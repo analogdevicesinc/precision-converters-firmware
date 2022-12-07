@@ -1,0 +1,14 @@
+*.swp
+*.profile*
+app/no-OS
+build/
+Visual*
+Code*
+.gitattributes
+.vs/
+*.sln
+*.vgdbproj
+*.TMP
+*.user
+/.mbed
+**/junit.xml

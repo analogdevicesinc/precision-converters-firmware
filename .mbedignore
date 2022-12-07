@@ -1,0 +1,20 @@
+* Note: Comment out the project name to be compiled (one at a time)
+
+//projects/ad7689_iio/
+projects/ad4130_iio/
+projects/ad717x_iio/
+projects/ad4696_iio/
+projects/ad7606_iio/
+projects/ad77681_iio/
+projects/ad738x_iio/
+projects/ad7124_temperature-measure/
+projects/ad7124_console/
+projects/ad717x_console/
+projects/nanodac_console/
+projects/ltc268x_console/
+projects/ad5770r_console/
+projects/ad590_console/
+projects/adt7420_console/
+projects/ad559xr_console/
+projects/ad5933_console/
+projects/evb_discovery_firmware/

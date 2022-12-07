@@ -1,0 +1,15 @@
+*.swp
+*.profile*
+*.txt
+mbed-os/
+app/no-OS/
+app/board_info/
+build
+Visual*
+Code*
+.gitattributes
+.vs/
+*.sln
+*.vgdbproj
+*.TMP
+*.user

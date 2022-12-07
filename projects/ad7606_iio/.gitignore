@@ -1,0 +1,12 @@
+*.swp
+*.profile*
+build
+app/no-OS
+Visual*
+Code*
+.gitattributes
+.vs/
+*.sln
+*.vgdbproj
+*.TMP
+*.user

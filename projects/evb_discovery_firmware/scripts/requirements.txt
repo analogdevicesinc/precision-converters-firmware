@@ -1,0 +1,7 @@
+numpy==1.22.4
+pyadi-iio==0.0.14
+pylibiio==0.23.1
+pynput==1.7.6
+pyserial==3.5
+tk==0.1.0
+ttkthemes==3.2.2

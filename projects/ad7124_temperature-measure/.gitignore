@@ -1,0 +1,15 @@
+*.swp
+*.profile*
+app/no-OS
+app/mbed_platform_drivers
+app/adi_console_menu
+app/tempsensors
+mbed-os
+Visual*
+Code*
+.gitattributes
+.vs/
+*.sln
+*.vgdbproj
+*.TMP
+*.user
