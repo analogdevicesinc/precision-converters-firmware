@@ -1,0 +1,18 @@
+* Note: Comment out the project name to be compiled (one at a time)
+
+//ad7689_iio-application/
+ad4130_iio-application/ 
+ad717x_iio-application/
+ad7124_temperature-measure-example/
+ad4696_iio-application/
+ad7606_iio-application/
+ad7124_console_application/
+ad717x_console-application/
+nanodac_console-application/
+ltc268x_console-application/
+ad5770r_console-application/
+ad590_console-application/
+adt7420_console-application/
+ad77681_iio-application/
+tools/
+CI/

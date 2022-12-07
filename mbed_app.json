@@ -1,0 +1,25 @@
+{
+    "config": {
+        "usb_speed": {
+            "help": "USE_USB_OTG_FS or USE_USB_OTG_HS or USE_USB_HS_IN_FS",
+            "value": "USE_USB_OTG_HS"
+        }
+    },
+    "requires": ["bare-metal", "drivers-usb", "events"],
+    "macros": [
+        "TINYIIOD_VERSION_MAJOR=0",
+        "TINYIIOD_VERSION_MINOR=1",
+        "TINYIIOD_VERSION_GIT=\"0.1\"",
+        "IIOD_BUFFER_SIZE=0x1000",
+        "_USE_STD_INT_TYPES",
+		"IIO_IGNORE_BUFF_OVERRUN_ERR",
+		"USE_STANDARD_SPI"
+    ],
+    "target_overrides": {
+        "*": {
+            "platform.default-serial-baud-rate": 230400,
+            "target.printf_lib": "std",
+			"target.device_has_remove": ["CAN"]
+        }
+    }
+}

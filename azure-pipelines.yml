@@ -1,0 +1,38 @@
+trigger:
+- main
+- develop
+- release/*
+
+pr:
+- main
+- develop
+- release/*
+
+variables:
+  isMain: $[eq(variables['Build.SourceBranch'], 'refs/heads/main')]
+  runCondition: true
+  targetBranch: $[ variables['Build.SourceBranchName'] ]
+
+jobs:
+- job: LinuxBuilds
+  strategy:
+    matrix:
+      astyle:
+        imageName: 'ubuntu-latest'
+        BUILD_TYPE: astyle
+        TARGET_BRANCH: '$(targetBranch)'
+      cppcheck:
+        imageName: 'ubuntu-latest'
+        BUILD_TYPE: cppcheck
+        TARGET_BRANCH: '$(targetBranch)'
+  pool:
+    vmImage: $(imageName)
+  steps:
+  - checkout: self
+    condition: eq(variables.runCondition, true)
+    fetchDepth: 50
+    clean: true
+    persistCredentials: true
+  - script: ./CI/scripts/run_build.sh
+    condition: eq(variables.runCondition, true)
+    displayName: 'Run $(BUILD_TYPE)'

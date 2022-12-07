@@ -1,0 +1,16 @@
+*.swp
+*.profile*
+mbed-os
+libraries/precision-converters-library
+mbed_app_json
+BUILD
+Visual*
+Code*
+.gitattributes
+.vs/
+*.sln
+*.vgdbproj
+*.TMP
+*.user
+*.csv
+.mbed
