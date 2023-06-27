@@ -40,7 +40,8 @@
 // Define the number of channels for selected device
 #if defined(DEV_AD4111) || defined(DEV_AD4112) || \
 	defined(DEV_AD4114) || defined(DEV_AD4115) || \
-	defined(DEV_AD7173_8) || defined(DEV_AD7175_8)
+	defined(DEV_AD7173_8) || defined(DEV_AD7175_8) ||\
+	defined(DEV_AD4116)
 #define NUMBER_OF_CHANNELS	16U
 #elif defined(DEV_AD7172_4)
 #define NUMBER_OF_CHANNELS	8U
@@ -53,7 +54,7 @@
 #if defined(DEV_AD4111) || defined(DEV_AD4112) || \
 	defined(DEV_AD4114) || defined(DEV_AD4115) || \
 	defined(DEV_AD7173_8) || defined(DEV_AD7172_4) || \
-	defined(DEV_AD7175_8)
+	defined(DEV_AD7175_8)|| defined(DEV_AD4116)
 #define NUMBER_OF_SETUPS	8U
 #else
 #define NUMBER_OF_SETUPS	4U

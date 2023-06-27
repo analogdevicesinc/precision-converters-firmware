@@ -36,7 +36,7 @@ def serial_port(serialport, serialcomtype, devicename, platformname):
         vcom_serial_number = firmware_name + '_' + devicename + '_' + platformname
         # Get the COM port number corresponding to virtualCOM port parameters
         for vcom_serial_port in serial.tools.list_ports.comports():
-            if (vcom_serial_port.vid == ADI_USB_VID and vcom_serial_port.pid == ADI_USB_PID and vcom_serial_port.serial_number == vcom_serial_number):
+            if (vcom_serial_port.vid == ADI_USB_VID and vcom_serial_port.pid == ADI_USB_PID and (vcom_serial_port.serial_number).lower() == (vcom_serial_number).lower()):
                 break
         yield vcom_serial_port.device
     else:

@@ -24,6 +24,7 @@
 #include "ad7606.h"
 #include "ad7606_support.h"
 #include "ad7606_user_config.h"
+#include "common.h"
 #include "no_os_error.h"
 #include "no_os_gpio.h"
 #include "iio_trigger.h"

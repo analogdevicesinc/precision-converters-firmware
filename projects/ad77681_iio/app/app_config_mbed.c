@@ -56,6 +56,12 @@ struct mbed_spi_init_param mbed_spi_extra_init_params = {
 	.use_sw_csb = false
 };
 
+/* I2C Mbed platform specific parameters */
+struct mbed_i2c_init_param mbed_i2c_extra_init_params = {
+	.i2c_sda_pin = I2C_SDA,
+	.i2c_scl_pin = I2C_SCL
+};
+
 /******************************************************************************/
 /************************** Functions Declarations ****************************/
 /******************************************************************************/

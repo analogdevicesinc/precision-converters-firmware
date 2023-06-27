@@ -44,7 +44,7 @@
 // Include the device register address map headers and device register map based
 // on the user selected device (default is AD4111)
 #if defined(DEV_AD4111) || defined(DEV_AD4112) || defined(DEV_AD4114) || \
-	defined(DEV_AD4115)
+	defined(DEV_AD4115) || defined (DEV_AD4116)
 #include <ad411x_regs.h>
 static ad717x_st_reg *ad717x_device_map = ad4111_regs;
 static uint8_t ad717x_reg_count = sizeof(ad4111_regs) / sizeof(ad4111_regs[0]);
@@ -412,6 +412,8 @@ static float ad717x_convert_sample_to_voltage(ad717x_dev *dev,
 	} else {
 		converted_value = (((float)sample * ADC_REF_VOLTAGE) / (1 << ADC_RESOLUTION));
 	}
+
+	converted_value /= SCALE_FACTOR_DR;
 
 	return (converted_value);
 }
@@ -880,7 +882,7 @@ int32_t menu_analog_input_connect(uint32_t user_analog_input)
 					  AD717X_CHMAP0_REG + current_channel);
 
 #if defined(DEV_AD4111) || defined(DEV_AD4112) || defined(DEV_AD4114) || \
-	defined(DEV_AD4115)
+	defined(DEV_AD4115) || defined(DEV_AD4116)
 	// Select analog input pair
 	device_chnmap_reg->value =
 		((device_chnmap_reg->value & ~AD4111_CHMAP_REG_INPUT_MSK) |
@@ -923,7 +925,7 @@ int32_t menu_analog_input_connect(uint32_t user_analog_input)
 int32_t menu_input_chn_connect_display(uint32_t menu_id)
 {
 #if defined(DEV_AD4111) || defined(DEV_AD4112) || defined(DEV_AD4114) || \
-	defined(DEV_AD4115)
+	defined(DEV_AD4115) || defined(DEV_AD4116)
 	input_to_select = ANALOG_INP_PAIR_SELECT;
 	adi_do_console_menu(&analog_input_connect_menu);
 #else
@@ -1398,7 +1400,7 @@ int32_t menu_display_setup(uint32_t menu_id)
 		}
 
 #if defined(DEV_AD4111) || defined(DEV_AD4112) || defined(DEV_AD4114) || \
-	defined(DEV_AD4115)
+	defined(DEV_AD4115)|| defined (DEV_AD4116)
 		device_setup.input_buffers =
 			AD4111_SETUP_CONF_REG_AIN_BUF_RD(device_setupcon_reg->value);
 		device_setup.reference_buffers =

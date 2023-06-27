@@ -19,6 +19,7 @@
 
 #include "app_config.h"
 #include "ad77681_iio.h"
+#include "common.h"
 #include "no_os_error.h"
 #include "no_os_uart.h"
 #include "no_os_irq.h"

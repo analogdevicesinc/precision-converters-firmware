@@ -17,6 +17,7 @@
 #include <stdbool.h>
 
 #include "app_config.h"
+#include "common.h"
 #include "no_os_gpio.h"
 #include "no_os_uart.h"
 #include "no_os_spi.h"

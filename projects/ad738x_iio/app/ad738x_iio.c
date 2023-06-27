@@ -20,6 +20,7 @@
 #include "app_config.h"
 #include "ad738x_iio.h"
 #include "ad738x_user_config.h"
+#include "common.h"
 #include "iio.h"
 #include "iio_types.h"
 #include "iio_trigger.h"

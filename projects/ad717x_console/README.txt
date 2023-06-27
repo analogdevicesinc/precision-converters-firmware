@@ -3,6 +3,7 @@ Evaluation Boards/Products Supported
 EVAL-AD4111SDZ
 EVAL-AD4112SDZ
 EVAL-AD4114/15SDZ
+EVAL-AD4116
 EVAL-AD7175-2
 EVAL-AD7175-8
 EVAL-AD7176-2
@@ -21,6 +22,7 @@ controller board: https://os.mbed.com/platforms/SDP_K1/
 Product details: https://www.analog.com/en/products/ad4111.html
                  https://www.analog.com/en/products/ad4112.html
                  https://www.analog.com/en/products/ad4115.html
+		 https://www.analog.com/en/products/ad4116.html
                  https://www.analog.com/en/products/landing-pages/001/ad717x-family.html
 Eval board details: https://www.analog.com/en/design-center/evaluation-hardware-and-software/evaluation-boards-kits/EVAL-AD4111.html
                     (*Refer device datasheet page for the respective EVAL boards manual)

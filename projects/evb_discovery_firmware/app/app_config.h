@@ -47,7 +47,7 @@
 #if (ACTIVE_PLATFORM == MBED_PLATFORM)
 #include "app_config_mbed.h"
 
-#define HW_CARRIER_NAME		STR(TARGET_NAME)
+#define HW_CARRIER_NAME		TARGET_NAME
 
 /* Redefine the init params structure mapping w.r.t. platform */
 #if defined(USE_VIRTUAL_COM_PORT)
@@ -64,9 +64,7 @@
 #endif
 
 /****** Macros used to form a VCOM serial number ******/
-#if !defined(FIRMWARE_NAME)
 #define	FIRMWARE_NAME	"evb_discovery_firmware"
-#endif
 
 #if !defined(PLATFORM_NAME)
 #define PLATFORM_NAME	HW_CARRIER_NAME
@@ -78,7 +76,7 @@
 #define VIRTUAL_COM_PORT_VID	0x0456
 #define VIRTUAL_COM_PORT_PID	0xb66c
 /* Serial number string is formed as: application name + platform (host) name */
-#define VIRTUAL_COM_SERIAL_NUM	(FIRMWARE_NAME "_" PLATFORM_NAME)
+#define VIRTUAL_COM_SERIAL_NUM	(FIRMWARE_NAME "_" STR(PLATFORM_NAME))
 
 /* Default baud rate for IIO UART interface */
 #define IIO_UART_BAUD_RATE	(230400)
@@ -94,7 +92,5 @@ extern struct no_os_uart_desc *uart_desc;
 extern struct no_os_eeprom_desc *eeprom_desc;
 
 int32_t init_system(void);
-uint8_t get_eeprom_detected_dev_addr(void);
-bool is_eeprom_valid_dev_addr_detected(void);
 
 #endif /* _APP_CONFIG_H_ */

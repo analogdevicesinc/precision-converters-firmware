@@ -57,70 +57,83 @@
 
 #if defined(DEV_AD4111)
 #define ACTIVE_DEVICE_NAME	"ad4111"
+#define DEVICE_NAME			"DEV_AD4111"
 #define ACTIVE_DEVICE_ID	 ID_AD4111
 #define HW_MEZZANINE_NAME	"Eval-AD4111SDZ"
 #elif defined(DEV_AD4112)
 #define ACTIVE_DEVICE_NAME	"ad4112"
+#define DEVICE_NAME			"DEV_AD4112"
 #define ACTIVE_DEVICE_ID	 ID_AD4112
 #define HW_MEZZANINE_NAME	"EVAL-AD4112SDZ"
 #elif defined(DEV_AD4114)
 #define ACTIVE_DEVICE_NAME	"ad4114"
+#define DEVICE_NAME			"DEV_AD4114"
 #define ACTIVE_DEVICE_ID	 ID_AD4114
 #define HW_MEZZANINE_NAME	"EVAL-AD4114SDZ"
 #elif defined(DEV_AD4115)
 #define ACTIVE_DEVICE_NAME	"ad4115"
+#define DEVICE_NAME			"DEV_AD4115"
 #define ACTIVE_DEVICE_ID	 ID_AD4115
 #define HW_MEZZANINE_NAME	"EVAL-AD4115SDZ"
 #elif defined(DEV_AD4116)
 #define ACTIVE_DEVICE_NAME	"ad4116"
+#define DEVICE_NAME			"DEV_AD4116"
 #define ACTIVE_DEVICE_ID	 ID_AD4116
 #define HW_MEZZANINE_NAME	"EVAL-AD4116SDZ"
 #elif defined(DEV_AD7172_2)
 #define AD7172_2_INIT
 #define ACTIVE_DEVICE_NAME	"ad7172-2"
+#define DEVICE_NAME			"DEV_AD7172_2"
 #define ACTIVE_DEVICE_ID	 ID_AD7172_2
 #define HW_MEZZANINE_NAME	"EVAL-AD7172-2SDZ"
 #elif defined(DEV_AD7172_4)
 #define AD7172_4_INIT
 #define ACTIVE_DEVICE_NAME	"ad7172-4"
+#define DEVICE_NAME			"DEV_AD7172_4"
 #define ACTIVE_DEVICE_ID	 ID_AD7172_4
 #define HW_MEZZANINE_NAME	"EVAL-AD7172-4SDZ"
 #elif defined(DEV_AD7173_8)
 #define AD7173_8_INIT
 #define ACTIVE_DEVICE_NAME	"ad7173-8"
+#define DEVICE_NAME			"DEV_AD7173_8"
 #define ACTIVE_DEVICE_ID	 ID_AD7173_8
 #define HW_MEZZANINE_NAME	"EVAL-AD7173-8SDZ"
 #elif defined(DEV_AD7175_2)
 #define AD7175_2_INIT
 #define ACTIVE_DEVICE_NAME	"ad7175-2"
+#define DEVICE_NAME			"DEV_AD7175_2"
 #define ACTIVE_DEVICE_ID	 ID_AD7175_2
 #define HW_MEZZANINE_NAME	"EVAL-AD7175-2SDZ"
 #elif defined(DEV_AD7175_8)
 #define AD7175_8_INIT
 #define ACTIVE_DEVICE_NAME	"ad7175-8"
+#define DEVICE_NAME			"DEV_AD7175_8"
 #define ACTIVE_DEVICE_ID	 ID_AD7175_8
 #define HW_MEZZANINE_NAME	"EVAL-AD7175-8SDZ"
 #elif defined(DEV_AD7176_2)
 #define AD7176_2_INIT
 #define ACTIVE_DEVICE_NAME	"ad7176-2"
+#define DEVICE_NAME			"DEV_AD7176_2"
 #define ACTIVE_DEVICE_ID	 ID_AD7176_2
 #define HW_MEZZANINE_NAME	"EVAL-AD7176-2SDZ"
 #elif defined(DEV_AD7177_2)
 #define AD7177_2_INIT
 #define ACTIVE_DEVICE_NAME	"ad7177-2"
+#define DEVICE_NAME			"DEV_AD7177_2"
 #define ACTIVE_DEVICE_ID	 ID_AD7177_2
 #define HW_MEZZANINE_NAME	"EVAL-AD7177-2SDZ"
 #else
 #warning No/Unsupported ADxxxxy symbol defined. AD4111 defined
 #define DEV_AD4111
 #define ACTIVE_DEVICE_NAME	"ad4111"
+#define DEVICE_NAME			"DEV_AD4111"
 #define ACTIVE_DEVICE_ID	 ID_AD4111
 #define HW_MEZZANINE_NAME	"Eval-AD4111SDZ"
 #endif // Device Select (Active Device name definition)
 
 #if (ACTIVE_PLATFORM == MBED_PLATFORM)
 #include "app_config_mbed.h"
-#define HW_CARRIER_NAME         STR(TARGET_NAME)
+#define HW_CARRIER_NAME         TARGET_NAME
 /* Redefine the init params structure mapping w.r.t. platform */
 #if defined(USE_VIRTUAL_COM_PORT)
 #define uart_extra_init_params mbed_vcom_extra_init_params
@@ -152,16 +165,12 @@
 #define EVB_INTERFACE	"SDP_120"
 #endif
 
-#if !defined(DEVICE_NAME)
-#define DEVICE_NAME		"DEV_AD4111"
-#endif
-
 /* Below USB configurations (VID and PID) are owned and assigned by ADI.
  * If intended to distribute software further, use the VID and PID owned by your
  * organization */
 #define VIRTUAL_COM_PORT_VID	0x0456
 #define VIRTUAL_COM_PORT_PID	0xb66c
-#define VIRTUAL_COM_SERIAL_NUM	(FIRMWARE_NAME "_" DEVICE_NAME "_" PLATFORM_NAME)
+#define VIRTUAL_COM_SERIAL_NUM	(FIRMWARE_NAME "_" DEVICE_NAME "_" STR(PLATFORM_NAME))
 
 /* Definition for number of channels for the selected device */
 #if defined(DEV_AD4111) || defined(DEV_AD4112) || \
@@ -373,10 +382,6 @@ extern struct no_os_irq_ctrl_desc *trigger_irq_desc;
 extern struct no_os_eeprom_desc *eeprom_desc;
 
 int32_t init_system(void);
-
-uint8_t get_eeprom_detected_dev_addr(void);
-
-bool is_eeprom_valid_dev_addr_detected(void);
 
 #endif // APP_CONFIG_H
 

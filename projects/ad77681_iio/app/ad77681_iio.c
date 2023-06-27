@@ -25,6 +25,7 @@
 #include "ad77681_user_config.h"
 #include "ad77681_regs.h"
 #include "ad77681_support.h"
+#include "common.h"
 #include "iio_trigger.h"
 #include "no_os_error.h"
 #include "no_os_util.h"

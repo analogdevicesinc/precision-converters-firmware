@@ -27,6 +27,7 @@
 /* AD4130 device initialization parameters */
 struct ad413x_init_param ad4130_rtd_config_params = {
 	.spi_init = &spi_init_params,
+	.rdy_pin_init = &trigger_gpio_param,
 
 	/* Setup (Preset) Configurations */
 	.preset = {

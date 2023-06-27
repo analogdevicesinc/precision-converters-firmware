@@ -25,11 +25,8 @@
 #include "mbed_irq.h"
 #include "mbed_gpio_irq.h"
 #include "mbed_spi.h"
+#include "mbed_i2c.h"
 #include "mbed_gpio.h"
-
-#if defined(TARGET_SDP_K1)
-#include "sdram_sdpk1.h"
-#endif
 
 /******************************************************************************/
 /********************** Macros and Constants Definition ***********************/
@@ -40,6 +37,9 @@
 #define SPI_HOST_SDO	ARDUINO_UNO_D11
 #define SPI_HOST_SDI	ARDUINO_UNO_D12
 #define SPI_SCK			ARDUINO_UNO_D13
+
+#define I2C_SCL			ARDUINO_UNO_D15
+#define I2C_SDA			ARDUINO_UNO_D14
 
 // Conversion over interrupt
 #define CONV_MON		ARDUINO_UNO_D2
@@ -78,5 +78,6 @@ extern struct mbed_gpio_init_param mbed_trigger_gpio_extra_init_params;
 extern struct mbed_uart_init_param mbed_uart_extra_init_params;
 extern struct mbed_uart_init_param mbed_vcom_extra_init_params;
 extern struct mbed_spi_init_param mbed_spi_extra_init_params;
+extern struct mbed_i2c_init_param mbed_i2c_extra_init_params;
 
 #endif /* _APP_CONFIG_MBED_H_ */

@@ -2,7 +2,7 @@
  *   @file    24xx32a_eeprom_iio.c
  *   @brief   Implementation of 24XX32A EEPROM device IIO application interfaces
 ********************************************************************************
- * Copyright (c) 2022 Analog Devices, Inc.
+ * Copyright (c) 2022-23 Analog Devices, Inc.
  * All rights reserved.
  *
  * This software is proprietary to Analog Devices, Inc. and its licensors.
@@ -21,8 +21,7 @@
 
 #include "24xx32a_eeprom_iio.h"
 #include "app_config.h"
-#include "board_info.h"
-#include "eeprom_config.h"
+#include "common.h"
 #include "no_os_error.h"
 #include "iio.h"
 #include "iio_types.h"
@@ -49,19 +48,8 @@ static int set_eeprom_dev_addr(void *device, char *buf,
 /* IIO interface descriptor */
 static struct iio_desc *evb_discovery_iio_desc;
 
-/* Context attributes ID */
-enum context_attr_ids {
-	HW_MEZZANINE_ID,
-	HW_CARRIER_ID,
-	HW_NAME_ID,
-	DEF_NUM_OF_CONTXT_ATTRS
-};
-
 /* EVB HW validation status */
 static bool hw_mezzanine_is_valid;
-
-/* Hardware board information */
-static struct board_info board_info;
 
 /* IIOD channels attributes list */
 struct iio_attribute channel_input_attributes[] = {
@@ -167,86 +155,6 @@ int32_t debug_reg_write(void *dev, uint32_t reg, uint32_t writeval)
 }
 
 /**
- * @brief	Read IIO context attributes
- * @param 	params[in,out] - Pointer to IIO context attributes init param
- * @param	attrs_cnt[in,out] - IIO contxt attributes count
- * @return	0 in case of success, negative error code otherwise
- */
-static int32_t get_iio_context_attributes(struct iio_cntx_attr_init *params,
-		uint32_t *attrs_cnt)
-{
-	int32_t ret;
-	struct iio_context_attribute *context_attributes;
-	uint8_t num_of_context_attributes = DEF_NUM_OF_CONTXT_ATTRS;
-	uint8_t cnt = 0;
-
-	hw_mezzanine_is_valid = false;
-
-	if (!params || !attrs_cnt) {
-		return -EINVAL;
-	}
-
-	if (is_eeprom_valid_dev_addr_detected()) {
-		/* Read the board information from EEPROM */
-		ret = read_board_info(eeprom_desc, &board_info);
-		if (!ret && (board_info.board_id[0] != '\0')) {
-			hw_mezzanine_is_valid = true;
-		}
-	}
-
-	if (!hw_mezzanine_is_valid) {
-		num_of_context_attributes++;
-	}
-
-#if defined(FIRMWARE_VERSION)
-	num_of_context_attributes++;
-#endif
-
-	/* Allocate dynamic memory for context attributes based on number of attributes
-	 * detected/available */
-	context_attributes = (struct iio_context_attribute *)calloc(
-				     num_of_context_attributes,
-				     sizeof(*context_attributes));
-	if (!context_attributes) {
-		return -ENOMEM;
-	}
-
-#if defined(FIRMWARE_VERSION)
-	(context_attributes + cnt)->name = "fw_version";
-	(context_attributes + cnt)->value = FIRMWARE_VERSION;
-	cnt++;
-#endif
-
-	(context_attributes + cnt)->name = "hw_carrier";
-	(context_attributes + cnt)->value = HW_CARRIER_NAME;
-	cnt++;
-
-	if (board_info.board_id[0] != '\0') {
-		(context_attributes + cnt)->name = "hw_mezzanine";
-		(context_attributes + cnt)->value = board_info.board_id;
-		cnt++;
-	}
-
-	if (board_info.board_name[0] != '\0') {
-		(context_attributes + cnt)->name = "hw_name";
-		(context_attributes + cnt)->value = board_info.board_name;
-		cnt++;
-	}
-
-	if (!hw_mezzanine_is_valid) {
-		(context_attributes + cnt)->name = "hw_mezzanine_status";
-		(context_attributes + cnt)->value = "not_detected";
-		cnt++;
-	}
-
-	num_of_context_attributes = cnt;
-	params->descriptor = context_attributes;
-	*attrs_cnt = num_of_context_attributes;
-
-	return 0;
-}
-
-/**
  * @brief	Init IIO device parameters
  * @param 	desc[in,out] - IIO device descriptor
  * @return	0 in case of success, negative error code otherwise
@@ -288,9 +196,6 @@ int32_t evb_discovery_iio_init(void)
 	/* IIO device init parameters */
 	static struct iio_device_init iio_device_init_params[NUM_OF_IIO_DEVICES];
 
-	/* IIO context attributes */
-	static struct iio_cntx_attr_init iio_cntx_attr_init_params;
-
 	/* IIO interface init parameters */
 	static struct iio_init_param iio_init_params = {
 		.phy_type = USE_UART,
@@ -303,8 +208,12 @@ int32_t evb_discovery_iio_init(void)
 	}
 
 	/* Read context attributes */
-	init_status = get_iio_context_attributes(&iio_cntx_attr_init_params,
-			&iio_init_params.nb_cntx_attrs);
+	init_status = get_iio_context_attributes(&iio_init_params.ctx_attrs,
+			&iio_init_params.nb_ctx_attr,
+			eeprom_desc,
+			NULL,
+			STR(HW_CARRIER_NAME),
+			&hw_mezzanine_is_valid);
 	if (init_status) {
 		return init_status;
 	}
@@ -328,7 +237,6 @@ int32_t evb_discovery_iio_init(void)
 	/* Initialize the IIO interface */
 	iio_init_params.uart_desc = uart_desc;
 	iio_init_params.devs = iio_device_init_params;
-	iio_init_params.cntx_attrs = &iio_cntx_attr_init_params;
 	init_status = iio_init(&evb_discovery_iio_desc, &iio_init_params);
 	if (init_status) {
 		return init_status;

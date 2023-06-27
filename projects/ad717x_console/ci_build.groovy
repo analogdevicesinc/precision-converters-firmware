@@ -1,6 +1,3 @@
-// This variable holds the build status
-buildStatusInfo = "Success"
-
 def doBuild(projectName) {
 	Map buildMap =[:]
 	if (env.CHANGE_TARGET == "main" || env.CHANGE_TARGET == "develop") {
@@ -8,7 +5,7 @@ def doBuild(projectName) {
 		buildMap = [
 			PLATFORM_NAME: ['SDP_K1', 'NUCLEO_L552ZE_Q', 'DISCO_F769NI'],
 			EVB_INTERFACE: ['ARDUINO','SDP_120'],
-			EVB_TYPE: ['DEV_AD4111','DEV_AD4112', 'DEV_AD4114', 'DEV_AD4115', 'DEV_AD7172_2', 'DEV_AD7172_4', 'DEV_AD7173_8', 'DEV_AD7175_2', 'DEV_AD7175_8', 'DEV_AD7176_2', 'DEV_AD7177_2']
+			EVB_TYPE: ['DEV_AD4111','DEV_AD4112', 'DEV_AD4114', 'DEV_AD4115', 'DEV_AD4116', 'DEV_AD7172_2', 'DEV_AD7172_4', 'DEV_AD7173_8', 'DEV_AD7175_2', 'DEV_AD7175_8', 'DEV_AD7176_2', 'DEV_AD7177_2']
 		]
 	} else {
 		// This map is for building targets that is always build
@@ -59,6 +56,8 @@ def doBuild(projectName) {
 						Map axis = buildMatrix[i]
 						runSeqBuild(axis, projectName)
 					}
+					// This variable holds the build status
+					buildStatusInfo = "Success"
 				}
 				catch (Exception ex) {
 					echo "Failed in ${projectName}-Build"
@@ -98,10 +97,12 @@ def doBuild(projectName) {
 							
 								echo "Starting mbed build..."
 								//NOTE: if adding in --profile, need to change the path where the .bin is found by mbedflsh in Test stage
-								bat "cd projects/${projectName} & make test TARGET_BOARD=${PLATFORM_NAME} ARTIFACT-NAME=${PLATFORM_NAME}-${EVB_INTERFACE}-${EVB_TYPE} TEST_FLAGS=-DPLATFORM_NAME=\\\\\\\"${PLATFORM_NAME}\\\\\\\" TEST_FLAGS+=-D${EVB_TYPE} TEST_FLAGS+=-D${EVB_INTERFACE}"
-								artifactory.uploadFirmwareArtifacts("projects/${projectName}/build/${PLATFORM_NAME}/${TOOLCHAIN}","${projectName}")
-								archiveArtifacts allowEmptyArchive: true, artifacts: "projects/${projectName}/build/**/*.bin, projects/${projectName}/build/**/*.elf"
-								stash includes: "projects/${projectName}/build/**/*.bin, projects/${projectName}/build/**/*.elf", name: "${PLATFORM_NAME}-${EVB_INTERFACE}-${EVB_TYPE}"
+								bat "cd projects/${projectName} & make clone-lib-repos"
+								bat "cd projects/${projectName} & make all LINK_SRCS=n TARGET_BOARD=${PLATFORM_NAME} BINARY_FILE_NAME=${PLATFORM_NAME}-${EVB_INTERFACE}-${EVB_TYPE} NEW_CFLAGS+=-D${EVB_TYPE} NEW_CFLAGS+=-D${EVB_INTERFACE}"
+								artifactory.uploadFirmwareArtifacts("projects/${projectName}/build","${projectName}")
+								archiveArtifacts allowEmptyArchive: true, artifacts: "projects/${projectName}/build/*.bin, projects/${projectName}/build/*.elf"
+								stash includes: "projects/${projectName}/build/*.bin, projects/${projectName}/build/*.elf", name: "${PLATFORM_NAME}-${EVB_INTERFACE}-${EVB_TYPE}"
+								buildStatusInfo = "Success"
 								deleteDir()
 							}
 						}
@@ -139,11 +140,12 @@ def runSeqBuild(Map config =[:], projectName) {
 	
 		echo "Starting mbed build..."
 		//NOTE: if adding in --profile, need to change the path where the .bin is found by mbedflsh in Test stage
-		bat "cd projects/${projectName} & make test TARGET_BOARD=${config.PLATFORM_NAME} ARTIFACT-NAME=${config.PLATFORM_NAME}-${config.EVB_INTERFACE}-${config.EVB_TYPE} TEST_FLAGS=-DPLATFORM_NAME=\\\\\\\"${config.PLATFORM_NAME}\\\\\\\" TEST_FLAGS+=-D${config.EVB_TYPE} TEST_FLAGS+=-D${config.EVB_INTERFACE}"
-		artifactory.uploadFirmwareArtifacts("projects/${projectName}/build/${config.PLATFORM_NAME}/${TOOLCHAIN}","${projectName}")
-		archiveArtifacts allowEmptyArchive: true, artifacts: "projects/${projectName}/build/**/*.bin, projects/${projectName}/build/**/*.elf"
-		stash includes: "projects/${projectName}/build/**/*.bin, projects/${projectName}/build/**/*.elf", name: "${config.PLATFORM_NAME}-${config.EVB_INTERFACE}-${config.EVB_TYPE}"
-		bat "cd projects/${projectName} & make clean TARGET_BOARD=${config.PLATFORM_NAME}"
+		bat "cd projects/${projectName} & make clone-lib-repos"
+		bat "cd projects/${projectName} & make all LINK_SRCS=n TARGET_BOARD=${config.PLATFORM_NAME} BINARY_FILE_NAME=${config.PLATFORM_NAME}-${config.EVB_INTERFACE}-${config.EVB_TYPE} NEW_CFLAGS+=-D${config.EVB_TYPE} NEW_CFLAGS+=-D${config.EVB_INTERFACE}"
+		artifactory.uploadFirmwareArtifacts("projects/${projectName}/build","${projectName}")
+		archiveArtifacts allowEmptyArchive: true, artifacts: "projects/${projectName}/build/*.bin, projects/${projectName}/build/*.elf"
+		stash includes: "projects/${projectName}/build/*.bin, projects/${projectName}/build/*.elf", name: "${config.PLATFORM_NAME}-${config.EVB_INTERFACE}-${config.EVB_TYPE}"
+		bat "cd projects/${projectName} & make reset LINK_SRCS=n TARGET_BOARD=${config.PLATFORM_NAME}"
 	}
 }
 

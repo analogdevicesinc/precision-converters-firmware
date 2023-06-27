@@ -43,6 +43,10 @@
 #define		NOISE_TEST_CONFIG		8
 #define		POWER_TEST_CONFIG		9
 
+/* List of supported IIO clients */
+#define		IIO_CLIENT_REMOTE		0
+#define		IIO_CLIENT_LOCAL		1
+
 /* Macros for stringification */
 #define XSTR(s)		#s
 #define STR(s)		XSTR(s)
@@ -59,6 +63,11 @@
 /* Select the active platform (default is Mbed) */
 #if !defined(ACTIVE_PLATFORM)
 #define ACTIVE_PLATFORM		MBED_PLATFORM
+#endif
+
+/* Select active IIO client */
+#if !defined(ACTIVE_IIO_CLIENT)
+#define ACTIVE_IIO_CLIENT	IIO_CLIENT_REMOTE
 #endif
 
 /* Select the demo mode configuration (default is user config) */
@@ -81,10 +90,11 @@
 #if (ACTIVE_PLATFORM == MBED_PLATFORM)
 #include "app_config_mbed.h"
 
-#define HW_CARRIER_NAME		STR(TARGET_NAME)
+#define HW_CARRIER_NAME		TARGET_NAME
 
 /* Redefine the init params structure mapping w.r.t. platform */
 #define ext_int_extra_init_params mbed_ext_int_extra_init_params
+#define ticker_int_extra_init_params mbed_ticker_int_extra_init_params
 #if defined(USE_VIRTUAL_COM_PORT)
 #define uart_extra_init_params mbed_vcom_extra_init_params
 #define uart_ops mbed_virtual_com_ops
@@ -97,7 +107,7 @@
 #define trigger_gpio_irq_extra_params mbed_trigger_gpio_irq_init_params
 #define trigger_gpio_extra_init_params mbed_trigger_gpio_extra_init_params
 #define trigger_gpio_ops mbed_gpio_ops
-#define irq_ops		mbed_gpio_irq_ops
+#define irq_ops		mbed_irq_ops
 #define gpio_ops	mbed_gpio_ops
 #define spi_ops		mbed_spi_ops
 #define i2c_ops		mbed_i2c_ops
@@ -106,12 +116,13 @@
 #define TRIGGER_GPIO_PORT 0  // Unused macro
 #define TRIGGER_GPIO_PIN  CONV_MON
 #define TRIGGER_INT_ID	GPIO_IRQ_ID1
+#define TICKER_ID TICKER_INT_ID
 #else
 #error "No/Invalid active platform selected"
 #endif
 
 /* Expected HW ID */
-#define HW_MEZZANINE_NAME	"EV-AD4130-8ASDZ-U1"
+#define HW_MEZZANINE_NAME	"EV-AD4130WASDZ-U1"
 
 /* Include user config files and params according to active/selected
  * demo mode config */
@@ -176,13 +187,9 @@
 #define ADC_MAX_COUNT_BIPOLAR	(uint32_t)(1 << (ADC_RESOLUTION-1))
 
 /****** Macros used to form a VCOM serial number ******/
-#if !defined(FIRMWARE_NAME)
 #define	FIRMWARE_NAME	"ad4130_iio"
-#endif
 
-#if !defined(DEVICE_NAME)
 #define DEVICE_NAME		"DEV_AD4130"
-#endif
 
 #if !defined(PLATFORM_NAME)
 #define PLATFORM_NAME	HW_CARRIER_NAME
@@ -194,7 +201,7 @@
 #define VIRTUAL_COM_PORT_VID	0x0456
 #define VIRTUAL_COM_PORT_PID	0xb66c
 /* Serial number string is formed as: application name + device (target) name + platform (host) name */
-#define VIRTUAL_COM_SERIAL_NUM	(FIRMWARE_NAME "_" DEVICE_NAME "_" PLATFORM_NAME)
+#define VIRTUAL_COM_SERIAL_NUM	(FIRMWARE_NAME "_" DEVICE_NAME "_" STR(PLATFORM_NAME))
 
 /* Baud rate for IIO application UART interface */
 #define IIO_UART_BAUD_RATE	(230400)
@@ -209,6 +216,7 @@
 extern struct no_os_uart_desc *uart_desc;
 extern struct no_os_gpio_desc *trigger_gpio_desc;
 extern struct no_os_spi_init_param spi_init_params;
+extern struct no_os_gpio_init_param trigger_gpio_param;
 extern struct no_os_eeprom_desc *eeprom_desc;
 extern struct no_os_irq_ctrl_desc *trigger_irq_desc;
 

@@ -61,6 +61,12 @@ struct mbed_i2c_init_param mbed_i2c_extra_init_params = {
 	.i2c_scl_pin = I2C_SCL
 };
 
+/* Ticker interrupt Mbed platform specific parameters */
+struct mbed_irq_init_param mbed_ticker_int_extra_init_params = {
+	.int_obj_type = NULL,
+	.ticker_period_usec = LVGL_TICK_TIME_US,
+};
+
 /******************************************************************************/
 /************************** Functions Declarations ****************************/
 /******************************************************************************/

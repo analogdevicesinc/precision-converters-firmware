@@ -1,6 +1,3 @@
-// This variable holds the build status
-buildStatusInfo = "Success"
-
 def doBuild(projectName) {
 	Map buildMap =[:]
 	if (env.CHANGE_TARGET == "main" || env.CHANGE_TARGET == "develop") {
@@ -97,6 +94,8 @@ def doBuild(projectName) {
 						Map axis = buildMatrix[i]
 						runSeqBuild(axis, projectName)
 					}
+					// This variable holds the build status
+					buildStatusInfo = "Success"
 				}
 				catch (Exception ex) {
 					echo "Failed in ${projectName}-Build"
@@ -137,10 +136,12 @@ def doBuild(projectName) {
 							
 								echo "Starting mbed build..."
 								//NOTE: if adding in --profile, need to change the path where the .bin is found by mbedflsh in Test stage
-								bat "cd projects/${projectName} & make test TARGET_BOARD=${PLATFORM_NAME} ARTIFACT-NAME=${PLATFORM_NAME}-${ACTIVE_DEVICE}-${COM_TYPE}-${SDRAM}-${EVB_INTERFACE} TEST_FLAGS=-DDEVICE_NAME=\\\\\\\"${ACTIVE_DEVICE}\\\\\\\" TEST_FLAGS+=-DPLATFORM_NAME=\\\\\\\"${PLATFORM_NAME}\\\\\\\" TEST_FLAGS+=-DFIRMWARE_VERSION=\\\\\\\"${FIRMWARE_VERSION}\\\\\\\" TEST_FLAGS+=-D${EVB_INTERFACE} TEST_FLAGS+=-D${ACTIVE_DEVICE} TEST_FLAGS+=-D${COM_TYPE} TEST_FLAGS+=-D${SDRAM}"
-								artifactory.uploadFirmwareArtifacts("projects/${projectName}/build/${PLATFORM_NAME}/${TOOLCHAIN}","${projectName}")
-								archiveArtifacts allowEmptyArchive: true, artifacts: "projects/${projectName}/build/**/*.bin, projects/${projectName}/build/**/*.elf"
-								stash includes: "projects/${projectName}/build/**/*.bin, projects/${projectName}/build/**/*.elf", name: "${PLATFORM_NAME}-${ACTIVE_DEVICE}-${COM_TYPE}-${SDRAM}-${EVB_INTERFACE}"
+								bat "cd projects/${projectName} & make clone-lib-repos"
+								bat "cd projects/${projectName} & make all LINK_SRCS=n TARGET_BOARD=${PLATFORM_NAME} BINARY_FILE_NAME=${PLATFORM_NAME}-${ACTIVE_DEVICE}-${COM_TYPE}-${SDRAM}-${EVB_INTERFACE} NEW_CFLAGS+=-DPLATFORM_NAME=${PLATFORM_NAME} NEW_CFLAGS+=-DFIRMWARE_VERSION=${FIRMWARE_VERSION} NEW_CFLAGS+=-D${EVB_INTERFACE} NEW_CFLAGS+=-D${ACTIVE_DEVICE} NEW_CFLAGS+=-D${COM_TYPE} NEW_CFLAGS+=-D${SDRAM}"
+								artifactory.uploadFirmwareArtifacts("projects/${projectName}/build","${projectName}")
+								archiveArtifacts allowEmptyArchive: true, artifacts: "projects/${projectName}/build/*.bin, projects/${projectName}/build/*.elf"
+								stash includes: "projects/${projectName}/build/*.bin, projects/${projectName}/build/*.elf", name: "${PLATFORM_NAME}-${ACTIVE_DEVICE}-${COM_TYPE}-${SDRAM}-${EVB_INTERFACE}"
+								buildStatusInfo = "Success"
 								deleteDir()
 							}
 						}
@@ -179,11 +180,12 @@ def runSeqBuild(Map config =[:], projectName) {
 	
 		echo "Starting mbed build..."
 		//NOTE: if adding in --profile, need to change the path where the .bin is found by mbedflsh in Test stage
-		bat "cd projects/${projectName} & make test TARGET_BOARD=${config.PLATFORM_NAME} ARTIFACT-NAME=${config.PLATFORM_NAME}-${config.ACTIVE_DEVICE}-${config.COM_TYPE}-${config.SDRAM}-${config.EVB_INTERFACE} TEST_FLAGS=-DDEVICE_NAME=\\\\\\\"${config.ACTIVE_DEVICE}\\\\\\\" TEST_FLAGS+=-DPLATFORM_NAME=\\\\\\\"${config.PLATFORM_NAME}\\\\\\\" TEST_FLAGS+=-DFIRMWARE_VERSION=\\\\\\\"${FIRMWARE_VERSION}\\\\\\\" TEST_FLAGS+=-D${config.EVB_INTERFACE} TEST_FLAGS+=-D${config.ACTIVE_DEVICE} TEST_FLAGS+=-D${config.COM_TYPE} TEST_FLAGS+=-D${config.SDRAM}"
-		artifactory.uploadFirmwareArtifacts("projects/${projectName}/build/${config.PLATFORM_NAME}/${TOOLCHAIN}","${projectName}")
-		archiveArtifacts allowEmptyArchive: true, artifacts: "projects/${projectName}/build/**/*.bin, projects/${projectName}/build/**/*.elf"
-		stash includes: "projects/${projectName}/build/**/*.bin, projects/${projectName}/build/**/*.elf", name: "${config.PLATFORM_NAME}-${config.ACTIVE_DEVICE}-${config.COM_TYPE}-${config.SDRAM}-${config.EVB_INTERFACE}"
-		bat "cd projects/${projectName} & make clean TARGET_BOARD=${config.PLATFORM_NAME}"
+		bat "cd projects/${projectName} & make clone-lib-repos"
+		bat "cd projects/${projectName} & make all LINK_SRCS=n TARGET_BOARD=${config.PLATFORM_NAME} BINARY_FILE_NAME=${config.PLATFORM_NAME}-${config.ACTIVE_DEVICE}-${config.COM_TYPE}-${config.SDRAM}-${config.EVB_INTERFACE} NEW_CFLAGS+=-DPLATFORM_NAME=${config.PLATFORM_NAME} NEW_CFLAGS+=-DFIRMWARE_VERSION=${FIRMWARE_VERSION} NEW_CFLAGS+=-D${config.EVB_INTERFACE} NEW_CFLAGS+=-D${config.ACTIVE_DEVICE} NEW_CFLAGS+=-D${config.COM_TYPE} NEW_CFLAGS+=-D${config.SDRAM}"
+		artifactory.uploadFirmwareArtifacts("projects/${projectName}/build","${projectName}")
+		archiveArtifacts allowEmptyArchive: true, artifacts: "projects/${projectName}/build/*.bin, projects/${projectName}/build/*.elf"
+		stash includes: "projects/${projectName}/build/*.bin, projects/${projectName}/build/*.elf", name: "${config.PLATFORM_NAME}-${config.ACTIVE_DEVICE}-${config.COM_TYPE}-${config.SDRAM}-${config.EVB_INTERFACE}"
+		bat "cd projects/${projectName} & make reset LINK_SRCS=n TARGET_BOARD=${config.PLATFORM_NAME}"
 	}
 	
 }

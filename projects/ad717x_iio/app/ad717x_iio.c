@@ -23,7 +23,7 @@
 #include "iio.h"
 #include "no_os_util.h"
 #include "no_os_error.h"
-#include "board_info.h"
+#include "common.h"
 #include "iio_trigger.h"
 #include "ad717x_support.h"
 
@@ -156,19 +156,8 @@ static struct scan_type ad717x_scan_type[] = {
 #endif
 };
 
-/* Context attributes ID */
-enum context_attr_ids {
-	HW_MEZZANINE_ID,
-	HW_CARRIER_ID,
-	HW_NAME_ID,
-	DEF_NUM_OF_CONTXT_ATTRS
-};
-
 /* EVB HW validation status */
 static bool hw_mezzanine_is_valid;
-
-/* Hardware board information */
-static struct board_info board_info;
 
 /* AD717x IIO hw trigger descriptor */
 static struct iio_hw_trig *ad717x_hw_trig_desc;
@@ -547,95 +536,6 @@ static int32_t iio_ad717x_end_transfer(void *dev)
 
 
 /**
- * @brief	Read IIO context attributes
- * @param 	ctx_attr[in,out] - Pointer to IIO context attributes init param
- * @param	attrs_cnt[in,out] - IIO contxt attributes count
- * @return	0 in case of success, negative error code otherwise
- */
-static int32_t get_iio_context_attributes(struct iio_ctx_attr **ctx_attr,
-		uint32_t *attrs_cnt)
-{
-	int32_t ret;
-	struct iio_ctx_attr *context_attributes;
-	const char *board_status;
-	uint8_t num_of_context_attributes = DEF_NUM_OF_CONTXT_ATTRS;
-	uint8_t cnt = 0;
-
-	if (!ctx_attr || !attrs_cnt) {
-		return -EINVAL;
-	}
-
-	if (is_eeprom_valid_dev_addr_detected()) {
-		/* Read the board information from EEPROM */
-		ret = read_board_info(eeprom_desc, &board_info);
-		if (!ret) {
-			if (!strcmp(board_info.board_id, HW_MEZZANINE_NAME)) {
-				hw_mezzanine_is_valid = true;
-			} else {
-				hw_mezzanine_is_valid = false;
-				board_status = "mismatch";
-				num_of_context_attributes++;
-			}
-		} else {
-			hw_mezzanine_is_valid = false;
-			board_status = "not_detected";
-			num_of_context_attributes++;
-		}
-	} else {
-		hw_mezzanine_is_valid = false;
-		board_status = "not_detected";
-		num_of_context_attributes++;
-	}
-
-#if defined(FIRMWARE_VERSION)
-	num_of_context_attributes++;
-#endif
-
-	/* Allocate dynamic memory for context attributes based on number of attributes
-	 * detected/available */
-	context_attributes = (struct iio_ctx_attr *)calloc(
-				     num_of_context_attributes,
-				     sizeof(*context_attributes));
-	if (!context_attributes) {
-		return -ENOMEM;
-	}
-
-#if defined(FIRMWARE_VERSION)
-	(context_attributes + cnt)->name = "fw_version";
-	(context_attributes + cnt)->value = FIRMWARE_VERSION;
-	cnt++;
-#endif
-
-	(context_attributes + cnt)->name = "hw_carrier";
-	(context_attributes + cnt)->value = HW_CARRIER_NAME;
-	cnt++;
-
-	if (board_info.board_id[0] != '\0') {
-		(context_attributes + cnt)->name = "hw_mezzanine";
-		(context_attributes + cnt)->value = board_info.board_id;
-		cnt++;
-	}
-
-	if (board_info.board_name[0] != '\0') {
-		(context_attributes + cnt)->name = "hw_name";
-		(context_attributes + cnt)->value = board_info.board_name;
-		cnt++;
-	}
-
-	if (!hw_mezzanine_is_valid) {
-		(context_attributes + cnt)->name = "hw_mezzanine_status";
-		(context_attributes + cnt)->value = board_status;
-		cnt++;
-	}
-
-	num_of_context_attributes = cnt;
-	*ctx_attr = context_attributes;
-	*attrs_cnt = num_of_context_attributes;
-
-	return 0;
-}
-
-/**
  * @brief Initialization of AD717x IIO hardware trigger specific parameters
  * @param desc[in,out] - IIO hardware trigger descriptor
  * @return 0 in case of success, negative error code otherwise
@@ -847,7 +747,11 @@ int32_t ad717x_iio_initialize(void)
 
 	/* Read context attributes */
 	iio_init_status = get_iio_context_attributes(&iio_init_params.ctx_attrs,
-			  &iio_init_params.nb_ctx_attr);
+			  &iio_init_params.nb_ctx_attr,
+			  eeprom_desc,
+			  HW_MEZZANINE_NAME,
+			  STR(HW_CARRIER_NAME),
+			  &hw_mezzanine_is_valid);
 	if (iio_init_status) {
 		return iio_init_status;
 	}

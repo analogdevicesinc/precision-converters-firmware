@@ -3,7 +3,7 @@
  *   @brief   Application configurations module
  *   @details This module contains the configurations needed for IIO application
 ********************************************************************************
- * Copyright (c) 2020-2022 Analog Devices, Inc.
+ * Copyright (c) 2020-2023 Analog Devices, Inc.
  *
  * This software is proprietary to Analog Devices, Inc. and its licensors.
  * By using this software you agree to the terms of the associated
@@ -17,13 +17,17 @@
 #include <stdbool.h>
 
 #include "app_config.h"
-#include "eeprom_config.h"
+#include "common.h"
 #include "no_os_error.h"
 #include "no_os_uart.h"
 #include "no_os_irq.h"
 #include "no_os_gpio.h"
 #include "no_os_i2c.h"
 #include "no_os_eeprom.h"
+#if (ACTIVE_IIO_CLIENT == IIO_CLIENT_LOCAL)
+#include "pl_gui_events.h"
+#include "pl_gui_views.h"
+#endif
 
 /******************************************************************************/
 /************************ Macros/Constants ************************************/
@@ -78,11 +82,36 @@ static struct no_os_callback_desc ext_int_callback_desc = {
 	.callback = ad4130_fifo_event_handler,
 };
 
-/* EEPROM init parameters */
-struct no_os_eeprom_init_param eeprom_init_params = {
+/* I2C init parameters */
+static struct no_os_i2c_init_param no_os_i2c_init_params = {
 	.device_id = 0,
-	.platform_ops = &eeprom_ops,
+	.platform_ops = &i2c_ops,
+	.max_speed_hz = 100000,
+	.extra = &i2c_extra_init_params
+};
+
+/* EEPROM init parameters */
+static struct eeprom_24xx32a_init_param eeprom_extra_init_params = {
+	.i2c_init = &no_os_i2c_init_params
+};
+
+/* EEPROM init parameters */
+static struct no_os_eeprom_init_param eeprom_init_params = {
+	.device_id = 0,
+	.platform_ops = &eeprom_24xx32a_ops,
 	.extra = &eeprom_extra_init_params
+};
+
+/* Ticker interrupt init parameters */
+static struct no_os_irq_init_param ticker_int_init_params = {
+	.irq_ctrl_id = 0,
+	.platform_ops = &irq_ops,
+	.extra = &ticker_int_extra_init_params
+};
+
+/* Ticker interrupt callback descriptor */
+static struct no_os_callback_desc ticker_int_callback_desc = {
+	.callback = lvgl_tick_callback,
 };
 
 /* UART descriptor */
@@ -94,12 +123,11 @@ struct no_os_gpio_desc *trigger_gpio_desc;
 /* Trigger GPIO interrupt descriptor */
 struct no_os_irq_ctrl_desc *trigger_irq_desc;
 
+/* Ticker interrupt descriptor */
+struct no_os_irq_ctrl_desc *ticker_int_desc;
+
 /* EEPROM descriptor */
 struct no_os_eeprom_desc *eeprom_desc;
-
-/* Valid EEPROM device address detected by firmaware */
-static uint8_t eeprom_detected_dev_addr;
-static bool valid_eeprom_addr_detected;
 
 /******************************************************************************/
 /************************ Functions Prototypes ********************************/
@@ -108,6 +136,13 @@ static bool valid_eeprom_addr_detected;
 /******************************************************************************/
 /************************ Functions Definitions *******************************/
 /******************************************************************************/
+
+#if (ACTIVE_IIO_CLIENT == IIO_CLIENT_LOCAL)
+void lvgl_tick_callback(void *ctx)
+{
+	pl_gui_lvgl_tick_update(LVGL_TICK_TIME_MS);
+}
+#endif
 
 /**
  * @brief Initialize the trigger GPIO and associated IRQ event
@@ -180,15 +215,43 @@ static int32_t init_uart(void)
 }
 
 /**
+ * @brief 	Initialize the lvgl timer peripheral
+ * @return	0 in case of success, negative error code otherwise
+ */
+static int32_t init_lvgl_timer(void)
+{
+	int32_t ret;
+
+	/* Init interrupt controller for Ticker interrupt */
+	ret = no_os_irq_ctrl_init(&ticker_int_desc, &ticker_int_init_params);
+	if (ret) {
+		return ret;
+	}
+
+	/* Register a callback function for Ticker interrupt */
+	ret = no_os_irq_register_callback(ticker_int_desc,
+					  TICKER_ID,
+					  &ticker_int_callback_desc);
+	if (ret) {
+		return ret;
+	}
+
+	/* Enable Ticker interrupt */
+	ret = no_os_irq_enable(ticker_int_desc, TICKER_ID);
+	if (ret) {
+		return ret;
+	}
+
+	return 0;
+}
+
+/**
  * @brief 	Initialize the system peripherals
  * @return	0 in case of success, negative error code otherwise
  */
 int32_t init_system(void)
 {
 	int32_t ret;
-	static volatile uint8_t eeprom_addr;
-	static volatile uint8_t dummy_data;
-	static volatile uint32_t cnt;
 
 	ret = init_uart();
 	if (ret) {
@@ -207,59 +270,18 @@ int32_t init_system(void)
 	}
 #endif
 
-#if defined (TARGET_SDP_K1)
-	/* ~100msec Delay before starting EEPROM operations for SDP-K1.
-	 * This delay makes sure that MCU is stable after power on
-	 * cycle before doing any EEPROM operations */
-	for (cnt = 0; cnt < EEPROM_OPS_START_DELAY; cnt++) ;
+#if (ACTIVE_IIO_CLIENT == IIO_CLIENT_LOCAL)
+	/* Initialize the lvgl timer */
+	ret = init_lvgl_timer();
+	if (ret) {
+		return ret;
+	}
 #endif
 
-	ret = no_os_eeprom_init(&eeprom_desc, &eeprom_init_params);
+	ret = eeprom_init(&eeprom_desc, &eeprom_init_params);
 	if (ret) {
 		return ret;
 	}
 
-	/* Detect valid EEPROM */
-	valid_eeprom_addr_detected = false;
-	for (eeprom_addr = EEPROM_DEV_ADDR_START;
-	     eeprom_addr <= EEPROM_DEV_ADDR_END; eeprom_addr++) {
-		ret = load_eeprom_dev_address(eeprom_desc, eeprom_addr);
-		if (ret) {
-			return ret;
-		}
-
-		ret = no_os_eeprom_read(eeprom_desc, 0, (uint8_t *)&dummy_data, 1);
-		if (!ret) {
-			/* Valid EEPROM address detected */
-			eeprom_detected_dev_addr = eeprom_addr;
-			valid_eeprom_addr_detected = true;
-			break;
-		}
-	}
-
-	if (!valid_eeprom_addr_detected) {
-		printf("No valid EEPROM address detected\r\n");
-	} else {
-		printf("Valid EEPROM address detected: %d\r\n", eeprom_addr);
-	}
-
 	return 0;
-}
-
-/**
- * @brief 	Get the EEPROM device address detected by firmware
- * @return	EEPROM device address
- */
-uint8_t get_eeprom_detected_dev_addr(void)
-{
-	return eeprom_detected_dev_addr;
-}
-
-/**
- * @brief 	Return the flag indicating if valid EEPROM address is detected
- * @return	EEPROM valid address detect flag (true/false)
- */
-bool is_eeprom_valid_dev_addr_detected(void)
-{
-	return valid_eeprom_addr_detected;
 }

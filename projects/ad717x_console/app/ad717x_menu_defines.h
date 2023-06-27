@@ -106,6 +106,10 @@ int32_t menu_input_buffer_enable_disable(uint32_t user_action);
 #define ODR_5000_STR	"5000.00"
 #define ODR_5000_BITS	0x08
 
+#define ODR_5194		5194
+#define ODR_5194_STR	"5194.00"
+#define ODR_5194_BITS	0x08
+
 #define ODR_3906		3906.00
 #define ODR_3906_STR	"3906.00"
 #define ODR_3906_BITS	0x09
@@ -121,6 +125,10 @@ int32_t menu_input_buffer_enable_disable(uint32_t user_action);
 #define ODR_2500		2500.00
 #define ODR_2500_STR	"2500.00"
 #define ODR_2500_BITS	0x09
+
+#define ODR_2496		2496.00
+#define ODR_2496_STR	"2496.00"
+#define ODR_2496_BITS	0x09
 
 #define ODR_1157		1157.00
 #define ODR_1157_STR	"1157.00"
@@ -154,6 +162,10 @@ int32_t menu_input_buffer_enable_disable(uint32_t user_action);
 #define ODR_500_STR		"500.00"
 #define ODR_500_BITS	0x0B
 
+#define ODR_499			499.9
+#define ODR_499_STR		"499.9"
+#define ODR_499_BITS	0x0B
+
 #define ODR_401			401.00
 #define ODR_401_STR		"401.00"
 #define ODR_401_BITS	0x0C
@@ -173,6 +185,10 @@ int32_t menu_input_buffer_enable_disable(uint32_t user_action);
 #define ODR_397			397.00
 #define ODR_397_STR		"397.00"
 #define ODR_397_BITS	0x0C
+
+#define ODR_390			390.6
+#define ODR_390_STR		"390.60"
+#define ODR_390_BITS	0x0C
 
 #define ODR_381			381.00
 #define ODR_381_STR		"381.00"
@@ -214,6 +230,10 @@ int32_t menu_input_buffer_enable_disable(uint32_t user_action);
 #define ODR_59_94_STR	"59.94"
 #define ODR_59_94_BITS	0x0F
 
+#define ODR_59_75		59.75
+#define ODR_59_75_STR	"59.75"
+#define ODR_59_75_BITS	0x0F
+
 #define ODR_59_52		59.52
 #define ODR_59_52_STR	"59.52"
 #define ODR_59_52_BITS	0x0F
@@ -225,6 +245,10 @@ int32_t menu_input_buffer_enable_disable(uint32_t user_action);
 #define ODR_49_96		49.96
 #define ODR_49_96_STR	"49.96"
 #define ODR_49_96_BITS	0x10
+
+#define ODR_49_84		49.84
+#define ODR_49_84_STR	"49.84"
+#define ODR_49_84_BITS	0x10
 
 #define ODR_49_68		49.68
 #define ODR_49_68_STR	"49.68"
@@ -245,6 +269,10 @@ int32_t menu_input_buffer_enable_disable(uint32_t user_action);
 #define ODR_16_67		16.67
 #define ODR_16_67_STR	"16.67"
 #define ODR_16_67_BITS	0x12
+
+#define ODR_16_65		16.65
+#define ODR_16_65_STR	"16.65"
+#define ODR_16_65_BITS	0x12
 
 #define ODR_10			10.00
 #define ODR_10_STR		"10.00"
@@ -299,6 +327,14 @@ int32_t menu_input_buffer_enable_disable(uint32_t user_action);
 #define AVDD1_AVSS_N_BITS		0x14
 #define REFP_INPUT_BITS			0x15
 #define REFN_INPUT_BITS			0x16
+#define ADCIN11_12_INPUT_BITS	0x16C
+#define ADCIN12_11_INPUT_BITS	0x18B
+#define ADCIN13_14_INPUT_BITS	0x1AE
+#define ADCIN14_13_INPUT_BITS	0x1CD
+#define ADCIN11_15_INPUT_BITS	0x16F
+#define ADCIN12_15_INPUT_BITS	0x18F
+#define ADCIN13_15_INPUT_BITS	0x1AF
+#define ADCIN14_15_INPUT_BITS	0x1CF
 
 // Offset to form VIN+ and VIN- pairs
 #define VIN_PAIR_OFFSET			5
@@ -399,10 +435,13 @@ const char *input_pin_map[] = {
 	"VIN6", "VIN7", "IN0-", "IN1-", "IN2-", "IN3-",
 	"IN3+", "IN2+", "IN1+", "IN0+", "VINCOM",
 	"TEMP+", "TEMP-", "RES", "RES", "REF+", "REF-"
-#elif defined(DEV_AD4114) || defined(DEV_AD4115)
+#elif defined(DEV_AD4114) || defined(DEV_AD4115) || defined(DEV_AD4116)
 	"VIN0", "VIN1", "VIN2", "VIN3", "VIN4", "VIN5",
-	"VIN6", "VIN7", "VIN8", "VIN9", "VIN10", "VIN11",
-	"VIN12", "VIN13", "VIN14", "VIN15", "VINCOM",
+	"VIN6", "VIN7", "VIN8", "VIN9", "VIN10",
+#if !defined (DEV_AD4116)
+	"VIN11", "VIN12", "VIN13", "VIN14", "VIN15",
+#endif
+	"VINCOM",
 	"TEMP+", "TEMP-", "RES", "RES", "REF+", "REF-"
 #elif defined(DEV_AD7173_8) || defined(DEV_AD7175_8)
 	"AIN0", "AIN1", "AIN2", "AIN3", "AIN4", "AIN5",
@@ -433,6 +472,9 @@ const char *input_pin_map[] = {
 	"RES", "RES", "RES", "RES", "RES", "RES",
 	"RES", "RES", "RES", "RES", "REF+", "REF-"
 #endif
+#if defined (DEV_AD4116)
+	"ADCIN11", "ADCIN12", "ADCIN13", "ADCIN14", "ADCIN15"
+#endif
 };
 
 
@@ -457,6 +499,12 @@ const float sinc5_sinc1_odr_map[] = {
 #endif
 	ODR_10000, ODR_5000,  ODR_2500,  ODR_1000, ODR_500,   ODR_397_5, ODR_200,
 	ODR_100,   ODR_59_94, ODR_49_96, ODR_20,   ODR_16_67, ODR_10,    ODR_5
+#endif
+#if defined (DEV_AD4116)
+	ODR_62500, ODR_62500, ODR_62500, ODR_62500, ODR_31250, ODR_31250,
+	ODR_15625, ODR_10417, ODR_5194, ODR_2597, ODR_1007, ODR_499, ODR_390,
+	ODR_200_3, ODR_100, ODR_59_75, ODR_49_84, ODR_20, ODR_16_65,
+	ODR_10, ODR_5, ODR_2_5, ODR_1_25
 #endif
 };
 
@@ -492,6 +540,14 @@ const float sinc3_odr_map[] = {
 	ODR_10000, ODR_5000, ODR_2500, ODR_1000, ODR_500,   ODR_400, ODR_200,
 	ODR_100,   ODR_60,   ODR_50,   ODR_20,   ODR_16_67, ODR_10,  ODR_5
 #endif
+
+#if defined (DEV_AD4116)
+	ODR_62500, ODR_62500, ODR_62500, ODR_62500,
+	ODR_31250, ODR_31250, ODR_15625, ODR_10417,
+	ODR_5208, ODR_2500, ODR_1008, ODR_500, ODR_400,
+	ODR_200, ODR_100, ODR_60, ODR_50, ODR_20,
+	ODR_16_67, ODR_10, ODR_5, ODR_2_5, ODR_1_25
+#endif
 };
 
 
@@ -517,7 +573,7 @@ console_menu chn_enable_disable_menu = {
  * Definition of the analog input connection menu items and menu itself
  */
 console_menu_item analog_input_connect_items[] = {
-#if defined(DEV_AD4111) || defined(DEV_AD4112) || defined(DEV_AD4114) || defined(DEV_AD4115)
+#if defined(DEV_AD4111) || defined(DEV_AD4112) || defined(DEV_AD4114) || defined(DEV_AD4115) || defined (DEV_AD4116)
 	// Input pin name/pair		Key		Menu Function			AINP/AINM Bits
 	//
 	{ "VIN0, VIN1",				'A', menu_analog_input_connect, NULL, ((VIN0_INPUT_BITS << VIN_PAIR_OFFSET) | VIN1_INPUT_BITS) },
@@ -541,13 +597,14 @@ console_menu_item analog_input_connect_items[] = {
 	{ "IN2+, IN2-",				'R', menu_analog_input_connect, NULL, ((IN2P_INPUT_BITS << VIN_PAIR_OFFSET) | IN2N_INPUT_BITS) },
 	{ "IN1+, IN1-",				'S', menu_analog_input_connect, NULL, ((IN1P_INPUT_BITS << VIN_PAIR_OFFSET) | IN1N_INPUT_BITS) },
 	{ "IN0+, IN0-",				'T', menu_analog_input_connect, NULL, ((IN0P_INPUT_BITS << VIN_PAIR_OFFSET) | IN0N_INPUT_BITS) },
-#else // mapping for AD4114/15
+#else // mapping for AD4114/15/16
 	{ "VIN8, VIN9",				'Q', menu_analog_input_connect, NULL, ((VIN8_INPUT_BITS << VIN_PAIR_OFFSET) | VIN9_INPUT_BITS) },
 	{ "VIN8, VINCOM",			'R', menu_analog_input_connect, NULL, ((VIN8_INPUT_BITS << VIN_PAIR_OFFSET) | VINCOM_INPUT_BITS) },
 	{ "VIN9, VIN8",				'S', menu_analog_input_connect, NULL, ((VIN9_INPUT_BITS << VIN_PAIR_OFFSET) | VIN8_INPUT_BITS) },
 	{ "VIN9, VINCOM",			'T', menu_analog_input_connect, NULL, ((VIN9_INPUT_BITS << VIN_PAIR_OFFSET) | VINCOM_INPUT_BITS) },
 	{ "VIN10, VIN11",			'U', menu_analog_input_connect, NULL, ((VIN10_INPUT_BITS << VIN_PAIR_OFFSET) | VIN11_INPUT_BITS) },
 	{ "VIN10, VINCOM",			'V', menu_analog_input_connect, NULL, ((VIN10_INPUT_BITS << VIN_PAIR_OFFSET) | VINCOM_INPUT_BITS) },
+#if !defined (DEV_AD4116)
 	{ "VIN11, VIN10",			'W', menu_analog_input_connect, NULL, ((VIN11_INPUT_BITS << VIN_PAIR_OFFSET) | VIN10_INPUT_BITS) },
 	{ "VIN11, VINCOM",			'X', menu_analog_input_connect, NULL, ((VIN11_INPUT_BITS << VIN_PAIR_OFFSET) | VINCOM_INPUT_BITS) },
 	{ "VIN12, VIN13",			'Y', menu_analog_input_connect, NULL, ((VIN12_INPUT_BITS << VIN_PAIR_OFFSET) | VIN13_INPUT_BITS) },
@@ -558,6 +615,16 @@ console_menu_item analog_input_connect_items[] = {
 	{ "VIN14, VINCOM",			'4', menu_analog_input_connect, NULL, ((VIN14_INPUT_BITS << VIN_PAIR_OFFSET) | VINCOM_INPUT_BITS) },
 	{ "VIN15, VIN14",			'5', menu_analog_input_connect, NULL, ((VIN15_INPUT_BITS << VIN_PAIR_OFFSET) | VIN14_INPUT_BITS) },
 	{ "VIN15, VINCOM",			'6', menu_analog_input_connect, NULL, ((VIN15_INPUT_BITS << VIN_PAIR_OFFSET) | VINCOM_INPUT_BITS) },
+#else
+	{ "ADCIN11, ADCIN12",			'W', menu_analog_input_connect, NULL, ADCIN11_12_INPUT_BITS },
+	{ "ADCIN12, ADCIN11",			'X', menu_analog_input_connect, NULL, ADCIN12_11_INPUT_BITS },
+	{ "ADCIN13, ADCIN14",			'Y', menu_analog_input_connect, NULL, ADCIN13_14_INPUT_BITS },
+	{ "ADCIN14, ADCIN13",			'Z', menu_analog_input_connect, NULL, ADCIN14_13_INPUT_BITS },
+	{ "ADCIN11, ADCIN15",			'1', menu_analog_input_connect, NULL, ADCIN11_15_INPUT_BITS },
+	{ "ADCIN12, ADCIN15",			'2', menu_analog_input_connect, NULL, ADCIN12_15_INPUT_BITS },
+	{ "ADCIN13, ADCIN15",			'3', menu_analog_input_connect, NULL, ADCIN13_15_INPUT_BITS },
+	{ "ADCIN14, ADCIN15",			'4', menu_analog_input_connect, NULL, ADCIN14_15_INPUT_BITS },
+#endif
 #endif
 	{ "Temperature Sensor",		'7', menu_analog_input_connect, NULL, ((TEMP_SENSOR_POS_INP_BITS << VIN_PAIR_OFFSET) | TEMP_SENSOR_NEG_INP_BITS) },
 	{ "Reference",				'8', menu_analog_input_connect, NULL, ((REFP_INPUT_BITS << VIN_PAIR_OFFSET) | REFN_INPUT_BITS) },
@@ -891,6 +958,27 @@ console_menu_item sinc5_1_data_rate_select_items[] = {
 	{ ODR_10_STR,		'T', menu_odr_select, NULL, ODR_10_BITS		},
 	{ ODR_5_STR,		'U', menu_odr_select, NULL, ODR_5_BITS		},
 #endif
+#if defined (DEV_AD4116)
+	{ ODR_62500_STR, 'A', menu_odr_select, NULL, ODR_62500_BITS	},
+	{ ODR_31250_STR, 'B', menu_odr_select, NULL, ODR_31250_BITS	},
+	{ ODR_15625_STR, 'C', menu_odr_select, NULL, ODR_15625_BITS	},
+	{ ODR_10417_STR, 'D', menu_odr_select, NULL, ODR_10417_BITS	},
+	{ ODR_5194_STR,  'E', menu_odr_select, NULL, ODR_5194_BITS	},
+	{ ODR_2496_STR,  'F', menu_odr_select, NULL, ODR_2496_BITS	},
+	{ ODR_1007_STR,  'G', menu_odr_select, NULL, ODR_1007_BITS	},
+	{ ODR_499_STR,   'H', menu_odr_select, NULL, ODR_499_BITS	},
+	{ ODR_390_STR,   'I', menu_odr_select, NULL, ODR_390_BITS	},
+	{ ODR_200_3_STR, 'J', menu_odr_select, NULL, ODR_200_3_BITS	},
+	{ ODR_100_STR,   'K', menu_odr_select, NULL, ODR_100_BITS	},
+	{ ODR_59_75_STR, 'L', menu_odr_select, NULL, ODR_59_75_BITS	},
+	{ ODR_49_84_STR, 'M', menu_odr_select, NULL, ODR_49_84_BITS	},
+	{ ODR_20_STR,    'N', menu_odr_select, NULL, ODR_20_BITS	},
+	{ ODR_16_65_STR, 'O', menu_odr_select, NULL, ODR_16_65_BITS	},
+	{ ODR_10_STR,    'P', menu_odr_select, NULL, ODR_10_BITS	},
+	{ ODR_5_STR,     'Q', menu_odr_select, NULL, ODR_5_BITS		},
+	{ ODR_2_5_STR,   'R', menu_odr_select, NULL, ODR_2_5_BITS	},
+	{ ODR_1_25_STR,  'S', menu_odr_select, NULL, ODR_1_25_BITS	},
+#endif
 };
 
 console_menu sinc5_1_data_rate_select_menu = {
@@ -982,6 +1070,27 @@ console_menu_item sinc3_data_rate_select_items[] = {
 	{ ODR_16_67_STR, 	'S', menu_odr_select, NULL, ODR_16_67_BITS	},
 	{ ODR_10_STR,		'T', menu_odr_select, NULL, ODR_10_BITS		},
 	{ ODR_5_STR,		'U', menu_odr_select, NULL, ODR_5_BITS		},
+#endif
+#if defined (DEV_AD4116)
+	{ ODR_62500_STR,	'A', menu_odr_select, NULL, ODR_62500_BITS	},
+	{ ODR_31250_STR,	'B', menu_odr_select, NULL, ODR_31250_BITS	},
+	{ ODR_15625_STR,	'C', menu_odr_select, NULL, ODR_15625_BITS	},
+	{ ODR_10417_STR,	'D', menu_odr_select, NULL, ODR_10417_BITS	},
+	{ ODR_5208_STR,		'E', menu_odr_select, NULL, ODR_5208_BITS	},
+	{ ODR_2500_STR,		'F', menu_odr_select, NULL, ODR_2500_BITS	},
+	{ ODR_1008_STR,		'G', menu_odr_select, NULL, ODR_1008_BITS	},
+	{ ODR_500_STR,		'H', menu_odr_select, NULL, ODR_500_BITS	},
+	{ ODR_400_STR,		'I', menu_odr_select, NULL, ODR_400_BITS	},
+	{ ODR_200_STR,		'J', menu_odr_select, NULL, ODR_200_BITS	},
+	{ ODR_100_STR,		'K', menu_odr_select, NULL, ODR_100_BITS	},
+	{ ODR_59_98_STR,	'L', menu_odr_select, NULL, ODR_59_98_BITS	},
+	{ ODR_50_STR,	    'M', menu_odr_select, NULL, ODR_50_BITS		},
+	{ ODR_20_STR,		'N', menu_odr_select, NULL, ODR_20_BITS		},
+	{ ODR_16_67_STR, 	'O', menu_odr_select, NULL, ODR_16_67_BITS	},
+	{ ODR_10_STR,		'P', menu_odr_select, NULL, ODR_10_BITS		},
+	{ ODR_5_STR,		'Q', menu_odr_select, NULL, ODR_5_BITS		},
+	{ ODR_2_5_STR,		'R', menu_odr_select, NULL, ODR_2_5_BITS	},
+	{ ODR_1_25_STR,		'S', menu_odr_select, NULL, ODR_1_25_BITS	},
 #endif
 };
 

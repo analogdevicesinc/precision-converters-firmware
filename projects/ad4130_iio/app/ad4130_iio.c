@@ -26,11 +26,16 @@
 #include "ad4130_user_config.h"
 #include "ad4130_temperature_sensor.h"
 #include "ad4130_regs.h"
+#include "common.h"
 #include "no_os_error.h"
 #include "board_info.h"
 #include "iio_trigger.h"
+#if (ACTIVE_IIO_CLIENT == IIO_CLIENT_LOCAL)
+#include "pl_gui_views.h"
+#include "pl_gui_events.h"
+#endif
 
-/******** Forward declaration of getter/setter functions ********/
+/******** Forward declaration of functions ********/
 static int iio_ad4130_attr_get(void *device, char *buf, uint32_t len,
 			       const struct iio_ch_info *channel, intptr_t priv);
 
@@ -44,6 +49,11 @@ static int iio_ad4130_attr_available_get(void *device, char *buf,
 static int iio_ad4130_attr_available_set(void *device, char *buf,
 		uint32_t len,
 		const struct iio_ch_info *channel, intptr_t priv);
+
+static int iio_ad4130_local_backend_event_read(void *conn, uint8_t *buf,
+		uint32_t len);
+static int iio_ad4130_local_backend_event_write(void *conn, uint8_t *buf,
+		uint32_t len);
 
 /******************************************************************************/
 /************************ Macros/Constants ************************************/
@@ -134,20 +144,71 @@ static int iio_ad4130_attr_available_set(void *device, char *buf,
 static int8_t adc_data_buffer[DATA_BUFFER_SIZE] = { 0 };
 #endif
 
+/* Local backend buffer (for storing IIO commands and responses) */
+#if (ACTIVE_IIO_CLIENT == IIO_CLIENT_LOCAL)
+#define APP_LOCAL_BACKEND_BUF_SIZE	0x1000	// min 4096 bytes required
+static char app_local_backend_buff[APP_LOCAL_BACKEND_BUF_SIZE];
+#endif
+
 /******************************************************************************/
 /*************************** Types Declarations *******************************/
 /******************************************************************************/
 
+/* AD4130 no-os device driver descriptor  */
+struct ad413x_dev *ad4130_dev_inst = NULL;
+
 /* IIO interface descriptor */
 static struct iio_desc *p_ad4130_iio_desc;
 
-/**
- * Pointer to the struct representing the AD4130 IIO device
- */
-struct ad413x_dev *ad4130_dev_inst = NULL;
+/* IIO device descriptor */
+static struct iio_device *p_iio_ad4130_dev;
 
 /* IIO hw trigger descriptor */
 static struct iio_hw_trig *ad4130_hw_trig_desc;
+
+#if (DATA_CAPTURE_MODE == CONTINUOUS_DATA_CAPTURE)
+static struct iio_trigger ad4130_iio_trig_desc = {
+	.is_synchronous = true,
+};
+
+/* IIO trigger init parameters */
+static struct iio_trigger_init iio_trigger_init_params = {
+	.descriptor = &ad4130_iio_trig_desc,
+	.name = AD4130_IIO_TRIGGER_NAME,
+};
+#endif
+
+#if (ACTIVE_IIO_CLIENT == IIO_CLIENT_LOCAL)
+/* IIO local backend init parameters */
+static struct iio_local_backend local_backend_init_params = {
+	.local_backend_event_read = iio_ad4130_local_backend_event_read,
+	.local_backend_event_write = iio_ad4130_local_backend_event_write,
+	.local_backend_buff = app_local_backend_buff,
+	.local_backend_buff_len = APP_LOCAL_BACKEND_BUF_SIZE,
+};
+#endif
+
+/* IIO interface init parameters */
+static struct iio_init_param iio_init_params = {
+#if (ACTIVE_IIO_CLIENT == IIO_CLIENT_REMOTE)
+	.phy_type = USE_UART,
+#else
+	.phy_type = USE_LOCAL_BACKEND,
+	.local_backend = &local_backend_init_params,
+#endif
+#if (DATA_CAPTURE_MODE == CONTINUOUS_DATA_CAPTURE)
+	.trigs = &iio_trigger_init_params,
+#endif
+};
+
+/* IIOD init parameters */
+static struct iio_device_init iio_device_init_params[NUM_OF_IIO_DEVICES] = {
+	{
+#if (DATA_CAPTURE_MODE == CONTINUOUS_DATA_CAPTURE)
+		.trigger_id = "trigger0",
+#endif
+	}
+};
 
 /* Number of active channels */
 static volatile uint8_t num_of_active_channels;
@@ -300,8 +361,24 @@ static uint32_t adc_raw_gain;
 /* EVB HW validation status */
 static bool hw_mezzanine_is_valid;
 
-/* Hardware board information */
-static struct board_info board_info;
+#if (ACTIVE_IIO_CLIENT == IIO_CLIENT_LOCAL)
+/* Pocket lab GUI views init parameters */
+struct pl_gui_views pocket_lab_gui_views[] = {
+	PL_GUI_ADD_ATTR_EDIT_DEF_VIEW,
+	PL_GUI_ADD_REG_DEBUG_DEF_VIEW,
+	PL_GUI_ADD_DMM_DEF_VIEW,
+	PL_GUI_ADD_CAPTURE_DEF_VIEW,
+	PL_GUI_ADD_ABOUT_DEF_VIEW,
+	{ NULL }
+};
+
+/* Pocket lab GUI init parameters */
+static struct pl_gui_init_param pocket_lab_gui_init_params = {
+	.views = pocket_lab_gui_views,
+};
+
+struct pl_gui_desc *pocket_lab_gui_desc;
+#endif
 
 /******************************************************************************/
 /************************ Functions Prototypes ********************************/
@@ -1345,92 +1422,33 @@ static void update_vltg_conv_scale_factor(uint8_t chn)
 }
 
 /**
- * @brief	Read IIO context attributes
- * @param 	ctx_attr[in,out] - Pointer to IIO context attributes init param
- * @param	attrs_cnt[in,out] - IIO contxt attributes count
+ * @brief	Read the IIO local backend event data
+ * @param	conn[in] - connection descriptor
+ * @param	buf[in] - local backend data handling buffer
+ * @param	len[in] - Number of bytes to read
  * @return	0 in case of success, negative error code otherwise
  */
-static int32_t get_iio_context_attributes(struct iio_ctx_attr **ctx_attr,
-		uint32_t *attrs_cnt)
+static int iio_ad4130_local_backend_event_read(void *conn, uint8_t *buf,
+		uint32_t len)
 {
-	int32_t ret;
-	struct iio_ctx_attr *context_attributes;
-	const char *board_status;
-	uint8_t num_of_context_attributes = DEF_NUM_OF_CONTXT_ATTRS;
-	uint8_t cnt = 0;
-
-	if (!ctx_attr || !attrs_cnt) {
-		return -EINVAL;
-	}
-
-	if (is_eeprom_valid_dev_addr_detected()) {
-		/* Read the board information from EEPROM */
-		ret = read_board_info(eeprom_desc, &board_info);
-		if (!ret) {
-			if (!strcmp(board_info.board_id, HW_MEZZANINE_NAME)) {
-				hw_mezzanine_is_valid = true;
-			} else {
-				hw_mezzanine_is_valid = false;
-				board_status = "mismatch";
-				num_of_context_attributes++;
-			}
-		} else {
-			hw_mezzanine_is_valid = false;
-			board_status = "not_detected";
-			num_of_context_attributes++;
-		}
-	} else {
-		hw_mezzanine_is_valid = false;
-		board_status = "not_detected";
-		num_of_context_attributes++;
-	}
-
-#if defined(FIRMWARE_VERSION)
-	num_of_context_attributes++;
+#if (ACTIVE_IIO_CLIENT == IIO_CLIENT_LOCAL)
+	return pl_gui_event_read(buf, len);
 #endif
+}
 
-	/* Allocate dynamic memory for context attributes based on number of attributes
-	 * detected/available */
-	context_attributes = (struct iio_context_attribute *)calloc(
-				     num_of_context_attributes,
-				     sizeof(*context_attributes));
-	if (!context_attributes) {
-		return -ENOMEM;
-	}
-
-#if defined(FIRMWARE_VERSION)
-	(context_attributes + cnt)->name = "fw_version";
-	(context_attributes + cnt)->value = FIRMWARE_VERSION;
-	cnt++;
+/**
+ * @brief	Write the IIO local backend event data
+ * @param	conn[in] - connection descriptor
+ * @param	buf[in] - local backend data handling buffer
+ * @param	len[in] - Number of bytes to read
+ * @return	0 in case of success, negative error code otherwise
+ */
+static int iio_ad4130_local_backend_event_write(void *conn, uint8_t *buf,
+		uint32_t len)
+{
+#if (ACTIVE_IIO_CLIENT == IIO_CLIENT_LOCAL)
+	return pl_gui_event_write(buf, len);
 #endif
-
-	(context_attributes + cnt)->name = "hw_carrier";
-	(context_attributes + cnt)->value = HW_CARRIER_NAME;
-	cnt++;
-
-	if (board_info.board_id[0] != '\0') {
-		(context_attributes + cnt)->name = "hw_mezzanine";
-		(context_attributes + cnt)->value = board_info.board_id;
-		cnt++;
-	}
-
-	if (board_info.board_name[0] != '\0') {
-		(context_attributes + cnt)->name = "hw_name";
-		(context_attributes + cnt)->value = board_info.board_name;
-		cnt++;
-	}
-
-	if (!hw_mezzanine_is_valid) {
-		(context_attributes + cnt)->name = "hw_mezzanine_status";
-		(context_attributes + cnt)->value = board_status;
-		cnt++;
-	}
-
-	num_of_context_attributes = cnt;
-	*ctx_attr = context_attributes;
-	*attrs_cnt = num_of_context_attributes;
-
-	return 0;
 }
 
 /*!
@@ -1539,7 +1557,7 @@ int32_t ad4130_iio_init(struct iio_device **desc)
 		chn_scan.sign = 's';
 		chn_scan.realbits = CHN_STORAGE_BITS;
 	} else {
-		/* Using streight-binary coding for bipolar mode */
+		/* Using streight-binary coding for unipolar mode */
 		chn_scan.sign = 'u';
 		chn_scan.realbits = ADC_RESOLUTION;
 	}
@@ -1596,38 +1614,6 @@ int32_t ad4130_iio_initialize(void)
 {
 	int32_t init_status;
 
-	/* IIO device descriptor */
-	struct iio_device *p_iio_ad4130_dev;
-
-#if (DATA_CAPTURE_MODE == CONTINUOUS_DATA_CAPTURE)
-	static struct iio_trigger ad4130_iio_trig_desc = {
-		.is_synchronous = true,
-	};
-
-	/* IIO trigger init parameters */
-	static struct iio_trigger_init iio_trigger_init_params = {
-		.descriptor = &ad4130_iio_trig_desc,
-		.name = AD4130_IIO_TRIGGER_NAME,
-	};
-#endif
-
-	/* IIO interface init parameters */
-	static struct iio_init_param iio_init_params = {
-		.phy_type = USE_UART,
-#if (DATA_CAPTURE_MODE == CONTINUOUS_DATA_CAPTURE)
-		.trigs = &iio_trigger_init_params,
-#endif
-	};
-
-	/* IIOD init parameters */
-	struct iio_device_init iio_device_init_params[NUM_OF_IIO_DEVICES] = {
-		{
-#if (DATA_CAPTURE_MODE == CONTINUOUS_DATA_CAPTURE)
-			.trigger_id = "trigger0",
-#endif
-		}
-	};
-
 	/* Init the system peripherals */
 	init_status = init_system();
 	if (init_status) {
@@ -1642,7 +1628,11 @@ int32_t ad4130_iio_initialize(void)
 
 	/* Read context attributes */
 	init_status = get_iio_context_attributes(&iio_init_params.ctx_attrs,
-			&iio_init_params.nb_ctx_attr);
+			&iio_init_params.nb_ctx_attr,
+			eeprom_desc,
+			HW_MEZZANINE_NAME,
+			STR(HW_CARRIER_NAME),
+			&hw_mezzanine_is_valid);
 	if (init_status) {
 		return init_status;
 	}
@@ -1691,6 +1681,14 @@ int32_t ad4130_iio_initialize(void)
 		return init_status;
 	}
 
+#if (ACTIVE_IIO_CLIENT == IIO_CLIENT_LOCAL)
+	pocket_lab_gui_init_params.extra = &iio_init_params;
+	init_status = pl_gui_init(&pocket_lab_gui_desc, &pocket_lab_gui_init_params);
+	if (init_status) {
+		return init_status;
+	}
+#endif
+
 	return 0;
 }
 
@@ -1702,4 +1700,7 @@ int32_t ad4130_iio_initialize(void)
 void ad4130_iio_event_handler(void)
 {
 	(void)iio_step(p_ad4130_iio_desc);
+#if (ACTIVE_IIO_CLIENT == IIO_CLIENT_LOCAL)
+	pl_gui_event_handle(LVGL_TICK_TIME_MS);
+#endif
 }

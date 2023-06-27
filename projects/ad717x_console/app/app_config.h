@@ -38,7 +38,7 @@
  * SDP-120 interface.
  */
 
- /* NOTE: Uncomment the SDP_120 #define below to enable the SDP-120 connector */
+/* NOTE: Uncomment the SDP_120 #define below to enable the SDP-120 connector */
 
 // #define  SDP_120
 
@@ -73,6 +73,8 @@
 #define ACTIVE_DEVICE_NAME	"AD4114"
 #elif defined(DEV_AD4115)
 #define ACTIVE_DEVICE_NAME	"AD4115"
+#elif defined(DEV_AD4116)
+#define ACTIVE_DEVICE_NAME	"AD4116"
 #elif defined(DEV_AD7172_2)
 #define AD7172_2_INIT
 #define ACTIVE_DEVICE_NAME	"AD7172-2"
@@ -98,6 +100,14 @@
 #warning No/Unsupported ADxxxxy symbol defined. AD4111 defined
 #define DEV_AD4111
 #define ACTIVE_DEVICE_NAME	"AD4111"
+#endif
+
+/* Denominator of the scale factor to be applied while converting raw values to actual voltage */
+#if  defined(DEV_AD4111) || defined(DEV_AD4112) || \
+	defined(DEV_AD4114) || defined(DEV_AD4115) || defined (DEV_AD4116)
+#define SCALE_FACTOR_DR			0.1
+#else
+#define SCALE_FACTOR_DR			1
 #endif
 
 #endif //_APP_CONFIG_H_

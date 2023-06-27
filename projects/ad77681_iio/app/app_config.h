@@ -58,7 +58,7 @@
 #if (ACTIVE_PLATFORM == MBED_PLATFORM)
 #include "app_config_mbed.h"
 
-#define HW_CARRIER_NAME		STR(TARGET_NAME)
+#define HW_CARRIER_NAME		TARGET_NAME
 
 /* Redefine the init params structure mapping w.r.t. platform */
 #define ext_int_extra_init_params mbed_ext_int_extra_init_params
@@ -70,12 +70,14 @@
 #define uart_ops mbed_uart_ops
 #endif
 #define spi_extra_init_params mbed_spi_extra_init_params
+#define i2c_extra_init_params mbed_i2c_extra_init_params
 #define trigger_gpio_irq_extra_params mbed_trigger_gpio_irq_init_params
 #define trigger_gpio_extra_init_params mbed_trigger_gpio_extra_init_params
 #define trigger_gpio_ops mbed_gpio_ops
 #define irq_ops		mbed_gpio_irq_ops
 #define gpio_ops	mbed_gpio_ops
 #define spi_ops		mbed_spi_ops
+#define i2c_ops mbed_i2c_ops
 #define trigger_gpio_irq_ops mbed_gpio_irq_ops
 #define trigger_gpio_handle 0	// Unused macro
 #define TRIGGER_GPIO_PORT 0  // Unused macro
@@ -89,13 +91,9 @@
 #define ADC_RESOLUTION		24
 
 /****** Macros used to form a VCOM serial number ******/
-#if !defined(FIRMWARE_NAME)
 #define	FIRMWARE_NAME	"ad77681_iio"
-#endif
 
-#if !defined(DEVICE_NAME)
 #define DEVICE_NAME		"DEV_AD77681"
-#endif
 
 #if !defined(PLATFORM_NAME)
 #define PLATFORM_NAME	HW_CARRIER_NAME
@@ -107,7 +105,7 @@
 #define VIRTUAL_COM_PORT_VID	0x0456
 #define VIRTUAL_COM_PORT_PID	0xb66c
 /* Serial number string is formed as: application name + device (target) name + platform (host) name */
-#define VIRTUAL_COM_SERIAL_NUM	(FIRMWARE_NAME "_" DEVICE_NAME "_" PLATFORM_NAME)
+#define VIRTUAL_COM_SERIAL_NUM	(FIRMWARE_NAME "_" DEVICE_NAME "_" STR(PLATFORM_NAME))
 
 /* Baud rate for IIO application UART interface */
 #define IIO_UART_BAUD_RATE (230400)

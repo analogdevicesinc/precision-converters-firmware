@@ -25,9 +25,6 @@
 #include "mbed_i2c.h"
 #include "mbed_gpio.h"
 #include "mbed_gpio_irq.h"
-#if defined(TARGET_SDP_K1)
-#include "sdram_sdpk1.h"
-#endif
 
 /******************************************************************************/
 /********************** Macros and Constants Definition ***********************/

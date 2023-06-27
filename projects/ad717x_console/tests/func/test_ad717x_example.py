@@ -225,7 +225,7 @@ def test_sample_chn_single_conv(serial_port, target_reset):
         # allow 67108 (0.1v) counts above/below expeced count scale
         assert (16710106 <= int(m.group(1)) <= 16844323)
         # Allow 0.1 above/below 2.5V scale
-        assert (2.490000 <= float(m.group(2)) <= 2.510000)
+        assert (24.90000 <= float(m.group(2)) <= 25.10000)
     else:
         assert data_row_found
 
@@ -274,7 +274,7 @@ def test_sample_chn_cont_conv(serial_port, target_reset):
         if m:
             print("Sample Voltage = ", m.group(0))
             # Allow 0.1 above/below 2.5v scale
-            assert (2.490000 <= float(m.group(0)) <= 2.510000)
+            assert (24.90000 <= float(m.group(0)) <= 25.10000)
 
 
 def test_enable_channels_menu(serial_port, target_reset):

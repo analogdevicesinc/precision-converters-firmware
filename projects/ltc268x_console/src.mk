@@ -1,26 +1,12 @@
-############## Platform Name #############
-PLATFORM_NAME = mbed
+# All the .c and .cpp and .h Files in SRC_DIRS are used in Build (Recursive)
+SRC_DIRS += $(PROJECT_APP_PATH)
+SRC_DIRS += $(LIBRARIES_PATH)/no-OS/drivers/dac/ltc268x
+SRC_DIRS += $(LIBRARIES_PATH)/no-OS/drivers/api
+SRC_DIRS += $(LIBRARIES_PATH)/no-OS/drivers/platform/mbed
+SRC_DIRS += $(LIBRARIES_PATH)/no-OS/iio
+SRC_DIRS += $(LIBRARIES_PATH)/no-OS/util
+SRC_DIRS += $(LIBRARIES_PATH)/no-OS/include
+SRC_DIRS += $(LIBRARIES_PATH)/precision-converters-library/adi_console_menu
 
-################ All the .c and .cpp Files in SOURCE_DIRS are used in Build (Not Recursive) #####################
-################ PROJECT_APP Variable Points to "Project_Name/app" Directory
-SOURCE_DIRS += $(PROJECT_APP)
-SOURCE_DIRS += $(LIBRARIES_PATH)/no-OS/drivers/dac/ltc268x
-SOURCE_DIRS += $(LIBRARIES_PATH)/no-OS/drivers/eeprom/24xx32a
-SOURCE_DIRS += $(LIBRARIES_PATH)/no-OS/drivers/api
-SOURCE_DIRS += $(LIBRARIES_PATH)/no-OS/drivers/platform/mbed
-SOURCE_DIRS += $(LIBRARIES_PATH)/no-OS/iio
-SOURCE_DIRS += $(LIBRARIES_PATH)/no-OS/util
-SOURCE_DIRS += $(LIBRARIES_PATH)/precision-converters-library/board_info
-SOURCE_DIRS += $(LIBRARIES_PATH)/precision-converters-library/adi_console_menu
-
-################# If Need to Add Only One File in any Directory Use "SOURCE_FILES" Variable #####################
-################ Example    SOURCE_FILES += $(PROJECT_APP)/main.c
-
-################ SOURCE_INCLUDE_PATHS contain path of Header Files Used in Build ################################
-SOURCE_INCLUDE_PATHS += $(PROJECT_APP)
-SOURCE_INCLUDE_PATHS += $(LIBRARIES_PATH)/no-OS/drivers/dac/ltc268x
-SOURCE_INCLUDE_PATHS += $(LIBRARIES_PATH)/no-OS/drivers/eeprom/24xx32a
-SOURCE_INCLUDE_PATHS += $(LIBRARIES_PATH)/no-OS/drivers/platform/mbed
-SOURCE_INCLUDE_PATHS += $(LIBRARIES_PATH)/no-OS/include
-SOURCE_INCLUDE_PATHS += $(LIBRARIES_PATH)/precision-converters-library/board_info
-SOURCE_INCLUDE_PATHS += $(LIBRARIES_PATH)/precision-converters-library/adi_console_menu
+# Extra Macros
+override NEW_CFLAGS += -DACTIVE_PLATFORM=MBED_PLATFORM

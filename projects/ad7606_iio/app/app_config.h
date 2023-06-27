@@ -63,35 +63,45 @@
 #if defined(DEV_AD7605_4)
 #define ACTIVE_DEVICE		ID_AD7605_4
 #define ACTIVE_DEVICE_NAME	"ad7605-4"
+#define DEVICE_NAME		    "DEV_AD7605_4"
 #elif defined(DEV_AD7606_4)
 #define ACTIVE_DEVICE		ID_AD7606_4
 #define ACTIVE_DEVICE_NAME	"ad7606-4"
+#define DEVICE_NAME		    "DEV_AD7606_4"
 #elif defined(DEV_AD7606_6)
 #define ACTIVE_DEVICE		ID_AD7606_6
 #define ACTIVE_DEVICE_NAME	"ad7606-6"
+#define DEVICE_NAME		    "DEV_AD7606_6"
 #elif defined(DEV_AD7606_8)
 #define ACTIVE_DEVICE		ID_AD7606_8
 #define ACTIVE_DEVICE_NAME	"ad7606-8"
+#define DEVICE_NAME		    "DEV_AD7606_8"
 #elif defined(DEV_AD7606B)
 #define ACTIVE_DEVICE		ID_AD7606B
 #define ACTIVE_DEVICE_NAME	"ad7606b"
+#define DEVICE_NAME		    "DEV_AD7606B"
 #elif defined(DEV_AD7606C_16)
 #define ACTIVE_DEVICE		ID_AD7606C_16
 #define ACTIVE_DEVICE_NAME	"ad7606c-16"
+#define DEVICE_NAME		    "DEV_AD7606C_16"
 #elif defined(DEV_AD7606C_18)
 #define ACTIVE_DEVICE		ID_AD7606C_18
 #define ACTIVE_DEVICE_NAME	"ad7606c-18"
+#define DEVICE_NAME		    "DEV_AD7606C_18"
 #elif defined(DEV_AD7608)
 #define ACTIVE_DEVICE		ID_AD7608
 #define ACTIVE_DEVICE_NAME	"ad7608"
+#define DEVICE_NAME		    "DEV_AD7608"
 #elif defined(DEV_AD7609)
 #define ACTIVE_DEVICE		ID_AD7609
 #define ACTIVE_DEVICE_NAME	"ad7609"
+#define DEVICE_NAME		    "DEV_AD7609"
 #else
 #warning No/Unsupported ADxxxxy symbol defined. AD7606B defined
 #define DEV_AD7606B
 #define ACTIVE_DEVICE		ID_AD7606B
 #define ACTIVE_DEVICE_NAME	"ad7606b"
+#define DEVICE_NAME		    "DEV_AD7606B"
 #endif
 
 #if defined(DEV_AD7605_4)
@@ -130,7 +140,7 @@
 #if (ACTIVE_PLATFORM == MBED_PLATFORM)
 #include "app_config_mbed.h"
 
-#define HW_CARRIER_NAME		STR(TARGET_NAME)
+#define HW_CARRIER_NAME		TARGET_NAME
 
 /* Redefine the init params structure mapping w.r.t. platform */
 #define pwm_extra_init_params mbed_pwm_extra_init_params
@@ -142,6 +152,7 @@
 #define uart_ops mbed_uart_ops
 #endif
 #define spi_extra_init_params mbed_spi_extra_init_params
+#define i2c_extra_init_params mbed_i2c_extra_init_params
 #define trigger_gpio_irq_extra_params mbed_trigger_gpio_irq_init_params
 #define trigger_gpio_extra_init_params mbed_trigger_gpio_extra_init_params
 #define reset_gpio_extra_init_params mbed_reset_gpio_extra_init_params
@@ -156,6 +167,7 @@
 #define irq_ops mbed_gpio_irq_ops
 #define gpio_ops mbed_gpio_ops
 #define spi_ops mbed_spi_ops
+#define i2c_ops mbed_i2c_ops
 #define trigger_gpio_irq_ops mbed_gpio_irq_ops
 #define trigger_gpio_handle 0	// Unused macro
 #define IRQ_INT_ID GPIO_IRQ_ID1
@@ -186,13 +198,7 @@
 #endif
 
 /****** Macros used to form a VCOM serial number ******/
-#if !defined(FIRMWARE_NAME)
 #define	FIRMWARE_NAME	"ad7606_iio"
-#endif
-
-#if !defined(DEVICE_NAME)
-#define DEVICE_NAME		"DEV_AD7606B"
-#endif
 
 #if !defined(PLATFORM_NAME)
 #define PLATFORM_NAME	HW_CARRIER_NAME
@@ -204,7 +210,7 @@
 #define VIRTUAL_COM_PORT_VID	0x0456
 #define VIRTUAL_COM_PORT_PID	0xb66c
 /* Serial number string is formed as: application name + device (target) name + platform (host) name */
-#define VIRTUAL_COM_SERIAL_NUM	(FIRMWARE_NAME "_" DEVICE_NAME "_" PLATFORM_NAME)
+#define VIRTUAL_COM_SERIAL_NUM	(FIRMWARE_NAME "_" DEVICE_NAME "_" STR(PLATFORM_NAME))
 
 /* Baud rate for IIO application UART interface */
 #define IIO_UART_BAUD_RATE	(230400)

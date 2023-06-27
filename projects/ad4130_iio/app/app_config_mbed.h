@@ -28,10 +28,6 @@
 #include "mbed_gpio.h"
 #include "mbed_i2c.h"
 
-#if defined(TARGET_SDP_K1)
-#include "sdram_sdpk1.h"
-#endif
-
 /******************************************************************************/
 /********************** Macros and Constants Definition ***********************/
 /******************************************************************************/
@@ -82,6 +78,10 @@
  * data continuity is not guaranteed above this ODR on IIO client */
 #define FS_CONFIG_VALUE		1	// ODR = 2.4KSPS
 
+/* LVGL tick time period for Mbed platform */
+#define LVGL_TICK_TIME_US	5000
+#define LVGL_TICK_TIME_MS	(LVGL_TICK_TIME_US / 1000)
+
 /******************************************************************************/
 /********************** Public/Extern Declarations ****************************/
 /******************************************************************************/
@@ -92,5 +92,8 @@ extern struct mbed_uart_init_param mbed_uart_extra_init_params;
 extern struct mbed_uart_init_param mbed_vcom_extra_init_params;
 extern struct mbed_spi_init_param mbed_spi_extra_init_params;
 extern struct mbed_i2c_init_param mbed_i2c_extra_init_params;
+extern struct mbed_irq_init_param mbed_ticker_int_extra_init_params;
+
+void lvgl_tick_callback(void *ctx);
 
 #endif /* APP_CONFIG_MBED_H_ */

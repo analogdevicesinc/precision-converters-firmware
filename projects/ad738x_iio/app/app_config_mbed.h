@@ -23,13 +23,10 @@
 #include "mbed_uart.h"
 #include "mbed_irq.h"
 #include "mbed_spi.h"
+#include "mbed_i2c.h"
 #include "mbed_pwm.h"
 #include "mbed_gpio.h"
 #include "mbed_gpio_irq.h"
-
-#if defined(TARGET_SDP_K1)
-#include "sdram_sdpk1.h"
-#endif
 
 /******************************************************************************/
 /********************** Macros and Constants Definition ***********************/
@@ -40,6 +37,9 @@
 #define SPI_HOST_SDO	ARDUINO_UNO_D11
 #define SPI_HOST_SDI	ARDUINO_UNO_D12
 #define SPI_SCK			ARDUINO_UNO_D13
+
+#define I2C_SCL			ARDUINO_UNO_D15
+#define I2C_SDA			ARDUINO_UNO_D14
 
 /* Pins used to trigger and/or read a new (periodic) conversion event */
 #define PWM_TRIGGER		ARDUINO_UNO_D3
@@ -69,5 +69,6 @@ extern struct mbed_spi_init_param mbed_spi_extra_init_params;
 extern struct mbed_gpio_init_param mbed_trigger_gpio_extra_init_params;
 extern struct mbed_gpio_irq_init_param mbed_trigger_gpio_irq_init_params;
 extern struct mbed_pwm_init_param mbed_pwm_extra_init_params;
+extern struct mbed_i2c_init_param mbed_i2c_extra_init_params;
 
 #endif /* APP_CONFIG_MBED_H_ */

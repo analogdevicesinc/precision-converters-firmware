@@ -2,6 +2,7 @@
 
 groovyScriptsList = []
 projectsNameList = []
+buildStatus = "Success"
 
 pipeline {
     agent none
@@ -62,21 +63,15 @@ pipeline {
         }
 
         stage("Build and Test") {   // Run build and test scripts
-			agent { label 'firmware_builder' }
 			steps {
 				script {
                     // Execute build and test job for each changed project
                     for (int cnt=0; cnt < groovyScriptsList.size(); cnt++) {
-                        def buildStatus = groovyScriptsList[cnt].doBuild("${projectsNameList[cnt]}")
+                        buildStatus = groovyScriptsList[cnt].doBuild("${projectsNameList[cnt]}")
                         if (buildStatus != "Failed") {
                            groovyScriptsList[cnt].doTest("${projectsNameList[cnt]}")
                         }
                     }
-                }
-			}
-			post {
-				cleanup {
-                    cleanWs()
                 }
 			}
         }
