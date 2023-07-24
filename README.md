@@ -21,6 +21,5 @@ When writing code, please follow the [style guidelines](https://github.com/analo
 ## Which branch should I use?
 * If you want to use the most stable code base, always use the latest release branch.
 * If you want to use the greatest and latest, check out the 'main' branch.
-
 ## Support
 Feel free to ask any question at [EngineerZone](https://ez.analog.com/data_converters)
