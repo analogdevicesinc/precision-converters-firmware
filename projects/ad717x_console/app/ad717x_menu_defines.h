@@ -494,13 +494,12 @@ const float sinc5_sinc1_odr_map[] = {
 	ODR_16_63, ODR_10,    ODR_5,     ODR_2_5,   ODR_1_25,
 #elif defined(DEV_AD7176_2) || defined(DEV_AD7175_2) || defined(DEV_AD7175_8) ||\
 	  defined(DEV_AD7177_2)
-#if (DEV_AD7176_2) || defined(DEV_AD7175_2) || defined(DEV_AD7175_8)
+#if defined(DEV_AD7176_2) || defined(DEV_AD7175_2) || defined(DEV_AD7175_8)
 	ODR_250000, ODR_125000, ODR_62500, ODR_50000, ODR_31250, ODR_25000, ODR_15625,
 #endif
 	ODR_10000, ODR_5000,  ODR_2500,  ODR_1000, ODR_500,   ODR_397_5, ODR_200,
 	ODR_100,   ODR_59_94, ODR_49_96, ODR_20,   ODR_16_67, ODR_10,    ODR_5
-#endif
-#if defined (DEV_AD4116)
+#elif defined (DEV_AD4116)
 	ODR_62500, ODR_62500, ODR_62500, ODR_62500, ODR_31250, ODR_31250,
 	ODR_15625, ODR_10417, ODR_5194, ODR_2597, ODR_1007, ODR_499, ODR_390,
 	ODR_200_3, ODR_100, ODR_59_75, ODR_49_84, ODR_20, ODR_16_65,
@@ -532,16 +531,14 @@ const float sinc3_odr_map[] = {
 	ODR_2_5,   ODR_1_25,
 #elif defined(DEV_AD7176_2) || defined(DEV_AD7175_2) || defined(DEV_AD7175_8) ||\
 	  defined(DEV_AD7177_2)
-#if (DEV_AD7176_2) || defined(DEV_AD7175_2) || defined(DEV_AD7175_8)
+#if defined(DEV_AD7176_2) || defined(DEV_AD7175_2) || defined(DEV_AD7175_8)
 	ODR_250000, ODR_125000, ODR_62500,
 	ODR_50000, ODR_31250, ODR_25000,
 	ODR_15625,
 #endif
 	ODR_10000, ODR_5000, ODR_2500, ODR_1000, ODR_500,   ODR_400, ODR_200,
 	ODR_100,   ODR_60,   ODR_50,   ODR_20,   ODR_16_67, ODR_10,  ODR_5
-#endif
-
-#if defined (DEV_AD4116)
+#elif defined (DEV_AD4116)
 	ODR_62500, ODR_62500, ODR_62500, ODR_62500,
 	ODR_31250, ODR_31250, ODR_15625, ODR_10417,
 	ODR_5208, ODR_2500, ODR_1008, ODR_500, ODR_400,
@@ -668,7 +665,7 @@ console_menu_item analog_input_connect_items[] = {
 	{ "AIN16",					'Q', menu_analog_input_connect, NULL, VIN16_INPUT_BITS },
 	{ "Temperature Sensor+",	'R', menu_analog_input_connect, NULL, TEMP_SENSOR_POS_INP_BITS },
 	{ "Temperature Sensor-",	'S', menu_analog_input_connect, NULL, TEMP_SENSOR_NEG_INP_BITS },
-#if (DEV_AD7175_8)
+#if defined(DEV_AD7175_8)
 	{ "((AVDD1 - AVSS)/5)+ ",	'T', menu_analog_input_connect, NULL, AVDD1_AVSS_P_BITS },
 	{ "((AVDD1 - AVSS)/5)-",	'U', menu_analog_input_connect, NULL, AVDD1_AVSS_N_BITS },
 #endif
@@ -934,7 +931,7 @@ console_menu_item sinc5_1_data_rate_select_items[] = {
 	{ ODR_1_25_STR,		'R', menu_odr_select, NULL, ODR_1_25_BITS		},
 #elif defined(DEV_AD7176_2) || defined(DEV_AD7175_2) || \
 	  defined(DEV_AD7175_8) || defined(DEV_AD7177_2)
-#if (DEV_AD7176_2) || defined(DEV_AD7175_2) || defined(DEV_AD7175_8)
+#if defined(DEV_AD7176_2) || defined(DEV_AD7175_2) || defined(DEV_AD7175_8)
 	{ ODR_250000_STR,	'A', menu_odr_select, NULL, ODR_250000_BITS	},
 	{ ODR_125000_STR,	'B', menu_odr_select, NULL, ODR_125000_BITS	},
 	{ ODR_62500_STR,	'C', menu_odr_select, NULL, ODR_62500_BITS	},
@@ -957,8 +954,7 @@ console_menu_item sinc5_1_data_rate_select_items[] = {
 	{ ODR_16_67_STR, 	'S', menu_odr_select, NULL, ODR_16_67_BITS	},
 	{ ODR_10_STR,		'T', menu_odr_select, NULL, ODR_10_BITS		},
 	{ ODR_5_STR,		'U', menu_odr_select, NULL, ODR_5_BITS		},
-#endif
-#if defined (DEV_AD4116)
+#elif defined (DEV_AD4116)
 	{ ODR_62500_STR, 'A', menu_odr_select, NULL, ODR_62500_BITS	},
 	{ ODR_31250_STR, 'B', menu_odr_select, NULL, ODR_31250_BITS	},
 	{ ODR_15625_STR, 'C', menu_odr_select, NULL, ODR_15625_BITS	},
@@ -977,7 +973,7 @@ console_menu_item sinc5_1_data_rate_select_items[] = {
 	{ ODR_10_STR,    'P', menu_odr_select, NULL, ODR_10_BITS	},
 	{ ODR_5_STR,     'Q', menu_odr_select, NULL, ODR_5_BITS		},
 	{ ODR_2_5_STR,   'R', menu_odr_select, NULL, ODR_2_5_BITS	},
-	{ ODR_1_25_STR,  'S', menu_odr_select, NULL, ODR_1_25_BITS	},
+	{ ODR_1_25_STR,  'S', menu_odr_select, NULL, ODR_1_25_BITS	}
 #endif
 };
 
@@ -1047,7 +1043,7 @@ console_menu_item sinc3_data_rate_select_items[] = {
 	{ ODR_1_25_STR,		'Q', menu_odr_select, NULL, ODR_1_25_BITS		},
 #elif defined(DEV_AD7176_2) || defined(DEV_AD7175_2) || \
 	  defined(DEV_AD7175_8) || defined(DEV_AD7177_2)
-#if (DEV_AD7176_2) || defined(DEV_AD7175_2) || defined(DEV_AD7175_8)
+#if defined(DEV_AD7176_2) || defined(DEV_AD7175_2) || defined(DEV_AD7175_8)
 	{ ODR_250000_STR,	'A', menu_odr_select, NULL, ODR_250000_BITS	},
 	{ ODR_125000_STR,	'B', menu_odr_select, NULL, ODR_125000_BITS	},
 	{ ODR_62500_STR,	'C', menu_odr_select, NULL, ODR_62500_BITS	},
@@ -1070,8 +1066,7 @@ console_menu_item sinc3_data_rate_select_items[] = {
 	{ ODR_16_67_STR, 	'S', menu_odr_select, NULL, ODR_16_67_BITS	},
 	{ ODR_10_STR,		'T', menu_odr_select, NULL, ODR_10_BITS		},
 	{ ODR_5_STR,		'U', menu_odr_select, NULL, ODR_5_BITS		},
-#endif
-#if defined (DEV_AD4116)
+#elif defined (DEV_AD4116)
 	{ ODR_62500_STR,	'A', menu_odr_select, NULL, ODR_62500_BITS	},
 	{ ODR_31250_STR,	'B', menu_odr_select, NULL, ODR_31250_BITS	},
 	{ ODR_15625_STR,	'C', menu_odr_select, NULL, ODR_15625_BITS	},
@@ -1090,7 +1085,7 @@ console_menu_item sinc3_data_rate_select_items[] = {
 	{ ODR_10_STR,		'P', menu_odr_select, NULL, ODR_10_BITS		},
 	{ ODR_5_STR,		'Q', menu_odr_select, NULL, ODR_5_BITS		},
 	{ ODR_2_5_STR,		'R', menu_odr_select, NULL, ODR_2_5_BITS	},
-	{ ODR_1_25_STR,		'S', menu_odr_select, NULL, ODR_1_25_BITS	},
+	{ ODR_1_25_STR,		'S', menu_odr_select, NULL, ODR_1_25_BITS	}
 #endif
 };
 
