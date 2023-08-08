@@ -1,3 +1,6 @@
+# Ignore ARM GCC toolchain directory
+gcc-*
+
 # Note: Comment out to use display as IIO client (pocket lab), else uses PC as IIO client
 # This also require to set ACTIVE_IIO_CLIENT == IIO_CLIENT_LOCAL in the app_config.h file
 libraries/stm32_lvgl/
