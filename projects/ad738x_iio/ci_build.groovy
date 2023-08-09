@@ -27,84 +27,28 @@ def doBuild(projectName) {
 		!(axis['PLATFORM_NAME'] == 'DISCO_F769NI' && axis['COM_TYPE'] == 'USE_VIRTUAL_COM_PORT')
 	}
 
-	def buildType = buildInfo.getBuildType()
-	if (buildType == "sequential") {
-		node(label : "${buildInfo.getBuilderLabel(projectName: projectName)}") {
-			ws('workspace/pcg-fw') {
-				checkout scm
-				try {
-					for (int i = 0; i < buildMatrix.size(); i++) {
-						Map axis = buildMatrix[i]
-						runSeqBuild(axis, projectName)
-					}
-					// This variable holds the build status
-					buildStatusInfo = "Success"
+	node(label : "firmware_builder") {
+		ws('workspace/pcg-fw') {
+			checkout scm
+			try {
+				echo "Number of matrix combinations: ${buildMatrix.size()}"
+				for (int i = 0; i < buildMatrix.size(); i++) {
+					Map axis = buildMatrix[i]
+					runSeqBuild(axis, projectName)
 				}
-				catch (Exception ex) {
-					echo "Failed in ${projectName}-Build"
-					echo "Caught:${ex}"
-					buildStatusInfo = "Failed"
-					currentBuild.result = 'FAILURE'
-				}
-				deleteDir()
+				// This variable holds the build status
+				buildStatusInfo = "Success"
 			}
+			catch (Exception ex) {
+				echo "Failed in ${projectName}-Build"
+				echo "Caught:${ex}"
+				buildStatusInfo = "Failed"
+				currentBuild.result = 'FAILURE'
+			}
+			deleteDir()
 		}
 	}
-	else {
-		// Build all included matrix combinations
-		buildMap = [:]
-		for (int i = 0; i < buildMatrix.size(); i++) {
-			// Convert the Axis into valid values for withEnv step
-			Map axis = buildMatrix[i]
-			List axisEnv = axis.collect { key, val ->
-				"${key}=${val}"
-			}
-
-			buildMap[axisEnv.join(', ')] = { ->
-				ws('workspace/pcg-fw') {
-					checkout scm
-					withEnv(axisEnv) {
-						try {
-							stage("Build-${PLATFORM_NAME}-${ACTIVE_DEVICE}-${COM_TYPE}-${SDRAM}") {
-								FIRMWARE_VERSION = buildInfo.getFirmwareVersion()
-
-								echo "^^**^^ ^^**^^ ^^**^^ ^^**^^ ^^**^^ ^^**^^ ^^**^^ ^^**^^ ^^**^^ ^^**^^"     
-								echo "Running on node: '${env.NODE_NAME}'"
-							
-								echo "TOOLCHAIN: ${TOOLCHAIN}"
-								echo "TOOLCHAIN_PATH: ${TOOLCHAIN_PATH}"
-							
-								echo "Building for ${PLATFORM_NAME} Platform and ${ACTIVE_DEVICE} Device with ${COM_TYPE} UART type and ${SDRAM}"
-								echo "^^**^^ ^^**^^ ^^**^^ ^^**^^ ^^**^^ ^^**^^ ^^**^^ ^^**^^ ^^**^^ ^^**^^"
-							
-								echo "Starting mbed build..."
-								//NOTE: if adding in --profile, need to change the path where the .bin is found by mbedflsh in Test stage
-								bat "cd projects/${projectName} & make clone-lib-repos"
-								bat "cd projects/${projectName} & make all LINK_SRCS=n TARGET_BOARD=${PLATFORM_NAME} BINARY_FILE_NAME=${PLATFORM_NAME}-${ACTIVE_DEVICE}-${COM_TYPE}-${SDRAM} NEW_CFLAGS+=-DPLATFORM_NAME=${PLATFORM_NAME} NEW_CFLAGS+=-DFIRMWARE_VERSION=${FIRMWARE_VERSION} NEW_CFLAGS+=-D${COM_TYPE} NEW_CFLAGS+=-D${SDRAM}"
-								artifactory.uploadFirmwareArtifacts("projects/${projectName}/build","${projectName}")
-								archiveArtifacts allowEmptyArchive: true, artifacts: "projects/${projectName}/build/*.bin, projects/${projectName}/build/*.elf"
-								stash includes: "projects/${projectName}/build/*.bin, projects/${projectName}/build/*.elf", name: "${PLATFORM_NAME}-${ACTIVE_DEVICE}-${COM_TYPE}-${SDRAM}"
-								buildStatusInfo = "Success"
-								deleteDir()
-							}
-						}
-						catch (Exception ex) {
-								echo "Failed in Build-${PLATFORM_NAME}-${ACTIVE_DEVICE}-${COM_TYPE}-${SDRAM} stage"
-								echo "Caught:${ex}"
-								buildStatusInfo = "Failed"
-								currentBuild.result = 'FAILURE'
-								deleteDir()
-						}
-					}
-				}
-			}
-		}
-
-		stage("Matrix Builds") {
-			parallel(buildMap)
-		}
-	}
-
+	
 	return buildStatusInfo
 }
 

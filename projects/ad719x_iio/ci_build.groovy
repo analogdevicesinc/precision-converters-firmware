@@ -51,81 +51,25 @@ def doBuild(projectName) {
 		!(axis['PLATFORM_NAME'] == 'SDP_K1' && axis['ACTIVE_DEVICE'] == 'DEV_AD7195' && axis['SDRAM'] == 'USE_SDRAM' && axis['COM_TYPE'] == 'USE_VIRTUAL_COM_PORT')
 	}
 
-	def buildType = buildInfo.getBuildType()
-	if (buildType == "sequential") {
-		node(label : "${buildInfo.getBuilderLabel(projectName: projectName)}") {
-			ws('workspace/pcg-fw') {
-				checkout scm
-				try {
-					for (int i = 0; i < buildMatrix.size(); i++) {
-						Map axis = buildMatrix[i]
-						runSeqBuild(axis, projectName)
-					}
-					// This variable holds the build status
-					buildStatusInfo = "Success"
+	node(label : "firmware_builder") {
+		ws('workspace/pcg-fw') {
+			checkout scm
+			try {
+				echo "Number of matrix combinations: ${buildMatrix.size()}"
+				for (int i = 0; i < buildMatrix.size(); i++) {
+					Map axis = buildMatrix[i]
+					runSeqBuild(axis, projectName)
 				}
-				catch (Exception ex) {
-					echo "Failed in ${projectName}-Build"
-					echo "Caught:${ex}"
-					buildStatusInfo = "Failed"
-					currentBuild.result = 'FAILURE'
-				}
-				deleteDir()
+				// This variable holds the build status
+				buildStatusInfo = "Success"
 			}
-		}
-	}
-	else {
-		// Build all included matrix combinations
-		buildMap = [:]
-		for (int i = 0; i < buildMatrix.size(); i++) {
-			// Convert the Axis into valid values for withEnv step
-			Map axis = buildMatrix[i]
-			List axisEnv = axis.collect { key, val ->
-				"${key}=${val}"
+			catch (Exception ex) {
+				echo "Failed in ${projectName}-Build"
+				echo "Caught:${ex}"
+				buildStatusInfo = "Failed"
+				currentBuild.result = 'FAILURE'
 			}
-
-			buildMap[axisEnv.join(', ')] = { ->
-				ws('workspace/pcg-fw') {
-					checkout scm
-					withEnv(axisEnv) {
-						try {
-							stage("Build-${PLATFORM_NAME}-${ACTIVE_DEVICE}-${COM_TYPE}-${SDRAM}") {
-								FIRMWARE_VERSION = buildInfo.getFirmwareVersion()
-
-								echo "^^**^^ ^^**^^ ^^**^^ ^^**^^ ^^**^^ ^^**^^ ^^**^^ ^^**^^ ^^**^^ ^^**^^"     
-								echo "Running on node: '${env.NODE_NAME}'"
-							
-								echo "TOOLCHAIN: ${TOOLCHAIN}"
-								echo "TOOLCHAIN_PATH: ${TOOLCHAIN_PATH}"
-							
-								echo "Building for ${PLATFORM_NAME} Platform and ${ACTIVE_DEVICE} Device in  with ${COM_TYPE} UART type and ${SDRAM}"
-								echo "^^**^^ ^^**^^ ^^**^^ ^^**^^ ^^**^^ ^^**^^ ^^**^^ ^^**^^ ^^**^^ ^^**^^"
-							
-								echo "Starting mbed build..."
-								//NOTE: if adding in --profile, need to change the path where the .bin is found by mbedflsh in Test stage
-								bat "cd projects/${projectName} & make clone-lib-repos"
-								bat "cd projects/${projectName} & make all LINK_SRCS=n TARGET_BOARD=${PLATFORM_NAME} BINARY_FILE_NAME=${PLATFORM_NAME}-${ACTIVE_DEVICE}-${COM_TYPE}-${SDRAM} NEW_CFLAGS+=-DPLATFORM_NAME=${PLATFORM_NAME} NEW_CFLAGS+=-DFIRMWARE_VERSION=${FIRMWARE_VERSION} NEW_CFLAGS+=-D${ACTIVE_DEVICE} NEW_CFLAGS+=-D${COM_TYPE} NEW_CFLAGS+=-D${SDRAM}"
-								artifactory.uploadFirmwareArtifacts("projects/${projectName}/build","${projectName}")
-								archiveArtifacts allowEmptyArchive: true, artifacts: "projects/${projectName}/build/*.bin, projects/${projectName}/build/*.elf"
-								stash includes: "projects/${projectName}/build/*.bin, projects/${projectName}/build/*.elf", name: "${PLATFORM_NAME}-${ACTIVE_DEVICE}-${COM_TYPE}-${SDRAM}"
-								buildStatusInfo = "Success"
-								deleteDir()
-							}
-						}
-						catch (Exception ex) {
-								echo "Failed in Build-${PLATFORM_NAME}-${ACTIVE_DEVICE}-${COM_TYPE}-${SDRAM} stage"
-								echo "Caught:${ex}"
-								buildStatusInfo = "Failed"
-								currentBuild.result = 'FAILURE'
-								deleteDir()
-						}
-					}
-				}
-			}
-		}
-
-		stage("Matrix Builds") {
-			parallel(buildMap)
+			deleteDir()
 		}
 	}
 
@@ -201,7 +145,7 @@ def runTest(Map config =[:], projectName) {
 					echo "Programming MCU platform..."               
 					bat "mbedflsh --version"
 					// need to ignore return code from mbedflsh as it returns 1 when programming successful
-					bat returnStatus: true , script: "mbedflsh --disk ${platformInfo["mountpoint"]} --file ${WORKSPACE}\\projects\\${projectName}\\build\\${config.PLATFORM_NAME}\\${TOOLCHAIN}\\${config.PLATFORM_NAME}-${config.ACTIVE_DEVICE}-${config.COM_TYPE}-${config.SDRAM}.bin"               
+					bat returnStatus: true , script: "mbedflsh --disk ${platformInfo["mountpoint"]} --file ${WORKSPACE}\\projects\\${projectName}\\build\\${config.PLATFORM_NAME}-${config.ACTIVE_DEVICE}-${config.COM_TYPE}-${config.SDRAM}.bin"               
 					bat "cd projects/${projectName}/tests & pytest --rootdir=${WORKSPACE}\\projects\\${projectName}\\tests -c pytest.ini --serialport ${platformInfo["serialport"]} --device_name ${config.ACTIVE_DEVICE} --platform_name ${config.PLATFORM_NAME} --serial_com_type ${config.COM_TYPE}"			
 					archiveArtifacts allowEmptyArchive: true, artifacts: "projects/${projectName}/tests/output/*.csv"
 					junit allowEmptyResults:true, testResults: "projects/${projectName}/tests/output/*.xml"
