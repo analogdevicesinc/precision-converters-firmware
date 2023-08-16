@@ -1,0 +1,26 @@
+name: Build projects using Mbed CLI 1
+on: [push]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Build with Mbed CLI 1
+        run: |
+          set -x
+          sudo apt-get update
+          sudo apt-get install -y wget bzip2 python3-pip git mercurial
+          wget https://armkeil.blob.core.windows.net/developer/Files/downloads/gnu-rm/10.3-2021.10/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux.tar.bz2
+          tar xjf gcc-arm-none-eabi-10.3-2021.10-x86_64-linux.tar.bz2
+          pip install mbed-cli
+          mbed config -G GCC_ARM_PATH "${PWD}/gcc-arm-none-eabi-10.3-2021.10/bin"
+          mbed deploy
+          mbed compile -m SDP_K1 -t GCC_ARM
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          path: |
+            BUILD/SDP_K1/GCC_ARM/precision-converters-firmware.bin
