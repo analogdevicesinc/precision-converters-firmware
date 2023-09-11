@@ -12,6 +12,7 @@ jobs:
     strategy:
       matrix:
         project:
+          - ad2s1210_iio
           - ad4130_iio
           - ad559xr_console
           - ad5770r_console
