@@ -27,8 +27,8 @@
 /******************************************************************************/
 
 #ifndef ACTIVE_DEVICE
-/** 
-   #define your chosen device here from the 
+/**
+   #define your chosen device here from the
    adt7420_type (adt7420.h) enum
 */
 #define ACTIVE_DEVICE ID_ADT7320
@@ -41,7 +41,7 @@
 #define INT_I2C_ADDRESS  0x48
 
 /**
-  Add a line-ending constant as different emulators 
+  Add a line-ending constant as different emulators
   implement it in various ways - simple to change it here
 */
 #define EOL "\r\n"
@@ -66,7 +66,7 @@
 #define SPI_HOST_SDO	SDP_SPI_MOSI
 #define SPI_SCK		SDP_SPI_SCK
 
-#define SPI_CSE 	SDP_SPI_CS_B	
+#define SPI_CSE 	SDP_SPI_CS_B
 #else
 #define I2C_SCL     ARDUINO_UNO_D15
 #define I2C_SDA     ARDUINO_UNO_D14
@@ -76,7 +76,7 @@
 #define SPI_HOST_SDO	ARDUINO_UNO_D11
 #define SPI_SCK		ARDUINO_UNO_D13
 
-#define SPI_CSE 	ARDUINO_UNO_D9 
+#define SPI_CSE 	ARDUINO_UNO_D9
 #endif
 
 #define spi_platform_ops    mbed_spi_ops
