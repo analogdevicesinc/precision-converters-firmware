@@ -967,7 +967,7 @@ int32_t ad77681_iio_initialize(void)
 		ad77681_iio_remove(p_ad77681_iio_desc);
 		return init_status;
 	}
-	
+
 #if (DATA_CAPTURE_MODE == CONTINUOUS_DATA_CAPTURE)
 	/* Initialize the IIO trigger specific parameters */
 	init_status = ad77681_iio_trigger_param_init(&ad77681_hw_trig_desc);
