@@ -188,7 +188,7 @@ int32_t ad469x_read_single_sample(struct ad469x_dev *device,
 		return ret;
 	}
 
-	/* Monitoring the end of conversion for writing 
+	/* Monitoring the end of conversion for writing
 	 * channel number into the sequencer. */
 	while ((gpio_val != NO_OS_GPIO_LOW)  && (timeout > 0)) {
 		no_os_gpio_get_value(device->gpio_busy, &gpio_val);
