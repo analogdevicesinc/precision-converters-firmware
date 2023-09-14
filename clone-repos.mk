@@ -16,16 +16,9 @@ MBED_OS_LIB_FILE_PATH = $(ROOT_DRIVE)/mbed-os.lib
 STM32F769_DISCO_BSP_LIB_FILE_PATH = $(LIBRARIES_PATH)/stm32_lvgl/BSP_DISCO_F769NI.lib
 STM32F769_DISCO_LVGL_LIB_FILE_PATH = $(LIBRARIES_PATH)/stm32_lvgl/lv_port_stm32f769_disco.lib
 
-ifeq ($(OS),Windows_NT)
-LIB_FILES_IN_LIBRARIES_FOLDER := $(subst /,\,$(sort $(LIB_FILES_IN_LIBRARIES_FOLDER)))
-read_a_file = type $(subst /,\,$1) 2> NUL
-command_separator = & 
-HIDE_OUTPUT = > nul
-else
 read_a_file = cat $1 2> /dev/null
 HIDE_OUTPUT = > /dev/null
 command_separator = ;
-endif
 
 MUTE_COMMAND = @
 HASH_SYMBOL = \#
