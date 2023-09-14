@@ -2,8 +2,8 @@
  *   @file   app_config.h
  *   @brief  Configuration file of AD5933 firmware example program
 ******************************************************************************
-* Copyright (c) 2019, 2022 Analog Devices, Inc.  
-* 
+* Copyright (c) 2019, 2022 Analog Devices, Inc.
+*
 * All rights reserved.
 *
 * This software is proprietary to Analog Devices, Inc. and its licensors.
@@ -39,10 +39,10 @@
 #define SPI_MOSI	ARDUINO_UNO_D11
 #define SPI_SCK		ARDUINO_UNO_D13
 
-#define GAIN_PIN	ARDUINO_UNO_D8 
-#define RESET_PIN	ARDUINO_UNO_D9 
-#define LDAC_PIN	ARDUINO_UNO_D7 
-#define ADDR0_PIN	ARDUINO_UNO_D6 
+#define GAIN_PIN	ARDUINO_UNO_D8
+#define RESET_PIN	ARDUINO_UNO_D9
+#define LDAC_PIN	ARDUINO_UNO_D7
+#define ADDR0_PIN	ARDUINO_UNO_D6
 #else
 /* SDP-120 interface pins*/
 #define I2C_SCL     SDP_I2C_SCL
