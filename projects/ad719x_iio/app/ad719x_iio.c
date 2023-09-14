@@ -1064,7 +1064,7 @@ int32_t ad719x_iio_initialize(void)
 		iio_ad719x_remove(p_ad719x_iio_desc);
 		return -ENOSYS;
 	}
-	
+
 #if (DATA_CAPTURE_MODE == CONTINUOUS_DATA_CAPTURE)
 	init_status = ad719x_iio_trigger_param_init(&ad719x_hw_trig_desc);
 	if (init_status) {
