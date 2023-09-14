@@ -3,6 +3,10 @@
 mbed-os
 libraries/precision-converters-library
 libraries/no-OS
+libraries/CMSIS-DSP
+libraries/lvgl
+libraries/stm32_lvgl/BSP_DISCO_F769NI
+libraries/stm32_lvgl/lv_port_stm32f769_disco
 mbed_app_json
 BUILD
 Visual*
