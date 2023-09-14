@@ -80,7 +80,7 @@ int32_t ad7606_read_single_sample(struct ad7606_dev *dev,
 	if (ret) {
 		return ret;
 	}
-	
+
 	*adc_data = adc_raw[chn];
 
 	return 0;
