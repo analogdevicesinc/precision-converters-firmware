@@ -47,7 +47,7 @@ pipeline {
                     int cnt = 0
                     for (String projectName: projectsList) {
                         projectName = projectName.trim()
-                        if (projectChanges.contains("$projectName") || projectChanges.contains("tools") || projectChanges.contains("Jenkinsfile") || env.BRANCH_NAME=="main" || env.BRANCH_NAME=="develop") {
+                        if (projectChanges.contains("$projectName") || projectChanges.contains("Jenkinsfile") || projectChanges.contains("libraries") || env.BRANCH_NAME=="main" || env.BRANCH_NAME=="develop") {
                             groovyScriptsList[cnt] = load "projects\\$projectName\\ci_build.groovy"
                             projectsNameList[cnt] = projectName
                             cnt++
