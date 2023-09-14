@@ -60,15 +60,15 @@ typedef enum {
 
 /*! Sets the Fault Queue option for ADT7420/ADT7320.*/
 int32_t adt7420_set_fault_queue(struct adt7420_dev *dev,
-			     uint8_t mode);
+				uint8_t mode);
 
 /*! Sets comparator/interrupt (CT/INT) mode for ADT7420/ADT7320.*/
 int32_t adt7420_set_ct_int_mode(struct adt7420_dev *dev,
-			     uint8_t setting);
+				uint8_t setting);
 
 /*! Sets output polarity for the pins CT/INT (Critical Temp - Over/Under Temp).*/
 int32_t adt7420_set_ct_int_polarity(struct adt7420_dev *dev,
-				 uint8_t polarity);
+				    uint8_t polarity);
 
 /*! Writes data to temperature registers*/
 int32_t adt7420_wr_setpoint_reg(struct adt7420_dev *device,
@@ -80,5 +80,6 @@ uint16_t configure_write_type_registers(struct adt7420_dev *dev,
 					uint16_t register_address);
 
 /*! Get the register address based on the register type enum- registers_e */
-int32_t adt7420_get_register_address_and_value(struct adt7420_dev *dev, uint16_t register_address, uint16_t *reg_val);
+int32_t adt7420_get_register_address_and_value(struct adt7420_dev *dev,
+		uint16_t register_address, uint16_t *reg_val);
 #endif // _ADT7XXX_SUPPORT_H
