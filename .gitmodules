@@ -1,0 +1,15 @@
+[submodule "libraries/precision-converters-library"]
+	path = libraries/precision-converters-library
+	url = https://github.com/analogdevicesinc/precision-converters-library
+[submodule "libraries/no-OS"]
+	path = libraries/no-OS
+	url = https://github.com/analogdevicesinc/no-OS
+[submodule "libraries/lvgl"]
+	path = libraries/lvgl
+	url = https://github.com/lvgl/lvgl
+[submodule "libraries/CMSIS-DSP"]
+	path = libraries/CMSIS-DSP
+	url = https://github.com/ARM-software/CMSIS-DSP
+[submodule "libraries/stm32_lvgl/lv_port_stm32f769_disco"]
+	path = libraries/stm32_lvgl/lv_port_stm32f769_disco
+	url = https://github.com/lvgl/lv_port_stm32f769_disco
