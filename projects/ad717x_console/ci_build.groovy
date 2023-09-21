@@ -1,4 +1,4 @@
-def doBuild(projectName) {
+def getBuildMatrix(projectName) {
 	Map buildMap =[:]
 	if (env.CHANGE_TARGET == "main" || env.CHANGE_TARGET == "develop") {
 		// This map is for building all targets when merging to main or develop branches
@@ -46,34 +46,11 @@ def doBuild(projectName) {
 		!(axis['PLATFORM_NAME'] == 'DISCO_F769NI' && axis['EVB_TYPE'] == 'DEV_AD7177_2')
 	}
 
-	node(label : "firmware_builder") {
-		ws('workspace/pcg-fw') {
-			checkout scm
-			try {
-				echo "Number of matrix combinations: ${buildMatrix.size()}"
-				for (int i = 0; i < buildMatrix.size(); i++) {
-					Map axis = buildMatrix[i]
-					runSeqBuild(axis, projectName)
-				}
-				// This variable holds the build status
-				buildStatusInfo = "Success"
-			}
-			catch (Exception ex) {
-				echo "Failed in ${projectName}-Build"
-				echo "Caught:${ex}"
-				buildStatusInfo = "Failed"
-				currentBuild.result = 'FAILURE'
-			}
-			deleteDir()
-		}
-	}
-
-	return buildStatusInfo
+	return buildMatrix
 }
 
-def runSeqBuild(Map config =[:], projectName) {
+def doBuild(Map config =[:], projectName) {
 	stage("Build-${config.PLATFORM_NAME}-${config.EVB_INTERFACE}-${config.EVB_TYPE}") {
-
 		echo "^^**^^ ^^**^^ ^^**^^ ^^**^^ ^^**^^ ^^**^^ ^^**^^ ^^**^^ ^^**^^ ^^**^^"     
 		echo "Running on node: '${env.NODE_NAME}'"
 	
@@ -85,7 +62,6 @@ def runSeqBuild(Map config =[:], projectName) {
 	
 		echo "Starting mbed build..."
 		//NOTE: if adding in --profile, need to change the path where the .bin is found by mbedflsh in Test stage
-		sh "cd projects/${projectName} ; make clone-lib-repos"
 		sh "cd projects/${projectName} ; make all LINK_SRCS=n TARGET_BOARD=${config.PLATFORM_NAME} BINARY_FILE_NAME=${config.PLATFORM_NAME}-${config.EVB_INTERFACE}-${config.EVB_TYPE} NEW_CFLAGS+=-D${config.EVB_TYPE} NEW_CFLAGS+=-D${config.EVB_INTERFACE}"
 		artifactory.uploadFirmwareArtifacts("projects/${projectName}/build","${projectName}")
 		archiveArtifacts allowEmptyArchive: true, artifacts: "projects/${projectName}/build/*.bin, projects/${projectName}/build/*.elf"
@@ -94,7 +70,7 @@ def runSeqBuild(Map config =[:], projectName) {
 	}
 }
 
-def doTest(projectName) {
+def getTestMatrix(projectName) {
 	Map testMap =[:]
 	if (env.CHANGE_TARGET == "main" || env.CHANGE_TARGET == "develop") {
 		// This map is for testing all targets when merging to main or develop branches
@@ -113,43 +89,36 @@ def doTest(projectName) {
 	}
 
 	List testMatrix = buildInfo.getMatrixCombination(testMap)
-	for (int i = 0; i < testMatrix.size(); i++) {
-		Map axis = testMatrix[i]
-		runTest(axis, projectName)
-	}
+	
+	return testMatrix
 }
 
-def runTest(Map config =[:], projectName) {
+def doTest(Map config =[:], projectName) {
 	node(label : "${hw.getAgentLabel(platform_name: config.PLATFORM_NAME, evb_ref_id: "EVAL-" + config.EVB_TYPE + "SDZ")}") {
-		ws('workspace/pcg-fw') {
-			checkout scm
-			try {
-				stage("Test-${config.PLATFORM_NAME}-${config.EVB_INTERFACE}-${config.EVB_TYPE}") {
-					// Fetch the stashed files from build stage
-					unstash "${config.PLATFORM_NAME}-${config.EVB_INTERFACE}-${config.EVB_TYPE}"
+		checkout scm
+		try {
+			stage("Test-${config.PLATFORM_NAME}-${config.EVB_INTERFACE}-${config.EVB_TYPE}") {
+				// Fetch the stashed files from build stage
+				unstash "${config.PLATFORM_NAME}-${config.EVB_INTERFACE}-${config.EVB_TYPE}"
 
-					echo "^^**^^ ^^**^^ ^^**^^ ^^**^^ ^^**^^ ^^**^^ ^^**^^ ^^**^^ ^^**^^ ^^**^^"                       
-					echo "Running on node: '${env.NODE_NAME}'"
-					echo "Testing for ${config.PLATFORM_NAME} and ${config.EVB_TYPE} with ${config.EVB_INTERFACE} EVB"
-					echo "^^**^^ ^^**^^ ^^**^^ ^^**^^ ^^**^^ ^^**^^ ^^**^^ ^^**^^ ^^**^^ ^^**^^"
-					
-					platformInfo = hw.getPlatformInfo(platform_name: config.PLATFORM_NAME, evb_ref_id: "EVAL-" + config.EVB_TYPE + "SDZ")
-					echo "Programming MCU platform..."               
-					bat "mbedflsh --version"
-					// need to ignore return code from mbedflsh as it returns 1 when programming successful
-					bat returnStatus: true , script: "mbedflsh --disk ${platformInfo["mountpoint"]} --file ${WORKSPACE}\\projects\\${projectName}\\build\\${config.PLATFORM_NAME}-${config.EVB_INTERFACE}-${config.EVB_TYPE}.bin"               
-					bat "cd projects/${projectName}/tests & pytest --rootdir=${WORKSPACE}\\projects\\${projectName}\\tests -c pytest.ini --serialnumber ${platformInfo["serialnumber"]}  --serialport ${platformInfo["serialport"]} --mountpoint ${platformInfo["mountpoint"]}"			
-					archiveArtifacts allowEmptyArchive: true, artifacts: "projects/${projectName}/tests/output/*.csv"
-					junit allowEmptyResults:true, testResults: "projects/${projectName}/tests/output/*.xml"
-					deleteDir()
-				}
-			}
-			catch (Exception ex) {
-				echo "Failed in Test-${config.PLATFORM_NAME}-${config.EVB_INTERFACE}-${config.EVB_TYPE} stage"
-				echo "Caught:${ex}"
-				currentBuild.result = 'FAILURE'
+				echo "^^**^^ ^^**^^ ^^**^^ ^^**^^ ^^**^^ ^^**^^ ^^**^^ ^^**^^ ^^**^^ ^^**^^"                       
+				echo "Running on node: '${env.NODE_NAME}'"
+				echo "Testing for ${config.PLATFORM_NAME} and ${config.EVB_TYPE} with ${config.EVB_INTERFACE} EVB"
+				echo "^^**^^ ^^**^^ ^^**^^ ^^**^^ ^^**^^ ^^**^^ ^^**^^ ^^**^^ ^^**^^ ^^**^^"
+				
+				platformInfo = hw.getPlatformInfo(platform_name: config.PLATFORM_NAME, evb_ref_id: "EVAL-" + config.EVB_TYPE + "SDZ")
+				echo "Programming MCU platform..."               
+				bat "mbedflsh --version"
+				// need to ignore return code from mbedflsh as it returns 1 when programming successful
+				bat returnStatus: true , script: "mbedflsh --disk ${platformInfo["mountpoint"]} --file ${WORKSPACE}\\projects\\${projectName}\\build\\${config.PLATFORM_NAME}-${config.EVB_INTERFACE}-${config.EVB_TYPE}.bin"               
+				bat "cd projects/${projectName}/tests & pytest --rootdir=${WORKSPACE}\\projects\\${projectName}\\tests -c pytest.ini --serialnumber ${platformInfo["serialnumber"]}  --serialport ${platformInfo["serialport"]} --mountpoint ${platformInfo["mountpoint"]}"			
+				archiveArtifacts allowEmptyArchive: true, artifacts: "projects/${projectName}/tests/output/*.csv"
+				junit allowEmptyResults:true, testResults: "projects/${projectName}/tests/output/*.xml"
 				deleteDir()
 			}
+		}
+		catch (Exception ex) {
+			deleteDir()
 		}
 	}
 }
