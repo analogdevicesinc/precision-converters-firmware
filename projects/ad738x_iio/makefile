@@ -1,4 +1,4 @@
-include ../../clone-repos.mk
+include ../../tools/scripts/generic_variables.mk
 
 -include $(NO-OS)/tools/scripts/generic_variables.mk
 

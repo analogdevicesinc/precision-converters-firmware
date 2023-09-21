@@ -1,5 +1,7 @@
-include ../../tools/scripts/generic_variable.mk
+include ../../tools/scripts/generic_variables.mk
+
+-include $(NO-OS)/tools/scripts/generic_variables.mk
 
 include src.mk
 
-include ../../tools/scripts/generic.mk
+-include $(NO-OS)/tools/scripts/generic.mk
