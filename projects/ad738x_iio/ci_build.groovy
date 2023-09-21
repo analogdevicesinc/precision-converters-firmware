@@ -1,4 +1,4 @@
-def doBuild(projectName) {
+def getBuildMatrix(projectName) {
 	Map buildMap =[:]
 	if (env.CHANGE_TARGET == "main" || env.CHANGE_TARGET == "develop") {
 		// This map is for building all targets when merging to main or develop branches
@@ -26,33 +26,11 @@ def doBuild(projectName) {
 		!(axis['PLATFORM_NAME'] == 'NUCLEO_L552ZE_Q' && axis['COM_TYPE'] == 'USE_VIRTUAL_COM_PORT') &&
 		!(axis['PLATFORM_NAME'] == 'DISCO_F769NI' && axis['COM_TYPE'] == 'USE_VIRTUAL_COM_PORT')
 	}
-
-	node(label : "firmware_builder") {
-		ws('workspace/pcg-fw') {
-			checkout scm
-			try {
-				echo "Number of matrix combinations: ${buildMatrix.size()}"
-				for (int i = 0; i < buildMatrix.size(); i++) {
-					Map axis = buildMatrix[i]
-					runSeqBuild(axis, projectName)
-				}
-				// This variable holds the build status
-				buildStatusInfo = "Success"
-			}
-			catch (Exception ex) {
-				echo "Failed in ${projectName}-Build"
-				echo "Caught:${ex}"
-				buildStatusInfo = "Failed"
-				currentBuild.result = 'FAILURE'
-			}
-			deleteDir()
-		}
-	}
 	
-	return buildStatusInfo
+	return buildMatrix
 }
 
-def runSeqBuild(Map config =[:], projectName) {
+def doBuild(Map config =[:], projectName) {
 	stage("Build-${config.PLATFORM_NAME}-${config.ACTIVE_DEVICE}-${config.COM_TYPE}-${config.SDRAM}") {
 		FIRMWARE_VERSION = buildInfo.getFirmwareVersion()
 
@@ -67,7 +45,6 @@ def runSeqBuild(Map config =[:], projectName) {
 	
 		echo "Starting mbed build..."
 		//NOTE: if adding in --profile, need to change the path where the .bin is found by mbedflsh in Test stage
-		sh "cd projects/${projectName} ; make clone-lib-repos"
 		sh "cd projects/${projectName} ; make all LINK_SRCS=n TARGET_BOARD=${config.PLATFORM_NAME} BINARY_FILE_NAME=${config.PLATFORM_NAME}-${config.ACTIVE_DEVICE}-${config.COM_TYPE}-${config.SDRAM} NEW_CFLAGS+=-DPLATFORM_NAME=${config.PLATFORM_NAME} NEW_CFLAGS+=-DFIRMWARE_VERSION=${FIRMWARE_VERSION} NEW_CFLAGS+=-D${config.COM_TYPE} NEW_CFLAGS+=-D${config.SDRAM}"
 		artifactory.uploadFirmwareArtifacts("projects/${projectName}/build","${projectName}")
 		archiveArtifacts allowEmptyArchive: true, artifacts: "projects/${projectName}/build/*.bin, projects/${projectName}/build/*.elf"
@@ -76,8 +53,14 @@ def runSeqBuild(Map config =[:], projectName) {
 	}
 }
 
-def doTest(projectName) {
-	// TODO Test setup not connected yet
+def getTestMatrix(projectName) {
+	// TODO: Add the test sequence once CI test setup is up
+	List testMatrix = []
+	return testMatrix
+}
+
+def doTest(Map config =[:], projectName) {
+	// TODO: Add the test sequence once CI test setup is up
 }
 
 return this;
