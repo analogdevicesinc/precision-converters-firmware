@@ -63,7 +63,12 @@ pipeline {
         }
 
         stage("Build and Test") {   // Run build and test scripts
-            agent { label 'firmware_builder' }
+            agent {
+                node {
+                    label 'firmware_builder' 
+                    customWorkspace 'workspace/pcg-fw'
+                }
+            }
 			steps {
 				script {
                     // Checkout all submodules recursively
