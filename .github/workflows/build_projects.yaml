@@ -8,10 +8,8 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        project:
-          - ad4130_iio
-        platform:
-          - MBED_PLATFORM
+        project: ad4130_iio
+        platform: MBED_PLATFORM
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
