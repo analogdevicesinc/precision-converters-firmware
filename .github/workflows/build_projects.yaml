@@ -1,0 +1,54 @@
+name: precision-converters-firmware
+on:
+  pull_request:
+    branches:    
+      - main
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        project: ad4130_iio
+        platform: MBED_PLATFORM
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 2
+      
+      - name: Get changes
+        run: |
+          echo "changed_files=$(git diff --name-only -r HEAD^1 HEAD | xargs)" >> $GITHUB_OUTPUT
+          echo "$changed_files"
+
+      - name: Update submodules recursively
+        run: |
+          git submodule update --init --recursive
+
+      - name: Build with make
+        run: |
+          set -x
+          pip install mbed-cli
+          wget https://armkeil.blob.core.windows.net/developer/Files/downloads/gnu-rm/10.3-2021.10/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux.tar.bz2
+          tar xjf gcc-arm-none-eabi-10.3-2021.10-x86_64-linux.tar.bz2
+          export PATH="${PATH}:${PWD}/gcc-arm-none-eabi-10.3-2021.10/bin"
+          mbed config -G GCC_ARM_PATH "${PWD}/gcc-arm-none-eabi-10.3-2021.10/bin"
+
+          pushd libraries/no-OS/libraries/mbed/mbed-os
+          pip install -r requirements.txt
+          popd
+
+
+          for project in ${{ matrix.project }}; do
+            if: contains(${{ project }}, ${{ changed_files }})
+              pushd projects/${{ matrix.project }}
+              make all LINK_SRCS=n NEW_CFLAGS+=-DPLATFORM_NAME=${{ matrix.platform }}
+              popd
+          done
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: ${{ matrix.project }}
+          path: |
+            projects/${{ matrix.project }}/build/${{ matrix.project }}.bin
