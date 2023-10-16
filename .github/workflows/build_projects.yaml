@@ -1,0 +1,41 @@
+name: precision-converters-firmware
+on:
+  pull_request:
+    branches:    
+      - main
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        project:
+          - ad4130_iio
+        platform:
+          - MBED_PLATFORM
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 2
+      
+      - name: Get changes
+        id: changed-files
+        run: |
+          echo "changed_files=$(git diff --name-only -r HEAD^1 HEAD | xargs)" >> $GITHUB_OUTPUT
+
+      - name: Build projects
+        uses: actions/checkout@v3
+        with:
+          name: ${{ matrix.project }}
+        if: contains(${{ matrix.project }}, ${{ steps.changed-files.outputs.changed_files }})
+          run: |
+            pushd projects/${{ matrix.project }}
+            make all LINK_SRCS=n NEW_CFLAGS+=-DPLATFORM_NAME=${{ matrix.platform }}
+            popd
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: ${{ matrix.project }}
+          path: |
+            projects/${{ matrix.project }}/build/${{ matrix.project }}.bin
