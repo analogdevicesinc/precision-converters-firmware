@@ -32,6 +32,7 @@ jobs:
         run: |
           if ${CHANGED_FILES} == true; then
             git submodule update --init --recursive
+          fi
 
       - name: Get pre-requisites
         env:
@@ -48,6 +49,7 @@ jobs:
             pushd libraries/no-OS/libraries/mbed/mbed-os
             pip install -r requirements.txt
             popd
+          fi
 
       - name: Build projects
         env:
@@ -57,6 +59,7 @@ jobs:
             pushd projects/${{ matrix.project }}
             make NEW_CFLAGS+=-DPLATFORM_NAME=${{ matrix.platform }}
             popd
+          fi
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v3
