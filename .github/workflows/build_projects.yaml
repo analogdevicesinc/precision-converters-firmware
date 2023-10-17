@@ -20,7 +20,24 @@ jobs:
         with:
           fetch-depth: 2
       
-      - name: Get changes
+      - name: Update submodules recursively
+        run: |
+          git submodule update --init --recursive
+
+      - name: Get pre-requisites
+        run: |
+          set -x
+          pip install mbed-cli
+          wget https://armkeil.blob.core.windows.net/developer/Files/downloads/gnu-rm/10.3-2021.10/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux.tar.bz2
+          tar xjf gcc-arm-none-eabi-10.3-2021.10-x86_64-linux.tar.bz2
+          export PATH="${PATH}:${PWD}/gcc-arm-none-eabi-10.3-2021.10/bin"
+          mbed config -G GCC_ARM_PATH "${PWD}/gcc-arm-none-eabi-10.3-2021.10/bin"
+
+          pushd libraries/no-OS/libraries/mbed/mbed-os
+          pip install -r requirements.txt
+          popd
+
+      - name: Get file changes
         id: changed-files
         run: |
           echo "changed_files=$(git diff --name-only -r HEAD^1 HEAD | xargs)" >> $GITHUB_OUTPUT
@@ -29,7 +46,7 @@ jobs:
         if: contains(${{ matrix.project }}, ${{ steps.changed-files.outputs.changed_files }})
         run: |
           pushd projects/${{ matrix.project }}
-          make all LINK_SRCS=n NEW_CFLAGS+=-DPLATFORM_NAME=${{ matrix.platform }}
+          make NEW_CFLAGS+=-DPLATFORM_NAME=${{ matrix.platform }}
           popd
 
       - name: Upload artifacts
