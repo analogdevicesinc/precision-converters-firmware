@@ -10,7 +10,6 @@ jobs:
       matrix:
         project:
           - ad4130_iio
-          - ad559xr_console
         platform:
           - MBED_PLATFORM
           
@@ -24,7 +23,7 @@ jobs:
         id: changed-files
         run: |
           echo "changed_files=$(git diff --name-only -r HEAD^1 HEAD | xargs)" >> $GITHUB_OUTPUT
-          echo "${{ steps.changed-files.outputs.changed_files }}"
+          echo "${{ changed_files }}"
           echo "${{ matrix.project }}"
 
       - name: Update submodules recursively
