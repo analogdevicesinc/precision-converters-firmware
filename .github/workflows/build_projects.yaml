@@ -28,7 +28,7 @@ jobs:
 
       - name: Update submodules recursively
         env:
-          CHANGED_FILES: ${{ contains(steps.changed-files.outputs.changed_files, ['matrix.project']) }}
+          CHANGED_FILES: ${{ contains(steps.changed-files.outputs.changed_files, '${{ matrix.project }}') }}
         run: |
           if ${CHANGED_FILES} == true; then
             git submodule update --init --recursive
