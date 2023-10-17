@@ -1,0 +1,70 @@
+name: precision-converters-firmware
+on:
+  pull_request:
+    branches:    
+      - main
+  push:
+    branches:    
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        project:
+          - ad4130_iio
+          - ad559xr_console
+          - ad5770r_console
+          - ad590_console
+          - ad5933_console
+          - ad7124_console
+          - ad7124_temperature-measure
+          - ad7134_iio
+          - ad717x_console
+          - ad717x_iio
+          - ad719x_iio
+          - ad738x_iio
+          - ad7606_iio
+          - ad7689_iio
+          - ad77681_iio
+          - adt7420_console
+          - evb_discovery_firmware
+          - ltc268x_console
+          - nanodac_console
+        platform:
+          - MBED_PLATFORM
+          
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Update submodules recursively
+        run: |
+          git submodule update --init --recursive
+
+      - name: Build project
+        run: |
+          set -x
+          pip install mbed-cli
+          wget https://armkeil.blob.core.windows.net/developer/Files/downloads/gnu-rm/10.3-2021.10/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux.tar.bz2
+          tar xjf gcc-arm-none-eabi-10.3-2021.10-x86_64-linux.tar.bz2
+          export PATH="${PATH}:${PWD}/gcc-arm-none-eabi-10.3-2021.10/bin"
+          mbed config -G GCC_ARM_PATH "${PWD}/gcc-arm-none-eabi-10.3-2021.10/bin"
+
+          pushd libraries/no-OS/libraries/mbed/mbed-os
+          pip install -r requirements.txt
+          popd
+
+          pushd projects/${{ matrix.project }}
+          make NEW_CFLAGS+=-DPLATFORM_NAME=${{ matrix.platform }}
+          popd
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: ${{ matrix.project }}
+          path: |
+            projects/${{ matrix.project }}/build/${{ matrix.project }}.bin
