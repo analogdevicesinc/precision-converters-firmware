@@ -22,7 +22,6 @@ jobs:
       - name: Get file changes
         id: changed-files
         run: |
-          echo "changed_files=$(git diff --name-only -r HEAD^1 HEAD | xargs)" >> $GITHUB_OUTPUT
           $changed_files = git diff --name-only HEAD^ HEAD
           echo "${{ changed_files }}"
           echo "${{ matrix.project }}"
