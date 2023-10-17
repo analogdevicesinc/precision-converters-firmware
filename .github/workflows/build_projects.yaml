@@ -24,8 +24,10 @@ jobs:
         run: |
           echo "changed_files=$(git diff --name-only -r HEAD^1 HEAD | xargs)" >> $GITHUB_OUTPUT
           git diff --name-only -r HEAD^1 HEAD
+          echo "FOO=$(git diff --name-only -r HEAD^1 HEAD)" >> $GITHUB_ENV
           echo "changed_files=$(git diff --name-only -r HEAD^1 HEAD)" >> $GITHUB_OUTPUT
           echo "${{ steps.changed-files.outputs.changed_files }}"
+          echo "${{ env.FOO }}"
           echo "${{ matrix.project }}"
 
       - name: Update submodules recursively
