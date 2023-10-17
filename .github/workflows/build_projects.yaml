@@ -10,8 +10,10 @@ jobs:
       matrix:
         project:
           - ad4130_iio
+          - ad559xr_console
         platform:
           - MBED_PLATFORM
+          
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
@@ -24,14 +26,11 @@ jobs:
           echo "changed_files=$(git diff --name-only -r HEAD^1 HEAD | xargs)" >> $GITHUB_OUTPUT
 
       - name: Build projects
-        uses: actions/checkout@v3
-        with:
-          name: ${{ matrix.project }}
         if: contains(${{ matrix.project }}, ${{ steps.changed-files.outputs.changed_files }})
-          run: |
-            pushd projects/${{ matrix.project }}
-            make all LINK_SRCS=n NEW_CFLAGS+=-DPLATFORM_NAME=${{ matrix.platform }}
-            popd
+        run: |
+          pushd projects/${{ matrix.project }}
+          make all LINK_SRCS=n NEW_CFLAGS+=-DPLATFORM_NAME=${{ matrix.platform }}
+          popd
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v3
