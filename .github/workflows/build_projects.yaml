@@ -35,7 +35,7 @@ jobs:
 
       - name: Get pre-requisites
         env:
-          CHANGED_FILES: ${{ contains(steps.changed-files.outputs.changed_files, ${{ matrix.project }}) }}
+          CHANGED_FILES: ${{ contains(steps.changed-files.outputs.changed_files, '${{ matrix.project }}') }}
         run: |
           if ${CHANGED_FILES} == true; then
             set -x
@@ -51,7 +51,7 @@ jobs:
 
       - name: Build projects
         env:
-          CHANGED_FILES: ${{ contains(${{ steps.changed-files.outputs.changed_files }}, ${{ matrix.project }}) }}
+          CHANGED_FILES: ${{ contains(steps.changed-files.outputs.changed_files, '${{ matrix.project }}') }}
         run: |
           if ${CHANGED_FILES} == true; then
             pushd projects/${{ matrix.project }}
