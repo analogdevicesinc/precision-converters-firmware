@@ -22,36 +22,36 @@ jobs:
       - name: Get file changes
         id: changed-files
         run: |
-          echo "changed_files=$(git diff --name-only -r HEAD^1 HEAD | xargs)" >> $GITHUB_OUTPUT
-          echo "changed_files=$(git diff --name-only -r HEAD^1 HEAD)" >> $GITHUB_OUTPUT
+          echo "changed_files=$(git diff-tree --no-commit-id --name-only -r HEAD HEAD^^2 | xargs)" >> $GITHUB_OUTPUT
           echo "${{ steps.changed-files.outputs.changed_files }}"
           echo "${{ matrix.project }}"
 
       - name: Update submodules recursively
-        if: contains(${{ matrix.project }}, ${{ steps.changed-files.outputs.changed_files }})
         run: |
-          git submodule update --init --recursive
+          if (contains(${{ matrix.project }}, ${{ steps.changed-files.outputs.changed_files }}) == true); then
+            git submodule update --init --recursive
 
       - name: Get pre-requisites
-        if: contains(${{ matrix.project }}, ${{ steps.changed-files.outputs.changed_files }})
         run: |
-          set -x
-          pip install mbed-cli
-          wget https://armkeil.blob.core.windows.net/developer/Files/downloads/gnu-rm/10.3-2021.10/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux.tar.bz2
-          tar xjf gcc-arm-none-eabi-10.3-2021.10-x86_64-linux.tar.bz2
-          export PATH="${PATH}:${PWD}/gcc-arm-none-eabi-10.3-2021.10/bin"
-          mbed config -G GCC_ARM_PATH "${PWD}/gcc-arm-none-eabi-10.3-2021.10/bin"
+          if (contains(${{ matrix.project }}, ${{ steps.changed-files.outputs.changed_files }}) == true); then
+            set -x
+            pip install mbed-cli
+            wget https://armkeil.blob.core.windows.net/developer/Files/downloads/gnu-rm/10.3-2021.10/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux.tar.bz2
+            tar xjf gcc-arm-none-eabi-10.3-2021.10-x86_64-linux.tar.bz2
+            export PATH="${PATH}:${PWD}/gcc-arm-none-eabi-10.3-2021.10/bin"
+            mbed config -G GCC_ARM_PATH "${PWD}/gcc-arm-none-eabi-10.3-2021.10/bin"
 
-          pushd libraries/no-OS/libraries/mbed/mbed-os
-          pip install -r requirements.txt
-          popd
+            pushd libraries/no-OS/libraries/mbed/mbed-os
+            pip install -r requirements.txt
+            popd
 
       - name: Build projects
         if: contains(${{ matrix.project }}, ${{ steps.changed-files.outputs.changed_files }})
         run: |
-          pushd projects/${{ matrix.project }}
-          make NEW_CFLAGS+=-DPLATFORM_NAME=${{ matrix.platform }}
-          popd
+          if (contains(${{ matrix.project }}, ${{ steps.changed-files.outputs.changed_files }}) == true); then
+            pushd projects/${{ matrix.project }}
+            make NEW_CFLAGS+=-DPLATFORM_NAME=${{ matrix.platform }}
+            popd
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v3
