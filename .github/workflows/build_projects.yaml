@@ -1,8 +1,10 @@
 name: precision-converters-firmware
+
 on:
   pull_request:
     branches:    
       - main
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -23,8 +25,6 @@ jobs:
         id: changed-files
         run: |
           echo "changed_files=$(git diff --name-only HEAD^ HEAD | xargs)" >> $GITHUB_OUTPUT
-          echo "${{ steps.changed-files.outputs.changed_files }}"
-          echo "${{ matrix.project }}"
 
       - name: Update submodules recursively
         env:
@@ -34,7 +34,7 @@ jobs:
             git submodule update --init --recursive
           fi
 
-      - name: Get pre-requisites
+      - name: Get build pre-requisites
         env:
           CHANGED_FILES: ${{ contains(steps.changed-files.outputs.changed_files, '${{ matrix.project }}') }}
         run: |
@@ -51,7 +51,7 @@ jobs:
             popd
           fi
 
-      - name: Build projects
+      - name: Build project
         env:
           CHANGED_FILES: ${{ contains(steps.changed-files.outputs.changed_files, '${{ matrix.project }}') }}
         run: |
