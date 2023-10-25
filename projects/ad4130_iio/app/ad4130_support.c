@@ -157,6 +157,53 @@ float convert_adc_sample_into_voltage(void *dev, uint32_t adc_raw,
 	}
 }
 
+/**
+ * @brief	Convert ADC data to voltage without Vref
+ * @param	dev[in] - Device instance
+ * @param	data[in] - ADC data in straight binary format (signed)
+ * @param	chn[in] - ADC channel
+ * @return	voltage
+ */
+float convert_adc_data_to_voltage_without_vref(void *dev, int32_t data,
+		uint8_t chn)
+{
+	enum ad413x_gain pga;
+	uint8_t preset = ((struct ad413x_dev *)dev)->ch[chn].preset;
+	bool bipolar = ((struct ad413x_dev *)dev)->bipolar;
+
+	pga = ((struct ad413x_dev *)dev)->preset[preset].gain;
+
+	if (bipolar) {
+		return ((float)data / (ADC_MAX_COUNT_BIPOLAR * (1 << pga)));
+	} else {
+		return ((float)data / (ADC_MAX_COUNT_UNIPOLAR * (1 << pga)));
+	}
+}
+
+/**
+ * @brief	Convert ADC data to voltage w.r.t Vref
+ * @param	dev[in] - Device instance
+ * @param	data[in] - ADC data in straight binary format (signed)
+ * @param	chn[in] - ADC channel
+ * @return	voltage
+ */
+float convert_adc_data_to_voltage_wrt_vref(void *dev, int32_t data, uint8_t chn)
+{
+	enum ad413x_gain pga;
+	float vref;
+	uint8_t preset = ((struct ad413x_dev *)dev)->ch[chn].preset;
+	bool bipolar = ((struct ad413x_dev *)dev)->bipolar;
+
+	pga = ((struct ad413x_dev *)dev)->preset[preset].gain;
+	vref = ad4130_get_reference_voltage(((struct ad413x_dev *)dev), chn);
+
+	if (bipolar) {
+		return ((float)data * (vref / (ADC_MAX_COUNT_BIPOLAR * (1 << pga))));
+	} else {
+		return ((float)data * (vref / (ADC_MAX_COUNT_UNIPOLAR * (1 << pga))));
+	}
+}
+
 /*!
  * @brief	Convert the ADC raw value into equivalent RTD resistance
  * @param	dev[in] - Device instance
