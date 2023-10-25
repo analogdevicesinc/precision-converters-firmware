@@ -10,3 +10,7 @@ Code*
 *.vgdbproj
 *.TMP
 *.user
+tests/.pytest_cache
+tests/__pycache__
+tests/func/__pycache__
+tests/output

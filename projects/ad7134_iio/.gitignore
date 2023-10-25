@@ -20,3 +20,8 @@ STM32/.project
 STM32/*.launch
 STM32/STM32L552ZETXQ_FLASH.ld
 STM32/STM32L552ZETXQ_RAM.ld
+scripts/__pycache__
+tests/.pytest_cache
+tests/__pycache__
+tests/func/__pycache__
+tests/output

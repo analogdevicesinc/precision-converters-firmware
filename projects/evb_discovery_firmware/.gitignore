@@ -10,3 +10,4 @@ Code*
 *.vgdbproj
 *.TMP
 *.user
+scripts/__pycache__
