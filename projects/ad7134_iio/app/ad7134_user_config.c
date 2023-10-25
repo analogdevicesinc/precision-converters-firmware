@@ -62,7 +62,7 @@ struct ad713x_init_param ad713x_init_params = {
 	.pnd = NO_OS_GPIO_HIGH,
 
 	/* Define the device specific additional parameters */
-	.dev_id = ID_AD7134,
+	.dev_id = ACTIVE_DEVICE_ID,
 
 	/* Only 16-bit Frame + No CRC is supported for data capturing */
 	.adc_data_len = ADC_16_BIT_DATA, /* DO NOT CHANGE */
