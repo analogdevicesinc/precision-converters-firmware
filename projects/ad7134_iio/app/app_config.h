@@ -18,6 +18,7 @@
 /******************************************************************************/
 
 #include <stdint.h>
+#include "ad713x.h"
 
 /******************************************************************************/
 /********************** Macros and Constants Definition ***********************/
@@ -42,10 +43,6 @@
 /* Select the active platform from list of supported platforms */
 #define ACTIVE_PLATFORM		MBED_PLATFORM
 
-/* Name of active device */
-#define ACTIVE_DEVICE_NAME	"ad7134"
-#define HW_MEZZANINE_NAME   "EVAL-AD7134ARDZ"
-
 /* Select the ADC data capture mode (default is CC mode) */
 #if !defined(DATA_CAPTURE_MODE)
 #define DATA_CAPTURE_MODE	CONTINUOUS_DATA_CAPTURE
@@ -59,6 +56,30 @@
 /* Macros for stringification */
 #define XSTR(s)		#s
 #define STR(s)		XSTR(s)
+
+// **** Note for User: ACTIVE_DEVICE selection ****//
+/* Define the device type from the list of below device type defines (one at a time)
+ * e.g. #define DEV_AD7134 -> This will make AD7134 as an active device.
+ * The active device is default set to AD7134 if device type is not defined.
+ * */
+//#define DEV_AD7134
+
+/* Name of active device */
+#if defined (DEV_AD7134)
+#define ACTIVE_DEVICE_NAME	"ad7134"
+#define HW_MEZZANINE_NAME   "EVAL-AD7134ARDZ"
+#define ACTIVE_DEVICE_ID    ID_AD7134
+#elif defined (DEV_AD4134)
+#define ACTIVE_DEVICE_NAME	"ad4134"
+#define HW_MEZZANINE_NAME   "EVAL-AD4134ARDZ"
+#define ACTIVE_DEVICE_ID    ID_AD4134
+#else
+#warning No / Unsupported ADxxxxy symbol defined.AD7134 defined
+#define DEV_AD7134
+#define ACTIVE_DEVICE_NAME	"ad7134"
+#define HW_MEZZANINE_NAME   "EVAL-AD7134ARDZ"
+#define ACTIVE_DEVICE_ID    ID_AD7134
+#endif
 
 /* Enable the UART/VirtualCOM port connection (default VCOM) */
 //#define USE_PHY_COM_PORT		// Uncomment to select UART
