@@ -91,6 +91,9 @@ no-OS/libraries/fatfs/
 no-OS/libraries/mbedtls/
 no-OS/libraries/mqtt/
 no-OS/libraries/mbed/
+no-OS/libraries/lwip/
+no-OS/libraries/azure/
+no-OS/libraries/iio/libtinyiiod/
 no-OS/network/
 no-OS/projects/
 no-OS/scripts/
@@ -99,15 +102,33 @@ no-OS/v4l2_config/
 no-OS/jesd204/
 
 # Ignoring files for pocket lab applications
+lvgl/examples/
+lvgl/demos/
+lvgl/env_support/
+lvgl/tests/
+
 stm32_lvgl/lv_port_stm32f769_disco/CMSIS/
 stm32_lvgl/lv_port_stm32f769_disco/HAL_Driver/
 stm32_lvgl/lv_port_stm32f769_disco/ide/
 stm32_lvgl/lv_port_stm32f769_disco/startup/
-stm32_lvgl/lv_port_stm32f769_disco/Utilities/
-stm32_lvgl/lv_port_stm32f769_disco/lvgl
-
+stm32_lvgl/lv_port_stm32f769_disco/Utilities/Components/ampire480272/
+stm32_lvgl/lv_port_stm32f769_disco/Utilities/Components/ampire640480/
+stm32_lvgl/lv_port_stm32f769_disco/Utilities/Components/exc7200/
+stm32_lvgl/lv_port_stm32f769_disco/Utilities/Components/ft5336/
+stm32_lvgl/lv_port_stm32f769_disco/Utilities/Components/mfxstm32l152/
+stm32_lvgl/lv_port_stm32f769_disco/Utilities/Components/n25q128a/
+stm32_lvgl/lv_port_stm32f769_disco/Utilities/Components/n25q512a/
+stm32_lvgl/lv_port_stm32f769_disco/Utilities/Components/ov9655/
+stm32_lvgl/lv_port_stm32f769_disco/Utilities/Components/rk043fn48h/
+stm32_lvgl/lv_port_stm32f769_disco/Utilities/Components/s5k5cag/
+stm32_lvgl/lv_port_stm32f769_disco/Utilities/Components/st7735/
+stm32_lvgl/lv_port_stm32f769_disco/Utilities/Components/st7789h2/
+stm32_lvgl/lv_port_stm32f769_disco/Utilities/Components/stmpe811/
+stm32_lvgl/lv_port_stm32f769_disco/Utilities/Components/ts3510/
+stm32_lvgl/lv_port_stm32f769_disco/Utilities/STM32F769I-Discovery/stm32f769i_discovery_audio.c
+stm32_lvgl/lv_port_stm32f769_disco/Utilities/Log/
+stm32_lvgl/lv_port_stm32f769_disco/lvgl/
 stm32_lvgl/lv_port_stm32f769_disco/lv_conf.h
-stm32_lvgl/BSP_DISCO_F769NI/Drivers/BSP/STM32F769I-Discovery/stm32f769i_discovery_audio.c
 stm32_lvgl/lv_port_stm32f769_disco/src/main.c
 stm32_lvgl/lv_port_stm32f769_disco/src/syscalls.c
 stm32_lvgl/lv_port_stm32f769_disco/src/system_stm32f7xx.c
@@ -331,12 +352,11 @@ CMSIS-DSP/Source/StatisticsFunctions/StatisticsFunctions.c
 CMSIS-DSP/Source/StatisticsFunctions/StatisticsFunctionsF16.c
 
 CMSIS-DSP/Source/TransformFunctions/arm_bitreversal_f16.c
-CMSIS-DSP/Source/TransformFunctions/arm_bitreversal2.c
 CMSIS-DSP/Source/TransformFunctions/arm_cfft_f16.c
-CMSIS-DSP/Source/TransformFunctions/arm_cfft_f32.c
+CMSIS-DSP/Source/TransformFunctions/arm_cfft_radix4_f32.c
 CMSIS-DSP/Source/TransformFunctions/arm_cfft_f64.c
 CMSIS-DSP/Source/TransformFunctions/arm_cfft_init_f16.c
-CMSIS-DSP/Source/TransformFunctions/arm_cfft_init_f32.c
+CMSIS-DSP/Source/TransformFunctions/arm_cfft_radix4_init_f32.c
 CMSIS-DSP/Source/TransformFunctions/arm_cfft_init_f64.c
 CMSIS-DSP/Source/TransformFunctions/arm_cfft_init_q15.c
 CMSIS-DSP/Source/TransformFunctions/arm_cfft_init_q31.c
@@ -357,7 +377,6 @@ CMSIS-DSP/Source/TransformFunctions/arm_cfft_radix4_init_q31.c
 CMSIS-DSP/Source/TransformFunctions/arm_cfft_radix4_q15.c
 CMSIS-DSP/Source/TransformFunctions/arm_cfft_radix4_q31.c
 CMSIS-DSP/Source/TransformFunctions/arm_cfft_radix8_f16.c
-CMSIS-DSP/Source/TransformFunctions/arm_cfft_radix8_f32.c
 CMSIS-DSP/Source/TransformFunctions/arm_dct4_f32.c
 CMSIS-DSP/Source/TransformFunctions/arm_dct4_init_f32.c
 CMSIS-DSP/Source/TransformFunctions/arm_dct4_init_q15.c
@@ -386,15 +405,3 @@ CMSIS-DSP/Source/TransformFunctions/arm_rfft_q15.c
 CMSIS-DSP/Source/TransformFunctions/arm_rfft_q31.c
 CMSIS-DSP/Source/TransformFunctions/TransformFunctions.c
 CMSIS-DSP/Source/TransformFunctions/TransformFunctionsF16.c
-
-CMSIS-DSP/Include/arm_helium_utils.h
-CMSIS-DSP/Include/arm_math_f16.h
-CMSIS-DSP/Include/arm_common_tables_f16.h
-CMSIS-DSP/Include/arm_math_memory.h
-CMSIS-DSP/Include/arm_math_types.h
-CMSIS-DSP/Include/arm_math_types_f16.h
-CMSIS-DSP/Include/arm_mve_tables_f16.h
-CMSIS-DSP/Include/arm_vec_math_f16.h
-CMSIS-DSP/Include/arm_const_structs_f16.h
-CMSIS-DSP/Include/arm_mve_tables.h
-CMSIS-DSP/Include/arm_vec_math.h
