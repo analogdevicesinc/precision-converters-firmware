@@ -318,16 +318,6 @@ static struct iio_attribute global_attributes[] = {
 	END_ATTRIBUTES_ARRAY
 };
 
-/* IIOD debug attributes list */
-static struct iio_attribute debug_attributes[] = {
-	{
-		.name = "direct_reg_access",
-		.show = NULL,
-		.store = NULL,
-	},
-	END_ATTRIBUTES_ARRAY
-};
-
 /* IIOD channels configurations */
 struct scan_type chn_scan = {
 	.sign = 'u',
@@ -662,7 +652,6 @@ static int32_t iio_ad7134_init(struct iio_device **desc)
 					  iio_ad7134_channels[0]);
 	iio_ad7134_inst->channels = iio_ad7134_channels;
 	iio_ad7134_inst->attributes = global_attributes;
-	iio_ad7134_inst->debug_attributes = debug_attributes;
 	iio_ad7134_inst->debug_reg_read = debug_reg_read;
 	iio_ad7134_inst->debug_reg_write = debug_reg_write;
 	iio_ad7134_inst->pre_enable = iio_ad7134_prepare_transfer;
