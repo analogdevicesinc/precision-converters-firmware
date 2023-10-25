@@ -33,6 +33,7 @@
 #if (ACTIVE_IIO_CLIENT == IIO_CLIENT_LOCAL)
 #include "pl_gui_views.h"
 #include "pl_gui_events.h"
+#include "adi_fft.h"
 #endif
 
 /******** Forward declaration of functions ********/
@@ -54,6 +55,10 @@ static int iio_ad4130_local_backend_event_read(void *conn, uint8_t *buf,
 		uint32_t len);
 static int iio_ad4130_local_backend_event_write(void *conn, uint8_t *buf,
 		uint32_t len);
+
+static float ad4130_data_to_voltage_without_vref(int32_t data, uint8_t chn);
+static float ad4130_data_to_voltage_wrt_vref(int32_t data, uint8_t chn);
+static int32_t ad4130_code_to_straight_binary(uint32_t code, uint8_t chn);
 
 /******************************************************************************/
 /************************ Macros/Constants ************************************/
@@ -140,7 +145,12 @@ static int iio_ad4130_local_backend_event_write(void *conn, uint8_t *buf,
 #define adc_data_buffer				SDRAM_START_ADDRESS
 #define DATA_BUFFER_SIZE			SDRAM_SIZE_BYTES
 #else
+#if (ACTIVE_IIO_CLIENT == IIO_CLIENT_LOCAL)
+/* Note: Setting lower size due to memory constraints on MCU */
+#define DATA_BUFFER_SIZE			(16384)		// 16kbytes
+#else
 #define DATA_BUFFER_SIZE			(32768)		// 32kbytes
+#endif
 static int8_t adc_data_buffer[DATA_BUFFER_SIZE] = { 0 };
 #endif
 
@@ -368,13 +378,32 @@ struct pl_gui_views pocket_lab_gui_views[] = {
 	PL_GUI_ADD_REG_DEBUG_DEF_VIEW,
 	PL_GUI_ADD_DMM_DEF_VIEW,
 	PL_GUI_ADD_CAPTURE_DEF_VIEW,
+	PL_GUI_ADD_ANALYSIS_DEF_VIEW,
 	PL_GUI_ADD_ABOUT_DEF_VIEW,
 	{ NULL }
+};
+
+/* FFT init parameters */
+struct adi_fft_init_params fft_init_params = {
+	.vref = AD4170_2_5V_INT_REF_VOLTAGE,
+	.sample_rate = AD4130_MIN_SAMPLING_FREQ,
+	.samples_count = ADI_FFT_MAX_SAMPLES,
+	.input_data_zero_scale = ADC_MAX_COUNT_BIPOLAR,
+	.input_data_full_scale = ADC_MAX_COUNT_UNIPOLAR,
+	.convert_data_to_volt_without_vref = &ad4130_data_to_voltage_without_vref,
+	.convert_data_to_volt_wrt_vref = &ad4130_data_to_voltage_wrt_vref,
+	.convert_code_to_straight_binary = &ad4130_code_to_straight_binary
+};
+
+/* Pocket lab GUI device init parameters */
+struct pl_gui_device_param pl_gui_device_params = {
+	.fft_params = &fft_init_params
 };
 
 /* Pocket lab GUI init parameters */
 static struct pl_gui_init_param pocket_lab_gui_init_params = {
 	.views = pocket_lab_gui_views,
+	.device_params = &pl_gui_device_params
 };
 
 struct pl_gui_desc *pocket_lab_gui_desc;
@@ -1419,6 +1448,39 @@ static void update_vltg_conv_scale_factor(uint8_t chn)
 		break;
 	}
 #endif
+}
+
+/**
+ * @brief	Convert ADC data to voltage without Vref
+ * @param	data[in] - ADC data in straight binary format (signed)
+ * @param	chn[in] - ADC channel
+ * @return	voltage
+ */
+static float ad4130_data_to_voltage_without_vref(int32_t data, uint8_t chn)
+{
+	return convert_adc_data_to_voltage_without_vref(ad4130_dev_inst, data, chn);
+}
+
+/**
+ * @brief	Convert ADC data to voltage with respect to Vref
+ * @param	data[in] - ADC data in straight binary format (signed)
+ * @param	chn[in] - ADC channel
+ * @return	voltage
+ */
+static float ad4130_data_to_voltage_wrt_vref(int32_t data, uint8_t chn)
+{
+	return convert_adc_data_to_voltage_wrt_vref(ad4130_dev_inst, data, chn);
+}
+
+/**
+ * @brief	Convert ADC code to straight binary data
+ * @param	code[in] - ADC code (unsigned)
+ * @param	chn[in] - ADC channel
+ * @return	ADC straight binary data (signed)
+ */
+static int32_t ad4130_code_to_straight_binary(uint32_t code, uint8_t chn)
+{
+	return perform_sign_conversion(ad4130_dev_inst, code, chn);
 }
 
 /**

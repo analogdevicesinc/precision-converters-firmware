@@ -60,6 +60,10 @@ int32_t perform_sign_conversion(struct ad413x_dev *dev, uint32_t adc_raw_data,
 				uint8_t chn);
 float convert_adc_sample_into_voltage(void *dev, uint32_t adc_raw,
 				      uint8_t chn);
+float convert_adc_data_to_voltage_wrt_vref(void *dev, int32_t code,
+		uint8_t chn);
+float convert_adc_data_to_voltage_without_vref(void *dev, int32_t code,
+		uint8_t chn);
 float convert_adc_raw_into_rtd_resistance(void *dev, uint32_t adc_raw,
 		float rtd_ref, uint8_t chn);
 int32_t ad4130_read_fifo(struct ad413x_dev *dev, uint32_t *data,
