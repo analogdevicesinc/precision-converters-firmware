@@ -3,11 +3,11 @@ gcc-*
 
 # Note: Comment out to use display as IIO client (pocket lab), else uses PC as IIO client
 # This also require to set ACTIVE_IIO_CLIENT == IIO_CLIENT_LOCAL in the app_config.h file
-libraries/stm32_lvgl/
-libraries/lvgl/
-libraries/precision-converters-library/pocket_lab/
-libraries/precision-converters-library/fft/
-libraries/CMSIS-DSP/
+libs/stm32_lvgl/
+libs/lvgl/
+libs/precision-converters-library/pocket_lab/
+libs/precision-converters-library/fft/
+libs/CMSIS-DSP/
 
 # Note: Comment out the project name to be compiled (one at a time)
 //projects/ad7689_iio/
