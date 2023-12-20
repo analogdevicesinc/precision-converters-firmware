@@ -1,0 +1,180 @@
+
+
+<!doctype html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Using IIO Oscilloscope &#8212; precision-converters-firmware  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=649a27d8" />
+    <link rel="stylesheet" type="text/css" href="../../_static/bizstyle.css?v=c92c1228" />
+    
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js?v=b3ba4146"></script>
+    <script src="../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../_static/sphinx_highlight.js?v=4825356b"></script>
+    <script src="../../_static/bizstyle.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <!--[if lt IE 9]>
+    <script src="_static/css3-mediaqueries.js"></script>
+    <![endif]-->
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">precision-converters-firmware  documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Using IIO Oscilloscope</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="using-iio-oscilloscope">
+<h1>Using IIO Oscilloscope<a class="headerlink" href="#using-iio-oscilloscope" title="Permalink to this heading">¶</a></h1>
+<section id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this heading">¶</a></h2>
+<p>Refer this page to install IIO oscilloscope for Windows or Linux OS: <a class="reference external" href="https://github.com/analogdevicesinc/iio-oscilloscope/releases">IIO Oscilloscope (Client)</a></p>
+</section>
+<section id="running-on-linux">
+<h2>Running on Linux<a class="headerlink" href="#running-on-linux" title="Permalink to this heading">¶</a></h2>
+<p>Refer this page: <a class="reference external" href="https://wiki.analog.com/resources/tools-software/linux-software/iio_oscilloscope">https://wiki.analog.com/resources/tools-software/linux-software/iio_oscilloscope</a></p>
+</section>
+<section id="running-on-windows">
+<h2>Running on Windows<a class="headerlink" href="#running-on-windows" title="Permalink to this heading">¶</a></h2>
+<p>Open the IIO Oscilloscope application from start menu and configure the serial (UART)
+settings as shown below. Click on refresh button and device should pop-up
+in the IIO devices list.</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../_images/iio_osc_connect_window.png"><img alt="../../_images/iio_osc_connect_window.png" src="../../_images/iio_osc_connect_window.png" style="width: 300px;" /></a>
+</div></blockquote>
+<p>Click ‘Connect’ and it should by default open the data ‘Capture’ window. You can
+drag aside or close this window to see the main ‘Debug and DMM’ tab window.</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../_images/iio_osc_tabs.png"><img alt="../../_images/iio_osc_tabs.png" src="../../_images/iio_osc_tabs.png" style="width: 500px;" /></a>
+</div></blockquote>
+</section>
+<section id="configure-access-device-attributes-parameters">
+<h2>Configure/Access Device Attributes (Parameters)<a class="headerlink" href="#configure-access-device-attributes-parameters" title="Permalink to this heading">¶</a></h2>
+<p>The IIO Oscilloscope allows user to access and configure different device parameters,
+called as ‘Attributes“. There are 2 types of attributes:</p>
+<ul class="simple">
+<li><p>Device Attributes (Global): Access/Configure common device parameters.</p></li>
+<li><p>Channel Attributes (Specific to channels): Access/Configure channel specific device parameters.</p></li>
+</ul>
+</section>
+<section id="using-dmm-tab-to-read-dc-voltage-on-input-channels">
+<h2>Using DMM Tab to Read DC Voltage on Input Channels<a class="headerlink" href="#using-dmm-tab-to-read-dc-voltage-on-input-channels" title="Permalink to this heading">¶</a></h2>
+<p>DMM tab can be used read the instantaneous voltage applied on analog input channels.
+Simply select the device and channels to read and press start button.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The voltage is just instantaneous, so it is not possible to get RMS AC voltage
+or averaged DC voltage. Also, when using DMM tab, do not access/use the Data
+capture or Debug tab as this could impact data capturing. All uses same
+communication bus to access the data which could result into access/busy conflicts
+during data capture.</p>
+</div>
+<a class="reference internal image-reference" href="../../_images/iio_osc_dmm_tab.png"><img alt="../../_images/iio_osc_dmm_tab.png" src="../../_images/iio_osc_dmm_tab.png" style="width: 500px;" /></a>
+</section>
+<section id="data-capture-from-iio-device">
+<h2>Data Capture from IIO Device<a class="headerlink" href="#data-capture-from-iio-device" title="Permalink to this heading">¶</a></h2>
+<p>To capture the data from IIO device, simply select the device and channels
+to read/capture data. The data is plotted as “ADC Raw Value” Vs “Number of Samples”
+and is just used for Visualization. The data is read as is from device without
+any processing. If user wants to process the data, it must be done externally
+by capturing data from the Serial link on controller board.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The DMM or Debug tab should not be accessed when capturing data as this would
+impact data capturing. All uses same communication bus to access the data which
+could result into access/busy conflicts during data capture.</p>
+</div>
+<p><em>Time Domain plot:</em></p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../_images/iio_osc_time_domain_plot.png"><img alt="../../_images/iio_osc_time_domain_plot.png" src="../../_images/iio_osc_time_domain_plot.png" style="width: 800px;" /></a>
+</div></blockquote>
+<p><em>Frequency Domain plot:</em></p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../_images/iio_osc_freq_domain_plot.png"><img alt="../../_images/iio_osc_freq_domain_plot.png" src="../../_images/iio_osc_freq_domain_plot.png" style="width: 800px;" /></a>
+</div></blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Select number of samples and channels according to sampling rate of your
+device. For very slow ODRs, the data capturing would be too slow and
+IIO oscilloscope might become unresponsive waiting for data to be received
+from IIO device.</p>
+</div>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../../index.html">
+              <img class="logo" src="../../_static/adi_logo.png" alt="Logo"/>
+            </a></p>
+  <div>
+    <h3><a href="../../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">Using IIO Oscilloscope</a><ul>
+<li><a class="reference internal" href="#installation">Installation</a></li>
+<li><a class="reference internal" href="#running-on-linux">Running on Linux</a></li>
+<li><a class="reference internal" href="#running-on-windows">Running on Windows</a></li>
+<li><a class="reference internal" href="#configure-access-device-attributes-parameters">Configure/Access Device Attributes (Parameters)</a></li>
+<li><a class="reference internal" href="#using-dmm-tab-to-read-dc-voltage-on-input-channels">Using DMM Tab to Read DC Voltage on Input Channels</a></li>
+<li><a class="reference internal" href="#data-capture-from-iio-device">Data Capture from IIO Device</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../_sources/source/iio_osc/iio_osc.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">precision-converters-firmware  documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Using IIO Oscilloscope</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+    &#169; Copyright 2023, Analog Devices Inc..
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.1.2.
+    </div>
+  </body>
+</html>
