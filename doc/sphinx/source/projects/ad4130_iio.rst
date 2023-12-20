@@ -1,1 +1,0 @@
-.. include:: ../../../../projects/ad4130_iio/README.rst
