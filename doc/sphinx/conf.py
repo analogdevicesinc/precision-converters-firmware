@@ -14,8 +14,7 @@ author = 'Analog Devices Inc.'
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
 
 extensions = [
-    'sphinx_toolbox.collapse',
-    'sphinx_immaterial.task_lists',
+    'sphinx_toolbox.collapse'
     ]
 
 templates_path = ['_templates']
