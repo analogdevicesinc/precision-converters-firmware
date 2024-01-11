@@ -4,27 +4,86 @@ on: [push, pull_request, workflow_dispatch]
 
 permissions:
   contents: write
+  pages: write
 
 jobs:
   docs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          submodules: recursive
       - uses: actions/setup-python@v3
       
       - name: Install dependencies
         run: |
           python -m pip install sphinx-toolbox
-          pip install sphinx sphinx_rtd_theme myst_parser
-      
+          pip install sphinx myst_parser
+          sudo apt-get install doxygen graphviz -y
+
       - name: Sphinx build
         run: |
-          sphinx-build doc/sphinx _build
+          pushd doc/sphinx
+          sphinx-build ./ build
+          popd
 
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          publish_branch: gh-pages
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: _build/
-          force_orphan: true
+          echo "Sphinx was generated successfully!"
+          
+      - name: Doxygen build
+        run: |
+          pushd doc/doxygen
+          mkdir -p build
+          cd build
+          cmake ../
+          doxygen doxygen_doc/Doxyfile.doxy
+          cd ..
+          popd
+
+          echo "Doxygen was generated successfully!"
+
+      - name: Update gh pages
+        run: |
+          git config --global user.email "cse-ci-notifications@analog.com"
+          git config --global user.name "CSE-CI"
+
+          MASTER_COMMIT=$(git rev-parse --short HEAD)
+          REPO_SLUG="${REPO_SLUG:-analogdevicesinc/precision-converters-firmware}"
+
+          # Fetch and checkout to gh-pages branch
+          git fetch --depth 1 origin +refs/heads/gh-pages:gh-pages
+          git checkout gh-pages
+
+          # Clear previous content in the root folder of 'gh-pages' branch except 
+          # the 'doc' folder which holds new builds
+          find -mindepth 1 -maxdepth 1 ! \( -name "doc" -o -name ".git" \) -exec rm -rf {} \;
+          
+          # Add sphinx build html content to root folder in the 'gh-pages' branch
+          cp -r doc/sphinx/build/* ./
+
+          # Create doxygen folder holding new build content and add doxygen html content
+          # to doxygen/ folder in the 'gh-pages' branch
+          mkdir -p doxygen
+          cp -r doc/doxygen/build/html/* doxygen/
+
+          # Remove temporary 'doc' folder
+          rm -rf doc/
+
+          # Create .nojekyll file to handle files starting with '_' on gh pages
+          touch .nojekyll
+
+          # Push contents to 'gh-pages' branch
+          CURRENT_COMMIT=$(git log -1 --pretty=%B)
+          if [[ ${CURRENT_COMMIT:(-7)} != ${MASTER_COMMIT:0:7} ]]
+          then
+                  git add --all .
+                  git commit --allow-empty --amend -m "Update documentation to ${MASTER_COMMIT:0:7}"
+                  if [ -n "$GITHUB_DOC_TOKEN" ] ; then
+                          git push https://${GITHUB_DOC_TOKEN}@github.com/${REPO_SLUG} gh-pages -f
+                  else
+                          git push origin gh-pages -f
+                  fi
+
+                  echo "Documetation updated!"
+          else
+                  echo "Documentation already up to date!"
+          fi
