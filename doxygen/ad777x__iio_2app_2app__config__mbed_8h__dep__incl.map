@@ -1,0 +1,12 @@
+<map id="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad777x_iio/app/app_config_mbed.h" name="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad777x_iio/app/app_config_mbed.h">
+<area shape="rect" id="node1" title="Header file for Mbed platform configurations." alt="" coords="703,5,957,76"/>
+<area shape="rect" id="node2" href="$ad777x__iio_2app_2app__config_8h.html" title="Configuration file for AD777x IIO firmware application." alt="" coords="645,124,868,195"/>
+<area shape="rect" id="node8" href="$ad777x__iio_2app_2app__config__mbed_8c.html" title="Application configurations module for Mbed platform." alt="" coords="1225,243,1480,313"/>
+<area shape="rect" id="node3" href="$ad777x__iio_8c.html" title="Source file of AD777x IIO interfaces." alt="" coords="55,361,277,432"/>
+<area shape="rect" id="node4" href="$ad777x__support_8c.html" title=" " alt="" coords="32,243,276,313"/>
+<area shape="rect" id="node5" href="$ad777x__user__config_8c.html" title="Default user configurations file for AD777x device." alt="" coords="387,361,657,432"/>
+<area shape="rect" id="node6" href="$ad777x__user__config_8h.html" title="Header for AD777x default user configurations file." alt="" coords="300,243,571,313"/>
+<area shape="rect" id="node7" href="$ad777x__iio_2app_2app__config_8c.html" title="Application configurations module for AD777x firmware application." alt="" coords="645,243,868,313"/>
+<area shape="rect" id="node9" href="$ad777x__iio_2app_2app__config__stm32_8c.html" title="Source file for STM32 platform configurations." alt="" coords="858,361,1117,432"/>
+<area shape="rect" id="node10" href="$ad777x__iio_2app_2app__config__stm32_8h.html" title=" " alt="" coords="942,243,1201,313"/>
+</map>

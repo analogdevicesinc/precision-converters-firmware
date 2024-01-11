@@ -1,0 +1,401 @@
+
+
+<!doctype html>
+
+<html lang="en" data-content_root="../../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>AD5770r Console Application &#8212; precision-converters-firmware  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=649a27d8" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/bizstyle.css?v=532c1bf3" />
+    
+    <script src="../../../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/bizstyle.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="AD5933 Console Application" href="../ad5933_console/index.html" />
+    <link rel="prev" title="AD5770r Console Application" href="index.html" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <!--[if lt IE 9]>
+    <script src="_static/css3-mediaqueries.js"></script>
+    <![endif]-->
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../ad5933_console/index.html" title="AD5933 Console Application"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="AD5770r Console Application"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">precision-converters-firmware  documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../index.html" >Firmware Applications</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="index.html" accesskey="U">AD5770r Console Application</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">AD5770r Console Application</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="ad5770r-console-application">
+<h1>AD5770r Console Application<a class="headerlink" href="#ad5770r-console-application" title="Link to this heading">¶</a></h1>
+<section id="supported-hardware">
+<h2>Supported Hardware<a class="headerlink" href="#supported-hardware" title="Link to this heading">¶</a></h2>
+<p><strong>Supported Devices:</strong></p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.analog.com/en/products/ad5770r.html">AD5770R</a></p></li>
+</ul>
+<p><strong>Supported Evaluation Boards:</strong></p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.analog.com/en/resources/evaluation-hardware-and-software/evaluation-boards-kits/EVAL-AD5770R.html">EVAL-AD5770R</a></p></li>
+</ul>
+<p><strong>Supported Carrier Boards:</strong></p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://os.mbed.com/platforms/SDP_K1/">SDP-K1 With Mbed</a></p></li>
+</ul>
+</section>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">¶</a></h2>
+<p>The AD5770R is a 6-channel, 14-bit resolution, low noise, programmable current output digital-to-analog converter (DAC) for photonics control applications. This chip incorporates a 1.25 V on-chip voltage reference, a 2.5 kΩ precision resistor for reference current generation, die temperature, output monitoring functions, fault alarm, and reset functions.</p>
+<p>The AD5770R contains five 14-bit resolution current sourcing DAC channels and one 14-bit resolution current sourcing/ sinking DAC channel.</p>
+<p>Channel 0 can be configured to sink up to 60 mA and source up to 300 mA. Channel 1 to Channel 5 have multiple, programmable output current sourcing ranges, set by register access. Each DAC can operate with a wide power supply rail from 0.8 V to AVDD − 0.4 V for optimizing power efficiency and thermal power dissipation.</p>
+<p>This page describes the AD5770R firmware example running on the SDP-K1 controller board, interfacing with the AD5770R evaluation board. The firmware example comprises 3 layers of software, built on top of the Mbed OS.</p>
+<ul>
+<li><p>Console Application - uses the ADI console libraries to provide a basic terminal UI</p></li>
+<li><p>AD5770R No-OS Driver - AD5770R device C API</p></li>
+<li><p>Mbed Platform Drivers - Hardware Abstraction Layer (SPI, GPIO, …) to adapt No-OS driver to Mbed OS</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../../_images/ad5770r_architecture.jpg"><img alt="../../../_images/ad5770r_architecture.jpg" src="../../../_images/ad5770r_architecture.jpg" style="width: 400px;" /></a>
+</div></blockquote>
+</li>
+</ul>
+<p>The AD5770R Mbed firmware example can be used as a starting point for developing your own code in your own environment utilizing the benefits of the Mbed platform. The Mbed Platform simplifies the overall software development process by providing a common low level driver abstraction. This reduces the hardware dependency as any Mbed enabled board can be used with same firmware with little to no modifications, usually just changing the pin mapping.</p>
+</section>
+<section id="interface-diagram">
+<h2>Interface Diagram<a class="headerlink" href="#interface-diagram" title="Link to this heading">¶</a></h2>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../../_images/ad5770r_interface_diagram.jpg"><img alt="../../../_images/ad5770r_interface_diagram.jpg" src="../../../_images/ad5770r_interface_diagram.jpg" style="width: 500px;" /></a>
+</div></blockquote>
+<p>The AD5770R Evaluation Board is connected to SDP-K1 using the 120-pin SDP Connector. The evaluation board must be powered externally, typically using an external 3.3V DC supply connected to the AVDD input supply terminal, if using the default power supply jumper settings.</p>
+<p>The SDP-K1 is connected to a PC through a USB cable. The firmware image, a .BIN file created using the online mbed compiler, can be loaded into SDP-K1 board by copying the .BIN file to the drive representing the SDP-K1. The SDP-K1 provides a USB to Serial link (UART) and any serial terminal (such as Teraterm, Putty, Coolterm, etc) can be used to connect to by configuring terminal with the necessary settings (serial port, baud rate, data bits, etc).</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Connect the VIO_ADJUST jumper on the SDP-K1 board to 3.3V position to drive SDP-K1 GPIOs at 3.3V</p>
+</div>
+</section>
+<section id="useful-links">
+<h2>Useful Links<a class="headerlink" href="#useful-links" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/analogdevicesinc/no-OS">no-OS: Software drivers for systems without OS</a></p></li>
+<li><p><a class="reference external" href="https://studio.keil.arm.com/auth/login/">Keil Studio Web IDE/Compiler</a></p></li>
+<li><p><a class="reference external" href="https://os.mbed.com/platforms/SDP_K1/">SDP-K1 on Mbed</a></p></li>
+<li><p><a class="reference external" href="https://github.com/analogdevicesinc/linux">Linux Drivers</a></p></li>
+<li><p><a class="reference external" href="https://github.com/analogdevicesinc/hdl">HDL Source Code</a></p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Linux and HDL are not used in emebdded IIO firmware projects but
+they may be of interest if you require Linux and/or FPGA support.</p>
+</div>
+</section>
+<section id="build-guide">
+<h2>Build Guide<a class="headerlink" href="#build-guide" title="Link to this heading">¶</a></h2>
+<details class="summary-build-prerequisites" open>
+<summary>Build Prerequisites</summary><blockquote>
+<div><p>Prior to building a firmware project, it is required to set up an environment so
+that the build process may find the necessary tools (compiler, linker, SDK etc.).
+Use the following steps to prepare your environment for building firmware projects
+for respective platform.</p>
+<details class="summary-windows">
+<summary>Windows</summary><details class="summary-mbed">
+<summary>Mbed</summary><details class="summary-for-web-online-build">
+<summary>For Web/Online Build</summary><ul class="simple">
+<li><p>Visit <a class="reference external" href="https://www.keil.arm.com/">Arm Keil website</a> to create an user account for accessing the web based Keil Studio IDE.</p></li>
+<li><p>Open <a class="reference external" href="https://studio.keil.arm.com/auth/login/">Keil Studio Web IDE</a> with registered user account</p></li>
+</ul>
+</details><details class="summary-for-make-build">
+<summary>For Make Build</summary><ul class="simple">
+<li><p>Clone Precision Converters Firmware repository with the –recursive flag (not needed if building with web IDE for Mbed platform):</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>--recursive<span class="w"> </span>https://github.com/analogdevicesinc/precision-converters-firmware
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>If however you’ve already cloned the repository without the –recursive flag, you may initialize all the submodules in an existing cloned repo with:</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>submodule<span class="w"> </span>update<span class="w"> </span>--recursive<span class="w"> </span>--init
+</pre></div>
+</div>
+<ul>
+<li><p>Install <a class="reference external" href="https://gnuwin32.sourceforge.net/packages/make.htm">Make</a> in the root of ‘C’ drive without any spaces in the installation path. The path must be <strong>C:\GnuWin32\…</strong>. Add this path into the system environmental path variable (as shown in below screenshot).</p></li>
+<li><p>Install <a class="reference external" href="https://git-scm.com/downloads">Git</a> and add a path of <strong>C:\Program Files\Git\usr\bin\</strong> directory into system environmental path variable (please verify your git installation path is correct).</p></li>
+<li><p>Install Mbed CLI 1 as per guide <a class="reference external" href="https://os.mbed.com/docs/mbed-os/v6.15/build-tools/install-and-set-up.html">here</a>.</p></li>
+<li><p>Install <a class="reference external" href="https://developer.arm.com/downloads/-/gnu-rm.">GNU Arm Embedded compiler</a> (for the development, 9-2019-q4-major version is used) and add a path of GNU Arm Embedded Toolchain bin directory into the system environmental path variable (as shown in below screenshot).</p></li>
+<li><p>Configure the compiler location with Mbed CLI. This can be carried out by running the <strong>mbed config -G GCC_ARM_PATH &lt;path-to-your-gcc-compiler&gt;</strong> in Command Prompt. For example you can run <strong>mbed config -G GCC_ARM_PATH “C:\Program Files (x86)\GNU Tools ARM Embedded\9 2019-q4-major\bin”</strong> in command prompt. It will set mentioned compiler path to all the Mbed Projects.</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../../_images/environmental_variables.png"><img alt="../../../_images/environmental_variables.png" src="../../../_images/environmental_variables.png" style="width: 400px;" /></a>
+</div></blockquote>
+</li>
+</ul>
+</details></details><details class="summary-stm32">
+<summary>STM32</summary><details class="summary-for-stm32-ide-based-build">
+<summary>For STM32 IDE based Build</summary><ul>
+<li><p>Install <a class="reference external" href="https://www.st.com/en/development-tools/stm32cubeide.html">STM32CubeIDE</a></p></li>
+<li><p>Install <a class="reference external" href="https://www.st.com/en/development-tools/stm32cubemx.html">STM32CubeMX</a></p></li>
+<li><p>Install <a class="reference external" href="https://git-scm.com/downloads">Git</a> and add a path of <strong>C:\Program Files\Git\usr\bin\</strong> directory into system environmental path variable (please verify your git installation path is correct).</p></li>
+<li><p>Install <a class="reference external" href="https://gnuwin32.sourceforge.net/packages/make.htm">Make</a> in the root of ‘C’ drive without any spaces in the installation path. The path must be <strong>C:\GnuWin32\…</strong>. Add this path into the system environmental path variable (as shown in below screenshot).</p></li>
+<li><p>Install <a class="reference external" href="https://developer.arm.com/downloads/-/gnu-rm.">GNU Arm Embedded compiler</a> (for the development, 9-2019-q4-major version is used) and add a path of GNU Arm Embedded Toolchain bin directory into the system environmental path variable (as shown in below screenshot).</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../../_images/environmental_variables.png"><img alt="../../../_images/environmental_variables.png" src="../../../_images/environmental_variables.png" style="width: 400px;" /></a>
+</div></blockquote>
+</li>
+</ul>
+</details></details></details></div></blockquote>
+</details><details class="summary-building-a-project" open>
+<summary>Building a project</summary><blockquote>
+<div><p>Once the build enviornment is setup, follow the guide below to build your project
+and generate executable file (.bin/.hex)</p>
+<details class="summary-windows">
+<summary>Windows</summary><details class="summary-mbed">
+<summary>Mbed</summary><details class="summary-build-using-web-online-ide">
+<summary>Build Using Web/Online IDE</summary><ul>
+<li><p>Clone the <a class="reference external" href="https://github.com/analogdevicesinc/precision-converters-firmware">Precision Converters Firmware repository</a> into Keil Studio using “File-&gt;clone…” menu.</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../../_images/mbed_keil_studio_project_clone.png"><img alt="../../../_images/mbed_keil_studio_project_clone.png" src="../../../_images/mbed_keil_studio_project_clone.png" style="width: 600px;" /></a>
+</div></blockquote>
+</li>
+<li><p>Once the project repository is imported, wait until all library dependencies are imported as shown in below screenshot. Now, open the ‘.medignore’ file present in the root directory of repository. Add comment syntax (two forward slashes) in front of the project name which you want to build. This will ignore all other projects and build only the comment syntax selected project.</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../../_images/mbedignore_changes.png"><img alt="../../../_images/mbedignore_changes.png" src="../../../_images/mbedignore_changes.png" style="width: 600px;" /></a>
+</div></blockquote>
+</li>
+<li><p>Select the target device (default used for development is SDP-K1) and click on ‘Clean build’ option to build the project. After a successful build a binary will be downloaded to your computer- store this on your drive. Drag and drop this binary to the USB drive hosted by your controller board to flash the MCU.</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../../_images/mbed_build.png"><img alt="../../../_images/mbed_build.png" src="../../../_images/mbed_build.png" style="width: 400px;" /></a>
+</div></blockquote>
+</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you intend to build different project, then modify the .medignore file in the root directory as
+mentioned in step2 and clean build project as mentioned in step3</p>
+</div>
+</details><details class="summary-build-using-make">
+<summary>Build Using Make</summary><ul class="simple">
+<li><p>Open Git bash and change current directory to project directory (eg. <strong>precision-converters-firmware/projects/ad4130_iio</strong> directory) which you want to build.</p></li>
+<li><p>Type <strong>make</strong> on the git bash command prompt to build a project.</p></li>
+<li><p>After successful build, binary file will be created into the <strong>Project_Name/build</strong> directory.</p></li>
+<li><p>If you want to clean build, type <strong>make reset</strong> on git bash command which deletes all generated build files for the given project.</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Default TARGET_BOARD is SDP_K1 and COMPILER is GCC_ARM. Current Make based build only support GCC_ARM Compiler.</p>
+</div>
+<ul class="simple">
+<li><p>By default project is built for “SDP_K1” Board and “GCC_ARM” Compiler. If you want to build for other Mbed Board, For example If you want to build the project for “DISCO_F769NI” Board then run <strong>make TARGET_BOARD=DISCO_F769NI</strong> command in git bash command prompt. If you want to clean build, run <strong>make reset TARGET_BOARD=DISCO_F769NI</strong> command to delete the generated build files for the given project.</p></li>
+</ul>
+</details></details><details class="summary-stm32">
+<summary>STM32</summary><details class="summary-build-using-stm32-ide">
+<summary>Build Using STM32 IDE</summary><ul>
+<li><p>Open the respective project directory by navigating into the “precision_converters_firmware/projects/” folder.</p></li>
+<li><p>In the “STM32” folder present within the project directory, double click and open the .ioc file present within.</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../../_images/stm32_project_directory.png"><img alt="../../../_images/stm32_project_directory.png" src="../../../_images/stm32_project_directory.png" style="width: 600px;" /></a>
+</div></blockquote>
+</li>
+<li><p>Click on the “Generate Code” option seen on the top right corner</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../../_images/stm32_generate_code.png"><img alt="../../../_images/stm32_generate_code.png" src="../../../_images/stm32_generate_code.png" style="width: 600px;" /></a>
+</div></blockquote>
+</li>
+<li><p>Upon successful generation of drivers for the selected MCU, the autogenerated files would be seen in the same directory where the .ioc file was present. Double click and open the “.project” file seen in the list of files</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../../_images/stm32_auto_generated_files.png"><img alt="../../../_images/stm32_auto_generated_files.png" src="../../../_images/stm32_auto_generated_files.png" style="width: 600px;" /></a>
+</div></blockquote>
+</li>
+<li><p>After the project is loaded to the STM32CubeIDE, unfold the adxxxx_iio project seen in the project explorer, right click the “app” folder, select “Settings” under the “C/C++ Build” section on the left pane and un-check the “Exclude resources from build” checkbox. This would ensure that the project specific files are included by the build system</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../../_images/stm32_exclude_files_option.png"><img alt="../../../_images/stm32_exclude_files_option.png" src="../../../_images/stm32_exclude_files_option.png" style="width: 600px;" /></a>
+</div></blockquote>
+</li>
+<li><p>In order to choose STM32 platform in the firmware, select the “ACTIVE_PLATFORM” as “STM32_PLATFORM” in the app_config.h from the respective project.</p></li>
+<li><p>Add compiler flags “-u _printf_float” to the project settings.</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../../_images/stm32_compiler_flag.png"><img alt="../../../_images/stm32_compiler_flag.png" src="../../../_images/stm32_compiler_flag.png" style="width: 600px;" /></a>
+</div></blockquote>
+</li>
+<li><p>Program by clicking on the “Run adxxxx_iio” option seen or by performing a copy-&gt;paste option of the .hex file seen in the STM32/Debug folder</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../../_images/stm32_run_option.png"><img alt="../../../_images/stm32_run_option.png" src="../../../_images/stm32_run_option.png" style="width: 600px;" /></a>
+</div></blockquote>
+</li>
+</ul>
+</details></details></details></div></blockquote>
+</details><details class="summary-running-a-project" open>
+<summary>Running a project</summary><blockquote>
+<div><p>Once the firmware build is successful and binary file is generated, copy the
+generated binary into USB drive hosted by your MCU board (e.g. USB drive hosted
+by SDP-K1 board on windows). This will flash the binary file into MCU present
+on the controller board. Programming might vary based on the tools used for building
+a project. The ‘Project Build’ section above talks about this exception at the end
+of all build steps.</p>
+</div></blockquote>
+</details></section>
+<section id="quick-start">
+<h2>Quick Start<a class="headerlink" href="#quick-start" title="Link to this heading">¶</a></h2>
+<p>If you have some familiarity with the Mbed platform, the following is a basic list of steps required to start running the code,
+see below for more detail:</p>
+<ul class="simple">
+<li><p>Connect the evaluation board to the SDP-K1 controller board, and power it appropriately, usually 3.3V to AVDD.</p></li>
+<li><p>Connect the SDP-K1 controller board to your computer over USB.</p></li>
+<li><p>Follow the steps mentioned in the Build Guide section above.</p></li>
+<li><dl class="simple">
+<dt>Start up a serial terminal emulator (e.g. Tera Term)</dt><dd><ul>
+<li><p>Find the com-port your controller board is connected on and select it.</p></li>
+<li><p>Set the baud-rate for 230400</p></li>
+<li><p>Reset the controller board and connect.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>The terminal windows should display the console menu providing access to the AD5770R functionality.</p></li>
+</ul>
+</section>
+<section id="using-the-firmware">
+<h2>Using the Firmware<a class="headerlink" href="#using-the-firmware" title="Link to this heading">¶</a></h2>
+<p>The example is menu driven, providing keyboard shortcuts to access/execute the menus items, and prompting for further inputs where necessary. When the example runs, it attempts to connect and initialize the AD5770R. The configuration used is defined in the ad5770r_user_config.h file, which can be modified as needs be to suit specific applications.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>While much of the functionality of the AD5770R No-OS driver is made available through the console UI, not all function are available. The additional AD5770R functionality can only be configured the ad5770r_user_config.c file.</p>
+</div>
+<section id="main-menu">
+<h3>Main Menu<a class="headerlink" href="#main-menu" title="Link to this heading">¶</a></h3>
+<p>The AD5770R Console App main menu provides basic initialization/reset type functions, and access to several sub-menus that provide more detailed configuration and control settings. Like most menus in the firmware, the menu options are framed by a header and footer that display status information related to the functions on the menu.</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../../_images/ad5770r_console_application.jpg"><img alt="../../../_images/ad5770r_console_application.jpg" src="../../../_images/ad5770r_console_application.jpg" style="width: 400px;" /></a>
+</div></blockquote>
+<p>The value of the scratchpad register is displayed in both the header and the footer. After reading the scratchpad value for the header, the value is incremented and written back to the device, such that the scratchpad footer value should always be equal to the header value + 1. This can be useful a debug aid to confirm communications.</p>
+</section>
+<section id="dac-operaions">
+<h3>DAC Operaions<a class="headerlink" href="#dac-operaions" title="Link to this heading">¶</a></h3>
+<p>This menu provides the ability to set the Input and DAC register values, and control the update of the DAC using both the hardware and software LDAC functions. The ordering of menu items is intended to follow the order in which actions are typically performed by the user.</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../../_images/ad5770r_dac_operations.jpg"><img alt="../../../_images/ad5770r_dac_operations.jpg" src="../../../_images/ad5770r_dac_operations.jpg" style="width: 400px;" /></a>
+</div></blockquote>
+<p>There are three ways in which the DAC output may be controlled using this menu.</p>
+<ul class="simple">
+<li><p>Write to Input Channel(s), set software LDAC shadow value, then write software LDAC to update DAC output</p></li>
+<li><p>Write to Input Channel(s), toggle hardware LDAC</p></li>
+<li><p>Write to DAC Channel to directly update DAC output</p></li>
+</ul>
+<p>Toggling a channel in the software LDAC shadow sets a bit corresponding to that channel in a mask. This SW LDAC Channel shadow value can then be written in a single transaction, transferring the input to the DAC value for all of the channels which are set in the shadow mask.</p>
+<p>The channels affected by the hardware LDAC pin toggling are set in the ad5770r_user_config.h file at compile time.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The toggling of the hardware LDAC is outside of the AD5770R No-OS driver, and as such the DAC values are not updated by this action.</p>
+</div>
+</section>
+</section>
+<section id="support">
+<h2>Support<a class="headerlink" href="#support" title="Link to this heading">¶</a></h2>
+<p>Feel free to ask questions in the <a class="reference external" href="https://ez.analog.com/data_converters">EngineerZone</a></p>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../../../index.html">
+              <img class="logo" src="../../../_static/adi_logo.png" alt="Logo"/>
+            </a></p>
+  <div>
+    <h3><a href="../../../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">AD5770r Console Application</a><ul>
+<li><a class="reference internal" href="#supported-hardware">Supported Hardware</a></li>
+<li><a class="reference internal" href="#introduction">Introduction</a></li>
+<li><a class="reference internal" href="#interface-diagram">Interface Diagram</a></li>
+<li><a class="reference internal" href="#useful-links">Useful Links</a></li>
+<li><a class="reference internal" href="#build-guide">Build Guide</a></li>
+<li><a class="reference internal" href="#quick-start">Quick Start</a></li>
+<li><a class="reference internal" href="#using-the-firmware">Using the Firmware</a><ul>
+<li><a class="reference internal" href="#main-menu">Main Menu</a></li>
+<li><a class="reference internal" href="#dac-operaions">DAC Operaions</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#support">Support</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="index.html"
+                          title="previous chapter">AD5770r Console Application</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="../ad5933_console/index.html"
+                          title="next chapter">AD5933 Console Application</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../../_sources/source/projects/ad5770r_console/ad5770r_console.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../ad5933_console/index.html" title="AD5933 Console Application"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="AD5770r Console Application"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">precision-converters-firmware  documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../index.html" >Firmware Applications</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="index.html" >AD5770r Console Application</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">AD5770r Console Application</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+    &#169; Copyright 2023, Analog Devices Inc..
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.2.6.
+    </div>
+  </body>
+</html>

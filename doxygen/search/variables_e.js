@@ -1,0 +1,25 @@
+var searchData=
+[
+  ['ram_5fcrc_5ferror_3471',['ram_crc_error',['../structad77681__status__registers.html#a28f73c77b0f25c5e938d486449b47e8e',1,'ad77681_status_registers']]],
+  ['raw_5fdata_3472',['raw_data',['../structadc__data.html#ad6333c3cbcfb623829fc8c34f4f2d651',1,'adc_data']]],
+  ['rdy_5fgpio_3473',['rdy_gpio',['../ad717x__iio_2app_2app__config_8h.html#aeab13b735f85061df93d813f70a5ca05',1,'rdy_gpio():&#160;app_config.c'],['../ad717x__iio_2app_2app__config_8c.html#aeab13b735f85061df93d813f70a5ca05',1,'rdy_gpio():&#160;app_config.c']]],
+  ['ref_5fbuffer_5fenable_5fdisable_5fitems_3474',['ref_buffer_enable_disable_items',['../ad717x__menu__defines_8h.html#ac7e38e6bc692ef1e4c9ebbd427827677',1,'ad717x_menu_defines.h']]],
+  ['ref_5fbuffer_5fenable_5fdisable_5fmenu_3475',['ref_buffer_enable_disable_menu',['../ad717x__menu__defines_8h.html#a868d70341712d939d6e638757cc027fc',1,'ad717x_menu_defines.h']]],
+  ['ref_5fdet_5ferror_3476',['ref_det_error',['../structad77681__status__registers.html#ad197d458ed2abf15e8c9780808ede6cf',1,'ad77681_status_registers']]],
+  ['reference_3477',['reference',['../structad717x__setup__config.html#a120ead58235e660188db29ad94b04399',1,'ad717x_setup_config::reference()'],['../structad7124__setup__config.html#a1aa99c36f78d06a2d9b3e2003302cc50',1,'ad7124_setup_config::reference()']]],
+  ['reference_5fbuffers_3478',['reference_buffers',['../structad7124__setup__config.html#a85f4ceaacdd077a0b68e79bda6bbada7',1,'ad7124_setup_config::reference_buffers()'],['../structad717x__setup__config.html#ab098638dd35c890a46d37a5b834e8350',1,'ad717x_setup_config::reference_buffers()']]],
+  ['reference_5fname_3479',['reference_name',['../ad717x__menu__defines_8h.html#a8ce3a371df4a00efe6c9b7b821140978',1,'ad717x_menu_defines.h']]],
+  ['reference_5fselect_5fitems_3480',['reference_select_items',['../ad717x__menu__defines_8h.html#a57c8f0448743e5add91b48596f6f6d06',1,'ad717x_menu_defines.h']]],
+  ['reference_5fselect_5fmenu_3481',['reference_select_menu',['../ad717x__menu__defines_8h.html#a081e4ced1a95af7c7204bef07b2f6a59',1,'ad717x_menu_defines.h']]],
+  ['refn_3482',['REFn',['../structad77681__init__param.html#a08fa9536f33d1f30d6532fce72604d7d',1,'ad77681_init_param::REFn()'],['../structad77681__dev.html#adb8769c3b993b789c6c4703c9f4d96bb',1,'ad77681_dev::REFn()']]],
+  ['refp_3483',['REFp',['../structad77681__init__param.html#a6850b6471848fb064ac87cf14f994cb6',1,'ad77681_init_param::REFp()'],['../structad77681__dev.html#a5110c16cff8975cb44e969f26a773cae',1,'ad77681_dev::REFp()']]],
+  ['reg_5fread_5fwrite_5fitems_3484',['reg_read_write_items',['../ad717x__menu__defines_8h.html#aede6b839ecac5448ac05b5d6d9800191',1,'ad717x_menu_defines.h']]],
+  ['reg_5fread_5fwrite_5fmenu_3485',['reg_read_write_menu',['../ad717x__menu__defines_8h.html#acb0951667f5196376a498ae346e9d59c',1,'ad717x_menu_defines.h']]],
+  ['registers_3486',['registers',['../adt7420__console_2app_2main_8c.html#a9ab03328a4173fdaa0dd4015c6d66154',1,'main.c']]],
+  ['rms_5fnoise_3487',['RMS_noise',['../structadi__fft__measurements.html#acfc877c8aed9c95626e630676a034698',1,'adi_fft_measurements']]],
+  ['rtd_5f2wire_5fmenu_3488',['rtd_2wire_menu',['../ad7124__temperature-measure_2app_2ad7124__console__app_8c.html#a12e13e64c96c309bdffb6ffcc0c152ec',1,'ad7124_console_app.c']]],
+  ['rtd_5f3wire_5fcalibration_5fmenu_3489',['rtd_3wire_calibration_menu',['../ad7124__temperature-measure_2app_2ad7124__console__app_8c.html#a9329eb8c7efad91c8c1704e73fb75970',1,'ad7124_console_app.c']]],
+  ['rtd_5f3wire_5fcalibration_5ftype_3490',['rtd_3wire_calibration_type',['../ad7124__temperature-measure_2app_2ad7124__console__app_8c.html#a8940914d00e6356b0f3316b3da25b63f',1,'ad7124_console_app.c']]],
+  ['rtd_5f3wire_5fmenu_3491',['rtd_3wire_menu',['../ad7124__temperature-measure_2app_2ad7124__console__app_8c.html#a3bf8b239917958f4e44e8a35f5d36239',1,'ad7124_console_app.c']]],
+  ['rtd_5f4wire_5fmenu_3492',['rtd_4wire_menu',['../ad7124__temperature-measure_2app_2ad7124__console__app_8c.html#a38a6720605912d5a6450341069d9cc72',1,'ad7124_console_app.c']]]
+];

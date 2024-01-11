@@ -1,0 +1,5 @@
+<map id="debug_get_reg_value" name="debug_get_reg_value">
+<area shape="rect" id="node1" title="Get the actual register address value from the list." alt="" coords="184,31,345,57"/>
+<area shape="rect" id="node2" href="$ad77681__iio_8c.html#a5a879613d3913765225f297389ce1313" title="Read the debug register value." alt="" coords="7,5,134,32"/>
+<area shape="rect" id="node3" href="$ad77681__iio_8c.html#ac196152ceed9e63b50ef8c8cdecb3f60" title="Write into the debug register." alt="" coords="5,56,136,83"/>
+</map>

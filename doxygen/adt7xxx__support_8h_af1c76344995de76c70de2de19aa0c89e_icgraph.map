@@ -1,0 +1,4 @@
+<map id="configure_write_type_registers" name="configure_write_type_registers">
+<area shape="rect" id="node1" title="Configure write typev register based on communication interface." alt="" coords="240,5,399,47"/>
+<area shape="rect" id="node2" href="$adt7xxx__support_8c.html#a5785bba27a2618d252cdca7c6bd58601" title="Write to a setpoint register." alt="" coords="5,13,192,39"/>
+</map>

@@ -1,0 +1,21 @@
+var searchData=
+[
+  ['raw_5fattr_5fid_3813',['RAW_ATTR_ID',['../ad4130__iio_8c.html#a2fac22815c96e6f6e5a7cb8d2f390087af8e70b58881dae645f97bdf26726ff95',1,'RAW_ATTR_ID():&#160;ad4130_iio.c'],['../ad738x__iio_8c.html#a8a4f34053bce768babeae2e3221fcdfbaf8e70b58881dae645f97bdf26726ff95',1,'RAW_ATTR_ID():&#160;ad738x_iio.c'],['../iio__ad7606_8c.html#a497ef5c0d88cbee217850935dd82355eaf8e70b58881dae645f97bdf26726ff95',1,'RAW_ATTR_ID():&#160;iio_ad7606.c'],['../ad777x__iio_8c.html#ab09ce48088b147b6981fbc11da70adf0af8e70b58881dae645f97bdf26726ff95',1,'RAW_ATTR_ID():&#160;ad777x_iio.c'],['../ad2s1210__iio_8c.html#a5a15d9327ec1216d37f49eb09ea00c9caf8e70b58881dae645f97bdf26726ff95',1,'RAW_ATTR_ID():&#160;ad2s1210_iio.c']]],
+  ['rectangular_3814',['RECTANGULAR',['../adi__fft_8h.html#a1c01073c186ebea6fb975d09fd5e9db6ae06caa270566bb68a321d91b7769fcee',1,'adi_fft.h']]],
+  ['ref1p_5favssx_5fmux_5fattr_5fid_3815',['REF1P_AVSSX_MUX_ATTR_ID',['../ad777x__iio_8c.html#ab09ce48088b147b6981fbc11da70adf0ac3cd7d08ce74a51a8df8d3b408b57572',1,'ad777x_iio.c']]],
+  ['ref1p_5fref1n_5fmux_5fattr_5fid_3816',['REF1P_REF1N_MUX_ATTR_ID',['../ad777x__iio_8c.html#ab09ce48088b147b6981fbc11da70adf0a90fca09a3685ff037fed0b885aeb0cfb',1,'ad777x_iio.c']]],
+  ['ref2p_5favssx_5fmux_5fattr_5fid_3817',['REF2P_AVSSX_MUX_ATTR_ID',['../ad777x__iio_8c.html#ab09ce48088b147b6981fbc11da70adf0a7904c7e17c7b75d7ca78011694166f6e',1,'ad777x_iio.c']]],
+  ['ref2p_5fref2n_5fmux_5fattr_5fid_3818',['REF2P_REF2N_MUX_ATTR_ID',['../ad777x__iio_8c.html#ab09ce48088b147b6981fbc11da70adf0a5199dfab8b16994ca760f0b021a978d4',1,'ad777x_iio.c']]],
+  ['ref_5fout_5favssx_5fmux_5fattr_5fid_3819',['REF_OUT_AVSSX_MUX_ATTR_ID',['../ad777x__iio_8c.html#ab09ce48088b147b6981fbc11da70adf0a6e76bd45d2286ed8c51b33aa03097191',1,'ad777x_iio.c']]],
+  ['refin1_3820',['REFIN1',['../ad7124__console_2app_2ad7124__console__app_8h.html#aec9a2192206f2614938b98fd7fa8113eaf4fdad31cc2b5177ac3b8239ced7ef48',1,'ad7124_console_app.h']]],
+  ['refin2_3821',['REFIN2',['../ad7124__console_2app_2ad7124__console__app_8h.html#aec9a2192206f2614938b98fd7fa8113ea7aec9fb5853d502c10747703bd3ae630',1,'ad7124_console_app.h']]],
+  ['reg_5fconfig_3822',['REG_CONFIG',['../adt7xxx__support_8h.html#a7496716d25746ab1958284dea9f5ff4fa1274e1a75524735fd9a2bc72cf8e11b9',1,'adt7xxx_support.h']]],
+  ['reg_5fhist_3823',['REG_HIST',['../adt7xxx__support_8h.html#a7496716d25746ab1958284dea9f5ff4fad131febf3b4adfd535b4972b51190bcc',1,'adt7xxx_support.h']]],
+  ['reg_5fid_3824',['REG_ID',['../adt7xxx__support_8h.html#a7496716d25746ab1958284dea9f5ff4fa6797b58f7ec24dbf469df8a17680fb7a',1,'adt7xxx_support.h']]],
+  ['reg_5freset_3825',['REG_RESET',['../adt7xxx__support_8h.html#a7496716d25746ab1958284dea9f5ff4faaf42d5f5e26ce5947619f16b57aebb8f',1,'adt7xxx_support.h']]],
+  ['reg_5fstatus_3826',['REG_STATUS',['../adt7xxx__support_8h.html#a7496716d25746ab1958284dea9f5ff4fadea8034327d219d939cd784da8bba37c',1,'adt7xxx_support.h']]],
+  ['reg_5ft_5fcrit_3827',['REG_T_CRIT',['../adt7xxx__support_8h.html#a7496716d25746ab1958284dea9f5ff4fabd58cd6ee8592073c07badd66cfa2f3f',1,'adt7xxx_support.h']]],
+  ['reg_5ft_5fhigh_3828',['REG_T_HIGH',['../adt7xxx__support_8h.html#a7496716d25746ab1958284dea9f5ff4fa18ebf670b7a8187af7cf63796effaf18',1,'adt7xxx_support.h']]],
+  ['reg_5ft_5flow_3829',['REG_T_LOW',['../adt7xxx__support_8h.html#a7496716d25746ab1958284dea9f5ff4fab310f87e09a9f4157d7e4035f65718f4',1,'adt7xxx_support.h']]],
+  ['reg_5ftemp_3830',['REG_TEMP',['../adt7xxx__support_8h.html#a7496716d25746ab1958284dea9f5ff4fa3a065aef57f8cc483c8961e825ac58e9',1,'adt7xxx_support.h']]]
+];

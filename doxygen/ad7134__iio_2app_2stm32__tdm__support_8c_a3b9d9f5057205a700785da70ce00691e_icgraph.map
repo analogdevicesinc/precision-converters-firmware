@@ -1,0 +1,7 @@
+<map id="end_tdm_dma_to_cb_transfer" name="end_tdm_dma_to_cb_transfer">
+<area shape="rect" id="node1" title="Update circular buffer indices and prepare for next async write via DMA." alt="" coords="243,81,457,108"/>
+<area shape="rect" id="node2" href="$ad7134__iio_2app_2app__config__stm32_8c.html#af31dad6f65ec19bb300fdd94269b9e8f" title="SAI DMA Receive Complete Callback function." alt="" coords="21,5,179,32"/>
+<area shape="rect" id="node3" href="$ad7134__iio_2app_2app__config__stm32_8c.html#a5fa6d1fee8b67d5a02cee000125e104b" title="SAI DMA Receive Half Complete Callback function." alt="" coords="5,56,195,83"/>
+<area shape="rect" id="node4" href="$ad777x__iio_2app_2app__config__stm32_8c.html#a120661e07279f0d4db3165cf61fda27b" title="SAI DMA Receive Complete Callback function." alt="" coords="21,107,179,133"/>
+<area shape="rect" id="node5" href="$ad777x__iio_2app_2app__config__stm32_8c.html#aa5b5d015074b5dea521cfa5c1d0b4078" title="SAI DMA Receive Half Complete Callback function." alt="" coords="5,157,195,184"/>
+</map>

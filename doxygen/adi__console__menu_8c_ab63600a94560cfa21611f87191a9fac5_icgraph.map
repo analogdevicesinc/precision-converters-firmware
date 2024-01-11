@@ -1,0 +1,4 @@
+<map id="adi_get_decimal_float" name="adi_get_decimal_float">
+<area shape="rect" id="node1" title="Reads a floating string from the user." alt="" coords="221,13,387,39"/>
+<area shape="rect" id="node2" href="$adi__console__menu_8c.html#a79a0b315e56c61d25e5f41b1194b86ff" title="Handles the float type input from the user by displaying the menu message and provides a set number o..." alt="" coords="5,5,173,47"/>
+</map>

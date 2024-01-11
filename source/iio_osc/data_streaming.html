@@ -1,0 +1,206 @@
+
+
+<!doctype html>
+
+<html lang="en" data-content_root="../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>IIO Data Streaming for DACs &#8212; precision-converters-firmware  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=649a27d8" />
+    <link rel="stylesheet" type="text/css" href="../../_static/bizstyle.css?v=532c1bf3" />
+    
+    <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/bizstyle.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <!--[if lt IE 9]>
+    <script src="_static/css3-mediaqueries.js"></script>
+    <![endif]-->
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">precision-converters-firmware  documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">IIO Data Streaming for DACs</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="iio-data-streaming-for-dacs">
+<h1>IIO Data Streaming for DACs<a class="headerlink" href="#iio-data-streaming-for-dacs" title="Link to this heading">¶</a></h1>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">¶</a></h2>
+<p>IIO clients can be used to load and stream data to DAC devices using an IIO
+firmware application developed for that device. Using this firmware, a user
+can configure various settings on the device and load the data using the DAC
+Data Manager tab. The data is transmitted using Virtual Serial or UART serial
+link. The input data to be streamed can be loaded in a binary data file or a MAT
+file (.mat) format.</p>
+<p>The channels for which data is to be streamed can be selected from the GUI window,
+and the number of samples per channel will be taken from the input data file provided.
+So, for an 8-channel DAC, if all 8 channels are selected for streaming, the input
+file should contain 3200 samples, considering 400 samples per channel.</p>
+<p>IIO client allows data to be streamed to the iio device in two ways: either cyclic
+streaming enabled or disabled. When the cyclic buffer streaming is
+enabled, the buffer repeats itself, and the same data is streamed over and over
+indefinitely until stopped.</p>
+</section>
+<section id="data-streaming-to-iio-device">
+<h2>Data Streaming to IIO Device<a class="headerlink" href="#data-streaming-to-iio-device" title="Link to this heading">¶</a></h2>
+<p>The DAC Data Manager tab on the IIO Oscilloscope allows streaming data to supported iio devices.
+The input data file can be a binary file (.bin) or a MAT file (.mat).</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>DAC Data Manager is not available in versions below 0.15. To use the Data Manager,
+the IIO Oscilloscope application must be upgraded to the most recent versions.</p>
+</div>
+</section>
+<section id="creating-binary-files-for-data-streaming">
+<h2>Creating binary files for data streaming<a class="headerlink" href="#creating-binary-files-for-data-streaming" title="Link to this heading">¶</a></h2>
+<p><a class="reference internal" href="../python/python.html"><span class="doc">pyadi-iio: Python interfaces</span></a>
+The PyADI module allows users to create binary data files from the input data using the
+tx class. The CLI (Command Line Interface) script adistream.py allows the user to
+create various types of waveforms like sine, triangular, pwm, etc and store them to a
+binary file.</p>
+</section>
+<section id="loading-and-streaming-the-data">
+<h2>Loading and Streaming the Data<a class="headerlink" href="#loading-and-streaming-the-data" title="Link to this heading">¶</a></h2>
+<p>On the IIO Oscilloscope, open the DAC Data Manager tab as indicated below
+after connecting to the iio device.</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../_images/iio_osc_data_manager.jpg"><img alt="../../_images/iio_osc_data_manager.jpg" src="../../_images/iio_osc_data_manager.jpg" style="width: 600px;" /></a>
+</div></blockquote>
+<p>Click on the File Selection section to input the wavefrom data binary file created.
+Copy the binary file path and paste it in the Location section, then click Open.</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../_images/iio_osc_file_section.jpg"><img alt="../../_images/iio_osc_file_section.jpg" src="../../_images/iio_osc_file_section.jpg" style="width: 600px;" /></a>
+</div></blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The input data file shall contain data according to the number of active channels
+enabled, and otherwise may result in incorrrect data being streamed.</p>
+</div>
+<p>Once the required channels are enabled, use the cyclic buffer checkbox to enable
+or disable cyclic streaming of data. Click the Load button to load the data. The
+message “Waveform loaded successfully” shows up if the data is loaded correctly.</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../_images/iio_osc_load_data.jpg"><img alt="../../_images/iio_osc_load_data.jpg" src="../../_images/iio_osc_load_data.jpg" style="width: 600px;" /></a>
+</div></blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The Debug tab should not be accessed when streaming data, as this would
+impact data streaming. All uses same communication bus to access the data which
+could result into access/busy conflicts during data streaming.</p>
+</div>
+<p>If Enable/Disable cyclic buffer is unchecked, streaming stops once all the data from
+the file is loaded, and if the cyclic buffer checkbox is checked, “Stop buffer transmission”
+button needs to be clicked to end the data streaming.</p>
+</section>
+</section>
+<section id="limitations-of-data-streaming-using-iio-application">
+<h1>Limitations of Data Streaming Using IIO Application<a class="headerlink" href="#limitations-of-data-streaming-using-iio-application" title="Link to this heading">¶</a></h1>
+<p><strong>DAC Sampling/Update Rate:</strong></p>
+<p>The sampling rate or update rate defines the maximum rate/speed at which data can
+be loaded and updated onto the DAC output using the IIO firmware application. For
+DACs, typical time to update single sample is defined as:</p>
+<p>Time to update single sample: DAC data write time over digital interface + DAC conversion &amp; output response time</p>
+<p>Data update rate is also limited because of additional overhead in the MCU firmware,
+such as interrupt context switching time, SPI (digital interface) clock frequency,
+MCU clock speed, etc.</p>
+<p>The “AD579X IIO Application” is used as a reference here.
+For AD5790, which is a one-channel VDAC, the update rate is 71.4 KSPS. So, if a
+sine wave with 200 data points is to be streamed, the output frequency
+that can be seen will be 357 Hz (fo = fs/np = Sample rate/number of data points =
+71.4K/200). The effective output frequency might also vary based on the number of
+channels enabled on the device.</p>
+<p><strong>Data Transmission Rate (serial link) of MCU:</strong></p>
+<p>This is the rate or speed at which data can be transmitted from the IIO client over
+the serial link (e.g. UART or Virtual serial). This especially needs to be considered
+when cyclic buffer streaming is disabled and the buffer data needs to be transferred
+from the client in real-time for a continuous update.</p>
+<p><strong>Buffer size limitations in the firmware:</strong></p>
+<p>Size of data buffer on the firmware is always restricted due to MCU memory size.
+The required number of samples to be streamed from the IIO client application
+therefore must always be less than the total size of data buffer. If the
+required streaming samples number is more than the size of data buffer, IIO
+firmware returns negative error code to IIO client which then terminates the
+data streaming request.</p>
+<p>Buffer size can be increased to larger value by making use of internal/external RAMs.
+For example, SDP-K1 MCU board has 16Mbytes of onboard SDRAM, which allows larger data
+buffer size in the firmware. By enabling SDRAM in the SDP-K1 targeted Mbed firmware
+(app_config.h file), the data buffer size can be increased to 16Mbytes.</p>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../../index.html">
+              <img class="logo" src="../../_static/adi_logo.png" alt="Logo"/>
+            </a></p>
+  <div>
+    <h3><a href="../../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">IIO Data Streaming for DACs</a><ul>
+<li><a class="reference internal" href="#introduction">Introduction</a></li>
+<li><a class="reference internal" href="#data-streaming-to-iio-device">Data Streaming to IIO Device</a></li>
+<li><a class="reference internal" href="#creating-binary-files-for-data-streaming">Creating binary files for data streaming</a></li>
+<li><a class="reference internal" href="#loading-and-streaming-the-data">Loading and Streaming the Data</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#limitations-of-data-streaming-using-iio-application">Limitations of Data Streaming Using IIO Application</a></li>
+</ul>
+
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../_sources/source/iio_osc/data_streaming.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">precision-converters-firmware  documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">IIO Data Streaming for DACs</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+    &#169; Copyright 2023, Analog Devices Inc..
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.2.6.
+    </div>
+  </body>
+</html>

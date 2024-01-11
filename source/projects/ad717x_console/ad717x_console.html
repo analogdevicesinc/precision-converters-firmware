@@ -1,0 +1,431 @@
+
+
+<!doctype html>
+
+<html lang="en" data-content_root="../../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>AD717x Console Application &#8212; precision-converters-firmware  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=649a27d8" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/bizstyle.css?v=532c1bf3" />
+    
+    <script src="../../../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/bizstyle.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="LTC268x Console Application" href="../ltc268x_console/index.html" />
+    <link rel="prev" title="AD717x Console Application" href="index.html" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <!--[if lt IE 9]>
+    <script src="_static/css3-mediaqueries.js"></script>
+    <![endif]-->
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../ltc268x_console/index.html" title="LTC268x Console Application"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="AD717x Console Application"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">precision-converters-firmware  documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../index.html" >Firmware Applications</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="index.html" accesskey="U">AD717x Console Application</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">AD717x Console Application</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="ad717x-console-application">
+<h1>AD717x Console Application<a class="headerlink" href="#ad717x-console-application" title="Link to this heading">¶</a></h1>
+<section id="supported-hardware">
+<h2>Supported Hardware<a class="headerlink" href="#supported-hardware" title="Link to this heading">¶</a></h2>
+<p><strong>Supported Devices:</strong></p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.analog.com/en/products/ad4111.html">AD4111</a> <a class="reference external" href="https://www.analog.com/en/products/ad4112.html">AD4112</a> <a class="reference external" href="https://www.analog.com/en/products/ad4114.html">AD4114</a> <a class="reference external" href="https://www.analog.com/en/products/ad4115.html">AD4115</a> <a class="reference external" href="https://www.analog.com/en/products/ad4116.html">AD4116</a></p></li>
+<li><p><a class="reference external" href="https://www.analog.com/en/products/ad7172.html">AD7172-2</a>  <a class="reference external" href="https://www.analog.com/en/products/ad7172-4.html">AD7172-4</a></p></li>
+<li><p><a class="reference external" href="https://www.analog.com/en/products/ad7173-8.html">AD7173-8</a> <a class="reference external" href="https://www.analog.com/en/products/ad7175-2.html">AD7175-2</a> <a class="reference external" href="https://www.analog.com/en/products/ad7175-8.html">AD7175-8</a></p></li>
+<li><p><a class="reference external" href="https://www.analog.com/en/products/ad7176-2.html">AD7176-2</a></p></li>
+<li><p><a class="reference external" href="https://www.analog.com/en/products/ad7177-2.html">AD7177-2</a></p></li>
+</ul>
+<p><strong>Supported Evaluation Boards:</strong></p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.analog.com/en/resources/evaluation-hardware-and-software/evaluation-boards-kits/eval-ad4111.html">AD4111</a> <a class="reference external" href="https://www.analog.com/en/resources/evaluation-hardware-and-software/evaluation-boards-kits/eval-ad4112.html">AD4112</a> <a class="reference external" href="https://www.analog.com/en/resources/evaluation-hardware-and-software/evaluation-boards-kits/eval-ad4114.html">AD4114</a> <a class="reference external" href="https://www.analog.com/en/resources/evaluation-hardware-and-software/evaluation-boards-kits/eval-ad4115.html">AD4115</a> <a class="reference external" href="https://www.analog.com/en/resources/evaluation-hardware-and-software/evaluation-boards-kits/eval-ad4116.html">AD4116</a></p></li>
+<li><p><a class="reference external" href="https://www.analog.com/en/resources/evaluation-hardware-and-software/evaluation-boards-kits/eval-ad7172-2.html">AD7172-2</a>  <a class="reference external" href="https://www.analog.com/en/resources/evaluation-hardware-and-software/evaluation-boards-kits/eval-ad7172-4.html">AD7172-4</a></p></li>
+<li><p><a class="reference external" href="https://www.analog.com/en/resources/evaluation-hardware-and-software/evaluation-boards-kits/eval-ad7173-8sdz.html">AD7173-8</a> <a class="reference external" href="https://www.analog.com/en/resources/evaluation-hardware-and-software/evaluation-boards-kits/eval-ad7175-2.html">AD7175-2</a> <a class="reference external" href="https://www.analog.com/en/resources/evaluation-hardware-and-software/evaluation-boards-kits/eval-ad7175-8.html">AD7175-8</a></p></li>
+<li><p><a class="reference external" href="https://www.analog.com/en/resources/evaluation-hardware-and-software/evaluation-boards-kits/eval-ad7176-2.html">AD7176-2</a></p></li>
+<li><p><a class="reference external" href="https://www.analog.com/en/resources/evaluation-hardware-and-software/evaluation-boards-kits/eval-ad7177-2.html">AD7177-2</a></p></li>
+</ul>
+<p><strong>Supported Carrier Boards:</strong></p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://os.mbed.com/platforms/SDP_K1/">SDP-K1 With Mbed</a></p></li>
+</ul>
+</section>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">¶</a></h2>
+<p>The AD717x/AD411x family offer a complete integrated Sigma-Delta ADC solution which can be used in high precision, low noise single channel applications (Life Science measurements) or higher speed multiplexed applications (Factory Automation PLC Input modules).
+This page gives an overview of using the AD717x/AD411x firmware example with SDP-K1 EVAL board, interfacing with various EVAL boards supporting AD711x/AD411x family devices.
+The firmware example comprises 3 layers of software (from top to bottom): Console Application Layer, Device No-OS Layer and Platform Drivers (Mbed-OS) layer.</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../../_images/ad717x_architecture.jpg"><img alt="../../../_images/ad717x_architecture.jpg" src="../../../_images/ad717x_architecture.jpg" style="width: 200px;" /></a>
+</div></blockquote>
+<p>The application layer uses the ADI Console Libraries to create console based User Interactive (UI).
+The middle layer of No-OS device library have device specific APIs to interface with AD717x/AD411x device.
+These APIs allows direct access to device register map in order to read/write device registers. The bottom layer of Platform
+Drivers is responsible for Low Level Interface. The platform drivers uses mbed-os libraries to access low level peripheral
+(like GPIOs, SPI, I2C, etc).</p>
+<p>The Mbed Platform simplifies the overall software development process by providing the low level driver support. This reduces
+the hardware dependency as any Mbed enabled board can be used with same firmware with little modifications (precisely changing a pin mapping).</p>
+</section>
+<section id="interface-diagram">
+<h2>Interface Diagram<a class="headerlink" href="#interface-diagram" title="Link to this heading">¶</a></h2>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../../_images/ad717x_interface_diagram.jpg"><img alt="../../../_images/ad717x_interface_diagram.jpg" src="../../../_images/ad717x_interface_diagram.jpg" style="width: 500px;" /></a>
+</div></blockquote>
+<p>The EVAL-AD411x/EVAL-AD717x board is connected to SDP-K1 through on-board default 120-pin SDP Connector. The AD717x/AD411x EVAL boards can be powered-up through a SDP-K1 USB supply or from external DC supply,
+depending on the power supply jumper settings. The settings can vary board to board and user must refer user manual of respective EVAL board for ensuring the proper connections.
+The SDP-K1 is connected to PC through an USB cable. The firmware (binary executable) can be loaded into SDP-K1 board through this USB interface from the PC.
+The SDP-K1 acts as a Serial Device (UART) and firmware loaded into it interacts with any serial terminal (like Teraterm, Putty, Coolterm, etc) by configuring terminal for proper serial settings (COM Port, Baud Rate, data bits, etc).</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The firmware provides a basic user-interface for interacting with the evaluation-board. All the main functionality of the AD411x/AD711x is provided in the application-code in abstracted form and the user is free to customize the software to suit their own needs for working with the AD711x/AD411x.</p>
+</div>
+</section>
+<section id="useful-links">
+<h2>Useful Links<a class="headerlink" href="#useful-links" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/analogdevicesinc/no-OS">no-OS: Software drivers for systems without OS</a></p></li>
+<li><p><a class="reference external" href="https://studio.keil.arm.com/auth/login/">Keil Studio Web IDE/Compiler</a></p></li>
+<li><p><a class="reference external" href="https://os.mbed.com/platforms/SDP_K1/">SDP-K1 on Mbed</a></p></li>
+<li><p><a class="reference external" href="https://github.com/analogdevicesinc/linux">Linux Drivers</a></p></li>
+<li><p><a class="reference external" href="https://github.com/analogdevicesinc/hdl">HDL Source Code</a></p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Linux and HDL are not used in emebdded IIO firmware projects but
+they may be of interest if you require Linux and/or FPGA support.</p>
+</div>
+</section>
+<section id="hardware-connections">
+<h2>Hardware Connections<a class="headerlink" href="#hardware-connections" title="Link to this heading">¶</a></h2>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../../_images/ad717x_hw_connection.jpg"><img alt="../../../_images/ad717x_hw_connection.jpg" src="../../../_images/ad717x_hw_connection.jpg" style="width: 400px;" /></a>
+</div></blockquote>
+</section>
+<section id="power-supply-and-usb-connection">
+<h2>Power Supply and USB Connection<a class="headerlink" href="#power-supply-and-usb-connection" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>SDP-K1- Connect the VIO_ADJUST jumper on the SDP-K1 board to 3.3V position to drive SDP-K1 GPIOs at 3.3V</p></li>
+<li><p>EVAL-AD4111SDZ Board (AD4111/AD4112 chip)- Connect PWR (LK3) connector to USB_SUPP (B) position to power-up device from the SDP-K1 USB.</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The settings can vary board to board and user must refer user manual of respective EVAL board for ensuring the proper connections.</p>
+</div>
+<p>SDP-K1 is powered through USB connection from the PC. SDP-K1 acts as a Serial device when connected to PC, which creates a COM Port to connect to Serial Terminals like Teraterm, Putty, etc.
+The COM port assigned to a device can be seen through the device manager for windows based OS.</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../../_images/com_port_sdp-k11.jpg"><img alt="../../../_images/com_port_sdp-k11.jpg" src="../../../_images/com_port_sdp-k11.jpg" style="width: 300px;" /></a>
+</div></blockquote>
+</section>
+<section id="ad717x-mbed-firmware">
+<h2>AD717x Mbed Firmware<a class="headerlink" href="#ad717x-mbed-firmware" title="Link to this heading">¶</a></h2>
+<p>This section briefs on the usage of MBED firmware. This also explains the steps to compile and build the application using
+mbed and make based build.</p>
+<p>The software execution sequence for the AD717x/AD411x Firmware Example is shown below. This is a blocking application as it waits for user input over serial interface (UART).
+The input is scanned and processed through ‘adi console libraries’. The menu functionality is executed from ad717x_conole_app.c file. The application layer talks with No-OS layer
+for device registers and data access. The No-OS layer interfaces with Platform Drivers layer for accessing low level peripherals. As name suggests, this layer is platform dependent.
+AD717x/AD411x firmware uses Mbed libraries within Platform Drivers layer.</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../../_images/sequence_diagram_ad717x.jpg"><img alt="../../../_images/sequence_diagram_ad717x.jpg" src="../../../_images/sequence_diagram_ad717x.jpg" style="width: 700px;" /></a>
+</div></blockquote>
+</section>
+<section id="build-guide">
+<h2>Build Guide<a class="headerlink" href="#build-guide" title="Link to this heading">¶</a></h2>
+<details class="summary-build-prerequisites" open>
+<summary>Build Prerequisites</summary><blockquote>
+<div><p>Prior to building a firmware project, it is required to set up an environment so
+that the build process may find the necessary tools (compiler, linker, SDK etc.).
+Use the following steps to prepare your environment for building firmware projects
+for respective platform.</p>
+<details class="summary-windows">
+<summary>Windows</summary><details class="summary-mbed">
+<summary>Mbed</summary><details class="summary-for-web-online-build">
+<summary>For Web/Online Build</summary><ul class="simple">
+<li><p>Visit <a class="reference external" href="https://www.keil.arm.com/">Arm Keil website</a> to create an user account for accessing the web based Keil Studio IDE.</p></li>
+<li><p>Open <a class="reference external" href="https://studio.keil.arm.com/auth/login/">Keil Studio Web IDE</a> with registered user account</p></li>
+</ul>
+</details><details class="summary-for-make-build">
+<summary>For Make Build</summary><ul class="simple">
+<li><p>Clone Precision Converters Firmware repository with the –recursive flag (not needed if building with web IDE for Mbed platform):</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>--recursive<span class="w"> </span>https://github.com/analogdevicesinc/precision-converters-firmware
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>If however you’ve already cloned the repository without the –recursive flag, you may initialize all the submodules in an existing cloned repo with:</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>submodule<span class="w"> </span>update<span class="w"> </span>--recursive<span class="w"> </span>--init
+</pre></div>
+</div>
+<ul>
+<li><p>Install <a class="reference external" href="https://gnuwin32.sourceforge.net/packages/make.htm">Make</a> in the root of ‘C’ drive without any spaces in the installation path. The path must be <strong>C:\GnuWin32\…</strong>. Add this path into the system environmental path variable (as shown in below screenshot).</p></li>
+<li><p>Install <a class="reference external" href="https://git-scm.com/downloads">Git</a> and add a path of <strong>C:\Program Files\Git\usr\bin\</strong> directory into system environmental path variable (please verify your git installation path is correct).</p></li>
+<li><p>Install Mbed CLI 1 as per guide <a class="reference external" href="https://os.mbed.com/docs/mbed-os/v6.15/build-tools/install-and-set-up.html">here</a>.</p></li>
+<li><p>Install <a class="reference external" href="https://developer.arm.com/downloads/-/gnu-rm.">GNU Arm Embedded compiler</a> (for the development, 9-2019-q4-major version is used) and add a path of GNU Arm Embedded Toolchain bin directory into the system environmental path variable (as shown in below screenshot).</p></li>
+<li><p>Configure the compiler location with Mbed CLI. This can be carried out by running the <strong>mbed config -G GCC_ARM_PATH &lt;path-to-your-gcc-compiler&gt;</strong> in Command Prompt. For example you can run <strong>mbed config -G GCC_ARM_PATH “C:\Program Files (x86)\GNU Tools ARM Embedded\9 2019-q4-major\bin”</strong> in command prompt. It will set mentioned compiler path to all the Mbed Projects.</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../../_images/environmental_variables.png"><img alt="../../../_images/environmental_variables.png" src="../../../_images/environmental_variables.png" style="width: 400px;" /></a>
+</div></blockquote>
+</li>
+</ul>
+</details></details><details class="summary-stm32">
+<summary>STM32</summary><details class="summary-for-stm32-ide-based-build">
+<summary>For STM32 IDE based Build</summary><ul>
+<li><p>Install <a class="reference external" href="https://www.st.com/en/development-tools/stm32cubeide.html">STM32CubeIDE</a></p></li>
+<li><p>Install <a class="reference external" href="https://www.st.com/en/development-tools/stm32cubemx.html">STM32CubeMX</a></p></li>
+<li><p>Install <a class="reference external" href="https://git-scm.com/downloads">Git</a> and add a path of <strong>C:\Program Files\Git\usr\bin\</strong> directory into system environmental path variable (please verify your git installation path is correct).</p></li>
+<li><p>Install <a class="reference external" href="https://gnuwin32.sourceforge.net/packages/make.htm">Make</a> in the root of ‘C’ drive without any spaces in the installation path. The path must be <strong>C:\GnuWin32\…</strong>. Add this path into the system environmental path variable (as shown in below screenshot).</p></li>
+<li><p>Install <a class="reference external" href="https://developer.arm.com/downloads/-/gnu-rm.">GNU Arm Embedded compiler</a> (for the development, 9-2019-q4-major version is used) and add a path of GNU Arm Embedded Toolchain bin directory into the system environmental path variable (as shown in below screenshot).</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../../_images/environmental_variables.png"><img alt="../../../_images/environmental_variables.png" src="../../../_images/environmental_variables.png" style="width: 400px;" /></a>
+</div></blockquote>
+</li>
+</ul>
+</details></details></details></div></blockquote>
+</details><details class="summary-building-a-project" open>
+<summary>Building a project</summary><blockquote>
+<div><p>Once the build enviornment is setup, follow the guide below to build your project
+and generate executable file (.bin/.hex)</p>
+<details class="summary-windows">
+<summary>Windows</summary><details class="summary-mbed">
+<summary>Mbed</summary><details class="summary-build-using-web-online-ide">
+<summary>Build Using Web/Online IDE</summary><ul>
+<li><p>Clone the <a class="reference external" href="https://github.com/analogdevicesinc/precision-converters-firmware">Precision Converters Firmware repository</a> into Keil Studio using “File-&gt;clone…” menu.</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../../_images/mbed_keil_studio_project_clone.png"><img alt="../../../_images/mbed_keil_studio_project_clone.png" src="../../../_images/mbed_keil_studio_project_clone.png" style="width: 600px;" /></a>
+</div></blockquote>
+</li>
+<li><p>Once the project repository is imported, wait until all library dependencies are imported as shown in below screenshot. Now, open the ‘.medignore’ file present in the root directory of repository. Add comment syntax (two forward slashes) in front of the project name which you want to build. This will ignore all other projects and build only the comment syntax selected project.</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../../_images/mbedignore_changes.png"><img alt="../../../_images/mbedignore_changes.png" src="../../../_images/mbedignore_changes.png" style="width: 600px;" /></a>
+</div></blockquote>
+</li>
+<li><p>Select the target device (default used for development is SDP-K1) and click on ‘Clean build’ option to build the project. After a successful build a binary will be downloaded to your computer- store this on your drive. Drag and drop this binary to the USB drive hosted by your controller board to flash the MCU.</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../../_images/mbed_build.png"><img alt="../../../_images/mbed_build.png" src="../../../_images/mbed_build.png" style="width: 400px;" /></a>
+</div></blockquote>
+</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you intend to build different project, then modify the .medignore file in the root directory as
+mentioned in step2 and clean build project as mentioned in step3</p>
+</div>
+</details><details class="summary-build-using-make">
+<summary>Build Using Make</summary><ul class="simple">
+<li><p>Open Git bash and change current directory to project directory (eg. <strong>precision-converters-firmware/projects/ad4130_iio</strong> directory) which you want to build.</p></li>
+<li><p>Type <strong>make</strong> on the git bash command prompt to build a project.</p></li>
+<li><p>After successful build, binary file will be created into the <strong>Project_Name/build</strong> directory.</p></li>
+<li><p>If you want to clean build, type <strong>make reset</strong> on git bash command which deletes all generated build files for the given project.</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Default TARGET_BOARD is SDP_K1 and COMPILER is GCC_ARM. Current Make based build only support GCC_ARM Compiler.</p>
+</div>
+<ul class="simple">
+<li><p>By default project is built for “SDP_K1” Board and “GCC_ARM” Compiler. If you want to build for other Mbed Board, For example If you want to build the project for “DISCO_F769NI” Board then run <strong>make TARGET_BOARD=DISCO_F769NI</strong> command in git bash command prompt. If you want to clean build, run <strong>make reset TARGET_BOARD=DISCO_F769NI</strong> command to delete the generated build files for the given project.</p></li>
+</ul>
+</details></details><details class="summary-stm32">
+<summary>STM32</summary><details class="summary-build-using-stm32-ide">
+<summary>Build Using STM32 IDE</summary><ul>
+<li><p>Open the respective project directory by navigating into the “precision_converters_firmware/projects/” folder.</p></li>
+<li><p>In the “STM32” folder present within the project directory, double click and open the .ioc file present within.</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../../_images/stm32_project_directory.png"><img alt="../../../_images/stm32_project_directory.png" src="../../../_images/stm32_project_directory.png" style="width: 600px;" /></a>
+</div></blockquote>
+</li>
+<li><p>Click on the “Generate Code” option seen on the top right corner</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../../_images/stm32_generate_code.png"><img alt="../../../_images/stm32_generate_code.png" src="../../../_images/stm32_generate_code.png" style="width: 600px;" /></a>
+</div></blockquote>
+</li>
+<li><p>Upon successful generation of drivers for the selected MCU, the autogenerated files would be seen in the same directory where the .ioc file was present. Double click and open the “.project” file seen in the list of files</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../../_images/stm32_auto_generated_files.png"><img alt="../../../_images/stm32_auto_generated_files.png" src="../../../_images/stm32_auto_generated_files.png" style="width: 600px;" /></a>
+</div></blockquote>
+</li>
+<li><p>After the project is loaded to the STM32CubeIDE, unfold the adxxxx_iio project seen in the project explorer, right click the “app” folder, select “Settings” under the “C/C++ Build” section on the left pane and un-check the “Exclude resources from build” checkbox. This would ensure that the project specific files are included by the build system</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../../_images/stm32_exclude_files_option.png"><img alt="../../../_images/stm32_exclude_files_option.png" src="../../../_images/stm32_exclude_files_option.png" style="width: 600px;" /></a>
+</div></blockquote>
+</li>
+<li><p>In order to choose STM32 platform in the firmware, select the “ACTIVE_PLATFORM” as “STM32_PLATFORM” in the app_config.h from the respective project.</p></li>
+<li><p>Add compiler flags “-u _printf_float” to the project settings.</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../../_images/stm32_compiler_flag.png"><img alt="../../../_images/stm32_compiler_flag.png" src="../../../_images/stm32_compiler_flag.png" style="width: 600px;" /></a>
+</div></blockquote>
+</li>
+<li><p>Program by clicking on the “Run adxxxx_iio” option seen or by performing a copy-&gt;paste option of the .hex file seen in the STM32/Debug folder</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../../_images/stm32_run_option.png"><img alt="../../../_images/stm32_run_option.png" src="../../../_images/stm32_run_option.png" style="width: 600px;" /></a>
+</div></blockquote>
+</li>
+</ul>
+</details></details></details></div></blockquote>
+</details><details class="summary-running-a-project" open>
+<summary>Running a project</summary><blockquote>
+<div><p>Once the firmware build is successful and binary file is generated, copy the
+generated binary into USB drive hosted by your MCU board (e.g. USB drive hosted
+by SDP-K1 board on windows). This will flash the binary file into MCU present
+on the controller board. Programming might vary based on the tools used for building
+a project. The ‘Project Build’ section above talks about this exception at the end
+of all build steps.</p>
+</div></blockquote>
+</details></section>
+<section id="quick-start">
+<h2>Quick Start<a class="headerlink" href="#quick-start" title="Link to this heading">¶</a></h2>
+<p>If you have some familiarity with the Mbed platform, the following is a basic list of steps required to start running the code,
+see below for more detail:</p>
+<ul class="simple">
+<li><p>Connect the AD717x/AD411x EVAL-board to the SDP-K1 controller board.</p></li>
+<li><p>Connect the SDP-K1 controller board to your computer over USB.</p></li>
+<li><p>Follow the steps mentioned in the Build Guide section above.</p></li>
+<li><dl class="simple">
+<dt>Start up a serial terminal emulator (e.g. Tera Term)</dt><dd><ul>
+<li><p>Find the com-port your controller board is connected on and select it.</p></li>
+<li><p>Set the baud-rate for 230400</p></li>
+<li><p>Reset the controller board and connect.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>Use the menu provided over the terminal window to access the evaluation board.</p></li>
+</ul>
+</section>
+<section id="using-the-firmware">
+<h2>Using the Firmware<a class="headerlink" href="#using-the-firmware" title="Link to this heading">¶</a></h2>
+<p>The AD711x/AD411x firmware example is configured to have following serial settings:</p>
+<p>Baud rate: 230400
+Data bits: 8-bits
+Parity: None
+Stop bits: 1</p>
+<p>Configure your serial terminal (<a class="reference external" href="https://osdn.net/projects/ttssh2/releases/">Tera Term</a>)
+for below settings:</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../../_images/baud_rate_update1.png"><img alt="../../../_images/baud_rate_update1.png" src="../../../_images/baud_rate_update1.png" style="width: 400px;" /></a>
+</div></blockquote>
+<p>The AD717x/AD411x console main menu looks like below (with Tera Term):</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../../_images/ad4111_console_menu.png"><img alt="../../../_images/ad4111_console_menu.png" src="../../../_images/ad4111_console_menu.png" style="width: 400px;" /></a>
+</div></blockquote>
+<p>The firmware is designed to be intuitive to use, and requires little explanation, simply enter a number corresponding to the required command and follow the on-screen prompts.</p>
+<p>The firmware comes with an app_config.h file which (at the moment) serves two purposes.
+* Select the active device to test.
+* Configure the pins you want to use to connect the controller board to the evaluation board.</p>
+<p>The firmware supports most products in AD717x/AD411x family, change the #define DEV_ADxxxx found in app_config.h to suit your selected device.
+e.g. #define DEV_AD7111_2 executes the AD7112-2 device functionality.</p>
+</section>
+<section id="support">
+<h2>Support<a class="headerlink" href="#support" title="Link to this heading">¶</a></h2>
+<p>Feel free to ask questions in the <a class="reference external" href="https://ez.analog.com/data_converters">EngineerZone</a></p>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../../../index.html">
+              <img class="logo" src="../../../_static/adi_logo.png" alt="Logo"/>
+            </a></p>
+  <div>
+    <h3><a href="../../../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">AD717x Console Application</a><ul>
+<li><a class="reference internal" href="#supported-hardware">Supported Hardware</a></li>
+<li><a class="reference internal" href="#introduction">Introduction</a></li>
+<li><a class="reference internal" href="#interface-diagram">Interface Diagram</a></li>
+<li><a class="reference internal" href="#useful-links">Useful Links</a></li>
+<li><a class="reference internal" href="#hardware-connections">Hardware Connections</a></li>
+<li><a class="reference internal" href="#power-supply-and-usb-connection">Power Supply and USB Connection</a></li>
+<li><a class="reference internal" href="#ad717x-mbed-firmware">AD717x Mbed Firmware</a></li>
+<li><a class="reference internal" href="#build-guide">Build Guide</a></li>
+<li><a class="reference internal" href="#quick-start">Quick Start</a></li>
+<li><a class="reference internal" href="#using-the-firmware">Using the Firmware</a></li>
+<li><a class="reference internal" href="#support">Support</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="index.html"
+                          title="previous chapter">AD717x Console Application</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="../ltc268x_console/index.html"
+                          title="next chapter">LTC268x Console Application</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../../_sources/source/projects/ad717x_console/ad717x_console.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../ltc268x_console/index.html" title="LTC268x Console Application"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="AD717x Console Application"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">precision-converters-firmware  documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../index.html" >Firmware Applications</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="index.html" >AD717x Console Application</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">AD717x Console Application</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+    &#169; Copyright 2023, Analog Devices Inc..
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.2.6.
+    </div>
+  </body>
+</html>

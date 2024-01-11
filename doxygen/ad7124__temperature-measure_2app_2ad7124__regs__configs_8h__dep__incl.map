@@ -1,0 +1,8 @@
+<map id="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad7124_temperature&#45;measure/app/ad7124_regs_configs.h" name="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad7124_temperature&#45;measure/app/ad7124_regs_configs.h">
+<area shape="rect" id="node1" title=" " alt="" coords="312,5,564,91"/>
+<area shape="rect" id="node2" href="$ad7124__temperature-measure_2app_2ad7124__console__app_8c.html" title="AD7124 temperature measurement firmware console interface." alt="" coords="373,272,625,357"/>
+<area shape="rect" id="node3" href="$ad7124__regs__config__rtd_8c.html" title="AD7124 register configuration file for RTD temperature sensor interface." alt="" coords="36,139,288,224"/>
+<area shape="rect" id="node4" href="$ad7124__regs__config__thermistor_8c.html" title="AD7124 register configuration file for thermistor sensor interface." alt="" coords="312,139,564,224"/>
+<area shape="rect" id="node5" href="$ad7124__regs__config__thermocouple_8c.html" title="AD7124 register configuration file for thermocouple sensor interface." alt="" coords="588,139,851,224"/>
+<area shape="rect" id="node6" href="$ad7124__temperature__sensor_8h.html" title=" " alt="" coords="875,139,1127,224"/>
+</map>

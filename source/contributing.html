@@ -1,0 +1,135 @@
+
+
+<!doctype html>
+
+<html lang="en" data-content_root="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Contributing &#8212; precision-converters-firmware  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=649a27d8" />
+    <link rel="stylesheet" type="text/css" href="../_static/bizstyle.css?v=532c1bf3" />
+    
+    <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/bizstyle.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Firmware Applications" href="projects/index.html" />
+    <link rel="prev" title="Code Styles" href="code_style.html" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <!--[if lt IE 9]>
+    <script src="_static/css3-mediaqueries.js"></script>
+    <![endif]-->
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="projects/index.html" title="Firmware Applications"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="code_style.html" title="Code Styles"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">precision-converters-firmware  documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Contributing</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="contributing">
+<h1>Contributing<a class="headerlink" href="#contributing" title="Link to this heading">¶</a></h1>
+<p>When contributing to Precision Converters Firmware please consider the following checklist:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Copyright header has been added to source and header files</p></li>
+<li><p>Artistic Style (astyle) has been run to lint new code</p></li>
+<li><p>Add EEPROM validation code</p></li>
+<li><p>Add all context attributes (e.g. fw_version, hw_carrier, hw_mezzanine, hw_name, hw_mezzanine_status)</p></li>
+<li><p>IIO attributes in the firmware match the corresponding Linux driver attributes</p></li>
+<li><p>Create a readme.md in the project directory explaining how to use the project</p></li>
+<li><p>Validate EEPROM detection and context attributes creation using IIO clients (e.g. ACE, IIO Oscilloscope)</p></li>
+<li><p>Capture and verify ADC data using an IIO client</p></li>
+<li><p>Test on the target platform with USE_SDRAM and NO_SDRAM where applicable</p></li>
+<li><p>Test on the target platform with physical and virtual serial ports where applicable</p></li>
+<li><p>Test using the STM32 HAL where applicable</p></li>
+<li><p>Validate attributes, calibration, temperature sensing, etc using a client</p></li>
+<li><p>Update corresponding ADI Wiki pages</p></li>
+<li><p>Request links to those pages on the product page</p></li>
+<li><p>Open a pull request on Github</p></li>
+</ul>
+</div></blockquote>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../index.html">
+              <img class="logo" src="../_static/adi_logo.png" alt="Logo"/>
+            </a></p>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="code_style.html"
+                          title="previous chapter">Code Styles</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="projects/index.html"
+                          title="next chapter">Firmware Applications</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/source/contributing.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="projects/index.html" title="Firmware Applications"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="code_style.html" title="Code Styles"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">precision-converters-firmware  documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Contributing</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+    &#169; Copyright 2023, Analog Devices Inc..
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.2.6.
+    </div>
+  </body>
+</html>

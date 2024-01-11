@@ -1,0 +1,7 @@
+<map id="ad77681_set_conv_mode" name="ad77681_set_conv_mode">
+<area shape="rect" id="node1" title=" " alt="" coords="340,78,527,105"/>
+<area shape="rect" id="node2" href="$ad77681__support_8c.html#aad57f1a42e2481f16779e574e0a39693" title="Enable continuous conversion mode." alt="" coords="128,5,292,47"/>
+<area shape="rect" id="node3" href="$ad77681__support_8c.html#a89d566f10bd54ad8fa8438645d22d51b" title="Read ADC single sample data." alt="" coords="130,71,290,112"/>
+<area shape="rect" id="node5" href="$ad77681_8c.html#a462935549432e532a6b9526b4807f862" title=" " alt="" coords="149,137,271,163"/>
+<area shape="rect" id="node4" href="$ad77681__iio_8c.html#a38646b408e4ff3656274ee74faadacdb" title="Getter/Setter for the raw attribute value." alt="" coords="5,78,80,105"/>
+</map>

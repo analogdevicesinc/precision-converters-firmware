@@ -1,0 +1,6 @@
+<map id="adi_press_any_key_to_continue" name="adi_press_any_key_to_continue">
+<area shape="rect" id="node1" title="waits for any key to be pressed, and displays a prompt to the user" alt="" coords="221,71,387,112"/>
+<area shape="rect" id="node2" href="$adi__console__menu_8c.html#a79a0b315e56c61d25e5f41b1194b86ff" title="Handles the float type input from the user by displaying the menu message and provides a set number o..." alt="" coords="5,5,173,47"/>
+<area shape="rect" id="node3" href="$adi__console__menu_8c.html#abfb5543d72a6daeaa664cb22a70ae185" title="Handles the integer type input from the user by displaying the menu message and provides a set number..." alt="" coords="5,71,173,112"/>
+<area shape="rect" id="node4" href="$ad559xr__console_2app_2main_8c.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title=" " alt="" coords="62,137,117,163"/>
+</map>

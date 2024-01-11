@@ -1,0 +1,15 @@
+<map id="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad4130_iio/app/app_config.h" name="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad4130_iio/app/app_config.h">
+<area shape="rect" id="node1" title="Configuration file for AD4130 device applications." alt="" coords="1682,5,1905,76"/>
+<area shape="rect" id="node2" href="$ad4130__ecg__config_8c.html" title="ECG user configurations file for AD4130 device." alt="" coords="5,124,269,195"/>
+<area shape="rect" id="node3" href="$ad4130__iio_8c.html" title="Implementation of AD4130 IIO application interfaces." alt="" coords="294,124,517,195"/>
+<area shape="rect" id="node4" href="$ad4130__loadcell__config_8c.html" title="Loadcell user configurations file for AD4130 device." alt="" coords="541,124,833,195"/>
+<area shape="rect" id="node5" href="$ad4130__noise__test__config_8c.html" title="Noise test user configurations file for AD4130 device." alt="" coords="857,124,1165,195"/>
+<area shape="rect" id="node6" href="$ad4130__power__test__config_8c.html" title="Power test user configurations file for AD4130 device." alt="" coords="1189,124,1502,195"/>
+<area shape="rect" id="node7" href="$ad4130__rtd__config_8c.html" title="RTD user configurations file for AD4130 device." alt="" coords="1527,124,1785,195"/>
+<area shape="rect" id="node8" href="$ad4130__support_8c.html" title="AD4130 device No&#45;OS driver supports." alt="" coords="1810,124,2054,195"/>
+<area shape="rect" id="node9" href="$ad4130__thermistor__config_8c.html" title="Thermistor user configurations file for AD4130 device." alt="" coords="2079,124,2388,195"/>
+<area shape="rect" id="node10" href="$ad4130__thermocouple__config_8c.html" title="Thermocouple user configurations file for AD4130 device." alt="" coords="2412,124,2743,195"/>
+<area shape="rect" id="node11" href="$ad4130__user__config_8c.html" title="User configuration file for AD4130 device." alt="" coords="2767,124,3036,195"/>
+<area shape="rect" id="node12" href="$ad4130__iio_2app_2app__config_8c.html" title="Application configurations module." alt="" coords="3061,124,3283,195"/>
+<area shape="rect" id="node13" href="$ad4130__iio_2app_2app__config__mbed_8c.html" title="Application configurations module for Mbed platform." alt="" coords="3307,124,3562,195"/>
+</map>

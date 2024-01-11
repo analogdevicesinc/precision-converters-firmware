@@ -1,0 +1,5 @@
+<map id="HAL_Init" name="HAL_Init">
+<area shape="rect" id="node1" title=" " alt="" coords="347,5,423,32"/>
+<area shape="rect" id="node2" href="$ad7134__iio_2app_2app__config__stm32_8c.html#a7256d80c59f9d4eafcebc79f1b73ba72" title="Initialize the STM32 system peripherals." alt="" coords="152,5,299,32"/>
+<area shape="rect" id="node3" href="$ad7134__iio_2app_2app__config_8c.html#aba990e48bb1b87852ff6a375f0c2f655" title="Initialize the system peripherals." alt="" coords="5,5,104,32"/>
+</map>

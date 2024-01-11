@@ -1,0 +1,41 @@
+<map id="ad77681_spi_reg_read" name="ad77681_spi_reg_read">
+<area shape="rect" id="node1" title=" " alt="" coords="912,917,1080,944"/>
+<area shape="rect" id="node2" href="$ad77681_8c.html#aa7d3102a021d6aae05e5f6a3877077d6" title=" " alt="" coords="679,157,862,184"/>
+<area shape="rect" id="node10" href="$ad77681_8c.html#ae9f2888f05e3c8cd4cd57adb1c177d53" title=" " alt="" coords="677,892,864,919"/>
+<area shape="rect" id="node38" href="$ad77681_8c.html#a3e67125e147f44a7e78b35c5e1a45fb8" title=" " alt="" coords="708,943,833,969"/>
+<area shape="rect" id="node39" href="$ad77681__iio_8c.html#a5a879613d3913765225f297389ce1313" title="Read the debug register value." alt="" coords="707,993,834,1020"/>
+<area shape="rect" id="node3" href="$ad77681_8c.html#a30a7d016031a1a7c7f9df3532cee2f1c" title=" " alt="" coords="449,5,599,32"/>
+<area shape="rect" id="node4" href="$ad77681_8c.html#a99916ee432c0763165175cbea946f432" title=" " alt="" coords="182,310,363,351"/>
+<area shape="rect" id="node5" href="$ad77681_8c.html#a8263dc977620e304b95ba0ea01e04874" title=" " alt="" coords="446,259,602,285"/>
+<area shape="rect" id="node7" href="$ad77681__iio_8c.html#a6861e76e24a90c440bc644468033edcf" title="Getter/Setter for the conversion mode attribute value." alt="" coords="461,107,587,133"/>
+<area shape="rect" id="node8" href="$ad77681__iio_8c.html#a9346ba86b6cc92372a6bd44515a7171d" title="Getter/Setter for the MCLK division attribute value." alt="" coords="454,157,594,184"/>
+<area shape="rect" id="node9" href="$ad77681__iio_8c.html#a50058b6d09e8068ba9fafa9507f92756" title="Getter/Setter for the power mode attribute value." alt="" coords="457,208,591,235"/>
+<area shape="rect" id="node6" href="$ad77681_8c.html#a462935549432e532a6b9526b4807f862" title=" " alt="" coords="5,1171,127,1197"/>
+<area shape="rect" id="node11" href="$ad77681_8c.html#a01713f8ca8731e12943b880507a60c2f" title=" " alt="" coords="446,360,602,387"/>
+<area shape="rect" id="node12" href="$ad77681_8c.html#a7289bab2b4ff811dd19c288c886ea3d0" title=" " alt="" coords="441,411,607,437"/>
+<area shape="rect" id="node13" href="$ad77681_8c.html#abe0bbf874c628dc1a733895e36a81435" title=" " alt="" coords="195,554,350,595"/>
+<area shape="rect" id="node14" href="$ad77681_8c.html#a09ac878f6c51495752c73fc6369ff634" title=" " alt="" coords="195,669,350,710"/>
+<area shape="rect" id="node15" href="$ad77681_8c.html#a116130e356f8e5b889c70295fa6f251e" title=" " alt="" coords="444,563,604,589"/>
+<area shape="rect" id="node16" href="$ad77681_8c.html#a7c4bf63d09917e4a817d230919dc6f93" title=" " alt="" coords="447,613,601,640"/>
+<area shape="rect" id="node17" href="$ad77681_8c.html#a78d8ed51bfa6ce2efdc05a2c1f1fdbea" title=" " alt="" coords="428,664,620,691"/>
+<area shape="rect" id="node18" href="$ad77681_8c.html#a0842e6758c6e2b37ac95f1e967403b0f" title=" " alt="" coords="447,715,601,741"/>
+<area shape="rect" id="node19" href="$ad77681_8c.html#a89f6fd97ea2aedf333cf9d9d9f40e1c2" title=" " alt="" coords="440,765,608,792"/>
+<area shape="rect" id="node20" href="$ad77681_8c.html#aeb0630d26819649cdf05b80bfd30f4b1" title=" " alt="" coords="183,785,362,812"/>
+<area shape="rect" id="node21" href="$ad77681_8c.html#ac8e9d93157cfab47035f5847d99978da" title=" " alt="" coords="419,867,629,893"/>
+<area shape="rect" id="node22" href="$ad77681_8c.html#a9318d50e8cc7eb2e9aa52a49f1cb8ee4" title=" " alt="" coords="179,836,367,863"/>
+<area shape="rect" id="node23" href="$ad77681_8c.html#a62e58471832b709ac6dd523846f739e9" title=" " alt="" coords="179,887,367,913"/>
+<area shape="rect" id="node24" href="$ad77681_8c.html#a2f1039e94f29755cdf25f9d06693960c" title=" " alt="" coords="419,1019,629,1045"/>
+<area shape="rect" id="node25" href="$ad77681_8c.html#ac757309f9c6d6d1fd6f66d4dc8a62c4c" title=" " alt="" coords="431,1069,617,1096"/>
+<area shape="rect" id="node29" href="$ad77681_8c.html#acec7c8f9cb58993f62b5a2e3d69fb281" title=" " alt="" coords="191,1120,354,1147"/>
+<area shape="rect" id="node30" href="$ad77681_8c.html#a542182b82fda815b62887e86a633404c" title=" " alt="" coords="194,1171,351,1197"/>
+<area shape="rect" id="node31" href="$ad77681_8c.html#a21c0128798277a19f12c5bc5aa001710" title=" " alt="" coords="187,1221,358,1248"/>
+<area shape="rect" id="node32" href="$ad77681_8c.html#a2e9b020598e2a30d2d2bddda8538cee2" title=" " alt="" coords="175,1272,371,1299"/>
+<area shape="rect" id="node33" href="$ad77681_8c.html#abed1da5dd1f12d3d0d2e5f6dda3a9809" title=" " alt="" coords="177,1323,368,1349"/>
+<area shape="rect" id="node34" href="$ad77681_8c.html#abd63a397baff2e4061a127d0f0420e43" title=" " alt="" coords="177,1373,368,1400"/>
+<area shape="rect" id="node35" href="$ad77681_8c.html#af651fa1691ace4c2f88908d85b8b4581" title=" " alt="" coords="185,1424,361,1451"/>
+<area shape="rect" id="node36" href="$ad77681_8c.html#a8f0e94b548f029443a5476002651f53b" title=" " alt="" coords="177,1475,368,1501"/>
+<area shape="rect" id="node37" href="$ad77681_8c.html#a742eab999aefa8e994ef466c56f5a597" title=" " alt="" coords="449,1525,599,1552"/>
+<area shape="rect" id="node26" href="$ad77681__support_8c.html#aad57f1a42e2481f16779e574e0a39693" title="Enable continuous conversion mode." alt="" coords="191,989,355,1030"/>
+<area shape="rect" id="node27" href="$ad77681__support_8c.html#a89d566f10bd54ad8fa8438645d22d51b" title="Read ADC single sample data." alt="" coords="193,1054,353,1095"/>
+<area shape="rect" id="node28" href="$ad77681__iio_8c.html#a38646b408e4ff3656274ee74faadacdb" title="Getter/Setter for the raw attribute value." alt="" coords="29,1061,103,1088"/>
+</map>

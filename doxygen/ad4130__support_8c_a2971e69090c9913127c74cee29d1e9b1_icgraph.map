@@ -1,0 +1,4 @@
+<map id="ad413x_mon_conv_and_read_data" name="ad413x_mon_conv_and_read_data">
+<area shape="rect" id="node1" title="Function to monitor end of conversion and read conversion result." alt="" coords="205,5,380,47"/>
+<area shape="rect" id="node2" href="$ad4130__support_8c.html#afa976b602e8fe00fef4929ed3a5f986b" title="Function to read the single ADC sample (raw data) for input channel." alt="" coords="5,5,157,47"/>
+</map>

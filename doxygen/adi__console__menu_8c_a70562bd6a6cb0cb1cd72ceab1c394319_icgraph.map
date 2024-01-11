@@ -1,0 +1,5 @@
+<map id="adi_clear_console" name="adi_clear_console">
+<area shape="rect" id="node1" title="Clears the console terminal." alt="" coords="261,35,400,61"/>
+<area shape="rect" id="node2" href="$ad717x__console__app_8c.html#a26ee816a097543ba194345f9d8c15b79" title="Handle the menu to connect input to channel." alt="" coords="5,5,213,32"/>
+<area shape="rect" id="node3" href="$ad717x__console__app_8c.html#a209308b1f737d5170c2a73f0610736bc" title="Handle the menu to configure and assign the device setup." alt="" coords="17,57,202,98"/>
+</map>

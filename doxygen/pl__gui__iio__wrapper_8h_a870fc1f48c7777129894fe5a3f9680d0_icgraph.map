@@ -1,0 +1,8 @@
+<map id="pl_gui_get_dev_names" name="pl_gui_get_dev_names">
+<area shape="rect" id="node1" title="Get IIO device names." alt="" coords="271,107,441,133"/>
+<area shape="rect" id="node2" href="$pl__gui__views_8c.html#a9ec92c409f2f75a62f6663a8eb642666" title="Create pocket lab GUI analysis view." alt="" coords="10,5,218,32"/>
+<area shape="rect" id="node3" href="$pl__gui__views_8c.html#a18720f4b283be5e0b8743045bd76a9a8" title="Create pocket lab GUI attributes view." alt="" coords="5,56,223,83"/>
+<area shape="rect" id="node4" href="$pl__gui__views_8c.html#a0b4a192606ecba5eca51896fbc1befb8" title="Create pocket lab GUI data capture view." alt="" coords="13,107,215,133"/>
+<area shape="rect" id="node5" href="$pl__gui__views_8c.html#a6dd69c69516001dd3c9c24d5134f51c3" title="Create pocket lab GUI DMM view." alt="" coords="20,157,208,184"/>
+<area shape="rect" id="node6" href="$pl__gui__views_8c.html#a605483e37dda1a227a7f66266193afae" title="Create pocket lab GUI register view." alt="" coords="12,208,216,235"/>
+</map>

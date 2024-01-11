@@ -1,0 +1,431 @@
+
+
+<!doctype html>
+
+<html lang="en" data-content_root="../../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>AD5933 Console Application &#8212; precision-converters-firmware  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=649a27d8" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/bizstyle.css?v=532c1bf3" />
+    
+    <script src="../../../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/bizstyle.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="AD7124 Console Application" href="../ad7124_console/index.html" />
+    <link rel="prev" title="AD5933 Console Application" href="index.html" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <!--[if lt IE 9]>
+    <script src="_static/css3-mediaqueries.js"></script>
+    <![endif]-->
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../ad7124_console/index.html" title="AD7124 Console Application"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="AD5933 Console Application"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">precision-converters-firmware  documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../index.html" >Firmware Applications</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="index.html" accesskey="U">AD5933 Console Application</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">AD5933 Console Application</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="ad5933-console-application">
+<h1>AD5933 Console Application<a class="headerlink" href="#ad5933-console-application" title="Link to this heading">¶</a></h1>
+<section id="supported-hardware">
+<h2>Supported Hardware<a class="headerlink" href="#supported-hardware" title="Link to this heading">¶</a></h2>
+<p><strong>Supported Devices:</strong></p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.analog.com/en/products/ad5933.html">AD5933</a></p></li>
+</ul>
+<p><strong>Supported Evaluation Boards:</strong></p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://digilent.com/reference/pmod/pmodia/start">Pmod IA</a></p></li>
+</ul>
+<p><strong>Supported Carrier Boards:</strong></p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://os.mbed.com/platforms/SDP_K1/">SDP-K1 With Mbed</a></p></li>
+</ul>
+</section>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">¶</a></h2>
+<p>The AD5933 Mbed support software (also supports AD5934) can be used as a starting point for developing your own code for Analog Devices AD5933 products in your own environment utilizing the benefits of the Mbed platform. Analog Devices is an MBED Partner and develops code on the platform for multiple products. The Analog Devices Mbed code-repo can be found in the links below.</p>
+<p>This guide will focus on the Analog Devices SDP-K1 controller board, as it is directly compatible with the AD5933 family of evaluation boards and is an MBED-Enabled device. Customers are of course, not limited to using the SDP-K1 board for code development, given that any ARM-based, MBED-enabled board that satisfies a small set of requirements can use the provided code and it will work with only minor changes to the source (see below).</p>
+<p>This guide uses the Pmod IA evaluation board. This is a convenient, inexpensive path to evaluating the AD5933.</p>
+</section>
+<section id="useful-links">
+<h2>Useful Links<a class="headerlink" href="#useful-links" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/analogdevicesinc/no-OS">no-OS: Software drivers for systems without OS</a></p></li>
+<li><p><a class="reference external" href="https://studio.keil.arm.com/auth/login/">Keil Studio Web IDE/Compiler</a></p></li>
+<li><p><a class="reference external" href="https://os.mbed.com/platforms/SDP_K1/">SDP-K1 on Mbed</a></p></li>
+<li><p><a class="reference external" href="https://github.com/analogdevicesinc/linux">Linux Drivers</a></p></li>
+<li><p><a class="reference external" href="https://github.com/analogdevicesinc/hdl">HDL Source Code</a></p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Linux and HDL are not used in emebdded IIO firmware projects but
+they may be of interest if you require Linux and/or FPGA support.</p>
+</div>
+</section>
+<section id="hardware-connections">
+<h2>Hardware Connections<a class="headerlink" href="#hardware-connections" title="Link to this heading">¶</a></h2>
+<p>The SDP-K1 board has two ways to connect to most ADI evaluation boards, it can use the 120-pin SDP connector on the underside of the board, or the Arduino connector can be used together with jumper wires as described below. Currently an ADI evaluation board with an SDP connector does not exist for the AD5933. As such, it is necessary to connect to the Arduino headers using short jumper wires.</p>
+<p>The Getting Started with Mbed page describes the Arduino Uno Header, the SDP connector, pinouts and other information related to understanding the SDP-K1 controller board.</p>
+<p>The SDP-K1 can operate with the 120-pin SDP connector of the evaluation board supports it, or, as in this case, it can also use the Arduino header pins (or indeed any available I2C port on the controller board) using wires to the evaluation board. This is shown here for the SDP-K1 board connected to the Digilent Pmod IA evaluation board using the Arduino Header, but different boards might have their SPI/I2C/GPIO ports exposed differently. The pins on the Arduino header must be shorted to the evaluation board as follows. The pin mappings for these are controlled in the app_config.h file and should match your controller board.</p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p>Arduino PIN</p></td>
+<td><p>MBED NAME</p></td>
+<td><p>Pmod IA PIN</p></td>
+</tr>
+<tr class="row-even"><td><p>D15</p></td>
+<td><p>I2C_SCL</p></td>
+<td><p>SCLK/A0</p></td>
+</tr>
+<tr class="row-odd"><td><p>D14</p></td>
+<td><p>I2C_SDA</p></td>
+<td><p>SDO/SDA</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If using the Arduino header pins, compile the software only after adding the #define ARDUINO to app_config.h (set by default)</p>
+</div>
+<a class="reference internal image-reference" href="../../../_images/ad5933_hardware_connections.jpg"><img alt="../../../_images/ad5933_hardware_connections.jpg" src="../../../_images/ad5933_hardware_connections.jpg" style="width: 500px;" /></a>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>One thing to note here is that power and ground for the evaluation need to be provided and can be conveniently taken from the Arduino header as shown above. If using a different evaluation board to the DIGILENT PMOD IA, then consult the relevant evaluation board guides available through the product-page for your selected board.</p>
+</div>
+</section>
+<section id="ad5933-mbed-firmware">
+<h2>AD5933 Mbed Firmware<a class="headerlink" href="#ad5933-mbed-firmware" title="Link to this heading">¶</a></h2>
+<p>This guide focuses on the SDP-K1, connected to the Pmod IA evaluation board, but it should be general enough to cover any compatible controller board (the controller board should be Mbed-enabled, and expose I2C and some GPIO’s).</p>
+<p>The software described below allows for an Mbed enabled controller board to be connected with the Pmod IA. Unmodified, the code will communicate over any serial terminal emulator (CoolTerm, putty, etc) using the UART provided by the controller board over USB.</p>
+</section>
+<section id="build-guide">
+<h2>Build Guide<a class="headerlink" href="#build-guide" title="Link to this heading">¶</a></h2>
+<details class="summary-build-prerequisites" open>
+<summary>Build Prerequisites</summary><blockquote>
+<div><p>Prior to building a firmware project, it is required to set up an environment so
+that the build process may find the necessary tools (compiler, linker, SDK etc.).
+Use the following steps to prepare your environment for building firmware projects
+for respective platform.</p>
+<details class="summary-windows">
+<summary>Windows</summary><details class="summary-mbed">
+<summary>Mbed</summary><details class="summary-for-web-online-build">
+<summary>For Web/Online Build</summary><ul class="simple">
+<li><p>Visit <a class="reference external" href="https://www.keil.arm.com/">Arm Keil website</a> to create an user account for accessing the web based Keil Studio IDE.</p></li>
+<li><p>Open <a class="reference external" href="https://studio.keil.arm.com/auth/login/">Keil Studio Web IDE</a> with registered user account</p></li>
+</ul>
+</details><details class="summary-for-make-build">
+<summary>For Make Build</summary><ul class="simple">
+<li><p>Clone Precision Converters Firmware repository with the –recursive flag (not needed if building with web IDE for Mbed platform):</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>--recursive<span class="w"> </span>https://github.com/analogdevicesinc/precision-converters-firmware
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>If however you’ve already cloned the repository without the –recursive flag, you may initialize all the submodules in an existing cloned repo with:</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>submodule<span class="w"> </span>update<span class="w"> </span>--recursive<span class="w"> </span>--init
+</pre></div>
+</div>
+<ul>
+<li><p>Install <a class="reference external" href="https://gnuwin32.sourceforge.net/packages/make.htm">Make</a> in the root of ‘C’ drive without any spaces in the installation path. The path must be <strong>C:\GnuWin32\…</strong>. Add this path into the system environmental path variable (as shown in below screenshot).</p></li>
+<li><p>Install <a class="reference external" href="https://git-scm.com/downloads">Git</a> and add a path of <strong>C:\Program Files\Git\usr\bin\</strong> directory into system environmental path variable (please verify your git installation path is correct).</p></li>
+<li><p>Install Mbed CLI 1 as per guide <a class="reference external" href="https://os.mbed.com/docs/mbed-os/v6.15/build-tools/install-and-set-up.html">here</a>.</p></li>
+<li><p>Install <a class="reference external" href="https://developer.arm.com/downloads/-/gnu-rm.">GNU Arm Embedded compiler</a> (for the development, 9-2019-q4-major version is used) and add a path of GNU Arm Embedded Toolchain bin directory into the system environmental path variable (as shown in below screenshot).</p></li>
+<li><p>Configure the compiler location with Mbed CLI. This can be carried out by running the <strong>mbed config -G GCC_ARM_PATH &lt;path-to-your-gcc-compiler&gt;</strong> in Command Prompt. For example you can run <strong>mbed config -G GCC_ARM_PATH “C:\Program Files (x86)\GNU Tools ARM Embedded\9 2019-q4-major\bin”</strong> in command prompt. It will set mentioned compiler path to all the Mbed Projects.</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../../_images/environmental_variables.png"><img alt="../../../_images/environmental_variables.png" src="../../../_images/environmental_variables.png" style="width: 400px;" /></a>
+</div></blockquote>
+</li>
+</ul>
+</details></details><details class="summary-stm32">
+<summary>STM32</summary><details class="summary-for-stm32-ide-based-build">
+<summary>For STM32 IDE based Build</summary><ul>
+<li><p>Install <a class="reference external" href="https://www.st.com/en/development-tools/stm32cubeide.html">STM32CubeIDE</a></p></li>
+<li><p>Install <a class="reference external" href="https://www.st.com/en/development-tools/stm32cubemx.html">STM32CubeMX</a></p></li>
+<li><p>Install <a class="reference external" href="https://git-scm.com/downloads">Git</a> and add a path of <strong>C:\Program Files\Git\usr\bin\</strong> directory into system environmental path variable (please verify your git installation path is correct).</p></li>
+<li><p>Install <a class="reference external" href="https://gnuwin32.sourceforge.net/packages/make.htm">Make</a> in the root of ‘C’ drive without any spaces in the installation path. The path must be <strong>C:\GnuWin32\…</strong>. Add this path into the system environmental path variable (as shown in below screenshot).</p></li>
+<li><p>Install <a class="reference external" href="https://developer.arm.com/downloads/-/gnu-rm.">GNU Arm Embedded compiler</a> (for the development, 9-2019-q4-major version is used) and add a path of GNU Arm Embedded Toolchain bin directory into the system environmental path variable (as shown in below screenshot).</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../../_images/environmental_variables.png"><img alt="../../../_images/environmental_variables.png" src="../../../_images/environmental_variables.png" style="width: 400px;" /></a>
+</div></blockquote>
+</li>
+</ul>
+</details></details></details></div></blockquote>
+</details><details class="summary-building-a-project" open>
+<summary>Building a project</summary><blockquote>
+<div><p>Once the build enviornment is setup, follow the guide below to build your project
+and generate executable file (.bin/.hex)</p>
+<details class="summary-windows">
+<summary>Windows</summary><details class="summary-mbed">
+<summary>Mbed</summary><details class="summary-build-using-web-online-ide">
+<summary>Build Using Web/Online IDE</summary><ul>
+<li><p>Clone the <a class="reference external" href="https://github.com/analogdevicesinc/precision-converters-firmware">Precision Converters Firmware repository</a> into Keil Studio using “File-&gt;clone…” menu.</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../../_images/mbed_keil_studio_project_clone.png"><img alt="../../../_images/mbed_keil_studio_project_clone.png" src="../../../_images/mbed_keil_studio_project_clone.png" style="width: 600px;" /></a>
+</div></blockquote>
+</li>
+<li><p>Once the project repository is imported, wait until all library dependencies are imported as shown in below screenshot. Now, open the ‘.medignore’ file present in the root directory of repository. Add comment syntax (two forward slashes) in front of the project name which you want to build. This will ignore all other projects and build only the comment syntax selected project.</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../../_images/mbedignore_changes.png"><img alt="../../../_images/mbedignore_changes.png" src="../../../_images/mbedignore_changes.png" style="width: 600px;" /></a>
+</div></blockquote>
+</li>
+<li><p>Select the target device (default used for development is SDP-K1) and click on ‘Clean build’ option to build the project. After a successful build a binary will be downloaded to your computer- store this on your drive. Drag and drop this binary to the USB drive hosted by your controller board to flash the MCU.</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../../_images/mbed_build.png"><img alt="../../../_images/mbed_build.png" src="../../../_images/mbed_build.png" style="width: 400px;" /></a>
+</div></blockquote>
+</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you intend to build different project, then modify the .medignore file in the root directory as
+mentioned in step2 and clean build project as mentioned in step3</p>
+</div>
+</details><details class="summary-build-using-make">
+<summary>Build Using Make</summary><ul class="simple">
+<li><p>Open Git bash and change current directory to project directory (eg. <strong>precision-converters-firmware/projects/ad4130_iio</strong> directory) which you want to build.</p></li>
+<li><p>Type <strong>make</strong> on the git bash command prompt to build a project.</p></li>
+<li><p>After successful build, binary file will be created into the <strong>Project_Name/build</strong> directory.</p></li>
+<li><p>If you want to clean build, type <strong>make reset</strong> on git bash command which deletes all generated build files for the given project.</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Default TARGET_BOARD is SDP_K1 and COMPILER is GCC_ARM. Current Make based build only support GCC_ARM Compiler.</p>
+</div>
+<ul class="simple">
+<li><p>By default project is built for “SDP_K1” Board and “GCC_ARM” Compiler. If you want to build for other Mbed Board, For example If you want to build the project for “DISCO_F769NI” Board then run <strong>make TARGET_BOARD=DISCO_F769NI</strong> command in git bash command prompt. If you want to clean build, run <strong>make reset TARGET_BOARD=DISCO_F769NI</strong> command to delete the generated build files for the given project.</p></li>
+</ul>
+</details></details><details class="summary-stm32">
+<summary>STM32</summary><details class="summary-build-using-stm32-ide">
+<summary>Build Using STM32 IDE</summary><ul>
+<li><p>Open the respective project directory by navigating into the “precision_converters_firmware/projects/” folder.</p></li>
+<li><p>In the “STM32” folder present within the project directory, double click and open the .ioc file present within.</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../../_images/stm32_project_directory.png"><img alt="../../../_images/stm32_project_directory.png" src="../../../_images/stm32_project_directory.png" style="width: 600px;" /></a>
+</div></blockquote>
+</li>
+<li><p>Click on the “Generate Code” option seen on the top right corner</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../../_images/stm32_generate_code.png"><img alt="../../../_images/stm32_generate_code.png" src="../../../_images/stm32_generate_code.png" style="width: 600px;" /></a>
+</div></blockquote>
+</li>
+<li><p>Upon successful generation of drivers for the selected MCU, the autogenerated files would be seen in the same directory where the .ioc file was present. Double click and open the “.project” file seen in the list of files</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../../_images/stm32_auto_generated_files.png"><img alt="../../../_images/stm32_auto_generated_files.png" src="../../../_images/stm32_auto_generated_files.png" style="width: 600px;" /></a>
+</div></blockquote>
+</li>
+<li><p>After the project is loaded to the STM32CubeIDE, unfold the adxxxx_iio project seen in the project explorer, right click the “app” folder, select “Settings” under the “C/C++ Build” section on the left pane and un-check the “Exclude resources from build” checkbox. This would ensure that the project specific files are included by the build system</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../../_images/stm32_exclude_files_option.png"><img alt="../../../_images/stm32_exclude_files_option.png" src="../../../_images/stm32_exclude_files_option.png" style="width: 600px;" /></a>
+</div></blockquote>
+</li>
+<li><p>In order to choose STM32 platform in the firmware, select the “ACTIVE_PLATFORM” as “STM32_PLATFORM” in the app_config.h from the respective project.</p></li>
+<li><p>Add compiler flags “-u _printf_float” to the project settings.</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../../_images/stm32_compiler_flag.png"><img alt="../../../_images/stm32_compiler_flag.png" src="../../../_images/stm32_compiler_flag.png" style="width: 600px;" /></a>
+</div></blockquote>
+</li>
+<li><p>Program by clicking on the “Run adxxxx_iio” option seen or by performing a copy-&gt;paste option of the .hex file seen in the STM32/Debug folder</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../../_images/stm32_run_option.png"><img alt="../../../_images/stm32_run_option.png" src="../../../_images/stm32_run_option.png" style="width: 600px;" /></a>
+</div></blockquote>
+</li>
+</ul>
+</details></details></details></div></blockquote>
+</details><details class="summary-running-a-project" open>
+<summary>Running a project</summary><blockquote>
+<div><p>Once the firmware build is successful and binary file is generated, copy the
+generated binary into USB drive hosted by your MCU board (e.g. USB drive hosted
+by SDP-K1 board on windows). This will flash the binary file into MCU present
+on the controller board. Programming might vary based on the tools used for building
+a project. The ‘Project Build’ section above talks about this exception at the end
+of all build steps.</p>
+</div></blockquote>
+</details></section>
+<section id="quick-start">
+<h2>Quick Start<a class="headerlink" href="#quick-start" title="Link to this heading">¶</a></h2>
+<p>If you have some familiarity with the Mbed platform, the following is a basic list of steps required to start running the code,
+see below for more detail:</p>
+<ul class="simple">
+<li><p>Connect the evaluation-board to the Mbed-enabled controller board.</p></li>
+<li><p>Connect the controller board to your computer over USB.</p></li>
+<li><p>Follow the steps mentioned in the Build Guide section above (Edit app_config.h file (defaults to SDP connector and AD5686R device) if evaluating any other device).</p></li>
+<li><dl class="simple">
+<dt>Start up a serial terminal emulator (e.g. Tera Term)</dt><dd><ul>
+<li><p>Find the com-port your controller board is connected on and select it.</p></li>
+<li><p>Set the baud-rate for 230400</p></li>
+<li><p>Reset the controller board and connect.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>Use the menu provided over the terminal window to access the evaluation board.</p></li>
+</ul>
+</section>
+<section id="using-the-firmware">
+<h2>Using the Firmware<a class="headerlink" href="#using-the-firmware" title="Link to this heading">¶</a></h2>
+<p>The firmware is delivered as a basic, text-based user-interface that operates through a UART on the controller board using the same USB cable that is used to flash the firmware to the boards. Any terminal-emulator should work, but it is not possible for Analog Devices to test everyone. It is necessary to connect a serial terminal-emulator to interact with the running firmware.</p>
+<p>Here CoolTerm is used as an example, Analog Devices does not endorse any particular program for this, but CoolTerm works well and is made freely available, other terminals such as Tera Term, or PuTTY will work just as well. Set the baud-rate for 115200 and keep the defaults for everything else. The actual values used can be found by looking at the source code in main.cpp</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../../_images/ad5933_coolterm_menu.jpg"><img alt="../../../_images/ad5933_coolterm_menu.jpg" src="../../../_images/ad5933_coolterm_menu.jpg" style="width: 400px;" /></a>
+</div></blockquote>
+<p>The software is provided as a demo. The demo covers the essential operation of the AD5933 and it is hoped to be a good starting point for developing your own firmware. The code is also written with a view to keeping things simple, you do not have to be a coding-ninja to understand and expand upon the delivered functions.</p>
+<p>It is hoped that the most common functions of the AD5933 family are coded, but it’s likely that some special functionality is not implemented.</p>
+<p>The software comes with an app_config.h file which allows the pins for the I2C interface to be selected.</p>
+<ul class="simple">
+<li><p>Configure the pins you want to use to connect the controller board to the evaluation board.</p></li>
+<li><p>They default to the I2C exposed on the Arduino header.</p></li>
+</ul>
+<section id="ad5933-demo">
+<h3>AD5933 DEMO<a class="headerlink" href="#ad5933-demo" title="Link to this heading">¶</a></h3>
+<p>This demo will keep things simple by only using resistances. The AD5933 operates is a ratiometric device and because of this it requires a calibration gain-factor to be calculated. This demo will use a 200KΩ calibration and will test the operation of the impedance calculation with a different resistance (300KΩ is arbitrarily chosen).</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Use Command option 1 to read the temperature from the AD5933. This ensures basic connectivity is established. The firmware does a temperature read following a board reset.</p>
+</div>
+<p>Step 1: Configure System</p>
+<ol class="arabic simple">
+<li><p>Place a 200KΩ resistance between the 2 SMB connectors on the PMOD IA</p></li>
+<li><p>Select Option 2 and provide the data will prompted, example for 200KΩ is done here.</p>
+<ol class="arabic simple">
+<li><p>Select option 3: 1Vpp typical (to ensure amplifiers are not saturated)</p></li>
+<li><p>Select PGA gain of X1</p></li>
+<li><p>Select Internal Clock</p></li>
+<li><p>Enter start frequency of 10Khz (this is arbitrary, as we are using only resistances for the demo)</p></li>
+<li><p>Enter frequency increment of 10 (again arbitrary)</p></li>
+<li><p>Give the number of increments (20 for example)</p></li>
+<li><p>Let the number of settling sample = 5</p></li>
+<li><p>Settling-time multiplier = X1</p></li>
+</ol>
+</li>
+<li><p>The software will report the values chosen - this configuration only has to be done once, the values are stored, both in the software and on the AD5933.</p></li>
+</ol>
+<p>Step 2: Calculate the Gain Factor
+The gain factor is the calibration for the signal path and only needs to be set once.</p>
+<ol class="arabic simple">
+<li><p>Select option 3 from the main-menu</p></li>
+<li><p>Enter your calibration resistance, in Ohms - e.g 200000</p></li>
+<li><p>The calculated gain-factor will be returned and stored in software and on-chip</p></li>
+</ol>
+<p>Step 3: Calculate unknown impedance
+Any impedance can now be placed between the SMB connectors on the PMOD IA board and option 4 from the main-menu will perform a sweep according to the settings configured in Step 1. The results will be displayed on the terminal. For this demo the 200KΩ was replaced with a 300KΩ and an impedance sweep performed. It returned the results shown below. Consult the extensive documentation available on the product page to help understand the process</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../../_images/ad5933_demo.jpg"><img alt="../../../_images/ad5933_demo.jpg" src="../../../_images/ad5933_demo.jpg" style="width: 400px;" /></a>
+</div></blockquote>
+</section>
+</section>
+<section id="support">
+<h2>Support<a class="headerlink" href="#support" title="Link to this heading">¶</a></h2>
+<p>Feel free to ask questions in the <a class="reference external" href="https://ez.analog.com/data_converters">EngineerZone</a></p>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../../../index.html">
+              <img class="logo" src="../../../_static/adi_logo.png" alt="Logo"/>
+            </a></p>
+  <div>
+    <h3><a href="../../../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">AD5933 Console Application</a><ul>
+<li><a class="reference internal" href="#supported-hardware">Supported Hardware</a></li>
+<li><a class="reference internal" href="#introduction">Introduction</a></li>
+<li><a class="reference internal" href="#useful-links">Useful Links</a></li>
+<li><a class="reference internal" href="#hardware-connections">Hardware Connections</a></li>
+<li><a class="reference internal" href="#ad5933-mbed-firmware">AD5933 Mbed Firmware</a></li>
+<li><a class="reference internal" href="#build-guide">Build Guide</a></li>
+<li><a class="reference internal" href="#quick-start">Quick Start</a></li>
+<li><a class="reference internal" href="#using-the-firmware">Using the Firmware</a><ul>
+<li><a class="reference internal" href="#ad5933-demo">AD5933 DEMO</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#support">Support</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="index.html"
+                          title="previous chapter">AD5933 Console Application</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="../ad7124_console/index.html"
+                          title="next chapter">AD7124 Console Application</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../../_sources/source/projects/ad5933_console/ad5933_console.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../ad7124_console/index.html" title="AD7124 Console Application"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="AD5933 Console Application"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">precision-converters-firmware  documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../index.html" >Firmware Applications</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="index.html" >AD5933 Console Application</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">AD5933 Console Application</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+    &#169; Copyright 2023, Analog Devices Inc..
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.2.6.
+    </div>
+  </body>
+</html>

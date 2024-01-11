@@ -1,0 +1,4 @@
+<map id="ad4130_iio_initialize" name="ad4130_iio_initialize">
+<area shape="rect" id="node1" title="Initialize the IIO interface for AD4130 IIO device." alt="" coords="108,5,264,32"/>
+<area shape="rect" id="node2" href="$ad4130__iio_2app_2main_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title="Main entry point to application." alt="" coords="5,5,60,32"/>
+</map>

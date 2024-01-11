@@ -1,0 +1,146 @@
+
+
+<!doctype html>
+
+<html lang="en" data-content_root="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Code Styles &#8212; precision-converters-firmware  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=649a27d8" />
+    <link rel="stylesheet" type="text/css" href="../_static/bizstyle.css?v=532c1bf3" />
+    
+    <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/bizstyle.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Contributing" href="contributing.html" />
+    <link rel="prev" title="Build Guide" href="build/project_build.html" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <!--[if lt IE 9]>
+    <script src="_static/css3-mediaqueries.js"></script>
+    <![endif]-->
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="contributing.html" title="Contributing"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="build/project_build.html" title="Build Guide"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">precision-converters-firmware  documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Code Styles</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="code-styles">
+<h1>Code Styles<a class="headerlink" href="#code-styles" title="Link to this heading">¶</a></h1>
+<p>To apply style guidelines, <a class="reference external" href="https://astyle.sourceforge.net/">astyle</a> is used.</p>
+<p>For the source code in the repository, the following configuration should be used
+through astyle_config file:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>--style<span class="o">=</span>linux
+--indent<span class="o">=</span>force-tab<span class="o">=</span><span class="m">8</span>
+--max-code-length<span class="o">=</span><span class="m">80</span>
+--suffix<span class="o">=</span>none
+</pre></div>
+</div>
+<p><strong>Run manually:</strong></p>
+<p>To use it, copy the script above to a file named e.g. ‘astyle_config’. Then, to
+apply the style to the source file example.cpp, call ‘astyle’ with the following
+command:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>astyle<span class="w"> </span>--options<span class="o">=</span>astyle_config<span class="w"> </span>example.cpp
+</pre></div>
+</div>
+<p>The file example.cpp will be rewritten to match the style rules.</p>
+<p><strong>Run from script (Linux):</strong></p>
+<p>A shell script that automates the code style check is available at: <a class="reference external" href="https://github.com/analogdevicesinc/no-OS/blob/master/ci/astyle.sh">https://github.com/analogdevicesinc/no-OS/blob/master/ci/astyle.sh</a></p>
+<p>Run the script from the root of the repository, for example:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./ci/astyle.sh
+</pre></div>
+</div>
+<p>All the changed files in the last commit from the current branch will be checked
+and rewritten. The differences will be displayed after code style is applied.</p>
+<p><strong>Run script with parameter:</strong></p>
+<p>Optionally, the commit range can be passed as parameter to the script, applying
+code style on all changed files within the commits.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./ci/astyle.sh<span class="w"> </span>&lt;COMMIT_RANGE&gt;
+</pre></div>
+</div>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../index.html">
+              <img class="logo" src="../_static/adi_logo.png" alt="Logo"/>
+            </a></p>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="build/project_build.html"
+                          title="previous chapter">Build Guide</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="contributing.html"
+                          title="next chapter">Contributing</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/source/code_style.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="contributing.html" title="Contributing"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="build/project_build.html" title="Build Guide"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">precision-converters-firmware  documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Code Styles</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+    &#169; Copyright 2023, Analog Devices Inc..
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.2.6.
+    </div>
+  </body>
+</html>

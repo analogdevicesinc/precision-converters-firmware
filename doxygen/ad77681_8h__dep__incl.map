@@ -1,0 +1,10 @@
+<map id="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad77681_iio/app/ad77681.h" name="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad77681_iio/app/ad77681.h">
+<area shape="rect" id="node1" title="Header file of the AD7768&#45;1 Driver." alt="" coords="397,5,620,76"/>
+<area shape="rect" id="node2" href="$ad77681_8c.html" title="Implementation of AD7768&#45;1 Driver." alt="" coords="5,124,228,195"/>
+<area shape="rect" id="node3" href="$ad77681__regs_8c.html" title="AD77681 registers map." alt="" coords="252,124,491,195"/>
+<area shape="rect" id="node4" href="$ad77681__support_8h.html" title=" " alt="" coords="515,124,777,195"/>
+<area shape="rect" id="node7" href="$ad77681__user__config_8h.html" title=" " alt="" coords="801,124,1088,195"/>
+<area shape="rect" id="node5" href="$ad77681__iio_8c.html" title="Implementation of AD7768&#45;1 IIO application interfaces." alt="" coords="675,243,902,313"/>
+<area shape="rect" id="node6" href="$ad77681__support_8c.html" title="AD7768&#45;1 No&#45;OS driver support file." alt="" coords="391,243,651,313"/>
+<area shape="rect" id="node8" href="$ad77681__user__config_8c.html" title=" " alt="" coords="926,243,1211,313"/>
+</map>

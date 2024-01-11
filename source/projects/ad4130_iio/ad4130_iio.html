@@ -1,0 +1,774 @@
+
+
+<!doctype html>
+
+<html lang="en" data-content_root="../../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>AD4130 IIO Application &#8212; precision-converters-firmware  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=649a27d8" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/bizstyle.css?v=532c1bf3" />
+    
+    <script src="../../../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/bizstyle.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="AD579X IIO Firmware Application" href="../ad579x_iio/index.html" />
+    <link rel="prev" title="AD4130 IIO Firmware Application" href="index.html" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <!--[if lt IE 9]>
+    <script src="_static/css3-mediaqueries.js"></script>
+    <![endif]-->
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../ad579x_iio/index.html" title="AD579X IIO Firmware Application"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="AD4130 IIO Firmware Application"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">precision-converters-firmware  documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../index.html" >Firmware Applications</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="index.html" accesskey="U">AD4130 IIO Firmware Application</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">AD4130 IIO Application</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="ad4130-iio-application">
+<h1>AD4130 IIO Application<a class="headerlink" href="#ad4130-iio-application" title="Link to this heading">¶</a></h1>
+<section id="supported-hardware">
+<h2>Supported Hardware<a class="headerlink" href="#supported-hardware" title="Link to this heading">¶</a></h2>
+<p><strong>Supported Devices:</strong></p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.analog.com/en/products/ad4130-8.html">AD4130-8</a></p></li>
+</ul>
+<p><strong>Supported Evaluation Boards:</strong></p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.analog.com/en/design-center/evaluation-hardware-and-software/evaluation-boards-kits/EVAL-AD4130-8.html">EVAL-AD4130-8WARDZ</a></p></li>
+</ul>
+<p><strong>Supported Carrier Boards:</strong></p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://os.mbed.com/platforms/SDP_K1/">SDP-K1 With Mbed</a></p></li>
+</ul>
+</section>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">¶</a></h2>
+<p>This guide gives an overview of using the IIO firmware application with Analog Devices
+AD4130 Evaluation board and SDP-K1 (or other compatible) MCU controller board,
+leveraging Mbed-OS as a primary software platform. This firmware application
+leverages the ADI developed IIO (Industrial Input Output) ecosystem to evaluate
+the AD4130 (IIO) device by providing device configuration and data capture support.</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../../_images/app_interface.png"><img alt="../../../_images/app_interface.png" src="../../../_images/app_interface.png" style="width: 350px;" /></a>
+</div></blockquote>
+<p>The interface used for communicating with PC based IIO clients is either Virtual Serial Or UART.
+IIO Firmware leverages the ADI created no-os and platform driver software layers
+to communicates with IIO device.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This code has been developed and tested on the SDP-K1 Controller Board with
+Arduino headers. However, the same code can be used with minimal modifications
+on any Mbed enabled board which has Arduino Header support on it. To find out
+all supported Mbed boards, refer this link: <a class="reference external" href="https://os.mbed.com/platforms/">https://os.mbed.com/platforms/</a></p>
+</div>
+</section>
+<section id="useful-links">
+<h2>Useful Links<a class="headerlink" href="#useful-links" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/analogdevicesinc/no-OS">no-OS: Software drivers for systems without OS</a></p></li>
+<li><p><a class="reference external" href="https://studio.keil.arm.com/auth/login/">Keil Studio Web IDE/Compiler</a></p></li>
+<li><p><a class="reference external" href="https://os.mbed.com/platforms/SDP_K1/">SDP-K1 on Mbed</a></p></li>
+<li><p><a class="reference external" href="https://github.com/analogdevicesinc/linux">Linux Drivers</a></p></li>
+<li><p><a class="reference external" href="https://github.com/analogdevicesinc/hdl">HDL Source Code</a></p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Linux and HDL are not used in emebdded IIO firmware projects but
+they may be of interest if you require Linux and/or FPGA support.</p>
+</div>
+</section>
+<section id="hardware-connections">
+<h2>Hardware Connections<a class="headerlink" href="#hardware-connections" title="Link to this heading">¶</a></h2>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../../_images/ad4130_hardware_connections.png"><img alt="../../../_images/ad4130_hardware_connections.png" src="../../../_images/ad4130_hardware_connections.png" style="width: 600px;" /></a>
+</div></blockquote>
+</section>
+<section id="jumper-settings">
+<h2>Jumper Settings<a class="headerlink" href="#jumper-settings" title="Link to this heading">¶</a></h2>
+<p><strong>SDP-K1:</strong></p>
+<p>Connect the VIO_ADJUST jumper on the SDP-K1 board to 3.3V position to drive SDP-K1 GPIOs at 3.3V</p>
+<p><strong>EVAL-AD4130 (Rev D):</strong></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Below jumper settings of AD4130 EVB are specific to sensor demo modes supported in the firmware. Change the
+jumper settings according to your requirements/demo configurations.</p>
+</div>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p>Jumper</p></td>
+<td><p>User Default Config</p></td>
+<td><p>Thermistor</p></td>
+<td><p>RTD</p></td>
+<td><p>Thermocouple</p></td>
+<td><p>ECG</p></td>
+<td><p>Power Test</p></td>
+</tr>
+<tr class="row-even"><td><p>LK1, LK2, LK3</p></td>
+<td><p>Short</p></td>
+<td><p>Short</p></td>
+<td><p>Short</p></td>
+<td><p>Short</p></td>
+<td><p>Short</p></td>
+<td><p>Short</p></td>
+</tr>
+<tr class="row-odd"><td><p>LK4</p></td>
+<td><p>A</p></td>
+<td><p>A</p></td>
+<td><p>Open</p></td>
+<td><p>Open</p></td>
+<td><p>Open</p></td>
+<td><p>A</p></td>
+</tr>
+<tr class="row-even"><td><p>LK5</p></td>
+<td><p>Open</p></td>
+<td><p>Open</p></td>
+<td><p>Open</p></td>
+<td><p>Open</p></td>
+<td><p>Open</p></td>
+<td><p>Open</p></td>
+</tr>
+<tr class="row-odd"><td><p>LK6</p></td>
+<td><p>Short</p></td>
+<td><p>Short</p></td>
+<td><p>Open</p></td>
+<td><p>Open</p></td>
+<td><p>Open</p></td>
+<td><p>Open</p></td>
+</tr>
+<tr class="row-even"><td><p>LK7</p></td>
+<td><p>A</p></td>
+<td><p>A</p></td>
+<td><p>A</p></td>
+<td><p>A</p></td>
+<td><p>A</p></td>
+<td><p>A</p></td>
+</tr>
+<tr class="row-odd"><td><p>LK8, LK9, LK10, LK11</p></td>
+<td><p>Open</p></td>
+<td><p>Open</p></td>
+<td><p>Open</p></td>
+<td><p>Open</p></td>
+<td><p>Open</p></td>
+<td><p>Short</p></td>
+</tr>
+<tr class="row-even"><td><p>LK12</p></td>
+<td><p>Open</p></td>
+<td><p>Open</p></td>
+<td><p>Open</p></td>
+<td><p>Open</p></td>
+<td><p>Open</p></td>
+<td><p>Open</p></td>
+</tr>
+<tr class="row-odd"><td><p>LK14</p></td>
+<td><p>Open</p></td>
+<td><p>Open</p></td>
+<td><p>Open</p></td>
+<td><p>Open</p></td>
+<td><p>Open</p></td>
+<td><p>Open</p></td>
+</tr>
+<tr class="row-even"><td><p>LK15, LK16</p></td>
+<td><p>A</p></td>
+<td><p>A</p></td>
+<td><p>A</p></td>
+<td><p>A</p></td>
+<td><p>A</p></td>
+<td><p>A</p></td>
+</tr>
+<tr class="row-odd"><td><p>LK17, LK18, LK19, LK20</p></td>
+<td><p>A</p></td>
+<td><p>A</p></td>
+<td><p>A</p></td>
+<td><p>A</p></td>
+<td><p>A</p></td>
+<td><p>A</p></td>
+</tr>
+<tr class="row-even"><td><p>LK21</p></td>
+<td><p>Open</p></td>
+<td><p>Open</p></td>
+<td><p>Open</p></td>
+<td><p>Open</p></td>
+<td><p>Open</p></td>
+<td><p>Open</p></td>
+</tr>
+<tr class="row-odd"><td><p>LK22</p></td>
+<td><p>Open</p></td>
+<td><p>Open</p></td>
+<td><p>Open</p></td>
+<td><p>Short</p></td>
+<td><p>Short</p></td>
+<td><p>Open</p></td>
+</tr>
+<tr class="row-even"><td><p>LK23, LK24</p></td>
+<td><p>Open</p></td>
+<td><p>Open</p></td>
+<td><p>Open</p></td>
+<td><p>Open</p></td>
+<td><p>Open</p></td>
+<td><p>Open</p></td>
+</tr>
+<tr class="row-odd"><td><p>LK25</p></td>
+<td><p>Open</p></td>
+<td><p>Open</p></td>
+<td><p>Open</p></td>
+<td><p>Open</p></td>
+<td><p>Open</p></td>
+<td><p>Open</p></td>
+</tr>
+<tr class="row-even"><td><p>LK26</p></td>
+<td><p>Short</p></td>
+<td><p>Short</p></td>
+<td><p>Short</p></td>
+<td><p>Short</p></td>
+<td><p>Short</p></td>
+<td><p>Short</p></td>
+</tr>
+<tr class="row-odd"><td><p>LK27</p></td>
+<td><p>B</p></td>
+<td><p>B</p></td>
+<td><p>B</p></td>
+<td><p>B</p></td>
+<td><p>B</p></td>
+<td><p>B</p></td>
+</tr>
+<tr class="row-even"><td><p>LK28</p></td>
+<td><p>B</p></td>
+<td><p>B</p></td>
+<td><p>B</p></td>
+<td><p>B</p></td>
+<td><p>B</p></td>
+<td><p>B</p></td>
+</tr>
+<tr class="row-odd"><td><p>LK29</p></td>
+<td><p>Short</p></td>
+<td><p>Short</p></td>
+<td><p>Short</p></td>
+<td><p>Short</p></td>
+<td><p>Short</p></td>
+<td><p>Short</p></td>
+</tr>
+<tr class="row-even"><td><p>LK30, LK31, LK32</p></td>
+<td><p>Open</p></td>
+<td><p>Open</p></td>
+<td><p>Open</p></td>
+<td><p>Open</p></td>
+<td><p>Open</p></td>
+<td><p>Open</p></td>
+</tr>
+<tr class="row-odd"><td><p>LK35</p></td>
+<td><p>Open</p></td>
+<td><p>Open</p></td>
+<td><p>Short</p></td>
+<td><p>Open</p></td>
+<td><p>Open</p></td>
+<td><p>Open</p></td>
+</tr>
+<tr class="row-even"><td><p>LK36</p></td>
+<td><p>Open</p></td>
+<td><p>Open</p></td>
+<td><p>Short</p></td>
+<td><p>Short</p></td>
+<td><p>Short</p></td>
+<td><p>Open</p></td>
+</tr>
+<tr class="row-odd"><td><p>LK37</p></td>
+<td><p>Open</p></td>
+<td><p>Short</p></td>
+<td><p>Open</p></td>
+<td><p>Open</p></td>
+<td><p>Open</p></td>
+<td><p>Open</p></td>
+</tr>
+<tr class="row-even"><td><p>LK45</p></td>
+<td><p>Open</p></td>
+<td><p>Open</p></td>
+<td><p>Open</p></td>
+<td><p>Open</p></td>
+<td><p>Open</p></td>
+<td><p>Open</p></td>
+</tr>
+<tr class="row-odd"><td><p>J4</p></td>
+<td><p>Open</p></td>
+<td><p>NA</p></td>
+<td><p>NA</p></td>
+<td><p>NA</p></td>
+<td><p>NA</p></td>
+<td><p>NA</p></td>
+</tr>
+<tr class="row-even"><td><p>J5</p></td>
+<td><p>Open</p></td>
+<td><p>NA</p></td>
+<td><p>NA</p></td>
+<td><p>NA</p></td>
+<td><p>NA</p></td>
+<td><p>NA</p></td>
+</tr>
+<tr class="row-odd"><td><p>AVDD SW</p></td>
+<td><p>3.3v POS</p></td>
+<td><p>3.3v POS</p></td>
+<td><p>3.3v POS</p></td>
+<td><p>3.3v POS</p></td>
+<td><p>NA</p></td>
+<td><p>3.3v POS</p></td>
+</tr>
+<tr class="row-even"><td><p>IOVDD SW</p></td>
+<td><p>3.3v POS</p></td>
+<td><p>3.3v POS</p></td>
+<td><p>3.3v POS</p></td>
+<td><p>3.3v POS</p></td>
+<td><p>NA</p></td>
+<td><p>3.3v POS</p></td>
+</tr>
+<tr class="row-odd"><td><p>REFIN+/- SW</p></td>
+<td><p>REFIN1+/-</p></td>
+<td><p>REFIN1+/-</p></td>
+<td><p>REFIN1+/-</p></td>
+<td><p>REFIN1+/-</p></td>
+<td><p>NA</p></td>
+<td><p>REFIN1+/-</p></td>
+</tr>
+<tr class="row-even"><td><p>T_AVDD</p></td>
+<td><p>A</p></td>
+<td><p>A</p></td>
+<td><p>A</p></td>
+<td><p>A</p></td>
+<td><p>NA</p></td>
+<td><p>A</p></td>
+</tr>
+<tr class="row-odd"><td><p>T_IOVDD</p></td>
+<td><p>A</p></td>
+<td><p>A</p></td>
+<td><p>A</p></td>
+<td><p>A</p></td>
+<td><p>NA</p></td>
+<td><p>A</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="communication-interface">
+<h2>Communication Interface<a class="headerlink" href="#communication-interface" title="Link to this heading">¶</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For data transmission to IIO clients, IIO firmware applications uses <em>Virtual Serial</em>
+Or <em>UART</em> as primary communication links. Firmware by default uses the Virtual Serial
+interface for higher speed data transmission as SDP-K1 MCU board and Mbed firmware supports
+both Virtual Serial and UART interface. If you target a different MCU board that does not
+support Virtual Serial, just set UART as communication link in the firmware (app_config.h file).</p>
+</div>
+<p>SDP-K1 is powered through USB connection from the computer. SDP-K1 MCU board
+acts as a serial device when connected to PC, which creates a serial ports to connect to IIO
+client application running on PC. The serial port assigned to a device can be seen
+through the device manager for windows-based OS as shown below:</p>
+<a class="reference internal image-reference" href="../../../_images/serial_ports_view.png"><img alt="../../../_images/serial_ports_view.png" src="../../../_images/serial_ports_view.png" style="width: 350px;" /></a>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The serial port naming is used differently on different operating systems.
+For example, Linux uses terms such as dev/ttyUSB* and Mac uses terms such as dev/tty.USB*.
+Please check serial port naming for your selected OS.</p>
+</div>
+<p><strong>Identifying Virtual Serial Port (Windows-OS):</strong></p>
+<p>To identify if serial port is virtual, right click on the port name and select ‘Properties’.
+Select ‘Events’ from menu option and check for below highlighted VIDs/PIDs and
+firmware name which is currently running on MCU.</p>
+<a class="reference internal image-reference" href="../../../_images/identifying_virtual_serial_port.png"><img alt="../../../_images/identifying_virtual_serial_port.png" src="../../../_images/identifying_virtual_serial_port.png" style="width: 350px;" /></a>
+<p>SDP-K1 can support high speed Virtual Serial USB interface, so by default Virtual Serial
+is configured as default interface in the Mbed firmware. The interface can be set to
+Physical (UART) serial port by defining macro <strong>USE_PHY_COM_PORT</strong> in the app_config.h file.</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="cm">/* Enable the UART/VirtualCOM port connection (default VCOM) */</span>
+<span class="c1">//#define USE_PHY_COM_PORT           // Uncomment to select UART</span>
+</pre></div>
+</div>
+</section>
+<section id="build-guide">
+<h2>Build Guide<a class="headerlink" href="#build-guide" title="Link to this heading">¶</a></h2>
+<details class="summary-build-prerequisites" open>
+<summary>Build Prerequisites</summary><blockquote>
+<div><p>Prior to building a firmware project, it is required to set up an environment so
+that the build process may find the necessary tools (compiler, linker, SDK etc.).
+Use the following steps to prepare your environment for building firmware projects
+for respective platform.</p>
+<details class="summary-windows">
+<summary>Windows</summary><details class="summary-mbed">
+<summary>Mbed</summary><details class="summary-for-web-online-build">
+<summary>For Web/Online Build</summary><ul class="simple">
+<li><p>Visit <a class="reference external" href="https://www.keil.arm.com/">Arm Keil website</a> to create an user account for accessing the web based Keil Studio IDE.</p></li>
+<li><p>Open <a class="reference external" href="https://studio.keil.arm.com/auth/login/">Keil Studio Web IDE</a> with registered user account</p></li>
+</ul>
+</details><details class="summary-for-make-build">
+<summary>For Make Build</summary><ul class="simple">
+<li><p>Clone Precision Converters Firmware repository with the –recursive flag (not needed if building with web IDE for Mbed platform):</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>--recursive<span class="w"> </span>https://github.com/analogdevicesinc/precision-converters-firmware
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>If however you’ve already cloned the repository without the –recursive flag, you may initialize all the submodules in an existing cloned repo with:</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>submodule<span class="w"> </span>update<span class="w"> </span>--recursive<span class="w"> </span>--init
+</pre></div>
+</div>
+<ul>
+<li><p>Install <a class="reference external" href="https://gnuwin32.sourceforge.net/packages/make.htm">Make</a> in the root of ‘C’ drive without any spaces in the installation path. The path must be <strong>C:\GnuWin32\…</strong>. Add this path into the system environmental path variable (as shown in below screenshot).</p></li>
+<li><p>Install <a class="reference external" href="https://git-scm.com/downloads">Git</a> and add a path of <strong>C:\Program Files\Git\usr\bin\</strong> directory into system environmental path variable (please verify your git installation path is correct).</p></li>
+<li><p>Install Mbed CLI 1 as per guide <a class="reference external" href="https://os.mbed.com/docs/mbed-os/v6.15/build-tools/install-and-set-up.html">here</a>.</p></li>
+<li><p>Install <a class="reference external" href="https://developer.arm.com/downloads/-/gnu-rm.">GNU Arm Embedded compiler</a> (for the development, 9-2019-q4-major version is used) and add a path of GNU Arm Embedded Toolchain bin directory into the system environmental path variable (as shown in below screenshot).</p></li>
+<li><p>Configure the compiler location with Mbed CLI. This can be carried out by running the <strong>mbed config -G GCC_ARM_PATH &lt;path-to-your-gcc-compiler&gt;</strong> in Command Prompt. For example you can run <strong>mbed config -G GCC_ARM_PATH “C:\Program Files (x86)\GNU Tools ARM Embedded\9 2019-q4-major\bin”</strong> in command prompt. It will set mentioned compiler path to all the Mbed Projects.</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../../_images/environmental_variables.png"><img alt="../../../_images/environmental_variables.png" src="../../../_images/environmental_variables.png" style="width: 400px;" /></a>
+</div></blockquote>
+</li>
+</ul>
+</details></details><details class="summary-stm32">
+<summary>STM32</summary><details class="summary-for-stm32-ide-based-build">
+<summary>For STM32 IDE based Build</summary><ul>
+<li><p>Install <a class="reference external" href="https://www.st.com/en/development-tools/stm32cubeide.html">STM32CubeIDE</a></p></li>
+<li><p>Install <a class="reference external" href="https://www.st.com/en/development-tools/stm32cubemx.html">STM32CubeMX</a></p></li>
+<li><p>Install <a class="reference external" href="https://git-scm.com/downloads">Git</a> and add a path of <strong>C:\Program Files\Git\usr\bin\</strong> directory into system environmental path variable (please verify your git installation path is correct).</p></li>
+<li><p>Install <a class="reference external" href="https://gnuwin32.sourceforge.net/packages/make.htm">Make</a> in the root of ‘C’ drive without any spaces in the installation path. The path must be <strong>C:\GnuWin32\…</strong>. Add this path into the system environmental path variable (as shown in below screenshot).</p></li>
+<li><p>Install <a class="reference external" href="https://developer.arm.com/downloads/-/gnu-rm.">GNU Arm Embedded compiler</a> (for the development, 9-2019-q4-major version is used) and add a path of GNU Arm Embedded Toolchain bin directory into the system environmental path variable (as shown in below screenshot).</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../../_images/environmental_variables.png"><img alt="../../../_images/environmental_variables.png" src="../../../_images/environmental_variables.png" style="width: 400px;" /></a>
+</div></blockquote>
+</li>
+</ul>
+</details></details></details></div></blockquote>
+</details><details class="summary-building-a-project" open>
+<summary>Building a project</summary><blockquote>
+<div><p>Once the build enviornment is setup, follow the guide below to build your project
+and generate executable file (.bin/.hex)</p>
+<details class="summary-windows">
+<summary>Windows</summary><details class="summary-mbed">
+<summary>Mbed</summary><details class="summary-build-using-web-online-ide">
+<summary>Build Using Web/Online IDE</summary><ul>
+<li><p>Clone the <a class="reference external" href="https://github.com/analogdevicesinc/precision-converters-firmware">Precision Converters Firmware repository</a> into Keil Studio using “File-&gt;clone…” menu.</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../../_images/mbed_keil_studio_project_clone.png"><img alt="../../../_images/mbed_keil_studio_project_clone.png" src="../../../_images/mbed_keil_studio_project_clone.png" style="width: 600px;" /></a>
+</div></blockquote>
+</li>
+<li><p>Once the project repository is imported, wait until all library dependencies are imported as shown in below screenshot. Now, open the ‘.medignore’ file present in the root directory of repository. Add comment syntax (two forward slashes) in front of the project name which you want to build. This will ignore all other projects and build only the comment syntax selected project.</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../../_images/mbedignore_changes.png"><img alt="../../../_images/mbedignore_changes.png" src="../../../_images/mbedignore_changes.png" style="width: 600px;" /></a>
+</div></blockquote>
+</li>
+<li><p>Select the target device (default used for development is SDP-K1) and click on ‘Clean build’ option to build the project. After a successful build a binary will be downloaded to your computer- store this on your drive. Drag and drop this binary to the USB drive hosted by your controller board to flash the MCU.</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../../_images/mbed_build.png"><img alt="../../../_images/mbed_build.png" src="../../../_images/mbed_build.png" style="width: 400px;" /></a>
+</div></blockquote>
+</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you intend to build different project, then modify the .medignore file in the root directory as
+mentioned in step2 and clean build project as mentioned in step3</p>
+</div>
+</details><details class="summary-build-using-make">
+<summary>Build Using Make</summary><ul class="simple">
+<li><p>Open Git bash and change current directory to project directory (eg. <strong>precision-converters-firmware/projects/ad4130_iio</strong> directory) which you want to build.</p></li>
+<li><p>Type <strong>make</strong> on the git bash command prompt to build a project.</p></li>
+<li><p>After successful build, binary file will be created into the <strong>Project_Name/build</strong> directory.</p></li>
+<li><p>If you want to clean build, type <strong>make reset</strong> on git bash command which deletes all generated build files for the given project.</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Default TARGET_BOARD is SDP_K1 and COMPILER is GCC_ARM. Current Make based build only support GCC_ARM Compiler.</p>
+</div>
+<ul class="simple">
+<li><p>By default project is built for “SDP_K1” Board and “GCC_ARM” Compiler. If you want to build for other Mbed Board, For example If you want to build the project for “DISCO_F769NI” Board then run <strong>make TARGET_BOARD=DISCO_F769NI</strong> command in git bash command prompt. If you want to clean build, run <strong>make reset TARGET_BOARD=DISCO_F769NI</strong> command to delete the generated build files for the given project.</p></li>
+</ul>
+</details></details><details class="summary-stm32">
+<summary>STM32</summary><details class="summary-build-using-stm32-ide">
+<summary>Build Using STM32 IDE</summary><ul>
+<li><p>Open the respective project directory by navigating into the “precision_converters_firmware/projects/” folder.</p></li>
+<li><p>In the “STM32” folder present within the project directory, double click and open the .ioc file present within.</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../../_images/stm32_project_directory.png"><img alt="../../../_images/stm32_project_directory.png" src="../../../_images/stm32_project_directory.png" style="width: 600px;" /></a>
+</div></blockquote>
+</li>
+<li><p>Click on the “Generate Code” option seen on the top right corner</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../../_images/stm32_generate_code.png"><img alt="../../../_images/stm32_generate_code.png" src="../../../_images/stm32_generate_code.png" style="width: 600px;" /></a>
+</div></blockquote>
+</li>
+<li><p>Upon successful generation of drivers for the selected MCU, the autogenerated files would be seen in the same directory where the .ioc file was present. Double click and open the “.project” file seen in the list of files</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../../_images/stm32_auto_generated_files.png"><img alt="../../../_images/stm32_auto_generated_files.png" src="../../../_images/stm32_auto_generated_files.png" style="width: 600px;" /></a>
+</div></blockquote>
+</li>
+<li><p>After the project is loaded to the STM32CubeIDE, unfold the adxxxx_iio project seen in the project explorer, right click the “app” folder, select “Settings” under the “C/C++ Build” section on the left pane and un-check the “Exclude resources from build” checkbox. This would ensure that the project specific files are included by the build system</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../../_images/stm32_exclude_files_option.png"><img alt="../../../_images/stm32_exclude_files_option.png" src="../../../_images/stm32_exclude_files_option.png" style="width: 600px;" /></a>
+</div></blockquote>
+</li>
+<li><p>In order to choose STM32 platform in the firmware, select the “ACTIVE_PLATFORM” as “STM32_PLATFORM” in the app_config.h from the respective project.</p></li>
+<li><p>Add compiler flags “-u _printf_float” to the project settings.</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../../_images/stm32_compiler_flag.png"><img alt="../../../_images/stm32_compiler_flag.png" src="../../../_images/stm32_compiler_flag.png" style="width: 600px;" /></a>
+</div></blockquote>
+</li>
+<li><p>Program by clicking on the “Run adxxxx_iio” option seen or by performing a copy-&gt;paste option of the .hex file seen in the STM32/Debug folder</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../../_images/stm32_run_option.png"><img alt="../../../_images/stm32_run_option.png" src="../../../_images/stm32_run_option.png" style="width: 600px;" /></a>
+</div></blockquote>
+</li>
+</ul>
+</details></details></details></div></blockquote>
+</details><details class="summary-running-a-project" open>
+<summary>Running a project</summary><blockquote>
+<div><p>Once the firmware build is successful and binary file is generated, copy the
+generated binary into USB drive hosted by your MCU board (e.g. USB drive hosted
+by SDP-K1 board on windows). This will flash the binary file into MCU present
+on the controller board. Programming might vary based on the tools used for building
+a project. The ‘Project Build’ section above talks about this exception at the end
+of all build steps.</p>
+</div></blockquote>
+</details></section>
+<section id="using-the-iio-ecosystem">
+<h2>Using the IIO Ecosystem<a class="headerlink" href="#using-the-iio-ecosystem" title="Link to this heading">¶</a></h2>
+<p>IIO (Industrial Input/Output) is a flexible ecosystem that allows various
+client tools to communicate with IIO device to configure the device, capture device
+data, generate waveforms, access registers, etc. Below diagram demonstrates the
+high level architecture of IIO ecosystem.</p>
+<p><a class="reference external" href="https://wiki.analog.com/resources/tools-software/linux-software/libiio">https://wiki.analog.com/resources/tools-software/linux-software/libiio</a></p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../../_images/flexible_iio_ecosystem.png"><img alt="../../../_images/flexible_iio_ecosystem.png" src="../../../_images/flexible_iio_ecosystem.png" style="width: 600px;" /></a>
+</div></blockquote>
+</section>
+<section id="iio-tools">
+<h2>IIO Tools:<a class="headerlink" href="#iio-tools" title="Link to this heading">¶</a></h2>
+<p><a class="reference internal" href="../../iio_osc/iio_osc.html"><span class="doc">IIO Oscilloscope</span></a>
+ADI IIO Oscilloscope is a cross platform GUI application, which demonstrates how
+to interface different evaluation boards within an IIO ecosystem. It supports
+raw data capture, FFT analysis, DMM measurement, device configuration, register
+read/write and data streaming.</p>
+<p><a class="reference internal" href="../../python/python.html"><span class="doc">pyadi-iio: Python interfaces</span></a>
+Analog Devices python interfaces for hardware with Industrial I/O drivers. It
+provides python based scripts for raw data capture, device configuration
+and register read/write.</p>
+<p><a class="reference external" href="https://www.analog.com/en/design-center/evaluation-hardware-and-software/evaluation-development-platforms/ace-software.html">ACE</a>
+ADI’s “Analysis, Control, Evaluation” (ACE) is a desktop software application
+which allows the evaluation and control of multiple evaluation systems.</p>
+<p><a class="reference external" href="https://github.com/analogdevicesinc/PrecisionToolbox">Precision Converters MATLAB Toolbox</a>
+Toolbox created by ADI to be used with MATLAB and Simulink with ADI Precision products.</p>
+<p><a class="reference external" href="https://wiki.analog.com/resources/tools-software/linux-software/libiio/iio_info">IIO Command Line</a>
+Command line interface for accessing IIO device parameters.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>These are the general evaluation and prototyping tools for Precision Converters
+but not all converters are supported. In some cases these tools provide generic
+IIO support (e.g. ACE, IIO Oscilloscope) and can provide basic functionality
+with any IIO based system. In other cases if a part is not currently supported,
+it is possible to add support for converters that you need due to the open
+source nature of the tools.</p>
+</div>
+</section>
+<section id="ad4130-sensor-demo-modes">
+<h2>AD4130 Sensor Demo Modes<a class="headerlink" href="#ad4130-sensor-demo-modes" title="Link to this heading">¶</a></h2>
+<p>AD4130 IIO firmware provides support for interfacing different sensors to analog
+inputs and perform the measurement on them. Below sensor demo modes are supported in the firmware.</p>
+<ul class="simple">
+<li><p>User Default Config (All channels test)</p></li>
+<li><p>2-wire/3-wire/4-wire RTD (Default is PT100)</p></li>
+<li><p>Thermistor (Default is 10K NTC)</p></li>
+<li><p>Thermocouple (Default is T type TC and PT1000 RTD as CJC)</p></li>
+<li><p>Load Cell (4-wire bridge)</p></li>
+<li><p>Noise Test (AIN0-AIN1 shorted)</p></li>
+<li><p>ECG</p></li>
+<li><p>Power Test (ADC internal channels voltage/current measurement)</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The demo mode configurations can be changed from respective user_config
+header files and some sensor specific parameters can be updated from
+ad4130_temperature_sensor.cpp file.</p>
+</div>
+</section>
+<section id="demo-mode-selection">
+<h2>Demo Mode Selection<a class="headerlink" href="#demo-mode-selection" title="Link to this heading">¶</a></h2>
+<p>The sensor mode selection is done from “app_config.h” file using “ACTIVE_DEMO_MODE_CONFIG”
+macro. The selection is done at compilation time, that means only one sensor demo
+mode is active at a time. Whenever demo mode is changed from app_config.h file,
+the code must be compiled again to generate a new binary file for that.</p>
+</section>
+<section id="demo-mode-user-configuration">
+<h2>Demo Mode User Configuration<a class="headerlink" href="#demo-mode-user-configuration" title="Link to this heading">¶</a></h2>
+<p>Firmware maintains the unique user configuration file for each sensor demo mode
+as per below table. The configurations can be updated by using .c and .h user config files.</p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p>Demo Mode</p></td>
+<td colspan="3"><p>User Config Files</p></td>
+</tr>
+<tr class="row-even"><td><p>2-wire/3-wire/4-wire RTD</p></td>
+<td colspan="3"><p>ad4130_rtd_config.c/.h</p></td>
+</tr>
+<tr class="row-odd"><td><p>Thermistor</p></td>
+<td colspan="3"><p>ad4130_thermistor_config.c/.h</p></td>
+</tr>
+<tr class="row-even"><td><p>Thermocouple</p></td>
+<td colspan="3"><p>ad4130_thermocouple_config.c/.h</p></td>
+</tr>
+<tr class="row-odd"><td><p>Load Cell</p></td>
+<td colspan="3"><p>ad4130_loadcell_config.c/.h</p></td>
+</tr>
+<tr class="row-even"><td><p>Noise Test</p></td>
+<td colspan="3"><p>ad4130_noise_test_config.c/.h</p></td>
+</tr>
+<tr class="row-odd"><td><p>ECG</p></td>
+<td colspan="3"><p>ad4130_ecg_config.c/.h</p></td>
+</tr>
+<tr class="row-even"><td><p>Power Test</p></td>
+<td colspan="3"><p>ad4130_power_test_config.c/.h</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="sensor-measurement">
+<h2>Sensor Measurement<a class="headerlink" href="#sensor-measurement" title="Link to this heading">¶</a></h2>
+<p>Sensor measurement for RTD, Thermistor, Thermocouple, Noise Test, ECG, Power Test
+and User Default Config can be done using the IIO oscilloscope GUI client application
+or by executing python scripts from the ‘scripts’ folder. Temperature result for RTD,
+TC and Thermistor would be in degree Celsius. The result for other configs would in voltage/current.</p>
+<p>Refer to this guide here to setup IIO enviornment for sensor measurements if not already done:
+<a class="reference internal" href="../../tinyiiod/iio_ecosystem.html"><span class="doc">Setting-up IIO Ecosystem</span></a></p>
+<p>Sensor measurement for Load Cell can be done by executing the python script available
+in the project “scripts” folder. IIO oscilloscope can only support measurement for voltage,
+current and temperature quantities and therefore python code is developed to support
+measurement for other sensor types.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>python<span class="w"> </span>ad4130_sensor_measurement.py
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../../../_images/ad4130_sensor_demo_console.png"><img alt="../../../_images/ad4130_sensor_demo_console.png" src="../../../_images/ad4130_sensor_demo_console.png" style="width: 500px;" /></a>
+</section>
+<section id="sensor-channels-calibration">
+<h2>Sensor Channels Calibration<a class="headerlink" href="#sensor-channels-calibration" title="Link to this heading">¶</a></h2>
+<p>It is possible to calibrate the device channels which are connected to external
+sensors. The sensors calibration (gain and offset) is done by executing the python
+script “ad4130_calibration.py”.</p>
+</section>
+<section id="iio-firmware-structure">
+<h2>IIO Firmware Structure<a class="headerlink" href="#iio-firmware-structure" title="Link to this heading">¶</a></h2>
+<p>Below diagram illustrates the architecture of Precision Converters IIO
+firmware applications.</p>
+<a class="reference internal image-reference" href="../../../_images/firmware_architecture.png"><img alt="../../../_images/firmware_architecture.png" src="../../../_images/firmware_architecture.png" style="width: 500px;" /></a>
+</section>
+<section id="support">
+<h2>Support<a class="headerlink" href="#support" title="Link to this heading">¶</a></h2>
+<p>Feel free to ask questions in the <a class="reference external" href="https://ez.analog.com/data_converters">EngineerZone</a></p>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../../../index.html">
+              <img class="logo" src="../../../_static/adi_logo.png" alt="Logo"/>
+            </a></p>
+  <div>
+    <h3><a href="../../../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">AD4130 IIO Application</a><ul>
+<li><a class="reference internal" href="#supported-hardware">Supported Hardware</a></li>
+<li><a class="reference internal" href="#introduction">Introduction</a></li>
+<li><a class="reference internal" href="#useful-links">Useful Links</a></li>
+<li><a class="reference internal" href="#hardware-connections">Hardware Connections</a></li>
+<li><a class="reference internal" href="#jumper-settings">Jumper Settings</a></li>
+<li><a class="reference internal" href="#communication-interface">Communication Interface</a></li>
+<li><a class="reference internal" href="#build-guide">Build Guide</a></li>
+<li><a class="reference internal" href="#using-the-iio-ecosystem">Using the IIO Ecosystem</a></li>
+<li><a class="reference internal" href="#iio-tools">IIO Tools:</a></li>
+<li><a class="reference internal" href="#ad4130-sensor-demo-modes">AD4130 Sensor Demo Modes</a></li>
+<li><a class="reference internal" href="#demo-mode-selection">Demo Mode Selection</a></li>
+<li><a class="reference internal" href="#demo-mode-user-configuration">Demo Mode User Configuration</a></li>
+<li><a class="reference internal" href="#sensor-measurement">Sensor Measurement</a></li>
+<li><a class="reference internal" href="#sensor-channels-calibration">Sensor Channels Calibration</a></li>
+<li><a class="reference internal" href="#iio-firmware-structure">IIO Firmware Structure</a></li>
+<li><a class="reference internal" href="#support">Support</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="index.html"
+                          title="previous chapter">AD4130 IIO Firmware Application</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="../ad579x_iio/index.html"
+                          title="next chapter">AD579X IIO Firmware Application</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../../_sources/source/projects/ad4130_iio/ad4130_iio.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../ad579x_iio/index.html" title="AD579X IIO Firmware Application"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="AD4130 IIO Firmware Application"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">precision-converters-firmware  documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../index.html" >Firmware Applications</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="index.html" >AD4130 IIO Firmware Application</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">AD4130 IIO Application</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+    &#169; Copyright 2023, Analog Devices Inc..
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.2.6.
+    </div>
+  </body>
+</html>

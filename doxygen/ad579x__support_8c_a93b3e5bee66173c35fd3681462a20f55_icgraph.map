@@ -1,0 +1,4 @@
+<map id="ad579x_reconfig_ldac" name="ad579x_reconfig_ldac">
+<area shape="rect" id="node1" title="Reconfigure LDAC pin as GPIO output." alt="" coords="251,5,413,32"/>
+<area shape="rect" id="node2" href="$ad579x__iio_8c.html#ac2e66ef78cbb3082ab0cbb107dfb5280" title="Set the sampling rate and get the updated value supported by MCU platform." alt="" coords="5,5,203,32"/>
+</map>

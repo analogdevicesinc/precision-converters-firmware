@@ -1,0 +1,5 @@
+<map id="update_dma_buffer_overflow" name="update_dma_buffer_overflow">
+<area shape="rect" id="node1" title="Update the TDM DMA buffer overflow flag." alt="" coords="211,31,421,57"/>
+<area shape="rect" id="node2" href="$ad7134__iio_2app_2app__config__stm32_8c.html#af31dad6f65ec19bb300fdd94269b9e8f" title="SAI DMA Receive Complete Callback function." alt="" coords="5,5,163,32"/>
+<area shape="rect" id="node3" href="$ad777x__iio_2app_2app__config__stm32_8c.html#a120661e07279f0d4db3165cf61fda27b" title="SAI DMA Receive Complete Callback function." alt="" coords="5,56,163,83"/>
+</map>

@@ -1,0 +1,4 @@
+<map id="pl_gui_is_capture_running" name="pl_gui_is_capture_running">
+<area shape="rect" id="node1" title="Capture running status check." alt="" coords="195,5,385,32"/>
+<area shape="rect" id="node2" href="$pl__gui__events_8c.html#af58bdc315575d596c65a4bf30756dbdf" title="Read the pocket lab GUI event and form (an IIO) command string." alt="" coords="5,5,147,32"/>
+</map>

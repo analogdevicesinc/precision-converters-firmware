@@ -1,0 +1,4 @@
+<map id="ad77681_read_single_sample" name="ad77681_read_single_sample">
+<area shape="rect" id="node1" title="Read ADC single sample data." alt="" coords="128,5,288,47"/>
+<area shape="rect" id="node2" href="$ad77681__iio_8c.html#a38646b408e4ff3656274ee74faadacdb" title="Getter/Setter for the raw attribute value." alt="" coords="5,13,80,39"/>
+</map>

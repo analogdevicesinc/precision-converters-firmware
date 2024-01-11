@@ -1,0 +1,4 @@
+<map id="ad4130_get_reference_voltage" name="ad4130_get_reference_voltage">
+<area shape="rect" id="node1" title="Get reference voltage based on the reference source." alt="" coords="211,5,377,47"/>
+<area shape="rect" id="node2" href="$ad4130__support_8c.html#ae8230dac0e41f655c3872e9dce2079d5" title="Convert ADC data to voltage w.r.t Vref." alt="" coords="5,5,163,47"/>
+</map>

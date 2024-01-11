@@ -1,0 +1,4 @@
+<map id="ad469x_trigger_conversion" name="ad469x_trigger_conversion">
+<area shape="rect" id="node1" title="Toggles conversion pin to trigger a new conversion." alt="" coords="205,13,404,39"/>
+<area shape="rect" id="node2" href="$ad4696__support_8c.html#a919926914a0ef3a6b54b10faffabdd27" title="Read single sample from the ADC." alt="" coords="5,5,157,47"/>
+</map>

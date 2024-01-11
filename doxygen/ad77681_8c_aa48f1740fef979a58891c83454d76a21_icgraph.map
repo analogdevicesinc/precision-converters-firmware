@@ -1,0 +1,6 @@
+<map id="ad77681_spi_read_adc_data" name="ad77681_spi_read_adc_data">
+<area shape="rect" id="node1" title=" " alt="" coords="571,13,777,39"/>
+<area shape="rect" id="node2" href="$ad77681__support_8c.html#ad8535bb0e68522192a8badae02480691" title="Read ADC raw data for recently sampled channel." alt="" coords="336,5,523,47"/>
+<area shape="rect" id="node3" href="$ad77681__support_8c.html#a89d566f10bd54ad8fa8438645d22d51b" title="Read ADC single sample data." alt="" coords="128,5,288,47"/>
+<area shape="rect" id="node4" href="$ad77681__iio_8c.html#a38646b408e4ff3656274ee74faadacdb" title="Getter/Setter for the raw attribute value." alt="" coords="5,13,80,39"/>
+</map>

@@ -1,0 +1,4 @@
+<map id="adi_get_decimal_int" name="adi_get_decimal_int">
+<area shape="rect" id="node1" title="Reads a decimal string from the user." alt="" coords="221,13,375,39"/>
+<area shape="rect" id="node2" href="$adi__console__menu_8c.html#abfb5543d72a6daeaa664cb22a70ae185" title="Handles the integer type input from the user by displaying the menu message and provides a set number..." alt="" coords="5,5,173,47"/>
+</map>

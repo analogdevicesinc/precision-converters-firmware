@@ -1,0 +1,4 @@
+<map id="pl_gui_is_dmm_running" name="pl_gui_is_dmm_running">
+<area shape="rect" id="node1" title="DMM running status check." alt="" coords="209,5,385,32"/>
+<area shape="rect" id="node2" href="$pl__gui__events_8c.html#a97eaab98213ff63e7f6bb8f4acef32a6" title="Handle lvgl GUI events." alt="" coords="5,5,161,32"/>
+</map>

@@ -1,0 +1,5 @@
+<map id="ltc2488_init" name="ltc2488_init">
+<area shape="rect" id="node1" title="Initialize the ltc2488 device structure." alt="" coords="320,5,419,32"/>
+<area shape="rect" id="node2" href="$ad590__console__app_8c.html#a0d876d508cbc2b5cb15365ff892e3253" title="Initialize the LTC2488 device and user configurations." alt="" coords="108,5,272,32"/>
+<area shape="rect" id="node3" href="$ad590__console_2app_2main_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title="Main entry point to application." alt="" coords="5,5,60,32"/>
+</map>
