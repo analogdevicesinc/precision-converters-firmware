@@ -10,3 +10,4 @@ Firmware Applications
    /source/projects/ad7606_iio/index.rst
    /source/projects/ad77681_iio/index.rst
    /source/projects/ad738x_iio/index.rst
+   /source/projects/ad7124_temperature-measure/index.rst
