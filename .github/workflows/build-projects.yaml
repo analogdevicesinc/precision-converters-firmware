@@ -16,6 +16,7 @@ jobs:
           - ad4130_iio
           - ad559xr_console
           - ad5770r_console
+          - ad579x_iio
           - ad590_console
           - ad5933_console
           - ad7124_console
