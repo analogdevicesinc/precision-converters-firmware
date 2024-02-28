@@ -119,11 +119,9 @@ For other boards, refer respective user manual for more details.
 
 .. include:: /source/hardware/comm_interface.rst
 
-
 .. Project Build Section:
     
 .. include:: /source/build/project_build.rst
-
 
 .. IIO Ecosystem Section:
     

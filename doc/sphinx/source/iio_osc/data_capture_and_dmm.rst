@@ -1,8 +1,25 @@
-================================
-IIO Data Capture and Limitations
-================================
+==================================================
+Using DMM Tab to Read DC Voltage on Input Channels
+==================================================
 
-============
+DMM tab can be used read the instantaneous voltage applied on analog input channels. 
+Simply select the device and channels to read and press start button.
+
+.. note::
+   
+   The voltage is just instantaneous, so it is not possible to get RMS AC voltage
+   or averaged DC voltage. Also, when using DMM tab, do not access/use the Data 
+   capture or Debug tab as this could impact data capturing. All uses same 
+   communication bus to access the data which could result into access/busy conflicts
+   during data capture.
+
+.. image:: /source/iio_osc/iio_osc_dmm_tab.png
+   :width: 500
+
+=========================
+IIO Data Capture for ADCs
+=========================
+
 Introduction
 ============
 
@@ -37,6 +54,54 @@ stored as shown below:
 
 .. image:: /source/iio_osc/iio_osc_select_chn_samples.png
     :width: 800
+
+Data Capture from IIO Device
+============================
+
+To capture the data from IIO device, simply select the device and channels
+to read/capture data. The data is plotted as “ADC Raw Value” Vs “Number of Samples” 
+and is just used for Visualization. The data is read as is from device without 
+any processing. If user wants to process the data, it must be done externally 
+by capturing data from the Serial link on controller board.
+
+.. note::
+   
+   The DMM or Debug tab should not be accessed when capturing data as this would 
+   impact data capturing. All uses same communication bus to access the data which 
+   could result into access/busy conflicts during data capture.
+
+*Time Domain plot:*
+
+   .. image:: /source/iio_osc/iio_osc_time_domain_plot.png
+      :width: 800
+
+*Frequency Domain plot:*
+
+   .. image:: /source/iio_osc/iio_osc_freq_domain_plot.png
+      :width: 800
+
+.. note::
+
+      Select number of samples and channels according to sampling rate of your
+      device. For very slow ODRs, the data capturing would be too slow and 
+      IIO oscilloscope might become unresponsive waiting for data to be received
+      from IIO device.
+
+Saving Captured Data
+====================
+
+The data on IIO oscilloscope can be saved for further processing and analysis. The
+data is saved using a .csv format. The data can be captured for each selected 
+channel during save option and only requested number of samples can be saved. So 
+if 400 samples are requested, the data for only 400 samples would get saved into 
+.csv file. The data is raw adc data and no extra processing is performed it while 
+saving or capturing.
+
+.. image:: /source/iio_osc/iio_osc_data_save.png
+    :width: 600
+
+The data saving feature is also available with other IIO client applications such as
+python and ACE.
 
 =================================================
 Limitations of Data Capture Using IIO Application
@@ -137,27 +202,10 @@ Mbed firmware (app_config.h file), the data buffer size can be increased to 16Mb
 .. code-block:: C
 
     /* Enable/Disable the use of SDRAM for ADC data capture buffer */
-    //#define USE_SDRAM		// Uncomment to use SDRAM for data buffer
+    //#define USE_SDRAM     // Uncomment to use SDRAM for data buffer
 
 IIO firmware maintains the circular data buffer with dedicated read and write indices.
 Below diagram illustrates the use of circular buffer in the firmware.
 
-.. image:: /source/tinyiiod/iio_data_capture_in_firmware.png
+.. image:: /source/iio_osc/iio_data_capture_in_firmware.png
     :width: 600
-
-====================
-Saving Captured Data
-====================
-
-The data on IIO oscilloscope can be saved for further processing and analysis. The
-data is saved using a .csv format. The data can be captured for each selected 
-channel during save option and only requested number of samples can be saved. So 
-if 400 samples are requested, the data for only 400 samples would get saved into 
-.csv file. The data is raw adc data and no extra processing is performed it while 
-saving or capturing.
-
-.. image:: /source/iio_osc/iio_osc_data_save.png
-    :width: 600
-
-The data saving feature is also available with other IIO client applications such as
-python and ACE.

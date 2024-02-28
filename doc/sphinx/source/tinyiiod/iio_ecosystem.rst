@@ -19,8 +19,8 @@ IIO Tools:
 :doc:`IIO Oscilloscope </source/iio_osc/iio_osc>`
 ADI IIO Oscilloscope is a cross platform GUI application, which demonstrates how
 to interface different evaluation boards within an IIO ecosystem. It supports
-raw data capture, FFT analysis, DMM measurement, device configuration and register 
-read/write.
+raw data capture, FFT analysis, DMM measurement, device configuration, register 
+read/write and data streaming.
 
 :doc:`pyadi-iio: Python interfaces </source/python/python>`
 Analog Devices python interfaces for hardware with Industrial I/O drivers. It
@@ -34,7 +34,7 @@ which allows the evaluation and control of multiple evaluation systems.
 `Precision Converters MATLAB Toolbox <https://github.com/analogdevicesinc/PrecisionToolbox>`_
 Toolbox created by ADI to be used with MATLAB and Simulink with ADI Precision products.
 
-`IIO Command Line <https://wiki.analog.com/resources/tools-software/linux-software/libiio/iio_info>`
+`IIO Command Line <https://wiki.analog.com/resources/tools-software/linux-software/libiio/iio_info>`_
 Command line interface for accessing IIO device parameters.
 
 .. note::
@@ -45,7 +45,3 @@ Command line interface for accessing IIO device parameters.
     with any IIO based system. In other cases if a part is not currently supported,
     it is possible to add support for converters that you need due to the open 
     source nature of the tools.
-
-:doc:`IIO Data Capture and Limitations </source/tinyiiod/data_capture>`
-This page talks more about mechanism used for data capture in the firmware IIO
-applications and what are the data capture limitations.
