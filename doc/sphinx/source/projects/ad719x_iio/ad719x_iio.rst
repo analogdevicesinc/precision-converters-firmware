@@ -79,16 +79,13 @@ Connect the VIO_ADJUST jumper on the SDP-K1 board to 3.3V position to drive SDP-
 
 .. include:: /source/hardware/comm_interface.rst
 
-
 .. Project Build Section:
     
 .. include:: /source/build/project_build.rst
 
-
 .. IIO Ecosystem Section:
     
 .. include:: /source/tinyiiod/iio_ecosystem.rst
-
 
 .. IIO Firmware Structure
 
