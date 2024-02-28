@@ -6,6 +6,7 @@ Firmware Applications
    :caption: Contents:
 
    /source/projects/ad4130_iio/index.rst
+   /source/projects/ad579x_iio/index.rst
    /source/projects/ad717x_iio/index.rst
    /source/projects/ad719x_iio/index.rst
    /source/projects/ad7689_iio/index.rst
