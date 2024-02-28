@@ -15,11 +15,11 @@ Supported Hardware
 
 **Supported Evaluation Boards:**
 
-* `AD4111 <https://www.analog.com/en/resources/evaluation-hardware-and-software/evaluation-boards-kits/eval-ad4111.html>`_ `AD4112 <https://www.analog.com/en/resources/evaluation-hardware-and-software/evaluation-boards-kits/eval-ad4112.html>`_ `AD4114 <https://www.analog.com/en/resources/evaluation-hardware-and-software/evaluation-boards-kits/eval-ad4114.html>`_ `AD4115 <https://www.analog.com/en/resources/evaluation-hardware-and-software/evaluation-boards-kits/eval-ad4115.html>`_ `AD4116 <https://www.analog.com/en/resources/evaluation-hardware-and-software/evaluation-boards-kits/eval-ad4116.html>`_
-* `AD7172-2 <https://www.analog.com/en/resources/evaluation-hardware-and-software/evaluation-boards-kits/eval-ad7172-2.html>`_  `AD7172-4 <https://www.analog.com/en/resources/evaluation-hardware-and-software/evaluation-boards-kits/eval-ad7172-4.html>`_
-* `AD7173-8 <https://www.analog.com/en/resources/evaluation-hardware-and-software/evaluation-boards-kits/eval-ad7173-8sdz.html>`_ `AD7175-2 <https://www.analog.com/en/resources/evaluation-hardware-and-software/evaluation-boards-kits/eval-ad7175-2.html>`_ `AD7175-8 <https://www.analog.com/en/resources/evaluation-hardware-and-software/evaluation-boards-kits/eval-ad7175-8.html>`_
-* `AD7176-2 <https://www.analog.com/en/resources/evaluation-hardware-and-software/evaluation-boards-kits/eval-ad7176-2.html>`_
-* `AD7177-2 <https://www.analog.com/en/resources/evaluation-hardware-and-software/evaluation-boards-kits/eval-ad7177-2.html>`_
+* `EVAL-AD4111 <https://www.analog.com/en/resources/evaluation-hardware-and-software/evaluation-boards-kits/eval-ad4111.html>`_ `EVAL-AD4112 <https://www.analog.com/en/resources/evaluation-hardware-and-software/evaluation-boards-kits/eval-ad4112.html>`_ `EVAL-AD4114 <https://www.analog.com/en/resources/evaluation-hardware-and-software/evaluation-boards-kits/eval-ad4114.html>`_ `EVAL-AD4115 <https://www.analog.com/en/resources/evaluation-hardware-and-software/evaluation-boards-kits/eval-ad4115.html>`_ `EVAL-AD4116 <https://www.analog.com/en/resources/evaluation-hardware-and-software/evaluation-boards-kits/eval-ad4116.html>`_
+* `EVAL-AD7172-2 <https://www.analog.com/en/resources/evaluation-hardware-and-software/evaluation-boards-kits/eval-ad7172-2.html>`_  `EVAL-AD7172-4 <https://www.analog.com/en/resources/evaluation-hardware-and-software/evaluation-boards-kits/eval-ad7172-4.html>`_
+* `EVAL-AD7173-8 <https://www.analog.com/en/resources/evaluation-hardware-and-software/evaluation-boards-kits/eval-ad7173-8sdz.html>`_ `EVAL-AD7175-2 <https://www.analog.com/en/resources/evaluation-hardware-and-software/evaluation-boards-kits/eval-ad7175-2.html>`_ `EVAL-AD7175-8 <https://www.analog.com/en/resources/evaluation-hardware-and-software/evaluation-boards-kits/eval-ad7175-8.html>`_
+* `EVAL-AD7176-2 <https://www.analog.com/en/resources/evaluation-hardware-and-software/evaluation-boards-kits/eval-ad7176-2.html>`_
+* `EVAL-AD7177-2 <https://www.analog.com/en/resources/evaluation-hardware-and-software/evaluation-boards-kits/eval-ad7177-2.html>`_
 
 **Supported Carrier Boards:**
 
@@ -60,7 +60,7 @@ Connect the EVAL-AD719x board to SDP-K1 board (or any other Mbed enabled control
 board) using jumper wires. Connect SDP-K1 board to the PC using the USB cable. 
 
 
-   .. image:: /source/projects/ad719x_iio/ad717x_hardware_connection.png
+   .. image:: /source/projects/ad717x_iio/ad717x_hardware_interface.png
       :width: 600
 
 
