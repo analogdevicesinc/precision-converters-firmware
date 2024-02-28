@@ -8,8 +8,9 @@ Introduction
 IIO clients can be used to load and stream data to DAC devices using an IIO 
 firmware application developed for that device. Using this firmware, a user 
 can configure various settings on the device and load the data using the DAC 
-data manager tab. The data is transmitted using Virtual Serial or UART serial 
-link. The input data to be streamed can be loaded in a binary data file format. 
+Data Manager tab. The data is transmitted using Virtual Serial or UART serial 
+link. The input data to be streamed can be loaded in a binary data file or a MAT
+file (.mat) format. 
 
 The channels for which data is to be streamed can be selected from the GUI window, 
 and the number of samples per channel will be taken from the input data file provided. 
@@ -17,22 +18,20 @@ So, for an 8-channel DAC, if all 8 channels are selected for streaming, the inpu
 file should contain 3200 samples, considering 400 samples per channel.
 
 IIO client allows data to be streamed to the iio device in two ways: either cyclic 
-streaming enabled or disabled. When the cyclic buffer is 
-enabled (cyclic buffers are identical or normal or non-cyclic buffers, except when 
-they reach hardware they will continuously repeat or be transmitted), the 
-buffer repeats itself, and the same data is streamed over and over indefinitely 
-until stopped.
+streaming enabled or disabled. When the cyclic buffer streaming is 
+enabled, the buffer repeats itself, and the same data is streamed over and over 
+indefinitely until stopped.
 
 Data Streaming to IIO Device
 ============================
 
-The DAC data manager on the iio oscilloscope allows streaming data to supported iio devices.
+The DAC Data Manager tab on the IIO Oscilloscope allows streaming data to supported iio devices.
 The input data file can be a binary file (.bin) or a MAT file (.mat).
 
 .. note::
 
-   DAC data manager is not available in versions below 0.15. To use the data manager, 
-   the IIO oscilloscope application must be upgraded to the most recent versions.
+   DAC Data Manager is not available in versions below 0.15. To use the Data Manager, 
+   the IIO Oscilloscope application must be upgraded to the most recent versions.
 
 Creating binary files for data streaming
 ========================================
@@ -46,7 +45,7 @@ binary file.
 Loading and Streaming the Data
 ==============================
 
-On the iio oscilloscope, open the DAC Data Manager tab as indicated below 
+On the IIO Oscilloscope, open the DAC Data Manager tab as indicated below 
 after connecting to the iio device.
 
    .. image:: /source/iio_osc/iio_osc_data_manager.jpg
@@ -88,7 +87,7 @@ Limitations of Data Streaming Using IIO Application
 
 The sampling rate or update rate defines the maximum rate/speed at which data can 
 be loaded and updated onto the DAC output using the IIO firmware application. For 
-DAC's, typical time to update single sample is defined as:
+DACs, typical time to update single sample is defined as:
 
 Time to update single sample: DAC data write time over digital interface + DAC conversion & output response time
 
@@ -98,7 +97,7 @@ MCU clock speed, etc.
 
 The "AD579X IIO Application" is used as a reference here. 
 For AD5790, which is a one-channel VDAC, the update rate is 71.4 KSPS. So, if a 
-sine wave of full scale with 200 data points is to be streamed, the output frequency 
+sine wave with 200 data points is to be streamed, the output frequency 
 that can be seen will be 357 Hz (fo = fs/np = Sample rate/number of data points = 
 71.4K/200). The effective output frequency might also vary based on the number of 
 channels enabled on the device.
