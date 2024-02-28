@@ -68,16 +68,13 @@ Use default board settings.
 
 .. include:: /source/hardware/comm_interface.rst
 
-
 .. Project Build Section:
     
 .. include:: /source/build/project_build.rst
 
-
 .. IIO Ecosystem Section:
     
 .. include:: /source/tinyiiod/iio_ecosystem.rst
-
 
 .. IIO Firmware Structure
 
