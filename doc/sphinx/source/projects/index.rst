@@ -16,5 +16,8 @@ Firmware Applications
    /source/projects/ad77681_iio/index.rst
    /source/projects/ad738x_iio/index.rst
    /source/projects/ad7124_temperature-measure/index.rst
+   /source/projects/ad5770r_console/index.rst
+   /source/projects/ad5933_console/index.rst
    /source/projects/ad7124_console/index.rst
    /source/projects/ad717x_console/index.rst
+   /source/projects/ltc268x_console/index.rst
