@@ -23,3 +23,4 @@ Firmware Applications
    /source/projects/ltc268x_console/index.rst
    /source/projects/ad559xr_console/index.rst
    /source/projects/ad590_console/index.rst
+   /source/projects/adt7420_console/index.rst
