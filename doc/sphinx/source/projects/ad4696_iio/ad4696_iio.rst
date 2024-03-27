@@ -108,6 +108,6 @@ Connect the VIO_ADJUST jumper on the SDP-K1 board to 3.3V position to drive SDP-
 Support
 =======
 
-Feel free to ask questions in the `EngineerZone <https://ez.analog.com/data_converters>`_
+Please Feel free to ask questions in the `EngineerZone <https://ez.analog.com/data_converters>`_
 
 
