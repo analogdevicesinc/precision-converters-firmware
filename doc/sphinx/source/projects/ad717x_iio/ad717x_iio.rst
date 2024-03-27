@@ -30,7 +30,7 @@ Introduction
 ============
 
 This page gives an overview of using the ARM platforms supported (default is Mbed) 
-firmware example with Analog Devices AD719x Evaluation board and SDP-K1 controller board. 
+firmware example with Analog Devices AD717x Evaluation board and SDP-K1 controller board. 
 This example code leverages the ADI developed IIO (Industrial Input Output) ecosystem to 
 evaluate the AD717x/AD414x device by providing a device debug and data capture support.
 
@@ -53,10 +53,10 @@ to communicates with IIO device.
 Hardware Connections
 ====================
 
-Required: SDP-K1 (or alternative Mbed enabled controller board), EVAL-AD719x board
+Required: SDP-K1 (or alternative Mbed enabled controller board), EVAL-AD717x board
 and USB cable.
 
-Connect the EVAL-AD719x board to SDP-K1 board (or any other Mbed enabled controller 
+Connect the EVAL-AD717x board to SDP-K1 board (or any other Mbed enabled controller 
 board) using jumper wires. Connect SDP-K1 board to the PC using the USB cable. 
 
 
