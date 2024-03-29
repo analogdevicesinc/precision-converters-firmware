@@ -11,6 +11,7 @@ Firmware Applications
    /source/projects/ad717x_iio/index.rst
    /source/projects/ad7134_iio/index.rst
    /source/projects/ad719x_iio/index.rst
+   /source/projects/ad7124_iio/index.rst
    /source/projects/ad7689_iio/index.rst
    /source/projects/ad7606_iio/index.rst
    /source/projects/ad777x_iio/index.rst
