@@ -1,20 +1,18 @@
 name: Documentation
-
-on: [push, pull_request, workflow_dispatch]
-
-permissions:
-  contents: write
-  pages: write
-
+on:
+  push:
+    branches:
+     - main
+  pull_request:
 jobs:
-  docs:
+  build-docs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
         with:
           submodules: recursive
       - uses: actions/setup-python@v3
-      
+
       - name: Install dependencies
         run: |
           python -m pip install sphinx-toolbox
@@ -26,9 +24,14 @@ jobs:
           pushd doc/sphinx
           sphinx-build ./ build
           popd
-
           echo "Sphinx was generated successfully!"
-          
+
+      - name: Store the generated doc
+        uses: actions/upload-artifact@v4
+        with:
+          name: html-sphinx
+          path: doc/sphinx/build
+
       - name: Doxygen build
         run: |
           pushd doc/doxygen
@@ -38,52 +41,49 @@ jobs:
           doxygen doxygen_doc/Doxyfile.doxy
           cd ..
           popd
-
           echo "Doxygen was generated successfully!"
 
-      - name: Update gh pages
-        run: |
-          git config --global user.email "cse-ci-notifications@analog.com"
-          git config --global user.name "CSE-CI"
+      - name: Store the generated doc
+        uses: actions/upload-artifact@v4
+        with:
+          name: html-doxygen
+          path: doc/doxygen/build/html
 
-          MASTER_COMMIT=$(git rev-parse --short HEAD)
-          REPO_SLUG="${REPO_SLUG:-analogdevicesinc/precision-converters-firmware}"
+  deploy-doc:
+    runs-on: ubuntu-latest
+    needs: build-docs
+    if: github.ref == 'refs/heads/main'
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        ref: 'gh-pages'
 
-          # Fetch and checkout to gh-pages branch
-          git fetch --depth 1 origin +refs/heads/gh-pages:gh-pages
-          git checkout gh-pages
+    - name: Empty gh-pages
+      run: |
+        git rm -r . --quiet
+    - uses: actions/download-artifact@v4
+      with:
+        name: html-sphinx
 
-          # Clear previous content in the root folder of 'gh-pages' branch except 
-          # the 'doc' folder which holds new builds
-          find -mindepth 1 -maxdepth 1 ! \( -name "doc" -o -name ".git" \) -exec rm -rf {} \;
-          
-          # Add sphinx build html content to root folder in the 'gh-pages' branch
-          cp -r doc/sphinx/build/* ./
+    - uses: actions/download-artifact@v4
+      with:
+        name: html-doxygen
+        path: doxygen
 
-          # Create doxygen folder holding new build content and add doxygen html content
-          # to doxygen/ folder in the 'gh-pages' branch
-          mkdir -p doxygen
-          cp -r doc/doxygen/build/html/* doxygen/
+    - name: Patch doc build
+      run: |
+        touch .nojekyll
 
-          # Remove temporary 'doc' folder
-          rm -rf doc/
-
-          # Create .nojekyll file to handle files starting with '_' on gh pages
-          touch .nojekyll
-
-          # Push contents to 'gh-pages' branch
-          CURRENT_COMMIT=$(git log -1 --pretty=%B)
-          if [[ ${CURRENT_COMMIT:(-7)} != ${MASTER_COMMIT:0:7} ]]
-          then
-                  git add --all .
-                  git commit --allow-empty --amend -m "Update documentation to ${MASTER_COMMIT:0:7}"
-                  if [ -n "$GITHUB_DOC_TOKEN" ] ; then
-                          git push https://${GITHUB_DOC_TOKEN}@github.com/${REPO_SLUG} gh-pages -f
-                  else
-                          git push origin gh-pages -f
-                  fi
-
-                  echo "Documetation updated!"
-          else
-                  echo "Documentation already up to date!"
-          fi
+    - name: Commit gh-pages
+      run: |
+        author=$(git log -1 --pretty=format:'%an')
+        email=$(git log -1 --pretty=format:'%ae')
+        commit=$(git rev-parse --short HEAD)
+        git add . >> /dev/null
+        git config --global user.name "$author"
+        git config --global user.email "$email"
+        git commit -m "deploy: $commit" --allow-empty
+        
+    - name: Push to gh-pages
+      run: >-
+        git push origin gh-pages:gh-pages
