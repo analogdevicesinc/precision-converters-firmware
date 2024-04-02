@@ -1,14 +1,82 @@
 name: Build projects
 on:
-  pull_request:
-    branches:
-     - main
   push:
     branches:
      - main
+  pull_request:
+
 jobs:
+  check-versions:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Update submodules recursively
+        run: |
+          git submodule update --init --recursive
+
+      - name: Check no-OS versions
+        run: |
+          git submodule status
+          lib_version=$(git submodule status | sed -nr 's/.(.*) libraries\/no-OS.*/\1/p')
+          submodule_version=$(sed -e 's/.*#//' libraries/no-OS.lib)
+          if [[ "${lib_version}" != "${submodule_version}" ]]; then
+            echo "ERROR: no-OS version in lib (${lib_version}) does not match submodule (${submodule_version})"
+            exit 1
+          fi
+          echo "SUCCESS: no-OS version in lib and submodule match (${lib_version})"
+
+      - name: Check Precision Converters Library versions
+        run: |
+          git submodule status
+          lib_version=$(git submodule status | sed -nr 's/.(.*) libraries\/precision-converters-library.*/\1/p')
+          submodule_version=$(sed -e 's/.*#//' libraries/precision-converters-library.lib)
+          if [[ "${lib_version}" != "${submodule_version}" ]]; then
+            echo "ERROR: PCL version in lib (${lib_version}) does not match submodule (${submodule_version})"
+            exit 1
+          fi
+          echo "SUCCESS: PCL version in lib and submodule match (${lib_version})"
+
+      - name: Check Mbed OS versions
+        run: |
+          git submodule status --recursive
+          no_os_version=$(git submodule status --recursive | sed -nr 's/.(.*) libraries\/no-OS.*mbed-os.*/\1/p')
+          pcf_version=$(sed -e 's/.*#//' mbed-os.lib)
+          if [[ "${no_os_version}" != "${pcf_version}" ]]; then
+            echo "ERROR: MBed OS version in no-OS (${no_os_version}) does not match PCF (${pcf_version})"
+            exit 1
+          fi
+          echo "SUCCESS: MBed OS version in no-OS and PCF match (${no_os_version})"
+
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Update no-OS submodule
+        run: |
+          git submodule update --init libraries/no-OS
+
+      - name: Run astyle on source code
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y astyle fd-find
+          set -e
+          formatted=$(fdfind -e c -e h . projects | xargs astyle --formatted --options=libraries/no-OS/ci/astyle_config)
+          if [[ ! -z "${formatted}" ]]; then
+            echo "ERROR: The following files were formatted by astyle:"
+            echo "${formatted}"
+            exit 1
+          fi
+          echo "SUCCESS: No files were formatted by astyle"
+
   build:
     runs-on: ubuntu-latest
+    needs: [check-versions, lint]
     strategy:
       matrix:
         project:
