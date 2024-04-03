@@ -1,5 +1,5 @@
 AD559XR Console Application
----------------------------
+"""""""""""""""""""""""""""
 
 ==================
 Supported Hardware
