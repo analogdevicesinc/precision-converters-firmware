@@ -1,5 +1,5 @@
 LTC268x Console Application
----------------------------
+"""""""""""""""""""""""""""
 
 ==================
 Supported Hardware
