@@ -1,5 +1,5 @@
 nanoDAC+ Console Application
-----------------------------
+""""""""""""""""""""""""""""
 
 ==================
 Supported Hardware
