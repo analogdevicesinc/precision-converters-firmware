@@ -20,3 +20,4 @@ Code*
 *.csv
 .mbed
 gcc-*
+doc/sphinx/_build

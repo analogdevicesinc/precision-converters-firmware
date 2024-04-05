@@ -98,7 +98,7 @@ from AIN1 for this. This requires an external RTD and reference resistor connect
    .. image:: /source/projects/ad7124_console/ad7124_rtd_thermocouple_connections.png
       :width: 200
 
-Temperature sensing application using AD7124 can be found `here <https://www.analog.com/media/en/reference-design-documentation/reference-designs/CN0383.pdf>`_
+Temperature sensing application using AD7124 can be found `here <https://www.analog.com/media/en/reference-design-documentation/reference-designs/CN0383.pdf>`__
 
 ====================
 AD7124 Mbed Firmware
