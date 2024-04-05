@@ -128,6 +128,7 @@ For other boards, refer respective user manual for more details.
 .. include:: /source/tinyiiod/iio_ecosystem.rst
 
 
+=============================
 Calibrating AD7606B/C Devices
 =============================
 
@@ -159,6 +160,7 @@ the calibration should happen one more time.
       :width: 600
 
 
+========================================
 Open Circuit Detection on AD7606B Device
 ========================================
 
@@ -193,6 +195,7 @@ performing 3 easy steps mentioned in below screenshot.
       :width: 1000
 
 
+===========================================
 Diagnostic Multiplexer on AD7606B/C Devices
 ===========================================
 
