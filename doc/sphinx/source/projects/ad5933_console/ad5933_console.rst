@@ -106,6 +106,7 @@ The software comes with an app_config.h file which allows the pins for the I2C i
 * Configure the pins you want to use to connect the controller board to the evaluation board.
 * They default to the I2C exposed on the Arduino header.
 
+===========
 AD5933 DEMO
 ===========
 
