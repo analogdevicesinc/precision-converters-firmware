@@ -2,7 +2,7 @@ Firmware Applications
 =====================
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
    :caption: Contents:
 
    /source/projects/ad4130_iio/ad4130_iio.rst
