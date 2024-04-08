@@ -27,7 +27,8 @@ The file example.cpp will be rewritten to match the style rules.
 
 **Run from script (Linux):**
 
-A shell script that automates the code style check is available at: `<https://github.com/analogdevicesinc/no-OS/blob/master/ci/astyle.sh>`_
+A shell script that automates the code style check is available at:
+:git-no-os:`ci/astyle.sh`.
 
 Run the script from the root of the repository, for example:
 

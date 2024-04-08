@@ -85,6 +85,7 @@ The example is menu driven, providing keyboard shortcuts to access/execute the m
 .. note::
    While much of the functionality of the AD5770R No-OS driver is made available through the console UI, not all function are available. The additional AD5770R functionality can only be configured the ad5770r_user_config.c file.
 
+=========
 Main Menu
 =========
 
@@ -95,6 +96,7 @@ The AD5770R Console App main menu provides basic initialization/reset type funct
 
 The value of the scratchpad register is displayed in both the header and the footer. After reading the scratchpad value for the header, the value is incremented and written back to the device, such that the scratchpad footer value should always be equal to the header value + 1. This can be useful a debug aid to confirm communications.
 
+=============
 DAC Operaions
 =============
 

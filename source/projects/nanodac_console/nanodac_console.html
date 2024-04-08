@@ -1,53 +1,179 @@
-
-
-<!doctype html>
+<!DOCTYPE html>
 
 <html lang="en" data-content_root="../../../">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>nanoDAC+ Console Application &#8212; precision-converters-firmware  documentation</title>
-    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=649a27d8" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/bizstyle.css?v=532c1bf3" />
-    
+    <title>nanoDAC+ Console Application &#8212; Precision Converters Firmware  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=8e8a900e" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/style.min.css?v=cf8483f0" />
     <script src="../../../_static/documentation_options.js?v=5929fcd5"></script>
     <script src="../../../_static/doctools.js?v=888ff710"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="../../../_static/bizstyle.js"></script>
+    <script defer="" src="../../../_static/app.umd.js?v=96350458"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="prev" title="nanoDAC+ Console Application" href="index.html" />
-    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
-    <!--[if lt IE 9]>
-    <script src="_static/css3-mediaqueries.js"></script>
-    <![endif]-->
-  </head><body>
-    <div class="related" role="navigation" aria-label="related navigation">
-      <h3>Navigation</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="../../../genindex.html" title="General Index"
-             accesskey="I">index</a></li>
-        <li class="right" >
-          <a href="index.html" title="nanoDAC+ Console Application"
-             accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../../../index.html">precision-converters-firmware  documentation</a> &#187;</li>
-          <li class="nav-item nav-item-1"><a href="../index.html" >Firmware Applications</a> &#187;</li>
-          <li class="nav-item nav-item-2"><a href="index.html" accesskey="U">nanoDAC+ Console Application</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">nanoDAC+ Console Application</a></li> 
-      </ul>
-    </div>  
+    <link rel="prev" title="ADT7420 Console Application" href="../adt7420_console/adt7420_console.html" />
+   
+  
+    <meta name="robots" content="noindex">
+  
+  
 
-    <div class="document">
+
+<style>
+  body {
+    
+  }
+
+  body.dark {
+    
+  }
+
+  @media (prefers-color-scheme: dark) {
+    body:not(.light) {
+      
+    }
+  }
+</style>
+  </head><body>
+  <input type="checkbox" id="input-show-toc">
+  <input type="checkbox" id="input-show-localtoc">
+  <header>
+    <div class="header">
+      <div id="left">
+        <label id="show-sidebar" for="input-show-toc" title="Show/hide index"></label>
+      </div>
+      <div id="right">
+        <span>
+          <a id="logo-org" href="https://analog.com"></a>
+              <a id="no-logo" href="../../../index.html">
+                Precision Converters Firmware
+              </a>
+        </span>
+        <span class="reverse">
+          <label id="show-localtoc" for="input-show-localtoc" title="Show/hide contents"></label>
+        </span>
+      </div>
+    </div>
+    <div class="repotoc-tree">
+      <root>
+  <a href="../../../../documentation/eval/index.html">Evaluation Boards</a>
+  <a href="../../../../documentation/university/index.html">University Program</a>
+  <a href="../../../../hdl/index.html">HDL</a>
+  <a href="../../../../no-OS/index.html">no-OS</a>
+  <a href="../../../../pyadi-iio/index.html">pyadi-iio</a>
+  <a href="../../../index.html" class="current">Precision Converters Firmware</a>
+</root>
+
+    </div>
+  </header>
+
+    <div class="localtoc">
+      <div class="tocwrapper">
+        <div>
+          <div class="localtoc-header">On this page</div>
+          <a id="scroll-up" href="#top-anchor" title="Back to top"></a>
+        </div>
+        <nav>
+          <ul>
+<li><a class="reference internal" href="#">nanoDAC+ Console Application</a><ul>
+<li><a class="reference internal" href="#supported-hardware">Supported Hardware</a></li>
+<li><a class="reference internal" href="#introduction">Introduction</a></li>
+<li><a class="reference internal" href="#interface-diagram">Interface Diagram</a></li>
+<li><a class="reference internal" href="#useful-links">Useful Links</a></li>
+<li><a class="reference internal" href="#hardware-connections">Hardware Connections</a></li>
+<li><a class="reference internal" href="#nanodac-mbed-firmware">nanoDAC+ Mbed Firmware</a></li>
+<li><a class="reference internal" href="#build-guide">Build Guide</a><ul>
+<li><a class="reference internal" href="#build-prerequisites">Build Prerequisites</a></li>
+<li><a class="reference internal" href="#building-a-project">Building a project</a></li>
+<li><a class="reference internal" href="#running-a-project">Running a project</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#quick-start">Quick Start</a></li>
+<li><a class="reference internal" href="#using-the-firmware">Using the Firmware</a></li>
+<li><a class="reference internal" href="#support">Support</a></li>
+</ul>
+</li>
+</ul>
+
+        </nav>
+      </div>
+    </div>
+
+  
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+              <a id="no-logo" href="../../../index.html">
+                Precision Converters Firmware
+              </a><input id="input-switch-toc" type="checkbox">
+<label id="show-repotoc" for="input-switch-toc">
+All content
+</label>
+<label id="show-toc" for="input-switch-toc">
+Content on this topic
+</label>
+<div class="repotoc-tree">
+  <root>
+  <a href="../../../../documentation/eval/index.html">Evaluation Boards</a>
+  <a href="../../../../documentation/university/index.html">University Program</a>
+  <a href="../../../../hdl/index.html">HDL</a>
+  <a href="../../../../no-OS/index.html">no-OS</a>
+  <a href="../../../../pyadi-iio/index.html">pyadi-iio</a>
+  <a href="../../../index.html" class="current">Precision Converters Firmware</a>
+</root>
+
+</div>
+<div class="toc-tree">
+  <html>
+  <body><p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../build/project_build.html">Build Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../code_style.html">Code Styles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing.html">Contributing</a></li>
+<li class="toctree-l1 current"><input class="toctree-collapse" type="checkbox" name="toctree-collapse-1" id="toctree-collapse-1" checked=""/><div class="collapse"><a class="reference internal" href="../index.html">Firmware Applications</a><label for="toctree-collapse-1"><div class="icon"></div></label></div><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../ad4130_iio/ad4130_iio.html">AD4130 IIO Application</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ad579x_iio/ad579x_iio.html">AD579X IIO Application</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ad4696_iio/ad4696_iio.html">AD4696 IIO Application</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ad717x_iio/ad717x_iio.html">AD717x IIO Application</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ad7134_iio/ad7134_iio.html">AD7134 IIO Application</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ad719x_iio/ad719x_iio.html">AD719x IIO Application</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ad7124_iio/ad7124_iio.html">AD7124 IIO Application</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ad7689_iio/ad7689_iio.html">AD7689 IIO Application</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ad7606_iio/ad7606_iio.html">AD7606 IIO Application</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ad777x_iio/ad777x_iio.html">AD777x IIO Application</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ad77681_iio/ad77681_iio.html">AD7768-1 IIO Application</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ad738x_iio/ad738x_iio.html">AD738x IIO Application</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ad7124_temperature-measure/ad7124_temperature-measure.html">AD7124 Temperature Measure Firmware Application</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ad5770r_console/ad5770r_console.html">AD5770r Console Application</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ad5933_console/ad5933_console.html">AD5933 Console Application</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ad7124_console/ad7124_console.html">AD7124 Console Application</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ad717x_console/ad717x_console.html">AD717x Console Application</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ltc268x_console/ltc268x_console.html">LTC268x Console Application</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ad559xr_console/ad559xr_console.html">AD559XR Console Application</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ad590_console/ad590_console.html">AD590 Console Application</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../adt7420_console/adt7420_console.html">ADT7420 Console Application</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">nanoDAC+ Console Application</a></li>
+</ul>
+</li>
+</ul>
+</body>
+</html>
+
+</div>
+        </div>
+      </div>
+
+  <div class="document">
       <div class="documentwrapper">
-        <div class="bodywrapper">
+        <div class="bodywrapper" id="top-anchor">
           <div class="body" role="main">
             
   <section id="nanodac-console-application">
-<h1>nanoDAC+ Console Application<a class="headerlink" href="#nanodac-console-application" title="Link to this heading">¶</a></h1>
+<h1>nanoDAC+ Console Application<a class="headerlink" href="#nanodac-console-application" title="Link to this heading">#</a></h1>
 <section id="supported-hardware">
-<h2>Supported Hardware<a class="headerlink" href="#supported-hardware" title="Link to this heading">¶</a></h2>
+<h2>Supported Hardware<a class="headerlink" href="#supported-hardware" title="Link to this heading">#</a></h2>
 <p><strong>Supported Devices:</strong></p>
 <p><a class="reference external" href="https://www.analog.com/en/products/ad5671r.html">AD5671r</a> <a class="reference external" href="https://www.analog.com/en/products/ad5672r.html">AD5672r</a> <a class="reference external" href="https://www.analog.com/en/products/ad5673r.html">AD5673r</a>
 <a class="reference external" href="https://www.analog.com/en/products/ad5674.html">AD5674</a>  <a class="reference external" href="https://www.analog.com/en/products/ad5674r.html">AD5674r</a>  <a class="reference external" href="https://www.analog.com/en/products/ad5675r.html">AD5675r</a>
@@ -71,7 +197,7 @@
 </ul>
 </section>
 <section id="introduction">
-<h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">¶</a></h2>
+<h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
 <p>Analog Devices nanoDAC+® products are low power, single-channel, 16-/14-/12-bit buffered voltage output DACs. This page gives an overview of using the nanodac+®
 firmware example with SDP-K1 EVAL board, interfacing with various EVAL boards supporting nanodac+ family devices.
 The firmware example comprises 3 layers of software (from top to bottom): Console Application Layer, Device No-OS Layer and Platform Drivers (Mbed-OS) layer.</p>
@@ -87,7 +213,7 @@ benefits of the Mbed platform. The Mbed Platform simplifies the overall software
 This reduces the hardware dependency as any Mbed enabled board can be used with same firmware with little modifications (precisely changing a pin mapping).</p>
 </section>
 <section id="interface-diagram">
-<h2>Interface Diagram<a class="headerlink" href="#interface-diagram" title="Link to this heading">¶</a></h2>
+<h2>Interface Diagram<a class="headerlink" href="#interface-diagram" title="Link to this heading">#</a></h2>
 <blockquote>
 <div><a class="reference internal image-reference" href="../../../_images/nanodac_interface_diagram.jpg"><img alt="../../../_images/nanodac_interface_diagram.jpg" src="../../../_images/nanodac_interface_diagram.jpg" style="width: 500px;" /></a>
 </div></blockquote>
@@ -102,7 +228,7 @@ The SDP-K1 acts as a Serial Device (UART) and firmware loaded into it interacts 
 </div>
 </section>
 <section id="useful-links">
-<h2>Useful Links<a class="headerlink" href="#useful-links" title="Link to this heading">¶</a></h2>
+<h2>Useful Links<a class="headerlink" href="#useful-links" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="https://github.com/analogdevicesinc/no-OS">no-OS: Software drivers for systems without OS</a></p></li>
 <li><p><a class="reference external" href="https://studio.keil.arm.com/auth/login/">Keil Studio Web IDE/Compiler</a></p></li>
@@ -117,7 +243,7 @@ they may be of interest if you require Linux and/or FPGA support.</p>
 </div>
 </section>
 <section id="hardware-connections">
-<h2>Hardware Connections<a class="headerlink" href="#hardware-connections" title="Link to this heading">¶</a></h2>
+<h2>Hardware Connections<a class="headerlink" href="#hardware-connections" title="Link to this heading">#</a></h2>
 <blockquote>
 <div><a class="reference internal image-reference" href="../../../_images/nanodac_hardware_connection.jpg"><img alt="../../../_images/nanodac_hardware_connection.jpg" src="../../../_images/nanodac_hardware_connection.jpg" style="width: 400px;" /></a>
 </div></blockquote>
@@ -140,7 +266,7 @@ The COM port assigned to a device can be seen through the device manager for win
 </div></blockquote>
 </section>
 <section id="nanodac-mbed-firmware">
-<h2>nanoDAC+ Mbed Firmware<a class="headerlink" href="#nanodac-mbed-firmware" title="Link to this heading">¶</a></h2>
+<h2>nanoDAC+ Mbed Firmware<a class="headerlink" href="#nanodac-mbed-firmware" title="Link to this heading">#</a></h2>
 <p>This section briefs on the usage of MBED firmware. This also explains the steps to compile and build the application using
 mbed and make based build.</p>
 <p>The software execution sequence for the nanodac+ Firmware Example is shown below. This is a blocking application as it waits for user input over serial interface (UART).
@@ -152,22 +278,32 @@ As name suggests, this layer is platform dependent. nanodac+ firmware uses Mbed 
 </div></blockquote>
 </section>
 <section id="build-guide">
-<h2>Build Guide<a class="headerlink" href="#build-guide" title="Link to this heading">¶</a></h2>
-<details class="summary-build-prerequisites" open>
-<summary>Build Prerequisites</summary><blockquote>
-<div><p>Prior to building a firmware project, it is required to set up an environment so
+<h2>Build Guide<a class="headerlink" href="#build-guide" title="Link to this heading">#</a></h2>
+<section id="build-prerequisites">
+<h3>Build Prerequisites<a class="headerlink" href="#build-prerequisites" title="Link to this heading">#</a></h3>
+<p>Prior to building a firmware project, it is required to set up an environment so
 that the build process may find the necessary tools (compiler, linker, SDK etc.).
 Use the following steps to prepare your environment for building firmware projects
 for respective platform.</p>
-<details class="summary-windows">
-<summary>Windows</summary><details class="summary-mbed">
-<summary>Mbed</summary><details class="summary-for-web-online-build">
-<summary>For Web/Online Build</summary><ul class="simple">
+<div><div class="collapsible docutils container">
+<input class="collapsible_input" id="619c1182eec748e103a2a4b316307914bdeb1dc4" name="619c1182eec748e103a2a4b316307914bdeb1dc4" type="checkbox"></input><label for="619c1182eec748e103a2a4b316307914bdeb1dc4"><p>Windows</p>
+<div class="icon"></div></label><div class="collapsible_content docutils container">
+<div><div class="collapsible docutils container">
+<input class="collapsible_input" id="09fb7c01896ae766da2ee01308090388bae68d1b" name="09fb7c01896ae766da2ee01308090388bae68d1b" type="checkbox"></input><label for="09fb7c01896ae766da2ee01308090388bae68d1b"><p>Mbed</p>
+<div class="icon"></div></label><div class="collapsible_content docutils container">
+<div><div class="collapsible docutils container">
+<input class="collapsible_input" id="39f5f3bbb61ac4ff030ff90ba173d6b14ddaee72" name="39f5f3bbb61ac4ff030ff90ba173d6b14ddaee72" type="checkbox"></input><label for="39f5f3bbb61ac4ff030ff90ba173d6b14ddaee72"><p>For Web/Online Build</p>
+<div class="icon"></div></label><div class="collapsible_content docutils container">
+<ul class="simple">
 <li><p>Visit <a class="reference external" href="https://www.keil.arm.com/">Arm Keil website</a> to create an user account for accessing the web based Keil Studio IDE.</p></li>
 <li><p>Open <a class="reference external" href="https://studio.keil.arm.com/auth/login/">Keil Studio Web IDE</a> with registered user account</p></li>
 </ul>
-</details><details class="summary-for-make-build">
-<summary>For Make Build</summary><ul class="simple">
+</div>
+</div>
+</div><div><div class="collapsible docutils container">
+<input class="collapsible_input" id="a16acbaf74415871cd32264793d63ec12b79936d" name="a16acbaf74415871cd32264793d63ec12b79936d" type="checkbox"></input><label for="a16acbaf74415871cd32264793d63ec12b79936d"><p>For Make Build</p>
+<div class="icon"></div></label><div class="collapsible_content docutils container">
+<ul class="simple">
 <li><p>Clone Precision Converters Firmware repository with the –recursive flag (not needed if building with web IDE for Mbed platform):</p></li>
 </ul>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>--recursive<span class="w"> </span>https://github.com/analogdevicesinc/precision-converters-firmware
@@ -190,9 +326,17 @@ for respective platform.</p>
 </div></blockquote>
 </li>
 </ul>
-</details></details><details class="summary-stm32">
-<summary>STM32</summary><details class="summary-for-stm32-ide-based-build">
-<summary>For STM32 IDE based Build</summary><ul>
+</div>
+</div>
+</div></div>
+</div>
+</div><div><div class="collapsible docutils container">
+<input class="collapsible_input" id="8a7ca0d3948e7ce81388ecc40d18f280c8478eec" name="8a7ca0d3948e7ce81388ecc40d18f280c8478eec" type="checkbox"></input><label for="8a7ca0d3948e7ce81388ecc40d18f280c8478eec"><p>STM32</p>
+<div class="icon"></div></label><div class="collapsible_content docutils container">
+<div><div class="collapsible docutils container">
+<input class="collapsible_input" id="bc024455f3fd27ee7b53a256aeaa9e24a5019346" name="bc024455f3fd27ee7b53a256aeaa9e24a5019346" type="checkbox"></input><label for="bc024455f3fd27ee7b53a256aeaa9e24a5019346"><p>For STM32 IDE based Build</p>
+<div class="icon"></div></label><div class="collapsible_content docutils container">
+<ul>
 <li><p>Install <a class="reference external" href="https://www.st.com/en/development-tools/stm32cubeide.html">STM32CubeIDE</a></p></li>
 <li><p>Install <a class="reference external" href="https://www.st.com/en/development-tools/stm32cubemx.html">STM32CubeMX</a></p></li>
 <li><p>Install <a class="reference external" href="https://git-scm.com/downloads">Git</a> and add a path of <strong>C:\Program Files\Git\usr\bin\</strong> directory into system environmental path variable (please verify your git installation path is correct).</p></li>
@@ -203,15 +347,27 @@ for respective platform.</p>
 </div></blockquote>
 </li>
 </ul>
-</details></details></details></div></blockquote>
-</details><details class="summary-building-a-project" open>
-<summary>Building a project</summary><blockquote>
-<div><p>Once the build enviornment is setup, follow the guide below to build your project
+</div>
+</div>
+</div></div>
+</div>
+</div></div>
+</div>
+</div></section>
+<section id="building-a-project">
+<h3>Building a project<a class="headerlink" href="#building-a-project" title="Link to this heading">#</a></h3>
+<p>Once the build enviornment is setup, follow the guide below to build your project
 and generate executable file (.bin/.hex)</p>
-<details class="summary-windows">
-<summary>Windows</summary><details class="summary-mbed">
-<summary>Mbed</summary><details class="summary-build-using-web-online-ide">
-<summary>Build Using Web/Online IDE</summary><ul>
+<div><div class="collapsible docutils container">
+<input class="collapsible_input" id="cdb5defc5f336af9cd58d7d7bb99ee5f5f6e9be0" name="cdb5defc5f336af9cd58d7d7bb99ee5f5f6e9be0" type="checkbox"></input><label for="cdb5defc5f336af9cd58d7d7bb99ee5f5f6e9be0"><p>Windows</p>
+<div class="icon"></div></label><div class="collapsible_content docutils container">
+<div><div class="collapsible docutils container">
+<input class="collapsible_input" id="8a96b2f5ce328a338a212ed635951e2db86e0faa" name="8a96b2f5ce328a338a212ed635951e2db86e0faa" type="checkbox"></input><label for="8a96b2f5ce328a338a212ed635951e2db86e0faa"><p>Mbed</p>
+<div class="icon"></div></label><div class="collapsible_content docutils container">
+<div><div class="collapsible docutils container">
+<input class="collapsible_input" id="f2c48851e525d0a0dff128e83d63241bbb3850e3" name="f2c48851e525d0a0dff128e83d63241bbb3850e3" type="checkbox"></input><label for="f2c48851e525d0a0dff128e83d63241bbb3850e3"><p>Build Using Web/Online IDE</p>
+<div class="icon"></div></label><div class="collapsible_content docutils container">
+<ul>
 <li><p>Clone the <a class="reference external" href="https://github.com/analogdevicesinc/precision-converters-firmware">Precision Converters Firmware repository</a> into Keil Studio using “File-&gt;clone…” menu.</p>
 <blockquote>
 <div><a class="reference internal image-reference" href="../../../_images/mbed_keil_studio_project_clone.png"><img alt="../../../_images/mbed_keil_studio_project_clone.png" src="../../../_images/mbed_keil_studio_project_clone.png" style="width: 600px;" /></a>
@@ -233,8 +389,12 @@ and generate executable file (.bin/.hex)</p>
 <p>If you intend to build different project, then modify the .medignore file in the root directory as
 mentioned in step2 and clean build project as mentioned in step3</p>
 </div>
-</details><details class="summary-build-using-make">
-<summary>Build Using Make</summary><ul class="simple">
+</div>
+</div>
+</div><div><div class="collapsible docutils container">
+<input class="collapsible_input" id="392c4f82a53d51f38b7cc22de16957d050be656e" name="392c4f82a53d51f38b7cc22de16957d050be656e" type="checkbox"></input><label for="392c4f82a53d51f38b7cc22de16957d050be656e"><p>Build Using Make</p>
+<div class="icon"></div></label><div class="collapsible_content docutils container">
+<ul class="simple">
 <li><p>Open Git bash and change current directory to project directory (eg. <strong>precision-converters-firmware/projects/ad4130_iio</strong> directory) which you want to build.</p></li>
 <li><p>Type <strong>make</strong> on the git bash command prompt to build a project.</p></li>
 <li><p>After successful build, binary file will be created into the <strong>Project_Name/build</strong> directory.</p></li>
@@ -247,9 +407,17 @@ mentioned in step2 and clean build project as mentioned in step3</p>
 <ul class="simple">
 <li><p>By default project is built for “SDP_K1” Board and “GCC_ARM” Compiler. If you want to build for other Mbed Board, For example If you want to build the project for “DISCO_F769NI” Board then run <strong>make TARGET_BOARD=DISCO_F769NI</strong> command in git bash command prompt. If you want to clean build, run <strong>make reset TARGET_BOARD=DISCO_F769NI</strong> command to delete the generated build files for the given project.</p></li>
 </ul>
-</details></details><details class="summary-stm32">
-<summary>STM32</summary><details class="summary-build-using-stm32-ide">
-<summary>Build Using STM32 IDE</summary><ul>
+</div>
+</div>
+</div></div>
+</div>
+</div><div><div class="collapsible docutils container">
+<input class="collapsible_input" id="3c4a01e1e95c26eb330376fd707d8f8c4e8584c9" name="3c4a01e1e95c26eb330376fd707d8f8c4e8584c9" type="checkbox"></input><label for="3c4a01e1e95c26eb330376fd707d8f8c4e8584c9"><p>STM32</p>
+<div class="icon"></div></label><div class="collapsible_content docutils container">
+<div><div class="collapsible docutils container">
+<input class="collapsible_input" id="d4ddbc4ee55eb90c15aa02d57b74b6abe663cfd9" name="d4ddbc4ee55eb90c15aa02d57b74b6abe663cfd9" type="checkbox"></input><label for="d4ddbc4ee55eb90c15aa02d57b74b6abe663cfd9"><p>Build Using STM32 IDE</p>
+<div class="icon"></div></label><div class="collapsible_content docutils container">
+<ul>
 <li><p>Open the respective project directory by navigating into the “precision_converters_firmware/projects/” folder.</p></li>
 <li><p>In the “STM32” folder present within the project directory, double click and open the .ioc file present within.</p>
 <blockquote>
@@ -283,19 +451,25 @@ mentioned in step2 and clean build project as mentioned in step3</p>
 </div></blockquote>
 </li>
 </ul>
-</details></details></details></div></blockquote>
-</details><details class="summary-running-a-project" open>
-<summary>Running a project</summary><blockquote>
-<div><p>Once the firmware build is successful and binary file is generated, copy the
+</div>
+</div>
+</div></div>
+</div>
+</div></div>
+</div>
+</div></section>
+<section id="running-a-project">
+<h3>Running a project<a class="headerlink" href="#running-a-project" title="Link to this heading">#</a></h3>
+<p>Once the firmware build is successful and binary file is generated, copy the
 generated binary into USB drive hosted by your MCU board (e.g. USB drive hosted
 by SDP-K1 board on windows). This will flash the binary file into MCU present
 on the controller board. Programming might vary based on the tools used for building
 a project. The ‘Project Build’ section above talks about this exception at the end
 of all build steps.</p>
-</div></blockquote>
-</details></section>
+</section>
+</section>
 <section id="quick-start">
-<h2>Quick Start<a class="headerlink" href="#quick-start" title="Link to this heading">¶</a></h2>
+<h2>Quick Start<a class="headerlink" href="#quick-start" title="Link to this heading">#</a></h2>
 <p>If you have some familiarity with the Mbed platform, the following is a basic list of steps required to start running the code,
 see below for more detail:</p>
 <ul class="simple">
@@ -315,7 +489,7 @@ see below for more detail:</p>
 </ul>
 </section>
 <section id="using-the-firmware">
-<h2>Using the Firmware<a class="headerlink" href="#using-the-firmware" title="Link to this heading">¶</a></h2>
+<h2>Using the Firmware<a class="headerlink" href="#using-the-firmware" title="Link to this heading">#</a></h2>
 <p>The nanodac+ firmware example is configured to have following serial settings:</p>
 <p>Baud rate: 230400
 Data bits: 8-bits
@@ -338,84 +512,42 @@ for below settings:</p>
 The products supported are enumerated in the ad5686_type, which is an enum found in AD5686.h, the firmware defaults to the AD5686R device.</p>
 </section>
 <section id="support">
-<h2>Support<a class="headerlink" href="#support" title="Link to this heading">¶</a></h2>
+<h2>Support<a class="headerlink" href="#support" title="Link to this heading">#</a></h2>
 <p>Feel free to ask questions in the <a class="reference external" href="https://ez.analog.com/data_converters">EngineerZone</a></p>
 </section>
 </section>
 
 
-            <div class="clearer"></div>
           </div>
+              <div class="related">
+                &nbsp;
+    <a href="../adt7420_console/adt7420_console.html" title="Previous document" class="prev">ADT7420 Console Application</a>
+    <div></div>
+              </div>
+          
         </div>
       </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
-        <div class="sphinxsidebarwrapper">
-            <p class="logo"><a href="../../../index.html">
-              <img class="logo" src="../../../_static/adi_logo.png" alt="Logo"/>
-            </a></p>
-  <div>
-    <h3><a href="../../../index.html">Table of Contents</a></h3>
-    <ul>
-<li><a class="reference internal" href="#">nanoDAC+ Console Application</a><ul>
-<li><a class="reference internal" href="#supported-hardware">Supported Hardware</a></li>
-<li><a class="reference internal" href="#introduction">Introduction</a></li>
-<li><a class="reference internal" href="#interface-diagram">Interface Diagram</a></li>
-<li><a class="reference internal" href="#useful-links">Useful Links</a></li>
-<li><a class="reference internal" href="#hardware-connections">Hardware Connections</a></li>
-<li><a class="reference internal" href="#nanodac-mbed-firmware">nanoDAC+ Mbed Firmware</a></li>
-<li><a class="reference internal" href="#build-guide">Build Guide</a></li>
-<li><a class="reference internal" href="#quick-start">Quick Start</a></li>
-<li><a class="reference internal" href="#using-the-firmware">Using the Firmware</a></li>
-<li><a class="reference internal" href="#support">Support</a></li>
-</ul>
-</li>
-</ul>
+  </div>
 
-  </div>
-  <div>
-    <h4>Previous topic</h4>
-    <p class="topless"><a href="index.html"
-                          title="previous chapter">nanoDAC+ Console Application</a></p>
-  </div>
-  <div role="note" aria-label="source link">
-    <h3>This Page</h3>
-    <ul class="this-page-menu">
-      <li><a href="../../../_sources/source/projects/nanodac_console/nanodac_console.rst.txt"
-            rel="nofollow">Show Source</a></li>
-    </ul>
-   </div>
-<div id="searchbox" style="display: none" role="search">
-  <h3 id="searchlabel">Quick search</h3>
-    <div class="searchformwrapper">
-    <form class="search" action="../../../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
-      <input type="submit" value="Go" />
-    </form>
-    </div>
-</div>
-<script>document.getElementById('searchbox').style.display = "block"</script>
-        </div>
-      </div>
-      <div class="clearer"></div>
-    </div>
-    <div class="related" role="navigation" aria-label="related navigation">
-      <h3>Navigation</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="../../../genindex.html" title="General Index"
-             >index</a></li>
-        <li class="right" >
-          <a href="index.html" title="nanoDAC+ Console Application"
-             >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../../../index.html">precision-converters-firmware  documentation</a> &#187;</li>
-          <li class="nav-item nav-item-1"><a href="../index.html" >Firmware Applications</a> &#187;</li>
-          <li class="nav-item nav-item-2"><a href="index.html" >nanoDAC+ Console Application</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">nanoDAC+ Console Application</a></li> 
-      </ul>
-    </div>
-    <div class="footer" role="contentinfo">
-    &#169; Copyright 2023, Analog Devices Inc..
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.2.6.
-    </div>
+  <div id="vertical-border"></div>
+
+  <label id="cancel-area-show-toc" for="input-show-toc"></label>
+  <label id="cancel-area-show-localtoc" for="input-show-localtoc"></label>
+
+  
+  <form action="" method="get" class="search-area">
+    <input type="text" name="q" aria-labelledby="search-documentation" value="" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" role="search" placeholder="Search"/>
+    <button value="search"></button>
+    <span id="search-progress"></span>
+  </form>
+  
+    <footer>
+      &#169;2023-2024, Analog Devices Inc.
+      
+      |
+      Made with <a href="https://www.sphinx-doc.org/">Sphinx</a>
+      &amp; <a href="https://github.com/analogdevicesinc/doctools">Doctools</a>
+      
+    </footer>
   </body>
 </html>
