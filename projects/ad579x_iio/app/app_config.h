@@ -113,9 +113,11 @@
 #if defined(INT_REF_M10V_TO_10V)  //internal reference bipolar
 #define DAC_CH_SPAN 20
 #define DAC_VREFN   -10.0
-#elif defined(INT_REF_0V_To_10V)  //internal reference unipolar
+#define DAC_VREFN_GAIN_OF_TWO   -30.0
+#elif defined(INT_REF_0V_TO_10V)  //internal reference unipolar
 #define DAC_CH_SPAN 10
 #define DAC_VREFN   0.0
+#define DAC_VREFN_GAIN_OF_TWO   -10.0
 #elif defined(EXT_REF)  //external reference
 #define DAC_VREFN   -10.0
 #define DAC_VREFP   10.0
@@ -125,6 +127,7 @@
 #define INT_REF_M10V_TO_10V
 #define DAC_CH_SPAN 20
 #define DAC_VREFN   -10.0
+#define DAC_VREFN_GAIN_OF_TWO   -30.0
 #endif
 
 /* Number of DAC Channels */
