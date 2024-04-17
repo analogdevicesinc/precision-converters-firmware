@@ -226,7 +226,7 @@ static struct iio_attribute ad579x_iio_global_attributes [] = {
 #if defined(DEV_AD5781) || defined(DEV_AD5791)
 	AD579X_CHN_ATTR("linearity_comp", DAC_LIN_COMP),
 	AD579X_CHN_AVAIL_ATTR("linearity_comp_available", DAC_LIN_COMP),
-#elif defined(DEV_AD5780) || defined(DEV_AD5790) || defined(DEV_AD5760)
+#elif (defined(DEV_AD5780) || defined(DEV_AD5790) || defined(DEV_AD5760)) && defined(INT_REF_0V_TO_10V)
 	AD579X_CHN_ATTR("output_amplifier", DAC_OUTPUT_AMPLIFIER),
 	AD579X_CHN_AVAIL_ATTR("output_amplifier_available", DAC_OUTPUT_AMPLIFIER),
 #endif
@@ -278,6 +278,9 @@ static bool dac_powered_down = true;
 
 /* Variable to store channel span in volts */
 static int8_t v_span = DAC_CH_SPAN;
+
+/* Variable to store negative ref in volts */
+static float v_neg = DAC_VREFN;
 
 /******************************************************************************/
 /************************ Functions Definitions *******************************/
@@ -361,12 +364,14 @@ int ad579x_get_scale(float *scale)
 	if (dac_amp_gain) {
 		/* unity gain */
 		v_span = DAC_CH_SPAN;
+		v_neg = DAC_VREFN;
 	} else {
 		/* gain of two */
 		v_span = DAC_CH_SPAN*2;
+		v_neg = DAC_VREFN_GAIN_OF_TWO;
 	}
 
-	*scale = ((float)v_span/DAC_MAX_COUNT);
+	*scale = ((float)v_span/DAC_MAX_COUNT) * 1000;
 
 	return 0;
 }
@@ -387,8 +392,8 @@ int ad579x_get_offset(uint32_t raw, int32_t *offset)
 	}
 
 	/* Calculate offset values for both the coding selects*/
-	bin_code_offset = (DAC_VREFN/v_span)*(1 << DAC_RESOLUTION);
-	twosc_offset = ((v_span/2 + DAC_VREFN)/v_span)*(1 << DAC_RESOLUTION);
+	bin_code_offset = (v_neg/v_span)*(1 << DAC_RESOLUTION);
+	twosc_offset = ((v_span/2 + v_neg)/v_span)*(1 << DAC_RESOLUTION);
 
 	if (!code_select_mode) {
 		/* 2s complement code */
@@ -745,14 +750,9 @@ static int ad579x_iio_attr_available_get(void *device,
 			       ad579x_lin_comp_str[4]);
 #endif
 
-#if defined(INT_REF_0V_To_10V)
+#if defined(INT_REF_0V_TO_10V)
 	case DAC_OUTPUT_AMPLIFIER:
 		return sprintf(buf, "%s %s", ad579x_output_amplifier_gain[0],
-			       ad579x_output_amplifier_gain[1]);
-#elif defined(INT_REF_M10V_TO_10V)
-	case DAC_OUTPUT_AMPLIFIER:
-		return sprintf(buf,
-			       "%s",
 			       ad579x_output_amplifier_gain[1]);
 #endif
 
