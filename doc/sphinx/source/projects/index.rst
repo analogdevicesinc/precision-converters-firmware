@@ -26,4 +26,5 @@ Firmware Applications
    /source/projects/ad559xr_console/ad559xr_console.rst
    /source/projects/ad590_console/ad590_console.rst
    /source/projects/adt7420_console/adt7420_console.rst
+   /source/projects/ltc2672_iio/ltc2672_iio.rst
    /source/projects/nanodac_console/nanodac_console.rst
