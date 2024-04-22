@@ -18,6 +18,7 @@ projects/ad579x_iio/
 projects/ad7606_iio/
 projects/ad77681_iio/
 projects/ad738x_iio/
+projects/ltc2672_iio/
 projects/ad7124_temperature-measure/
 projects/ad7124_console/
 projects/ad717x_console/
