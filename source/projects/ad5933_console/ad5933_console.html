@@ -9,7 +9,7 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=8e8a900e" />
     <link rel="stylesheet" type="text/css" href="../../../_static/style.min.css?v=cf8483f0" />
     <script src="../../../_static/documentation_options.js?v=5929fcd5"></script>
-    <script src="../../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script defer="" src="../../../_static/app.umd.js?v=96350458"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
@@ -66,6 +66,7 @@
   <a href="../../../../no-OS/index.html">no-OS</a>
   <a href="../../../../pyadi-iio/index.html">pyadi-iio</a>
   <a href="../../../index.html" class="current">Precision Converters Firmware</a>
+  <a href="../../../../PrecisionToolbox/index.html">Precision Toolbox</a>
 </root>
 
     </div>
@@ -123,6 +124,7 @@ Content on this topic
   <a href="../../../../no-OS/index.html">no-OS</a>
   <a href="../../../../pyadi-iio/index.html">pyadi-iio</a>
   <a href="../../../index.html" class="current">Precision Converters Firmware</a>
+  <a href="../../../../PrecisionToolbox/index.html">Precision Toolbox</a>
 </root>
 
 </div>
@@ -172,9 +174,9 @@ Content on this topic
           <div class="body" role="main">
             
   <section id="ad5933-console-application">
-<h1>AD5933 Console Application<a class="headerlink" href="#ad5933-console-application" title="Link to this heading">#</a></h1>
+<h1>AD5933 Console Application<a class="headerlink" href="#ad5933-console-application" title="Link to this heading">¶</a></h1>
 <section id="supported-hardware">
-<h2>Supported Hardware<a class="headerlink" href="#supported-hardware" title="Link to this heading">#</a></h2>
+<h2>Supported Hardware<a class="headerlink" href="#supported-hardware" title="Link to this heading">¶</a></h2>
 <p><strong>Supported Devices:</strong></p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://www.analog.com/en/products/ad5933.html">AD5933</a></p></li>
@@ -189,13 +191,13 @@ Content on this topic
 </ul>
 </section>
 <section id="introduction">
-<h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
+<h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">¶</a></h2>
 <p>The AD5933 Mbed support software (also supports AD5934) can be used as a starting point for developing your own code for Analog Devices AD5933 products in your own environment utilizing the benefits of the Mbed platform. Analog Devices is an MBED Partner and develops code on the platform for multiple products. The Analog Devices Mbed code-repo can be found in the links below.</p>
 <p>This guide will focus on the Analog Devices SDP-K1 controller board, as it is directly compatible with the AD5933 family of evaluation boards and is an MBED-Enabled device. Customers are of course, not limited to using the SDP-K1 board for code development, given that any ARM-based, MBED-enabled board that satisfies a small set of requirements can use the provided code and it will work with only minor changes to the source (see below).</p>
 <p>This guide uses the Pmod IA evaluation board. This is a convenient, inexpensive path to evaluating the AD5933.</p>
 </section>
 <section id="useful-links">
-<h2>Useful Links<a class="headerlink" href="#useful-links" title="Link to this heading">#</a></h2>
+<h2>Useful Links<a class="headerlink" href="#useful-links" title="Link to this heading">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="https://github.com/analogdevicesinc/no-OS">no-OS: Software drivers for systems without OS</a></p></li>
 <li><p><a class="reference external" href="https://studio.keil.arm.com/auth/login/">Keil Studio Web IDE/Compiler</a></p></li>
@@ -210,7 +212,7 @@ they may be of interest if you require Linux and/or FPGA support.</p>
 </div>
 </section>
 <section id="hardware-connections">
-<h2>Hardware Connections<a class="headerlink" href="#hardware-connections" title="Link to this heading">#</a></h2>
+<h2>Hardware Connections<a class="headerlink" href="#hardware-connections" title="Link to this heading">¶</a></h2>
 <p>The SDP-K1 board has two ways to connect to most ADI evaluation boards, it can use the 120-pin SDP connector on the underside of the board, or the Arduino connector can be used together with jumper wires as described below. Currently an ADI evaluation board with an SDP connector does not exist for the AD5933. As such, it is necessary to connect to the Arduino headers using short jumper wires.</p>
 <p>The Getting Started with Mbed page describes the Arduino Uno Header, the SDP connector, pinouts and other information related to understanding the SDP-K1 controller board.</p>
 <p>The SDP-K1 can operate with the 120-pin SDP connector of the evaluation board supports it, or, as in this case, it can also use the Arduino header pins (or indeed any available I2C port on the controller board) using wires to the evaluation board. This is shown here for the SDP-K1 board connected to the Digilent Pmod IA evaluation board using the Arduino Header, but different boards might have their SPI/I2C/GPIO ports exposed differently. The pins on the Arduino header must be shorted to the evaluation board as follows. The pin mappings for these are controlled in the app_config.h file and should match your controller board.</p>
@@ -243,14 +245,14 @@ they may be of interest if you require Linux and/or FPGA support.</p>
 </div>
 </section>
 <section id="ad5933-mbed-firmware">
-<h2>AD5933 Mbed Firmware<a class="headerlink" href="#ad5933-mbed-firmware" title="Link to this heading">#</a></h2>
+<h2>AD5933 Mbed Firmware<a class="headerlink" href="#ad5933-mbed-firmware" title="Link to this heading">¶</a></h2>
 <p>This guide focuses on the SDP-K1, connected to the Pmod IA evaluation board, but it should be general enough to cover any compatible controller board (the controller board should be Mbed-enabled, and expose I2C and some GPIO’s).</p>
 <p>The software described below allows for an Mbed enabled controller board to be connected with the Pmod IA. Unmodified, the code will communicate over any serial terminal emulator (CoolTerm, putty, etc) using the UART provided by the controller board over USB.</p>
 </section>
 <section id="build-guide">
-<h2>Build Guide<a class="headerlink" href="#build-guide" title="Link to this heading">#</a></h2>
+<h2>Build Guide<a class="headerlink" href="#build-guide" title="Link to this heading">¶</a></h2>
 <section id="build-prerequisites">
-<h3>Build Prerequisites<a class="headerlink" href="#build-prerequisites" title="Link to this heading">#</a></h3>
+<h3>Build Prerequisites<a class="headerlink" href="#build-prerequisites" title="Link to this heading">¶</a></h3>
 <p>Prior to building a firmware project, it is required to set up an environment so
 that the build process may find the necessary tools (compiler, linker, SDK etc.).
 Use the following steps to prepare your environment for building firmware projects
@@ -325,7 +327,7 @@ for respective platform.</p>
 </div>
 </div></section>
 <section id="building-a-project">
-<h3>Building a project<a class="headerlink" href="#building-a-project" title="Link to this heading">#</a></h3>
+<h3>Building a project<a class="headerlink" href="#building-a-project" title="Link to this heading">¶</a></h3>
 <p>Once the build enviornment is setup, follow the guide below to build your project
 and generate executable file (.bin/.hex)</p>
 <div><div class="collapsible docutils container">
@@ -429,7 +431,7 @@ mentioned in step2 and clean build project as mentioned in step3</p>
 </div>
 </div></section>
 <section id="running-a-project">
-<h3>Running a project<a class="headerlink" href="#running-a-project" title="Link to this heading">#</a></h3>
+<h3>Running a project<a class="headerlink" href="#running-a-project" title="Link to this heading">¶</a></h3>
 <p>Once the firmware build is successful and binary file is generated, copy the
 generated binary into USB drive hosted by your MCU board (e.g. USB drive hosted
 by SDP-K1 board on windows). This will flash the binary file into MCU present
@@ -439,7 +441,7 @@ of all build steps.</p>
 </section>
 </section>
 <section id="quick-start">
-<h2>Quick Start<a class="headerlink" href="#quick-start" title="Link to this heading">#</a></h2>
+<h2>Quick Start<a class="headerlink" href="#quick-start" title="Link to this heading">¶</a></h2>
 <p>If you have some familiarity with the Mbed platform, the following is a basic list of steps required to start running the code,
 see below for more detail:</p>
 <ul class="simple">
@@ -459,7 +461,7 @@ see below for more detail:</p>
 </ul>
 </section>
 <section id="using-the-firmware">
-<h2>Using the Firmware<a class="headerlink" href="#using-the-firmware" title="Link to this heading">#</a></h2>
+<h2>Using the Firmware<a class="headerlink" href="#using-the-firmware" title="Link to this heading">¶</a></h2>
 <p>The firmware is delivered as a basic, text-based user-interface that operates through a UART on the controller board using the same USB cable that is used to flash the firmware to the boards. Any terminal-emulator should work, but it is not possible for Analog Devices to test everyone. It is necessary to connect a serial terminal-emulator to interact with the running firmware.</p>
 <p>Here CoolTerm is used as an example, Analog Devices does not endorse any particular program for this, but CoolTerm works well and is made freely available, other terminals such as Tera Term, or PuTTY will work just as well. Set the baud-rate for 115200 and keep the defaults for everything else. The actual values used can be found by looking at the source code in main.cpp</p>
 <blockquote>
@@ -474,7 +476,7 @@ see below for more detail:</p>
 </ul>
 </section>
 <section id="ad5933-demo">
-<h2>AD5933 DEMO<a class="headerlink" href="#ad5933-demo" title="Link to this heading">#</a></h2>
+<h2>AD5933 DEMO<a class="headerlink" href="#ad5933-demo" title="Link to this heading">¶</a></h2>
 <p>This demo will keep things simple by only using resistances. The AD5933 operates is a ratiometric device and because of this it requires a calibration gain-factor to be calculated. This demo will use a 200KΩ calibration and will test the operation of the impedance calculation with a different resistance (300KΩ is arbitrarily chosen).</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -511,7 +513,7 @@ Any impedance can now be placed between the SMB connectors on the PMOD IA board 
 </div></blockquote>
 </section>
 <section id="support">
-<h2>Support<a class="headerlink" href="#support" title="Link to this heading">#</a></h2>
+<h2>Support<a class="headerlink" href="#support" title="Link to this heading">¶</a></h2>
 <p>Feel free to ask questions in the <a class="reference external" href="https://ez.analog.com/data_converters">EngineerZone</a></p>
 </section>
 </section>

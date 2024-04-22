@@ -9,7 +9,7 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=8e8a900e" />
     <link rel="stylesheet" type="text/css" href="../../../_static/style.min.css?v=cf8483f0" />
     <script src="../../../_static/documentation_options.js?v=5929fcd5"></script>
-    <script src="../../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script defer="" src="../../../_static/app.umd.js?v=96350458"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
@@ -66,6 +66,7 @@
   <a href="../../../../no-OS/index.html">no-OS</a>
   <a href="../../../../pyadi-iio/index.html">pyadi-iio</a>
   <a href="../../../index.html" class="current">Precision Converters Firmware</a>
+  <a href="../../../../PrecisionToolbox/index.html">Precision Toolbox</a>
 </root>
 
     </div>
@@ -123,6 +124,7 @@ Content on this topic
   <a href="../../../../no-OS/index.html">no-OS</a>
   <a href="../../../../pyadi-iio/index.html">pyadi-iio</a>
   <a href="../../../index.html" class="current">Precision Converters Firmware</a>
+  <a href="../../../../PrecisionToolbox/index.html">Precision Toolbox</a>
 </root>
 
 </div>
@@ -172,9 +174,9 @@ Content on this topic
           <div class="body" role="main">
             
   <section id="ltc268x-console-application">
-<h1>LTC268x Console Application<a class="headerlink" href="#ltc268x-console-application" title="Link to this heading">#</a></h1>
+<h1>LTC268x Console Application<a class="headerlink" href="#ltc268x-console-application" title="Link to this heading">¶</a></h1>
 <section id="supported-hardware">
-<h2>Supported Hardware<a class="headerlink" href="#supported-hardware" title="Link to this heading">#</a></h2>
+<h2>Supported Hardware<a class="headerlink" href="#supported-hardware" title="Link to this heading">¶</a></h2>
 <p><strong>Supported Devices:</strong></p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://www.analog.com/en/products/ltc2686.html">LTC2686</a></p></li>
@@ -191,7 +193,7 @@ Content on this topic
 </ul>
 </section>
 <section id="introduction">
-<h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
+<h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">¶</a></h2>
 <p>The LTC2686/8 are 8/16-channel, 16-bit, ±15 V digital-to-analog converters (DAC) with an integrated precision reference. The LTC268X Mbed example software can be used as a starting point for developing your own code for Analog Devices DC2873A-B or DC2904A board in your own environment utilizing the benefits of the Mbed platform. This guide will focus interfacing the DC2873A-B or DC2904A-B evaluation board with Analog Devices SDP-K1 controller board or any an MBED-Enabled board.
 The firmware example comprises 3 layers of software (from top to bottom): Console Application Layer, Device No-OS Layer and Platform Drivers (Mbed-OS) layer.</p>
 <blockquote>
@@ -203,14 +205,14 @@ the hardware dependency as any Mbed enabled board can be used with same firmware
 <p>The software described below allows for an Mbed enabled controller board to be connected with an Analog Devices evaluation board. Unmodified, the code will communicate over any serial terminal emulator (CoolTerm, putty, etc) using the UART provided by the controller board over USB.</p>
 </section>
 <section id="interface-diagram">
-<h2>Interface Diagram<a class="headerlink" href="#interface-diagram" title="Link to this heading">#</a></h2>
+<h2>Interface Diagram<a class="headerlink" href="#interface-diagram" title="Link to this heading">¶</a></h2>
 <blockquote>
 <div><a class="reference internal image-reference" href="../../../_images/ltc268x_interface_diagram.jpg"><img alt="../../../_images/ltc268x_interface_diagram.jpg" src="../../../_images/ltc268x_interface_diagram.jpg" style="width: 600px;" /></a>
 </div></blockquote>
 <p>The DC2873A-B/DC2904A-B evaluation board is connected to SDP-K1 using the Arduino Headers and jumper wires. The DC2873A-B/DC2904A-B evaluation board VCC and IOVCC can be powered-up through a SDP-K1 USB supply or from external DC supply using the turrets connection. The SDP-K1 is connected to PC through an USB cable. The firmware (binary executable) can be loaded into SDP-K1 board through this USB interface from the PC. The SDP-K1 acts as a Serial Device (UART) and firmware loaded into it interacts with any serial terminal (like Teraterm, Putty, Coolterm, etc) by configuring terminal for proper serial settings (COM Port, Baud Rate, data bits, etc)</p>
 </section>
 <section id="useful-links">
-<h2>Useful Links<a class="headerlink" href="#useful-links" title="Link to this heading">#</a></h2>
+<h2>Useful Links<a class="headerlink" href="#useful-links" title="Link to this heading">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="https://github.com/analogdevicesinc/no-OS">no-OS: Software drivers for systems without OS</a></p></li>
 <li><p><a class="reference external" href="https://studio.keil.arm.com/auth/login/">Keil Studio Web IDE/Compiler</a></p></li>
@@ -225,7 +227,7 @@ they may be of interest if you require Linux and/or FPGA support.</p>
 </div>
 </section>
 <section id="hardware-connections">
-<h2>Hardware Connections<a class="headerlink" href="#hardware-connections" title="Link to this heading">#</a></h2>
+<h2>Hardware Connections<a class="headerlink" href="#hardware-connections" title="Link to this heading">¶</a></h2>
 <p>The DC2873A-B/DC2904A-B evaluation board can be connected to the SDP-K1 using jumper wires from the Arduino header to the signal pins available via through-hole headers right beside the J1 connector. Either you can solder header pins on the through-hole mounting area or directly connect wires to them.</p>
 <blockquote>
 <div><a class="reference internal image-reference" href="../../../_images/ltc268x_hardware_connections.jpg"><img alt="../../../_images/ltc268x_hardware_connections.jpg" src="../../../_images/ltc268x_hardware_connections.jpg" style="width: 600px;" /></a>
@@ -257,7 +259,7 @@ they may be of interest if you require Linux and/or FPGA support.</p>
 </div>
 </section>
 <section id="power-supply">
-<h2>Power Supply<a class="headerlink" href="#power-supply" title="Link to this heading">#</a></h2>
+<h2>Power Supply<a class="headerlink" href="#power-supply" title="Link to this heading">¶</a></h2>
 <p>The power to the evaluation board should be supplied through the on-board turret connections within the following supply range:</p>
 <div class="table-wrapper docutils container">
 <table class="docutils align-default">
@@ -299,9 +301,9 @@ they may be of interest if you require Linux and/or FPGA support.</p>
 </div>
 </section>
 <section id="build-guide">
-<h2>Build Guide<a class="headerlink" href="#build-guide" title="Link to this heading">#</a></h2>
+<h2>Build Guide<a class="headerlink" href="#build-guide" title="Link to this heading">¶</a></h2>
 <section id="build-prerequisites">
-<h3>Build Prerequisites<a class="headerlink" href="#build-prerequisites" title="Link to this heading">#</a></h3>
+<h3>Build Prerequisites<a class="headerlink" href="#build-prerequisites" title="Link to this heading">¶</a></h3>
 <p>Prior to building a firmware project, it is required to set up an environment so
 that the build process may find the necessary tools (compiler, linker, SDK etc.).
 Use the following steps to prepare your environment for building firmware projects
@@ -376,7 +378,7 @@ for respective platform.</p>
 </div>
 </div></section>
 <section id="building-a-project">
-<h3>Building a project<a class="headerlink" href="#building-a-project" title="Link to this heading">#</a></h3>
+<h3>Building a project<a class="headerlink" href="#building-a-project" title="Link to this heading">¶</a></h3>
 <p>Once the build enviornment is setup, follow the guide below to build your project
 and generate executable file (.bin/.hex)</p>
 <div><div class="collapsible docutils container">
@@ -480,7 +482,7 @@ mentioned in step2 and clean build project as mentioned in step3</p>
 </div>
 </div></section>
 <section id="running-a-project">
-<h3>Running a project<a class="headerlink" href="#running-a-project" title="Link to this heading">#</a></h3>
+<h3>Running a project<a class="headerlink" href="#running-a-project" title="Link to this heading">¶</a></h3>
 <p>Once the firmware build is successful and binary file is generated, copy the
 generated binary into USB drive hosted by your MCU board (e.g. USB drive hosted
 by SDP-K1 board on windows). This will flash the binary file into MCU present
@@ -490,7 +492,7 @@ of all build steps.</p>
 </section>
 </section>
 <section id="quick-start">
-<h2>Quick Start<a class="headerlink" href="#quick-start" title="Link to this heading">#</a></h2>
+<h2>Quick Start<a class="headerlink" href="#quick-start" title="Link to this heading">¶</a></h2>
 <p>If you have some familiarity with the Mbed platform, the following is a basic list of steps required to start running the code,
 see below for more detail:</p>
 <ul class="simple">
@@ -511,7 +513,7 @@ see below for more detail:</p>
 </ul>
 </section>
 <section id="using-the-firmware">
-<h2>Using the Firmware<a class="headerlink" href="#using-the-firmware" title="Link to this heading">#</a></h2>
+<h2>Using the Firmware<a class="headerlink" href="#using-the-firmware" title="Link to this heading">¶</a></h2>
 <p>The firmware is delivered as a basic, text-based user-interface that operates through a UART on the controller board using the same USB cable that is used to flash the firmware to the boards. Any terminal-emulator should work, but it is not possible for Analog Devices to test everyone. It is necessary to connect a serial terminal-emulator to interact with the running firmware.</p>
 <p>Here TeraTerm is used as an example, Analog Devices does not endorse any particular program for this, but TeraTerm works well and is made freely available, other terminals such as CoolTerm, or PuTTY will work.</p>
 <p>Configure your serial terminal (<a class="reference external" href="https://osdn.net/projects/ttssh2/releases/">Tera Term</a>)
@@ -532,7 +534,7 @@ for below settings:</p>
 <p>It is hoped that the most features of the LTC2686/8 are coded, but it’s likely that some special functionality is not implemented.</p>
 </section>
 <section id="support">
-<h2>Support<a class="headerlink" href="#support" title="Link to this heading">#</a></h2>
+<h2>Support<a class="headerlink" href="#support" title="Link to this heading">¶</a></h2>
 <p>Feel free to ask questions in the <a class="reference external" href="https://ez.analog.com/data_converters">EngineerZone</a></p>
 </section>
 </section>
