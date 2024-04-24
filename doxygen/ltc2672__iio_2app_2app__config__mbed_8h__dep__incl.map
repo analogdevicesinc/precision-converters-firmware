@@ -1,0 +1,8 @@
+<map id="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ltc2672_iio/app/app_config_mbed.h" name="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ltc2672_iio/app/app_config_mbed.h">
+<area shape="rect" id="node1" title="Header file for Mbed platform configurations." alt="" coords="136,5,391,76"/>
+<area shape="rect" id="node2" href="$ltc2672__iio_2app_2app__config_8h.html" title="Configuration file for LTC2672 device application." alt="" coords="284,124,507,195"/>
+<area shape="rect" id="node4" href="$ltc2672__iio_2app_2app__config__mbed_8c.html" title="Application configurations module for Mbed platform." alt="" coords="5,243,260,313"/>
+<area shape="rect" id="node3" href="$ltc2672__iio_2app_2app__config_8c.html" title="Application configurations module (platform&#45;agnostic)" alt="" coords="284,243,507,313"/>
+<area shape="rect" id="node5" href="$ltc2672__iio_8c.html" title="Implementation of LTC2672 IIO application interfaces." alt="" coords="531,243,753,313"/>
+<area shape="rect" id="node6" href="$ltc2672__user__config_8c.html" title="User configurations for LTC2672 No&#45;OS driver." alt="" coords="778,243,1047,313"/>
+</map>

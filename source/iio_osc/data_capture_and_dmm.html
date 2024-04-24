@@ -145,6 +145,7 @@ Content on this topic
 <li class="toctree-l2"><a class="reference internal" href="../projects/ad559xr_console/ad559xr_console.html">AD559XR Console Application</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../projects/ad590_console/ad590_console.html">AD590 Console Application</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../projects/adt7420_console/adt7420_console.html">ADT7420 Console Application</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../projects/ltc2672_iio/ltc2672_iio.html">LTC2672 IIO Application</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../projects/nanodac_console/nanodac_console.html">nanoDAC+ Console Application</a></li>
 </ul>
 </li>
@@ -173,7 +174,8 @@ capture or Debug tab as this could impact data capturing. All uses same
 communication bus to access the data which could result into access/busy conflicts
 during data capture.</p>
 </div>
-<a class="reference internal image-reference" href="../../_images/iio_osc_dmm_tab.png"><img alt="../../_images/iio_osc_dmm_tab.png" src="../../_images/iio_osc_dmm_tab.png" style="width: 500px;" /></a>
+<a class="reference internal image-reference" href="../../_images/iio_osc_dmm_tab.png"><img alt="../../_images/iio_osc_dmm_tab.png" src="../../_images/iio_osc_dmm_tab.png" style="width: 500px;" />
+</a>
 </section>
 <section id="iio-data-capture-for-adcs">
 <h1>IIO Data Capture for ADCs<a class="headerlink" href="#iio-data-capture-for-adcs" title="Link to this heading">¶</a></h1>
@@ -192,15 +194,18 @@ also allows users to save the data, which can further be used to process and ana
 is an 8-channel DAS. A 1Khz signal is applied on inputs of all 8 analog channels.
 The max data capturing rate in firmware is ~30 to 40 KSPS. The data is transmitted
 from firmware application using Virtual Serial or UART serial link.</p>
-<a class="reference internal image-reference" href="../../_images/iio_osc_sine_wave_capture.png"><img alt="../../_images/iio_osc_sine_wave_capture.png" src="../../_images/iio_osc_sine_wave_capture.png" style="width: 800px;" /></a>
-<a class="reference internal image-reference" href="../../_images/iio_osc_trapezoidal_wave_capture.png"><img alt="../../_images/iio_osc_trapezoidal_wave_capture.png" src="../../_images/iio_osc_trapezoidal_wave_capture.png" style="width: 800px;" /></a>
+<a class="reference internal image-reference" href="../../_images/iio_osc_sine_wave_capture.png"><img alt="../../_images/iio_osc_sine_wave_capture.png" src="../../_images/iio_osc_sine_wave_capture.png" style="width: 800px;" />
+</a>
+<a class="reference internal image-reference" href="../../_images/iio_osc_trapezoidal_wave_capture.png"><img alt="../../_images/iio_osc_trapezoidal_wave_capture.png" src="../../_images/iio_osc_trapezoidal_wave_capture.png" style="width: 800px;" />
+</a>
 <p>The channels for which data is to be captured can be selected from the GUI window,
 along with the number of samples to display on screen in a single data read query.
 As shown below, all 8 channels are selected for data capture and the number of
 requested samples is set at 400 (default). This means, IIO oscilloscope requests
 400 samples per channel, so in this case total 3200 samples. The channels are
 stored as shown below:</p>
-<a class="reference internal image-reference" href="../../_images/iio_osc_select_chn_samples.png"><img alt="../../_images/iio_osc_select_chn_samples.png" src="../../_images/iio_osc_select_chn_samples.png" style="width: 800px;" /></a>
+<a class="reference internal image-reference" href="../../_images/iio_osc_select_chn_samples.png"><img alt="../../_images/iio_osc_select_chn_samples.png" src="../../_images/iio_osc_select_chn_samples.png" style="width: 800px;" />
+</a>
 </section>
 <section id="data-capture-from-iio-device">
 <h2>Data Capture from IIO Device<a class="headerlink" href="#data-capture-from-iio-device" title="Link to this heading">¶</a></h2>
@@ -217,11 +222,13 @@ could result into access/busy conflicts during data capture.</p>
 </div>
 <p><em>Time Domain plot:</em></p>
 <blockquote>
-<div><a class="reference internal image-reference" href="../../_images/iio_osc_time_domain_plot.png"><img alt="../../_images/iio_osc_time_domain_plot.png" src="../../_images/iio_osc_time_domain_plot.png" style="width: 800px;" /></a>
+<div><a class="reference internal image-reference" href="../../_images/iio_osc_time_domain_plot.png"><img alt="../../_images/iio_osc_time_domain_plot.png" src="../../_images/iio_osc_time_domain_plot.png" style="width: 800px;" />
+</a>
 </div></blockquote>
 <p><em>Frequency Domain plot:</em></p>
 <blockquote>
-<div><a class="reference internal image-reference" href="../../_images/iio_osc_freq_domain_plot.png"><img alt="../../_images/iio_osc_freq_domain_plot.png" src="../../_images/iio_osc_freq_domain_plot.png" style="width: 800px;" /></a>
+<div><a class="reference internal image-reference" href="../../_images/iio_osc_freq_domain_plot.png"><img alt="../../_images/iio_osc_freq_domain_plot.png" src="../../_images/iio_osc_freq_domain_plot.png" style="width: 800px;" />
+</a>
 </div></blockquote>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -239,7 +246,8 @@ channel during save option and only requested number of samples can be saved. So
 if 400 samples are requested, the data for only 400 samples would get saved into
 .csv file. The data is raw adc data and no extra processing is performed it while
 saving or capturing.</p>
-<a class="reference internal image-reference" href="../../_images/iio_osc_data_save.png"><img alt="../../_images/iio_osc_data_save.png" src="../../_images/iio_osc_data_save.png" style="width: 600px;" /></a>
+<a class="reference internal image-reference" href="../../_images/iio_osc_data_save.png"><img alt="../../_images/iio_osc_data_save.png" src="../../_images/iio_osc_data_save.png" style="width: 600px;" />
+</a>
 <p>The data saving feature is also available with other IIO client applications such as
 python and ACE.</p>
 </section>
@@ -275,7 +283,8 @@ signals with frequencies of 4Khz and less when no oversampling is present. At OS
 the data rate drops down and so higher frequency signals can’t be reproduced correctly.
 Below plot is captured with 17Khz analog input on channel 1 and it can be seen that
 the signal is not a pure sine wave.</p>
-<a class="reference internal image-reference" href="../../_images/iio_osc_high_frequency_graph.png"><img alt="../../_images/iio_osc_high_frequency_graph.png" src="../../_images/iio_osc_high_frequency_graph.png" style="width: 800px;" /></a>
+<a class="reference internal image-reference" href="../../_images/iio_osc_high_frequency_graph.png"><img alt="../../_images/iio_osc_high_frequency_graph.png" src="../../_images/iio_osc_high_frequency_graph.png" style="width: 800px;" />
+</a>
 <p><strong>Data Transmission Rate (serial link) of MCU:</strong></p>
 <p>This is the rate or speed at which data can be transmitted to IIO client
 over the serial link (e.g. UART or Virtual serial). The data transmission link
@@ -320,7 +329,8 @@ Mbed firmware (app_config.h file), the data buffer size can be increased to 16Mb
 </div>
 <p>IIO firmware maintains the circular data buffer with dedicated read and write indices.
 Below diagram illustrates the use of circular buffer in the firmware.</p>
-<a class="reference internal image-reference" href="../../_images/iio_data_capture_in_firmware.png"><img alt="../../_images/iio_data_capture_in_firmware.png" src="../../_images/iio_data_capture_in_firmware.png" style="width: 600px;" /></a>
+<a class="reference internal image-reference" href="../../_images/iio_data_capture_in_firmware.png"><img alt="../../_images/iio_data_capture_in_firmware.png" src="../../_images/iio_data_capture_in_firmware.png" style="width: 600px;" />
+</a>
 </section>
 
 

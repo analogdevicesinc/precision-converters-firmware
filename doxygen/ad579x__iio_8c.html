@@ -137,11 +137,11 @@ Macros</h2></td></tr>
 <tr class="separator:a6f2add8fcba3f86373808fbdd22c872b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5626e745deedca2db2c3812c40153f65"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad579x__iio_8c.html#a5626e745deedca2db2c3812c40153f65">AD579X_IIO_TRIGGER_NAME</a>&#160;&#160;&#160;&quot;ad579x_iio_trigger&quot;</td></tr>
 <tr class="separator:a5626e745deedca2db2c3812c40153f65"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a43588505c7e50a0bd5b69f7554a4be79"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad579x__iio_8c.html#a43588505c7e50a0bd5b69f7554a4be79">DEFAULT_SCALE</a>&#160;&#160;&#160;(((float)<a class="el" href="ad579x__iio_2app_2app__config_8h.html#a79b656f52005e93f3112db2b9657447a">DAC_CH_SPAN</a>/<a class="el" href="ad579x__iio_2app_2app__config_8h.html#a653c425fe1a8e30cd67b8f94142f0127">DAC_MAX_COUNT_BIN_OFFSET</a>)*1000)</td></tr>
+<tr class="memitem:a43588505c7e50a0bd5b69f7554a4be79"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad579x__iio_8c.html#a43588505c7e50a0bd5b69f7554a4be79">DEFAULT_SCALE</a>&#160;&#160;&#160;(((float)<a class="el" href="ltc2672__iio_8c.html#ad2c22ae9c2fbfe97eabb11361415bf37a8e1574e51b5b298f4f362e5c8a52405e">DAC_CH_SPAN</a>/<a class="el" href="ad579x__iio_2app_2app__config_8h.html#a653c425fe1a8e30cd67b8f94142f0127">DAC_MAX_COUNT_BIN_OFFSET</a>)*1000)</td></tr>
 <tr class="separator:a43588505c7e50a0bd5b69f7554a4be79"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a25065cd833bcfecfb404093aed3edaca"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad579x__iio_8c.html#a25065cd833bcfecfb404093aed3edaca">BYTES_PER_SAMPLE</a>&#160;&#160;&#160;sizeof(uint32_t)</td></tr>
 <tr class="separator:a25065cd833bcfecfb404093aed3edaca"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6a5692377aeb1197a19ef7856ae54e8d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad579x__iio_8c.html#a6a5692377aeb1197a19ef7856ae54e8d">CHN_STORAGE_BITS</a>&#160;&#160;&#160;(<a class="el" href="ad777x__iio_2app_2app__config_8h.html#a25065cd833bcfecfb404093aed3edaca">BYTES_PER_SAMPLE</a> * 8)</td></tr>
+<tr class="memitem:a6a5692377aeb1197a19ef7856ae54e8d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad579x__iio_8c.html#a6a5692377aeb1197a19ef7856ae54e8d">CHN_STORAGE_BITS</a>&#160;&#160;&#160;(<a class="el" href="ltc2672__iio_8c.html#a25065cd833bcfecfb404093aed3edaca">BYTES_PER_SAMPLE</a> * 8)</td></tr>
 <tr class="separator:a6a5692377aeb1197a19ef7856ae54e8d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab723c5f0e9759c70ed582dfd77431ff7"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad579x__iio_8c.html#ab723c5f0e9759c70ed582dfd77431ff7">DATA_BUFFER_SIZE</a>&#160;&#160;&#160;(32768)</td></tr>
 <tr class="separator:ab723c5f0e9759c70ed582dfd77431ff7"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -361,7 +361,7 @@ Variables</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define CHN_STORAGE_BITS&#160;&#160;&#160;(<a class="el" href="ad777x__iio_2app_2app__config_8h.html#a25065cd833bcfecfb404093aed3edaca">BYTES_PER_SAMPLE</a> * 8)</td>
+          <td class="memname">#define CHN_STORAGE_BITS&#160;&#160;&#160;(<a class="el" href="ltc2672__iio_8c.html#a25065cd833bcfecfb404093aed3edaca">BYTES_PER_SAMPLE</a> * 8)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -389,7 +389,7 @@ Variables</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define DEFAULT_SCALE&#160;&#160;&#160;(((float)<a class="el" href="ad579x__iio_2app_2app__config_8h.html#a79b656f52005e93f3112db2b9657447a">DAC_CH_SPAN</a>/<a class="el" href="ad579x__iio_2app_2app__config_8h.html#a653c425fe1a8e30cd67b8f94142f0127">DAC_MAX_COUNT_BIN_OFFSET</a>)*1000)</td>
+          <td class="memname">#define DEFAULT_SCALE&#160;&#160;&#160;(((float)<a class="el" href="ltc2672__iio_8c.html#ad2c22ae9c2fbfe97eabb11361415bf37a8e1574e51b5b298f4f362e5c8a52405e">DAC_CH_SPAN</a>/<a class="el" href="ad579x__iio_2app_2app__config_8h.html#a653c425fe1a8e30cd67b8f94142f0127">DAC_MAX_COUNT_BIN_OFFSET</a>)*1000)</td>
         </tr>
       </table>
 </div><div class="memdoc">

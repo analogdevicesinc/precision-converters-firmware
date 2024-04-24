@@ -157,6 +157,7 @@ Content on this topic
 <li class="toctree-l2"><a class="reference internal" href="../ad559xr_console/ad559xr_console.html">AD559XR Console Application</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ad590_console/ad590_console.html">AD590 Console Application</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../adt7420_console/adt7420_console.html">ADT7420 Console Application</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ltc2672_iio/ltc2672_iio.html">LTC2672 IIO Application</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../nanodac_console/nanodac_console.html">nanoDAC+ Console Application</a></li>
 </ul>
 </li>
@@ -238,7 +239,8 @@ they may be of interest if you require Linux and/or FPGA support.</p>
 <p class="admonition-title">Note</p>
 <p>If using the Arduino header pins, compile the software only after adding the #define ARDUINO to app_config.h (set by default)</p>
 </div>
-<a class="reference internal image-reference" href="../../../_images/ad5933_hardware_connections.jpg"><img alt="../../../_images/ad5933_hardware_connections.jpg" src="../../../_images/ad5933_hardware_connections.jpg" style="width: 500px;" /></a>
+<a class="reference internal image-reference" href="../../../_images/ad5933_hardware_connections.jpg"><img alt="../../../_images/ad5933_hardware_connections.jpg" src="../../../_images/ad5933_hardware_connections.jpg" style="width: 500px;" />
+</a>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>One thing to note here is that power and ground for the evaluation need to be provided and can be conveniently taken from the Arduino header as shown above. If using a different evaluation board to the DIGILENT PMOD IA, then consult the relevant evaluation board guides available through the product-page for your selected board.</p>
@@ -294,7 +296,8 @@ for respective platform.</p>
 <li><p>Install <a class="reference external" href="https://developer.arm.com/downloads/-/gnu-rm.">GNU Arm Embedded compiler</a> (for the development, 9-2019-q4-major version is used) and add a path of GNU Arm Embedded Toolchain bin directory into the system environmental path variable (as shown in below screenshot).</p></li>
 <li><p>Configure the compiler location with Mbed CLI. This can be carried out by running the <strong>mbed config -G GCC_ARM_PATH &lt;path-to-your-gcc-compiler&gt;</strong> in Command Prompt. For example you can run <strong>mbed config -G GCC_ARM_PATH “C:\Program Files (x86)\GNU Tools ARM Embedded\9 2019-q4-major\bin”</strong> in command prompt. It will set mentioned compiler path to all the Mbed Projects.</p>
 <blockquote>
-<div><a class="reference internal image-reference" href="../../../_images/environmental_variables.png"><img alt="../../../_images/environmental_variables.png" src="../../../_images/environmental_variables.png" style="width: 400px;" /></a>
+<div><a class="reference internal image-reference" href="../../../_images/environmental_variables.png"><img alt="../../../_images/environmental_variables.png" src="../../../_images/environmental_variables.png" style="width: 400px;" />
+</a>
 </div></blockquote>
 </li>
 </ul>
@@ -315,7 +318,8 @@ for respective platform.</p>
 <li><p>Install <a class="reference external" href="https://gnuwin32.sourceforge.net/packages/make.htm">Make</a> in the root of ‘C’ drive without any spaces in the installation path. The path must be <strong>C:\GnuWin32\…</strong>. Add this path into the system environmental path variable (as shown in below screenshot).</p></li>
 <li><p>Install <a class="reference external" href="https://developer.arm.com/downloads/-/gnu-rm.">GNU Arm Embedded compiler</a> (for the development, 9-2019-q4-major version is used) and add a path of GNU Arm Embedded Toolchain bin directory into the system environmental path variable (as shown in below screenshot).</p>
 <blockquote>
-<div><a class="reference internal image-reference" href="../../../_images/environmental_variables.png"><img alt="../../../_images/environmental_variables.png" src="../../../_images/environmental_variables.png" style="width: 400px;" /></a>
+<div><a class="reference internal image-reference" href="../../../_images/environmental_variables.png"><img alt="../../../_images/environmental_variables.png" src="../../../_images/environmental_variables.png" style="width: 400px;" />
+</a>
 </div></blockquote>
 </li>
 </ul>
@@ -342,17 +346,20 @@ and generate executable file (.bin/.hex)</p>
 <ul>
 <li><p>Clone the <a class="reference external" href="https://github.com/analogdevicesinc/precision-converters-firmware">Precision Converters Firmware repository</a> into Keil Studio using “File-&gt;clone…” menu.</p>
 <blockquote>
-<div><a class="reference internal image-reference" href="../../../_images/mbed_keil_studio_project_clone.png"><img alt="../../../_images/mbed_keil_studio_project_clone.png" src="../../../_images/mbed_keil_studio_project_clone.png" style="width: 600px;" /></a>
+<div><a class="reference internal image-reference" href="../../../_images/mbed_keil_studio_project_clone.png"><img alt="../../../_images/mbed_keil_studio_project_clone.png" src="../../../_images/mbed_keil_studio_project_clone.png" style="width: 600px;" />
+</a>
 </div></blockquote>
 </li>
 <li><p>Once the project repository is imported, wait until all library dependencies are imported as shown in below screenshot. Now, open the ‘.medignore’ file present in the root directory of repository. Add comment syntax (two forward slashes) in front of the project name which you want to build. This will ignore all other projects and build only the comment syntax selected project.</p>
 <blockquote>
-<div><a class="reference internal image-reference" href="../../../_images/mbedignore_changes.png"><img alt="../../../_images/mbedignore_changes.png" src="../../../_images/mbedignore_changes.png" style="width: 600px;" /></a>
+<div><a class="reference internal image-reference" href="../../../_images/mbedignore_changes.png"><img alt="../../../_images/mbedignore_changes.png" src="../../../_images/mbedignore_changes.png" style="width: 600px;" />
+</a>
 </div></blockquote>
 </li>
 <li><p>Select the target device (default used for development is SDP-K1) and click on ‘Clean build’ option to build the project. After a successful build a binary will be downloaded to your computer- store this on your drive. Drag and drop this binary to the USB drive hosted by your controller board to flash the MCU.</p>
 <blockquote>
-<div><a class="reference internal image-reference" href="../../../_images/mbed_build.png"><img alt="../../../_images/mbed_build.png" src="../../../_images/mbed_build.png" style="width: 400px;" /></a>
+<div><a class="reference internal image-reference" href="../../../_images/mbed_build.png"><img alt="../../../_images/mbed_build.png" src="../../../_images/mbed_build.png" style="width: 400px;" />
+</a>
 </div></blockquote>
 </li>
 </ul>
@@ -393,33 +400,39 @@ mentioned in step2 and clean build project as mentioned in step3</p>
 <li><p>Open the respective project directory by navigating into the “precision_converters_firmware/projects/” folder.</p></li>
 <li><p>In the “STM32” folder present within the project directory, double click and open the .ioc file present within.</p>
 <blockquote>
-<div><a class="reference internal image-reference" href="../../../_images/stm32_project_directory.png"><img alt="../../../_images/stm32_project_directory.png" src="../../../_images/stm32_project_directory.png" style="width: 600px;" /></a>
+<div><a class="reference internal image-reference" href="../../../_images/stm32_project_directory.png"><img alt="../../../_images/stm32_project_directory.png" src="../../../_images/stm32_project_directory.png" style="width: 600px;" />
+</a>
 </div></blockquote>
 </li>
 <li><p>Click on the “Generate Code” option seen on the top right corner</p>
 <blockquote>
-<div><a class="reference internal image-reference" href="../../../_images/stm32_generate_code.png"><img alt="../../../_images/stm32_generate_code.png" src="../../../_images/stm32_generate_code.png" style="width: 600px;" /></a>
+<div><a class="reference internal image-reference" href="../../../_images/stm32_generate_code.png"><img alt="../../../_images/stm32_generate_code.png" src="../../../_images/stm32_generate_code.png" style="width: 600px;" />
+</a>
 </div></blockquote>
 </li>
 <li><p>Upon successful generation of drivers for the selected MCU, the autogenerated files would be seen in the same directory where the .ioc file was present. Double click and open the “.project” file seen in the list of files</p>
 <blockquote>
-<div><a class="reference internal image-reference" href="../../../_images/stm32_auto_generated_files.png"><img alt="../../../_images/stm32_auto_generated_files.png" src="../../../_images/stm32_auto_generated_files.png" style="width: 600px;" /></a>
+<div><a class="reference internal image-reference" href="../../../_images/stm32_auto_generated_files.png"><img alt="../../../_images/stm32_auto_generated_files.png" src="../../../_images/stm32_auto_generated_files.png" style="width: 600px;" />
+</a>
 </div></blockquote>
 </li>
 <li><p>After the project is loaded to the STM32CubeIDE, unfold the adxxxx_iio project seen in the project explorer, right click the “app” folder, select “Settings” under the “C/C++ Build” section on the left pane and un-check the “Exclude resources from build” checkbox. This would ensure that the project specific files are included by the build system</p>
 <blockquote>
-<div><a class="reference internal image-reference" href="../../../_images/stm32_exclude_files_option.png"><img alt="../../../_images/stm32_exclude_files_option.png" src="../../../_images/stm32_exclude_files_option.png" style="width: 600px;" /></a>
+<div><a class="reference internal image-reference" href="../../../_images/stm32_exclude_files_option.png"><img alt="../../../_images/stm32_exclude_files_option.png" src="../../../_images/stm32_exclude_files_option.png" style="width: 600px;" />
+</a>
 </div></blockquote>
 </li>
 <li><p>In order to choose STM32 platform in the firmware, select the “ACTIVE_PLATFORM” as “STM32_PLATFORM” in the app_config.h from the respective project.</p></li>
 <li><p>Add compiler flags “-u _printf_float” to the project settings.</p>
 <blockquote>
-<div><a class="reference internal image-reference" href="../../../_images/stm32_compiler_flag.png"><img alt="../../../_images/stm32_compiler_flag.png" src="../../../_images/stm32_compiler_flag.png" style="width: 600px;" /></a>
+<div><a class="reference internal image-reference" href="../../../_images/stm32_compiler_flag.png"><img alt="../../../_images/stm32_compiler_flag.png" src="../../../_images/stm32_compiler_flag.png" style="width: 600px;" />
+</a>
 </div></blockquote>
 </li>
 <li><p>Program by clicking on the “Run adxxxx_iio” option seen or by performing a copy-&gt;paste option of the .hex file seen in the STM32/Debug folder</p>
 <blockquote>
-<div><a class="reference internal image-reference" href="../../../_images/stm32_run_option.png"><img alt="../../../_images/stm32_run_option.png" src="../../../_images/stm32_run_option.png" style="width: 600px;" /></a>
+<div><a class="reference internal image-reference" href="../../../_images/stm32_run_option.png"><img alt="../../../_images/stm32_run_option.png" src="../../../_images/stm32_run_option.png" style="width: 600px;" />
+</a>
 </div></blockquote>
 </li>
 </ul>
@@ -465,7 +478,8 @@ see below for more detail:</p>
 <p>The firmware is delivered as a basic, text-based user-interface that operates through a UART on the controller board using the same USB cable that is used to flash the firmware to the boards. Any terminal-emulator should work, but it is not possible for Analog Devices to test everyone. It is necessary to connect a serial terminal-emulator to interact with the running firmware.</p>
 <p>Here CoolTerm is used as an example, Analog Devices does not endorse any particular program for this, but CoolTerm works well and is made freely available, other terminals such as Tera Term, or PuTTY will work just as well. Set the baud-rate for 115200 and keep the defaults for everything else. The actual values used can be found by looking at the source code in main.cpp</p>
 <blockquote>
-<div><a class="reference internal image-reference" href="../../../_images/ad5933_coolterm_menu.jpg"><img alt="../../../_images/ad5933_coolterm_menu.jpg" src="../../../_images/ad5933_coolterm_menu.jpg" style="width: 400px;" /></a>
+<div><a class="reference internal image-reference" href="../../../_images/ad5933_coolterm_menu.jpg"><img alt="../../../_images/ad5933_coolterm_menu.jpg" src="../../../_images/ad5933_coolterm_menu.jpg" style="width: 400px;" />
+</a>
 </div></blockquote>
 <p>The software is provided as a demo. The demo covers the essential operation of the AD5933 and it is hoped to be a good starting point for developing your own firmware. The code is also written with a view to keeping things simple, you do not have to be a coding-ninja to understand and expand upon the delivered functions.</p>
 <p>It is hoped that the most common functions of the AD5933 family are coded, but it’s likely that some special functionality is not implemented.</p>
@@ -509,7 +523,8 @@ The gain factor is the calibration for the signal path and only needs to be set 
 <p>Step 3: Calculate unknown impedance
 Any impedance can now be placed between the SMB connectors on the PMOD IA board and option 4 from the main-menu will perform a sweep according to the settings configured in Step 1. The results will be displayed on the terminal. For this demo the 200KΩ was replaced with a 300KΩ and an impedance sweep performed. It returned the results shown below. Consult the extensive documentation available on the product page to help understand the process</p>
 <blockquote>
-<div><a class="reference internal image-reference" href="../../../_images/ad5933_demo.jpg"><img alt="../../../_images/ad5933_demo.jpg" src="../../../_images/ad5933_demo.jpg" style="width: 400px;" /></a>
+<div><a class="reference internal image-reference" href="../../../_images/ad5933_demo.jpg"><img alt="../../../_images/ad5933_demo.jpg" src="../../../_images/ad5933_demo.jpg" style="width: 400px;" />
+</a>
 </div></blockquote>
 </section>
 <section id="support">

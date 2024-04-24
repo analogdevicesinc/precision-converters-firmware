@@ -156,6 +156,7 @@ Content on this topic
 <li class="toctree-l2 current"><a class="current reference internal" href="#">AD559XR Console Application</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ad590_console/ad590_console.html">AD590 Console Application</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../adt7420_console/adt7420_console.html">ADT7420 Console Application</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ltc2672_iio/ltc2672_iio.html">LTC2672 IIO Application</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../nanodac_console/nanodac_console.html">nanoDAC+ Console Application</a></li>
 </ul>
 </li>
@@ -195,7 +196,8 @@ Content on this topic
 <h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">¶</a></h2>
 <p>The AD5592R/ AD5593R offer 8-Channel, 12-Bit, configurable ADC/DAC with on-chip reference and either SPI (AD5592R) or I2C interfaces (AD5593R). This page gives an overview of using the AD5592R/AD5593R firmware example with SDP-K1 EVAL board. The firmware example comprises 3 layers of software (from top to bottom): Console Application Layer, Device No-OS Layer and Platform Drivers (Mbed-OS) layer.</p>
 <blockquote>
-<div><a class="reference internal image-reference" href="../../../_images/ad5592r_software_architecture.jpg"><img alt="../../../_images/ad5592r_software_architecture.jpg" src="../../../_images/ad5592r_software_architecture.jpg" style="width: 200px;" /></a>
+<div><a class="reference internal image-reference" href="../../../_images/ad5592r_software_architecture.jpg"><img alt="../../../_images/ad5592r_software_architecture.jpg" src="../../../_images/ad5592r_software_architecture.jpg" style="width: 200px;" />
+</a>
 </div></blockquote>
 <p>The application layer uses the ADI Console Libraries to create console-based User Interactive (UI). The middle layer of No-OS device library has device specific APIs to interface with AD5592R/93R devices. These APIs allows direct access to device register map in order to read/write device registers. The bottom layer of Platform Drivers is responsible for Low Level Interface. The platform drivers use mbed-os libraries to access low level peripheral (like GPIOs, SPI, I2C, etc). The devices from AD5592R/AD5593R family use SPI and I2C communication interfaces respectively.</p>
 <p>The Mbed Platform simplifies the overall software development process by providing the low-level driver support. This reduces the hardware dependency as any Mbed enabled board can be used with same firmware with little modifications (changing a pin mapping).</p>
@@ -203,7 +205,8 @@ Content on this topic
 <section id="interface-diagram">
 <h2>Interface Diagram<a class="headerlink" href="#interface-diagram" title="Link to this heading">¶</a></h2>
 <blockquote>
-<div><a class="reference internal image-reference" href="../../../_images/ad5592r_interface.jpg"><img alt="../../../_images/ad5592r_interface.jpg" src="../../../_images/ad5592r_interface.jpg" style="width: 600px;" /></a>
+<div><a class="reference internal image-reference" href="../../../_images/ad5592r_interface.jpg"><img alt="../../../_images/ad5592r_interface.jpg" src="../../../_images/ad5592r_interface.jpg" style="width: 600px;" />
+</a>
 </div></blockquote>
 <p>The EVAL-AD5592R is connected to SDP-K1 through the on-board default 120-pin SDP connector. Meanwhile, the EVAL-AD5593R is connected using the K1’s Arduino Header and jumper cables.</p>
 <p>Both evaluation boards have 8 I/O pins available on the SMB connectors - I/O 0-7. These connectors are analog inputs or outputs depending on whether the I/Ox pin is configured as ADCs or DACs, or as digital inputs or outputs if the I/Ox pin is configured as a GPIO.</p>
@@ -228,7 +231,8 @@ they may be of interest if you require Linux and/or FPGA support.</p>
 <h2>Hardware Connections<a class="headerlink" href="#hardware-connections" title="Link to this heading">¶</a></h2>
 <p>The SDP-K1 is powered by the USB connection to a PC. The SDP-K1 appears as a USB serial device, and the host PC creates a serial or COM Port that can be connected to connect by Terminal software such as Teraterm, Putty, etc. The serial port assigned to a device can be found using the Device Manager for a Windows based OS.</p>
 <blockquote>
-<div><a class="reference internal image-reference" href="../../../_images/ad5592r_connections.jpg"><img alt="../../../_images/ad5592r_connections.jpg" src="../../../_images/ad5592r_connections.jpg" style="width: 600px;" /></a>
+<div><a class="reference internal image-reference" href="../../../_images/ad5592r_connections.jpg"><img alt="../../../_images/ad5592r_connections.jpg" src="../../../_images/ad5592r_connections.jpg" style="width: 600px;" />
+</a>
 </div></blockquote>
 <p>The EVAL-AD5592R-1SDZ can be connected to the SDP-K1 using the 120-way header and is used for the SPI signals. A separate VDD power supply connection is required, either 5V or 3.3V. This can be wired from the corresponding pin on the SDP-K1 Arduino power header to the J2-1 ‘VDD’ screw terminal.</p>
 <ul class="simple">
@@ -242,7 +246,8 @@ they may be of interest if you require Linux and/or FPGA support.</p>
 <li><p>LK11-A, selects 3.3V from SDP as Vlogic supply</p></li>
 <li><p>LK2, LK4 to LK9, LK20 - when fitted, connects pull down resistor to ground. Remove link depending on how the I/O pins are configured and used.</p>
 <blockquote>
-<div><a class="reference internal image-reference" href="../../../_images/ad5593r_connections.jpg"><img alt="../../../_images/ad5593r_connections.jpg" src="../../../_images/ad5593r_connections.jpg" style="width: 400px;" /></a>
+<div><a class="reference internal image-reference" href="../../../_images/ad5593r_connections.jpg"><img alt="../../../_images/ad5593r_connections.jpg" src="../../../_images/ad5593r_connections.jpg" style="width: 400px;" />
+</a>
 </div></blockquote>
 </li>
 </ul>
@@ -329,7 +334,8 @@ for respective platform.</p>
 <li><p>Install <a class="reference external" href="https://developer.arm.com/downloads/-/gnu-rm.">GNU Arm Embedded compiler</a> (for the development, 9-2019-q4-major version is used) and add a path of GNU Arm Embedded Toolchain bin directory into the system environmental path variable (as shown in below screenshot).</p></li>
 <li><p>Configure the compiler location with Mbed CLI. This can be carried out by running the <strong>mbed config -G GCC_ARM_PATH &lt;path-to-your-gcc-compiler&gt;</strong> in Command Prompt. For example you can run <strong>mbed config -G GCC_ARM_PATH “C:\Program Files (x86)\GNU Tools ARM Embedded\9 2019-q4-major\bin”</strong> in command prompt. It will set mentioned compiler path to all the Mbed Projects.</p>
 <blockquote>
-<div><a class="reference internal image-reference" href="../../../_images/environmental_variables.png"><img alt="../../../_images/environmental_variables.png" src="../../../_images/environmental_variables.png" style="width: 400px;" /></a>
+<div><a class="reference internal image-reference" href="../../../_images/environmental_variables.png"><img alt="../../../_images/environmental_variables.png" src="../../../_images/environmental_variables.png" style="width: 400px;" />
+</a>
 </div></blockquote>
 </li>
 </ul>
@@ -350,7 +356,8 @@ for respective platform.</p>
 <li><p>Install <a class="reference external" href="https://gnuwin32.sourceforge.net/packages/make.htm">Make</a> in the root of ‘C’ drive without any spaces in the installation path. The path must be <strong>C:\GnuWin32\…</strong>. Add this path into the system environmental path variable (as shown in below screenshot).</p></li>
 <li><p>Install <a class="reference external" href="https://developer.arm.com/downloads/-/gnu-rm.">GNU Arm Embedded compiler</a> (for the development, 9-2019-q4-major version is used) and add a path of GNU Arm Embedded Toolchain bin directory into the system environmental path variable (as shown in below screenshot).</p>
 <blockquote>
-<div><a class="reference internal image-reference" href="../../../_images/environmental_variables.png"><img alt="../../../_images/environmental_variables.png" src="../../../_images/environmental_variables.png" style="width: 400px;" /></a>
+<div><a class="reference internal image-reference" href="../../../_images/environmental_variables.png"><img alt="../../../_images/environmental_variables.png" src="../../../_images/environmental_variables.png" style="width: 400px;" />
+</a>
 </div></blockquote>
 </li>
 </ul>
@@ -377,17 +384,20 @@ and generate executable file (.bin/.hex)</p>
 <ul>
 <li><p>Clone the <a class="reference external" href="https://github.com/analogdevicesinc/precision-converters-firmware">Precision Converters Firmware repository</a> into Keil Studio using “File-&gt;clone…” menu.</p>
 <blockquote>
-<div><a class="reference internal image-reference" href="../../../_images/mbed_keil_studio_project_clone.png"><img alt="../../../_images/mbed_keil_studio_project_clone.png" src="../../../_images/mbed_keil_studio_project_clone.png" style="width: 600px;" /></a>
+<div><a class="reference internal image-reference" href="../../../_images/mbed_keil_studio_project_clone.png"><img alt="../../../_images/mbed_keil_studio_project_clone.png" src="../../../_images/mbed_keil_studio_project_clone.png" style="width: 600px;" />
+</a>
 </div></blockquote>
 </li>
 <li><p>Once the project repository is imported, wait until all library dependencies are imported as shown in below screenshot. Now, open the ‘.medignore’ file present in the root directory of repository. Add comment syntax (two forward slashes) in front of the project name which you want to build. This will ignore all other projects and build only the comment syntax selected project.</p>
 <blockquote>
-<div><a class="reference internal image-reference" href="../../../_images/mbedignore_changes.png"><img alt="../../../_images/mbedignore_changes.png" src="../../../_images/mbedignore_changes.png" style="width: 600px;" /></a>
+<div><a class="reference internal image-reference" href="../../../_images/mbedignore_changes.png"><img alt="../../../_images/mbedignore_changes.png" src="../../../_images/mbedignore_changes.png" style="width: 600px;" />
+</a>
 </div></blockquote>
 </li>
 <li><p>Select the target device (default used for development is SDP-K1) and click on ‘Clean build’ option to build the project. After a successful build a binary will be downloaded to your computer- store this on your drive. Drag and drop this binary to the USB drive hosted by your controller board to flash the MCU.</p>
 <blockquote>
-<div><a class="reference internal image-reference" href="../../../_images/mbed_build.png"><img alt="../../../_images/mbed_build.png" src="../../../_images/mbed_build.png" style="width: 400px;" /></a>
+<div><a class="reference internal image-reference" href="../../../_images/mbed_build.png"><img alt="../../../_images/mbed_build.png" src="../../../_images/mbed_build.png" style="width: 400px;" />
+</a>
 </div></blockquote>
 </li>
 </ul>
@@ -428,33 +438,39 @@ mentioned in step2 and clean build project as mentioned in step3</p>
 <li><p>Open the respective project directory by navigating into the “precision_converters_firmware/projects/” folder.</p></li>
 <li><p>In the “STM32” folder present within the project directory, double click and open the .ioc file present within.</p>
 <blockquote>
-<div><a class="reference internal image-reference" href="../../../_images/stm32_project_directory.png"><img alt="../../../_images/stm32_project_directory.png" src="../../../_images/stm32_project_directory.png" style="width: 600px;" /></a>
+<div><a class="reference internal image-reference" href="../../../_images/stm32_project_directory.png"><img alt="../../../_images/stm32_project_directory.png" src="../../../_images/stm32_project_directory.png" style="width: 600px;" />
+</a>
 </div></blockquote>
 </li>
 <li><p>Click on the “Generate Code” option seen on the top right corner</p>
 <blockquote>
-<div><a class="reference internal image-reference" href="../../../_images/stm32_generate_code.png"><img alt="../../../_images/stm32_generate_code.png" src="../../../_images/stm32_generate_code.png" style="width: 600px;" /></a>
+<div><a class="reference internal image-reference" href="../../../_images/stm32_generate_code.png"><img alt="../../../_images/stm32_generate_code.png" src="../../../_images/stm32_generate_code.png" style="width: 600px;" />
+</a>
 </div></blockquote>
 </li>
 <li><p>Upon successful generation of drivers for the selected MCU, the autogenerated files would be seen in the same directory where the .ioc file was present. Double click and open the “.project” file seen in the list of files</p>
 <blockquote>
-<div><a class="reference internal image-reference" href="../../../_images/stm32_auto_generated_files.png"><img alt="../../../_images/stm32_auto_generated_files.png" src="../../../_images/stm32_auto_generated_files.png" style="width: 600px;" /></a>
+<div><a class="reference internal image-reference" href="../../../_images/stm32_auto_generated_files.png"><img alt="../../../_images/stm32_auto_generated_files.png" src="../../../_images/stm32_auto_generated_files.png" style="width: 600px;" />
+</a>
 </div></blockquote>
 </li>
 <li><p>After the project is loaded to the STM32CubeIDE, unfold the adxxxx_iio project seen in the project explorer, right click the “app” folder, select “Settings” under the “C/C++ Build” section on the left pane and un-check the “Exclude resources from build” checkbox. This would ensure that the project specific files are included by the build system</p>
 <blockquote>
-<div><a class="reference internal image-reference" href="../../../_images/stm32_exclude_files_option.png"><img alt="../../../_images/stm32_exclude_files_option.png" src="../../../_images/stm32_exclude_files_option.png" style="width: 600px;" /></a>
+<div><a class="reference internal image-reference" href="../../../_images/stm32_exclude_files_option.png"><img alt="../../../_images/stm32_exclude_files_option.png" src="../../../_images/stm32_exclude_files_option.png" style="width: 600px;" />
+</a>
 </div></blockquote>
 </li>
 <li><p>In order to choose STM32 platform in the firmware, select the “ACTIVE_PLATFORM” as “STM32_PLATFORM” in the app_config.h from the respective project.</p></li>
 <li><p>Add compiler flags “-u _printf_float” to the project settings.</p>
 <blockquote>
-<div><a class="reference internal image-reference" href="../../../_images/stm32_compiler_flag.png"><img alt="../../../_images/stm32_compiler_flag.png" src="../../../_images/stm32_compiler_flag.png" style="width: 600px;" /></a>
+<div><a class="reference internal image-reference" href="../../../_images/stm32_compiler_flag.png"><img alt="../../../_images/stm32_compiler_flag.png" src="../../../_images/stm32_compiler_flag.png" style="width: 600px;" />
+</a>
 </div></blockquote>
 </li>
 <li><p>Program by clicking on the “Run adxxxx_iio” option seen or by performing a copy-&gt;paste option of the .hex file seen in the STM32/Debug folder</p>
 <blockquote>
-<div><a class="reference internal image-reference" href="../../../_images/stm32_run_option.png"><img alt="../../../_images/stm32_run_option.png" src="../../../_images/stm32_run_option.png" style="width: 600px;" /></a>
+<div><a class="reference internal image-reference" href="../../../_images/stm32_run_option.png"><img alt="../../../_images/stm32_run_option.png" src="../../../_images/stm32_run_option.png" style="width: 600px;" />
+</a>
 </div></blockquote>
 </li>
 </ul>
@@ -510,11 +526,13 @@ of all build steps.</p>
 <p>Configure your serial terminal (<a class="reference external" href="https://osdn.net/projects/ttssh2/releases/">Tera Term</a>)
 for below settings:</p>
 <blockquote>
-<div><a class="reference internal image-reference" href="../../../_images/braud_rate_update.jpg"><img alt="../../../_images/braud_rate_update.jpg" src="../../../_images/braud_rate_update.jpg" style="width: 600px;" /></a>
+<div><a class="reference internal image-reference" href="../../../_images/braud_rate_update.jpg"><img alt="../../../_images/braud_rate_update.jpg" src="../../../_images/braud_rate_update.jpg" style="width: 600px;" />
+</a>
 </div></blockquote>
 <p>The AD5592R Main Menu looks like below (with Tera Term):</p>
 <blockquote>
-<div><a class="reference internal image-reference" href="../../../_images/ad5592r_teraterm.jpg"><img alt="../../../_images/ad5592r_teraterm.jpg" src="../../../_images/ad5592r_teraterm.jpg" style="width: 300px;" /></a>
+<div><a class="reference internal image-reference" href="../../../_images/ad5592r_teraterm.jpg"><img alt="../../../_images/ad5592r_teraterm.jpg" src="../../../_images/ad5592r_teraterm.jpg" style="width: 300px;" />
+</a>
 </div></blockquote>
 <p>The firmware is designed to be intuitive to use, and requires little explanation, simply enter the letter corresponding to the required command and follow the on-screen prompts.</p>
 <p>The console menu application provides the following main features:</p>

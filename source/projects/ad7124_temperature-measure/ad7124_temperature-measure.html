@@ -162,6 +162,7 @@ Content on this topic
 <li class="toctree-l2"><a class="reference internal" href="../ad559xr_console/ad559xr_console.html">AD559XR Console Application</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ad590_console/ad590_console.html">AD590 Console Application</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../adt7420_console/adt7420_console.html">ADT7420 Console Application</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ltc2672_iio/ltc2672_iio.html">LTC2672 IIO Application</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../nanodac_console/nanodac_console.html">nanoDAC+ Console Application</a></li>
 </ul>
 </li>
@@ -206,7 +207,8 @@ The firmware application provides an user-interactive menu options for user to s
 and configure the multiple temperature sensors at different instances, such as
 2/3/4-wire RTDs, NTC Thermistors and Thermocouples.</p>
 <blockquote>
-<div><a class="reference internal image-reference" href="../../../_images/ad7124_interface.png"><img alt="../../../_images/ad7124_interface.png" src="../../../_images/ad7124_interface.png" style="width: 600px;" /></a>
+<div><a class="reference internal image-reference" href="../../../_images/ad7124_interface.png"><img alt="../../../_images/ad7124_interface.png" src="../../../_images/ad7124_interface.png" style="width: 600px;" />
+</a>
 </div></blockquote>
 <p>The interface used for communicating with PC based console tools (e.g. Teraterm) is UART.
 Firmware leverages the ADI created no-os and platform driver software layers
@@ -237,7 +239,8 @@ they may be of interest if you require Linux and/or FPGA support.</p>
 <section id="hardware-connections">
 <h2>Hardware Connections<a class="headerlink" href="#hardware-connections" title="Link to this heading">¶</a></h2>
 <blockquote>
-<div><a class="reference internal image-reference" href="../../../_images/ad7124_hardware_connections.png"><img alt="../../../_images/ad7124_hardware_connections.png" src="../../../_images/ad7124_hardware_connections.png" style="width: 800px;" /></a>
+<div><a class="reference internal image-reference" href="../../../_images/ad7124_hardware_connections.png"><img alt="../../../_images/ad7124_hardware_connections.png" src="../../../_images/ad7124_hardware_connections.png" style="width: 800px;" />
+</a>
 </div></blockquote>
 </section>
 <section id="jumper-settings">
@@ -255,7 +258,8 @@ to console based tool running on PC. The serial port assigned to a device can
 be seen through the device manager for windows-based OS as shown below. Use UART
 (physical) port for PC communication.</p>
 <blockquote>
-<div><a class="reference internal image-reference" href="../../../_images/serial_ports_view.png"><img alt="../../../_images/serial_ports_view.png" src="../../../_images/serial_ports_view.png" style="width: 400px;" /></a>
+<div><a class="reference internal image-reference" href="../../../_images/serial_ports_view.png"><img alt="../../../_images/serial_ports_view.png" src="../../../_images/serial_ports_view.png" style="width: 400px;" />
+</a>
 </div></blockquote>
 </section>
 <section id="build-guide">
@@ -303,7 +307,8 @@ for respective platform.</p>
 <li><p>Install <a class="reference external" href="https://developer.arm.com/downloads/-/gnu-rm.">GNU Arm Embedded compiler</a> (for the development, 9-2019-q4-major version is used) and add a path of GNU Arm Embedded Toolchain bin directory into the system environmental path variable (as shown in below screenshot).</p></li>
 <li><p>Configure the compiler location with Mbed CLI. This can be carried out by running the <strong>mbed config -G GCC_ARM_PATH &lt;path-to-your-gcc-compiler&gt;</strong> in Command Prompt. For example you can run <strong>mbed config -G GCC_ARM_PATH “C:\Program Files (x86)\GNU Tools ARM Embedded\9 2019-q4-major\bin”</strong> in command prompt. It will set mentioned compiler path to all the Mbed Projects.</p>
 <blockquote>
-<div><a class="reference internal image-reference" href="../../../_images/environmental_variables.png"><img alt="../../../_images/environmental_variables.png" src="../../../_images/environmental_variables.png" style="width: 400px;" /></a>
+<div><a class="reference internal image-reference" href="../../../_images/environmental_variables.png"><img alt="../../../_images/environmental_variables.png" src="../../../_images/environmental_variables.png" style="width: 400px;" />
+</a>
 </div></blockquote>
 </li>
 </ul>
@@ -324,7 +329,8 @@ for respective platform.</p>
 <li><p>Install <a class="reference external" href="https://gnuwin32.sourceforge.net/packages/make.htm">Make</a> in the root of ‘C’ drive without any spaces in the installation path. The path must be <strong>C:\GnuWin32\…</strong>. Add this path into the system environmental path variable (as shown in below screenshot).</p></li>
 <li><p>Install <a class="reference external" href="https://developer.arm.com/downloads/-/gnu-rm.">GNU Arm Embedded compiler</a> (for the development, 9-2019-q4-major version is used) and add a path of GNU Arm Embedded Toolchain bin directory into the system environmental path variable (as shown in below screenshot).</p>
 <blockquote>
-<div><a class="reference internal image-reference" href="../../../_images/environmental_variables.png"><img alt="../../../_images/environmental_variables.png" src="../../../_images/environmental_variables.png" style="width: 400px;" /></a>
+<div><a class="reference internal image-reference" href="../../../_images/environmental_variables.png"><img alt="../../../_images/environmental_variables.png" src="../../../_images/environmental_variables.png" style="width: 400px;" />
+</a>
 </div></blockquote>
 </li>
 </ul>
@@ -351,17 +357,20 @@ and generate executable file (.bin/.hex)</p>
 <ul>
 <li><p>Clone the <a class="reference external" href="https://github.com/analogdevicesinc/precision-converters-firmware">Precision Converters Firmware repository</a> into Keil Studio using “File-&gt;clone…” menu.</p>
 <blockquote>
-<div><a class="reference internal image-reference" href="../../../_images/mbed_keil_studio_project_clone.png"><img alt="../../../_images/mbed_keil_studio_project_clone.png" src="../../../_images/mbed_keil_studio_project_clone.png" style="width: 600px;" /></a>
+<div><a class="reference internal image-reference" href="../../../_images/mbed_keil_studio_project_clone.png"><img alt="../../../_images/mbed_keil_studio_project_clone.png" src="../../../_images/mbed_keil_studio_project_clone.png" style="width: 600px;" />
+</a>
 </div></blockquote>
 </li>
 <li><p>Once the project repository is imported, wait until all library dependencies are imported as shown in below screenshot. Now, open the ‘.medignore’ file present in the root directory of repository. Add comment syntax (two forward slashes) in front of the project name which you want to build. This will ignore all other projects and build only the comment syntax selected project.</p>
 <blockquote>
-<div><a class="reference internal image-reference" href="../../../_images/mbedignore_changes.png"><img alt="../../../_images/mbedignore_changes.png" src="../../../_images/mbedignore_changes.png" style="width: 600px;" /></a>
+<div><a class="reference internal image-reference" href="../../../_images/mbedignore_changes.png"><img alt="../../../_images/mbedignore_changes.png" src="../../../_images/mbedignore_changes.png" style="width: 600px;" />
+</a>
 </div></blockquote>
 </li>
 <li><p>Select the target device (default used for development is SDP-K1) and click on ‘Clean build’ option to build the project. After a successful build a binary will be downloaded to your computer- store this on your drive. Drag and drop this binary to the USB drive hosted by your controller board to flash the MCU.</p>
 <blockquote>
-<div><a class="reference internal image-reference" href="../../../_images/mbed_build.png"><img alt="../../../_images/mbed_build.png" src="../../../_images/mbed_build.png" style="width: 400px;" /></a>
+<div><a class="reference internal image-reference" href="../../../_images/mbed_build.png"><img alt="../../../_images/mbed_build.png" src="../../../_images/mbed_build.png" style="width: 400px;" />
+</a>
 </div></blockquote>
 </li>
 </ul>
@@ -402,33 +411,39 @@ mentioned in step2 and clean build project as mentioned in step3</p>
 <li><p>Open the respective project directory by navigating into the “precision_converters_firmware/projects/” folder.</p></li>
 <li><p>In the “STM32” folder present within the project directory, double click and open the .ioc file present within.</p>
 <blockquote>
-<div><a class="reference internal image-reference" href="../../../_images/stm32_project_directory.png"><img alt="../../../_images/stm32_project_directory.png" src="../../../_images/stm32_project_directory.png" style="width: 600px;" /></a>
+<div><a class="reference internal image-reference" href="../../../_images/stm32_project_directory.png"><img alt="../../../_images/stm32_project_directory.png" src="../../../_images/stm32_project_directory.png" style="width: 600px;" />
+</a>
 </div></blockquote>
 </li>
 <li><p>Click on the “Generate Code” option seen on the top right corner</p>
 <blockquote>
-<div><a class="reference internal image-reference" href="../../../_images/stm32_generate_code.png"><img alt="../../../_images/stm32_generate_code.png" src="../../../_images/stm32_generate_code.png" style="width: 600px;" /></a>
+<div><a class="reference internal image-reference" href="../../../_images/stm32_generate_code.png"><img alt="../../../_images/stm32_generate_code.png" src="../../../_images/stm32_generate_code.png" style="width: 600px;" />
+</a>
 </div></blockquote>
 </li>
 <li><p>Upon successful generation of drivers for the selected MCU, the autogenerated files would be seen in the same directory where the .ioc file was present. Double click and open the “.project” file seen in the list of files</p>
 <blockquote>
-<div><a class="reference internal image-reference" href="../../../_images/stm32_auto_generated_files.png"><img alt="../../../_images/stm32_auto_generated_files.png" src="../../../_images/stm32_auto_generated_files.png" style="width: 600px;" /></a>
+<div><a class="reference internal image-reference" href="../../../_images/stm32_auto_generated_files.png"><img alt="../../../_images/stm32_auto_generated_files.png" src="../../../_images/stm32_auto_generated_files.png" style="width: 600px;" />
+</a>
 </div></blockquote>
 </li>
 <li><p>After the project is loaded to the STM32CubeIDE, unfold the adxxxx_iio project seen in the project explorer, right click the “app” folder, select “Settings” under the “C/C++ Build” section on the left pane and un-check the “Exclude resources from build” checkbox. This would ensure that the project specific files are included by the build system</p>
 <blockquote>
-<div><a class="reference internal image-reference" href="../../../_images/stm32_exclude_files_option.png"><img alt="../../../_images/stm32_exclude_files_option.png" src="../../../_images/stm32_exclude_files_option.png" style="width: 600px;" /></a>
+<div><a class="reference internal image-reference" href="../../../_images/stm32_exclude_files_option.png"><img alt="../../../_images/stm32_exclude_files_option.png" src="../../../_images/stm32_exclude_files_option.png" style="width: 600px;" />
+</a>
 </div></blockquote>
 </li>
 <li><p>In order to choose STM32 platform in the firmware, select the “ACTIVE_PLATFORM” as “STM32_PLATFORM” in the app_config.h from the respective project.</p></li>
 <li><p>Add compiler flags “-u _printf_float” to the project settings.</p>
 <blockquote>
-<div><a class="reference internal image-reference" href="../../../_images/stm32_compiler_flag.png"><img alt="../../../_images/stm32_compiler_flag.png" src="../../../_images/stm32_compiler_flag.png" style="width: 600px;" /></a>
+<div><a class="reference internal image-reference" href="../../../_images/stm32_compiler_flag.png"><img alt="../../../_images/stm32_compiler_flag.png" src="../../../_images/stm32_compiler_flag.png" style="width: 600px;" />
+</a>
 </div></blockquote>
 </li>
 <li><p>Program by clicking on the “Run adxxxx_iio” option seen or by performing a copy-&gt;paste option of the .hex file seen in the STM32/Debug folder</p>
 <blockquote>
-<div><a class="reference internal image-reference" href="../../../_images/stm32_run_option.png"><img alt="../../../_images/stm32_run_option.png" src="../../../_images/stm32_run_option.png" style="width: 600px;" /></a>
+<div><a class="reference internal image-reference" href="../../../_images/stm32_run_option.png"><img alt="../../../_images/stm32_run_option.png" src="../../../_images/stm32_run_option.png" style="width: 600px;" />
+</a>
 </div></blockquote>
 </li>
 </ul>
@@ -453,11 +468,13 @@ of all build steps.</p>
 <h2>Using Firmware<a class="headerlink" href="#using-firmware" title="Link to this heading">¶</a></h2>
 <p>Configure your serial terminal ( Tera Term) for below settings:</p>
 <blockquote>
-<div><a class="reference internal image-reference" href="../../../_images/console_app_teraterm_settings.png"><img alt="../../../_images/console_app_teraterm_settings.png" src="../../../_images/console_app_teraterm_settings.png" style="width: 600px;" /></a>
+<div><a class="reference internal image-reference" href="../../../_images/console_app_teraterm_settings.png"><img alt="../../../_images/console_app_teraterm_settings.png" src="../../../_images/console_app_teraterm_settings.png" style="width: 600px;" />
+</a>
 </div></blockquote>
 <p>The AD7124 temperature measurement example main menu looks like below (with Tera Term):</p>
 <blockquote>
-<div><a class="reference internal image-reference" href="../../../_images/ad7124_temperature_measure_main_menu.png"><img alt="../../../_images/ad7124_temperature_measure_main_menu.png" src="../../../_images/ad7124_temperature_measure_main_menu.png" style="width: 600px;" /></a>
+<div><a class="reference internal image-reference" href="../../../_images/ad7124_temperature_measure_main_menu.png"><img alt="../../../_images/ad7124_temperature_measure_main_menu.png" src="../../../_images/ad7124_temperature_measure_main_menu.png" style="width: 600px;" />
+</a>
 </div></blockquote>
 <p>Firmware allows user to perform the measurement for single or multiple (more than one)
 temperature sensors of same type. Below sensors are supported:</p>
@@ -473,7 +490,8 @@ hardware connections must be modified as per new configurations. The details
 about altering the software modules for modifying the configurations are given
 in ‘Modifying Firmware’ section.</p>
 <blockquote>
-<div><a class="reference internal image-reference" href="../../../_images/bypassing_lk6_link_on_legacy_board.png"><img alt="../../../_images/bypassing_lk6_link_on_legacy_board.png" src="../../../_images/bypassing_lk6_link_on_legacy_board.png" style="width: 600px;" /></a>
+<div><a class="reference internal image-reference" href="../../../_images/bypassing_lk6_link_on_legacy_board.png"><img alt="../../../_images/bypassing_lk6_link_on_legacy_board.png" src="../../../_images/bypassing_lk6_link_on_legacy_board.png" style="width: 600px;" />
+</a>
 </div></blockquote>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -488,15 +506,18 @@ connector. Make sure LK6 link is removed for the same purpose.</p>
 <p>Reference: <a class="reference external" href="https://www.analog.com/en/design-center/reference-designs/circuits-from-the-lab/CN0383.html">https://www.analog.com/en/design-center/reference-designs/circuits-from-the-lab/CN0383.html</a></p>
 <p><strong>Multiple 2-wire RTD configurations:</strong></p>
 <blockquote>
-<div><a class="reference internal image-reference" href="../../../_images/ad7124_multiple_2_wire_rtd_configs.png"><img alt="../../../_images/ad7124_multiple_2_wire_rtd_configs.png" src="../../../_images/ad7124_multiple_2_wire_rtd_configs.png" style="width: 800px;" /></a>
+<div><a class="reference internal image-reference" href="../../../_images/ad7124_multiple_2_wire_rtd_configs.png"><img alt="../../../_images/ad7124_multiple_2_wire_rtd_configs.png" src="../../../_images/ad7124_multiple_2_wire_rtd_configs.png" style="width: 800px;" />
+</a>
 </div></blockquote>
 <p><strong>Multiple 3-wire RTD configurations:</strong></p>
 <blockquote>
-<div><a class="reference internal image-reference" href="../../../_images/ad7124_multiple_3_wire_rtd_configs.png"><img alt="../../../_images/ad7124_multiple_3_wire_rtd_configs.png" src="../../../_images/ad7124_multiple_3_wire_rtd_configs.png" style="width: 800px;" /></a>
+<div><a class="reference internal image-reference" href="../../../_images/ad7124_multiple_3_wire_rtd_configs.png"><img alt="../../../_images/ad7124_multiple_3_wire_rtd_configs.png" src="../../../_images/ad7124_multiple_3_wire_rtd_configs.png" style="width: 800px;" />
+</a>
 </div></blockquote>
 <p><strong>Multiple 4-wire RTD configurations:</strong></p>
 <blockquote>
-<div><a class="reference internal image-reference" href="../../../_images/ad7124_multiple_4_wire_rtd_configs.png"><img alt="../../../_images/ad7124_multiple_4_wire_rtd_configs.png" src="../../../_images/ad7124_multiple_4_wire_rtd_configs.png" style="width: 800px;" /></a>
+<div><a class="reference internal image-reference" href="../../../_images/ad7124_multiple_4_wire_rtd_configs.png"><img alt="../../../_images/ad7124_multiple_4_wire_rtd_configs.png" src="../../../_images/ad7124_multiple_4_wire_rtd_configs.png" style="width: 800px;" />
+</a>
 </div></blockquote>
 </section>
 <section id="multiple-thermocouple-configurations">
@@ -504,18 +525,21 @@ connector. Make sure LK6 link is removed for the same purpose.</p>
 <p>Reference: <a class="reference external" href="https://www.analog.com/en/design-center/reference-designs/circuits-from-the-lab/CN0384.html">https://www.analog.com/en/design-center/reference-designs/circuits-from-the-lab/CN0384.html</a></p>
 <p><strong>Thermocouple (Hot Junction) configurations for TC measurement:</strong></p>
 <blockquote>
-<div><a class="reference internal image-reference" href="../../../_images/ad7124_multiple_tc_configs.png"><img alt="../../../_images/ad7124_multiple_tc_configs.png" src="../../../_images/ad7124_multiple_tc_configs.png" style="width: 800px;" /></a>
+<div><a class="reference internal image-reference" href="../../../_images/ad7124_multiple_tc_configs.png"><img alt="../../../_images/ad7124_multiple_tc_configs.png" src="../../../_images/ad7124_multiple_tc_configs.png" style="width: 800px;" />
+</a>
 </div></blockquote>
 <p><strong>Cold Junction Compensation (CJC) configurations for TC measurement:</strong></p>
 <blockquote>
-<div><a class="reference internal image-reference" href="../../../_images/ad7124_cjc_configs.png"><img alt="../../../_images/ad7124_cjc_configs.png" src="../../../_images/ad7124_cjc_configs.png" style="width: 800px;" /></a>
+<div><a class="reference internal image-reference" href="../../../_images/ad7124_cjc_configs.png"><img alt="../../../_images/ad7124_cjc_configs.png" src="../../../_images/ad7124_cjc_configs.png" style="width: 800px;" />
+</a>
 </div></blockquote>
 </section>
 <section id="multiple-ntc-thermistor-configurations">
 <h2>Multiple NTC Thermistor Configurations<a class="headerlink" href="#multiple-ntc-thermistor-configurations" title="Link to this heading">¶</a></h2>
 <p>Reference: <a class="reference external" href="https://www.analog.com/en/design-center/reference-designs/circuits-from-the-lab/cn0545.html">https://www.analog.com/en/design-center/reference-designs/circuits-from-the-lab/cn0545.html</a></p>
 <blockquote>
-<div><a class="reference internal image-reference" href="../../../_images/ad7124_multiple_ntc10k_configs.png"><img alt="../../../_images/ad7124_multiple_ntc10k_configs.png" src="../../../_images/ad7124_multiple_ntc10k_configs.png" style="width: 800px;" /></a>
+<div><a class="reference internal image-reference" href="../../../_images/ad7124_multiple_ntc10k_configs.png"><img alt="../../../_images/ad7124_multiple_ntc10k_configs.png" src="../../../_images/ad7124_multiple_ntc10k_configs.png" style="width: 800px;" />
+</a>
 </div></blockquote>
 </section>
 <section id="calibrating-3-wire-rtds">
@@ -528,7 +552,8 @@ and then 3-wire RTD measurement is performed on them. For more information on th
 calibration scheme, refer the <a class="reference external" href="https://www.analog.com/en/design-center/reference-designs/circuits-from-the-lab/CN0383.html">design note</a>
 on RTD measurement.</p>
 <blockquote>
-<div><a class="reference internal image-reference" href="../../../_images/ad7124_3wire_rtd_calibration_menu.png"><img alt="../../../_images/ad7124_3wire_rtd_calibration_menu.png" src="../../../_images/ad7124_3wire_rtd_calibration_menu.png" style="width: 800px;" /></a>
+<div><a class="reference internal image-reference" href="../../../_images/ad7124_3wire_rtd_calibration_menu.png"><img alt="../../../_images/ad7124_3wire_rtd_calibration_menu.png" src="../../../_images/ad7124_3wire_rtd_calibration_menu.png" style="width: 800px;" />
+</a>
 </div></blockquote>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -552,13 +577,15 @@ this case, user must perform the calibration again.</p>
 inputs (typically after applying full-scale/zero-scale) voltages on selected
 analog inputs.</p>
 <blockquote>
-<div><a class="reference internal image-reference" href="../../../_images/ad7124_calibration_menu.png"><img alt="../../../_images/ad7124_calibration_menu.png" src="../../../_images/ad7124_calibration_menu.png" style="width: 800px;" /></a>
+<div><a class="reference internal image-reference" href="../../../_images/ad7124_calibration_menu.png"><img alt="../../../_images/ad7124_calibration_menu.png" src="../../../_images/ad7124_calibration_menu.png" style="width: 800px;" />
+</a>
 </div></blockquote>
 </section>
 <section id="firmware-structure">
 <h2>Firmware Structure<a class="headerlink" href="#firmware-structure" title="Link to this heading">¶</a></h2>
 <blockquote>
-<div><a class="reference internal image-reference" href="../../../_images/firmware_architecture.png"><img alt="../../../_images/firmware_architecture.png" src="../../../_images/firmware_architecture.png" style="width: 600px;" /></a>
+<div><a class="reference internal image-reference" href="../../../_images/firmware_architecture.png"><img alt="../../../_images/firmware_architecture.png" src="../../../_images/firmware_architecture.png" style="width: 600px;" />
+</a>
 </div></blockquote>
 </section>
 <section id="support">
