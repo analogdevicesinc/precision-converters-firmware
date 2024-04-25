@@ -1,5 +1,5 @@
-AD717x IIO Application
-""""""""""""""""""""""
+AD717x / AD411x IIO Application
+"""""""""""""""""""""""""""""""
 
 ==================
 Supported Hardware
@@ -32,7 +32,7 @@ Introduction
 This page gives an overview of using the ARM platforms supported (default is Mbed) 
 firmware example with Analog Devices AD717x Evaluation board and SDP-K1 controller board. 
 This example code leverages the ADI developed IIO (Industrial Input Output) ecosystem to 
-evaluate the AD717x/AD414x device by providing a device debug and data capture support.
+evaluate the AD717x/AD411x device by providing a device debug and data capture support.
 
    .. image:: /source/tinyiiod/app_interface.png
       :width: 350

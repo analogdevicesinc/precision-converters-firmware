@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>EVB Discovery Firmware &#8212; Precision Converters Firmware  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=8e8a900e" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/style.min.css?v=cf8483f0" />
+    <script src="../../../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script defer="" src="../../../_static/app.umd.js?v=96350458"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+   
+  
+    <meta name="robots" content="noindex">
+  
+  
+
+
+<style>
+  body {
+    
+  }
+
+  body.dark {
+    
+  }
+
+  @media (prefers-color-scheme: dark) {
+    body:not(.light) {
+      
+    }
+  }
+</style>
+  </head><body>
+  <input type="checkbox" id="input-show-toc">
+  <input type="checkbox" id="input-show-localtoc">
+  <header>
+    <div class="header">
+      <div id="left">
+        <label id="show-sidebar" for="input-show-toc" title="Show/hide index"></label>
+      </div>
+      <div id="right">
+        <span>
+          <a id="logo-org" href="https://analog.com"></a>
+              <a id="no-logo" href="../../../index.html">
+                Precision Converters Firmware
+              </a>
+        </span>
+        <span class="reverse">
+          <label id="show-localtoc" for="input-show-localtoc" title="Show/hide contents"></label>
+        </span>
+      </div>
+    </div>
+    <div class="repotoc-tree">
+      <root>
+  <a href="../../../../documentation/eval/index.html">Evaluation Boards</a>
+  <a href="../../../../documentation/university/index.html">University Program</a>
+  <a href="../../../../hdl/index.html">HDL</a>
+  <a href="../../../../no-OS/index.html">no-OS</a>
+  <a href="../../../../pyadi-iio/index.html">pyadi-iio</a>
+  <a href="../../../index.html" class="current">Precision Converters Firmware</a>
+  <a href="../../../../PrecisionToolbox/index.html">Precision Toolbox</a>
+</root>
+
+    </div>
+  </header>
+
+    <div class="localtoc">
+      <div class="tocwrapper">
+        <div>
+          <div class="localtoc-header">On this page</div>
+          <a id="scroll-up" href="#top-anchor" title="Back to top"></a>
+        </div>
+        <nav>
+          <ul>
+<li><a class="reference internal" href="#">EVB Discovery Firmware</a><ul>
+<li><a class="reference internal" href="#about">About</a></li>
+<li><a class="reference internal" href="#support">Support</a></li>
+</ul>
+</li>
+</ul>
+
+        </nav>
+      </div>
+    </div>
+
+  
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+              <a id="no-logo" href="../../../index.html">
+                Precision Converters Firmware
+              </a><input id="input-switch-toc" type="checkbox">
+<label id="show-repotoc" for="input-switch-toc">
+All content
+</label>
+<label id="show-toc" for="input-switch-toc">
+Content on this topic
+</label>
+<div class="repotoc-tree">
+  <root>
+  <a href="../../../../documentation/eval/index.html">Evaluation Boards</a>
+  <a href="../../../../documentation/university/index.html">University Program</a>
+  <a href="../../../../hdl/index.html">HDL</a>
+  <a href="../../../../no-OS/index.html">no-OS</a>
+  <a href="../../../../pyadi-iio/index.html">pyadi-iio</a>
+  <a href="../../../index.html" class="current">Precision Converters Firmware</a>
+  <a href="../../../../PrecisionToolbox/index.html">Precision Toolbox</a>
+</root>
+
+</div>
+<div class="toc-tree">
+  <html>
+  <body><p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../build/project_build.html">Build Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../code_style.html">Code Styles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing.html">Contributing</a></li>
+<li class="toctree-l1"><input class="toctree-collapse" type="checkbox" name="toctree-collapse-1" id="toctree-collapse-1"/><div class="collapse"><a class="reference internal" href="../index.html">Firmware Applications</a><label for="toctree-collapse-1"><div class="icon"></div></label></div><ul>
+<li class="toctree-l2"><a class="reference internal" href="../ad4130_iio/ad4130_iio.html">AD4130 IIO Application</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ad4696_iio/ad4696_iio.html">AD4696 IIO Application</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ad559xr_console/ad559xr_console.html">AD559XR Console Application</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ad579x_iio/ad579x_iio.html">AD579X IIO Application</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ad590_console/ad590_console.html">AD590 Console Application</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ad5933_console/ad5933_console.html">AD5933 Console Application</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ad7124_console/ad7124_console.html">AD7124 Console Application</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ad7124_iio/ad7124_iio.html">AD7124 IIO Application</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ad7124_temperature-measure/ad7124_temperature-measure.html">AD7124 Temperature Measure Firmware Application</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ad7134_iio/ad7134_iio.html">AD7134 IIO Application</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ad717x_console/ad717x_console.html">AD717x / AD411x Console Application</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ad717x_iio/ad717x_iio.html">AD717x / AD411x IIO Application</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ad719x_iio/ad719x_iio.html">AD719x IIO Application</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ad738x_iio/ad738x_iio.html">AD738x IIO Application</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ad7606_iio/ad7606_iio.html">AD7606 IIO Application</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ad7689_iio/ad7689_iio.html">AD7689 IIO Application</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ad77681_iio/ad77681_iio.html">AD7768-1 IIO Application</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ad777x_iio/ad777x_iio.html">AD777x IIO Application</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../adt7420_console/adt7420_console.html">ADT7420 Console Application</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ltc268x_console/ltc268x_console.html">LTC268x Console Application</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ltc2672_iio/ltc2672_iio.html">LTC2672 IIO Application</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../nanodac_console/nanodac_console.html">nanoDAC+ Console Application</a></li>
+</ul>
+</li>
+</ul>
+</body>
+</html>
+
+</div>
+        </div>
+      </div>
+
+  <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper" id="top-anchor">
+          <div class="body" role="main">
+            
+  <section id="evb-discovery-firmware">
+<h1>EVB Discovery Firmware<a class="headerlink" href="#evb-discovery-firmware" title="Link to this heading">¶</a></h1>
+<p>Analog Devices Inc. Evaluation Board Discovery IIO based Firmware</p>
+<section id="about">
+<h2>About<a class="headerlink" href="#about" title="Link to this heading">¶</a></h2>
+<p>This embedded firmware is used to extract the hardware board (or EVB) information from the EEPROM and send it
+over to the IIO client to discover the user connected EVB. The board information is passed in the form of IIO
+context attributes to IIO client.</p>
+</section>
+<section id="support">
+<h2>Support<a class="headerlink" href="#support" title="Link to this heading">¶</a></h2>
+<p>Feel free to ask questions in the <a class="reference external" href="https://ez.analog.com/data_converters">EngineerZone</a></p>
+</section>
+</section>
+
+
+          </div>
+              <div class="related">
+                &nbsp;
+    <div></div>
+    <div></div>
+              </div>
+          
+        </div>
+      </div>
+  </div>
+
+  <div id="vertical-border"></div>
+
+  <label id="cancel-area-show-toc" for="input-show-toc"></label>
+  <label id="cancel-area-show-localtoc" for="input-show-localtoc"></label>
+
+  
+  <form action="" method="get" class="search-area">
+    <input type="text" name="q" aria-labelledby="search-documentation" value="" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" role="search" placeholder="Search"/>
+    <button value="search"></button>
+    <span id="search-progress"></span>
+  </form>
+  
+    <footer>
+      &#169;2023-2024, Analog Devices Inc.
+      
+      |
+      Made with <a href="https://www.sphinx-doc.org/">Sphinx</a>
+      &amp; <a href="https://github.com/analogdevicesinc/doctools">Doctools</a>
+      
+    </footer>
+  </body>
+</html>

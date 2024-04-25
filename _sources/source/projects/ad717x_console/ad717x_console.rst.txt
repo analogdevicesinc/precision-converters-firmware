@@ -1,5 +1,5 @@
-AD717x Console Application
-""""""""""""""""""""""""""
+AD717x / AD411x Console Application
+"""""""""""""""""""""""""""""""""""
 
 ==================
 Supported Hardware
