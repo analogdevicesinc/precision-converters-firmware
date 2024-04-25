@@ -1,8 +1,8 @@
 /***************************************************************************//**
- *   @file    app_config_mbed.h
- *   @brief   Header file for Mbed platform configurations
+ *   @file    app_config_stm32.h
+ *   @brief   Header file for STM32 platform configurations
 ********************************************************************************
- * Copyright (c) 2022-24 Analog Devices, Inc.
+ * Copyright (c) 2024 Analog Devices, Inc.
  * All rights reserved.
  *
  * This software is proprietary to Analog Devices, Inc. and its licensors.
@@ -10,39 +10,39 @@
  * Analog Devices Software License Agreement.
 *******************************************************************************/
 
-#ifndef APP_CONFIG_MBED_H_
-#define APP_CONFIG_MBED_H_
+#ifndef APP_CONFIG_STM32_H_
+#define APP_CONFIG_STM32_H_
 
 /******************************************************************************/
 /***************************** Include Files **********************************/
 /******************************************************************************/
 
 #include <stdint.h>
-#include <PinNames.h>
 
-#include "mbed_uart.h"
-#include "mbed_i2c.h"
+#include "stm32_uart.h"
+#include "stm32_i2c.h"
 
 /******************************************************************************/
 /********************** Macros and Constants Definition ***********************/
 /******************************************************************************/
 
-/* Pin mapping of SDP-K1 w.r.t Arduino connector */
-#define I2C_SCL			ARDUINO_UNO_D15
-#define I2C_SDA			ARDUINO_UNO_D14
+/* I2C timing register value for standard mode of operation
+ * Check here for more understanding on I2C timing register
+ * configuration: https://wiki.analog.com/resources/no-os/drivers/i2c */
+#define I2C_TIMING			0x00000E14
 
-/* Common pin mapping on SDP-K1 */
-#define UART_TX			CONSOLE_TX
-#define	UART_RX			CONSOLE_RX
+#define I2C_DEVICE_ID       1 // I2C1
 
-#define I2C_DEVICE_ID           0
+#define APP_UART_HANDLE     &huart3 // UART3
 
 /******************************************************************************/
 /********************** Public/Extern Declarations ****************************/
 /******************************************************************************/
 
-extern struct mbed_uart_init_param mbed_uart_extra_init_params;
-extern struct mbed_uart_init_param mbed_vcom_extra_init_params;
-extern struct mbed_i2c_init_param mbed_i2c_extra_init_params;
+extern struct stm32_i2c_init_param stm32_i2c_extra_init_params;
+extern struct stm32_uart_init_param stm32_uart_extra_init_params;
+extern UART_HandleTypeDef huart3;
 
-#endif /* APP_CONFIG_MBED_H_ */
+void stm32_system_init();
+
+#endif /* APP_CONFIG_STM32_H_ */

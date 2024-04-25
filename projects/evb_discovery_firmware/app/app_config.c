@@ -3,7 +3,7 @@
  *   @brief   Application configurations module (platform-agnostic)
  *   @details This module performs the system configurations
 ********************************************************************************
- * Copyright (c) 2022-23 Analog Devices, Inc.
+ * Copyright (c) 2022-24 Analog Devices, Inc.
  * All rights reserved.
  *
  * This software is proprietary to Analog Devices, Inc. and its licensors.
@@ -44,7 +44,7 @@ static struct no_os_uart_init_param uart_init_params = {
 
 /* I2C init parameters */
 static struct no_os_i2c_init_param no_os_i2c_init_params = {
-	.device_id = 0,
+	.device_id = I2C_DEVICE_ID,
 	.platform_ops = &i2c_ops,
 	.max_speed_hz = 100000,
 	.extra = &i2c_extra_init_params
@@ -92,6 +92,10 @@ static int32_t init_uart(void)
 int32_t init_system(void)
 {
 	int32_t ret;
+
+#if (ACTIVE_PLATFORM == STM32_PLATFORM)
+	stm32_system_init();
+#endif
 
 	ret = init_uart();
 	if (ret) {

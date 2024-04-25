@@ -2,7 +2,7 @@
  * @file    app_config.h
  * @brief   Header file for application configurations (platform-agnostic)
 ******************************************************************************
- * Copyright (c) 2022-23 Analog Devices, Inc.
+ * Copyright (c) 2022-24 Analog Devices, Inc.
  * All rights reserved.
  *
  * This software is proprietary to Analog Devices, Inc. and its licensors.
@@ -25,6 +25,7 @@
 
 /* List of supported platforms */
 #define	MBED_PLATFORM		1
+#define STM32_PLATFORM		2
 
 /* Macros for stringification */
 #define XSTR(s)		#s
@@ -59,6 +60,15 @@
 #endif
 #define i2c_extra_init_params mbed_i2c_extra_init_params
 #define i2c_ops mbed_i2c_ops
+#elif (ACTIVE_PLATFORM == STM32_PLATFORM)
+#include "app_config_stm32.h"
+
+#define HW_CARRIER_NAME		NUCLEO-H563ZI
+
+#define uart_extra_init_params	stm32_uart_extra_init_params
+#define i2c_extra_init_params stm32_i2c_extra_init_params
+#define i2c_ops stm32_i2c_ops
+#define uart_ops stm32_uart_ops
 #else
 #error "No/Invalid active platform selected"
 #endif
