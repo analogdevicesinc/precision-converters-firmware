@@ -11,7 +11,7 @@ are primarily targeted for the Mbed (SDP-K1) platform, however they can easily
 target other platforms as well (see [Understanding No-OS and
 Platform Drivers](https://www.analog.com/en/analog-dialogue/articles/understanding-and-using-the-no-os-and-platform-drivers.html)).
 
-For more information about Precision Converters software support see the [ADI Wiki](https://wiki.analog.com/resources/tools-software/product-support-software).
+Code documentation is generated using Sphinx tool, available at [Documentation for the Precision Converters Firmware](https://analogdevicesinc.github.io/precision-converters-firmware/index.html).
 
 ## Build
 

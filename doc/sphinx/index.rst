@@ -10,6 +10,7 @@ and capture device data over a serial communication link. These applications are
 primarily targeted for the SDP-k1 hardware platform, running Mbed OS, however 
 they can target other platforms as well. `See Understanding No-OS and Platform Drivers <https://www.analog.com/en/analog-dialogue/articles/understanding-and-using-the-no-os-and-platform-drivers.html>`_
 
+Source code can be found here: `Precision Converters Firmware Repository <https://github.com/analogdevicesinc/precision-converters-firmware>`_
 
 .. toctree::
    :maxdepth: 2
