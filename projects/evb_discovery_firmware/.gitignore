@@ -1,7 +1,6 @@
 *.swp
 *.profile*
 build
-app/no-OS
 Visual*
 Code*
 .gitattributes
@@ -11,3 +10,12 @@ Code*
 *.TMP
 *.user
 scripts/__pycache__
+STM32/.settings
+STM32/Core
+STM32/Drivers
+STM32/.mxproject
+STM32/.cproject
+STM32/.project
+STM32/Debug
+STM32/STM32H563ZITX_FLASH.ld
+STM32/STM32H563ZITX_RAM.ld

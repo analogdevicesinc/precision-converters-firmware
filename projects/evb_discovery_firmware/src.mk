@@ -10,5 +10,12 @@ SRC_DIRS += $(LIBRARIES_PATH)/precision-converters-library/sdp_k1_sdram
 SRC_DIRS += $(LIBRARIES_PATH)/precision-converters-library/common
 SRC_DIRS += $(LIBRARIES_PATH)/precision-converters-library/board_info
 
+ifeq 'mbed' '$(PLATFORM)'
+# ALL_IGNORED_FILES variable used for excluding particular source files in SRC_DIRS in Build
+SRC_DIRS += $(LIBRARIES_PATH)/no-OS/drivers/platform/mbed
+ALL_IGNORED_FILES += $(PROJECT_APP_PATH)/app_config_stm32.c
+ALL_IGNORED_FILES += $(PROJECT_APP_PATH)/app_config_stm32.h
+
 # Extra Macros
 override NEW_CFLAGS += -DACTIVE_PLATFORM=MBED_PLATFORM
+endif
