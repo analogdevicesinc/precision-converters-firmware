@@ -71,6 +71,10 @@ Connect the VIO_ADJUST jumper on the SDP-K1 / JP4 on Nucleo-H563ZI board to 3.3V
 * Connect a male-to-male jumper wire between D8 and D12 on Arduino connectors. (Required for data capture)
 * If using analog inputs AIN0/AIN1, remove the noise test LK1 jumper.
 
+.. note::
+   Set capture_timeout of iio oscilloscope atleast 25s to avoid timing out of the application when capturing all channels at lower odr. 
+   Please refer to the limitations section of ADC Data Capture in IIO Tools section
+
 .. Communication Interface section:
 
 .. include:: /source/hardware/comm_interface.rst
