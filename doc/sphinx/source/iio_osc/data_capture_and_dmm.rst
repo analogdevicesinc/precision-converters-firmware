@@ -174,6 +174,19 @@ For example, if sampling frequency is set as 400SPS, the timeout period is:
 
 timeout = 400 (requested samples) * (1 / 10000 SPS) + 1sec = 1.4 sec
 
+There is a fix employed for the above in the latest version of iio-oscilloscope
+Please follow the below steps to **increase the timeout** of iio oscilloscope:
+* Download the `iio-oscilloscope.exe <https://github.com/analogdevicesinc/iio-oscilloscope/actions/runs/8153749871>`_
+* Navigate to the configuration file .osc_profile.ini (This can be usually found at: C:\Users\disha\AppData\Local)
+* Add a variable capture_timeout and set it to a value (in ms) suited for your application.
+
+.. image:: /source/iio_osc/osc_ini.png
+    :width: 400
+
+An example of a minimum  content of a .ini file:
+[IIO Oscilloscope]
+capture_timeout=5000
+
 Capturing Rate > Transmission Rate:
 
 If data capturing rate is too high compared to the transmission rate, the data 
