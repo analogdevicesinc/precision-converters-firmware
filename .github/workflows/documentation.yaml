@@ -77,13 +77,10 @@ jobs:
 
     - name: Commit gh-pages
       run: |
-        author=$(git log -1 --pretty=format:'%an')
-        email=$(git log -1 --pretty=format:'%ae')
-        commit=$(git rev-parse --short HEAD)
         git add . >> /dev/null
-        git config --global user.name "$author"
-        git config --global user.email "$email"
-        git commit -m "deploy: $commit" --allow-empty
+        git config --global user.name "${{ github.event.head_commit.committer.name }}"
+        git config --global user.email "${{ github.event.head_commit.committer.email }}"
+        git commit -m "deploy: ${GITHUB_SHA}" --allow-empty
         
     - name: Push to gh-pages
       run: >-
