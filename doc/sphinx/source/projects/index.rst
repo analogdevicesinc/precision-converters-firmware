@@ -5,6 +5,7 @@ Firmware Applications
    :maxdepth: 1
    :caption: Contents:
 
+   /source/projects/ad2s1210_iio/ad2s1210_iio.rst
    /source/projects/ad4130_iio/ad4130_iio.rst
    /source/projects/ad4696_iio/ad4696_iio.rst
    /source/projects/ad559xr_console/ad559xr_console.rst
