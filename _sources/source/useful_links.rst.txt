@@ -2,6 +2,8 @@
 Useful Links
 ============
 
+* `Source Code: Precision Converters Firmware <https://github.com/analogdevicesinc/precision-converters-firmware>`_
+
 * `no-OS: Software drivers for systems without OS <https://github.com/analogdevicesinc/no-OS>`_
 
 * `Keil Studio Web IDE/Compiler <https://studio.keil.arm.com/auth/login/>`_

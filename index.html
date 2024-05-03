@@ -7,11 +7,11 @@
 
     <title>Precision-converters-firmware &#8212; Precision Converters Firmware  documentation</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=8e8a900e" />
-    <link rel="stylesheet" type="text/css" href="_static/style.min.css?v=cf8483f0" />
+    <link rel="stylesheet" type="text/css" href="_static/style.min.css?v=b4b07c60" />
     <script src="_static/documentation_options.js?v=5929fcd5"></script>
     <script src="_static/doctools.js?v=9a2dae69"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script defer="" src="_static/app.umd.js?v=96350458"></script>
+    <script defer="" src="_static/app.umd.js?v=18e99e78"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Build Guide" href="source/build/project_build.html" />
@@ -19,6 +19,7 @@
   
     <meta name="robots" content="noindex">
   
+  <meta name="repo" content="precision-converters-firmware">
   
 
 
@@ -38,39 +39,54 @@
   }
 </style>
   </head><body>
+  <div class="banner"></div>
   <input type="checkbox" id="input-show-toc">
   <input type="checkbox" id="input-show-localtoc">
+  <input type="checkbox" id="input-show-repotoc">
+
+  
+  <div class="search-area">
+    <form action="" method="get">
+      <input type="text" name="q" aria-labelledby="search-documentation" value="" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" role="search" placeholder="Search"/>
+      <button value="search" class="icon"></button>
+      <span id="search-progress"></span>
+    </form>
+  </div>
+  
+
   <header>
-    <div class="header">
-      <div id="left">
-        <label id="show-sidebar" for="input-show-toc" title="Show/hide index"></label>
-      </div>
-      <div id="right">
-        <span>
-          <a id="logo-org" href="https://analog.com"></a>
-              <a id="no-logo" href="#">
-                Precision Converters Firmware
-              </a>
-        </span>
-        <span class="reverse">
-          <label id="show-localtoc" for="input-show-localtoc" title="Show/hide contents"></label>
-        </span>
-      </div>
+    <div id="left">
+      <label id="show-sidebar" class="icon" for="input-show-toc" title="Show/hide index"></label>
     </div>
-    <div class="repotoc-tree">
-      <root>
+    <div id="right">
+      <span>
+        <a id="logo-org" href="https://analog.com"></a>
+        <div class="vertical-divider"></div>
+        <label id="show-repotoc" for="input-show-repotoc" title="Show/hide docs" tabindex="0">Docs</label>
+        <a id="logo" href="#">
+          <div>Precision Converters Firmware</div>
+        </a>
+      </span>
+      <span class="reverse">
+        <label id="show-localtoc" class="icon" for="input-show-localtoc" title="Show/hide contents"></label>
+      </span>
+    </div>
+  </header>
+
+
+  <div class="repotoc-tree overlay">
+    <root>
   <a href="./../documentation/eval/index.html">Evaluation Boards</a>
   <a href="./../documentation/university/index.html">University Program</a>
   <a href="./../hdl/index.html">HDL</a>
   <a href="./../no-OS/index.html">no-OS</a>
-  <a href="./../pyadi-iio/index.html">pyadi-iio</a>
+  <a href="./../pyadi-iio/index.html">Hardware Python Interfaces</a>
   <a href="./index.html" class="current">Precision Converters Firmware</a>
+  <a href="./../doctools/index.html">Doctools</a>
   <a href="./../PrecisionToolbox/index.html">Precision Toolbox</a>
 </root>
 
-    </div>
-  </header>
-
+  </div>
     <div class="localtoc">
       <div class="tocwrapper">
         <div>
@@ -92,9 +108,9 @@
   
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
-              <a id="no-logo" href="#">
-                Precision Converters Firmware
-              </a><input id="input-switch-toc" type="checkbox">
+    <a id="no-logo" href="#">
+      Precision Converters Firmware
+    </a><input id="input-switch-toc" type="checkbox">
 <label id="show-repotoc" for="input-switch-toc">
 All content
 </label>
@@ -107,8 +123,9 @@ Content on this topic
   <a href="./../documentation/university/index.html">University Program</a>
   <a href="./../hdl/index.html">HDL</a>
   <a href="./../no-OS/index.html">no-OS</a>
-  <a href="./../pyadi-iio/index.html">pyadi-iio</a>
+  <a href="./../pyadi-iio/index.html">Hardware Python Interfaces</a>
   <a href="./index.html" class="current">Precision Converters Firmware</a>
+  <a href="./../doctools/index.html">Doctools</a>
   <a href="./../PrecisionToolbox/index.html">Precision Toolbox</a>
 </root>
 
@@ -167,6 +184,7 @@ Precision Converters (ADCs/DACs) in order to configure/access device parameters
 and capture device data over a serial communication link. These applications are
 primarily targeted for the SDP-k1 hardware platform, running Mbed OS, however
 they can target other platforms as well. <a class="reference external" href="https://www.analog.com/en/analog-dialogue/articles/understanding-and-using-the-no-os-and-platform-drivers.html">See Understanding No-OS and Platform Drivers</a></p>
+<p>Source code can be found here: <a class="reference external" href="https://github.com/analogdevicesinc/precision-converters-firmware">Precision Converters Firmware Repository</a></p>
 <div class="toctree-wrapper compound">
 <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul>
@@ -216,7 +234,7 @@ they can target other platforms as well. <a class="reference external" href="htt
               <div class="related">
                 &nbsp;
     <div></div>
-    <a href="source/build/project_build.html" title="Next document" class="next">Build Guide</a>
+    <a href="source/build/project_build.html" title="Next document (Ctrl+RightArrow)" class="next">Build Guide</a>
               </div>
           
         </div>
@@ -227,14 +245,6 @@ they can target other platforms as well. <a class="reference external" href="htt
 
   <label id="cancel-area-show-toc" for="input-show-toc"></label>
   <label id="cancel-area-show-localtoc" for="input-show-localtoc"></label>
-
-  
-  <form action="" method="get" class="search-area">
-    <input type="text" name="q" aria-labelledby="search-documentation" value="" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" role="search" placeholder="Search"/>
-    <button value="search"></button>
-    <span id="search-progress"></span>
-  </form>
-  
     <footer>
       &#169;2023-2024, Analog Devices Inc.
       
