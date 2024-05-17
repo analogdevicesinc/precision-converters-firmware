@@ -1,8 +1,8 @@
 /***************************************************************************//**
- *   @file   ad4696_support.h
+ *   @file   ad469x_support.h
  *   @brief  Header for AD469x No-OS driver supports
 ********************************************************************************
- * Copyright (c) 2021-22 Analog Devices, Inc.
+ * Copyright (c) 2021-23 Analog Devices, Inc.
  *
  * All rights reserved.
  *
@@ -11,8 +11,8 @@
  * Analog Devices Software License Agreement.
 *******************************************************************************/
 
-#ifndef AD4696_SUPPORT_H_
-#define AD4696_SUPPORT_H_
+#ifndef AD469X_SUPPORT_H_
+#define AD469X_SUPPORT_H_
 
 /******************************************************************************/
 /***************************** Include Files **********************************/
@@ -27,9 +27,6 @@
 
 /* Number of AD469x registers */
 #define NUM_OF_REGISTERS	0x17F
-
-/* Default channel range for AD4696 devices */
-#define DEFAULT_VREF                (5.0)
 
 /* AD469x_REG_TEMPERATURE */
 #define AD469x_TEMPERATURE_MSK		NO_OS_GENMASK(0,0)
@@ -86,4 +83,4 @@ int32_t ad469x_read_single_sample(struct ad469x_dev *device,
 				  uint8_t chn_num,
 				  uint32_t *data);
 
-#endif /* AD4696_SUPPORT_H_ */
+#endif /* AD469X_SUPPORT_H_ */

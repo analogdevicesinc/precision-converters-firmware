@@ -1,8 +1,8 @@
 /*************************************************************************//**
- *   @file   ad4696_user_config.h
- *   @brief  Header for AD4696 user configuration file
+ *   @file   ad469x_user_config.h
+ *   @brief  Header for AD469x user configuration file
 ******************************************************************************
-* Copyright (c) 2021 Analog Devices, Inc.
+* Copyright (c) 2021-23 Analog Devices, Inc.
 *
 * All rights reserved.
 *
@@ -11,8 +11,8 @@
 * Analog Devices Software License Agreement.
 *****************************************************************************/
 
-#ifndef AD4696_USER_CONFIG_H
-#define AD4696_USER_CONFIG_H
+#ifndef AD469X_USER_CONFIG_H
+#define AD469X_USER_CONFIG_H
 
 /******************************************************************************/
 /***************************** Include Files **********************************/
@@ -28,6 +28,6 @@
 /******************************************************************************/
 /********************** Variables and User Defined Data Types *****************/
 /******************************************************************************/
-extern struct ad469x_init_param ad4696_init_str;
+extern struct ad469x_init_param ad469x_init_str;
 
-#endif /* end of AD4696_USER_CONFIG_H */
+#endif /* end of AD469X_USER_CONFIG_H */

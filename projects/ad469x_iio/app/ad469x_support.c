@@ -1,8 +1,8 @@
 /*************************************************************************//**
- *   @file   ad4696_support.c
+ *   @file   ad469x_support.c
  *   @brief  AD469x device No-OS driver supports
 ******************************************************************************
-* Copyright (c) 2021-22 Analog Devices, Inc.
+* Copyright (c) 2021-23 Analog Devices, Inc.
 *
 * All rights reserved.
 *
@@ -18,8 +18,8 @@
 #include <stdint.h>
 
 #include "app_config.h"
-#include "ad4696_support.h"
-#include "ad4696_user_config.h"
+#include "ad469x_support.h"
+#include "ad469x_user_config.h"
 #include "no_os_error.h"
 #include "no_os_gpio.h"
 #include "no_os_spi.h"
@@ -120,9 +120,9 @@ int32_t ad469x_trigger_conversion(struct ad469x_dev *device)
 	 * (when used for PWM) in analog mode, after disabling or
 	 * removing the PWM object.
 	 * In this applications, the conversion trigger pin is being shared with
-	 * ad4696 drivers as gpio output pin and is configured in output mode
+	 * ad469x drivers as gpio output pin and is configured in output mode
 	 * only when it is initialized.
-	 * Hence we need to reinitialize the gpio so that ad4696 driver
+	 * Hence we need to reinitialize the gpio so that ad469x driver
 	 * can gain access to pin configured in output mode.
 	 * */
 	ret = no_os_gpio_remove(device->gpio_convst);
@@ -130,7 +130,7 @@ int32_t ad469x_trigger_conversion(struct ad469x_dev *device)
 		return ret;
 	}
 
-	ret = no_os_gpio_get(&device->gpio_convst, ad4696_init_str.gpio_convst);
+	ret = no_os_gpio_get(&device->gpio_convst, ad469x_init_str.gpio_convst);
 	if (ret) {
 		return ret;
 	}
