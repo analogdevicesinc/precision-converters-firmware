@@ -1,4 +1,0 @@
-<map id="stm32_system_init" name="stm32_system_init">
-<area shape="rect" id="node1" title="Initialize the STM32 system peripherals." alt="" coords="152,5,299,32"/>
-<area shape="rect" id="node2" href="$ad7134__iio_2app_2app__config_8c.html#aba990e48bb1b87852ff6a375f0c2f655" title="Initialize the system peripherals." alt="" coords="5,5,104,32"/>
-</map>

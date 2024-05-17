@@ -1,8 +1,0 @@
-<map id="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad4696_iio/app/app_config.h" name="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad4696_iio/app/app_config.h">
-<area shape="rect" id="node1" title="Configuration file for AD4696 device applications." alt="" coords="568,5,791,76"/>
-<area shape="rect" id="node2" href="$ad4696__support_8c.html" title="AD469x device No&#45;OS driver supports." alt="" coords="5,124,249,195"/>
-<area shape="rect" id="node3" href="$ad4696__user__config_8c.html" title="User configuration file for AD4696 device." alt="" coords="274,124,543,195"/>
-<area shape="rect" id="node4" href="$ad4696__iio_2app_2app__config_8c.html" title="Application configurations module." alt="" coords="568,124,791,195"/>
-<area shape="rect" id="node5" href="$ad4696__iio_2app_2app__config__mbed_8c.html" title="Application configurations module for Mbed platform." alt="" coords="815,124,1069,195"/>
-<area shape="rect" id="node6" href="$iio__ad4696_8c.html" title="Implementation of AD4696 IIO application interfaces." alt="" coords="1093,124,1316,195"/>
-</map>
