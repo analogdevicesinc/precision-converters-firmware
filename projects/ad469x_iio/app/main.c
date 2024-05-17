@@ -1,10 +1,10 @@
 /***************************************************************************//**
  *   @file    main.c
- *   @brief   Main module for AD4696 IIO application
- *   @details This module invokes the AD4696 IIO interfaces
+ *   @brief   Main module for AD469x IIO application
+ *   @details This module invokes the AD469x IIO interfaces
  *            through forever loop.
 ********************************************************************************
- * Copyright (c) 2021-22 Analog Devices, Inc.
+ * Copyright (c) 2021-23 Analog Devices, Inc.
  *
  * All rights reserved.
  *
@@ -19,7 +19,7 @@
 #include <stdint.h>
 #include <assert.h>
 
-#include "iio_ad4696.h"
+#include "ad469x_iio.h"
 
 /******************************************************************************/
 /********************** Macros and Constants Definitions **********************/
@@ -35,14 +35,14 @@
  */
 int main(void)
 {
-	/* Initialize the AD4696 IIO interface */
-	if (ad4696_iio_initialize()) {
+	/* Initialize the AD469x IIO interface */
+	if (ad469x_iio_initialize()) {
 		printf("IIO initialization failure!!\r\n");
 	}
 
 	while (1) {
 		/* Monitor the IIO client events */
-		ad4696_iio_event_handler();
+		ad469x_iio_event_handler();
 	}
 }
 
