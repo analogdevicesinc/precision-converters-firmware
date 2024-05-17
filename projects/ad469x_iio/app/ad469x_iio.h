@@ -1,6 +1,6 @@
 /***************************************************************************//**
-*   @file   iio_ad4696.h
-*   @brief  Header file of iio_ad4696
+*   @file   ad469x_iio.h
+*   @brief  Header file of ad469x_iio
 ********************************************************************************
 * Copyright (c) 2021-22 Analog Devices, Inc.
 *
@@ -9,8 +9,8 @@
 * By using this software you agree to the terms of the associated
 * Analog Devices Software License Agreement.
 *******************************************************************************/
-#ifndef IIO_AD4696_H_
-#define IIO_AD4696_H_
+#ifndef IIO_AD469X_H_
+#define IIO_AD469X_H_
 
 /******************************************************************************/
 /***************************** Include Files **********************************/
@@ -30,7 +30,7 @@
 /*************************** Types Declarations *******************************/
 /******************************************************************************/
 
-/*  AD4696 global device instance for accessing device specific APIs */
+/*  AD469x global device instance for accessing device specific APIs */
 extern struct ad469x_dev *p_ad469x_dev;
 
 /******************************************************************************/
@@ -38,9 +38,9 @@ extern struct ad469x_dev *p_ad469x_dev;
 /******************************************************************************/
 
 /* Init the IIO interface */
-int32_t ad4696_iio_initialize(void);
+int32_t ad469x_iio_initialize(void);
 
 /* Run the IIO event handler */
-void ad4696_iio_event_handler(void);
+void ad469x_iio_event_handler(void);
 
-#endif /* IIO_AD4696_H_ */
+#endif /* IIO_AD469X_H_ */

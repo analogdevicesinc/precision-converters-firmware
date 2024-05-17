@@ -29,19 +29,29 @@
 /* UART Mbed platform specific init parameters */
 struct mbed_uart_init_param mbed_uart_extra_init_params = {
 	.uart_tx_pin = UART_TX,
-	.uart_rx_pin = UART_RX
+	.uart_rx_pin = UART_RX,
+#if defined(USE_PHY_COM_PORT)
+	.is_console_stdio_port = false
+#else
+	.is_console_stdio_port = true
+#endif
 };
 
 /* VCOM Mbed platform specific init parameters */
 struct mbed_uart_init_param mbed_vcom_extra_init_params = {
 	.vendor_id = VIRTUAL_COM_PORT_VID,
 	.product_id = VIRTUAL_COM_PORT_PID,
-	.serial_number = VIRTUAL_COM_SERIAL_NUM
+	.serial_number = VIRTUAL_COM_SERIAL_NUM,
+#if defined(USE_VIRTUAL_COM_PORT)
+	.is_console_stdio_port = false
+#else
+	.is_console_stdio_port = true
+#endif
 };
 
 /* External interrupt Mbed platform specific parameters */
 struct mbed_gpio_irq_init_param mbed_trigger_gpio_irq_init_params = {
-	.gpio_irq_pin = EXT_TRIGGER_PIN
+	.gpio_irq_pin = BSY_PIN_NUM
 };
 
 /* SPI Mbed platform specific parameters */
@@ -54,10 +64,26 @@ struct mbed_spi_init_param mbed_spi_extra_init_params = {
 
 /* PWM Mbed platform specific parameters */
 struct mbed_pwm_init_param mbed_pwm_extra_init_params = {
-	.pwm_pin = PWM_PIN
+	.pwm_pin = CNV_PIN_NUM
 };
 
 /* GPIO Mbed platform specific parameters */
 struct mbed_gpio_init_param mbed_gpio_bsy_extra_init_params = {
 	.pin_mode = PullNone
+};
+
+/* GPIO Mbed platform specific parameters */
+struct mbed_gpio_init_param mbed_gpio_reset_extra_init_params = {
+	.pin_mode = PullNone
+};
+
+/* GPIO Mbed platform specific parameters */
+struct mbed_gpio_init_param mbed_gpio_cnv_extra_init_params = {
+	.pin_mode = PullNone
+};
+
+/* I2C Mbed platform specific parameters */
+struct mbed_i2c_init_param mbed_i2c_extra_init_params = {
+	.i2c_sda_pin = I2C_SDA,
+	.i2c_scl_pin = I2C_SCL
 };

@@ -1,8 +1,8 @@
 /*************************************************************************//**
  *   @file   app_config.h
- *   @brief  Configuration file for AD4696 device applications
+ *   @brief  Configuration file for AD469x device applications
 ******************************************************************************
-* Copyright (c) 2021-23 Analog Devices, Inc.
+* Copyright (c) 2021-24 Analog Devices, Inc.
 *
 * All rights reserved.
 *
@@ -24,16 +24,21 @@
 /********************** Macros and Constants Definition ***********************/
 /******************************************************************************/
 
-/* List of supported platforms*/
-#define	MBED_PLATFORM		1
+/* List of supported platforms */
+#define	MBED_PLATFORM		0
+#define STM32_PLATFORM		1
 
-/* List of data capture modes for AD4696 device */
+/* List of data capture modes for AD469X device */
 #define CONTINUOUS_DATA_CAPTURE		0
 #define BURST_DATA_CAPTURE			1
 
 /* List of available polarity modes */
 #define UNIPOLAR_MODE           0
 #define PSEUDO_BIPOLAR_MODE     1
+
+/* List of data capture methods supported by hardware platform */
+#define SPI_DMA                         0
+#define SPI_INTERRUPT                   1
 
 /* Select the ADC data capture mode (default is CC mode) */
 #if !defined(DATA_CAPTURE_MODE)
@@ -43,6 +48,17 @@
 /* Select the active platform (default is Mbed) */
 #if !defined(ACTIVE_PLATFORM)
 #define ACTIVE_PLATFORM		MBED_PLATFORM
+#endif
+
+/* Note: The STM32 platform supports SPI interrupt and SPI DMA Mode
+ * for data capturing. The MBED platform supports only SPI interrupt mode
+ * */
+#if !defined(INTERFACE_MODE)
+#if (ACTIVE_PLATFORM == STM32_PLATFORM)
+#define INTERFACE_MODE   SPI_DMA
+#else // Mbed
+#define INTERFACE_MODE   SPI_INTERRUPT
+#endif
 #endif
 
 /* Enable the UART/VirtualCOM port connection (default VCOM) */
@@ -58,26 +74,33 @@
 
 #if (ACTIVE_PLATFORM == MBED_PLATFORM)
 #include "app_config_mbed.h"
-#define HW_CARRIER_NAME		STR(TARGET_NAME)
-
-/* Redefine the init params structure mapping w.r.t. platform */
-#define bsy_gpio_extra_init_params mbed_gpio_bsy_extra_init_params
+#define HW_CARRIER_NAME		TARGET_NAME
+#define uart_extra_init_params      mbed_uart_extra_init_params
+#define vcom_extra_init_params      mbed_vcom_extra_init_params
+#define bsy_extra_init_params  mbed_gpio_bsy_extra_init_params
+#define cnv_extra_init_params       mbed_gpio_cnv_extra_init_params
+#define reset_extra_init_params     mbed_gpio_reset_extra_init_params
 #define trigger_gpio_irq_extra_params mbed_trigger_gpio_irq_init_params
-#if defined(USE_VIRTUAL_COM_PORT)
-#define uart_extra_init_params mbed_vcom_extra_init_params
-#define uart_ops mbed_virtual_com_ops
-#else
-#define uart_extra_init_params mbed_uart_extra_init_params
-#define uart_ops mbed_uart_ops
-#endif
-#define spi_extra_init_params mbed_spi_extra_init_params
-#define pwm_extra_init_params mbed_pwm_extra_init_params
-#define gpio_ops                    mbed_gpio_ops
-#define spi_ops                     mbed_spi_ops
-#define trigger_gpio_irq_ops        mbed_gpio_irq_ops
-#define trigger_gpio_handle         0 // Unused macro
-#define TRIGGER_GPIO_PORT           0 // Unused macro
-#define TRIGGER_INT_ID	            GPIO_IRQ_ID1
+#define spi_extra_init_params       mbed_spi_extra_init_params
+#define pwm_extra_init_params       mbed_pwm_extra_init_params
+#define i2c_extra_init_params       mbed_i2c_extra_init_params
+
+#elif (ACTIVE_PLATFORM == STM32_PLATFORM)
+#include "app_config_stm32.h"
+#define HW_CARRIER_NAME		    	TARGET_NAME
+/* Redefine the init params structure mapping w.r.t. platform */
+#define uart_extra_init_params        stm32_uart_extra_init_params
+#define spi_extra_init_params         stm32_spi_extra_init_params
+#define cnv_extra_init_params         stm32_gpio_cnv_extra_init_params
+#define pwm_extra_init_params         stm32_pwm_cnv_extra_init_params
+#define pwm_gpio_extra_init_params    stm32_pwm_gpio_extra_init_params
+#define bsy_extra_init_params         stm32_gpio_gp0_extra_init_params
+#define gp1_extra_init_params         stm32_gpio_gp1_extra_init_params
+#define trigger_gpio_irq_extra_params stm32_gpio_irq_extra_init_params
+#define reset_extra_init_params       stm32_gpio_reset_extra_init_params
+#define cs_extra_init_params          stm32_cs_extra_init_params
+#define tx_trigger_extra_init_params  stm32_tx_trigger_extra_init_params
+#define cs_pwm_gpio_extra_init_params stm32_cs_pwm_gpio_extra_init_params
 #else
 #error "No/Invalid active platform selected"
 #endif
@@ -94,27 +117,18 @@
 #if defined(DEV_AD4696)
 #define ACTIVE_DEVICE		ID_AD4696
 #define ACTIVE_DEVICE_NAME	"ad4696"
-#elif defined(DEV_AD4695)
-#define ACTIVE_DEVICE		ID_AD4695
-#define ACTIVE_DEVICE_NAME	"ad4695"
+#define HW_MEZZANINE_NAME	"EVAL-AD4696-FMCZ"
+#define	NO_OF_CHANNELS		16
 #else
 #warning No/Unsupported ADxxxxy symbol defined. AD4696 defined
 #define DEV_AD4696
 #define ACTIVE_DEVICE		ID_AD4696
 #define ACTIVE_DEVICE_NAME	"ad4696"
+#define HW_MEZZANINE_NAME	"EVAL-AD4696-ARDZ"
+#define	NO_OF_CHANNELS		16
 #endif
 
-#if defined(DEV_AD4696)
-#define	NO_OF_CHANNELS		16
 #define ADC_RESOLUTION		16
-#elif defined(DEV_AD4695)
-#define	NO_OF_CHANNELS		16
-#define ADC_RESOLUTION		16
-#else
-/* Default config for AD4696 */
-#define	NO_OF_CHANNELS		16
-#define ADC_RESOLUTION		16
-#endif
 
 // **** Note for User: Polarity Mode selection **** //
 /* Since the pin pairing option is same for all the channels in
@@ -128,9 +142,6 @@
  * for all the channels.
  * */
 #define DEFAULT_POLARITY_MODE    PSEUDO_BIPOLAR_MODE
-
-/* Pins to be used an interrupt to trigger callback function */
-#define EXT_TRIGGER_PIN 	     BUSY_PIN
 
 /* ADC max count (full scale value) for unipolar inputs */
 #define ADC_MAX_COUNT_UNIPOLAR	(uint32_t)((1 << ADC_RESOLUTION) - 1)
@@ -147,7 +158,7 @@
 #endif
 
 /* Used to form a VCOM serial number */
-#define	FIRMWARE_NAME	"ad4696_iio"
+#define	FIRMWARE_NAME	"ad469x_iio"
 
 #if !defined(PLATFORM_NAME)
 #define PLATFORM_NAME	HW_CARRIER_NAME
@@ -159,13 +170,36 @@
 #define VIRTUAL_COM_PORT_VID	0x0456
 #define VIRTUAL_COM_PORT_PID	0xb66c
 /* Serial number string is formed as: application name + device (target) name + platform (host) name */
-#define VIRTUAL_COM_SERIAL_NUM	(FIRMWARE_NAME "_" DEVICE_NAME "_" PLATFORM_NAME)
+#define VIRTUAL_COM_SERIAL_NUM	(FIRMWARE_NAME "_" DEVICE_NAME "_" STR(PLATFORM_NAME))
 
 /* Baud rate for IIO application UART interface */
 #define IIO_UART_BAUD_RATE	(230400)
 
+/* Check if any serial port available for use as console stdio port */
+#if defined(USE_PHY_COM_PORT)
+/* If PHY com is selected, VCOM or alternate PHY com port can act as a console stdio port */
+#if (ACTIVE_PLATFORM == MBED_PLATFORM)
+#define CONSOLE_STDIO_PORT_AVAILABLE
+#endif
+#else
+/* If VCOM is selected, PHY com port will/should act as a console stdio port */
+#define CONSOLE_STDIO_PORT_AVAILABLE
+#endif
+
 /* Enable/Disable the use of SDRAM for ADC data capture buffer */
 //#define USE_SDRAM  	// Uncomment to use SDRAM as data buffer
+
+/* Bytes per sample. This count should divide the total 256 bytes into 'n' equivalent
+ * ADC samples as IIO library requests only 256bytes of data at a time in a given
+ * data read query.
+ * For 1 to 8-bit ADC, bytes per sample = 1 (2^0)
+ * For 9 to 16-bit ADC, bytes per sample = 2 (2^1)
+ * For 17 to 32-bit ADC, bytes per sample = 4 (2^2)
+ **/
+#define	BYTES_PER_SAMPLE	sizeof(uint16_t)	// For ADC resolution of 16-bits
+
+/* Number of data storage bits (needed for IIO client to plot ADC data) */
+#define CHN_STORAGE_BITS	(BYTES_PER_SAMPLE * 8)
 
 /******************************************************************************/
 /********************** Variables and User Defined Data Types *****************/
@@ -174,9 +208,21 @@
 /******************************************************************************/
 /************************ Public Declarations *********************************/
 /******************************************************************************/
-extern struct no_os_uart_desc *uart_desc;
+extern struct no_os_uart_desc *uart_iio_com_desc;
 extern struct no_os_pwm_desc *pwm_desc;
 extern struct no_os_irq_ctrl_desc *trigger_irq_desc;
+extern struct no_os_eeprom_desc *eeprom_desc;
+#if (INTERFACE_MODE == SPI_DMA)
+extern struct no_os_pwm_init_param cs_init_params;
+extern struct no_os_dma_init_param ad469x_dma_init_param;
+extern struct no_os_gpio_init_param pwm_gpio_params;
+extern struct no_os_gpio_init_param cs_pwm_gpio_params;
+extern volatile struct iio_device_data* global_iio_dev_data;
+extern struct no_os_pwm_init_param pwm_init_params;
+extern uint32_t global_nb_of_samples;
+extern volatile uint32_t* buff_start_addr;
+extern int32_t data_read;
+#endif
 
 /* Initializing system peripherals */
 int32_t init_pwm(void);
