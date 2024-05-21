@@ -37,6 +37,11 @@ Toolbox created by ADI to be used with MATLAB and Simulink with ADI Precision pr
 `IIO Command Line <https://wiki.analog.com/resources/tools-software/linux-software/libiio/iio_info>`_
 Command line interface for accessing IIO device parameters.
 
+:doc:`Pocketlab </source/pocketlab/pocketlab>`
+ADI Pocketlab is a display based GUI client. It supports
+raw data capture, FFT analysis, DMM measurement, device configuration, register 
+read/write.
+
 .. note::
 
     These are the general evaluation and prototyping tools for Precision Converters
