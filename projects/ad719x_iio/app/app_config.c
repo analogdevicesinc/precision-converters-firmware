@@ -4,7 +4,7 @@
  *   @details This module contains the configurations needed for ad719x
  *            IIO application firmware
 ********************************************************************************
- * Copyright (c) 2021-23 Analog Devices, Inc.
+ * Copyright (c) 2021-24 Analog Devices, Inc.
  * All rights reserved.
  *
  * This software is proprietary to Analog Devices, Inc. and its licensors.
@@ -30,7 +30,7 @@
 /******************************************************************************/
 /* UART init parameters structure */
 struct no_os_uart_init_param uart_init_params = {
-	.device_id = NULL,
+	.device_id = 0,
 	.baud_rate = IIO_UART_BAUD_RATE,
 	.size = NO_OS_UART_CS_8,
 	.parity = NO_OS_UART_PAR_NO,

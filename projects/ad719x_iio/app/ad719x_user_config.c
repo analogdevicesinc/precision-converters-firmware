@@ -2,7 +2,7 @@
  *   @file   ad719x_user_config.c
  *   @brief  User configuration file for AD719X device
 ******************************************************************************
-* Copyright (c) 2021-22 Analog Devices, Inc.
+* Copyright (c) 2021-22,2024 Analog Devices, Inc.
 *
 * All rights reserved.
 *
@@ -69,6 +69,8 @@ struct ad719x_init_param ad719x_init_params = {
 	.chip_id = AD7192
 #elif defined(DEV_AD7193)
 	.chip_id = AD7193
+#elif defined(DEV_AD7194)
+	.chip_id = AD7194
 #elif defined(DEV_AD7195)
 	.chip_id = AD7195
 #endif

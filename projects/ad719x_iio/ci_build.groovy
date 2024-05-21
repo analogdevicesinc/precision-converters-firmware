@@ -4,7 +4,7 @@ def getBuildMatrix(projectName) {
 		// This map is for building all targets when merging to main or develop branches
 		buildMap = [
 			PLATFORM_NAME: ['SDP_K1', 'NUCLEO_L552ZE_Q', 'DISCO_F769NI'],
-			ACTIVE_DEVICE: ['DEV_AD7190', 'DEV_AD7192', 'DEV_AD7193', 'DEV_AD7195'],
+			ACTIVE_DEVICE: ['DEV_AD7190', 'DEV_AD7192', 'DEV_AD7193', 'DEV_AD7194', 'DEV_AD7195'],
 			COM_TYPE: ['USE_PHY_COM_PORT','USE_VIRTUAL_COM_PORT'],
 			SDRAM: ['USE_SDRAM', 'NO_SDRAM']
 		]
@@ -30,24 +30,29 @@ def getBuildMatrix(projectName) {
 		// Skip 'all platforms except SDP-K1 + all devices except AD7193'
 		!(axis['PLATFORM_NAME'] == 'NUCLEO_L552ZE_Q' && axis['ACTIVE_DEVICE'] == 'DEV_AD7190') &&
 		!(axis['PLATFORM_NAME'] == 'NUCLEO_L552ZE_Q' && axis['ACTIVE_DEVICE'] == 'DEV_AD7192') &&
+		!(axis['PLATFORM_NAME'] == 'NUCLEO_L552ZE_Q' && axis['ACTIVE_DEVICE'] == 'DEV_AD7194') &&
 		!(axis['PLATFORM_NAME'] == 'NUCLEO_L552ZE_Q' && axis['ACTIVE_DEVICE'] == 'DEV_AD7195') &&
 		!(axis['PLATFORM_NAME'] == 'DISCO_F769NI' && axis['ACTIVE_DEVICE'] == 'DEV_AD7190') &&
 		!(axis['PLATFORM_NAME'] == 'DISCO_F769NI' && axis['ACTIVE_DEVICE'] == 'DEV_AD7192') &&
+		!(axis['PLATFORM_NAME'] == 'DISCO_F769NI' && axis['ACTIVE_DEVICE'] == 'DEV_AD7194') &&
 		!(axis['PLATFORM_NAME'] == 'DISCO_F769NI' && axis['ACTIVE_DEVICE'] == 'DEV_AD7195') &&
 
 		// Skip 'SDP-K1 + SDRAM + Phy COM + all devices except DEV_AD7193'
 		!(axis['PLATFORM_NAME'] == 'SDP_K1' && axis['ACTIVE_DEVICE'] == 'DEV_AD7190' && axis['SDRAM'] == 'USE_SDRAM' && axis['COM_TYPE'] == 'USE_PHY_COM_PORT') &&
 		!(axis['PLATFORM_NAME'] == 'SDP_K1' && axis['ACTIVE_DEVICE'] == 'DEV_AD7192' && axis['SDRAM'] == 'USE_SDRAM' && axis['COM_TYPE'] == 'USE_PHY_COM_PORT') &&
+		!(axis['PLATFORM_NAME'] == 'SDP_K1' && axis['ACTIVE_DEVICE'] == 'DEV_AD7194' && axis['SDRAM'] == 'USE_SDRAM' && axis['COM_TYPE'] == 'USE_PHY_COM_PORT') &&
 		!(axis['PLATFORM_NAME'] == 'SDP_K1' && axis['ACTIVE_DEVICE'] == 'DEV_AD7195' && axis['SDRAM'] == 'USE_SDRAM' && axis['COM_TYPE'] == 'USE_PHY_COM_PORT') &&
 
 		// Skip 'SDP-K1 + No SDRAM + Phy COM + all devices except DEV_AD7193'
 		!(axis['PLATFORM_NAME'] == 'SDP_K1' && axis['ACTIVE_DEVICE'] == 'DEV_AD7190' && axis['SDRAM'] == 'NO_SDRAM' && axis['COM_TYPE'] == 'USE_PHY_COM_PORT') &&
 		!(axis['PLATFORM_NAME'] == 'SDP_K1' && axis['ACTIVE_DEVICE'] == 'DEV_AD7192' && axis['SDRAM'] == 'NO_SDRAM' && axis['COM_TYPE'] == 'USE_PHY_COM_PORT') &&
+		!(axis['PLATFORM_NAME'] == 'SDP_K1' && axis['ACTIVE_DEVICE'] == 'DEV_AD7194' && axis['SDRAM'] == 'NO_SDRAM' && axis['COM_TYPE'] == 'USE_PHY_COM_PORT') &&
 		!(axis['PLATFORM_NAME'] == 'SDP_K1' && axis['ACTIVE_DEVICE'] == 'DEV_AD7195' && axis['SDRAM'] == 'NO_SDRAM' && axis['COM_TYPE'] == 'USE_PHY_COM_PORT') &&
 
 		// Skip 'SDP-K1 + SDRAM + VCOM + all devices except DEV_AD7193'
 		!(axis['PLATFORM_NAME'] == 'SDP_K1' && axis['ACTIVE_DEVICE'] == 'DEV_AD7190' && axis['SDRAM'] == 'USE_SDRAM' && axis['COM_TYPE'] == 'USE_VIRTUAL_COM_PORT') &&
 		!(axis['PLATFORM_NAME'] == 'SDP_K1' && axis['ACTIVE_DEVICE'] == 'DEV_AD7192' && axis['SDRAM'] == 'USE_SDRAM' && axis['COM_TYPE'] == 'USE_VIRTUAL_COM_PORT') &&
+		!(axis['PLATFORM_NAME'] == 'SDP_K1' && axis['ACTIVE_DEVICE'] == 'DEV_AD7194' && axis['SDRAM'] == 'USE_SDRAM' && axis['COM_TYPE'] == 'USE_VIRTUAL_COM_PORT') &&
 		!(axis['PLATFORM_NAME'] == 'SDP_K1' && axis['ACTIVE_DEVICE'] == 'DEV_AD7195' && axis['SDRAM'] == 'USE_SDRAM' && axis['COM_TYPE'] == 'USE_VIRTUAL_COM_PORT')
 	}
 

@@ -2,7 +2,7 @@
  *   @file   app_config.h
  *   @brief  Configuration file for ad719x IIO firmware application
 ******************************************************************************
-* Copyright (c) 2021-23 Analog Devices, Inc.
+* Copyright (c) 2021-24 Analog Devices, Inc.
 *
 * All rights reserved.
 *
@@ -100,34 +100,35 @@
 #if defined(DEV_AD7190)
 #define ACTIVE_DEVICE_NAME	"ad7190"
 #define DEVICE_NAME			"DEV_AD7190"
-#define ACTIVE_DEVICE_ID	 ID_AD7190
 #define HW_MEZZANINE_NAME	"EVAL-AD7190-ASDZ"
 #elif defined(DEV_AD7192)
 #define ACTIVE_DEVICE_NAME	"ad7192"
 #define DEVICE_NAME			"DEV_AD7192"
-#define ACTIVE_DEVICE_ID	 ID_AD7192
 #define HW_MEZZANINE_NAME	"EVAL-AD7192-ASDZ"
 #elif defined(DEV_AD7193)
 #define ACTIVE_DEVICE_NAME	"ad7193"
 #define DEVICE_NAME			"DEV_AD7193"
-#define ACTIVE_DEVICE_ID	 ID_AD7193
 #define HW_MEZZANINE_NAME	"EVAL-AD7193-ASDZ"
+#elif defined(DEV_AD7194)
+#define ACTIVE_DEVICE_NAME	"ad7194"
+#define DEVICE_NAME			"DEV_AD7194"
+#define HW_MEZZANINE_NAME	"EVAL-AD7194ASDZ"
 #elif defined(DEV_AD7195)
 #define ACTIVE_DEVICE_NAME	"ad7195"
 #define DEVICE_NAME			"DEV_AD7195"
-#define ACTIVE_DEVICE_ID	 ID_AD7195
 #define HW_MEZZANINE_NAME	"EVAL-AD7195-ASDZ"
 #else
 #warning No/Unsupported ADxxxxy symbol defined. AD7193 defined
 #define DEV_AD7193
 #define ACTIVE_DEVICE_NAME	"ad7193"
 #define DEVICE_NAME			"DEV_AD7193"
-#define ACTIVE_DEVICE_ID	 ID_AD7193
 #define HW_MEZZANINE_NAME	"EVAL-AD7193-ASDZ"
 #endif // Device Select (Active Device name definition)
 
 #if defined(DEV_AD7190) || defined(DEV_AD7192) || defined(DEV_AD7195)
 #define	NO_OF_CHANNELS		4
+#elif defined(DEV_AD7194)
+#define NO_OF_CHANNELS		16
 #else
 #define NO_OF_CHANNELS		8
 #endif

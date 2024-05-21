@@ -1,6 +1,6 @@
 Evaluation Boards/Products Supported
 ------------------------------------ 
--Products supported: AD7190, AD7192, AD7193, AD7195
+-Products supported: AD7190, AD7192, AD7193, AD7194, AD7195
 
 Overview
 --------
