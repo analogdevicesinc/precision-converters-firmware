@@ -2,7 +2,7 @@
  *   @file    ad719x_iio.c
  *   @brief   Implementation of AD719X IIO application interfaces
 ********************************************************************************
- * Copyright (c) 2021-23 Analog Devices, Inc.
+ * Copyright (c) 2021-24 Analog Devices, Inc.
  * All rights reserved.
  *
  * This software is proprietary to Analog Devices, Inc. and its licensors.
@@ -60,10 +60,10 @@ static int iio_ad719x_attr_available_set(void *device,
 		intptr_t priv);
 
 #define AD719X_CHN_ATTR(_name, _priv) {\
-	.name = _name,\
-	.priv = _priv,\
-	.show = iio_ad719x_attr_get,\
-	.store = iio_ad719x_attr_set\
+		.name = _name,\
+		.priv = _priv,\
+		.show = iio_ad719x_attr_get,\
+		.store = iio_ad719x_attr_set\
 }
 
 #define AD719X_CHN_AVAIL_ATTR(_name, _priv) {\
@@ -124,6 +124,9 @@ static int8_t adc_data_buffer[DATA_BUFFER_SIZE];
 #else
 #define AD719X_DEFAULT_SCALE(x)		((AD719X_DEFAULT_REF_VOLTAGE / (ADC_MAX_COUNT_UNIPOLAR * x)) * 1000)
 #endif
+
+/* AD7194 channels */
+#define AD7194_CH(chn) chn
 
 /******************************************************************************/
 /******************** Variables and User Defined Data Types *******************/
@@ -240,6 +243,16 @@ static struct iio_channel iio_ad719x_channels[] = {
 	AD719X_IIO_CHANN_DEF("AIN3-AIN4", AD719X_CH_2, AD719X_CH_3),
 	AD719X_IIO_CHANN_DEF("AIN5-AIN6", AD719X_CH_4, AD719X_CH_5),
 	AD719X_IIO_CHANN_DEF("AIN7-AIN8", AD719X_CH_6, AD719X_CH_7)
+#elif defined(DEV_AD7194)
+	/* 24-bit ADC Differential Input Channels (Count= 8) */
+	AD719X_IIO_CHANN_DEF("AIN1-AIN2", AD7194_CH(0), AD7194_CH(1)),
+	AD719X_IIO_CHANN_DEF("AIN3-AIN4", AD7194_CH(2), AD7194_CH(3)),
+	AD719X_IIO_CHANN_DEF("AIN5-AIN6", AD7194_CH(4), AD7194_CH(5)),
+	AD719X_IIO_CHANN_DEF("AIN7-AIN8", AD7194_CH(6), AD7194_CH(7)),
+	AD719X_IIO_CHANN_DEF("AIN9-AIN10", AD7194_CH(8), AD7194_CH(9)),
+	AD719X_IIO_CHANN_DEF("AIN11-AIN12", AD7194_CH(10), AD7194_CH(11)),
+	AD719X_IIO_CHANN_DEF("AIN13-AIN14", AD7194_CH(12), AD7194_CH(13)),
+	AD719X_IIO_CHANN_DEF("AIN14-AIN15", AD7194_CH(14), AD7194_CH(15))
 #endif // Device Channel Select
 };
 #else
@@ -259,6 +272,23 @@ static struct iio_channel iio_ad719x_channels[] = {
 	AD719X_IIO_CH("AIN6", AD719X_CH_5),
 	AD719X_IIO_CH("AIN7", AD719X_CH_6),
 	AD719X_IIO_CH("AIN8", AD719X_CH_7)
+#elif defined(DEV_AD7194)
+	AD719X_IIO_CH("AIN0", AD7194_CH(0)),
+	AD719X_IIO_CH("AIN1", AD7194_CH(1)),
+	AD719X_IIO_CH("AIN2", AD7194_CH(2)),
+	AD719X_IIO_CH("AIN3", AD7194_CH(3)),
+	AD719X_IIO_CH("AIN4", AD7194_CH(4)),
+	AD719X_IIO_CH("AIN5", AD7194_CH(5)),
+	AD719X_IIO_CH("AIN6", AD7194_CH(6)),
+	AD719X_IIO_CH("AIN7", AD7194_CH(7)),
+	AD719X_IIO_CH("AIN8", AD7194_CH(8)),
+	AD719X_IIO_CH("AIN9", AD7194_CH(9)),
+	AD719X_IIO_CH("AIN10", AD7194_CH(10)),
+	AD719X_IIO_CH("AIN11", AD7194_CH(11)),
+	AD719X_IIO_CH("AIN12", AD7194_CH(12)),
+	AD719X_IIO_CH("AIN13", AD7194_CH(13)),
+	AD719X_IIO_CH("AIN14", AD7194_CH(14)),
+	AD719X_IIO_CH("AIN15", AD7194_CH(15)),
 #endif // Device Channel Select
 };
 #endif // Differential Input Select
@@ -296,11 +326,14 @@ static int iio_ad719x_attr_get(void *device,
 	int32_t ret;
 	uint32_t value;
 	struct ad719x_dev *desc = (struct ad719x_dev *)device;
+	uint32_t new_mask;
 
 	switch (priv) {
 	/****************** ADC global getters ******************/
 	case ADC_RANGE:
-		ret = ad719x_get_register_value(desc, AD719X_REG_CONF, BYTES_TRANSFER_THREE,
+		ret = ad719x_get_register_value(desc,
+						AD719X_REG_CONF,
+						BYTES_TRANSFER_THREE,
 						&value);
 		if (NO_OS_IS_ERR_VALUE(ret)) {
 			return ret;
@@ -308,7 +341,9 @@ static int iio_ad719x_attr_get(void *device,
 		return sprintf(buf, "%s", ad719x_range_str[AD719X_CONF_GAIN(value)]);
 
 	case ADC_BRIDGE_SWITCH:
-		ret = ad719x_get_register_value(desc, AD719X_REG_GPOCON, sizeof(uint8_t),
+		ret = ad719x_get_register_value(desc,
+						AD719X_REG_GPOCON,
+						sizeof(uint8_t),
 						&value);
 		if (NO_OS_IS_ERR_VALUE(ret)) {
 			return ret;
@@ -317,7 +352,9 @@ static int iio_ad719x_attr_get(void *device,
 		return sprintf(buf, "%s", ad719x_bridge_switch_str[value]);
 
 	case ADC_OPERATING_MODE:
-		ret = ad719x_get_register_value(desc, AD719X_REG_MODE, BYTES_TRANSFER_THREE,
+		ret = ad719x_get_register_value(desc,
+						AD719X_REG_MODE,
+						BYTES_TRANSFER_THREE,
 						&value);
 		if (NO_OS_IS_ERR_VALUE(ret)) {
 			return ret;
@@ -337,19 +374,35 @@ static int iio_ad719x_attr_get(void *device,
 			case AD7192:
 			case AD7195:
 				ret = ad719x_channels_select(desc,
-							     AD719X_CH_MASK(channel->ch_num) << AD7190_2_5_CHN_SHIFT);
+							     AD719X_CH_MASK(channel->ch_num) << AD719X_CHN_SHIFT);
+				break;
+			case AD7194:
+				new_mask = (iio_ad719x_channels[channel->ch_num].channel << AD719X_CHN_SHIFT) +
+					   iio_ad719x_channels[channel->ch_num].channel2;
+				ret = ad719x_channels_select(desc, new_mask);
+
 				break;
 			case AD7193:
-				ret = ad719x_channels_select(desc,AD719X_CH_MASK(channel->ch_num));
+				ret = ad719x_channels_select(desc, AD719X_CH_MASK(channel->ch_num));
 				break;
+
 			default:
 				return -ENODEV;
 			}
 		} else {
 			/* In differential mode, the IIO backend supplies channel
 			        * number as multiple of 2 */
-			ret = ad719x_channels_select(desc,
-						     AD719X_CH_MASK(channel->ch_num / AD719X_CH_2));
+			if (desc->chip_id == AD7194) {
+				ret = ad719x_channels_select(desc,
+							     (iio_ad719x_channels[channel->ch_num / AD719X_CH_2].channel <<
+							      AD719X_CHN_SHIFT) + iio_ad719x_channels[channel->ch_num /
+											      AD719X_CH_2].channel2);
+
+			} else {
+				ret = ad719x_channels_select(desc,
+							     AD719X_CH_MASK(channel->ch_num / AD719X_CH_2));
+			}
+
 		}
 
 		if (NO_OS_IS_ERR_VALUE(ret)) {
@@ -366,9 +419,11 @@ static int iio_ad719x_attr_get(void *device,
 		return sprintf(buf, "%f", AD719X_DEFAULT_SCALE(desc->current_gain));
 
 	case ADC_OFFSET:
-		if (desc->current_polarity != 0) { // Offset for unipolar
+		if (desc->current_polarity != 0) {
+			// Offset for unipolar
 			return snprintf(buf, len, "%d", 0);
-		} else { // Offset for bipolar
+		} else {
+			// Offset for bipolar
 			return snprintf(buf, len, "%ld", -ADC_MAX_COUNT_BIPOLAR);
 		}
 
@@ -483,14 +538,20 @@ static int iio_ad719x_attr_available_get(void *device,
 {
 	switch (priv) {
 	case ADC_RANGE:
-		return sprintf(buf, "%s %s %s %s %s %s",
-			       ad719x_range_str[0], ad719x_range_str[1],
-			       ad719x_range_str[2], ad719x_range_str[3],
-			       ad719x_range_str[4], ad719x_range_str[5]);
+		return sprintf(buf,
+			       "%s %s %s %s %s %s",
+			       ad719x_range_str[0],
+			       ad719x_range_str[1],
+			       ad719x_range_str[2],
+			       ad719x_range_str[3],
+			       ad719x_range_str[4],
+			       ad719x_range_str[5]);
 
 	case ADC_BRIDGE_SWITCH:
-		return sprintf(buf, "%s %s",
-			       ad719x_bridge_switch_str[0], ad719x_bridge_switch_str[1]);
+		return sprintf(buf,
+			       "%s %s",
+			       ad719x_bridge_switch_str[0],
+			       ad719x_bridge_switch_str[1]);
 
 	case ADC_OPERATING_MODE:
 		return sprintf(buf,
@@ -539,19 +600,46 @@ static int iio_ad719x_prepare_transfer(void *dev, uint32_t mask)
 {
 	/* Command Word to start continuous conversion */
 	uint8_t cmd_wrd = CNV_START_CMD;
-	int32_t ret;
+	int ret;
+	uint8_t ch_id;
+	uint32_t ch_mask = 0x01;
+	uint16_t new_mask;
+	uint8_t num_of_channels;
+
+#if defined (DEV_AD7194)
+#if (INPUT_CONFIG == DIFFERENTIAL_INPUT)
+	num_of_channels = NO_OF_CHANNELS / 2;
+#else
+	num_of_channels = NO_OF_CHANNELS;
+#endif
+
+	for (ch_id = 0;
+	     ch_id < num_of_channels; ch_id++) {
+		if (mask & ch_mask) {
+			new_mask = (iio_ad719x_channels[ch_id].channel << AD719X_CHN_SHIFT) +
+				   iio_ad719x_channels[ch_id].channel2;
+			ret = ad719x_channels_select(p_ad719x_dev_inst, new_mask);
+			if (ret) {
+				return ret;
+			}
+		}
+		ch_mask <<= 1;
+	}
 
 	/* Updates the channel select bits with user selected channels */
-#if (INPUT_CONFIG != DIFFERENTIAL_INPUT) && (defined(DEV_AD7190) || \
+#elif (INPUT_CONFIG != DIFFERENTIAL_INPUT) && (defined(DEV_AD7190) || \
 	defined(DEV_AD7192) || defined(DEV_AD7195))
 	ret = ad719x_channels_select(p_ad719x_dev_inst,
-				     mask << AD7190_2_5_CHN_SHIFT);
-#else
-	ret = ad719x_channels_select(p_ad719x_dev_inst, mask);
-#endif
+				     mask << AD719X_CHN_SHIFT);
 	if (ret) {
 		return ret;
 	}
+#else
+	ret = ad719x_channels_select(p_ad719x_dev_inst, mask);
+	if (ret) {
+		return ret;
+	}
+#endif
 
 	/* Reads the Mode register and updates the register with
 	 * following configuration:
@@ -577,7 +665,8 @@ static int iio_ad719x_prepare_transfer(void *dev, uint32_t mask)
 
 	/* Writes the conversion start command word */
 	ret = no_os_spi_write_and_read(p_ad719x_dev_inst->spi_desc,
-				       &cmd_wrd, sizeof(uint8_t));
+				       &cmd_wrd,
+				       sizeof(uint8_t));
 	if (ret) {
 		return ret;
 	}
@@ -659,7 +748,8 @@ static int iio_ad719x_close_channels(void *dev)
 	}
 
 	ret = no_os_spi_write_and_read(p_ad719x_dev_inst->spi_desc,
-				       &stop_cmd, sizeof(uint8_t));
+				       &stop_cmd,
+				       sizeof(uint8_t));
 	if (ret) {
 		return ret;
 	}
@@ -742,7 +832,8 @@ static int iio_ad719x_submit_samples(struct iio_device_data *iio_dev_data)
 		}
 
 		ret = no_os_cb_write(iio_dev_data->buffer->buf,
-				     data_read, BYTES_PER_SAMPLE);
+				     data_read,
+				     BYTES_PER_SAMPLE);
 		if (ret) {
 			return ret;
 		}
@@ -787,7 +878,7 @@ static int32_t ad719x_trigger_handler(struct iio_device_data *iio_dev_data)
 	}
 
 	/* Read data over spi interface (in continuous read mode) */
-	ret = no_os_spi_write_and_read(p_ad719x_dev_inst->spi_desc, data_read, 3) ;
+	ret = no_os_spi_write_and_read(p_ad719x_dev_inst->spi_desc, data_read, 3);
 	if (ret) {
 		return ret;
 	}
@@ -807,7 +898,8 @@ static int32_t ad719x_trigger_handler(struct iio_device_data *iio_dev_data)
 	}
 
 	ret = no_os_cb_write(iio_dev_data->buffer->buf,
-			     data_read, BYTES_PER_SAMPLE);
+			     data_read,
+			     BYTES_PER_SAMPLE);
 	if (ret) {
 		return ret;
 	}
@@ -832,7 +924,8 @@ void burst_capture_callback(void *context)
  * @param	readval[out]- Pointer to variable to read data into
  * @return	0 in case of success, negative value otherwise
  */
-static int iio_ad719x_debug_reg_read(void *dev, uint32_t reg,
+static int iio_ad719x_debug_reg_read(void *dev,
+				     uint32_t reg,
 				     uint32_t *readval)
 {
 	struct ad719x_dev *desc = (struct ad719x_dev *)dev;
@@ -853,7 +946,8 @@ static int iio_ad719x_debug_reg_read(void *dev, uint32_t reg,
  * @param	writeval[out]- Pointer to variable to write data into
  * @return	0 in case of success, negative value otherwise
  */
-static int iio_ad719x_debug_reg_write(void *dev, uint32_t reg,
+static int iio_ad719x_debug_reg_write(void *dev,
+				      uint32_t reg,
 				      uint32_t writeval)
 {
 	struct ad719x_dev *desc = (struct ad719x_dev *)dev;

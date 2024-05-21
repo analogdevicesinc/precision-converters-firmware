@@ -2,7 +2,7 @@
 * @file   ad719x_iio.h
 * @brief  Header file for ad719x IIO interface
 ********************************************************************************
-* Copyright (c) 2021-22 Analog Devices, Inc.
+* Copyright (c) 2021-22,2024 Analog Devices, Inc.
 * All rights reserved.
 *
 * This software is proprietary to Analog Devices, Inc. and its licensors.
@@ -31,9 +31,9 @@
 #define CNV_START_CMD           0x5C
 #define CNV_STOP_CMD            0x58
 #define BYTES_TRANSFER_THREE    3
-/* For AD7190/2/5 the channel mask needs to shifted by 4,
+/* For AD7190/2/4/5 the channel mask needs to shifted by 4,
  * when operating in pseudo differential mode.*/
-#define AD7190_2_5_CHN_SHIFT    4
+#define AD719X_CHN_SHIFT    4
 
 /******************************************************************************/
 /********************** Public/Extern Declarations ****************************/
