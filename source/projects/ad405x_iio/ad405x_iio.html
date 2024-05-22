@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>LTC268x Console Application &#8212; Precision Converters Firmware  documentation</title>
+    <title>AD405x IIO Application &#8212; Precision Converters Firmware  documentation</title>
     <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=8e8a900e" />
     <link rel="stylesheet" type="text/css" href="../../../_static/style.min.css?v=8e0fb079" />
     <script src="../../../_static/documentation_options.js?v=5929fcd5"></script>
@@ -14,8 +14,8 @@
     <script defer="" src="../../../_static/app.umd.js?v=7e1fdd13"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="LTC2672 IIO Application" href="../ltc2672_iio/ltc2672_iio.html" />
-    <link rel="prev" title="ADT7420 Console Application" href="../adt7420_console/adt7420_console.html" />
+    <link rel="next" title="AD4130 IIO Application" href="../ad4130_iio/ad4130_iio.html" />
+    <link rel="prev" title="AD2S1210 IIO Application" href="../ad2s1210_iio/ad2s1210_iio.html" />
    
   
     <meta name="robots" content="noindex">
@@ -96,21 +96,22 @@
         </div>
         <nav>
           <ul>
-<li><a class="reference internal" href="#">LTC268x Console Application</a><ul>
+<li><a class="reference internal" href="#">AD405x IIO Application</a><ul>
 <li><a class="reference internal" href="#supported-hardware">Supported Hardware</a></li>
 <li><a class="reference internal" href="#introduction">Introduction</a></li>
-<li><a class="reference internal" href="#interface-diagram">Interface Diagram</a></li>
 <li><a class="reference internal" href="#useful-links">Useful Links</a></li>
 <li><a class="reference internal" href="#hardware-connections">Hardware Connections</a></li>
-<li><a class="reference internal" href="#power-supply">Power Supply</a></li>
+<li><a class="reference internal" href="#jumper-settings">Jumper Settings</a></li>
+<li><a class="reference internal" href="#communication-interface">Communication Interface</a></li>
 <li><a class="reference internal" href="#build-guide">Build Guide</a><ul>
 <li><a class="reference internal" href="#build-prerequisites">Build Prerequisites</a></li>
 <li><a class="reference internal" href="#building-a-project">Building a project</a></li>
 <li><a class="reference internal" href="#running-a-project">Running a project</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#quick-start">Quick Start</a></li>
-<li><a class="reference internal" href="#using-the-firmware">Using the Firmware</a></li>
+<li><a class="reference internal" href="#using-the-iio-ecosystem">Using the IIO Ecosystem</a></li>
+<li><a class="reference internal" href="#iio-tools">IIO Tools:</a></li>
+<li><a class="reference internal" href="#iio-firmware-structure">IIO Firmware Structure</a></li>
 <li><a class="reference internal" href="#support">Support</a></li>
 </ul>
 </li>
@@ -154,7 +155,7 @@ Content on this topic
 <li class="toctree-l1"><a class="reference internal" href="../../contributing.html">Contributing</a></li>
 <li class="toctree-l1 current"><input class="toctree-collapse" type="checkbox" name="toctree-collapse-1" id="toctree-collapse-1" checked=""/><div class="collapse"><a class="reference internal" href="../index.html">Firmware Applications</a><label for="toctree-collapse-1"><div class="icon"></div></label></div><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../ad2s1210_iio/ad2s1210_iio.html">AD2S1210 IIO Application</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ad405x_iio/ad405x_iio.html">AD405x IIO Application</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">AD405x IIO Application</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ad4130_iio/ad4130_iio.html">AD4130 IIO Application</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ad4696_iio/ad4696_iio.html">AD4696 IIO Application</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ad559xr_console/ad559xr_console.html">AD559XR Console Application</a></li>
@@ -174,7 +175,7 @@ Content on this topic
 <li class="toctree-l2"><a class="reference internal" href="../ad77681_iio/ad77681_iio.html">AD7768-1 IIO Application</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ad777x_iio/ad777x_iio.html">AD777x IIO Application</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../adt7420_console/adt7420_console.html">ADT7420 Console Application</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">LTC268x Console Application</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ltc268x_console/ltc268x_console.html">LTC268x Console Application</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ltc2672_iio/ltc2672_iio.html">LTC2672 IIO Application</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../nanodac_console/nanodac_console.html">nanoDAC+ Console Application</a></li>
 </ul>
@@ -192,45 +193,47 @@ Content on this topic
         <div class="bodywrapper" id="top-anchor">
           <div class="body" role="main">
             
-  <section id="ltc268x-console-application">
-<h1>LTC268x Console Application<a class="headerlink" href="#ltc268x-console-application" title="Link to this heading">¶</a></h1>
+  <section id="ad405x-iio-application">
+<h1>AD405x IIO Application<a class="headerlink" href="#ad405x-iio-application" title="Link to this heading">¶</a></h1>
 <section id="supported-hardware">
 <h2>Supported Hardware<a class="headerlink" href="#supported-hardware" title="Link to this heading">¶</a></h2>
 <p><strong>Supported Devices:</strong></p>
 <ul class="simple">
-<li><p><a class="reference external" href="https://www.analog.com/en/products/ltc2686.html">LTC2686</a></p></li>
-<li><p><a class="reference external" href="https://www.analog.com/en/products/ltc2688.html">LTC2688</a></p></li>
+<li><p><a class="reference external" href="https://www.analog.com/en/products/ad4052.html">AD4052</a></p></li>
 </ul>
 <p><strong>Supported Evaluation Boards:</strong></p>
 <ul class="simple">
-<li><p><a class="reference external" href="https://www.analog.com/en/resources/evaluation-hardware-and-software/evaluation-boards-kits/dc2783a.html">DC2873A-B</a></p></li>
-<li><p><a class="reference external" href="https://www.analog.com/en/resources/evaluation-hardware-and-software/evaluation-boards-kits/dc2904a.html">DC2904A-B</a></p></li>
+<li><p><a class="reference external" href="https://www.analog.com/en/resources/evaluation-hardware-and-software/evaluation-boards-kits/eval-ad4052.html">EVAL-AD4052-ARDZ</a></p></li>
 </ul>
 <p><strong>Supported Carrier Boards:</strong></p>
 <ul class="simple">
-<li><p><a class="reference external" href="https://os.mbed.com/platforms/SDP_K1/">SDP-K1 With Mbed</a></p></li>
+<li><p><a class="reference external" href="https://os.mbed.com/platforms/SDP_K1/">SDP-K1 With Mbed Platform</a></p></li>
 </ul>
 </section>
 <section id="introduction">
 <h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">¶</a></h2>
-<p>The LTC2686/8 are 8/16-channel, 16-bit, ±15 V digital-to-analog converters (DAC) with an integrated precision reference. The LTC268X Mbed example software can be used as a starting point for developing your own code for Analog Devices DC2873A-B or DC2904A board in your own environment utilizing the benefits of the Mbed platform. This guide will focus interfacing the DC2873A-B or DC2904A-B evaluation board with Analog Devices SDP-K1 controller board or any an MBED-Enabled board.
-The firmware example comprises 3 layers of software (from top to bottom): Console Application Layer, Device No-OS Layer and Platform Drivers (Mbed-OS) layer.</p>
+<p>This page gives an overview of using the ARM platforms supported (default is Mbed)
+firmware example with Analog Devices AD4052 Evaluation board and SDP-K1 controller board.
+This example code leverages the ADI developed IIO (Industrial Input Output) ecosystem to
+evaluate the AD4052 device by providing a device debug and data capture support.
+The code provides support for MBED and STM32 platforms, using the SDP-K1 controller board.</p>
+<p>The respective build guides for each of the platforms
+can be found in the further sections. The active platform can be chosen by selecting the appropriate
+value for the ACTIVE_PLATFORM macro in the app_config.h (Default is mbed)</p>
 <blockquote>
-<div><a class="reference internal image-reference" href="../../../_images/ltc268x_architecture.jpg"><img alt="../../../_images/ltc268x_architecture.jpg" src="../../../_images/ltc268x_architecture.jpg" style="width: 200px;" />
+<div><a class="reference internal image-reference" href="../../../_images/app_interface.png"><img alt="../../../_images/app_interface.png" src="../../../_images/app_interface.png" style="width: 350px;" />
 </a>
 </div></blockquote>
-<p>The application layer uses the ADI Console Libraries to create console-based User Interactive (UI). The middle layer of No-OS device library has device specific APIs to interface with LTC2686/8 devices. These APIs allows direct access to device register map in order to read/write device registers. The bottom layer of Platform Drivers is responsible for Low Level Interface. The platform drivers use mbed-os libraries to access low level peripheral (like GPIOs, SPI, I2C, etc). The devices from LTC2686/8 family use SPI communication interfaces respectively.</p>
-<p>This guide focuses on the SDP-K1, connected to the DC2873A-B or DC2904A-B board, but it should be general enough to cover any compatible controller board (the controller board should be Mbed-enabled, and expose at least SPI or I2C and some GPIO’s). The Mbed Platform simplifies the overall software development process by providing the low level driver support. This reduces
-the hardware dependency as any Mbed enabled board can be used with same firmware with little modifications (precisely changing a pin mapping).</p>
-<p>The software described below allows for an Mbed enabled controller board to be connected with an Analog Devices evaluation board. Unmodified, the code will communicate over any serial terminal emulator (CoolTerm, putty, etc) using the UART provided by the controller board over USB.</p>
-</section>
-<section id="interface-diagram">
-<h2>Interface Diagram<a class="headerlink" href="#interface-diagram" title="Link to this heading">¶</a></h2>
-<blockquote>
-<div><a class="reference internal image-reference" href="../../../_images/ltc268x_interface_diagram.jpg"><img alt="../../../_images/ltc268x_interface_diagram.jpg" src="../../../_images/ltc268x_interface_diagram.jpg" style="width: 600px;" />
-</a>
-</div></blockquote>
-<p>The DC2873A-B/DC2904A-B evaluation board is connected to SDP-K1 using the Arduino Headers and jumper wires. The DC2873A-B/DC2904A-B evaluation board VCC and IOVCC can be powered-up through a SDP-K1 USB supply or from external DC supply using the turrets connection. The SDP-K1 is connected to PC through an USB cable. The firmware (binary executable) can be loaded into SDP-K1 board through this USB interface from the PC. The SDP-K1 acts as a Serial Device (UART) and firmware loaded into it interacts with any serial terminal (like Teraterm, Putty, Coolterm, etc) by configuring terminal for proper serial settings (COM Port, Baud Rate, data bits, etc)</p>
+<p>The interface used for communicating with PC based IIO clients is either Virtual Serial Or UART.
+IIO Firmware leverages the ADI created no-os and platform driver software layers
+to communicates with IIO device.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This code has been developed and tested on the SDP-K1 Controller Board with
+Arduino headers. However, the same code can be used with minimal modifications
+on any Mbed enabled board which has Arduino Header support on it. To find out
+all supported Mbed boards, refer this link: <a class="reference external" href="https://os.mbed.com/platforms/">https://os.mbed.com/platforms/</a></p>
+</div>
 </section>
 <section id="useful-links">
 <h2>Useful Links<a class="headerlink" href="#useful-links" title="Link to this heading">¶</a></h2>
@@ -250,77 +253,57 @@ they may be of interest if you require Linux and/or FPGA support.</p>
 </section>
 <section id="hardware-connections">
 <h2>Hardware Connections<a class="headerlink" href="#hardware-connections" title="Link to this heading">¶</a></h2>
-<p>The DC2873A-B/DC2904A-B evaluation board can be connected to the SDP-K1 using jumper wires from the Arduino header to the signal pins available via through-hole headers right beside the J1 connector. Either you can solder header pins on the through-hole mounting area or directly connect wires to them.</p>
+<p>Required: SDP-K1 (or alternative Mbed enabled controller board, or an STM32 board ), EVAL-AD4052 board
+and USB cable.</p>
+<p>Connect the EVAL-AD042 board to SDP-K1 board (or any other Mbed enabled controller
+board or an equivalent STM32 board). Connect controller board to the PC using the USB cable.</p>
 <blockquote>
-<div><a class="reference internal image-reference" href="../../../_images/ltc268x_hardware_connections.jpg"><img alt="../../../_images/ltc268x_hardware_connections.jpg" src="../../../_images/ltc268x_hardware_connections.jpg" style="width: 600px;" />
+<div><a class="reference internal image-reference" href="../../../_images/ad4052_connection_diagram.png"><img alt="../../../_images/ad4052_connection_diagram.png" src="../../../_images/ad4052_connection_diagram.png" style="width: 600px;" />
 </a>
 </div></blockquote>
-<p>The connections to be made between the SDP-K1 and the DC2873A-B/DC2904A-B are as follows:</p>
-<div class="table-wrapper docutils container">
-<table class="docutils align-default">
-<tbody>
-<tr class="row-odd"><td><p>SDP-K1 Arduino Header</p></td>
-<td><p>DC2873A-B/DC2904A-B Through-Hole</p></td>
-</tr>
-<tr class="row-even"><td><p>SCLK/D13</p></td>
-<td><p>SCK</p></td>
-</tr>
-<tr class="row-odd"><td><p>MISO/D12</p></td>
-<td><p>SDO</p></td>
-</tr>
-<tr class="row-even"><td><p>MOSI/D11</p></td>
-<td><p>SDI</p></td>
-</tr>
-<tr class="row-odd"><td><p>CS/D10</p></td>
-<td><p>CS</p></td>
-</tr>
-<tr class="row-even"><td><p>GND</p></td>
-<td><p>GND</p></td>
-</tr>
-</tbody>
-</table>
-</div>
 </section>
-<section id="power-supply">
-<h2>Power Supply<a class="headerlink" href="#power-supply" title="Link to this heading">¶</a></h2>
-<p>The power to the evaluation board should be supplied through the on-board turret connections within the following supply range:</p>
-<div class="table-wrapper docutils container">
-<table class="docutils align-default">
-<tbody>
-<tr class="row-odd"><td><p>Pin</p></td>
-<td><p>Turret</p></td>
-<td><p>Voltage Supply</p></td>
-</tr>
-<tr class="row-even"><td><p>VCC</p></td>
-<td><p>E31</p></td>
-<td><p>5V</p></td>
-</tr>
-<tr class="row-odd"><td><p>IOVCC</p></td>
-<td><p>E10</p></td>
-<td><p>3.3V</p></td>
-</tr>
-<tr class="row-even"><td><p>V1+</p></td>
-<td><p>E1</p></td>
-<td><p>5V - 21V</p></td>
-</tr>
-<tr class="row-odd"><td><p>V2+</p></td>
-<td><p>E14</p></td>
-<td><p>5V - 21V</p></td>
-</tr>
-<tr class="row-even"><td><p>V-</p></td>
-<td><p>E3</p></td>
-<td><p>-21V - 0</p></td>
-</tr>
-<tr class="row-odd"><td><p>GND</p></td>
-<td><p>E2</p></td>
-<td><p>GND</p></td>
-</tr>
-</tbody>
-</table>
-</div>
+<section id="jumper-settings">
+<h2>Jumper Settings<a class="headerlink" href="#jumper-settings" title="Link to this heading">¶</a></h2>
+<p>SDP-K1 :</p>
+<p>Connect the VIO_ADJUST jumper on the SDP-K1 to 3.3V position
+to drive SDP-K1 GPIOs at 3.3V</p>
+<p><strong>EVAL-AD4052:</strong></p>
+<p>Please refer to the user guide for the jumper connections on the EVAL-AD4052 board</p>
+</section>
+<section id="communication-interface">
+<h2>Communication Interface<a class="headerlink" href="#communication-interface" title="Link to this heading">¶</a></h2>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>V2+ must be less than or equal to V1+. The VIO_ADJUST jumper on the SDP-K1 board should be on 3.3V position. Remove the jumpers from JP1, JP2, JP3, JP4 for using the board with VIO = 3.3V</p>
+<p>For data transmission to IIO clients, IIO firmware applications uses <em>Virtual Serial</em>
+Or <em>UART</em> as primary communication links. Firmware by default uses the Virtual Serial
+interface for higher speed data transmission as SDP-K1 MCU board and Mbed firmware supports
+both Virtual Serial and UART interface. If you target a different MCU board that does not
+support Virtual Serial, just set UART as communication link in the firmware (app_config.h file).</p>
+</div>
+<p>SDP-K1 is powered through USB connection from the computer. SDP-K1 MCU board
+acts as a serial device when connected to PC, which creates a serial ports to connect to IIO
+client application running on PC. The serial port assigned to a device can be seen
+through the device manager for windows-based OS as shown below:</p>
+<a class="reference internal image-reference" href="../../../_images/serial_ports_view.png"><img alt="../../../_images/serial_ports_view.png" src="../../../_images/serial_ports_view.png" style="width: 350px;" />
+</a>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The serial port naming is used differently on different operating systems.
+For example, Linux uses terms such as dev/ttyUSB* and Mac uses terms such as dev/tty.USB*.
+Please check serial port naming for your selected OS.</p>
+</div>
+<p><strong>Identifying Virtual Serial Port (Windows-OS):</strong></p>
+<p>To identify if serial port is virtual, right click on the port name and select ‘Properties’.
+Select ‘Events’ from menu option and check for below highlighted VIDs/PIDs and
+firmware name which is currently running on MCU.</p>
+<a class="reference internal image-reference" href="../../../_images/identifying_virtual_serial_port.png"><img alt="../../../_images/identifying_virtual_serial_port.png" src="../../../_images/identifying_virtual_serial_port.png" style="width: 350px;" />
+</a>
+<p>SDP-K1 can support high speed Virtual Serial USB interface, so by default Virtual Serial
+is configured as default interface in the Mbed firmware. The interface can be set to
+Physical (UART) serial port by defining macro <strong>USE_PHY_COM_PORT</strong> in the app_config.h file.</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="cm">/* Enable the UART/VirtualCOM port connection (default VCOM) */</span>
+<span class="c1">//#define USE_PHY_COM_PORT           // Uncomment to select UART</span>
+</pre></div>
 </div>
 </section>
 <section id="build-guide">
@@ -525,49 +508,52 @@ a project. The ‘Project Build’ section above talks about this exception at t
 of all build steps.</p>
 </section>
 </section>
-<section id="quick-start">
-<h2>Quick Start<a class="headerlink" href="#quick-start" title="Link to this heading">¶</a></h2>
-<p>If you have some familiarity with the Mbed platform, the following is a basic list of steps required to start running the code,
-see below for more detail:</p>
-<ul class="simple">
-<li><p>Connect the evaluation-board to the Mbed-enabled controller board using the Arduino connector and jumper wires.</p></li>
-<li><p>Connect all the power supplies to the evaluation board as instructed in the hardware connection section.</p></li>
-<li><p>Connect the controller board to your computer over USB. (Make sure that the VIO_ADJUST is set to 3.3 volts)</p></li>
-<li><p>Follow the steps mentioned in the Build Guide section above.</p></li>
-<li><dl class="simple">
-<dt>Start up a serial terminal emulator (e.g. Tera Term)</dt><dd><ul>
-<li><p>Find the com-port your controller board is connected on and select it.</p></li>
-<li><p>Set the baud-rate for 230400 - other defaults should be fine.</p></li>
-<li><p>Reset the controller board and connect.</p></li>
-</ul>
-</dd>
-</dl>
-</li>
-<li><p>Use the menu provided over the terminal window to access the evaluation board.</p></li>
-</ul>
+<section id="using-the-iio-ecosystem">
+<h2>Using the IIO Ecosystem<a class="headerlink" href="#using-the-iio-ecosystem" title="Link to this heading">¶</a></h2>
+<p>IIO (Industrial Input/Output) is a flexible ecosystem that allows various
+client tools to communicate with IIO device to configure the device, capture device
+data, generate waveforms, access registers, etc. Below diagram demonstrates the
+high level architecture of IIO ecosystem.</p>
+<p><a class="reference external" href="https://wiki.analog.com/resources/tools-software/linux-software/libiio">https://wiki.analog.com/resources/tools-software/linux-software/libiio</a></p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../../_images/flexible_iio_ecosystem.png"><img alt="../../../_images/flexible_iio_ecosystem.png" src="../../../_images/flexible_iio_ecosystem.png" style="width: 600px;" />
+</a>
+</div></blockquote>
 </section>
-<section id="using-the-firmware">
-<h2>Using the Firmware<a class="headerlink" href="#using-the-firmware" title="Link to this heading">¶</a></h2>
-<p>The firmware is delivered as a basic, text-based user-interface that operates through a UART on the controller board using the same USB cable that is used to flash the firmware to the boards. Any terminal-emulator should work, but it is not possible for Analog Devices to test everyone. It is necessary to connect a serial terminal-emulator to interact with the running firmware.</p>
-<p>Here TeraTerm is used as an example, Analog Devices does not endorse any particular program for this, but TeraTerm works well and is made freely available, other terminals such as CoolTerm, or PuTTY will work.</p>
-<p>Configure your serial terminal (<a class="reference external" href="https://osdn.net/projects/ttssh2/releases/">Tera Term</a>)
-for below settings:</p>
-<blockquote>
-<div><a class="reference internal image-reference" href="../../../_images/ltc268x_teraterm_setup.jpg"><img alt="../../../_images/ltc268x_teraterm_setup.jpg" src="../../../_images/ltc268x_teraterm_setup.jpg" style="width: 400px;" />
+<section id="iio-tools">
+<h2>IIO Tools:<a class="headerlink" href="#iio-tools" title="Link to this heading">¶</a></h2>
+<p><a class="reference internal" href="../../iio_osc/iio_osc.html"><span class="doc">IIO Oscilloscope</span></a>
+ADI IIO Oscilloscope is a cross platform GUI application, which demonstrates how
+to interface different evaluation boards within an IIO ecosystem. It supports
+raw data capture, FFT analysis, DMM measurement, device configuration, register
+read/write and data streaming.</p>
+<p><a class="reference internal" href="../../python/python.html"><span class="doc">pyadi-iio: Python interfaces</span></a>
+Analog Devices python interfaces for hardware with Industrial I/O drivers. It
+provides python based scripts for raw data capture, device configuration
+and register read/write.</p>
+<p><a class="reference external" href="https://www.analog.com/en/design-center/evaluation-hardware-and-software/evaluation-development-platforms/ace-software.html">ACE</a>
+ADI’s “Analysis, Control, Evaluation” (ACE) is a desktop software application
+which allows the evaluation and control of multiple evaluation systems.</p>
+<p><a class="reference external" href="https://github.com/analogdevicesinc/PrecisionToolbox">Precision Converters MATLAB Toolbox</a>
+Toolbox created by ADI to be used with MATLAB and Simulink with ADI Precision products.</p>
+<p><a class="reference external" href="https://wiki.analog.com/resources/tools-software/linux-software/libiio/iio_info">IIO Command Line</a>
+Command line interface for accessing IIO device parameters.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>These are the general evaluation and prototyping tools for Precision Converters
+but not all converters are supported. In some cases these tools provide generic
+IIO support (e.g. ACE, IIO Oscilloscope) and can provide basic functionality
+with any IIO based system. In other cases if a part is not currently supported,
+it is possible to add support for converters that you need due to the open
+source nature of the tools.</p>
+</div>
+</section>
+<section id="iio-firmware-structure">
+<h2>IIO Firmware Structure<a class="headerlink" href="#iio-firmware-structure" title="Link to this heading">¶</a></h2>
+<p>Below diagram illustrates the architecture of Precision Converters IIO
+firmware applications.</p>
+<a class="reference internal image-reference" href="../../../_images/firmware_architecture.png"><img alt="../../../_images/firmware_architecture.png" src="../../../_images/firmware_architecture.png" style="width: 500px;" />
 </a>
-</div></blockquote>
-<p>Set the baud-rate for 230400, configure the console terminal settings as shown in the picture above and select the connected controller board’s COM port. If using TeraTerm, you should be able to keep the defaults, however adjustments may need to be made to how carriage return (CR) is handled in order for everything to display correctly.</p>
-<p>The LTC268x console main menu looks like below (with Tera Term):</p>
-<blockquote>
-<div><a class="reference internal image-reference" href="../../../_images/ltc268x_console_menu.jpg"><img alt="../../../_images/ltc268x_console_menu.jpg" src="../../../_images/ltc268x_console_menu.jpg" style="width: 600px;" />
-</a>
-</div></blockquote>
-<p>The software is designed to be straight forward to use and requires little explanation. The main menu provides two options:</p>
-<ul class="simple">
-<li><p>DAC Configuration: This option lets to configure various DAC parameters such as active channel, span and toggle/dither selection.</p></li>
-<li><p>DAC Data Operation: This option lets you set the output voltage for DAC channels.</p></li>
-</ul>
-<p>It is hoped that the most features of the LTC2686/8 are coded, but it’s likely that some special functionality is not implemented.</p>
 </section>
 <section id="support">
 <h2>Support<a class="headerlink" href="#support" title="Link to this heading">¶</a></h2>
@@ -579,8 +565,8 @@ for below settings:</p>
           </div>
               <div class="related">
                 &nbsp;
-    <a href="../adt7420_console/adt7420_console.html" title="Previous document (Ctrl+LeftArrow)" class="prev">ADT7420 Console Application</a>
-    <a href="../ltc2672_iio/ltc2672_iio.html" title="Next document (Ctrl+RightArrow)" class="next">LTC2672 IIO Application</a>
+    <a href="../ad2s1210_iio/ad2s1210_iio.html" title="Previous document (Ctrl+LeftArrow)" class="prev">AD2S1210 IIO Application</a>
+    <a href="../ad4130_iio/ad4130_iio.html" title="Next document (Ctrl+RightArrow)" class="next">AD4130 IIO Application</a>
               </div>
           
         </div>
