@@ -1,0 +1,7 @@
+<map id="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad405x_iio/app/ad405x_iio.h" name="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad405x_iio/app/ad405x_iio.h">
+<area shape="rect" id="node1" title="Header for AD405X IIO application." alt="" coords="384,5,607,76"/>
+<area shape="rect" id="node2" href="$ad405x__iio_8c.html" title="Implementation of AD405X IIO Application Interface." alt="" coords="5,124,228,195"/>
+<area shape="rect" id="node3" href="$ad405x__iio_2app_2app__config_8c.html" title="Application configurations module." alt="" coords="252,124,475,195"/>
+<area shape="rect" id="node4" href="$ad405x__iio_2app_2app__config__stm32_8c.html" title="Source file for STM32 platform configurations." alt="" coords="498,124,757,195"/>
+<area shape="rect" id="node5" href="$ad405x__iio_2app_2main_8c.html" title="Main interface for AD405X IIO firmware application." alt="" coords="780,124,1003,195"/>
+</map>

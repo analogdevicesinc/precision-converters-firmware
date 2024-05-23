@@ -65,7 +65,7 @@ $(function() {
 
 <h3><a id="index_m"></a>- m -</h3><ul>
 <li>main()
-: <a class="el" href="ltc2672__iio_2app_2main_8c.html#a840291bc02cba5474a4cb46a9b9566fe">main.c</a>
+: <a class="el" href="ad405x__iio_2app_2main_8c.html#a840291bc02cba5474a4cb46a9b9566fe">main.c</a>
 </li>
 <li>main_menu_header()
 : <a class="el" href="ad7124__temperature-measure_2app_2ad7124__console__app_8c.html#a94c946b8e3d4376e0dd4a0ee8493adae">ad7124_console_app.c</a>
@@ -104,6 +104,9 @@ $(function() {
 <li>MAX_AVG_ADC_SAMPLES
 : <a class="el" href="ad7124__temperature-measure_2app_2ad7124__console__app_8c.html#a0d03b717856c2e3e76f7cc95dcc735d0">ad7124_console_app.c</a>
 </li>
+<li>MAX_DMA_NDTR
+: <a class="el" href="ad405x__iio_2app_2app__config_8h.html#a35fe7741c00803a7bb80d783507203f9">app_config.h</a>
+</li>
 <li>MAX_FILTER_DATA_RATE_FS
 : <a class="el" href="ad7124__console_2app_2ad7124__console__app_8c.html#a90c75564cdcd86dbf1c345081377516a">ad7124_console_app.c</a>
 </li>
@@ -135,15 +138,25 @@ $(function() {
 <li>MAX_SAMPLES
 : <a class="el" href="ad590__console__app_8c.html#a78f316da3a87bf72cb1647786b64bf0e">ad590_console_app.c</a>
 </li>
+<li>MAX_SAMPLING_PERIOD_NSEC
+: <a class="el" href="ad405x__iio_8c.html#aa2f406144119ccdc4eda4f6a07fc8abb">ad405x_iio.c</a>
+</li>
 <li>MAX_SAMPLING_RATE
 : <a class="el" href="ad579x__iio_2app_2app__config__mbed_8h.html#ab88af31958ca4e8909227fb9982ddd59">app_config_mbed.h</a>
+</li>
+<li>MAX_SAMPLING_TIME_NS
+: <a class="el" href="ad405x__iio_8c.html#a0db4f421fc77cf162c0b91b5f464716f">ad405x_iio.c</a>
 </li>
 <li>MAX_SETTLING_CYCLES
 : <a class="el" href="ad5933__console_2app_2main_8c.html#a9e40f7e99c5d4a81df99ac17a0129e4c">main.c</a>
 </li>
 <li>MAX_SPI_SCLK
-: <a class="el" href="ad469x__iio_2app_2app__config__mbed_8h.html#aa7f8a683fd3bf396cb721f0ea3b800d9">app_config_mbed.h</a>
+: <a class="el" href="ad405x__iio_2app_2app__config__mbed_8h.html#aa7f8a683fd3bf396cb721f0ea3b800d9">app_config_mbed.h</a>
 , <a class="el" href="ad469x__iio_2app_2app__config__stm32_8h.html#aa7f8a683fd3bf396cb721f0ea3b800d9">app_config_stm32.h</a>
+, <a class="el" href="ad469x__iio_2app_2app__config__mbed_8h.html#aa7f8a683fd3bf396cb721f0ea3b800d9">app_config_mbed.h</a>
+</li>
+<li>MAX_SPI_SCLK_45MHz
+: <a class="el" href="ad405x__iio_2app_2app__config__stm32_8h.html#a90969fe7bcfbef6fd48d3fc93b940202">app_config_stm32.h</a>
 </li>
 <li>MAX_THERMOCOUPLE_SENSORS
 : <a class="el" href="ad7124__temperature-measure_2app_2ad7124__console__app_8c.html#a217ec1bf2824f56af937a6896b73224a">ad7124_console_app.c</a>
@@ -168,7 +181,9 @@ $(function() {
 , <a class="el" href="ad469x__iio_2app_2app__config__mbed_8h.html#a93f1614c2ba896c331e83e7041e8ec61">app_config_mbed.h</a>
 </li>
 <li>mbed_gpio_cnv_extra_init_params
-: <a class="el" href="ad469x__iio_2app_2app__config__mbed_8c.html#a7566eddd1289ed27ddec8617d734edbd">app_config_mbed.c</a>
+: <a class="el" href="ad405x__iio_2app_2app__config__mbed_8c.html#a7566eddd1289ed27ddec8617d734edbd">app_config_mbed.c</a>
+, <a class="el" href="ad405x__iio_2app_2app__config__mbed_8h.html#a7566eddd1289ed27ddec8617d734edbd">app_config_mbed.h</a>
+, <a class="el" href="ad469x__iio_2app_2app__config__mbed_8c.html#a7566eddd1289ed27ddec8617d734edbd">app_config_mbed.c</a>
 , <a class="el" href="ad469x__iio_2app_2app__config__mbed_8h.html#a7566eddd1289ed27ddec8617d734edbd">app_config_mbed.h</a>
 </li>
 <li>mbed_gpio_convst_sar_extra_init_params
@@ -176,8 +191,8 @@ $(function() {
 , <a class="el" href="ad777x__iio_2app_2app__config__mbed_8h.html#a57c51451cf52c1cc4990d5f9e714353c">app_config_mbed.h</a>
 </li>
 <li>mbed_gpio_dclk0_extra_init_params
-: <a class="el" href="ad777x__iio_2app_2app__config__mbed_8c.html#a5e898512cb366767b4598d0995c7693f">app_config_mbed.c</a>
-, <a class="el" href="ad777x__iio_2app_2app__config__mbed_8h.html#a5e898512cb366767b4598d0995c7693f">app_config_mbed.h</a>
+: <a class="el" href="ad777x__iio_2app_2app__config__mbed_8h.html#a5e898512cb366767b4598d0995c7693f">app_config_mbed.h</a>
+, <a class="el" href="ad777x__iio_2app_2app__config__mbed_8c.html#a5e898512cb366767b4598d0995c7693f">app_config_mbed.c</a>
 </li>
 <li>mbed_gpio_dclk1_extra_init_params
 : <a class="el" href="ad777x__iio_2app_2app__config__mbed_8c.html#a960893724456232081226da8fb323ef4">app_config_mbed.c</a>
@@ -192,8 +207,16 @@ $(function() {
 , <a class="el" href="ad777x__iio_2app_2app__config__mbed_8h.html#a70ce4257303145f3ee76e7e9634dba1d">app_config_mbed.h</a>
 </li>
 <li>mbed_gpio_error_extra_init_params
-: <a class="el" href="ad777x__iio_2app_2app__config__mbed_8h.html#a5c0dfaa7ec970c6cb8fd6d7122fc6993">app_config_mbed.h</a>
-, <a class="el" href="ad777x__iio_2app_2app__config__mbed_8c.html#a5c0dfaa7ec970c6cb8fd6d7122fc6993">app_config_mbed.c</a>
+: <a class="el" href="ad777x__iio_2app_2app__config__mbed_8c.html#a5c0dfaa7ec970c6cb8fd6d7122fc6993">app_config_mbed.c</a>
+, <a class="el" href="ad777x__iio_2app_2app__config__mbed_8h.html#a5c0dfaa7ec970c6cb8fd6d7122fc6993">app_config_mbed.h</a>
+</li>
+<li>mbed_gpio_gp0_extra_init_params
+: <a class="el" href="ad405x__iio_2app_2app__config__mbed_8h.html#a809d50e5d8a0914df46dd40fa21ceb25">app_config_mbed.h</a>
+, <a class="el" href="ad405x__iio_2app_2app__config__mbed_8c.html#a809d50e5d8a0914df46dd40fa21ceb25">app_config_mbed.c</a>
+</li>
+<li>mbed_gpio_gp1_extra_init_params
+: <a class="el" href="ad405x__iio_2app_2app__config__mbed_8c.html#a404c6bfe803a6fa18e6a0b96d3f2373b">app_config_mbed.c</a>
+, <a class="el" href="ad405x__iio_2app_2app__config__mbed_8h.html#a404c6bfe803a6fa18e6a0b96d3f2373b">app_config_mbed.h</a>
 </li>
 <li>mbed_gpio_mode0_extra_init_params
 : <a class="el" href="ad777x__iio_2app_2app__config__mbed_8c.html#a17cf00836b37c98589a494810a6e6933">app_config_mbed.c</a>
@@ -208,13 +231,14 @@ $(function() {
 , <a class="el" href="ad777x__iio_2app_2app__config__mbed_8h.html#aec5ca5d5af5bc1103e7dc70541c95644">app_config_mbed.h</a>
 </li>
 <li>mbed_gpio_mode3_extra_init_params
-: <a class="el" href="ad777x__iio_2app_2app__config__mbed_8c.html#acff02a2cee57f56d5c9d70b747b2f0f7">app_config_mbed.c</a>
-, <a class="el" href="ad777x__iio_2app_2app__config__mbed_8h.html#acff02a2cee57f56d5c9d70b747b2f0f7">app_config_mbed.h</a>
+: <a class="el" href="ad777x__iio_2app_2app__config__mbed_8h.html#acff02a2cee57f56d5c9d70b747b2f0f7">app_config_mbed.h</a>
+, <a class="el" href="ad777x__iio_2app_2app__config__mbed_8c.html#acff02a2cee57f56d5c9d70b747b2f0f7">app_config_mbed.c</a>
 </li>
 <li>mbed_gpio_reset_extra_init_params
-: <a class="el" href="ad777x__iio_2app_2app__config__mbed_8c.html#a96f4d31f1e6900bbeb4d37496131c942">app_config_mbed.c</a>
+: <a class="el" href="ad469x__iio_2app_2app__config__mbed_8c.html#a96f4d31f1e6900bbeb4d37496131c942">app_config_mbed.c</a>
+, <a class="el" href="ad469x__iio_2app_2app__config__mbed_8h.html#a96f4d31f1e6900bbeb4d37496131c942">app_config_mbed.h</a>
+, <a class="el" href="ad777x__iio_2app_2app__config__mbed_8c.html#a96f4d31f1e6900bbeb4d37496131c942">app_config_mbed.c</a>
 , <a class="el" href="ad777x__iio_2app_2app__config__mbed_8h.html#a96f4d31f1e6900bbeb4d37496131c942">app_config_mbed.h</a>
-, <a class="el" href="ad469x__iio_2app_2app__config__mbed_8c.html#a96f4d31f1e6900bbeb4d37496131c942">app_config_mbed.c</a>
 </li>
 <li>mbed_gpio_sync_extra_init_params
 : <a class="el" href="ad719x__iio_2app_2app__config__mbed_8c.html#ac888214c66c086e18398a469787a1c2a">app_config_mbed.c</a>
@@ -225,30 +249,32 @@ $(function() {
 , <a class="el" href="ad777x__iio_2app_2app__config__mbed_8h.html#a7b3ab4636896d0d6ad04c8295023cf0f">app_config_mbed.h</a>
 </li>
 <li>mbed_i2c_extra_init_params
-: <a class="el" href="ad738x__iio_2app_2app__config__mbed_8c.html#af5aa9ab8ce5048f9423e8c6297504c90">app_config_mbed.c</a>
-, <a class="el" href="ad7689__iio_2app_2app__config__mbed_8h.html#af5aa9ab8ce5048f9423e8c6297504c90">app_config_mbed.h</a>
+: <a class="el" href="ad719x__iio_2app_2app__config__mbed_8h.html#af5aa9ab8ce5048f9423e8c6297504c90">app_config_mbed.h</a>
 , <a class="el" href="ad7606__iio_2app_2app__config__mbed_8c.html#af5aa9ab8ce5048f9423e8c6297504c90">app_config_mbed.c</a>
-, <a class="el" href="ad7606__iio_2app_2app__config__mbed_8h.html#af5aa9ab8ce5048f9423e8c6297504c90">app_config_mbed.h</a>
+, <a class="el" href="ad738x__iio_2app_2app__config__mbed_8h.html#af5aa9ab8ce5048f9423e8c6297504c90">app_config_mbed.h</a>
 , <a class="el" href="ad7689__iio_2app_2app__config__mbed_8c.html#af5aa9ab8ce5048f9423e8c6297504c90">app_config_mbed.c</a>
+, <a class="el" href="ad7689__iio_2app_2app__config__mbed_8h.html#af5aa9ab8ce5048f9423e8c6297504c90">app_config_mbed.h</a>
+, <a class="el" href="ad77681__iio_2app_2app__config__mbed_8c.html#af5aa9ab8ce5048f9423e8c6297504c90">app_config_mbed.c</a>
 , <a class="el" href="ad77681__iio_2app_2app__config__mbed_8h.html#af5aa9ab8ce5048f9423e8c6297504c90">app_config_mbed.h</a>
 , <a class="el" href="ad777x__iio_2app_2app__config__mbed_8c.html#af5aa9ab8ce5048f9423e8c6297504c90">app_config_mbed.c</a>
 , <a class="el" href="ad777x__iio_2app_2app__config__mbed_8h.html#af5aa9ab8ce5048f9423e8c6297504c90">app_config_mbed.h</a>
 , <a class="el" href="evb__discovery__firmware_2app_2app__config__mbed_8c.html#af5aa9ab8ce5048f9423e8c6297504c90">app_config_mbed.c</a>
 , <a class="el" href="evb__discovery__firmware_2app_2app__config__mbed_8h.html#af5aa9ab8ce5048f9423e8c6297504c90">app_config_mbed.h</a>
-, <a class="el" href="ad719x__iio_2app_2app__config__mbed_8c.html#af5aa9ab8ce5048f9423e8c6297504c90">app_config_mbed.c</a>
-, <a class="el" href="ad717x__iio_2app_2app__config__mbed_8h.html#af5aa9ab8ce5048f9423e8c6297504c90">app_config_mbed.h</a>
 , <a class="el" href="ad717x__iio_2app_2app__config__mbed_8c.html#af5aa9ab8ce5048f9423e8c6297504c90">app_config_mbed.c</a>
 , <a class="el" href="ad7134__iio_2app_2app__config__mbed_8h.html#af5aa9ab8ce5048f9423e8c6297504c90">app_config_mbed.h</a>
-, <a class="el" href="ad4130__iio_2app_2app__config__mbed_8c.html#af5aa9ab8ce5048f9423e8c6297504c90">app_config_mbed.c</a>
+, <a class="el" href="ad7134__iio_2app_2app__config__mbed_8c.html#af5aa9ab8ce5048f9423e8c6297504c90">app_config_mbed.c</a>
 , <a class="el" href="ad579x__iio_2app_2app__config__mbed_8h.html#af5aa9ab8ce5048f9423e8c6297504c90">app_config_mbed.h</a>
 , <a class="el" href="ad579x__iio_2app_2app__config__mbed_8c.html#af5aa9ab8ce5048f9423e8c6297504c90">app_config_mbed.c</a>
 , <a class="el" href="ad469x__iio_2app_2app__config__mbed_8h.html#af5aa9ab8ce5048f9423e8c6297504c90">app_config_mbed.h</a>
 , <a class="el" href="ad469x__iio_2app_2app__config__mbed_8c.html#af5aa9ab8ce5048f9423e8c6297504c90">app_config_mbed.c</a>
 , <a class="el" href="ad4130__iio_2app_2app__config__mbed_8h.html#af5aa9ab8ce5048f9423e8c6297504c90">app_config_mbed.h</a>
+, <a class="el" href="ad4130__iio_2app_2app__config__mbed_8c.html#af5aa9ab8ce5048f9423e8c6297504c90">app_config_mbed.c</a>
+, <a class="el" href="ad405x__iio_2app_2app__config__mbed_8h.html#af5aa9ab8ce5048f9423e8c6297504c90">app_config_mbed.h</a>
+, <a class="el" href="ad719x__iio_2app_2app__config__mbed_8c.html#af5aa9ab8ce5048f9423e8c6297504c90">app_config_mbed.c</a>
 </li>
 <li>mbed_osr0_gpio_extra_init_params
-: <a class="el" href="ad7606__iio_2app_2app__config__mbed_8c.html#a8f8c63e0fb39030edc66be6dc23d88a7">app_config_mbed.c</a>
-, <a class="el" href="ad7606__iio_2app_2app__config__mbed_8h.html#a8f8c63e0fb39030edc66be6dc23d88a7">app_config_mbed.h</a>
+: <a class="el" href="ad7606__iio_2app_2app__config__mbed_8h.html#a8f8c63e0fb39030edc66be6dc23d88a7">app_config_mbed.h</a>
+, <a class="el" href="ad7606__iio_2app_2app__config__mbed_8c.html#a8f8c63e0fb39030edc66be6dc23d88a7">app_config_mbed.c</a>
 </li>
 <li>mbed_osr1_gpio_extra_init_params
 : <a class="el" href="ad7606__iio_2app_2app__config__mbed_8c.html#a5307c158e4d6d5a2459d26effc618501">app_config_mbed.c</a>
@@ -263,36 +289,39 @@ $(function() {
 , <a class="el" href="ad7134__iio_2app_2app__config__mbed_8h.html#a9cd801fdd5c7f4a83ed1c81656adba76">app_config_mbed.h</a>
 </li>
 <li>MBED_PLATFORM
-: <a class="el" href="ad717x__iio_2app_2app__config_8h.html#a053837cf4ec7ed65d18c930324db4f1e">app_config.h</a>
+: <a class="el" href="ad7134__iio_2app_2app__config_8h.html#a053837cf4ec7ed65d18c930324db4f1e">app_config.h</a>
 </li>
 <li>mbed_pwm_extra_init_params
-: <a class="el" href="ad7689__iio_2app_2app__config__mbed_8h.html#a361d1615422e295a2bf094802d28e80b">app_config_mbed.h</a>
-, <a class="el" href="ad7689__iio_2app_2app__config__mbed_8c.html#a361d1615422e295a2bf094802d28e80b">app_config_mbed.c</a>
-, <a class="el" href="ad7606__iio_2app_2app__config__mbed_8h.html#a361d1615422e295a2bf094802d28e80b">app_config_mbed.h</a>
+: <a class="el" href="ad7689__iio_2app_2app__config__mbed_8c.html#a361d1615422e295a2bf094802d28e80b">app_config_mbed.c</a>
+, <a class="el" href="ad7689__iio_2app_2app__config__mbed_8h.html#a361d1615422e295a2bf094802d28e80b">app_config_mbed.h</a>
 , <a class="el" href="ad7606__iio_2app_2app__config__mbed_8c.html#a361d1615422e295a2bf094802d28e80b">app_config_mbed.c</a>
 , <a class="el" href="ad738x__iio_2app_2app__config__mbed_8h.html#a361d1615422e295a2bf094802d28e80b">app_config_mbed.h</a>
 , <a class="el" href="ad738x__iio_2app_2app__config__mbed_8c.html#a361d1615422e295a2bf094802d28e80b">app_config_mbed.c</a>
 , <a class="el" href="ad7134__iio_2app_2app__config__mbed_8h.html#a361d1615422e295a2bf094802d28e80b">app_config_mbed.h</a>
-, <a class="el" href="ad579x__iio_2app_2app__config__mbed_8c.html#a361d1615422e295a2bf094802d28e80b">app_config_mbed.c</a>
+, <a class="el" href="ad7134__iio_2app_2app__config__mbed_8c.html#a361d1615422e295a2bf094802d28e80b">app_config_mbed.c</a>
 , <a class="el" href="ad469x__iio_2app_2app__config__mbed_8h.html#a361d1615422e295a2bf094802d28e80b">app_config_mbed.h</a>
 , <a class="el" href="ad469x__iio_2app_2app__config__mbed_8c.html#a361d1615422e295a2bf094802d28e80b">app_config_mbed.c</a>
+, <a class="el" href="ad405x__iio_2app_2app__config__mbed_8h.html#a361d1615422e295a2bf094802d28e80b">app_config_mbed.h</a>
+, <a class="el" href="ad405x__iio_2app_2app__config__mbed_8c.html#a361d1615422e295a2bf094802d28e80b">app_config_mbed.c</a>
 , <a class="el" href="ad2s1210__iio_2app_2app__config__mbed_8h.html#a361d1615422e295a2bf094802d28e80b">app_config_mbed.h</a>
 , <a class="el" href="ad2s1210__iio_2app_2app__config__mbed_8c.html#a361d1615422e295a2bf094802d28e80b">app_config_mbed.c</a>
+, <a class="el" href="ad579x__iio_2app_2app__config__mbed_8h.html#a361d1615422e295a2bf094802d28e80b">app_config_mbed.h</a>
 </li>
 <li>mbed_pwm_init_params
 : <a class="el" href="ad777x__iio_2app_2app__config__mbed_8c.html#ae98d0a746d49fab1e032b9b5bc2a7a0e">app_config_mbed.c</a>
 , <a class="el" href="ad777x__iio_2app_2app__config__mbed_8h.html#ae98d0a746d49fab1e032b9b5bc2a7a0e">app_config_mbed.h</a>
 </li>
 <li>mbed_range_gpio_extra_init_params
-: <a class="el" href="ad7606__iio_2app_2app__config__mbed_8h.html#a8295b2d5cd89839503272726e41156ba">app_config_mbed.h</a>
-, <a class="el" href="ad7606__iio_2app_2app__config__mbed_8c.html#a8295b2d5cd89839503272726e41156ba">app_config_mbed.c</a>
+: <a class="el" href="ad7606__iio_2app_2app__config__mbed_8c.html#a8295b2d5cd89839503272726e41156ba">app_config_mbed.c</a>
+, <a class="el" href="ad7606__iio_2app_2app__config__mbed_8h.html#a8295b2d5cd89839503272726e41156ba">app_config_mbed.h</a>
 </li>
 <li>mbed_reset_gpio_extra_init_params
 : <a class="el" href="ad7606__iio_2app_2app__config__mbed_8c.html#acb49d67e5c17052a0c3865d582eb783e">app_config_mbed.c</a>
 , <a class="el" href="ad7606__iio_2app_2app__config__mbed_8h.html#acb49d67e5c17052a0c3865d582eb783e">app_config_mbed.h</a>
 </li>
 <li>mbed_spi_extra_init_params
-: <a class="el" href="ad738x__iio_2app_2app__config__mbed_8c.html#af5c771905ea3e771be70b2d0f975bcdd">app_config_mbed.c</a>
+: <a class="el" href="ad719x__iio_2app_2app__config__mbed_8h.html#af5c771905ea3e771be70b2d0f975bcdd">app_config_mbed.h</a>
+, <a class="el" href="ad738x__iio_2app_2app__config__mbed_8c.html#af5c771905ea3e771be70b2d0f975bcdd">app_config_mbed.c</a>
 , <a class="el" href="ad738x__iio_2app_2app__config__mbed_8h.html#af5c771905ea3e771be70b2d0f975bcdd">app_config_mbed.h</a>
 , <a class="el" href="ad7606__iio_2app_2app__config__mbed_8c.html#af5c771905ea3e771be70b2d0f975bcdd">app_config_mbed.c</a>
 , <a class="el" href="ad7606__iio_2app_2app__config__mbed_8h.html#af5c771905ea3e771be70b2d0f975bcdd">app_config_mbed.h</a>
@@ -307,23 +336,20 @@ $(function() {
 , <a class="el" href="ltc268x__console_2app_2app__config__mbed_8c.html#af5c771905ea3e771be70b2d0f975bcdd">app_config_mbed.c</a>
 , <a class="el" href="ltc268x__console_2app_2app__config__mbed_8h.html#af5c771905ea3e771be70b2d0f975bcdd">app_config_mbed.h</a>
 , <a class="el" href="ad719x__iio_2app_2app__config__mbed_8c.html#af5c771905ea3e771be70b2d0f975bcdd">app_config_mbed.c</a>
-, <a class="el" href="ad719x__iio_2app_2app__config__mbed_8h.html#af5c771905ea3e771be70b2d0f975bcdd">app_config_mbed.h</a>
-, <a class="el" href="ad2s1210__iio_2app_2app__config__mbed_8c.html#af5c771905ea3e771be70b2d0f975bcdd">app_config_mbed.c</a>
 , <a class="el" href="ad2s1210__iio_2app_2app__config__mbed_8h.html#af5c771905ea3e771be70b2d0f975bcdd">app_config_mbed.h</a>
+, <a class="el" href="ad405x__iio_2app_2app__config__mbed_8c.html#af5c771905ea3e771be70b2d0f975bcdd">app_config_mbed.c</a>
+, <a class="el" href="ad405x__iio_2app_2app__config__mbed_8h.html#af5c771905ea3e771be70b2d0f975bcdd">app_config_mbed.h</a>
 , <a class="el" href="ad4130__iio_2app_2app__config__mbed_8c.html#af5c771905ea3e771be70b2d0f975bcdd">app_config_mbed.c</a>
 , <a class="el" href="ad4130__iio_2app_2app__config__mbed_8h.html#af5c771905ea3e771be70b2d0f975bcdd">app_config_mbed.h</a>
-, <a class="el" href="ad469x__iio_2app_2app__config__mbed_8c.html#af5c771905ea3e771be70b2d0f975bcdd">app_config_mbed.c</a>
-, <a class="el" href="ad469x__iio_2app_2app__config__mbed_8h.html#af5c771905ea3e771be70b2d0f975bcdd">app_config_mbed.h</a>
 , <a class="el" href="ad579x__iio_2app_2app__config__mbed_8c.html#af5c771905ea3e771be70b2d0f975bcdd">app_config_mbed.c</a>
 , <a class="el" href="ad579x__iio_2app_2app__config__mbed_8h.html#af5c771905ea3e771be70b2d0f975bcdd">app_config_mbed.h</a>
 , <a class="el" href="ad7134__iio_2app_2app__config__mbed_8c.html#af5c771905ea3e771be70b2d0f975bcdd">app_config_mbed.c</a>
 , <a class="el" href="ad7134__iio_2app_2app__config__mbed_8h.html#af5c771905ea3e771be70b2d0f975bcdd">app_config_mbed.h</a>
 , <a class="el" href="ad717x__iio_2app_2app__config__mbed_8c.html#af5c771905ea3e771be70b2d0f975bcdd">app_config_mbed.c</a>
-, <a class="el" href="ad717x__iio_2app_2app__config__mbed_8h.html#af5c771905ea3e771be70b2d0f975bcdd">app_config_mbed.h</a>
 </li>
 <li>mbed_stdby_gpio_extra_init_params
-: <a class="el" href="ad7606__iio_2app_2app__config__mbed_8c.html#ab55500a195b5993aeb7bec4e12fcd5a1">app_config_mbed.c</a>
-, <a class="el" href="ad7606__iio_2app_2app__config__mbed_8h.html#ab55500a195b5993aeb7bec4e12fcd5a1">app_config_mbed.h</a>
+: <a class="el" href="ad7606__iio_2app_2app__config__mbed_8h.html#ab55500a195b5993aeb7bec4e12fcd5a1">app_config_mbed.h</a>
+, <a class="el" href="ad7606__iio_2app_2app__config__mbed_8c.html#ab55500a195b5993aeb7bec4e12fcd5a1">app_config_mbed.c</a>
 </li>
 <li>mbed_ticker_int_extra_init_params
 : <a class="el" href="ad4130__iio_2app_2app__config__mbed_8c.html#adb1868960fa3ba3344458195a9a3dc23">app_config_mbed.c</a>
@@ -343,7 +369,8 @@ $(function() {
 , <a class="el" href="ad2s1210__iio_2app_2app__config__mbed_8c.html#a2e91d254b9b0fc4af9d84f1a96cba44c">app_config_mbed.c</a>
 </li>
 <li>mbed_trigger_gpio_irq_init_params
-: <a class="el" href="ad719x__iio_2app_2app__config__mbed_8h.html#a4243810e97c5174bb085ed12801c4d55">app_config_mbed.h</a>
+: <a class="el" href="ad719x__iio_2app_2app__config__mbed_8c.html#a4243810e97c5174bb085ed12801c4d55">app_config_mbed.c</a>
+, <a class="el" href="ad719x__iio_2app_2app__config__mbed_8h.html#a4243810e97c5174bb085ed12801c4d55">app_config_mbed.h</a>
 , <a class="el" href="ad738x__iio_2app_2app__config__mbed_8c.html#a4243810e97c5174bb085ed12801c4d55">app_config_mbed.c</a>
 , <a class="el" href="ad738x__iio_2app_2app__config__mbed_8h.html#a4243810e97c5174bb085ed12801c4d55">app_config_mbed.h</a>
 , <a class="el" href="ad7606__iio_2app_2app__config__mbed_8c.html#a4243810e97c5174bb085ed12801c4d55">app_config_mbed.c</a>
@@ -352,19 +379,21 @@ $(function() {
 , <a class="el" href="ad77681__iio_2app_2app__config__mbed_8h.html#a4243810e97c5174bb085ed12801c4d55">app_config_mbed.h</a>
 , <a class="el" href="ad777x__iio_2app_2app__config__mbed_8c.html#a4243810e97c5174bb085ed12801c4d55">app_config_mbed.c</a>
 , <a class="el" href="ad777x__iio_2app_2app__config__mbed_8h.html#a4243810e97c5174bb085ed12801c4d55">app_config_mbed.h</a>
-, <a class="el" href="ad719x__iio_2app_2app__config__mbed_8c.html#a4243810e97c5174bb085ed12801c4d55">app_config_mbed.c</a>
-, <a class="el" href="ad2s1210__iio_2app_2app__config__mbed_8h.html#a4243810e97c5174bb085ed12801c4d55">app_config_mbed.h</a>
+, <a class="el" href="ad717x__iio_2app_2app__config__mbed_8c.html#a4243810e97c5174bb085ed12801c4d55">app_config_mbed.c</a>
+, <a class="el" href="ad717x__iio_2app_2app__config__mbed_8h.html#a4243810e97c5174bb085ed12801c4d55">app_config_mbed.h</a>
+, <a class="el" href="ad405x__iio_2app_2app__config__mbed_8c.html#a4243810e97c5174bb085ed12801c4d55">app_config_mbed.c</a>
+, <a class="el" href="ad405x__iio_2app_2app__config__mbed_8h.html#a4243810e97c5174bb085ed12801c4d55">app_config_mbed.h</a>
 , <a class="el" href="ad4130__iio_2app_2app__config__mbed_8c.html#a4243810e97c5174bb085ed12801c4d55">app_config_mbed.c</a>
 , <a class="el" href="ad4130__iio_2app_2app__config__mbed_8h.html#a4243810e97c5174bb085ed12801c4d55">app_config_mbed.h</a>
 , <a class="el" href="ad469x__iio_2app_2app__config__mbed_8c.html#a4243810e97c5174bb085ed12801c4d55">app_config_mbed.c</a>
 , <a class="el" href="ad469x__iio_2app_2app__config__mbed_8h.html#a4243810e97c5174bb085ed12801c4d55">app_config_mbed.h</a>
 , <a class="el" href="ad579x__iio_2app_2app__config__mbed_8c.html#a4243810e97c5174bb085ed12801c4d55">app_config_mbed.c</a>
 , <a class="el" href="ad579x__iio_2app_2app__config__mbed_8h.html#a4243810e97c5174bb085ed12801c4d55">app_config_mbed.h</a>
-, <a class="el" href="ad717x__iio_2app_2app__config__mbed_8c.html#a4243810e97c5174bb085ed12801c4d55">app_config_mbed.c</a>
 </li>
 <li>mbed_uart_extra_init_params
-: <a class="el" href="ad738x__iio_2app_2app__config__mbed_8h.html#a9dcc7fdd2dd150a02ab4d291e16d8dfe">app_config_mbed.h</a>
-, <a class="el" href="ad738x__iio_2app_2app__config__mbed_8c.html#a9dcc7fdd2dd150a02ab4d291e16d8dfe">app_config_mbed.c</a>
+: <a class="el" href="ad738x__iio_2app_2app__config__mbed_8c.html#a9dcc7fdd2dd150a02ab4d291e16d8dfe">app_config_mbed.c</a>
+, <a class="el" href="ad719x__iio_2app_2app__config__mbed_8h.html#a9dcc7fdd2dd150a02ab4d291e16d8dfe">app_config_mbed.h</a>
+, <a class="el" href="ad7606__iio_2app_2app__config__mbed_8c.html#a9dcc7fdd2dd150a02ab4d291e16d8dfe">app_config_mbed.c</a>
 , <a class="el" href="ad7606__iio_2app_2app__config__mbed_8h.html#a9dcc7fdd2dd150a02ab4d291e16d8dfe">app_config_mbed.h</a>
 , <a class="el" href="ad7689__iio_2app_2app__config__mbed_8c.html#a9dcc7fdd2dd150a02ab4d291e16d8dfe">app_config_mbed.c</a>
 , <a class="el" href="ad7689__iio_2app_2app__config__mbed_8h.html#a9dcc7fdd2dd150a02ab4d291e16d8dfe">app_config_mbed.h</a>
@@ -377,9 +406,9 @@ $(function() {
 , <a class="el" href="ltc2672__iio_2app_2app__config__mbed_8c.html#a9dcc7fdd2dd150a02ab4d291e16d8dfe">app_config_mbed.c</a>
 , <a class="el" href="ltc2672__iio_2app_2app__config__mbed_8h.html#a9dcc7fdd2dd150a02ab4d291e16d8dfe">app_config_mbed.h</a>
 , <a class="el" href="ad719x__iio_2app_2app__config__mbed_8c.html#a9dcc7fdd2dd150a02ab4d291e16d8dfe">app_config_mbed.c</a>
-, <a class="el" href="ad719x__iio_2app_2app__config__mbed_8h.html#a9dcc7fdd2dd150a02ab4d291e16d8dfe">app_config_mbed.h</a>
-, <a class="el" href="ad2s1210__iio_2app_2app__config__mbed_8c.html#a9dcc7fdd2dd150a02ab4d291e16d8dfe">app_config_mbed.c</a>
 , <a class="el" href="ad2s1210__iio_2app_2app__config__mbed_8h.html#a9dcc7fdd2dd150a02ab4d291e16d8dfe">app_config_mbed.h</a>
+, <a class="el" href="ad405x__iio_2app_2app__config__mbed_8c.html#a9dcc7fdd2dd150a02ab4d291e16d8dfe">app_config_mbed.c</a>
+, <a class="el" href="ad405x__iio_2app_2app__config__mbed_8h.html#a9dcc7fdd2dd150a02ab4d291e16d8dfe">app_config_mbed.h</a>
 , <a class="el" href="ad4130__iio_2app_2app__config__mbed_8c.html#a9dcc7fdd2dd150a02ab4d291e16d8dfe">app_config_mbed.c</a>
 , <a class="el" href="ad4130__iio_2app_2app__config__mbed_8h.html#a9dcc7fdd2dd150a02ab4d291e16d8dfe">app_config_mbed.h</a>
 , <a class="el" href="ad469x__iio_2app_2app__config__mbed_8c.html#a9dcc7fdd2dd150a02ab4d291e16d8dfe">app_config_mbed.c</a>
@@ -389,10 +418,10 @@ $(function() {
 , <a class="el" href="ad7134__iio_2app_2app__config__mbed_8c.html#a9dcc7fdd2dd150a02ab4d291e16d8dfe">app_config_mbed.c</a>
 , <a class="el" href="ad7134__iio_2app_2app__config__mbed_8h.html#a9dcc7fdd2dd150a02ab4d291e16d8dfe">app_config_mbed.h</a>
 , <a class="el" href="ad717x__iio_2app_2app__config__mbed_8c.html#a9dcc7fdd2dd150a02ab4d291e16d8dfe">app_config_mbed.c</a>
-, <a class="el" href="ad717x__iio_2app_2app__config__mbed_8h.html#a9dcc7fdd2dd150a02ab4d291e16d8dfe">app_config_mbed.h</a>
 </li>
 <li>mbed_vcom_extra_init_params
-: <a class="el" href="ad738x__iio_2app_2app__config__mbed_8c.html#a42d5d5b22d89a48758f599d9b34eb4c8">app_config_mbed.c</a>
+: <a class="el" href="ad719x__iio_2app_2app__config__mbed_8h.html#a42d5d5b22d89a48758f599d9b34eb4c8">app_config_mbed.h</a>
+, <a class="el" href="ad738x__iio_2app_2app__config__mbed_8c.html#a42d5d5b22d89a48758f599d9b34eb4c8">app_config_mbed.c</a>
 , <a class="el" href="ad738x__iio_2app_2app__config__mbed_8h.html#a42d5d5b22d89a48758f599d9b34eb4c8">app_config_mbed.h</a>
 , <a class="el" href="ad7606__iio_2app_2app__config__mbed_8c.html#a42d5d5b22d89a48758f599d9b34eb4c8">app_config_mbed.c</a>
 , <a class="el" href="ad7606__iio_2app_2app__config__mbed_8h.html#a42d5d5b22d89a48758f599d9b34eb4c8">app_config_mbed.h</a>
@@ -407,17 +436,14 @@ $(function() {
 , <a class="el" href="ltc2672__iio_2app_2app__config__mbed_8c.html#a42d5d5b22d89a48758f599d9b34eb4c8">app_config_mbed.c</a>
 , <a class="el" href="ltc2672__iio_2app_2app__config__mbed_8h.html#a42d5d5b22d89a48758f599d9b34eb4c8">app_config_mbed.h</a>
 , <a class="el" href="ad719x__iio_2app_2app__config__mbed_8c.html#a42d5d5b22d89a48758f599d9b34eb4c8">app_config_mbed.c</a>
-, <a class="el" href="ad719x__iio_2app_2app__config__mbed_8h.html#a42d5d5b22d89a48758f599d9b34eb4c8">app_config_mbed.h</a>
-, <a class="el" href="ad2s1210__iio_2app_2app__config__mbed_8c.html#a42d5d5b22d89a48758f599d9b34eb4c8">app_config_mbed.c</a>
 , <a class="el" href="ad2s1210__iio_2app_2app__config__mbed_8h.html#a42d5d5b22d89a48758f599d9b34eb4c8">app_config_mbed.h</a>
+, <a class="el" href="ad405x__iio_2app_2app__config__mbed_8c.html#a42d5d5b22d89a48758f599d9b34eb4c8">app_config_mbed.c</a>
+, <a class="el" href="ad405x__iio_2app_2app__config__mbed_8h.html#a42d5d5b22d89a48758f599d9b34eb4c8">app_config_mbed.h</a>
 , <a class="el" href="ad4130__iio_2app_2app__config__mbed_8c.html#a42d5d5b22d89a48758f599d9b34eb4c8">app_config_mbed.c</a>
 , <a class="el" href="ad4130__iio_2app_2app__config__mbed_8h.html#a42d5d5b22d89a48758f599d9b34eb4c8">app_config_mbed.h</a>
 , <a class="el" href="ad469x__iio_2app_2app__config__mbed_8c.html#a42d5d5b22d89a48758f599d9b34eb4c8">app_config_mbed.c</a>
-, <a class="el" href="ad469x__iio_2app_2app__config__mbed_8h.html#a42d5d5b22d89a48758f599d9b34eb4c8">app_config_mbed.h</a>
-, <a class="el" href="ad579x__iio_2app_2app__config__mbed_8c.html#a42d5d5b22d89a48758f599d9b34eb4c8">app_config_mbed.c</a>
-, <a class="el" href="ad717x__iio_2app_2app__config__mbed_8h.html#a42d5d5b22d89a48758f599d9b34eb4c8">app_config_mbed.h</a>
-, <a class="el" href="ad717x__iio_2app_2app__config__mbed_8c.html#a42d5d5b22d89a48758f599d9b34eb4c8">app_config_mbed.c</a>
 , <a class="el" href="ad7134__iio_2app_2app__config__mbed_8h.html#a42d5d5b22d89a48758f599d9b34eb4c8">app_config_mbed.h</a>
+, <a class="el" href="ad579x__iio_2app_2app__config__mbed_8c.html#a42d5d5b22d89a48758f599d9b34eb4c8">app_config_mbed.c</a>
 </li>
 <li>MCLK_DIVISOR
 : <a class="el" href="ad7134__support_8c.html#a763e519b605c3dc79ecc1a80709b57fe">ad7134_support.c</a>
@@ -506,8 +532,8 @@ $(function() {
 , <a class="el" href="ad717x__menu__defines_8h.html#aa93db1b032f623e922aa446c4a546ff3">ad717x_menu_defines.h</a>
 </li>
 <li>menu_input_chn_connect_display()
-: <a class="el" href="ad717x__console__app_8c.html#a3f1f15edb56c5af7ebcf23b9b988fa7a">ad717x_console_app.c</a>
-, <a class="el" href="ad717x__menu__defines_8h.html#a3f1f15edb56c5af7ebcf23b9b988fa7a">ad717x_menu_defines.h</a>
+: <a class="el" href="ad717x__menu__defines_8h.html#a3f1f15edb56c5af7ebcf23b9b988fa7a">ad717x_menu_defines.h</a>
+, <a class="el" href="ad717x__console__app_8c.html#a3f1f15edb56c5af7ebcf23b9b988fa7a">ad717x_console_app.c</a>
 </li>
 <li>menu_input_type_selection()
 : <a class="el" href="ad717x__console__app_8c.html#ac109255f49701312593d90644c8ab5b9">ad717x_console_app.c</a>
@@ -534,8 +560,8 @@ $(function() {
 , <a class="el" href="ad717x__menu__defines_8h.html#a66e18e8add8ec5abe301b9124aa063e0">ad717x_menu_defines.h</a>
 </li>
 <li>menu_read_id()
-: <a class="el" href="ad717x__console__app_8c.html#a6fb3d5ef1a21aaaa02d46200a89dc3df">ad717x_console_app.c</a>
-, <a class="el" href="ad717x__menu__defines_8h.html#a6fb3d5ef1a21aaaa02d46200a89dc3df">ad717x_menu_defines.h</a>
+: <a class="el" href="ad717x__menu__defines_8h.html#a6fb3d5ef1a21aaaa02d46200a89dc3df">ad717x_menu_defines.h</a>
+, <a class="el" href="ad717x__console__app_8c.html#a6fb3d5ef1a21aaaa02d46200a89dc3df">ad717x_console_app.c</a>
 </li>
 <li>menu_read_status()
 : <a class="el" href="ad717x__console__app_8c.html#add2491b666fea5c97831584d518810d9">ad717x_console_app.c</a>
@@ -554,12 +580,12 @@ $(function() {
 , <a class="el" href="ad717x__menu__defines_8h.html#aae4b7e61da809faac7ec723e0a9dbc20">ad717x_menu_defines.h</a>
 </li>
 <li>menu_reference_source_select()
-: <a class="el" href="ad717x__menu__defines_8h.html#a1525b715c50f885e4ebaf000a622c203">ad717x_menu_defines.h</a>
-, <a class="el" href="ad717x__console__app_8c.html#a1525b715c50f885e4ebaf000a622c203">ad717x_console_app.c</a>
+: <a class="el" href="ad717x__console__app_8c.html#a1525b715c50f885e4ebaf000a622c203">ad717x_console_app.c</a>
+, <a class="el" href="ad717x__menu__defines_8h.html#a1525b715c50f885e4ebaf000a622c203">ad717x_menu_defines.h</a>
 </li>
 <li>menu_rw_ad717x_register()
-: <a class="el" href="ad717x__console__app_8c.html#a206145af8ed00a53e28da72b7108b7c6">ad717x_console_app.c</a>
-, <a class="el" href="ad717x__menu__defines_8h.html#a206145af8ed00a53e28da72b7108b7c6">ad717x_menu_defines.h</a>
+: <a class="el" href="ad717x__menu__defines_8h.html#a206145af8ed00a53e28da72b7108b7c6">ad717x_menu_defines.h</a>
+, <a class="el" href="ad717x__console__app_8c.html#a206145af8ed00a53e28da72b7108b7c6">ad717x_console_app.c</a>
 </li>
 <li>menu_sample_channels()
 : <a class="el" href="ad717x__console__app_8c.html#a9001581f73f9721a393d983a64990fa7">ad717x_console_app.c</a>
@@ -577,8 +603,14 @@ $(function() {
 : <a class="el" href="ad717x__console__app_8c.html#abdf1eac9de7626df424a0f12aec98c08">ad717x_console_app.c</a>
 , <a class="el" href="ad717x__menu__defines_8h.html#abdf1eac9de7626df424a0f12aec98c08">ad717x_menu_defines.h</a>
 </li>
+<li>MIN_DATA_CAPTURE_TIME_NS
+: <a class="el" href="ad405x__iio_2app_2app__config_8h.html#a3b461848c512364ed7d12071630921e1">app_config.h</a>
+</li>
 <li>MIN_FILTER_DATA_RATE
 : <a class="el" href="ad7124__console_2app_2ad7124__console__app_8c.html#ae7ee0308007c13f190545beb1ebe2c84">ad7124_console_app.c</a>
+</li>
+<li>MIN_INTERRUPT_OVER_HEAD
+: <a class="el" href="ad405x__iio_2app_2app__config_8h.html#abdefd8a2ca202729d45cef47845910b0">app_config.h</a>
 </li>
 <li>MIN_PROGRAMMABLE_GAIN
 : <a class="el" href="ad7124__console_2app_2ad7124__console__app_8c.html#a71560c355d1b789eb8a1c9d751b774d7">ad7124_console_app.c</a>
@@ -591,6 +623,10 @@ $(function() {
 </li>
 <li>MODE_BIT_POSTION
 : <a class="el" href="ad719x__iio_8h.html#a2564f519508a11dd169d64512d240136">ad719x_iio.h</a>
+</li>
+<li>more_than_64k_requested
+: <a class="el" href="ad405x__iio_2app_2app__config__stm32_8c.html#a4752e1b61f0701eefe9610c2c0e35fce">app_config_stm32.c</a>
+, <a class="el" href="ad405x__iio_2app_2app__config__stm32_8h.html#a4752e1b61f0701eefe9610c2c0e35fce">app_config_stm32.h</a>
 </li>
 <li>MULTI_3WIRE_RTD_GAIN
 : <a class="el" href="ad7124__temperature-measure_2app_2ad7124__regs__configs_8h.html#a758afaf3f247b6cd9e3836bacaba7eef">ad7124_regs_configs.h</a>

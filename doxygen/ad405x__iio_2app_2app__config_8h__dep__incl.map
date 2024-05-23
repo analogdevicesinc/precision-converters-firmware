@@ -1,0 +1,10 @@
+<map id="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad405x_iio/app/app_config.h" name="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad405x_iio/app/app_config.h">
+<area shape="rect" id="node1" title="Application configurations module for AD405X." alt="" coords="473,5,696,76"/>
+<area shape="rect" id="node2" href="$ad405x__iio_8c.html" title="Implementation of AD405X IIO Application Interface." alt="" coords="5,243,228,313"/>
+<area shape="rect" id="node3" href="$ad405x__iio_8h.html" title="Header for AD405X IIO application." alt="" coords="400,124,623,195"/>
+<area shape="rect" id="node4" href="$ad405x__iio_2app_2app__config_8c.html" title="Application configurations module." alt="" coords="252,243,475,313"/>
+<area shape="rect" id="node5" href="$ad405x__iio_2app_2app__config__stm32_8c.html" title="Source file for STM32 platform configurations." alt="" coords="745,243,1003,313"/>
+<area shape="rect" id="node7" href="$ad405x__user__config_8c.html" title="User configuration file for AD405X." alt="" coords="697,124,966,195"/>
+<area shape="rect" id="node8" href="$ad405x__iio_2app_2app__config__mbed_8c.html" title="Application configurations module for Mbed platform." alt="" coords="991,124,1245,195"/>
+<area shape="rect" id="node6" href="$ad405x__iio_2app_2main_8c.html" title="Main interface for AD405X IIO firmware application." alt="" coords="499,243,721,313"/>
+</map>

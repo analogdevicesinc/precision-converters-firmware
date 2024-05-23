@@ -237,13 +237,13 @@ Functions</h2></td></tr>
 <tr class="memdesc:a5f112e13dcc13734d1eb3cc45089a409"><td class="mdescLeft">&#160;</td><td class="mdescRight">Configures the chip select pin as output mode.  <a href="ad469x__iio_2app_2app__config__stm32_8h.html#a5f112e13dcc13734d1eb3cc45089a409">More...</a><br /></td></tr>
 <tr class="separator:a5f112e13dcc13734d1eb3cc45089a409"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aed8efa9cf850d566266e90c8119e1ab6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad469x__iio_2app_2app__config__stm32_8h.html#aed8efa9cf850d566266e90c8119e1ab6">stm32_abort_dma_transfer</a> (void)</td></tr>
-<tr class="memdesc:aed8efa9cf850d566266e90c8119e1ab6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Abort DMA Transfers.  <a href="ad469x__iio_2app_2app__config__stm32_8h.html#aed8efa9cf850d566266e90c8119e1ab6">More...</a><br /></td></tr>
+<tr class="memdesc:aed8efa9cf850d566266e90c8119e1ab6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Abort ongoing SPI RX DMA transfer.  <a href="ad469x__iio_2app_2app__config__stm32_8h.html#aed8efa9cf850d566266e90c8119e1ab6">More...</a><br /></td></tr>
 <tr class="separator:aed8efa9cf850d566266e90c8119e1ab6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a91403f8dbab4ddc9299c6bdb54d79863"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad469x__iio_2app_2app__config__stm32_8h.html#a91403f8dbab4ddc9299c6bdb54d79863">stm32_timer_enable</a> (void)</td></tr>
 <tr class="memdesc:a91403f8dbab4ddc9299c6bdb54d79863"><td class="mdescLeft">&#160;</td><td class="mdescRight">Starts the timer signal generation for PWM and OC channels all at once.  <a href="ad469x__iio_2app_2app__config__stm32_8h.html#a91403f8dbab4ddc9299c6bdb54d79863">More...</a><br /></td></tr>
 <tr class="separator:a91403f8dbab4ddc9299c6bdb54d79863"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adc68d7f97d9907d3ef6fa6bc0cbd0d09"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad469x__iio_2app_2app__config__stm32_8h.html#adc68d7f97d9907d3ef6fa6bc0cbd0d09">stm32_timer_stop</a> (void)</td></tr>
-<tr class="memdesc:adc68d7f97d9907d3ef6fa6bc0cbd0d09"><td class="mdescLeft">&#160;</td><td class="mdescRight">Disable PWM signals.  <a href="ad469x__iio_2app_2app__config__stm32_8h.html#adc68d7f97d9907d3ef6fa6bc0cbd0d09">More...</a><br /></td></tr>
+<tr class="memdesc:adc68d7f97d9907d3ef6fa6bc0cbd0d09"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stops generating timer signals.  <a href="ad469x__iio_2app_2app__config__stm32_8h.html#adc68d7f97d9907d3ef6fa6bc0cbd0d09">More...</a><br /></td></tr>
 <tr class="separator:adc68d7f97d9907d3ef6fa6bc0cbd0d09"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7a33403d4cbab22c6d876363a1c0a806"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad469x__iio_2app_2app__config__stm32_8h.html#a7a33403d4cbab22c6d876363a1c0a806">tim8_config</a> (void)</td></tr>
 <tr class="separator:a7a33403d4cbab22c6d876363a1c0a806"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -1080,6 +1080,16 @@ Variables</h2></td></tr>
 
 <p>Callback function to flag the capture of number of requested samples. </p>
 <dl class="section return"><dt>Returns</dt><dd>None </dd></dl>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="ad469x__iio_2app_2app__config__stm32_8h_aa599b1bdd18c25d273dded2a87a19a2f_icgraph.png" border="0" usemap="#aad469x__iio_2app_2app__config__stm32_8h_aa599b1bdd18c25d273dded2a87a19a2f_icgraph" alt=""/></div>
+<map name="aad469x__iio_2app_2app__config__stm32_8h_aa599b1bdd18c25d273dded2a87a19a2f_icgraph" id="aad469x__iio_2app_2app__config__stm32_8h_aa599b1bdd18c25d273dded2a87a19a2f_icgraph">
+<area shape="rect" title="Callback function to flag the capture of number of requested samples." alt="" coords="347,5,539,32"/>
+<area shape="rect" href="ad405x__iio_2app_2app__config__stm32_8c.html#a7256d80c59f9d4eafcebc79f1b73ba72" title="Initialize the STM32 system peripherals." alt="" coords="152,5,299,32"/>
+<area shape="rect" href="ad405x__iio_2app_2app__config_8c.html#aba990e48bb1b87852ff6a375f0c2f655" title="Initializing system peripherals." alt="" coords="5,5,104,32"/>
+</map>
+</div>
 
 </div>
 </div>
@@ -1099,7 +1109,9 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Abort DMA Transfers. </p>
+<p>Abort ongoing SPI RX DMA transfer. </p>
+<dl class="section return"><dt>Returns</dt><dd>None</dd></dl>
+<p>Abort ongoing SPI RX DMA transfer.</p>
 <dl class="section return"><dt>Returns</dt><dd>None </dd></dl>
 
 </div>
@@ -1148,6 +1160,13 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Configures the chip select pin as output mode. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">is_gpio[in]</td><td>- Mode of the Pin </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>None</dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">is_gpio[in]</td><td>Mode of the Pin </td></tr>
@@ -1216,7 +1235,9 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Disable PWM signals. </p>
+<p>Stops generating timer signals. </p>
+<dl class="section return"><dt>Returns</dt><dd>None</dd></dl>
+<p>Stops generating timer signals.</p>
 <dl class="section return"><dt>Returns</dt><dd>None </dd></dl>
 
 </div>

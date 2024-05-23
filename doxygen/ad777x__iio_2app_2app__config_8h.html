@@ -253,7 +253,7 @@ Functions</h2></td></tr>
 <tr class="memdesc:aba990e48bb1b87852ff6a375f0c2f655"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize the system peripherals.  <a href="ad777x__iio_2app_2app__config_8h.html#aba990e48bb1b87852ff6a375f0c2f655">More...</a><br /></td></tr>
 <tr class="separator:aba990e48bb1b87852ff6a375f0c2f655"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a616505fab0dd47929500794865d1aed9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad777x__iio_2app_2app__config_8h.html#a616505fab0dd47929500794865d1aed9">data_capture_callback</a> (void *ctx)</td></tr>
-<tr class="memdesc:a616505fab0dd47929500794865d1aed9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Interrupt Service Routine to monitor end of conversion event.  <a href="ad777x__iio_2app_2app__config_8h.html#a616505fab0dd47929500794865d1aed9">More...</a><br /></td></tr>
+<tr class="memdesc:a616505fab0dd47929500794865d1aed9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Interrupt Service Routine to monitor data ready event.  <a href="ad777x__iio_2app_2app__config_8h.html#a616505fab0dd47929500794865d1aed9">More...</a><br /></td></tr>
 <tr class="separator:a616505fab0dd47929500794865d1aed9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
@@ -1171,7 +1171,15 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Interrupt Service Routine to monitor end of conversion event. </p>
+<p>Interrupt Service Routine to monitor data ready event. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">context[in]</td><td>- Callback context (unused) </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>none</dd></dl>
+<p>Interrupt Service Routine to monitor data ready event.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">ctx[in]</td><td>- Callback context (unused) </td></tr>

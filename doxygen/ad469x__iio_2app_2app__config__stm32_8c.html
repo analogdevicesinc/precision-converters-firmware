@@ -280,6 +280,7 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Abort DMA Transfers. </p>
+<p>Abort ongoing SPI RX DMA transfer.</p>
 <dl class="section return"><dt>Returns</dt><dd>None </dd></dl>
 
 </div>
@@ -356,15 +357,6 @@ Variables</h2></td></tr>
 
 <p>Initialize the STM32 system peripherals. </p>
 <dl class="section return"><dt>Returns</dt><dd>None </dd></dl>
-<div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="ad469x__iio_2app_2app__config__stm32_8c_a7256d80c59f9d4eafcebc79f1b73ba72_icgraph.png" border="0" usemap="#aad469x__iio_2app_2app__config__stm32_8c_a7256d80c59f9d4eafcebc79f1b73ba72_icgraph" alt=""/></div>
-<map name="aad469x__iio_2app_2app__config__stm32_8c_a7256d80c59f9d4eafcebc79f1b73ba72_icgraph" id="aad469x__iio_2app_2app__config__stm32_8c_a7256d80c59f9d4eafcebc79f1b73ba72_icgraph">
-<area shape="rect" title="Initialize the STM32 system peripherals." alt="" coords="152,5,299,32"/>
-<area shape="rect" href="ad469x__iio_2app_2app__config_8c.html#aba990e48bb1b87852ff6a375f0c2f655" title="Initializing system peripherals." alt="" coords="5,5,104,32"/>
-</map>
-</div>
 
 </div>
 </div>
@@ -406,6 +398,7 @@ Here is the caller graph for this function:</div>
 </div><div class="memdoc">
 
 <p>Disable PWM signals. </p>
+<p>Stops generating timer signals.</p>
 <dl class="section return"><dt>Returns</dt><dd>None </dd></dl>
 
 </div>
@@ -535,9 +528,9 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line">= {</div>
-<div class="line">    .port_nb = <a class="code" href="ad469x__iio_2app_2app__config__mbed_8h.html#a779927bd65bff14619ae45ef489bb706">GP0_PORT_NUM</a>, </div>
+<div class="line">    .port_nb = <a class="code" href="ad405x__iio_2app_2app__config__mbed_8h.html#a779927bd65bff14619ae45ef489bb706">GP0_PORT_NUM</a>, </div>
 <div class="line">}</div>
-<div class="ttc" id="aad469x__iio_2app_2app__config__mbed_8h_html_a779927bd65bff14619ae45ef489bb706"><div class="ttname"><a href="ad469x__iio_2app_2app__config__mbed_8h.html#a779927bd65bff14619ae45ef489bb706">GP0_PORT_NUM</a></div><div class="ttdeci">#define GP0_PORT_NUM</div><div class="ttdef"><b>Definition:</b> app_config_mbed.h:84</div></div>
+<div class="ttc" id="aad405x__iio_2app_2app__config__mbed_8h_html_a779927bd65bff14619ae45ef489bb706"><div class="ttname"><a href="ad405x__iio_2app_2app__config__mbed_8h.html#a779927bd65bff14619ae45ef489bb706">GP0_PORT_NUM</a></div><div class="ttdeci">#define GP0_PORT_NUM</div><div class="ttdef"><b>Definition:</b> app_config_mbed.h:60</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -571,17 +564,17 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line">= {</div>
-<div class="line">    .prescaler = <a class="code" href="ad469x__iio_2app_2app__config__stm32_8h.html#a14a687c138f5c3f5afa9cabf917d2422">TIMER_1_PRESCALER</a>,</div>
+<div class="line">    .prescaler = <a class="code" href="ad405x__iio_2app_2app__config__stm32_8h.html#a14a687c138f5c3f5afa9cabf917d2422">TIMER_1_PRESCALER</a>,</div>
 <div class="line">    .timer_autoreload = <span class="keyword">true</span>,</div>
 <div class="line">    .mode = TIM_OC_PWM2,</div>
-<div class="line">    .timer_chn = <a class="code" href="ad469x__iio_2app_2app__config__stm32_8h.html#a512547363586c59e256515b69389de1b">TIMER_CHANNEL_3</a>,</div>
+<div class="line">    .timer_chn = <a class="code" href="ad405x__iio_2app_2app__config__stm32_8h.html#a512547363586c59e256515b69389de1b">TIMER_CHANNEL_3</a>,</div>
 <div class="line">    .complementary_channel = <span class="keyword">true</span>,</div>
 <div class="line">    .get_timer_clock = HAL_RCC_GetPCLK2Freq,</div>
-<div class="line">    .clock_divider = <a class="code" href="ad469x__iio_2app_2app__config__stm32_8h.html#ae4c0ff9fa433bcc0af620d4f55b9f2db">TIMER_1_CLK_DIVIDER</a></div>
+<div class="line">    .clock_divider = <a class="code" href="ad405x__iio_2app_2app__config__stm32_8h.html#ae4c0ff9fa433bcc0af620d4f55b9f2db">TIMER_1_CLK_DIVIDER</a></div>
 <div class="line">}</div>
-<div class="ttc" id="aad469x__iio_2app_2app__config__stm32_8h_html_a14a687c138f5c3f5afa9cabf917d2422"><div class="ttname"><a href="ad469x__iio_2app_2app__config__stm32_8h.html#a14a687c138f5c3f5afa9cabf917d2422">TIMER_1_PRESCALER</a></div><div class="ttdeci">#define TIMER_1_PRESCALER</div><div class="ttdef"><b>Definition:</b> app_config_stm32.h:74</div></div>
-<div class="ttc" id="aad469x__iio_2app_2app__config__stm32_8h_html_a512547363586c59e256515b69389de1b"><div class="ttname"><a href="ad469x__iio_2app_2app__config__stm32_8h.html#a512547363586c59e256515b69389de1b">TIMER_CHANNEL_3</a></div><div class="ttdeci">#define TIMER_CHANNEL_3</div><div class="ttdef"><b>Definition:</b> app_config_stm32.h:84</div></div>
-<div class="ttc" id="aad469x__iio_2app_2app__config__stm32_8h_html_ae4c0ff9fa433bcc0af620d4f55b9f2db"><div class="ttname"><a href="ad469x__iio_2app_2app__config__stm32_8h.html#ae4c0ff9fa433bcc0af620d4f55b9f2db">TIMER_1_CLK_DIVIDER</a></div><div class="ttdeci">#define TIMER_1_CLK_DIVIDER</div><div class="ttdef"><b>Definition:</b> app_config_stm32.h:76</div></div>
+<div class="ttc" id="aad405x__iio_2app_2app__config__stm32_8h_html_a14a687c138f5c3f5afa9cabf917d2422"><div class="ttname"><a href="ad405x__iio_2app_2app__config__stm32_8h.html#a14a687c138f5c3f5afa9cabf917d2422">TIMER_1_PRESCALER</a></div><div class="ttdeci">#define TIMER_1_PRESCALER</div><div class="ttdef"><b>Definition:</b> app_config_stm32.h:60</div></div>
+<div class="ttc" id="aad405x__iio_2app_2app__config__stm32_8h_html_a512547363586c59e256515b69389de1b"><div class="ttname"><a href="ad405x__iio_2app_2app__config__stm32_8h.html#a512547363586c59e256515b69389de1b">TIMER_CHANNEL_3</a></div><div class="ttdeci">#define TIMER_CHANNEL_3</div><div class="ttdef"><b>Definition:</b> app_config_stm32.h:68</div></div>
+<div class="ttc" id="aad405x__iio_2app_2app__config__stm32_8h_html_ae4c0ff9fa433bcc0af620d4f55b9f2db"><div class="ttname"><a href="ad405x__iio_2app_2app__config__stm32_8h.html#ae4c0ff9fa433bcc0af620d4f55b9f2db">TIMER_1_CLK_DIVIDER</a></div><div class="ttdeci">#define TIMER_1_CLK_DIVIDER</div><div class="ttdef"><b>Definition:</b> app_config_stm32.h:62</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -635,9 +628,9 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line">= {</div>
-<div class="line">    .huart = &amp;<a class="code" href="ad469x__iio_2app_2app__config__stm32_8h.html#a25a82fcf0cd24eb6d39977cb5864cec8">huart5</a>,</div>
+<div class="line">    .huart = &amp;<a class="code" href="ad405x__iio_2app_2app__config__stm32_8h.html#a25a82fcf0cd24eb6d39977cb5864cec8">huart5</a>,</div>
 <div class="line">}</div>
-<div class="ttc" id="aad469x__iio_2app_2app__config__stm32_8h_html_a25a82fcf0cd24eb6d39977cb5864cec8"><div class="ttname"><a href="ad469x__iio_2app_2app__config__stm32_8h.html#a25a82fcf0cd24eb6d39977cb5864cec8">huart5</a></div><div class="ttdeci">UART_HandleTypeDef huart5</div></div>
+<div class="ttc" id="aad405x__iio_2app_2app__config__stm32_8h_html_a25a82fcf0cd24eb6d39977cb5864cec8"><div class="ttname"><a href="ad405x__iio_2app_2app__config__stm32_8h.html#a25a82fcf0cd24eb6d39977cb5864cec8">huart5</a></div><div class="ttdeci">UART_HandleTypeDef huart5</div></div>
 </div><!-- fragment -->
 </div>
 </div>
