@@ -149,6 +149,8 @@ Macros</h2></td></tr>
 <tr class="separator:a25065cd833bcfecfb404093aed3edaca"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae9aabff8af578ba8f7686bf18b8032db"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad719x__iio_8c.html#ae9aabff8af578ba8f7686bf18b8032db">AD719X_DEFAULT_SCALE</a>(x)&#160;&#160;&#160;((<a class="el" href="ad719x__user__config_8h.html#a0c531deafd2f3f3a9454984c2e86c1ef">AD719X_DEFAULT_REF_VOLTAGE</a> / (<a class="el" href="ad777x__iio_2app_2app__config_8h.html#ad6af11c8af52e93da6eafa098285f631">ADC_MAX_COUNT_UNIPOLAR</a> * x)) * 1000)</td></tr>
 <tr class="separator:ae9aabff8af578ba8f7686bf18b8032db"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a62e92a76e0ffc838a1e3f692bb46aee6"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad719x__iio_8c.html#a62e92a76e0ffc838a1e3f692bb46aee6">AD7194_CH</a>(chn)&#160;&#160;&#160;chn</td></tr>
+<tr class="separator:a62e92a76e0ffc838a1e3f692bb46aee6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a70daa3c8a2012e9f7f314b8476476af2"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad719x__iio_8c.html#a70daa3c8a2012e9f7f314b8476476af2">BUF_READ_TIMEOUT</a>&#160;&#160;&#160;0xffffffff</td></tr>
 <tr class="separator:a70daa3c8a2012e9f7f314b8476476af2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
@@ -195,9 +197,27 @@ Variables</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Implementation of AD719X IIO application interfaces. </p>
-<p>Copyright (c) 2021-23 Analog Devices, Inc. All rights reserved.</p>
+<p>Copyright (c) 2021-24 Analog Devices, Inc. All rights reserved.</p>
 <p>This software is proprietary to Analog Devices, Inc. and its licensors. By using this software you agree to the terms of the associated Analog Devices Software License Agreement. </p>
 </div><h2 class="groupheader">Macro Definition Documentation</h2>
+<a id="a62e92a76e0ffc838a1e3f692bb46aee6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a62e92a76e0ffc838a1e3f692bb46aee6">&#9670;&nbsp;</a></span>AD7194_CH</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define AD7194_CH</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">chn</td><td>)</td>
+          <td>&#160;&#160;&#160;chn</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a858e676e91ffcc494765dee591c70652"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a858e676e91ffcc494765dee591c70652">&#9670;&nbsp;</a></span>AD719X_CHN_ATTR</h2>
 
@@ -223,11 +243,11 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line">    {\</div>
-<div class="line">    .name = _name,\</div>
-<div class="line">    .priv = _priv,\</div>
-<div class="line">    .show = iio_ad719x_attr_get,\</div>
-<div class="line">    .store = iio_ad719x_attr_set\</div>
+<b>Value:</b><div class="fragment"><div class="line">        {\</div>
+<div class="line">        .name = _name,\</div>
+<div class="line">        .priv = _priv,\</div>
+<div class="line">        .show = iio_ad719x_attr_get,\</div>
+<div class="line">        .store = iio_ad719x_attr_set\</div>
 <div class="line">}</div>
 </div><!-- fragment -->
 </div>
@@ -319,7 +339,7 @@ Variables</h2></td></tr>
 <div class="line">    .scan_type = &amp;<a class="code" href="ad719x__iio_8c.html#afd1cc7b1d45e7d5f83e2ab1c92ab4e1c">ad719x_iio_scan_type</a>,\</div>
 <div class="line">    .attributes = iio_ad719x_ch_attributes\</div>
 <div class="line">}</div>
-<div class="ttc" id="aad719x__iio_8c_html_afd1cc7b1d45e7d5f83e2ab1c92ab4e1c"><div class="ttname"><a href="ad719x__iio_8c.html#afd1cc7b1d45e7d5f83e2ab1c92ab4e1c">ad719x_iio_scan_type</a></div><div class="ttdeci">struct scan_type ad719x_iio_scan_type</div><div class="ttdef"><b>Definition:</b> ad719x_iio.c:163</div></div>
+<div class="ttc" id="aad719x__iio_8c_html_afd1cc7b1d45e7d5f83e2ab1c92ab4e1c"><div class="ttname"><a href="ad719x__iio_8c.html#afd1cc7b1d45e7d5f83e2ab1c92ab4e1c">ad719x_iio_scan_type</a></div><div class="ttdeci">struct scan_type ad719x_iio_scan_type</div><div class="ttdef"><b>Definition:</b> ad719x_iio.c:166</div></div>
 </div><!-- fragment -->
 </div>
 </div>
