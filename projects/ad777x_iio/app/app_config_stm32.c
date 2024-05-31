@@ -2,7 +2,7 @@
  * @file    app_config_stm32.c
  * @brief   Source file for STM32 platform configurations
 ********************************************************************************
-* Copyright (c) 2022-2023 Analog Devices, Inc.
+* Copyright (c) 2022-2024 Analog Devices, Inc.
 * All rights reserved.
 *
 * This software is proprietary to Analog Devices, Inc. and its licensors.
@@ -132,6 +132,11 @@ struct stm32_pwm_init_param stm32_pwm_extra_init_params = {
 	.clock_divider = MCLK_PWM_CLK_DIVIDER
 };
 
+/* STM32 I2C Specific parameters */
+struct stm32_i2c_init_param stm32_i2c_extra_init_params = {
+	.i2c_timing = I2C_TIMING
+};
+
 /******************************************************************************/
 /************************** Functions Declaration *****************************/
 /******************************************************************************/
@@ -148,11 +153,11 @@ void stm32_system_init(void)
 {
 	HAL_Init();
 	SystemClock_Config();
-	MX_LPUART1_UART_Init();
+	MX_USART3_UART_Init();
 	MX_SPI1_Init();
 	MX_GPIO_Init();
 	MX_SAI1_Init();
-	MX_DMA_Init();
+	MX_GPDMA1_Init();
 	MX_ICACHE_Init();
 	MX_TIM1_Init();
 }
@@ -178,7 +183,7 @@ void ad777x_configure_intr_priority(void)
 
 	priority = NVIC_EncodePriority(priGroup, UART_PRE_EMPT_PRIORITY,
 				       UART_SUB_PRI_PRIORITY);
-	NVIC_SetPriority(LPUART1_IRQn, priority);
+	NVIC_SetPriority(USART3_IRQn, priority);
 
 }
 
