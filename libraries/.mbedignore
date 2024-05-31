@@ -30,6 +30,7 @@ no-OS/drivers/adc/max11205/
 no-OS/drivers/adc/max14001/
 no-OS/drivers/adc/max9611pmb/
 no-OS/drivers/adc/ad9656/
+no-OS/drivers/adc/ad796x/
 no-OS/drivers/adc/ad713x/iio_ad713x.c
 no-OS/drivers/adc/ad713x/iio_ad713x.h
 no-OS/drivers/adc/ad713x/iio_dual_ad713x.c

@@ -4,7 +4,7 @@
  *   @details This module contains the configurations needed for AD7134 IIO
  *            application
 ********************************************************************************
- * Copyright (c) 2021, 2023 Analog Devices, Inc.
+ * Copyright (c) 2021, 2023-24 Analog Devices, Inc.
  * All rights reserved.
  *
  * This software is proprietary to Analog Devices, Inc. and its licensors.
@@ -160,9 +160,7 @@ static struct no_os_i2c_init_param no_os_i2c_init_params = {
 	.device_id = I2C_DEVICE_ID,
 	.platform_ops = &i2c_ops,
 	.max_speed_hz = 100000,
-#if (ACTIVE_PLATFORM == MBED_PLATFORM)
 	.extra = &i2c_extra_init_params
-#endif
 };
 
 /* EEPROM init parameters */
@@ -172,7 +170,7 @@ static struct eeprom_24xx32a_init_param eeprom_extra_init_params = {
 
 /* EEPROM init parameters */
 static struct no_os_eeprom_init_param eeprom_init_params = {
-	.device_id = 0,
+	.device_id = I2C_DEVICE_ID,
 	.platform_ops = &eeprom_24xx32a_ops,
 	.extra = &eeprom_extra_init_params
 };
@@ -395,12 +393,11 @@ int32_t init_system(void)
 	if (init_tdm () != 0) {
 		return -EINVAL;
 	}
-#if (ACTIVE_PLATFORM == MBED_PLATFORM)
+
 	ret = eeprom_init(&eeprom_desc, &eeprom_init_params);
 	if (ret) {
 		return ret;
 	}
-#endif
 
 	return 0;
 }

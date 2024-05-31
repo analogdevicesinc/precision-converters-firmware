@@ -2,7 +2,7 @@
  *   @file   app_config.h
  *   @brief  Configuration file for AD7134 device application
 ******************************************************************************
-* Copyright (c) 2020-21, 2023 Analog Devices, Inc.
+* Copyright (c) 2020-21, 2023-24 Analog Devices, Inc.
 * All rights reserved.
 *
 * This software is proprietary to Analog Devices, Inc. and its licensors.
@@ -40,9 +40,6 @@
 #define TDM_MODE	0
 #define BIT_BANGING_MODE	1
 
-/* Select the active platform from list of supported platforms */
-#define ACTIVE_PLATFORM		MBED_PLATFORM
-
 /* Select the ADC data capture mode (default is CC mode) */
 #if !defined(DATA_CAPTURE_MODE)
 #define DATA_CAPTURE_MODE	CONTINUOUS_DATA_CAPTURE
@@ -60,9 +57,9 @@
 // **** Note for User: ACTIVE_DEVICE selection ****//
 /* Define the device type from the list of below device type defines (one at a time)
  * e.g. #define DEV_AD7134 -> This will make AD7134 as an active device.
- * The active device is default set to AD7134 if device type is not defined.
+ * The active device is default set to AD4134 if device type is not defined.
  * */
-//#define DEV_AD7134
+//#define DEV_AD4134
 
 /* Name of active device */
 #if defined (DEV_AD7134)
@@ -71,14 +68,14 @@
 #define ACTIVE_DEVICE_ID    ID_AD7134
 #elif defined (DEV_AD4134)
 #define ACTIVE_DEVICE_NAME	"ad4134"
-#define HW_MEZZANINE_NAME   "EVAL-AD4134ARDZ"
+#define HW_MEZZANINE_NAME   "EVAL-CN0561-ARDZ"
 #define ACTIVE_DEVICE_ID    ID_AD4134
 #else
-#warning No / Unsupported ADxxxxy symbol defined.AD7134 defined
-#define DEV_AD7134
-#define ACTIVE_DEVICE_NAME	"ad7134"
-#define HW_MEZZANINE_NAME   "EVAL-AD7134ARDZ"
-#define ACTIVE_DEVICE_ID    ID_AD7134
+#warning No / Unsupported ADxxxxy symbol defined.AD4134 defined
+#define DEV_AD4134
+#define ACTIVE_DEVICE_NAME	"ad4134"
+#define HW_MEZZANINE_NAME   "EVAL-CN0561-ARDZ"
+#define ACTIVE_DEVICE_ID    ID_AD4134
 #endif
 
 /* Enable the UART/VirtualCOM port connection (default VCOM) */
@@ -104,12 +101,15 @@
 #if (ACTIVE_PLATFORM == STM32_PLATFORM)
 #include "app_config_stm32.h"
 
+#define HW_CARRIER_NAME         NUCLEO_H563ZI
+
 /* Redefine the init params structure mapping w.r.t. platform */
 #define uart_extra_init_params stm32_uart_extra_init_params
 #define spi_extra_init_params stm32_spi_extra_init_params
 #define tdm_extra_init_params stm32_tdm_extra_init_params
 #define ext_int_extra_init_params stm32_trigger_gpio_irq_init_params
 #define gpio_pdn_extra_init_params stm32_pdn_extra_init_params
+#define i2c_extra_init_params stm32_i2c_extra_init_params
 #define tdm_platform_ops      stm32_tdm_platform_ops
 #define spi_ops 			  stm32_spi_ops
 #define uart_ops              stm32_uart_ops

@@ -2,7 +2,7 @@
  *   @file    ad7134_iio.c
  *   @brief   Implementation of AD7134 IIO apllication interfaces
 ********************************************************************************
- * Copyright (c) 2020-21, 2023 Analog Devices, Inc.
+ * Copyright (c) 2020-21, 2023-24 Analog Devices, Inc.
  *
  * This software is proprietary to Analog Devices, Inc. and its licensors.
  * By using this software you agree to the terms of the associated
@@ -39,7 +39,7 @@
 #define ADC_DEFAULT_SCALE	((ADC_DEFAULT_REF_VOLTAGE / (ADC_MAX_COUNT_BIPOLAR)) * 1000)
 
 /* IIO trigger name */
-#define AD7134_IIO_TRIGGER_NAME		"ad7134_iio_trigger"
+#define AD7134_IIO_TRIGGER_NAME		"ad4134_iio_trigger"
 
 /* Number of IIO devices */
 #define NUM_OF_IIO_DEVICES	1
@@ -753,7 +753,6 @@ int32_t ad7134_iio_initialize(void)
 	if (init_status) {
 		return init_status;
 	}
-#if (ACTIVE_PLATFORM == MBED_PLATFORM)
 	/* Read context attributes */
 	init_status = get_iio_context_attributes(&iio_init_params.ctx_attrs,
 			&iio_init_params.nb_ctx_attr,
@@ -765,9 +764,7 @@ int32_t ad7134_iio_initialize(void)
 		return init_status;
 	}
 
-	// TODO- Context attribute validation is TBD for STM32 HAL platform
 	if (hw_mezzanine_is_valid) {
-#endif
 		/* Initialize the AD7134 IIO Interface */
 		init_status = iio_ad7134_init(&p_iio_ad7134_dev);
 		if (init_status) {
@@ -786,9 +783,7 @@ int32_t ad7134_iio_initialize(void)
 #if (DATA_CAPTURE_MODE == CONTINUOUS_DATA_CAPTURE)
 		iio_init_params.nb_trigs++;
 #endif
-#if (ACTIVE_PLATFORM == MBED_PLATFORM)
 	}
-#endif
 
 	/* Initialize the IIO interface */
 	iio_init_params.uart_desc = uart_iio_com_desc;
