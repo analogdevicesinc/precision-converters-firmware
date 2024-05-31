@@ -14,7 +14,7 @@ Supported Hardware
 **Supported Carrier Boards:**
 
 * `SDP-K1 With Mbed Platform <https://os.mbed.com/platforms/SDP_K1/>`_
-* `Nucleo-L552ZEQ With STM32 Platform <https://os.mbed.com/platforms/ST-Nucleo-L552ZE-Q/>`_
+* `Nucleo-H563ZI With STM32 Platform <https://www.st.com/en/evaluation-tools/nucleo-h563zi.html>`_
 
 ============
 Introduction
@@ -55,7 +55,7 @@ and USB cable.
 Connect the EVAL-AD777x board to SDP-K1 board (or any other Mbed enabled controller 
 board or an equivalent STM32 board). Connect controller board to the PC using the USB cable. 
 
-   .. image:: /source/projects/ad777x_iio/stm_diagram_updated.png
+   .. image:: /source/projects/ad777x_iio/ad777x_hardware_interface.png
       :width: 600
 
 ===============
@@ -64,11 +64,11 @@ Jumper Settings
 
 **SDP-K1:**
 
-Connect the VIO_ADJUST jumper on the SDP-K1 board to 3.3V position to drive SDP-K1 GPIOs at 3.3V
+Connect the VIO_ADJUST jumper on the SDP-K1/Nucleo board to 3.3V position to drive SDP-K1 GPIOs at 3.3V
 
-**Nucleo L552ZEQ for STM32 platform:**
+**Nucleo H563ZI  for STM32 platform:**
 
-The Nucleo L552ZEQ board has been used to develop and test the STM32 firmware.Please refer to the board user guide `Nucleo-L552ZEQ User Manual <https://www.st.com/content/ccc/resource/technical/document/user_manual/group1/ad/a4/bd/5e/14/15/4e/e8/DM00615305/files/DM00615305.pdf/jcr:content/translations/en.DM00615305.pdf>`_
+The Nucleo H563ZI  board has been used to develop and test the STM32 firmware.Please refer to the board user guide `Nucleo-H563ZI User Manual <https://www.st.com/resource/en/user_manual/um3115-stm32h5-nucleo144-board-mb1404-stmicroelectronics.pdf>`_
 
 **EVAL-AD777x:**
 
