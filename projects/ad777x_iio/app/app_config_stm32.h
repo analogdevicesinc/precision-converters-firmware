@@ -2,7 +2,7 @@
  *   @file    app_config_mbed.h
  *   @brief   Header file for STM32 platform configurations
 ********************************************************************************
- * Copyright (c) 2022-2023 Analog Devices, Inc.
+ * Copyright (c) 2022-2024 Analog Devices, Inc.
  * All rights reserved.
  *
  * This software is proprietary to Analog Devices, Inc. and its licensors.
@@ -30,9 +30,9 @@
 /********************** Macros and Constants Definition ***********************/
 /******************************************************************************/
 
-/* Note: The NUCLEO-L552ZEQ board with the STM32L552ZE MCU has been used
-* for developing the firmware. The below parameters will change depending
-* on the controller used. */
+/* Note: The NUCLEO-H563ZI board with the STM32H563ZIT6 MCU has been used
+ * for developing the firmware. The below parameters will change depending
+ * on the controller used. */
 
 /* STM32 SPI Macro definitions */
 #define STM32_SPI_ID			1		// SPI1
@@ -40,7 +40,7 @@
 #define SPI_CSB					14		// GPIO Pin 14
 
 /* GPIO Pins for the Pin control mode in AD777x */
-#define GPIO_RESET_PIN			15 	// PF15
+#define GPIO_RESET_PIN			14 	// PG14
 #define GPIO_MODE0_PIN			0   // Unused
 #define GPIO_MODE1_PIN			0   // Unused
 #define GPIO_MODE2_PIN			0   // Unused
@@ -49,13 +49,13 @@
 #define GPIO_DCLK0_PIN			0   // Unused
 #define GPIO_DCLK1_PIN			0   // Unused
 #define GPIO_DCLK2_PIN			0   // Unused
-#define GPIO_SYNC_IN_PIN		1 	// PG1
-#define GPIO_CONVST_SAR_PIN		8 	// PD8
-#define GPIO_DRDY_PIN				12  // PF12
-#define GPIO_ERROR_LED			LED_RED_Pin
+#define GPIO_SYNC_IN_PIN		7 	// PB7
+#define GPIO_CONVST_SAR_PIN		6 	// PB6
+#define GPIO_DRDY_PIN				3  // PF3
+#define GPIO_ERROR_LED			LED3_RED_Pin
 
 /* Port names */
-#define GPIO_RESET_PORT 	5 // GPIOF
+#define GPIO_RESET_PORT 	6 // GPIOG
 #define GPIO_MODE0_PORT		0 // Unused
 #define GPIO_MODE1_PORT		0 // Unused
 #define GPIO_MODE2_PORT		0 // Unused
@@ -63,28 +63,33 @@
 #define GPIO_DCLK0_PORT		0 // Unused
 #define GPIO_DCLK1_PORT		0 // Unused
 #define GPIO_DCLK2_PORT		0 // Unused
-#define GPIO_SYNC_PORT		6 // GPIOG
+#define GPIO_SYNC_PORT		1 // GPIOB
 #define GPIO_CONVST_PORT	3 // GPIOD
 #define GPIO_DRDY_PORT		5 // GPIOF
 #define GPIO_ERROR_LED_PORT		0 // GPIOA
 
 #define GPIO_TRIGGER_INT_PORT	EXTI_GPIOF
 
-#define APP_UART_HANDLE     &hlpuart1
+#define APP_UART_HANDLE     &huart3
 #define SAI_BASE            SAI1_Block_A
 
 #define IRQ_INT_ID			GPIO_DRDY_PIN
-#define UART_IRQ_ID			LPUART1_IRQn
-#define DMA_IRQ_ID 		    DMA1_Channel1_IRQn
+#define UART_IRQ_ID			USART3_IRQn
+#define DMA_IRQ_ID 		    GPDMA1_Channel7_IRQn
 #define DRDY_IRQ_CTRL_ID	GPIO_DRDY_PIN
 #define UART_DEVICE_ID      0
 #define SPI_DEVICE_ID		STM32_SPI_ID
-#define I2C_DEVICE_ID       0
+#define I2C_DEVICE_ID       1 // I2C1
 #define MCLK_PWM_ID			1 // Timer 1
 #define TIMER1_ID           1
 #define MCLK_PWM_PRESCALER  1
 #define MCLK_PWM_CHANNEL    3 // Channel 3
 #define MCLK_PWM_CLK_DIVIDER 2
+
+/* I2C timing register value for standard mode of operation
+ * Check here for more understanding on I2C timing register
+ * configuration: https://wiki.analog.com/resources/no-os/drivers/i2c */
+#define I2C_TIMING			0x00000E14
 
 /* pre-empt and sub priority for the peripherals except UART */
 #define PERIPH_INTR_PRE_EMPT_PRIORITY		7
@@ -147,7 +152,8 @@ extern struct stm32_gpio_init_param stm32_gpio_error_extra_init_params;
 extern struct stm32_gpio_irq_init_param stm32_trigger_gpio_irq_init_params;
 extern struct stm32_tdm_init_param 	stm32_tdm_extra_init_params;
 extern struct stm32_pwm_init_param stm32_pwm_extra_init_params;
-extern UART_HandleTypeDef hlpuart1;
+extern struct stm32_i2c_init_param stm32_i2c_extra_init_params;
+extern UART_HandleTypeDef huart3;
 extern bool data_capture_operation;
 extern struct iio_device_data *ad777x_iio_dev_data;
 void SystemClock_Config(void);

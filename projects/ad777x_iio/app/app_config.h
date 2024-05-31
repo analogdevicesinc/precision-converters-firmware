@@ -2,7 +2,7 @@
  *   @file   app_config.h
  *   @brief  Configuration file for AD777x IIO firmware application
 ******************************************************************************
-* Copyright (c) 2022-2023 Analog Devices, Inc.
+* Copyright (c) 2022-2024 Analog Devices, Inc.
 * All rights reserved.
 *
 * This software is proprietary to Analog Devices, Inc. and its licensors.
@@ -27,8 +27,8 @@
 /******************************************************************************/
 
 /* List of supported platforms */
-#define STM32_PLATFORM		0
-#define MBED_PLATFORM		1
+#define STM32_PLATFORM		1
+#define MBED_PLATFORM		2
 
 /* List of supported data capture modes */
 #define BURST_DATA_CAPTURE		0
@@ -142,6 +142,7 @@
 #define trigger_gpio_irq_extra_params 	stm32_trigger_gpio_irq_init_params
 #define tdm_extra_init_params			stm32_tdm_extra_init_params
 #define pwm_extra_init_params   stm32_pwm_extra_init_params
+#define i2c_extra_init_params	stm32_i2c_extra_init_params
 
 #define spi_platform_ops 	stm32_spi_ops
 #define gpio_platform_ops	stm32_gpio_ops
@@ -153,7 +154,7 @@
 
 #define trigger_gpio_handle	0	// Unused macro
 
-#define HW_CARRIER_NAME		"NUCLEO-L552ZEQ"
+#define HW_CARRIER_NAME		NUCLEO-H563ZI
 #elif (ACTIVE_PLATFORM == MBED_PLATFORM)
 #include "app_config_mbed.h"
 
