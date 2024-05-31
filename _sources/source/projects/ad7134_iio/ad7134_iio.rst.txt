@@ -13,7 +13,7 @@ Supported Hardware
 **Supported Carrier Boards:**
 
 * `SDP-K1 With Mbed Platform <https://os.mbed.com/platforms/SDP_K1/>`_
-* `Nucleo-L552ZEQ With STM32 Platform <https://os.mbed.com/platforms/ST-Nucleo-L552ZE-Q/>`_
+* `Nucleo-H563ZI With STM32 Platform <https://www.st.com/en/evaluation-tools/nucleo-h563zi.html>`_
 
 ============
 Introduction

@@ -100,76 +100,76 @@ $(function() {
 <div class="line"><a name="l00040"></a><span class="lineno"><a class="line" href="ad7134__iio_2app_2app__config_8h.html#aca23c6c07c3f12eee05b0e977095f019">   40</a></span>&#160;<span class="preprocessor">#define TDM_MODE    0</span></div>
 <div class="line"><a name="l00041"></a><span class="lineno"><a class="line" href="ad7134__iio_2app_2app__config_8h.html#a864c497154e1762311383cad47603a5a">   41</a></span>&#160;<span class="preprocessor">#define BIT_BANGING_MODE    1</span></div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="comment">/* Select the active platform from list of supported platforms */</span></div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="preprocessor">#define ACTIVE_PLATFORM     MBED_PLATFORM</span></div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160; </div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="comment">/* Select the ADC data capture mode (default is CC mode) */</span></div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="preprocessor">#if !defined(DATA_CAPTURE_MODE)</span></div>
-<div class="line"><a name="l00048"></a><span class="lineno"><a class="line" href="ad7134__iio_2app_2app__config_8h.html#a009f13797a328ac4e6002eda587cfaab">   48</a></span>&#160;<span class="preprocessor">#define DATA_CAPTURE_MODE   CONTINUOUS_DATA_CAPTURE</span></div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160; </div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="comment">/* Select the platform (default is MBED platform) */</span></div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="preprocessor">#if !defined(ACTIVE_PLATFORM)</span></div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="preprocessor">#define ACTIVE_PLATFORM MBED_PLATFORM</span></div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="comment">/* Macros for stringification */</span></div>
-<div class="line"><a name="l00057"></a><span class="lineno"><a class="line" href="ad7134__iio_2app_2app__config_8h.html#a03943706e48069237cd57f2d35ca987e">   57</a></span>&#160;<span class="preprocessor">#define XSTR(s)     #s</span></div>
-<div class="line"><a name="l00058"></a><span class="lineno"><a class="line" href="ad7134__iio_2app_2app__config_8h.html#a6388870e639eee9c0a69446876f1f8cc">   58</a></span>&#160;<span class="preprocessor">#define STR(s)      XSTR(s)</span></div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160; </div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="comment">// **** Note for User: ACTIVE_DEVICE selection ****//</span></div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="comment">/* Define the device type from the list of below device type defines (one at a time)</span></div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="comment"> * e.g. #define DEV_AD7134 -&gt; This will make AD7134 as an active device.</span></div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="comment"> * The active device is default set to AD7134 if device type is not defined.</span></div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="comment"> * */</span></div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;<span class="comment">//#define DEV_AD7134</span></div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160; </div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="comment">/* Name of active device */</span></div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="preprocessor">#if defined (DEV_AD7134)</span></div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<span class="preprocessor">#define ACTIVE_DEVICE_NAME  &quot;ad7134&quot;</span></div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="preprocessor">#define HW_MEZZANINE_NAME   &quot;EVAL-AD7134ARDZ&quot;</span></div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="preprocessor">#define ACTIVE_DEVICE_ID    ID_AD7134</span></div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;<span class="preprocessor">#elif defined (DEV_AD4134)</span></div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<span class="preprocessor">#define ACTIVE_DEVICE_NAME  &quot;ad4134&quot;</span></div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="preprocessor">#define HW_MEZZANINE_NAME   &quot;EVAL-AD4134ARDZ&quot;</span></div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="preprocessor">#define ACTIVE_DEVICE_ID    ID_AD4134</span></div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;<span class="preprocessor">#else</span></div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;<span class="preprocessor">#warning No / Unsupported ADxxxxy symbol defined.AD7134 defined</span></div>
-<div class="line"><a name="l00078"></a><span class="lineno"><a class="line" href="ad7134__iio_2app_2app__config_8h.html#ac19f57d23c959c25d3dbb9cac0a1db87">   78</a></span>&#160;<span class="preprocessor">#define DEV_AD7134</span></div>
-<div class="line"><a name="l00079"></a><span class="lineno"><a class="line" href="ad7134__iio_2app_2app__config_8h.html#acd8913ebbe9b1e52fe7ca9e4d64f4107">   79</a></span>&#160;<span class="preprocessor">#define ACTIVE_DEVICE_NAME  &quot;ad7134&quot;</span></div>
-<div class="line"><a name="l00080"></a><span class="lineno"><a class="line" href="ad7134__iio_2app_2app__config_8h.html#aa66c3c12d5fb52251f997a80e567561d">   80</a></span>&#160;<span class="preprocessor">#define HW_MEZZANINE_NAME   &quot;EVAL-AD7134ARDZ&quot;</span></div>
-<div class="line"><a name="l00081"></a><span class="lineno"><a class="line" href="ad7134__iio_2app_2app__config_8h.html#a1187373991bc85d79c54e91e1b32be3d">   81</a></span>&#160;<span class="preprocessor">#define ACTIVE_DEVICE_ID    ID_AD7134</span></div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="comment">/* Select the ADC data capture mode (default is CC mode) */</span></div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="preprocessor">#if !defined(DATA_CAPTURE_MODE)</span></div>
+<div class="line"><a name="l00045"></a><span class="lineno"><a class="line" href="ad7134__iio_2app_2app__config_8h.html#a009f13797a328ac4e6002eda587cfaab">   45</a></span>&#160;<span class="preprocessor">#define DATA_CAPTURE_MODE   CONTINUOUS_DATA_CAPTURE</span></div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="comment">/* Select the platform (default is MBED platform) */</span></div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="preprocessor">#if !defined(ACTIVE_PLATFORM)</span></div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="preprocessor">#define ACTIVE_PLATFORM MBED_PLATFORM</span></div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160; </div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="comment">/* Macros for stringification */</span></div>
+<div class="line"><a name="l00054"></a><span class="lineno"><a class="line" href="ad7134__iio_2app_2app__config_8h.html#a03943706e48069237cd57f2d35ca987e">   54</a></span>&#160;<span class="preprocessor">#define XSTR(s)     #s</span></div>
+<div class="line"><a name="l00055"></a><span class="lineno"><a class="line" href="ad7134__iio_2app_2app__config_8h.html#a6388870e639eee9c0a69446876f1f8cc">   55</a></span>&#160;<span class="preprocessor">#define STR(s)      XSTR(s)</span></div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160; </div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="comment">// **** Note for User: ACTIVE_DEVICE selection ****//</span></div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="comment">/* Define the device type from the list of below device type defines (one at a time)</span></div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="comment"> * e.g. #define DEV_AD7134 -&gt; This will make AD7134 as an active device.</span></div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="comment"> * The active device is default set to AD4134 if device type is not defined.</span></div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="comment"> * */</span></div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="comment">//#define DEV_AD4134</span></div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160; </div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="comment">/* Name of active device */</span></div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;<span class="preprocessor">#if defined (DEV_AD7134)</span></div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="preprocessor">#define ACTIVE_DEVICE_NAME  &quot;ad7134&quot;</span></div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="preprocessor">#define HW_MEZZANINE_NAME   &quot;EVAL-AD7134ARDZ&quot;</span></div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="preprocessor">#define ACTIVE_DEVICE_ID    ID_AD7134</span></div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<span class="preprocessor">#elif defined (DEV_AD4134)</span></div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="preprocessor">#define ACTIVE_DEVICE_NAME  &quot;ad4134&quot;</span></div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="preprocessor">#define HW_MEZZANINE_NAME   &quot;EVAL-CN0561-ARDZ&quot;</span></div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;<span class="preprocessor">#define ACTIVE_DEVICE_ID    ID_AD4134</span></div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<span class="preprocessor">#else</span></div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="preprocessor">#warning No / Unsupported ADxxxxy symbol defined.AD4134 defined</span></div>
+<div class="line"><a name="l00075"></a><span class="lineno"><a class="line" href="ad7134__iio_2app_2app__config_8h.html#a06f98d4fe617bffd9b493461e780ec8d">   75</a></span>&#160;<span class="preprocessor">#define DEV_AD4134</span></div>
+<div class="line"><a name="l00076"></a><span class="lineno"><a class="line" href="ad7134__iio_2app_2app__config_8h.html#acd8913ebbe9b1e52fe7ca9e4d64f4107">   76</a></span>&#160;<span class="preprocessor">#define ACTIVE_DEVICE_NAME  &quot;ad4134&quot;</span></div>
+<div class="line"><a name="l00077"></a><span class="lineno"><a class="line" href="ad7134__iio_2app_2app__config_8h.html#aa66c3c12d5fb52251f997a80e567561d">   77</a></span>&#160;<span class="preprocessor">#define HW_MEZZANINE_NAME   &quot;EVAL-CN0561-ARDZ&quot;</span></div>
+<div class="line"><a name="l00078"></a><span class="lineno"><a class="line" href="ad7134__iio_2app_2app__config_8h.html#a1187373991bc85d79c54e91e1b32be3d">   78</a></span>&#160;<span class="preprocessor">#define ACTIVE_DEVICE_ID    ID_AD4134</span></div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160; </div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;<span class="comment">/* Enable the UART/VirtualCOM port connection (default VCOM) */</span></div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;<span class="comment">//#define USE_PHY_COM_PORT      // Uncomment to select UART</span></div>
 <div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160; </div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<span class="comment">/* Enable the UART/VirtualCOM port connection (default VCOM) */</span></div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;<span class="comment">//#define USE_PHY_COM_PORT      // Uncomment to select UART</span></div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160; </div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;<span class="preprocessor">#if !defined(USE_PHY_COM_PORT)</span></div>
-<div class="line"><a name="l00088"></a><span class="lineno"><a class="line" href="ad7134__iio_2app_2app__config_8h.html#acfe9e882702f650dcb55150063d1d2a1">   88</a></span>&#160;<span class="preprocessor">#define USE_VIRTUAL_COM_PORT</span></div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160; </div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;<span class="comment">/* Note: The STM32 platform supports TDM Mode of data capturing.</span></div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;<span class="comment"> * and the MBED platform supports Bit Banging Mode. */</span></div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;<span class="preprocessor">#if !defined(INTERFACE_MODE)</span></div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;<span class="preprocessor">#if (ACTIVE_PLATFORM == STM32_PLATFORM)</span></div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;<span class="preprocessor">#define INTERFACE_MODE TDM_MODE</span></div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;<span class="preprocessor">#else </span><span class="comment">// Mbed</span></div>
-<div class="line"><a name="l00097"></a><span class="lineno"><a class="line" href="ad7134__iio_2app_2app__config_8h.html#a44fa7474e0e805f22fefd9acba975758">   97</a></span>&#160;<span class="preprocessor">#define INTERFACE_MODE BIT_BANGING_MODE</span></div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<span class="preprocessor">#if !defined(USE_PHY_COM_PORT)</span></div>
+<div class="line"><a name="l00085"></a><span class="lineno"><a class="line" href="ad7134__iio_2app_2app__config_8h.html#acfe9e882702f650dcb55150063d1d2a1">   85</a></span>&#160;<span class="preprocessor">#define USE_VIRTUAL_COM_PORT</span></div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160; </div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;<span class="comment">/* Note: The STM32 platform supports TDM Mode of data capturing.</span></div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;<span class="comment"> * and the MBED platform supports Bit Banging Mode. */</span></div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;<span class="preprocessor">#if !defined(INTERFACE_MODE)</span></div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;<span class="preprocessor">#if (ACTIVE_PLATFORM == STM32_PLATFORM)</span></div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;<span class="preprocessor">#define INTERFACE_MODE TDM_MODE</span></div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;<span class="preprocessor">#else </span><span class="comment">// Mbed</span></div>
+<div class="line"><a name="l00094"></a><span class="lineno"><a class="line" href="ad7134__iio_2app_2app__config_8h.html#a44fa7474e0e805f22fefd9acba975758">   94</a></span>&#160;<span class="preprocessor">#define INTERFACE_MODE BIT_BANGING_MODE</span></div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160; </div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;<span class="comment">/* Bytes per sample (Note: 2 bytes needed per sample) */</span></div>
+<div class="line"><a name="l00099"></a><span class="lineno"><a class="line" href="ad7134__iio_2app_2app__config_8h.html#a25065cd833bcfecfb404093aed3edaca">   99</a></span>&#160;<span class="preprocessor">#define BYTES_PER_SAMPLE    sizeof(uint16_t)</span></div>
 <div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160; </div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;<span class="comment">/* Bytes per sample (Note: 2 bytes needed per sample) */</span></div>
-<div class="line"><a name="l00102"></a><span class="lineno"><a class="line" href="ad7134__iio_2app_2app__config_8h.html#a25065cd833bcfecfb404093aed3edaca">  102</a></span>&#160;<span class="preprocessor">#define BYTES_PER_SAMPLE    sizeof(uint16_t)</span></div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;<span class="preprocessor">#if (ACTIVE_PLATFORM == STM32_PLATFORM)</span></div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;<span class="preprocessor">#include &quot;app_config_stm32.h&quot;</span></div>
 <div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160; </div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;<span class="preprocessor">#if (ACTIVE_PLATFORM == STM32_PLATFORM)</span></div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;<span class="preprocessor">#include &quot;app_config_stm32.h&quot;</span></div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160; </div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;<span class="comment">/* Redefine the init params structure mapping w.r.t. platform */</span></div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;<span class="preprocessor">#define uart_extra_init_params stm32_uart_extra_init_params</span></div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;<span class="preprocessor">#define spi_extra_init_params stm32_spi_extra_init_params</span></div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;<span class="preprocessor">#define tdm_extra_init_params stm32_tdm_extra_init_params</span></div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;<span class="preprocessor">#define ext_int_extra_init_params stm32_trigger_gpio_irq_init_params</span></div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;<span class="preprocessor">#define gpio_pdn_extra_init_params stm32_pdn_extra_init_params</span></div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;<span class="preprocessor">#define HW_CARRIER_NAME         NUCLEO_H563ZI</span></div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160; </div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;<span class="comment">/* Redefine the init params structure mapping w.r.t. platform */</span></div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;<span class="preprocessor">#define uart_extra_init_params stm32_uart_extra_init_params</span></div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;<span class="preprocessor">#define spi_extra_init_params stm32_spi_extra_init_params</span></div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;<span class="preprocessor">#define tdm_extra_init_params stm32_tdm_extra_init_params</span></div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;<span class="preprocessor">#define ext_int_extra_init_params stm32_trigger_gpio_irq_init_params</span></div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;<span class="preprocessor">#define gpio_pdn_extra_init_params stm32_pdn_extra_init_params</span></div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;<span class="preprocessor">#define i2c_extra_init_params stm32_i2c_extra_init_params</span></div>
 <div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;<span class="preprocessor">#define tdm_platform_ops      stm32_tdm_platform_ops</span></div>
 <div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;<span class="preprocessor">#define spi_ops               stm32_spi_ops</span></div>
 <div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;<span class="preprocessor">#define uart_ops              stm32_uart_ops</span></div>
@@ -278,7 +278,7 @@ $(function() {
 <div class="ttc" id="aad405x__iio_2app_2app__config_8h_html_afe54820c1e9d26888bd767dd63680b2d"><div class="ttname"><a href="ad405x__iio_2app_2app__config_8h.html#afe54820c1e9d26888bd767dd63680b2d">uart_console_stdio_desc</a></div><div class="ttdeci">struct no_os_uart_desc * uart_console_stdio_desc</div><div class="ttdef"><b>Definition:</b> app_config.c:100</div></div>
 <div class="ttc" id="aad7134__iio_2app_2app__config_8h_html_a0e575b7e7a708a26a7c461049c9985ac"><div class="ttname"><a href="ad7134__iio_2app_2app__config_8h.html#a0e575b7e7a708a26a7c461049c9985ac">pdn_init_param</a></div><div class="ttdeci">struct no_os_gpio_init_param pdn_init_param</div><div class="ttdef"><b>Definition:</b> app_config.c:151</div></div>
 <div class="ttc" id="aad7134__iio_2app_2app__config_8h_html_a9dfb4e5e1cd1d79c83534f0f9a383736"><div class="ttname"><a href="ad7134__iio_2app_2app__config_8h.html#a9dfb4e5e1cd1d79c83534f0f9a383736">ad7134_tdm_desc</a></div><div class="ttdeci">struct no_os_tdm_desc * ad7134_tdm_desc</div></div>
-<div class="ttc" id="aad7134__iio_2app_2app__config_8h_html_ab62a2c5c966054811da9181f170033ef"><div class="ttname"><a href="ad7134__iio_2app_2app__config_8h.html#ab62a2c5c966054811da9181f170033ef">external_int_desc</a></div><div class="ttdeci">struct no_os_irq_ctrl_desc * external_int_desc</div><div class="ttdef"><b>Definition:</b> app_config.c:190</div></div>
+<div class="ttc" id="aad7134__iio_2app_2app__config_8h_html_ab62a2c5c966054811da9181f170033ef"><div class="ttname"><a href="ad7134__iio_2app_2app__config_8h.html#ab62a2c5c966054811da9181f170033ef">external_int_desc</a></div><div class="ttdeci">struct no_os_irq_ctrl_desc * external_int_desc</div><div class="ttdef"><b>Definition:</b> app_config.c:188</div></div>
 <div class="ttc" id="altc268x__console_2app_2app__config__mbed_8h_html"><div class="ttname"><a href="ltc268x__console_2app_2app__config__mbed_8h.html">app_config_mbed.h</a></div><div class="ttdoc">Header file for Mbed platform configurations.</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->

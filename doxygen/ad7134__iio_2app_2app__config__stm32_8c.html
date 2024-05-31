@@ -140,11 +140,13 @@ Variables</h2></td></tr>
 <tr class="separator:ae9b3636a64a6ddc6e338421a69ca0405"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad3de3d35084c611d563938544b067895"><td class="memItemLeft" align="right" valign="top">struct stm32_gpio_init_param&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad7134__iio_2app_2app__config__stm32_8c.html#ad3de3d35084c611d563938544b067895">stm32_pdn_extra_init_params</a></td></tr>
 <tr class="separator:ad3de3d35084c611d563938544b067895"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a247f0561bf59d7572c7894ad57822d3f"><td class="memItemLeft" align="right" valign="top">struct stm32_i2c_init_param&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad7134__iio_2app_2app__config__stm32_8c.html#a247f0561bf59d7572c7894ad57822d3f">stm32_i2c_extra_init_params</a></td></tr>
+<tr class="separator:a247f0561bf59d7572c7894ad57822d3f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>STM32 Specific configuration files for AD7134 IIO Application. </p>
 <p>This module contains the STM32 platform specific configurations</p>
-<p>Copyright (c) 2021 Analog Devices, Inc. All rights reserved.</p>
+<p>Copyright (c) 2021,2023-24 Analog Devices, Inc. All rights reserved.</p>
 <p>This software is proprietary to Analog Devices, Inc. and its licensors. By using this software you agree to the terms of the associated Analog Devices Software License Agreement. </p>
 </div><h2 class="groupheader">Function Documentation</h2>
 <a id="af31dad6f65ec19bb300fdd94269b9e8f"></a>
@@ -243,6 +245,24 @@ Variables</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Variable Documentation</h2>
+<a id="a247f0561bf59d7572c7894ad57822d3f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a247f0561bf59d7572c7894ad57822d3f">&#9670;&nbsp;</a></span>stm32_i2c_extra_init_params</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">struct stm32_i2c_init_param stm32_i2c_extra_init_params</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line">= {</div>
+<div class="line">    .i2c_timing = <a class="code" href="ad7134__iio_2app_2app__config__stm32_8h.html#a11e7d26bdb06febd4e1e79f765eab113">I2C_TIMING</a></div>
+<div class="line">}</div>
+<div class="ttc" id="aad7134__iio_2app_2app__config__stm32_8h_html_a11e7d26bdb06febd4e1e79f765eab113"><div class="ttname"><a href="ad7134__iio_2app_2app__config__stm32_8h.html#a11e7d26bdb06febd4e1e79f765eab113">I2C_TIMING</a></div><div class="ttdeci">#define I2C_TIMING</div><div class="ttdef"><b>Definition:</b> app_config_stm32.h:87</div></div>
+</div><!-- fragment -->
+</div>
+</div>
 <a id="ad3de3d35084c611d563938544b067895"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ad3de3d35084c611d563938544b067895">&#9670;&nbsp;</a></span>stm32_pdn_extra_init_params</h2>
 
