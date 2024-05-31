@@ -2,7 +2,7 @@
  *   @file    app_config_stm32.h
  *   @brief   Header file for STM32 platform configurations
 ********************************************************************************
- * Copyright (c) 2021 Analog Devices, Inc.
+ * Copyright (c) 2021,2023-24 Analog Devices, Inc.
  * All rights reserved.
  *
  * This software is proprietary to Analog Devices, Inc. and its licensors.
@@ -30,19 +30,19 @@
 /********************** Macros and Constants Definition ***********************/
 /******************************************************************************/
 
-/* The below pin mapping is specific to STM32L552ZE MCU on NUCLEO-L552ZE-Q Board */
+/* The below pin mapping is specific to STM32H563ZIT6 MCU on NUCLEO-H563ZI Board */
 #define STM32_SPI_ID			1  // SPI1
 #define SPI_CSB					14 // PD_14
 #define STM32_SPI_CS_PORT		3  // GPIO Port D
 
-#define DCLK_PIN		15 // PF15
+#define DCLK_PIN		14 // PG14
 #define ODR_PIN			13 // PE13
-#define DOUT0_PIN		14 // PF14
+#define DOUT0_PIN		14 // PE14
 #define DOUT1_PIN		11 // PE11
-#define PDN_PIN         8  // PD8
+#define PDN_PIN         6  // PB6
 
 #define GPIO_TRIGGER_INT_PORT 4 // PORTE
-#define PDN_PORT              3 // PORTD
+#define PDN_PORT              1 // PORTB
 
 /* STM32 specific UART parameters */
 #define STM32_UART_BASE	3
@@ -50,7 +50,7 @@
 /* STM32 specific SAI Parameters */
 #define STM32_SAI_BASE	SAI1_Block_A
 
-#define APP_UART_HANDLE     &hlpuart1
+#define APP_UART_HANDLE     &huart3
 
 /* TDM specific Parameters */
 #define TDM_DATA_SIZE			16
@@ -73,17 +73,22 @@
 #define		DCLK_IDR		0
 #define     DOUT0_IDR       0
 
-#define UART_IRQ_ID			  LPUART1_IRQn
+#define UART_IRQ_ID			  USART3_IRQn
 #define UART_DEVICE_ID  	  0
 #define SPI_DEVICE_ID		  STM32_SPI_ID
 #define trigger_gpio_handle	  0	// Unused macro
 #define IRQ_INT_ID			  ODR_PIN
-#define DMA_IRQ_ID			 DMA1_Channel1_IRQn
-#define I2C_DEVICE_ID           0
+#define DMA_IRQ_ID			 GPDMA1_Channel7_IRQn
+#define I2C_DEVICE_ID           1 // I2C1
+
+/* I2C timing register value for standard mode of operation
+ * Check here for more understanding on I2C timing register
+ * configuration: https://wiki.analog.com/resources/no-os/drivers/i2c */
+#define I2C_TIMING				0x00000E14
 
 /* Define the max possible sampling (or output data) rate for a given platform.
  * Note: Max possible ODR is 500KSPS per channel for continuous data capture on
- * IIO client. This is derived by testing the firmware on NUCLEO-F767 controller
+ * IIO client. This is derived by testing the firmware on NUCLEO-H563ZI controller
  * board. The max possible ODR can vary from board to board and data
  * continuity is not guaranteed above this ODR on IIO oscilloscope */
 #define SAMPLING_RATE		(500000)
@@ -97,7 +102,8 @@ extern struct stm32_spi_init_param stm32_spi_extra_init_params;
 extern struct stm32_tdm_init_param stm32_tdm_extra_init_params;
 extern struct stm32_gpio_irq_init_param stm32_trigger_gpio_irq_init_params;
 extern struct stm32_gpio_init_param stm32_pdn_extra_init_params;
-extern UART_HandleTypeDef hlpuart1;
+extern struct stm32_i2c_init_param stm32_i2c_extra_init_params;
+extern UART_HandleTypeDef huart3;
 extern bool data_capture_operation;
 extern struct iio_device_data *ad7134_iio_dev_data;
 extern void SystemClock_Config(void);

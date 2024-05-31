@@ -3,7 +3,7 @@
  * @brief   STM32 Specific configuration files for AD7134 IIO Application
  * @details This module contains the STM32 platform specific configurations
 ********************************************************************************
-* Copyright (c) 2021 Analog Devices, Inc.
+* Copyright (c) 2021,2023-24 Analog Devices, Inc.
 * All rights reserved.
 *
 * This software is proprietary to Analog Devices, Inc. and its licensors.
@@ -63,6 +63,11 @@ struct stm32_gpio_init_param stm32_pdn_extra_init_params = {
 	.mode = GPIO_MODE_OUTPUT_PP
 };
 
+/* STM32 I2C specific parameters */
+struct stm32_i2c_init_param stm32_i2c_extra_init_params = {
+	.i2c_timing = I2C_TIMING
+};
+
 /******************************************************************************/
 /************************** Functions Declaration *****************************/
 /******************************************************************************/
@@ -79,11 +84,11 @@ void stm32_system_init(void)
 {
 	HAL_Init();
 	SystemClock_Config();
-	MX_LPUART1_UART_Init();
+	MX_USART3_UART_Init();
 	MX_SPI1_Init();
 	MX_GPIO_Init();
 	MX_SAI1_Init();
-	MX_DMA_Init();
+	MX_GPDMA1_Init();
 	MX_ICACHE_Init();
 }
 

@@ -30,24 +30,23 @@ def test_ad7134(serial_port, device_name, target_reset):
     ad7134_dev._rx_data_type = np.int32
     ad7134_dev.rx_output_type = "raw"
     ad7134_dev._rx_stack_interleaved = True
-    ad7134_dev.rx_enabled_channels = [chn]
+    # Enabling all channels as the FW doesn't suport enabling single channel
+    ad7134_dev.rx_enabled_channels = ["voltage0","voltage1","voltage2","voltage3"]
     ad7134_dev.rx_buffer_size = 100
+
     # Read the Raw Attribute once to update the scale and offset values
     adc_raw = ad7134_dev.channel[chn].raw
     offset =  ad7134_dev.channel[chn].offset
     scale = ad7134_dev.channel[chn].scale
     
-    # Note: The chn_data holds the sampled values of all channels irrespective of the chosen
-    # channel in rx_enabled_channels.
     chn_data = ad7134_dev.rx()
 
     data = ndarray((ad7134_dev.rx_buffer_size,),int)
     
-    # Extract the data of enabled channels in rx_enabled_channels
-    for sample_index in range(0, len(data)):
-        for ch_id in range (0, len(ad7134_dev.rx_enabled_channels)): 
-            data[sample_index] = (chn_data[ad7134_dev.rx_enabled_channels[ch_id]]+ offset)*(scale)
-            sample_index = sample_index + len(ad7134_dev.channel)
+    # Extract the data of the enabled channel set in 'chn'
+    for sample_index in range(len(data)):
+        # Apply the Offset and Scale to the raw data of enabled channel 'chn'
+        data[sample_index] = (chn_data[chn][sample_index]+ offset)*scale
     
     
     # Write data into CSV file (tests/output directory)

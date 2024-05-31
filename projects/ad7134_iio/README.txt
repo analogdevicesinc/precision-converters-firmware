@@ -6,7 +6,7 @@ Overview
 --------
 This is a IIO based firmware application to evalute the AD7134/AD4134 device.
 This code was developed and tested on SDP-K1 controller board for mbed platform : https://os.mbed.com/platforms/SDP_K1/.
-and the NucleoL552ZEQ Board for STM32 platform: https://os.mbed.com/platforms/ST-Nucleo-L552ZE-Q/
+and the Nucleo-H563ZI Board for STM32 platform: https://www.st.com/en/evaluation-tools/nucleo-h563zi.html
 
 Product details:
 https://www.analog.com/en/products/ad7134.html
@@ -38,9 +38,9 @@ A detailed user guide on SDP-K1 controller board is available here:
 https://os.mbed.com/platforms/SDP_K1/
 https://www.analog.com/en/design-center/evaluation-hardware-and-software/evaluation-boards-kits/SDP-K1.html.
 
-A Detailed user guide on Nucleo-L552ZEQ board is available here:
-https://os.mbed.com/platforms/ST-Nucleo-L552ZE-Q/
-https://www.st.com/content/ccc/resource/technical/document/user_manual/group1/ad/a4/bd/5e/14/15/4e/e8/DM00615305/files/DM00615305.pdf/jcr:content/translations/en.DM00615305.pdf
+A Detailed user guide on Nucleo-H563ZI board is available here:
+https://www.st.com/en/evaluation-tools/nucleo-h563zi.html
+https://www.st.com/resource/en/user_manual/um3115-stm32h5-nucleo144-board-mb1404-stmicroelectronics.pdf
 
 Copyright (c) 2023 Analog Devices, Inc.  All rights reserved.
 
