@@ -15,7 +15,7 @@ Supported Hardware
 
 **Supported Carrier Boards:**
 
-* `SDP-K1 With Mbed Platform <https://os.mbed.com/platforms/SDP_K1/>`_
+* SDP-K1 With `Mbed <https://os.mbed.com/platforms/SDP_K1/>`_ and STM32 platforms.
 
 ============
 Introduction
