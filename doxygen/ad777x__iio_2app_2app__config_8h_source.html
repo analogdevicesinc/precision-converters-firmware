@@ -87,8 +87,8 @@ $(function() {
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="comment">/******************************************************************************/</span></div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="comment">/* List of supported platforms */</span></div>
-<div class="line"><a name="l00030"></a><span class="lineno"><a class="line" href="ad777x__iio_2app_2app__config_8h.html#adaf57100c5a484ccdbcea26419175a82">   30</a></span>&#160;<span class="preprocessor">#define STM32_PLATFORM      0</span></div>
-<div class="line"><a name="l00031"></a><span class="lineno"><a class="line" href="ad777x__iio_2app_2app__config_8h.html#a053837cf4ec7ed65d18c930324db4f1e">   31</a></span>&#160;<span class="preprocessor">#define MBED_PLATFORM       1</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno"><a class="line" href="ad777x__iio_2app_2app__config_8h.html#adaf57100c5a484ccdbcea26419175a82">   30</a></span>&#160;<span class="preprocessor">#define STM32_PLATFORM      1</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno"><a class="line" href="ad777x__iio_2app_2app__config_8h.html#a053837cf4ec7ed65d18c930324db4f1e">   31</a></span>&#160;<span class="preprocessor">#define MBED_PLATFORM       2</span></div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="comment">/* List of supported data capture modes */</span></div>
 <div class="line"><a name="l00034"></a><span class="lineno"><a class="line" href="ad777x__iio_2app_2app__config_8h.html#ad5fe849d541a8b8976183ae744c574b4">   34</a></span>&#160;<span class="preprocessor">#define BURST_DATA_CAPTURE      0</span></div>
@@ -202,154 +202,155 @@ $(function() {
 <div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;<span class="preprocessor">#define trigger_gpio_irq_extra_params   stm32_trigger_gpio_irq_init_params</span></div>
 <div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;<span class="preprocessor">#define tdm_extra_init_params           stm32_tdm_extra_init_params</span></div>
 <div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;<span class="preprocessor">#define pwm_extra_init_params   stm32_pwm_extra_init_params</span></div>
-<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160; </div>
-<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;<span class="preprocessor">#define spi_platform_ops    stm32_spi_ops</span></div>
-<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;<span class="preprocessor">#define gpio_platform_ops   stm32_gpio_ops</span></div>
-<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;<span class="preprocessor">#define trigger_gpio_irq_ops stm32_gpio_irq_ops</span></div>
-<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;<span class="preprocessor">#define uart_ops             stm32_uart_ops</span></div>
-<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;<span class="preprocessor">#define tdm_platform_ops    stm32_tdm_platform_ops</span></div>
-<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;<span class="preprocessor">#define i2c_ops             stm32_i2c_ops</span></div>
-<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;<span class="preprocessor">#define pwm_ops             stm32_pwm_ops</span></div>
-<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160; </div>
-<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;<span class="preprocessor">#define trigger_gpio_handle 0   </span><span class="comment">// Unused macro</span></div>
-<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160; </div>
-<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;<span class="preprocessor">#define HW_CARRIER_NAME     &quot;NUCLEO-L552ZEQ&quot;</span></div>
-<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;<span class="preprocessor">#elif (ACTIVE_PLATFORM == MBED_PLATFORM)</span></div>
-<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="ltc268x__console_2app_2app__config__mbed_8h.html">app_config_mbed.h</a>&quot;</span></div>
-<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160; </div>
-<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;<span class="comment">/* Re-define platform specific parameters */</span></div>
-<div class="line"><a name="l00161"></a><span class="lineno"><a class="line" href="ad777x__iio_2app_2app__config_8h.html#a0218303728bba1f6bc0b725266ccbbd4">  161</a></span>&#160;<span class="preprocessor">#define uart_extra_init_params mbed_uart_extra_init_params</span></div>
-<div class="line"><a name="l00162"></a><span class="lineno"><a class="line" href="ad777x__iio_2app_2app__config_8h.html#a5d0039d2f60b5109c03e1daf4134b20c">  162</a></span>&#160;<span class="preprocessor">#define vcom_extra_init_params mbed_vcom_extra_init_params</span></div>
-<div class="line"><a name="l00163"></a><span class="lineno"><a class="line" href="ad777x__iio_2app_2app__config_8h.html#ab8a3cecf3246ca49585f55dbb7b9d435">  163</a></span>&#160;<span class="preprocessor">#define spi_extra_init_params   mbed_spi_extra_init_params</span></div>
-<div class="line"><a name="l00164"></a><span class="lineno"><a class="line" href="ad777x__iio_2app_2app__config_8h.html#a3e36d4d64e31d4b3b9e9d2f6d83ba0ce">  164</a></span>&#160;<span class="preprocessor">#define i2c_extra_init_params   mbed_i2c_extra_init_params</span></div>
-<div class="line"><a name="l00165"></a><span class="lineno"><a class="line" href="ad777x__iio_2app_2app__config_8h.html#a301d0f121f6894a5dca801490980d984">  165</a></span>&#160;<span class="preprocessor">#define gpio_reset_extra_init_params    mbed_gpio_reset_extra_init_params</span></div>
-<div class="line"><a name="l00166"></a><span class="lineno"><a class="line" href="ad777x__iio_2app_2app__config_8h.html#a6b1fe8915699a90afc8909cd6bfa1ad8">  166</a></span>&#160;<span class="preprocessor">#define gpio_mode0_extra_init_params    mbed_gpio_mode0_extra_init_params</span></div>
-<div class="line"><a name="l00167"></a><span class="lineno"><a class="line" href="ad777x__iio_2app_2app__config_8h.html#a389a00f5d82656848463724e8ed58f87">  167</a></span>&#160;<span class="preprocessor">#define gpio_mode1_extra_init_params    mbed_gpio_mode1_extra_init_params</span></div>
-<div class="line"><a name="l00168"></a><span class="lineno"><a class="line" href="ad777x__iio_2app_2app__config_8h.html#a50e3254aa6c76cf754b604b83c2cb5f2">  168</a></span>&#160;<span class="preprocessor">#define gpio_mode2_extra_init_params    mbed_gpio_mode2_extra_init_params</span></div>
-<div class="line"><a name="l00169"></a><span class="lineno"><a class="line" href="ad777x__iio_2app_2app__config_8h.html#ac0205f1eaf6eb6f76573360cf4613c60">  169</a></span>&#160;<span class="preprocessor">#define gpio_mode3_extra_init_params    mbed_gpio_mode3_extra_init_params</span></div>
-<div class="line"><a name="l00170"></a><span class="lineno"><a class="line" href="ad777x__iio_2app_2app__config_8h.html#ac44d2da74b59a3bf93dc849c841f7375">  170</a></span>&#160;<span class="preprocessor">#define gpio_dclk0_extra_init_params    mbed_gpio_dclk0_extra_init_params</span></div>
-<div class="line"><a name="l00171"></a><span class="lineno"><a class="line" href="ad777x__iio_2app_2app__config_8h.html#a074be722ea586e8c6a7434df33c70fb7">  171</a></span>&#160;<span class="preprocessor">#define gpio_dclk1_extra_init_params    mbed_gpio_dclk1_extra_init_params</span></div>
-<div class="line"><a name="l00172"></a><span class="lineno"><a class="line" href="ad777x__iio_2app_2app__config_8h.html#a0d977bb7d36579d3d4ff13e7a6023de4">  172</a></span>&#160;<span class="preprocessor">#define gpio_dclk2_extra_init_params    mbed_gpio_dclk2_extra_init_params</span></div>
-<div class="line"><a name="l00173"></a><span class="lineno"><a class="line" href="ad777x__iio_2app_2app__config_8h.html#af5948944427cf7fa1116d9d6d64efbca">  173</a></span>&#160;<span class="preprocessor">#define gpio_sync_in_extra_init_params  mbed_gpio_sync_in_extra_init_params</span></div>
-<div class="line"><a name="l00174"></a><span class="lineno"><a class="line" href="ad777x__iio_2app_2app__config_8h.html#ae45a511cb995a7ffd1dce8d2c630760b">  174</a></span>&#160;<span class="preprocessor">#define gpio_convst_sar_extra_init_params   mbed_gpio_convst_sar_extra_init_params</span></div>
-<div class="line"><a name="l00175"></a><span class="lineno"><a class="line" href="ad777x__iio_2app_2app__config_8h.html#a87a9f02fd547a1d7e6944387b7d47a9c">  175</a></span>&#160;<span class="preprocessor">#define gpio_drdy_extra_init_params mbed_gpio_drdy_extra_init_params</span></div>
-<div class="line"><a name="l00176"></a><span class="lineno"><a class="line" href="ad777x__iio_2app_2app__config_8h.html#aad4040fa98ea06bf94de952aadaee7e2">  176</a></span>&#160;<span class="preprocessor">#define gpio_error_extra_init_params    mbed_gpio_error_extra_init_params</span></div>
-<div class="line"><a name="l00177"></a><span class="lineno"><a class="line" href="ad777x__iio_2app_2app__config_8h.html#a94a5e0dc135efcaaeacfbaf36f4f5ff4">  177</a></span>&#160;<span class="preprocessor">#define trigger_gpio_irq_extra_params mbed_trigger_gpio_irq_init_params</span></div>
-<div class="line"><a name="l00178"></a><span class="lineno"><a class="line" href="ad777x__iio_2app_2app__config_8h.html#ae91096eb29d71a7778d1bb6dda3f6dcc">  178</a></span>&#160;<span class="preprocessor">#define pwm_extra_init_params   mbed_pwm_init_params</span></div>
-<div class="line"><a name="l00179"></a><span class="lineno"><a class="line" href="ad777x__iio_2app_2app__config_8h.html#af2fcad7b6d816c2ce329dbd011d6b80c">  179</a></span>&#160;<span class="preprocessor">#define spi_platform_ops    mbed_spi_ops</span></div>
-<div class="line"><a name="l00180"></a><span class="lineno"><a class="line" href="ad777x__iio_2app_2app__config_8h.html#a7bb5897c5faa9b4edb6bf5868a8dc75d">  180</a></span>&#160;<span class="preprocessor">#define i2c_ops     mbed_i2c_ops</span></div>
-<div class="line"><a name="l00181"></a><span class="lineno"><a class="line" href="ad777x__iio_2app_2app__config_8h.html#a7f9dd755def2926b7f07b5e0a1e6a403">  181</a></span>&#160;<span class="preprocessor">#define gpio_platform_ops   mbed_gpio_ops</span></div>
-<div class="line"><a name="l00182"></a><span class="lineno"><a class="line" href="ad777x__iio_2app_2app__config_8h.html#aea695cfd66cb4b1c25c5f56b59d9ad1e">  182</a></span>&#160;<span class="preprocessor">#define trigger_gpio_irq_ops    mbed_gpio_irq_ops</span></div>
-<div class="line"><a name="l00183"></a><span class="lineno"><a class="line" href="ad777x__iio_2app_2app__config_8h.html#acc53ed106567a5a56e1bdf6aa73728bc">  183</a></span>&#160;<span class="preprocessor">#define uart_ops                mbed_uart_ops</span></div>
-<div class="line"><a name="l00184"></a><span class="lineno"><a class="line" href="ad777x__iio_2app_2app__config_8h.html#ad7c095ac25ce9f903c7c0a9a50002bd4">  184</a></span>&#160;<span class="preprocessor">#define vcom_ops                mbed_virtual_com_ops</span></div>
-<div class="line"><a name="l00185"></a><span class="lineno"><a class="line" href="ad777x__iio_2app_2app__config_8h.html#a9b6ac61cf1859752ae6b375e319a55c5">  185</a></span>&#160;<span class="preprocessor">#define pwm_ops                 mbed_pwm_ops</span></div>
-<div class="line"><a name="l00186"></a><span class="lineno"><a class="line" href="ad777x__iio_2app_2app__config_8h.html#acccd839538293e59fffb48844b260d43">  186</a></span>&#160;<span class="preprocessor">#define trigger_gpio_handle 0   </span><span class="comment">// Unused macro</span></div>
-<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160; </div>
-<div class="line"><a name="l00188"></a><span class="lineno"><a class="line" href="ad777x__iio_2app_2app__config_8h.html#a53f88b148569ce9eaa56404b7b3c72f2">  188</a></span>&#160;<span class="preprocessor">#define HW_CARRIER_NAME     TARGET_NAME</span></div>
-<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160; </div>
-<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;<span class="comment">/* Enable/Disable the use of SDRAM for ADC data capture buffer */</span></div>
-<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;<span class="comment">// #define USE_SDRAM    // Uncomment to use SDRAM as data buffer</span></div>
-<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160; </div>
-<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;<span class="comment">/* Check if any serial port available for use as console stdio port */</span></div>
-<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;<span class="preprocessor">#if defined(USE_PHY_COM_PORT)</span></div>
-<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;<span class="comment">/* If PHY com is selected, VCOM or alternate PHY com port can act as a console stdio port */</span></div>
-<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;<span class="preprocessor">#if (ACTIVE_PLATFORM == MBED_PLATFORM)</span></div>
-<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;<span class="preprocessor">#define CONSOLE_STDIO_PORT_AVAILABLE</span></div>
-<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;<span class="preprocessor">#else</span></div>
-<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;<span class="comment">/* If VCOM is selected, PHY com port will/should act as a console stdio port */</span></div>
-<div class="line"><a name="l00202"></a><span class="lineno"><a class="line" href="ad777x__iio_2app_2app__config_8h.html#a7b9ca6f22e6111e9ab572c0af459467a">  202</a></span>&#160;<span class="preprocessor">#define CONSOLE_STDIO_PORT_AVAILABLE</span></div>
-<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160; </div>
-<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;<span class="comment">/* VCOM Serial number definition */</span></div>
-<div class="line"><a name="l00206"></a><span class="lineno"><a class="line" href="ad777x__iio_2app_2app__config_8h.html#a53e29efbf83712dcee0878d27965aedf">  206</a></span>&#160;<span class="preprocessor">#define FIRMWARE_NAME   &quot;ad777x_iio&quot;</span></div>
-<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160; </div>
-<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;<span class="preprocessor">#if !defined(PLATFORM_NAME)</span></div>
-<div class="line"><a name="l00209"></a><span class="lineno"><a class="line" href="ad777x__iio_2app_2app__config_8h.html#aa4688daf0f1e6dda714351a6e5a394c2">  209</a></span>&#160;<span class="preprocessor">#define PLATFORM_NAME   HW_CARRIER_NAME</span></div>
-<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160; </div>
-<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;<span class="comment">/* Below USB configurations (VID and PID) are owned and assigned by ADI.</span></div>
-<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;<span class="comment"> * If intended to distribute software further, use the VID and PID owned by your</span></div>
-<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;<span class="comment"> * organization */</span></div>
-<div class="line"><a name="l00215"></a><span class="lineno"><a class="line" href="ad777x__iio_2app_2app__config_8h.html#ac999cc20b1fcfa436cd0924ea11b104d">  215</a></span>&#160;<span class="preprocessor">#define VIRTUAL_COM_PORT_VID    0x0456</span></div>
-<div class="line"><a name="l00216"></a><span class="lineno"><a class="line" href="ad777x__iio_2app_2app__config_8h.html#a641e35f3000ead2e5fe60dce0dae31ba">  216</a></span>&#160;<span class="preprocessor">#define VIRTUAL_COM_PORT_PID    0xb66c</span></div>
-<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160; </div>
-<div class="line"><a name="l00218"></a><span class="lineno"><a class="line" href="ad777x__iio_2app_2app__config_8h.html#acc0cba4b761e8e4480755beac5bca349">  218</a></span>&#160;<span class="preprocessor">#define VIRTUAL_COM_SERIAL_NUM  (FIRMWARE_NAME &quot;_&quot;</span> DEVICE_NAME &quot;_&quot; STR(PLATFORM_NAME))</div>
-<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160; </div>
-<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;<span class="comment">/* Baudrate for UART Transactions */</span></div>
-<div class="line"><a name="l00221"></a><span class="lineno"><a class="line" href="ad777x__iio_2app_2app__config_8h.html#a1f21242d642bc7352daa4f657ff15a5a">  221</a></span>&#160;<span class="preprocessor">#define IIO_UART_BAUD_RATE  230400</span></div>
-<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160; </div>
-<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;<span class="comment">/* Number of channels in the AD777x Family */</span></div>
-<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;<span class="preprocessor">#if (ADC_TYPE == SAR_ADC)</span></div>
-<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;<span class="comment">/* Choose the SAR input for data capturing. Default is AUXAIN+/AUXAIN.</span></div>
-<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;<span class="comment"> * Please refer to the GLOBAL_MUX_CTRL bit in GLOBAL_MUX_CONFIG register</span></div>
-<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;<span class="comment"> *  the datasheet for other SAR MUX configurations */</span></div>
-<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;<span class="preprocessor">#define SAR_MUX_CONF                    0</span></div>
-<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;<span class="preprocessor">#define AD777x_NUM_CHANNELS             1</span></div>
-<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;<span class="preprocessor">#else </span><span class="comment">// SD_ADC</span></div>
-<div class="line"><a name="l00231"></a><span class="lineno"><a class="line" href="ad777x__iio_2app_2app__config_8h.html#a13f7008dabd927947dfad0884c0e77c2">  231</a></span>&#160;<span class="preprocessor">#define AD777x_NUM_CHANNELS             8</span></div>
-<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160; </div>
-<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;<span class="comment">/* ADC resolution for active device */</span></div>
-<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;<span class="preprocessor">#if (ADC_TYPE == SAR_ADC)</span></div>
-<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;<span class="preprocessor">#define ADC_RESOLUTION      12</span></div>
-<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;<span class="preprocessor">#else</span></div>
-<div class="line"><a name="l00238"></a><span class="lineno"><a class="line" href="ad777x__iio_2app_2app__config_8h.html#a00978ca9e8220475258dcbbbb7d29129">  238</a></span>&#160;<span class="preprocessor">#define ADC_RESOLUTION      24</span></div>
-<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160; </div>
-<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;<span class="comment">/* ADC max count (full scale value) for unipolar inputs */</span></div>
-<div class="line"><a name="l00242"></a><span class="lineno"><a class="line" href="ad777x__iio_2app_2app__config_8h.html#ad6af11c8af52e93da6eafa098285f631">  242</a></span>&#160;<span class="preprocessor">#define ADC_MAX_COUNT_UNIPOLAR  (uint32_t)((1 &lt;&lt; ADC_RESOLUTION) - 1)</span></div>
-<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160; </div>
-<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;<span class="comment">/* ADC max count (full scale value) for bipolar inputs */</span></div>
-<div class="line"><a name="l00245"></a><span class="lineno"><a class="line" href="ad777x__iio_2app_2app__config_8h.html#aed250e391fcc00823ec8cf976bc47482">  245</a></span>&#160;<span class="preprocessor">#define ADC_MAX_COUNT_BIPOLAR   (uint32_t)(1 &lt;&lt; (ADC_RESOLUTION-1))</span></div>
-<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160; </div>
-<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;<span class="comment">/* Uncomment this macro to enable external master clock MCLK */</span></div>
-<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;<span class="comment">//#define ENABLE_EXT_MCLK</span></div>
-<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160; </div>
-<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;<span class="comment">/* Select the external master clock frequency</span></div>
-<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;<span class="comment"> * Note: The maximum programmable PWM frequency for mbed platform</span></div>
-<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;<span class="comment"> * is only 500kHz */</span></div>
-<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;<span class="preprocessor">#if (ACTIVE_PLATFORM == MBED_PLATFORM)</span></div>
-<div class="line"><a name="l00254"></a><span class="lineno"><a class="line" href="ad777x__iio_2app_2app__config_8h.html#a7f1519377b27ef41fb09f5e86170dbcf">  254</a></span>&#160;<span class="preprocessor">#define AD777X_EXT_MCLK_FREQ    500000</span></div>
-<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;<span class="preprocessor">#else</span></div>
-<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;<span class="preprocessor">#define AD777X_EXT_MCLK_FREQ    8192000</span></div>
-<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160; </div>
-<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;<span class="comment">/* AD777x Master Clock Frequency */</span></div>
-<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;<span class="preprocessor">#if !defined (ENABLE_EXT_MCLK)</span></div>
-<div class="line"><a name="l00261"></a><span class="lineno"><a class="line" href="ad777x__iio_2app_2app__config_8h.html#a10cd86d452a9355239174510cd999dc8">  261</a></span>&#160;<span class="preprocessor">#define AD777x_MCLK_FREQ                8192000 </span><span class="comment">// Fixed</span></div>
-<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;<span class="preprocessor">#else</span></div>
-<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;<span class="preprocessor">#define AD777x_MCLK_FREQ                AD777X_EXT_MCLK_FREQ</span></div>
-<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160; </div>
-<div class="line"><a name="l00266"></a><span class="lineno"><a class="line" href="ad777x__iio_2app_2app__config_8h.html#adbc659eccd16a66b05a2deca13624b16">  266</a></span>&#160;<span class="preprocessor">#define AD777x_MCLK_PERIOD  (((float)(1.0 / AD777x_MCLK_FREQ) * 1000000) * 1000)</span></div>
-<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160; </div>
-<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;<span class="comment">/******************************************************************************/</span></div>
-<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;<span class="comment">/************************ Public Declarations *********************************/</span></div>
-<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;<span class="comment">/******************************************************************************/</span></div>
-<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160; </div>
-<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;int32_t <a class="code" href="ad2s1210__iio_2app_2app__config_8h.html#aba990e48bb1b87852ff6a375f0c2f655">init_system</a>(<span class="keywordtype">void</span>);</div>
-<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;<span class="keywordtype">void</span> <a class="code" href="ad777x__iio_2app_2app__config_8h.html#a616505fab0dd47929500794865d1aed9">data_capture_callback</a>(<span class="keywordtype">void</span> *ctx);</div>
-<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;<span class="keyword">extern</span> <span class="keyword">struct </span>no_os_uart_desc *<a class="code" href="ad405x__iio_2app_2app__config_8h.html#aa6f3be6e813afee496ddad30cd994987">uart_iio_com_desc</a>;</div>
-<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;<span class="keyword">extern</span> <span class="keyword">struct </span>no_os_uart_desc *<a class="code" href="ad405x__iio_2app_2app__config_8h.html#afe54820c1e9d26888bd767dd63680b2d">uart_console_stdio_desc</a>;</div>
-<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;<span class="keyword">extern</span> <span class="keyword">struct </span>no_os_gpio_desc *<a class="code" href="ad777x__iio_2app_2app__config_8h.html#a34b41bce4c016c0db5afac57b6633cff">gpio_drdy_desc</a>;</div>
-<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;<span class="keyword">extern</span> <span class="keyword">struct </span>no_os_gpio_desc *<a class="code" href="ad777x__iio_2app_2app__config_8h.html#a992ea5da2e9f656d6101699d58906b74">gpio_error_desc</a>;</div>
-<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;<span class="keyword">extern</span> <span class="keyword">struct </span>no_os_irq_ctrl_desc *<a class="code" href="ad2s1210__iio_2app_2app__config_8h.html#a2b20c5f31c6b6ef72967b7bad0420320">trigger_irq_desc</a>;</div>
-<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;<span class="keyword">extern</span> <span class="keyword">struct </span>no_os_tdm_desc *<a class="code" href="ad777x__iio_2app_2app__config_8h.html#a4d8564faa9a6d8e057b4edd3c117ab99">ad777x_tdm_desc</a>;</div>
-<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;<span class="keyword">extern</span> <span class="keyword">struct </span>no_os_eeprom_desc *<a class="code" href="ad405x__iio_2app_2app__config_8h.html#a3e28ad761469de0b6f49f66710c878a0">eeprom_desc</a>;</div>
-<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160; </div>
-<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;<span class="preprocessor">#endif </span><span class="comment">// APP_CONFIG_H</span></div>
-<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160; </div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;<span class="preprocessor">#define i2c_extra_init_params   stm32_i2c_extra_init_params</span></div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160; </div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;<span class="preprocessor">#define spi_platform_ops    stm32_spi_ops</span></div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;<span class="preprocessor">#define gpio_platform_ops   stm32_gpio_ops</span></div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;<span class="preprocessor">#define trigger_gpio_irq_ops stm32_gpio_irq_ops</span></div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;<span class="preprocessor">#define uart_ops             stm32_uart_ops</span></div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;<span class="preprocessor">#define tdm_platform_ops    stm32_tdm_platform_ops</span></div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;<span class="preprocessor">#define i2c_ops             stm32_i2c_ops</span></div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;<span class="preprocessor">#define pwm_ops             stm32_pwm_ops</span></div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160; </div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;<span class="preprocessor">#define trigger_gpio_handle 0   </span><span class="comment">// Unused macro</span></div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160; </div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;<span class="preprocessor">#define HW_CARRIER_NAME     NUCLEO-H563ZI</span></div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;<span class="preprocessor">#elif (ACTIVE_PLATFORM == MBED_PLATFORM)</span></div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="ltc268x__console_2app_2app__config__mbed_8h.html">app_config_mbed.h</a>&quot;</span></div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160; </div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;<span class="comment">/* Re-define platform specific parameters */</span></div>
+<div class="line"><a name="l00162"></a><span class="lineno"><a class="line" href="ad777x__iio_2app_2app__config_8h.html#a0218303728bba1f6bc0b725266ccbbd4">  162</a></span>&#160;<span class="preprocessor">#define uart_extra_init_params mbed_uart_extra_init_params</span></div>
+<div class="line"><a name="l00163"></a><span class="lineno"><a class="line" href="ad777x__iio_2app_2app__config_8h.html#a5d0039d2f60b5109c03e1daf4134b20c">  163</a></span>&#160;<span class="preprocessor">#define vcom_extra_init_params mbed_vcom_extra_init_params</span></div>
+<div class="line"><a name="l00164"></a><span class="lineno"><a class="line" href="ad777x__iio_2app_2app__config_8h.html#ab8a3cecf3246ca49585f55dbb7b9d435">  164</a></span>&#160;<span class="preprocessor">#define spi_extra_init_params   mbed_spi_extra_init_params</span></div>
+<div class="line"><a name="l00165"></a><span class="lineno"><a class="line" href="ad777x__iio_2app_2app__config_8h.html#a3e36d4d64e31d4b3b9e9d2f6d83ba0ce">  165</a></span>&#160;<span class="preprocessor">#define i2c_extra_init_params   mbed_i2c_extra_init_params</span></div>
+<div class="line"><a name="l00166"></a><span class="lineno"><a class="line" href="ad777x__iio_2app_2app__config_8h.html#a301d0f121f6894a5dca801490980d984">  166</a></span>&#160;<span class="preprocessor">#define gpio_reset_extra_init_params    mbed_gpio_reset_extra_init_params</span></div>
+<div class="line"><a name="l00167"></a><span class="lineno"><a class="line" href="ad777x__iio_2app_2app__config_8h.html#a6b1fe8915699a90afc8909cd6bfa1ad8">  167</a></span>&#160;<span class="preprocessor">#define gpio_mode0_extra_init_params    mbed_gpio_mode0_extra_init_params</span></div>
+<div class="line"><a name="l00168"></a><span class="lineno"><a class="line" href="ad777x__iio_2app_2app__config_8h.html#a389a00f5d82656848463724e8ed58f87">  168</a></span>&#160;<span class="preprocessor">#define gpio_mode1_extra_init_params    mbed_gpio_mode1_extra_init_params</span></div>
+<div class="line"><a name="l00169"></a><span class="lineno"><a class="line" href="ad777x__iio_2app_2app__config_8h.html#a50e3254aa6c76cf754b604b83c2cb5f2">  169</a></span>&#160;<span class="preprocessor">#define gpio_mode2_extra_init_params    mbed_gpio_mode2_extra_init_params</span></div>
+<div class="line"><a name="l00170"></a><span class="lineno"><a class="line" href="ad777x__iio_2app_2app__config_8h.html#ac0205f1eaf6eb6f76573360cf4613c60">  170</a></span>&#160;<span class="preprocessor">#define gpio_mode3_extra_init_params    mbed_gpio_mode3_extra_init_params</span></div>
+<div class="line"><a name="l00171"></a><span class="lineno"><a class="line" href="ad777x__iio_2app_2app__config_8h.html#ac44d2da74b59a3bf93dc849c841f7375">  171</a></span>&#160;<span class="preprocessor">#define gpio_dclk0_extra_init_params    mbed_gpio_dclk0_extra_init_params</span></div>
+<div class="line"><a name="l00172"></a><span class="lineno"><a class="line" href="ad777x__iio_2app_2app__config_8h.html#a074be722ea586e8c6a7434df33c70fb7">  172</a></span>&#160;<span class="preprocessor">#define gpio_dclk1_extra_init_params    mbed_gpio_dclk1_extra_init_params</span></div>
+<div class="line"><a name="l00173"></a><span class="lineno"><a class="line" href="ad777x__iio_2app_2app__config_8h.html#a0d977bb7d36579d3d4ff13e7a6023de4">  173</a></span>&#160;<span class="preprocessor">#define gpio_dclk2_extra_init_params    mbed_gpio_dclk2_extra_init_params</span></div>
+<div class="line"><a name="l00174"></a><span class="lineno"><a class="line" href="ad777x__iio_2app_2app__config_8h.html#af5948944427cf7fa1116d9d6d64efbca">  174</a></span>&#160;<span class="preprocessor">#define gpio_sync_in_extra_init_params  mbed_gpio_sync_in_extra_init_params</span></div>
+<div class="line"><a name="l00175"></a><span class="lineno"><a class="line" href="ad777x__iio_2app_2app__config_8h.html#ae45a511cb995a7ffd1dce8d2c630760b">  175</a></span>&#160;<span class="preprocessor">#define gpio_convst_sar_extra_init_params   mbed_gpio_convst_sar_extra_init_params</span></div>
+<div class="line"><a name="l00176"></a><span class="lineno"><a class="line" href="ad777x__iio_2app_2app__config_8h.html#a87a9f02fd547a1d7e6944387b7d47a9c">  176</a></span>&#160;<span class="preprocessor">#define gpio_drdy_extra_init_params mbed_gpio_drdy_extra_init_params</span></div>
+<div class="line"><a name="l00177"></a><span class="lineno"><a class="line" href="ad777x__iio_2app_2app__config_8h.html#aad4040fa98ea06bf94de952aadaee7e2">  177</a></span>&#160;<span class="preprocessor">#define gpio_error_extra_init_params    mbed_gpio_error_extra_init_params</span></div>
+<div class="line"><a name="l00178"></a><span class="lineno"><a class="line" href="ad777x__iio_2app_2app__config_8h.html#a94a5e0dc135efcaaeacfbaf36f4f5ff4">  178</a></span>&#160;<span class="preprocessor">#define trigger_gpio_irq_extra_params mbed_trigger_gpio_irq_init_params</span></div>
+<div class="line"><a name="l00179"></a><span class="lineno"><a class="line" href="ad777x__iio_2app_2app__config_8h.html#ae91096eb29d71a7778d1bb6dda3f6dcc">  179</a></span>&#160;<span class="preprocessor">#define pwm_extra_init_params   mbed_pwm_init_params</span></div>
+<div class="line"><a name="l00180"></a><span class="lineno"><a class="line" href="ad777x__iio_2app_2app__config_8h.html#af2fcad7b6d816c2ce329dbd011d6b80c">  180</a></span>&#160;<span class="preprocessor">#define spi_platform_ops    mbed_spi_ops</span></div>
+<div class="line"><a name="l00181"></a><span class="lineno"><a class="line" href="ad777x__iio_2app_2app__config_8h.html#a7bb5897c5faa9b4edb6bf5868a8dc75d">  181</a></span>&#160;<span class="preprocessor">#define i2c_ops     mbed_i2c_ops</span></div>
+<div class="line"><a name="l00182"></a><span class="lineno"><a class="line" href="ad777x__iio_2app_2app__config_8h.html#a7f9dd755def2926b7f07b5e0a1e6a403">  182</a></span>&#160;<span class="preprocessor">#define gpio_platform_ops   mbed_gpio_ops</span></div>
+<div class="line"><a name="l00183"></a><span class="lineno"><a class="line" href="ad777x__iio_2app_2app__config_8h.html#aea695cfd66cb4b1c25c5f56b59d9ad1e">  183</a></span>&#160;<span class="preprocessor">#define trigger_gpio_irq_ops    mbed_gpio_irq_ops</span></div>
+<div class="line"><a name="l00184"></a><span class="lineno"><a class="line" href="ad777x__iio_2app_2app__config_8h.html#acc53ed106567a5a56e1bdf6aa73728bc">  184</a></span>&#160;<span class="preprocessor">#define uart_ops                mbed_uart_ops</span></div>
+<div class="line"><a name="l00185"></a><span class="lineno"><a class="line" href="ad777x__iio_2app_2app__config_8h.html#ad7c095ac25ce9f903c7c0a9a50002bd4">  185</a></span>&#160;<span class="preprocessor">#define vcom_ops                mbed_virtual_com_ops</span></div>
+<div class="line"><a name="l00186"></a><span class="lineno"><a class="line" href="ad777x__iio_2app_2app__config_8h.html#a9b6ac61cf1859752ae6b375e319a55c5">  186</a></span>&#160;<span class="preprocessor">#define pwm_ops                 mbed_pwm_ops</span></div>
+<div class="line"><a name="l00187"></a><span class="lineno"><a class="line" href="ad777x__iio_2app_2app__config_8h.html#acccd839538293e59fffb48844b260d43">  187</a></span>&#160;<span class="preprocessor">#define trigger_gpio_handle 0   </span><span class="comment">// Unused macro</span></div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160; </div>
+<div class="line"><a name="l00189"></a><span class="lineno"><a class="line" href="ad777x__iio_2app_2app__config_8h.html#a53f88b148569ce9eaa56404b7b3c72f2">  189</a></span>&#160;<span class="preprocessor">#define HW_CARRIER_NAME     TARGET_NAME</span></div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160; </div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;<span class="comment">/* Enable/Disable the use of SDRAM for ADC data capture buffer */</span></div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;<span class="comment">// #define USE_SDRAM    // Uncomment to use SDRAM as data buffer</span></div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160; </div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;<span class="comment">/* Check if any serial port available for use as console stdio port */</span></div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;<span class="preprocessor">#if defined(USE_PHY_COM_PORT)</span></div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;<span class="comment">/* If PHY com is selected, VCOM or alternate PHY com port can act as a console stdio port */</span></div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;<span class="preprocessor">#if (ACTIVE_PLATFORM == MBED_PLATFORM)</span></div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;<span class="preprocessor">#define CONSOLE_STDIO_PORT_AVAILABLE</span></div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;<span class="preprocessor">#else</span></div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;<span class="comment">/* If VCOM is selected, PHY com port will/should act as a console stdio port */</span></div>
+<div class="line"><a name="l00203"></a><span class="lineno"><a class="line" href="ad777x__iio_2app_2app__config_8h.html#a7b9ca6f22e6111e9ab572c0af459467a">  203</a></span>&#160;<span class="preprocessor">#define CONSOLE_STDIO_PORT_AVAILABLE</span></div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160; </div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;<span class="comment">/* VCOM Serial number definition */</span></div>
+<div class="line"><a name="l00207"></a><span class="lineno"><a class="line" href="ad777x__iio_2app_2app__config_8h.html#a53e29efbf83712dcee0878d27965aedf">  207</a></span>&#160;<span class="preprocessor">#define FIRMWARE_NAME   &quot;ad777x_iio&quot;</span></div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160; </div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;<span class="preprocessor">#if !defined(PLATFORM_NAME)</span></div>
+<div class="line"><a name="l00210"></a><span class="lineno"><a class="line" href="ad777x__iio_2app_2app__config_8h.html#aa4688daf0f1e6dda714351a6e5a394c2">  210</a></span>&#160;<span class="preprocessor">#define PLATFORM_NAME   HW_CARRIER_NAME</span></div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160; </div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;<span class="comment">/* Below USB configurations (VID and PID) are owned and assigned by ADI.</span></div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;<span class="comment"> * If intended to distribute software further, use the VID and PID owned by your</span></div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;<span class="comment"> * organization */</span></div>
+<div class="line"><a name="l00216"></a><span class="lineno"><a class="line" href="ad777x__iio_2app_2app__config_8h.html#ac999cc20b1fcfa436cd0924ea11b104d">  216</a></span>&#160;<span class="preprocessor">#define VIRTUAL_COM_PORT_VID    0x0456</span></div>
+<div class="line"><a name="l00217"></a><span class="lineno"><a class="line" href="ad777x__iio_2app_2app__config_8h.html#a641e35f3000ead2e5fe60dce0dae31ba">  217</a></span>&#160;<span class="preprocessor">#define VIRTUAL_COM_PORT_PID    0xb66c</span></div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160; </div>
+<div class="line"><a name="l00219"></a><span class="lineno"><a class="line" href="ad777x__iio_2app_2app__config_8h.html#acc0cba4b761e8e4480755beac5bca349">  219</a></span>&#160;<span class="preprocessor">#define VIRTUAL_COM_SERIAL_NUM  (FIRMWARE_NAME &quot;_&quot;</span> DEVICE_NAME &quot;_&quot; STR(PLATFORM_NAME))</div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160; </div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;<span class="comment">/* Baudrate for UART Transactions */</span></div>
+<div class="line"><a name="l00222"></a><span class="lineno"><a class="line" href="ad777x__iio_2app_2app__config_8h.html#a1f21242d642bc7352daa4f657ff15a5a">  222</a></span>&#160;<span class="preprocessor">#define IIO_UART_BAUD_RATE  230400</span></div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160; </div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;<span class="comment">/* Number of channels in the AD777x Family */</span></div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;<span class="preprocessor">#if (ADC_TYPE == SAR_ADC)</span></div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;<span class="comment">/* Choose the SAR input for data capturing. Default is AUXAIN+/AUXAIN.</span></div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;<span class="comment"> * Please refer to the GLOBAL_MUX_CTRL bit in GLOBAL_MUX_CONFIG register</span></div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;<span class="comment"> *  the datasheet for other SAR MUX configurations */</span></div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;<span class="preprocessor">#define SAR_MUX_CONF                    0</span></div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;<span class="preprocessor">#define AD777x_NUM_CHANNELS             1</span></div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;<span class="preprocessor">#else </span><span class="comment">// SD_ADC</span></div>
+<div class="line"><a name="l00232"></a><span class="lineno"><a class="line" href="ad777x__iio_2app_2app__config_8h.html#a13f7008dabd927947dfad0884c0e77c2">  232</a></span>&#160;<span class="preprocessor">#define AD777x_NUM_CHANNELS             8</span></div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160; </div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;<span class="comment">/* ADC resolution for active device */</span></div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;<span class="preprocessor">#if (ADC_TYPE == SAR_ADC)</span></div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;<span class="preprocessor">#define ADC_RESOLUTION      12</span></div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;<span class="preprocessor">#else</span></div>
+<div class="line"><a name="l00239"></a><span class="lineno"><a class="line" href="ad777x__iio_2app_2app__config_8h.html#a00978ca9e8220475258dcbbbb7d29129">  239</a></span>&#160;<span class="preprocessor">#define ADC_RESOLUTION      24</span></div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160; </div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;<span class="comment">/* ADC max count (full scale value) for unipolar inputs */</span></div>
+<div class="line"><a name="l00243"></a><span class="lineno"><a class="line" href="ad777x__iio_2app_2app__config_8h.html#ad6af11c8af52e93da6eafa098285f631">  243</a></span>&#160;<span class="preprocessor">#define ADC_MAX_COUNT_UNIPOLAR  (uint32_t)((1 &lt;&lt; ADC_RESOLUTION) - 1)</span></div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160; </div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;<span class="comment">/* ADC max count (full scale value) for bipolar inputs */</span></div>
+<div class="line"><a name="l00246"></a><span class="lineno"><a class="line" href="ad777x__iio_2app_2app__config_8h.html#aed250e391fcc00823ec8cf976bc47482">  246</a></span>&#160;<span class="preprocessor">#define ADC_MAX_COUNT_BIPOLAR   (uint32_t)(1 &lt;&lt; (ADC_RESOLUTION-1))</span></div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160; </div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;<span class="comment">/* Uncomment this macro to enable external master clock MCLK */</span></div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;<span class="comment">//#define ENABLE_EXT_MCLK</span></div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160; </div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;<span class="comment">/* Select the external master clock frequency</span></div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;<span class="comment"> * Note: The maximum programmable PWM frequency for mbed platform</span></div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;<span class="comment"> * is only 500kHz */</span></div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;<span class="preprocessor">#if (ACTIVE_PLATFORM == MBED_PLATFORM)</span></div>
+<div class="line"><a name="l00255"></a><span class="lineno"><a class="line" href="ad777x__iio_2app_2app__config_8h.html#a7f1519377b27ef41fb09f5e86170dbcf">  255</a></span>&#160;<span class="preprocessor">#define AD777X_EXT_MCLK_FREQ    500000</span></div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;<span class="preprocessor">#else</span></div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;<span class="preprocessor">#define AD777X_EXT_MCLK_FREQ    8192000</span></div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160; </div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;<span class="comment">/* AD777x Master Clock Frequency */</span></div>
+<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;<span class="preprocessor">#if !defined (ENABLE_EXT_MCLK)</span></div>
+<div class="line"><a name="l00262"></a><span class="lineno"><a class="line" href="ad777x__iio_2app_2app__config_8h.html#a10cd86d452a9355239174510cd999dc8">  262</a></span>&#160;<span class="preprocessor">#define AD777x_MCLK_FREQ                8192000 </span><span class="comment">// Fixed</span></div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;<span class="preprocessor">#else</span></div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;<span class="preprocessor">#define AD777x_MCLK_FREQ                AD777X_EXT_MCLK_FREQ</span></div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160; </div>
+<div class="line"><a name="l00267"></a><span class="lineno"><a class="line" href="ad777x__iio_2app_2app__config_8h.html#adbc659eccd16a66b05a2deca13624b16">  267</a></span>&#160;<span class="preprocessor">#define AD777x_MCLK_PERIOD  (((float)(1.0 / AD777x_MCLK_FREQ) * 1000000) * 1000)</span></div>
+<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160; </div>
+<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;<span class="comment">/******************************************************************************/</span></div>
+<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;<span class="comment">/************************ Public Declarations *********************************/</span></div>
+<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;<span class="comment">/******************************************************************************/</span></div>
+<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160; </div>
+<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;int32_t <a class="code" href="ad2s1210__iio_2app_2app__config_8h.html#aba990e48bb1b87852ff6a375f0c2f655">init_system</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;<span class="keywordtype">void</span> <a class="code" href="ad777x__iio_2app_2app__config_8h.html#a616505fab0dd47929500794865d1aed9">data_capture_callback</a>(<span class="keywordtype">void</span> *ctx);</div>
+<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;<span class="keyword">extern</span> <span class="keyword">struct </span>no_os_uart_desc *<a class="code" href="ad405x__iio_2app_2app__config_8h.html#aa6f3be6e813afee496ddad30cd994987">uart_iio_com_desc</a>;</div>
+<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;<span class="keyword">extern</span> <span class="keyword">struct </span>no_os_uart_desc *<a class="code" href="ad405x__iio_2app_2app__config_8h.html#afe54820c1e9d26888bd767dd63680b2d">uart_console_stdio_desc</a>;</div>
+<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;<span class="keyword">extern</span> <span class="keyword">struct </span>no_os_gpio_desc *<a class="code" href="ad777x__iio_2app_2app__config_8h.html#a34b41bce4c016c0db5afac57b6633cff">gpio_drdy_desc</a>;</div>
+<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;<span class="keyword">extern</span> <span class="keyword">struct </span>no_os_gpio_desc *<a class="code" href="ad777x__iio_2app_2app__config_8h.html#a992ea5da2e9f656d6101699d58906b74">gpio_error_desc</a>;</div>
+<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;<span class="keyword">extern</span> <span class="keyword">struct </span>no_os_irq_ctrl_desc *<a class="code" href="ad2s1210__iio_2app_2app__config_8h.html#a2b20c5f31c6b6ef72967b7bad0420320">trigger_irq_desc</a>;</div>
+<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;<span class="keyword">extern</span> <span class="keyword">struct </span>no_os_tdm_desc *<a class="code" href="ad777x__iio_2app_2app__config_8h.html#a4d8564faa9a6d8e057b4edd3c117ab99">ad777x_tdm_desc</a>;</div>
+<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;<span class="keyword">extern</span> <span class="keyword">struct </span>no_os_eeprom_desc *<a class="code" href="ad405x__iio_2app_2app__config_8h.html#a3e28ad761469de0b6f49f66710c878a0">eeprom_desc</a>;</div>
+<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160; </div>
+<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;<span class="preprocessor">#endif </span><span class="comment">// APP_CONFIG_H</span></div>
+<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160; </div>
 <div class="ttc" id="aad2s1210__iio_2app_2app__config_8h_html_a2b20c5f31c6b6ef72967b7bad0420320"><div class="ttname"><a href="ad2s1210__iio_2app_2app__config_8h.html#a2b20c5f31c6b6ef72967b7bad0420320">trigger_irq_desc</a></div><div class="ttdeci">struct no_os_irq_ctrl_desc * trigger_irq_desc</div><div class="ttdef"><b>Definition:</b> app_config.c:103</div></div>
 <div class="ttc" id="aad2s1210__iio_2app_2app__config_8h_html_aba990e48bb1b87852ff6a375f0c2f655"><div class="ttname"><a href="ad2s1210__iio_2app_2app__config_8h.html#aba990e48bb1b87852ff6a375f0c2f655">init_system</a></div><div class="ttdeci">int32_t init_system(void)</div><div class="ttdoc">Initialize the system peripherals.</div><div class="ttdef"><b>Definition:</b> app_config.c:185</div></div>
 <div class="ttc" id="aad405x__iio_2app_2app__config_8h_html_a3e28ad761469de0b6f49f66710c878a0"><div class="ttname"><a href="ad405x__iio_2app_2app__config_8h.html#a3e28ad761469de0b6f49f66710c878a0">eeprom_desc</a></div><div class="ttdeci">struct no_os_eeprom_desc * eeprom_desc</div><div class="ttdef"><b>Definition:</b> app_config.c:194</div></div>
 <div class="ttc" id="aad405x__iio_2app_2app__config_8h_html_aa6f3be6e813afee496ddad30cd994987"><div class="ttname"><a href="ad405x__iio_2app_2app__config_8h.html#aa6f3be6e813afee496ddad30cd994987">uart_iio_com_desc</a></div><div class="ttdeci">struct no_os_uart_desc * uart_iio_com_desc</div><div class="ttdef"><b>Definition:</b> app_config.c:190</div></div>
 <div class="ttc" id="aad405x__iio_2app_2app__config_8h_html_afe54820c1e9d26888bd767dd63680b2d"><div class="ttname"><a href="ad405x__iio_2app_2app__config_8h.html#afe54820c1e9d26888bd767dd63680b2d">uart_console_stdio_desc</a></div><div class="ttdeci">struct no_os_uart_desc * uart_console_stdio_desc</div><div class="ttdef"><b>Definition:</b> app_config.c:100</div></div>
-<div class="ttc" id="aad777x__iio_2app_2app__config_8h_html_a34b41bce4c016c0db5afac57b6633cff"><div class="ttname"><a href="ad777x__iio_2app_2app__config_8h.html#a34b41bce4c016c0db5afac57b6633cff">gpio_drdy_desc</a></div><div class="ttdeci">struct no_os_gpio_desc * gpio_drdy_desc</div><div class="ttdef"><b>Definition:</b> app_config.c:167</div></div>
+<div class="ttc" id="aad777x__iio_2app_2app__config_8h_html_a34b41bce4c016c0db5afac57b6633cff"><div class="ttname"><a href="ad777x__iio_2app_2app__config_8h.html#a34b41bce4c016c0db5afac57b6633cff">gpio_drdy_desc</a></div><div class="ttdeci">struct no_os_gpio_desc * gpio_drdy_desc</div><div class="ttdef"><b>Definition:</b> app_config.c:165</div></div>
 <div class="ttc" id="aad777x__iio_2app_2app__config_8h_html_a4d8564faa9a6d8e057b4edd3c117ab99"><div class="ttname"><a href="ad777x__iio_2app_2app__config_8h.html#a4d8564faa9a6d8e057b4edd3c117ab99">ad777x_tdm_desc</a></div><div class="ttdeci">struct no_os_tdm_desc * ad777x_tdm_desc</div></div>
 <div class="ttc" id="aad777x__iio_2app_2app__config_8h_html_a616505fab0dd47929500794865d1aed9"><div class="ttname"><a href="ad777x__iio_2app_2app__config_8h.html#a616505fab0dd47929500794865d1aed9">data_capture_callback</a></div><div class="ttdeci">void data_capture_callback(void *ctx)</div><div class="ttdoc">Interrupt Service Routine to monitor data ready event.</div><div class="ttdef"><b>Definition:</b> ad405x_iio.c:1300</div></div>
-<div class="ttc" id="aad777x__iio_2app_2app__config_8h_html_a992ea5da2e9f656d6101699d58906b74"><div class="ttname"><a href="ad777x__iio_2app_2app__config_8h.html#a992ea5da2e9f656d6101699d58906b74">gpio_error_desc</a></div><div class="ttdeci">struct no_os_gpio_desc * gpio_error_desc</div><div class="ttdef"><b>Definition:</b> app_config.c:170</div></div>
+<div class="ttc" id="aad777x__iio_2app_2app__config_8h_html_a992ea5da2e9f656d6101699d58906b74"><div class="ttname"><a href="ad777x__iio_2app_2app__config_8h.html#a992ea5da2e9f656d6101699d58906b74">gpio_error_desc</a></div><div class="ttdeci">struct no_os_gpio_desc * gpio_error_desc</div><div class="ttdef"><b>Definition:</b> app_config.c:168</div></div>
 <div class="ttc" id="altc268x__console_2app_2app__config__mbed_8h_html"><div class="ttname"><a href="ltc268x__console_2app_2app__config__mbed_8h.html">app_config_mbed.h</a></div><div class="ttdoc">Header file for Mbed platform configurations.</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
