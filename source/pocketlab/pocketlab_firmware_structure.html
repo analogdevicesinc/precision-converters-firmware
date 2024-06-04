@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Using the IIO Ecosystem &#8212; Precision Converters Firmware  documentation</title>
+    <title>Pocketlab Firmware Structure &#8212; Precision Converters Firmware  documentation</title>
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8e8a900e" />
     <link rel="stylesheet" type="text/css" href="../../_static/style.min.css?v=a3ba2641" />
     <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
@@ -94,8 +94,7 @@
         </div>
         <nav>
           <ul>
-<li><a class="reference internal" href="#">Using the IIO Ecosystem</a></li>
-<li><a class="reference internal" href="#iio-tools">IIO Tools:</a></li>
+<li><a class="reference internal" href="#">Pocketlab Firmware Structure</a></li>
 </ul>
 
         </nav>
@@ -174,49 +173,12 @@ Content on this topic
         <div class="bodywrapper" id="top-anchor">
           <div class="body" role="main">
             
-  <section id="using-the-iio-ecosystem">
-<h1>Using the IIO Ecosystem<a class="headerlink" href="#using-the-iio-ecosystem" title="Link to this heading">¶</a></h1>
-<p>IIO (Industrial Input/Output) is a flexible ecosystem that allows various
-client tools to communicate with IIO device to configure the device, capture device
-data, generate waveforms, access registers, etc. Below diagram demonstrates the
-high level architecture of IIO ecosystem.</p>
-<p><a class="reference external" href="https://wiki.analog.com/resources/tools-software/linux-software/libiio">https://wiki.analog.com/resources/tools-software/linux-software/libiio</a></p>
-<blockquote>
-<div><a class="reference internal image-reference" href="../../_images/flexible_iio_ecosystem.png"><img alt="../../_images/flexible_iio_ecosystem.png" src="../../_images/flexible_iio_ecosystem.png" style="width: 600px;" />
+  <section id="pocketlab-firmware-structure">
+<h1>Pocketlab Firmware Structure<a class="headerlink" href="#pocketlab-firmware-structure" title="Link to this heading">¶</a></h1>
+<p>Below diagram illustrates the architecture of Precision Converters Pocketlab
+firmware applications.</p>
+<a class="reference internal image-reference" href="../../_images/pocketlab_fw_architecture.png"><img alt="../../_images/pocketlab_fw_architecture.png" src="../../_images/pocketlab_fw_architecture.png" style="width: 500px;" />
 </a>
-</div></blockquote>
-</section>
-<section id="iio-tools">
-<h1>IIO Tools:<a class="headerlink" href="#iio-tools" title="Link to this heading">¶</a></h1>
-<p><a class="reference internal" href="../iio_osc/iio_osc.html"><span class="doc">IIO Oscilloscope</span></a>
-ADI IIO Oscilloscope is a cross platform GUI application, which demonstrates how
-to interface different evaluation boards within an IIO ecosystem. It supports
-raw data capture, FFT analysis, DMM measurement, device configuration, register
-read/write and data streaming.</p>
-<p><a class="reference internal" href="../python/python.html"><span class="doc">pyadi-iio: Python interfaces</span></a>
-Analog Devices python interfaces for hardware with Industrial I/O drivers. It
-provides python based scripts for raw data capture, device configuration
-and register read/write.</p>
-<p><a class="reference external" href="https://www.analog.com/en/design-center/evaluation-hardware-and-software/evaluation-development-platforms/ace-software.html">ACE</a>
-ADI’s “Analysis, Control, Evaluation” (ACE) is a desktop software application
-which allows the evaluation and control of multiple evaluation systems.</p>
-<p><a class="reference external" href="https://github.com/analogdevicesinc/PrecisionToolbox">Precision Converters MATLAB Toolbox</a>
-Toolbox created by ADI to be used with MATLAB and Simulink with ADI Precision products.</p>
-<p><a class="reference external" href="https://wiki.analog.com/resources/tools-software/linux-software/libiio/iio_info">IIO Command Line</a>
-Command line interface for accessing IIO device parameters.</p>
-<p><a class="reference internal" href="../pocketlab/pocketlab.html"><span class="doc">Pocketlab</span></a>
-ADI Pocketlab is a display based GUI client. It supports
-raw data capture, FFT analysis, DMM measurement, device configuration, register
-read/write.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>These are the general evaluation and prototyping tools for Precision Converters
-but not all converters are supported. In some cases these tools provide generic
-IIO support (e.g. ACE, IIO Oscilloscope) and can provide basic functionality
-with any IIO based system. In other cases if a part is not currently supported,
-it is possible to add support for converters that you need due to the open
-source nature of the tools.</p>
-</div>
 </section>
 
 

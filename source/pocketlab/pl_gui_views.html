@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Using the IIO Ecosystem &#8212; Precision Converters Firmware  documentation</title>
+    <title>Pocket Lab GUI Views &#8212; Precision Converters Firmware  documentation</title>
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8e8a900e" />
     <link rel="stylesheet" type="text/css" href="../../_static/style.min.css?v=a3ba2641" />
     <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
@@ -94,8 +94,15 @@
         </div>
         <nav>
           <ul>
-<li><a class="reference internal" href="#">Using the IIO Ecosystem</a></li>
-<li><a class="reference internal" href="#iio-tools">IIO Tools:</a></li>
+<li><a class="reference internal" href="#">Pocket Lab GUI Views</a><ul>
+<li><a class="reference internal" href="#configuration-view">Configuration View</a></li>
+<li><a class="reference internal" href="#register-view">Register View</a></li>
+<li><a class="reference internal" href="#dmm-view">DMM View</a></li>
+<li><a class="reference internal" href="#capture-view">Capture View</a></li>
+<li><a class="reference internal" href="#analysis-view">Analysis View</a></li>
+<li><a class="reference internal" href="#about-view">About View</a></li>
+</ul>
+</li>
 </ul>
 
         </nav>
@@ -174,49 +181,51 @@ Content on this topic
         <div class="bodywrapper" id="top-anchor">
           <div class="body" role="main">
             
-  <section id="using-the-iio-ecosystem">
-<h1>Using the IIO Ecosystem<a class="headerlink" href="#using-the-iio-ecosystem" title="Link to this heading">¶</a></h1>
-<p>IIO (Industrial Input/Output) is a flexible ecosystem that allows various
-client tools to communicate with IIO device to configure the device, capture device
-data, generate waveforms, access registers, etc. Below diagram demonstrates the
-high level architecture of IIO ecosystem.</p>
-<p><a class="reference external" href="https://wiki.analog.com/resources/tools-software/linux-software/libiio">https://wiki.analog.com/resources/tools-software/linux-software/libiio</a></p>
-<blockquote>
-<div><a class="reference internal image-reference" href="../../_images/flexible_iio_ecosystem.png"><img alt="../../_images/flexible_iio_ecosystem.png" src="../../_images/flexible_iio_ecosystem.png" style="width: 600px;" />
+  <section id="pocket-lab-gui-views">
+<h1>Pocket Lab GUI Views<a class="headerlink" href="#pocket-lab-gui-views" title="Link to this heading">¶</a></h1>
+<p>This module takes care of any event happening on the display GUI. The GUI is created in the form of widgets such as buttons, text fields, drop-down menus, etc. Each widget would have associated event handler callback function, that would be registered for a given event object during pocket lab GUI initialization time.
+The event handler function would be responsible for handling the user event and forming a proper response to that event.
+All the widgets, event objects and event callbacks are created using the lvgl library.
+Below are the standard views available for pocket lab and are created from the pocket lab library.
+Each Tinyiiod firmware application provides an ability to enable/disable these views.</p>
+<section id="configuration-view">
+<h2>Configuration View<a class="headerlink" href="#configuration-view" title="Link to this heading">¶</a></h2>
+<p>Provides ability to read and write the global and channel attributes of the device.</p>
+<a class="reference internal image-reference" href="../../_images/config_view.jpg"><img alt="../../_images/config_view.jpg" src="../../_images/config_view.jpg" style="width: 400px;" />
 </a>
-</div></blockquote>
 </section>
-<section id="iio-tools">
-<h1>IIO Tools:<a class="headerlink" href="#iio-tools" title="Link to this heading">¶</a></h1>
-<p><a class="reference internal" href="../iio_osc/iio_osc.html"><span class="doc">IIO Oscilloscope</span></a>
-ADI IIO Oscilloscope is a cross platform GUI application, which demonstrates how
-to interface different evaluation boards within an IIO ecosystem. It supports
-raw data capture, FFT analysis, DMM measurement, device configuration, register
-read/write and data streaming.</p>
-<p><a class="reference internal" href="../python/python.html"><span class="doc">pyadi-iio: Python interfaces</span></a>
-Analog Devices python interfaces for hardware with Industrial I/O drivers. It
-provides python based scripts for raw data capture, device configuration
-and register read/write.</p>
-<p><a class="reference external" href="https://www.analog.com/en/design-center/evaluation-hardware-and-software/evaluation-development-platforms/ace-software.html">ACE</a>
-ADI’s “Analysis, Control, Evaluation” (ACE) is a desktop software application
-which allows the evaluation and control of multiple evaluation systems.</p>
-<p><a class="reference external" href="https://github.com/analogdevicesinc/PrecisionToolbox">Precision Converters MATLAB Toolbox</a>
-Toolbox created by ADI to be used with MATLAB and Simulink with ADI Precision products.</p>
-<p><a class="reference external" href="https://wiki.analog.com/resources/tools-software/linux-software/libiio/iio_info">IIO Command Line</a>
-Command line interface for accessing IIO device parameters.</p>
-<p><a class="reference internal" href="../pocketlab/pocketlab.html"><span class="doc">Pocketlab</span></a>
-ADI Pocketlab is a display based GUI client. It supports
-raw data capture, FFT analysis, DMM measurement, device configuration, register
-read/write.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>These are the general evaluation and prototyping tools for Precision Converters
-but not all converters are supported. In some cases these tools provide generic
-IIO support (e.g. ACE, IIO Oscilloscope) and can provide basic functionality
-with any IIO based system. In other cases if a part is not currently supported,
-it is possible to add support for converters that you need due to the open
-source nature of the tools.</p>
-</div>
+<section id="register-view">
+<h2>Register View<a class="headerlink" href="#register-view" title="Link to this heading">¶</a></h2>
+<p>This view provides low level access to the registers of the device. The user can read the register values in hex.</p>
+<a class="reference internal image-reference" href="../../_images/register_view.jpg"><img alt="../../_images/register_view.jpg" src="../../_images/register_view.jpg" style="width: 400px;" />
+</a>
+</section>
+<section id="dmm-view">
+<h2>DMM View<a class="headerlink" href="#dmm-view" title="Link to this heading">¶</a></h2>
+<p>This view continuously displays device specific ADC read back value in SI Units, once start button is activated.
+There is an option to enable and disable all the channels.</p>
+<a class="reference internal image-reference" href="../../_images/dmm_view.jpg"><img alt="../../_images/dmm_view.jpg" src="../../_images/dmm_view.jpg" style="width: 400px;" />
+</a>
+</section>
+<section id="capture-view">
+<h2>Capture View<a class="headerlink" href="#capture-view" title="Link to this heading">¶</a></h2>
+<p>In this view adc raw data can be captured and visualized as waveforms continuously once the start button is activated.</p>
+<a class="reference internal image-reference" href="../../_images/capture_view.jpg"><img alt="../../_images/capture_view.jpg" src="../../_images/capture_view.jpg" style="width: 400px;" />
+</a>
+</section>
+<section id="analysis-view">
+<h2>Analysis View<a class="headerlink" href="#analysis-view" title="Link to this heading">¶</a></h2>
+<p>In this view FFT analysis can be visualized. Key information such as SNR, THD, Fund Power, freq and RMS noise is displayed on the right pane.</p>
+<p>FFT analysis can be performed only on one channel at a time.</p>
+<a class="reference internal image-reference" href="../../_images/fft_view.jpg"><img alt="../../_images/fft_view.jpg" src="../../_images/fft_view.jpg" style="width: 400px;" />
+</a>
+</section>
+<section id="about-view">
+<h2>About View<a class="headerlink" href="#about-view" title="Link to this heading">¶</a></h2>
+<p>About screen is used to provide high level product features and some presentation material on the product’s value and USP</p>
+<a class="reference internal image-reference" href="../../_images/about_view.jpg"><img alt="../../_images/about_view.jpg" src="../../_images/about_view.jpg" style="width: 400px;" />
+</a>
+</section>
 </section>
 
 
