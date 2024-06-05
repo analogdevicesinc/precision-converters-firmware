@@ -2,7 +2,7 @@
  *   @file   ad405x_user_config.h
  *   @brief  Header for AD405X user configuration file
 ******************************************************************************
-* Copyright (c) 2023-24 Analog Devices, Inc.
+* Copyright (c) 2023-2024 Analog Devices, Inc.
 *
 * All rights reserved.
 *

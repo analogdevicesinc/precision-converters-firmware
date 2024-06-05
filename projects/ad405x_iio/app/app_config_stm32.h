@@ -2,7 +2,7 @@
  *   @file    app_config_stm32.h
  *   @brief   Header file for STM32 platform configurations
 ********************************************************************************
- * Copyright (c) 2023-24 Analog Devices, Inc.
+ * Copyright (c) 2023-2024 Analog Devices, Inc.
  * All rights reserved.
  *
  * This software is proprietary to Analog Devices, Inc. and its licensors.
@@ -164,12 +164,12 @@ extern volatile bool ad405x_conversion_flag;
 extern struct stm32_dma_init_param stm32_spi_dma_extra_init_params;
 extern struct stm32_dma_channel rxdma_channel;
 extern struct stm32_dma_channel txdma_channel;
+extern uint32_t rxdma_ndtr;
 #endif
 
 extern int dma_cycle_count;
-extern bool more_than_64k_requested;
-
-void rxM1cmplt_callback(DMA_HandleTypeDef * hdma);
+void halfcmplt_callback(DMA_HandleTypeDef * hdma);
+void update_buff(uint32_t* local_buf, uint32_t* buf_start_addr);
 void stm32_system_init(void);
 void stm32_timer_enable(void);
 void stm32_timer_stop(void);

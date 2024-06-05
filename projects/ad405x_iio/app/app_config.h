@@ -204,10 +204,7 @@
 #endif
 
 /* Enable/Disable the use of SDRAM for ADC data capture buffer */
-#define USE_SDRAM	// Uncomment to use SDRAM as data buffer
-
-/* Maximum value the DMA NDTR register can take */
-#define MAX_DMA_NDTR		65535
+//#define USE_SDRAM	// Uncomment to use SDRAM as data buffer
 
 /******************************************************************************/
 /********************** Variables and User Defined Data Types *****************/
