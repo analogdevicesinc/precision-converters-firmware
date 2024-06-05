@@ -75,7 +75,7 @@ static int iio_ad405x_attr_available_set(void *device,
 #define adc_data_buffer				SDRAM_START_ADDRESS
 #define DATA_BUFFER_SIZE			SDRAM_SIZE_BYTES
 #else
-#define DATA_BUFFER_SIZE			(32768)		// 32kbytes
+#define DATA_BUFFER_SIZE			(131072)		// 128kbytes
 static int8_t adc_data_buffer[DATA_BUFFER_SIZE];
 #endif
 
@@ -137,6 +137,12 @@ static float scale = (((ADC_REF_VOLTAGE) / ADC_MAX_COUNT) * 1000);
  */
 #define BUFFER_UPDATE_RATE  400
 
+/* Maximum size of the local SRAM buffer */
+#define MAX_LOCAL_BUF_SIZE	32000
+
+/* Maximum value the DMA NDTR register can take */
+#define MAX_DMA_NDTR		(no_os_min(65535, MAX_LOCAL_BUF_SIZE/2))
+
 /******************************************************************************/
 /*************************** Types Declarations *******************************/
 /******************************************************************************/
@@ -166,6 +172,9 @@ static uint32_t nb_of_samples;
 
 /* Variable to store start of buffer address */
 volatile uint32_t *buff_start_addr;
+
+/* Local SRAM buffer */
+uint8_t local_buf[MAX_LOCAL_BUF_SIZE];
 
 /* Flag to indicate if size of the buffer is updated according to requested
  * number of samples for the multi-channel IIO buffer data alignment */
@@ -1060,6 +1069,7 @@ static int32_t iio_ad405x_end_transfer(void *dev)
 	SPI1->CR1 &= ~SPI_CR1_SPE;
 	SPI1->CR1 &= ~SPI_CR1_DFF;
 	SPI1->CR1 |= SPI_CR1_SPE;
+
 #endif
 	return ad405x_stop_data_capture();
 #else
@@ -1138,33 +1148,18 @@ static int32_t iio_ad405x_submit_samples(struct iio_device_data *iio_dev_data)
 	}
 
 	if (!dma_config_updated) {
-		/* Cap SPI RX DMA NDTR to MAX_DMA_NDTR.
-		 * If number of bytes is more than that register the M1 callback, enable DBM*/
-		spirxdma_ndtr = no_os_min(MAX_DMA_NDTR, nb_of_samples * (BYTES_PER_SAMPLE));
+		/* Cap SPI RX DMA NDTR to MAX_DMA_NDTR. */
+		spirxdma_ndtr = no_os_min(MAX_DMA_NDTR, nb_of_samples);
+		rxdma_ndtr = spirxdma_ndtr;
 
-		if (nb_of_samples * (BYTES_PER_SAMPLE) > spirxdma_ndtr) {
-			/* Set flag indicating more than 64k samples requested
-			 * Enable double buffering
-			 * Register M1 Complt Callback
-			 * Specify M1 starting address*/
-			more_than_64k_requested = true;
-			hspi1.hdmarx->Instance->CR |= (uint32_t)(DMA_SxCR_DBM);
-			HAL_DMA_RegisterCallback(&hdma_spi1_rx,
-						 HAL_DMA_XFER_M1CPLT_CB_ID,
-						 rxM1cmplt_callback);
-
-
-			hspi1.hdmarx->Instance->M1AR = (uint32_t)buff_start_addr + 0xffff;
-		} else {
-			more_than_64k_requested = false;
-			hspi1.hdmarx->Instance->CR &= ~(uint32_t)(DMA_SxCR_DBM);
-			HAL_DMA_UnRegisterCallback(&hdma_spi1_rx,
-						   HAL_DMA_XFER_M1CPLT_CB_ID);
-		}
+		/* Register half complete callback, for ping-pong buffers implementation. */
+		HAL_DMA_RegisterCallback(&hdma_spi1_rx,
+					 HAL_DMA_XFER_HALFCPLT_CB_ID,
+					 halfcmplt_callback);
 
 		struct no_os_spi_msg ad405x_spi_msg = {
 			.tx_buff = (uint32_t*)local_tx_data,
-			.rx_buff = (uint32_t*)buff_start_addr,
+			.rx_buff = (uint32_t*)local_buf,
 			.bytes_number = spirxdma_ndtr
 		};
 
@@ -1184,18 +1179,18 @@ static int32_t iio_ad405x_submit_samples(struct iio_device_data *iio_dev_data)
 		htim1.Instance->CNT = 0;
 		TIM8->CNT = 0;
 
-		hspi1.hdmarx->Instance->CR &= ~DMA_SxCR_EN;
-		hspi1.hdmarx->Instance->CR &= ~(uint32_t)(DMA_SxCR_CT);
-		hspi1.hdmarx->Instance->CR |= DMA_SxCR_DBM;
-		hspi1.hdmarx->Instance->M0AR = (uint32_t)buff_start_addr;
-		hspi1.hdmarx->Instance->M1AR = (uint32_t)buff_start_addr + MAX_DMA_NDTR;
-		hspi1.hdmarx->Instance->CR |= DMA_SxCR_EN;
-		dma_cycle_count = ((nb_of_samples * (BYTES_PER_SAMPLE)) / MAX_DMA_NDTR) + 1;
+		sdesc->hspi.hdmarx->Instance->CR &= ~DMA_SxCR_EN;
+		sdesc->hspi.hdmarx->Instance->M0AR = (uint16_t *)local_buf;
+		sdesc->hspi.hdmarx->Instance->NDTR = spirxdma_ndtr;
+		sdesc->hspi.hdmarx->Instance->CR |= DMA_SxCR_EN;
+
 		dma_config_updated = true;
 		ad405x_conversion_flag = false;
 		tim8_config();
 	}
 
+	dma_cycle_count = ((nb_of_samples) / spirxdma_ndtr) + 1;
+	update_buff(local_buf, buff_start_addr);
 	stm32_timer_enable();
 
 	while (ad405x_conversion_flag != true && timeout > 0) {
@@ -1206,6 +1201,7 @@ static int32_t iio_ad405x_submit_samples(struct iio_device_data *iio_dev_data)
 		return -EIO;
 	}
 
+	dma_config_updated = false;
 	no_os_cb_end_async_write(iio_dev_data->buffer->buf);
 #else
 
@@ -1556,10 +1552,6 @@ int32_t iio_ad405x_initialize(void)
 	if (init_status) {
 		return init_status;
 	}
-
-#if defined(USE_SDRAM)
-	memset(adc_data_buffer, 0, DATA_BUFFER_SIZE);
-#endif
 
 	return 0;
 }

@@ -2,7 +2,7 @@
  * @file    app_config_stm32.c
  * @brief   Source file for STM32 platform configurations
 ********************************************************************************
-* Copyright (c) 2023-24 Analog Devices, Inc.
+* Copyright (c) 2023-2024 Analog Devices, Inc.
 * All rights reserved.
 *
 * This software is proprietary to Analog Devices, Inc. and its licensors.
@@ -150,18 +150,32 @@ volatile struct stm32_spi_desc* sdesc;
  * samples is over. */
 volatile bool ad405x_conversion_flag = false;
 
+#if (INTERFACE_MODE == SPI_DMA)
 /* Number of times the DMA complete callback needs to be invoked for
  * capturing the desired number of samples*/
 int dma_cycle_count = 0;
 
-/* Flag to indicate whether user requested more than 64k samples */
-bool more_than_64k_requested = false;
+/* The number of transactions requested for the RX DMA stream */
+uint32_t rxdma_ndtr;
+
+/* Pointer to start of the IIO buffer */
+uint8_t *iio_buf_start_idx;
+
+/* Pointer to start of the local SRAM buffer
+ * used by RXDMA to put data directly in. */
+uint8_t *dma_buf_start_idx;
+
+/* Pointer to the current location being written to, in the IIO buffer */
+uint8_t *iio_buf_current_idx;
+
+/* Pointer to the current location being written to, by the DMA */
+uint8_t *dma_buf_current_idx;
+#endif
 
 /******************************************************************************/
 /************************** Functions Declaration *****************************/
 /******************************************************************************/
 void receivecomplete_callback(DMA_HandleTypeDef * hdma);
-void rxM1cmplt_callback(DMA_HandleTypeDef * hdma);
 void tim1_config(void);
 /******************************************************************************/
 /************************** Functions Definition ******************************/
@@ -209,27 +223,39 @@ void stm32_system_init(void)
 #endif
 }
 
-void rxM1cmplt_callback(DMA_HandleTypeDef * hdma)
+/**
+ * @brief   Callback function to flag the capture of half the number
+ *          of requested samples.
+ * @param hdma - DMA Handler (Unused)
+ * @return	None
+ */
+void halfcmplt_callback(DMA_HandleTypeDef * hdma)
 {
-	if (more_than_64k_requested) {
-		/* Update M0AR */
-		hspi1.hdmarx->Instance->M1AR += MAX_DMA_NDTR * 2;
-	}
-
-	/* Update samples captured so far */
-	dma_cycle_count -= 1;
-
-	/* If required dma cycles are done, stop timers and reset counters */
 	if (!dma_cycle_count) {
-		TIM2->CR1 &= ~1;
-		TIM1->CR1 &= ~1;
-		TIM1->CNT = 0;
-		TIM2->CNT = 0;
-		TIM8->CNT = 0;
-
-		data_ready = true;
-		ad405x_conversion_flag = true;
+		return;
 	}
+
+	/* Copy first half of the data to the IIO buffer */
+	memcpy((void *)iio_buf_current_idx, dma_buf_current_idx, rxdma_ndtr);
+
+	dma_buf_current_idx += rxdma_ndtr;
+	iio_buf_current_idx += rxdma_ndtr;
+
+}
+
+/**
+ * @brief Update buffer index
+ * @param local_buf[out] - Local Buffer
+ * @param buf_start_addr[out] - Buffer start addr
+ * @return	None
+ */
+void update_buff(uint32_t* local_buf, uint32_t* buf_start_addr)
+{
+	iio_buf_start_idx = (uint8_t*)buf_start_addr;
+	dma_buf_start_idx = (uint8_t*)local_buf;
+
+	iio_buf_current_idx = iio_buf_start_idx;
+	dma_buf_current_idx = dma_buf_start_idx;
 }
 
 /**
@@ -272,16 +298,22 @@ void stm32_timer_stop(void)
 /**
  * @brief   Callback function to flag the capture of number
  *          of requested samples.
+ * @param hdma - DMA handler (Unused)
  * @return	None
  */
 
 #if (INTERFACE_MODE == SPI_DMA)
 void receivecomplete_callback(DMA_HandleTypeDef * hdma)
 {
-	if (more_than_64k_requested) {
-		/* Update M0AR */
-		hspi1.hdmarx->Instance->M0AR += MAX_DMA_NDTR * 2;
+	if (!dma_cycle_count) {
+		return;
 	}
+
+	/* Copy second half of the data to the IIO buffer */
+	memcpy((void *)iio_buf_current_idx, dma_buf_current_idx, rxdma_ndtr);
+
+	dma_buf_current_idx = dma_buf_start_idx;
+	iio_buf_current_idx += rxdma_ndtr;
 
 	/* Update samples captured so far */
 	dma_cycle_count -= 1;
@@ -296,27 +328,12 @@ void receivecomplete_callback(DMA_HandleTypeDef * hdma)
 
 		data_ready = true;
 		ad405x_conversion_flag = true;
+
+		iio_buf_current_idx = iio_buf_start_idx;
+		dma_buf_current_idx = dma_buf_start_idx;
 	}
 
 	return;
-
-#if (APP_CAPTURE_MODE == WINDOWED_DATA_CAPTURE)
-
-	sdesc = p_ad405x_dev->spi_desc->extra ;
-
-	no_os_pwm_disable(sdesc->pwm_desc); // CS PWM
-	no_os_pwm_disable(pwm_desc);// CNV PWM
-	htim2.Instance->CNT = 0;
-
-	ad405x_conversion_flag = true;
-
-#elif (DATA_CAPTURE_MODE ==  CONTINUOUS_DATA_CAPTURE)
-	no_os_cb_end_async_write(iio_dev_data_g->buffer->buf);
-	no_os_cb_prepare_async_write(iio_dev_data_g->buffer->buf,
-				     nb_of_samples_g * (BYTES_PER_SAMPLE),
-				     &buff_start_addr,
-				     &data_read);
-#endif
 }
 #endif
 
@@ -379,7 +396,10 @@ int stm32_abort_dma_transfer(void)
 
 }
 
-/* Configure TIM1 to output TRGO */
+/**
+ * @brief Configure CNV timer
+ * @return None
+ */
 void tim1_config(void)
 {
 	TIM1->EGR = TIM_EGR_UG;// Generate update event
