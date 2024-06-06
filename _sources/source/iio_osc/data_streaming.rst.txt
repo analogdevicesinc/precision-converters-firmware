@@ -122,5 +122,5 @@ data streaming request.
 
 Buffer size can be increased to larger value by making use of internal/external RAMs. 
 For example, SDP-K1 MCU board has 16Mbytes of onboard SDRAM, which allows larger data 
-buffer size in the firmware. By enabling SDRAM in the SDP-K1 targeted Mbed firmware 
-(app_config.h file), the data buffer size can be increased to 16Mbytes.
+buffer size in the firmware. By enabling SDRAM in the SDP-K1 
+(using the macro in app_config.h file), the data buffer size can be increased to 16Mbytes.

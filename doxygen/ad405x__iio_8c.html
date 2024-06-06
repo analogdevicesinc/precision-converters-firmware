@@ -136,9 +136,7 @@ Macros</h2></td></tr>
 <tr class="separator:a80e56368cf178c2a3ef8706281ac2ab4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac92a3ff37cc9ee32542a944fe9a4c57e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad405x__iio_8c.html#ac92a3ff37cc9ee32542a944fe9a4c57e">AD405X_CHN_AVAIL_ATTR</a>(_name,  _priv)</td></tr>
 <tr class="separator:ac92a3ff37cc9ee32542a944fe9a4c57e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aca9774d2d61ff5879f0c93ac9f5e9b03"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad405x__iio_8c.html#aca9774d2d61ff5879f0c93ac9f5e9b03">adc_data_buffer</a>&#160;&#160;&#160;SDRAM_START_ADDRESS</td></tr>
-<tr class="separator:aca9774d2d61ff5879f0c93ac9f5e9b03"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab723c5f0e9759c70ed582dfd77431ff7"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad405x__iio_8c.html#ab723c5f0e9759c70ed582dfd77431ff7">DATA_BUFFER_SIZE</a>&#160;&#160;&#160;SDRAM_SIZE_BYTES</td></tr>
+<tr class="memitem:ab723c5f0e9759c70ed582dfd77431ff7"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad405x__iio_8c.html#ab723c5f0e9759c70ed582dfd77431ff7">DATA_BUFFER_SIZE</a>&#160;&#160;&#160;(131072)</td></tr>
 <tr class="separator:ab723c5f0e9759c70ed582dfd77431ff7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6f2add8fcba3f86373808fbdd22c872b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad405x__iio_8c.html#a6f2add8fcba3f86373808fbdd22c872b">NUM_OF_IIO_DEVICES</a>&#160;&#160;&#160;1</td></tr>
 <tr class="separator:a6f2add8fcba3f86373808fbdd22c872b"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -166,6 +164,10 @@ Macros</h2></td></tr>
 <tr class="separator:a70daa3c8a2012e9f7f314b8476476af2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a362aa3038c1a3a4278d24bb5380cad6d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad405x__iio_8c.html#a362aa3038c1a3a4278d24bb5380cad6d">BUFFER_UPDATE_RATE</a>&#160;&#160;&#160;400</td></tr>
 <tr class="separator:a362aa3038c1a3a4278d24bb5380cad6d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a635a0761c3c1c63eca588709c21b0b08"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad405x__iio_8c.html#a635a0761c3c1c63eca588709c21b0b08">MAX_LOCAL_BUF_SIZE</a>&#160;&#160;&#160;32000</td></tr>
+<tr class="separator:a635a0761c3c1c63eca588709c21b0b08"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a35fe7741c00803a7bb80d783507203f9"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad405x__iio_8c.html#a35fe7741c00803a7bb80d783507203f9">MAX_DMA_NDTR</a>&#160;&#160;&#160;(no_os_min(65535, <a class="el" href="ad405x__iio_8c.html#a635a0761c3c1c63eca588709c21b0b08">MAX_LOCAL_BUF_SIZE</a>/2))</td></tr>
+<tr class="separator:a35fe7741c00803a7bb80d783507203f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
 Enumerations</h2></td></tr>
@@ -208,6 +210,8 @@ Variables</h2></td></tr>
 <tr class="separator:a435319bc08d13b6396ba5731efd19077"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac662eceda82713d996bc90ff0cc60e80"><td class="memItemLeft" align="right" valign="top">volatile uint32_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad405x__iio_8c.html#ac662eceda82713d996bc90ff0cc60e80">buff_start_addr</a></td></tr>
 <tr class="separator:ac662eceda82713d996bc90ff0cc60e80"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a64753f7285011cab33065a7abb2574ef"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad405x__iio_8c.html#a64753f7285011cab33065a7abb2574ef">local_buf</a> [<a class="el" href="ad405x__iio_8c.html#a635a0761c3c1c63eca588709c21b0b08">MAX_LOCAL_BUF_SIZE</a>]</td></tr>
+<tr class="separator:a64753f7285011cab33065a7abb2574ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0adce98ac7807d035b9f6687a3908e76"><td class="memItemLeft" align="right" valign="top">volatile bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad405x__iio_8c.html#a0adce98ac7807d035b9f6687a3908e76">dma_config_updated</a> = false</td></tr>
 <tr class="separator:a0adce98ac7807d035b9f6687a3908e76"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a07cd3ac75bd66ef8329fab4614a1d70a"><td class="memItemLeft" align="right" valign="top">volatile struct iio_device_data *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad405x__iio_8c.html#a07cd3ac75bd66ef8329fab4614a1d70a">iio_dev_data_g</a></td></tr>
@@ -309,20 +313,6 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a id="aca9774d2d61ff5879f0c93ac9f5e9b03"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aca9774d2d61ff5879f0c93ac9f5e9b03">&#9670;&nbsp;</a></span>adc_data_buffer</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define adc_data_buffer&#160;&#160;&#160;SDRAM_START_ADDRESS</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
 <a id="a70daa3c8a2012e9f7f314b8476476af2"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a70daa3c8a2012e9f7f314b8476476af2">&#9670;&nbsp;</a></span>BUF_READ_TIMEOUT</h2>
 
@@ -386,7 +376,7 @@ Variables</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define DATA_BUFFER_SIZE&#160;&#160;&#160;SDRAM_SIZE_BYTES</td>
+          <td class="memname">#define DATA_BUFFER_SIZE&#160;&#160;&#160;(131072)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -401,6 +391,34 @@ Variables</h2></td></tr>
       <table class="memname">
         <tr>
           <td class="memname">#define INTERNAL_SAMPLING_CLK_NS&#160;&#160;&#160;500</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a35fe7741c00803a7bb80d783507203f9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a35fe7741c00803a7bb80d783507203f9">&#9670;&nbsp;</a></span>MAX_DMA_NDTR</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MAX_DMA_NDTR&#160;&#160;&#160;(no_os_min(65535, <a class="el" href="ad405x__iio_8c.html#a635a0761c3c1c63eca588709c21b0b08">MAX_LOCAL_BUF_SIZE</a>/2))</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a635a0761c3c1c63eca588709c21b0b08"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a635a0761c3c1c63eca588709c21b0b08">&#9670;&nbsp;</a></span>MAX_LOCAL_BUF_SIZE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MAX_LOCAL_BUF_SIZE&#160;&#160;&#160;32000</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -720,6 +738,20 @@ Here is the caller graph for this function:</div>
       <table class="memname">
         <tr>
           <td class="memname">volatile struct iio_device_data* iio_dev_data_g</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a64753f7285011cab33065a7abb2574ef"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a64753f7285011cab33065a7abb2574ef">&#9670;&nbsp;</a></span>local_buf</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t local_buf[<a class="el" href="ad405x__iio_8c.html#a635a0761c3c1c63eca588709c21b0b08">MAX_LOCAL_BUF_SIZE</a>]</td>
         </tr>
       </table>
 </div><div class="memdoc">

@@ -246,8 +246,12 @@ Macros</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a8c4fecfe0f8e65c4d5a1e733592a4439"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad405x__iio_2app_2app__config__stm32_8h.html#a8c4fecfe0f8e65c4d5a1e733592a4439">rxM1cmplt_callback</a> (DMA_HandleTypeDef *hdma)</td></tr>
-<tr class="separator:a8c4fecfe0f8e65c4d5a1e733592a4439"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a748af879b759fb21a9679dfade3057c3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad405x__iio_2app_2app__config__stm32_8h.html#a748af879b759fb21a9679dfade3057c3">halfcmplt_callback</a> (DMA_HandleTypeDef *hdma)</td></tr>
+<tr class="memdesc:a748af879b759fb21a9679dfade3057c3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Callback function to flag the capture of half the number of requested samples.  <a href="ad405x__iio_2app_2app__config__stm32_8h.html#a748af879b759fb21a9679dfade3057c3">More...</a><br /></td></tr>
+<tr class="separator:a748af879b759fb21a9679dfade3057c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aedc02b5a83ce2aec0bdd827a23822a30"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad405x__iio_2app_2app__config__stm32_8h.html#aedc02b5a83ce2aec0bdd827a23822a30">update_buff</a> (uint32_t *<a class="el" href="ad405x__iio_8c.html#a64753f7285011cab33065a7abb2574ef">local_buf</a>, uint32_t *buf_start_addr)</td></tr>
+<tr class="memdesc:aedc02b5a83ce2aec0bdd827a23822a30"><td class="mdescLeft">&#160;</td><td class="mdescRight">Update buffer index.  <a href="ad405x__iio_2app_2app__config__stm32_8h.html#aedc02b5a83ce2aec0bdd827a23822a30">More...</a><br /></td></tr>
+<tr class="separator:aedc02b5a83ce2aec0bdd827a23822a30"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7256d80c59f9d4eafcebc79f1b73ba72"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad405x__iio_2app_2app__config__stm32_8h.html#a7256d80c59f9d4eafcebc79f1b73ba72">stm32_system_init</a> (void)</td></tr>
 <tr class="memdesc:a7256d80c59f9d4eafcebc79f1b73ba72"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize the STM32 system peripherals.  <a href="ad405x__iio_2app_2app__config__stm32_8h.html#a7256d80c59f9d4eafcebc79f1b73ba72">More...</a><br /></td></tr>
 <tr class="separator:a7256d80c59f9d4eafcebc79f1b73ba72"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -274,6 +278,7 @@ Functions</h2></td></tr>
 <tr class="memitem:a7a33403d4cbab22c6d876363a1c0a806"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad405x__iio_2app_2app__config__stm32_8h.html#a7a33403d4cbab22c6d876363a1c0a806">tim8_config</a> (void)</td></tr>
 <tr class="separator:a7a33403d4cbab22c6d876363a1c0a806"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a24bc958e748c2ee89fe6cb7b251c0f92"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad405x__iio_2app_2app__config__stm32_8h.html#a24bc958e748c2ee89fe6cb7b251c0f92">tim1_config</a> (void)</td></tr>
+<tr class="memdesc:a24bc958e748c2ee89fe6cb7b251c0f92"><td class="mdescLeft">&#160;</td><td class="mdescRight">Configure CNV timer.  <a href="ad405x__iio_2app_2app__config__stm32_8h.html#a24bc958e748c2ee89fe6cb7b251c0f92">More...</a><br /></td></tr>
 <tr class="separator:a24bc958e748c2ee89fe6cb7b251c0f92"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
@@ -332,14 +337,14 @@ Variables</h2></td></tr>
 <tr class="separator:a561a42d82d21f905611582e83de10c1c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a117d16f5e47ab1da2ae9982aeffd5832"><td class="memItemLeft" align="right" valign="top">struct stm32_dma_channel&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad405x__iio_2app_2app__config__stm32_8h.html#a117d16f5e47ab1da2ae9982aeffd5832">txdma_channel</a></td></tr>
 <tr class="separator:a117d16f5e47ab1da2ae9982aeffd5832"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5915db76e1b5a75cfd23f3ee5d8d3bf6"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad405x__iio_2app_2app__config__stm32_8h.html#a5915db76e1b5a75cfd23f3ee5d8d3bf6">rxdma_ndtr</a></td></tr>
+<tr class="separator:a5915db76e1b5a75cfd23f3ee5d8d3bf6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aaff309cfd077ce3b159451bf67816b2f"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad405x__iio_2app_2app__config__stm32_8h.html#aaff309cfd077ce3b159451bf67816b2f">dma_cycle_count</a></td></tr>
 <tr class="separator:aaff309cfd077ce3b159451bf67816b2f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4752e1b61f0701eefe9610c2c0e35fce"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad405x__iio_2app_2app__config__stm32_8h.html#a4752e1b61f0701eefe9610c2c0e35fce">more_than_64k_requested</a></td></tr>
-<tr class="separator:a4752e1b61f0701eefe9610c2c0e35fce"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Header file for STM32 platform configurations. </p>
-<p>Copyright (c) 2023-24 Analog Devices, Inc. All rights reserved.</p>
+<p>Copyright (c) 2023-2024 Analog Devices, Inc. All rights reserved.</p>
 <p>This software is proprietary to Analog Devices, Inc. and its licensors. By using this software you agree to the terms of the associated Analog Devices Software License Agreement. </p>
 </div><h2 class="groupheader">Macro Definition Documentation</h2>
 <a id="adc768b73efdb2144e1bc51080917a8d3"></a>
@@ -1177,6 +1182,33 @@ Variables</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
+<a id="a748af879b759fb21a9679dfade3057c3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a748af879b759fb21a9679dfade3057c3">&#9670;&nbsp;</a></span>halfcmplt_callback()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void halfcmplt_callback </td>
+          <td>(</td>
+          <td class="paramtype">DMA_HandleTypeDef *&#160;</td>
+          <td class="paramname"><em>hdma</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Callback function to flag the capture of half the number of requested samples. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">hdma</td><td>- DMA Handler (Unused) </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>None </dd></dl>
+
+</div>
+</div>
 <a id="aa599b1bdd18c25d273dded2a87a19a2f"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aa599b1bdd18c25d273dded2a87a19a2f">&#9670;&nbsp;</a></span>receivecomplete_callback()</h2>
 
@@ -1194,25 +1226,17 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Callback function to flag the capture of number of requested samples. </p>
-<dl class="section return"><dt>Returns</dt><dd>None </dd></dl>
-
-</div>
-</div>
-<a id="a8c4fecfe0f8e65c4d5a1e733592a4439"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8c4fecfe0f8e65c4d5a1e733592a4439">&#9670;&nbsp;</a></span>rxM1cmplt_callback()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void rxM1cmplt_callback </td>
-          <td>(</td>
-          <td class="paramtype">DMA_HandleTypeDef *&#160;</td>
-          <td class="paramname"><em>hdma</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">hdma</td><td>- DMA handler (Unused) </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>None</dd>
+<dd>
+None</dd>
+<dd>
+None </dd></dl>
 
 </div>
 </div>
@@ -1415,6 +1439,9 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Configure CNV timer. </p>
+<dl class="section return"><dt>Returns</dt><dd>None </dd></dl>
+
 </div>
 </div>
 <a id="a7a33403d4cbab22c6d876363a1c0a806"></a>
@@ -1432,6 +1459,44 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+</div>
+</div>
+<a id="aedc02b5a83ce2aec0bdd827a23822a30"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aedc02b5a83ce2aec0bdd827a23822a30">&#9670;&nbsp;</a></span>update_buff()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void update_buff </td>
+          <td>(</td>
+          <td class="paramtype">uint32_t *&#160;</td>
+          <td class="paramname"><em>local_buf</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t *&#160;</td>
+          <td class="paramname"><em>buf_start_addr</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Update buffer index. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">local_buf[out]</td><td>- Local Buffer </td></tr>
+    <tr><td class="paramname">buf_start_addr[out]</td><td>- Buffer start addr </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>None </dd></dl>
 
 </div>
 </div>
@@ -1700,28 +1765,6 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a id="a4752e1b61f0701eefe9610c2c0e35fce"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4752e1b61f0701eefe9610c2c0e35fce">&#9670;&nbsp;</a></span>more_than_64k_requested</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool more_than_64k_requested</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
 <a id="a561a42d82d21f905611582e83de10c1c"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a561a42d82d21f905611582e83de10c1c">&#9670;&nbsp;</a></span>rxdma_channel</h2>
 
@@ -1733,6 +1776,28 @@ Variables</h2></td></tr>
       <table class="memname">
         <tr>
           <td class="memname">struct stm32_dma_channel rxdma_channel</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a5915db76e1b5a75cfd23f3ee5d8d3bf6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5915db76e1b5a75cfd23f3ee5d8d3bf6">&#9670;&nbsp;</a></span>rxdma_ndtr</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t rxdma_ndtr</td>
         </tr>
       </table>
   </td>
