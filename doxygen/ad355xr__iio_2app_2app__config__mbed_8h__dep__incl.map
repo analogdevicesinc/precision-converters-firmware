@@ -1,0 +1,12 @@
+<map id="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad355xr_iio/app/app_config_mbed.h" name="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad355xr_iio/app/app_config_mbed.h">
+<area shape="rect" id="node1" title="Header file for Mbed platform configurations." alt="" coords="1008,5,1268,76"/>
+<area shape="rect" id="node2" href="$ad355xr__iio_2app_2app__config_8h.html" title="Configuration file for AD355xr device application." alt="" coords="953,124,1176,195"/>
+<area shape="rect" id="node8" href="$ad355xr__iio_2app_2app__config__mbed_8c.html" title="Application configurations module for Mbed platform." alt="" coords="1626,243,1885,313"/>
+<area shape="rect" id="node3" href="$ad355xr__iio_8c.html" title="AD355XR IIO application interface module." alt="" coords="5,243,228,313"/>
+<area shape="rect" id="node4" href="$ad355xr__regs_8c.html" title="Source file for the ad355xr registers map." alt="" coords="252,243,485,313"/>
+<area shape="rect" id="node5" href="$ad355xr__support_8c.html" title="AD3552r No&#45;OS driver support file." alt="" coords="509,243,764,313"/>
+<area shape="rect" id="node6" href="$ad355xr__user__config_8c.html" title="User configuration file for AD355XR devices." alt="" coords="788,243,1067,313"/>
+<area shape="rect" id="node7" href="$ad355xr__iio_2app_2app__config_8c.html" title="Application configurations module." alt="" coords="1091,243,1313,313"/>
+<area shape="rect" id="node9" href="$ad355xr__iio_2app_2app__config__stm32_8h.html" title="Header file for STM32 platform configurations." alt="" coords="1338,243,1602,313"/>
+<area shape="rect" id="node10" href="$ad355xr__iio_2app_2app__config__stm32_8c.html" title="Application configurations module for STM32 platform." alt="" coords="1339,361,1601,432"/>
+</map>

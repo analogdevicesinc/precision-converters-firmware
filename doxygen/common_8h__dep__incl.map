@@ -1,36 +1,45 @@
 <map id="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/libraries/precision&#45;converters&#45;library/common/common.h" name="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/libraries/precision&#45;converters&#45;library/common/common.h">
-<area shape="rect" id="node1" title=" " alt="" coords="3973,5,4196,91"/>
-<area shape="rect" id="node2" href="$ad2s1210__iio_8c.html" title="Implementation of AD2S1210 IIO application interfaces." alt="" coords="5,146,247,217"/>
-<area shape="rect" id="node3" href="$ad2s1210__iio_2app_2app__config_8c.html" title="Application configurations module (platform&#45;agnostic)" alt="" coords="271,146,496,217"/>
-<area shape="rect" id="node4" href="$ad405x__iio_8c.html" title="Implementation of AD405X IIO Application Interface." alt="" coords="520,146,743,217"/>
-<area shape="rect" id="node5" href="$ad405x__iio_2app_2app__config_8c.html" title="Application configurations module." alt="" coords="767,146,989,217"/>
-<area shape="rect" id="node6" href="$ad4130__iio_8c.html" title="Implementation of AD4130 IIO application interfaces." alt="" coords="1013,146,1236,217"/>
-<area shape="rect" id="node7" href="$ad4130__iio_2app_2app__config_8c.html" title="Application configurations module." alt="" coords="1260,146,1483,217"/>
-<area shape="rect" id="node8" href="$ad4170__iio_8c.html" title="Implementation of AD4170 IIO application interfaces." alt="" coords="1507,146,1729,217"/>
-<area shape="rect" id="node9" href="$ad4170__iio_2app_2app__config_8c.html" title="Application configurations module." alt="" coords="1753,146,1976,217"/>
-<area shape="rect" id="node10" href="$ad469x__iio_8c.html" title="Implementation of AD469x IIO application interfaces." alt="" coords="2000,146,2223,217"/>
-<area shape="rect" id="node11" href="$ad469x__iio_2app_2app__config_8c.html" title="Application configurations module." alt="" coords="2247,146,2469,217"/>
-<area shape="rect" id="node12" href="$ad579x__iio_8c.html" title="AD579x IIO application interface module." alt="" coords="2493,146,2716,217"/>
-<area shape="rect" id="node13" href="$ad579x__iio_2app_2app__config_8c.html" title="Application configurations module." alt="" coords="2740,146,2963,217"/>
-<area shape="rect" id="node14" href="$ad7134__iio_8c.html" title="Implementation of AD7134 IIO apllication interfaces." alt="" coords="2987,146,3209,217"/>
-<area shape="rect" id="node15" href="$ad7134__iio_2app_2app__config_8c.html" title="Application configurations module." alt="" coords="3233,146,3456,217"/>
-<area shape="rect" id="node16" href="$ad717x__iio_8c.html" title="Source file for the AD717x IIO Application." alt="" coords="3480,146,3703,217"/>
-<area shape="rect" id="node17" href="$ad717x__iio_2app_2app__config_8c.html" title="Source file for the application configuration for AD717x IIO Application." alt="" coords="3727,146,3949,217"/>
-<area shape="rect" id="node18" href="$ad719x__iio_8c.html" title="Implementation of AD719X IIO application interfaces." alt="" coords="3973,146,4196,217"/>
-<area shape="rect" id="node19" href="$ad719x__iio_2app_2app__config_8c.html" title="Application configurations module." alt="" coords="4220,146,4443,217"/>
-<area shape="rect" id="node20" href="$ad738x__iio_8c.html" title="AD738x IIO application interface module." alt="" coords="4467,146,4689,217"/>
-<area shape="rect" id="node21" href="$ad738x__iio_2app_2app__config_8c.html" title="Application configurations module." alt="" coords="4713,146,4936,217"/>
-<area shape="rect" id="node22" href="$ad7606__iio_2app_2app__config_8c.html" title="Application configurations module (platform&#45;agnostic)" alt="" coords="4960,146,5183,217"/>
-<area shape="rect" id="node23" href="$iio__ad7606_8c.html" title="Implementation of AD7606 IIO application interfaces." alt="" coords="5207,146,5429,217"/>
-<area shape="rect" id="node24" href="$ad7689__iio_8c.html" title="Implementation of AD7689 IIO application interfaces." alt="" coords="5453,146,5676,217"/>
-<area shape="rect" id="node25" href="$ad7689__iio_2app_2app__config_8c.html" title="Application configurations module (platform&#45;agnostic)" alt="" coords="5700,146,5923,217"/>
-<area shape="rect" id="node26" href="$ad77681__iio_8c.html" title="Implementation of AD7768&#45;1 IIO application interfaces." alt="" coords="5947,146,6174,217"/>
-<area shape="rect" id="node27" href="$ad77681__iio_2app_2app__config_8c.html" title="Application configurations module." alt="" coords="6199,146,6421,217"/>
-<area shape="rect" id="node28" href="$ad777x__iio_8c.html" title="Source file of AD777x IIO interfaces." alt="" coords="6445,146,6668,217"/>
-<area shape="rect" id="node29" href="$ad777x__iio_2app_2app__config_8c.html" title="Application configurations module for AD777x firmware application." alt="" coords="6692,146,6915,217"/>
-<area shape="rect" id="node30" href="$24xx32a__eeprom__iio_8c.html" title="Implementation of 24XX32A EEPROM device IIO application interfaces." alt="" coords="6939,139,7212,224"/>
-<area shape="rect" id="node31" href="$evb__discovery__firmware_2app_2app__config_8c.html" title="Application configurations module (platform&#45;agnostic)" alt="" coords="7235,146,7534,217"/>
-<area shape="rect" id="node32" href="$ltc2672__iio_2app_2app__config_8c.html" title="Application configurations module (platform&#45;agnostic)" alt="" coords="7559,146,7781,217"/>
-<area shape="rect" id="node33" href="$ltc2672__iio_8c.html" title="Implementation of LTC2672 IIO application interfaces." alt="" coords="7805,146,8028,217"/>
-<area shape="rect" id="node34" href="$common_8c.html" title="Precision converters firmware common functions." alt="" coords="8052,139,8275,224"/>
+<area shape="rect" id="node1" title=" " alt="" coords="4392,5,4615,91"/>
+<area shape="rect" id="node2" href="$ad2s1210__iio_8c.html" title="Implementation of AD2S1210 IIO application interfaces." alt="" coords="301,146,543,217"/>
+<area shape="rect" id="node3" href="$ad2s1210__iio_2app_2app__config_8c.html" title="Application configurations module (platform&#45;agnostic)" alt="" coords="567,146,792,217"/>
+<area shape="rect" id="node4" href="$ad355xr__iio_2app_2app__config_8h.html" title="Configuration file for AD355xr device application." alt="" coords="816,146,1039,217"/>
+<area shape="rect" id="node13" href="$ad405x__iio_8c.html" title="Implementation of AD405X IIO Application Interface." alt="" coords="1063,146,1285,217"/>
+<area shape="rect" id="node14" href="$ad405x__iio_2app_2app__config_8c.html" title="Application configurations module." alt="" coords="1309,146,1532,217"/>
+<area shape="rect" id="node15" href="$ad4130__iio_8c.html" title="Implementation of AD4130 IIO application interfaces." alt="" coords="1556,146,1779,217"/>
+<area shape="rect" id="node16" href="$ad4130__iio_2app_2app__config_8c.html" title="Application configurations module." alt="" coords="1803,146,2025,217"/>
+<area shape="rect" id="node17" href="$ad4170__iio_8c.html" title="Implementation of AD4170 IIO application interfaces." alt="" coords="2049,146,2272,217"/>
+<area shape="rect" id="node18" href="$ad4170__iio_2app_2app__config_8c.html" title="Application configurations module." alt="" coords="2296,146,2519,217"/>
+<area shape="rect" id="node19" href="$ad469x__iio_8c.html" title="Implementation of AD469x IIO application interfaces." alt="" coords="2543,146,2765,217"/>
+<area shape="rect" id="node20" href="$ad469x__iio_2app_2app__config_8c.html" title="Application configurations module." alt="" coords="2789,146,3012,217"/>
+<area shape="rect" id="node21" href="$ad579x__iio_8c.html" title="AD579x IIO application interface module." alt="" coords="3036,146,3259,217"/>
+<area shape="rect" id="node22" href="$ad579x__iio_2app_2app__config_8c.html" title="Application configurations module." alt="" coords="3283,146,3505,217"/>
+<area shape="rect" id="node23" href="$ad7134__iio_8c.html" title="Implementation of AD7134 IIO apllication interfaces." alt="" coords="3529,146,3752,217"/>
+<area shape="rect" id="node24" href="$ad7134__iio_2app_2app__config_8c.html" title="Application configurations module." alt="" coords="3776,146,3999,217"/>
+<area shape="rect" id="node25" href="$ad717x__iio_8c.html" title="Source file for the AD717x IIO Application." alt="" coords="4023,146,4245,217"/>
+<area shape="rect" id="node26" href="$ad717x__iio_2app_2app__config_8c.html" title="Source file for the application configuration for AD717x IIO Application." alt="" coords="4269,146,4492,217"/>
+<area shape="rect" id="node27" href="$ad719x__iio_8c.html" title="Implementation of AD719X IIO application interfaces." alt="" coords="4516,146,4739,217"/>
+<area shape="rect" id="node28" href="$ad719x__iio_2app_2app__config_8c.html" title="Application configurations module." alt="" coords="4763,146,4985,217"/>
+<area shape="rect" id="node29" href="$ad738x__iio_8c.html" title="AD738x IIO application interface module." alt="" coords="5009,146,5232,217"/>
+<area shape="rect" id="node30" href="$ad738x__iio_2app_2app__config_8c.html" title="Application configurations module." alt="" coords="5256,146,5479,217"/>
+<area shape="rect" id="node31" href="$ad7606__iio_2app_2app__config_8c.html" title="Application configurations module (platform&#45;agnostic)" alt="" coords="5503,146,5725,217"/>
+<area shape="rect" id="node32" href="$iio__ad7606_8c.html" title="Implementation of AD7606 IIO application interfaces." alt="" coords="5749,146,5972,217"/>
+<area shape="rect" id="node33" href="$ad7689__iio_8c.html" title="Implementation of AD7689 IIO application interfaces." alt="" coords="5996,146,6219,217"/>
+<area shape="rect" id="node34" href="$ad7689__iio_2app_2app__config_8c.html" title="Application configurations module (platform&#45;agnostic)" alt="" coords="6243,146,6465,217"/>
+<area shape="rect" id="node35" href="$ad77681__iio_8c.html" title="Implementation of AD7768&#45;1 IIO application interfaces." alt="" coords="6490,146,6717,217"/>
+<area shape="rect" id="node36" href="$ad77681__iio_2app_2app__config_8c.html" title="Application configurations module." alt="" coords="6741,146,6964,217"/>
+<area shape="rect" id="node37" href="$ad777x__iio_8c.html" title="Source file of AD777x IIO interfaces." alt="" coords="6988,146,7211,217"/>
+<area shape="rect" id="node38" href="$ad777x__iio_2app_2app__config_8c.html" title="Application configurations module for AD777x firmware application." alt="" coords="7235,146,7457,217"/>
+<area shape="rect" id="node39" href="$24xx32a__eeprom__iio_8c.html" title="Implementation of 24XX32A EEPROM device IIO application interfaces." alt="" coords="7481,139,7755,224"/>
+<area shape="rect" id="node40" href="$evb__discovery__firmware_2app_2app__config_8c.html" title="Application configurations module (platform&#45;agnostic)" alt="" coords="7778,146,8077,217"/>
+<area shape="rect" id="node41" href="$ltc2672__iio_2app_2app__config_8c.html" title="Application configurations module (platform&#45;agnostic)" alt="" coords="8101,146,8324,217"/>
+<area shape="rect" id="node42" href="$ltc2672__iio_8c.html" title="Implementation of LTC2672 IIO application interfaces." alt="" coords="8348,146,8571,217"/>
+<area shape="rect" id="node43" href="$common_8c.html" title="Precision converters firmware common functions." alt="" coords="8595,139,8817,224"/>
+<area shape="rect" id="node5" href="$ad355xr__iio_8c.html" title="AD355XR IIO application interface module." alt="" coords="5,272,228,343"/>
+<area shape="rect" id="node6" href="$ad355xr__regs_8c.html" title="Source file for the ad355xr registers map." alt="" coords="252,272,485,343"/>
+<area shape="rect" id="node7" href="$ad355xr__support_8c.html" title="AD3552r No&#45;OS driver support file." alt="" coords="509,272,764,343"/>
+<area shape="rect" id="node8" href="$ad355xr__user__config_8c.html" title="User configuration file for AD355XR devices." alt="" coords="788,272,1067,343"/>
+<area shape="rect" id="node9" href="$ad355xr__iio_2app_2app__config_8c.html" title="Application configurations module." alt="" coords="1091,272,1313,343"/>
+<area shape="rect" id="node10" href="$ad355xr__iio_2app_2app__config__mbed_8c.html" title="Application configurations module for Mbed platform." alt="" coords="1337,272,1595,343"/>
+<area shape="rect" id="node11" href="$ad355xr__iio_2app_2app__config__stm32_8h.html" title="Header file for STM32 platform configurations." alt="" coords="1619,272,1883,343"/>
+<area shape="rect" id="node12" href="$ad355xr__iio_2app_2app__config__stm32_8c.html" title="Application configurations module for STM32 platform." alt="" coords="1620,391,1883,461"/>
 </map>
