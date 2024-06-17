@@ -20,6 +20,7 @@ Firmware Applications
    /source/projects/ad579x_iio/ad579x_iio.rst
    /source/projects/ad590_console/ad590_console.rst
    /source/projects/ad5933_console/ad5933_console.rst
+   /source/projects/ad7091r_iio/ad7091r_iio.rst
    /source/projects/ad7124_console/ad7124_console.rst
    /source/projects/ad7124_iio/ad7124_iio.rst
    /source/projects/ad7124_temperature-measure/ad7124_temperature-measure.rst
