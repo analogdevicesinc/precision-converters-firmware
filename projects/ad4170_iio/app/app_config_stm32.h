@@ -22,13 +22,68 @@
 #include "stm32_i2c.h"
 #include "stm32_uart.h"
 #include "stm32_gpio.h"
+#include "app_config.h"
+#if (INTERFACE_MODE != SPI_DMA_MODE)
 #include "stm32_gpio_irq.h"
+#else
+#include "stm32_dma.h"
+#endif
 #include "stm32_tdm.h"
+#if (INTERFACE_MODE == SPI_DMA_MODE)
+#include "stm32_pwm.h"
+#endif
 
 /******************************************************************************/
 /********************** Macros and Constants Definition ***********************/
 /******************************************************************************/
 
+#if defined (TARGET_SDP_K1)
+/* The below configurations are specific to STM32F469NIH6 MCU on SDP-K1 Board. */
+#define HW_CARRIER_NAME		SDP-K1
+
+/* STM32 SPI Specific parameters */
+#define STM32_SPI_ID		1 // SPI1
+#define STM32_SPI_CS_PORT	0  // GPIO Port A
+#define SPI_CSB			15 // PA_15
+
+/* STM32 I2C Specific parameters */
+#define STM32_I2C_ID		1 // I2C1
+
+/* STM32 UART specific parameters */
+#define APP_UART_HANDLE     &huart5
+#define UART_IRQ_ID         UART5_IRQn
+
+/* STM32 GPIO specific parameters */
+#define DIG_AUX_1           7 // PG7
+#define DIG_AUX_2	    10 // PG10
+#define SYNC_INB	    9 // PG9
+#define LED_GPO		    4
+
+#define DIG_AUX_1_PORT	    6 // GPIOG
+#define DIG_AUX_2_PORT	    6 // GPIOG
+#define SYNC_INB_PORT	    6 // GPIOG
+#define SYNC_INB_PORT_ID    GPIOG
+
+#define GPIO_TRIGGER_INT_PORT EXTI_GPIOG // PG7
+
+#define I2C_TIMING      0 // (Unused)
+
+/* SPI DMA specific parameters */
+#define AD469x_DMA_NUM_CHANNELS     2
+
+#define Rx_DMA_IRQ_ID               DMA2_Stream0_IRQn
+#define AD469x_TxDMA_CHANNEL_NUM    DMA_CHANNEL_7
+#define AD469x_RxDMA_CHANNEL_NUM    DMA_CHANNEL_3
+
+/* Tx Trigger timer parameters */
+#define TX_TRIGGER_TIMER_ID         8 // Timer 8
+/* Tx trigger period considering a MAX SPI clock of 22.5MHz and 32 bit transfer */
+#define TX_TRIGGER_PERIOD           2250
+#define TX_TRIGGER_DUTY_RATIO       240
+#define TIMER_8_PRESCALER           0
+#define TIMER_8_CLK_DIVIDER         1
+#define TIMER_CHANNEL_1				1
+#else
 /* The below configurations are specific to STM32H563ZIT6 MCU on NUCLEO-H563ZI Board. */
 #define HW_CARRIER_NAME		NUCLEO-H563ZI
 
@@ -72,6 +127,7 @@
 #define TDM_DMA_READ_SIZE			TDM_N_SAMPLES_DMA_READ * TDM_SLOTS_PER_FRAME/2
 
 #define STM32_SAI_BASE	SAI1_Block_A
+#endif
 
 /* Note: The below macro and the type of digital filter chosen together
  * decides the output data rate to be configured for the device.
@@ -82,13 +138,18 @@
  * a value specific to the NUCLEO-H563ZI platform tested with a 10MHz SPI clock. The maximum
  * ODR might vary across platforms and data continuity is not guaranteed above this ODR
  * on the IIO Client*/
-#if (INTERFACE_MODE == SPI_MODE)
+#if (INTERFACE_MODE == SPI_INTERRUPT_MODE)
 #define FS_CONFIG_VALUE 	20 // Value corresponding to 24KSPS ODR (per channel) with Sinc5 average filter
+#elif (INTERFACE_MODE == SPI_DMA_MODE)
+#define FS_CONFIG_VALUE		1 // Value correspoinding to 512ksps ODR (per channel) with Sinc5 filter
 #else // TDM_MODE
 #define FS_CONFIG_VALUE		1 // Value correspoinding to 512ksps ODR (per channel) with Sinc5 filter
 #endif
 
 #define TICKER_INTERRUPT_PERIOD_uSEC	(0) // unused
+
+/* Max SPI Speed */
+#define AD4170_MAX_SPI_SPEED     22500000
 
 /******************************************************************************/
 /********************** Public/Extern Declarations ****************************/
@@ -104,12 +165,41 @@ extern struct stm32_gpio_init_param stm32_csb_gpio_extra_init_params;
 extern struct stm32_gpio_irq_init_param stm32_trigger_gpio_irq_init_params;
 extern struct stm32_tdm_init_param stm32_tdm_extra_init_params;
 extern struct stm32_i2c_init_param stm32_i2c_extra_init_params;
+#if !defined (TARGET_SDP_K1)
 extern UART_HandleTypeDef huart3;
+#else
+extern UART_HandleTypeDef huart5;
+extern DMA_HandleTypeDef hdma_spi1_rx;
+extern DMA_HandleTypeDef hdma_tim8_ch1;
+#endif
 extern bool data_capture_operation;
 extern struct iio_device_data *ad4170_iio_dev_data;
 extern uint8_t num_of_active_channels;
 extern volatile bool tdm_read_started;
+extern volatile struct iio_device_data* iio_dev_data_g;
+extern uint32_t nb_of_samples_g;
+extern volatile uint32_t* buff_start_addr;
+extern int32_t data_read;
+extern uint32_t rxdma_ndtr;
+extern volatile bool ad4170_dma_buff_full;
+extern uint32_t dma_cycle_count;
+extern struct stm32_spi_desc* sdesc;
+
+#if (INTERFACE_MODE == SPI_DMA_MODE)
+extern struct stm32_pwm_init_param stm32_tx_trigger_extra_init_params;
+extern struct no_os_dma_init_param ad4170_dma_init_param;
+extern struct stm32_dma_channel rxdma_channel;
+extern struct stm32_dma_channel txdma_channel;
+#endif
+
+void tim8_config(void);
+void stm32_timer_stop(void);
 void stm32_system_init(void);
+void stm32_abort_dma_transfer(void);
 void ad4170_dma_rx_cplt(SAI_HandleTypeDef *hsai);
 void ad4170_dma_rx_half_cplt(SAI_HandleTypeDef *hsai);
+void ad4170_spi_dma_rx_cplt_callback(DMA_HandleTypeDef* hdma);
+void ad4170_spi_dma_rx_half_cplt_callback(DMA_HandleTypeDef* hdma);
+void update_buff(uint32_t* local_buf, uint32_t* buf_start_addr);
+void tim8_init(struct no_os_pwm_desc *pwm_desc);
 #endif /* APP_CONFIG_STM32_H_ */

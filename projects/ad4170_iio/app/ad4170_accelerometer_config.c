@@ -2,7 +2,7 @@
  *   @file   ad4170_accelerometer_config.c
  *   @brief  Accelerometer user configurations module for AD4170 IIO firmware
 ******************************************************************************
-* Copyright (c) 2021-22 Analog Devices, Inc.
+* Copyright (c) 2021-22,24 Analog Devices, Inc.
 * All rights reserved.
 *
 * This software is proprietary to Analog Devices, Inc. and its licensors.
@@ -36,7 +36,7 @@ struct ad4170_init_param ad4170_accelerometer_config_params = {
 	.id = ACTIVE_DEVICE_ID,
 	/* Note: Max supported SPI frequency can vary from one platform to other */
 	.spi_init = {
-		.max_speed_hz = 10000000,	// Max SPI Speed
+		.max_speed_hz = AD4170_MAX_SPI_SPEED,	// Max SPI Speed
 		.chip_select = SPI_CSB,		// Chip Select
 		.mode = NO_OS_SPI_MODE_3,	// CPOL = 1, CPHA = 1
 		.platform_ops = &spi_ops,
@@ -55,7 +55,7 @@ struct ad4170_init_param ad4170_accelerometer_config_params = {
 	.config = {
 		.pin_muxing = {
 			.chan_to_gpio = AD4170_CHANNEL_NOT_TO_GPIO,
-#if (INTERFACE_MODE == SPI_MODE)
+#if (INTERFACE_MODE == SPI_INTERRUPT_MODE)
 			.dig_aux2_ctrl = AD4170_DIG_AUX2_LDAC,	// Used as h/w LDACB
 			.dig_aux1_ctrl = AD4170_DIG_AUX1_RDY,	// Used as RDY (end of conversion)
 #elif (INTERFACE_MODE == TDM_MODE)

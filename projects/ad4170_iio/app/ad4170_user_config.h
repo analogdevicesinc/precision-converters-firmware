@@ -2,7 +2,7 @@
  *   @file   ad4170_user_config.h
  *   @brief  Header for AD4170 default user configurations file
 ******************************************************************************
-* Copyright (c) 2021-22 Analog Devices, Inc.
+* Copyright (c) 2021-22,24 Analog Devices, Inc.
 * All rights reserved.
 *
 * This software is proprietary to Analog Devices, Inc. and its licensors.
@@ -39,9 +39,9 @@
  * Sinc5 filter allows the same to be configured from 1 (500ksps) to 256 (1953sps) in
  * steps of 2
  * Please refer to the data sheet for more details on digital filters */
-#if (INTERFACE_MODE == SPI_MODE)
+#if (INTERFACE_MODE == SPI_INTERRUPT_MODE)
 #define AD4170_FILTER_CONFIG			AD4170_FILT_SINC5_AVG
-#else // TDM_MODE
+#else // TDM_MODE and SPI_DMA Mode
 #define AD4170_FILTER_CONFIG			AD4170_FILT_SINC5
 #endif
 

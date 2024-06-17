@@ -68,7 +68,7 @@ int32_t ad4170_read_single_sample(uint8_t input_chn, uint32_t *raw_data)
 		return ret;
 	}
 
-#if (INTERFACE_MODE == SPI_MODE)
+#if (INTERFACE_MODE == SPI_INTERRUPT_MODE) || (INTERFACE_MODE == SPI_DMA_MODE)
 	/* Enable single conversion mode */
 	adc_ctrl = p_ad4170_dev_inst->config.adc_ctrl;
 	adc_ctrl.mode = AD4170_MODE_SINGLE;
@@ -82,7 +82,7 @@ int32_t ad4170_read_single_sample(uint8_t input_chn, uint32_t *raw_data)
 	if (ret) {
 		return ret;
 	}
-#else
+#elif (INTERFACE_MODE == TDM_MODE)
 	/* Set to continuous transmit mode as TDM works only in this mode */
 	adc_ctrl.mode =
 		AD4170_CONT_CONV_MODE_CONFIG; /* ADC in continuous conversion mode */

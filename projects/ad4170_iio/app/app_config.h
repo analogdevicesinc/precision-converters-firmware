@@ -48,7 +48,8 @@
 
 /* List of supported interface modes for data capturing */
 #define TDM_MODE	0
-#define SPI_MODE	1
+#define SPI_INTERRUPT_MODE	1
+#define SPI_DMA_MODE    2
 
 /* List of supported IIO clients
  * Note: Local client is supported only for Mbed platform
@@ -80,7 +81,7 @@
 
 /* Select the active platform (default is Mbed) */
 #if !defined(ACTIVE_PLATFORM)
-#define ACTIVE_PLATFORM		STM32_PLATFORM
+#define ACTIVE_PLATFORM		MBED_PLATFORM
 #endif
 
 /* Select active IIO client */
@@ -88,19 +89,25 @@
 #define ACTIVE_IIO_CLIENT	IIO_CLIENT_REMOTE
 #endif
 
-/* Note: The STM32 platform supports SPI and TDM Mode of data capturing
- * while the MBED platform supports only SPI Mode */
+/* Note: The STM32 platform supports SPI interrupt and TDM DMA data capturing
+ * using the Nucleo-H563ZI and SPI DMA Mode using the SDP-K1
+ * while the MBED platform supports only SPI interrupt Mode */
 #if !defined(INTERFACE_MODE)
 #if (ACTIVE_PLATFORM == STM32_PLATFORM)
+/* Note: SDP-K1 supports only SPI DMA Mode in stm32 platform*/
+#if defined (TARGET_SDP_K1)
+#define INTERFACE_MODE SPI_DMA_MODE
+#else // Nucleo H563
 #define INTERFACE_MODE TDM_MODE
+#endif
 #else // Mbed
-#define INTERFACE_MODE SPI_MODE
+#define INTERFACE_MODE SPI_INTERRUPT_MODE
 #endif
 #endif
 
 /* Select the demo mode configuration (default is user config) */
 #if !defined(ACTIVE_DEMO_MODE_CONFIG)
-#define ACTIVE_DEMO_MODE_CONFIG		THERMOCOUPLE_CONFIG
+#define ACTIVE_DEMO_MODE_CONFIG		USER_DEFAULT_CONFIG
 #endif
 
 /* Select the ADC data capture mode (default is CC mode) */
@@ -163,6 +170,9 @@
 #define ticker_int_extra_init_params	stm32_ticket_int_init_params
 #define tdm_extra_init_params stm32_tdm_extra_init_params
 #define i2c_extra_init_params stm32_i2c_extra_init_params
+#if (INTERFACE_MODE == SPI_DMA_MODE)
+#define tx_trigger_extra_init_params  stm32_tx_trigger_extra_init_params
+#endif
 
 #define spi_ops		stm32_spi_ops
 #define uart_ops	stm32_uart_ops
@@ -171,6 +181,10 @@
 #define irq_ops		stm32_gpio_irq_ops
 #define tdm_ops      stm32_tdm_platform_ops
 #define trigger_gpio_irq_ops stm32_gpio_irq_ops
+#if (INTERFACE_MODE == SPI_DMA_MODE)
+#define dma_ops stm32_dma_ops
+#define pwm_ops      stm32_pwm_ops
+#endif
 
 #define TRIGGER_GPIO_PORT 			DIG_AUX_1_PORT
 #define TRIGGER_GPIO_PIN  			DIG_AUX_1
@@ -290,6 +304,7 @@ extern struct no_os_spi_init_param spi_init_params;
 extern struct no_os_irq_ctrl_desc *trigger_irq_desc;
 extern struct no_os_tdm_desc *ad4170_tdm_desc;
 extern struct no_os_eeprom_desc *eeprom_desc;
+extern struct no_os_pwm_desc *tx_trigger_desc;
 int32_t init_system(void);
 void ticker_callback(void *ctx);
 

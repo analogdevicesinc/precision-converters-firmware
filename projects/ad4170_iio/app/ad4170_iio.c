@@ -89,6 +89,7 @@ static int32_t ad4170_code_to_straight_binary(uint32_t code, uint8_t chn);
 
 /* ADC data buffer size */
 #if defined(USE_SDRAM)
+/* SDRAM configs for SDP-K1 */
 #define adc_data_buffer				SDRAM_START_ADDRESS
 #define DATA_BUFFER_SIZE			SDRAM_SIZE_BYTES
 #else
@@ -99,7 +100,7 @@ static int32_t ad4170_code_to_straight_binary(uint32_t code, uint8_t chn);
 #if (INTERFACE_MODE == TDM_MODE)
 #define DATA_BUFFER_SIZE			(128000)
 #else
-#define DATA_BUFFER_SIZE			(32768)
+#define DATA_BUFFER_SIZE			(131072)
 #endif
 #endif	// ACTIVE_IIO_CLIENT
 static int8_t adc_data_buffer[DATA_BUFFER_SIZE] = { 0 };
@@ -110,6 +111,9 @@ static int8_t adc_data_buffer[DATA_BUFFER_SIZE] = { 0 };
 #define APP_LOCAL_BACKEND_BUF_SIZE	0x1000	// min 4096 bytes required
 static char app_local_backend_buff[APP_LOCAL_BACKEND_BUF_SIZE];
 #endif
+
+/* Max number of cached registers */
+#define N_REGISTERS_CACHED ADC_REGISTER_COUNT
 
 /******************************************************************************/
 /*************************** Types Declarations *******************************/
@@ -367,6 +371,67 @@ static struct pl_gui_init_param pocket_lab_gui_init_params = {
 
 struct pl_gui_desc *pocket_lab_gui_desc;
 #endif
+
+#if (INTERFACE_MODE == SPI_DMA_MODE)
+/* STM32 SPI Init params */
+struct stm32_spi_init_param* spi_init_param;
+
+/* Rx DMA channel descriptor */
+struct no_os_dma_ch* rxch;
+
+/* Tx DMA channel descriptor */
+struct no_os_dma_ch* txch;
+
+/* Global Pointer for IIO Device Data */
+volatile struct iio_device_data* iio_dev_data_g;
+
+/* Global variable for number of samples */
+uint32_t nb_of_samples_g;
+
+/* Global variable for data read from CB functions */
+int32_t data_read;
+
+/* Flag to indicate if DMA has been configured for capture */
+volatile bool dma_config_updated = false;
+
+/* Flag for checking DMA buffer overflow */
+volatile bool ad4170_dma_buff_full = false;
+
+/* Variable to store start of buffer address */
+volatile uint32_t* buff_start_addr;
+
+/* Local buffer */
+#define MAX_LOCAL_BUF_SIZE	8000
+uint8_t local_buf[MAX_LOCAL_BUF_SIZE];
+
+/* Maximum value the DMA NDTR register can take */
+#define MAX_DMA_NDTR		(no_os_min(65535, MAX_LOCAL_BUF_SIZE))
+#endif
+
+/* Serial interface reset command */
+static const uint8_t ad4170_serial_intf_reset[24] = {
+	0xFF, 0xFF, 0xFF, 0xFF,
+	0xFF, 0xFF, 0xFF, 0xFE,
+	0xFF, 0xFF, 0xFF, 0xFF,
+	0xFF, 0xFF, 0xFF, 0xFE,
+	0xFF, 0xFF, 0xFF, 0xFF,
+	0xFF, 0xFF, 0xFF, 0xFE
+};
+
+/**
+ * @struct ad4170_cached_reg
+ * @brief Cached register
+ */
+struct ad4170_cached_reg {
+	uint32_t addr;
+	uint32_t value
+};
+
+/* Cached registers */
+struct ad4170_cached_reg reg_values[N_REGISTERS_CACHED];
+
+/* Register index */
+uint8_t read_reg_id = 0;
 
 /******************************************************************************/
 /************************ Functions Prototypes ********************************/
@@ -1619,7 +1684,7 @@ static int32_t ad4170_start_data_capture(void)
 		}
 	}
 
-#if (INTERFACE_MODE == SPI_MODE)
+#if (INTERFACE_MODE == SPI_INTERRUPT_MODE)
 #if (DATA_CAPTURE_MODE == CONTINUOUS_DATA_CAPTURE)
 	/* Select continuous conversion mode */
 	adc_ctrl.mode = AD4170_CONT_CONV_MODE_CONFIG;
@@ -1633,6 +1698,18 @@ static int32_t ad4170_start_data_capture(void)
 	adc_ctrl.mode = AD4170_CONT_CONV_MODE_CONFIG;
 	adc_ctrl.cont_read = AD4170_CONT_READ_OFF;
 #endif
+	ret = ad4170_set_adc_ctrl(p_ad4170_dev_inst, adc_ctrl);
+	if (ret) {
+		return ret;
+	}
+#elif (INTERFACE_MODE == SPI_DMA_MODE)
+	/* Select continuous conversion mode */
+	adc_ctrl.mode = AD4170_CONT_CONV_MODE_CONFIG;
+
+	/* Enable continuous read mode for faster data read */
+	adc_ctrl.cont_read = AD4170_CONT_READ_ON;
+	adc_ctrl.cont_read_status_en = false;
+
 	ret = ad4170_set_adc_ctrl(p_ad4170_dev_inst, adc_ctrl);
 	if (ret) {
 		return ret;
@@ -1672,6 +1749,9 @@ static int32_t ad4170_stop_data_capture(void)
 {
 	int32_t ret;
 	uint8_t chn;
+	struct ad4170_adc_ctrl adc_ctrl = p_ad4170_dev_inst->config.adc_ctrl;
+	adc_ctrl.cont_read = AD4170_CONT_READ_OFF;
+	adc_ctrl.mode = AD4170_MODE_STANDBY;
 
 #if (INTERFACE_MODE == TDM_MODE)
 	ret = no_os_tdm_stop(ad4170_tdm_desc);
@@ -1692,12 +1772,37 @@ static int32_t ad4170_stop_data_capture(void)
 	}
 #endif
 
+#if (INTERFACE_MODE != SPI_DMA_MODE)
 	/* Disable ADC conversion */
 	ret = ad4170_disable_conversion();
 	if (ret) {
 		return ret;
 	}
+#else
+	ret = no_os_spi_write_and_read(p_ad4170_dev_inst->spi_desc,
+				       ad4170_serial_intf_reset, sizeof(ad4170_serial_intf_reset));
+	if (ret) {
+		return ret;
+	}
 
+	/* Serial interface reset delay */
+	no_os_mdelay(5);
+
+	p_ad4170_dev_inst->config.adc_ctrl.cont_read = AD4170_CONT_READ_OFF;
+	ad4170_set_adc_ctrl(p_ad4170_dev_inst, adc_ctrl);
+
+	/* Re-initialize the Device to apply the user config params */
+	ret = ad4170_init(&p_ad4170_dev_inst, &ad4170_init_params);
+	if (ret) {
+		return ret;
+	}
+
+	/* Restore cached reg values */
+	ret = ad4170_restore_cache();
+	if (ret) {
+		return ret;
+	}
+#endif
 	/* Remove excitation sources (demo config specific) */
 	for (chn = 0; chn < num_of_active_channels; chn++) {
 		ret = ad4170_remove_excitation(active_channels[chn]);
@@ -1829,6 +1934,156 @@ static int32_t ad4170_read_burst_data_spi(uint32_t nb_of_samples,
 }
 
 /**
+ * @brief Read data in burst mode via SPI DMA
+ * @param nb_of_samples[in] - Number of samples requested by IIO
+ * @param iio_dev_data[in] - IIO Device data instance
+ * @return 0 in case of success or negative value otherwise
+ */
+static int32_t ad4170_read_burst_data_spi_dma(uint32_t nb_of_samples,
+		struct iio_device_data* iio_dev_data)
+{
+	nb_of_samples *= BYTES_PER_SAMPLE;
+	int ret;
+	uint32_t local_tx_data = 0x000000;
+	uint32_t timeout = BUF_READ_TIMEOUT;
+	uint32_t spirxdma_ndtr;
+
+#if (INTERFACE_MODE == SPI_DMA_MODE)
+	ad4170_dma_buff_full = false;
+	/* STM32 SPI Descriptor */
+	struct stm32_spi_desc* sdesc = p_ad4170_dev_inst->spi_desc->extra;
+
+	nb_of_samples_g = nb_of_samples;
+	iio_dev_data_g = iio_dev_data;
+
+#if (DATA_CAPTURE_MODE == BURST_DATA_CAPTURE)
+	ret = no_os_cb_prepare_async_write(iio_dev_data->buffer->buf,
+					   nb_of_samples, &buff_start_addr, &data_read);
+	if (ret) {
+		return ret;
+	}
+
+	if (!dma_config_updated) {
+		/* Set SYNC Low */
+		ret = no_os_gpio_set_value(p_ad4170_dev_inst->gpio_sync_inb, NO_OS_GPIO_LOW);
+		if (ret) {
+			return ret;
+		}
+
+		/* Cap SPI RX DMA NDTR to MAX_DMA_NDTR. */
+		spirxdma_ndtr = no_os_min(MAX_DMA_NDTR, nb_of_samples);
+		rxdma_ndtr = spirxdma_ndtr;
+
+		/* Register half complete callback, for ping-pong buffers implementation. */
+		HAL_DMA_RegisterCallback(&hdma_spi1_rx,
+					 HAL_DMA_XFER_HALFCPLT_CB_ID,
+					 ad4170_spi_dma_rx_half_cplt_callback);
+
+		struct no_os_spi_msg  ad4170_spi_msg = {
+			.tx_buff = (uint32_t*)local_tx_data,
+			.rx_buff = (uint32_t*)local_buf,
+			.bytes_number = spirxdma_ndtr
+		};
+
+		ret = no_os_spi_transfer_dma_async(p_ad4170_dev_inst->spi_desc, &ad4170_spi_msg,
+						   1, ad4170_spi_dma_rx_cplt_callback, NULL);
+		if (ret) {
+			return ret;
+		}
+		dma_config_updated = true;
+
+		/* Configure Tx Trigger timer parameters */
+		tim8_config();
+	}
+
+	dma_cycle_count = ((nb_of_samples) / rxdma_ndtr) + 1;
+	update_buff(local_buf, buff_start_addr);
+
+	TIM8->CNT = 0;
+
+	/* Set CS Low to stream data continuously on SDO */
+	ret = no_os_gpio_set_value(csb_gpio_desc, NO_OS_GPIO_LOW);
+	if (ret) {
+		return ret;
+	}
+
+	/* Set SYNC High to Initiate conversion */
+	ret = no_os_gpio_set_value(p_ad4170_dev_inst->gpio_sync_inb, NO_OS_GPIO_HIGH);
+	if (ret) {
+		return ret;
+	}
+
+	while (ad4170_dma_buff_full != true && timeout > 0) {
+		timeout--;
+	}
+
+	if (!timeout) {
+		return -EIO;
+	}
+
+	ret = no_os_cb_end_async_write(iio_dev_data->buffer->buf);
+	if (ret) {
+		return ret;
+	}
+
+	/* Set CS back high to enable Reg access mode */
+	ret = no_os_gpio_set_value(csb_gpio_desc, NO_OS_GPIO_HIGH);
+	if (ret) {
+		return ret;
+	}
+#else
+	if (!dma_config_updated) {
+		/* SPI Message */
+		struct no_os_spi_msg ad4170_spi_msg = {
+			.tx_buff = (uint32_t*)local_tx_data,
+			.bytes_number = nb_of_samples * (BYTES_PER_SAMPLE)
+		};
+
+		/* Set SYNC Low */
+		ret = no_os_gpio_set_value(p_ad4170_dev_inst->gpio_sync_inb, NO_OS_GPIO_LOW);
+		if (ret) {
+			return ret;
+		}
+
+		ret = no_os_cb_prepare_async_write(iio_dev_data_g->buffer->buf,
+						   nb_of_samples * (BYTES_PER_SAMPLE), &buff_start_addr, &data_read);
+		if (ret) {
+			return ret;
+		}
+		ad4170_spi_msg.rx_buff = (uint32_t*)buff_start_addr;
+
+		ret = no_os_spi_transfer_dma_async(p_ad4170_dev_inst->spi_desc, &ad4170_spi_msg,
+						   1, NULL, NULL);
+		if (ret) {
+			return ret;
+		}
+
+		dma_config_updated = true;
+
+		/* Configure Tx trigger timer parameters */
+		tim8_config();
+
+		TIM8->CNT = 0;
+
+		/* Set CS Low to stream data continuously on SDO */
+		ret = no_os_gpio_set_value(csb_gpio_desc, NO_OS_GPIO_LOW);
+		if (ret) {
+			return ret;
+		}
+
+		/* Set SYNC High to Initiate conversion */
+		ret = no_os_gpio_set_value(p_ad4170_dev_inst->gpio_sync_inb, NO_OS_GPIO_HIGH);
+		if (ret) {
+			return ret;
+		}
+	}
+#endif // DATA_CAPTURE_MODE
+#endif // INTERFACE_MODE
+
+	return 0;
+}
+
+/**
  * @brief	Read buffer data corresponding to AD4170 ADC IIO device
  * @param	iio_dev_data[in] - IIO device data instance
  * @return 0 in case of success or negative value otherwise
@@ -1837,27 +2092,133 @@ static int32_t iio_ad4170_submit_buffer(struct iio_device_data *iio_dev_data)
 {
 	uint32_t ret;
 	uint32_t nb_of_samples;
-
-#if (DATA_CAPTURE_MODE == BURST_DATA_CAPTURE)
 	nb_of_samples = iio_dev_data->buffer->size / BYTES_PER_SAMPLE;
-#if (INTERFACE_MODE == SPI_MODE)
+
+#if (INTERFACE_MODE  != TDM_MODE)
 	if (!buf_size_updated) {
 		/* Update total buffer size according to requested samples
 		 * IIO from  for proper alignment of multi-channel IIO buffer data */
 		iio_dev_data->buffer->buf->size = iio_dev_data->buffer->size;
 		buf_size_updated = true;
 	}
+#endif
 
+#if (DATA_CAPTURE_MODE == BURST_DATA_CAPTURE)
+#if (INTERFACE_MODE == SPI_INTERRUPT_MODE)
 	ret = ad4170_read_burst_data_spi(nb_of_samples, iio_dev_data);
-
-#else  // TDM_MODE
+	if (ret) {
+		return ret;
+	}
+#elif (INTERFACE_MODE == TDM_MODE)
 	ret = ad4170_read_burst_data_tdm(iio_dev_data->buffer->size, iio_dev_data);
+	if (ret) {
+		return ret;
+	}
+#elif (INTERFACE_MODE == SPI_DMA_MODE)
+	ret = ad4170_read_burst_data_spi_dma(nb_of_samples, iio_dev_data);
 	if (ret) {
 		return ret;
 	}
 #endif
 #else // CONTINUOUS_DATA_CAPTURE
+#if(INTERFACE_MODE == SPI_DMA_MODE)
+	ret = ad4170_read_burst_data_spi_dma(nb_of_samples, iio_dev_data);
+	if (ret) {
+		return ret;
+	}
 #endif
+#endif
+
+	return 0;
+}
+
+/**
+ * @brief Cache register values modified by attributes
+ * @return 0 in case of success, negative error code otherwise
+ */
+int ad4170_cache_register_values(void)
+{
+	int ret;
+	uint8_t chn_setup_index = 0;
+	uint32_t debug_addr = AD4170_REG_ADC_CTRL;
+	uint32_t debug_val = 0;
+
+	read_reg_id = 0;
+
+	/* Cache ADC control register */
+	reg_values[read_reg_id].addr = AD4170_REG_ADC_CTRL;
+	ret = ad4170_spi_reg_read(p_ad4170_dev_inst, reg_values[read_reg_id].addr,
+				  &reg_values[read_reg_id].value);
+	if (ret) {
+		return ret;
+	}
+
+	read_reg_id++;
+
+	/* Cache setup register */
+	for (chn_setup_index = 0; chn_setup_index < AD4170_NUM_SETUPS;
+	     chn_setup_index++) {
+		reg_values[read_reg_id].addr = AD4170_REG_ADC_CHANNEL_SETUP(chn_setup_index);
+		ret = ad4170_spi_reg_read(p_ad4170_dev_inst,
+					  reg_values[read_reg_id].addr, &reg_values[read_reg_id].value);
+		if (ret) {
+			return ret;
+		}
+		read_reg_id++;
+	}
+
+	/* Cache AFE register */
+	for (chn_setup_index = 0; chn_setup_index < AD4170_NUM_SETUPS;
+	     chn_setup_index++) {
+		reg_values[read_reg_id].addr = AD4170_REG_ADC_SETUPS_AFE(chn_setup_index);
+		ret = ad4170_spi_reg_read(p_ad4170_dev_inst,
+					  reg_values[read_reg_id].addr, &reg_values[read_reg_id].value);
+		if (ret) {
+			return ret;
+		}
+		read_reg_id++;
+	}
+
+	/* Cache clock control register */
+	reg_values[read_reg_id].addr = AD4170_REG_CLOCK_CTRL;
+	ret = ad4170_spi_reg_read(p_ad4170_dev_inst,
+				  reg_values[read_reg_id].addr, &reg_values[read_reg_id].value);
+	if (ret) {
+		return ret;
+	}
+	read_reg_id++;
+
+	/* Cache Filter Fs register */
+	for (chn_setup_index = 0; chn_setup_index < AD4170_NUM_SETUPS;
+	     chn_setup_index++) {
+		reg_values[read_reg_id].addr = AD4170_REG_ADC_SETUPS_FILTER_FS(chn_setup_index);
+		ret = ad4170_spi_reg_read(p_ad4170_dev_inst,
+					  reg_values[read_reg_id].addr, &reg_values[read_reg_id].value);
+		if (ret) {
+			return ret;
+		}
+		read_reg_id++;
+	}
+
+	return 0;
+}
+
+/**
+ * @brief Restore cached register values
+ * @return 0 in case of success, negative error code otherwise
+ */
+int ad4170_restore_cache(void)
+{
+	int ret;
+	uint8_t write_reg_id;
+
+	for (write_reg_id = 0; write_reg_id < read_reg_id; write_reg_id++) {
+		ret = ad4170_spi_reg_write(p_ad4170_dev_inst,
+					   reg_values[write_reg_id].addr, reg_values[write_reg_id].value);
+		if (ret) {
+			return ret;
+		}
+	}
 
 	return 0;
 }
@@ -1884,6 +2245,12 @@ static int32_t iio_ad4170_prepare_transfer(void *dev_instance,
 
 	/* Store the previous active channels */
 	prev_active_channels = p_ad4170_dev_inst->config.channel_en;
+
+	/* Cache register values */
+	ret = ad4170_cache_register_values();
+	if (ret) {
+		return ret;
+	}
 
 	/* Enable/Disable channels based on channel mask set in the IIO client */
 	for (chn = 0; chn < AD4170_NUM_CHANNELS; chn++) {
@@ -1920,7 +2287,7 @@ static int32_t iio_ad4170_prepare_transfer(void *dev_instance,
 		num_samples_ignore = 2;
 	}
 
-#if (DATA_CAPTURE_MODE == CONTINUOUS_DATA_CAPTURE)
+#if (DATA_CAPTURE_MODE == CONTINUOUS_DATA_CAPTURE) && (INTERFACE_MODE != SPI_DMA_MODE)
 	ret = iio_trig_enable(ad4170_hw_trig_desc);
 	if (ret) {
 		return ret;
@@ -1951,6 +2318,40 @@ static int32_t iio_ad4170_prepare_transfer(void *dev_instance,
 #endif // INTERFACE_MODE
 #endif // DATA_CAPTURE_MODE
 
+#if (INTERFACE_MODE == SPI_DMA_MODE)
+	ret = ad4170_start_data_capture();
+	if (ret) {
+		return ret;
+	}
+
+	spi_init_param = ad4170_user_config_params.spi_init.extra;
+	spi_init_param->dma_init = &ad4170_dma_init_param;
+
+	rxch = (struct no_os_dma_ch*)no_os_calloc(1, sizeof(*rxch));
+	if (!rxch) {
+		return -ENOMEM;
+	}
+
+	txch = (struct no_os_dma_ch*)no_os_calloc(1, sizeof(*txch));
+	if (!txch) {
+		return -ENOMEM;
+	}
+
+	rxch->irq_num = Rx_DMA_IRQ_ID;
+	rxch->extra = &rxdma_channel;
+	txch->extra = &txdma_channel;
+
+	spi_init_param->rxdma_ch = rxch;
+	spi_init_param->txdma_ch = txch;
+
+	/* Init SPI interface in DMA Mode */
+	ret = no_os_spi_init(&p_ad4170_dev_inst->spi_desc,
+			     &ad4170_user_config_params.spi_init);
+	if (ret) {
+		return ret;
+	}
+#endif
+
 	return 0;
 }
 
@@ -1969,6 +2370,7 @@ static int32_t iio_ad4170_end_transfer(void *dev)
 	tdm_read_started = false;
 	data_capture_operation = false;
 
+#if (INTERFACE_MODE != SPI_DMA_MODE)
 #if (DATA_CAPTURE_MODE == CONTINUOUS_DATA_CAPTURE)
 	ret = iio_trig_disable(ad4170_hw_trig_desc);
 	if (ret) {
@@ -1986,6 +2388,40 @@ static int32_t iio_ad4170_end_transfer(void *dev)
 	if (ret) {
 		return ret;
 	}
+#endif
+#else // SPI_DMA
+	stm32_timer_stop();
+
+	stm32_abort_dma_transfer();
+
+	spi_init_param = ad4170_user_config_params.spi_init.extra;
+	spi_init_param->dma_init = NULL;
+
+	/* Init SPI Interface in normal mode (Non DMA) */
+	ret = no_os_spi_init(&p_ad4170_dev_inst->spi_desc,
+			     &ad4170_user_config_params.spi_init);
+	if (ret) {
+		return ret;
+	}
+
+	/* Set SYNC High to Initiate conversion */
+	ret = no_os_gpio_set_value(p_ad4170_dev_inst->gpio_sync_inb, NO_OS_GPIO_HIGH);
+	if (ret) {
+		return ret;
+	}
+
+	/* Stop data capture */
+	ret = ad4170_stop_data_capture();
+	if (ret) {
+		return ret;
+	}
+
+	/* Restore (re-enable) the previous active channels */
+	ret = ad4170_set_channel_en(p_ad4170_dev_inst, prev_active_channels);
+	if (ret) {
+		return ret;
+	}
+	dma_config_updated = false;
 #endif
 
 	data_capture_operation = false;
@@ -2350,8 +2786,13 @@ static int32_t ad4170_iio_init(struct iio_device **desc)
 
 		chn_scan[chn].realbits = CHN_REAL_BITS;
 		chn_scan[chn].storagebits = CHN_STORAGE_BITS;
+#if (INTERFACE_MODE == SPI_DMA_MODE)
+		chn_scan[chn].shift = CHN_STORAGE_BITS - CHN_REAL_BITS;
+		chn_scan[chn].is_big_endian = true;
+#else
 		chn_scan[chn].shift = 0;
 		chn_scan[chn].is_big_endian = false;
+#endif
 	}
 
 	iio_ad4170_inst->num_ch = NO_OS_ARRAY_SIZE(iio_ad4170_channels);
@@ -2361,7 +2802,7 @@ static int32_t ad4170_iio_init(struct iio_device **desc)
 	iio_ad4170_inst->submit = iio_ad4170_submit_buffer;
 	iio_ad4170_inst->pre_enable = iio_ad4170_prepare_transfer;
 	iio_ad4170_inst->post_disable = iio_ad4170_end_transfer;
-#if (DATA_CAPTURE_MODE == CONTINUOUS_DATA_CAPTURE)
+#if (DATA_CAPTURE_MODE == CONTINUOUS_DATA_CAPTURE) && (INTERFACE_MODE != SPI_DMA_MODE)
 	iio_ad4170_inst->trigger_handler = iio_ad4170_trigger_handler;
 #endif
 
@@ -2476,7 +2917,7 @@ int32_t ad4170_iio_initialize(void)
 
 		iio_init_params.nb_devs++;
 
-#if (DATA_CAPTURE_MODE == CONTINUOUS_DATA_CAPTURE)
+#if (DATA_CAPTURE_MODE == CONTINUOUS_DATA_CAPTURE) && (INTERFACE_MODE != SPI_DMA_MODE)
 		iio_init_params.nb_trigs++;
 #endif
 	}
@@ -2490,7 +2931,7 @@ int32_t ad4170_iio_initialize(void)
 		return init_status;
 	}
 
-#if (DATA_CAPTURE_MODE == CONTINUOUS_DATA_CAPTURE)
+#if (DATA_CAPTURE_MODE == CONTINUOUS_DATA_CAPTURE) && (INTERFACE_MODE != SPI_DMA_MODE)
 	/* Initialize the IIO trigger specific parameters */
 	init_status = ad4170_iio_trigger_param_init(&ad4170_hw_trig_desc);
 	if (init_status) {
