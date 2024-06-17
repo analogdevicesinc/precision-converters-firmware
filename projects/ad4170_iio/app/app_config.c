@@ -3,7 +3,7 @@
  *   @brief   Application configurations module
  *   @details This module contains the configurations needed for IIO application
 ********************************************************************************
- * Copyright (c) 2021-23 Analog Devices, Inc.
+ * Copyright (c) 2021-24 Analog Devices, Inc.
  * All rights reserved.
  *
  * This software is proprietary to Analog Devices, Inc. and its licensors.
@@ -26,6 +26,7 @@
 #include "no_os_i2c.h"
 #include "no_os_eeprom.h"
 #include "no_os_tdm.h"
+#include "no_os_pwm.h"
 #if (ACTIVE_IIO_CLIENT == IIO_CLIENT_LOCAL)
 #include "pl_gui_events.h"
 #include "pl_gui_views.h"
@@ -81,7 +82,7 @@ static struct no_os_gpio_init_param led_gpio_init_params = {
 	.extra = NULL
 };
 
-#if (INTERFACE_MODE == SPI_MODE)
+#if (INTERFACE_MODE == SPI_INTERRUPT_MODE)
 /* Trigger GPIO init parameters */
 struct no_os_gpio_init_param trigger_gpio_param = {
 	.port = TRIGGER_GPIO_PORT,
@@ -92,12 +93,15 @@ struct no_os_gpio_init_param trigger_gpio_param = {
 };
 #endif
 
+#if (INTERFACE_MODE != SPI_DMA_MODE)
 /* Trigger GPIO IRQ parameters */
 struct no_os_irq_init_param trigger_gpio_irq_params = {
 	.irq_ctrl_id = TRIGGER_GPIO_IRQ_CTRL_ID,
 	.platform_ops = &trigger_gpio_irq_ops,
 	.extra = &trigger_gpio_irq_extra_params
 };
+#endif
+
 #if (INTERFACE_MODE == TDM_MODE)
 struct no_os_tdm_init_param tdm_init_param = {
 	.mode = NO_OS_TDM_SLAVE_RX,
@@ -120,18 +124,6 @@ struct no_os_tdm_init_param tdm_init_param = {
 
 /* TDM Descriptor */
 struct no_os_tdm_desc *ad4170_tdm_desc;
-
-/* Chip Select GPIO init parameters */
-struct no_os_gpio_init_param csb_gpio_init_param = {
-	.port = CSB_GPIO_PORT,
-	.number = SPI_CSB,
-	.pull = NO_OS_PULL_NONE,
-	.platform_ops = &gpio_ops,
-	.extra = &csb_gpio_extra_init_params
-};
-
-/* Chip Select GPIO descriptor */
-struct no_os_gpio_desc *csb_gpio_desc;
 #endif // INTERFACE_MODE
 
 /* TODO: Ticker event for LED toggling in device error detection is
@@ -178,6 +170,40 @@ static struct no_os_eeprom_init_param eeprom_init_params = {
 	.extra = &eeprom_extra_init_params
 };
 
+#if (INTERFACE_MODE == SPI_DMA_MODE)
+/* DMA Init params */
+struct no_os_dma_init_param ad4170_dma_init_param = {
+	.id = 0,
+	.num_ch = AD469x_DMA_NUM_CHANNELS,
+	.platform_ops = &dma_ops,
+	.sg_handler = ad4170_spi_dma_rx_cplt_callback,
+};
+
+/* Tx Trigger Init params */
+struct no_os_pwm_init_param tx_trigger_init_param = {
+	.id = TX_TRIGGER_TIMER_ID,
+	.period_ns = TX_TRIGGER_PERIOD,
+	.duty_cycle_ns = TX_TRIGGER_DUTY_RATIO,
+	.polarity = NO_OS_PWM_POLARITY_HIGH,
+	.platform_ops = &pwm_ops,
+	.extra = &tx_trigger_extra_init_params,
+};
+
+/* Tx trigger descriptor */
+struct no_os_pwm_desc *tx_trigger_desc;
+#endif
+
+#if (INTERFACE_MODE == TDM_MODE) || (INTERFACE_MODE == SPI_DMA_MODE)
+/* Chip Select GPIO init parameters */
+struct no_os_gpio_init_param csb_gpio_init_param = {
+	.port = CSB_GPIO_PORT,
+	.number = SPI_CSB,
+	.pull = NO_OS_PULL_NONE,
+	.platform_ops = &gpio_ops,
+	.extra = &csb_gpio_extra_init_params
+};
+#endif
+
 /* LED GPO descriptor */
 struct no_os_gpio_desc *led_gpio_desc = NULL;
 
@@ -195,6 +221,9 @@ struct no_os_irq_ctrl_desc *ticker_int_desc;
 
 /* EEPROM descriptor */
 struct no_os_eeprom_desc *eeprom_desc;
+
+/* Chip Select GPIO descriptor */
+struct no_os_gpio_desc* csb_gpio_desc;
 
 /******************************************************************************/
 /************************ Functions Prototypes ********************************/
@@ -236,7 +265,7 @@ static int32_t init_gpio(void)
 		return ret;
 	}
 
-#if (INTERFACE_MODE == TDM_MODE)
+#if (INTERFACE_MODE == TDM_MODE) || (INTERFACE_MODE == SPI_DMA_MODE)
 	/* Initialize the Chip select pin as a GPIO */
 	ret = no_os_gpio_get_optional(&csb_gpio_desc, &csb_gpio_init_param);
 	if (ret) {
@@ -260,7 +289,8 @@ static int32_t gpio_trigger_init(void)
 {
 	int32_t ret;
 
-#if (INTERFACE_MODE == SPI_MODE)
+#if (INTERFACE_MODE != SPI_DMA_MODE)
+#if (INTERFACE_MODE == SPI_INTERRUPT_MODE)
 	/* Configure GPIO as input */
 	ret = no_os_gpio_get(&trigger_gpio_desc, &trigger_gpio_param);
 	if (ret) {
@@ -278,6 +308,7 @@ static int32_t gpio_trigger_init(void)
 	if (ret) {
 		return ret;
 	}
+#endif
 
 	return 0;
 }
@@ -341,6 +372,26 @@ static int32_t init_tdm(void)
 }
 
 /**
+ * @brief 	Initialize Tx Trigger Timer
+ * @return	0 in case of success, negative error code otherwise
+ */
+static int32_t tx_trigger_init(void)
+{
+	int ret;
+
+#if (INTERFACE_MODE == SPI_DMA_MODE)
+	ret = no_os_pwm_init(&tx_trigger_desc, &tx_trigger_init_param);
+	if (ret) {
+		return ret;
+	}
+
+	tim8_init(tx_trigger_desc);
+#endif
+
+	return 0;
+}
+
+/**
  * @brief 	Initialize the system peripherals
  * @return	0 in case of success, negative error code otherwise
  */
@@ -387,6 +438,11 @@ int32_t init_system(void)
 #endif
 
 	ret = eeprom_init(&eeprom_desc, &eeprom_init_params);
+	if (ret) {
+		return ret;
+	}
+
+	ret = tx_trigger_init();
 	if (ret) {
 		return ret;
 	}

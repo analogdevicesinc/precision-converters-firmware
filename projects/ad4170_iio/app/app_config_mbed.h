@@ -2,7 +2,7 @@
  *   @file    app_config_mbed.h
  *   @brief   Header file for Mbed platform configurations
 ********************************************************************************
- * Copyright (c) 2021-23 Analog Devices, Inc.
+ * Copyright (c) 2021-24 Analog Devices, Inc.
  * All rights reserved.
  *
  * This software is proprietary to Analog Devices, Inc. and its licensors.
@@ -91,6 +91,9 @@
  * ODR might vary across platforms and data continuity is not guaranteed above this ODR
  * on the IIO Client */
 #define FS_CONFIG_VALUE		16	// ODR = ~32KSPS (per channel) with Sinc5 average filter
+
+/* Max SPI Speed */
+#define AD4170_MAX_SPI_SPEED     22500000
 
 /******************************************************************************/
 /********************** Public/Extern Declarations ****************************/
