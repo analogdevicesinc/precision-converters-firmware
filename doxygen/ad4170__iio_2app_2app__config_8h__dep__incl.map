@@ -1,5 +1,5 @@
 <map id="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad4170_iio/app/app_config.h" name="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad4170_iio/app/app_config.h">
-<area shape="rect" id="node1" title="Configuration file for AD4170 device application." alt="" coords="1695,5,1917,76"/>
+<area shape="rect" id="node1" title="Configuration file for AD4170 device application." alt="" coords="1968,5,2191,76"/>
 <area shape="rect" id="node2" href="$ad4170__accelerometer__config_8c.html" title="Accelerometer user configurations module for AD4170 IIO firmware." alt="" coords="5,124,340,195"/>
 <area shape="rect" id="node3" href="$ad4170__iio_8c.html" title="Implementation of AD4170 IIO application interfaces." alt="" coords="364,124,587,195"/>
 <area shape="rect" id="node4" href="$ad4170__loadcell__config_8c.html" title="Loadcell user configurations module for AD4170 IIO firmware." alt="" coords="611,124,903,195"/>
@@ -11,5 +11,6 @@
 <area shape="rect" id="node10" href="$ad4170__user__config_8h.html" title="Header for AD4170 default user configurations file." alt="" coords="2219,124,2489,195"/>
 <area shape="rect" id="node11" href="$ad4170__iio_2app_2app__config_8c.html" title="Application configurations module." alt="" coords="2513,124,2736,195"/>
 <area shape="rect" id="node12" href="$ad4170__iio_2app_2app__config__mbed_8c.html" title="Application configurations module for Mbed platform." alt="" coords="2760,124,3015,195"/>
-<area shape="rect" id="node13" href="$ad4170__iio_2app_2app__config__stm32_8c.html" title="Application configurations module for STM32 platform." alt="" coords="3039,124,3298,195"/>
+<area shape="rect" id="node13" href="$ad4170__iio_2app_2app__config__stm32_8c.html" title="Application configurations module for STM32 platform." alt="" coords="3006,243,3265,313"/>
+<area shape="rect" id="node14" href="$ad4170__iio_2app_2app__config__stm32_8h.html" title="Header file for STM32 platform configurations." alt="" coords="3090,124,3349,195"/>
 </map>

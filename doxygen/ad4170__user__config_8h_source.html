@@ -99,10 +99,10 @@ $(function() {
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="comment"> * Sinc5 filter allows the same to be configured from 1 (500ksps) to 256 (1953sps) in</span></div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="comment"> * steps of 2</span></div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="comment"> * Please refer to the data sheet for more details on digital filters */</span></div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="preprocessor">#if (INTERFACE_MODE == SPI_MODE)</span></div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="preprocessor">#define AD4170_FILTER_CONFIG            AD4170_FILT_SINC5_AVG</span></div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="preprocessor">#else </span><span class="comment">// TDM_MODE</span></div>
-<div class="line"><a name="l00045"></a><span class="lineno"><a class="line" href="ad4170__user__config_8h.html#a9e3603d22d6fe4c5ff63192b4c30f048">   45</a></span>&#160;<span class="preprocessor">#define AD4170_FILTER_CONFIG            AD4170_FILT_SINC5</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="preprocessor">#if (INTERFACE_MODE == SPI_INTERRUPT_MODE)</span></div>
+<div class="line"><a name="l00043"></a><span class="lineno"><a class="line" href="ad4170__user__config_8h.html#a9e3603d22d6fe4c5ff63192b4c30f048">   43</a></span>&#160;<span class="preprocessor">#define AD4170_FILTER_CONFIG            AD4170_FILT_SINC5_AVG</span></div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="preprocessor">#else </span><span class="comment">// TDM_MODE and SPI_DMA Mode</span></div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="preprocessor">#define AD4170_FILTER_CONFIG            AD4170_FILT_SINC5</span></div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="comment">/* Select FS (or ODR) for default user config (same for all channels) */</span></div>
