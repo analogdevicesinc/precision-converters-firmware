@@ -7,11 +7,7 @@ Supported Hardware
 
 **Supported Devices:**
 
-* `AD4170 <https://www.analog.com/en/products/ad4170.html>`_ 
-
-**Supported Evaluation Boards:**
-
-* `EVAL-AD4170ARDZ <https://www.analog.com/en/resources/evaluation-hardware-and-software/evaluation-boards-kits/eval-ad4170.html>`_
+* `AD4170 <https://www.analog.com/en/products/ad4170-4.html>`_ 
 
 **Supported Carrier Boards:**
 
@@ -23,7 +19,7 @@ Introduction
 ============
 
 This page gives an overview of using the ARM platforms supported (default is Mbed) 
-firmware example with Analog Devices Ad4170 Evaluation board and SDP-K1 controller board. 
+firmware example with Analog Devices AD4170 Evaluation board and SDP-K1 controller board. 
 This example code leverages the ADI developed IIO (Industrial Input Output) ecosystem to 
 evaluate the AD4170 device by providing a device debug and data capture support.
 The code provides support to MBED and STM32 platforms.
@@ -60,7 +56,6 @@ board or an equivalent STM32 board). Connect controller board to the PC using th
    .. image:: /source/projects/ad4170_iio/ad4170_connection_diagram.png
       :width: 600
 
-
 ===============
 Jumper Settings
 ===============
@@ -71,6 +66,9 @@ Connect the VIO_ADJUST jumper on the SDP-K1 / JP4 on Nucleo-H563ZI board to 3.3V
 to drive SDP-K1 / Nucleo-H563ZI GPIOs at 3.3V
 
 **EVAL-AD4170:**
+
+In case the firmware is being used with the SDP-K1 in the STM32 platform with SPI DMA Mode of operation,
+an external jumper needs to be connected between D0 and D1 of the Arduino header of the SDP-K1
 
 Please refer to the user guide for the jumper connections on the EVAL-AD4170 board
 
