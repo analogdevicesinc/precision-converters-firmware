@@ -12,9 +12,11 @@ they can target other platforms as well. `See Understanding No-OS and Platform D
 
 Source code can be found here: `Precision Converters Firmware Repository <https://github.com/analogdevicesinc/precision-converters-firmware>`_
 
+Contents
+--------
+
 .. toctree::
    :maxdepth: 2
-   :caption: Contents:
 
    /source/build/project_build.rst
    /source/code_style.rst
