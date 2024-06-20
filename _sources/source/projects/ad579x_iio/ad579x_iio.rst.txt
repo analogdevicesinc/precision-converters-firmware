@@ -17,6 +17,12 @@ Supported Hardware
 
 * `AD5760 <https://www.analog.com/en/products/ad5760.html>`_
 
+**Supported Evaluation Boards:**
+
+* `EVAL-AD5781ARDZ <https://www.analog.com/en/resources/evaluation-hardware-and-software/evaluation-boards-kits/eval-ad5781ardz.html>`_
+
+* `EVAL-AD5791ARDZ <https://www.analog.com/en/resources/evaluation-hardware-and-software/evaluation-boards-kits/eval-ad5791ardz.html>`_
+
 **Supported Carrier Boards:**
 
 * `SDP-K1 With Mbed <https://os.mbed.com/platforms/SDP_K1/>`_
