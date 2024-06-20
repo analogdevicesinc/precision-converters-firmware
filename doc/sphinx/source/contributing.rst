@@ -1,5 +1,5 @@
-Contributing
-------------
+Contributing to PCFW Repository
+-------------------------------
 
 When contributing to Precision Converters Firmware please consider the following checklist:
 
