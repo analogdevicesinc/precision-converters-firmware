@@ -2,7 +2,7 @@
 <area shape="rect" id="node1" title=" " alt="" coords="307,5,559,91"/>
 <area shape="rect" id="node2" href="$ad7124__temperature-measure_2app_2ad7124__console__app_8c.html" title="AD7124 temperature measurement firmware console interface." alt="" coords="5,405,257,491"/>
 <area shape="rect" id="node3" href="$ad7124__temperature-measure_2app_2ad7124__regs__configs_8h.html" title=" " alt="" coords="307,139,559,224"/>
-<area shape="rect" id="node8" href="$ad7124__user__config_8c.html" title="User configuration file for AD7124 device." alt="" coords="583,139,835,224"/>
+<area shape="rect" id="node8" href="$ad7124__temperature-measure_2app_2ad7124__user__config_8c.html" title="User configuration file for AD7124 device." alt="" coords="583,139,835,224"/>
 <area shape="rect" id="node4" href="$ad7124__regs__config__rtd_8c.html" title="AD7124 register configuration file for RTD temperature sensor interface." alt="" coords="169,272,421,357"/>
 <area shape="rect" id="node5" href="$ad7124__regs__config__thermistor_8c.html" title="AD7124 register configuration file for thermistor sensor interface." alt="" coords="445,272,697,357"/>
 <area shape="rect" id="node6" href="$ad7124__regs__config__thermocouple_8c.html" title="AD7124 register configuration file for thermocouple sensor interface." alt="" coords="721,272,984,357"/>

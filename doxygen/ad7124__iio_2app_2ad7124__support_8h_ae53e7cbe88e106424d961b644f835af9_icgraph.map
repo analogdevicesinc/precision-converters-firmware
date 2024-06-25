@@ -1,0 +1,5 @@
+<map id="ad7124_enable_cont_read" name="ad7124_enable_cont_read">
+<area shape="rect" id="node1" title="Enable/Disable continuous read mode." alt="" coords="251,35,443,61"/>
+<area shape="rect" id="node2" href="$ad7124__iio_2app_2ad7124__support_8c.html#adacd35c2bd2d250a582a09676e83dba7" title="Function to stop data capture." alt="" coords="5,5,203,32"/>
+<area shape="rect" id="node3" href="$ad7124__iio_2app_2ad7124__support_8c.html#abc709262aad97fceb0429c0bd86a28d7" title="Function to prepare the ADC for data capture." alt="" coords="26,57,182,98"/>
+</map>
