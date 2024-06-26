@@ -1,6 +1,6 @@
 # @file    ad4110_data_capture.py
 # @brief   Data capturing for the AD4110 device
-# Copyright (c) 2022 Analog Devices, Inc.
+# Copyright (c) 2022,2024 Analog Devices, Inc.
 # All rights reserved.
 # 
 # This software is proprietary to Analog Devices, Inc. and its licensors.
@@ -14,7 +14,7 @@ from time import sleep
 from pynput import keyboard
 import os
 import csv
-from ad7134 import *
+from adi.ad7134 import *
 import math
 import pandas as pd
 import matplotlib.pyplot as plt
