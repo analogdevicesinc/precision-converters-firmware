@@ -1,7 +1,7 @@
 import serial
 from time import sleep
 from pynput import keyboard
-from ad4170 import *
+from adi.ad4170 import *
 from ad4170_xattr import *
 
 # Delays in seconds

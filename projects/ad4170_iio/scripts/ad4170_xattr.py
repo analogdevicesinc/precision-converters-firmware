@@ -1,4 +1,4 @@
-# Copyright (C) 2021 Analog Devices, Inc.
+# Copyright (C) 2021,2024 Analog Devices, Inc.
 #
 # All rights reserved.
 #
@@ -31,9 +31,7 @@
 # STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF
 # THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-#import adi.ad4170              # TODO - Enable later
-#from adi.ad4170 import ad4170  # TODO - Enable later
-from ad4170 import *            # TODO - Delete later
+from adi.ad4170 import *
 from adi.attribute import attribute
 from decimal import Decimal
 
