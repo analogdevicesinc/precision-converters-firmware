@@ -1,6 +1,6 @@
 import serial
 from time import sleep
-from ad4170 import *
+from adi.ad4170 import *
 from ad4170_xattr import *
 
 # Delays in second
