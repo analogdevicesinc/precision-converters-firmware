@@ -5,8 +5,7 @@ from time import sleep
 import csv
 import os
 from numpy import ndarray
-#import adi.ad7134      # TODO - Enable once ad7134 iio linux drivers are publicly released
-from ad7134 import *    # TODO - Delete later
+from adi.ad7134 import *    # TODO - Delete later
 
 iio_device = { 'DEV_AD7134': 'ad7134' }
 MAX_EXPECTED_VOLTAGE = 1.9

@@ -4,8 +4,7 @@ import serial
 from time import sleep
 import csv
 import os
-#import adi.ad4170      # TODO - Enable once ad4170 iio linux drivers are publicly released
-from ad4170 import *    # TODO - Delete later
+from adi.ad4170 import *
 
 iio_device = { 'DEV_AD4170': 'ad4170' }
 MAX_EXPECTED_VOLTAGE = 1.9
