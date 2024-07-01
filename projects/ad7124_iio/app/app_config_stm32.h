@@ -19,6 +19,7 @@
 
 #include "stm32_uart.h"
 #include "stm32_spi.h"
+#include "stm32_i2c.h"
 #include "stm32_gpio.h"
 #include "stm32_irq.h"
 #include "stm32_gpio_irq.h"
