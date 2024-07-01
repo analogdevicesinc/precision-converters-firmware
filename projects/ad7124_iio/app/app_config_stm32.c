@@ -42,7 +42,7 @@ struct stm32_uart_init_param stm32_uart_extra_init_params = {
 
 /* SPI STM32 Platform Specific Init Parameters */
 struct stm32_spi_init_param stm32_spi_extra_init_params = {
-	.chip_select_port = STM32_SPI_CS_PORT,
+	.chip_select_port = SPI_CS_PORT,
 	.get_input_clock = HAL_RCC_GetSysClockFreq_app
 };
 
