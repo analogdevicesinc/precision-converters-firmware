@@ -117,7 +117,7 @@
 #if defined(DEV_AD4696)
 #define ACTIVE_DEVICE		ID_AD4696
 #define ACTIVE_DEVICE_NAME	"ad4696"
-#define HW_MEZZANINE_NAME	"EVAL-AD4696-FMCZ"
+#define HW_MEZZANINE_NAME	"EVAL-AD4696-ARDZ"
 #define	NO_OF_CHANNELS		16
 #else
 #warning No/Unsupported ADxxxxy symbol defined. AD4696 defined

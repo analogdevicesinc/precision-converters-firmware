@@ -4,7 +4,7 @@ def getBuildMatrix(projectName) {
 		// This map is for building all targets when merging to main or develop branches
 		buildMap = [
 			PLATFORM_NAME: ['SDP_K1', 'NUCLEO_L552ZE_Q', 'DISCO_F769NI'],
-			ACTIVE_DEVICE: ['DEV_AD4697'],
+			ACTIVE_DEVICE: ['DEV_AD4696'],
 			COM_TYPE: ['USE_PHY_COM_PORT','USE_VIRTUAL_COM_PORT'],
 			SDRAM: ['USE_SDRAM', 'NO_SDRAM']
 		]
@@ -12,7 +12,7 @@ def getBuildMatrix(projectName) {
 		// This map is for building targets that is always build
 		buildMap = [
 			PLATFORM_NAME: ['SDP_K1'],
-			ACTIVE_DEVICE: ['DEV_AD4697'],
+			ACTIVE_DEVICE: ['DEV_AD4696'],
 			COM_TYPE: ['USE_VIRTUAL_COM_PORT'],
 			SDRAM: ['NO_SDRAM']
 		]
@@ -58,7 +58,7 @@ def getTestMatrix(projectName) {
 		// This map is for testing all targets when merging to main or develop branches
 		testMap = [
 			PLATFORM_NAME: ['SDP_K1'],
-			ACTIVE_DEVICE: ['DEV_AD4697'],
+			ACTIVE_DEVICE: ['DEV_AD4696'],
 			COM_TYPE: ['USE_VIRTUAL_COM_PORT'],
 			SDRAM: ['NO_SDRAM']
 		]
@@ -66,7 +66,7 @@ def getTestMatrix(projectName) {
 		// This map is for testing target that is always tested
 		testMap = [
 			PLATFORM_NAME: ['SDP_K1'],
-			ACTIVE_DEVICE: ['DEV_AD4697'],
+			ACTIVE_DEVICE: ['DEV_AD4696'],
 			COM_TYPE: ['USE_VIRTUAL_COM_PORT'],
 			SDRAM: ['NO_SDRAM']
 		]
