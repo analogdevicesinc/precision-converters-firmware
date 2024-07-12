@@ -2884,12 +2884,6 @@ int32_t ad4170_iio_initialize(void)
 		return init_status;
 	}
 
-	/* Initialize AD4170 device and peripheral interface */
-	init_status = ad4170_init(&p_ad4170_dev_inst, &ad4170_init_params);
-	if (init_status) {
-		return init_status;
-	}
-
 	/* Read context attributes */
 	init_status = get_iio_context_attributes(&iio_init_params.ctx_attrs,
 			&iio_init_params.nb_ctx_attr,
@@ -2902,6 +2896,12 @@ int32_t ad4170_iio_initialize(void)
 	}
 
 	if (hw_mezzanine_is_valid) {
+		/* Initialize AD4170 device and peripheral interface */
+		init_status = ad4170_init(&p_ad4170_dev_inst, &ad4170_init_params);
+		if (init_status) {
+			return init_status;
+		}
+
 		/* Initialize the device if HW mezzanine status is valid */
 		init_status = ad4170_iio_init(&p_iio_ad4170_dev);
 		if (init_status) {
