@@ -12,7 +12,7 @@ app/libraries/no-OS/drivers/eeprom/24xx32a/=../../../libraries/no-OS/drivers/eep
 
 app/libraries/no-OS/=../../../libraries/no-OS/util/;../../../libraries/no-OS/include;
 
-app/libraries/no-OS/drivers/platform/stm32/=../../../libraries/no-OS/drivers/platform/stm32/stm32_uart.c;../../../libraries/no-OS/drivers/platform/stm32/stm32_uart.h;../../../libraries/no-OS/drivers/platform/stm32/stm32_i2c.h;../../../libraries/no-OS/drivers/platform/stm32/stm32_i2c.c;../../../libraries/no-OS/drivers/platform/stm32/stm32_irq.h;../../../libraries/no-OS/drivers/platform/stm32/stm32_irq.c;
+app/libraries/no-OS/drivers/platform/stm32/=../../../libraries/no-OS/drivers/platform/stm32/stm32_uart.c;../../../libraries/no-OS/drivers/platform/stm32/stm32_uart.h;../../../libraries/no-OS/drivers/platform/stm32/stm32_i2c.h;../../../libraries/no-OS/drivers/platform/stm32/stm32_i2c.c;../../../libraries/no-OS/drivers/platform/stm32/stm32_irq.h;../../../libraries/no-OS/drivers/platform/stm32/stm32_irq.c;../../../libraries/no-OS/drivers/platform/stm32/stm32_delay.c
 
 app/libraries/no-OS/iio/=../../../libraries/no-OS/iio/iio.c;../../../libraries/no-OS/iio/iio.h;../../../libraries/no-OS/iio/iiod.h;../../../libraries/no-OS/iio/iiod.c;
 
