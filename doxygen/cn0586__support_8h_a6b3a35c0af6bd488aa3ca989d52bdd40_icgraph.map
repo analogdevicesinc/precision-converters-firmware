@@ -1,0 +1,4 @@
+<map id="cn0586_set_hvout_range" name="cn0586_set_hvout_range">
+<area shape="rect" id="node1" title="Set HVOUT range for the CFTL." alt="" coords="151,5,335,32"/>
+<area shape="rect" id="node2" href="$cn0586__support_8c.html#af258faefac2b215f37341d1cbd9367e3" title="Initialize the CFTL. Power up channels A, B, D." alt="" coords="5,5,103,32"/>
+</map>

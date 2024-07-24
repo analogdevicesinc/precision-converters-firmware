@@ -1,0 +1,11 @@
+<map id="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad5754r_iio/app/app_config.h" name="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad5754r_iio/app/app_config.h">
+<area shape="rect" id="node1" title="Configuration file for AD5754R device application." alt="" coords="655,5,877,76"/>
+<area shape="rect" id="node2" href="$ad5754r__iio_8c.html" title="Implementation of AD5754R IIO application interfaces." alt="" coords="252,243,475,313"/>
+<area shape="rect" id="node3" href="$ad5754r__iio_8h.html" title="Header file for AD5754R IIO interface." alt="" coords="55,124,277,195"/>
+<area shape="rect" id="node5" href="$ad5754r__user__config_8c.html" title="User configuration file for AD5754R devices." alt="" coords="352,124,631,195"/>
+<area shape="rect" id="node6" href="$ad5754r__iio_2app_2app__config_8c.html" title="Application configurations module (platform&#45;agnostic)" alt="" coords="655,124,877,195"/>
+<area shape="rect" id="node7" href="$ad5754r__iio_2app_2app__config__mbed_8c.html" title="Application configurations module for Mbed platform." alt="" coords="901,124,1159,195"/>
+<area shape="rect" id="node8" href="$cn0586__support_8c.html" title="CN0586 support module." alt="" coords="1263,243,1511,313"/>
+<area shape="rect" id="node9" href="$cn0586__support_8h.html" title="Header file for CN0586 supporting APIs." alt="" coords="1183,124,1432,195"/>
+<area shape="rect" id="node4" href="$ad5754r__iio_2app_2main_8c.html" title="Main interface for AD5754R IIO firmware application." alt="" coords="5,243,228,313"/>
+</map>
