@@ -35,13 +35,17 @@ struct no_os_uart_init_param uart_init_params = {
 	.size = NO_OS_UART_CS_8,
 	.parity = NO_OS_UART_PAR_NO,
 	.stop = NO_OS_UART_STOP_1_BIT,
+#if (ACTIVE_PLATFORM == STM32_PLATFORM)
+	.asynchronous_rx = true,
+	.irq_id = UART_IRQ_ID,
+#endif
 	.platform_ops = &uart_ops,
 	.extra = &uart_extra_init_params
 };
 
 /* External interrupt init parameters */
 static struct no_os_irq_init_param trigger_gpio_irq_params = {
-	.irq_ctrl_id = 0,
+	.irq_ctrl_id = TRIGGER_INT_ID,
 	.platform_ops = &trigger_gpio_irq_ops,
 	.extra = &trigger_gpio_irq_extra_params
 };
@@ -55,7 +59,7 @@ static struct no_os_callback_desc ext_int_callback_desc = {
 
 /* I2C init parameters */
 static struct no_os_i2c_init_param no_os_i2c_init_params = {
-	.device_id = 0,
+	.device_id = I2C_DEVICE_ID,
 	.platform_ops = &i2c_ops,
 	.max_speed_hz = 100000,
 	.extra = &i2c_extra_init_params
@@ -147,6 +151,10 @@ static int32_t init_interrupt(void)
 int32_t init_system(void)
 {
 	int32_t ret;
+
+#if (ACTIVE_PLATFORM == STM32_PLATFORM)
+	stm32_system_init();
+#endif
 
 	ret = init_uart();
 	if (ret) {

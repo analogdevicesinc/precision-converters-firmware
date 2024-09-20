@@ -22,8 +22,9 @@
 /******************************************************************************/
 /* Define SPI init parameters structure for AD719X */
 struct no_os_spi_init_param spi_init_params = {
-	.max_speed_hz = 10000000, // Max SPI Speed
+	.max_speed_hz = MAX_SPI_BAUDRATE, // Max SPI Speed
 	.chip_select = SPI_CSB, // Chip Select
+	.device_id = SPI_DEVICE_ID,
 	.mode = NO_OS_SPI_MODE_3, // CPOL = 1, CPHA = 1
 	.platform_ops = &spi_ops,
 	.extra = &spi_extra_init_params	 // SPI extra configurations
@@ -32,13 +33,15 @@ struct no_os_spi_init_param spi_init_params = {
 /* Define GPIO cs pin init parameters structure */
 struct no_os_gpio_init_param gpio_cs_init = {
 	.number = SPI_CSB,
-	.platform_ops = &mbed_gpio_ops,
+	.port = SPI_CS_PORT,
+	.platform_ops = &gpio_ops,
 	.extra = NULL
 };
 
 /* Define GPIO miso pin init parameters structure */
 struct no_os_gpio_init_param gpio_miso_init = {
 	.number = RDY_PIN,
+	.port = RDY_PORT,
 	.platform_ops = &gpio_ops,
 	.extra = NULL
 };
@@ -46,6 +49,7 @@ struct no_os_gpio_init_param gpio_miso_init = {
 /* Define GPIO sync pin init parameters structure */
 struct no_os_gpio_init_param gpio_sync_init = {
 	.number = SYNC_PIN,
+	.port = SYNC_PORT,
 	.platform_ops = &gpio_ops,
 	.extra = &gpio_sync_init_params
 };

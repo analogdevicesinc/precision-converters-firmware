@@ -2,7 +2,7 @@
  *   @file    app_config_mbed.h
  *   @brief   Header file for Mbed platform configurations
 ********************************************************************************
- * Copyright (c) 2021-23 Analog Devices, Inc.
+ * Copyright (c) 2021-24 Analog Devices, Inc.
  * All rights reserved.
  *
  * This software is proprietary to Analog Devices, Inc. and its licensors.
@@ -28,6 +28,7 @@
 /********************** Macros and Constants Definition ***********************/
 /******************************************************************************/
 /* Pin mapping for AD719x w.r.t Arduino Headers */
+#define MAX_SPI_BAUDRATE 10000000
 #define SPI_CSB		     ARDUINO_UNO_D10
 #define SPI_HOST_SDO	 ARDUINO_UNO_D11
 #define SPI_HOST_SDI	 ARDUINO_UNO_D12
@@ -59,6 +60,12 @@
  * analog input from a known point in time.
  * */
 #define SYNC_PIN         ARDUINO_UNO_D4
+
+#define I2C_DEVICE_ID    0 // Unused
+#define SPI_DEVICE_ID    0 // Unused
+#define SPI_CS_PORT      0 // Unused
+#define SYNC_PORT        0 // Unused
+#define RDY_PORT         0 // Unused
 
 /******************************************************************************/
 /********************** Public/Extern Declarations ****************************/
