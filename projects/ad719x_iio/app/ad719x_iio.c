@@ -606,6 +606,20 @@ static int iio_ad719x_prepare_transfer(void *dev, uint32_t mask)
 	uint16_t new_mask;
 	uint8_t num_of_channels;
 
+	/* The UART interrupt needs to be prioritized over the GPIO (end of conversion) interrupt.
+		 * If not, the GPIO interrupt may occur during the period where there is a UART read happening
+		 * for the READBUF command. If UART interrupts are not prioritized, then it would lead to missing of
+		 * characters in the IIO command sent from the client. */
+#if(DATA_CAPTURE_MODE == CONTINUOUS_DATA_CAPTURE)
+#if(ACTIVE_PLATFORM == STM32_PLATFORM)
+	ret = no_os_irq_set_priority(trigger_irq_desc, TRIGGER_INT_ID,
+				     RDY_GPIO_PRIORITY);
+	if(ret) {
+		return ret;
+	}
+#endif
+#endif
+
 #if defined (DEV_AD7194)
 #if (INPUT_CONFIG == DIFFERENTIAL_INPUT)
 	num_of_channels = NO_OF_CHANNELS / 2;
@@ -821,6 +835,16 @@ static int iio_ad719x_submit_samples(struct iio_device_data *iio_dev_data)
 		no_os_swap(data_read[0], data_read[2]);
 		data_read[3] = 0;
 
+#if (ACTIVE_PLATFORM == STM32_PLATFORM)
+		/* Clear pending Interrupt before enabling back the trigger.
+		 * Else , a spurious interrupt is observed after a legitimate interrupt,
+		 * as SPI SDO is on the same pin and is mistaken for an interrupt event */
+		ret = no_os_irq_clear_pending(trigger_irq_desc, TRIGGER_INT_ID);
+		if (ret) {
+			return ret;
+		}
+#endif
+
 		ret = no_os_irq_enable(trigger_irq_desc, TRIGGER_INT_ID);
 		if (ret) {
 			return ret;
@@ -891,6 +915,16 @@ static int32_t ad719x_trigger_handler(struct iio_device_data *iio_dev_data)
 	if (ret) {
 		return ret;
 	}
+
+#if (ACTIVE_PLATFORM == STM32_PLATFORM)
+	/* Clear pending Interrupt before enabling back the trigger.
+	 * Else , a spurious interrupt is observed after a legitimate interrupt,
+	 * as SPI SDO is on the same pin and is mistaken for an interrupt event */
+	ret = no_os_irq_clear_pending(trigger_irq_desc, TRIGGER_INT_ID);
+	if (ret) {
+		return ret;
+	}
+#endif
 
 	ret = iio_trig_enable(ad719x_hw_trig_desc);
 	if (ret) {

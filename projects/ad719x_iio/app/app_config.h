@@ -23,6 +23,7 @@
 /******************************************************************************/
 /* List of supported platforms*/
 #define	MBED_PLATFORM		1
+#define STM32_PLATFORM      2
 
 /* List of data capture modes for AD719X device */
 #define CONTINUOUS_DATA_CAPTURE		0
@@ -85,6 +86,22 @@
 #define trigger_gpio_irq_ops          mbed_gpio_irq_ops
 #define trigger_gpio_handle           0 // Unused macro
 #define TRIGGER_INT_ID	              GPIO_IRQ_ID1
+#elif (ACTIVE_PLATFORM == STM32_PLATFORM)
+#include "app_config_stm32.h"
+/* Redefine the init params structure mapping wrt platform */
+#define gpio_ops		   stm32_gpio_ops
+#define spi_ops            stm32_spi_ops
+#define i2c_ops            stm32_i2c_ops
+#define uart_ops stm32_uart_ops
+#define irq_platform_ops stm32_gpio_irq_ops
+#define trigger_gpio_irq_ops        stm32_gpio_irq_ops
+#define TRIGGER_INT_ID              RDY_PIN
+#define trigger_gpio_handle	        0
+#define spi_extra_init_params   	stm32_spi_extra_init_params
+#define uart_extra_init_params 		stm32_uart_extra_init_params
+#define i2c_extra_init_params       stm32_i2c_extra_init_params
+#define trigger_gpio_irq_extra_params stm32_trigger_gpio_irq_init_params
+#define gpio_sync_init_params         stm32_gpio_sync_extra_init_params
 #else
 #error "No/Invalid active platform selected"
 #endif
