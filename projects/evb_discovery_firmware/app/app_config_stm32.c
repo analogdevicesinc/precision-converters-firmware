@@ -51,5 +51,7 @@ struct stm32_uart_init_param stm32_uart_extra_init_params = {
  */
 void stm32_system_init()
 {
+	HAL_Init();
+	SystemClock_Config();
 	MX_USART3_UART_Init();
 }
