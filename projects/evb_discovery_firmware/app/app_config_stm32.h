@@ -43,6 +43,6 @@ extern struct stm32_i2c_init_param stm32_i2c_extra_init_params;
 extern struct stm32_uart_init_param stm32_uart_extra_init_params;
 extern UART_HandleTypeDef huart3;
 
-void stm32_system_init();
+void stm32_system_init(void);
 
 #endif /* APP_CONFIG_STM32_H_ */

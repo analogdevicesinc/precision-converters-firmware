@@ -49,7 +49,7 @@ struct stm32_uart_init_param stm32_uart_extra_init_params = {
  * @brief 	Initialize the STM32 system peripherals
  * @return	None
  */
-void stm32_system_init()
+void stm32_system_init(void)
 {
 	HAL_Init();
 	SystemClock_Config();
