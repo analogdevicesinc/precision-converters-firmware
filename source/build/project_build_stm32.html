@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Build Guide &#8212; Precision Converters Firmware  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8e8a900e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/style.min.css?v=765fa3cc" />
+    <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script defer="" src="../../_static/app.umd.js?v=c93eadd1"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+   
+  
+  <meta name="global_root" content="../../../">
+  <meta name="repo" content="precision-converters-firmware">
+  
+
+
+<style>
+  body {
+    
+  }
+
+  body.dark {
+    
+  }
+
+  @media (prefers-color-scheme: dark) {
+    body:not(.light) {
+      
+    }
+  }
+</style>
+  </head><body>
+  <div class="banner"></div>
+  <input type="checkbox" id="input-show-toc">
+  <input type="checkbox" id="input-show-localtoc">
+  <input type="checkbox" id="input-show-repotoc">
+
+  
+  <div class="search-area">
+    <form action="" method="get">
+      <input type="text" name="q" aria-labelledby="search-documentation" value="" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" role="search" placeholder="Search"/>
+      <button value="search" class="icon"></button>
+      <span id="search-progress"></span>
+    </form>
+  </div>
+  
+
+  <header>
+    <div id="left">
+      <label id="show-sidebar" class="icon" for="input-show-toc" title="Show/hide index"></label>
+    </div>
+    <div id="right">
+      <span>
+        <a id="logo-org" href="https://analog.com"></a>
+        <div class="vertical-divider"></div>
+        <label id="show-repotoc" for="input-show-repotoc" title="Show/hide docs" tabindex="0">Docs</label>
+        <a id="logo" href="../../index.html">
+          <div>Precision Converters Firmware</div>
+        </a>
+      </span>
+      <span class="reverse">
+        <label id="show-localtoc" class="icon" for="input-show-localtoc" title="Show/hide contents"></label>
+      </span>
+    </div>
+  </header>
+
+
+  <div class="repotoc-tree overlay">
+    <root>
+  <a href="../../../documentation/index.html">System Level</a>
+  <a href="../../../hdl/index.html">HDL</a>
+  <a href="../../../testbenches/index.html">HDL Testbenches</a>
+  <a href="../../../pyadi-iio/index.html">Hardware Python Interfaces</a>
+  <a href="../../../libiio/index.html">libiio</a>
+  <a href="../../../no-OS/index.html">no-OS</a>
+  <a href="../../index.html" class="current">Precision Converters Firmware</a>
+  <a href="../../../PrecisionToolbox/index.html">Precision Toolbox</a>
+  <a href="../../../scopy/index.html">Scopy</a>
+  <a href="../../../doctools/index.html">Doctools</a>
+</root>
+
+  </div>
+    <div class="localtoc">
+      <div class="tocwrapper">
+        <div>
+          <div class="localtoc-header">On this page</div>
+          <a id="scroll-up" href="#top-anchor" title="Back to top"></a>
+        </div>
+        <nav>
+          <ul>
+<li><a class="reference internal" href="#">Build Guide</a><ul>
+<li><a class="reference internal" href="#build-prerequisites">Build Prerequisites</a></li>
+<li><a class="reference internal" href="#building-a-project">Building a project</a></li>
+<li><a class="reference internal" href="#running-a-project">Running a project</a></li>
+</ul>
+</li>
+</ul>
+
+        </nav>
+      </div>
+    </div>
+
+  
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+    <a id="no-logo" href="../../index.html">
+      Precision Converters Firmware
+    </a><input id="input-switch-toc" type="checkbox">
+<label id="show-repotoc" for="input-switch-toc">
+All content
+</label>
+<label id="show-toc" for="input-switch-toc">
+Content on this topic
+</label>
+<div class="repotoc-tree">
+  <root>
+  <a href="../../../documentation/index.html">System Level</a>
+  <a href="../../../hdl/index.html">HDL</a>
+  <a href="../../../testbenches/index.html">HDL Testbenches</a>
+  <a href="../../../pyadi-iio/index.html">Hardware Python Interfaces</a>
+  <a href="../../../libiio/index.html">libiio</a>
+  <a href="../../../no-OS/index.html">no-OS</a>
+  <a href="../../index.html" class="current">Precision Converters Firmware</a>
+  <a href="../../../PrecisionToolbox/index.html">Precision Toolbox</a>
+  <a href="../../../scopy/index.html">Scopy</a>
+  <a href="../../../doctools/index.html">Doctools</a>
+</root>
+
+</div>
+<div class="toc-tree">
+  <html>
+  <body><ul>
+<li class="toctree-l1"><a class="reference internal" href="project_build.html">Build Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../code_style.html">Code Styles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contributing.html">Contributing to PCFW Repository</a></li>
+<li class="toctree-l1"><input class="toctree-collapse" type="checkbox" name="toctree-collapse-1" id="toctree-collapse-1"/><div class="collapse"><a class="reference internal" href="../projects/index.html">Firmware Applications</a><label for="toctree-collapse-1"><div class="icon"></div></label></div><ul>
+<li class="toctree-l2"><a class="reference internal" href="../projects/ad2s1210_iio/ad2s1210_iio.html">AD2S1210 IIO Application</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../projects/ad355xr_iio/ad355xr_iio.html">AD355XR IIO Application</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../projects/ad405x_iio/ad405x_iio.html">AD405x IIO Application</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../projects/ad4130_iio/ad4130_iio.html">AD4130 IIO Application</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../projects/ad4170_iio/ad4170_iio.html">AD4170 IIO Application</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../projects/ad4696_iio/ad4696_iio.html">AD4696 IIO Application</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../projects/ad559xr_console/ad559xr_console.html">AD559XR Console Application</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../projects/ad5754r_iio/ad5754r_iio.html">AD5754R/CN0586 IIO Application</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../projects/ad579x_iio/ad579x_iio.html">AD579X IIO Application</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../projects/ad590_console/ad590_console.html">AD590 Console Application</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../projects/ad5933_console/ad5933_console.html">AD5933 Console Application</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../projects/ad7124_console/ad7124_console.html">AD7124 Console Application</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../projects/ad7124_iio/ad7124_iio.html">AD7124 IIO Application</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../projects/ad7124_temperature-measure/ad7124_temperature-measure.html">AD7124 Temperature Measure Firmware Application</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../projects/ad7134_iio/ad7134_iio.html">AD7134 IIO Application</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../projects/ad717x_console/ad717x_console.html">AD717x / AD411x Console Application</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../projects/ad717x_iio/ad717x_iio.html">AD717x / AD411x IIO Application</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../projects/ad719x_iio/ad719x_iio.html">AD719x IIO Application</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../projects/ad738x_iio/ad738x_iio.html">AD738x IIO Application</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../projects/ad7606_iio/ad7606_iio.html">AD7606 IIO Application</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../projects/ad7689_iio/ad7689_iio.html">AD7689 IIO Application</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../projects/ad77681_iio/ad77681_iio.html">AD7768-1 IIO Application</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../projects/ad777x_iio/ad777x_iio.html">AD777x IIO Application</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../projects/adt7420_console/adt7420_console.html">ADT7420 Console Application</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../projects/ltc268x_console/ltc268x_console.html">LTC268x Console Application</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../projects/ltc2672_iio/ltc2672_iio.html">LTC2672 IIO Application</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../projects/nanodac_console/nanodac_console.html">nanoDAC+ Console Application</a></li>
+</ul>
+</li>
+</ul>
+</body>
+</html>
+
+</div>
+        </div>
+      </div>
+
+  <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper" id="top-anchor">
+          <div class="body" role="main">
+            
+  <section id="build-guide">
+<h1>Build Guide<a class="headerlink" href="#build-guide" title="Link to this heading">#</a></h1>
+<section id="build-prerequisites">
+<h2>Build Prerequisites<a class="headerlink" href="#build-prerequisites" title="Link to this heading">#</a></h2>
+<p>Prior to building a firmware project, it is required to set up an environment so
+that the build process may find the necessary tools (compiler, linker, SDK etc.).
+Use the following steps to prepare your environment for building firmware projects
+for respective platform.</p>
+<div><div class="collapsible docutils container">
+<input class="collapsible_input" id="9b60f03671af37cc1496b82766f6a537cb67c60a" name="9b60f03671af37cc1496b82766f6a537cb67c60a" type="checkbox"></input><label for="9b60f03671af37cc1496b82766f6a537cb67c60a"><p>Windows</p>
+<div class="icon"></div></label><div class="collapsible_content docutils container">
+<div><div class="collapsible docutils container">
+<input class="collapsible_input" id="fa09a7188e5b64e6db36c1092089233b09fd75ba" name="fa09a7188e5b64e6db36c1092089233b09fd75ba" type="checkbox"></input><label for="fa09a7188e5b64e6db36c1092089233b09fd75ba"><p>STM32</p>
+<div class="icon"></div></label><div class="collapsible_content docutils container">
+<div><div class="collapsible docutils container">
+<input class="collapsible_input" id="31dd6c13542299d944a089597884f96e3993de5c" name="31dd6c13542299d944a089597884f96e3993de5c" type="checkbox"></input><label for="31dd6c13542299d944a089597884f96e3993de5c"><p>For STM32 IDE based Build</p>
+<div class="icon"></div></label><div class="collapsible_content docutils container">
+<ul>
+<li><p>Install <a class="reference external" href="https://www.st.com/en/development-tools/stm32cubeide.html">STM32CubeIDE</a></p></li>
+<li><p>Install <a class="reference external" href="https://www.st.com/en/development-tools/stm32cubemx.html">STM32CubeMX</a></p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../_images/environmental_variables.png"><img alt="../../_images/environmental_variables.png" src="../../_images/environmental_variables.png" style="width: 400px;" />
+</a>
+</div></blockquote>
+</li>
+</ul>
+</div>
+</div>
+</div></div>
+</div>
+</div></div>
+</div>
+</div></section>
+<section id="building-a-project">
+<h2>Building a project<a class="headerlink" href="#building-a-project" title="Link to this heading">#</a></h2>
+<p>Once the build enviornment is setup, follow the guide below to build your project
+and generate executable file (.bin/.hex)</p>
+<div><div class="collapsible docutils container">
+<input class="collapsible_input" id="8f22db3c8895536d9f469a3ee2373259a3ef1d96" name="8f22db3c8895536d9f469a3ee2373259a3ef1d96" type="checkbox"></input><label for="8f22db3c8895536d9f469a3ee2373259a3ef1d96"><p>Windows</p>
+<div class="icon"></div></label><div class="collapsible_content docutils container">
+<div><div class="collapsible docutils container">
+<input class="collapsible_input" id="6d4692d8c91dfb061dfba381ec4ebfcee15fe389" name="6d4692d8c91dfb061dfba381ec4ebfcee15fe389" type="checkbox"></input><label for="6d4692d8c91dfb061dfba381ec4ebfcee15fe389"><p>STM32</p>
+<div class="icon"></div></label><div class="collapsible_content docutils container">
+<div><div class="collapsible docutils container">
+<input class="collapsible_input" id="40d95710ac8c485fd38ee69527a9ba568f6db616" name="40d95710ac8c485fd38ee69527a9ba568f6db616" type="checkbox"></input><label for="40d95710ac8c485fd38ee69527a9ba568f6db616"><p>Build Using STM32 IDE</p>
+<div class="icon"></div></label><div class="collapsible_content docutils container">
+<ul>
+<li><p>Open the respective project directory by navigating into the “precision_converters_firmware/projects/” folder.</p></li>
+<li><p>In the “STM32” folder present within the project directory, double click and open the .ioc file present within.</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../_images/stm32_project_directory.png"><img alt="../../_images/stm32_project_directory.png" src="../../_images/stm32_project_directory.png" style="width: 600px;" />
+</a>
+</div></blockquote>
+</li>
+<li><p>Click on the “Generate Code” option seen on the top right corner</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../_images/stm32_generate_code.png"><img alt="../../_images/stm32_generate_code.png" src="../../_images/stm32_generate_code.png" style="width: 600px;" />
+</a>
+</div></blockquote>
+</li>
+<li><p>Upon successful generation of drivers for the selected MCU, the autogenerated files would be seen in the same directory where the .ioc file was present. Double click and open the “.project” file seen in the list of files</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../_images/stm32_auto_generated_files.png"><img alt="../../_images/stm32_auto_generated_files.png" src="../../_images/stm32_auto_generated_files.png" style="width: 600px;" />
+</a>
+</div></blockquote>
+</li>
+<li><p>After the project is loaded to the STM32CubeIDE, unfold the adxxxx_iio project seen in the project explorer, right click the “app” folder, select “Settings” under the “C/C++ Build” section on the left pane and un-check the “Exclude resources from build” checkbox. This would ensure that the project specific files are included by the build system</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../_images/stm32_exclude_files_option.png"><img alt="../../_images/stm32_exclude_files_option.png" src="../../_images/stm32_exclude_files_option.png" style="width: 600px;" />
+</a>
+</div></blockquote>
+</li>
+<li><p>In order to choose STM32 platform in the firmware, select the “ACTIVE_PLATFORM” as “STM32_PLATFORM” in the app_config.h from the respective project. Alternately , add compiler flag “ACTIVE_PLATFORM=value of STM32_PLATFORM in app_config.h” for selecting stm32 platform.</p></li>
+<li><p>Add compiler flags “-u _printf_float” to the project settings.</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../_images/stm32_compiler_flag.png"><img alt="../../_images/stm32_compiler_flag.png" src="../../_images/stm32_compiler_flag.png" style="width: 600px;" />
+</a>
+</div></blockquote>
+</li>
+<li><p>Program by clicking on the “Run adxxxx_iio” option seen or by performing a copy-&gt;paste option of the .hex file seen in the STM32/Debug folder</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../_images/stm32_run_option.png"><img alt="../../_images/stm32_run_option.png" src="../../_images/stm32_run_option.png" style="width: 600px;" />
+</a>
+</div></blockquote>
+</li>
+</ul>
+</div>
+</div>
+</div></div>
+</div>
+</div></div>
+</div>
+</div></section>
+<section id="running-a-project">
+<h2>Running a project<a class="headerlink" href="#running-a-project" title="Link to this heading">#</a></h2>
+<p>Once the firmware build is successful and binary file is generated, copy the
+generated binary into USB drive hosted by your MCU board (e.g. USB drive hosted
+by SDP-K1 board on windows). This will flash the binary file into MCU present
+on the controller board. Programming might vary based on the tools used for building
+a project. The ‘Project Build’ section above talks about this exception at the end
+of all build steps.</p>
+</section>
+</section>
+
+
+          </div>
+              <div class="related">
+                &nbsp;
+    <div></div>
+    <div></div>
+              </div>
+          
+        </div>
+      </div>
+  </div>
+
+  <div id="vertical-border"></div>
+
+  <label id="cancel-area-show-toc" for="input-show-toc"></label>
+  <label id="cancel-area-show-localtoc" for="input-show-localtoc"></label>
+    <footer>
+      &#169;2023-2024, Analog Devices Inc.
+      
+      |
+      Made with <a href="https://www.sphinx-doc.org/">Sphinx</a>
+      &amp; <a href="https://github.com/analogdevicesinc/doctools">Doctools</a>
+      
+    </footer>
+  </body>
+</html>
