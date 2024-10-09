@@ -151,10 +151,10 @@ Variables</h2></td></tr>
 <div class="line"> </div>
 <div class="line"> </div>
 <div class="line">}</div>
-<div class="ttc" id="aad719x__iio_2app_2app__config_8h_html_a1f9f7c9ab505f48dfd45300022df3fea"><div class="ttname"><a href="ad719x__iio_2app_2app__config_8h.html#a1f9f7c9ab505f48dfd45300022df3fea">POLARITY_CONFIG</a></div><div class="ttdeci">#define POLARITY_CONFIG</div><div class="ttdef"><b>Definition:</b> app_config.h:157</div></div>
-<div class="ttc" id="aad719x__iio_2app_2app__config_8h_html_ae6bf482b53c945da787c4457c4b10770"><div class="ttname"><a href="ad719x__iio_2app_2app__config_8h.html#ae6bf482b53c945da787c4457c4b10770">INPUT_CONFIG</a></div><div class="ttdeci">#define INPUT_CONFIG</div><div class="ttdef"><b>Definition:</b> app_config.h:181</div></div>
-<div class="ttc" id="aad719x__user__config_8c_html_a24e6e638764e4aa7ebcfa48fc89c67eb"><div class="ttname"><a href="ad719x__user__config_8c.html#a24e6e638764e4aa7ebcfa48fc89c67eb">gpio_sync_init</a></div><div class="ttdeci">struct no_os_gpio_init_param gpio_sync_init</div><div class="ttdef"><b>Definition:</b> ad719x_user_config.c:47</div></div>
-<div class="ttc" id="aad719x__user__config_8c_html_a969d58ad8b84f7b7dfea67d8907062ee"><div class="ttname"><a href="ad719x__user__config_8c.html#a969d58ad8b84f7b7dfea67d8907062ee">gpio_miso_init</a></div><div class="ttdeci">struct no_os_gpio_init_param gpio_miso_init</div><div class="ttdef"><b>Definition:</b> ad719x_user_config.c:40</div></div>
+<div class="ttc" id="aad719x__iio_2app_2app__config_8h_html_a1f9f7c9ab505f48dfd45300022df3fea"><div class="ttname"><a href="ad719x__iio_2app_2app__config_8h.html#a1f9f7c9ab505f48dfd45300022df3fea">POLARITY_CONFIG</a></div><div class="ttdeci">#define POLARITY_CONFIG</div><div class="ttdef"><b>Definition:</b> app_config.h:174</div></div>
+<div class="ttc" id="aad719x__iio_2app_2app__config_8h_html_ae6bf482b53c945da787c4457c4b10770"><div class="ttname"><a href="ad719x__iio_2app_2app__config_8h.html#ae6bf482b53c945da787c4457c4b10770">INPUT_CONFIG</a></div><div class="ttdeci">#define INPUT_CONFIG</div><div class="ttdef"><b>Definition:</b> app_config.h:198</div></div>
+<div class="ttc" id="aad719x__user__config_8c_html_a24e6e638764e4aa7ebcfa48fc89c67eb"><div class="ttname"><a href="ad719x__user__config_8c.html#a24e6e638764e4aa7ebcfa48fc89c67eb">gpio_sync_init</a></div><div class="ttdeci">struct no_os_gpio_init_param gpio_sync_init</div><div class="ttdef"><b>Definition:</b> ad719x_user_config.c:50</div></div>
+<div class="ttc" id="aad719x__user__config_8c_html_a969d58ad8b84f7b7dfea67d8907062ee"><div class="ttname"><a href="ad719x__user__config_8c.html#a969d58ad8b84f7b7dfea67d8907062ee">gpio_miso_init</a></div><div class="ttdeci">struct no_os_gpio_init_param gpio_miso_init</div><div class="ttdef"><b>Definition:</b> ad719x_user_config.c:42</div></div>
 <div class="ttc" id="aad719x__user__config_8c_html_aa247c71107ed61242c98471409faab1d"><div class="ttname"><a href="ad719x__user__config_8c.html#aa247c71107ed61242c98471409faab1d">spi_init_params</a></div><div class="ttdeci">struct no_os_spi_init_param spi_init_params</div><div class="ttdef"><b>Definition:</b> ad719x_user_config.c:24</div></div>
 <div class="ttc" id="aad719x__user__config_8h_html_ad68f4a87dfa5c11b2c4d9efe2d4e7bf5"><div class="ttname"><a href="ad719x__user__config_8h.html#ad68f4a87dfa5c11b2c4d9efe2d4e7bf5">DATA_OUTPUT_RATE_BITS</a></div><div class="ttdeci">#define DATA_OUTPUT_RATE_BITS</div><div class="ttdef"><b>Definition:</b> ad719x_user_config.h:26</div></div>
 <div class="ttc" id="aad719x__user__config_8h_html_ae242ab0e0a91e95de561944085dbdf20"><div class="ttname"><a href="ad719x__user__config_8h.html#ae242ab0e0a91e95de561944085dbdf20">DEFAULT_GAIN</a></div><div class="ttdeci">#define DEFAULT_GAIN</div><div class="ttdef"><b>Definition:</b> ad719x_user_config.h:27</div></div>
@@ -174,10 +174,13 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line">= {</div>
 <div class="line">    .number = <a class="code" href="ad2s1210__iio_2app_2app__config__mbed_8h.html#a6dc78fc30202ccac1f51bc2daedc14d1">SPI_CSB</a>,</div>
-<div class="line">    .platform_ops = &amp;mbed_gpio_ops,</div>
+<div class="line">    .port = <a class="code" href="ad7124__iio_2app_2app__config__mbed_8h.html#a9912b2a4108ecd9f98ad04eceef5f836">SPI_CS_PORT</a>,</div>
+<div class="line">    .platform_ops = &amp;<a class="code" href="ad2s1210__iio_2app_2app__config_8h.html#a79830dd38aaae12b8956a81b716f7fa5">gpio_ops</a>,</div>
 <div class="line">    .extra = NULL</div>
 <div class="line">}</div>
+<div class="ttc" id="aad2s1210__iio_2app_2app__config_8h_html_a79830dd38aaae12b8956a81b716f7fa5"><div class="ttname"><a href="ad2s1210__iio_2app_2app__config_8h.html#a79830dd38aaae12b8956a81b716f7fa5">gpio_ops</a></div><div class="ttdeci">#define gpio_ops</div><div class="ttdef"><b>Definition:</b> app_config.h:85</div></div>
 <div class="ttc" id="aad2s1210__iio_2app_2app__config__mbed_8h_html_a6dc78fc30202ccac1f51bc2daedc14d1"><div class="ttname"><a href="ad2s1210__iio_2app_2app__config__mbed_8h.html#a6dc78fc30202ccac1f51bc2daedc14d1">SPI_CSB</a></div><div class="ttdeci">#define SPI_CSB</div><div class="ttdef"><b>Definition:</b> app_config_mbed.h:33</div></div>
+<div class="ttc" id="aad7124__iio_2app_2app__config__mbed_8h_html_a9912b2a4108ecd9f98ad04eceef5f836"><div class="ttname"><a href="ad7124__iio_2app_2app__config__mbed_8h.html#a9912b2a4108ecd9f98ad04eceef5f836">SPI_CS_PORT</a></div><div class="ttdeci">#define SPI_CS_PORT</div><div class="ttdef"><b>Definition:</b> app_config_mbed.h:70</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -194,10 +197,11 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line">= {</div>
 <div class="line">    .number = <a class="code" href="ad7124__iio_2app_2app__config__mbed_8h.html#a53eb094642a9f1bbcf5ac223315a9003">RDY_PIN</a>,</div>
+<div class="line">    .port = <a class="code" href="ad7124__iio_2app_2app__config__mbed_8h.html#a1f27d23df33acb903d6a4a4435d9a835">RDY_PORT</a>,</div>
 <div class="line">    .platform_ops = &amp;<a class="code" href="ad2s1210__iio_2app_2app__config_8h.html#a79830dd38aaae12b8956a81b716f7fa5">gpio_ops</a>,</div>
 <div class="line">    .extra = NULL</div>
 <div class="line">}</div>
-<div class="ttc" id="aad2s1210__iio_2app_2app__config_8h_html_a79830dd38aaae12b8956a81b716f7fa5"><div class="ttname"><a href="ad2s1210__iio_2app_2app__config_8h.html#a79830dd38aaae12b8956a81b716f7fa5">gpio_ops</a></div><div class="ttdeci">#define gpio_ops</div><div class="ttdef"><b>Definition:</b> app_config.h:85</div></div>
+<div class="ttc" id="aad7124__iio_2app_2app__config__mbed_8h_html_a1f27d23df33acb903d6a4a4435d9a835"><div class="ttname"><a href="ad7124__iio_2app_2app__config__mbed_8h.html#a1f27d23df33acb903d6a4a4435d9a835">RDY_PORT</a></div><div class="ttdeci">#define RDY_PORT</div><div class="ttdef"><b>Definition:</b> app_config_mbed.h:68</div></div>
 <div class="ttc" id="aad7124__iio_2app_2app__config__mbed_8h_html_a53eb094642a9f1bbcf5ac223315a9003"><div class="ttname"><a href="ad7124__iio_2app_2app__config__mbed_8h.html#a53eb094642a9f1bbcf5ac223315a9003">RDY_PIN</a></div><div class="ttdeci">#define RDY_PIN</div><div class="ttdef"><b>Definition:</b> app_config_mbed.h:63</div></div>
 </div><!-- fragment -->
 </div>
@@ -215,11 +219,13 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line">= {</div>
 <div class="line">    .number = <a class="code" href="ad719x__iio_2app_2app__config__mbed_8h.html#a6528d00cbccc360e013bea6d5c59d377">SYNC_PIN</a>,</div>
+<div class="line">    .port = <a class="code" href="ad719x__iio_2app_2app__config__mbed_8h.html#aa90b41dba233ae71029e94c34470a06a">SYNC_PORT</a>,</div>
 <div class="line">    .platform_ops = &amp;<a class="code" href="ad2s1210__iio_2app_2app__config_8h.html#a79830dd38aaae12b8956a81b716f7fa5">gpio_ops</a>,</div>
 <div class="line">    .extra = &amp;<a class="code" href="ad719x__iio_2app_2app__config_8h.html#a48efe2071a2542d0b6fbf27068ac1915">gpio_sync_init_params</a></div>
 <div class="line">}</div>
-<div class="ttc" id="aad719x__iio_2app_2app__config_8h_html_a48efe2071a2542d0b6fbf27068ac1915"><div class="ttname"><a href="ad719x__iio_2app_2app__config_8h.html#a48efe2071a2542d0b6fbf27068ac1915">gpio_sync_init_params</a></div><div class="ttdeci">#define gpio_sync_init_params</div><div class="ttdef"><b>Definition:</b> app_config.h:79</div></div>
-<div class="ttc" id="aad719x__iio_2app_2app__config__mbed_8h_html_a6528d00cbccc360e013bea6d5c59d377"><div class="ttname"><a href="ad719x__iio_2app_2app__config__mbed_8h.html#a6528d00cbccc360e013bea6d5c59d377">SYNC_PIN</a></div><div class="ttdeci">#define SYNC_PIN</div><div class="ttdef"><b>Definition:</b> app_config_mbed.h:61</div></div>
+<div class="ttc" id="aad719x__iio_2app_2app__config_8h_html_a48efe2071a2542d0b6fbf27068ac1915"><div class="ttname"><a href="ad719x__iio_2app_2app__config_8h.html#a48efe2071a2542d0b6fbf27068ac1915">gpio_sync_init_params</a></div><div class="ttdeci">#define gpio_sync_init_params</div><div class="ttdef"><b>Definition:</b> app_config.h:80</div></div>
+<div class="ttc" id="aad719x__iio_2app_2app__config__mbed_8h_html_a6528d00cbccc360e013bea6d5c59d377"><div class="ttname"><a href="ad719x__iio_2app_2app__config__mbed_8h.html#a6528d00cbccc360e013bea6d5c59d377">SYNC_PIN</a></div><div class="ttdeci">#define SYNC_PIN</div><div class="ttdef"><b>Definition:</b> app_config_mbed.h:62</div></div>
+<div class="ttc" id="aad719x__iio_2app_2app__config__mbed_8h_html_aa90b41dba233ae71029e94c34470a06a"><div class="ttname"><a href="ad719x__iio_2app_2app__config__mbed_8h.html#aa90b41dba233ae71029e94c34470a06a">SYNC_PORT</a></div><div class="ttdeci">#define SYNC_PORT</div><div class="ttdef"><b>Definition:</b> app_config_mbed.h:67</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -235,14 +241,17 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line">= {</div>
-<div class="line">    .max_speed_hz = 10000000, </div>
+<div class="line">    .max_speed_hz = <a class="code" href="ad719x__iio_2app_2app__config__mbed_8h.html#a5416eec6d4cb97b252f5775b9aeae85e">MAX_SPI_BAUDRATE</a>, </div>
 <div class="line">    .chip_select = <a class="code" href="ad2s1210__iio_2app_2app__config__mbed_8h.html#a6dc78fc30202ccac1f51bc2daedc14d1">SPI_CSB</a>, </div>
+<div class="line">    .device_id = <a class="code" href="ad355xr__iio_2app_2app__config__mbed_8h.html#a2264889066fc41987d29395b4772bd17">SPI_DEVICE_ID</a>,</div>
 <div class="line">    .mode = NO_OS_SPI_MODE_3, </div>
 <div class="line">    .platform_ops = &amp;<a class="code" href="ad2s1210__iio_2app_2app__config_8h.html#aa470d2a15f37bae689fd091f85b670a1">spi_ops</a>,</div>
 <div class="line">    .extra = &amp;<a class="code" href="ad2s1210__iio_2app_2app__config_8h.html#ab8a3cecf3246ca49585f55dbb7b9d435">spi_extra_init_params</a>  </div>
 <div class="line">}</div>
 <div class="ttc" id="aad2s1210__iio_2app_2app__config_8h_html_aa470d2a15f37bae689fd091f85b670a1"><div class="ttname"><a href="ad2s1210__iio_2app_2app__config_8h.html#aa470d2a15f37bae689fd091f85b670a1">spi_ops</a></div><div class="ttdeci">#define spi_ops</div><div class="ttdef"><b>Definition:</b> app_config.h:86</div></div>
 <div class="ttc" id="aad2s1210__iio_2app_2app__config_8h_html_ab8a3cecf3246ca49585f55dbb7b9d435"><div class="ttname"><a href="ad2s1210__iio_2app_2app__config_8h.html#ab8a3cecf3246ca49585f55dbb7b9d435">spi_extra_init_params</a></div><div class="ttdeci">#define spi_extra_init_params</div><div class="ttdef"><b>Definition:</b> app_config.h:80</div></div>
+<div class="ttc" id="aad355xr__iio_2app_2app__config__mbed_8h_html_a2264889066fc41987d29395b4772bd17"><div class="ttname"><a href="ad355xr__iio_2app_2app__config__mbed_8h.html#a2264889066fc41987d29395b4772bd17">SPI_DEVICE_ID</a></div><div class="ttdeci">#define SPI_DEVICE_ID</div><div class="ttdef"><b>Definition:</b> app_config_mbed.h:70</div></div>
+<div class="ttc" id="aad719x__iio_2app_2app__config__mbed_8h_html_a5416eec6d4cb97b252f5775b9aeae85e"><div class="ttname"><a href="ad719x__iio_2app_2app__config__mbed_8h.html#a5416eec6d4cb97b252f5775b9aeae85e">MAX_SPI_BAUDRATE</a></div><div class="ttdeci">#define MAX_SPI_BAUDRATE</div><div class="ttdef"><b>Definition:</b> app_config_mbed.h:31</div></div>
 </div><!-- fragment -->
 </div>
 </div>

@@ -7,18 +7,17 @@
 
     <title>nanoDAC+ Console Application &#8212; Precision Converters Firmware  documentation</title>
     <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=8e8a900e" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/style.min.css?v=a3ba2641" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/style.min.css?v=765fa3cc" />
     <script src="../../../_static/documentation_options.js?v=5929fcd5"></script>
     <script src="../../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script defer="" src="../../../_static/app.umd.js?v=7b10be7e"></script>
+    <script defer="" src="../../../_static/app.umd.js?v=c93eadd1"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
     <link rel="prev" title="LTC2672 IIO Application" href="../ltc2672_iio/ltc2672_iio.html" />
    
   
-    <meta name="robots" content="noindex">
-  
+  <meta name="global_root" content="../../../../">
   <meta name="repo" content="precision-converters-firmware">
   
 
@@ -76,14 +75,16 @@
 
   <div class="repotoc-tree overlay">
     <root>
-  <a href="../../../../documentation/eval/index.html">Evaluation Boards</a>
-  <a href="../../../../documentation/university/index.html">University Program</a>
+  <a href="../../../../documentation/index.html">System Level</a>
   <a href="../../../../hdl/index.html">HDL</a>
-  <a href="../../../../no-OS/index.html">no-OS</a>
+  <a href="../../../../testbenches/index.html">HDL Testbenches</a>
   <a href="../../../../pyadi-iio/index.html">Hardware Python Interfaces</a>
+  <a href="../../../../libiio/index.html">libiio</a>
+  <a href="../../../../no-OS/index.html">no-OS</a>
   <a href="../../../index.html" class="current">Precision Converters Firmware</a>
-  <a href="../../../../doctools/index.html">Doctools</a>
   <a href="../../../../PrecisionToolbox/index.html">Precision Toolbox</a>
+  <a href="../../../../scopy/index.html">Scopy</a>
+  <a href="../../../../doctools/index.html">Doctools</a>
 </root>
 
   </div>
@@ -133,14 +134,16 @@ Content on this topic
 </label>
 <div class="repotoc-tree">
   <root>
-  <a href="../../../../documentation/eval/index.html">Evaluation Boards</a>
-  <a href="../../../../documentation/university/index.html">University Program</a>
+  <a href="../../../../documentation/index.html">System Level</a>
   <a href="../../../../hdl/index.html">HDL</a>
-  <a href="../../../../no-OS/index.html">no-OS</a>
+  <a href="../../../../testbenches/index.html">HDL Testbenches</a>
   <a href="../../../../pyadi-iio/index.html">Hardware Python Interfaces</a>
+  <a href="../../../../libiio/index.html">libiio</a>
+  <a href="../../../../no-OS/index.html">no-OS</a>
   <a href="../../../index.html" class="current">Precision Converters Firmware</a>
-  <a href="../../../../doctools/index.html">Doctools</a>
   <a href="../../../../PrecisionToolbox/index.html">Precision Toolbox</a>
+  <a href="../../../../scopy/index.html">Scopy</a>
+  <a href="../../../../doctools/index.html">Doctools</a>
 </root>
 
 </div>
@@ -194,9 +197,9 @@ Content on this topic
           <div class="body" role="main">
             
   <section id="nanodac-console-application">
-<h1>nanoDAC+ Console Application<a class="headerlink" href="#nanodac-console-application" title="Link to this heading">¶</a></h1>
+<h1>nanoDAC+ Console Application<a class="headerlink" href="#nanodac-console-application" title="Link to this heading">#</a></h1>
 <section id="supported-hardware">
-<h2>Supported Hardware<a class="headerlink" href="#supported-hardware" title="Link to this heading">¶</a></h2>
+<h2>Supported Hardware<a class="headerlink" href="#supported-hardware" title="Link to this heading">#</a></h2>
 <p><strong>Supported Devices:</strong></p>
 <p><a class="reference external" href="https://www.analog.com/en/products/ad5671r.html">AD5671r</a> <a class="reference external" href="https://www.analog.com/en/products/ad5672r.html">AD5672r</a> <a class="reference external" href="https://www.analog.com/en/products/ad5673r.html">AD5673r</a>
 <a class="reference external" href="https://www.analog.com/en/products/ad5674.html">AD5674</a>  <a class="reference external" href="https://www.analog.com/en/products/ad5674r.html">AD5674r</a>  <a class="reference external" href="https://www.analog.com/en/products/ad5675r.html">AD5675r</a>
@@ -220,7 +223,7 @@ Content on this topic
 </ul>
 </section>
 <section id="introduction">
-<h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">¶</a></h2>
+<h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
 <p>Analog Devices nanoDAC+® products are low power, single-channel, 16-/14-/12-bit buffered voltage output DACs. This page gives an overview of using the nanodac+®
 firmware example with SDP-K1 EVAL board, interfacing with various EVAL boards supporting nanodac+ family devices.
 The firmware example comprises 3 layers of software (from top to bottom): Console Application Layer, Device No-OS Layer and Platform Drivers (Mbed-OS) layer.</p>
@@ -237,7 +240,7 @@ benefits of the Mbed platform. The Mbed Platform simplifies the overall software
 This reduces the hardware dependency as any Mbed enabled board can be used with same firmware with little modifications (precisely changing a pin mapping).</p>
 </section>
 <section id="interface-diagram">
-<h2>Interface Diagram<a class="headerlink" href="#interface-diagram" title="Link to this heading">¶</a></h2>
+<h2>Interface Diagram<a class="headerlink" href="#interface-diagram" title="Link to this heading">#</a></h2>
 <blockquote>
 <div><a class="reference internal image-reference" href="../../../_images/nanodac_interface_diagram.jpg"><img alt="../../../_images/nanodac_interface_diagram.jpg" src="../../../_images/nanodac_interface_diagram.jpg" style="width: 500px;" />
 </a>
@@ -253,7 +256,7 @@ The SDP-K1 acts as a Serial Device (UART) and firmware loaded into it interacts 
 </div>
 </section>
 <section id="useful-links">
-<h2>Useful Links<a class="headerlink" href="#useful-links" title="Link to this heading">¶</a></h2>
+<h2>Useful Links<a class="headerlink" href="#useful-links" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="https://github.com/analogdevicesinc/precision-converters-firmware">Source Code: Precision Converters Firmware</a></p></li>
 <li><p><a class="reference external" href="https://github.com/analogdevicesinc/no-OS">no-OS: Software drivers for systems without OS</a></p></li>
@@ -269,7 +272,7 @@ they may be of interest if you require Linux and/or FPGA support.</p>
 </div>
 </section>
 <section id="hardware-connections">
-<h2>Hardware Connections<a class="headerlink" href="#hardware-connections" title="Link to this heading">¶</a></h2>
+<h2>Hardware Connections<a class="headerlink" href="#hardware-connections" title="Link to this heading">#</a></h2>
 <blockquote>
 <div><a class="reference internal image-reference" href="../../../_images/nanodac_hardware_connection.jpg"><img alt="../../../_images/nanodac_hardware_connection.jpg" src="../../../_images/nanodac_hardware_connection.jpg" style="width: 400px;" />
 </a>
@@ -294,7 +297,7 @@ The COM port assigned to a device can be seen through the device manager for win
 </div></blockquote>
 </section>
 <section id="nanodac-mbed-firmware">
-<h2>nanoDAC+ Mbed Firmware<a class="headerlink" href="#nanodac-mbed-firmware" title="Link to this heading">¶</a></h2>
+<h2>nanoDAC+ Mbed Firmware<a class="headerlink" href="#nanodac-mbed-firmware" title="Link to this heading">#</a></h2>
 <p>This section briefs on the usage of MBED firmware. This also explains the steps to compile and build the application using
 mbed and make based build.</p>
 <p>The software execution sequence for the nanodac+ Firmware Example is shown below. This is a blocking application as it waits for user input over serial interface (UART).
@@ -307,9 +310,9 @@ As name suggests, this layer is platform dependent. nanodac+ firmware uses Mbed 
 </div></blockquote>
 </section>
 <section id="build-guide">
-<h2>Build Guide<a class="headerlink" href="#build-guide" title="Link to this heading">¶</a></h2>
+<h2>Build Guide<a class="headerlink" href="#build-guide" title="Link to this heading">#</a></h2>
 <section id="build-prerequisites">
-<h3>Build Prerequisites<a class="headerlink" href="#build-prerequisites" title="Link to this heading">¶</a></h3>
+<h3>Build Prerequisites<a class="headerlink" href="#build-prerequisites" title="Link to this heading">#</a></h3>
 <p>Prior to building a firmware project, it is required to set up an environment so
 that the build process may find the necessary tools (compiler, linker, SDK etc.).
 Use the following steps to prepare your environment for building firmware projects
@@ -383,7 +386,7 @@ for respective platform.</p>
 </div>
 </div></section>
 <section id="building-a-project">
-<h3>Building a project<a class="headerlink" href="#building-a-project" title="Link to this heading">¶</a></h3>
+<h3>Building a project<a class="headerlink" href="#building-a-project" title="Link to this heading">#</a></h3>
 <p>Once the build enviornment is setup, follow the guide below to build your project
 and generate executable file (.bin/.hex)</p>
 <div><div class="collapsible docutils container">
@@ -496,7 +499,7 @@ mentioned in step2 and clean build project as mentioned in step3</p>
 </div>
 </div></section>
 <section id="running-a-project">
-<h3>Running a project<a class="headerlink" href="#running-a-project" title="Link to this heading">¶</a></h3>
+<h3>Running a project<a class="headerlink" href="#running-a-project" title="Link to this heading">#</a></h3>
 <p>Once the firmware build is successful and binary file is generated, copy the
 generated binary into USB drive hosted by your MCU board (e.g. USB drive hosted
 by SDP-K1 board on windows). This will flash the binary file into MCU present
@@ -506,7 +509,7 @@ of all build steps.</p>
 </section>
 </section>
 <section id="quick-start">
-<h2>Quick Start<a class="headerlink" href="#quick-start" title="Link to this heading">¶</a></h2>
+<h2>Quick Start<a class="headerlink" href="#quick-start" title="Link to this heading">#</a></h2>
 <p>If you have some familiarity with the Mbed platform, the following is a basic list of steps required to start running the code,
 see below for more detail:</p>
 <ul class="simple">
@@ -526,7 +529,7 @@ see below for more detail:</p>
 </ul>
 </section>
 <section id="using-the-firmware">
-<h2>Using the Firmware<a class="headerlink" href="#using-the-firmware" title="Link to this heading">¶</a></h2>
+<h2>Using the Firmware<a class="headerlink" href="#using-the-firmware" title="Link to this heading">#</a></h2>
 <p>The nanodac+ firmware example is configured to have following serial settings:</p>
 <p>Baud rate: 230400
 Data bits: 8-bits
@@ -551,7 +554,7 @@ for below settings:</p>
 The products supported are enumerated in the ad5686_type, which is an enum found in AD5686.h, the firmware defaults to the AD5686R device.</p>
 </section>
 <section id="support">
-<h2>Support<a class="headerlink" href="#support" title="Link to this heading">¶</a></h2>
+<h2>Support<a class="headerlink" href="#support" title="Link to this heading">#</a></h2>
 <p>Feel free to ask questions in the <a class="reference external" href="https://ez.analog.com/data_converters">EngineerZone</a></p>
 </section>
 </section>

@@ -7,17 +7,16 @@
 
     <title>Using DMM Tab to Read DC Voltage on Input Channels &#8212; Precision Converters Firmware  documentation</title>
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8e8a900e" />
-    <link rel="stylesheet" type="text/css" href="../../_static/style.min.css?v=a3ba2641" />
+    <link rel="stylesheet" type="text/css" href="../../_static/style.min.css?v=765fa3cc" />
     <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
     <script src="../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script defer="" src="../../_static/app.umd.js?v=7b10be7e"></script>
+    <script defer="" src="../../_static/app.umd.js?v=c93eadd1"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
    
   
-    <meta name="robots" content="noindex">
-  
+  <meta name="global_root" content="../../../">
   <meta name="repo" content="precision-converters-firmware">
   
 
@@ -75,14 +74,16 @@
 
   <div class="repotoc-tree overlay">
     <root>
-  <a href="../../../documentation/eval/index.html">Evaluation Boards</a>
-  <a href="../../../documentation/university/index.html">University Program</a>
+  <a href="../../../documentation/index.html">System Level</a>
   <a href="../../../hdl/index.html">HDL</a>
-  <a href="../../../no-OS/index.html">no-OS</a>
+  <a href="../../../testbenches/index.html">HDL Testbenches</a>
   <a href="../../../pyadi-iio/index.html">Hardware Python Interfaces</a>
+  <a href="../../../libiio/index.html">libiio</a>
+  <a href="../../../no-OS/index.html">no-OS</a>
   <a href="../../index.html" class="current">Precision Converters Firmware</a>
-  <a href="../../../doctools/index.html">Doctools</a>
   <a href="../../../PrecisionToolbox/index.html">Precision Toolbox</a>
+  <a href="../../../scopy/index.html">Scopy</a>
+  <a href="../../../doctools/index.html">Doctools</a>
 </root>
 
   </div>
@@ -122,14 +123,16 @@ Content on this topic
 </label>
 <div class="repotoc-tree">
   <root>
-  <a href="../../../documentation/eval/index.html">Evaluation Boards</a>
-  <a href="../../../documentation/university/index.html">University Program</a>
+  <a href="../../../documentation/index.html">System Level</a>
   <a href="../../../hdl/index.html">HDL</a>
-  <a href="../../../no-OS/index.html">no-OS</a>
+  <a href="../../../testbenches/index.html">HDL Testbenches</a>
   <a href="../../../pyadi-iio/index.html">Hardware Python Interfaces</a>
+  <a href="../../../libiio/index.html">libiio</a>
+  <a href="../../../no-OS/index.html">no-OS</a>
   <a href="../../index.html" class="current">Precision Converters Firmware</a>
-  <a href="../../../doctools/index.html">Doctools</a>
   <a href="../../../PrecisionToolbox/index.html">Precision Toolbox</a>
+  <a href="../../../scopy/index.html">Scopy</a>
+  <a href="../../../doctools/index.html">Doctools</a>
 </root>
 
 </div>
@@ -183,7 +186,7 @@ Content on this topic
           <div class="body" role="main">
             
   <section id="using-dmm-tab-to-read-dc-voltage-on-input-channels">
-<h1>Using DMM Tab to Read DC Voltage on Input Channels<a class="headerlink" href="#using-dmm-tab-to-read-dc-voltage-on-input-channels" title="Link to this heading">¶</a></h1>
+<h1>Using DMM Tab to Read DC Voltage on Input Channels<a class="headerlink" href="#using-dmm-tab-to-read-dc-voltage-on-input-channels" title="Link to this heading">#</a></h1>
 <p>DMM tab can be used read the instantaneous voltage applied on analog input channels.
 Simply select the device and channels to read and press start button.</p>
 <div class="admonition note">
@@ -198,9 +201,9 @@ during data capture.</p>
 </a>
 </section>
 <section id="iio-data-capture-for-adcs">
-<h1>IIO Data Capture for ADCs<a class="headerlink" href="#iio-data-capture-for-adcs" title="Link to this heading">¶</a></h1>
+<h1>IIO Data Capture for ADCs<a class="headerlink" href="#iio-data-capture-for-adcs" title="Link to this heading">#</a></h1>
 <section id="introduction">
-<h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">¶</a></h2>
+<h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
 <p>This page focuses on the IIO firmware part of ‘Data Capturing. The “AD7606 IIO Application”
 is used as a reference for this discussion.</p>
 <p>IIO clients can be used to capture and visualize the continuous analog or
@@ -228,7 +231,7 @@ stored as shown below:</p>
 </a>
 </section>
 <section id="data-capture-from-iio-device">
-<h2>Data Capture from IIO Device<a class="headerlink" href="#data-capture-from-iio-device" title="Link to this heading">¶</a></h2>
+<h2>Data Capture from IIO Device<a class="headerlink" href="#data-capture-from-iio-device" title="Link to this heading">#</a></h2>
 <p>To capture the data from IIO device, simply select the device and channels
 to read/capture data. The data is plotted as “ADC Raw Value” Vs “Number of Samples”
 and is just used for Visualization. The data is read as is from device without
@@ -259,7 +262,7 @@ from IIO device.</p>
 </div>
 </section>
 <section id="saving-captured-data">
-<h2>Saving Captured Data<a class="headerlink" href="#saving-captured-data" title="Link to this heading">¶</a></h2>
+<h2>Saving Captured Data<a class="headerlink" href="#saving-captured-data" title="Link to this heading">#</a></h2>
 <p>The data on IIO oscilloscope can be saved for further processing and analysis. The
 data is saved using a .csv format. The data can be captured for each selected
 channel during save option and only requested number of samples can be saved. So
@@ -273,7 +276,7 @@ python and ACE.</p>
 </section>
 </section>
 <section id="limitations-of-data-capture-using-iio-application">
-<h1>Limitations of Data Capture Using IIO Application<a class="headerlink" href="#limitations-of-data-capture-using-iio-application" title="Link to this heading">¶</a></h1>
+<h1>Limitations of Data Capture Using IIO Application<a class="headerlink" href="#limitations-of-data-capture-using-iio-application" title="Link to this heading">#</a></h1>
 <p>There are 3 major factors which can potentially impact the data capturing:</p>
 <ul class="simple">
 <li><p>Sampling/Capturing Rate of ADC</p></li>

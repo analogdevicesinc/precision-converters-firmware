@@ -7,19 +7,18 @@
 
     <title>AD355XR IIO Application &#8212; Precision Converters Firmware  documentation</title>
     <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=8e8a900e" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/style.min.css?v=a3ba2641" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/style.min.css?v=765fa3cc" />
     <script src="../../../_static/documentation_options.js?v=5929fcd5"></script>
     <script src="../../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script defer="" src="../../../_static/app.umd.js?v=7b10be7e"></script>
+    <script defer="" src="../../../_static/app.umd.js?v=c93eadd1"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
     <link rel="next" title="AD405x IIO Application" href="../ad405x_iio/ad405x_iio.html" />
     <link rel="prev" title="AD2S1210 IIO Application" href="../ad2s1210_iio/ad2s1210_iio.html" />
    
   
-    <meta name="robots" content="noindex">
-  
+  <meta name="global_root" content="../../../../">
   <meta name="repo" content="precision-converters-firmware">
   
 
@@ -77,14 +76,16 @@
 
   <div class="repotoc-tree overlay">
     <root>
-  <a href="../../../../documentation/eval/index.html">Evaluation Boards</a>
-  <a href="../../../../documentation/university/index.html">University Program</a>
+  <a href="../../../../documentation/index.html">System Level</a>
   <a href="../../../../hdl/index.html">HDL</a>
-  <a href="../../../../no-OS/index.html">no-OS</a>
+  <a href="../../../../testbenches/index.html">HDL Testbenches</a>
   <a href="../../../../pyadi-iio/index.html">Hardware Python Interfaces</a>
+  <a href="../../../../libiio/index.html">libiio</a>
+  <a href="../../../../no-OS/index.html">no-OS</a>
   <a href="../../../index.html" class="current">Precision Converters Firmware</a>
-  <a href="../../../../doctools/index.html">Doctools</a>
   <a href="../../../../PrecisionToolbox/index.html">Precision Toolbox</a>
+  <a href="../../../../scopy/index.html">Scopy</a>
+  <a href="../../../../doctools/index.html">Doctools</a>
 </root>
 
   </div>
@@ -135,14 +136,16 @@ Content on this topic
 </label>
 <div class="repotoc-tree">
   <root>
-  <a href="../../../../documentation/eval/index.html">Evaluation Boards</a>
-  <a href="../../../../documentation/university/index.html">University Program</a>
+  <a href="../../../../documentation/index.html">System Level</a>
   <a href="../../../../hdl/index.html">HDL</a>
-  <a href="../../../../no-OS/index.html">no-OS</a>
+  <a href="../../../../testbenches/index.html">HDL Testbenches</a>
   <a href="../../../../pyadi-iio/index.html">Hardware Python Interfaces</a>
+  <a href="../../../../libiio/index.html">libiio</a>
+  <a href="../../../../no-OS/index.html">no-OS</a>
   <a href="../../../index.html" class="current">Precision Converters Firmware</a>
-  <a href="../../../../doctools/index.html">Doctools</a>
   <a href="../../../../PrecisionToolbox/index.html">Precision Toolbox</a>
+  <a href="../../../../scopy/index.html">Scopy</a>
+  <a href="../../../../doctools/index.html">Doctools</a>
 </root>
 
 </div>
@@ -196,9 +199,9 @@ Content on this topic
           <div class="body" role="main">
             
   <section id="ad355xr-iio-application">
-<h1>AD355XR IIO Application<a class="headerlink" href="#ad355xr-iio-application" title="Link to this heading">¶</a></h1>
+<h1>AD355XR IIO Application<a class="headerlink" href="#ad355xr-iio-application" title="Link to this heading">#</a></h1>
 <section id="supported-hardware">
-<h2>Supported Hardware<a class="headerlink" href="#supported-hardware" title="Link to this heading">¶</a></h2>
+<h2>Supported Hardware<a class="headerlink" href="#supported-hardware" title="Link to this heading">#</a></h2>
 <p><strong>Supported Devices:</strong></p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://www.analog.com/en/products/ad3541r.html">AD3541R</a></p></li>
@@ -217,7 +220,7 @@ Content on this topic
 </ul>
 </section>
 <section id="introduction">
-<h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">¶</a></h2>
+<h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
 <p>This guide gives an overview of using the IIO firmware application with Analog Devices
 AD355XR Evaluation board and SDP-K1 (or other compatible) MCU controller board,
 leveraging Mbed-OS as a primary software platform. This firmware application
@@ -243,7 +246,7 @@ all supported Mbed boards, refer this link: <a class="reference external" href="
 </div>
 </section>
 <section id="useful-links">
-<h2>Useful Links<a class="headerlink" href="#useful-links" title="Link to this heading">¶</a></h2>
+<h2>Useful Links<a class="headerlink" href="#useful-links" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="https://github.com/analogdevicesinc/precision-converters-firmware">Source Code: Precision Converters Firmware</a></p></li>
 <li><p><a class="reference external" href="https://github.com/analogdevicesinc/no-OS">no-OS: Software drivers for systems without OS</a></p></li>
@@ -259,7 +262,7 @@ they may be of interest if you require Linux and/or FPGA support.</p>
 </div>
 </section>
 <section id="hardware-connections">
-<h2>Hardware Connections<a class="headerlink" href="#hardware-connections" title="Link to this heading">¶</a></h2>
+<h2>Hardware Connections<a class="headerlink" href="#hardware-connections" title="Link to this heading">#</a></h2>
 <p>Required: SDP-K1 (or alternative Mbed enabled controller board), EVAL-AD355xr board and USB cable.
 Connect the EVAL-AD355xr board to SDP-K1 board (or any other Mbed enabled controller board).
 Connect SDP-K1 board to the PC using the USB cable.</p>
@@ -269,14 +272,14 @@ Connect SDP-K1 board to the PC using the USB cable.</p>
 </div></blockquote>
 </section>
 <section id="jumper-settings">
-<h2>Jumper Settings<a class="headerlink" href="#jumper-settings" title="Link to this heading">¶</a></h2>
+<h2>Jumper Settings<a class="headerlink" href="#jumper-settings" title="Link to this heading">#</a></h2>
 <p><strong>SDP-K1:</strong></p>
 <p>Connect the VIO_ADJUST jumper on the SDP-K1 board to 3.3V position to drive SDP-K1 GPIOs at 3.3V</p>
 <p><strong>EVAL-AD355XR:</strong></p>
 <p>Please refer to the user guide for the jumper connections on the EVAL-AD355XR board</p>
 </section>
 <section id="communication-interface">
-<h2>Communication Interface<a class="headerlink" href="#communication-interface" title="Link to this heading">¶</a></h2>
+<h2>Communication Interface<a class="headerlink" href="#communication-interface" title="Link to this heading">#</a></h2>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>For data transmission to IIO clients, IIO firmware applications uses <em>Virtual Serial</em>
@@ -312,9 +315,9 @@ Physical (UART) serial port by defining macro <strong>USE_PHY_COM_PORT</strong> 
 </div>
 </section>
 <section id="build-guide">
-<h2>Build Guide<a class="headerlink" href="#build-guide" title="Link to this heading">¶</a></h2>
+<h2>Build Guide<a class="headerlink" href="#build-guide" title="Link to this heading">#</a></h2>
 <section id="build-prerequisites">
-<h3>Build Prerequisites<a class="headerlink" href="#build-prerequisites" title="Link to this heading">¶</a></h3>
+<h3>Build Prerequisites<a class="headerlink" href="#build-prerequisites" title="Link to this heading">#</a></h3>
 <p>Prior to building a firmware project, it is required to set up an environment so
 that the build process may find the necessary tools (compiler, linker, SDK etc.).
 Use the following steps to prepare your environment for building firmware projects
@@ -388,7 +391,7 @@ for respective platform.</p>
 </div>
 </div></section>
 <section id="building-a-project">
-<h3>Building a project<a class="headerlink" href="#building-a-project" title="Link to this heading">¶</a></h3>
+<h3>Building a project<a class="headerlink" href="#building-a-project" title="Link to this heading">#</a></h3>
 <p>Once the build enviornment is setup, follow the guide below to build your project
 and generate executable file (.bin/.hex)</p>
 <div><div class="collapsible docutils container">
@@ -501,7 +504,7 @@ mentioned in step2 and clean build project as mentioned in step3</p>
 </div>
 </div></section>
 <section id="running-a-project">
-<h3>Running a project<a class="headerlink" href="#running-a-project" title="Link to this heading">¶</a></h3>
+<h3>Running a project<a class="headerlink" href="#running-a-project" title="Link to this heading">#</a></h3>
 <p>Once the firmware build is successful and binary file is generated, copy the
 generated binary into USB drive hosted by your MCU board (e.g. USB drive hosted
 by SDP-K1 board on windows). This will flash the binary file into MCU present
@@ -511,7 +514,7 @@ of all build steps.</p>
 </section>
 </section>
 <section id="using-the-iio-ecosystem">
-<h2>Using the IIO Ecosystem<a class="headerlink" href="#using-the-iio-ecosystem" title="Link to this heading">¶</a></h2>
+<h2>Using the IIO Ecosystem<a class="headerlink" href="#using-the-iio-ecosystem" title="Link to this heading">#</a></h2>
 <p>IIO (Industrial Input/Output) is a flexible ecosystem that allows various
 client tools to communicate with IIO device to configure the device, capture device
 data, generate waveforms, access registers, etc. Below diagram demonstrates the
@@ -523,7 +526,7 @@ high level architecture of IIO ecosystem.</p>
 </div></blockquote>
 </section>
 <section id="iio-tools">
-<h2>IIO Tools:<a class="headerlink" href="#iio-tools" title="Link to this heading">¶</a></h2>
+<h2>IIO Tools:<a class="headerlink" href="#iio-tools" title="Link to this heading">#</a></h2>
 <p><a class="reference internal" href="../../iio_osc/iio_osc.html"><span class="doc">IIO Oscilloscope</span></a>
 ADI IIO Oscilloscope is a cross platform GUI application, which demonstrates how
 to interface different evaluation boards within an IIO ecosystem. It supports
@@ -560,14 +563,14 @@ then 0th channel data.</p>
 </div>
 </section>
 <section id="iio-firmware-structure">
-<h2>IIO Firmware Structure<a class="headerlink" href="#iio-firmware-structure" title="Link to this heading">¶</a></h2>
+<h2>IIO Firmware Structure<a class="headerlink" href="#iio-firmware-structure" title="Link to this heading">#</a></h2>
 <p>Below diagram illustrates the architecture of Precision Converters IIO
 firmware applications.</p>
 <a class="reference internal image-reference" href="../../../_images/firmware_architecture.png"><img alt="../../../_images/firmware_architecture.png" src="../../../_images/firmware_architecture.png" style="width: 500px;" />
 </a>
 </section>
 <section id="support">
-<h2>Support<a class="headerlink" href="#support" title="Link to this heading">¶</a></h2>
+<h2>Support<a class="headerlink" href="#support" title="Link to this heading">#</a></h2>
 <p>Feel free to ask questions in the <a class="reference external" href="https://ez.analog.com/data_converters">EngineerZone</a></p>
 </section>
 </section>

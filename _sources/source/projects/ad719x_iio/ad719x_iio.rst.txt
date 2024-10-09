@@ -32,6 +32,11 @@ This page gives an overview of using the ARM platforms supported (default is Mbe
 firmware example with Analog Devices AD719x Evaluation board and SDP-K1 controller board. 
 This example code leverages the ADI developed IIO (Industrial Input Output) ecosystem to 
 evaluate the AD719x device by providing a device debug and data capture support.
+The code provides support to MBED and STM32 platforms.
+
+The respective build guides for each of the platforms
+can be found in the further sections. The active platform can be chosen by selecting the appropriate 
+value for the ACTIVE_PLATFORM macro in the app_config.h (Default is mbed)
 
    .. image:: /source/tinyiiod/app_interface.png
       :width: 350
@@ -52,11 +57,11 @@ to communicates with IIO device.
 Hardware Connections
 ====================
 
-Required: SDP-K1 (or alternative Mbed enabled controller board), EVAL-AD719x board
+Required: SDP-K1 (or alternative Mbed enabled controller board, or an STM32 board), EVAL-AD719x board
 and USB cable.
 
 Connect the EVAL-AD719x board to SDP-K1 board (or any other Mbed enabled controller 
-board) using jumper wires. Connect SDP-K1 board to the PC using the USB cable. 
+board or an equivalent STM32 board) using jumper wires. Connect SDP-K1 board to the PC using the USB cable. 
 
 
    .. image:: /source/projects/ad719x_iio/ad719x_hardware_connection.png

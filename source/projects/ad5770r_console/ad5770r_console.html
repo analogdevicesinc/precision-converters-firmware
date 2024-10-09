@@ -7,17 +7,16 @@
 
     <title>AD5770r Console Application &#8212; Precision Converters Firmware  documentation</title>
     <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=8e8a900e" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/style.min.css?v=a3ba2641" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/style.min.css?v=765fa3cc" />
     <script src="../../../_static/documentation_options.js?v=5929fcd5"></script>
     <script src="../../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script defer="" src="../../../_static/app.umd.js?v=7b10be7e"></script>
+    <script defer="" src="../../../_static/app.umd.js?v=c93eadd1"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
    
   
-    <meta name="robots" content="noindex">
-  
+  <meta name="global_root" content="../../../../">
   <meta name="repo" content="precision-converters-firmware">
   
 
@@ -75,14 +74,16 @@
 
   <div class="repotoc-tree overlay">
     <root>
-  <a href="../../../../documentation/eval/index.html">Evaluation Boards</a>
-  <a href="../../../../documentation/university/index.html">University Program</a>
+  <a href="../../../../documentation/index.html">System Level</a>
   <a href="../../../../hdl/index.html">HDL</a>
-  <a href="../../../../no-OS/index.html">no-OS</a>
+  <a href="../../../../testbenches/index.html">HDL Testbenches</a>
   <a href="../../../../pyadi-iio/index.html">Hardware Python Interfaces</a>
+  <a href="../../../../libiio/index.html">libiio</a>
+  <a href="../../../../no-OS/index.html">no-OS</a>
   <a href="../../../index.html" class="current">Precision Converters Firmware</a>
-  <a href="../../../../doctools/index.html">Doctools</a>
   <a href="../../../../PrecisionToolbox/index.html">Precision Toolbox</a>
+  <a href="../../../../scopy/index.html">Scopy</a>
+  <a href="../../../../doctools/index.html">Doctools</a>
 </root>
 
   </div>
@@ -132,14 +133,16 @@ Content on this topic
 </label>
 <div class="repotoc-tree">
   <root>
-  <a href="../../../../documentation/eval/index.html">Evaluation Boards</a>
-  <a href="../../../../documentation/university/index.html">University Program</a>
+  <a href="../../../../documentation/index.html">System Level</a>
   <a href="../../../../hdl/index.html">HDL</a>
-  <a href="../../../../no-OS/index.html">no-OS</a>
+  <a href="../../../../testbenches/index.html">HDL Testbenches</a>
   <a href="../../../../pyadi-iio/index.html">Hardware Python Interfaces</a>
+  <a href="../../../../libiio/index.html">libiio</a>
+  <a href="../../../../no-OS/index.html">no-OS</a>
   <a href="../../../index.html" class="current">Precision Converters Firmware</a>
-  <a href="../../../../doctools/index.html">Doctools</a>
   <a href="../../../../PrecisionToolbox/index.html">Precision Toolbox</a>
+  <a href="../../../../scopy/index.html">Scopy</a>
+  <a href="../../../../doctools/index.html">Doctools</a>
 </root>
 
 </div>
@@ -193,9 +196,9 @@ Content on this topic
           <div class="body" role="main">
             
   <section id="ad5770r-console-application">
-<h1>AD5770r Console Application<a class="headerlink" href="#ad5770r-console-application" title="Link to this heading">¶</a></h1>
+<h1>AD5770r Console Application<a class="headerlink" href="#ad5770r-console-application" title="Link to this heading">#</a></h1>
 <section id="supported-hardware">
-<h2>Supported Hardware<a class="headerlink" href="#supported-hardware" title="Link to this heading">¶</a></h2>
+<h2>Supported Hardware<a class="headerlink" href="#supported-hardware" title="Link to this heading">#</a></h2>
 <p><strong>Supported Devices:</strong></p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://www.analog.com/en/products/ad5770r.html">AD5770R</a></p></li>
@@ -210,7 +213,7 @@ Content on this topic
 </ul>
 </section>
 <section id="introduction">
-<h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">¶</a></h2>
+<h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
 <p>The AD5770R is a 6-channel, 14-bit resolution, low noise, programmable current output digital-to-analog converter (DAC) for photonics control applications. This chip incorporates a 1.25 V on-chip voltage reference, a 2.5 kΩ precision resistor for reference current generation, die temperature, output monitoring functions, fault alarm, and reset functions.</p>
 <p>The AD5770R contains five 14-bit resolution current sourcing DAC channels and one 14-bit resolution current sourcing/ sinking DAC channel.</p>
 <p>Channel 0 can be configured to sink up to 60 mA and source up to 300 mA. Channel 1 to Channel 5 have multiple, programmable output current sourcing ranges, set by register access. Each DAC can operate with a wide power supply rail from 0.8 V to AVDD − 0.4 V for optimizing power efficiency and thermal power dissipation.</p>
@@ -228,7 +231,7 @@ Content on this topic
 <p>The AD5770R Mbed firmware example can be used as a starting point for developing your own code in your own environment utilizing the benefits of the Mbed platform. The Mbed Platform simplifies the overall software development process by providing a common low level driver abstraction. This reduces the hardware dependency as any Mbed enabled board can be used with same firmware with little to no modifications, usually just changing the pin mapping.</p>
 </section>
 <section id="interface-diagram">
-<h2>Interface Diagram<a class="headerlink" href="#interface-diagram" title="Link to this heading">¶</a></h2>
+<h2>Interface Diagram<a class="headerlink" href="#interface-diagram" title="Link to this heading">#</a></h2>
 <blockquote>
 <div><a class="reference internal image-reference" href="../../../_images/ad5770r_interface_diagram.jpg"><img alt="../../../_images/ad5770r_interface_diagram.jpg" src="../../../_images/ad5770r_interface_diagram.jpg" style="width: 500px;" />
 </a>
@@ -241,7 +244,7 @@ Content on this topic
 </div>
 </section>
 <section id="useful-links">
-<h2>Useful Links<a class="headerlink" href="#useful-links" title="Link to this heading">¶</a></h2>
+<h2>Useful Links<a class="headerlink" href="#useful-links" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="https://github.com/analogdevicesinc/precision-converters-firmware">Source Code: Precision Converters Firmware</a></p></li>
 <li><p><a class="reference external" href="https://github.com/analogdevicesinc/no-OS">no-OS: Software drivers for systems without OS</a></p></li>
@@ -257,9 +260,9 @@ they may be of interest if you require Linux and/or FPGA support.</p>
 </div>
 </section>
 <section id="build-guide">
-<h2>Build Guide<a class="headerlink" href="#build-guide" title="Link to this heading">¶</a></h2>
+<h2>Build Guide<a class="headerlink" href="#build-guide" title="Link to this heading">#</a></h2>
 <section id="build-prerequisites">
-<h3>Build Prerequisites<a class="headerlink" href="#build-prerequisites" title="Link to this heading">¶</a></h3>
+<h3>Build Prerequisites<a class="headerlink" href="#build-prerequisites" title="Link to this heading">#</a></h3>
 <p>Prior to building a firmware project, it is required to set up an environment so
 that the build process may find the necessary tools (compiler, linker, SDK etc.).
 Use the following steps to prepare your environment for building firmware projects
@@ -333,7 +336,7 @@ for respective platform.</p>
 </div>
 </div></section>
 <section id="building-a-project">
-<h3>Building a project<a class="headerlink" href="#building-a-project" title="Link to this heading">¶</a></h3>
+<h3>Building a project<a class="headerlink" href="#building-a-project" title="Link to this heading">#</a></h3>
 <p>Once the build enviornment is setup, follow the guide below to build your project
 and generate executable file (.bin/.hex)</p>
 <div><div class="collapsible docutils container">
@@ -446,7 +449,7 @@ mentioned in step2 and clean build project as mentioned in step3</p>
 </div>
 </div></section>
 <section id="running-a-project">
-<h3>Running a project<a class="headerlink" href="#running-a-project" title="Link to this heading">¶</a></h3>
+<h3>Running a project<a class="headerlink" href="#running-a-project" title="Link to this heading">#</a></h3>
 <p>Once the firmware build is successful and binary file is generated, copy the
 generated binary into USB drive hosted by your MCU board (e.g. USB drive hosted
 by SDP-K1 board on windows). This will flash the binary file into MCU present
@@ -456,7 +459,7 @@ of all build steps.</p>
 </section>
 </section>
 <section id="quick-start">
-<h2>Quick Start<a class="headerlink" href="#quick-start" title="Link to this heading">¶</a></h2>
+<h2>Quick Start<a class="headerlink" href="#quick-start" title="Link to this heading">#</a></h2>
 <p>If you have some familiarity with the Mbed platform, the following is a basic list of steps required to start running the code,
 see below for more detail:</p>
 <ul class="simple">
@@ -476,7 +479,7 @@ see below for more detail:</p>
 </ul>
 </section>
 <section id="using-the-firmware">
-<h2>Using the Firmware<a class="headerlink" href="#using-the-firmware" title="Link to this heading">¶</a></h2>
+<h2>Using the Firmware<a class="headerlink" href="#using-the-firmware" title="Link to this heading">#</a></h2>
 <p>The example is menu driven, providing keyboard shortcuts to access/execute the menus items, and prompting for further inputs where necessary. When the example runs, it attempts to connect and initialize the AD5770R. The configuration used is defined in the ad5770r_user_config.h file, which can be modified as needs be to suit specific applications.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -484,7 +487,7 @@ see below for more detail:</p>
 </div>
 </section>
 <section id="main-menu">
-<h2>Main Menu<a class="headerlink" href="#main-menu" title="Link to this heading">¶</a></h2>
+<h2>Main Menu<a class="headerlink" href="#main-menu" title="Link to this heading">#</a></h2>
 <p>The AD5770R Console App main menu provides basic initialization/reset type functions, and access to several sub-menus that provide more detailed configuration and control settings. Like most menus in the firmware, the menu options are framed by a header and footer that display status information related to the functions on the menu.</p>
 <blockquote>
 <div><a class="reference internal image-reference" href="../../../_images/ad5770r_console_application.jpg"><img alt="../../../_images/ad5770r_console_application.jpg" src="../../../_images/ad5770r_console_application.jpg" style="width: 400px;" />
@@ -493,7 +496,7 @@ see below for more detail:</p>
 <p>The value of the scratchpad register is displayed in both the header and the footer. After reading the scratchpad value for the header, the value is incremented and written back to the device, such that the scratchpad footer value should always be equal to the header value + 1. This can be useful a debug aid to confirm communications.</p>
 </section>
 <section id="dac-operaions">
-<h2>DAC Operaions<a class="headerlink" href="#dac-operaions" title="Link to this heading">¶</a></h2>
+<h2>DAC Operaions<a class="headerlink" href="#dac-operaions" title="Link to this heading">#</a></h2>
 <p>This menu provides the ability to set the Input and DAC register values, and control the update of the DAC using both the hardware and software LDAC functions. The ordering of menu items is intended to follow the order in which actions are typically performed by the user.</p>
 <blockquote>
 <div><a class="reference internal image-reference" href="../../../_images/ad5770r_dac_operations.jpg"><img alt="../../../_images/ad5770r_dac_operations.jpg" src="../../../_images/ad5770r_dac_operations.jpg" style="width: 400px;" />
@@ -513,7 +516,7 @@ see below for more detail:</p>
 </div>
 </section>
 <section id="support">
-<h2>Support<a class="headerlink" href="#support" title="Link to this heading">¶</a></h2>
+<h2>Support<a class="headerlink" href="#support" title="Link to this heading">#</a></h2>
 <p>Feel free to ask questions in the <a class="reference external" href="https://ez.analog.com/data_converters">EngineerZone</a></p>
 </section>
 </section>

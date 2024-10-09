@@ -7,17 +7,16 @@
 
     <title>IIO Oscilloscope &#8212; Precision Converters Firmware  documentation</title>
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8e8a900e" />
-    <link rel="stylesheet" type="text/css" href="../../_static/style.min.css?v=a3ba2641" />
+    <link rel="stylesheet" type="text/css" href="../../_static/style.min.css?v=765fa3cc" />
     <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
     <script src="../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script defer="" src="../../_static/app.umd.js?v=7b10be7e"></script>
+    <script defer="" src="../../_static/app.umd.js?v=c93eadd1"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
    
   
-    <meta name="robots" content="noindex">
-  
+  <meta name="global_root" content="../../../">
   <meta name="repo" content="precision-converters-firmware">
   
 
@@ -75,14 +74,16 @@
 
   <div class="repotoc-tree overlay">
     <root>
-  <a href="../../../documentation/eval/index.html">Evaluation Boards</a>
-  <a href="../../../documentation/university/index.html">University Program</a>
+  <a href="../../../documentation/index.html">System Level</a>
   <a href="../../../hdl/index.html">HDL</a>
-  <a href="../../../no-OS/index.html">no-OS</a>
+  <a href="../../../testbenches/index.html">HDL Testbenches</a>
   <a href="../../../pyadi-iio/index.html">Hardware Python Interfaces</a>
+  <a href="../../../libiio/index.html">libiio</a>
+  <a href="../../../no-OS/index.html">no-OS</a>
   <a href="../../index.html" class="current">Precision Converters Firmware</a>
-  <a href="../../../doctools/index.html">Doctools</a>
   <a href="../../../PrecisionToolbox/index.html">Precision Toolbox</a>
+  <a href="../../../scopy/index.html">Scopy</a>
+  <a href="../../../doctools/index.html">Doctools</a>
 </root>
 
   </div>
@@ -143,14 +144,16 @@ Content on this topic
 </label>
 <div class="repotoc-tree">
   <root>
-  <a href="../../../documentation/eval/index.html">Evaluation Boards</a>
-  <a href="../../../documentation/university/index.html">University Program</a>
+  <a href="../../../documentation/index.html">System Level</a>
   <a href="../../../hdl/index.html">HDL</a>
-  <a href="../../../no-OS/index.html">no-OS</a>
+  <a href="../../../testbenches/index.html">HDL Testbenches</a>
   <a href="../../../pyadi-iio/index.html">Hardware Python Interfaces</a>
+  <a href="../../../libiio/index.html">libiio</a>
+  <a href="../../../no-OS/index.html">no-OS</a>
   <a href="../../index.html" class="current">Precision Converters Firmware</a>
-  <a href="../../../doctools/index.html">Doctools</a>
   <a href="../../../PrecisionToolbox/index.html">Precision Toolbox</a>
+  <a href="../../../scopy/index.html">Scopy</a>
+  <a href="../../../doctools/index.html">Doctools</a>
 </root>
 
 </div>
@@ -204,17 +207,17 @@ Content on this topic
           <div class="body" role="main">
             
   <section id="iio-oscilloscope">
-<h1>IIO Oscilloscope<a class="headerlink" href="#iio-oscilloscope" title="Link to this heading">¶</a></h1>
+<h1>IIO Oscilloscope<a class="headerlink" href="#iio-oscilloscope" title="Link to this heading">#</a></h1>
 <section id="installation">
-<h2>Installation<a class="headerlink" href="#installation" title="Link to this heading">¶</a></h2>
+<h2>Installation<a class="headerlink" href="#installation" title="Link to this heading">#</a></h2>
 <p>Refer this page to install IIO oscilloscope for Windows or Linux OS: <a class="reference external" href="https://github.com/analogdevicesinc/iio-oscilloscope/releases">IIO Oscilloscope (Client)</a></p>
 </section>
 <section id="running-on-linux">
-<h2>Running on Linux<a class="headerlink" href="#running-on-linux" title="Link to this heading">¶</a></h2>
+<h2>Running on Linux<a class="headerlink" href="#running-on-linux" title="Link to this heading">#</a></h2>
 <p>Refer this page: <a class="reference external" href="https://wiki.analog.com/resources/tools-software/linux-software/iio_oscilloscope">https://wiki.analog.com/resources/tools-software/linux-software/iio_oscilloscope</a></p>
 </section>
 <section id="running-on-windows">
-<h2>Running on Windows<a class="headerlink" href="#running-on-windows" title="Link to this heading">¶</a></h2>
+<h2>Running on Windows<a class="headerlink" href="#running-on-windows" title="Link to this heading">#</a></h2>
 <p>Open the IIO Oscilloscope application from start menu and configure the serial (UART)
 settings as shown below. Click on refresh button and device should pop-up
 in the IIO devices list.</p>
@@ -230,7 +233,7 @@ drag aside or close this window to see the main ‘Debug and DMM’ tab window.<
 </div></blockquote>
 </section>
 <section id="configure-access-device-attributes-parameters">
-<h2>Configure/Access Device Attributes (Parameters)<a class="headerlink" href="#configure-access-device-attributes-parameters" title="Link to this heading">¶</a></h2>
+<h2>Configure/Access Device Attributes (Parameters)<a class="headerlink" href="#configure-access-device-attributes-parameters" title="Link to this heading">#</a></h2>
 <p>The IIO Oscilloscope allows user to access and configure different device parameters,
 called as ‘Attributes“. There are 2 types of attributes:</p>
 <ul class="simple">
@@ -240,9 +243,9 @@ called as ‘Attributes“. There are 2 types of attributes:</p>
 </section>
 </section>
 <section id="using-iio-oscilloscope-for-adcs">
-<h1>Using IIO Oscilloscope for ADCs<a class="headerlink" href="#using-iio-oscilloscope-for-adcs" title="Link to this heading">¶</a></h1>
+<h1>Using IIO Oscilloscope for ADCs<a class="headerlink" href="#using-iio-oscilloscope-for-adcs" title="Link to this heading">#</a></h1>
 <section id="using-dmm-tab-to-read-dc-voltage-on-input-channels">
-<h2>Using DMM Tab to Read DC Voltage on Input Channels<a class="headerlink" href="#using-dmm-tab-to-read-dc-voltage-on-input-channels" title="Link to this heading">¶</a></h2>
+<h2>Using DMM Tab to Read DC Voltage on Input Channels<a class="headerlink" href="#using-dmm-tab-to-read-dc-voltage-on-input-channels" title="Link to this heading">#</a></h2>
 <p>DMM tab can be used read the instantaneous voltage applied on analog input channels.
 Simply select the device and channels to read and press start button.</p>
 <div class="admonition note">
@@ -257,9 +260,9 @@ during data capture.</p>
 </a>
 </section>
 <section id="iio-data-capture-for-adcs">
-<h2>IIO Data Capture for ADCs<a class="headerlink" href="#iio-data-capture-for-adcs" title="Link to this heading">¶</a></h2>
+<h2>IIO Data Capture for ADCs<a class="headerlink" href="#iio-data-capture-for-adcs" title="Link to this heading">#</a></h2>
 <section id="introduction">
-<h3>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">¶</a></h3>
+<h3>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h3>
 <p>This page focuses on the IIO firmware part of ‘Data Capturing. The “AD7606 IIO Application”
 is used as a reference for this discussion.</p>
 <p>IIO clients can be used to capture and visualize the continuous analog or
@@ -287,7 +290,7 @@ stored as shown below:</p>
 </a>
 </section>
 <section id="data-capture-from-iio-device">
-<h3>Data Capture from IIO Device<a class="headerlink" href="#data-capture-from-iio-device" title="Link to this heading">¶</a></h3>
+<h3>Data Capture from IIO Device<a class="headerlink" href="#data-capture-from-iio-device" title="Link to this heading">#</a></h3>
 <p>To capture the data from IIO device, simply select the device and channels
 to read/capture data. The data is plotted as “ADC Raw Value” Vs “Number of Samples”
 and is just used for Visualization. The data is read as is from device without
@@ -318,7 +321,7 @@ from IIO device.</p>
 </div>
 </section>
 <section id="saving-captured-data">
-<h3>Saving Captured Data<a class="headerlink" href="#saving-captured-data" title="Link to this heading">¶</a></h3>
+<h3>Saving Captured Data<a class="headerlink" href="#saving-captured-data" title="Link to this heading">#</a></h3>
 <p>The data on IIO oscilloscope can be saved for further processing and analysis. The
 data is saved using a .csv format. The data can be captured for each selected
 channel during save option and only requested number of samples can be saved. So
@@ -332,7 +335,7 @@ python and ACE.</p>
 </section>
 </section>
 <section id="limitations-of-data-capture-using-iio-application">
-<h2>Limitations of Data Capture Using IIO Application<a class="headerlink" href="#limitations-of-data-capture-using-iio-application" title="Link to this heading">¶</a></h2>
+<h2>Limitations of Data Capture Using IIO Application<a class="headerlink" href="#limitations-of-data-capture-using-iio-application" title="Link to this heading">#</a></h2>
 <p>There are 3 major factors which can potentially impact the data capturing:</p>
 <ul class="simple">
 <li><p>Sampling/Capturing Rate of ADC</p></li>
@@ -423,11 +426,11 @@ Below diagram illustrates the use of circular buffer in the firmware.</p>
 </section>
 </section>
 <section id="using-iio-oscilloscope-for-dacs">
-<h1>Using IIO Oscilloscope for DACs<a class="headerlink" href="#using-iio-oscilloscope-for-dacs" title="Link to this heading">¶</a></h1>
+<h1>Using IIO Oscilloscope for DACs<a class="headerlink" href="#using-iio-oscilloscope-for-dacs" title="Link to this heading">#</a></h1>
 <section id="iio-data-streaming-for-dacs">
-<h2>IIO Data Streaming for DACs<a class="headerlink" href="#iio-data-streaming-for-dacs" title="Link to this heading">¶</a></h2>
+<h2>IIO Data Streaming for DACs<a class="headerlink" href="#iio-data-streaming-for-dacs" title="Link to this heading">#</a></h2>
 <section id="id1">
-<h3>Introduction<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h3>
+<h3>Introduction<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
 <p>IIO clients can be used to load and stream data to DAC devices using an IIO
 firmware application developed for that device. Using this firmware, a user
 can configure various settings on the device and load the data using the DAC
@@ -444,7 +447,7 @@ enabled, the buffer repeats itself, and the same data is streamed over and over
 indefinitely until stopped.</p>
 </section>
 <section id="data-streaming-to-iio-device">
-<h3>Data Streaming to IIO Device<a class="headerlink" href="#data-streaming-to-iio-device" title="Link to this heading">¶</a></h3>
+<h3>Data Streaming to IIO Device<a class="headerlink" href="#data-streaming-to-iio-device" title="Link to this heading">#</a></h3>
 <p>The DAC Data Manager tab on the IIO Oscilloscope allows streaming data to supported iio devices.
 The input data file can be a binary file (.bin) or a MAT file (.mat).</p>
 <div class="admonition note">
@@ -454,7 +457,7 @@ the IIO Oscilloscope application must be upgraded to the most recent versions.</
 </div>
 </section>
 <section id="creating-binary-files-for-data-streaming">
-<h3>Creating binary files for data streaming<a class="headerlink" href="#creating-binary-files-for-data-streaming" title="Link to this heading">¶</a></h3>
+<h3>Creating binary files for data streaming<a class="headerlink" href="#creating-binary-files-for-data-streaming" title="Link to this heading">#</a></h3>
 <p><a class="reference internal" href="../python/python.html"><span class="doc">pyadi-iio: Python interfaces</span></a>
 The PyADI module allows users to create binary data files from the input data using the
 tx class. The CLI (Command Line Interface) script adistream.py allows the user to
@@ -462,7 +465,7 @@ create various types of waveforms like sine, triangular, pwm, etc and store them
 binary file.</p>
 </section>
 <section id="loading-and-streaming-the-data">
-<h3>Loading and Streaming the Data<a class="headerlink" href="#loading-and-streaming-the-data" title="Link to this heading">¶</a></h3>
+<h3>Loading and Streaming the Data<a class="headerlink" href="#loading-and-streaming-the-data" title="Link to this heading">#</a></h3>
 <p>On the IIO Oscilloscope, open the DAC Data Manager tab as indicated below
 after connecting to the iio device.</p>
 <blockquote>
@@ -499,7 +502,7 @@ button needs to be clicked to end the data streaming.</p>
 </section>
 </section>
 <section id="limitations-of-data-streaming-using-iio-application">
-<h2>Limitations of Data Streaming Using IIO Application<a class="headerlink" href="#limitations-of-data-streaming-using-iio-application" title="Link to this heading">¶</a></h2>
+<h2>Limitations of Data Streaming Using IIO Application<a class="headerlink" href="#limitations-of-data-streaming-using-iio-application" title="Link to this heading">#</a></h2>
 <p><strong>DAC Sampling/Update Rate:</strong></p>
 <p>The sampling rate or update rate defines the maximum rate/speed at which data can
 be loaded and updated onto the DAC output using the IIO firmware application. For
