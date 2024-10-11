@@ -69,14 +69,14 @@
 #define ACTIVE_DEVICE_NAME	"ad4170"
 #define DEVICE_NAME		    "DEV_AD4170"
 #define ACTIVE_DEVICE_ID    ID_AD4170
-#define HW_MEZZANINE_NAME	"EVAL-AD4170-ARDZ"
+#define HW_MEZZANINE_NAME	"EVAL-AD4170-4ARDZ"
 #else
 #warning No/Unsupported ADxxxxy symbol defined. AD4170 defined
 #define DEV_AD4170
 #define ACTIVE_DEVICE_NAME	"ad4170"
 #define DEVICE_NAME		    "DEV_AD4170"
 #define ACTIVE_DEVICE_ID    ID_AD4170
-#define HW_MEZZANINE_NAME	"EVAL-AD4170-ARDZ"
+#define HW_MEZZANINE_NAME	"EVAL-AD4170-4ARDZ"
 #endif
 
 /* Select the active platform (default is Mbed) */
