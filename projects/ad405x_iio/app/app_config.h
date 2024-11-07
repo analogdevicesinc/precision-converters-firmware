@@ -75,7 +75,7 @@
 #define ADC_CAPTURE_MODE	   SAMPLE_MODE
 #endif
 
-/* Select the ADC output data format (default is straight binary mode) */
+/* Select the ADC output data format (default is twos complement mode) */
 #if !defined(ADC_DATA_FORMAT)
 #define ADC_DATA_FORMAT	       TWOS_COMPLEMENT
 #endif
@@ -104,18 +104,24 @@
 #define DEVICE_NAME			"DEV_AD4052"
 #define ACTIVE_DEVICE_ID	 ID_AD4052
 #define HW_MEZZANINE_NAME	"EVAL-AD4052-ARDZ"
+#define ADC_SAMPLE_MODE_RESOLUTION		    16
+#define ADC_AVERAGING_MODE_RESOLUTION		20
 #define ADC_BURST_AVG_MODE_RESOLUTION		20
 #elif defined(DEV_AD4050)
 #define ACTIVE_DEVICE_NAME	"ad4050"
 #define DEVICE_NAME			"DEV_AD4050"
 #define ACTIVE_DEVICE_ID	 ID_AD4050
 #define HW_MEZZANINE_NAME	"EVAL-AD4050-ARDZ"
-#define ADC_BURST_AVG_MODE_RESOLUTION		16
+#define ADC_SAMPLE_MODE_RESOLUTION		    12
+#define ADC_AVERAGING_MODE_RESOLUTION		14
+#define ADC_BURST_AVG_MODE_RESOLUTION		14
 #else
 #define ACTIVE_DEVICE_NAME	"ad4052"
 #define DEVICE_NAME			"DEV_AD4052"
 #define ACTIVE_DEVICE_ID	 ID_AD4052
 #define HW_MEZZANINE_NAME	"EVAL-AD4052-ARDZ"
+#define ADC_SAMPLE_MODE_RESOLUTION		    16
+#define ADC_AVERAGING_MODE_RESOLUTION		20
 #define ADC_BURST_AVG_MODE_RESOLUTION		20
 #endif
 
@@ -139,9 +145,6 @@
 #error "No/Invalid active platform selected"
 #endif
 
-/* ADC resolution for active device */
-#define ADC_SAMPLE_MODE_RESOLUTION		    16
-#define ADC_AVERAGING_MODE_RESOLUTION		24	//TODO check if it works for AD4050 too
 #define DEFAULT_BURST_SAMPLE_RATE           2000000
 
 /* ADC reference voltage (Range: 2.5 to 3.3v) */

@@ -525,16 +525,6 @@ static int iio_ad405x_attr_get(void *device,
 
 	switch (priv) {
 	case ADC_RAW:
-#if (ACTIVE_PLATFORM == MBED_PLATFORM)
-		/* By default Mbed configures the I/O direction of a gpio
-		 * (when used for PWM) in analog mode, after disabling or
-		 * removing the PWM object.
-		 * In this applications, the conversion trigger pin is being shared with
-		 * ad405x drivers as gpio output pin and is configured in output mode
-		 * only when it is initialized.
-		 * Hence we need to reinitialize the gpio so that ad405x drivers
-		 * can gain access to pin configured in output mode.
-		 * */
 		ret = no_os_gpio_remove(p_ad405x_dev->gpio_cnv);
 		if (ret) {
 			return ret;
@@ -549,7 +539,7 @@ static int iio_ad405x_attr_get(void *device,
 		if (ret) {
 			return ret;
 		}
-#endif
+
 #if (ADC_CAPTURE_MODE == SAMPLE_MODE)
 		ret = ad405x_set_adc_mode(p_ad405x_dev);
 #elif (ADC_CAPTURE_MODE == BURST_AVERAGING_MODE)
