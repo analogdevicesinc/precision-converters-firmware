@@ -223,6 +223,7 @@ void stm32_system_init(void)
 #endif
 }
 
+#if (INTERFACE_MODE == SPI_DMA)
 /**
  * @brief   Callback function to flag the capture of half the number
  *          of requested samples.
@@ -302,7 +303,6 @@ void stm32_timer_stop(void)
  * @return	None
  */
 
-#if (INTERFACE_MODE == SPI_DMA)
 void receivecomplete_callback(DMA_HandleTypeDef * hdma)
 {
 	if (!dma_cycle_count) {
@@ -335,7 +335,6 @@ void receivecomplete_callback(DMA_HandleTypeDef * hdma)
 
 	return;
 }
-#endif
 
 /**
  * @brief 	Configures the chip select pin as output mode.
@@ -431,3 +430,4 @@ void tim8_config(void)
 
 	TIM8->DIER |= TIM_DIER_CC1DE; // Generate DMA request after overflow
 }
+#endif
