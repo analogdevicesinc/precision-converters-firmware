@@ -28,6 +28,7 @@
 #include "no_os_error.h"
 #include "no_os_irq.h"
 #include "no_os_delay.h"
+#include "no_os_util.h"
 #include "common.h"
 #include "iio_trigger.h"
 
@@ -548,7 +549,7 @@ static int get_adc_raw(void *device,
 		       intptr_t id)
 {
 	int32_t ret;
-	static uint32_t adc_data_raw = 0;
+	static int32_t adc_data_raw = 0;
 	int32_t offset = 0;
 	uint8_t setup = p_ad4170_dev_inst->config.setup[channel->ch_num].setup_n;
 	bool bipolar = p_ad4170_dev_inst->config.setups[setup].afe.bipolar;
@@ -577,6 +578,9 @@ static int get_adc_raw(void *device,
 		if (ret) {
 			break;
 		}
+		if (channel->scan_type.sign == 's')
+			adc_data_raw = no_os_sign_extend32(adc_data_raw,
+							   channel->scan_type.realbits - 1);
 
 		perform_sensor_measurement_and_update_scale(adc_data_raw, channel->ch_num);
 		return sprintf(buf, "%d", adc_data_raw);
