@@ -93,7 +93,9 @@ struct stm32_pwm_init_param stm32_cnv_pwm_init_params = {
 	.timer_chn = CNV_PWM_CHANNEL,
 	.get_timer_clock = HAL_RCC_GetPCLK2Freq,
 	.clock_divider = CNV_PWM_CLK_DIVIDER,
-	.complementary_channel = false
+	.complementary_channel = false,
+	.trigger_enable = false,
+	.trigger_output = PWM_TRGO_RESET
 };
 
 #if (INTERFACE_MODE == SPI_DMA)
@@ -116,7 +118,11 @@ struct stm32_pwm_init_param stm32_tx_trigger_extra_init_params = {
 	.timer_chn = TIMER_CHANNEL_1,
 	.complementary_channel = false,
 	.get_timer_clock = HAL_RCC_GetPCLK1Freq,
-	.clock_divider = TIMER_8_CLK_DIVIDER
+	.clock_divider = TIMER_8_CLK_DIVIDER,
+	.trigger_output = PWM_TRGO_ENABLE,
+	.dma_enable = true,
+	.repetitions = 1,
+	.onepulse_enable = true
 };
 
 /* STM32 Tx DMA channel extra init params */
@@ -225,12 +231,8 @@ void tim2_config(void)
  */
 void tim8_config(void)
 {
-	TIM8->RCR = BYTES_PER_SAMPLE - 1; // RCR value in one-pulse mode
-
-	TIM8->EGR = TIM_EGR_UG; // Generate update event
-
-	TIM8->DIER |=
-		TIM_DIER_CC1DE; // Generate DMA request after capture/compare event
+	TIM8->SMCR |= (TIM_TS_ETRF | TIM_SLAVEMODE_TRIGGER |
+		       TIM_MASTERSLAVEMODE_ENABLE);
 
 	TIM8->SMCR |=
 		TIM_TRIGGERPOLARITY_INVERTED; // Inverted Polarity for ETR trigger source (Busy falling edge)
@@ -244,6 +246,10 @@ void tim8_config(void)
 void stm32_timer_enable(void)
 {
 #if (INTERFACE_MODE == SPI_DMA)
+
+	/* Enable tx trigger timer */
+	no_os_pwm_enable(tx_trigger_desc);
+
 	TIM1->CNT = 0;
 	TIM2->CNT = 0;
 	TIM8->CNT = 0;
@@ -332,10 +338,10 @@ void receivecomplete_callback(DMA_HandleTypeDef* hdma)
 	}
 
 	/* Copy second half of the data to the IIO buffer */
-	memcpy((void*)iio_buf_current_idx, dma_buf_current_idx, rxdma_ndtr/2);
+	memcpy((void*)iio_buf_current_idx, dma_buf_current_idx, rxdma_ndtr / 2);
 
 	dma_buf_current_idx = dma_buf_start_idx;
-	iio_buf_current_idx += rxdma_ndtr/2;
+	iio_buf_current_idx += rxdma_ndtr / 2;
 
 	/* Update samples captured so far */
 	dma_cycle_count -= 1;

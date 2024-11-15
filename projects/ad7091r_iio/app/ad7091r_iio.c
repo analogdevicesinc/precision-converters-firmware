@@ -325,12 +325,6 @@ volatile bool dma_config_updated = false;
 /* STM32 SPI Init params */
 struct stm32_spi_init_param* spi_init_param;
 
-/* Rx DMA channel descriptor */
-struct no_os_dma_ch* rxch;
-
-/* Tx DMA channel descriptor */
-struct no_os_dma_ch* txch;
-
 /* Local buffer */
 uint8_t local_buf[MAX_LOCAL_BUF_SIZE];
 #endif
@@ -884,22 +878,10 @@ static int32_t ad7091r_iio_prepare_transfer(void *dev, uint32_t mask)
 	spi_init_param->pwm_init = &cs_init_params;
 	spi_init_param->dma_init = &ad7091r_dma_init_param;
 
-	rxch = (struct no_os_dma_ch*)no_os_calloc(1, sizeof(*rxch));
-	if (!rxch) {
-		return -ENOMEM;
-	}
-
-	txch = (struct no_os_dma_ch*)no_os_calloc(1, sizeof(*txch));
-	if (!txch) {
-		return -ENOMEM;
-	}
-
-	rxch->irq_num = Rx_DMA_IRQ_ID;
-	rxch->extra = &rxdma_channel;
-	txch->extra = &txdma_channel;
-
-	spi_init_param->rxdma_ch = rxch;
-	spi_init_param->txdma_ch = txch;
+	spi_init_param->irq_num = Rx_DMA_IRQ_ID;
+	spi_init_param->rxdma_ch = &rxdma_channel;
+	spi_init_param->txdma_ch = &txdma_channel;
+	spi_init_param->alternate = GPIO_AF1_TIM2;
 
 	/* Init SPI interface in DMA Mode */
 	ret = no_os_spi_init(&ad7091r_dev_desc->spi_desc, ad7091r_init_params.spi_init);
@@ -907,14 +889,12 @@ static int32_t ad7091r_iio_prepare_transfer(void *dev, uint32_t mask)
 		return ret;
 	}
 
-	/* Configure CS in Alternate function Mode */
-	stm32_cs_output_gpio_config(false);
-
 	/* Init PWM */
 	ret = init_pwm_trigger();
 	if (ret) {
 		return ret;
 	}
+
 #endif
 
 	return 0;
@@ -1101,7 +1081,7 @@ static int32_t ad7091r_iio_submit_samples(struct iio_device_data *iio_dev_data)
 		ad7091r_spi_msg.bytes_number = spirxdma_ndtr;
 
 		ret = no_os_spi_transfer_dma_async(ad7091r_dev_desc->spi_desc, &ad7091r_spi_msg,
-						   1, receivecomplete_callback, NULL);
+						   1, NULL, NULL);
 		if (ret) {
 			return ret;
 		}
@@ -1152,7 +1132,7 @@ static int32_t ad7091r_iio_submit_samples(struct iio_device_data *iio_dev_data)
 		ad7091r_spi_msg.bytes_number = nb_of_samples;
 
 		ret = no_os_spi_transfer_dma_async(ad7091r_dev_desc->spi_desc, &ad7091r_spi_msg,
-						   1, receivecomplete_callback, NULL);
+						   1, NULL, NULL);
 		if (ret) {
 			return ret;
 		}
