@@ -140,6 +140,7 @@ extern struct no_os_irq_ctrl_desc *trigger_irq_desc;
 extern struct no_os_pwm_init_param pwm_init_params;
 
 #if (INTERFACE_MODE == SPI_DMA)
+extern struct no_os_pwm_desc* tx_trigger_desc;
 extern struct no_os_pwm_init_param cs_init_params;
 extern struct no_os_dma_init_param ad7091r_dma_init_param;
 extern struct no_os_gpio_init_param pwm_gpio_params;
