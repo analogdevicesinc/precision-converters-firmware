@@ -45,6 +45,11 @@ struct stm32_uart_init_param stm32_uart_init_params = {
 	.huart = APP_UART_HANDLE
 };
 
+/* VCOM Init Parameters */
+struct stm32_usb_uart_init_param stm32_vcom_extra_init_params = {
+	.husbdevice = APP_UART_USB_HANDLE
+};
+
 /* STM32 GPIO IRQ specific parameters */
 struct stm32_gpio_irq_init_param stm32_trigger_gpio_irq_init_params = {
 	.port_nb = GPIO_TRIGGER_INT_PORT
@@ -207,6 +212,9 @@ void stm32_system_init(void)
 	MX_UART5_Init();
 	MX_TIM1_Init();
 	MX_I2C1_Init();
+#ifdef USE_VIRTUAL_COM_PORT
+	MX_USB_DEVICE_Init();
+#endif
 }
 
 /**
