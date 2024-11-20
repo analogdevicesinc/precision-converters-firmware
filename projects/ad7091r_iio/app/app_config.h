@@ -54,7 +54,12 @@
 #endif
 
 /* Enable the UART port connection */
-#define USE_PHY_COM_PORT
+/* Enable the UART/VirtualCOM port connection (default VCOM) */
+//#define USE_PHY_COM_PORT		// Uncomment to select UART
+
+#if !defined(USE_PHY_COM_PORT)
+#define USE_VIRTUAL_COM_PORT
+#endif
 
 /* Note: The STM32 platform supports SPI interrupt and SPI DMA Mode
  * for data capturing. (Default is SPI DMA mode)

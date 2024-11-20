@@ -25,6 +25,9 @@ STM32/stm32.props
 STM32/stm32.xml
 STM32/STM32F469NIHX_FLASH.ld
 STM32/STM32F469NIHX_RAM.ld
+STM32/Middlewares
+STM32/USB_DEVICE
+STM32/*.cfg
 scripts/__pycache__
 scripts/.idea
 tests/.pytest_cache
