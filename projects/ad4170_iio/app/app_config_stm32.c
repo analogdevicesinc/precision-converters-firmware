@@ -129,7 +129,11 @@ struct stm32_pwm_init_param stm32_tx_trigger_extra_init_params = {
 	.timer_chn = TIMER_CHANNEL_1,
 	.complementary_channel = false,
 	.get_timer_clock = HAL_RCC_GetPCLK1Freq,
-	.clock_divider = TIMER_8_CLK_DIVIDER
+	.clock_divider = TIMER_8_CLK_DIVIDER,
+	.trigger_output = PWM_TRGO_UPDATE,
+	.dma_enable = true,
+	.repetitions = BYTES_PER_SAMPLE - 1,
+	.onepulse_enable = true
 };
 
 /* Value of RXDMA NDTR Reg */
@@ -389,6 +393,7 @@ void tim8_init(struct no_os_pwm_desc *pwm_desc)
 
 	struct stm32_pwm_desc *spwm_desc = pwm_desc->extra;
 
-	spwm_desc->htimer.Instance->RCR = BYTES_PER_SAMPLE - 1;
+	TIM8->SMCR = TIM_SMCR_ETP | TIM_MASTERSLAVEMODE_ENABLE | TIM_SLAVEMODE_TRIGGER |
+		     TIM_TS_ETRF;
 #endif
 }
