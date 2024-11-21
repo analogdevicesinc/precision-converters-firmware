@@ -201,7 +201,7 @@ Functions</h2></td></tr>
 <tr class="memitem:a4bb7d3cc701b729409935bd8ade51f33"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad4170__iio_2app_2app__config__stm32_8h.html#a4bb7d3cc701b729409935bd8ade51f33">ad4170_spi_dma_rx_half_cplt_callback</a> (DMA_HandleTypeDef *hdma)</td></tr>
 <tr class="memdesc:a4bb7d3cc701b729409935bd8ade51f33"><td class="mdescLeft">&#160;</td><td class="mdescRight">Callback function to flag the capture of Half the number of requested samples.  <a href="ad4170__iio_2app_2app__config__stm32_8h.html#a4bb7d3cc701b729409935bd8ade51f33">More...</a><br /></td></tr>
 <tr class="separator:a4bb7d3cc701b729409935bd8ade51f33"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aedc02b5a83ce2aec0bdd827a23822a30"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad4170__iio_2app_2app__config__stm32_8h.html#aedc02b5a83ce2aec0bdd827a23822a30">update_buff</a> (uint32_t *<a class="el" href="ad405x__iio_8c.html#a64753f7285011cab33065a7abb2574ef">local_buf</a>, uint32_t *buf_start_addr)</td></tr>
+<tr class="memitem:aedc02b5a83ce2aec0bdd827a23822a30"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad4170__iio_2app_2app__config__stm32_8h.html#aedc02b5a83ce2aec0bdd827a23822a30">update_buff</a> (uint32_t *<a class="el" href="ad7091r__iio_8c.html#a64753f7285011cab33065a7abb2574ef">local_buf</a>, uint32_t *buf_start_addr)</td></tr>
 <tr class="memdesc:aedc02b5a83ce2aec0bdd827a23822a30"><td class="mdescLeft">&#160;</td><td class="mdescRight">Update buffer index.  <a href="ad4170__iio_2app_2app__config__stm32_8h.html#aedc02b5a83ce2aec0bdd827a23822a30">More...</a><br /></td></tr>
 <tr class="separator:aedc02b5a83ce2aec0bdd827a23822a30"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a88e5b2a0f6cb7067fcedf92d2a75239f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad4170__iio_2app_2app__config__stm32_8h.html#a88e5b2a0f6cb7067fcedf92d2a75239f">tim8_init</a> (struct no_os_pwm_desc *<a class="el" href="ad7689__iio_2app_2app__config_8c.html#a8c7a5dc28a9303b43a5d0206ac1bcc79">pwm_desc</a>)</td></tr>
@@ -791,7 +791,10 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Configure Tx Trigger timer. </p>
-<dl class="section return"><dt>Returns</dt><dd>None </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>None</dd>
+<dd>
+None </dd></dl>
+<dl class="section note"><dt>Note</dt><dd>Tx timer acts as a slave for External Trigger (ETR1) in one-pulse mode to generate DMA requests </dd></dl>
 
 </div>
 </div>
