@@ -90,7 +90,7 @@ struct ad4170_init_param ad4170_thermistor_config_params = {
 		/* Enabled Channel0 (channel must be enabled to apply init
 		 * configurations on it such as setup, pin mapping, etc)
 		 **/
-		.channel_en = AD4170_CHANNEL(0) | AD4170_CHANNEL(1) |\
+		.channel_en = AD4170_CHANNEL(0) | AD4170_CHANNEL(1) | \
 		AD4170_CHANNEL(2) | AD4170_CHANNEL(3),
 
 		/* Channel setup */

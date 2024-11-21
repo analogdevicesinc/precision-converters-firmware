@@ -94,7 +94,7 @@ static uint8_t spi_dma_rx_buf[6];
 /* look up table for SPI DMA transfer stop pwm frequency
    note: this is mcu specific and number of bytes to be transfered
    per ldac cycle */
-uint32_t spi_dma_tx_stop_pwm_frequency[NUMBER_OF_CHANNELS] = { 3214285,319182 };
+uint32_t spi_dma_tx_stop_pwm_frequency[NUMBER_OF_CHANNELS] = { 3214285, 319182 };
 
 /******************************************************************************/
 /************************** Functions Declarations ****************************/

@@ -25,7 +25,7 @@ Analog Devices Software License Agreement.
 /************************ Functions Definitions *******************************/
 /******************************************************************************/
 
-int main (void)
+int main(void)
 {
 	int32_t setupResult;
 
@@ -34,7 +34,7 @@ int main (void)
 		printf("Error setting up AD5770R (%d)" EOL EOL, setupResult);
 	}
 
-	while(1) {
+	while (1) {
 		adi_do_console_menu(&ad5770r_main_menu);
 	}
 

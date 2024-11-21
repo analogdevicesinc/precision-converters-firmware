@@ -1535,7 +1535,7 @@ int32_t debug_reg_write(void *dev, uint32_t reg, uint32_t writeval)
 	uint32_t reg_addr_offset; 	// Offset of input register address from its base
 	uint32_t data;				// Register data
 
-	if(!dev || (reg > MAX_REGISTER_ADDRESS)) {
+	if (!dev || (reg > MAX_REGISTER_ADDRESS)) {
 		return -EINVAL;
 	}
 
@@ -2282,7 +2282,7 @@ static int32_t iio_ad4170_prepare_transfer(void *dev_instance,
 	/* Ignore num_of_active_channels-1 samples if more than
 	 * one channel is enabled */
 	if (num_of_active_channels > 2) {
-		num_samples_ignore = num_of_active_channels-2;
+		num_samples_ignore = num_of_active_channels - 2;
 	} else {
 		num_samples_ignore = 2;
 	}

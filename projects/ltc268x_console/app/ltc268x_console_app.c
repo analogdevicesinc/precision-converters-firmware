@@ -377,7 +377,7 @@ static int32_t ltc268x_write_dac_voltage(uint32_t id)
 		ret = adi_handle_user_input_integer(
 			      EOL "Enter the channel number: ",
 			      0,
-			      p_ltc268x_dev->num_channels-1,
+			      p_ltc268x_dev->num_channels - 1,
 			      &channnel_no,
 			      2,
 			      5,

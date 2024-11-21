@@ -96,7 +96,7 @@ struct ad4170_init_param ad4170_loadcell_config_params = {
 		 * configurations on it such as setup, pin mapping, etc)
 		 **/
 #if defined(FOUR_WIRE_LOAD_CELL)
-		.channel_en = AD4170_CHANNEL(0) | AD4170_CHANNEL(1) |\
+		.channel_en = AD4170_CHANNEL(0) | AD4170_CHANNEL(1) | \
 		AD4170_CHANNEL(2) | AD4170_CHANNEL(3),
 #else
 		.channel_en = AD4170_CHANNEL(0) | AD4170_CHANNEL(1),

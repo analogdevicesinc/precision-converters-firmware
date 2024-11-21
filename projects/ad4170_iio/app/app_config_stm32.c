@@ -255,7 +255,7 @@ void ad4170_spi_dma_rx_cplt_callback(DMA_HandleTypeDef* hdma)
 #if (DATA_CAPTURE_MODE == BURST_DATA_CAPTURE)
 	if (dma_cycle_count) {
 		/* Copy second half of the data to the IIO buffer */
-		memcpy((void*)iio_buf_current_idx, dma_buf_current_idx, rxdma_ndtr/2);
+		memcpy((void*)iio_buf_current_idx, dma_buf_current_idx, rxdma_ndtr / 2);
 
 		dma_buf_current_idx = dma_buf_start_idx;
 		iio_buf_current_idx += rxdma_ndtr / 2;

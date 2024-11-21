@@ -400,7 +400,7 @@ int ad7124_update_sampling_rate(struct ad7124_dev *ad7124_dev_inst,
 	/* Frequency here is calculated as 1 / tsettle and 30 is the dead time
 	 * The Dead Time is dependent on FS value of the channels enabled
 	 * More Details can be found in the sequencer section in Data Sheet. */
-	*frequency = 1 / (((32* filt_coeff * fs_value) + 30) / fclk);
+	*frequency = 1 / (((32 * filt_coeff * fs_value) + 30) / fclk);
 
 	return 0;
 }

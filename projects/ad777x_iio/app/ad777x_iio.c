@@ -33,11 +33,11 @@
 #endif
 
 /* Forward declaration of getter/setter functions */
-static int ad777x_get_attribute(void *device,char *buf, uint32_t len,
-				const struct iio_ch_info *channel,intptr_t priv);
+static int ad777x_get_attribute(void *device, char *buf, uint32_t len,
+				const struct iio_ch_info *channel, intptr_t priv);
 
-static int ad777x_set_attribute(void *device,char *buf,uint32_t len,
-				const struct iio_ch_info *channel,intptr_t priv);
+static int ad777x_set_attribute(void *device, char *buf, uint32_t len,
+				const struct iio_ch_info *channel, intptr_t priv);
 
 static int ad777x_get_avail_attribute(void *device, char *buf, uint32_t len,
 				      const struct iio_ch_info *channel, intptr_t priv);
@@ -1151,7 +1151,7 @@ static int32_t ad777x_read_burst_data_sar_spi(uint32_t nb_of_samples,
 		if (ret) {
 			return ret;
 		}
-		sample_index+= AD777x_NUM_CHANNELS;
+		sample_index += AD777x_NUM_CHANNELS;
 	}
 #endif
 
@@ -1200,7 +1200,7 @@ static int32_t ad777x_read_burst_data_spi(uint32_t nb_of_samples,
 		if (ret) {
 			return ret;
 		}
-		sample_index+= AD777x_NUM_CHANNELS;
+		sample_index += AD777x_NUM_CHANNELS;
 	}
 
 	/* Stop conversion by setting ADC to INT reg mode */
@@ -1245,7 +1245,7 @@ static int32_t ad777x_read_burst_data_tdm(uint32_t nb_of_bytes,
 
 		/* Trigger TDM-DMA read to capture data into buffer in the background */
 		ret = no_os_tdm_read(ad777x_tdm_desc, ad777x_dma_buff,
-				     nb_of_bytes/BYTES_PER_SAMPLE);
+				     nb_of_bytes / BYTES_PER_SAMPLE);
 		if (ret) {
 			return ret;
 		}
@@ -1358,7 +1358,7 @@ int32_t ad777x_trigger_handler(struct iio_device_data *iio_dev_data)
 	}
 
 	ret =  no_os_cb_write(iio_dev_data->buffer->buf, adc_raw,
-			      BYTES_PER_SAMPLE*AD777x_NUM_CHANNELS);
+			      BYTES_PER_SAMPLE * AD777x_NUM_CHANNELS);
 	if (ret) {
 		return ret;
 	}

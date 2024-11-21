@@ -252,7 +252,7 @@ static float die_temp_calculation(uint16_t adc_temp_code, bool adc_gain)
 	float result = 0;
 
 	// use different equation depending on gain
-	if(adc_gain) {
+	if (adc_gain) {
 		result = 25 + ((AD5592R_REG_ADC_SEQ_CODE_MSK(adc_temp_code) -
 				((0.5 / (2 * vref_voltage)) * MAX_ADC_CODE)) /
 			       (ADC_GAIN_HIGH_CONVERSION_VALUE * (2.5 / vref_voltage)));
@@ -435,21 +435,21 @@ static void display_general_setting_header(void)
 			adi_press_any_key_to_continue();
 			break;
 		}
-	} while(0);
+	} while (0);
 
 	printf("\tSetting \tEnabled\t\tSetting \tEnabled"EOL);
 	printf("\tEn Ref\t\t%s\t\tADC Gain\t%s"EOL,
-	       (AD5592R_REG_PD_EN_REF & pd_reg_data)?"X":"\00",
-	       (AD5592R_REG_CTRL_ADC_RANGE & ctrl_reg_data)?"X":"\00");
+	       (AD5592R_REG_PD_EN_REF & pd_reg_data) ? "X" : "\00",
+	       (AD5592R_REG_CTRL_ADC_RANGE & ctrl_reg_data) ? "X" : "\00");
 	printf("\tPC Buff\t\t%s\t\tPD All\t\t%s"EOL,
-	       (AD5592R_REG_CTRL_ADC_PC_BUFF & ctrl_reg_data)?"X":"\00",
+	       (AD5592R_REG_CTRL_ADC_PC_BUFF & ctrl_reg_data) ? "X" : "\00",
 	       (AD5592R_REG_PD_PD_ALL & pd_reg_data) ? "X" : "\00");
 	printf("\tBuff\t\t%s\t\tDAC Gain\t%s"EOL,
-	       (AD5592R_REG_CTRL_ADC_BUFF_EN & ctrl_reg_data)?"X":"\00",
-	       (AD5592R_REG_CTRL_DAC_RANGE & ctrl_reg_data)?"X":"\00");
+	       (AD5592R_REG_CTRL_ADC_BUFF_EN & ctrl_reg_data) ? "X" : "\00",
+	       (AD5592R_REG_CTRL_DAC_RANGE & ctrl_reg_data) ? "X" : "\00");
 	printf("\tLock Config\t%s\t\tWr All\t\t%s"EOL,
-	       (AD5592R_REG_CTRL_CONFIG_LOCK & ctrl_reg_data)?"X":"\00",
-	       (AD5592R_REG_CTRL_W_ALL_DACS & ctrl_reg_data)?"X":"\00");
+	       (AD5592R_REG_CTRL_CONFIG_LOCK & ctrl_reg_data) ? "X" : "\00",
+	       (AD5592R_REG_CTRL_W_ALL_DACS & ctrl_reg_data) ? "X" : "\00");
 
 }
 
@@ -479,7 +479,7 @@ static int32_t do_dac_input_reg_to_output(uint32_t id)
  */
 static uint16_t user_dac_code(float user_voltage)
 {
-	return (uint16_t) (((user_voltage) * MAX_ADC_CODE) / vref_voltage);
+	return (uint16_t)(((user_voltage) * MAX_ADC_CODE) / vref_voltage);
 }
 
 /*!
@@ -649,7 +649,7 @@ static int32_t do_set_gpio_input(uint32_t id)
 		if (active_channel_selections[i] == true) {
 			sAd5592r_dev.channel_modes[i] = CH_MODE_GPI;
 			if ((status = ad5592r_gpio_direction_input
-				      (&sAd5592r_dev, AD5592R_CHANNEL(i) )) != 0) {
+				      (&sAd5592r_dev, AD5592R_CHANNEL(i))) != 0) {
 				printf(" *** Error Setting GPIO Input on Channel %d (%d) ***" EOL, i, status);
 				adi_press_any_key_to_continue();
 			}
@@ -675,7 +675,7 @@ static int32_t do_set_gpio_output(uint32_t value)
 			sAd5592r_dev.channel_modes[i] = CH_MODE_GPO;
 			if ((status = ad5592r_gpio_direction_output
 				      (&sAd5592r_dev, AD5592R_CHANNEL(i), NO_OS_GPIO_LOW)) != 0) {
-				printf(" *** Error Setting GPIO Output on channel %d (%d) ***" EOL, i,status);
+				printf(" *** Error Setting GPIO Output on channel %d (%d) ***" EOL, i, status);
 				adi_press_any_key_to_continue();
 			}
 		}
@@ -756,7 +756,7 @@ static void display_channel_selection_header(void)
 {
 	printf(" Configuration Lock: %s" EOL,
 	       (AD5592R_REG_CTRL_CONFIG_LOCK & sAd5592r_dev.cached_gp_ctrl)
-	       ?"Enabled":"Disabled");
+	       ? "Enabled" : "Disabled");
 
 	printf("\tCh\tMode\t\tOffstate\tSelected" EOL);
 	for (uint8_t i = 0; i < sAd5592r_dev.num_channels; i++) {
@@ -764,7 +764,7 @@ static void display_channel_selection_header(void)
 		       i,
 		       mode_names[sAd5592r_dev.channel_modes[i]],
 		       offstate_names[sAd5592r_dev.channel_offstate[i]],
-		       active_channel_selections[i]?"X":"\00" );
+		       active_channel_selections[i] ? "X" : "\00");
 	}
 }
 
@@ -798,7 +798,7 @@ static void display_dac_menu_header(void)
 	char *dac_channel_state = "";
 
 	printf("\tLDAC mode: %s" EOL EOL,
-	       sAd5592r_dev.ldac_mode ? "Write to Input Register": "Immediate Output");
+	       sAd5592r_dev.ldac_mode ? "Write to Input Register" : "Immediate Output");
 
 	printf("\tCH \tConfig \tCode \tVoltage \tSelected" EOL);
 
@@ -833,7 +833,7 @@ static void display_dac_menu_header(void)
 		       dac_channel_state,
 		       sAd5592r_dev.cached_dac[i],
 		       voltage,
-		       active_channel_selections[i]?"X":"\00");
+		       active_channel_selections[i] ? "X" : "\00");
 	}
 }
 
@@ -875,8 +875,8 @@ static void display_adc_menu_header(void)
 		printf("\t%d \t%s \t%s \t%s" EOL,
 		       i,
 		       adc_channel_state,
-		       (adc_channels_in_seq & AD5592R_REG_ADC_SEQ_INCL(i)) ?"X":"",
-		       active_channel_selections[i]?"X":""
+		       (adc_channels_in_seq & AD5592R_REG_ADC_SEQ_INCL(i)) ? "X" : "",
+		       active_channel_selections[i] ? "X" : ""
 		      );
 	}
 }

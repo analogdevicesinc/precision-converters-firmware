@@ -337,7 +337,7 @@ static int iio_ad2s1210_attr_set(void *device, char *buf, uint32_t len,
 static int32_t iio_ad2s1210_debug_reg_read(void *dev, uint32_t reg,
 		uint32_t *val)
 {
-	return ad2s1210_reg_read(dev,  (uint8_t) reg, (uint8_t *)val);
+	return ad2s1210_reg_read(dev, (uint8_t) reg, (uint8_t *)val);
 }
 
 /*!

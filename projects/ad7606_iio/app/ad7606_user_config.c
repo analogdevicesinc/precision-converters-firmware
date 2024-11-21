@@ -66,7 +66,7 @@ struct no_os_gpio_init_param gpio_init_osr2 = {
 	.extra = &osr2_gpio_extra_init_params
 };
 
-struct no_os_gpio_init_param gpio_init_range= {
+struct no_os_gpio_init_param gpio_init_range = {
 	.number = RANGE_PIN,
 	.platform_ops = &gpio_ops,
 	.extra = &range_gpio_extra_init_params

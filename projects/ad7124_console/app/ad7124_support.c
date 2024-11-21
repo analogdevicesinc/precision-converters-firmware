@@ -91,10 +91,10 @@ float ad7124_convert_sample_to_voltage(struct ad7124_dev *dev, uint8_t channel,
 	float convertedValue;
 
 	if (isBipolar) {
-		convertedValue = ( ((float)sample / (1 << (AD7124_ADC_N_BITS -1))) -1 ) * \
+		convertedValue = (((float)sample / (1 << (AD7124_ADC_N_BITS - 1))) - 1) * \
 				 (AD7124_REF_VOLTAGE / AD7124_PGA_GAIN(channelPGA));
 	} else {
-		convertedValue = ((float)sample * AD7124_REF_VOLTAGE)/(AD7124_PGA_GAIN(
+		convertedValue = ((float)sample * AD7124_REF_VOLTAGE) / (AD7124_PGA_GAIN(
 					 channelPGA) * \
 				 (1 << AD7124_ADC_N_BITS));
 	}

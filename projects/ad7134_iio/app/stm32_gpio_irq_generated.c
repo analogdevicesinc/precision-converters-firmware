@@ -44,7 +44,7 @@ int stm32_get_exti_irq_id_from_pin(uint8_t pin_nb, IRQn_Type *irq_id)
 	/* Note: The irq_id number used here are specific to STM32H563ZIT6 MCU
 	 * on the Nucleo-H563ZI Board.
 	 * The below parameters will change depending on the controller used. */
-	switch(pin_nb) {
+	switch (pin_nb) {
 	case 8:
 		*irq_id = EXTI8_IRQn;
 		break;

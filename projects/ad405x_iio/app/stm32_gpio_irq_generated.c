@@ -5,7 +5,7 @@ int stm32_get_exti_irq_id_from_pin(uint8_t pin_nb, IRQn_Type *irq_id)
 	/* Note: The irq_id number used here are specific to STM32F469NI MCU on the SDP-K1 board
 	 * The below parameters will change depending on the controller used.
 	 * */
-	switch(pin_nb) {
+	switch (pin_nb) {
 	case 4:
 		*irq_id = EXTI4_IRQn;
 		break;

@@ -297,9 +297,11 @@ static int ltc2672_get_scale(uint8_t chn, float *scale)
 	}
 
 	if (ltc2672_dev_desc->id == LTC2672_12) {
-		*scale = ((float)ltc2672_dev_desc->max_currents[chn] / LTC2672_12BIT_RESO)/1000;
+		*scale = ((float)ltc2672_dev_desc->max_currents[chn] / LTC2672_12BIT_RESO) /
+			 1000;
 	} else {
-		*scale = ((float)ltc2672_dev_desc->max_currents[chn] / LTC2672_16BIT_RESO)/1000;
+		*scale = ((float)ltc2672_dev_desc->max_currents[chn] / LTC2672_16BIT_RESO) /
+			 1000;
 	}
 
 	return 0;
@@ -337,7 +339,7 @@ static int ltc2672_iio_attr_get(void *device,
 	case DAC_CH_CURRENT:
 		/* Convert the dac code to current in mA */
 		current = (ch_dac_codes[channel->ch_num] + attr_offset_val)
-			  *attr_scale_val[channel->ch_num];
+			  * attr_scale_val[channel->ch_num];
 
 		return sprintf(buf, "%5.4fmA", current);
 
@@ -345,7 +347,7 @@ static int ltc2672_iio_attr_get(void *device,
 		read_val = ltc2672_dev_desc->out_spans[channel->ch_num];
 
 		if (read_val == LTC2672_4800VREF) {
-			read_val = LTC2672_NUM_CURRENT_SPANS-1;
+			read_val = LTC2672_NUM_CURRENT_SPANS - 1;
 		}
 
 		return sprintf(buf,
@@ -358,7 +360,7 @@ static int ltc2672_iio_attr_get(void *device,
 	case DAC_CURRENT:
 		/* Convert the dac code to current in mA */
 		current = (ch_dac_codes[0] + attr_offset_val)
-			  *attr_scale_val[0];
+			  * attr_scale_val[0];
 
 		return sprintf(buf, "%5.4fmA", current);
 
@@ -480,7 +482,7 @@ static int ltc2672_iio_attr_set(void *device,
 			}
 		}
 
-		if (val == LTC2672_NUM_CURRENT_SPANS-1) {
+		if (val == LTC2672_NUM_CURRENT_SPANS - 1) {
 			val = LTC2672_4800VREF;
 		}
 
@@ -545,7 +547,7 @@ static int ltc2672_iio_attr_set(void *device,
 			}
 		}
 
-		if (val == LTC2672_NUM_CURRENT_SPANS-1) {
+		if (val == LTC2672_NUM_CURRENT_SPANS - 1) {
 			val = LTC2672_4800VREF;
 		}
 
@@ -626,7 +628,7 @@ static int ltc2672_iio_attr_available_get(void *device,
 		break;
 
 	case DAC_MUX:
-		for(val = 0; val < LTC2672_NUM_MUX_SELECTS; val++) {
+		for (val = 0; val < LTC2672_NUM_MUX_SELECTS; val++) {
 			strcat(buf, ltc2672_mux_select[val]);
 			strcat(buf, " ");
 		}

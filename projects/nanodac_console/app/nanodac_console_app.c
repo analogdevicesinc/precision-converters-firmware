@@ -192,12 +192,12 @@ int32_t nanodac_app_initialize(void)
 
 	do {
 		// Initialize the device
-		if((device_init_status = ad5686_init(&nanodac_dev,
-						     nanodac_init_params)) != 0)
+		if ((device_init_status = ad5686_init(&nanodac_dev,
+						      nanodac_init_params)) != 0)
 			break;
 
 		// Configure the GPIOs specific to application upon power-up
-		if((device_init_status = gpio_power_up_configuration()) != 0)
+		if ((device_init_status = gpio_power_up_configuration()) != 0)
 			break;
 
 		return device_init_status;
@@ -568,7 +568,7 @@ static int32_t menu_set_gain(uint32_t gain_input)
 	}
 #endif
 
-	printf(EOL EOL"\tGain set to %ld"EOL,gain);
+	printf(EOL EOL"\tGain set to %ld"EOL, gain);
 
 	adi_press_any_key_to_continue();
 	return MENU_CONTINUE;
@@ -768,7 +768,7 @@ static console_menu_item main_menu_items[] = {
 	{	"Select DAC Channel",					'A',	menu_dac_channels },
 	{""},
 #endif
-	{	"Write to Input Register (LDAC Dependent)",	'B',menu_write_to_input_register },
+	{	"Write to Input Register (LDAC Dependent)",	'B', menu_write_to_input_register },
 	{""},
 	{	"Update DAC from Input Register",		'C',	menu_update_dac_from_input },
 	{""},

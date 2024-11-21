@@ -306,8 +306,8 @@ void tim1_config(void)
 {
 #if (INTERFACE_MODE == SPI_DMA)
 	TIM1->EGR = TIM_EGR_UG;// Generate update event
-	TIM1->CR2 =  (TIM_CR2_MMS_COMPARE_PULSE *
-		      TIM_CR2_MMS_0);
+	TIM1->CR2 = (TIM_CR2_MMS_COMPARE_PULSE *
+		     TIM_CR2_MMS_0);
 #endif
 }
 
@@ -315,7 +315,7 @@ void tim8_config(void)
 {
 #if (INTERFACE_MODE == SPI_DMA)
 	TIM8->RCR = BYTES_PER_SAMPLE - 1;
-	TIM8->CCMR1 =  (TIM_CCMR_CCS_OUTPUT * TIM_CCMR1_CC1S_0);
+	TIM8->CCMR1 = (TIM_CCMR_CCS_OUTPUT * TIM_CCMR1_CC1S_0);
 	TIM8->EGR = TIM_EGR_UG;// Generate update event
 	TIM8->SMCR = (TIM_ITR_SOURCE * TIM_SMCR_TS_0)
 		     | (TIM_SMCR_SMS_TRIGGER *

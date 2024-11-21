@@ -56,7 +56,7 @@ int32_t start_tdm_dma_to_cb_transfer(struct no_os_tdm_desc *tdm_desc,
 	/* Prepare Circular Buffer for a write operation- retrieve the
 	 * pointer to the circular buffer */
 	ret = no_os_cb_prepare_async_write(iio_dev_data->buffer->buf,
-					   buffer_size*bytes_per_sample,
+					   buffer_size * bytes_per_sample,
 					   &dma_buff, &buff_available_size);
 	if (ret) {
 		return ret;
@@ -108,7 +108,7 @@ int32_t end_tdm_dma_to_cb_transfer(struct no_os_tdm_desc *tdm_desc,
 	 * updated pointer to the circular buffer post one cycle of buffer
 	 * write overflow */
 	ret = no_os_cb_prepare_async_write(iio_dev_data->buffer->buf,
-					   buffer_size*bytes_per_sample,
+					   buffer_size * bytes_per_sample,
 					   &dma_buff, &buff_available_size);
 	if (ret) {
 		return ret;

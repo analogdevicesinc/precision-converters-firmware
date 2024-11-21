@@ -390,7 +390,7 @@ int32_t init_system(void)
 		return -EINVAL;
 	}
 #endif
-	if (init_tdm () != 0) {
+	if (init_tdm() != 0) {
 		return -EINVAL;
 	}
 
