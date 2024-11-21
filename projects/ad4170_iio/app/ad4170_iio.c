@@ -31,6 +31,7 @@
 #include "no_os_util.h"
 #include "common.h"
 #include "iio_trigger.h"
+#include "no_os_gpio.h"
 
 #if (INTERFACE_MODE == TDM_MODE)
 #include "stm32_tdm_support.h"
@@ -376,12 +377,6 @@ struct pl_gui_desc *pocket_lab_gui_desc;
 #if (INTERFACE_MODE == SPI_DMA_MODE)
 /* STM32 SPI Init params */
 struct stm32_spi_init_param* spi_init_param;
-
-/* Rx DMA channel descriptor */
-struct no_os_dma_ch* rxch;
-
-/* Tx DMA channel descriptor */
-struct no_os_dma_ch* txch;
 
 /* Global Pointer for IIO Device Data */
 volatile struct iio_device_data* iio_dev_data_g;
@@ -1990,7 +1985,7 @@ static int32_t ad4170_read_burst_data_spi_dma(uint32_t nb_of_samples,
 		};
 
 		ret = no_os_spi_transfer_dma_async(p_ad4170_dev_inst->spi_desc, &ad4170_spi_msg,
-						   1, ad4170_spi_dma_rx_cplt_callback, NULL);
+						   1, NULL, NULL);
 		if (ret) {
 			return ret;
 		}
@@ -2331,22 +2326,9 @@ static int32_t iio_ad4170_prepare_transfer(void *dev_instance,
 	spi_init_param = ad4170_user_config_params.spi_init.extra;
 	spi_init_param->dma_init = &ad4170_dma_init_param;
 
-	rxch = (struct no_os_dma_ch*)no_os_calloc(1, sizeof(*rxch));
-	if (!rxch) {
-		return -ENOMEM;
-	}
-
-	txch = (struct no_os_dma_ch*)no_os_calloc(1, sizeof(*txch));
-	if (!txch) {
-		return -ENOMEM;
-	}
-
-	rxch->irq_num = Rx_DMA_IRQ_ID;
-	rxch->extra = &rxdma_channel;
-	txch->extra = &txdma_channel;
-
-	spi_init_param->rxdma_ch = rxch;
-	spi_init_param->txdma_ch = txch;
+	spi_init_param->irq_num = Rx_DMA_IRQ_ID;
+	spi_init_param->rxdma_ch = &rxdma_channel;
+	spi_init_param->txdma_ch = &txdma_channel;
 
 	/* Init SPI interface in DMA Mode */
 	ret = no_os_spi_init(&p_ad4170_dev_inst->spi_desc,
