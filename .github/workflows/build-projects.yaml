@@ -94,8 +94,8 @@ jobs:
           - ad717x_console
           - ad717x_iio
           - ad719x_iio
-          - ad738x_iio
-          - ad7606_iio
+          #- ad738x_iio  #Exclude projects until make build is fixed
+          #- ad7606_iio
           - ad7689_iio
           - ad77681_iio
           - ad777x_iio
