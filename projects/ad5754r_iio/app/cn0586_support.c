@@ -151,7 +151,7 @@ int32_t cn0586_set_hvout_volts(struct cn0586_dev *dev, float volts)
 		break;
 	}
 
-	dac_a_volts = volts/20 + dac_b_volts;
+	dac_a_volts = volts / 20 + dac_b_volts;
 
 	dac_a_code = (1 << AD5754R_MAX_RESOLUTION) * dac_a_volts;
 	dac_a_code /= (((float)dev->dev->vref_mv / AD5754R_GAIN_SCALE) *

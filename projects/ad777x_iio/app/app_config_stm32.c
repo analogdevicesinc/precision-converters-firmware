@@ -177,7 +177,7 @@ void ad777x_configure_intr_priority(void)
 	priority = NVIC_EncodePriority(priGroup, PERIPH_INTR_PRE_EMPT_PRIORITY,
 				       PERIPH_INTR_SUB_PRI_PRIORITY);
 
-	for (int currIRQ = WWDG_IRQn; currIRQ < ICACHE_IRQn; currIRQ++ ) {
+	for (int currIRQ = WWDG_IRQn; currIRQ < ICACHE_IRQn; currIRQ++) {
 		NVIC_SetPriority(currIRQ, priority);
 	}
 

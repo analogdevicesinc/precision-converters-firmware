@@ -87,7 +87,7 @@ int32_t ad77681_read_converted_sample(uint32_t *adc_raw)
 	ad77681_sample_data = (uint32_t)
 			      (
 				      (ad77681_sample_data_buff[1] << AD77681_2_BYTES_SHIFT) |
-				      (ad77681_sample_data_buff[2] << AD77681_1_BYTE_SHIFT ) |
+				      (ad77681_sample_data_buff[2] << AD77681_1_BYTE_SHIFT) |
 				      (ad77681_sample_data_buff[3])
 			      );
 	*adc_raw = ad77681_sample_data & AD77681_24_BITS_SIGN_EXTENSION;

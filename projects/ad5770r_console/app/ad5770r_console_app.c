@@ -86,21 +86,21 @@ static console_menu dac_operations_menu;
 int32_t ad5770r_app_initialize(void)
 {
 	// Create a new descriptor for HW LDACB
-	if(no_os_gpio_get(&hw_ldacb_desc, &hw_ldacb_init_param) != 0) {
+	if (no_os_gpio_get(&hw_ldacb_desc, &hw_ldacb_init_param) != 0) {
 		return -EINVAL;
 	}
 
 	// Set the direction of HW LDACB
-	if((no_os_gpio_direction_output(hw_ldacb_desc, NO_OS_GPIO_HIGH)) != 0) {
+	if ((no_os_gpio_direction_output(hw_ldacb_desc, NO_OS_GPIO_HIGH)) != 0) {
 		return -EINVAL;
 	}
 
 	// Set the default output state  of HW LDACB
-	if((no_os_gpio_set_value(hw_ldacb_desc, NO_OS_GPIO_HIGH)) != 0) {
+	if ((no_os_gpio_set_value(hw_ldacb_desc, NO_OS_GPIO_HIGH)) != 0) {
 		return -EINVAL;
 	}
 
-	return(ad5770r_init(&pAd5770r_dev, &ad5770r_user_param));
+	return (ad5770r_init(&pAd5770r_dev, &ad5770r_user_param));
 }
 
 /**
@@ -151,7 +151,7 @@ static int32_t do_software_reset(uint32_t id)
 		printf(EOL " *** Software Reset Failure: %d ***" EOL, ret);
 	}
 	adi_press_any_key_to_continue();
-	return(MENU_CONTINUE);
+	return (MENU_CONTINUE);
 }
 
 /*
@@ -167,7 +167,7 @@ static int32_t do_device_init(uint32_t id)
 	}
 
 	adi_press_any_key_to_continue();
-	return(MENU_CONTINUE);
+	return (MENU_CONTINUE);
 }
 
 /*
@@ -184,7 +184,7 @@ static int32_t do_device_remove(uint32_t id)
 	pAd5770r_dev = NULL;
 
 	adi_press_any_key_to_continue();
-	return(MENU_CONTINUE);
+	return (MENU_CONTINUE);
 }
 
 /*!
@@ -203,7 +203,7 @@ static int32_t do_toggle_ref_resistor(uint32_t id)
 		adi_press_any_key_to_continue();
 	}
 
-	return(MENU_CONTINUE);
+	return (MENU_CONTINUE);
 }
 
 /*!
@@ -222,7 +222,7 @@ static int32_t do_set_reference(uint32_t ref_option)
 		adi_press_any_key_to_continue();
 	}
 
-	return(MENU_CONTINUE);
+	return (MENU_CONTINUE);
 }
 
 /*!
@@ -237,7 +237,7 @@ static int32_t do_set_alarm(uint32_t alarm_id)
 
 	alarm_config = pAd5770r_dev->alarm_config;
 
-	switch(alarm_id) {
+	switch (alarm_id) {
 	case AD5770R_ALARM_CONFIG_OPEN_DRAIN_EN(1):
 		alarm_config.open_drain_en = !alarm_config.open_drain_en;
 		break;
@@ -273,7 +273,7 @@ static int32_t do_set_alarm(uint32_t alarm_id)
 		adi_press_any_key_to_continue();
 	}
 
-	return(MENU_CONTINUE);
+	return (MENU_CONTINUE);
 }
 
 /*!
@@ -285,7 +285,7 @@ static int32_t do_set_alarm(uint32_t alarm_id)
 static void ch_switches_toggle(struct ad5770r_channel_switches *ch_switches,
 			       uint32_t channel_id)
 {
-	switch(channel_id) {
+	switch (channel_id) {
 	case AD5770R_CHANNEL_CONFIG_CH0_SHUTDOWN_B(1):
 		ch_switches->en0 = !ch_switches->en0;
 		break;
@@ -333,7 +333,7 @@ static int32_t do_channel_config(uint32_t channel_id)
 		adi_press_any_key_to_continue();
 	}
 
-	return(MENU_CONTINUE);
+	return (MENU_CONTINUE);
 }
 
 /*!
@@ -360,7 +360,7 @@ static int32_t do_input_value(uint32_t channel_id)
 		adi_press_any_key_to_continue();
 	}
 
-	return(MENU_CONTINUE);
+	return (MENU_CONTINUE);
 }
 
 /*!
@@ -386,7 +386,7 @@ static int32_t do_dac_value(uint32_t channel_id)
 		adi_press_any_key_to_continue();
 	}
 
-	return(MENU_CONTINUE);
+	return (MENU_CONTINUE);
 }
 
 /*!
@@ -398,7 +398,7 @@ static int32_t do_sw_ldac(uint32_t channel_id)
 {
 	ch_switches_toggle(&sw_ldac_shadow, channel_id);
 
-	return(MENU_CONTINUE);
+	return (MENU_CONTINUE);
 }
 
 /*!
@@ -416,7 +416,7 @@ static int32_t do_sw_ldac_write(uint32_t id)
 		adi_press_any_key_to_continue();
 	}
 
-	return(MENU_CONTINUE);
+	return (MENU_CONTINUE);
 }
 
 /*!
@@ -450,7 +450,7 @@ static int32_t do_hw_ldac_toggle(uint32_t id)
 
 	adi_press_any_key_to_continue();
 
-	return(MENU_CONTINUE);
+	return (MENU_CONTINUE);
 }
 
 /*!
@@ -587,7 +587,7 @@ static int32_t do_monitor_setup(uint32_t id)
 
 	monitor_setup = pAd5770r_dev->mon_setup;
 
-	switch(id) {
+	switch (id) {
 	case AD5770R_DISABLE:
 		monitor_setup.monitor_function = AD5770R_DISABLE;
 		break;
@@ -608,7 +608,7 @@ static int32_t do_monitor_setup(uint32_t id)
 		break;
 	default:
 		// ensure the id is valid.
-		assert(( id >= AD5770R_CH0 + MENU_CHANNEL_OFFSET )
+		assert((id >= AD5770R_CH0 + MENU_CHANNEL_OFFSET)
 		       && (id <= AD5770R_CH5 + MENU_CHANNEL_OFFSET));
 		monitor_setup.monitor_channel = (enum ad5770r_channels)(
 							id - MENU_CHANNEL_OFFSET);
@@ -620,7 +620,7 @@ static int32_t do_monitor_setup(uint32_t id)
 		adi_press_any_key_to_continue();
 	}
 
-	return(MENU_CONTINUE);
+	return (MENU_CONTINUE);
 }
 
 /*!
@@ -650,7 +650,7 @@ static void display_main_menu_header(void)
 			break;
 		}
 
-	} while(0);
+	} while (0);
 
 	if (ret != 0) {
 		printf(EOL " *** Error in display state: %d **" EOL, ret);
@@ -662,8 +662,8 @@ static void display_main_menu_header(void)
 	print_monitor_setup(&pAd5770r_dev->mon_setup);
 
 	// Increment the scratchpad by 1 to show a +1 delta in footer
-	if((ret = ad5770r_spi_reg_write(pAd5770r_dev, AD5770R_SCRATCH_PAD,
-					scratchpad + 1)) != 0) {
+	if ((ret = ad5770r_spi_reg_write(pAd5770r_dev, AD5770R_SCRATCH_PAD,
+					 scratchpad + 1)) != 0) {
 		printf(EOL " *** Error writing scratchpad + 1 : %d **" EOL, ret);
 	}
 }

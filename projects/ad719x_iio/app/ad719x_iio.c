@@ -614,7 +614,7 @@ static int iio_ad719x_prepare_transfer(void *dev, uint32_t mask)
 #if(ACTIVE_PLATFORM == STM32_PLATFORM)
 	ret = no_os_irq_set_priority(trigger_irq_desc, TRIGGER_INT_ID,
 				     RDY_GPIO_PRIORITY);
-	if(ret) {
+	if (ret) {
 		return ret;
 	}
 #endif

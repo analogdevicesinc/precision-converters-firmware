@@ -42,7 +42,7 @@ int32_t adt7420_get_register_address_and_value(struct adt7420_dev *dev,
 	int32_t ret;
 
 	//remap register map
-	if(adt7420_is_spi(dev)) {
+	if (adt7420_is_spi(dev)) {
 		switch (register_address) {
 		case REG_TEMP:
 			register_address = ADT7320_REG_TEMP;
@@ -154,7 +154,7 @@ uint16_t configure_write_type_registers(struct adt7420_dev *dev,
 {
 	if (adt7420_is_spi(dev)) {
 		//simple address re-map for SPI devices
-		switch(register_address) {
+		switch (register_address) {
 		case REG_TEMP:
 			return ADT7320_REG_TEMP;
 			break; // Temperature value
@@ -182,7 +182,7 @@ uint16_t configure_write_type_registers(struct adt7420_dev *dev,
 		}
 	} else {
 		//simple address re-map for I2Cdevices
-		switch(register_address) {
+		switch (register_address) {
 		case REG_TEMP:
 			return ADT7420_REG_T_HIGH_MSB;
 			break; // Temperature value

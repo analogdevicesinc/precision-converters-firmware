@@ -86,7 +86,7 @@ int main()
 	//Do a quick check to ensure basic connectivity is ok
 	temperature  = ad5933_get_temperature(device);
 	if (temperature >= TEMP_LIMIT_MIN && temperature <= TEMP_LIMIT_MAX) {
-		printf("\nTemperature: %f, AD5933 initialization successful!\n",temperature);
+		printf("\nTemperature: %f, AD5933 initialization successful!\n", temperature);
 	} else {
 		printf("AD5933 initialization reported a bad temperature - recommend debug :\n");
 	}
@@ -324,7 +324,7 @@ static int32_t configure_system()
 	printf("    Setting the number of settling-cycles to %d\n\r",
 	       (unsigned int)num_settling_cycles);
 	printf("    The multiplier for the settling-cycles %d\n\r",
-	       (unsigned int)multiplier+1);
+	       (unsigned int)multiplier + 1);
 
 	//update device state
 	config_data.start_freq = start_freq;
@@ -332,7 +332,7 @@ static int32_t configure_system()
 	config_data.number_increments = num_increments;
 	config_data.number_settling_cycles = num_settling_cycles;
 
-	ad5933_set_settling_time(device,multiplier,num_settling_cycles);
+	ad5933_set_settling_time(device, multiplier, num_settling_cycles);
 	ad5933_set_range_and_gain(device, device->current_range, device->current_gain);
 	ad5933_config_sweep(device, start_freq, freq_inc, num_increments);
 

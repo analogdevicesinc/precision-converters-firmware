@@ -493,7 +493,7 @@ static int32_t do_continuous_conversion(uint8_t display_mode)
 
 		for (uint8_t i = 0; i < AD7124_CHANNEL_COUNT; i++) {
 			// if showing all channels, or channel is enabled
-			if(ad7124_register_map[AD7124_Channel_0 + i].value &
+			if (ad7124_register_map[AD7124_Channel_0 + i].value &
 			    AD7124_CH_MAP_REG_CH_ENABLE) {
 				/*
 				 *  add the comma before we output the next channel but
@@ -510,7 +510,7 @@ static int32_t do_continuous_conversion(uint8_t display_mode)
 	}
 
 	// Continuously read the channels, and store sample values
-	while(was_escape_key_pressed() != true) {
+	while (was_escape_key_pressed() != true) {
 		toggle_activity_led();
 
 		if (display_mode == DISPLAY_DATA_TABULAR) {
@@ -820,7 +820,7 @@ static int32_t menu_reset_to_configuration(uint32_t config_type)
  **/
 static int16_t scan_temperature(uint32_t value)
 {
-	uint16_t key=0, start, end;
+	uint16_t key = 0, start, end;
 	bool found = false;
 
 	start = 0;
@@ -1388,7 +1388,7 @@ static int32_t menu_calibrate_adc(uint32_t id)
 	ad7124_write_register(pAd7124_dev, ad7124_register_map[AD7124_Error_En]);
 
 	// Need to store which channels are enabled in this config so it can be restored
-	for(chn_cnt = 0 ; chn_cnt < AD7124_MAX_CHANNELS ; chn_cnt++) {
+	for (chn_cnt = 0 ; chn_cnt < AD7124_MAX_CHANNELS ; chn_cnt++) {
 		ad7124_read_register(pAd7124_dev,
 				     &ad7124_register_map[AD7124_Channel_0 + chn_cnt]);
 		if (ad7124_register_map[AD7124_Channel_0 + chn_cnt].value &
@@ -1438,8 +1438,8 @@ static int32_t menu_calibrate_adc(uint32_t id)
 			ad7124_write_register(pAd7124_dev, ad7124_register_map[AD7124_ADC_Control]);
 
 			// Wait for calibration to over
-			if((error_code = ad7124_wait_for_conv_ready(pAd7124_dev,
-					 pAd7124_dev->spi_rdy_poll_cnt)) < 0) {
+			if ((error_code = ad7124_wait_for_conv_ready(pAd7124_dev,
+					  pAd7124_dev->spi_rdy_poll_cnt)) < 0) {
 				printf("\tError in calibration...\r\n");
 			} else {
 				// Check for any calibration error (bit 18 of AD7124_ERROR register)
@@ -1866,8 +1866,8 @@ static void config_filter_parameters(ad7124_setup_config *psetup)
 		gain_raw = adi_get_decimal_int(sizeof(gain_raw));
 
 		// Get the gain bits value
-		for(gain_bits_value = 0 ; gain_bits_value <= MAX_GAIN_BITS_VALUE ;
-		    gain_bits_value++) {
+		for (gain_bits_value = 0 ; gain_bits_value <= MAX_GAIN_BITS_VALUE ;
+		     gain_bits_value++) {
 			if (gain_raw == p_gain[gain_bits_value]) {
 				psetup->programmable_gain_bits = gain_bits_value;
 				current_selection_done = true;
@@ -2054,7 +2054,7 @@ static int32_t menu_select_power_mode(uint32_t id)
  */
 static console_menu_item main_menu_items[] = {
 	{ "Reset to Default Configuration", 'A',   menu_reset },
-	{ "Reset to Configuration A",       'B',   menu_reset_to_configuration, NULL,  (uint32_t)AD7124_CONFIG_A },
+	{ "Reset to Configuration A",       'B',   menu_reset_to_configuration, NULL, (uint32_t)AD7124_CONFIG_A },
 	{ "Reset to Configuration B",       'C',   menu_reset_to_configuration, NULL, (uint32_t)AD7124_CONFIG_B },
 	{ "",                               '\00', NULL },
 	{ "Read ID Register",               'D',   menu_read_id },

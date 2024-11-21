@@ -37,7 +37,7 @@ int main(void)
 	}
 
 	while (1) {
-		if (init_status == 0 ) {
+		if (init_status == 0) {
 			/* display the console menu for the ad590 application */
 			adi_do_console_menu(&ad590_main_menu);
 		}

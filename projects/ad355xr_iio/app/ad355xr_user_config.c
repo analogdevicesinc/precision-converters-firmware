@@ -75,5 +75,5 @@ struct ad3552r_init_param ad3552r_init_params = {
 #endif
 	},
 	.crc_en = false,
-	.is_simultaneous =false
+	.is_simultaneous = false
 };

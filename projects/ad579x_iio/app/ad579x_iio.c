@@ -367,11 +367,11 @@ int ad579x_get_scale(float *scale)
 		v_neg = DAC_VREFN;
 	} else {
 		/* gain of two */
-		v_span = DAC_CH_SPAN*2;
+		v_span = DAC_CH_SPAN * 2;
 		v_neg = DAC_VREFN_GAIN_OF_TWO;
 	}
 
-	*scale = ((float)v_span/DAC_MAX_COUNT) * 1000;
+	*scale = ((float)v_span / DAC_MAX_COUNT) * 1000;
 
 	return 0;
 }
@@ -392,13 +392,13 @@ int ad579x_get_offset(uint32_t raw, int32_t *offset)
 	}
 
 	/* Calculate offset values for both the coding selects*/
-	bin_code_offset = (v_neg/v_span)*(1 << DAC_RESOLUTION);
-	twosc_offset = ((v_span/2 + v_neg)/v_span)*(1 << DAC_RESOLUTION);
+	bin_code_offset = (v_neg / v_span) * (1 << DAC_RESOLUTION);
+	twosc_offset = ((v_span / 2 + v_neg) / v_span) * (1 << DAC_RESOLUTION);
 
 	if (!code_select_mode) {
 		/* 2s complement code */
 		if (raw >= DAC_MAX_COUNT_2S_COMPL) {
-			*offset = -(DAC_MAX_COUNT_BIN_OFFSET-twosc_offset);
+			*offset = -(DAC_MAX_COUNT_BIN_OFFSET - twosc_offset);
 		} else {
 			*offset = twosc_offset;
 		}

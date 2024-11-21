@@ -78,7 +78,7 @@ struct no_os_uart_init_param uart_console_stdio_init_params = {
 static struct no_os_pwm_init_param ldac_pwm_init_params = {
 	.id = LDAC_PWM_ID,
 	.period_ns = CONV_PERIOD_NSEC(MAX_SAMPLING_RATE),
-	.duty_cycle_ns = CONV_DUTY_CYCLE_NSEC(MAX_SAMPLING_RATE,LDAC_PWM_DUTY_CYCLE),
+	.duty_cycle_ns = CONV_DUTY_CYCLE_NSEC(MAX_SAMPLING_RATE, LDAC_PWM_DUTY_CYCLE),
 	.platform_ops = &pwm_ops,
 	.extra = &ldac_pwm_extra_init_params,
 #if (ACTIVE_PLATFORM == STM32_PLATFORM)
@@ -99,7 +99,7 @@ struct no_os_gpio_init_param spi_dma_tx_stop_pwm_gpio_init = {
 static struct no_os_pwm_init_param spi_dma_tx_stop_pwm_init_params = {
 	.id = SPI_DMA_TX_STOP_PWM_ID,
 	.period_ns = CONV_PERIOD_NSEC(MAX_SAMPLING_RATE),
-	.duty_cycle_ns = CONV_DUTY_CYCLE_NSEC(MAX_SAMPLING_RATE,LDAC_PWM_DUTY_CYCLE),
+	.duty_cycle_ns = CONV_DUTY_CYCLE_NSEC(MAX_SAMPLING_RATE, LDAC_PWM_DUTY_CYCLE),
 	.platform_ops = &pwm_ops,
 	.extra = &spi_dma_tx_stop_pwm_extra_init_params,
 #if (ACTIVE_PLATFORM == STM32_PLATFORM)

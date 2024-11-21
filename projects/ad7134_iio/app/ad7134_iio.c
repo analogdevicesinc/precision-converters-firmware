@@ -440,7 +440,7 @@ static int32_t ad7134_read_burst_data_tdm(uint32_t nb_of_bytes,
 
 		/* Trigger TDM-DMA read to capture data into buffer in the background */
 		ret = no_os_tdm_read(ad7134_tdm_desc, ad7134_dma_buff,
-				     nb_of_bytes/BYTES_PER_SAMPLE);
+				     nb_of_bytes / BYTES_PER_SAMPLE);
 		if (ret) {
 			return ret;
 		}
@@ -533,7 +533,7 @@ static int32_t iio_ad7134_submit_buffer(struct iio_device_data *iio_dev_data)
 		buf_size_updated = true;
 	}
 
-	ret = ad7134_read_burst_data_bit_bang(nb_of_samples,iio_dev_data);
+	ret = ad7134_read_burst_data_bit_bang(nb_of_samples, iio_dev_data);
 	if (ret) {
 		return ret;
 	}

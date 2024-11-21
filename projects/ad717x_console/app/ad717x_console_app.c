@@ -189,7 +189,7 @@ static uint8_t get_channel_selection(void)
 	bool current_selection_done = false;
 
 	do {
-		printf(EOL "\tEnter Channel Value <0-%d>: ", NUMBER_OF_CHANNELS-1);
+		printf(EOL "\tEnter Channel Value <0-%d>: ", NUMBER_OF_CHANNELS - 1);
 		current_channel = adi_get_decimal_int(sizeof(current_channel));
 
 		if (current_channel < NUMBER_OF_CHANNELS) {
@@ -212,7 +212,7 @@ static uint8_t get_setup_selection(void)
 	bool current_selection_done = false;
 
 	do {
-		printf(EOL "\tEnter Setup Selection <0-%d>: ", NUMBER_OF_SETUPS-1);
+		printf(EOL "\tEnter Setup Selection <0-%d>: ", NUMBER_OF_SETUPS - 1);
 		current_setup = adi_get_decimal_int(sizeof(current_setup));
 
 		if (current_setup < NUMBER_OF_SETUPS) {
@@ -689,8 +689,8 @@ int32_t menu_single_conversion(uint32_t channel_id)
 		 AD717X_ADCMODE_REG_MODE(CONTINUOUS_CONVERSION));
 
 	// read the channels, and store sample values
-	for(uint8_t loopCount = 0 ; ((was_escape_key_pressed() != true)
-				     && (loopCount < channel_count)) ; loopCount++) {
+	for (uint8_t loopCount = 0 ; ((was_escape_key_pressed() != true)
+				      && (loopCount < channel_count)) ; loopCount++) {
 
 		device_mode_reg->value =
 			((device_mode_reg->value & ~AD717X_ADCMODE_REG_MODE_MSK) |
@@ -754,7 +754,7 @@ int32_t menu_single_conversion(uint32_t channel_id)
 		 AD717X_ADCMODE_REG_MODE(STANDBY_MODE));
 
 	// Need to restore the channels that were disabled during acquisition
-	for(uint8_t chn = 0 ; chn < NUMBER_OF_CHANNELS ; chn++) {
+	for (uint8_t chn = 0 ; chn < NUMBER_OF_CHANNELS ; chn++) {
 		if (channel_enable_mask & (1 << chn)) {
 			// Get the pointer to channel register
 			device_chnmap_reg = AD717X_GetReg(pad717x_dev, AD717X_CHMAP0_REG + chn);
@@ -1635,7 +1635,7 @@ int32_t menu_calibrate_adc(uint32_t menu_id)
 			// Disable the curent channel
 			device_chnmap_reg->value &= (~AD717X_CHMAP_REG_CH_EN);
 
-			if(AD717X_WriteRegister(pad717x_dev, AD717X_CHMAP0_REG + chn_cnt) != 0) {
+			if (AD717X_WriteRegister(pad717x_dev, AD717X_CHMAP0_REG + chn_cnt) != 0) {
 				calibration_error = true;
 				break;
 			}

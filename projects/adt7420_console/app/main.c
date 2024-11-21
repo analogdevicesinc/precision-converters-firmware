@@ -238,7 +238,7 @@ void print_prompt()
  *******************************************************************************/
 static int get_menu_select(uint8_t *menu_select)
 {
-	int invalid_check = scanf("%d",(int *) menu_select);
+	int invalid_check = scanf("%d", (int *) menu_select);
 	return input_check(*menu_select, 1, 10, invalid_check);
 }
 
@@ -417,8 +417,8 @@ static int32_t set_op_mode()
 		case 2:
 			/*When One shot mode is set completes one conversion and immediately goes to shutdown mode*/
 			ret = adt7420_set_operation_mode(device, ADT7420_OP_MODE_ONE_SHOT);
-			printf( EOL"       One Shot mode enabled, device will enter shutdown mode once a conversion is complete."
-				EOL);
+			printf(EOL"       One Shot mode enabled, device will enter shutdown mode once a conversion is complete."
+			       EOL);
 			printf("         See page 10 in datasheet for details." EOL);
 			break;
 		case 3:
@@ -470,12 +470,12 @@ static int32_t bunch_of_temps()
 
 	uint32_t delay_sec = 1000000 / sample_freq;
 
-	printf("  Gathering %d seconds of samples" EOL, num_samples/sample_freq);
+	printf("  Gathering %d seconds of samples" EOL, num_samples / sample_freq);
 	printf("Press enter to continue and then press again to quit" EOL);
 	getchar();
 
 	for (int i = 0; i < num_samples; i++) {
-		if(getchar_noblock()) {
+		if (getchar_noblock()) {
 			return 0;
 		} else {
 			printf("  Sample:%d: Temperature:", i + 1);
@@ -605,18 +605,18 @@ static int32_t write_to_setpoint_reg()
 
 	float temp_c;
 
-	if(new_mode == 2) {
+	if (new_mode == 2) {
 		printf("Enter value to write (0 to 15) Celsius:");
 		invalid_check = scanf("%f", &temp_c);
 		ret = input_check(temp_c, MIN_HYST_TEMP, MAX_HYST_TEMP, invalid_check);
-		if(ret) {
+		if (ret) {
 			return ret;
 		}
 	} else {
 		printf("Enter value to write (in Celsius):");
 		invalid_check = scanf("%f", &temp_c);
 		ret = input_check(temp_c, TEMP_MIN, TEMP_MAX, invalid_check);
-		if(ret) {
+		if (ret) {
 			return ret;
 		}
 	}
@@ -625,7 +625,7 @@ static int32_t write_to_setpoint_reg()
 
 	int16_t write_value;
 
-	if(new_mode == 2)
+	if (new_mode == 2)
 		write_value = round(temp_c);
 	else
 		write_value = round(128 * temp_c);
@@ -751,7 +751,7 @@ static int32_t set_ct_int_config()
 	       EOL);
 	printf("   (Feature available only for internal sensors)." EOL);
 
-	if(init_params.interface_init.i2c_init.slave_address == INT_I2C_ADDRESS ||
+	if (init_params.interface_init.i2c_init.slave_address == INT_I2C_ADDRESS ||
 	    init_params.interface_init.spi_init.chip_select == SPI_CSB) {
 
 		printf("    1- Active Low (default) " EOL);
@@ -827,9 +827,9 @@ static int input_check(int input_val,
 		       int highest_accepted_val,
 		       int invalid_check)
 {
-	if(invalid_check == 0 || input_val < lowest_accepted_val
+	if (invalid_check == 0 || input_val < lowest_accepted_val
 	    || input_val > highest_accepted_val) {
-		printf(EOL EOL "*****   Invalid entry: No changes made *****" EOL );
+		printf(EOL EOL "*****   Invalid entry: No changes made *****" EOL);
 		no_os_mdelay(WAIT_MENU_TIME);
 		return -EINVAL;
 	}

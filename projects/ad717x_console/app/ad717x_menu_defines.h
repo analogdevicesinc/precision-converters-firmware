@@ -585,8 +585,8 @@ console_menu_item analog_input_connect_items[] = {
 	{ "VIN4, VINCOM",			'J', menu_analog_input_connect, NULL, ((VIN4_INPUT_BITS << VIN_PAIR_OFFSET) | VINCOM_INPUT_BITS) },
 	{ "VIN5, VIN4",				'K', menu_analog_input_connect, NULL, ((VIN5_INPUT_BITS << VIN_PAIR_OFFSET) | VIN4_INPUT_BITS) },
 	{ "VIN5, VINCOM",			'L', menu_analog_input_connect, NULL, ((VIN5_INPUT_BITS << VIN_PAIR_OFFSET) | VINCOM_INPUT_BITS) },
-	{ "VIN6, VIN7",				'M', menu_analog_input_connect,NULL, ((VIN6_INPUT_BITS << VIN_PAIR_OFFSET) | VIN7_INPUT_BITS) },
-	{ "VIN6, VINCOM",			'N', menu_analog_input_connect,NULL, ((VIN6_INPUT_BITS << VIN_PAIR_OFFSET) | VINCOM_INPUT_BITS) },
+	{ "VIN6, VIN7",				'M', menu_analog_input_connect, NULL, ((VIN6_INPUT_BITS << VIN_PAIR_OFFSET) | VIN7_INPUT_BITS) },
+	{ "VIN6, VINCOM",			'N', menu_analog_input_connect, NULL, ((VIN6_INPUT_BITS << VIN_PAIR_OFFSET) | VINCOM_INPUT_BITS) },
 	{ "VIN7, VIN6",				'O', menu_analog_input_connect, NULL, ((VIN7_INPUT_BITS << VIN_PAIR_OFFSET) | VIN6_INPUT_BITS) },
 	{ "VIN7, VINCOM",			'P', menu_analog_input_connect, NULL, ((VIN7_INPUT_BITS << VIN_PAIR_OFFSET) | VINCOM_INPUT_BITS) },
 #if defined(DEV_AD4111) || defined(DEV_AD4112)
@@ -775,7 +775,7 @@ console_menu open_wire_detect_se_analog_input_menu = {
  * Definition of the open wire detect differential ended analog inputs menu items and menu itself
  */
 console_menu_item open_wire_detect_de_analog_input_items[] = {
-	{ "VIN0, VIN1", 'A', menu_select_input_pair, NULL,  ((VIN0_INPUT_BITS << VIN_PAIR_OFFSET) | VIN1_INPUT_BITS) },
+	{ "VIN0, VIN1", 'A', menu_select_input_pair, NULL, ((VIN0_INPUT_BITS << VIN_PAIR_OFFSET) | VIN1_INPUT_BITS) },
 	{ "VIN2, VIN3", 'B', menu_select_input_pair, NULL, ((VIN2_INPUT_BITS << VIN_PAIR_OFFSET) | VIN3_INPUT_BITS) },
 	{ "VIN4, VIN5", 'C', menu_select_input_pair, NULL, ((VIN4_INPUT_BITS << VIN_PAIR_OFFSET) | VIN5_INPUT_BITS) },
 	{ "VIN6, VIN7", 'D', menu_select_input_pair, NULL, ((VIN6_INPUT_BITS << VIN_PAIR_OFFSET) | VIN7_INPUT_BITS) },
@@ -868,10 +868,10 @@ console_menu postfilter_enable_disable_menu = {
  * Definition of the post-filter select menu items and menu itself
  */
 console_menu_item postfilter_select_items[] = {
-	{ "27 SPS, 47 dB reject, 36.7 ms settling ",'A', menu_postfiler_select, NULL, POST_FLTR_27_SPS },
+	{ "27 SPS, 47 dB reject, 36.7 ms settling ", 'A', menu_postfiler_select, NULL, POST_FLTR_27_SPS },
 	{ "25 SPS, 62 dB reject, 40 ms settling",	'B', menu_postfiler_select, NULL, POST_FLTR_25_SPS },
 	{ "20 SPS, 86 dB reject, 50 ms settling",	'C', menu_postfiler_select, NULL, POST_FLTR_20_SPS },
-	{ "16.67 SPS, 92 dB reject, 60 ms settling",'D', menu_postfiler_select, NULL, POST_FLTR_16_67_SPS },
+	{ "16.67 SPS, 92 dB reject, 60 ms settling", 'D', menu_postfiler_select, NULL, POST_FLTR_16_67_SPS },
 };
 
 console_menu postfilter_select_menu = {

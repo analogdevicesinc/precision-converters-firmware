@@ -33,7 +33,7 @@ int main()
 {
 	int32_t status;
 
-	if((status = ad5592r_app_initalization()) < 0) {
+	if ((status = ad5592r_app_initalization()) < 0) {
 		printf(EOL "Error setting up device (%d)" EOL, status);
 		adi_press_any_key_to_continue();
 	}

@@ -231,10 +231,10 @@ static char *ad405x_op_mode_str[] = {
 
 /* Averaging filter length values string representation */
 static char *ad405x_avg_filter_str[] = {
-	"2","4","8","16","32","64","128",
+	"2", "4", "8", "16", "32", "64", "128",
 	"256",
 #if !defined(DEV_AD4050)
-	"512","1024","2048","4096"
+	"512", "1024", "2048", "4096"
 #endif
 };
 
@@ -725,7 +725,7 @@ static int iio_ad405x_attr_set(void *device,
 		ad405x_sample_rate = no_os_min(ad405x_sample_rate,
 					       SAMPLING_RATE / (1 << (value + 1)));
 		requested_sampling_period = (1 << (value + 1))
-					    *ad405x_sample_rate;
+					    * ad405x_sample_rate;
 		requested_sampling_period = CONV_TRIGGER_PERIOD_NSEC(requested_sampling_period);
 
 		ret = configure_pwm_period(requested_sampling_period);
@@ -762,7 +762,7 @@ static int iio_ad405x_attr_set(void *device,
 		ad405x_sample_rate = no_os_min(no_os_str_to_uint32(buf),
 					       SAMPLING_RATE / (1 << (p_ad405x_dev->filter_length + 1)));
 		requested_sampling_period = (1 << (p_ad405x_dev->filter_length + 1))
-					    *ad405x_sample_rate;
+					    * ad405x_sample_rate;
 		requested_sampling_period = CONV_TRIGGER_PERIOD_NSEC(requested_sampling_period);
 #endif
 		ret = configure_pwm_period(requested_sampling_period);
@@ -842,7 +842,7 @@ static int iio_ad405x_attr_available_get(void *device,
 			       ad405x_avg_filter_str[6],
 			       ad405x_avg_filter_str[7]
 #if !defined(DEV_AD4050)
-			       ,ad405x_avg_filter_str[8],
+			       , ad405x_avg_filter_str[8],
 			       ad405x_avg_filter_str[9],
 			       ad405x_avg_filter_str[10],
 			       ad405x_avg_filter_str[11]
@@ -1101,7 +1101,7 @@ static int32_t iio_ad405x_submit_samples(struct iio_device_data *iio_dev_data)
 		return ret;
 	}
 
-	while (sample_index < nb_of_samples ) {
+	while (sample_index < nb_of_samples) {
 		while (data_ready != true && timeout > 0) {
 			timeout--;
 		}
@@ -1132,7 +1132,7 @@ static int32_t iio_ad405x_submit_samples(struct iio_device_data *iio_dev_data)
 #else
 #if (APP_CAPTURE_MODE == WINDOWED_DATA_CAPTURE)
 	ret = no_os_cb_prepare_async_write(iio_dev_data->buffer->buf,
-					   nb_of_samples*(BYTES_PER_SAMPLE), &buff_start_addr, &data_read);
+					   nb_of_samples * (BYTES_PER_SAMPLE), &buff_start_addr, &data_read);
 	if (ret) {
 		return ret;
 	}
@@ -1273,7 +1273,7 @@ static int32_t ad405x_trigger_handler(struct iio_device_data *iio_dev_data)
 	return no_os_cb_write(iio_dev_data->buffer->buf, &data_read, BYTES_PER_SAMPLE);
 #else
 	no_os_cb_prepare_async_write(iio_dev_data->buffer->buf,
-				     nb_of_samples*(BYTES_PER_SAMPLE), &buff_start_addr, &data_read);
+				     nb_of_samples * (BYTES_PER_SAMPLE), &buff_start_addr, &data_read);
 	no_os_cb_end_async_write(iio_dev_data->buffer->buf);
 #endif
 }

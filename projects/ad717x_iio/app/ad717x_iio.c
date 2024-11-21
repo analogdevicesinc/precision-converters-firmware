@@ -209,7 +209,7 @@ static int32_t get_adc_attribute(void *device,
 		return sprintf(buf, "%d", attr_offset_val[channel->ch_num]);
 
 	case AD717x_SAMPLING_FREQUENCY_ID:
-		return sprintf(buf, "%d", AD717x_SAMPLING_RATE/NUMBER_OF_CHANNELS);
+		return sprintf(buf, "%d", AD717x_SAMPLING_RATE / NUMBER_OF_CHANNELS);
 
 	default:
 		break;

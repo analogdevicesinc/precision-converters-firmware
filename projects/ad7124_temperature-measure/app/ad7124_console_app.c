@@ -686,7 +686,7 @@ static int32_t perform_rtd_measurement(uint32_t rtd_config_id,
 	for (uint8_t chn = SENSOR_CHANNEL0;
 	     chn < max_supported_sensors[rtd_config_id]; chn++) {
 		if (sensor_enable_status[chn]) {
-			printf("\tRTD%d   ", chn+1);
+			printf("\tRTD%d   ", chn + 1);
 		}
 	}
 	printf(EOL "\t-----------------------------------------------" EOL EOL);
@@ -1413,7 +1413,7 @@ int32_t perform_thermocouple_measurement(uint32_t measurement_type)
 	for (uint8_t chn = SENSOR_CHANNEL0;
 	     chn < max_supported_sensors[AD7124_CONFIG_THERMOCOUPLE]; chn++) {
 		if (sensor_enable_status[chn]) {
-			sprintf(decimal_eqv_str, "TC%d  CJC   ", chn+1);
+			sprintf(decimal_eqv_str, "TC%d  CJC   ", chn + 1);
 			strcat(decimal_eqv_str_arr, decimal_eqv_str);
 		}
 	}
