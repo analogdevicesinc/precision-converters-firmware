@@ -44,11 +44,11 @@
 #define SPI_CS_PIN_NUM              15   // PA_15
 #define SPI_CS_PORT_BASE            GPIOA
 #define SPI_CS_PORT_NUM             0    // PORTA = 0
-#define CNV_PIN_NUM                 15   // PB_15
-#define CNV_PORT_NUM                1    // PORTB = 1
-#define CNV_PORT_BASE               GPIOB
-#define GP0_PIN_NUM                 7    // PG_7
-#define GP0_PORT_NUM                6    // PORTG = 6
+#define CNV_PIN_NUM                 10   // PA_10
+#define CNV_PORT_NUM                0    // PORTA = 0
+#define CNV_PORT_BASE               GPIOA
+#define GP0_PIN_NUM                 15    // PB_15
+#define GP0_PORT_NUM                1    // PORTB = 1
 #define GP1_PIN_NUM                 10   // PG_10
 #define GP1_PORT_NUM                6    // PORTG = 6
 #define BSY_PIN_NUM                 GP0_PIN_NUM
@@ -99,7 +99,7 @@
  * above this ODR on IIO oscilloscope
  */
 #if (INTERFACE_MODE == SPI_INTERRUPT)
-#define SAMPLING_RATE					(62500)
+#define SAMPLING_RATE					(50000)
 #define CONV_TRIGGER_DUTY_CYCLE_NSEC(x)	(x / 10)
 #else
 #define SAMPLING_RATE					   (500000)
@@ -113,7 +113,7 @@
 #define TX_TRIGGER_PERIOD       406
 #define TX_TRIGGER_DUTY_RATIO   50
 
-#define CNV_DUTY_RATIO_NS       1310
+#define CNV_DUTY_RATIO_NS       690
 
 /******************************************************************************/
 /********************** Public/Extern Declarations ****************************/
@@ -145,15 +145,17 @@ extern DMA_HandleTypeDef hdma_tim8_ch1;
 extern struct stm32_dma_channel rxdma_channel;
 extern struct stm32_dma_channel txdma_channel;
 extern struct stm32_gpio_init_param stm32_cs_pwm_gpio_extra_init_params;
+extern uint32_t rxdma_ndtr;
+extern uint32_t dma_cycle_count;
 
 void receivecomplete_callback(DMA_HandleTypeDef* hdma);
+void halfcmplt_callback(DMA_HandleTypeDef* hdma);
+void update_buff(uint32_t* local_buf, uint32_t* buf_start_addr);
 void stm32_cnv_output_gpio_config(bool is_gpio);
 void stm32_cs_output_gpio_config(bool is_gpio);
 void stm32_abort_dma_transfer(void);
 void stm32_timer_enable(void);
 void stm32_timer_stop(void);
-void tim8_config(void);
-void tim1_config(void);
 #endif
 
 void stm32_system_init(void);

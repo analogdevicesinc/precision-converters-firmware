@@ -33,6 +33,8 @@
 /*  AD469x global device instance for accessing device specific APIs */
 extern struct ad469x_dev *p_ad469x_dev;
 
+extern uint32_t callback_count;
+
 /******************************************************************************/
 /************************ Functions Declarations ******************************/
 /******************************************************************************/

@@ -117,6 +117,12 @@ static int8_t adc_data_buffer[DATA_BUFFER_SIZE];
 /* Scale factor for gain correction */
 #define AD469X_GAIN_CORR_SCALE(x)	(float)(x) / (float)(ADC_MAX_COUNT_BIPOLAR)
 
+/* Local buffer size */
+#define MAX_LOCAL_BUF_SIZE	8000
+
+/* Maximum value the DMA NDTR register can take */
+#define MAX_DMA_NDTR		(no_os_min(65535, MAX_LOCAL_BUF_SIZE/2))
+
 /******************************************************************************/
 /*************************** Types Declarations *******************************/
 /******************************************************************************/
@@ -289,6 +295,11 @@ struct no_os_dma_ch* rxch;
 
 /* Tx DMA channel descriptor */
 struct no_os_dma_ch* txch;
+
+/* Local buffer */
+uint8_t local_buf[MAX_LOCAL_BUF_SIZE];
+
+uint32_t callback_count;
 #endif
 
 /******************************************************************************/
@@ -810,6 +821,12 @@ static int32_t ad469x_adc_stop_data_capture(void)
 	if (ret) {
 		return ret;
 	}
+#if (DATA_CAPTURE_MODE == BURST_DATA_CAPTURE)
+	ret = ad469x_exit_conversion_mode(p_ad469x_dev);
+	if (ret) {
+		return ret;
+	}
+#endif // DATA_CAPTURE_MODE
 #endif
 #if (INTERFACE_MODE == SPI_DMA)
 	/* Stop timers */
@@ -907,7 +924,7 @@ static int32_t ad469x_iio_prepare_transfer(void *dev, uint32_t mask)
 	}
 
 #if (DATA_CAPTURE_MODE == CONTINUOUS_DATA_CAPTURE) \
-	|| (INTERFACE_MODE == SPI_INTERRUPT)
+	&& (INTERFACE_MODE == SPI_INTERRUPT)
 	ret = ad469x_adc_start_data_capture();
 	if (ret) {
 		return ret;
@@ -920,23 +937,13 @@ static int32_t ad469x_iio_prepare_transfer(void *dev, uint32_t mask)
 	}
 
 	spi_init_param = ad469x_init_str.spi_init->extra;
-	spi_init_param->pwm_init = &cs_init_params;
+	spi_init_param->pwm_init = (const struct no_os_pwm_init_param *)
+				   &cs_init_params;
 	spi_init_param->dma_init = &ad469x_dma_init_param;
 
-	rxch = (struct no_os_dma_ch*)no_os_calloc(1, sizeof(*rxch));
-	if (!rxch)
-		return -ENOMEM;
-
-	txch = (struct no_os_dma_ch*)no_os_calloc(1, sizeof(*txch));
-	if (!txch)
-		return -ENOMEM;
-
-	rxch->irq_num = Rx_DMA_IRQ_ID;
-	rxch->extra = &rxdma_channel;
-	txch->extra = &txdma_channel;
-
-	spi_init_param->rxdma_ch = rxch;
-	spi_init_param->txdma_ch = txch;
+	spi_init_param->irq_num = Rx_DMA_IRQ_ID;
+	spi_init_param->rxdma_ch = &rxdma_channel;
+	spi_init_param->txdma_ch = &txdma_channel;
 
 	/* Init SPI interface in DMA Mode */
 	ret = no_os_spi_init(&p_ad469x_dev->spi_desc, ad469x_init_str.spi_init);
@@ -953,9 +960,6 @@ static int32_t ad469x_iio_prepare_transfer(void *dev, uint32_t mask)
 	if (ret) {
 		return ret;
 	}
-
-	/* Configure Timer 1 parameters */
-	tim1_config();
 #endif
 
 	return 0;
@@ -1056,6 +1060,7 @@ static int32_t ad469x_iio_submit_samples(struct iio_device_data *iio_dev_data)
 	ad469x_conversion_flag = false;
 	uint16_t local_tx_data = 0;
 	nb_of_samples = iio_dev_data->buffer->size / BYTES_PER_SAMPLE;
+	uint32_t spirxdma_ndtr;
 
 #if (INTERFACE_MODE == SPI_DMA)
 	/* STM32 SPI Descriptor */
@@ -1072,7 +1077,7 @@ static int32_t ad469x_iio_submit_samples(struct iio_device_data *iio_dev_data)
 		return -EINVAL;
 	}
 
-	global_nb_of_samples  = nb_of_samples;
+	global_nb_of_samples = nb_of_samples;
 	global_iio_dev_data = iio_dev_data;
 
 	if (!buf_size_updated) {
@@ -1129,17 +1134,30 @@ static int32_t ad469x_iio_submit_samples(struct iio_device_data *iio_dev_data)
 	}
 #else // SPI_DMA_MODE
 #if (DATA_CAPTURE_MODE == BURST_DATA_CAPTURE)
+	nb_of_samples *= BYTES_PER_SAMPLE;
 	ret = no_os_cb_prepare_async_write(iio_dev_data->buffer->buf,
-					   nb_of_samples * (BYTES_PER_SAMPLE), &buff_start_addr, &data_read);
+					   nb_of_samples, &buff_start_addr, &data_read);
 	if (ret) {
 		return ret;
 	}
 
 	if (!dma_config_updated) {
-		ad469x_spi_msg.rx_buff = (uint32_t*)buff_start_addr;
+		/* Cap SPI RX DMA NDTR to MAX_DMA_NDTR. */
+		spirxdma_ndtr = no_os_min(MAX_DMA_NDTR, nb_of_samples);
+		rxdma_ndtr = spirxdma_ndtr;
+
+		/* Register half complete callback, for ping-pong buffers implementation. */
+		HAL_DMA_RegisterCallback(&hdma_spi1_rx,
+					 HAL_DMA_XFER_HALFCPLT_CB_ID,
+					 halfcmplt_callback);
+
+		/* Update the SPI message */
+		ad469x_spi_msg.tx_buff = (uint32_t*)local_tx_data;
+		ad469x_spi_msg.rx_buff = (uint32_t*)local_buf;
+		ad469x_spi_msg.bytes_number = spirxdma_ndtr;
 
 		ret = no_os_spi_transfer_dma_async(p_ad469x_dev->spi_desc, &ad469x_spi_msg,
-						   1, receivecomplete_callback, NULL);
+						   1, NULL, NULL);
 		if (ret) {
 			return ret;
 		}
@@ -1149,9 +1167,20 @@ static int32_t ad469x_iio_submit_samples(struct iio_device_data *iio_dev_data)
 		htim1.Instance->CNT = 0;
 		dma_config_updated = true;
 
-		/* Configure Tx trigger timer parameters */
-		tim8_config();
+		/* Disable the DMA to update the memory addresses and the no. of
+		data items to transfer */
+		sdesc->hspi.hdmarx->Instance->CR &= ~DMA_SxCR_EN;
+		sdesc->hspi.hdmarx->Instance->M0AR = (uint32_t*)local_buf;
+		sdesc->hspi.hdmarx->Instance->NDTR = spirxdma_ndtr;
+
+		/* Enable back the DMA */
+		sdesc->hspi.hdmarx->Instance->CR |= DMA_SxCR_EN;
 	}
+
+	dma_cycle_count = ((nb_of_samples) / rxdma_ndtr) + 1;
+	callback_count = dma_cycle_count * 2;
+
+	update_buff(local_buf, buff_start_addr);
 
 	/* Enable Timers */
 	stm32_timer_enable();
@@ -1183,8 +1212,6 @@ static int32_t ad469x_iio_submit_samples(struct iio_device_data *iio_dev_data)
 		htim2.Instance->CNT = 0;
 		htim1.Instance->CNT = 0;
 		dma_config_updated = true;
-		/* Configure Tx trigger timer parameters */
-		tim8_config();
 
 		/* Enable timers */
 		stm32_timer_enable();
@@ -1359,7 +1386,6 @@ int32_t ad469x_iio_initialize(void)
 		return init_status;
 	}
 
-#if !defined(DEV_AD4696)
 	/* Read context attributes */
 	init_status = get_iio_context_attributes(&iio_init_params.ctx_attrs,
 			&iio_init_params.nb_ctx_attr,
@@ -1372,7 +1398,6 @@ int32_t ad469x_iio_initialize(void)
 	}
 
 	if (hw_mezzanine_is_valid) {
-#endif
 		/* Initialize AD469x device and peripheral interface */
 		init_status = ad469x_init(&p_ad469x_dev, &ad469x_init_str);
 		if (init_status) {
@@ -1397,13 +1422,11 @@ int32_t ad469x_iio_initialize(void)
 			return init_status;
 		}
 
-#if !defined(DEV_AD4696)
 		/* Configure the GP0 as the data ready pin */
 		init_status = ad469x_set_busy(p_ad469x_dev, AD469x_busy_gp0);
 		if (init_status) {
 			return init_status;
 		}
-#endif
 
 		/* Register and initialize the AD469x device into IIO interface */
 		init_status = ad469x_iio_init(&p_ad469x_iio_dev);
@@ -1425,10 +1448,7 @@ int32_t ad469x_iio_initialize(void)
 	(DATA_CAPTURE_MODE == CONTINUOUS_DATA_CAPTURE)
 		iio_init_params.nb_trigs++;
 #endif
-
-#if !defined(DEV_AD4696)
 	}
-#endif
 
 	/* Initialize the IIO interface */
 	iio_init_params.uart_desc = uart_iio_com_desc;

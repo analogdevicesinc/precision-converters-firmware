@@ -131,17 +131,11 @@
 #define ADC_RESOLUTION		16
 
 // **** Note for User: Polarity Mode selection **** //
-/* Since the pin pairing option is same for all the channels in
- * standard sequencer mode, hence polarity mode for all the
- * channels is also kept same to avoid stale ADC output codes.
- * Make sure to change the JP6 jumper position on the Eval board to A
- * to use the PSEUDO_BIPOLAR_MODE.
- *
- * Select Pseudo bipolar mode (default is unipolar mode) for all the channels.
+/* Select the polarity mode. Default is unipolar.
  * e.g. #define PSEUDO_BIPOLAR_MODE -> This will enable the PSEUDO_BIPOLAR_MODE
  * for all the channels.
  * */
-#define DEFAULT_POLARITY_MODE    PSEUDO_BIPOLAR_MODE
+#define DEFAULT_POLARITY_MODE    UNIPOLAR_MODE
 
 /* ADC max count (full scale value) for unipolar inputs */
 #define ADC_MAX_COUNT_UNIPOLAR	(uint32_t)((1 << ADC_RESOLUTION) - 1)
@@ -222,6 +216,7 @@ extern struct no_os_pwm_init_param pwm_init_params;
 extern uint32_t global_nb_of_samples;
 extern volatile uint32_t* buff_start_addr;
 extern int32_t data_read;
+extern struct no_os_pwm_desc* tx_trigger_desc;
 #endif
 
 /* Initializing system peripherals */

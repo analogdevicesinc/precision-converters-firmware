@@ -78,13 +78,13 @@
 #define UART_IRQ                    0    // Unused macro
 #define SPI_DEVICE_ID               0    // Unused macro
 #define SPI_CS_PIN_NUM              ARDUINO_UNO_D10
-#define CNV_PIN_NUM                 ARDUINO_UNO_D9
+#define CNV_PIN_NUM                 ARDUINO_UNO_D6
 #define CNV_PORT_NUM                0    // Unused macro
 #define GP0_PIN_NUM                 0    // Unused macro
 #define GP0_PORT_NUM                0    // Unused macro
 #define GP1_PIN_NUM                 0    // Unused macro
 #define GP1_PORT_NUM                0    // Unused macro
-#define BSY_PIN_NUM                 ARDUINO_UNO_D2
+#define BSY_PIN_NUM                 ARDUINO_UNO_D9
 #define BSY_PORT_NUM                0    // Unused macro
 #define RESET_PIN_NUM               ARDUINO_UNO_D4
 #define RESET_PORT_NUM              0    // Unused macro

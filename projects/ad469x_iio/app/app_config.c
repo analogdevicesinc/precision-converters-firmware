@@ -107,7 +107,7 @@ struct no_os_pwm_init_param pwm_init_params = {
 	* also used to trigger a spi tx dma transaction.
 	 * */
 	.duty_cycle_ns = CNV_DUTY_RATIO_NS,
-	.polarity = NO_OS_PWM_POLARITY_HIGH,
+	.polarity = NO_OS_PWM_POLARITY_LOW,
 #else
 	.duty_cycle_ns = CONV_TRIGGER_DUTY_CYCLE_NSEC(CONV_TRIGGER_PERIOD_NSEC(SAMPLING_RATE)),
 #endif

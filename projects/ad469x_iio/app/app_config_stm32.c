@@ -56,7 +56,8 @@ struct stm32_uart_init_param stm32_uart_extra_init_params = {
 /* STM32 SPI specific parameters */
 struct stm32_spi_init_param stm32_spi_extra_init_params = {
 	.chip_select_port = SPI_CS_PORT_NUM,
-	.get_input_clock = HAL_RCC_GetPCLK2Freq
+	.get_input_clock = HAL_RCC_GetPCLK2Freq,
+	.alternate = GPIO_AF1_TIM2
 };
 
 /* STM32 GPIO specific parameters */
@@ -85,7 +86,7 @@ struct stm32_gpio_init_param stm32_gpio_reset_extra_init_params = {
 
 /* STM32 GPIO IRQ specific parameters */
 struct stm32_gpio_irq_init_param stm32_gpio_irq_extra_init_params = {
-	.port_nb = GP0_PORT_NUM, /* Port G */
+	.port_nb = GP0_PORT_NUM, /* Port B */
 };
 
 /* STM32 PWM GPIO specific parameters */
@@ -99,11 +100,13 @@ struct stm32_gpio_init_param stm32_pwm_gpio_extra_init_params = {
 struct stm32_pwm_init_param stm32_pwm_cnv_extra_init_params = {
 	.prescaler = TIMER_1_PRESCALER,
 	.timer_autoreload = true,
-	.mode = TIM_OC_PWM2,
+	.mode = TIM_OC_PWM1,
 	.timer_chn = TIMER_CHANNEL_3,
-	.complementary_channel = true,
+	.complementary_channel = false,
 	.get_timer_clock = HAL_RCC_GetPCLK2Freq,
-	.clock_divider = TIMER_1_CLK_DIVIDER
+	.clock_divider = TIMER_1_CLK_DIVIDER,
+	.trigger_enable = false,
+	.trigger_output = PWM_TRGO_OC1
 };
 
 #if (INTERFACE_MODE == SPI_DMA)
@@ -126,7 +129,13 @@ struct stm32_pwm_init_param stm32_tx_trigger_extra_init_params = {
 	.timer_chn = TIMER_CHANNEL_1,
 	.complementary_channel = false,
 	.get_timer_clock = HAL_RCC_GetPCLK1Freq,
-	.clock_divider = TIMER_8_CLK_DIVIDER
+	.clock_divider = TIMER_8_CLK_DIVIDER,
+	.trigger_enable = true,
+	.trigger_source = PWM_TS_ITR0,
+	.repetitions = 1,
+	.onepulse_enable = true,
+	.dma_enable = true,
+	.trigger_output = PWM_TRGO_RESET
 };
 
 /* STM32 Tx DMA channel extra init params */
@@ -164,6 +173,26 @@ struct stm32_gpio_init_param stm32_cs_gpio_extra_init_params = {
 
 /* STM32 SPI Descriptor*/
 volatile struct stm32_spi_desc* sdesc;
+
+/* Value of RXDMA NDTR Reg */
+uint32_t rxdma_ndtr;
+
+/* Number of times the DMA complete callback needs to be invoked for
+ * capturing the desired number of samples*/
+uint32_t dma_cycle_count = 0;
+
+/* IIO Buffer start index */
+uint8_t* iio_buf_start_idx;
+
+/* DMA Buffer Start index */
+uint8_t* dma_buf_start_idx;
+
+/* IIO Buffer present index */
+uint8_t* iio_buf_current_idx;
+
+/* DMA Buffer present index */
+uint8_t* dma_buf_current_idx;
+
 #endif
 
 /******************************************************************************/
@@ -213,7 +242,8 @@ void stm32_timer_enable(void)
 #if (INTERFACE_MODE == SPI_DMA)
 	sdesc = p_ad469x_dev->spi_desc->extra;
 
-	no_os_pwm_enable(sdesc->pwm_desc); // CS Pwm;
+	TIM8->DIER |= TIM_DIER_CC1DE;
+	no_os_pwm_enable(sdesc->pwm_desc); // CS PWM
 	no_os_pwm_enable(pwm_desc); // CNV PWM
 #endif
 }
@@ -228,9 +258,8 @@ void stm32_timer_stop(void)
 	int ret;
 	sdesc = p_ad469x_dev->spi_desc->extra;
 
-	no_os_pwm_disable(pwm_desc);// CNV PWM
+	no_os_pwm_disable(pwm_desc); // CNV PWM
 	no_os_pwm_disable(sdesc->pwm_desc); // CS PWM
-
 	TIM8->DIER &= ~TIM_DIER_CC1DE;
 
 	/* Disable RX DMA */
@@ -302,32 +331,10 @@ void stm32_cnv_output_gpio_config(bool is_gpio)
 #endif
 }
 
-void tim1_config(void)
-{
-#if (INTERFACE_MODE == SPI_DMA)
-	TIM1->EGR = TIM_EGR_UG;// Generate update event
-	TIM1->CR2 = (TIM_CR2_MMS_COMPARE_PULSE *
-		     TIM_CR2_MMS_0);
-#endif
-}
-
-void tim8_config(void)
-{
-#if (INTERFACE_MODE == SPI_DMA)
-	TIM8->RCR = BYTES_PER_SAMPLE - 1;
-	TIM8->CCMR1 = (TIM_CCMR_CCS_OUTPUT * TIM_CCMR1_CC1S_0);
-	TIM8->EGR = TIM_EGR_UG;// Generate update event
-	TIM8->SMCR = (TIM_ITR_SOURCE * TIM_SMCR_TS_0)
-		     | (TIM_SMCR_SMS_TRIGGER *
-			TIM_SMCR_SMS_0);
-	TIM8->CR1 = (1 * TIM_CR1_OPM); // Enable one pulse mode
-	TIM8->DIER |= TIM_DIER_CC1DE; // Generate DMA request after overflow
-#endif
-}
-
 /**
  * @brief   Callback function to flag the capture of number
  *          of requested samples.
+ * @param hdma - DMA handler (Unused)
  * @return	None
  */
 
@@ -337,16 +344,86 @@ void receivecomplete_callback(DMA_HandleTypeDef* hdma)
 #if (DATA_CAPTURE_MODE == BURST_DATA_CAPTURE)
 	sdesc = p_ad469x_dev->spi_desc->extra;
 
-	no_os_pwm_disable(sdesc->pwm_desc); // CS PWM
-	no_os_pwm_disable(pwm_desc);// CNV PWM
-	htim2.Instance->CNT = 0;
+	/* Update samples captured so far */
+	dma_cycle_count -= 1;
 
-	ad469x_conversion_flag = true;
+	if (!dma_cycle_count) {
+		ad469x_conversion_flag = true;
+		memcpy((void*)iio_buf_current_idx, dma_buf_current_idx, rxdma_ndtr / 2);
 
-#else (DATA_CAPTURE_MODE ==  CONTINUOUS_DATA_CAPTURE)
+		iio_buf_current_idx = iio_buf_start_idx;
+		dma_buf_current_idx = dma_buf_start_idx;
+	} else {
+		memcpy((void*)iio_buf_current_idx, dma_buf_current_idx, rxdma_ndtr / 2);
+
+		dma_buf_current_idx = dma_buf_start_idx;
+		iio_buf_current_idx += rxdma_ndtr / 2;
+
+	}
+	callback_count--;
+#else
 	no_os_cb_end_async_write(global_iio_dev_data->buffer->buf);
 	no_os_cb_prepare_async_write(global_iio_dev_data->buffer->buf,
 				     global_nb_of_samples  * (BYTES_PER_SAMPLE), &buff_start_addr, &data_read);
 #endif // DATA_CAPTURE_MODE
 #endif // INTERFACE_MODE
+}
+
+/**
+ * @brief   Callback function to flag the capture of Half the number
+ *          of requested samples.
+ * @param hdma - DMA Handler (Unused)
+ * @return	None
+ */
+void halfcmplt_callback(DMA_HandleTypeDef* hdma)
+{
+#if (INTERFACE_MODE == SPI_DMA)
+	if (!dma_cycle_count) {
+		return;
+	}
+
+	/* Copy first half of the data to the IIO buffer */
+	memcpy((void*)iio_buf_current_idx, dma_buf_current_idx, rxdma_ndtr / 2);
+
+	dma_buf_current_idx += rxdma_ndtr / 2;
+	iio_buf_current_idx += rxdma_ndtr / 2;
+
+	callback_count--;
+#endif
+}
+
+/**
+ * @brief Update buffer index
+ * @param local_buf[out] - Local Buffer
+ * @param buf_start_addr[out] - Buffer start addr
+ * @return	None
+ */
+void update_buff(uint32_t* local_buf, uint32_t* buf_start_addr)
+{
+#if (INTERFACE_MODE == SPI_DMA)
+	iio_buf_start_idx = (uint8_t*)buf_start_addr;
+	dma_buf_start_idx = (uint8_t*)local_buf;
+
+	iio_buf_current_idx = iio_buf_start_idx;
+	dma_buf_current_idx = dma_buf_start_idx;
+#endif
+}
+
+/**
+ * @brief DMA2 Stream0 IRQ Handler
+ * @param None
+ * @return None
+ */
+void DMA2_Stream0_IRQHandler(void)
+{
+	/* Stop Tx trigger DMA and CNV timer at the last entry
+	to the callback */
+#if (DATA_CAPTURE_MODE == BURST_DATA_CAPTURE)
+	if (callback_count == 1) {
+		TIM8->DIER &= ~TIM_DIER_CC1DE;
+		no_os_pwm_disable(pwm_desc);
+		no_os_pwm_disable(sdesc->pwm_desc);
+	}
+#endif
+	HAL_DMA_IRQHandler(&hdma_spi1_rx);
 }
