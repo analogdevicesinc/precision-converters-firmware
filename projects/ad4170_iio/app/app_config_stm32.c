@@ -100,6 +100,13 @@ struct stm32_i2c_init_param stm32_i2c_extra_init_params = {
 	.i2c_timing = I2C_TIMING
 };
 
+#if defined (TARGET_SDP_K1)
+/* STM32 VCOM init parameters */
+struct stm32_usb_uart_init_param stm32_vcom_extra_init_params = {
+	.husbdevice = &hUsbDeviceHS,
+};
+#endif
+
 #if (INTERFACE_MODE == SPI_DMA_MODE)
 /* STM32 Tx DMA channel extra init params */
 struct stm32_dma_channel txdma_channel = {
@@ -186,6 +193,9 @@ void stm32_system_init(void)
 	MX_UART5_Init();
 	MX_DMA_Init();
 	MX_TIM8_Init();
+#ifdef USE_VIRTUAL_COM_PORT
+	MX_USB_DEVICE_Init();
+#endif
 #endif
 }
 

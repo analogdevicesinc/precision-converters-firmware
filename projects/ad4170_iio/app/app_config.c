@@ -47,8 +47,13 @@ struct no_os_uart_init_param uart_init_params = {
 	.size = NO_OS_UART_CS_8,
 	.parity = NO_OS_UART_PAR_NO,
 	.stop = NO_OS_UART_STOP_1_BIT,
+#if defined(USE_VIRTUAL_COM_PORT)
+	.platform_ops = &vcom_ops,
+	.extra = &vcom_extra_init_params
+#else
 	.platform_ops = &uart_ops,
 	.extra = &uart_extra_init_params
+#endif
 };
 
 /* LDAC GPO init parameters. */
