@@ -195,6 +195,11 @@ uint8_t* dma_buf_current_idx;
 
 #endif
 
+/* STM32 VCOM init parameters */
+struct stm32_usb_uart_init_param stm32_vcom_extra_init_params = {
+	.husbdevice = &hUsbDeviceHS,
+};
+
 /******************************************************************************/
 /************************** Functions Declaration *****************************/
 /******************************************************************************/
@@ -229,6 +234,9 @@ void stm32_system_init(void)
 	HAL_NVIC_DisableIRQ(DMA2_Stream0_IRQn);
 #else
 	HAL_NVIC_DisableIRQ(EXTI9_5_IRQn);
+#endif
+#ifdef USE_VIRTUAL_COM_PORT
+	MX_USB_DEVICE_Init();
 #endif
 }
 

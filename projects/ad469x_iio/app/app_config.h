@@ -101,6 +101,7 @@
 #define cs_extra_init_params          stm32_cs_extra_init_params
 #define tx_trigger_extra_init_params  stm32_tx_trigger_extra_init_params
 #define cs_pwm_gpio_extra_init_params stm32_cs_pwm_gpio_extra_init_params
+#define vcom_extra_init_params      stm32_vcom_extra_init_params
 #else
 #error "No/Invalid active platform selected"
 #endif
