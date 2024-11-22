@@ -27,6 +27,7 @@
 #include "stm32_uart.h"
 #include "stm32_pwm.h"
 #include "stm32_dma.h"
+#include "stm32_usb_uart.h"
 
 /******************************************************************************/
 /********************** Macros and Constants Definition ***********************/
@@ -67,6 +68,7 @@
 #define pwm_ops                     stm32_pwm_ops
 #define trigger_gpio_irq_ops        stm32_gpio_irq_ops
 #define dma_ops                     stm32_dma_ops
+#define vcom_ops                    stm32_usb_uart_ops
 #define trigger_gpio_handle         0    // Unused macro
 
 /* Timer specific macros used for calculating pwm
@@ -147,6 +149,8 @@ extern struct stm32_dma_channel txdma_channel;
 extern struct stm32_gpio_init_param stm32_cs_pwm_gpio_extra_init_params;
 extern uint32_t rxdma_ndtr;
 extern uint32_t dma_cycle_count;
+extern USBD_HandleTypeDef hUsbDeviceHS;
+extern struct stm32_usb_uart_init_param stm32_vcom_extra_init_params;
 
 void receivecomplete_callback(DMA_HandleTypeDef* hdma);
 void halfcmplt_callback(DMA_HandleTypeDef* hdma);
@@ -159,5 +163,6 @@ void stm32_timer_stop(void);
 #endif
 
 void stm32_system_init(void);
+void MX_USB_DEVICE_Init(void);
 
 #endif /* APP_CONFIG_STM32_H_ */
