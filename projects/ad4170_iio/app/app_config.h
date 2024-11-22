@@ -173,6 +173,9 @@
 #if (INTERFACE_MODE == SPI_DMA_MODE)
 #define tx_trigger_extra_init_params  stm32_tx_trigger_extra_init_params
 #endif
+#if defined (TARGET_SDP_K1)
+#define vcom_extra_init_params      stm32_vcom_extra_init_params
+#endif
 
 #define spi_ops		stm32_spi_ops
 #define uart_ops	stm32_uart_ops
@@ -184,6 +187,9 @@
 #if (INTERFACE_MODE == SPI_DMA_MODE)
 #define dma_ops stm32_dma_ops
 #define pwm_ops      stm32_pwm_ops
+#endif
+#if defined (TARGET_SDP_K1)
+#define vcom_ops                    stm32_usb_uart_ops
 #endif
 
 #define TRIGGER_GPIO_PORT 			DIG_AUX_1_PORT

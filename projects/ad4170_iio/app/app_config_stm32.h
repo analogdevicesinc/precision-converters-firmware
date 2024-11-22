@@ -32,6 +32,10 @@
 #include "stm32_pwm.h"
 #endif
 
+#if defined (TARGET_SDP_K1)
+#include "stm32_usb_uart.h"
+#endif
+
 /******************************************************************************/
 /********************** Macros and Constants Definition ***********************/
 /******************************************************************************/
@@ -148,7 +152,7 @@
 #define TICKER_INTERRUPT_PERIOD_uSEC	(0) // unused
 
 /* Max SPI Speed */
-#define AD4170_MAX_SPI_SPEED     11250000
+#define AD4170_MAX_SPI_SPEED     20000000
 
 /******************************************************************************/
 /********************** Public/Extern Declarations ****************************/
@@ -190,6 +194,10 @@ extern struct no_os_dma_init_param ad4170_dma_init_param;
 extern struct stm32_dma_channel rxdma_channel;
 extern struct stm32_dma_channel txdma_channel;
 #endif
+#if defined (TARGET_SDP_K1)
+extern USBD_HandleTypeDef hUsbDeviceHS;
+extern struct stm32_usb_uart_init_param stm32_vcom_extra_init_params;
+#endif
 
 void tim8_config(void);
 void stm32_timer_stop(void);
@@ -201,4 +209,5 @@ void ad4170_spi_dma_rx_cplt_callback(DMA_HandleTypeDef* hdma);
 void ad4170_spi_dma_rx_half_cplt_callback(DMA_HandleTypeDef* hdma);
 void update_buff(uint32_t* local_buf, uint32_t* buf_start_addr);
 void tim8_init(struct no_os_pwm_desc *pwm_desc);
+void MX_USB_DEVICE_Init(void);
 #endif /* APP_CONFIG_STM32_H_ */
