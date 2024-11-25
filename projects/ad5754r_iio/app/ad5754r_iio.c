@@ -1297,63 +1297,63 @@ int32_t ad5754r_iio_init(void)
 #if defined(DEV_CN0586)
 	if (hw_mezzanine_is_valid) {
 #endif
-		/* Initialize AD5754R no-os device driver interface */
-		ret = ad5754r_init(&ad5754r_dev_inst, &ad5754r_init_params);
+	/* Initialize AD5754R no-os device driver interface */
+	ret = ad5754r_init(&ad5754r_dev_inst, &ad5754r_init_params);
+	if (ret) {
+		return ret;
+	}
+
+	/* Check if descriptors have been assigned for GPIOs */
+	if (ad5754r_init_params.gpio_clear_init) {
+		if (!ad5754r_dev_inst->gpio_clear) {
+			return -ENOSYS;
+		}
+	}
+
+	if (ad5754r_init_params.gpio_ldac_init) {
+		if (!ad5754r_dev_inst->gpio_ldac) {
+			return -ENOSYS;
+		}
+	}
+
+	/* Initialize the AD5754R IIO app specific parameters */
+	ret = ad5754r_iio_param_init(&ad5754r_iio_dev);
+	if (ret) {
+		return ret;
+	}
+	iio_init_params.nb_devs++;
+
+#ifdef DEV_CN0586
+	if (ad5754r_dev_inst) {
+		ret = cn0586_init(&cn0586_dev_inst, ad5754r_dev_inst);
 		if (ret) {
 			return ret;
 		}
 
-		/* Check if descriptors have been assigned for GPIOs */
-		if (ad5754r_init_params.gpio_clear_init) {
-			if (!ad5754r_dev_inst->gpio_clear) {
-				return -ENOSYS;
-			}
-		}
-
-		if (ad5754r_init_params.gpio_ldac_init) {
-			if (!ad5754r_dev_inst->gpio_ldac) {
-				return -ENOSYS;
-			}
-		}
-
-		/* Initialize the AD5754R IIO app specific parameters */
-		ret = ad5754r_iio_param_init(&ad5754r_iio_dev);
+		ret = cn0586_iio_param_init(&cn0586_iio_dev);
 		if (ret) {
 			return ret;
 		}
 		iio_init_params.nb_devs++;
-
-#ifdef DEV_CN0586
-		if (ad5754r_dev_inst) {
-			ret = cn0586_init(&cn0586_dev_inst, ad5754r_dev_inst);
-			if (ret) {
-				return ret;
-			}
-
-			ret = cn0586_iio_param_init(&cn0586_iio_dev);
-			if (ret) {
-				return ret;
-			}
-			iio_init_params.nb_devs++;
-		}
+	}
 #endif
 
-		/* AD5754R IIO device init parameters */
-		iio_device_init_params[0].name = ACTIVE_DEVICE_NAME;
-		iio_device_init_params[0].raw_buf = dac_data_buffer;
-		iio_device_init_params[0].raw_buf_len = DATA_BUFFER_SIZE;
-		iio_device_init_params[0].dev = ad5754r_dev_inst;
-		iio_device_init_params[0].dev_descriptor = ad5754r_iio_dev;
-		iio_device_init_params[0].trigger_id = "trigger0";
+	/* AD5754R IIO device init parameters */
+	iio_device_init_params[0].name = ACTIVE_DEVICE_NAME;
+	iio_device_init_params[0].raw_buf = dac_data_buffer;
+	iio_device_init_params[0].raw_buf_len = DATA_BUFFER_SIZE;
+	iio_device_init_params[0].dev = ad5754r_dev_inst;
+	iio_device_init_params[0].dev_descriptor = ad5754r_iio_dev;
+	iio_device_init_params[0].trigger_id = "trigger0";
 
 #ifdef DEV_CN0586
-		/* CFTL IIO device init parameters */
-		iio_device_init_params[1].name = "cn0586";
-		iio_device_init_params[1].raw_buf = dac_data_buffer;
-		iio_device_init_params[1].raw_buf_len = DATA_BUFFER_SIZE;
-		iio_device_init_params[1].dev = cn0586_dev_inst;
-		iio_device_init_params[1].dev_descriptor = cn0586_iio_dev;
-		iio_device_init_params[1].trigger_id = NULL; // TODO
+	/* CFTL IIO device init parameters */
+	iio_device_init_params[1].name = "cn0586";
+	iio_device_init_params[1].raw_buf = dac_data_buffer;
+	iio_device_init_params[1].raw_buf_len = DATA_BUFFER_SIZE;
+	iio_device_init_params[1].dev = cn0586_dev_inst;
+	iio_device_init_params[1].dev_descriptor = cn0586_iio_dev;
+	iio_device_init_params[1].trigger_id = NULL; // TODO
 #endif
 
 #if defined(DEV_CN0586)
