@@ -233,142 +233,148 @@ $(function() {
 <div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;<span class="preprocessor">#if (INTERFACE_MODE == SPI_DMA_MODE)</span></div>
 <div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;<span class="preprocessor">#define tx_trigger_extra_init_params  stm32_tx_trigger_extra_init_params</span></div>
 <div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160; </div>
-<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;<span class="preprocessor">#define spi_ops     stm32_spi_ops</span></div>
-<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;<span class="preprocessor">#define uart_ops    stm32_uart_ops</span></div>
-<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;<span class="preprocessor">#define gpio_ops    stm32_gpio_ops</span></div>
-<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;<span class="preprocessor">#define i2c_ops     stm32_i2c_ops</span></div>
-<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;<span class="preprocessor">#define irq_ops     stm32_gpio_irq_ops</span></div>
-<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;<span class="preprocessor">#define tdm_ops      stm32_tdm_platform_ops</span></div>
-<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;<span class="preprocessor">#define trigger_gpio_irq_ops stm32_gpio_irq_ops</span></div>
-<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;<span class="preprocessor">#if (INTERFACE_MODE == SPI_DMA_MODE)</span></div>
-<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;<span class="preprocessor">#define dma_ops stm32_dma_ops</span></div>
-<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;<span class="preprocessor">#define pwm_ops      stm32_pwm_ops</span></div>
-<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160; </div>
-<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;<span class="preprocessor">#define TRIGGER_GPIO_PORT           DIG_AUX_1_PORT</span></div>
-<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;<span class="preprocessor">#define TRIGGER_GPIO_PIN            DIG_AUX_1</span></div>
-<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;<span class="preprocessor">#define TRIGGER_GPIO_IRQ_CTRL_ID    TRIGGER_GPIO_PIN</span></div>
-<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;<span class="preprocessor">#define CSB_GPIO_PORT               STM32_SPI_CS_PORT</span></div>
-<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160; </div>
-<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;<span class="preprocessor">#define SPI_DEVICE_ID       STM32_SPI_ID</span></div>
-<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;<span class="preprocessor">#define I2C_DEVICE_ID       STM32_I2C_ID</span></div>
-<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;<span class="preprocessor">#define TRIGGER_INT_ID      0 </span><span class="comment">// unused</span></div>
-<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;<span class="preprocessor">#define trigger_gpio_handle 0 </span><span class="comment">// unused</span></div>
-<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;<span class="preprocessor">#define DMA_IRQ_ID           GPDMA1_Channel7_IRQn</span></div>
-<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;<span class="preprocessor">#else</span></div>
-<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;<span class="preprocessor">#error &quot;No/Invalid active platform selected&quot;</span></div>
-<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160; </div>
-<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;<span class="comment">/* List the differential/single-ended channels based on active device.</span></div>
-<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;<span class="comment"> * Note : There can be max 16 channels in the device sequencer but since</span></div>
-<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;<span class="comment"> * input pairs can be only 3/6/4/8/16, only those many channels are exposed</span></div>
-<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;<span class="comment"> * out, based on the user selected channel configuration.</span></div>
-<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;<span class="comment"> **/</span></div>
-<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;<span class="preprocessor">#if defined(DEV_AD4170)</span></div>
-<div class="line"><a name="l00209"></a><span class="lineno"><a class="line" href="ad4170__iio_2app_2app__config_8h.html#afcd4c275172a254e2d7078c3a2286751">  209</a></span>&#160;<span class="preprocessor">#define DIFFERENTIAL_CHNS   4</span></div>
-<div class="line"><a name="l00210"></a><span class="lineno"><a class="line" href="ad4170__iio_2app_2app__config_8h.html#a751a1099ded553fc80c6211003217daf">  210</a></span>&#160;<span class="preprocessor">#define SINGLE_ENDED_CHNS   8</span></div>
-<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160; </div>
-<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;<span class="comment">/* Include user config files and params according to active/selected demo mode config */</span></div>
-<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;<span class="preprocessor">#if (ACTIVE_DEMO_MODE_CONFIG == USER_DEFAULT_CONFIG)</span></div>
-<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="ad4170__user__config_8h.html">ad4170_user_config.h</a>&quot;</span></div>
-<div class="line"><a name="l00216"></a><span class="lineno"><a class="line" href="ad4170__iio_2app_2app__config_8h.html#a250a098d7f0b375cae43c970037dbc8f">  216</a></span>&#160;<span class="preprocessor">#define ad4170_init_params  ad4170_user_config_params</span></div>
-<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;<span class="preprocessor">#elif ((ACTIVE_DEMO_MODE_CONFIG == RTD_2WIRE_CONFIG) || \</span></div>
-<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;<span class="preprocessor">(ACTIVE_DEMO_MODE_CONFIG == RTD_3WIRE_CONFIG) || (ACTIVE_DEMO_MODE_CONFIG == RTD_4WIRE_CONFIG))</span></div>
-<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="ad4170__rtd__config_8h.html">ad4170_rtd_config.h</a>&quot;</span></div>
-<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;<span class="preprocessor">#define ad4170_init_params  ad4170_rtd_config_params</span></div>
-<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;<span class="preprocessor">#elif (ACTIVE_DEMO_MODE_CONFIG == THERMISTOR_CONFIG)</span></div>
-<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="ad4170__thermistor__config_8h.html">ad4170_thermistor_config.h</a>&quot;</span></div>
-<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;<span class="preprocessor">#define ad4170_init_params  ad4170_thermistor_config_params</span></div>
-<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;<span class="preprocessor">#elif (ACTIVE_DEMO_MODE_CONFIG == THERMOCOUPLE_CONFIG)</span></div>
-<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="ad4170__thermocouple__config_8h.html">ad4170_thermocouple_config.h</a>&quot;</span></div>
-<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;<span class="preprocessor">#define ad4170_init_params  ad4170_thermocouple_config_params</span></div>
-<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;<span class="preprocessor">#elif (ACTIVE_DEMO_MODE_CONFIG == ACCELEROMETER_CONFIG)</span></div>
-<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="ad4170__accelerometer__config_8h.html">ad4170_accelerometer_config.h</a>&quot;</span></div>
-<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;<span class="preprocessor">#define ad4170_init_params  ad4170_accelerometer_config_params</span></div>
-<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;<span class="preprocessor">#elif (ACTIVE_DEMO_MODE_CONFIG == LOADCELL_CONFIG)</span></div>
-<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="ad4170__loadcell__config_8h.html">ad4170_loadcell_config.h</a>&quot;</span></div>
-<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;<span class="preprocessor">#define ad4170_init_params  ad4170_loadcell_config_params</span></div>
-<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;<span class="preprocessor">#else</span></div>
-<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="ad4170__user__config_8h.html">ad4170_user_config.h</a>&quot;</span></div>
-<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;<span class="preprocessor">#define ad4170_init_params  ad4170_user_config_params</span></div>
-<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;<span class="preprocessor">#warning &quot;No/Invalid active demo config selected, user config used as default&quot;</span></div>
-<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160; </div>
-<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;<span class="comment">/* ADC resolution for active device */</span></div>
-<div class="line"><a name="l00240"></a><span class="lineno"><a class="line" href="ad4170__iio_2app_2app__config_8h.html#a00978ca9e8220475258dcbbbb7d29129">  240</a></span>&#160;<span class="preprocessor">#define ADC_RESOLUTION      24</span></div>
-<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160; </div>
-<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;<span class="comment">/* Bytes per sample */</span></div>
-<div class="line"><a name="l00243"></a><span class="lineno"><a class="line" href="ad4170__iio_2app_2app__config_8h.html#a25065cd833bcfecfb404093aed3edaca">  243</a></span>&#160;<span class="preprocessor">#define BYTES_PER_SAMPLE    sizeof(uint32_t)    </span><span class="comment">// For ADC resolution of 24-bits</span></div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;<span class="preprocessor">#if defined (TARGET_SDP_K1)</span></div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;<span class="preprocessor">#define vcom_extra_init_params      stm32_vcom_extra_init_params</span></div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160; </div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;<span class="preprocessor">#define spi_ops     stm32_spi_ops</span></div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;<span class="preprocessor">#define uart_ops    stm32_uart_ops</span></div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;<span class="preprocessor">#define gpio_ops    stm32_gpio_ops</span></div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;<span class="preprocessor">#define i2c_ops     stm32_i2c_ops</span></div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;<span class="preprocessor">#define irq_ops     stm32_gpio_irq_ops</span></div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;<span class="preprocessor">#define tdm_ops      stm32_tdm_platform_ops</span></div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;<span class="preprocessor">#define trigger_gpio_irq_ops stm32_gpio_irq_ops</span></div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;<span class="preprocessor">#if (INTERFACE_MODE == SPI_DMA_MODE)</span></div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;<span class="preprocessor">#define dma_ops stm32_dma_ops</span></div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;<span class="preprocessor">#define pwm_ops      stm32_pwm_ops</span></div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;<span class="preprocessor">#if defined (TARGET_SDP_K1)</span></div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;<span class="preprocessor">#define vcom_ops                    stm32_usb_uart_ops</span></div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160; </div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;<span class="preprocessor">#define TRIGGER_GPIO_PORT           DIG_AUX_1_PORT</span></div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;<span class="preprocessor">#define TRIGGER_GPIO_PIN            DIG_AUX_1</span></div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;<span class="preprocessor">#define TRIGGER_GPIO_IRQ_CTRL_ID    TRIGGER_GPIO_PIN</span></div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;<span class="preprocessor">#define CSB_GPIO_PORT               STM32_SPI_CS_PORT</span></div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160; </div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;<span class="preprocessor">#define SPI_DEVICE_ID       STM32_SPI_ID</span></div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;<span class="preprocessor">#define I2C_DEVICE_ID       STM32_I2C_ID</span></div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;<span class="preprocessor">#define TRIGGER_INT_ID      0 </span><span class="comment">// unused</span></div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;<span class="preprocessor">#define trigger_gpio_handle 0 </span><span class="comment">// unused</span></div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;<span class="preprocessor">#define DMA_IRQ_ID           GPDMA1_Channel7_IRQn</span></div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;<span class="preprocessor">#else</span></div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;<span class="preprocessor">#error &quot;No/Invalid active platform selected&quot;</span></div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160; </div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;<span class="comment">/* List the differential/single-ended channels based on active device.</span></div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;<span class="comment"> * Note : There can be max 16 channels in the device sequencer but since</span></div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;<span class="comment"> * input pairs can be only 3/6/4/8/16, only those many channels are exposed</span></div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;<span class="comment"> * out, based on the user selected channel configuration.</span></div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;<span class="comment"> **/</span></div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;<span class="preprocessor">#if defined(DEV_AD4170)</span></div>
+<div class="line"><a name="l00215"></a><span class="lineno"><a class="line" href="ad4170__iio_2app_2app__config_8h.html#afcd4c275172a254e2d7078c3a2286751">  215</a></span>&#160;<span class="preprocessor">#define DIFFERENTIAL_CHNS   4</span></div>
+<div class="line"><a name="l00216"></a><span class="lineno"><a class="line" href="ad4170__iio_2app_2app__config_8h.html#a751a1099ded553fc80c6211003217daf">  216</a></span>&#160;<span class="preprocessor">#define SINGLE_ENDED_CHNS   8</span></div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160; </div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;<span class="comment">/* Include user config files and params according to active/selected demo mode config */</span></div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;<span class="preprocessor">#if (ACTIVE_DEMO_MODE_CONFIG == USER_DEFAULT_CONFIG)</span></div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="ad4170__user__config_8h.html">ad4170_user_config.h</a>&quot;</span></div>
+<div class="line"><a name="l00222"></a><span class="lineno"><a class="line" href="ad4170__iio_2app_2app__config_8h.html#a250a098d7f0b375cae43c970037dbc8f">  222</a></span>&#160;<span class="preprocessor">#define ad4170_init_params  ad4170_user_config_params</span></div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;<span class="preprocessor">#elif ((ACTIVE_DEMO_MODE_CONFIG == RTD_2WIRE_CONFIG) || \</span></div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;<span class="preprocessor">(ACTIVE_DEMO_MODE_CONFIG == RTD_3WIRE_CONFIG) || (ACTIVE_DEMO_MODE_CONFIG == RTD_4WIRE_CONFIG))</span></div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="ad4170__rtd__config_8h.html">ad4170_rtd_config.h</a>&quot;</span></div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;<span class="preprocessor">#define ad4170_init_params  ad4170_rtd_config_params</span></div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;<span class="preprocessor">#elif (ACTIVE_DEMO_MODE_CONFIG == THERMISTOR_CONFIG)</span></div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="ad4170__thermistor__config_8h.html">ad4170_thermistor_config.h</a>&quot;</span></div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;<span class="preprocessor">#define ad4170_init_params  ad4170_thermistor_config_params</span></div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;<span class="preprocessor">#elif (ACTIVE_DEMO_MODE_CONFIG == THERMOCOUPLE_CONFIG)</span></div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="ad4170__thermocouple__config_8h.html">ad4170_thermocouple_config.h</a>&quot;</span></div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;<span class="preprocessor">#define ad4170_init_params  ad4170_thermocouple_config_params</span></div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;<span class="preprocessor">#elif (ACTIVE_DEMO_MODE_CONFIG == ACCELEROMETER_CONFIG)</span></div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="ad4170__accelerometer__config_8h.html">ad4170_accelerometer_config.h</a>&quot;</span></div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;<span class="preprocessor">#define ad4170_init_params  ad4170_accelerometer_config_params</span></div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;<span class="preprocessor">#elif (ACTIVE_DEMO_MODE_CONFIG == LOADCELL_CONFIG)</span></div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="ad4170__loadcell__config_8h.html">ad4170_loadcell_config.h</a>&quot;</span></div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;<span class="preprocessor">#define ad4170_init_params  ad4170_loadcell_config_params</span></div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;<span class="preprocessor">#else</span></div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="ad4170__user__config_8h.html">ad4170_user_config.h</a>&quot;</span></div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;<span class="preprocessor">#define ad4170_init_params  ad4170_user_config_params</span></div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;<span class="preprocessor">#warning &quot;No/Invalid active demo config selected, user config used as default&quot;</span></div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160; </div>
-<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;<span class="comment">/* ADC max count (full scale value) for unipolar inputs */</span></div>
-<div class="line"><a name="l00246"></a><span class="lineno"><a class="line" href="ad4170__iio_2app_2app__config_8h.html#ad6af11c8af52e93da6eafa098285f631">  246</a></span>&#160;<span class="preprocessor">#define ADC_MAX_COUNT_UNIPOLAR  (uint32_t)((1 &lt;&lt; ADC_RESOLUTION) - 1)</span></div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;<span class="comment">/* ADC resolution for active device */</span></div>
+<div class="line"><a name="l00246"></a><span class="lineno"><a class="line" href="ad4170__iio_2app_2app__config_8h.html#a00978ca9e8220475258dcbbbb7d29129">  246</a></span>&#160;<span class="preprocessor">#define ADC_RESOLUTION      24</span></div>
 <div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160; </div>
-<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;<span class="comment">/* ADC max count (full scale value) for bipolar inputs */</span></div>
-<div class="line"><a name="l00249"></a><span class="lineno"><a class="line" href="ad4170__iio_2app_2app__config_8h.html#aed250e391fcc00823ec8cf976bc47482">  249</a></span>&#160;<span class="preprocessor">#define ADC_MAX_COUNT_BIPOLAR   (uint32_t)(1 &lt;&lt; (ADC_RESOLUTION-1))</span></div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;<span class="comment">/* Bytes per sample */</span></div>
+<div class="line"><a name="l00249"></a><span class="lineno"><a class="line" href="ad4170__iio_2app_2app__config_8h.html#a25065cd833bcfecfb404093aed3edaca">  249</a></span>&#160;<span class="preprocessor">#define BYTES_PER_SAMPLE    sizeof(uint32_t)    </span><span class="comment">// For ADC resolution of 24-bits</span></div>
 <div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160; </div>
-<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;<span class="comment">/* Default ADC reference voltages for each reference source */</span></div>
-<div class="line"><a name="l00252"></a><span class="lineno"><a class="line" href="ad4170__iio_2app_2app__config_8h.html#ac5621bbc422cd1eaded69d339c77ced7">  252</a></span>&#160;<span class="preprocessor">#define AD4170_REFIN_REFIN1_VOLTAGE     2.5</span></div>
-<div class="line"><a name="l00253"></a><span class="lineno"><a class="line" href="ad4170__iio_2app_2app__config_8h.html#ad6a7c3ec57e47d700c8905a7f526ba68">  253</a></span>&#160;<span class="preprocessor">#define AD4170_REFIN_REFIN2_VOLTAGE     2.5</span></div>
-<div class="line"><a name="l00254"></a><span class="lineno"><a class="line" href="ad4170__iio_2app_2app__config_8h.html#a3080986409025c4b8b1ed9425f5da493">  254</a></span>&#160;<span class="preprocessor">#define AD4170_REFIN_AVDD_VOLTAGE       5.0</span></div>
-<div class="line"><a name="l00255"></a><span class="lineno"><a class="line" href="ad4170__iio_2app_2app__config_8h.html#ad7b3848a9edd83e83744263d992a5d82">  255</a></span>&#160;<span class="preprocessor">#define AD4170_REFIN_REFOUT_VOLTAGE     2.5</span></div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;<span class="comment">/* ADC max count (full scale value) for unipolar inputs */</span></div>
+<div class="line"><a name="l00252"></a><span class="lineno"><a class="line" href="ad4170__iio_2app_2app__config_8h.html#ad6af11c8af52e93da6eafa098285f631">  252</a></span>&#160;<span class="preprocessor">#define ADC_MAX_COUNT_UNIPOLAR  (uint32_t)((1 &lt;&lt; ADC_RESOLUTION) - 1)</span></div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160; </div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;<span class="comment">/* ADC max count (full scale value) for bipolar inputs */</span></div>
+<div class="line"><a name="l00255"></a><span class="lineno"><a class="line" href="ad4170__iio_2app_2app__config_8h.html#aed250e391fcc00823ec8cf976bc47482">  255</a></span>&#160;<span class="preprocessor">#define ADC_MAX_COUNT_BIPOLAR   (uint32_t)(1 &lt;&lt; (ADC_RESOLUTION-1))</span></div>
 <div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160; </div>
-<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;<span class="comment">/****** Macros used to form a VCOM serial number ******/</span></div>
-<div class="line"><a name="l00258"></a><span class="lineno"><a class="line" href="ad4170__iio_2app_2app__config_8h.html#a53e29efbf83712dcee0878d27965aedf">  258</a></span>&#160;<span class="preprocessor">#define FIRMWARE_NAME   &quot;ad4170_iio&quot;</span></div>
-<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160; </div>
-<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;<span class="preprocessor">#if !defined(PLATFORM_NAME)</span></div>
-<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;<span class="preprocessor">#define PLATFORM_NAME   HW_CARRIER_NAME</span></div>
-<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160; </div>
-<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;<span class="comment">/* Below USB configurations (VID and PID) are owned and assigned by ADI.</span></div>
-<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;<span class="comment"> * If intended to distribute software further, use the VID and PID owned by your</span></div>
-<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;<span class="comment"> * organization */</span></div>
-<div class="line"><a name="l00267"></a><span class="lineno"><a class="line" href="ad4170__iio_2app_2app__config_8h.html#ac999cc20b1fcfa436cd0924ea11b104d">  267</a></span>&#160;<span class="preprocessor">#define VIRTUAL_COM_PORT_VID    0x0456</span></div>
-<div class="line"><a name="l00268"></a><span class="lineno"><a class="line" href="ad4170__iio_2app_2app__config_8h.html#a641e35f3000ead2e5fe60dce0dae31ba">  268</a></span>&#160;<span class="preprocessor">#define VIRTUAL_COM_PORT_PID    0xb66c</span></div>
-<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;<span class="comment">/* Serial number string is formed as: application name + device (target) name + platform (host) name */</span></div>
-<div class="line"><a name="l00270"></a><span class="lineno"><a class="line" href="ad4170__iio_2app_2app__config_8h.html#acc0cba4b761e8e4480755beac5bca349">  270</a></span>&#160;<span class="preprocessor">#define VIRTUAL_COM_SERIAL_NUM  (FIRMWARE_NAME &quot;_&quot;</span> DEVICE_NAME &quot;_&quot; STR(PLATFORM_NAME))</div>
-<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160; </div>
-<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;<span class="comment">/* Baud rate for IIO application UART interface */</span></div>
-<div class="line"><a name="l00273"></a><span class="lineno"><a class="line" href="ad4170__iio_2app_2app__config_8h.html#a1f21242d642bc7352daa4f657ff15a5a">  273</a></span>&#160;<span class="preprocessor">#define IIO_UART_BAUD_RATE  (230400)</span></div>
-<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160; </div>
-<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;<span class="comment">/* Enable/Disable the use of SDRAM for ADC data capture buffer */</span></div>
-<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;<span class="comment">//#define USE_SDRAM     // Uncomment to use SDRAM for data buffer</span></div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;<span class="comment">/* Default ADC reference voltages for each reference source */</span></div>
+<div class="line"><a name="l00258"></a><span class="lineno"><a class="line" href="ad4170__iio_2app_2app__config_8h.html#ac5621bbc422cd1eaded69d339c77ced7">  258</a></span>&#160;<span class="preprocessor">#define AD4170_REFIN_REFIN1_VOLTAGE     2.5</span></div>
+<div class="line"><a name="l00259"></a><span class="lineno"><a class="line" href="ad4170__iio_2app_2app__config_8h.html#ad6a7c3ec57e47d700c8905a7f526ba68">  259</a></span>&#160;<span class="preprocessor">#define AD4170_REFIN_REFIN2_VOLTAGE     2.5</span></div>
+<div class="line"><a name="l00260"></a><span class="lineno"><a class="line" href="ad4170__iio_2app_2app__config_8h.html#a3080986409025c4b8b1ed9425f5da493">  260</a></span>&#160;<span class="preprocessor">#define AD4170_REFIN_AVDD_VOLTAGE       5.0</span></div>
+<div class="line"><a name="l00261"></a><span class="lineno"><a class="line" href="ad4170__iio_2app_2app__config_8h.html#ad7b3848a9edd83e83744263d992a5d82">  261</a></span>&#160;<span class="preprocessor">#define AD4170_REFIN_REFOUT_VOLTAGE     2.5</span></div>
+<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160; </div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;<span class="comment">/****** Macros used to form a VCOM serial number ******/</span></div>
+<div class="line"><a name="l00264"></a><span class="lineno"><a class="line" href="ad4170__iio_2app_2app__config_8h.html#a53e29efbf83712dcee0878d27965aedf">  264</a></span>&#160;<span class="preprocessor">#define FIRMWARE_NAME   &quot;ad4170_iio&quot;</span></div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160; </div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;<span class="preprocessor">#if !defined(PLATFORM_NAME)</span></div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;<span class="preprocessor">#define PLATFORM_NAME   HW_CARRIER_NAME</span></div>
+<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160; </div>
+<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;<span class="comment">/* Below USB configurations (VID and PID) are owned and assigned by ADI.</span></div>
+<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;<span class="comment"> * If intended to distribute software further, use the VID and PID owned by your</span></div>
+<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;<span class="comment"> * organization */</span></div>
+<div class="line"><a name="l00273"></a><span class="lineno"><a class="line" href="ad4170__iio_2app_2app__config_8h.html#ac999cc20b1fcfa436cd0924ea11b104d">  273</a></span>&#160;<span class="preprocessor">#define VIRTUAL_COM_PORT_VID    0x0456</span></div>
+<div class="line"><a name="l00274"></a><span class="lineno"><a class="line" href="ad4170__iio_2app_2app__config_8h.html#a641e35f3000ead2e5fe60dce0dae31ba">  274</a></span>&#160;<span class="preprocessor">#define VIRTUAL_COM_PORT_PID    0xb66c</span></div>
+<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;<span class="comment">/* Serial number string is formed as: application name + device (target) name + platform (host) name */</span></div>
+<div class="line"><a name="l00276"></a><span class="lineno"><a class="line" href="ad4170__iio_2app_2app__config_8h.html#acc0cba4b761e8e4480755beac5bca349">  276</a></span>&#160;<span class="preprocessor">#define VIRTUAL_COM_SERIAL_NUM  (FIRMWARE_NAME &quot;_&quot;</span> DEVICE_NAME &quot;_&quot; STR(PLATFORM_NAME))</div>
 <div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160; </div>
-<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;<span class="comment">/* Calculations for sampling frequency (used to define timeout in IIO client):</span></div>
-<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;<span class="comment"> * Note: Below calculations are based on default user configurations set in the</span></div>
-<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;<span class="comment"> *        ad4170_xyz_config.h files. These configurations are used for data capturing.</span></div>
-<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;<span class="comment"> * Clock: Internal 16Mhz oscillotor</span></div>
-<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;<span class="comment"> * Filter Type: Selected in user config files</span></div>
-<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;<span class="comment"> * Filter FS: Selected in user config files</span></div>
-<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;<span class="comment"> * Filter ODR Average (as defined in datasheet): Selected in user config files</span></div>
-<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;<span class="comment"> **/</span></div>
-<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;<span class="comment">/* AD4170 default internal clock frequency (Fclock = 16Mhz)*/</span></div>
-<div class="line"><a name="l00287"></a><span class="lineno"><a class="line" href="ad4170__iio_2app_2app__config_8h.html#a520f63f6a2f38fcd630c22c68d029e0e">  287</a></span>&#160;<span class="preprocessor">#define AD4170_INTERNAL_CLOCK           (16000000U)</span></div>
-<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160; </div>
-<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;<span class="comment">/* Default sampling frequency for AD4170 (in SPS) */</span></div>
-<div class="line"><a name="l00290"></a><span class="lineno"><a class="line" href="ad4170__iio_2app_2app__config_8h.html#a411d8c86148016fdd9411c00e80f7bbc">  290</a></span>&#160;<span class="preprocessor">#define AD4170_DEFLT_SAMPLING_FREQUENCY (AD4170_INTERNAL_CLOCK / FS_TO_ODR_CONV_SCALER)</span></div>
-<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160; </div>
-<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;<span class="comment">/******************************************************************************/</span></div>
-<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;<span class="comment">/************************ Public Declarations *********************************/</span></div>
-<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;<span class="comment">/******************************************************************************/</span></div>
-<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160; </div>
-<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;<span class="keyword">extern</span> <span class="keyword">struct </span>no_os_gpio_init_param <a class="code" href="ad4170__iio_2app_2app__config_8h.html#aa6edd21b8d3b11bfc84d2678abc7d922">gpio_init_ldac_n</a>;</div>
-<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;<span class="keyword">extern</span> <span class="keyword">struct </span>no_os_gpio_init_param <a class="code" href="ad4170__iio_2app_2app__config_8h.html#a325760f96dd831775fe7c8ffd2f951af">gpio_init_rdy</a>;</div>
-<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;<span class="keyword">extern</span> <span class="keyword">struct </span>no_os_gpio_init_param <a class="code" href="ad4170__iio_2app_2app__config_8h.html#ab8227b0bd0c980a16b0adf0a87062c81">gpio_init_sync_inb</a>;</div>
-<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;<span class="keyword">extern</span> <span class="keyword">struct </span>no_os_gpio_desc *<a class="code" href="ad4170__iio_2app_2app__config_8h.html#a4809a80bd78ee1316fb8b4609e460e8a">led_gpio_desc</a>;</div>
-<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;<span class="keyword">extern</span> <span class="keyword">struct </span>no_os_uart_desc *<a class="code" href="ad2s1210__iio_2app_2app__config_8h.html#ad5132545e75d00d2901088ff1886e41e">uart_desc</a>;</div>
-<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;<span class="keyword">extern</span> <span class="keyword">struct </span>no_os_gpio_desc *<a class="code" href="ad405x__iio_2app_2app__config_8h.html#aa3fa5b0f28aa02dd241b7c618836d06a">trigger_gpio_desc</a>;</div>
-<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;<span class="keyword">extern</span> <span class="keyword">struct </span>no_os_gpio_desc *<a class="code" href="ad4170__iio_2app_2app__config_8h.html#aa4e0e21e262905fedb9b1d3d636f529a">csb_gpio_desc</a>;</div>
-<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;<span class="keyword">extern</span> <span class="keyword">struct </span>no_os_spi_init_param <a class="code" href="ad4130__iio_2app_2app__config_8h.html#aa247c71107ed61242c98471409faab1d">spi_init_params</a>;</div>
-<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;<span class="keyword">extern</span> <span class="keyword">struct </span>no_os_irq_ctrl_desc *<a class="code" href="ad2s1210__iio_2app_2app__config_8h.html#a2b20c5f31c6b6ef72967b7bad0420320">trigger_irq_desc</a>;</div>
-<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;<span class="keyword">extern</span> <span class="keyword">struct </span>no_os_tdm_desc *<a class="code" href="ad4170__iio_2app_2app__config_8h.html#a5a275316e0bde85cd49b2e8a3a30e2cd">ad4170_tdm_desc</a>;</div>
-<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;<span class="keyword">extern</span> <span class="keyword">struct </span>no_os_eeprom_desc *<a class="code" href="ad405x__iio_2app_2app__config_8h.html#a3e28ad761469de0b6f49f66710c878a0">eeprom_desc</a>;</div>
-<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;<span class="keyword">extern</span> <span class="keyword">struct </span>no_os_pwm_desc *<a class="code" href="ad405x__iio_2app_2app__config_8h.html#a6135e59733ce0a63eebdfe96b5f45e51">tx_trigger_desc</a>;</div>
-<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;int32_t <a class="code" href="ad2s1210__iio_2app_2app__config_8h.html#aba990e48bb1b87852ff6a375f0c2f655">init_system</a>(<span class="keywordtype">void</span>);</div>
-<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;<span class="keywordtype">void</span> <a class="code" href="ad4170__iio_2app_2app__config_8h.html#a57c37c6b7af2f7586e6a924484a36155">ticker_callback</a>(<span class="keywordtype">void</span> *ctx);</div>
-<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160; </div>
-<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;<span class="preprocessor">#endif </span><span class="comment">//_APP_CONFIG_H_</span></div>
+<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;<span class="comment">/* Baud rate for IIO application UART interface */</span></div>
+<div class="line"><a name="l00279"></a><span class="lineno"><a class="line" href="ad4170__iio_2app_2app__config_8h.html#a1f21242d642bc7352daa4f657ff15a5a">  279</a></span>&#160;<span class="preprocessor">#define IIO_UART_BAUD_RATE  (230400)</span></div>
+<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160; </div>
+<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;<span class="comment">/* Enable/Disable the use of SDRAM for ADC data capture buffer */</span></div>
+<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;<span class="comment">//#define USE_SDRAM     // Uncomment to use SDRAM for data buffer</span></div>
+<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160; </div>
+<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;<span class="comment">/* Calculations for sampling frequency (used to define timeout in IIO client):</span></div>
+<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;<span class="comment"> * Note: Below calculations are based on default user configurations set in the</span></div>
+<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;<span class="comment"> *        ad4170_xyz_config.h files. These configurations are used for data capturing.</span></div>
+<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;<span class="comment"> * Clock: Internal 16Mhz oscillotor</span></div>
+<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;<span class="comment"> * Filter Type: Selected in user config files</span></div>
+<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;<span class="comment"> * Filter FS: Selected in user config files</span></div>
+<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;<span class="comment"> * Filter ODR Average (as defined in datasheet): Selected in user config files</span></div>
+<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;<span class="comment"> **/</span></div>
+<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;<span class="comment">/* AD4170 default internal clock frequency (Fclock = 16Mhz)*/</span></div>
+<div class="line"><a name="l00293"></a><span class="lineno"><a class="line" href="ad4170__iio_2app_2app__config_8h.html#a520f63f6a2f38fcd630c22c68d029e0e">  293</a></span>&#160;<span class="preprocessor">#define AD4170_INTERNAL_CLOCK           (16000000U)</span></div>
+<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160; </div>
+<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;<span class="comment">/* Default sampling frequency for AD4170 (in SPS) */</span></div>
+<div class="line"><a name="l00296"></a><span class="lineno"><a class="line" href="ad4170__iio_2app_2app__config_8h.html#a411d8c86148016fdd9411c00e80f7bbc">  296</a></span>&#160;<span class="preprocessor">#define AD4170_DEFLT_SAMPLING_FREQUENCY (AD4170_INTERNAL_CLOCK / FS_TO_ODR_CONV_SCALER)</span></div>
+<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160; </div>
+<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;<span class="comment">/******************************************************************************/</span></div>
+<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;<span class="comment">/************************ Public Declarations *********************************/</span></div>
+<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;<span class="comment">/******************************************************************************/</span></div>
+<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160; </div>
+<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;<span class="keyword">extern</span> <span class="keyword">struct </span>no_os_gpio_init_param <a class="code" href="ad4170__iio_2app_2app__config_8h.html#aa6edd21b8d3b11bfc84d2678abc7d922">gpio_init_ldac_n</a>;</div>
+<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;<span class="keyword">extern</span> <span class="keyword">struct </span>no_os_gpio_init_param <a class="code" href="ad4170__iio_2app_2app__config_8h.html#a325760f96dd831775fe7c8ffd2f951af">gpio_init_rdy</a>;</div>
+<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;<span class="keyword">extern</span> <span class="keyword">struct </span>no_os_gpio_init_param <a class="code" href="ad4170__iio_2app_2app__config_8h.html#ab8227b0bd0c980a16b0adf0a87062c81">gpio_init_sync_inb</a>;</div>
+<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;<span class="keyword">extern</span> <span class="keyword">struct </span>no_os_gpio_desc *<a class="code" href="ad4170__iio_2app_2app__config_8h.html#a4809a80bd78ee1316fb8b4609e460e8a">led_gpio_desc</a>;</div>
+<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;<span class="keyword">extern</span> <span class="keyword">struct </span>no_os_uart_desc *<a class="code" href="ad2s1210__iio_2app_2app__config_8h.html#ad5132545e75d00d2901088ff1886e41e">uart_desc</a>;</div>
+<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;<span class="keyword">extern</span> <span class="keyword">struct </span>no_os_gpio_desc *<a class="code" href="ad405x__iio_2app_2app__config_8h.html#aa3fa5b0f28aa02dd241b7c618836d06a">trigger_gpio_desc</a>;</div>
+<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;<span class="keyword">extern</span> <span class="keyword">struct </span>no_os_gpio_desc *<a class="code" href="ad4170__iio_2app_2app__config_8h.html#aa4e0e21e262905fedb9b1d3d636f529a">csb_gpio_desc</a>;</div>
+<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;<span class="keyword">extern</span> <span class="keyword">struct </span>no_os_spi_init_param <a class="code" href="ad4130__iio_2app_2app__config_8h.html#aa247c71107ed61242c98471409faab1d">spi_init_params</a>;</div>
+<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;<span class="keyword">extern</span> <span class="keyword">struct </span>no_os_irq_ctrl_desc *<a class="code" href="ad2s1210__iio_2app_2app__config_8h.html#a2b20c5f31c6b6ef72967b7bad0420320">trigger_irq_desc</a>;</div>
+<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;<span class="keyword">extern</span> <span class="keyword">struct </span>no_os_tdm_desc *<a class="code" href="ad4170__iio_2app_2app__config_8h.html#a5a275316e0bde85cd49b2e8a3a30e2cd">ad4170_tdm_desc</a>;</div>
+<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;<span class="keyword">extern</span> <span class="keyword">struct </span>no_os_eeprom_desc *<a class="code" href="ad405x__iio_2app_2app__config_8h.html#a3e28ad761469de0b6f49f66710c878a0">eeprom_desc</a>;</div>
+<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;<span class="keyword">extern</span> <span class="keyword">struct </span>no_os_pwm_desc *<a class="code" href="ad405x__iio_2app_2app__config_8h.html#a6135e59733ce0a63eebdfe96b5f45e51">tx_trigger_desc</a>;</div>
+<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;int32_t <a class="code" href="ad2s1210__iio_2app_2app__config_8h.html#aba990e48bb1b87852ff6a375f0c2f655">init_system</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;<span class="keywordtype">void</span> <a class="code" href="ad4170__iio_2app_2app__config_8h.html#a57c37c6b7af2f7586e6a924484a36155">ticker_callback</a>(<span class="keywordtype">void</span> *ctx);</div>
+<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160; </div>
+<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;<span class="preprocessor">#endif </span><span class="comment">//_APP_CONFIG_H_</span></div>
 <div class="ttc" id="aad2s1210__iio_2app_2app__config_8h_html_a2b20c5f31c6b6ef72967b7bad0420320"><div class="ttname"><a href="ad2s1210__iio_2app_2app__config_8h.html#a2b20c5f31c6b6ef72967b7bad0420320">trigger_irq_desc</a></div><div class="ttdeci">struct no_os_irq_ctrl_desc * trigger_irq_desc</div><div class="ttdef"><b>Definition:</b> app_config.c:103</div></div>
 <div class="ttc" id="aad2s1210__iio_2app_2app__config_8h_html_aba990e48bb1b87852ff6a375f0c2f655"><div class="ttname"><a href="ad2s1210__iio_2app_2app__config_8h.html#aba990e48bb1b87852ff6a375f0c2f655">init_system</a></div><div class="ttdeci">int32_t init_system(void)</div><div class="ttdoc">Initialize the system peripherals.</div><div class="ttdef"><b>Definition:</b> app_config.c:185</div></div>
 <div class="ttc" id="aad2s1210__iio_2app_2app__config_8h_html_ad5132545e75d00d2901088ff1886e41e"><div class="ttname"><a href="ad2s1210__iio_2app_2app__config_8h.html#ad5132545e75d00d2901088ff1886e41e">uart_desc</a></div><div class="ttdeci">struct no_os_uart_desc * uart_desc</div><div class="ttdef"><b>Definition:</b> app_config.c:97</div></div>
@@ -377,13 +383,13 @@ $(function() {
 <div class="ttc" id="aad405x__iio_2app_2app__config_8h_html_aa3fa5b0f28aa02dd241b7c618836d06a"><div class="ttname"><a href="ad405x__iio_2app_2app__config_8h.html#aa3fa5b0f28aa02dd241b7c618836d06a">trigger_gpio_desc</a></div><div class="ttdeci">struct no_os_gpio_desc * trigger_gpio_desc</div><div class="ttdef"><b>Definition:</b> app_config.c:192</div></div>
 <div class="ttc" id="aad4130__iio_2app_2app__config_8h_html_aa247c71107ed61242c98471409faab1d"><div class="ttname"><a href="ad4130__iio_2app_2app__config_8h.html#aa247c71107ed61242c98471409faab1d">spi_init_params</a></div><div class="ttdeci">struct no_os_spi_init_param spi_init_params</div><div class="ttdef"><b>Definition:</b> app_config.c:56</div></div>
 <div class="ttc" id="aad4170__accelerometer__config_8h_html"><div class="ttname"><a href="ad4170__accelerometer__config_8h.html">ad4170_accelerometer_config.h</a></div><div class="ttdoc">Header for AD4170 Accelerometer configurations module.</div></div>
-<div class="ttc" id="aad4170__iio_2app_2app__config_8h_html_a325760f96dd831775fe7c8ffd2f951af"><div class="ttname"><a href="ad4170__iio_2app_2app__config_8h.html#a325760f96dd831775fe7c8ffd2f951af">gpio_init_rdy</a></div><div class="ttdeci">struct no_os_gpio_init_param gpio_init_rdy</div><div class="ttdef"><b>Definition:</b> app_config.c:63</div></div>
-<div class="ttc" id="aad4170__iio_2app_2app__config_8h_html_a4809a80bd78ee1316fb8b4609e460e8a"><div class="ttname"><a href="ad4170__iio_2app_2app__config_8h.html#a4809a80bd78ee1316fb8b4609e460e8a">led_gpio_desc</a></div><div class="ttdeci">struct no_os_gpio_desc * led_gpio_desc</div><div class="ttdef"><b>Definition:</b> app_config.c:208</div></div>
-<div class="ttc" id="aad4170__iio_2app_2app__config_8h_html_a57c37c6b7af2f7586e6a924484a36155"><div class="ttname"><a href="ad4170__iio_2app_2app__config_8h.html#a57c37c6b7af2f7586e6a924484a36155">ticker_callback</a></div><div class="ttdeci">void ticker_callback(void *ctx)</div><div class="ttdoc">This is an ISR (Interrupt Service Routine) for Ticker object.</div><div class="ttdef"><b>Definition:</b> ad4170_iio.c:2850</div></div>
+<div class="ttc" id="aad4170__iio_2app_2app__config_8h_html_a325760f96dd831775fe7c8ffd2f951af"><div class="ttname"><a href="ad4170__iio_2app_2app__config_8h.html#a325760f96dd831775fe7c8ffd2f951af">gpio_init_rdy</a></div><div class="ttdeci">struct no_os_gpio_init_param gpio_init_rdy</div><div class="ttdef"><b>Definition:</b> app_config.c:68</div></div>
+<div class="ttc" id="aad4170__iio_2app_2app__config_8h_html_a4809a80bd78ee1316fb8b4609e460e8a"><div class="ttname"><a href="ad4170__iio_2app_2app__config_8h.html#a4809a80bd78ee1316fb8b4609e460e8a">led_gpio_desc</a></div><div class="ttdeci">struct no_os_gpio_desc * led_gpio_desc</div><div class="ttdef"><b>Definition:</b> app_config.c:213</div></div>
+<div class="ttc" id="aad4170__iio_2app_2app__config_8h_html_a57c37c6b7af2f7586e6a924484a36155"><div class="ttname"><a href="ad4170__iio_2app_2app__config_8h.html#a57c37c6b7af2f7586e6a924484a36155">ticker_callback</a></div><div class="ttdeci">void ticker_callback(void *ctx)</div><div class="ttdoc">This is an ISR (Interrupt Service Routine) for Ticker object.</div><div class="ttdef"><b>Definition:</b> ad4170_iio.c:2832</div></div>
 <div class="ttc" id="aad4170__iio_2app_2app__config_8h_html_a5a275316e0bde85cd49b2e8a3a30e2cd"><div class="ttname"><a href="ad4170__iio_2app_2app__config_8h.html#a5a275316e0bde85cd49b2e8a3a30e2cd">ad4170_tdm_desc</a></div><div class="ttdeci">struct no_os_tdm_desc * ad4170_tdm_desc</div></div>
-<div class="ttc" id="aad4170__iio_2app_2app__config_8h_html_aa4e0e21e262905fedb9b1d3d636f529a"><div class="ttname"><a href="ad4170__iio_2app_2app__config_8h.html#aa4e0e21e262905fedb9b1d3d636f529a">csb_gpio_desc</a></div><div class="ttdeci">struct no_os_gpio_desc * csb_gpio_desc</div><div class="ttdef"><b>Definition:</b> app_config.c:226</div></div>
-<div class="ttc" id="aad4170__iio_2app_2app__config_8h_html_aa6edd21b8d3b11bfc84d2678abc7d922"><div class="ttname"><a href="ad4170__iio_2app_2app__config_8h.html#aa6edd21b8d3b11bfc84d2678abc7d922">gpio_init_ldac_n</a></div><div class="ttdeci">struct no_os_gpio_init_param gpio_init_ldac_n</div><div class="ttdef"><b>Definition:</b> app_config.c:55</div></div>
-<div class="ttc" id="aad4170__iio_2app_2app__config_8h_html_ab8227b0bd0c980a16b0adf0a87062c81"><div class="ttname"><a href="ad4170__iio_2app_2app__config_8h.html#ab8227b0bd0c980a16b0adf0a87062c81">gpio_init_sync_inb</a></div><div class="ttdeci">struct no_os_gpio_init_param gpio_init_sync_inb</div><div class="ttdef"><b>Definition:</b> app_config.c:71</div></div>
+<div class="ttc" id="aad4170__iio_2app_2app__config_8h_html_aa4e0e21e262905fedb9b1d3d636f529a"><div class="ttname"><a href="ad4170__iio_2app_2app__config_8h.html#aa4e0e21e262905fedb9b1d3d636f529a">csb_gpio_desc</a></div><div class="ttdeci">struct no_os_gpio_desc * csb_gpio_desc</div><div class="ttdef"><b>Definition:</b> app_config.c:231</div></div>
+<div class="ttc" id="aad4170__iio_2app_2app__config_8h_html_aa6edd21b8d3b11bfc84d2678abc7d922"><div class="ttname"><a href="ad4170__iio_2app_2app__config_8h.html#aa6edd21b8d3b11bfc84d2678abc7d922">gpio_init_ldac_n</a></div><div class="ttdeci">struct no_os_gpio_init_param gpio_init_ldac_n</div><div class="ttdef"><b>Definition:</b> app_config.c:60</div></div>
+<div class="ttc" id="aad4170__iio_2app_2app__config_8h_html_ab8227b0bd0c980a16b0adf0a87062c81"><div class="ttname"><a href="ad4170__iio_2app_2app__config_8h.html#ab8227b0bd0c980a16b0adf0a87062c81">gpio_init_sync_inb</a></div><div class="ttdeci">struct no_os_gpio_init_param gpio_init_sync_inb</div><div class="ttdef"><b>Definition:</b> app_config.c:76</div></div>
 <div class="ttc" id="aad4170__loadcell__config_8h_html"><div class="ttname"><a href="ad4170__loadcell__config_8h.html">ad4170_loadcell_config.h</a></div><div class="ttdoc">Header for AD4170 Loadcell configurations module.</div></div>
 <div class="ttc" id="aad4170__rtd__config_8h_html"><div class="ttname"><a href="ad4170__rtd__config_8h.html">ad4170_rtd_config.h</a></div><div class="ttdoc">Header for AD4170 RTD configurations module.</div></div>
 <div class="ttc" id="aad4170__thermistor__config_8h_html"><div class="ttname"><a href="ad4170__thermistor__config_8h.html">ad4170_thermistor_config.h</a></div><div class="ttdoc">Header for AD4170 thermistor configurations module.</div></div>
