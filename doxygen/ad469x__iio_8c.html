@@ -152,6 +152,10 @@ Macros</h2></td></tr>
 <tr class="separator:a70daa3c8a2012e9f7f314b8476476af2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a97a48b1e60b1197a423e2f65aedf87a9"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad469x__iio_8c.html#a97a48b1e60b1197a423e2f65aedf87a9">AD469X_GAIN_CORR_SCALE</a>(x)&#160;&#160;&#160;(float)(x) / (float)(<a class="el" href="ad777x__iio_2app_2app__config_8h.html#aed250e391fcc00823ec8cf976bc47482">ADC_MAX_COUNT_BIPOLAR</a>)</td></tr>
 <tr class="separator:a97a48b1e60b1197a423e2f65aedf87a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a635a0761c3c1c63eca588709c21b0b08"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad469x__iio_8c.html#a635a0761c3c1c63eca588709c21b0b08">MAX_LOCAL_BUF_SIZE</a>&#160;&#160;&#160;8000</td></tr>
+<tr class="separator:a635a0761c3c1c63eca588709c21b0b08"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a35fe7741c00803a7bb80d783507203f9"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad469x__iio_8c.html#a35fe7741c00803a7bb80d783507203f9">MAX_DMA_NDTR</a>&#160;&#160;&#160;(no_os_min(65535, <a class="el" href="ad7091r__iio_8c.html#a635a0761c3c1c63eca588709c21b0b08">MAX_LOCAL_BUF_SIZE</a>/2))</td></tr>
+<tr class="separator:a35fe7741c00803a7bb80d783507203f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
 Enumerations</h2></td></tr>
@@ -339,7 +343,7 @@ Variables</h2></td></tr>
 <div class="line">    .scan_type = &amp;<a class="code" href="ad469x__iio_8c.html#a493e3ad8d6f8e0653fb1aef51762beed">ad469x_iio_scan_type</a>,\</div>
 <div class="line">    .attributes = ad469x_iio_ch_attributes\</div>
 <div class="line">}</div>
-<div class="ttc" id="aad469x__iio_8c_html_a493e3ad8d6f8e0653fb1aef51762beed"><div class="ttname"><a href="ad469x__iio_8c.html#a493e3ad8d6f8e0653fb1aef51762beed">ad469x_iio_scan_type</a></div><div class="ttdeci">struct scan_type ad469x_iio_scan_type</div><div class="ttdef"><b>Definition:</b> ad469x_iio.c:184</div></div>
+<div class="ttc" id="aad469x__iio_8c_html_a493e3ad8d6f8e0653fb1aef51762beed"><div class="ttname"><a href="ad469x__iio_8c.html#a493e3ad8d6f8e0653fb1aef51762beed">ad469x_iio_scan_type</a></div><div class="ttdeci">struct scan_type ad469x_iio_scan_type</div><div class="ttdef"><b>Definition:</b> ad469x_iio.c:190</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -379,6 +383,34 @@ Variables</h2></td></tr>
       <table class="memname">
         <tr>
           <td class="memname">#define DATA_BUFFER_SIZE&#160;&#160;&#160;(32768)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a35fe7741c00803a7bb80d783507203f9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a35fe7741c00803a7bb80d783507203f9">&#9670;&nbsp;</a></span>MAX_DMA_NDTR</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MAX_DMA_NDTR&#160;&#160;&#160;(no_os_min(65535, <a class="el" href="ad7091r__iio_8c.html#a635a0761c3c1c63eca588709c21b0b08">MAX_LOCAL_BUF_SIZE</a>/2))</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a635a0761c3c1c63eca588709c21b0b08"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a635a0761c3c1c63eca588709c21b0b08">&#9670;&nbsp;</a></span>MAX_LOCAL_BUF_SIZE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MAX_LOCAL_BUF_SIZE&#160;&#160;&#160;8000</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -632,9 +664,9 @@ Here is the caller graph for this function:</div>
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line">= {</div>
 <div class="line"> </div>
-<div class="line">    .sign = <span class="charliteral">&#39;s&#39;</span>,</div>
 <div class="line"> </div>
 <div class="line"> </div>
+<div class="line">    .sign = <span class="charliteral">&#39;u&#39;</span>,</div>
 <div class="line"> </div>
 <div class="line">    .realbits = <a class="code" href="ad2s1210__iio_8c.html#a6a5692377aeb1197a19ef7856ae54e8d">CHN_STORAGE_BITS</a>,</div>
 <div class="line">    .storagebits = <a class="code" href="ad4130__iio_2app_2app__config_8h.html#a00978ca9e8220475258dcbbbb7d29129">ADC_RESOLUTION</a>,</div>

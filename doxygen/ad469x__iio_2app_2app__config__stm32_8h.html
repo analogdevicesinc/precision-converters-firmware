@@ -86,12 +86,13 @@ $(function() {
 <code>#include &quot;stm32_uart.h&quot;</code><br />
 <code>#include &quot;stm32_pwm.h&quot;</code><br />
 <code>#include &quot;stm32_dma.h&quot;</code><br />
+<code>#include &quot;stm32_usb_uart.h&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for app_config_stm32.h:</div>
 <div class="dyncontent">
 <div class="center"><img src="ad469x__iio_2app_2app__config__stm32_8h__incl.png" border="0" usemap="#a_2home_2runner_2work_2precision-converters-firmware_2precision-converters-firmware_2projects_2ad469x__iio_2app_2app__config__stm32_8h" alt=""/></div>
 <map name="a_2home_2runner_2work_2precision-converters-firmware_2precision-converters-firmware_2projects_2ad469x__iio_2app_2app__config__stm32_8h" id="a_2home_2runner_2work_2precision-converters-firmware_2precision-converters-firmware_2projects_2ad469x__iio_2app_2app__config__stm32_8h">
-<area shape="rect" title="Header file for STM32 platform configurations." alt="" coords="485,5,743,76"/>
+<area shape="rect" title="Header file for STM32 platform configurations." alt="" coords="557,5,815,76"/>
 <area shape="rect" title=" " alt="" coords="5,124,76,151"/>
 <area shape="rect" title=" " alt="" coords="100,124,203,151"/>
 <area shape="rect" title=" " alt="" coords="227,124,329,151"/>
@@ -102,6 +103,7 @@ Include dependency graph for app_config_stm32.h:</div>
 <area shape="rect" title=" " alt="" coords="896,124,1004,151"/>
 <area shape="rect" title=" " alt="" coords="1029,124,1143,151"/>
 <area shape="rect" title=" " alt="" coords="1168,124,1279,151"/>
+<area shape="rect" title=" " alt="" coords="1303,124,1442,151"/>
 </map>
 </div>
 </div><div class="textblock"><div class="dynheader">
@@ -134,15 +136,15 @@ Macros</h2></td></tr>
 <tr class="separator:aa0c606bfd1bde0400d6c7b759f9d2817"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a35c5b09972868811ffbd7c08c530bfb5"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad469x__iio_2app_2app__config__stm32_8h.html#a35c5b09972868811ffbd7c08c530bfb5">SPI_CS_PORT_NUM</a>&#160;&#160;&#160;0</td></tr>
 <tr class="separator:a35c5b09972868811ffbd7c08c530bfb5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa150ebc720ce1013f945fab3fda0eb8a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad469x__iio_2app_2app__config__stm32_8h.html#aa150ebc720ce1013f945fab3fda0eb8a">CNV_PIN_NUM</a>&#160;&#160;&#160;15</td></tr>
+<tr class="memitem:aa150ebc720ce1013f945fab3fda0eb8a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad469x__iio_2app_2app__config__stm32_8h.html#aa150ebc720ce1013f945fab3fda0eb8a">CNV_PIN_NUM</a>&#160;&#160;&#160;10</td></tr>
 <tr class="separator:aa150ebc720ce1013f945fab3fda0eb8a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a848b77ccbd5091fc97110d87fded00ea"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad469x__iio_2app_2app__config__stm32_8h.html#a848b77ccbd5091fc97110d87fded00ea">CNV_PORT_NUM</a>&#160;&#160;&#160;1</td></tr>
+<tr class="memitem:a848b77ccbd5091fc97110d87fded00ea"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad469x__iio_2app_2app__config__stm32_8h.html#a848b77ccbd5091fc97110d87fded00ea">CNV_PORT_NUM</a>&#160;&#160;&#160;0</td></tr>
 <tr class="separator:a848b77ccbd5091fc97110d87fded00ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1f5e7169afe871e2a91354fd79ed15e8"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad469x__iio_2app_2app__config__stm32_8h.html#a1f5e7169afe871e2a91354fd79ed15e8">CNV_PORT_BASE</a>&#160;&#160;&#160;GPIOB</td></tr>
+<tr class="memitem:a1f5e7169afe871e2a91354fd79ed15e8"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad469x__iio_2app_2app__config__stm32_8h.html#a1f5e7169afe871e2a91354fd79ed15e8">CNV_PORT_BASE</a>&#160;&#160;&#160;GPIOA</td></tr>
 <tr class="separator:a1f5e7169afe871e2a91354fd79ed15e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa6a04a1fa7eab9a688104ad31bfcb929"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad469x__iio_2app_2app__config__stm32_8h.html#aa6a04a1fa7eab9a688104ad31bfcb929">GP0_PIN_NUM</a>&#160;&#160;&#160;7</td></tr>
+<tr class="memitem:aa6a04a1fa7eab9a688104ad31bfcb929"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad469x__iio_2app_2app__config__stm32_8h.html#aa6a04a1fa7eab9a688104ad31bfcb929">GP0_PIN_NUM</a>&#160;&#160;&#160;15</td></tr>
 <tr class="separator:aa6a04a1fa7eab9a688104ad31bfcb929"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a779927bd65bff14619ae45ef489bb706"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad469x__iio_2app_2app__config__stm32_8h.html#a779927bd65bff14619ae45ef489bb706">GP0_PORT_NUM</a>&#160;&#160;&#160;6</td></tr>
+<tr class="memitem:a779927bd65bff14619ae45ef489bb706"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad469x__iio_2app_2app__config__stm32_8h.html#a779927bd65bff14619ae45ef489bb706">GP0_PORT_NUM</a>&#160;&#160;&#160;1</td></tr>
 <tr class="separator:a779927bd65bff14619ae45ef489bb706"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab9a6818fcd5b0c436c78a43cc34a1791"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad469x__iio_2app_2app__config__stm32_8h.html#ab9a6818fcd5b0c436c78a43cc34a1791">GP1_PIN_NUM</a>&#160;&#160;&#160;10</td></tr>
 <tr class="separator:ab9a6818fcd5b0c436c78a43cc34a1791"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -178,6 +180,8 @@ Macros</h2></td></tr>
 <tr class="separator:aea695cfd66cb4b1c25c5f56b59d9ad1e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab4b92eba8271021f58a561078d6e549d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad469x__iio_2app_2app__config__stm32_8h.html#ab4b92eba8271021f58a561078d6e549d">dma_ops</a>&#160;&#160;&#160;stm32_dma_ops</td></tr>
 <tr class="separator:ab4b92eba8271021f58a561078d6e549d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad7c095ac25ce9f903c7c0a9a50002bd4"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad469x__iio_2app_2app__config__stm32_8h.html#ad7c095ac25ce9f903c7c0a9a50002bd4">vcom_ops</a>&#160;&#160;&#160;stm32_usb_uart_ops</td></tr>
+<tr class="separator:ad7c095ac25ce9f903c7c0a9a50002bd4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acccd839538293e59fffb48844b260d43"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad469x__iio_2app_2app__config__stm32_8h.html#acccd839538293e59fffb48844b260d43">trigger_gpio_handle</a>&#160;&#160;&#160;0</td></tr>
 <tr class="separator:acccd839538293e59fffb48844b260d43"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a14a687c138f5c3f5afa9cabf917d2422"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad469x__iio_2app_2app__config__stm32_8h.html#a14a687c138f5c3f5afa9cabf917d2422">TIMER_1_PRESCALER</a>&#160;&#160;&#160;1</td></tr>
@@ -210,7 +214,7 @@ Macros</h2></td></tr>
 <tr class="separator:a14ec8c7cc0a3b8c323855a87bd39f8c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0f4e70d03f161044918ff22db048377b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad469x__iio_2app_2app__config__stm32_8h.html#a0f4e70d03f161044918ff22db048377b">AD469x_RxDMA_CHANNEL_NUM</a>&#160;&#160;&#160;DMA_CHANNEL_3</td></tr>
 <tr class="separator:a0f4e70d03f161044918ff22db048377b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a17889cf1cf83a54524c242fa5a353cf1"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad469x__iio_2app_2app__config__stm32_8h.html#a17889cf1cf83a54524c242fa5a353cf1">SAMPLING_RATE</a>&#160;&#160;&#160;(62500)</td></tr>
+<tr class="memitem:a17889cf1cf83a54524c242fa5a353cf1"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad469x__iio_2app_2app__config__stm32_8h.html#a17889cf1cf83a54524c242fa5a353cf1">SAMPLING_RATE</a>&#160;&#160;&#160;(50000)</td></tr>
 <tr class="separator:a17889cf1cf83a54524c242fa5a353cf1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a610f314b31027cbf9aee7c2eb8b946fd"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad469x__iio_2app_2app__config__stm32_8h.html#a610f314b31027cbf9aee7c2eb8b946fd">CONV_TRIGGER_DUTY_CYCLE_NSEC</a>(x)&#160;&#160;&#160;(x / 10)</td></tr>
 <tr class="separator:a610f314b31027cbf9aee7c2eb8b946fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -222,7 +226,7 @@ Macros</h2></td></tr>
 <tr class="separator:a351fea660532d65c7a6195dc2de96c3f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad5519bec7cf84804da50dc272c4fc8d2"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad469x__iio_2app_2app__config__stm32_8h.html#ad5519bec7cf84804da50dc272c4fc8d2">TX_TRIGGER_DUTY_RATIO</a>&#160;&#160;&#160;50</td></tr>
 <tr class="separator:ad5519bec7cf84804da50dc272c4fc8d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1eca36e2a807991f0bb6fab74f6afe48"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad469x__iio_2app_2app__config__stm32_8h.html#a1eca36e2a807991f0bb6fab74f6afe48">CNV_DUTY_RATIO_NS</a>&#160;&#160;&#160;1310</td></tr>
+<tr class="memitem:a1eca36e2a807991f0bb6fab74f6afe48"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad469x__iio_2app_2app__config__stm32_8h.html#a1eca36e2a807991f0bb6fab74f6afe48">CNV_DUTY_RATIO_NS</a>&#160;&#160;&#160;690</td></tr>
 <tr class="separator:a1eca36e2a807991f0bb6fab74f6afe48"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
@@ -230,6 +234,12 @@ Functions</h2></td></tr>
 <tr class="memitem:aa599b1bdd18c25d273dded2a87a19a2f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad469x__iio_2app_2app__config__stm32_8h.html#aa599b1bdd18c25d273dded2a87a19a2f">receivecomplete_callback</a> (DMA_HandleTypeDef *hdma)</td></tr>
 <tr class="memdesc:aa599b1bdd18c25d273dded2a87a19a2f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Callback function to flag the capture of number of requested samples.  <a href="ad469x__iio_2app_2app__config__stm32_8h.html#aa599b1bdd18c25d273dded2a87a19a2f">More...</a><br /></td></tr>
 <tr class="separator:aa599b1bdd18c25d273dded2a87a19a2f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a748af879b759fb21a9679dfade3057c3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad469x__iio_2app_2app__config__stm32_8h.html#a748af879b759fb21a9679dfade3057c3">halfcmplt_callback</a> (DMA_HandleTypeDef *hdma)</td></tr>
+<tr class="memdesc:a748af879b759fb21a9679dfade3057c3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Callback function to flag the capture of half the number of requested samples.  <a href="ad469x__iio_2app_2app__config__stm32_8h.html#a748af879b759fb21a9679dfade3057c3">More...</a><br /></td></tr>
+<tr class="separator:a748af879b759fb21a9679dfade3057c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aedc02b5a83ce2aec0bdd827a23822a30"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad469x__iio_2app_2app__config__stm32_8h.html#aedc02b5a83ce2aec0bdd827a23822a30">update_buff</a> (uint32_t *<a class="el" href="ad7091r__iio_8c.html#a64753f7285011cab33065a7abb2574ef">local_buf</a>, uint32_t *buf_start_addr)</td></tr>
+<tr class="memdesc:aedc02b5a83ce2aec0bdd827a23822a30"><td class="mdescLeft">&#160;</td><td class="mdescRight">Update buffer index.  <a href="ad469x__iio_2app_2app__config__stm32_8h.html#aedc02b5a83ce2aec0bdd827a23822a30">More...</a><br /></td></tr>
+<tr class="separator:aedc02b5a83ce2aec0bdd827a23822a30"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abefda411622f6a67f00c5c381005027d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad469x__iio_2app_2app__config__stm32_8h.html#abefda411622f6a67f00c5c381005027d">stm32_cnv_output_gpio_config</a> (bool is_gpio)</td></tr>
 <tr class="memdesc:abefda411622f6a67f00c5c381005027d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Configures the conversion pin as output mode.  <a href="ad469x__iio_2app_2app__config__stm32_8h.html#abefda411622f6a67f00c5c381005027d">More...</a><br /></td></tr>
 <tr class="separator:abefda411622f6a67f00c5c381005027d"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -245,15 +255,11 @@ Functions</h2></td></tr>
 <tr class="memitem:adc68d7f97d9907d3ef6fa6bc0cbd0d09"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad469x__iio_2app_2app__config__stm32_8h.html#adc68d7f97d9907d3ef6fa6bc0cbd0d09">stm32_timer_stop</a> (void)</td></tr>
 <tr class="memdesc:adc68d7f97d9907d3ef6fa6bc0cbd0d09"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stops generating timer signals.  <a href="ad469x__iio_2app_2app__config__stm32_8h.html#adc68d7f97d9907d3ef6fa6bc0cbd0d09">More...</a><br /></td></tr>
 <tr class="separator:adc68d7f97d9907d3ef6fa6bc0cbd0d09"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7a33403d4cbab22c6d876363a1c0a806"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad469x__iio_2app_2app__config__stm32_8h.html#a7a33403d4cbab22c6d876363a1c0a806">tim8_config</a> (void)</td></tr>
-<tr class="memdesc:a7a33403d4cbab22c6d876363a1c0a806"><td class="mdescLeft">&#160;</td><td class="mdescRight">Configure Tx Trigger timer.  <a href="ad469x__iio_2app_2app__config__stm32_8h.html#a7a33403d4cbab22c6d876363a1c0a806">More...</a><br /></td></tr>
-<tr class="separator:a7a33403d4cbab22c6d876363a1c0a806"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a24bc958e748c2ee89fe6cb7b251c0f92"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad469x__iio_2app_2app__config__stm32_8h.html#a24bc958e748c2ee89fe6cb7b251c0f92">tim1_config</a> (void)</td></tr>
-<tr class="memdesc:a24bc958e748c2ee89fe6cb7b251c0f92"><td class="mdescLeft">&#160;</td><td class="mdescRight">Configure CNV timer.  <a href="ad469x__iio_2app_2app__config__stm32_8h.html#a24bc958e748c2ee89fe6cb7b251c0f92">More...</a><br /></td></tr>
-<tr class="separator:a24bc958e748c2ee89fe6cb7b251c0f92"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7256d80c59f9d4eafcebc79f1b73ba72"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad469x__iio_2app_2app__config__stm32_8h.html#a7256d80c59f9d4eafcebc79f1b73ba72">stm32_system_init</a> (void)</td></tr>
 <tr class="memdesc:a7256d80c59f9d4eafcebc79f1b73ba72"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize the STM32 system peripherals.  <a href="ad469x__iio_2app_2app__config__stm32_8h.html#a7256d80c59f9d4eafcebc79f1b73ba72">More...</a><br /></td></tr>
 <tr class="separator:a7256d80c59f9d4eafcebc79f1b73ba72"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adab4f7fc1db4ce2be073d3913209d2af"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad469x__iio_2app_2app__config__stm32_8h.html#adab4f7fc1db4ce2be073d3913209d2af">MX_USB_DEVICE_Init</a> (void)</td></tr>
+<tr class="separator:adab4f7fc1db4ce2be073d3913209d2af"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Variables</h2></td></tr>
@@ -307,6 +313,14 @@ Variables</h2></td></tr>
 <tr class="separator:a117d16f5e47ab1da2ae9982aeffd5832"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af55721be04fc4e68245e58f18df59343"><td class="memItemLeft" align="right" valign="top">struct stm32_gpio_init_param&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad469x__iio_2app_2app__config__stm32_8h.html#af55721be04fc4e68245e58f18df59343">stm32_cs_pwm_gpio_extra_init_params</a></td></tr>
 <tr class="separator:af55721be04fc4e68245e58f18df59343"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5915db76e1b5a75cfd23f3ee5d8d3bf6"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad469x__iio_2app_2app__config__stm32_8h.html#a5915db76e1b5a75cfd23f3ee5d8d3bf6">rxdma_ndtr</a></td></tr>
+<tr class="separator:a5915db76e1b5a75cfd23f3ee5d8d3bf6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8e268603ece19f1811f12af4b4930359"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad469x__iio_2app_2app__config__stm32_8h.html#a8e268603ece19f1811f12af4b4930359">dma_cycle_count</a></td></tr>
+<tr class="separator:a8e268603ece19f1811f12af4b4930359"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5abca88253610d01e7e250f30d72cc5b"><td class="memItemLeft" align="right" valign="top">USBD_HandleTypeDef&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad469x__iio_2app_2app__config__stm32_8h.html#a5abca88253610d01e7e250f30d72cc5b">hUsbDeviceHS</a></td></tr>
+<tr class="separator:a5abca88253610d01e7e250f30d72cc5b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad6c530882dee1bb34bfde4c8bf40eb9c"><td class="memItemLeft" align="right" valign="top">struct stm32_usb_uart_init_param&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad469x__iio_2app_2app__config__stm32_8h.html#ad6c530882dee1bb34bfde4c8bf40eb9c">stm32_vcom_extra_init_params</a></td></tr>
+<tr class="separator:ad6c530882dee1bb34bfde4c8bf40eb9c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Header file for STM32 platform configurations. </p>
@@ -390,7 +404,7 @@ Variables</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define CNV_DUTY_RATIO_NS&#160;&#160;&#160;1310</td>
+          <td class="memname">#define CNV_DUTY_RATIO_NS&#160;&#160;&#160;690</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -404,7 +418,7 @@ Variables</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define CNV_PIN_NUM&#160;&#160;&#160;15</td>
+          <td class="memname">#define CNV_PIN_NUM&#160;&#160;&#160;10</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -418,7 +432,7 @@ Variables</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define CNV_PORT_BASE&#160;&#160;&#160;GPIOB</td>
+          <td class="memname">#define CNV_PORT_BASE&#160;&#160;&#160;GPIOA</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -432,7 +446,7 @@ Variables</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define CNV_PORT_NUM&#160;&#160;&#160;1</td>
+          <td class="memname">#define CNV_PORT_NUM&#160;&#160;&#160;0</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -496,7 +510,7 @@ Variables</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define GP0_PIN_NUM&#160;&#160;&#160;7</td>
+          <td class="memname">#define GP0_PIN_NUM&#160;&#160;&#160;15</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -510,7 +524,7 @@ Variables</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define GP0_PORT_NUM&#160;&#160;&#160;6</td>
+          <td class="memname">#define GP0_PORT_NUM&#160;&#160;&#160;1</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -664,7 +678,7 @@ Variables</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define SAMPLING_RATE&#160;&#160;&#160;(62500)</td>
+          <td class="memname">#define SAMPLING_RATE&#160;&#160;&#160;(50000)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -1063,7 +1077,74 @@ Variables</h2></td></tr>
 
 </div>
 </div>
+<a id="ad7c095ac25ce9f903c7c0a9a50002bd4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad7c095ac25ce9f903c7c0a9a50002bd4">&#9670;&nbsp;</a></span>vcom_ops</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define vcom_ops&#160;&#160;&#160;stm32_usb_uart_ops</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <h2 class="groupheader">Function Documentation</h2>
+<a id="a748af879b759fb21a9679dfade3057c3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a748af879b759fb21a9679dfade3057c3">&#9670;&nbsp;</a></span>halfcmplt_callback()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void halfcmplt_callback </td>
+          <td>(</td>
+          <td class="paramtype">DMA_HandleTypeDef *&#160;</td>
+          <td class="paramname"><em>hdma</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Callback function to flag the capture of half the number of requested samples. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">hdma</td><td>- DMA Handler (Unused) </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>None</dd></dl>
+<p>Callback function to flag the capture of half the number of requested samples.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">hdma</td><td>- DMA Handler (Unused) </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>None </dd></dl>
+
+</div>
+</div>
+<a id="adab4f7fc1db4ce2be073d3913209d2af"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adab4f7fc1db4ce2be073d3913209d2af">&#9670;&nbsp;</a></span>MX_USB_DEVICE_Init()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void MX_USB_DEVICE_Init </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="aa599b1bdd18c25d273dded2a87a19a2f"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aa599b1bdd18c25d273dded2a87a19a2f">&#9670;&nbsp;</a></span>receivecomplete_callback()</h2>
 
@@ -1087,11 +1168,7 @@ Variables</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>None</dd>
-<dd>
-None</dd>
-<dd>
-None</dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>None</dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">hdma</td><td>- DMA Handler (Unused) </td></tr>
@@ -1251,48 +1328,41 @@ None</dd></dl>
 
 </div>
 </div>
-<a id="a24bc958e748c2ee89fe6cb7b251c0f92"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a24bc958e748c2ee89fe6cb7b251c0f92">&#9670;&nbsp;</a></span>tim1_config()</h2>
+<a id="aedc02b5a83ce2aec0bdd827a23822a30"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aedc02b5a83ce2aec0bdd827a23822a30">&#9670;&nbsp;</a></span>update_buff()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void tim1_config </td>
+          <td class="memname">void update_buff </td>
           <td>(</td>
-          <td class="paramtype">void&#160;</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramtype">uint32_t *&#160;</td>
+          <td class="paramname"><em>local_buf</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">uint32_t *&#160;</td>
+          <td class="paramname"><em>buf_start_addr</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Configure CNV timer. </p>
+<p>Update buffer index. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">local_buf[out]</td><td>- Local Buffer </td></tr>
+    <tr><td class="paramname">buf_start_addr[out]</td><td>- Buffer start addr </td></tr>
+  </table>
+  </dd>
+</dl>
 <dl class="section return"><dt>Returns</dt><dd>None </dd></dl>
-
-</div>
-</div>
-<a id="a7a33403d4cbab22c6d876363a1c0a806"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7a33403d4cbab22c6d876363a1c0a806">&#9670;&nbsp;</a></span>tim8_config()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void tim8_config </td>
-          <td>(</td>
-          <td class="paramtype">void&#160;</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Configure Tx Trigger timer. </p>
-<dl class="section return"><dt>Returns</dt><dd>None</dd>
-<dd>
-None </dd></dl>
-<dl class="section note"><dt>Note</dt><dd>Tx timer acts as a slave for External Trigger (ETR1) in one-pulse mode to generate DMA requests </dd></dl>
 
 </div>
 </div>
@@ -1308,6 +1378,28 @@ None </dd></dl>
       <table class="memname">
         <tr>
           <td class="memname">volatile bool data_ready</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a8e268603ece19f1811f12af4b4930359"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8e268603ece19f1811f12af4b4930359">&#9670;&nbsp;</a></span>dma_cycle_count</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t dma_cycle_count</td>
         </tr>
       </table>
   </td>
@@ -1539,6 +1631,28 @@ None </dd></dl>
 
 </div>
 </div>
+<a id="a5abca88253610d01e7e250f30d72cc5b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5abca88253610d01e7e250f30d72cc5b">&#9670;&nbsp;</a></span>hUsbDeviceHS</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">USBD_HandleTypeDef hUsbDeviceHS</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a561a42d82d21f905611582e83de10c1c"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a561a42d82d21f905611582e83de10c1c">&#9670;&nbsp;</a></span>rxdma_channel</h2>
 
@@ -1550,6 +1664,28 @@ None </dd></dl>
       <table class="memname">
         <tr>
           <td class="memname">struct stm32_dma_channel rxdma_channel</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a5915db76e1b5a75cfd23f3ee5d8d3bf6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5915db76e1b5a75cfd23f3ee5d8d3bf6">&#9670;&nbsp;</a></span>rxdma_ndtr</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t rxdma_ndtr</td>
         </tr>
       </table>
   </td>
@@ -1814,6 +1950,28 @@ None </dd></dl>
       <table class="memname">
         <tr>
           <td class="memname">struct stm32_uart_init_param stm32_uart_extra_init_params</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad6c530882dee1bb34bfde4c8bf40eb9c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad6c530882dee1bb34bfde4c8bf40eb9c">&#9670;&nbsp;</a></span>stm32_vcom_extra_init_params</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">struct stm32_usb_uart_init_param stm32_vcom_extra_init_params</td>
         </tr>
       </table>
   </td>
