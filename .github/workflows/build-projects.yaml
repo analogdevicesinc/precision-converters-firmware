@@ -84,6 +84,7 @@ jobs:
           - ad405x_iio
           - ad4130_iio
           - ad559xr_console
+          - ad5754r_iio
           - ad5770r_console
           - ad579x_iio
           - ad590_console
