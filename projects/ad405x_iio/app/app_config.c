@@ -235,6 +235,10 @@ static int32_t init_uart(void)
 	if (ret) {
 		return ret;
 	}
+
+#if (ACTIVE_PLATFORM == STM32_PLATFORM)
+	no_os_uart_stdio(uart_console_stdio_desc);
+#endif
 #endif
 
 	return 0;

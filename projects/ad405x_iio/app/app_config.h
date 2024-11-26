@@ -58,8 +58,8 @@
 #define ACTIVE_PLATFORM		STM32_PLATFORM
 #endif
 
-/* Enable the UART/VirtualCOM port connection (default VCOM) */
-//#define USE_PHY_COM_PORT		// Uncomment to select UART
+/* Enable the UART/VirtualCOM port connection */
+#define USE_PHY_COM_PORT		// Uncomment to select UART
 
 #if !defined(USE_PHY_COM_PORT)
 #define USE_VIRTUAL_COM_PORT
@@ -91,46 +91,17 @@
 #endif
 #endif
 
-// **** Note for User on selection of Active Device ****//
-/* Define the device type here from the list of below device type defines
- * (one at a time. Defining more than one device can result into compile error).
- * e.g. #define DEV_AD4050 -> This will make AD4050 as an active device.
- * The active device is default set to AD4052 if device type is not defined.
- * */
-// #define DEV_AD4050
-
-#if defined(DEV_AD4052)
-#define ACTIVE_DEVICE_NAME	"ad4052"
-#define DEVICE_NAME			"DEV_AD4052"
-#define ACTIVE_DEVICE_ID	 ID_AD4052
-#define HW_MEZZANINE_NAME	"EVAL-AD4052-ARDZ"
-#define ADC_SAMPLE_MODE_RESOLUTION		    16
-#define ADC_AVERAGING_MODE_RESOLUTION		20
-#define ADC_BURST_AVG_MODE_RESOLUTION		20
-#elif defined(DEV_AD4050)
-#define ACTIVE_DEVICE_NAME	"ad4050"
-#define DEVICE_NAME			"DEV_AD4050"
-#define ACTIVE_DEVICE_ID	 ID_AD4050
-#define HW_MEZZANINE_NAME	"EVAL-AD4050-ARDZ"
-#define ADC_SAMPLE_MODE_RESOLUTION		    12
-#define ADC_AVERAGING_MODE_RESOLUTION		14
-#define ADC_BURST_AVG_MODE_RESOLUTION		14
-#else
-#define ACTIVE_DEVICE_NAME	"ad4052"
-#define DEVICE_NAME			"DEV_AD4052"
-#define ACTIVE_DEVICE_ID	 ID_AD4052
-#define HW_MEZZANINE_NAME	"EVAL-AD4052-ARDZ"
-#define ADC_SAMPLE_MODE_RESOLUTION		    16
-#define ADC_AVERAGING_MODE_RESOLUTION		20
-#define ADC_BURST_AVG_MODE_RESOLUTION		20
-#endif
+#define ACTIVE_DEVICE_NAME	"ad405x"
+#define DEVICE_NAME			"DEV_AD405x"
 
 #if (ACTIVE_PLATFORM == MBED_PLATFORM)
 #include "app_config_mbed.h"
 #define HW_CARRIER_NAME		    	TARGET_NAME
+#define CONSOLE_STDIO_PORT_AVAILABLE
 #elif (ACTIVE_PLATFORM == STM32_PLATFORM)
 #include "app_config_stm32.h"
 #define HW_CARRIER_NAME		    	TARGET_NAME
+#define CONSOLE_STDIO_PORT_AVAILABLE
 #if (INTERFACE_MODE != SPI_DMA)
 #define trigger_gpio_handle         0    // Unused macro
 #else
@@ -149,20 +120,6 @@
 
 /* ADC reference voltage (Range: 2.5 to 3.3v) */
 #define ADC_REF_VOLTAGE		2.5
-
-#if (ADC_CAPTURE_MODE == SAMPLE_MODE)
-#if (ADC_DATA_FORMAT == STRAIGHT_BINARY)
-#define ADC_MAX_COUNT 	(uint32_t)(1 << (ADC_SAMPLE_MODE_RESOLUTION))
-#else
-#define ADC_MAX_COUNT 	(uint32_t)(1 << (ADC_SAMPLE_MODE_RESOLUTION - 1))
-#endif
-#else
-#if (ADC_DATA_FORMAT == STRAIGHT_BINARY)
-#define ADC_MAX_COUNT 	(uint32_t)(1 << (ADC_BURST_AVG_MODE_RESOLUTION))
-#else
-#define ADC_MAX_COUNT 	(uint32_t)(1 << (ADC_BURST_AVG_MODE_RESOLUTION - 1))
-#endif
-#endif
 
 /* Time taken for the application to process the interrupt and
  * push data into iio buffer. */
@@ -195,17 +152,6 @@
 /* Serial number string is formed as: application name + device (target) name + platform (host) name */
 #define VIRTUAL_COM_SERIAL_NUM	(FIRMWARE_NAME "_" DEVICE_NAME "_" STR(PLATFORM_NAME))
 
-/* Check if any serial port available for use as console stdio port */
-#if defined(USE_PHY_COM_PORT)
-/* If PHY com is selected, VCOM or alternate PHY com port can act as a console stdio port */
-#if (ACTIVE_PLATFORM == MBED_PLATFORM)
-#define CONSOLE_STDIO_PORT_AVAILABLE
-#endif
-#else
-/* If VCOM is selected, PHY com port will/should act as a console stdio port */
-#define CONSOLE_STDIO_PORT_AVAILABLE
-#endif
-
 /* Enable/Disable the use of SDRAM for ADC data capture buffer */
 //#define USE_SDRAM	// Uncomment to use SDRAM as data buffer
 
@@ -224,12 +170,12 @@ extern struct no_os_irq_ctrl_desc *trigger_irq_desc;
 extern struct no_os_eeprom_desc *eeprom_desc;
 extern struct no_os_gpio_init_param cs_pwm_gpio_params;
 extern struct no_os_gpio_init_param pwm_gpio_params;
+extern struct no_os_pwm_init_param pwm_init_params;
 
 #if (INTERFACE_MODE == SPI_DMA)
 extern struct no_os_dma_xfer_desc dma_tx_desc;
 extern struct no_os_dma_ch dma_chan;
 extern struct no_os_pwm_init_param cs_init_params;
-extern struct no_os_pwm_init_param pwm_init_params;
 extern struct no_os_dma_init_param ad405x_dma_init_param;
 extern struct no_os_gpio_init_param cs_pwm_gpio_params;
 extern struct no_os_gpio_init_param pwm_gpio_params;
