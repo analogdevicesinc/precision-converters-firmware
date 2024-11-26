@@ -17,6 +17,8 @@ tests/output
 STM32/.settings
 STM32/Core
 STM32/Drivers
+STM32/Middlewares
+STM32/USB_DEVICE
 STM32/.mxproject
 STM32/.cproject
 STM32/.project
