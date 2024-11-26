@@ -64,7 +64,6 @@ struct no_os_gpio_init_param gpio_gpio1_param = {
 /* Initialize the AD405X device structure */
 struct ad405x_init_param ad405x_init_params = {
 	.spi_init = &spi_init_params,
-	.active_device = ACTIVE_DEVICE_ID,
 	.gpio_cnv = &gpio_cnv_param,
 	.gpio_gpio0 = &gpio_gpio0_param,
 	.gpio_gpio1 = &gpio_gpio1_param,

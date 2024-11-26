@@ -27,6 +27,7 @@
 #include "stm32_uart.h"
 #include "stm32_dma.h"
 #include "stm32_pwm.h"
+#include "stm32_usb_uart.h"
 
 /******************************************************************************/
 /********************** Macros and Constants Definition ***********************/
@@ -57,8 +58,13 @@
 
 /* Timer specific macros used for calculating pwm
  * period and duty cycle */
+#if (ADC_CAPTURE_MODE == BURST_AVERAGING_MODE)
+#define TIMER_1_PRESCALER                  7
+#define TIMER_2_PRESCALER                  3
+#else
 #define TIMER_1_PRESCALER                  1
 #define TIMER_2_PRESCALER                  0
+#endif
 #define TIMER_1_CLK_DIVIDER                2
 #define TIMER_2_CLK_DIVIDER                2
 
@@ -95,6 +101,7 @@
 #define dma_extra_init_params       stm32_dma_extra_init_params
 #define cs_extra_init_params        stm32_cs_extra_init_params
 #define tx_trigger_extra_init_params          stm32_tx_trigger_extra_init_params
+#define vcom_extra_init_params      stm32_vcom_extra_init_params
 
 /* Platform ops */
 #define gpio_ops                    stm32_gpio_ops
@@ -104,6 +111,7 @@
 #define pwm_ops                     stm32_pwm_ops
 #define trigger_gpio_irq_ops        stm32_gpio_irq_ops
 #define dma_ops                     stm32_dma_ops
+#define vcom_ops                    stm32_usb_uart_ops
 
 #define MAX_SPI_SCLK                22500000
 #define MAX_SPI_SCLK_45MHz			45000000
@@ -143,9 +151,11 @@ extern DMA_HandleTypeDef hdma_tim1_ch3;
 extern DMA_HandleTypeDef hdma_tim1_ch2;
 extern DMA_HandleTypeDef hdma_tim8_ch1;
 extern UART_HandleTypeDef huart5;
+extern USBD_HandleTypeDef hUsbDeviceHS;
 extern volatile bool data_ready;
 
 extern struct stm32_uart_init_param stm32_uart_extra_init_params;
+extern struct stm32_usb_uart_init_param stm32_vcom_extra_init_params;
 extern struct stm32_spi_init_param stm32_spi_extra_init_params;
 extern struct stm32_gpio_init_param stm32_pwm_gpio_extra_init_params;
 extern struct stm32_gpio_init_param stm32_gpio_cnv_extra_init_params;
@@ -165,9 +175,10 @@ extern struct stm32_dma_init_param stm32_spi_dma_extra_init_params;
 extern struct stm32_dma_channel rxdma_channel;
 extern struct stm32_dma_channel txdma_channel;
 extern uint32_t rxdma_ndtr;
+extern int dma_cycle_count;
+extern uint32_t callback_count;
 #endif
 
-extern int dma_cycle_count;
 void halfcmplt_callback(DMA_HandleTypeDef * hdma);
 void update_buff(uint32_t* local_buf, uint32_t* buf_start_addr);
 void stm32_system_init(void);
@@ -179,7 +190,5 @@ void stm32_configure_spi_dma(struct no_os_spi_init_param* spi_init_par,
 			     struct no_os_spi_desc* spi_desc, bool is_dma_mode);
 int stm32_abort_dma_transfer(void);
 void receivecomplete_callback(DMA_HandleTypeDef * hdma);
-void tim8_config(void);
-void tim1_config(void);
 
 #endif /* APP_CONFIG_STM32_H_ */

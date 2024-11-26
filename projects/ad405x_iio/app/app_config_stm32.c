@@ -50,10 +50,16 @@ struct stm32_uart_init_param stm32_uart_extra_init_params = {
 	.huart = &huart5,
 };
 
+/* STM32 VCOM init parameters */
+struct stm32_usb_uart_init_param stm32_vcom_extra_init_params = {
+	.husbdevice = &hUsbDeviceHS,
+};
+
 /* STM32 SPI specific parameters */
 struct stm32_spi_init_param stm32_spi_extra_init_params = {
 	.chip_select_port = STM32_SPI_CS_PORT_NUM,
 	.get_input_clock = HAL_RCC_GetPCLK2Freq,
+	.alternate = GPIO_AF1_TIM2
 };
 
 /* STM32 GPIO specific parameters */
@@ -115,7 +121,9 @@ struct stm32_pwm_init_param stm32_pwm_cnv_extra_init_params = {
 	.mode = TIM_OC_PWM1,
 	.timer_chn = TIMER_CHANNEL_3,
 	.get_timer_clock = HAL_RCC_GetPCLK2Freq,
-	.clock_divider = TIMER_1_CLK_DIVIDER
+	.clock_divider = TIMER_1_CLK_DIVIDER,
+	.trigger_enable = false,
+	.trigger_output = PWM_TRGO_UPDATE
 };
 
 #if (INTERFACE_MODE == SPI_DMA)
@@ -139,7 +147,12 @@ struct stm32_pwm_init_param stm32_tx_trigger_extra_init_params = {
 	.timer_chn = TIMER_CHANNEL_1,
 	.complementary_channel = false,
 	.get_timer_clock = HAL_RCC_GetPCLK1Freq,
-	.clock_divider = TIMER_8_CLK_DIVIDER
+	.clock_divider = TIMER_8_CLK_DIVIDER,
+	.trigger_enable = true,
+	.trigger_source = PWM_TS_ITR0,
+	.repetitions = 0,
+	.onepulse_enable = true,
+	.dma_enable = true,
 };
 #endif
 
@@ -154,6 +167,9 @@ volatile bool ad405x_conversion_flag = false;
 /* Number of times the DMA complete callback needs to be invoked for
  * capturing the desired number of samples*/
 int dma_cycle_count = 0;
+
+/* Global variable for callback count */
+uint32_t callback_count;
 
 /* The number of transactions requested for the RX DMA stream */
 uint32_t rxdma_ndtr;
@@ -176,7 +192,6 @@ uint8_t *dma_buf_current_idx;
 /************************** Functions Declaration *****************************/
 /******************************************************************************/
 void receivecomplete_callback(DMA_HandleTypeDef * hdma);
-void tim1_config(void);
 /******************************************************************************/
 /************************** Functions Definition ******************************/
 /******************************************************************************/
@@ -202,6 +217,7 @@ void stm32_system_init(void)
 	MX_TIM1_Init();
 	MX_TIM8_Init();
 	MX_SPI1_Init();
+	MX_USB_DEVICE_Init();
 	HAL_NVIC_DisableIRQ(STM32_DMA_CONT_TRIGGER);
 #if (INTERFACE_MODE == SPI_INTERRUPT)
 	HAL_NVIC_DisableIRQ(STM32_DMA_SPI_RX_TRIGGER);
@@ -225,6 +241,25 @@ void stm32_system_init(void)
 
 #if (INTERFACE_MODE == SPI_DMA)
 /**
+  * @brief 	IRQ handler for RX DMA channel
+  * @return None
+  */
+void DMA2_Stream0_IRQHandler(void)
+{
+#if (DATA_CAPTURE_MODE == BURST_DATA_CAPTURE)
+	/* Stop timers at the last entry to the callback */
+	if (callback_count == 1) {
+		sdesc = p_ad405x_dev->spi_desc->extra;
+
+		TIM8->DIER &= ~TIM_DIER_CC1DE;
+		no_os_pwm_disable(pwm_desc);
+		no_os_pwm_disable(sdesc->pwm_desc);
+	}
+#endif
+	HAL_DMA_IRQHandler(&hdma_spi1_rx);
+}
+
+/**
  * @brief   Callback function to flag the capture of half the number
  *          of requested samples.
  * @param hdma - DMA Handler (Unused)
@@ -242,6 +277,7 @@ void halfcmplt_callback(DMA_HandleTypeDef * hdma)
 	dma_buf_current_idx += rxdma_ndtr;
 	iio_buf_current_idx += rxdma_ndtr;
 
+	callback_count--;
 }
 
 /**
@@ -266,6 +302,9 @@ void update_buff(uint32_t* local_buf, uint32_t* buf_start_addr)
  */
 void stm32_timer_enable(void)
 {
+	/* Enable TIM DMA request */
+	no_os_pwm_enable(tx_trigger_desc);
+
 	/* Enable timers 1 and 2 */
 	TIM1->CCER |= TIM_CCER_CC3E;
 	TIM2->CCER |= TIM_CCER_CC1E;
@@ -316,7 +355,8 @@ void receivecomplete_callback(DMA_HandleTypeDef * hdma)
 	iio_buf_current_idx += rxdma_ndtr;
 
 	/* Update samples captured so far */
-	dma_cycle_count -= 1;
+	dma_cycle_count--;
+	callback_count--;
 
 	/* If required cycles are done, stop timers and reset counters. */
 	if (!dma_cycle_count) {
@@ -393,41 +433,5 @@ int stm32_abort_dma_transfer(void)
 		return ret;
 	}
 
-}
-
-/**
- * @brief Configure CNV timer
- * @return None
- */
-void tim1_config(void)
-{
-	TIM1->EGR = TIM_EGR_UG;// Generate update event
-
-	TIM1->CR2 &= ~TIM_CR2_MMS;
-	TIM1->CR2 |= TIM_TRGO_UPDATE; // Select Update as trigger event
-}
-
-/* Configure TIM8 for slave mode operation, one-pulse mode
- * and to generate DMA requests. */
-void tim8_config(void)
-{
-	TIM8->RCR = 0;
-
-	TIM8->CCMR1 &= ~TIM_CCMR1_CC1S_Msk;
-
-	TIM8->EGR = TIM_EGR_UG;// Generate update event
-
-	TIM8->CCMR1 &= ~TIM_CCMR1_CC1S_Msk; // Output compare
-
-	TIM8->SMCR &= ~TIM_SMCR_TS_Msk; // Select TIM1 as TRGI source
-
-	TIM8->SMCR &= ~TIM_SMCR_SMS_Msk;
-	TIM8->SMCR |= TIM_SMCR_SMS_1 |
-		      TIM_SMCR_SMS_2; // Set trigger mode for slave controller
-
-	TIM8->CR1 &= ~TIM_CR1_OPM_Msk;
-	TIM8->CR1 |= TIM_CR1_OPM; // Enable one pulse mode
-
-	TIM8->DIER |= TIM_DIER_CC1DE; // Generate DMA request after overflow
 }
 #endif
