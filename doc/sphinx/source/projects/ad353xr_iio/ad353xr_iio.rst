@@ -54,7 +54,7 @@ Connect the EVAL-AD3530RARDZ board to SDP-K1 board (or any STM32 controller
 board). Connect controller board to the PC using the USB cable. 
 
 
-   .. image:: /source/projects/ad3530r_iio/ad3530r_hardware_interface.png
+   .. image:: /source/projects/ad353xr_iio/ad3530r_hardware_interface.png
       :width: 600
 
 
@@ -98,8 +98,42 @@ through the device manager for windows-based OS as shown below:
 
 .. include:: /source/tinyiiod/iio_firmware_structure.rst
 
-#TODO: Waveform gen
-#TODO: Boardlevel attributes and techniques
+===================
+Waveform Generation
+===================
+
+The Firmware supports two modes of data streaming using the SPI-DMA technique for Waveform generation from the IIO client
+
+Configuring data streaming modes
+--------------------------------
+
+The IIO client can configure the data streaming mode by setting the "data_streaming_mode" iio attribute. The supported modes are:
+
+1. Single Instruction mode
+
+2. Streaming mode
+
+Please refer to the data sheet for more details on the data streaming modes.
+
+Configuring Sampling Frequency
+-------------------------------
+
+Using the "sampling_frequency" iio attribute, the rate at which the converter updates the data can be controlled. In this case, it can go all the way from 1000SPS to 570KSPS in case of Single Instruction mode of data streaming. In case of Streaming mode, the sampling frequency is fixed at 1.4MSPS and non-configurable.
+The attribute is set to maximum sampling rate supported by default by the platform and can be varied in the accepted ranges by writing to the it.
+
+Based on the sampling_frequency input, the FW calculates the nearest possible period value (based on the prescalers, counter resolutions and other settings) that can be acheived on the counter
+and returns back the same after setting it to the counter registers.
+
+Here's a simple formula that calculates the same:
+   .. image:: /source/projects/ad353xr_iio/sampling_frequency_calculation.png
+      :width: 600
+
+When to use what mode?
+-----------------------
+
+Any combination of channels can be sequenced in case of Single Instruction Mode and sampling_frequency (update rate) can be varied as per the requirement. However, since every transaction is a single instruction (requires an address plus data phase), the maximum achievable sampling rate is limited to 570KSPS.
+
+On the other hand, in case of Streaming mode, only serial channels are allowed to be sequenced (as the chip assumes the regiters to be contiguous in streaming mode) and the sampling frequency is fixed at 1.4MSPS (the highest throughput possible at a given SPI clok frequency). This mode is useful when the maximum sampling rate is required and the data is to be streamed continuously.
 
 =======
 Support
