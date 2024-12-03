@@ -6,6 +6,7 @@ Firmware Applications
    :caption: Contents:
 
    /source/projects/ad2s1210_iio/ad2s1210_iio.rst
+   /source/projects/ad353xr_iio/ad353xr_iio.rst
    /source/projects/ad355xr_iio/ad355xr_iio.rst
    /source/projects/ad405x_iio/ad405x_iio.rst
    /source/projects/ad4130_iio/ad4130_iio.rst
