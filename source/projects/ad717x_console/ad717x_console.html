@@ -7,11 +7,11 @@
 
     <title>AD717x / AD411x Console Application &#8212; Precision Converters Firmware  documentation</title>
     <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=8e8a900e" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/style.min.css?v=95305861" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/style.min.css?v=7f94efc5" />
     <script src="../../../_static/documentation_options.js?v=5929fcd5"></script>
     <script src="../../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script defer="" src="../../../_static/app.umd.js?v=c93eadd1"></script>
+    <script defer="" src="../../../_static/app.umd.js?v=689b8755"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
     <link rel="next" title="AD717x / AD411x IIO Application" href="../ad717x_iio/ad717x_iio.html" />
@@ -92,7 +92,7 @@
     <div class="localtoc">
       <div class="tocwrapper">
         <div>
-          <div class="localtoc-header">On this page</div>
+          <div class="localtoc-header"></div>
           <a id="scroll-up" href="#top-anchor" title="Back to top"></a>
         </div>
         <nav>
@@ -199,9 +199,9 @@ Content on this topic
           <div class="body" role="main">
             
   <section id="ad717x-ad411x-console-application">
-<h1>AD717x / AD411x Console Application<a class="headerlink" href="#ad717x-ad411x-console-application" title="Link to this heading">#</a></h1>
+<h1>AD717x / AD411x Console Application<a class="headerlink" href="#ad717x-ad411x-console-application" title="Link to this heading"></a></h1>
 <section id="supported-hardware">
-<h2>Supported Hardware<a class="headerlink" href="#supported-hardware" title="Link to this heading">#</a></h2>
+<h2>Supported Hardware<a class="headerlink" href="#supported-hardware" title="Link to this heading"></a></h2>
 <p><strong>Supported Devices:</strong></p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://www.analog.com/en/products/ad4111.html">AD4111</a> <a class="reference external" href="https://www.analog.com/en/products/ad4112.html">AD4112</a> <a class="reference external" href="https://www.analog.com/en/products/ad4114.html">AD4114</a> <a class="reference external" href="https://www.analog.com/en/products/ad4115.html">AD4115</a> <a class="reference external" href="https://www.analog.com/en/products/ad4116.html">AD4116</a></p></li>
@@ -224,7 +224,7 @@ Content on this topic
 </ul>
 </section>
 <section id="introduction">
-<h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
+<h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading"></a></h2>
 <p>The AD717x/AD411x family offer a complete integrated Sigma-Delta ADC solution which can be used in high precision, low noise single channel applications (Life Science measurements) or higher speed multiplexed applications (Factory Automation PLC Input modules).
 This page gives an overview of using the AD717x/AD411x firmware example with SDP-K1 EVAL board, interfacing with various EVAL boards supporting AD711x/AD411x family devices.
 The firmware example comprises 3 layers of software (from top to bottom): Console Application Layer, Device No-OS Layer and Platform Drivers (Mbed-OS) layer.</p>
@@ -241,7 +241,7 @@ Drivers is responsible for Low Level Interface. The platform drivers uses mbed-o
 the hardware dependency as any Mbed enabled board can be used with same firmware with little modifications (precisely changing a pin mapping).</p>
 </section>
 <section id="interface-diagram">
-<h2>Interface Diagram<a class="headerlink" href="#interface-diagram" title="Link to this heading">#</a></h2>
+<h2>Interface Diagram<a class="headerlink" href="#interface-diagram" title="Link to this heading"></a></h2>
 <blockquote>
 <div><a class="reference internal image-reference" href="../../../_images/ad717x_interface_diagram.jpg"><img alt="../../../_images/ad717x_interface_diagram.jpg" src="../../../_images/ad717x_interface_diagram.jpg" style="width: 500px;" />
 </a>
@@ -256,7 +256,7 @@ The SDP-K1 acts as a Serial Device (UART) and firmware loaded into it interacts 
 </div>
 </section>
 <section id="useful-links">
-<h2>Useful Links<a class="headerlink" href="#useful-links" title="Link to this heading">#</a></h2>
+<h2>Useful Links<a class="headerlink" href="#useful-links" title="Link to this heading"></a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="https://github.com/analogdevicesinc/precision-converters-firmware">Source Code: Precision Converters Firmware</a></p></li>
 <li><p><a class="reference external" href="https://github.com/analogdevicesinc/no-OS">no-OS: Software drivers for systems without OS</a></p></li>
@@ -272,14 +272,14 @@ they may be of interest if you require Linux and/or FPGA support.</p>
 </div>
 </section>
 <section id="hardware-connections">
-<h2>Hardware Connections<a class="headerlink" href="#hardware-connections" title="Link to this heading">#</a></h2>
+<h2>Hardware Connections<a class="headerlink" href="#hardware-connections" title="Link to this heading"></a></h2>
 <blockquote>
 <div><a class="reference internal image-reference" href="../../../_images/ad717x_hw_connection.jpg"><img alt="../../../_images/ad717x_hw_connection.jpg" src="../../../_images/ad717x_hw_connection.jpg" style="width: 400px;" />
 </a>
 </div></blockquote>
 </section>
 <section id="power-supply-and-usb-connection">
-<h2>Power Supply and USB Connection<a class="headerlink" href="#power-supply-and-usb-connection" title="Link to this heading">#</a></h2>
+<h2>Power Supply and USB Connection<a class="headerlink" href="#power-supply-and-usb-connection" title="Link to this heading"></a></h2>
 <ul class="simple">
 <li><p>SDP-K1- Connect the VIO_ADJUST jumper on the SDP-K1 board to 3.3V position to drive SDP-K1 GPIOs at 3.3V</p></li>
 <li><p>EVAL-AD4111SDZ Board (AD4111/AD4112 chip)- Connect PWR (LK3) connector to USB_SUPP (B) position to power-up device from the SDP-K1 USB.</p></li>
@@ -296,7 +296,7 @@ The COM port assigned to a device can be seen through the device manager for win
 </div></blockquote>
 </section>
 <section id="ad717x-mbed-firmware">
-<h2>AD717x Mbed Firmware<a class="headerlink" href="#ad717x-mbed-firmware" title="Link to this heading">#</a></h2>
+<h2>AD717x Mbed Firmware<a class="headerlink" href="#ad717x-mbed-firmware" title="Link to this heading"></a></h2>
 <p>This section briefs on the usage of MBED firmware. This also explains the steps to compile and build the application using
 mbed and make based build.</p>
 <p>The software execution sequence for the AD717x/AD411x Firmware Example is shown below. This is a blocking application as it waits for user input over serial interface (UART).
@@ -309,9 +309,9 @@ AD717x/AD411x firmware uses Mbed libraries within Platform Drivers layer.</p>
 </div></blockquote>
 </section>
 <section id="build-guide">
-<h2>Build Guide<a class="headerlink" href="#build-guide" title="Link to this heading">#</a></h2>
+<h2>Build Guide<a class="headerlink" href="#build-guide" title="Link to this heading"></a></h2>
 <section id="build-prerequisites">
-<h3>Build Prerequisites<a class="headerlink" href="#build-prerequisites" title="Link to this heading">#</a></h3>
+<h3>Build Prerequisites<a class="headerlink" href="#build-prerequisites" title="Link to this heading"></a></h3>
 <p>Prior to building a firmware project, it is required to set up an environment so
 that the build process may find the necessary tools (compiler, linker, SDK etc.).
 Use the following steps to prepare your environment for building firmware projects
@@ -385,7 +385,7 @@ for respective platform.</p>
 </div>
 </div></section>
 <section id="building-a-project">
-<h3>Building a project<a class="headerlink" href="#building-a-project" title="Link to this heading">#</a></h3>
+<h3>Building a project<a class="headerlink" href="#building-a-project" title="Link to this heading"></a></h3>
 <p>Once the build enviornment is setup, follow the guide below to build your project
 and generate executable file (.bin/.hex)</p>
 <div><div class="collapsible docutils container">
@@ -498,7 +498,7 @@ mentioned in step2 and clean build project as mentioned in step3</p>
 </div>
 </div></section>
 <section id="running-a-project">
-<h3>Running a project<a class="headerlink" href="#running-a-project" title="Link to this heading">#</a></h3>
+<h3>Running a project<a class="headerlink" href="#running-a-project" title="Link to this heading"></a></h3>
 <p>Once the firmware build is successful and binary file is generated, copy the
 generated binary into USB drive hosted by your MCU board (e.g. USB drive hosted
 by SDP-K1 board on windows). This will flash the binary file into MCU present
@@ -508,7 +508,7 @@ of all build steps.</p>
 </section>
 </section>
 <section id="quick-start">
-<h2>Quick Start<a class="headerlink" href="#quick-start" title="Link to this heading">#</a></h2>
+<h2>Quick Start<a class="headerlink" href="#quick-start" title="Link to this heading"></a></h2>
 <p>If you have some familiarity with the Mbed platform, the following is a basic list of steps required to start running the code,
 see below for more detail:</p>
 <ul class="simple">
@@ -528,7 +528,7 @@ see below for more detail:</p>
 </ul>
 </section>
 <section id="using-the-firmware">
-<h2>Using the Firmware<a class="headerlink" href="#using-the-firmware" title="Link to this heading">#</a></h2>
+<h2>Using the Firmware<a class="headerlink" href="#using-the-firmware" title="Link to this heading"></a></h2>
 <p>The AD711x/AD411x firmware example is configured to have following serial settings:</p>
 <p>Baud rate: 230400
 Data bits: 8-bits
@@ -553,7 +553,7 @@ for below settings:</p>
 e.g. #define DEV_AD7111_2 executes the AD7112-2 device functionality.</p>
 </section>
 <section id="support">
-<h2>Support<a class="headerlink" href="#support" title="Link to this heading">#</a></h2>
+<h2>Support<a class="headerlink" href="#support" title="Link to this heading"></a></h2>
 <p>Feel free to ask questions in the <a class="reference external" href="https://ez.analog.com/data_converters">EngineerZone</a></p>
 </section>
 </section>

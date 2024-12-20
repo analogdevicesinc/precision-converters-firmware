@@ -7,11 +7,11 @@
 
     <title>AD590 Console Application &#8212; Precision Converters Firmware  documentation</title>
     <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=8e8a900e" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/style.min.css?v=95305861" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/style.min.css?v=7f94efc5" />
     <script src="../../../_static/documentation_options.js?v=5929fcd5"></script>
     <script src="../../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script defer="" src="../../../_static/app.umd.js?v=c93eadd1"></script>
+    <script defer="" src="../../../_static/app.umd.js?v=689b8755"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
     <link rel="next" title="AD5933 Console Application" href="../ad5933_console/ad5933_console.html" />
@@ -92,7 +92,7 @@
     <div class="localtoc">
       <div class="tocwrapper">
         <div>
-          <div class="localtoc-header">On this page</div>
+          <div class="localtoc-header"></div>
           <a id="scroll-up" href="#top-anchor" title="Back to top"></a>
         </div>
         <nav>
@@ -197,9 +197,9 @@ Content on this topic
           <div class="body" role="main">
             
   <section id="ad590-console-application">
-<h1>AD590 Console Application<a class="headerlink" href="#ad590-console-application" title="Link to this heading">#</a></h1>
+<h1>AD590 Console Application<a class="headerlink" href="#ad590-console-application" title="Link to this heading"></a></h1>
 <section id="supported-hardware">
-<h2>Supported Hardware<a class="headerlink" href="#supported-hardware" title="Link to this heading">#</a></h2>
+<h2>Supported Hardware<a class="headerlink" href="#supported-hardware" title="Link to this heading"></a></h2>
 <p><strong>Supported Devices:</strong></p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://www.analog.com/en/products/ad590.html">AD590</a></p></li>
@@ -214,13 +214,13 @@ Content on this topic
 </ul>
 </section>
 <section id="introduction">
-<h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
+<h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading"></a></h2>
 <p>The page provides a starting point for developing your own code for Analog Devices EVAL-AD590-ARDZ board in your own environment utilizing the benefits of the Mbed platform. Analog Devices is an MBED Partner and develops code on the platform for multiple products.</p>
 <p>This guide will focus on the Analog Devices SDP-K1 controller board, as it is directly compatible with the EVAL-AD590-ARDZ evaluation board and is an MBED-Enabled device. Customers are of course, not limited to using the SDP-K1 board for code development, given that any ARM-based, MBED-enabled board that satisfies a small set of requirements can use the provided code and it will work with only minor changes to the source (see below).</p>
 <p>It is further assumed that SDP-K1 board will be connected to the appropriate AD590 Eval-board such as the EVAL-AD590-ARDZ Evaluation board which has the LTC2488 (SPI) built in with the ability to connect external sensor via headers on the board.</p>
 </section>
 <section id="useful-links">
-<h2>Useful Links<a class="headerlink" href="#useful-links" title="Link to this heading">#</a></h2>
+<h2>Useful Links<a class="headerlink" href="#useful-links" title="Link to this heading"></a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="https://github.com/analogdevicesinc/precision-converters-firmware">Source Code: Precision Converters Firmware</a></p></li>
 <li><p><a class="reference external" href="https://github.com/analogdevicesinc/no-OS">no-OS: Software drivers for systems without OS</a></p></li>
@@ -236,7 +236,7 @@ they may be of interest if you require Linux and/or FPGA support.</p>
 </div>
 </section>
 <section id="hardware-setup">
-<h2>Hardware Setup<a class="headerlink" href="#hardware-setup" title="Link to this heading">#</a></h2>
+<h2>Hardware Setup<a class="headerlink" href="#hardware-setup" title="Link to this heading"></a></h2>
 <p>Connecting the EVAL-AD590-ARDZ evaluation board using the SDP connector on the K1 is the simplest and most convenient way to get up and running quickly, simply mate the two boards to together.</p>
 <blockquote>
 <div><a class="reference internal image-reference" href="../../../_images/ad590_hardware_setup.jpg"><img alt="../../../_images/ad590_hardware_setup.jpg" src="../../../_images/ad590_hardware_setup.jpg" style="width: 600px;" />
@@ -250,15 +250,15 @@ they may be of interest if you require Linux and/or FPGA support.</p>
 </div>
 </section>
 <section id="eval-ad590-ardz-mbed-software">
-<h2>EVAL-AD590-ARDZ Mbed Software<a class="headerlink" href="#eval-ad590-ardz-mbed-software" title="Link to this heading">#</a></h2>
+<h2>EVAL-AD590-ARDZ Mbed Software<a class="headerlink" href="#eval-ad590-ardz-mbed-software" title="Link to this heading"></a></h2>
 <p>At this time Analog Devices supports Mbed code development only on the Mbed online-compiler. See here for instructions on setting up an account and using the compiler. Analog Devices may, at a later date support other offline-IDE’s. This guide focuses on the SDP-K1, connected to the EVAL-AD590-ARDZ board, but it should be general enough to cover any compatible controller board (the controller board should be Mbed-enabled, and expose at least SPI or I2C and some GPIO’s).</p>
 <p>The software described below allows for an Mbed enabled controller board to be connected with an Analog Devices evaluation board. Unmodified, the code will communicate over any serial terminal emulator (CoolTerm, putty, etc) using the UART provided by the controller board over USB.</p>
 <p>The software provides a basic user-interface for interacting with temperature sensors on the evaluation-board. All the main functionality of the AD590 is provided in the application-code in abstracted form and the user is free to customize the software to suit their own needs for working with the sensors</p>
 </section>
 <section id="build-guide">
-<h2>Build Guide<a class="headerlink" href="#build-guide" title="Link to this heading">#</a></h2>
+<h2>Build Guide<a class="headerlink" href="#build-guide" title="Link to this heading"></a></h2>
 <section id="build-prerequisites">
-<h3>Build Prerequisites<a class="headerlink" href="#build-prerequisites" title="Link to this heading">#</a></h3>
+<h3>Build Prerequisites<a class="headerlink" href="#build-prerequisites" title="Link to this heading"></a></h3>
 <p>Prior to building a firmware project, it is required to set up an environment so
 that the build process may find the necessary tools (compiler, linker, SDK etc.).
 Use the following steps to prepare your environment for building firmware projects
@@ -332,7 +332,7 @@ for respective platform.</p>
 </div>
 </div></section>
 <section id="building-a-project">
-<h3>Building a project<a class="headerlink" href="#building-a-project" title="Link to this heading">#</a></h3>
+<h3>Building a project<a class="headerlink" href="#building-a-project" title="Link to this heading"></a></h3>
 <p>Once the build enviornment is setup, follow the guide below to build your project
 and generate executable file (.bin/.hex)</p>
 <div><div class="collapsible docutils container">
@@ -445,7 +445,7 @@ mentioned in step2 and clean build project as mentioned in step3</p>
 </div>
 </div></section>
 <section id="running-a-project">
-<h3>Running a project<a class="headerlink" href="#running-a-project" title="Link to this heading">#</a></h3>
+<h3>Running a project<a class="headerlink" href="#running-a-project" title="Link to this heading"></a></h3>
 <p>Once the firmware build is successful and binary file is generated, copy the
 generated binary into USB drive hosted by your MCU board (e.g. USB drive hosted
 by SDP-K1 board on windows). This will flash the binary file into MCU present
@@ -455,7 +455,7 @@ of all build steps.</p>
 </section>
 </section>
 <section id="quick-start">
-<h2>Quick Start<a class="headerlink" href="#quick-start" title="Link to this heading">#</a></h2>
+<h2>Quick Start<a class="headerlink" href="#quick-start" title="Link to this heading"></a></h2>
 <p>If you have some familiarity with the Mbed platform, the following is a basic list of steps required to start running the code, see below for more detail.</p>
 <ul class="simple">
 <li><p>Connect the evaluation-board to the Mbed-enabled controller board using the SDP-120 or Arduino connector. (Switch the P8 Jumper accordingly).</p></li>
@@ -479,7 +479,7 @@ of all build steps.</p>
 </ul>
 </section>
 <section id="using-the-firmware">
-<h2>Using the Firmware<a class="headerlink" href="#using-the-firmware" title="Link to this heading">#</a></h2>
+<h2>Using the Firmware<a class="headerlink" href="#using-the-firmware" title="Link to this heading"></a></h2>
 <p>The firmware is delivered as a basic, text-based user-interface that operates through a UART on the controller board using the same USB cable that is used to flash the firmware to the boards. Any terminal-emulator should work, but it is not possible for Analog Devices to test everyone. It is necessary to connect a serial terminal-emulator to interact with the running firmware.</p>
 <p>Here TeraTerm is used as an example, Analog Devices does not endorse any particular program for this, but TeraTerm works well and is made freely available, other terminals such as CoolTerm, or PuTTY will work.</p>
 <blockquote>
@@ -495,7 +495,7 @@ of all build steps.</p>
 <p>It is hoped that the most features of the AD590 are coded, but it’s likely that some special functionality is not implemented.</p>
 </section>
 <section id="support">
-<h2>Support<a class="headerlink" href="#support" title="Link to this heading">#</a></h2>
+<h2>Support<a class="headerlink" href="#support" title="Link to this heading"></a></h2>
 <p>Feel free to ask questions in the <a class="reference external" href="https://ez.analog.com/data_converters">EngineerZone</a></p>
 </section>
 </section>

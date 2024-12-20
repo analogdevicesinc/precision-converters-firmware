@@ -7,11 +7,11 @@
 
     <title>Introduction &#8212; Precision Converters Firmware  documentation</title>
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8e8a900e" />
-    <link rel="stylesheet" type="text/css" href="../../_static/style.min.css?v=95305861" />
+    <link rel="stylesheet" type="text/css" href="../../_static/style.min.css?v=7f94efc5" />
     <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
     <script src="../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script defer="" src="../../_static/app.umd.js?v=c93eadd1"></script>
+    <script defer="" src="../../_static/app.umd.js?v=689b8755"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
    
@@ -90,7 +90,7 @@
     <div class="localtoc">
       <div class="tocwrapper">
         <div>
-          <div class="localtoc-header">On this page</div>
+          <div class="localtoc-header"></div>
           <a id="scroll-up" href="#top-anchor" title="Back to top"></a>
         </div>
         <nav>
@@ -194,21 +194,21 @@ Content on this topic
           <div class="body" role="main">
             
   <section id="introduction">
-<h1>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h1>
+<h1>Introduction<a class="headerlink" href="#introduction" title="Link to this heading"></a></h1>
 <p>Pocket lab is a portable display-based embedded solution created primarily for demoing the ADCs functionality.
 Pocket Lab makes use of <a class="reference external" href="https://www.st.com/en/microcontrollers-microprocessors/stm32f769ni.html">STM32F769NI-Discovery board</a> from ST microelectronics and 3rd party library LVGL.
 The demo functionality was primarily focused on device configuration, register memory access, data capture and FFT analysis.
 This documentation describes various components of pocket lab application in subsequent sections.</p>
 </section>
 <section id="pocketlab-firmware-structure">
-<h1>Pocketlab Firmware Structure<a class="headerlink" href="#pocketlab-firmware-structure" title="Link to this heading">#</a></h1>
+<h1>Pocketlab Firmware Structure<a class="headerlink" href="#pocketlab-firmware-structure" title="Link to this heading"></a></h1>
 <p>Below diagram illustrates the architecture of Precision Converters Pocketlab
 firmware applications.</p>
 <a class="reference internal image-reference" href="../../_images/pocketlab_fw_architecture.png"><img alt="../../_images/pocketlab_fw_architecture.png" src="../../_images/pocketlab_fw_architecture.png" style="width: 500px;" />
 </a>
 </section>
 <section id="pocketlab-library">
-<h1>Pocketlab Library<a class="headerlink" href="#pocketlab-library" title="Link to this heading">#</a></h1>
+<h1>Pocketlab Library<a class="headerlink" href="#pocketlab-library" title="Link to this heading"></a></h1>
 <p>Source Code: <a class="reference external" href="https://github.com/analogdevicesinc/precision-converters-library/tree/main/pocket_lab">Precision Converters Library</a>
 Doxygen: <a class="reference external" href="https://analogdevicesinc.github.io/precision-converters-firmware/doxygen/dir_e754d0f20ca3746dccad9be70ecb80f9.html">Doxygen for Pocket Lab</a></p>
 <p>Pocket lab library makes use of ‘lvgl (Light versatile graphics library)’. LVGL is primarily targeted for the embedded display-based applications. LVGL is an abstracted library, which supports multiple display boards from the different vendors. So, it’s vendors responsibility to add lvgl support for their display board.
@@ -223,9 +223,9 @@ The lvgl portable library for the board used is present here: <a class="referenc
 </ul>
 </section>
 <section id="running-pocket-lab">
-<h1>Running Pocket Lab<a class="headerlink" href="#running-pocket-lab" title="Link to this heading">#</a></h1>
+<h1>Running Pocket Lab<a class="headerlink" href="#running-pocket-lab" title="Link to this heading"></a></h1>
 <section id="hardware-setup">
-<h2>Hardware setup<a class="headerlink" href="#hardware-setup" title="Link to this heading">#</a></h2>
+<h2>Hardware setup<a class="headerlink" href="#hardware-setup" title="Link to this heading"></a></h2>
 <p>Stack the Eval board on the discovery board. Power the board with USB to Micro B cable through the USB ST link port on the board as shown below</p>
 <ul class="simple">
 <li><p>Comment out the pocketlab libraries to include them in .mbedignore.</p></li>
@@ -239,46 +239,46 @@ The lvgl portable library for the board used is present here: <a class="referenc
 </section>
 </section>
 <section id="pocket-lab-gui-views">
-<h1>Pocket Lab GUI Views<a class="headerlink" href="#pocket-lab-gui-views" title="Link to this heading">#</a></h1>
+<h1>Pocket Lab GUI Views<a class="headerlink" href="#pocket-lab-gui-views" title="Link to this heading"></a></h1>
 <p>This module takes care of any event happening on the display GUI. The GUI is created in the form of widgets such as buttons, text fields, drop-down menus, etc. Each widget would have associated event handler callback function, that would be registered for a given event object during pocket lab GUI initialization time.
 The event handler function would be responsible for handling the user event and forming a proper response to that event.
 All the widgets, event objects and event callbacks are created using the lvgl library.
 Below are the standard views available for pocket lab and are created from the pocket lab library.
 Each Tinyiiod firmware application provides an ability to enable/disable these views.</p>
 <section id="configuration-view">
-<h2>Configuration View<a class="headerlink" href="#configuration-view" title="Link to this heading">#</a></h2>
+<h2>Configuration View<a class="headerlink" href="#configuration-view" title="Link to this heading"></a></h2>
 <p>Provides ability to read and write the global and channel attributes of the device.</p>
 <a class="reference internal image-reference" href="../../_images/config_view.jpg"><img alt="../../_images/config_view.jpg" src="../../_images/config_view.jpg" style="width: 400px;" />
 </a>
 </section>
 <section id="register-view">
-<h2>Register View<a class="headerlink" href="#register-view" title="Link to this heading">#</a></h2>
+<h2>Register View<a class="headerlink" href="#register-view" title="Link to this heading"></a></h2>
 <p>This view provides low level access to the registers of the device. The user can read the register values in hex.</p>
 <a class="reference internal image-reference" href="../../_images/register_view.jpg"><img alt="../../_images/register_view.jpg" src="../../_images/register_view.jpg" style="width: 400px;" />
 </a>
 </section>
 <section id="dmm-view">
-<h2>DMM View<a class="headerlink" href="#dmm-view" title="Link to this heading">#</a></h2>
+<h2>DMM View<a class="headerlink" href="#dmm-view" title="Link to this heading"></a></h2>
 <p>This view continuously displays device specific ADC read back value in SI Units, once start button is activated.
 There is an option to enable and disable all the channels.</p>
 <a class="reference internal image-reference" href="../../_images/dmm_view.jpg"><img alt="../../_images/dmm_view.jpg" src="../../_images/dmm_view.jpg" style="width: 400px;" />
 </a>
 </section>
 <section id="capture-view">
-<h2>Capture View<a class="headerlink" href="#capture-view" title="Link to this heading">#</a></h2>
+<h2>Capture View<a class="headerlink" href="#capture-view" title="Link to this heading"></a></h2>
 <p>In this view adc raw data can be captured and visualized as waveforms continuously once the start button is activated.</p>
 <a class="reference internal image-reference" href="../../_images/capture_view.jpg"><img alt="../../_images/capture_view.jpg" src="../../_images/capture_view.jpg" style="width: 400px;" />
 </a>
 </section>
 <section id="analysis-view">
-<h2>Analysis View<a class="headerlink" href="#analysis-view" title="Link to this heading">#</a></h2>
+<h2>Analysis View<a class="headerlink" href="#analysis-view" title="Link to this heading"></a></h2>
 <p>In this view FFT analysis can be visualized. Key information such as SNR, THD, Fund Power, freq and RMS noise is displayed on the right pane.</p>
 <p>FFT analysis can be performed only on one channel at a time.</p>
 <a class="reference internal image-reference" href="../../_images/fft_view.jpg"><img alt="../../_images/fft_view.jpg" src="../../_images/fft_view.jpg" style="width: 400px;" />
 </a>
 </section>
 <section id="about-view">
-<h2>About View<a class="headerlink" href="#about-view" title="Link to this heading">#</a></h2>
+<h2>About View<a class="headerlink" href="#about-view" title="Link to this heading"></a></h2>
 <p>About screen is used to provide high level product features and some presentation material on the product’s value and USP</p>
 <a class="reference internal image-reference" href="../../_images/about_view.jpg"><img alt="../../_images/about_view.jpg" src="../../_images/about_view.jpg" style="width: 400px;" />
 </a>

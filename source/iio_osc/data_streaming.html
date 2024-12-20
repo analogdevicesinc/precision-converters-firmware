@@ -7,11 +7,11 @@
 
     <title>IIO Data Streaming for DACs &#8212; Precision Converters Firmware  documentation</title>
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8e8a900e" />
-    <link rel="stylesheet" type="text/css" href="../../_static/style.min.css?v=95305861" />
+    <link rel="stylesheet" type="text/css" href="../../_static/style.min.css?v=7f94efc5" />
     <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
     <script src="../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script defer="" src="../../_static/app.umd.js?v=c93eadd1"></script>
+    <script defer="" src="../../_static/app.umd.js?v=689b8755"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
    
@@ -90,7 +90,7 @@
     <div class="localtoc">
       <div class="tocwrapper">
         <div>
-          <div class="localtoc-header">On this page</div>
+          <div class="localtoc-header"></div>
           <a id="scroll-up" href="#top-anchor" title="Back to top"></a>
         </div>
         <nav>
@@ -186,9 +186,9 @@ Content on this topic
           <div class="body" role="main">
             
   <section id="iio-data-streaming-for-dacs">
-<h1>IIO Data Streaming for DACs<a class="headerlink" href="#iio-data-streaming-for-dacs" title="Link to this heading">#</a></h1>
+<h1>IIO Data Streaming for DACs<a class="headerlink" href="#iio-data-streaming-for-dacs" title="Link to this heading"></a></h1>
 <section id="introduction">
-<h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
+<h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading"></a></h2>
 <p>IIO clients can be used to load and stream data to DAC devices using an IIO
 firmware application developed for that device. Using this firmware, a user
 can configure various settings on the device and load the data using the DAC
@@ -205,7 +205,7 @@ enabled, the buffer repeats itself, and the same data is streamed over and over
 indefinitely until stopped.</p>
 </section>
 <section id="data-streaming-to-iio-device">
-<h2>Data Streaming to IIO Device<a class="headerlink" href="#data-streaming-to-iio-device" title="Link to this heading">#</a></h2>
+<h2>Data Streaming to IIO Device<a class="headerlink" href="#data-streaming-to-iio-device" title="Link to this heading"></a></h2>
 <p>The DAC Data Manager tab on the IIO Oscilloscope allows streaming data to supported iio devices.
 The input data file can be a binary file (.bin) or a MAT file (.mat).</p>
 <div class="admonition note">
@@ -215,7 +215,7 @@ the IIO Oscilloscope application must be upgraded to the most recent versions.</
 </div>
 </section>
 <section id="creating-binary-files-for-data-streaming">
-<h2>Creating binary files for data streaming<a class="headerlink" href="#creating-binary-files-for-data-streaming" title="Link to this heading">#</a></h2>
+<h2>Creating binary files for data streaming<a class="headerlink" href="#creating-binary-files-for-data-streaming" title="Link to this heading"></a></h2>
 <p><a class="reference internal" href="../python/python.html"><span class="doc">pyadi-iio: Python interfaces</span></a>
 The PyADI module allows users to create binary data files from the input data using the
 tx class. The CLI (Command Line Interface) script adistream.py allows the user to
@@ -223,7 +223,7 @@ create various types of waveforms like sine, triangular, pwm, etc and store them
 binary file.</p>
 </section>
 <section id="loading-and-streaming-the-data">
-<h2>Loading and Streaming the Data<a class="headerlink" href="#loading-and-streaming-the-data" title="Link to this heading">#</a></h2>
+<h2>Loading and Streaming the Data<a class="headerlink" href="#loading-and-streaming-the-data" title="Link to this heading"></a></h2>
 <p>On the IIO Oscilloscope, open the DAC Data Manager tab as indicated below
 after connecting to the iio device.</p>
 <blockquote>
@@ -260,7 +260,7 @@ button needs to be clicked to end the data streaming.</p>
 </section>
 </section>
 <section id="limitations-of-data-streaming-using-iio-application">
-<h1>Limitations of Data Streaming Using IIO Application<a class="headerlink" href="#limitations-of-data-streaming-using-iio-application" title="Link to this heading">#</a></h1>
+<h1>Limitations of Data Streaming Using IIO Application<a class="headerlink" href="#limitations-of-data-streaming-using-iio-application" title="Link to this heading"></a></h1>
 <p><strong>DAC Sampling/Update Rate:</strong></p>
 <p>The sampling rate or update rate defines the maximum rate/speed at which data can
 be loaded and updated onto the DAC output using the IIO firmware application. For

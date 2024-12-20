@@ -7,11 +7,11 @@
 
     <title>AD559XR Console Application &#8212; Precision Converters Firmware  documentation</title>
     <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=8e8a900e" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/style.min.css?v=95305861" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/style.min.css?v=7f94efc5" />
     <script src="../../../_static/documentation_options.js?v=5929fcd5"></script>
     <script src="../../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script defer="" src="../../../_static/app.umd.js?v=c93eadd1"></script>
+    <script defer="" src="../../../_static/app.umd.js?v=689b8755"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
     <link rel="next" title="AD5754R/CN0586 IIO Application" href="../ad5754r_iio/ad5754r_iio.html" />
@@ -92,7 +92,7 @@
     <div class="localtoc">
       <div class="tocwrapper">
         <div>
-          <div class="localtoc-header">On this page</div>
+          <div class="localtoc-header"></div>
           <a id="scroll-up" href="#top-anchor" title="Back to top"></a>
         </div>
         <nav>
@@ -197,9 +197,9 @@ Content on this topic
           <div class="body" role="main">
             
   <section id="ad559xr-console-application">
-<h1>AD559XR Console Application<a class="headerlink" href="#ad559xr-console-application" title="Link to this heading">#</a></h1>
+<h1>AD559XR Console Application<a class="headerlink" href="#ad559xr-console-application" title="Link to this heading"></a></h1>
 <section id="supported-hardware">
-<h2>Supported Hardware<a class="headerlink" href="#supported-hardware" title="Link to this heading">#</a></h2>
+<h2>Supported Hardware<a class="headerlink" href="#supported-hardware" title="Link to this heading"></a></h2>
 <p><strong>Supported Devices:</strong></p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://www.analog.com/en/products/ad5592r.html">AD5592R</a></p></li>
@@ -216,7 +216,7 @@ Content on this topic
 </ul>
 </section>
 <section id="introduction">
-<h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
+<h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading"></a></h2>
 <p>The AD5592R/ AD5593R offer 8-Channel, 12-Bit, configurable ADC/DAC with on-chip reference and either SPI (AD5592R) or I2C interfaces (AD5593R). This page gives an overview of using the AD5592R/AD5593R firmware example with SDP-K1 EVAL board. The firmware example comprises 3 layers of software (from top to bottom): Console Application Layer, Device No-OS Layer and Platform Drivers (Mbed-OS) layer.</p>
 <blockquote>
 <div><a class="reference internal image-reference" href="../../../_images/ad5592r_software_architecture.jpg"><img alt="../../../_images/ad5592r_software_architecture.jpg" src="../../../_images/ad5592r_software_architecture.jpg" style="width: 200px;" />
@@ -226,7 +226,7 @@ Content on this topic
 <p>The Mbed Platform simplifies the overall software development process by providing the low-level driver support. This reduces the hardware dependency as any Mbed enabled board can be used with same firmware with little modifications (changing a pin mapping).</p>
 </section>
 <section id="interface-diagram">
-<h2>Interface Diagram<a class="headerlink" href="#interface-diagram" title="Link to this heading">#</a></h2>
+<h2>Interface Diagram<a class="headerlink" href="#interface-diagram" title="Link to this heading"></a></h2>
 <blockquote>
 <div><a class="reference internal image-reference" href="../../../_images/ad5592r_interface.jpg"><img alt="../../../_images/ad5592r_interface.jpg" src="../../../_images/ad5592r_interface.jpg" style="width: 600px;" />
 </a>
@@ -236,7 +236,7 @@ Content on this topic
 <p>The SDP-K1 is connected to PC through USB cable and appears as a USB disk device. The firmware can be loaded into SDP-K1 board through this USB interface from PC, by copying a firmware image file onto the USB disk.</p>
 </section>
 <section id="useful-links">
-<h2>Useful Links<a class="headerlink" href="#useful-links" title="Link to this heading">#</a></h2>
+<h2>Useful Links<a class="headerlink" href="#useful-links" title="Link to this heading"></a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="https://github.com/analogdevicesinc/precision-converters-firmware">Source Code: Precision Converters Firmware</a></p></li>
 <li><p><a class="reference external" href="https://github.com/analogdevicesinc/no-OS">no-OS: Software drivers for systems without OS</a></p></li>
@@ -252,7 +252,7 @@ they may be of interest if you require Linux and/or FPGA support.</p>
 </div>
 </section>
 <section id="hardware-connections">
-<h2>Hardware Connections<a class="headerlink" href="#hardware-connections" title="Link to this heading">#</a></h2>
+<h2>Hardware Connections<a class="headerlink" href="#hardware-connections" title="Link to this heading"></a></h2>
 <p>The SDP-K1 is powered by the USB connection to a PC. The SDP-K1 appears as a USB serial device, and the host PC creates a serial or COM Port that can be connected to connect by Terminal software such as Teraterm, Putty, etc. The serial port assigned to a device can be found using the Device Manager for a Windows based OS.</p>
 <blockquote>
 <div><a class="reference internal image-reference" href="../../../_images/ad5592r_connections.jpg"><img alt="../../../_images/ad5592r_connections.jpg" src="../../../_images/ad5592r_connections.jpg" style="width: 600px;" />
@@ -314,9 +314,9 @@ they may be of interest if you require Linux and/or FPGA support.</p>
 </ul>
 </section>
 <section id="build-guide">
-<h2>Build Guide<a class="headerlink" href="#build-guide" title="Link to this heading">#</a></h2>
+<h2>Build Guide<a class="headerlink" href="#build-guide" title="Link to this heading"></a></h2>
 <section id="build-prerequisites">
-<h3>Build Prerequisites<a class="headerlink" href="#build-prerequisites" title="Link to this heading">#</a></h3>
+<h3>Build Prerequisites<a class="headerlink" href="#build-prerequisites" title="Link to this heading"></a></h3>
 <p>Prior to building a firmware project, it is required to set up an environment so
 that the build process may find the necessary tools (compiler, linker, SDK etc.).
 Use the following steps to prepare your environment for building firmware projects
@@ -390,7 +390,7 @@ for respective platform.</p>
 </div>
 </div></section>
 <section id="building-a-project">
-<h3>Building a project<a class="headerlink" href="#building-a-project" title="Link to this heading">#</a></h3>
+<h3>Building a project<a class="headerlink" href="#building-a-project" title="Link to this heading"></a></h3>
 <p>Once the build enviornment is setup, follow the guide below to build your project
 and generate executable file (.bin/.hex)</p>
 <div><div class="collapsible docutils container">
@@ -503,7 +503,7 @@ mentioned in step2 and clean build project as mentioned in step3</p>
 </div>
 </div></section>
 <section id="running-a-project">
-<h3>Running a project<a class="headerlink" href="#running-a-project" title="Link to this heading">#</a></h3>
+<h3>Running a project<a class="headerlink" href="#running-a-project" title="Link to this heading"></a></h3>
 <p>Once the firmware build is successful and binary file is generated, copy the
 generated binary into USB drive hosted by your MCU board (e.g. USB drive hosted
 by SDP-K1 board on windows). This will flash the binary file into MCU present
@@ -513,7 +513,7 @@ of all build steps.</p>
 </section>
 </section>
 <section id="quick-start">
-<h2>Quick Start<a class="headerlink" href="#quick-start" title="Link to this heading">#</a></h2>
+<h2>Quick Start<a class="headerlink" href="#quick-start" title="Link to this heading"></a></h2>
 <p>If you have some familiarity with the Mbed platform, the following is a basic list of steps required to start running the code, see below for more detail:</p>
 <ul class="simple">
 <li><p>Connect the AD5592R/AD55593R EVAL-board to the SDP-K1 controller board.</p></li>
@@ -536,7 +536,7 @@ of all build steps.</p>
 </div>
 </section>
 <section id="using-the-firmware">
-<h2>Using the Firmware<a class="headerlink" href="#using-the-firmware" title="Link to this heading">#</a></h2>
+<h2>Using the Firmware<a class="headerlink" href="#using-the-firmware" title="Link to this heading"></a></h2>
 <p>The AD5592R/93R firmware example is configured to have following serial settings:</p>
 <ul class="simple">
 <li><p>Baud rate: 230400</p></li>
@@ -569,7 +569,7 @@ for below settings:</p>
 <p>It is hoped that the most common functions of the AD5592R and AD5593R devices are coded, but it’s likely that some special functionality is not implemented.</p>
 </section>
 <section id="support">
-<h2>Support<a class="headerlink" href="#support" title="Link to this heading">#</a></h2>
+<h2>Support<a class="headerlink" href="#support" title="Link to this heading"></a></h2>
 <p>Feel free to ask questions in the <a class="reference external" href="https://ez.analog.com/data_converters">EngineerZone</a></p>
 </section>
 </section>
