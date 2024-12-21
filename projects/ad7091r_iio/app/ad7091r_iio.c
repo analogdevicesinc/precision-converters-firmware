@@ -103,6 +103,9 @@ static int ad7091r_iio_attr_available_set(void *device,
 /* AD70901r register maximum value */
 #define REGISTER_MAX_VAL AD7091R8_REG_CH_HYSTERESIS(7)
 
+/* AD70901r limit register value bit shift */
+#define AD7091R_LIMIT_REG_BIT_SHIFT  3
+
 /* ADC data buffer size */
 #if defined(USE_SDRAM)
 #define adc_data_buffer				SDRAM_START_ADDRESS
@@ -406,6 +409,7 @@ static int ad7091r_iio_attr_get(void *device,
 	int ret;
 	uint16_t read_val = 0;
 	enum ad7091r8_alert_type alert;
+	static uint8_t alert_val[8];
 
 	switch (priv) {
 	case ADC_RAW:
@@ -427,10 +431,22 @@ static int ad7091r_iio_attr_get(void *device,
 		return sprintf(buf, "%d", offset);
 
 	case ADC_THRESHOLD_ALERT:
+		/* Do one read op for threshold alert */
+		ret = ad7091r8_read_one_stm(channel->ch_num, &read_val);
+		if (ret) {
+			return ret;
+		}
+
 		ret = ad7091r8_get_alert(ad7091r_dev_desc, channel->ch_num, &alert);
 		if (ret) {
 			return ret;
 		}
+
+		/* If both alerts are recorded, retrieve the latest alert occured */
+		if (alert >= NO_OS_ARRAY_SIZE(ad7091r_thresh_val)) {
+			alert &= ~alert_val[channel->ch_num];
+		}
+		alert_val[channel->ch_num] = alert;
 
 		return sprintf(buf, "%s", ad7091r_thresh_val[alert]);
 
@@ -532,7 +548,7 @@ static int ad7091r_iio_attr_set(void *device,
 		write_val = no_os_str_to_uint32(buf);
 
 		ret = ad7091r8_set_limit(ad7091r_dev_desc, AD7091R8_LOW_LIMIT, channel->ch_num,
-					 write_val);
+					 write_val >> AD7091R_LIMIT_REG_BIT_SHIFT);
 		if (ret) {
 			return ret;
 		}
@@ -543,7 +559,7 @@ static int ad7091r_iio_attr_set(void *device,
 		write_val = no_os_str_to_uint32(buf);
 
 		ret = ad7091r8_set_limit(ad7091r_dev_desc, AD7091R8_HIGH_LIMIT, channel->ch_num,
-					 write_val);
+					 write_val >> AD7091R_LIMIT_REG_BIT_SHIFT);
 		if (ret) {
 			return ret;
 		}
@@ -554,7 +570,7 @@ static int ad7091r_iio_attr_set(void *device,
 		write_val = no_os_str_to_uint32(buf);
 
 		ret = ad7091r8_set_limit(ad7091r_dev_desc, AD7091R8_HYSTERESIS, channel->ch_num,
-					 write_val);
+					 write_val >> AD7091R_LIMIT_REG_BIT_SHIFT);
 		if (ret) {
 			return ret;
 		}
