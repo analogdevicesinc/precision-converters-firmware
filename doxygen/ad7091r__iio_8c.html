@@ -145,6 +145,8 @@ Macros</h2></td></tr>
 <tr class="separator:a6a5692377aeb1197a19ef7856ae54e8d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aaf094666b088c711d3661f2fc30c7bbe"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad7091r__iio_8c.html#aaf094666b088c711d3661f2fc30c7bbe">REGISTER_MAX_VAL</a>&#160;&#160;&#160;AD7091R8_REG_CH_HYSTERESIS(7)</td></tr>
 <tr class="separator:aaf094666b088c711d3661f2fc30c7bbe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa738f37918ae59512ca306e608015479"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad7091r__iio_8c.html#aa738f37918ae59512ca306e608015479">AD7091R_LIMIT_REG_BIT_SHIFT</a>&#160;&#160;&#160;3</td></tr>
+<tr class="separator:aa738f37918ae59512ca306e608015479"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab723c5f0e9759c70ed582dfd77431ff7"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad7091r__iio_8c.html#ab723c5f0e9759c70ed582dfd77431ff7">DATA_BUFFER_SIZE</a>&#160;&#160;&#160;(32768)</td></tr>
 <tr class="separator:ab723c5f0e9759c70ed582dfd77431ff7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a70daa3c8a2012e9f7f314b8476476af2"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad7091r__iio_8c.html#a70daa3c8a2012e9f7f314b8476476af2">BUF_READ_TIMEOUT</a>&#160;&#160;&#160;0xffffffff</td></tr>
@@ -283,7 +285,7 @@ Variables</h2></td></tr>
 <div class="line">    .scan_type = &amp;<a class="code" href="ad7091r__iio_8c.html#a5de3c68e5769a11af3546746b33d8a88">ad7091r_iio_scan_type</a>,\</div>
 <div class="line">    .attributes = ad7091r_iio_ch_attributes[_dev]\</div>
 <div class="line">}</div>
-<div class="ttc" id="aad7091r__iio_8c_html_a5de3c68e5769a11af3546746b33d8a88"><div class="ttname"><a href="ad7091r__iio_8c.html#a5de3c68e5769a11af3546746b33d8a88">ad7091r_iio_scan_type</a></div><div class="ttdeci">struct scan_type ad7091r_iio_scan_type</div><div class="ttdef"><b>Definition:</b> ad7091r_iio.c:192</div></div>
+<div class="ttc" id="aad7091r__iio_8c_html_a5de3c68e5769a11af3546746b33d8a88"><div class="ttname"><a href="ad7091r__iio_8c.html#a5de3c68e5769a11af3546746b33d8a88">ad7091r_iio_scan_type</a></div><div class="ttdeci">struct scan_type ad7091r_iio_scan_type</div><div class="ttdef"><b>Definition:</b> ad7091r_iio.c:195</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -386,6 +388,20 @@ Variables</h2></td></tr>
       <table class="memname">
         <tr>
           <td class="memname">#define AD7091R_IIO_TRIGGER_NAME&#160;&#160;&#160;&quot;ad7091r_iio_trigger&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aa738f37918ae59512ca306e608015479"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa738f37918ae59512ca306e608015479">&#9670;&nbsp;</a></span>AD7091R_LIMIT_REG_BIT_SHIFT</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define AD7091R_LIMIT_REG_BIT_SHIFT&#160;&#160;&#160;3</td>
         </tr>
       </table>
 </div><div class="memdoc">
