@@ -65,6 +65,11 @@ and generate executable file (.bin/.hex)
                .. image:: /source/build/stm32_compiler_flag.png
                   :width: 600
 
+            * Exclude the generated file syscalls.c from the build process
+
+               .. image:: /source/build/stm32_exclude_syscalls.png
+                  :width: 600
+
             * Program by clicking on the "Run adxxxx_iio" option seen or by performing a copy->paste option of the .hex file seen in the STM32/Debug folder
 
                .. image:: /source/build/stm32_run_option.png

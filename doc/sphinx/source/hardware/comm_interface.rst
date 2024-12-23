@@ -6,7 +6,7 @@ Communication Interface
 
    For data transmission to IIO clients, IIO firmware applications uses *Virtual Serial*
    Or *UART* as primary communication links. Firmware by default uses the Virtual Serial
-   interface for higher speed data transmission as SDP-K1 MCU board and Mbed firmware supports
+   interface for higher speed data transmission as SDP-K1 MCU board supports
    both Virtual Serial and UART interface. If you target a different MCU board that does not 
    support Virtual Serial, just set UART as communication link in the firmware (app_config.h file).
 
@@ -33,9 +33,9 @@ firmware name which is currently running on MCU.
 .. image:: /source/hardware/identifying_virtual_serial_port.png
    :width: 350
 
-SDP-K1 can support high speed Virtual Serial USB interface, so by default Virtual Serial 
-is configured as default interface in the Mbed firmware. The interface can be set to 
-Physical (UART) serial port by defining macro **USE_PHY_COM_PORT** in the app_config.h file.
+SDP-K1 can support high speed Virtual Serial USB interface, so by default Virtual Serial
+is configured as default interface. The interface can be set to Physical (UART)
+serial port by defining macro **USE_PHY_COM_PORT** in the app_config.h file.
 
 .. code-block:: C
 
