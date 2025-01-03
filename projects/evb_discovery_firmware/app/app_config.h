@@ -63,8 +63,6 @@
 #elif (ACTIVE_PLATFORM == STM32_PLATFORM)
 #include "app_config_stm32.h"
 
-#define HW_CARRIER_NAME		NUCLEO-H563ZI
-
 #define uart_extra_init_params	stm32_uart_extra_init_params
 #define i2c_extra_init_params stm32_i2c_extra_init_params
 #define i2c_ops stm32_i2c_ops
