@@ -53,5 +53,9 @@ void stm32_system_init(void)
 {
 	HAL_Init();
 	SystemClock_Config();
+#if defined (TARGET_SDP_K1)
+	MX_UART5_Init();
+#else
 	MX_USART3_UART_Init();
+#endif
 }
