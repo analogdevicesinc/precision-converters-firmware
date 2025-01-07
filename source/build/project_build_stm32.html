@@ -221,13 +221,13 @@ for respective platform.</p>
 <p>Once the build enviornment is setup, follow the guide below to build your project
 and generate executable file (.bin/.hex)</p>
 <div><div class="collapsible docutils container">
-<input class="collapsible_input" id="8f22db3c8895536d9f469a3ee2373259a3ef1d96" name="8f22db3c8895536d9f469a3ee2373259a3ef1d96" type="checkbox"></input><label for="8f22db3c8895536d9f469a3ee2373259a3ef1d96"><p>Windows</p>
+<input class="collapsible_input" id="feed9129cacfd64077289b778ae4b208cc6f3e5d" name="feed9129cacfd64077289b778ae4b208cc6f3e5d" type="checkbox"></input><label for="feed9129cacfd64077289b778ae4b208cc6f3e5d"><p>Windows</p>
 <div class="icon"></div></label><div class="collapsible_content docutils container">
 <div><div class="collapsible docutils container">
-<input class="collapsible_input" id="6d4692d8c91dfb061dfba381ec4ebfcee15fe389" name="6d4692d8c91dfb061dfba381ec4ebfcee15fe389" type="checkbox"></input><label for="6d4692d8c91dfb061dfba381ec4ebfcee15fe389"><p>STM32</p>
+<input class="collapsible_input" id="df7238a7ddb0a5aaf42604b098b262eb890b9a78" name="df7238a7ddb0a5aaf42604b098b262eb890b9a78" type="checkbox"></input><label for="df7238a7ddb0a5aaf42604b098b262eb890b9a78"><p>STM32</p>
 <div class="icon"></div></label><div class="collapsible_content docutils container">
 <div><div class="collapsible docutils container">
-<input class="collapsible_input" id="40d95710ac8c485fd38ee69527a9ba568f6db616" name="40d95710ac8c485fd38ee69527a9ba568f6db616" type="checkbox"></input><label for="40d95710ac8c485fd38ee69527a9ba568f6db616"><p>Build Using STM32 IDE</p>
+<input class="collapsible_input" id="29bab2cfebf52c299e09da63ecd55b3bba9d368d" name="29bab2cfebf52c299e09da63ecd55b3bba9d368d" type="checkbox"></input><label for="29bab2cfebf52c299e09da63ecd55b3bba9d368d"><p>Build Using STM32 IDE</p>
 <div class="icon"></div></label><div class="collapsible_content docutils container">
 <ul>
 <li><p>Open the respective project directory by navigating into the “precision_converters_firmware/projects/” folder.</p></li>
@@ -259,6 +259,12 @@ and generate executable file (.bin/.hex)</p>
 <li><p>Add compiler flags “-u _printf_float” to the project settings.</p>
 <blockquote>
 <div><a class="reference internal image-reference" href="../../_images/stm32_compiler_flag.png"><img alt="../../_images/stm32_compiler_flag.png" src="../../_images/stm32_compiler_flag.png" style="width: 600px;" />
+</a>
+</div></blockquote>
+</li>
+<li><p>Exclude the generated file syscalls.c from the build process</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../_images/stm32_exclude_syscalls.png"><img alt="../../_images/stm32_exclude_syscalls.png" src="../../_images/stm32_exclude_syscalls.png" style="width: 600px;" />
 </a>
 </div></blockquote>
 </li>

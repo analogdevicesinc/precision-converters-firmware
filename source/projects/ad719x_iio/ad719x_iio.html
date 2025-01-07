@@ -292,7 +292,7 @@ board or an equivalent STM32 board) using jumper wires. Connect SDP-K1 board to 
 <p class="admonition-title">Note</p>
 <p>For data transmission to IIO clients, IIO firmware applications uses <em>Virtual Serial</em>
 Or <em>UART</em> as primary communication links. Firmware by default uses the Virtual Serial
-interface for higher speed data transmission as SDP-K1 MCU board and Mbed firmware supports
+interface for higher speed data transmission as SDP-K1 MCU board supports
 both Virtual Serial and UART interface. If you target a different MCU board that does not
 support Virtual Serial, just set UART as communication link in the firmware (app_config.h file).</p>
 </div>
@@ -315,8 +315,8 @@ firmware name which is currently running on MCU.</p>
 <a class="reference internal image-reference" href="../../../_images/identifying_virtual_serial_port.png"><img alt="../../../_images/identifying_virtual_serial_port.png" src="../../../_images/identifying_virtual_serial_port.png" style="width: 350px;" />
 </a>
 <p>SDP-K1 can support high speed Virtual Serial USB interface, so by default Virtual Serial
-is configured as default interface in the Mbed firmware. The interface can be set to
-Physical (UART) serial port by defining macro <strong>USE_PHY_COM_PORT</strong> in the app_config.h file.</p>
+is configured as default interface. The interface can be set to Physical (UART)
+serial port by defining macro <strong>USE_PHY_COM_PORT</strong> in the app_config.h file.</p>
 <div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="cm">/* Enable the UART/VirtualCOM port connection (default VCOM) */</span>
 <span class="c1">//#define USE_PHY_COM_PORT           // Uncomment to select UART</span>
 </pre></div>
