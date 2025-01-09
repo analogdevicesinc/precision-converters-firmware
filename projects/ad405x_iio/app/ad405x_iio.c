@@ -322,7 +322,7 @@ static struct iio_attribute ad405x_debug_attributes[] = {
 volatile struct iio_device_data* iio_dev_data_g;
 
 /* Global variable for number of samples */
-uint32_t nb_of_samples_g;
+uint32_t nb_of_bytes_g;
 
 /* Global variable for data read from CB functions */
 int32_t data_read;
@@ -935,7 +935,6 @@ int32_t ad405x_stop_data_capture(void)
 	if (ret) {
 		return ret;
 	}
-#endif
 
 #if (APP_CAPTURE_MODE == CONTINUOUS_DATA_CAPTURE)
 	ret = iio_trig_disable(ad405x_hw_trig_desc);
@@ -947,6 +946,7 @@ int32_t ad405x_stop_data_capture(void)
 	if (ret) {
 		return ret;
 	}
+#endif
 #endif
 
 #if (INTERFACE_MODE == SPI_DMA)
@@ -987,7 +987,7 @@ static int32_t iio_ad405x_prepare_transfer(void *dev, uint32_t mask)
 {
 	int ret;
 
-#if (APP_CAPTURE_MODE == CONTINUOUS_DATA_CAPTURE)
+#if (APP_CAPTURE_MODE == CONTINUOUS_DATA_CAPTURE) && (INTERFACE_MODE == SPI_INTERRUPT)
 	return ad405x_start_data_capture();
 #endif
 
@@ -1072,7 +1072,7 @@ static int32_t iio_ad405x_submit_samples(struct iio_device_data *iio_dev_data)
 	uint16_t spirxdma_ndtr;
 
 	nb_of_samples = iio_dev_data->buffer->size / BYTES_PER_SAMPLE;
-	nb_of_samples_g = nb_of_samples;
+	nb_of_bytes_g = nb_of_samples * BYTES_PER_SAMPLE;
 	iio_dev_data_g = iio_dev_data;
 
 	if (!buf_size_updated) {
@@ -1179,7 +1179,6 @@ static int32_t iio_ad405x_submit_samples(struct iio_device_data *iio_dev_data)
 
 	no_os_cb_end_async_write(iio_dev_data->buffer->buf);
 #else
-
 	if (!dma_config_updated) {
 		ret = no_os_cb_prepare_async_write(iio_dev_data->buffer->buf,
 						   nb_of_samples * (BYTES_PER_SAMPLE),
@@ -1192,7 +1191,7 @@ static int32_t iio_ad405x_submit_samples(struct iio_device_data *iio_dev_data)
 		struct no_os_spi_msg ad405x_spi_msg = {
 			.tx_buff = (uint32_t*)local_tx_data,
 			.rx_buff = (uint32_t*)buff_start_addr,
-			.bytes_number = nb_of_samples * (BYTES_PER_SAMPLE)
+			.bytes_number = spirxdma_ndtr
 		};
 
 		ret = no_os_spi_transfer_dma_async(p_ad405x_dev->spi_desc,
@@ -1207,8 +1206,9 @@ static int32_t iio_ad405x_submit_samples(struct iio_device_data *iio_dev_data)
 		no_os_pwm_disable(sdesc->pwm_desc); // CS PWM
 		htim2.Instance->CNT = 0;
 		htim1.Instance->CNT = 0;
+		TIM8->CNT = 0;
 		dma_config_updated = true;
-		tim8_config();
+
 		stm32_timer_enable();
 	}
 
@@ -1237,7 +1237,6 @@ static int32_t ad405x_trigger_handler(struct iio_device_data *iio_dev_data)
 		buf_size_updated = true;
 	}
 
-#if (INTERFACE_MODE == SPI_INTERRUPT)
 #if (ADC_CAPTURE_MODE == AVERAGING_MODE)
 	cnv_count += 1;
 	if (cnv_count < (1 << (1 + p_ad405x_dev->filter_length))) {
@@ -1256,11 +1255,6 @@ static int32_t ad405x_trigger_handler(struct iio_device_data *iio_dev_data)
 #endif
 
 	return no_os_cb_write(iio_dev_data->buffer->buf, &data_read, BYTES_PER_SAMPLE);
-#else
-	no_os_cb_prepare_async_write(iio_dev_data->buffer->buf,
-				     nb_of_samples * (BYTES_PER_SAMPLE), &buff_start_addr, &data_read);
-	no_os_cb_end_async_write(iio_dev_data->buffer->buf);
-#endif
 }
 
 /*!
@@ -1468,7 +1462,7 @@ int32_t iio_ad405x_initialize(void)
 	enum ad405x_device_type dev_type;
 	uint8_t indx;
 
-#if	(APP_CAPTURE_MODE == CONTINUOUS_DATA_CAPTURE)
+#if	(APP_CAPTURE_MODE == CONTINUOUS_DATA_CAPTURE) && (INTERFACE_MODE == SPI_INTERRUPT)
 	static struct iio_trigger ad405x_iio_trig_desc = {
 		.is_synchronous = true,
 		.enable = NULL,
@@ -1484,7 +1478,7 @@ int32_t iio_ad405x_initialize(void)
 	/* IIO interface init parameters */
 	struct iio_init_param iio_init_params = {
 		.phy_type = USE_UART,
-#if (APP_CAPTURE_MODE == CONTINUOUS_DATA_CAPTURE)
+#if (APP_CAPTURE_MODE == CONTINUOUS_DATA_CAPTURE) && (INTERFACE_MODE == SPI_INTERRUPT)
 		.trigs = &iio_trigger_init_params,
 #endif
 	};
@@ -1492,7 +1486,7 @@ int32_t iio_ad405x_initialize(void)
 	/* IIOD init parameters */
 	static struct iio_device_init iio_device_init_params[NUM_OF_IIO_DEVICES] = {
 		{
-#if (APP_CAPTURE_MODE == CONTINUOUS_DATA_CAPTURE)
+#if (APP_CAPTURE_MODE == CONTINUOUS_DATA_CAPTURE) && (INTERFACE_MODE == SPI_INTERRUPT)
 			.trigger_id = "trigger0",
 #endif
 		}
@@ -1568,7 +1562,7 @@ int32_t iio_ad405x_initialize(void)
 
 		iio_init_params.nb_devs++;
 
-#if (APP_CAPTURE_MODE == CONTINUOUS_DATA_CAPTURE)
+#if (APP_CAPTURE_MODE == CONTINUOUS_DATA_CAPTURE) && (INTERFACE_MODE == SPI_INTERRUPT)
 		iio_init_params.nb_trigs++;
 #endif
 	}
@@ -1581,7 +1575,7 @@ int32_t iio_ad405x_initialize(void)
 		return init_status;
 	}
 
-#if (APP_CAPTURE_MODE == CONTINUOUS_DATA_CAPTURE)
+#if (APP_CAPTURE_MODE == CONTINUOUS_DATA_CAPTURE) && (INTERFACE_MODE == SPI_INTERRUPT)
 	init_status = ad405x_iio_trigger_param_init(&ad405x_hw_trig_desc);
 	if (init_status) {
 		return init_status;

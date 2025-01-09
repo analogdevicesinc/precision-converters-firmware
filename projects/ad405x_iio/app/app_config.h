@@ -58,8 +58,8 @@
 #define ACTIVE_PLATFORM		STM32_PLATFORM
 #endif
 
-/* Enable the UART/VirtualCOM port connection */
-#define USE_PHY_COM_PORT		// Uncomment to select UART
+/* Enable the UART/VirtualCOM port connection (default VCOM) */
+//#define USE_PHY_COM_PORT		// Uncomment to select UART
 
 #if !defined(USE_PHY_COM_PORT)
 #define USE_VIRTUAL_COM_PORT
@@ -181,7 +181,7 @@ extern struct no_os_gpio_init_param cs_pwm_gpio_params;
 extern struct no_os_gpio_init_param pwm_gpio_params;
 extern volatile uint32_t* buff_start_addr;
 extern volatile struct iio_device_data* iio_dev_data_g;
-extern uint32_t nb_of_samples_g;
+extern uint32_t nb_of_bytes_g;
 extern int32_t data_read;
 extern struct no_os_pwm_desc* tx_trigger_desc;
 #endif

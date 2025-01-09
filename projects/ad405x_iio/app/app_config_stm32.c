@@ -18,6 +18,8 @@
 #include "app_config_stm32.h"
 #include "ad405x_iio.h"
 #include "ad405x.h"
+#include "iio.h"
+
 /******************************************************************************/
 /************************ Macros/Constants ************************************/
 /******************************************************************************/
@@ -246,7 +248,7 @@ void stm32_system_init(void)
   */
 void DMA2_Stream0_IRQHandler(void)
 {
-#if (DATA_CAPTURE_MODE == BURST_DATA_CAPTURE)
+#if (APP_CAPTURE_MODE == WINDOWED_DATA_CAPTURE)
 	/* Stop timers at the last entry to the callback */
 	if (callback_count == 1) {
 		sdesc = p_ad405x_dev->spi_desc->extra;
@@ -344,6 +346,7 @@ void stm32_timer_stop(void)
 
 void receivecomplete_callback(DMA_HandleTypeDef * hdma)
 {
+#if (APP_CAPTURE_MODE == WINDOWED_DATA_CAPTURE)
 	if (!dma_cycle_count) {
 		return;
 	}
@@ -374,6 +377,13 @@ void receivecomplete_callback(DMA_HandleTypeDef * hdma)
 	}
 
 	return;
+#else
+	no_os_cb_end_async_write(iio_dev_data_g->buffer->buf);
+	no_os_cb_prepare_async_write(iio_dev_data_g->buffer->buf,
+				     nb_of_bytes_g,
+				     &buff_start_addr,
+				     &data_read);
+#endif
 }
 
 /**
