@@ -256,7 +256,7 @@ Variables</h2></td></tr>
 <div class="line">    .platform_ops = &amp;<a class="code" href="ad405x__iio_2app_2app__config__stm32_8h.html#ab4b92eba8271021f58a561078d6e549d">dma_ops</a>,</div>
 <div class="line">    .sg_handler = (<span class="keywordtype">void</span> *)<a class="code" href="ad405x__iio_2app_2app__config__stm32_8c.html#aa599b1bdd18c25d273dded2a87a19a2f">receivecomplete_callback</a>,</div>
 <div class="line">}</div>
-<div class="ttc" id="aad405x__iio_2app_2app__config__stm32_8c_html_aa599b1bdd18c25d273dded2a87a19a2f"><div class="ttname"><a href="ad405x__iio_2app_2app__config__stm32_8c.html#aa599b1bdd18c25d273dded2a87a19a2f">receivecomplete_callback</a></div><div class="ttdeci">void receivecomplete_callback(DMA_HandleTypeDef *hdma)</div><div class="ttdoc">Callback function to flag the capture of number of requested samples.</div><div class="ttdef"><b>Definition:</b> app_config_stm32.c:345</div></div>
+<div class="ttc" id="aad405x__iio_2app_2app__config__stm32_8c_html_aa599b1bdd18c25d273dded2a87a19a2f"><div class="ttname"><a href="ad405x__iio_2app_2app__config__stm32_8c.html#aa599b1bdd18c25d273dded2a87a19a2f">receivecomplete_callback</a></div><div class="ttdeci">void receivecomplete_callback(DMA_HandleTypeDef *hdma)</div><div class="ttdoc">Callback function to flag the capture of number of requested samples.</div><div class="ttdef"><b>Definition:</b> app_config_stm32.c:347</div></div>
 <div class="ttc" id="aad405x__iio_2app_2app__config__stm32_8h_html_ab4b92eba8271021f58a561078d6e549d"><div class="ttname"><a href="ad405x__iio_2app_2app__config__stm32_8h.html#ab4b92eba8271021f58a561078d6e549d">dma_ops</a></div><div class="ttdeci">#define dma_ops</div><div class="ttdef"><b>Definition:</b> app_config_stm32.h:113</div></div>
 <div class="ttc" id="aad405x__iio_2app_2app__config__stm32_8h_html_adc768b73efdb2144e1bc51080917a8d3"><div class="ttname"><a href="ad405x__iio_2app_2app__config__stm32_8h.html#adc768b73efdb2144e1bc51080917a8d3">AD405x_DMA_NUM_CHANNELS</a></div><div class="ttdeci">#define AD405x_DMA_NUM_CHANNELS</div><div class="ttdef"><b>Definition:</b> app_config_stm32.h:86</div></div>
 </div><!-- fragment -->
@@ -543,22 +543,22 @@ Variables</h2></td></tr>
 <div class="line">    .parity = NO_OS_UART_PAR_NO,</div>
 <div class="line">    .stop = NO_OS_UART_STOP_1_BIT,</div>
 <div class="line"> </div>
-<div class="line"> </div>
-<div class="line"> </div>
-<div class="line"> </div>
-<div class="line"> </div>
-<div class="line"> </div>
-<div class="line"> </div>
-<div class="line"> </div>
 <div class="line">    </div>
-<div class="line">    .platform_ops = &amp;<a class="code" href="ad2s1210__iio_2app_2app__config_8h.html#ad7c095ac25ce9f903c7c0a9a50002bd4">vcom_ops</a>,</div>
-<div class="line">    .extra = &amp;<a class="code" href="ad2s1210__iio_2app_2app__config_8h.html#a5d0039d2f60b5109c03e1daf4134b20c">vcom_extra_init_params</a></div>
+<div class="line">    .platform_ops = &amp;<a class="code" href="ad2s1210__iio_2app_2app__config_8h.html#acc53ed106567a5a56e1bdf6aa73728bc">uart_ops</a>,</div>
+<div class="line">    .extra = &amp;<a class="code" href="ad2s1210__iio_2app_2app__config_8h.html#a0218303728bba1f6bc0b725266ccbbd4">uart_extra_init_params</a></div>
+<div class="line"> </div>
+<div class="line"> </div>
+<div class="line"> </div>
+<div class="line"> </div>
+<div class="line"> </div>
+<div class="line"> </div>
+<div class="line"> </div>
 <div class="line"> </div>
 <div class="line"> </div>
 <div class="line">}</div>
+<div class="ttc" id="aad2s1210__iio_2app_2app__config_8h_html_a0218303728bba1f6bc0b725266ccbbd4"><div class="ttname"><a href="ad2s1210__iio_2app_2app__config_8h.html#a0218303728bba1f6bc0b725266ccbbd4">uart_extra_init_params</a></div><div class="ttdeci">#define uart_extra_init_params</div><div class="ttdef"><b>Definition:</b> app_config.h:78</div></div>
 <div class="ttc" id="aad2s1210__iio_2app_2app__config_8h_html_a1f21242d642bc7352daa4f657ff15a5a"><div class="ttname"><a href="ad2s1210__iio_2app_2app__config_8h.html#a1f21242d642bc7352daa4f657ff15a5a">IIO_UART_BAUD_RATE</a></div><div class="ttdeci">#define IIO_UART_BAUD_RATE</div><div class="ttdef"><b>Definition:</b> app_config.h:164</div></div>
-<div class="ttc" id="aad2s1210__iio_2app_2app__config_8h_html_a5d0039d2f60b5109c03e1daf4134b20c"><div class="ttname"><a href="ad2s1210__iio_2app_2app__config_8h.html#a5d0039d2f60b5109c03e1daf4134b20c">vcom_extra_init_params</a></div><div class="ttdeci">#define vcom_extra_init_params</div><div class="ttdef"><b>Definition:</b> app_config.h:79</div></div>
-<div class="ttc" id="aad2s1210__iio_2app_2app__config_8h_html_ad7c095ac25ce9f903c7c0a9a50002bd4"><div class="ttname"><a href="ad2s1210__iio_2app_2app__config_8h.html#ad7c095ac25ce9f903c7c0a9a50002bd4">vcom_ops</a></div><div class="ttdeci">#define vcom_ops</div><div class="ttdef"><b>Definition:</b> app_config.h:88</div></div>
+<div class="ttc" id="aad2s1210__iio_2app_2app__config_8h_html_acc53ed106567a5a56e1bdf6aa73728bc"><div class="ttname"><a href="ad2s1210__iio_2app_2app__config_8h.html#acc53ed106567a5a56e1bdf6aa73728bc">uart_ops</a></div><div class="ttdeci">#define uart_ops</div><div class="ttdef"><b>Definition:</b> app_config.h:87</div></div>
 <div class="ttc" id="aad405x__iio_2app_2app__config__mbed_8h_html_aa8408d081cc7ddf35547426dee549cc5"><div class="ttname"><a href="ad405x__iio_2app_2app__config__mbed_8h.html#aa8408d081cc7ddf35547426dee549cc5">UART_MODULE</a></div><div class="ttdeci">#define UART_MODULE</div><div class="ttdef"><b>Definition:</b> app_config_mbed.h:54</div></div>
 </div><!-- fragment -->
 </div>
@@ -599,15 +599,15 @@ Variables</h2></td></tr>
 <div class="line">    .stop = NO_OS_UART_STOP_1_BIT,</div>
 <div class="line">    .irq_id = <a class="code" href="ad405x__iio_2app_2app__config__mbed_8h.html#a833c8df01544588f5a71e2cbff8aa266">UART_IRQ</a>,</div>
 <div class="line"> </div>
+<div class="line">    .platform_ops = &amp;<a class="code" href="ad2s1210__iio_2app_2app__config_8h.html#ad7c095ac25ce9f903c7c0a9a50002bd4">vcom_ops</a>,</div>
+<div class="line">    .extra = &amp;<a class="code" href="ad2s1210__iio_2app_2app__config_8h.html#a5d0039d2f60b5109c03e1daf4134b20c">vcom_extra_init_params</a></div>
 <div class="line"> </div>
 <div class="line"> </div>
 <div class="line"> </div>
-<div class="line">    .platform_ops = &amp;<a class="code" href="ad2s1210__iio_2app_2app__config_8h.html#acc53ed106567a5a56e1bdf6aa73728bc">uart_ops</a>,</div>
-<div class="line">    .extra = &amp;<a class="code" href="ad2s1210__iio_2app_2app__config_8h.html#a0218303728bba1f6bc0b725266ccbbd4">uart_extra_init_params</a></div>
 <div class="line"> </div>
 <div class="line">}</div>
-<div class="ttc" id="aad2s1210__iio_2app_2app__config_8h_html_a0218303728bba1f6bc0b725266ccbbd4"><div class="ttname"><a href="ad2s1210__iio_2app_2app__config_8h.html#a0218303728bba1f6bc0b725266ccbbd4">uart_extra_init_params</a></div><div class="ttdeci">#define uart_extra_init_params</div><div class="ttdef"><b>Definition:</b> app_config.h:78</div></div>
-<div class="ttc" id="aad2s1210__iio_2app_2app__config_8h_html_acc53ed106567a5a56e1bdf6aa73728bc"><div class="ttname"><a href="ad2s1210__iio_2app_2app__config_8h.html#acc53ed106567a5a56e1bdf6aa73728bc">uart_ops</a></div><div class="ttdeci">#define uart_ops</div><div class="ttdef"><b>Definition:</b> app_config.h:87</div></div>
+<div class="ttc" id="aad2s1210__iio_2app_2app__config_8h_html_a5d0039d2f60b5109c03e1daf4134b20c"><div class="ttname"><a href="ad2s1210__iio_2app_2app__config_8h.html#a5d0039d2f60b5109c03e1daf4134b20c">vcom_extra_init_params</a></div><div class="ttdeci">#define vcom_extra_init_params</div><div class="ttdef"><b>Definition:</b> app_config.h:79</div></div>
+<div class="ttc" id="aad2s1210__iio_2app_2app__config_8h_html_ad7c095ac25ce9f903c7c0a9a50002bd4"><div class="ttname"><a href="ad2s1210__iio_2app_2app__config_8h.html#ad7c095ac25ce9f903c7c0a9a50002bd4">vcom_ops</a></div><div class="ttdeci">#define vcom_ops</div><div class="ttdef"><b>Definition:</b> app_config.h:88</div></div>
 <div class="ttc" id="aad405x__iio_2app_2app__config__mbed_8h_html_a833c8df01544588f5a71e2cbff8aa266"><div class="ttname"><a href="ad405x__iio_2app_2app__config__mbed_8h.html#a833c8df01544588f5a71e2cbff8aa266">UART_IRQ</a></div><div class="ttdeci">#define UART_IRQ</div><div class="ttdef"><b>Definition:</b> app_config_mbed.h:55</div></div>
 </div><!-- fragment -->
 </div>
