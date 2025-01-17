@@ -38,7 +38,7 @@ These code files provide drivers to interface with nanoDAC+ family of devices li
 
 Product details: https://www.analog.com/en/products/ad5686.html
 Eval board details: https://www.analog.com/en/design-center/evaluation-hardware-and-software/evaluation-boards-kits/EVAL-AD5686R.html
-User Guide for this code: https://wiki.analog.com/resources/tools-software/product-support-software/nanodac-mbed
+User Guide for this code: https://analogdevicesinc.github.io/precision-converters-firmware/source/projects/nanodac_console/nanodac_console.html
 Communication Protocol: SPI/I2C
 
 
@@ -54,7 +54,7 @@ How to Get Started
 Mbed web/online compiler: https://studio.keil.arm.com/auth/login/
 Import code into compiler and compile it to generate executable binary file. 
 Drag and drop binary file into USB drive hosted by SDP-K1 controller board. 
-Find detailed instructions here: https://wiki.analog.com/resources/tools-software/product-support-software/pcg-fw-mbed-build-guide
+Find detailed instructions here: https://analogdevicesinc.github.io/precision-converters-firmware/source/build/project_build.html
 
 
 Notes

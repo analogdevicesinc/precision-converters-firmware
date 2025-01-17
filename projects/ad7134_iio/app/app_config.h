@@ -182,7 +182,7 @@
  * and not in case of SAI-TDM method. For TDM, AD7134 can operate only as
  * a controller)
  * Note: The mode configuration must be modified in the hardware to match the one set
- * in software. Refer project wiki document for required h/w changes */
+ * in software. Refer project documentation for required h/w changes */
 #define AD7134_ASRC_MODE	CONTROLLER_MODE
 
 /* Enable/Disable the use of SDRAM for ADC data capture buffer */

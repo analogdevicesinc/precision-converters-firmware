@@ -103,7 +103,7 @@ Software Downloads
 Below section provides an overview about the pre-requisites needed to build and run the project:
 
 * Source code is hosted on `precision-converters-firmware <https://studio.keil.arm.com/auth/login/>`_ repo
-* `Build Guide for projects <https://wiki.analog.com/resources/tools-software/product-support-software/pcg-fw-mbed-build-guide>`_
+* `Build Guide for projects <https://analogdevicesinc.github.io/precision-converters-firmware/source/build/project_build.html>`_
 * `Libiio: IIO Library <https://github.com/analogdevicesinc/libiio/releases>`_ 
 This library provides an abstracted interface to communicate with IIO device 
 and IIO client application (IIO Oscilloscope) without worrying about the low 

@@ -19,7 +19,7 @@ Hardware Setup
 --------------
 Required: SDP-K1 (or alternative Mbed enabled controller board), EVAL-AD7380 board, 9V adapter and USB cable.
 Connect the EVAL-AD7380 board to SDP-K1 board (or any other Mbed enabled controller board) using jumper wires
-(refer software wiki page for connection setup).
+(refer software documentation page for connection setup).
 Connect SDP-K1 board to the PC using the USB cable. AD7380 EVB is powered through external 9-12V DC adapter.
 
 
@@ -28,7 +28,7 @@ How to Get Started
 Mbed web/online compiler: https://studio.keil.arm.com/auth/login/
 Import code into compiler and compile it to generate executable binary file. 
 Drag and drop binary file into USB drive hosted by SDP-K1 controller board. 
-Find detailed instructions here: https://wiki.analog.com/resources/tools-software/product-support-software/pcg-fw-mbed-build-guide
+Find detailed instructions here: https://analogdevicesinc.github.io/precision-converters-firmware/source/build/project_build.html
 
 
 Notes

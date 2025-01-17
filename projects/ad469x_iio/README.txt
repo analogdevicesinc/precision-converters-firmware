@@ -14,8 +14,8 @@ The EVAL-AD4696FMCZ board is interfaced with SDP-K1 (or any Arduino compatible b
 
 Hardware Setup
 --------------
-Refer "Hardware Connections" section from below wiki page link:
-https://wiki.analog.com/resources/tools-software/product-support-software/ad4696_mbed_iio_application
+Refer "Hardware Connections" section from below page:
+https://analogdevicesinc.github.io/precision-converters-firmware/source/projects/ad4696_iio/ad4696_iio.html
 
 
 How to Get Started
@@ -23,7 +23,7 @@ How to Get Started
 Mbed web/online compiler: https://studio.keil.arm.com/auth/login/
 Import code into compiler and compile it to generate executable binary file. 
 Drag and drop binary file into USB drive hosted by SDP-K1 controller board. 
-Find detailed instructions here: https://wiki.analog.com/resources/tools-software/product-support-software/pcg-fw-mbed-build-guide
+Find detailed instructions here: https://analogdevicesinc.github.io/precision-converters-firmware/source/build/project_build.html
 
 
 Notes

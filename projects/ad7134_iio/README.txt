@@ -18,18 +18,15 @@ Hardware Setup
 --------------
 Required: SDP-K1 (or alternative Mbed/STM32 enabled controller board), EVAL-AD7134 board and USB cable.
 Find further instructions on the hardware connections here:
-https://wiki.analog.com/resources/tools-software/product-support-software/ad7134_iio_support#hardware_connections
+https://analogdevicesinc.github.io/precision-converters-firmware/source/projects/ad7134_iio/ad7134_iio.html
 
 
 How to Get Started
 ------------------
 The Firmware supports MBED and STM32 platforms. Import code into the respective platform and compile it to generate the executable binary.
 
-Find detailed instructions for MBED platform here: 
-https://wiki.analog.com/resources/tools-software/product-support-software/pcg-fw-mbed-build-guide
-
-Find detailed instructions for STM32 platform here: 
-https://wiki.analog.com/resources/tools-software/product-support-software/pcg-fw-stm32-build-guide
+Find detailed instructions here: 
+https://analogdevicesinc.github.io/precision-converters-firmware/source/build/project_build.html
 
 
 Notes

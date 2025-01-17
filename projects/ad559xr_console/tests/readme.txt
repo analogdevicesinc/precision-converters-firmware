@@ -23,8 +23,8 @@ Links:
 LK11: C/B	
 LK1: B	
 
-For more details and photos for connecting power on the AD5592R/93R the wiki page:	
-https://wiki.analog.com/resources/tools-software/product-support-software/ad5592r_mbed_example	
+For more details and photos for connecting power on the AD5592R/93R:	
+https://analogdevicesinc.github.io/precision-converters-firmware/source/projects/ad559xr_console/ad559xr_console.html
 
 
 
