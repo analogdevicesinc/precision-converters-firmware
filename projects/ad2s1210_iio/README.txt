@@ -11,7 +11,7 @@ Use of the Mbed platform allows code to be ported to other Mbed supported target
 
 Product details: AD2S1210.
 Product Evaluation board details: EVAL-AD2S1210SDZ
-User Guide for this code: https://wiki.analog.com/resources/tools-software/product-support-software/AD2S1210_mbed_iio_support
+User Guide for this code: https://analogdevicesinc.github.io/precision-converters-firmware/source/projects/ad2s1210_iio/ad2s1210_iio.html
 Communication Protocol: SPI
 
 
@@ -51,7 +51,7 @@ How to Get Started
 Mbed web/online compiler: https://studio.keil.arm.com/auth/login/
 Import the code into the compiler and compile it to generate the executable binary file.
 Drag and drop the binary file onto the USB drive hosted by the SDP-K1 controller board.
-Find detailed instructions here: https://wiki.analog.com/resources/tools-software/product-support-software/pcg-fw-mbed-build-guide
+Find detailed instructions here: https://analogdevicesinc.github.io/precision-converters-firmware/source/build/project_build.html
 
 
 Notes
