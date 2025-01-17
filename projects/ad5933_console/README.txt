@@ -14,7 +14,7 @@ Use of Mbed platform allows code to port on other Mbed supported target boards w
  
 Product details: https://www.analog.com/en/products/ad5933.html
 Eval board details: https://digilent.com/reference/pmod/pmodia/start
-User Guide for this code: https://wiki.analog.com/resources/tools-software/product-support-software/ad5933-mbed
+User Guide for this code: https://analogdevicesinc.github.io/precision-converters-firmware/source/projects/ad5933_console/ad5933_console.html
 Communication Protocol: I2C
 
 
@@ -22,7 +22,7 @@ Hardware Setup
 --------------
 Required: SDP-K1 (or alternative MBED enabled controller board), recommend Digilent PMOD IA, USB cable.
 Connect the DIGILENT PMOD IA board to SDP-K1 board (or any other Mbed enabled controller board) 
-using the SDP-120 or Arduino on-board connector (refer software wiki page to identify suitable interface) and short jumper-wires.
+using the SDP-120 or Arduino on-board connector (refer software documentation page to identify suitable interface) and short jumper-wires.
 Connect SDP-K1 board to the PC using the USB cable.
 
 
@@ -31,7 +31,7 @@ How to Get Started
 Mbed web/online compiler: https://studio.keil.arm.com/auth/login/
 Import code into compiler and compile it to generate executable binary file. 
 Drag and drop binary file into USB drive hosted by SDP-K1 controller board. 
-Find detailed instructions here: https://wiki.analog.com/resources/tools-software/product-support-software/pcg-fw-mbed-build-guide
+Find detailed instructions here: https://analogdevicesinc.github.io/precision-converters-firmware/source/build/project_build.html
  
  
 Notes

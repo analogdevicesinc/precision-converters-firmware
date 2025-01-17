@@ -28,7 +28,7 @@ How to Get Started
 Mbed web/online compiler: https://studio.keil.arm.com/auth/login/
 Import code into compiler and compile it to generate executable binary file. 
 Drag and drop binary file into USB drive hosted by SDP-K1 controller board. 
-Find detailed instructions here: https://wiki.analog.com/resources/tools-software/product-support-software/pcg-fw-mbed-build-guide
+Find detailed instructions here: https://analogdevicesinc.github.io/precision-converters-firmware/source/build/project_build.html
 
 
 Notes
