@@ -1,0 +1,9 @@
+<map id="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad353xr_iio/app/ad3530r_iio.h" name="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad353xr_iio/app/ad3530r_iio.h">
+<area shape="rect" id="Node000001" title="Header for AD3530R IIO aplication." alt="" coords="272,5,495,75"/>
+<area shape="rect" id="Node000002" href="$ad3530r__iio_8c.html" title="Implementation of AD3530R IIO Application Interface." alt="" coords="5,123,228,192"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="294,83,196,125,194,120,292,78"/>
+<area shape="rect" id="Node000003" href="$ad353xr__iio_2app_2app__config__stm32_8c.html" title="Application configurations module for STM32 platform." alt="" coords="252,123,515,192"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="386,89,386,122,381,122,381,89"/>
+<area shape="rect" id="Node000004" href="$ad353xr__iio_2app_2main_8c.html" title="Main interface for AD3530R IIO firmware application." alt="" coords="539,123,761,192"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="475,78,573,120,571,125,473,83"/>
+</map>

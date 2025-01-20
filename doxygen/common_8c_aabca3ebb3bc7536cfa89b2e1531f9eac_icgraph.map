@@ -1,59 +1,63 @@
 <map id="get_iio_context_attributes" name="get_iio_context_attributes">
-<area shape="rect" id="Node000001" title="Read IIO context attributes." alt="" coords="323,327,515,352"/>
-<area shape="rect" id="Node000002" href="$ad4130__iio_8c.html#ae92881e9f4ea154620ea3b03c20880e6" title="Initialize the IIO interface for AD4130 IIO device." alt="" coords="113,5,269,31"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="410,314,395,258,369,185,351,146,329,109,303,74,273,44,255,33,258,29,276,40,307,71,333,106,356,144,374,183,400,256,415,313"/>
-<area shape="rect" id="Node000004" href="$ad4170__iio_8c.html#afe5b4999ffeb4ff59922c46515a4a8b1" title="Initialize the IIO interface for AD4170 IIO device." alt="" coords="113,55,269,80"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="407,314,390,266,362,207,323,146,300,118,273,93,254,82,257,78,276,89,303,114,328,142,367,204,395,264,412,312"/>
-<area shape="rect" id="Node000006" href="$ad469x__iio_8c.html#adf57bdf6c7d2d6dfa2a8531795e03e3f" title="Release resources allocated for IIO device." alt="" coords="113,104,269,129"/>
-<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="404,315,384,277,355,230,318,183,273,143,252,132,255,127,276,138,322,179,359,227,388,274,408,313"/>
-<area shape="rect" id="Node000008" href="$ad5754r__iio_8c.html#af75390844f2453ece9d9763d07f194f6" title="Initialize the IIO interface for AD5754R IIO device." alt="" coords="128,153,255,179"/>
-<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="399,317,347,255,312,221,273,192,249,181,251,176,276,188,316,217,351,251,403,314"/>
-<area shape="rect" id="Node000010" href="$ad579x__iio_8c.html#aa2a89d81a19aea6a5b4e6a03a2dd7124" title="Initialize the IIO interface for AD579x IIO device." alt="" coords="131,203,252,228"/>
-<area shape="poly" id="edge9_Node000001_Node000010" title=" " alt="" coords="390,320,338,280,273,242,245,231,247,226,276,237,341,276,394,316"/>
-<area shape="rect" id="Node000012" href="$ad7091r__iio_8c.html#a526d44841f367222c787b008f38e76a9" title="Initialize the IIO interface for AD7091R IIO device." alt="" coords="128,252,255,277"/>
-<area shape="poly" id="edge11_Node000001_Node000012" title=" " alt="" coords="369,324,274,291,237,280,239,275,275,286,371,319"/>
-<area shape="rect" id="Node000014" href="$ad7124__iio_8c.html#af012050c4da92d39f4302b89865a477f" title="Initialize the AD7124 IIO Interface." alt="" coords="113,301,269,327"/>
-<area shape="poly" id="edge13_Node000001_Node000014" title=" " alt="" coords="308,330,269,325,270,320,309,324"/>
-<area shape="rect" id="Node000016" href="$ad7134__iio_8c.html#a4c05ffbe1f6b58d3746137ef1bd30a10" title="Initialize the AD7134 device for iio interface." alt="" coords="113,351,269,376"/>
-<area shape="poly" id="edge15_Node000001_Node000016" title=" " alt="" coords="309,354,270,358,269,352,309,348"/>
-<area shape="rect" id="Node000018" href="$ad717x__iio_8c.html#acddf5b7a4d74fe84be7eceea2cd5f88d" title="Initialize the AD717x IIO Interface." alt="" coords="113,400,269,425"/>
-<area shape="poly" id="edge17_Node000001_Node000018" title=" " alt="" coords="368,359,275,390,235,403,234,397,274,385,367,354"/>
-<area shape="rect" id="Node000020" href="$ad719x__iio_8c.html#aa04984aee6819593088c17ebc0f7a540" title="Initialize the ad719x IIO Interface." alt="" coords="113,449,269,475"/>
-<area shape="poly" id="edge19_Node000001_Node000020" title=" " alt="" coords="393,363,341,401,276,439,243,452,241,447,274,434,338,397,390,358"/>
-<area shape="rect" id="Node000022" href="$ad7689__iio_8c.html#ad230f115f917fa129f5784eb1085eecf" title="Initialize the IIO interface for AD7689 IIO device." alt="" coords="113,499,269,524"/>
-<area shape="poly" id="edge21_Node000001_Node000022" title=" " alt="" coords="402,365,350,426,315,460,276,488,249,501,247,496,273,484,312,456,346,423,398,362"/>
-<area shape="rect" id="Node000024" href="$ad777x__iio_8c.html#a968983df489fc93c1651d6a6d2d9b187" title="Initialize the IIO interface for AD777x IIO device." alt="" coords="113,548,269,573"/>
-<area shape="poly" id="edge23_Node000001_Node000024" title=" " alt="" coords="408,366,388,404,359,450,321,497,276,538,252,550,249,546,273,533,317,493,354,447,383,401,403,363"/>
-<area shape="rect" id="Node000026" href="$24xx32a__eeprom__iio_8c.html#a77d3374b7fbb8a4f73edf8314501fc44" title="Initialize the IIO interface." alt="" coords="108,597,275,623"/>
-<area shape="poly" id="edge25_Node000001_Node000026" title=" " alt="" coords="412,366,394,413,366,473,327,534,303,562,276,587,254,600,251,595,273,583,299,558,323,531,362,470,389,411,407,364"/>
-<area shape="rect" id="Node000028" href="$ad405x__iio_8c.html#ac0141386b392ad24a1e7636a9b4c99c9" title="Initialize the IIO interface for AD405X IIO device." alt="" coords="113,647,269,672"/>
-<area shape="poly" id="edge27_Node000001_Node000028" title=" " alt="" coords="415,366,400,422,373,495,355,533,333,570,307,605,276,636,256,649,253,644,273,632,303,602,328,568,350,530,368,493,395,420,409,365"/>
-<area shape="rect" id="Node000003" href="$ad4130__iio_2app_2main_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title="Main entry point to application." alt="" coords="5,5,60,31"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="100,21,60,21,60,15,100,15"/>
-<area shape="rect" id="Node000005" href="$ad4170__iio_2app_2main_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title="Main entry point to application." alt="" coords="5,55,60,80"/>
+<area shape="rect" id="Node000001" title="Read IIO context attributes." alt="" coords="323,351,515,376"/>
+<area shape="rect" id="Node000002" href="$ad3530r__iio_8c.html#a4d2d07ab4b13d997040993474d2a1921" title="Initialize the IIO interface for AD3530R IIO device." alt="" coords="111,5,272,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="411,338,398,277,372,198,354,156,332,115,305,77,273,44,255,33,258,28,276,40,309,74,336,112,359,154,377,196,403,276,416,337"/>
+<area shape="rect" id="Node000004" href="$ad4130__iio_8c.html#ae92881e9f4ea154620ea3b03c20880e6" title="Initialize the IIO interface for AD4130 IIO device." alt="" coords="113,55,269,80"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="408,338,393,286,366,220,326,152,301,121,273,93,255,82,258,78,276,89,305,117,330,149,370,218,398,284,414,336"/>
+<area shape="rect" id="Node000006" href="$ad4170__iio_8c.html#afe5b4999ffeb4ff59922c46515a4a8b1" title="Initialize the IIO interface for AD4170 IIO device." alt="" coords="113,104,269,129"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="406,339,387,296,359,243,321,189,298,164,273,143,253,132,256,127,276,138,302,160,325,185,363,240,392,294,410,337"/>
+<area shape="rect" id="Node000008" href="$ad469x__iio_8c.html#adf57bdf6c7d2d6dfa2a8531795e03e3f" title="Release resources allocated for IIO device." alt="" coords="113,153,269,179"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="401,340,351,266,315,226,273,192,251,181,253,176,276,188,319,222,355,263,406,337"/>
+<area shape="rect" id="Node000010" href="$ad5754r__iio_8c.html#af75390844f2453ece9d9763d07f194f6" title="Initialize the IIO interface for AD5754R IIO device." alt="" coords="128,203,255,228"/>
+<area shape="poly" id="edge9_Node000001_Node000010" title=" " alt="" coords="395,342,343,292,309,265,273,242,247,230,249,226,276,237,313,260,346,288,399,339"/>
+<area shape="rect" id="Node000012" href="$ad579x__iio_8c.html#aa2a89d81a19aea6a5b4e6a03a2dd7124" title="Initialize the IIO interface for AD579x IIO device." alt="" coords="131,252,252,277"/>
+<area shape="poly" id="edge11_Node000001_Node000012" title=" " alt="" coords="383,346,332,318,274,291,241,280,243,275,276,286,335,314,386,341"/>
+<area shape="rect" id="Node000014" href="$ad7091r__iio_8c.html#a526d44841f367222c787b008f38e76a9" title="Initialize the IIO interface for AD7091R IIO device." alt="" coords="128,301,255,327"/>
+<area shape="poly" id="edge13_Node000001_Node000014" title=" " alt="" coords="346,350,250,329,251,324,347,345"/>
+<area shape="rect" id="Node000016" href="$ad7124__iio_8c.html#af012050c4da92d39f4302b89865a477f" title="Initialize the AD7124 IIO Interface." alt="" coords="113,351,269,376"/>
+<area shape="poly" id="edge15_Node000001_Node000016" title=" " alt="" coords="308,366,269,366,269,361,308,361"/>
+<area shape="rect" id="Node000018" href="$ad7134__iio_8c.html#a4c05ffbe1f6b58d3746137ef1bd30a10" title="Initialize the AD7134 device for iio interface." alt="" coords="113,400,269,425"/>
+<area shape="poly" id="edge17_Node000001_Node000018" title=" " alt="" coords="347,382,251,403,250,397,346,376"/>
+<area shape="rect" id="Node000020" href="$ad717x__iio_8c.html#acddf5b7a4d74fe84be7eceea2cd5f88d" title="Initialize the AD717x IIO Interface." alt="" coords="113,449,269,475"/>
+<area shape="poly" id="edge19_Node000001_Node000020" title=" " alt="" coords="385,385,334,412,276,439,240,452,238,447,274,434,332,407,382,381"/>
+<area shape="rect" id="Node000022" href="$ad719x__iio_8c.html#aa04984aee6819593088c17ebc0f7a540" title="Initialize the ad719x IIO Interface." alt="" coords="113,499,269,524"/>
+<area shape="poly" id="edge21_Node000001_Node000022" title=" " alt="" coords="399,388,346,438,312,465,276,488,246,501,244,496,273,484,309,461,343,434,395,384"/>
+<area shape="rect" id="Node000024" href="$ad7689__iio_8c.html#ad230f115f917fa129f5784eb1085eecf" title="Initialize the IIO interface for AD7689 IIO device." alt="" coords="113,548,269,573"/>
+<area shape="poly" id="edge23_Node000001_Node000024" title=" " alt="" coords="406,390,355,463,318,503,276,538,251,550,248,546,273,533,315,499,351,459,401,386"/>
+<area shape="rect" id="Node000026" href="$ad777x__iio_8c.html#a968983df489fc93c1651d6a6d2d9b187" title="Initialize the IIO interface for AD777x IIO device." alt="" coords="113,597,269,623"/>
+<area shape="poly" id="edge25_Node000001_Node000026" title=" " alt="" coords="410,390,392,432,363,485,324,540,301,565,276,587,253,600,251,595,273,582,298,561,320,537,358,483,387,430,405,387"/>
+<area shape="rect" id="Node000028" href="$24xx32a__eeprom__iio_8c.html#a77d3374b7fbb8a4f73edf8314501fc44" title="Initialize the IIO interface." alt="" coords="108,647,275,672"/>
+<area shape="poly" id="edge27_Node000001_Node000028" title=" " alt="" coords="413,390,397,442,370,508,330,577,305,608,276,636,255,649,252,644,273,632,301,605,326,574,365,506,392,440,408,388"/>
+<area shape="rect" id="Node000030" href="$ad405x__iio_8c.html#ac0141386b392ad24a1e7636a9b4c99c9" title="Initialize the IIO interface for AD405X IIO device." alt="" coords="113,696,269,721"/>
+<area shape="poly" id="edge29_Node000001_Node000030" title=" " alt="" coords="416,391,402,451,376,530,358,572,336,613,308,652,276,685,256,698,253,694,273,681,304,648,331,610,353,570,371,528,397,450,410,390"/>
+<area shape="rect" id="Node000003" href="$ad353xr__iio_2app_2main_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title="Main entry point to application." alt="" coords="5,5,60,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="97,21,60,21,60,15,97,15"/>
+<area shape="rect" id="Node000005" href="$ad4130__iio_2app_2main_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title="Main entry point to application." alt="" coords="5,55,60,80"/>
 <area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="100,70,60,70,60,65,100,65"/>
-<area shape="rect" id="Node000007" href="$ad469x__iio_2app_2main_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title="Main entry point to application." alt="" coords="5,104,60,129"/>
+<area shape="rect" id="Node000007" href="$ad4170__iio_2app_2main_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title="Main entry point to application." alt="" coords="5,104,60,129"/>
 <area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="100,119,60,119,60,114,100,114"/>
-<area shape="rect" id="Node000009" href="$ad5754r__iio_2app_2main_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title="Main entry point to application." alt="" coords="5,153,60,179"/>
-<area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="114,169,60,169,60,163,114,163"/>
-<area shape="rect" id="Node000011" href="$ad579x__iio_2app_2main_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title="Main entry point to application." alt="" coords="5,203,60,228"/>
-<area shape="poly" id="edge10_Node000010_Node000011" title=" " alt="" coords="117,218,60,218,60,213,117,213"/>
-<area shape="rect" id="Node000013" href="$ad7091r__iio_2app_2main_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title="Main entry point to application." alt="" coords="5,252,60,277"/>
-<area shape="poly" id="edge12_Node000012_Node000013" title=" " alt="" coords="114,267,60,267,60,262,114,262"/>
-<area shape="rect" id="Node000015" href="$ad7124__iio_2app_2main_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title="Main entry point to application." alt="" coords="5,301,60,327"/>
-<area shape="poly" id="edge14_Node000014_Node000015" title=" " alt="" coords="100,317,60,317,60,311,100,311"/>
-<area shape="rect" id="Node000017" href="$ad7134__iio_2app_2main_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title=" " alt="" coords="5,351,60,376"/>
+<area shape="rect" id="Node000009" href="$ad469x__iio_2app_2main_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title="Main entry point to application." alt="" coords="5,153,60,179"/>
+<area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="100,169,60,169,60,163,100,163"/>
+<area shape="rect" id="Node000011" href="$ad5754r__iio_2app_2main_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title="Main entry point to application." alt="" coords="5,203,60,228"/>
+<area shape="poly" id="edge10_Node000010_Node000011" title=" " alt="" coords="114,218,60,218,60,213,114,213"/>
+<area shape="rect" id="Node000013" href="$ad579x__iio_2app_2main_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title="Main entry point to application." alt="" coords="5,252,60,277"/>
+<area shape="poly" id="edge12_Node000012_Node000013" title=" " alt="" coords="117,267,60,267,60,262,117,262"/>
+<area shape="rect" id="Node000015" href="$ad7091r__iio_2app_2main_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title="Main entry point to application." alt="" coords="5,301,60,327"/>
+<area shape="poly" id="edge14_Node000014_Node000015" title=" " alt="" coords="114,317,60,317,60,311,114,311"/>
+<area shape="rect" id="Node000017" href="$ad7124__iio_2app_2main_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title="Main entry point to application." alt="" coords="5,351,60,376"/>
 <area shape="poly" id="edge16_Node000016_Node000017" title=" " alt="" coords="100,366,60,366,60,361,100,361"/>
-<area shape="rect" id="Node000019" href="$ad717x__iio_2app_2main_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title="Main entry point to application." alt="" coords="5,400,60,425"/>
+<area shape="rect" id="Node000019" href="$ad7134__iio_2app_2main_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title=" " alt="" coords="5,400,60,425"/>
 <area shape="poly" id="edge18_Node000018_Node000019" title=" " alt="" coords="100,415,60,415,60,410,100,410"/>
-<area shape="rect" id="Node000021" href="$ad719x__iio_2app_2main_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title=" " alt="" coords="5,449,60,475"/>
+<area shape="rect" id="Node000021" href="$ad717x__iio_2app_2main_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title="Main entry point to application." alt="" coords="5,449,60,475"/>
 <area shape="poly" id="edge20_Node000020_Node000021" title=" " alt="" coords="100,465,60,465,60,459,100,459"/>
-<area shape="rect" id="Node000023" href="$ad7689__iio_2app_2main_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title=" " alt="" coords="5,499,60,524"/>
+<area shape="rect" id="Node000023" href="$ad719x__iio_2app_2main_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title=" " alt="" coords="5,499,60,524"/>
 <area shape="poly" id="edge22_Node000022_Node000023" title=" " alt="" coords="100,514,60,514,60,509,100,509"/>
-<area shape="rect" id="Node000025" href="$ad777x__iio_2app_2main_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title=" " alt="" coords="5,548,60,573"/>
+<area shape="rect" id="Node000025" href="$ad7689__iio_2app_2main_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title=" " alt="" coords="5,548,60,573"/>
 <area shape="poly" id="edge24_Node000024_Node000025" title=" " alt="" coords="100,563,60,563,60,558,100,558"/>
-<area shape="rect" id="Node000027" href="$evb__discovery__firmware_2app_2main_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title=" " alt="" coords="5,597,60,623"/>
-<area shape="poly" id="edge26_Node000026_Node000027" title=" " alt="" coords="94,613,60,613,60,607,94,607"/>
-<area shape="rect" id="Node000029" href="$ad405x__iio_2app_2main_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title="Main entry point to application." alt="" coords="5,647,60,672"/>
-<area shape="poly" id="edge28_Node000028_Node000029" title=" " alt="" coords="100,662,60,662,60,657,100,657"/>
+<area shape="rect" id="Node000027" href="$ad777x__iio_2app_2main_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title=" " alt="" coords="5,597,60,623"/>
+<area shape="poly" id="edge26_Node000026_Node000027" title=" " alt="" coords="100,613,60,613,60,607,100,607"/>
+<area shape="rect" id="Node000029" href="$evb__discovery__firmware_2app_2main_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title=" " alt="" coords="5,647,60,672"/>
+<area shape="poly" id="edge28_Node000028_Node000029" title=" " alt="" coords="94,662,60,662,60,657,94,657"/>
+<area shape="rect" id="Node000031" href="$ad405x__iio_2app_2main_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title="Main entry point to application." alt="" coords="5,696,60,721"/>
+<area shape="poly" id="edge30_Node000030_Node000031" title=" " alt="" coords="100,711,60,711,60,706,100,706"/>
 </map>

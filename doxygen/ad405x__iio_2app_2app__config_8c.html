@@ -237,34 +237,6 @@ Variables</h2></td></tr>
 
 <p>Initialize the PWM interface. </p>
 <dl class="section return"><dt>Returns</dt><dd>0 in case of success, negative error code otherwise. </dd></dl>
-<div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="ad405x__iio_2app_2app__config_8c_adaf46e15c93e1851d175d9f2eb7daa91_icgraph.png" border="0" usemap="#aad405x__iio_2app_2app__config_8c_adaf46e15c93e1851d175d9f2eb7daa91_icgraph" alt=""/></div>
-<map name="aad405x__iio_2app_2app__config_8c_adaf46e15c93e1851d175d9f2eb7daa91_icgraph" id="aad405x__iio_2app_2app__config_8c_adaf46e15c93e1851d175d9f2eb7daa91_icgraph">
-<area shape="rect" title="Initialize the PWM interface." alt="" coords="345,145,428,171"/>
-<area shape="rect" href="ad469x__iio_8c.html#adf57bdf6c7d2d6dfa2a8531795e03e3f" title="Release resources allocated for IIO device." alt="" coords="125,5,281,31"/>
-<area shape="poly" title=" " alt="" coords="370,135,340,89,320,65,296,46,271,33,273,28,299,41,323,61,345,85,375,132"/>
-<area shape="rect" href="ad469x__iio_8c.html#a667ae98e0273401e857abc5ca78bad7a" title="Set the sampling rate and get the updated value supported by MCU platform." alt="" coords="108,55,297,95"/>
-<area shape="poly" title=" " alt="" coords="353,140,296,110,267,98,269,93,298,105,355,136"/>
-<area shape="rect" href="ad5754r__iio_8c.html#af75390844f2453ece9d9763d07f194f6" title="Initialize the IIO interface for AD5754R IIO device." alt="" coords="139,120,266,145"/>
-<area shape="poly" title=" " alt="" coords="331,153,266,144,267,139,332,148"/>
-<area shape="rect" href="ad7134__iio_8c.html#a4c05ffbe1f6b58d3746137ef1bd30a10" title="Initialize the AD7134 device for iio interface." alt="" coords="125,169,281,195"/>
-<area shape="poly" title=" " alt="" coords="332,168,281,174,281,169,331,162"/>
-<area shape="rect" href="ad405x__iio_8c.html#ac0141386b392ad24a1e7636a9b4c99c9" title="Initialize the IIO interface for AD405X IIO device." alt="" coords="125,219,281,244"/>
-<area shape="poly" title=" " alt="" coords="356,180,298,210,264,221,262,216,296,205,353,176"/>
-<area shape="rect" href="ad777x__iio_2app_2app__config_8c.html#aba990e48bb1b87852ff6a375f0c2f655" title="Initialize the system peripherals." alt="" coords="153,268,252,293"/>
-<area shape="poly" title=" " alt="" coords="372,184,341,223,321,242,299,259,276,270,253,276,251,271,274,265,296,254,318,238,337,219,368,180"/>
-<area shape="rect" href="ad469x__iio_2app_2main_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title="Main entry point to application." alt="" coords="5,5,60,31"/>
-<area shape="poly" title=" " alt="" coords="111,21,60,21,60,15,111,15"/>
-<area shape="rect" href="ad5754r__iio_2app_2main_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title="Main entry point to application." alt="" coords="5,120,60,145"/>
-<area shape="poly" title=" " alt="" coords="125,135,60,135,60,130,125,130"/>
-<area shape="rect" href="ad7134__iio_2app_2main_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title=" " alt="" coords="5,169,60,195"/>
-<area shape="poly" title=" " alt="" coords="111,185,60,185,60,179,111,179"/>
-<area shape="rect" href="ad405x__iio_2app_2main_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title="Main entry point to application." alt="" coords="5,219,60,244"/>
-<area shape="poly" title=" " alt="" coords="111,234,60,234,60,229,111,229"/>
-</map>
-</div>
 
 </div>
 </div>
@@ -320,11 +292,11 @@ Here is the caller graph for this function:</div>
 <b>Initial value:</b><div class="fragment"><div class="line">= {</div>
 <div class="line">    .id = 0,</div>
 <div class="line">    .num_ch = <a class="code hl_define" href="ad405x__iio_2app_2app__config__stm32_8h.html#adc768b73efdb2144e1bc51080917a8d3">AD405x_DMA_NUM_CHANNELS</a>,</div>
-<div class="line">    .platform_ops = &amp;<a class="code hl_define" href="ad405x__iio_2app_2app__config__stm32_8h.html#ab4b92eba8271021f58a561078d6e549d">dma_ops</a>,</div>
-<div class="line">    .sg_handler = (<span class="keywordtype">void</span> *)<a class="code hl_function" href="ad405x__iio_2app_2app__config__stm32_8c.html#aa599b1bdd18c25d273dded2a87a19a2f">receivecomplete_callback</a>,</div>
+<div class="line">    .platform_ops = &amp;<a class="code hl_define" href="ad353xr__iio_2app_2app__config__stm32_8h.html#ab4b92eba8271021f58a561078d6e549d">dma_ops</a>,</div>
+<div class="line">    .sg_handler = (<span class="keywordtype">void</span> *)<a class="code hl_function" href="ad353xr__iio_2app_2app__config__stm32_8c.html#aa599b1bdd18c25d273dded2a87a19a2f">receivecomplete_callback</a>,</div>
 <div class="line">}</div>
-<div class="ttc" id="aad405x__iio_2app_2app__config__stm32_8c_html_aa599b1bdd18c25d273dded2a87a19a2f"><div class="ttname"><a href="ad405x__iio_2app_2app__config__stm32_8c.html#aa599b1bdd18c25d273dded2a87a19a2f">receivecomplete_callback</a></div><div class="ttdeci">void receivecomplete_callback(DMA_HandleTypeDef *hdma)</div><div class="ttdoc">Callback function to flag the capture of number of requested samples.</div><div class="ttdef"><b>Definition</b> app_config_stm32.c:347</div></div>
-<div class="ttc" id="aad405x__iio_2app_2app__config__stm32_8h_html_ab4b92eba8271021f58a561078d6e549d"><div class="ttname"><a href="ad405x__iio_2app_2app__config__stm32_8h.html#ab4b92eba8271021f58a561078d6e549d">dma_ops</a></div><div class="ttdeci">#define dma_ops</div><div class="ttdef"><b>Definition</b> app_config_stm32.h:113</div></div>
+<div class="ttc" id="aad353xr__iio_2app_2app__config__stm32_8c_html_aa599b1bdd18c25d273dded2a87a19a2f"><div class="ttname"><a href="ad353xr__iio_2app_2app__config__stm32_8c.html#aa599b1bdd18c25d273dded2a87a19a2f">receivecomplete_callback</a></div><div class="ttdeci">void receivecomplete_callback(DMA_HandleTypeDef *hdma)</div><div class="ttdoc">Callback function to flag the transfer of number of requested samples.</div><div class="ttdef"><b>Definition</b> app_config_stm32.c:336</div></div>
+<div class="ttc" id="aad353xr__iio_2app_2app__config__stm32_8h_html_ab4b92eba8271021f58a561078d6e549d"><div class="ttname"><a href="ad353xr__iio_2app_2app__config__stm32_8h.html#ab4b92eba8271021f58a561078d6e549d">dma_ops</a></div><div class="ttdeci">#define dma_ops</div><div class="ttdef"><b>Definition</b> app_config_stm32.h:110</div></div>
 <div class="ttc" id="aad405x__iio_2app_2app__config__stm32_8h_html_adc768b73efdb2144e1bc51080917a8d3"><div class="ttname"><a href="ad405x__iio_2app_2app__config__stm32_8h.html#adc768b73efdb2144e1bc51080917a8d3">AD405x_DMA_NUM_CHANNELS</a></div><div class="ttdeci">#define AD405x_DMA_NUM_CHANNELS</div><div class="ttdef"><b>Definition</b> app_config_stm32.h:86</div></div>
 </div><!-- fragment -->
 </div>
@@ -565,15 +537,15 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line">= {</div>
-<div class="line">    .id = <a class="code hl_define" href="ad405x__iio_2app_2app__config__stm32_8h.html#af8880bbd6cd66f2f9eb67e9f039dd9a0">TIMER8_ID</a>,</div>
+<div class="line">    .id = <a class="code hl_define" href="ad353xr__iio_2app_2app__config__stm32_8h.html#af8880bbd6cd66f2f9eb67e9f039dd9a0">TIMER8_ID</a>,</div>
 <div class="line">    .period_ns = 100,</div>
 <div class="line">    .duty_cycle_ns = 0,</div>
 <div class="line">    .polarity = NO_OS_PWM_POLARITY_LOW,</div>
 <div class="line">    .platform_ops = &amp;<a class="code hl_define" href="ad2s1210__iio_2app_2app__config_8h.html#a9b6ac61cf1859752ae6b375e319a55c5">pwm_ops</a>,</div>
-<div class="line">    .extra = &amp;<a class="code hl_define" href="ad405x__iio_2app_2app__config__stm32_8h.html#ab8c64e5e4fbabe0ab24e55523b812b91">tx_trigger_extra_init_params</a>,</div>
+<div class="line">    .extra = &amp;<a class="code hl_define" href="ad353xr__iio_2app_2app__config__stm32_8h.html#ab8c64e5e4fbabe0ab24e55523b812b91">tx_trigger_extra_init_params</a>,</div>
 <div class="line">}</div>
-<div class="ttc" id="aad405x__iio_2app_2app__config__stm32_8h_html_ab8c64e5e4fbabe0ab24e55523b812b91"><div class="ttname"><a href="ad405x__iio_2app_2app__config__stm32_8h.html#ab8c64e5e4fbabe0ab24e55523b812b91">tx_trigger_extra_init_params</a></div><div class="ttdeci">#define tx_trigger_extra_init_params</div><div class="ttdef"><b>Definition</b> app_config_stm32.h:103</div></div>
-<div class="ttc" id="aad405x__iio_2app_2app__config__stm32_8h_html_af8880bbd6cd66f2f9eb67e9f039dd9a0"><div class="ttname"><a href="ad405x__iio_2app_2app__config__stm32_8h.html#af8880bbd6cd66f2f9eb67e9f039dd9a0">TIMER8_ID</a></div><div class="ttdeci">#define TIMER8_ID</div><div class="ttdef"><b>Definition</b> app_config_stm32.h:84</div></div>
+<div class="ttc" id="aad353xr__iio_2app_2app__config__stm32_8h_html_ab8c64e5e4fbabe0ab24e55523b812b91"><div class="ttname"><a href="ad353xr__iio_2app_2app__config__stm32_8h.html#ab8c64e5e4fbabe0ab24e55523b812b91">tx_trigger_extra_init_params</a></div><div class="ttdeci">#define tx_trigger_extra_init_params</div><div class="ttdef"><b>Definition</b> app_config_stm32.h:100</div></div>
+<div class="ttc" id="aad353xr__iio_2app_2app__config__stm32_8h_html_af8880bbd6cd66f2f9eb67e9f039dd9a0"><div class="ttname"><a href="ad353xr__iio_2app_2app__config__stm32_8h.html#af8880bbd6cd66f2f9eb67e9f039dd9a0">TIMER8_ID</a></div><div class="ttdeci">#define TIMER8_ID</div><div class="ttdef"><b>Definition</b> app_config_stm32.h:79</div></div>
 </div><!-- fragment -->
 </div>
 </div>
