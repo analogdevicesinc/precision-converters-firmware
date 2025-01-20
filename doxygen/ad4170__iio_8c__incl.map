@@ -1,35 +1,113 @@
 <map id="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad4170_iio/app/ad4170_iio.c" name="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad4170_iio/app/ad4170_iio.c">
-<area shape="rect" id="node1" title="Implementation of AD4170 IIO application interfaces." alt="" coords="1191,5,1414,76"/>
-<area shape="rect" id="node2" title=" " alt="" coords="1109,288,1179,315"/>
-<area shape="rect" id="node3" title=" " alt="" coords="1586,213,1657,240"/>
-<area shape="rect" id="node4" title=" " alt="" coords="877,213,944,240"/>
-<area shape="rect" id="node5" title=" " alt="" coords="759,131,827,158"/>
-<area shape="rect" id="node6" href="$ad4170__iio_8h.html" title="Header file of ad4170_iio." alt="" coords="1086,131,1191,158"/>
-<area shape="rect" id="node10" href="$ad4170__iio_2app_2app__config_8h.html" title="Configuration file for AD4170 device application." alt="" coords="443,131,547,158"/>
-<area shape="rect" id="node22" href="$ad4170__regs_8h.html" title="Global declarations for ad4170_regs module." alt="" coords="619,131,736,158"/>
-<area shape="rect" id="node23" href="$ad4170__support_8h.html" title=" " alt="" coords="79,213,217,240"/>
-<area shape="rect" id="node24" href="$ad4170__temperature__sensor_8h.html" title=" " alt="" coords="851,124,1010,165"/>
-<area shape="rect" id="node25" title=" " alt="" coords="1681,213,1791,240"/>
-<area shape="rect" id="node26" title=" " alt="" coords="1432,131,1528,158"/>
-<area shape="rect" id="node27" title=" " alt="" coords="1553,131,1666,158"/>
-<area shape="rect" id="node28" title=" " alt="" coords="1690,131,1790,158"/>
-<area shape="rect" id="node29" href="$common_8h.html" title=" " alt="" coords="1216,131,1307,158"/>
-<area shape="rect" id="node32" title=" " alt="" coords="1865,131,1964,158"/>
-<area shape="rect" id="node33" title=" " alt="" coords="1988,131,2095,158"/>
-<area shape="rect" id="node7" title=" " alt="" coords="1160,213,1243,240"/>
-<area shape="rect" id="node8" title=" " alt="" coords="1085,213,1136,240"/>
-<area shape="rect" id="node9" title=" " alt="" coords="968,213,1061,240"/>
-<area shape="rect" id="node11" title=" " alt="" coords="5,288,88,315"/>
-<area shape="rect" id="node12" href="$ad4170__iio_2app_2app__config__mbed_8h.html" title="Header file for Mbed platform configurations." alt="" coords="553,213,701,240"/>
-<area shape="rect" id="node20" href="$ad4170__user__config_8h.html" title="Header for AD4170 default user configurations file." alt="" coords="365,213,528,240"/>
-<area shape="rect" id="node13" title=" " alt="" coords="725,288,825,315"/>
-<area shape="rect" id="node14" title=" " alt="" coords="849,288,956,315"/>
-<area shape="rect" id="node15" title=" " alt="" coords="980,288,1084,315"/>
-<area shape="rect" id="node16" title=" " alt="" coords="207,288,302,315"/>
-<area shape="rect" id="node17" title=" " alt="" coords="327,288,457,315"/>
-<area shape="rect" id="node18" title=" " alt="" coords="482,288,579,315"/>
-<area shape="rect" id="node19" title=" " alt="" coords="603,288,701,315"/>
-<area shape="rect" id="node21" title=" " alt="" coords="113,288,183,315"/>
-<area shape="rect" id="node30" title=" " alt="" coords="1317,213,1408,240"/>
-<area shape="rect" id="node31" title=" " alt="" coords="1433,213,1562,240"/>
+<area shape="rect" id="Node000001" title="Implementation of AD4170 IIO application interfaces." alt="" coords="2130,5,2353,75"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="1318,284,1389,309"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="2130,47,1944,56,1724,70,1516,93,1431,108,1367,125,1325,140,1292,155,1265,176,1241,212,1237,223,1239,233,1252,252,1277,267,1306,279,1304,284,1275,272,1249,256,1234,235,1232,223,1236,210,1261,173,1289,150,1323,135,1366,120,1430,103,1515,88,1723,65,1944,50,2130,42"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="2573,284,2643,309"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="2279,73,2377,163,2427,205,2465,234,2513,259,2560,277,2558,282,2511,263,2463,238,2424,209,2373,167,2275,77"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="2212,284,2279,309"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="2245,75,2248,270,2242,270,2239,75"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="2497,130,2565,155"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="2340,72,2478,120,2486,123,2484,128,2476,125,2338,77"/>
+<area shape="rect" id="Node000006" href="$ad4170__iio_8h.html" title="Header file of ad4170_iio." alt="" coords="2123,211,2229,236"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="2232,76,2187,199,2182,197,2227,74"/>
+<area shape="rect" id="Node000010" href="$ad4170__iio_2app_2app__config_8h.html" title="Configuration file for AD4170 device application." alt="" coords="992,130,1096,155"/>
+<area shape="poly" id="edge10_Node000001_Node000010" title=" " alt="" coords="2130,51,1718,80,1195,125,1110,135,1109,130,1194,120,1718,75,2129,46"/>
+<area shape="rect" id="Node000022" href="$ad4170__regs_8h.html" title="Global declarations for ad4170_regs module." alt="" coords="1251,211,1368,236"/>
+<area shape="poly" id="edge27_Node000001_Node000022" title=" " alt="" coords="2130,47,1958,56,1757,70,1568,93,1492,108,1434,125,1404,141,1375,161,1330,202,1327,198,1372,157,1401,137,1432,120,1490,103,1567,88,1756,65,1958,50,2130,42"/>
+<area shape="rect" id="Node000023" href="$ad4170__support_8h.html" title=" " alt="" coords="749,211,888,236"/>
+<area shape="poly" id="edge29_Node000001_Node000023" title=" " alt="" coords="2130,44,1867,48,1535,60,1367,70,1212,84,1080,102,981,125,941,141,904,162,844,204,841,200,901,157,939,136,979,120,1079,97,1211,79,1367,65,1534,55,1867,43,2130,39"/>
+<area shape="rect" id="Node000024" href="$ad4170__temperature__sensor_8h.html" title=" " alt="" coords="1609,123,1767,163"/>
+<area shape="poly" id="edge32_Node000001_Node000024" title=" " alt="" coords="2130,64,1781,127,1780,122,2129,59"/>
+<area shape="rect" id="Node000025" title=" " alt="" coords="2668,284,2777,309"/>
+<area shape="poly" id="edge34_Node000001_Node000025" title=" " alt="" coords="2306,72,2690,275,2688,280,2304,77"/>
+<area shape="rect" id="Node000026" title=" " alt="" coords="2589,130,2685,155"/>
+<area shape="poly" id="edge35_Node000001_Node000026" title=" " alt="" coords="2354,64,2578,120,2590,123,2588,129,2577,125,2352,69"/>
+<area shape="rect" id="Node000027" title=" " alt="" coords="2710,130,2823,155"/>
+<area shape="poly" id="edge36_Node000001_Node000027" title=" " alt="" coords="2353,56,2517,84,2698,120,2714,124,2713,129,2697,125,2516,89,2352,61"/>
+<area shape="rect" id="Node000028" title=" " alt="" coords="2847,130,2947,155"/>
+<area shape="poly" id="edge37_Node000001_Node000028" title=" " alt="" coords="2353,49,2578,75,2708,95,2837,120,2851,124,2849,129,2835,125,2707,100,2577,80,2353,54"/>
+<area shape="rect" id="Node000029" href="$common_8h.html" title=" " alt="" coords="2304,211,2395,236"/>
+<area shape="poly" id="edge38_Node000001_Node000029" title=" " alt="" coords="2264,74,2338,197,2333,200,2259,76"/>
+<area shape="rect" id="Node000032" title=" " alt="" coords="2972,130,3071,155"/>
+<area shape="poly" id="edge47_Node000001_Node000032" title=" " alt="" coords="2353,45,2631,70,2796,91,2961,120,2976,124,2974,129,2959,125,2795,96,2630,75,2353,50"/>
+<area shape="rect" id="Node000033" title=" " alt="" coords="3095,130,3201,155"/>
+<area shape="poly" id="edge48_Node000001_Node000033" title=" " alt="" coords="2353,43,2499,51,2682,66,2883,88,3083,120,3100,124,3099,129,3082,125,2882,94,2681,71,2499,57,2353,48"/>
+<area shape="rect" id="Node000034" href="$ad4170__iio_2app_2stm32__tdm__support_8h.html" title="Header file for STM32 TDM&#45;DMA Data Capture Wrapper file." alt="" coords="1755,211,1919,236"/>
+<area shape="poly" id="edge49_Node000001_Node000034" title=" " alt="" coords="2212,77,2160,123,2129,146,2096,165,2063,177,2018,189,1916,211,1915,206,2016,184,2062,172,2094,160,2126,141,2157,119,2208,73"/>
+<area shape="rect" id="Node000037" href="$pl__gui__views_8h.html" title="Pocket lab GUI views." alt="" coords="1446,130,1565,155"/>
+<area shape="poly" id="edge55_Node000001_Node000037" title=" " alt="" coords="2130,55,1885,84,1596,125,1571,130,1570,125,1596,120,1884,79,2129,50"/>
+<area shape="rect" id="Node000039" href="$adi__fft_8h.html" title="FFT library implementation headers." alt="" coords="1605,211,1680,236"/>
+<area shape="poly" id="edge68_Node000001_Node000039" title=" " alt="" coords="2130,73,1947,125,1690,209,1688,204,1946,120,2129,68"/>
+<area shape="rect" id="Node000042" href="$pl__gui__events_8h.html" title="Pocket lab GUI event handling headers." alt="" coords="1959,130,2083,155"/>
+<area shape="poly" id="edge63_Node000001_Node000042" title=" " alt="" coords="2169,77,2060,127,2058,122,2166,72"/>
+<area shape="poly" id="edge6_Node000006_Node000004" title=" " alt="" coords="2189,234,2227,272,2223,276,2186,238"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="1913,284,1996,309"/>
+<area shape="poly" id="edge7_Node000006_Node000007" title=" " alt="" coords="2141,239,2004,282,2002,277,2140,233"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="2137,284,2188,309"/>
+<area shape="poly" id="edge8_Node000006_Node000008" title=" " alt="" coords="2176,237,2170,271,2165,270,2171,236"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="2020,284,2113,309"/>
+<area shape="poly" id="edge9_Node000006_Node000009" title=" " alt="" coords="2160,238,2098,279,2095,274,2157,234"/>
+<area shape="poly" id="edge11_Node000010_Node000002" title=" " alt="" coords="1062,153,1120,191,1196,234,1252,258,1306,277,1304,282,1250,263,1193,238,1117,196,1059,158"/>
+<area shape="rect" id="Node000011" title=" " alt="" coords="1003,284,1085,309"/>
+<area shape="poly" id="edge12_Node000010_Node000011" title=" " alt="" coords="1017,158,990,172,965,191,950,212,949,223,953,235,973,259,1000,276,997,280,970,263,948,237,944,223,945,210,961,187,987,168,1014,153"/>
+<area shape="rect" id="Node000012" href="$ad4170__iio_2app_2app__config__mbed_8h.html" title="Header file for Mbed platform configurations." alt="" coords="505,211,653,236"/>
+<area shape="poly" id="edge13_Node000010_Node000012" title=" " alt="" coords="992,155,661,211,660,206,992,150"/>
+<area shape="rect" id="Node000020" href="$ad4170__user__config_8h.html" title="Header for AD4170 default user configurations file." alt="" coords="963,211,1125,236"/>
+<area shape="poly" id="edge22_Node000010_Node000020" title=" " alt="" coords="1040,156,1038,197,1033,197,1035,155"/>
+<area shape="poly" id="edge14_Node000012_Node000002" title=" " alt="" coords="653,229,1304,288,1304,294,653,234"/>
+<area shape="rect" id="Node000013" title=" " alt="" coords="651,284,751,309"/>
+<area shape="poly" id="edge15_Node000012_Node000013" title=" " alt="" coords="600,234,671,275,668,279,597,238"/>
+<area shape="rect" id="Node000014" title=" " alt="" coords="776,284,883,309"/>
+<area shape="poly" id="edge16_Node000012_Node000014" title=" " alt="" coords="620,233,776,278,775,283,618,239"/>
+<area shape="rect" id="Node000015" title=" " alt="" coords="5,284,109,309"/>
+<area shape="poly" id="edge17_Node000012_Node000015" title=" " alt="" coords="505,236,335,257,123,287,122,281,334,252,504,231"/>
+<area shape="rect" id="Node000016" title=" " alt="" coords="134,284,229,309"/>
+<area shape="poly" id="edge18_Node000012_Node000016" title=" " alt="" coords="513,239,243,286,242,281,512,233"/>
+<area shape="rect" id="Node000017" title=" " alt="" coords="253,284,384,309"/>
+<area shape="poly" id="edge19_Node000012_Node000017" title=" " alt="" coords="538,239,375,283,373,278,536,233"/>
+<area shape="rect" id="Node000018" title=" " alt="" coords="409,284,506,309"/>
+<area shape="poly" id="edge20_Node000012_Node000018" title=" " alt="" coords="561,238,490,279,487,275,558,234"/>
+<area shape="rect" id="Node000019" title=" " alt="" coords="530,284,627,309"/>
+<area shape="poly" id="edge21_Node000012_Node000019" title=" " alt="" coords="581,236,581,270,576,270,576,236"/>
+<area shape="poly" id="edge23_Node000020_Node000002" title=" " alt="" coords="1094,233,1305,282,1304,287,1093,239"/>
+<area shape="poly" id="edge25_Node000020_Node000010" title=" " alt="" coords="1048,210,1050,169,1055,169,1053,211"/>
+<area shape="poly" id="edge26_Node000020_Node000011" title=" " alt="" coords="1047,236,1047,270,1041,270,1041,236"/>
+<area shape="rect" id="Node000021" title=" " alt="" coords="907,284,978,309"/>
+<area shape="poly" id="edge24_Node000020_Node000021" title=" " alt="" coords="1029,238,972,278,969,274,1026,234"/>
+<area shape="poly" id="edge28_Node000022_Node000002" title=" " alt="" coords="1319,235,1341,271,1337,274,1314,238"/>
+<area shape="poly" id="edge31_Node000023_Node000011" title=" " alt="" coords="856,233,995,277,994,282,854,239"/>
+<area shape="poly" id="edge30_Node000023_Node000021" title=" " alt="" coords="840,234,912,275,909,279,837,238"/>
+<area shape="poly" id="edge33_Node000024_Node000002" title=" " alt="" coords="1664,165,1610,201,1542,238,1470,266,1403,286,1401,281,1468,261,1540,234,1607,197,1661,161"/>
+<area shape="poly" id="edge39_Node000029_Node000002" title=" " alt="" coords="2304,233,2240,239,2006,251,1822,254,1638,261,1530,271,1402,287,1402,282,1529,265,1638,256,1822,249,2006,246,2240,233,2303,227"/>
+<area shape="poly" id="edge41_Node000029_Node000003" title=" " alt="" coords="2392,233,2560,279,2559,285,2390,239"/>
+<area shape="poly" id="edge42_Node000029_Node000004" title=" " alt="" coords="2334,238,2275,278,2272,274,2331,234"/>
+<area shape="poly" id="edge40_Node000029_Node000007" title=" " alt="" coords="2304,235,2010,286,2010,281,2303,229"/>
+<area shape="poly" id="edge43_Node000029_Node000008" title=" " alt="" coords="2320,239,2202,283,2200,278,2318,234"/>
+<area shape="poly" id="edge46_Node000029_Node000025" title=" " alt="" coords="2395,231,2655,280,2654,285,2394,236"/>
+<area shape="rect" id="Node000030" title=" " alt="" coords="2457,284,2548,309"/>
+<area shape="poly" id="edge44_Node000029_Node000030" title=" " alt="" coords="2375,234,2466,276,2464,281,2373,238"/>
+<area shape="rect" id="Node000031" title=" " alt="" coords="2303,284,2433,309"/>
+<area shape="poly" id="edge45_Node000029_Node000031" title=" " alt="" coords="2355,236,2364,270,2359,272,2350,237"/>
+<area shape="poly" id="edge50_Node000034_Node000002" title=" " alt="" coords="1755,238,1573,261,1403,287,1402,281,1572,256,1755,232"/>
+<area shape="poly" id="edge51_Node000034_Node000007" title=" " alt="" coords="1858,234,1925,274,1922,279,1855,238"/>
+<area shape="poly" id="edge53_Node000034_Node000009" title=" " alt="" coords="1875,233,2017,277,2015,282,1873,239"/>
+<area shape="rect" id="Node000035" title=" " alt="" coords="1589,284,1760,309"/>
+<area shape="poly" id="edge52_Node000034_Node000035" title=" " alt="" coords="1812,238,1715,281,1713,276,1810,234"/>
+<area shape="rect" id="Node000036" title=" " alt="" coords="1785,284,1890,309"/>
+<area shape="poly" id="edge54_Node000034_Node000036" title=" " alt="" coords="1840,236,1840,270,1835,270,1835,236"/>
+<area shape="poly" id="edge56_Node000037_Node000002" title=" " alt="" coords="1494,157,1433,213,1374,275,1370,271,1429,209,1490,153"/>
+<area shape="rect" id="Node000038" title=" " alt="" coords="1443,211,1530,236"/>
+<area shape="poly" id="edge57_Node000037_Node000038" title=" " alt="" coords="1505,156,1495,198,1490,197,1500,155"/>
+<area shape="poly" id="edge58_Node000037_Node000039" title=" " alt="" coords="1527,153,1612,202,1609,206,1524,158"/>
+<area shape="poly" id="edge59_Node000039_Node000002" title=" " alt="" coords="1605,236,1403,286,1401,281,1604,231"/>
+<area shape="poly" id="edge60_Node000039_Node000007" title=" " alt="" coords="1681,231,1900,280,1899,285,1680,236"/>
+<area shape="rect" id="Node000040" href="$adi__fft__windowing_8h.html" title="FFT windowing functionality headers." alt="" coords="1413,284,1565,309"/>
+<area shape="poly" id="edge61_Node000039_Node000040" title=" " alt="" coords="1619,238,1528,281,1526,276,1617,234"/>
+<area shape="rect" id="Node000041" title=" " alt="" coords="1439,357,1540,383"/>
+<area shape="poly" id="edge62_Node000040_Node000041" title=" " alt="" coords="1492,310,1492,344,1487,344,1487,310"/>
+<area shape="poly" id="edge64_Node000042_Node000002" title=" " alt="" coords="1960,157,1857,179,1744,213,1719,226,1693,239,1615,259,1551,268,1486,274,1403,287,1402,281,1485,269,1550,263,1614,254,1691,233,1716,221,1742,208,1856,174,1959,152"/>
+<area shape="rect" id="Node000043" href="$pl__gui__iio__wrapper_8h.html" title="Pocket lab GUI IIO wrapper interfaces." alt="" coords="1944,211,2099,236"/>
+<area shape="poly" id="edge65_Node000042_Node000043" title=" " alt="" coords="2024,156,2024,197,2019,197,2019,156"/>
+<area shape="poly" id="edge66_Node000043_Node000002" title=" " alt="" coords="1944,237,1931,239,1784,251,1668,258,1552,267,1403,287,1402,282,1551,262,1668,253,1784,246,1930,233,1943,232"/>
+<area shape="poly" id="edge67_Node000043_Node000008" title=" " alt="" coords="2045,234,2129,275,2126,280,2043,238"/>
 </map>

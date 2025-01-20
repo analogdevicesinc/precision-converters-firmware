@@ -1,7 +1,11 @@
 <map id="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/libraries/precision&#45;converters&#45;library/fft/adi_fft.h" name="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/libraries/precision&#45;converters&#45;library/fft/adi_fft.h">
-<area shape="rect" id="node1" title="FFT library implementation headers." alt="" coords="31,5,253,91"/>
-<area shape="rect" id="node2" title=" " alt="" coords="5,139,76,165"/>
-<area shape="rect" id="node3" title=" " alt="" coords="101,139,183,165"/>
-<area shape="rect" id="node4" href="$adi__fft__windowing_8h.html" title="FFT windowing functionality headers." alt="" coords="207,139,359,165"/>
-<area shape="rect" id="node5" title=" " alt="" coords="233,213,334,240"/>
+<area shape="rect" id="Node000001" title="FFT library implementation headers." alt="" coords="31,5,253,89"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,137,76,163"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="103,91,64,129,60,126,99,87"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="101,137,183,163"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="145,89,145,124,139,124,139,89"/>
+<area shape="rect" id="Node000004" href="$adi__fft__windowing_8h.html" title="FFT windowing functionality headers." alt="" coords="207,137,359,163"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="201,87,257,127,254,131,198,92"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="233,211,334,236"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="286,163,286,197,281,197,281,163"/>
 </map>

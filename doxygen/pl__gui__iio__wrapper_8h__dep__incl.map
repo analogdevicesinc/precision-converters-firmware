@@ -1,7 +1,23 @@
 <map id="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/libraries/precision&#45;converters&#45;library/pocket_lab/pl_gui_iio_wrapper.h" name="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/libraries/precision&#45;converters&#45;library/pocket_lab/pl_gui_iio_wrapper.h">
-<area shape="rect" id="node1" title="Pocket lab GUI IIO wrapper interfaces." alt="" coords="252,5,485,91"/>
-<area shape="rect" id="node2" href="$pl__gui__events_8h.html" title="Pocket lab GUI event handling headers." alt="" coords="5,139,228,224"/>
-<area shape="rect" id="node4" href="$pl__gui__iio__wrapper_8c.html" title="Pocket lab GUI IIO wrapper interfaces." alt="" coords="253,139,485,224"/>
-<area shape="rect" id="node5" href="$pl__gui__views_8c.html" title="Pocket lab GUI views." alt="" coords="509,139,732,224"/>
-<area shape="rect" id="node3" href="$pl__gui__events_8c.html" title="Pocket lab GUI event handling." alt="" coords="5,272,228,357"/>
+<area shape="rect" id="Node000001" title="Pocket lab GUI IIO wrapper interfaces." alt="" coords="992,5,1225,89"/>
+<area shape="rect" id="Node000002" href="$pl__gui__events_8h.html" title="Pocket lab GUI event handling headers." alt="" coords="745,137,968,221"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="1018,98,937,140,935,135,1016,93"/>
+<area shape="rect" id="Node000010" href="$pl__gui__iio__wrapper_8c.html" title="Pocket lab GUI IIO wrapper interfaces." alt="" coords="993,137,1225,221"/>
+<area shape="poly" id="edge9_Node000001_Node000010" title=" " alt="" coords="1111,103,1111,137,1106,137,1106,103"/>
+<area shape="rect" id="Node000011" href="$pl__gui__views_8c.html" title="Pocket lab GUI views." alt="" coords="1249,137,1472,221"/>
+<area shape="poly" id="edge10_Node000001_Node000011" title=" " alt="" coords="1201,93,1282,135,1280,140,1199,98"/>
+<area shape="rect" id="Node000003" href="$pl__gui__events_8c.html" title="Pocket lab GUI event handling." alt="" coords="5,269,228,353"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="732,195,502,223,370,245,240,272,229,275,227,270,239,267,369,240,501,218,731,189"/>
+<area shape="rect" id="Node000004" href="$ad4130__iio_8c.html" title="Implementation of AD4130 IIO application interfaces." alt="" coords="252,277,475,346"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="733,210,613,239,487,272,462,279,461,274,485,267,612,233,731,205"/>
+<area shape="rect" id="Node000005" href="$ad4130__iio_2app_2app__config_8c.html" title="Application configurations module." alt="" coords="499,277,721,346"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="768,230,675,279,672,274,766,225"/>
+<area shape="rect" id="Node000006" href="$ad4170__iio_8c.html" title="Implementation of AD4170 IIO application interfaces." alt="" coords="745,277,968,346"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="859,235,859,276,854,276,854,235"/>
+<area shape="rect" id="Node000007" href="$ad4170__iio_2app_2app__config_8c.html" title="Application configurations module." alt="" coords="992,277,1215,346"/>
+<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="948,225,1041,274,1038,279,945,230"/>
+<area shape="rect" id="Node000008" href="$ad7124__iio_8c.html" title="Main interface for AD7124 IIO Application firmware example program." alt="" coords="1239,277,1461,346"/>
+<area shape="poly" id="edge7_Node000002_Node000008" title=" " alt="" coords="982,219,1052,234,1107,243,1161,252,1228,267,1254,274,1253,279,1227,272,1160,257,1106,248,1051,239,981,224"/>
+<area shape="rect" id="Node000009" href="$ad7124__iio_2app_2app__config_8c.html" title="Source file for the application configuration for AD7124 IIO Application." alt="" coords="1485,277,1708,346"/>
+<area shape="poly" id="edge8_Node000002_Node000009" title=" " alt="" coords="982,219,1057,231,1121,238,1230,242,1339,246,1401,254,1475,267,1504,274,1503,279,1473,272,1401,259,1338,252,1230,248,1120,244,1056,237,981,224"/>
 </map>

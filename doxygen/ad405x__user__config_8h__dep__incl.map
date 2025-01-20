@@ -1,6 +1,9 @@
 <map id="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad405x_iio/app/ad405x_user_config.h" name="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad405x_iio/app/ad405x_user_config.h">
-<area shape="rect" id="node1" title="Header for AD405X user configuration file." alt="" coords="252,5,523,76"/>
-<area shape="rect" id="node2" href="$ad405x__iio_8c.html" title="Implementation of AD405X IIO Application Interface." alt="" coords="5,124,228,195"/>
-<area shape="rect" id="node3" href="$ad405x__user__config_8c.html" title="User configuration file for AD405X." alt="" coords="253,124,522,195"/>
-<area shape="rect" id="node4" href="$ad405x__iio_2app_2app__config_8c.html" title="Application configurations module." alt="" coords="547,124,769,195"/>
+<area shape="rect" id="Node000001" title="Header for AD405X user configuration file." alt="" coords="252,5,523,75"/>
+<area shape="rect" id="Node000002" href="$ad405x__iio_8c.html" title="Implementation of AD405X IIO Application Interface." alt="" coords="5,123,228,192"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="297,83,197,125,195,120,295,78"/>
+<area shape="rect" id="Node000003" href="$ad405x__user__config_8c.html" title="User configuration file for AD405X." alt="" coords="253,123,522,192"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="390,89,390,122,385,122,385,89"/>
+<area shape="rect" id="Node000004" href="$ad405x__iio_2app_2app__config_8c.html" title="Application configurations module." alt="" coords="547,123,769,192"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="480,78,580,120,578,125,478,83"/>
 </map>

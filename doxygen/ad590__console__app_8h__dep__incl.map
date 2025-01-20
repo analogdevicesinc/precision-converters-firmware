@@ -1,5 +1,7 @@
 <map id="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad590_console/app/ad590_console_app.h" name="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad590_console/app/ad590_console_app.h">
-<area shape="rect" id="node1" title="Header for ad590 console application interfaces." alt="" coords="147,5,441,76"/>
-<area shape="rect" id="node2" href="$ad590__console__app_8c.html" title="ad590 console application interfaces" alt="" coords="5,124,300,195"/>
-<area shape="rect" id="node3" href="$ad590__console_2app_2main_8c.html" title="main module for ad590 console application interface" alt="" coords="324,124,547,195"/>
+<area shape="rect" id="Node000001" title="Header for ad590 console application interfaces." alt="" coords="147,5,441,75"/>
+<area shape="rect" id="Node000002" href="$ad590__console__app_8c.html" title="ad590 console application interfaces" alt="" coords="5,123,300,192"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="244,86,196,124,193,120,240,81"/>
+<area shape="rect" id="Node000003" href="$ad590__console_2app_2main_8c.html" title="main module for ad590 console application interface" alt="" coords="324,123,547,192"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="348,81,395,120,392,124,344,86"/>
 </map>

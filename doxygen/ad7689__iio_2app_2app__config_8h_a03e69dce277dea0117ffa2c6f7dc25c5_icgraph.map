@@ -1,0 +1,29 @@
+<map id="init_pwm_trigger" name="init_pwm_trigger">
+<area shape="rect" id="Node000001" title="Initialize the PWM trigger contoller." alt="" coords="359,153,491,179"/>
+<area shape="rect" id="Node000002" href="$ad2s1210__iio_8c.html#a6dddb9987035d35e4f540f18a96091d1" title="Initialize the IIO interface for AD2S1210 IIO device." alt="" coords="124,5,295,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="406,144,366,93,339,66,309,44,285,33,287,28,312,40,343,62,370,89,410,140"/>
+<area shape="rect" id="Node000004" href="$ad579x__iio_8c.html#aa2a89d81a19aea6a5b4e6a03a2dd7124" title="Initialize the IIO interface for AD579x IIO device." alt="" coords="149,55,270,80"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="395,147,356,119,310,94,270,81,271,76,312,89,359,115,398,142"/>
+<area shape="rect" id="Node000006" href="$ad7091r__iio_8c.html#a526d44841f367222c787b008f38e76a9" title="Initialize the IIO interface for AD7091R IIO device." alt="" coords="146,104,273,129"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="355,153,265,132,266,127,356,148"/>
+<area shape="rect" id="Node000008" href="$ad7091r__iio_8c.html#a90e227b232d191cd2bb5d478515cc59e" title="Set the sampling rate and get the updated value supported by MCU platform." alt="" coords="108,153,311,179"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="345,169,311,169,311,163,345,163"/>
+<area shape="rect" id="Node000009" href="$ad738x__iio_8c.html#aca39994109d05202ac8e9ee9ad40a9cf" title="Initialize the IIO interface for AD738x IIO device." alt="" coords="131,203,287,228"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="356,184,266,205,265,200,355,179"/>
+<area shape="rect" id="Node000011" href="$iio__ad7606_8c.html#af125d30ab8d373f729b7fb4a705681f9" title="Initialize the IIO interface for AD7606 IIO device." alt="" coords="131,252,287,277"/>
+<area shape="poly" id="edge10_Node000001_Node000011" title=" " alt="" coords="398,189,358,216,312,242,275,254,273,249,310,237,356,212,395,185"/>
+<area shape="rect" id="Node000013" href="$ad7689__iio_8c.html#ad230f115f917fa129f5784eb1085eecf" title="Initialize the IIO interface for AD7689 IIO device." alt="" coords="131,301,287,327"/>
+<area shape="poly" id="edge12_Node000001_Node000013" title=" " alt="" coords="410,192,370,242,343,269,312,291,284,304,282,299,309,286,339,265,366,239,406,189"/>
+<area shape="rect" id="Node000003" href="$ad2s1210__iio_2app_2main_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title=" " alt="" coords="5,5,60,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="110,21,60,21,60,15,110,15"/>
+<area shape="rect" id="Node000005" href="$ad579x__iio_2app_2main_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title="Main entry point to application." alt="" coords="5,55,60,80"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="135,70,60,70,60,65,135,65"/>
+<area shape="rect" id="Node000007" href="$ad7091r__iio_2app_2main_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title="Main entry point to application." alt="" coords="5,104,60,129"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="132,119,60,119,60,114,132,114"/>
+<area shape="rect" id="Node000010" href="$ad738x__iio_2app_2main_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title="Main entry point to application." alt="" coords="5,203,60,228"/>
+<area shape="poly" id="edge9_Node000009_Node000010" title=" " alt="" coords="117,218,60,218,60,213,117,213"/>
+<area shape="rect" id="Node000012" href="$ad7606__iio_2app_2main_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title="Main entry point to application." alt="" coords="5,252,60,277"/>
+<area shape="poly" id="edge11_Node000011_Node000012" title=" " alt="" coords="117,267,60,267,60,262,117,262"/>
+<area shape="rect" id="Node000014" href="$ad7689__iio_2app_2main_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title=" " alt="" coords="5,301,60,327"/>
+<area shape="poly" id="edge13_Node000013_Node000014" title=" " alt="" coords="117,317,60,317,60,311,117,311"/>
+</map>

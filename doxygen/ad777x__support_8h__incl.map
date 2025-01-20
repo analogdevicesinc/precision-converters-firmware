@@ -1,6 +1,9 @@
 <map id="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad777x_iio/app/ad777x_support.h" name="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad777x_iio/app/ad777x_support.h">
-<area shape="rect" id="node1" title=" " alt="" coords="25,5,271,76"/>
-<area shape="rect" id="node2" title=" " alt="" coords="5,124,88,151"/>
-<area shape="rect" id="node3" title=" " alt="" coords="113,124,183,151"/>
-<area shape="rect" id="node4" title=" " alt="" coords="208,124,291,151"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="25,5,271,75"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,123,88,148"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="113,77,71,115,68,111,110,73"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="113,123,183,148"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="151,75,151,109,145,109,145,75"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="208,123,291,148"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="186,73,228,111,225,115,183,77"/>
 </map>

@@ -1,8 +1,14 @@
 <map id="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad7124_temperature&#45;measure/app/ad7124_temperature_sensor.h" name="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad7124_temperature&#45;measure/app/ad7124_temperature_sensor.h">
-<area shape="rect" id="node1" title=" " alt="" coords="5,5,257,91"/>
-<area shape="rect" id="node2" title=" " alt="" coords="35,288,105,315"/>
-<area shape="rect" id="node3" href="$ad7124__temperature-measure_2app_2ad7124__regs__configs_8h.html" title=" " alt="" coords="107,139,278,165"/>
-<area shape="rect" id="node4" href="$ad7124__temperature-measure_2app_2app__config_8h.html" title=" " alt="" coords="117,213,221,240"/>
-<area shape="rect" id="node6" title=" " alt="" coords="245,213,327,240"/>
-<area shape="rect" id="node5" title=" " alt="" coords="129,288,229,315"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,5,257,89"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="35,284,105,309"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="115,90,98,138,83,210,75,271,70,270,78,209,93,137,110,89"/>
+<area shape="rect" id="Node000003" href="$ad7124__temperature-measure_2app_2ad7124__regs__configs_8h.html" title=" " alt="" coords="107,137,278,163"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="159,88,181,124,176,127,154,91"/>
+<area shape="rect" id="Node000004" href="$ad7124__temperature-measure_2app_2app__config_8h.html" title=" " alt="" coords="117,211,221,236"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="191,164,179,198,174,197,186,162"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="245,211,327,236"/>
+<area shape="poly" id="edge6_Node000003_Node000006" title=" " alt="" coords="209,161,262,200,258,204,206,165"/>
+<area shape="poly" id="edge4_Node000004_Node000002" title=" " alt="" coords="154,238,99,278,96,274,151,234"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="129,284,229,309"/>
+<area shape="poly" id="edge5_Node000004_Node000005" title=" " alt="" coords="173,236,178,270,173,271,168,237"/>
 </map>

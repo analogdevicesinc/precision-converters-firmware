@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['apache_20license_202_2e0_6469',['Apache License 2.0',['../license_page.html',1,'']]]
+  ['0_0',['Apache License 2.0',['../license_page.html',1,'']]]
 ];

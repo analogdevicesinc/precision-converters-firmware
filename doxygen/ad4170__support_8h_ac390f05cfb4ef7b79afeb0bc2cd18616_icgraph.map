@@ -1,0 +1,5 @@
+<map id="ad4170_read_converted_sample" name="ad4170_read_converted_sample">
+<area shape="rect" id="Node000001" title="Read ADC raw data for recently sampled channel." alt="" coords="196,5,375,45"/>
+<area shape="rect" id="Node000002" href="$ad4170__iio_8c.html#a83819a45a1f01a33f81c406a0e59c3aa" title="Push data into IIO buffer when trigger handler IRQ is invoked." alt="" coords="5,5,148,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="182,28,148,28,148,23,182,23"/>
+</map>

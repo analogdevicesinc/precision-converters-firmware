@@ -1,6 +1,9 @@
 <map id="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/evb_discovery_firmware/app/app_config_stm32.h" name="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/evb_discovery_firmware/app/app_config_stm32.h">
-<area shape="rect" id="node1" title="Header file for STM32 platform configurations." alt="" coords="33,5,275,91"/>
-<area shape="rect" id="node2" title=" " alt="" coords="5,139,76,165"/>
-<area shape="rect" id="node3" title=" " alt="" coords="100,139,208,165"/>
-<area shape="rect" id="node4" title=" " alt="" coords="233,139,334,165"/>
+<area shape="rect" id="Node000001" title="Header file for STM32 platform configurations." alt="" coords="33,5,275,89"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,137,76,163"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="110,91,66,130,62,126,106,87"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="100,137,208,163"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="157,89,157,124,151,124,151,89"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="233,137,334,163"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="208,87,259,127,256,131,205,91"/>
 </map>

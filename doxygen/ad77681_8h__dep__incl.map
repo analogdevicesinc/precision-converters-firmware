@@ -1,10 +1,18 @@
 <map id="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad77681_iio/app/ad77681.h" name="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad77681_iio/app/ad77681.h">
-<area shape="rect" id="node1" title="Header file of the AD7768&#45;1 Driver." alt="" coords="397,5,620,76"/>
-<area shape="rect" id="node2" href="$ad77681_8c.html" title="Implementation of AD7768&#45;1 Driver." alt="" coords="5,124,228,195"/>
-<area shape="rect" id="node3" href="$ad77681__regs_8c.html" title="AD77681 registers map." alt="" coords="252,124,491,195"/>
-<area shape="rect" id="node4" href="$ad77681__support_8h.html" title=" " alt="" coords="515,124,777,195"/>
-<area shape="rect" id="node7" href="$ad77681__user__config_8h.html" title=" " alt="" coords="801,124,1088,195"/>
-<area shape="rect" id="node5" href="$ad77681__iio_8c.html" title="Implementation of AD7768&#45;1 IIO application interfaces." alt="" coords="675,243,902,313"/>
-<area shape="rect" id="node6" href="$ad77681__support_8c.html" title="AD7768&#45;1 No&#45;OS driver support file." alt="" coords="391,243,651,313"/>
-<area shape="rect" id="node8" href="$ad77681__user__config_8c.html" title=" " alt="" coords="926,243,1211,313"/>
+<area shape="rect" id="Node000001" title="Header file of the AD7768&#45;1 Driver." alt="" coords="397,5,620,75"/>
+<area shape="rect" id="Node000002" href="$ad77681_8c.html" title="Implementation of AD7768&#45;1 Driver." alt="" coords="5,123,228,192"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="384,80,229,126,228,121,383,75"/>
+<area shape="rect" id="Node000003" href="$ad77681__regs_8c.html" title="AD77681 registers map." alt="" coords="252,123,491,192"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="460,86,413,124,410,120,457,81"/>
+<area shape="rect" id="Node000004" href="$ad77681__support_8h.html" title=" " alt="" coords="515,123,777,192"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="561,81,607,120,604,124,557,86"/>
+<area shape="rect" id="Node000007" href="$ad77681__user__config_8h.html" title=" " alt="" coords="801,123,1088,192"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="634,72,819,120,817,125,633,77"/>
+<area shape="rect" id="Node000005" href="$ad77681__iio_8c.html" title="Implementation of AD7768&#45;1 IIO application interfaces." alt="" coords="675,240,902,309"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="700,199,748,238,745,242,697,203"/>
+<area shape="rect" id="Node000006" href="$ad77681__support_8c.html" title="AD7768&#45;1 No&#45;OS driver support file." alt="" coords="391,240,651,309"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="601,203,559,242,556,238,598,199"/>
+<area shape="poly" id="edge7_Node000007_Node000005" title=" " alt="" coords="890,202,836,242,833,237,887,198"/>
+<area shape="rect" id="Node000008" href="$ad77681__user__config_8c.html" title=" " alt="" coords="926,240,1211,309"/>
+<area shape="poly" id="edge8_Node000007_Node000008" title=" " alt="" coords="993,200,1034,238,1031,242,990,204"/>
 </map>

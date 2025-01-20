@@ -1,0 +1,5 @@
+<map id="perform_cjc_measurement" name="perform_cjc_measurement">
+<area shape="rect" id="Node000001" title="Perform the cold junction compensation (CJC) measurement." alt="" coords="224,13,421,38"/>
+<area shape="rect" id="Node000002" href="$ad7124__temperature-measure_2app_2ad7124__console__app_8c.html#af832c590d7044c1c5adde9bc4b8850d6" title="Perform the multiple thermocouple sensors measurement." alt="" coords="5,5,176,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="210,28,176,28,176,23,210,23"/>
+</map>

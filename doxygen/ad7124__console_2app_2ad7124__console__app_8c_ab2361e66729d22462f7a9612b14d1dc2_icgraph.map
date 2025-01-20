@@ -1,4 +1,7 @@
 <map id="ad7124_app_initialize" name="ad7124_app_initialize">
-<area shape="rect" id="node1" title="Initialize the AD7124 device and the SPI port as required." alt="" coords="108,5,272,32"/>
-<area shape="rect" id="node2" href="$ad7124__console_2app_2main_8c.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title=" " alt="" coords="5,5,60,32"/>
+<area shape="rect" id="Node000001" title="Initialize the AD7124 device and the SPI port as required." alt="" coords="108,31,272,56"/>
+<area shape="rect" id="Node000002" href="$ad7124__console_2app_2main_8c.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title=" " alt="" coords="5,5,60,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="97,31,60,25,60,20,98,26"/>
+<area shape="rect" id="Node000003" href="$ad7124__temperature-measure_2app_2main_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title=" " alt="" coords="5,55,60,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="95,61,61,66,60,61,94,55"/>
 </map>

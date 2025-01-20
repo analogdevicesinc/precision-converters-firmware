@@ -1,31 +1,71 @@
 <map id="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad7091r_iio/app/ad7091r_iio.c" name="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad7091r_iio/app/ad7091r_iio.c">
-<area shape="rect" id="node1" title="Implementation of AD7091R IIO application interfaces." alt="" coords="928,5,1151,76"/>
-<area shape="rect" id="node2" title=" " alt="" coords="1006,199,1073,225"/>
-<area shape="rect" id="node3" title=" " alt="" coords="1097,199,1168,225"/>
-<area shape="rect" id="node4" href="$ad7091r__iio_2app_2app__config_8h.html" title="Configuration file for AD7091R device application." alt="" coords="723,124,827,151"/>
-<area shape="rect" id="node7" title=" " alt="" coords="747,199,857,225"/>
-<area shape="rect" id="node8" title=" " alt="" coords="881,199,981,225"/>
-<area shape="rect" id="node19" href="$ad7091r__iio_8h.html" title="Header file for AD7091R IIO interface." alt="" coords="1543,124,1653,151"/>
-<area shape="rect" id="node22" href="$ad7091r__user__config_8h.html" title=" " alt="" coords="363,124,531,151"/>
-<area shape="rect" id="node23" href="$ad7091r__support_8h.html" title="AD7091R No&#45;OS driver support functionality headers." alt="" coords="556,124,699,151"/>
-<area shape="rect" id="node24" href="$common_8h.html" title=" " alt="" coords="1355,124,1446,151"/>
-<area shape="rect" id="node28" title=" " alt="" coords="1678,124,1777,151"/>
-<area shape="rect" id="node29" title=" " alt="" coords="1801,124,1897,151"/>
-<area shape="rect" id="node5" title=" " alt="" coords="1408,273,1479,300"/>
-<area shape="rect" id="node6" title=" " alt="" coords="400,199,495,225"/>
-<area shape="rect" id="node9" href="$ad7091r__iio_2app_2app__config__stm32_8h.html" title="Header file for STM32 platform configurations." alt="" coords="519,199,671,225"/>
-<area shape="rect" id="node10" title=" " alt="" coords="985,273,1093,300"/>
-<area shape="rect" id="node11" title=" " alt="" coords="1118,273,1219,300"/>
-<area shape="rect" id="node12" title=" " alt="" coords="5,273,116,300"/>
-<area shape="rect" id="node13" title=" " alt="" coords="141,273,239,300"/>
-<area shape="rect" id="node14" title=" " alt="" coords="263,273,378,300"/>
-<area shape="rect" id="node15" title=" " alt="" coords="402,273,503,300"/>
-<area shape="rect" id="node16" title=" " alt="" coords="528,273,663,300"/>
-<area shape="rect" id="node17" title=" " alt="" coords="687,273,797,300"/>
-<area shape="rect" id="node18" title=" " alt="" coords="822,273,961,300"/>
-<area shape="rect" id="node20" title=" " alt="" coords="1719,199,1802,225"/>
-<area shape="rect" id="node21" title=" " alt="" coords="1645,199,1695,225"/>
-<area shape="rect" id="node25" title=" " alt="" coords="1479,199,1570,225"/>
-<area shape="rect" id="node26" title=" " alt="" coords="1192,199,1321,225"/>
-<area shape="rect" id="node27" title=" " alt="" coords="1346,199,1455,225"/>
+<area shape="rect" id="Node000001" title="Implementation of AD7091R IIO application interfaces." alt="" coords="928,5,1151,75"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="1006,196,1073,221"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="1042,75,1042,182,1037,182,1037,75"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="1097,196,1168,221"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="1061,74,1122,183,1117,185,1056,76"/>
+<area shape="rect" id="Node000004" href="$ad7091r__iio_2app_2app__config_8h.html" title="Configuration file for AD7091R device application." alt="" coords="723,123,827,148"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="945,77,822,121,820,116,943,72"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="747,196,857,221"/>
+<area shape="poly" id="edge39_Node000001_Node000007" title=" " alt="" coords="993,77,831,190,828,186,990,73"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="881,196,981,221"/>
+<area shape="poly" id="edge38_Node000001_Node000008" title=" " alt="" coords="1020,76,949,186,944,183,1015,73"/>
+<area shape="rect" id="Node000019" href="$ad7091r__iio_8h.html" title="Header file for AD7091R IIO interface." alt="" coords="1543,123,1653,148"/>
+<area shape="poly" id="edge20_Node000001_Node000019" title=" " alt="" coords="1151,57,1530,120,1529,125,1150,62"/>
+<area shape="rect" id="Node000022" href="$ad7091r__user__config_8h.html" title=" " alt="" coords="363,123,531,148"/>
+<area shape="poly" id="edge24_Node000001_Node000022" title=" " alt="" coords="928,61,534,123,533,118,928,56"/>
+<area shape="rect" id="Node000023" href="$ad7091r__support_8h.html" title="AD7091R No&#45;OS driver support functionality headers." alt="" coords="556,123,699,148"/>
+<area shape="poly" id="edge26_Node000001_Node000023" title=" " alt="" coords="928,69,692,122,690,117,927,64"/>
+<area shape="rect" id="Node000024" href="$common_8h.html" title=" " alt="" coords="1355,123,1446,148"/>
+<area shape="poly" id="edge28_Node000001_Node000024" title=" " alt="" coords="1151,67,1344,117,1342,122,1150,72"/>
+<area shape="rect" id="Node000028" title=" " alt="" coords="1678,123,1777,148"/>
+<area shape="poly" id="edge37_Node000001_Node000028" title=" " alt="" coords="1151,51,1384,80,1665,120,1664,125,1383,85,1151,57"/>
+<area shape="rect" id="Node000029" title=" " alt="" coords="1801,123,1897,148"/>
+<area shape="poly" id="edge40_Node000001_Node000029" title=" " alt="" coords="1151,48,1436,76,1787,120,1787,125,1435,81,1151,53"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="1408,269,1479,295"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="764,150,749,166,736,184,730,203,731,212,735,219,820,231,1009,247,1395,275,1394,280,1009,253,819,236,733,224,726,214,725,203,731,182,745,162,760,146"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="400,196,495,221"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="724,151,509,197,508,192,722,145"/>
+<area shape="poly" id="edge6_Node000004_Node000007" title=" " alt="" coords="782,147,795,182,790,184,777,149"/>
+<area shape="poly" id="edge7_Node000004_Node000008" title=" " alt="" coords="801,146,894,188,892,193,799,150"/>
+<area shape="rect" id="Node000009" href="$ad7091r__iio_2app_2app__config__stm32_8h.html" title="Header file for STM32 platform configurations." alt="" coords="519,196,671,221"/>
+<area shape="poly" id="edge8_Node000004_Node000009" title=" " alt="" coords="741,151,631,193,630,188,739,146"/>
+<area shape="poly" id="edge19_Node000009_Node000004" title=" " alt="" coords="631,193,740,151,742,156,633,198"/>
+<area shape="poly" id="edge9_Node000009_Node000005" title=" " alt="" coords="672,217,690,219,1097,254,1395,275,1394,280,1096,259,690,224,671,222"/>
+<area shape="rect" id="Node000010" title=" " alt="" coords="985,269,1093,295"/>
+<area shape="poly" id="edge10_Node000009_Node000010" title=" " alt="" coords="670,219,972,267,971,272,669,224"/>
+<area shape="rect" id="Node000011" title=" " alt="" coords="1118,269,1219,295"/>
+<area shape="poly" id="edge11_Node000009_Node000011" title=" " alt="" coords="672,217,690,219,895,241,1104,267,1104,272,895,246,690,224,671,222"/>
+<area shape="rect" id="Node000012" title=" " alt="" coords="5,269,116,295"/>
+<area shape="poly" id="edge12_Node000009_Node000012" title=" " alt="" coords="520,222,130,272,129,267,519,217"/>
+<area shape="rect" id="Node000013" title=" " alt="" coords="141,269,239,295"/>
+<area shape="poly" id="edge13_Node000009_Node000013" title=" " alt="" coords="529,224,253,272,252,266,528,219"/>
+<area shape="rect" id="Node000014" title=" " alt="" coords="263,269,378,295"/>
+<area shape="poly" id="edge14_Node000009_Node000014" title=" " alt="" coords="552,224,379,268,378,263,551,219"/>
+<area shape="rect" id="Node000015" title=" " alt="" coords="402,269,503,295"/>
+<area shape="poly" id="edge15_Node000009_Node000015" title=" " alt="" coords="574,224,489,265,487,261,571,219"/>
+<area shape="rect" id="Node000016" title=" " alt="" coords="528,269,663,295"/>
+<area shape="poly" id="edge16_Node000009_Node000016" title=" " alt="" coords="598,222,598,256,593,256,593,222"/>
+<area shape="rect" id="Node000017" title=" " alt="" coords="687,269,797,295"/>
+<area shape="poly" id="edge17_Node000009_Node000017" title=" " alt="" coords="620,219,707,261,705,266,618,224"/>
+<area shape="rect" id="Node000018" title=" " alt="" coords="822,269,961,295"/>
+<area shape="poly" id="edge18_Node000009_Node000018" title=" " alt="" coords="644,219,831,263,830,269,642,224"/>
+<area shape="poly" id="edge21_Node000019_Node000005" title=" " alt="" coords="1653,145,1753,170,1794,182,1816,194,1822,209,1816,223,1794,240,1760,253,1673,271,1576,280,1493,283,1493,278,1575,274,1672,265,1759,248,1791,235,1812,220,1817,209,1812,198,1792,187,1752,175,1652,151"/>
+<area shape="rect" id="Node000020" title=" " alt="" coords="1719,196,1802,221"/>
+<area shape="poly" id="edge22_Node000019_Node000020" title=" " alt="" coords="1625,146,1723,188,1720,193,1623,150"/>
+<area shape="rect" id="Node000021" title=" " alt="" coords="1645,196,1695,221"/>
+<area shape="poly" id="edge23_Node000019_Node000021" title=" " alt="" coords="1612,146,1650,184,1647,188,1608,150"/>
+<area shape="poly" id="edge25_Node000022_Node000006" title=" " alt="" coords="450,148,450,182,445,182,445,148"/>
+<area shape="poly" id="edge27_Node000023_Node000006" title=" " alt="" coords="599,151,490,193,488,188,597,146"/>
+<area shape="poly" id="edge32_Node000024_Node000002" title=" " alt="" coords="1355,147,1087,198,1086,193,1354,142"/>
+<area shape="poly" id="edge31_Node000024_Node000003" title=" " alt="" coords="1358,151,1182,197,1181,192,1357,145"/>
+<area shape="poly" id="edge29_Node000024_Node000005" title=" " alt="" coords="1446,135,1482,139,1520,150,1555,167,1584,194,1591,209,1589,223,1581,235,1568,245,1533,262,1493,273,1492,268,1531,257,1565,241,1577,231,1584,221,1585,210,1580,198,1552,172,1518,155,1481,145,1446,140"/>
+<area shape="poly" id="edge30_Node000024_Node000020" title=" " alt="" coords="1447,143,1706,193,1705,198,1446,148"/>
+<area shape="poly" id="edge33_Node000024_Node000021" title=" " alt="" coords="1445,145,1632,195,1631,200,1443,151"/>
+<area shape="rect" id="Node000025" title=" " alt="" coords="1479,196,1570,221"/>
+<area shape="poly" id="edge34_Node000024_Node000025" title=" " alt="" coords="1422,146,1494,187,1491,191,1419,150"/>
+<area shape="rect" id="Node000026" title=" " alt="" coords="1192,196,1321,221"/>
+<area shape="poly" id="edge35_Node000024_Node000026" title=" " alt="" coords="1379,150,1294,192,1291,187,1376,146"/>
+<area shape="rect" id="Node000027" title=" " alt="" coords="1346,196,1455,221"/>
+<area shape="poly" id="edge36_Node000024_Node000027" title=" " alt="" coords="1403,148,1403,182,1398,182,1398,148"/>
 </map>

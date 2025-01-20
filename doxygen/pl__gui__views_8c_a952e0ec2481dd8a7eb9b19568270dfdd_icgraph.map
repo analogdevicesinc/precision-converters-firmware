@@ -1,4 +1,17 @@
 <map id="pl_gui_is_dmm_running" name="pl_gui_is_dmm_running">
-<area shape="rect" id="node1" title="DMM running status check." alt="" coords="209,5,385,32"/>
-<area shape="rect" id="node2" href="$pl__gui__events_8c.html#a97eaab98213ff63e7f6bb8f4acef32a6" title="Handle lvgl GUI events." alt="" coords="5,5,161,32"/>
+<area shape="rect" id="Node000001" title="DMM running status check." alt="" coords="553,55,729,80"/>
+<area shape="rect" id="Node000002" href="$pl__gui__events_8c.html#a97eaab98213ff63e7f6bb8f4acef32a6" title="Handle lvgl GUI events." alt="" coords="349,55,505,80"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="539,70,506,70,506,65,539,65"/>
+<area shape="rect" id="Node000003" href="$ad4130__iio_8c.html#a2d9788ebb49a6952924cf97ca442f92a" title="Run the AD4130 IIO event handler." alt="" coords="108,5,301,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="356,54,262,33,263,28,357,49"/>
+<area shape="rect" id="Node000005" href="$ad4170__iio_8c.html#a90df09e109b2513ba81975c0fabfdb60" title="Run the AD4170 IIO event handler." alt="" coords="108,55,301,80"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="336,70,301,70,301,65,336,65"/>
+<area shape="rect" id="Node000007" href="$ad7124__iio_8c.html#a065de382e039b932b0e1ce86fb1f4ec2" title="Run the AD7124 IIO event handler." alt="" coords="108,104,301,129"/>
+<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="357,86,263,107,262,101,356,80"/>
+<area shape="rect" id="Node000004" href="$ad4130__iio_2app_2main_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title="Main entry point to application." alt="" coords="5,5,60,31"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="94,21,60,21,60,15,94,15"/>
+<area shape="rect" id="Node000006" href="$ad4170__iio_2app_2main_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title="Main entry point to application." alt="" coords="5,55,60,80"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="94,70,60,70,60,65,94,65"/>
+<area shape="rect" id="Node000008" href="$ad7124__iio_2app_2main_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title="Main entry point to application." alt="" coords="5,104,60,129"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="94,119,60,119,60,114,94,114"/>
 </map>

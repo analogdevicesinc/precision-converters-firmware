@@ -1,6 +1,13 @@
 <map id="ad77681_initiate_sync" name="ad77681_initiate_sync">
-<area shape="rect" id="node1" title=" " alt="" coords="404,42,572,69"/>
-<area shape="rect" id="node2" href="$ad77681_8c.html#a99916ee432c0763165175cbea946f432" title=" " alt="" coords="175,5,356,47"/>
-<area shape="rect" id="node3" href="$ad77681_8c.html#aeb0630d26819649cdf05b80bfd30f4b1" title=" " alt="" coords="176,71,355,98"/>
-<area shape="rect" id="node4" href="$ad77681_8c.html#a462935549432e532a6b9526b4807f862" title=" " alt="" coords="5,71,127,98"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="719,42,887,67"/>
+<area shape="rect" id="Node000002" href="$ad77681_8c.html#a99916ee432c0763165175cbea946f432" title=" " alt="" coords="489,5,671,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="704,44,671,40,671,35,705,39"/>
+<area shape="rect" id="Node000003" href="$ad77681_8c.html#aeb0630d26819649cdf05b80bfd30f4b1" title=" " alt="" coords="491,70,669,95"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="705,70,670,74,669,69,704,64"/>
+<area shape="rect" id="Node000004" href="$ad77681_8c.html#a462935549432e532a6b9526b4807f862" title=" " alt="" coords="320,70,441,95"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="477,85,441,85,441,80,477,80"/>
+<area shape="rect" id="Node000005" href="$ad77681__iio_8c.html#a40ce85e986a3bd49c843b926ce2566e3" title="Initialize the IIO interface for AD7768&#45;1 IIO device." alt="" coords="108,70,272,95"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="306,85,272,85,272,80,306,80"/>
+<area shape="rect" id="Node000006" href="$ad77681__iio_2app_2main_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title=" " alt="" coords="5,70,60,95"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="94,85,60,85,60,80,94,80"/>
 </map>

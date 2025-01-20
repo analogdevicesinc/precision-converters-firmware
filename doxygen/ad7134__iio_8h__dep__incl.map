@@ -1,6 +1,9 @@
 <map id="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad7134_iio/app/ad7134_iio.h" name="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad7134_iio/app/ad7134_iio.h">
-<area shape="rect" id="node1" title="Header file AD7134 IIO interface." alt="" coords="263,5,485,76"/>
-<area shape="rect" id="node2" href="$ad7134__iio_8c.html" title="Implementation of AD7134 IIO apllication interfaces." alt="" coords="5,124,228,195"/>
-<area shape="rect" id="node3" href="$ad7134__support_8c.html" title="Source file for for AD7134 No&#45;OS driver support." alt="" coords="252,124,496,195"/>
-<area shape="rect" id="node4" href="$ad7134__iio_2app_2main_8c.html" title=" " alt="" coords="520,124,743,195"/>
+<area shape="rect" id="Node000001" title="Header file AD7134 IIO interface." alt="" coords="263,5,485,75"/>
+<area shape="rect" id="Node000002" href="$ad7134__iio_8c.html" title="Implementation of AD7134 IIO apllication interfaces." alt="" coords="5,123,228,192"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="287,83,193,125,191,120,285,78"/>
+<area shape="rect" id="Node000003" href="$ad7134__support_8c.html" title="Source file for for AD7134 No&#45;OS driver support." alt="" coords="252,123,496,192"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="377,89,377,122,371,122,371,89"/>
+<area shape="rect" id="Node000004" href="$ad7134__iio_2app_2main_8c.html" title=" " alt="" coords="520,123,743,192"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="463,78,557,120,555,125,461,83"/>
 </map>

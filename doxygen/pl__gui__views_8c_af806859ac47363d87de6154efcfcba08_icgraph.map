@@ -1,0 +1,5 @@
+<map id="pl_gui_get_capture_chns_mask" name="pl_gui_get_capture_chns_mask">
+<area shape="rect" id="Node000001" title="Get the channels mask based on enabled channels count." alt="" coords="195,5,340,45"/>
+<area shape="rect" id="Node000002" href="$pl__gui__events_8c.html#af58bdc315575d596c65a4bf30756dbdf" title="Read the pocket lab GUI event and form (an IIO) command string." alt="" coords="5,13,147,38"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="181,28,147,28,147,23,181,23"/>
+</map>

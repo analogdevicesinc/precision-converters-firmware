@@ -1,9 +1,16 @@
 <map id="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad717x_console/app/ad717x_console_app.h" name="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad717x_console/app/ad717x_console_app.h">
-<area shape="rect" id="node1" title=": Header for AD717x/AD411x console application interface." alt="" coords="69,5,379,76"/>
-<area shape="rect" id="node2" href="$adi__console__menu_8h.html" title=": A simple console menu manager handler" alt="" coords="71,124,225,151"/>
-<area shape="rect" id="node6" href="$ad717x__console_2app_2app__config_8h.html" title="Configuration file for AD717x/AD411x firmware example." alt="" coords="249,124,353,151"/>
-<area shape="rect" id="node3" title=" " alt="" coords="5,199,88,225"/>
-<area shape="rect" id="node4" title=" " alt="" coords="207,199,278,225"/>
-<area shape="rect" id="node5" title=" " alt="" coords="113,199,183,225"/>
-<area shape="rect" id="node7" title=" " alt="" coords="302,199,402,225"/>
+<area shape="rect" id="Node000001" title=": Header for AD717x/AD411x console application interface." alt="" coords="69,5,379,75"/>
+<area shape="rect" id="Node000002" href="$adi__console__menu_8h.html" title=": A simple console menu manager handler" alt="" coords="71,123,225,148"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="199,76,168,113,164,110,195,73"/>
+<area shape="rect" id="Node000006" href="$ad717x__console_2app_2app__config_8h.html" title="Configuration file for AD717x/AD411x firmware example." alt="" coords="249,123,353,148"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="254,73,285,110,281,114,250,76"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="5,196,88,221"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="133,150,76,190,73,186,130,146"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="207,196,278,221"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="165,146,218,185,215,190,162,150"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="113,196,183,221"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="151,148,151,182,145,182,145,148"/>
+<area shape="poly" id="edge6_Node000006_Node000004" title=" " alt="" coords="294,150,263,187,259,184,290,147"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="302,196,402,221"/>
+<area shape="poly" id="edge7_Node000006_Node000007" title=" " alt="" coords="312,147,338,183,334,186,308,150"/>
 </map>

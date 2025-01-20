@@ -1,5 +1,7 @@
 <map id="ad717x_enable_cont_read" name="ad717x_enable_cont_read">
-<area shape="rect" id="node1" title="Enable/Disable continuous read mode." alt="" coords="229,46,421,73"/>
-<area shape="rect" id="node2" href="$ad717x__iio_8c.html#ab8935b525cc447a6ff569ff432e82189" title="Function to stop continuous data capture." alt="" coords="5,5,181,47"/>
-<area shape="rect" id="node3" href="$ad717x__iio_8c.html#ac086e9add2dfdc29e5641786dab88181" title="Function to prepare the ADC for continuous capture." alt="" coords="16,71,171,112"/>
+<area shape="rect" id="Node000001" title="Enable/Disable continuous read mode." alt="" coords="229,45,421,70"/>
+<area shape="rect" id="Node000002" href="$ad717x__iio_8c.html#ab8935b525cc447a6ff569ff432e82189" title="Function to stop continuous data capture." alt="" coords="5,5,181,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="219,45,181,40,182,35,220,40"/>
+<area shape="rect" id="Node000003" href="$ad717x__iio_8c.html#ac086e9add2dfdc29e5641786dab88181" title="Function to prepare the ADC for continuous capture." alt="" coords="16,69,171,109"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="220,75,171,81,171,76,219,69"/>
 </map>

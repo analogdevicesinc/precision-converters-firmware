@@ -1,6 +1,9 @@
 <map id="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad4170_iio/app/ad4170_accelerometer_config.h" name="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad4170_iio/app/ad4170_accelerometer_config.h">
-<area shape="rect" id="node1" title="Header for AD4170 Accelerometer configurations module." alt="" coords="5,5,341,76"/>
-<area shape="rect" id="node2" title=" " alt="" coords="43,124,114,151"/>
-<area shape="rect" id="node3" title=" " alt="" coords="138,124,209,151"/>
-<area shape="rect" id="node4" title=" " alt="" coords="233,124,316,151"/>
+<area shape="rect" id="Node000001" title="Header for AD4170 Accelerometer configurations module." alt="" coords="5,5,341,75"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="43,123,114,148"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="141,77,102,115,98,111,137,73"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="138,123,209,148"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="176,75,176,109,171,109,171,75"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="233,123,316,148"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="212,73,254,111,250,115,208,77"/>
 </map>

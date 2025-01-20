@@ -1,7 +1,11 @@
 <map id="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad7124_console/app/ad7124_support.c" name="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad7124_console/app/ad7124_support.c">
-<area shape="rect" id="node1" title=": Provides useful support functions for the AD7124 NoOS driver" alt="" coords="5,5,284,76"/>
-<area shape="rect" id="node2" title=" " alt="" coords="37,124,119,151"/>
-<area shape="rect" id="node3" href="$ad7124__console_2app_2ad7124__support_8h.html" title=": Provides useful support functions for the AD7124 NoOS driver" alt="" coords="143,124,282,151"/>
-<area shape="rect" id="node4" title=" " alt="" coords="113,199,195,225"/>
-<area shape="rect" id="node5" title=" " alt="" coords="220,199,320,225"/>
+<area shape="rect" id="Node000001" title=": Provides useful support functions for the AD7124 NoOS driver" alt="" coords="5,5,284,75"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="37,123,119,148"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="123,76,97,113,92,110,118,73"/>
+<area shape="rect" id="Node000003" href="$ad7124__console_2app_2ad7124__support_8h.html" title=": Provides useful support functions for the AD7124 NoOS driver" alt="" coords="143,123,282,148"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="171,73,198,110,194,113,167,76"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="113,196,195,221"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="205,150,174,187,170,184,201,147"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="220,196,320,221"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="224,147,254,183,250,187,220,150"/>
 </map>

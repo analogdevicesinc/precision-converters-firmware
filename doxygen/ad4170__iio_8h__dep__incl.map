@@ -1,7 +1,11 @@
 <map id="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad4170_iio/app/ad4170_iio.h" name="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad4170_iio/app/ad4170_iio.h">
-<area shape="rect" id="node1" title="Header file of ad4170_iio." alt="" coords="400,5,623,76"/>
-<area shape="rect" id="node2" href="$ad4170__iio_8c.html" title="Implementation of AD4170 IIO application interfaces." alt="" coords="5,124,228,195"/>
-<area shape="rect" id="node3" href="$ad4170__support_8c.html" title=" " alt="" coords="252,124,496,195"/>
-<area shape="rect" id="node4" href="$ad4170__iio_2app_2app__config__stm32_8c.html" title="Application configurations module for STM32 platform." alt="" coords="521,124,779,195"/>
-<area shape="rect" id="node5" href="$ad4170__iio_2app_2main_8c.html" title="Main module for AD4170 IIO application." alt="" coords="803,124,1025,195"/>
+<area shape="rect" id="Node000001" title="Header file of ad4170_iio." alt="" coords="400,5,623,75"/>
+<area shape="rect" id="Node000002" href="$ad4170__iio_8c.html" title="Implementation of AD4170 IIO application interfaces." alt="" coords="5,123,228,192"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="387,80,229,126,228,121,386,75"/>
+<area shape="rect" id="Node000003" href="$ad4170__support_8c.html" title=" " alt="" coords="252,123,496,192"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="463,86,416,124,413,120,459,81"/>
+<area shape="rect" id="Node000004" href="$ad4170__iio_2app_2app__config__stm32_8c.html" title="Application configurations module for STM32 platform." alt="" coords="521,123,779,192"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="564,81,611,120,608,124,561,86"/>
+<area shape="rect" id="Node000005" href="$ad4170__iio_2app_2main_8c.html" title="Main module for AD4170 IIO application." alt="" coords="803,123,1025,192"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="637,74,803,122,802,127,635,79"/>
 </map>

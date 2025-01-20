@@ -1,6 +1,10 @@
 <map id="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ltc2672_iio/app/main.c" name="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ltc2672_iio/app/main.c">
-<area shape="rect" id="node1" title="Main module for LTC2672 IIO application." alt="" coords="5,5,228,76"/>
-<area shape="rect" id="node2" title=" " alt="" coords="13,124,79,151"/>
-<area shape="rect" id="node3" title=" " alt="" coords="127,199,197,225"/>
-<area shape="rect" id="node4" href="$ltc2672__iio_8h.html" title="Header file for LTC2672 IIO interface." alt="" coords="155,124,260,151"/>
+<area shape="rect" id="Node000001" title="Main module for LTC2672 IIO application." alt="" coords="5,5,228,75"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="13,123,79,148"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="93,76,65,113,61,110,89,73"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="127,196,197,221"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="127,74,146,147,156,182,151,183,141,149,122,76"/>
+<area shape="rect" id="Node000004" href="$ltc2672__iio_8h.html" title="Header file for LTC2672 IIO interface." alt="" coords="155,123,260,148"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="151,73,188,111,184,114,147,77"/>
+<area shape="poly" id="edge4_Node000004_Node000003" title=" " alt="" coords="202,150,179,186,174,183,198,147"/>
 </map>

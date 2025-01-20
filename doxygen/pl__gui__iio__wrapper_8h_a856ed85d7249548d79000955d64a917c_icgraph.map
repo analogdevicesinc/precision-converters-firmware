@@ -1,0 +1,11 @@
+<map id="pl_gui_get_chn_names" name="pl_gui_get_chn_names">
+<area shape="rect" id="Node000001" title="Get IIO channels names." alt="" coords="271,80,441,105"/>
+<area shape="rect" id="Node000002" href="$pl__gui__views_8c.html#a9ec92c409f2f75a62f6663a8eb642666" title="Create pocket lab GUI analysis view." alt="" coords="10,5,218,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="312,77,222,45,179,33,180,28,223,39,313,72"/>
+<area shape="rect" id="Node000003" href="$pl__gui__views_8c.html#a18720f4b283be5e0b8743045bd76a9a8" title="Create pocket lab GUI attributes view." alt="" coords="5,55,223,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="257,85,222,81,223,76,257,80"/>
+<area shape="rect" id="Node000004" href="$pl__gui__views_8c.html#a0b4a192606ecba5eca51896fbc1befb8" title="Create pocket lab GUI data capture view." alt="" coords="13,104,215,129"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="257,105,216,109,215,104,257,100"/>
+<area shape="rect" id="Node000005" href="$pl__gui__views_8c.html#a6dd69c69516001dd3c9c24d5134f51c3" title="Create pocket lab GUI DMM view." alt="" coords="20,153,208,179"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="311,113,223,143,175,156,174,151,222,138,310,108"/>
+</map>

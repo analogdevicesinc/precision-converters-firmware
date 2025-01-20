@@ -1,8 +1,13 @@
 <map id="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ltc2672_iio/app/app_config_stm32.c" name="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ltc2672_iio/app/app_config_stm32.c">
-<area shape="rect" id="node1" title="Application configurations module for STM32 platform." alt="" coords="89,5,347,76"/>
-<area shape="rect" id="node2" href="$ltc2672__iio_2app_2app__config__stm32_8h.html" title="Header file for STM32 platform configurations." alt="" coords="142,124,294,151"/>
-<area shape="rect" id="node3" title=" " alt="" coords="5,199,76,225"/>
-<area shape="rect" id="node4" title=" " alt="" coords="100,199,208,225"/>
-<area shape="rect" id="node5" title=" " alt="" coords="233,199,334,225"/>
-<area shape="rect" id="node6" title=" " alt="" coords="359,199,469,225"/>
+<area shape="rect" id="Node000001" title="Application configurations module for STM32 platform." alt="" coords="89,5,347,75"/>
+<area shape="rect" id="Node000002" href="$ltc2672__iio_2app_2app__config__stm32_8h.html" title="Header file for STM32 platform configurations." alt="" coords="142,123,294,148"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="221,75,221,109,215,109,215,75"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="5,196,76,221"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="190,150,83,193,81,188,189,146"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="100,196,208,221"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="209,150,175,188,171,184,205,147"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="233,196,334,221"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="231,147,265,184,262,188,227,150"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="359,196,469,221"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="250,146,370,189,368,194,249,151"/>
 </map>

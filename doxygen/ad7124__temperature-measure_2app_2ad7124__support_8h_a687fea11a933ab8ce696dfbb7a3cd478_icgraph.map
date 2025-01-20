@@ -1,4 +1,7 @@
 <map id="ad7124_get_channel_bipolar" name="ad7124_get_channel_bipolar">
-<area shape="rect" id="node1" title=" " alt="" coords="235,5,391,47"/>
-<area shape="rect" id="node2" href="$ad7124__console_2app_2ad7124__support_8c.html#afe07faeb7a4c520d61667a2fc0cb5813" title=" " alt="" coords="5,5,187,47"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="235,37,391,77"/>
+<area shape="rect" id="Node000002" href="$ad7124__temperature-measure_2app_2ad7124__support_8c.html#a5ad5af834d8320f9ddca50b8837d4e2f" title=" " alt="" coords="5,5,187,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="220,46,186,41,187,36,221,41"/>
+<area shape="rect" id="Node000003" href="$ad7124__console_2app_2ad7124__support_8c.html#afe07faeb7a4c520d61667a2fc0cb5813" title=" " alt="" coords="5,69,187,109"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="221,74,187,79,186,73,220,68"/>
 </map>

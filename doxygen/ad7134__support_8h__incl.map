@@ -1,6 +1,9 @@
 <map id="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad7134_iio/app/ad7134_support.h" name="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad7134_iio/app/ad7134_support.h">
-<area shape="rect" id="node1" title="Header for AD7134 No&#45;OS driver supports." alt="" coords="15,5,260,76"/>
-<area shape="rect" id="node2" title=" " alt="" coords="5,124,72,151"/>
-<area shape="rect" id="node3" title=" " alt="" coords="96,124,179,151"/>
-<area shape="rect" id="node4" title=" " alt="" coords="203,124,285,151"/>
+<area shape="rect" id="Node000001" title="Header for AD7134 No&#45;OS driver supports." alt="" coords="15,5,260,75"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,123,72,148"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="104,77,63,115,59,111,100,73"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="96,123,179,148"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="140,75,140,109,135,109,135,75"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="203,123,285,148"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="178,73,222,111,218,115,174,77"/>
 </map>

@@ -1,8 +1,14 @@
 <map id="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/evb_discovery_firmware/app/app_config_mbed.h" name="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/evb_discovery_firmware/app/app_config_mbed.h">
-<area shape="rect" id="node1" title="Header file for Mbed platform configurations." alt="" coords="719,5,960,91"/>
-<area shape="rect" id="node2" href="$evb__discovery__firmware_2app_2app__config_8h.html" title=" " alt="" coords="597,139,895,209"/>
-<area shape="rect" id="node5" href="$evb__discovery__firmware_2app_2app__config__mbed_8c.html" title="Application configurations module for Mbed platform." alt="" coords="891,257,1132,343"/>
-<area shape="rect" id="node3" href="$24xx32a__eeprom__iio_8c.html" title="Implementation of 24XX32A EEPROM device IIO application interfaces." alt="" coords="5,257,279,343"/>
-<area shape="rect" id="node4" href="$evb__discovery__firmware_2app_2app__config_8c.html" title="Application configurations module (platform&#45;agnostic)" alt="" coords="302,265,601,335"/>
-<area shape="rect" id="node6" href="$evb__discovery__firmware_2app_2app__config__stm32_8c.html" title="Application configurations module for STM32 platform." alt="" coords="625,257,867,343"/>
+<area shape="rect" id="Node000001" title="Header file for Mbed platform configurations." alt="" coords="719,5,960,89"/>
+<area shape="rect" id="Node000002" href="$evb__discovery__firmware_2app_2app__config_8h.html" title=" " alt="" coords="597,137,895,207"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="802,102,774,139,769,136,798,99"/>
+<area shape="rect" id="Node000005" href="$evb__discovery__firmware_2app_2app__config__mbed_8c.html" title="Application configurations module for Mbed platform." alt="" coords="891,255,1132,339"/>
+<area shape="poly" id="edge6_Node000001_Node000005" title=" " alt="" coords="882,99,910,136,988,253,983,256,905,139,878,102"/>
+<area shape="rect" id="Node000003" href="$24xx32a__eeprom__iio_8c.html" title="Implementation of 24XX32A EEPROM device IIO application interfaces." alt="" coords="5,255,279,339"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="584,201,441,227,291,257,280,260,278,255,289,252,440,221,583,196"/>
+<area shape="rect" id="Node000004" href="$evb__discovery__firmware_2app_2app__config_8c.html" title="Application configurations module (platform&#45;agnostic)" alt="" coords="302,262,601,331"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="654,214,533,264,531,259,652,209"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="832,210,924,252,922,257,830,215"/>
+<area shape="rect" id="Node000006" href="$evb__discovery__firmware_2app_2app__config__stm32_8c.html" title="Application configurations module for STM32 platform." alt="" coords="625,255,867,339"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="749,220,749,255,743,255,743,220"/>
 </map>

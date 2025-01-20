@@ -1,0 +1,5 @@
+<map id="pl_gui_display_captured_data" name="pl_gui_display_captured_data">
+<area shape="rect" id="Node000001" title="Display the captured data onto GUI." alt="" coords="199,5,413,31"/>
+<area shape="rect" id="Node000002" href="$pl__gui__events_8c.html#ab43b443a2422538a1efe3b873b7fff5d" title="Form the response for previous pocket lab GUI event (an IIO) command string." alt="" coords="5,5,151,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="185,21,151,21,151,15,185,15"/>
+</map>

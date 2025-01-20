@@ -1,5 +1,8 @@
 <map id="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/libraries/precision&#45;converters&#45;library/tempsensors/ntc_10k_44031.h" name="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/libraries/precision&#45;converters&#45;library/tempsensors/ntc_10k_44031.h">
-<area shape="rect" id="node1" title=":" alt="" coords="5,5,229,91"/>
-<area shape="rect" id="node2" title=" " alt="" coords="82,213,153,240"/>
-<area shape="rect" id="node3" href="$thermistor_8h.html" title=":" alt="" coords="111,139,212,165"/>
+<area shape="rect" id="Node000001" title=":" alt="" coords="5,5,229,89"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="82,211,153,236"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="107,90,101,125,101,162,110,197,105,198,96,163,95,125,102,89"/>
+<area shape="rect" id="Node000003" href="$thermistor_8h.html" title=":" alt="" coords="111,137,212,163"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="138,88,153,124,148,126,133,90"/>
+<area shape="poly" id="edge3_Node000003_Node000002" title=" " alt="" coords="156,164,134,200,129,198,152,162"/>
 </map>

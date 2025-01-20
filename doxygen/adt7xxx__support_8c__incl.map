@@ -1,7 +1,11 @@
 <map id="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/adt7420_console/app/adt7xxx_support.c" name="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/adt7420_console/app/adt7xxx_support.c">
-<area shape="rect" id="node1" title="Support Source File for adt7xxx." alt="" coords="61,5,349,76"/>
-<area shape="rect" id="node2" title=" " alt="" coords="5,124,76,151"/>
-<area shape="rect" id="node3" title=" " alt="" coords="100,124,187,151"/>
-<area shape="rect" id="node4" title=" " alt="" coords="211,124,321,151"/>
-<area shape="rect" id="node5" href="$adt7xxx__support_8h.html" title=" " alt="" coords="345,124,488,151"/>
+<area shape="rect" id="Node000001" title="Support Source File for adt7xxx." alt="" coords="61,5,349,75"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,123,76,148"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="147,77,74,118,72,113,144,72"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="100,123,187,148"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="185,76,161,113,156,110,180,73"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="211,123,321,148"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="229,73,253,110,249,113,225,76"/>
+<area shape="rect" id="Node000005" href="$adt7xxx__support_8h.html" title=" " alt="" coords="345,123,488,148"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="282,72,379,115,377,120,280,77"/>
 </map>

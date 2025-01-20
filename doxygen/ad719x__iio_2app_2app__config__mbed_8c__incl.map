@@ -1,14 +1,26 @@
 <map id="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad719x_iio/app/app_config_mbed.c" name="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad719x_iio/app/app_config_mbed.c">
-<area shape="rect" id="node1" title="Application configurations module for Mbed platform." alt="" coords="305,5,560,76"/>
-<area shape="rect" id="node2" title=" " alt="" coords="313,124,395,151"/>
-<area shape="rect" id="node3" href="$ad719x__iio_2app_2app__config__mbed_8h.html" title="Header file for Mbed platform configurations." alt="" coords="359,199,507,225"/>
-<area shape="rect" id="node11" href="$ad719x__iio_2app_2app__config_8h.html" title="Configuration file for ad719x IIO firmware application." alt="" coords="470,124,574,151"/>
-<area shape="rect" id="node4" title=" " alt="" coords="5,273,105,300"/>
-<area shape="rect" id="node5" title=" " alt="" coords="129,273,227,300"/>
-<area shape="rect" id="node6" title=" " alt="" coords="251,273,355,300"/>
-<area shape="rect" id="node7" title=" " alt="" coords="379,273,486,300"/>
-<area shape="rect" id="node8" title=" " alt="" coords="510,273,641,300"/>
-<area shape="rect" id="node9" title=" " alt="" coords="665,273,760,300"/>
-<area shape="rect" id="node10" title=" " alt="" coords="784,273,881,300"/>
-<area shape="rect" id="node12" title=" " alt="" coords="531,199,601,225"/>
+<area shape="rect" id="Node000001" title="Application configurations module for Mbed platform." alt="" coords="305,5,560,75"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="313,123,395,148"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="406,77,375,114,371,110,402,73"/>
+<area shape="rect" id="Node000003" href="$ad719x__iio_2app_2app__config__mbed_8h.html" title="Header file for Mbed platform configurations." alt="" coords="359,196,507,221"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="435,75,435,182,430,182,430,75"/>
+<area shape="rect" id="Node000011" href="$ad719x__iio_2app_2app__config_8h.html" title="Configuration file for ad719x IIO firmware application." alt="" coords="470,123,574,148"/>
+<area shape="poly" id="edge10_Node000001_Node000011" title=" " alt="" coords="467,73,503,111,499,114,463,77"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="5,269,105,295"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="373,224,120,271,119,266,372,219"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="129,269,227,295"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="392,224,233,268,231,263,391,219"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="251,269,355,295"/>
+<area shape="poly" id="edge5_Node000003_Node000006" title=" " alt="" coords="413,224,338,265,336,260,411,219"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="379,269,486,295"/>
+<area shape="poly" id="edge6_Node000003_Node000007" title=" " alt="" coords="435,222,435,256,430,256,430,222"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="510,269,641,295"/>
+<area shape="poly" id="edge7_Node000003_Node000008" title=" " alt="" coords="457,219,541,261,539,265,454,224"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="665,269,760,295"/>
+<area shape="poly" id="edge8_Node000003_Node000009" title=" " alt="" coords="478,219,655,263,654,268,477,224"/>
+<area shape="rect" id="Node000010" title=" " alt="" coords="784,269,881,295"/>
+<area shape="poly" id="edge9_Node000003_Node000010" title=" " alt="" coords="500,219,770,266,769,271,499,224"/>
+<area shape="poly" id="edge12_Node000011_Node000003" title=" " alt="" coords="509,150,460,189,456,185,506,146"/>
+<area shape="rect" id="Node000012" title=" " alt="" coords="531,196,601,221"/>
+<area shape="poly" id="edge11_Node000011_Node000012" title=" " alt="" coords="532,147,554,183,549,186,527,150"/>
 </map>

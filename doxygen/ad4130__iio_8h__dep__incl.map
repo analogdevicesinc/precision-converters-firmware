@@ -1,5 +1,7 @@
 <map id="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad4130_iio/app/ad4130_iio.h" name="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad4130_iio/app/ad4130_iio.h">
-<area shape="rect" id="node1" title="Header file of AD4130 IIO interface." alt="" coords="128,5,351,76"/>
-<area shape="rect" id="node2" href="$ad4130__iio_8c.html" title="Implementation of AD4130 IIO application interfaces." alt="" coords="5,124,228,195"/>
-<area shape="rect" id="node3" href="$ad4130__iio_2app_2main_8c.html" title="Main module for AD4130 IIO application." alt="" coords="252,124,475,195"/>
+<area shape="rect" id="Node000001" title="Header file of AD4130 IIO interface." alt="" coords="128,5,351,75"/>
+<area shape="rect" id="Node000002" href="$ad4130__iio_8c.html" title="Implementation of AD4130 IIO application interfaces." alt="" coords="5,123,228,192"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="195,86,154,124,151,121,191,83"/>
+<area shape="rect" id="Node000003" href="$ad4130__iio_2app_2main_8c.html" title="Main module for AD4130 IIO application." alt="" coords="252,123,475,192"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="288,83,329,121,325,124,284,86"/>
 </map>

@@ -1,0 +1,5 @@
+<map id="get_data_samples_count" name="get_data_samples_count">
+<area shape="rect" id="Node000001" title="Get the count for data samples to be captured." alt="" coords="195,5,379,31"/>
+<area shape="rect" id="Node000002" href="$pl__gui__events_8c.html#af58bdc315575d596c65a4bf30756dbdf" title="Read the pocket lab GUI event and form (an IIO) command string." alt="" coords="5,5,147,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="180,21,147,21,147,15,180,15"/>
+</map>

@@ -1,4 +1,23 @@
 <map id="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad777x_iio/app/app_config_stm32.h" name="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad777x_iio/app/app_config_stm32.h">
-<area shape="rect" id="node1" title=" " alt="" coords="5,5,264,76"/>
-<area shape="rect" id="node2" href="$ad777x__iio_2app_2app__config__stm32_8c.html" title="Source file for STM32 platform configurations." alt="" coords="5,124,264,195"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="552,5,811,75"/>
+<area shape="rect" id="Node000002" href="$ad777x__iio_2app_2app__config_8h.html" title="Configuration file for AD777x IIO firmware application." alt="" coords="570,123,793,192"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="676,89,676,122,671,123,670,89"/>
+<area shape="rect" id="Node000009" href="$ad777x__iio_2app_2app__config__stm32_8c.html" title="Source file for STM32 platform configurations." alt="" coords="1171,240,1430,309"/>
+<area shape="poly" id="edge12_Node000001_Node000009" title=" " alt="" coords="785,77,1212,237,1210,242,783,82"/>
+<area shape="poly" id="edge11_Node000002_Node000001" title=" " alt="" coords="688,109,687,75,693,75,693,109"/>
+<area shape="rect" id="Node000003" href="$ad777x__iio_8c.html" title="Source file of AD777x IIO interfaces." alt="" coords="54,357,277,427"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="557,168,401,179,233,194,93,216,46,228,21,242,11,258,8,273,12,290,21,308,44,335,73,355,70,359,40,339,17,311,7,291,3,273,6,256,17,238,44,223,92,211,233,189,401,173,557,163"/>
+<area shape="rect" id="Node000004" href="$ad777x__support_8c.html" title=" " alt="" coords="32,240,276,309"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="557,186,288,243,276,245,275,240,287,237,556,180"/>
+<area shape="rect" id="Node000005" href="$ad777x__user__config_8c.html" title="Default user configurations file for AD777x device." alt="" coords="387,357,656,427"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="655,205,584,311,549,359,545,356,580,308,650,202"/>
+<area shape="rect" id="Node000006" href="$ad777x__user__config_8h.html" title="Header for AD777x default user configurations file." alt="" coords="300,240,570,309"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="599,200,508,242,506,237,596,195"/>
+<area shape="rect" id="Node000007" href="$ad777x__iio_2app_2app__config_8c.html" title="Application configurations module for AD777x firmware application." alt="" coords="645,240,868,309"/>
+<area shape="poly" id="edge8_Node000002_Node000007" title=" " alt="" coords="713,202,737,238,732,241,709,205"/>
+<area shape="rect" id="Node000008" href="$ad777x__iio_2app_2app__config__mbed_8c.html" title="Application configurations module for Mbed platform." alt="" coords="892,240,1146,309"/>
+<area shape="poly" id="edge9_Node000002_Node000008" title=" " alt="" coords="794,194,921,237,920,242,793,199"/>
+<area shape="poly" id="edge10_Node000002_Node000009" title=" " alt="" coords="807,175,974,203,1158,237,1172,240,1171,245,1157,243,973,208,806,181"/>
+<area shape="poly" id="edge6_Node000006_Node000003" title=" " alt="" coords="345,317,246,360,243,355,343,312"/>
+<area shape="poly" id="edge7_Node000006_Node000005" title=" " alt="" coords="471,319,499,356,494,359,467,322"/>
 </map>

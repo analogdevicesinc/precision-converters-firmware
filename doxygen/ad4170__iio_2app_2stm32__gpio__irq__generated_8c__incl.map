@@ -1,5 +1,7 @@
 <map id="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad4170_iio/app/stm32_gpio_irq_generated.c" name="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad4170_iio/app/stm32_gpio_irq_generated.c">
-<area shape="rect" id="node1" title="GPIO IRQ specific functions for STM32 platform." alt="" coords="11,5,240,91"/>
-<area shape="rect" id="node2" title=" " alt="" coords="5,139,115,165"/>
-<area shape="rect" id="node3" title=" " alt="" coords="139,139,242,165"/>
+<area shape="rect" id="Node000001" title="GPIO IRQ specific functions for STM32 platform." alt="" coords="11,5,240,89"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,137,115,163"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="101,91,77,127,73,124,97,88"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="139,137,242,163"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="154,88,178,124,174,127,150,91"/>
 </map>

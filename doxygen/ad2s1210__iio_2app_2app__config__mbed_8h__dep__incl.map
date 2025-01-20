@@ -1,8 +1,14 @@
 <map id="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad2s1210_iio/app/app_config_mbed.h" name="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad2s1210_iio/app/app_config_mbed.h">
-<area shape="rect" id="node1" title="Header file for Mbed platform configurations." alt="" coords="647,5,917,76"/>
-<area shape="rect" id="node2" href="$ad2s1210__iio_2app_2app__config_8h.html" title=" " alt="" coords="594,124,821,195"/>
-<area shape="rect" id="node6" href="$ad2s1210__iio_2app_2app__config__mbed_8c.html" title="Application configurations module for Mbed platform." alt="" coords="845,243,1114,313"/>
-<area shape="rect" id="node3" href="$ad2s1210__iio_8c.html" title="Implementation of AD2S1210 IIO application interfaces." alt="" coords="5,243,247,313"/>
-<area shape="rect" id="node4" href="$ad2s1210__user__config_8c.html" title="User configurations for AD2S1210 No&#45;OS driver." alt="" coords="271,243,570,313"/>
-<area shape="rect" id="node5" href="$ad2s1210__iio_2app_2app__config_8c.html" title="Application configurations module (platform&#45;agnostic)" alt="" coords="595,243,820,313"/>
+<area shape="rect" id="Node000001" title="Header file for Mbed platform configurations." alt="" coords="647,5,917,75"/>
+<area shape="rect" id="Node000002" href="$ad2s1210__iio_2app_2app__config_8h.html" title=" " alt="" coords="594,123,821,192"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="755,88,731,124,727,121,750,85"/>
+<area shape="rect" id="Node000006" href="$ad2s1210__iio_2app_2app__config__mbed_8c.html" title="Application configurations module for Mbed platform." alt="" coords="845,240,1114,309"/>
+<area shape="poly" id="edge6_Node000001_Node000006" title=" " alt="" coords="822,84,953,238,949,242,817,87"/>
+<area shape="rect" id="Node000003" href="$ad2s1210__iio_8c.html" title="Implementation of AD2S1210 IIO application interfaces." alt="" coords="5,240,247,309"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="581,182,427,209,260,243,247,245,246,240,259,237,426,204,580,177"/>
+<area shape="rect" id="Node000004" href="$ad2s1210__user__config_8c.html" title="User configurations for AD2S1210 No&#45;OS driver." alt="" coords="271,240,570,309"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="612,200,505,242,503,237,610,195"/>
+<area shape="rect" id="Node000005" href="$ad2s1210__iio_2app_2app__config_8c.html" title="Application configurations module (platform&#45;agnostic)" alt="" coords="595,240,820,309"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="710,206,710,240,705,240,705,206"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="800,195,901,237,899,242,798,200"/>
 </map>

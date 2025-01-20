@@ -1,6 +1,9 @@
 <map id="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad7091r_iio/app/ad7091r_user_config.h" name="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad7091r_iio/app/ad7091r_user_config.h">
-<area shape="rect" id="node1" title=" " alt="" coords="239,5,519,76"/>
-<area shape="rect" id="node2" href="$ad7091r__iio_8c.html" title="Implementation of AD7091R IIO application interfaces." alt="" coords="5,124,228,195"/>
-<area shape="rect" id="node3" href="$ad7091r__support_8c.html" title="AD7091R No&#45;OS driver support functionality." alt="" coords="252,124,507,195"/>
-<area shape="rect" id="node4" href="$ad7091r__user__config_8c.html" title="User configurations for AD7091R No&#45;OS driver." alt="" coords="531,124,809,195"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="239,5,519,75"/>
+<area shape="rect" id="Node000002" href="$ad7091r__iio_8c.html" title="Implementation of AD7091R IIO application interfaces." alt="" coords="5,123,228,192"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="291,83,195,125,192,120,289,78"/>
+<area shape="rect" id="Node000003" href="$ad7091r__support_8c.html" title="AD7091R No&#45;OS driver support functionality." alt="" coords="252,123,507,192"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="382,89,382,122,377,122,377,89"/>
+<area shape="rect" id="Node000004" href="$ad7091r__user__config_8c.html" title="User configurations for AD7091R No&#45;OS driver." alt="" coords="531,123,809,192"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="478,77,586,120,584,125,476,82"/>
 </map>

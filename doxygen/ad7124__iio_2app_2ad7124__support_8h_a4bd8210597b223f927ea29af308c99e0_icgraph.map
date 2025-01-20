@@ -1,0 +1,11 @@
+<map id="ad7124_read_converted_data" name="ad7124_read_converted_data">
+<area shape="rect" id="Node000001" title="Read ADC Converted data." alt="" coords="705,5,920,31"/>
+<area shape="rect" id="Node000002" href="$ad7124__iio_8c.html#a2efed1f52052f8cd846e0ceb098ee0b5" title=" " alt="" coords="481,5,657,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="692,21,658,21,658,15,692,15"/>
+<area shape="rect" id="Node000003" href="$ad7124__iio_8c.html#a1e34eb66da57a11a49d06baa1cc357a8" title="Init for reading/writing and parameterization of a AD7124 IIO device." alt="" coords="312,5,433,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="468,21,433,21,433,15,468,15"/>
+<area shape="rect" id="Node000004" href="$ad7124__iio_8c.html#af012050c4da92d39f4302b89865a477f" title="Initialize the AD7124 IIO Interface." alt="" coords="108,5,264,31"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="298,21,264,21,264,15,298,15"/>
+<area shape="rect" id="Node000005" href="$ad7124__iio_2app_2main_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title="Main entry point to application." alt="" coords="5,5,60,31"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="94,21,60,21,60,15,94,15"/>
+</map>

@@ -1,10 +1,17 @@
 <map id="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad2s1210_iio/app/app_config_mbed.h" name="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad2s1210_iio/app/app_config_mbed.h">
-<area shape="rect" id="node1" title="Header file for Mbed platform configurations." alt="" coords="283,5,553,76"/>
-<area shape="rect" id="node2" title=" " alt="" coords="5,124,76,151"/>
-<area shape="rect" id="node3" title=" " alt="" coords="100,124,200,151"/>
-<area shape="rect" id="node4" title=" " alt="" coords="225,124,329,151"/>
-<area shape="rect" id="node5" title=" " alt="" coords="353,124,483,151"/>
-<area shape="rect" id="node6" title=" " alt="" coords="508,124,605,151"/>
-<area shape="rect" id="node7" title=" " alt="" coords="629,124,740,151"/>
-<area shape="rect" id="node8" title=" " alt="" coords="765,124,871,151"/>
+<area shape="rect" id="Node000001" title="Header file for Mbed platform configurations." alt="" coords="283,5,553,75"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,123,76,148"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="283,77,90,125,89,119,282,72"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="100,123,200,148"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="322,77,197,121,195,116,320,72"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="225,123,329,148"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="368,77,307,117,304,113,366,73"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="353,123,483,148"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="421,75,421,109,415,109,415,75"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="508,123,605,148"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="470,73,529,112,526,117,467,77"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="629,123,740,148"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="515,72,640,116,638,121,513,77"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="765,123,871,148"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="554,70,756,117,755,122,553,75"/>
 </map>

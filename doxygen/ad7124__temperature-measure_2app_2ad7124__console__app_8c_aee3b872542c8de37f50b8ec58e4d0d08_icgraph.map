@@ -1,0 +1,5 @@
+<map id="select_cjc_sensor" name="select_cjc_sensor">
+<area shape="rect" id="Node000001" title="Select the CJC sensor for thermocouple measurement." alt="" coords="261,5,397,31"/>
+<area shape="rect" id="Node000002" href="$ad7124__temperature-measure_2app_2ad7124__console__app_8c.html#afe0f2fe467ce4188b7c2b3cc1fa03b8b" title="Display header information for NTC thermistor measurement menu." alt="" coords="5,5,213,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="248,21,213,21,213,15,248,15"/>
+</map>

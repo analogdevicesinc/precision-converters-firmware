@@ -1,5 +1,7 @@
 <map id="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad4130_iio/app/ad4130_thermistor_config.h" name="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad4130_iio/app/ad4130_thermistor_config.h">
-<area shape="rect" id="node1" title="Header for AD4130 thermistors user configuration file." alt="" coords="5,5,316,76"/>
-<area shape="rect" id="node2" title=" " alt="" coords="75,124,145,151"/>
-<area shape="rect" id="node3" title=" " alt="" coords="170,124,253,151"/>
+<area shape="rect" id="Node000001" title="Header for AD4130 thermistors user configuration file." alt="" coords="5,5,316,75"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="75,123,145,148"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="145,76,125,112,121,109,140,74"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="170,123,253,148"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="181,74,201,109,196,112,177,76"/>
 </map>

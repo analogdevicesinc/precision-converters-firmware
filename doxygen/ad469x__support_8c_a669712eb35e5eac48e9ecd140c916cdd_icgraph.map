@@ -1,0 +1,7 @@
+<map id="ad469x_polarity_mode_select" name="ad469x_polarity_mode_select">
+<area shape="rect" id="Node000001" title="Select between polarity modes." alt="" coords="312,5,483,45"/>
+<area shape="rect" id="Node000002" href="$ad469x__iio_8c.html#adf57bdf6c7d2d6dfa2a8531795e03e3f" title="Release resources allocated for IIO device." alt="" coords="108,13,264,38"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="298,28,264,28,264,23,298,23"/>
+<area shape="rect" id="Node000003" href="$ad469x__iio_2app_2main_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title="Main entry point to application." alt="" coords="5,13,60,38"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="94,28,60,28,60,23,94,23"/>
+</map>

@@ -1,6 +1,9 @@
 <map id="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad469x_iio/app/ad469x_user_config.h" name="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad469x_iio/app/ad469x_user_config.h">
-<area shape="rect" id="node1" title="Header for AD469x user configuration file." alt="" coords="239,5,509,76"/>
-<area shape="rect" id="node2" href="$ad469x__iio_8c.html" title="Implementation of AD469x IIO application interfaces." alt="" coords="5,124,228,195"/>
-<area shape="rect" id="node3" href="$ad469x__support_8c.html" title="AD469x device No&#45;OS driver supports." alt="" coords="252,124,496,195"/>
-<area shape="rect" id="node4" href="$ad469x__user__config_8c.html" title="User configuration file for AD469x device." alt="" coords="521,124,790,195"/>
+<area shape="rect" id="Node000001" title="Header for AD469x user configuration file." alt="" coords="239,5,509,75"/>
+<area shape="rect" id="Node000002" href="$ad469x__iio_8c.html" title="Implementation of AD469x IIO application interfaces." alt="" coords="5,123,228,192"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="287,83,193,125,191,120,285,78"/>
+<area shape="rect" id="Node000003" href="$ad469x__support_8c.html" title="AD469x device No&#45;OS driver supports." alt="" coords="252,123,496,192"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="377,89,377,122,371,122,371,89"/>
+<area shape="rect" id="Node000004" href="$ad469x__user__config_8c.html" title="User configuration file for AD469x device." alt="" coords="521,123,790,192"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="470,78,574,120,572,125,468,82"/>
 </map>

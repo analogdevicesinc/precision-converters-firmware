@@ -1,4 +1,9 @@
 <map id="ad7124_get_channel_pga" name="ad7124_get_channel_pga">
-<area shape="rect" id="node1" title=" " alt="" coords="235,13,421,39"/>
-<area shape="rect" id="node2" href="$ad7124__console_2app_2ad7124__support_8c.html#afe07faeb7a4c520d61667a2fc0cb5813" title=" " alt="" coords="5,5,187,47"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="235,77,421,102"/>
+<area shape="rect" id="Node000002" href="$ad7124__temperature-measure_2app_2ad7124__support_8c.html#a5ad5af834d8320f9ddca50b8837d4e2f" title=" " alt="" coords="5,5,187,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="267,76,169,48,170,43,269,70"/>
+<area shape="rect" id="Node000003" href="$ad7124__console_2app_2ad7124__support_8c.html#afe07faeb7a4c520d61667a2fc0cb5813" title=" " alt="" coords="5,69,187,109"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="220,92,187,92,187,87,220,87"/>
+<area shape="rect" id="Node000004" href="$ad7124__temperature-measure_2app_2ad7124__console__app_8c.html#a5213402765cca2d9f877f72ff61db859" title="Perform the AD7124 internal/system calibration." alt="" coords="6,134,186,159"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="263,108,149,137,147,131,262,103"/>
 </map>

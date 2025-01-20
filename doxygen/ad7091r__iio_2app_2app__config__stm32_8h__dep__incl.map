@@ -1,9 +1,16 @@
 <map id="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad7091r_iio/app/app_config_stm32.h" name="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad7091r_iio/app/app_config_stm32.h">
-<area shape="rect" id="node1" title="Header file for STM32 platform configurations." alt="" coords="393,5,657,76"/>
-<area shape="rect" id="node2" href="$ad7091r__iio_2app_2app__config_8h.html" title="Configuration file for AD7091R device application." alt="" coords="413,124,636,195"/>
-<area shape="rect" id="node7" href="$ad7091r__iio_2app_2app__config__stm32_8c.html" title="Application configurations module for STM32 platform." alt="" coords="660,124,923,195"/>
-<area shape="rect" id="node3" href="$ad7091r__iio_8c.html" title="Implementation of AD7091R IIO application interfaces." alt="" coords="5,243,228,313"/>
-<area shape="rect" id="node4" href="$ad7091r__support_8c.html" title="AD7091R No&#45;OS driver support functionality." alt="" coords="252,243,507,313"/>
-<area shape="rect" id="node5" href="$ad7091r__user__config_8c.html" title="User configurations for AD7091R No&#45;OS driver." alt="" coords="531,243,809,313"/>
-<area shape="rect" id="node6" href="$ad7091r__iio_2app_2app__config_8c.html" title="Application configurations module (platform&#45;agnostic)" alt="" coords="833,243,1056,313"/>
+<area shape="rect" id="Node000001" title="Header file for STM32 platform configurations." alt="" coords="393,5,657,75"/>
+<area shape="rect" id="Node000002" href="$ad7091r__iio_2app_2app__config_8h.html" title="Configuration file for AD7091R device application." alt="" coords="413,123,636,192"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="518,89,519,122,514,123,513,89"/>
+<area shape="rect" id="Node000007" href="$ad7091r__iio_2app_2app__config__stm32_8c.html" title="Application configurations module for STM32 platform." alt="" coords="660,123,923,192"/>
+<area shape="poly" id="edge7_Node000001_Node000007" title=" " alt="" coords="616,78,714,120,712,125,614,83"/>
+<area shape="poly" id="edge6_Node000002_Node000001" title=" " alt="" coords="531,109,530,75,536,75,536,109"/>
+<area shape="rect" id="Node000003" href="$ad7091r__iio_8c.html" title="Implementation of AD7091R IIO application interfaces." alt="" coords="5,240,228,309"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="401,196,229,245,227,239,399,191"/>
+<area shape="rect" id="Node000004" href="$ad7091r__support_8c.html" title="AD7091R No&#45;OS driver support functionality." alt="" coords="252,240,507,309"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="473,203,424,242,420,238,470,198"/>
+<area shape="rect" id="Node000005" href="$ad7091r__user__config_8c.html" title="User configurations for AD7091R No&#45;OS driver." alt="" coords="531,240,809,309"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="579,198,629,238,626,242,576,203"/>
+<area shape="rect" id="Node000006" href="$ad7091r__iio_2app_2app__config_8c.html" title="Application configurations module (platform&#45;agnostic)" alt="" coords="833,240,1056,309"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="650,190,834,240,832,245,648,195"/>
 </map>

@@ -1,5 +1,7 @@
 <map id="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad355xr_iio/app/ad355xr_iio.h" name="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad355xr_iio/app/ad355xr_iio.h">
-<area shape="rect" id="node1" title="Header file for AD355XR IIO application interfaces." alt="" coords="5,5,228,76"/>
-<area shape="rect" id="node2" title=" " alt="" coords="31,124,101,151"/>
-<area shape="rect" id="node3" title=" " alt="" coords="125,124,212,151"/>
+<area shape="rect" id="Node000001" title="Header file for AD355XR IIO application interfaces." alt="" coords="5,5,228,75"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="31,123,101,148"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="101,76,81,112,77,109,96,74"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="125,123,212,148"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="138,73,158,109,153,112,133,76"/>
 </map>

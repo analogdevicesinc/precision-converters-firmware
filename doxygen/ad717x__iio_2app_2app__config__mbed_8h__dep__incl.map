@@ -1,10 +1,19 @@
 <map id="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad717x_iio/app/app_config_mbed.h" name="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad717x_iio/app/app_config_mbed.h">
-<area shape="rect" id="node1" title="Header file for Mbed platform configurations." alt="" coords="553,5,808,76"/>
-<area shape="rect" id="node2" href="$ad717x__iio_2app_2app__config_8h.html" title="Configuration file for AD717x and AD411x IIO firmware application." alt="" coords="496,124,719,195"/>
-<area shape="rect" id="node8" href="$ad717x__iio_2app_2app__config__mbed_8c.html" title="Source file for the mbed configuration for AD717x IIO Application." alt="" coords="879,243,1133,313"/>
-<area shape="rect" id="node3" href="$ad717x__iio_8c.html" title="Source file for the AD717x IIO Application." alt="" coords="5,361,228,432"/>
-<area shape="rect" id="node4" href="$ad717x__support_8c.html" title="Support file for AD717X device configurations." alt="" coords="69,243,313,313"/>
-<area shape="rect" id="node5" href="$ad717x__user__config_8h.html" title="User configuration file for AD717x&#45;AD411x IIO firmware application." alt="" coords="337,243,608,313"/>
-<area shape="rect" id="node7" href="$ad717x__iio_2app_2app__config_8c.html" title="Source file for the application configuration for AD717x IIO Application." alt="" coords="632,243,855,313"/>
-<area shape="rect" id="node6" href="$ad717x__user__config_8c.html" title="User Configuration source for AD717x&#45;AD411x IIO Application." alt="" coords="338,361,607,432"/>
+<area shape="rect" id="Node000001" title="Header file for Mbed platform configurations." alt="" coords="553,5,808,75"/>
+<area shape="rect" id="Node000002" href="$ad717x__iio_2app_2app__config_8h.html" title="Configuration file for AD717x and AD411x IIO firmware application." alt="" coords="496,123,719,192"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="654,88,631,124,627,121,649,85"/>
+<area shape="rect" id="Node000008" href="$ad717x__iio_2app_2app__config__mbed_8c.html" title="Source file for the mbed configuration for AD717x IIO Application." alt="" coords="879,240,1133,309"/>
+<area shape="poly" id="edge9_Node000001_Node000008" title=" " alt="" coords="740,80,961,238,958,242,737,85"/>
+<area shape="rect" id="Node000003" href="$ad717x__iio_8c.html" title="Source file for the AD717x IIO Application." alt="" coords="5,357,228,427"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="483,162,363,167,236,180,177,190,126,204,86,221,59,242,51,254,48,268,52,298,67,328,87,355,83,358,63,331,47,300,42,268,46,252,55,238,83,216,125,199,176,185,235,175,362,162,482,156"/>
+<area shape="rect" id="Node000004" href="$ad717x__support_8c.html" title="Support file for AD717X device configurations." alt="" coords="69,240,313,309"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="483,196,313,242,312,237,482,190"/>
+<area shape="rect" id="Node000005" href="$ad717x__user__config_8h.html" title="User configuration file for AD717x&#45;AD411x IIO firmware application." alt="" coords="337,240,608,309"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="560,203,514,242,511,238,556,199"/>
+<area shape="rect" id="Node000007" href="$ad717x__iio_2app_2app__config_8c.html" title="Source file for the application configuration for AD717x IIO Application." alt="" coords="632,240,855,309"/>
+<area shape="poly" id="edge7_Node000002_Node000007" title=" " alt="" coords="659,199,705,238,702,242,656,203"/>
+<area shape="poly" id="edge8_Node000002_Node000008" title=" " alt="" coords="733,192,891,237,889,243,732,197"/>
+<area shape="poly" id="edge5_Node000005_Node000003" title=" " alt="" coords="357,316,222,360,220,355,355,311"/>
+<area shape="rect" id="Node000006" href="$ad717x__user__config_8c.html" title="User Configuration source for AD717x&#45;AD411x IIO Application." alt="" coords="338,357,607,427"/>
+<area shape="poly" id="edge6_Node000005_Node000006" title=" " alt="" coords="475,323,475,357,470,357,470,323"/>
 </map>

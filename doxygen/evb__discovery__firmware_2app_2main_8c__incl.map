@@ -1,6 +1,9 @@
 <map id="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/evb_discovery_firmware/app/main.c" name="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/evb_discovery_firmware/app/main.c">
-<area shape="rect" id="node1" title="Main application interface module." alt="" coords="5,5,267,76"/>
-<area shape="rect" id="node2" title=" " alt="" coords="9,124,76,151"/>
-<area shape="rect" id="node3" title=" " alt="" coords="101,124,171,151"/>
-<area shape="rect" id="node4" href="$24xx32a__eeprom__iio_8h.html" title="Header file for 24XX32A EEPROM device IIO interfaces." alt="" coords="196,124,367,151"/>
+<area shape="rect" id="Node000001" title="Main application interface module." alt="" coords="5,5,267,75"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="9,123,76,148"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="104,77,66,115,62,111,100,73"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="101,123,171,148"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="139,75,139,109,133,109,133,75"/>
+<area shape="rect" id="Node000004" href="$24xx32a__eeprom__iio_8h.html" title="Header file for 24XX32A EEPROM device IIO interfaces." alt="" coords="196,123,367,148"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="190,73,253,113,250,117,187,77"/>
 </map>

@@ -1,13 +1,25 @@
 <map id="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ltc2672_iio/app/ltc2672_user_config.c" name="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ltc2672_iio/app/ltc2672_user_config.c">
-<area shape="rect" id="node1" title="User configurations for LTC2672 No&#45;OS driver." alt="" coords="31,5,300,76"/>
-<area shape="rect" id="node2" href="$ltc2672__user__config_8h.html" title=" " alt="" coords="5,124,168,151"/>
-<area shape="rect" id="node4" href="$ltc2672__iio_2app_2app__config_8h.html" title="Configuration file for LTC2672 device application." alt="" coords="192,124,296,151"/>
-<area shape="rect" id="node3" title=" " alt="" coords="84,199,167,225"/>
-<area shape="rect" id="node5" title=" " alt="" coords="127,273,198,300"/>
-<area shape="rect" id="node6" href="$ltc2672__iio_2app_2app__config__mbed_8h.html" title="Header file for Mbed platform configurations." alt="" coords="325,199,473,225"/>
-<area shape="rect" id="node7" title=" " alt="" coords="222,273,322,300"/>
-<area shape="rect" id="node8" title=" " alt="" coords="347,273,451,300"/>
-<area shape="rect" id="node9" title=" " alt="" coords="475,273,570,300"/>
-<area shape="rect" id="node10" title=" " alt="" coords="594,273,691,300"/>
-<area shape="rect" id="node11" title=" " alt="" coords="716,273,823,300"/>
+<area shape="rect" id="Node000001" title="User configurations for LTC2672 No&#45;OS driver." alt="" coords="31,5,300,75"/>
+<area shape="rect" id="Node000002" href="$ltc2672__user__config_8h.html" title=" " alt="" coords="5,123,168,148"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="139,77,108,114,103,110,135,73"/>
+<area shape="rect" id="Node000004" href="$ltc2672__iio_2app_2app__config_8h.html" title="Configuration file for LTC2672 device application." alt="" coords="192,123,296,148"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="196,73,227,110,223,114,192,77"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="84,196,167,221"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="95,147,115,183,110,185,91,150"/>
+<area shape="poly" id="edge5_Node000004_Node000003" title=" " alt="" coords="226,150,158,191,155,186,224,146"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="127,269,198,295"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="240,150,178,259,174,256,235,147"/>
+<area shape="rect" id="Node000006" href="$ltc2672__iio_2app_2app__config__mbed_8h.html" title="Header file for Mbed platform configurations." alt="" coords="325,196,473,221"/>
+<area shape="poly" id="edge6_Node000004_Node000006" title=" " alt="" coords="270,146,362,188,360,193,268,150"/>
+<area shape="poly" id="edge7_Node000006_Node000005" title=" " alt="" coords="362,224,212,269,210,264,360,219"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="222,269,322,295"/>
+<area shape="poly" id="edge8_Node000006_Node000007" title=" " alt="" coords="380,224,306,265,303,260,377,219"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="347,269,451,295"/>
+<area shape="poly" id="edge9_Node000006_Node000008" title=" " alt="" coords="401,222,401,256,396,256,396,222"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="475,269,570,295"/>
+<area shape="poly" id="edge10_Node000006_Node000009" title=" " alt="" coords="420,219,492,260,489,265,417,224"/>
+<area shape="rect" id="Node000010" title=" " alt="" coords="594,269,691,295"/>
+<area shape="poly" id="edge11_Node000006_Node000010" title=" " alt="" coords="439,219,591,263,589,268,437,224"/>
+<area shape="rect" id="Node000011" title=" " alt="" coords="716,269,823,295"/>
+<area shape="poly" id="edge12_Node000006_Node000011" title=" " alt="" coords="459,219,703,265,702,271,458,224"/>
 </map>

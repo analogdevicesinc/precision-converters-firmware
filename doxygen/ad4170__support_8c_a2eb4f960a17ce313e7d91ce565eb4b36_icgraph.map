@@ -1,0 +1,7 @@
+<map id="ad4170_get_reference_voltage" name="ad4170_get_reference_voltage">
+<area shape="rect" id="Node000001" title="Get the reference voltage based on the reference source." alt="" coords="211,37,377,77"/>
+<area shape="rect" id="Node000002" href="$ad4170__support_8c.html#a99ae04c4d625ee34507ad0b5b48a673a" title="Convert ADC data to voltage w.r.t. Vref." alt="" coords="5,5,163,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="196,45,162,40,163,35,197,40"/>
+<area shape="rect" id="Node000003" href="$ad4170__support_8c.html#ac69e7b9fb116faa7ce307451691b83a0" title="Convert the ADC raw value into equivalent voltage." alt="" coords="6,69,162,109"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="197,75,163,80,162,75,196,70"/>
+</map>

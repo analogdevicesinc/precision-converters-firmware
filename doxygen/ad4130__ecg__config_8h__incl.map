@@ -1,5 +1,7 @@
 <map id="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad4130_iio/app/ad4130_ecg_config.h" name="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad4130_iio/app/ad4130_ecg_config.h">
-<area shape="rect" id="node1" title="Header for AD4130 ECG user configuration file." alt="" coords="5,5,271,76"/>
-<area shape="rect" id="node2" title=" " alt="" coords="52,124,123,151"/>
-<area shape="rect" id="node3" title=" " alt="" coords="147,124,230,151"/>
+<area shape="rect" id="Node000001" title="Header for AD4130 ECG user configuration file." alt="" coords="5,5,271,75"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="52,123,123,148"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="122,76,103,112,98,109,117,74"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="147,123,230,148"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="159,74,178,109,173,112,154,76"/>
 </map>

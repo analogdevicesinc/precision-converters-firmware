@@ -1,5 +1,9 @@
 <map id="update_dma_buffer_overflow" name="update_dma_buffer_overflow">
-<area shape="rect" id="node1" title="Update the TDM DMA buffer overflow flag." alt="" coords="211,31,421,57"/>
-<area shape="rect" id="node2" href="$ad7134__iio_2app_2app__config__stm32_8c.html#af31dad6f65ec19bb300fdd94269b9e8f" title="SAI DMA Receive Complete Callback function." alt="" coords="5,5,163,32"/>
-<area shape="rect" id="node3" href="$ad777x__iio_2app_2app__config__stm32_8c.html#a120661e07279f0d4db3165cf61fda27b" title="SAI DMA Receive Complete Callback function." alt="" coords="5,56,163,83"/>
+<area shape="rect" id="Node000001" title="Update the TDM DMA buffer overflow flag." alt="" coords="211,55,421,80"/>
+<area shape="rect" id="Node000002" href="$ad4170__iio_2app_2app__config__stm32_8c.html#af01b00ecc07f182e122f1033a24ec410" title="SAI DMA Receive Complete Callback function." alt="" coords="5,5,163,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="242,54,144,33,145,28,243,49"/>
+<area shape="rect" id="Node000003" href="$ad7134__iio_2app_2app__config__stm32_8c.html#af31dad6f65ec19bb300fdd94269b9e8f" title="SAI DMA Receive Complete Callback function." alt="" coords="5,55,163,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="197,70,163,70,163,65,197,65"/>
+<area shape="rect" id="Node000004" href="$ad777x__iio_2app_2app__config__stm32_8c.html#a120661e07279f0d4db3165cf61fda27b" title="SAI DMA Receive Complete Callback function." alt="" coords="5,104,163,129"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="243,85,145,107,144,101,242,80"/>
 </map>

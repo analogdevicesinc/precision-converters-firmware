@@ -1,5 +1,7 @@
 <map id="thermistor" name="thermistor">
-<area shape="rect" id="node1" title=" " alt="" coords="98,5,189,32"/>
-<area shape="rect" id="node2" href="$classntc__10k__44031rc.html" title=" " alt="" coords="5,80,137,107"/>
-<area shape="rect" id="node3" href="$classptc__ky81__110.html" title=" " alt="" coords="161,80,272,107"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="98,5,189,31"/>
+<area shape="rect" id="Node000002" href="$classntc__10k__44031rc.html" title=" " alt="" coords="5,79,137,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="123,43,85,80,81,77,120,39"/>
+<area shape="rect" id="Node000003" href="$classptc__ky81__110.html" title=" " alt="" coords="161,79,272,104"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="167,38,207,77,203,80,163,42"/>
 </map>

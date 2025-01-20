@@ -1,0 +1,6 @@
+<map id="init_tdm" name="init_tdm">
+<area shape="rect" id="Node000001" title="Initialize the TDM Peripheral." alt="" coords="152,29,228,55"/>
+<area shape="poly" id="edge2_Node000001_Node000001" title=" " alt="" coords="213,18,206,11,190,8,176,10,169,14,168,20,172,28,167,30,162,21,165,11,174,5,190,3,208,6,216,14"/>
+<area shape="rect" id="Node000002" href="$ad777x__iio_2app_2app__config_8c.html#aba990e48bb1b87852ff6a375f0c2f655" title="Initialize the system peripherals." alt="" coords="5,29,104,55"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="138,45,104,45,104,39,138,39"/>
+</map>

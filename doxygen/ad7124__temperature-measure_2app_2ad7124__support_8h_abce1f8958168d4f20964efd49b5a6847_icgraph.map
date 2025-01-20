@@ -1,0 +1,22 @@
+<map id="ad7124_get_channel_setup" name="ad7124_get_channel_setup">
+<area shape="rect" id="Node000001" title=" " alt="" coords="480,133,636,173"/>
+<area shape="rect" id="Node000002" href="$ad7124__console_2app_2ad7124__support_8c.html#a687fea11a933ab8ce696dfbb7a3cd478" title=" " alt="" coords="255,27,411,67"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="514,128,431,81,401,69,403,64,433,76,517,123"/>
+<area shape="rect" id="Node000005" href="$ad7124__console_2app_2ad7124__support_8c.html#ad4e89080f6586ee525ea8510812a5ec2" title=" " alt="" coords="240,91,427,117"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="466,136,391,119,393,114,467,131"/>
+<area shape="rect" id="Node000007" href="$ad7124__temperature-measure_2app_2ad7124__console__app_8c.html#ab0901a2a5f9b46d478ccabc162a26423" title="Perform the cold junction compensation (CJC) measurement." alt="" coords="235,141,432,166"/>
+<area shape="poly" id="edge8_Node000001_Node000007" title=" " alt="" coords="466,156,432,156,432,151,466,151"/>
+<area shape="rect" id="Node000008" href="$ad7124__temperature-measure_2app_2ad7124__console__app_8c.html#af832c590d7044c1c5adde9bc4b8850d6" title="Perform the multiple thermocouple sensors measurement." alt="" coords="11,184,181,224"/>
+<area shape="poly" id="edge11_Node000001_Node000008" title=" " alt="" coords="467,176,432,181,301,195,182,203,181,198,300,190,432,176,466,170"/>
+<area shape="rect" id="Node000009" href="$ad7124__temperature-measure_2app_2ad7124__console__app_8c.html#af0ca741babdc187307c5ce129cdc46cb" title="Perform the multiple NTC thermistor sensors measurement." alt="" coords="245,241,421,281"/>
+<area shape="poly" id="edge10_Node000001_Node000009" title=" " alt="" coords="513,183,433,225,390,244,388,239,431,220,511,178"/>
+<area shape="rect" id="Node000003" href="$ad7124__temperature-measure_2app_2ad7124__support_8c.html#a5ad5af834d8320f9ddca50b8837d4e2f" title=" " alt="" coords="5,5,187,45"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="241,41,187,36,187,31,242,36"/>
+<area shape="rect" id="Node000004" href="$ad7124__console_2app_2ad7124__support_8c.html#afe07faeb7a4c520d61667a2fc0cb5813" title=" " alt="" coords="5,69,187,109"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="242,66,187,76,187,70,241,60"/>
+<area shape="poly" id="edge5_Node000005_Node000003" title=" " alt="" coords="263,90,234,81,186,60,154,48,156,43,188,55,236,76,264,85"/>
+<area shape="poly" id="edge6_Node000005_Node000004" title=" " alt="" coords="226,100,187,98,187,92,226,95"/>
+<area shape="rect" id="Node000006" href="$ad7124__temperature-measure_2app_2ad7124__console__app_8c.html#a5213402765cca2d9f877f72ff61db859" title="Perform the AD7124 internal/system calibration." alt="" coords="6,134,186,159"/>
+<area shape="poly" id="edge7_Node000005_Node000006" title=" " alt="" coords="249,122,168,137,167,131,248,116"/>
+<area shape="poly" id="edge9_Node000007_Node000008" title=" " alt="" coords="260,172,182,188,181,183,259,166"/>
+</map>

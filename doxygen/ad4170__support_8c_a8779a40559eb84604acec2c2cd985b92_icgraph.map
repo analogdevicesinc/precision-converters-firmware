@@ -1,0 +1,7 @@
+<map id="ad4170_apply_excitation" name="ad4170_apply_excitation">
+<area shape="rect" id="Node000001" title="Apply the excitation sources." alt="" coords="233,42,419,67"/>
+<area shape="rect" id="Node000002" href="$ad4170__support_8c.html#a6d8a1afbda734d96743bec3e1c7d0b66" title="Read the single ADC sample (raw data) for input channel." alt="" coords="19,5,171,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="219,44,171,38,172,32,220,39"/>
+<area shape="rect" id="Node000003" href="$ad4170__iio_8c.html#a99da1e4b3602d07cef5c3a2962ef5331" title="Perform the ADC internal/system calibration." alt="" coords="5,70,185,95"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="220,70,186,74,185,69,220,65"/>
+</map>

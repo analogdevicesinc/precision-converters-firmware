@@ -1,5 +1,7 @@
 <map id="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad469x_iio/app/ad469x_support.h" name="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad469x_iio/app/ad469x_support.h">
-<area shape="rect" id="node1" title="Header for AD469x No&#45;OS driver supports." alt="" coords="5,5,251,76"/>
-<area shape="rect" id="node2" title=" " alt="" coords="29,124,112,151"/>
-<area shape="rect" id="node3" title=" " alt="" coords="137,124,237,151"/>
+<area shape="rect" id="Node000001" title="Header for AD469x No&#45;OS driver supports." alt="" coords="5,5,251,75"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="29,123,112,148"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="110,76,87,112,83,109,105,73"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="137,123,237,148"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="151,73,174,109,170,112,147,76"/>
 </map>

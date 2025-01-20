@@ -1,6 +1,9 @@
 <map id="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/libraries/precision&#45;converters&#45;library/adi_console_menu/adi_console_menu.h" name="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/libraries/precision&#45;converters&#45;library/adi_console_menu/adi_console_menu.h">
-<area shape="rect" id="node1" title=": A simple console menu manager handler" alt="" coords="6,5,290,91"/>
-<area shape="rect" id="node2" title=" " alt="" coords="5,139,88,165"/>
-<area shape="rect" id="node3" title=" " alt="" coords="113,139,183,165"/>
-<area shape="rect" id="node4" title=" " alt="" coords="207,139,278,165"/>
+<area shape="rect" id="Node000001" title=": A simple console menu manager handler" alt="" coords="6,5,290,89"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,137,88,163"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="109,91,70,129,66,126,105,87"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="113,137,183,163"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="151,89,151,124,145,124,145,89"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="207,137,278,163"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="188,88,224,125,220,129,185,91"/>
 </map>

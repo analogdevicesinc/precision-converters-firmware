@@ -1,4 +1,9 @@
 <map id="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad4170_iio/app/stm32_tdm_support.h" name="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad4170_iio/app/stm32_tdm_support.h">
-<area shape="rect" id="node1" title="Header file for STM32 TDM&#45;DMA Data Capture Wrapper file." alt="" coords="5,5,276,76"/>
-<area shape="rect" id="node2" href="$ad4170__iio_2app_2stm32__tdm__support_8c.html" title=" " alt="" coords="5,124,276,195"/>
+<area shape="rect" id="Node000001" title="Header file for STM32 TDM&#45;DMA Data Capture Wrapper file." alt="" coords="245,5,516,75"/>
+<area shape="rect" id="Node000002" href="$ad4170__iio_8c.html" title="Implementation of AD4170 IIO application interfaces." alt="" coords="5,123,228,192"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="292,83,195,125,193,120,290,78"/>
+<area shape="rect" id="Node000003" href="$ad4170__iio_2app_2app__config__stm32_8c.html" title="Application configurations module for STM32 platform." alt="" coords="251,123,510,192"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="383,89,383,122,378,122,378,89"/>
+<area shape="rect" id="Node000004" href="$ad4170__iio_2app_2stm32__tdm__support_8c.html" title=" " alt="" coords="533,123,804,192"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="478,77,585,120,584,125,476,82"/>
 </map>

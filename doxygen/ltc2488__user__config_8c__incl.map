@@ -1,10 +1,17 @@
 <map id="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad590_console/app/ltc2488_user_config.c" name="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad590_console/app/ltc2488_user_config.c">
-<area shape="rect" id="node1" title="User configuration file for LTC2488 device." alt="" coords="237,5,531,76"/>
-<area shape="rect" id="node2" href="$ltc2488_8h.html" title=" " alt="" coords="171,124,253,151"/>
-<area shape="rect" id="node6" href="$ltc2488__user__config_8h.html" title="Header for ltc2488 user configuration file." alt="" coords="303,124,465,151"/>
-<area shape="rect" id="node8" title=" " alt="" coords="490,124,587,151"/>
-<area shape="rect" id="node3" title=" " alt="" coords="5,199,88,225"/>
-<area shape="rect" id="node4" title=" " alt="" coords="112,199,211,225"/>
-<area shape="rect" id="node5" title=" " alt="" coords="235,199,335,225"/>
-<area shape="rect" id="node7" title=" " alt="" coords="359,199,459,225"/>
+<area shape="rect" id="Node000001" title="User configuration file for LTC2488 device." alt="" coords="237,5,531,75"/>
+<area shape="rect" id="Node000002" href="$ltc2488_8h.html" title=" " alt="" coords="171,123,253,148"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="323,77,247,118,244,114,321,72"/>
+<area shape="rect" id="Node000006" href="$ltc2488__user__config_8h.html" title="Header for ltc2488 user configuration file." alt="" coords="303,123,465,148"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="387,75,387,109,381,109,381,75"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="490,123,587,148"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="441,73,509,113,506,118,438,77"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="5,196,88,221"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="186,150,87,193,85,188,184,146"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="112,196,211,221"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="206,150,180,186,175,183,201,147"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="235,196,335,221"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="226,146,265,184,262,188,222,150"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="359,196,459,221"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="391,147,403,182,398,184,386,149"/>
 </map>

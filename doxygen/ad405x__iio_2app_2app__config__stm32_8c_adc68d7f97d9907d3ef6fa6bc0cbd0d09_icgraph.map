@@ -1,0 +1,5 @@
+<map id="stm32_timer_stop" name="stm32_timer_stop">
+<area shape="rect" id="Node000001" title="Stops generating timer signals." alt="" coords="251,5,391,31"/>
+<area shape="rect" id="Node000002" href="$ad405x__iio_8c.html#a0a6e8b6a22c7f2e20c3b2d5b59d3c570" title="Stop a data capture from continuous/burst mode." alt="" coords="5,5,203,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="237,21,203,21,203,15,237,15"/>
+</map>

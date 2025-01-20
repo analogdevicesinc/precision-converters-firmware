@@ -1,0 +1,5 @@
+<map id="pl_gui_get_chn_unit" name="pl_gui_get_chn_unit">
+<area shape="rect" id="Node000001" title="Get IIO channels unit type (in string format)" alt="" coords="241,5,392,31"/>
+<area shape="rect" id="Node000002" href="$pl__gui__views_8c.html#a6dd69c69516001dd3c9c24d5134f51c3" title="Create pocket lab GUI DMM view." alt="" coords="5,5,193,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="227,21,194,21,194,15,227,15"/>
+</map>

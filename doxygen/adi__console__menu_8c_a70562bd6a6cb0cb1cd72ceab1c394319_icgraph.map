@@ -1,5 +1,13 @@
 <map id="adi_clear_console" name="adi_clear_console">
-<area shape="rect" id="node1" title="Clears the console terminal." alt="" coords="261,35,400,61"/>
-<area shape="rect" id="node2" href="$ad717x__console__app_8c.html#a26ee816a097543ba194345f9d8c15b79" title="Handle the menu to connect input to channel." alt="" coords="5,5,213,32"/>
-<area shape="rect" id="node3" href="$ad717x__console__app_8c.html#a209308b1f737d5170c2a73f0610736bc" title="Handle the menu to configure and assign the device setup." alt="" coords="17,57,202,98"/>
+<area shape="rect" id="Node000001" title="Clears the console terminal." alt="" coords="268,127,407,152"/>
+<area shape="rect" id="Node000002" href="$ad717x__console__app_8c.html#a26ee816a097543ba194345f9d8c15b79" title="Handle the menu to connect input to channel." alt="" coords="9,5,217,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="313,119,272,81,219,46,186,33,188,28,221,41,275,77,317,115"/>
+<area shape="rect" id="Node000003" href="$ad717x__console__app_8c.html#a209308b1f737d5170c2a73f0610736bc" title="Handle the menu to configure and assign the device setup." alt="" coords="20,55,205,95"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="278,125,183,98,184,93,280,120"/>
+<area shape="rect" id="Node000004" href="$ad717x__console__app_8c.html#af3c663140d338be4561052f9a9c6b4a7" title="Samples all enabled channels and displays in tabular form." alt="" coords="5,119,220,159"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="254,142,220,142,220,137,254,137"/>
+<area shape="rect" id="Node000005" href="$ad717x__console__app_8c.html#abdf1eac9de7626df424a0f12aec98c08" title="Samples all enabled channels once in Single Conversion mode." alt="" coords="21,184,204,209"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="279,158,221,174,170,186,168,181,219,169,278,153"/>
+<area shape="rect" id="Node000006" href="$ad7124__temperature-measure_2app_2ad7124__console__app_8c.html#a5213402765cca2d9f877f72ff61db859" title="Perform the AD7124 internal/system calibration." alt="" coords="23,233,203,259"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="313,163,271,194,221,223,185,236,183,231,219,218,269,190,310,159"/>
 </map>

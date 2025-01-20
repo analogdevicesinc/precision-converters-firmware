@@ -1,0 +1,9 @@
+<map id="ad579x_reconfig_ldac" name="ad579x_reconfig_ldac">
+<area shape="rect" id="Node000001" title="Reconfigure LDAC pin as GPIO output." alt="" coords="353,31,516,56"/>
+<area shape="rect" id="Node000002" href="$ad579x__iio_8c.html#aa2a89d81a19aea6a5b4e6a03a2dd7124" title="Initialize the IIO interface for AD579x IIO device." alt="" coords="146,5,267,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="340,35,267,27,268,22,340,30"/>
+<area shape="rect" id="Node000004" href="$ad579x__iio_8c.html#ac2e66ef78cbb3082ab0cbb107dfb5280" title="Set the sampling rate and get the updated value supported by MCU platform." alt="" coords="108,55,305,80"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="340,56,306,60,305,54,339,51"/>
+<area shape="rect" id="Node000003" href="$ad579x__iio_2app_2main_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title="Main entry point to application." alt="" coords="5,5,60,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="132,21,60,21,60,15,132,15"/>
+</map>

@@ -1,0 +1,9 @@
+<map id="ad777x_trigger_handler" name="ad777x_trigger_handler">
+<area shape="rect" id="Node000001" title="Push data into IIO buffer when trigger handler IRQ is invoked." alt="" coords="481,5,657,31"/>
+<area shape="rect" id="Node000002" href="$ad777x__iio_8c.html#a1a75be7024b1973d06cef9d421ec4d98" title="Init for reading/writing and parameterization of a AD777x IIO device." alt="" coords="312,5,433,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="468,21,433,21,433,15,468,15"/>
+<area shape="rect" id="Node000003" href="$ad777x__iio_8c.html#a968983df489fc93c1651d6a6d2d9b187" title="Initialize the IIO interface for AD777x IIO device." alt="" coords="108,5,264,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="298,21,264,21,264,15,298,15"/>
+<area shape="rect" id="Node000004" href="$ad777x__iio_2app_2main_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title=" " alt="" coords="5,5,60,31"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="94,21,60,21,60,15,94,15"/>
+</map>

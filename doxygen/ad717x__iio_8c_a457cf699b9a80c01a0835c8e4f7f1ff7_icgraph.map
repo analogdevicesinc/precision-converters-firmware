@@ -1,0 +1,7 @@
+<map id="iio_ad717x_init" name="iio_ad717x_init">
+<area shape="rect" id="Node000001" title="Init for reading/writing and parameterization of a AD717x IIO device." alt="" coords="312,5,433,31"/>
+<area shape="rect" id="Node000002" href="$ad717x__iio_8c.html#acddf5b7a4d74fe84be7eceea2cd5f88d" title="Initialize the AD717x IIO Interface." alt="" coords="108,5,264,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="298,21,264,21,264,15,298,15"/>
+<area shape="rect" id="Node000003" href="$ad717x__iio_2app_2main_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title="Main entry point to application." alt="" coords="5,5,60,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="94,21,60,21,60,15,94,15"/>
+</map>

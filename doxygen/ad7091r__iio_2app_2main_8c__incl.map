@@ -1,8 +1,14 @@
 <map id="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad7091r_iio/app/main.c" name="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad7091r_iio/app/main.c">
-<area shape="rect" id="node1" title="Main module for AD7091R IIO application." alt="" coords="5,5,228,76"/>
-<area shape="rect" id="node2" title=" " alt="" coords="13,124,79,151"/>
-<area shape="rect" id="node3" title=" " alt="" coords="79,199,149,225"/>
-<area shape="rect" id="node4" href="$ad7091r__iio_8h.html" title="Header file for AD7091R IIO interface." alt="" coords="159,124,269,151"/>
-<area shape="rect" id="node5" title=" " alt="" coords="174,199,257,225"/>
-<area shape="rect" id="node6" title=" " alt="" coords="281,199,331,225"/>
+<area shape="rect" id="Node000001" title="Main module for AD7091R IIO application." alt="" coords="5,5,228,75"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="13,123,79,148"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="93,76,65,113,61,110,89,73"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="79,196,149,221"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="119,75,117,182,112,182,113,75"/>
+<area shape="rect" id="Node000004" href="$ad7091r__iio_8h.html" title="Header file for AD7091R IIO interface." alt="" coords="159,123,269,148"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="154,73,194,111,190,115,150,77"/>
+<area shape="poly" id="edge4_Node000004_Node000003" title=" " alt="" coords="199,150,143,190,140,186,196,146"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="174,196,257,221"/>
+<area shape="poly" id="edge5_Node000004_Node000005" title=" " alt="" coords="217,148,218,182,212,183,212,148"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="281,196,331,221"/>
+<area shape="poly" id="edge6_Node000004_Node000006" title=" " alt="" coords="230,146,282,185,279,190,227,150"/>
 </map>

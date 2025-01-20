@@ -1,0 +1,5 @@
+<map id="ad7134_read_tdm_data" name="ad7134_read_tdm_data">
+<area shape="rect" id="Node000001" title="Read ADC data over SAI TDM Peripheral." alt="" coords="220,13,395,38"/>
+<area shape="rect" id="Node000002" href="$ad7134__support_8c.html#a588c967cf373724fa46b7846c82cbce9" title="Read ADC single sample data." alt="" coords="5,5,172,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="206,28,172,28,172,23,206,23"/>
+</map>

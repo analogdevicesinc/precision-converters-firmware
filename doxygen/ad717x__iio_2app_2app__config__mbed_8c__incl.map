@@ -1,14 +1,27 @@
 <map id="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad717x_iio/app/app_config_mbed.c" name="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad717x_iio/app/app_config_mbed.c">
-<area shape="rect" id="node1" title="Source file for the mbed configuration for AD717x IIO Application." alt="" coords="193,5,448,76"/>
-<area shape="rect" id="node2" href="$ad717x__iio_2app_2app__config_8h.html" title="Configuration file for AD717x and AD411x IIO firmware application." alt="" coords="225,124,329,151"/>
-<area shape="rect" id="node5" href="$ad717x__iio_2app_2app__config__mbed_8h.html" title="Header file for Mbed platform configurations." alt="" coords="324,199,472,225"/>
-<area shape="rect" id="node3" title=" " alt="" coords="5,273,76,300"/>
-<area shape="rect" id="node4" title=" " alt="" coords="193,199,299,225"/>
-<area shape="rect" id="node6" title=" " alt="" coords="100,273,200,300"/>
-<area shape="rect" id="node7" title=" " alt="" coords="224,273,321,300"/>
-<area shape="rect" id="node8" title=" " alt="" coords="346,273,450,300"/>
-<area shape="rect" id="node9" title=" " alt="" coords="475,273,569,300"/>
-<area shape="rect" id="node10" title=" " alt="" coords="593,273,691,300"/>
-<area shape="rect" id="node11" title=" " alt="" coords="715,273,822,300"/>
-<area shape="rect" id="node12" title=" " alt="" coords="846,273,977,300"/>
+<area shape="rect" id="Node000001" title="Source file for the mbed configuration for AD717x IIO Application." alt="" coords="193,5,448,75"/>
+<area shape="rect" id="Node000002" href="$ad717x__iio_2app_2app__config_8h.html" title="Configuration file for AD717x and AD411x IIO firmware application." alt="" coords="225,123,329,148"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="307,76,290,111,286,109,302,74"/>
+<area shape="rect" id="Node000005" href="$ad717x__iio_2app_2app__config__mbed_8h.html" title="Header file for Mbed platform configurations." alt="" coords="324,196,472,221"/>
+<area shape="poly" id="edge13_Node000001_Node000005" title=" " alt="" coords="339,74,389,182,384,185,334,76"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="5,269,76,295"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="259,150,73,264,70,260,256,146"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="193,196,299,221"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="274,149,259,185,254,183,269,147"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="298,146,368,187,365,191,295,150"/>
+<area shape="poly" id="edge5_Node000005_Node000003" title=" " alt="" coords="334,224,90,272,89,266,333,219"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="100,269,200,295"/>
+<area shape="poly" id="edge6_Node000005_Node000006" title=" " alt="" coords="359,224,204,268,203,263,357,219"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="224,269,321,295"/>
+<area shape="poly" id="edge7_Node000005_Node000007" title=" " alt="" coords="379,224,306,265,304,260,377,219"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="346,269,450,295"/>
+<area shape="poly" id="edge8_Node000005_Node000008" title=" " alt="" coords="401,222,401,256,395,256,395,222"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="475,269,569,295"/>
+<area shape="poly" id="edge9_Node000005_Node000009" title=" " alt="" coords="419,219,491,260,489,265,417,224"/>
+<area shape="rect" id="Node000010" title=" " alt="" coords="593,269,691,295"/>
+<area shape="poly" id="edge10_Node000005_Node000010" title=" " alt="" coords="438,219,590,263,589,268,436,224"/>
+<area shape="rect" id="Node000011" title=" " alt="" coords="715,269,822,295"/>
+<area shape="poly" id="edge11_Node000005_Node000011" title=" " alt="" coords="458,219,702,265,701,271,457,224"/>
+<area shape="rect" id="Node000012" title=" " alt="" coords="846,269,977,295"/>
+<area shape="poly" id="edge12_Node000005_Node000012" title=" " alt="" coords="472,217,833,266,832,272,472,222"/>
 </map>

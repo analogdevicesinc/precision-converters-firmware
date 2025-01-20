@@ -1,5 +1,19 @@
 <map id="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/libraries/precision&#45;converters&#45;library/pocket_lab/pl_gui_views.h" name="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/libraries/precision&#45;converters&#45;library/pocket_lab/pl_gui_views.h">
-<area shape="rect" id="node1" title="Pocket lab GUI views." alt="" coords="128,5,351,91"/>
-<area shape="rect" id="node2" href="$pl__gui__events_8c.html" title="Pocket lab GUI event handling." alt="" coords="5,139,228,224"/>
-<area shape="rect" id="node3" href="$pl__gui__views_8c.html" title="Pocket lab GUI views." alt="" coords="252,139,475,224"/>
+<area shape="rect" id="Node000001" title="Pocket lab GUI views." alt="" coords="868,5,1091,89"/>
+<area shape="rect" id="Node000002" href="$pl__gui__events_8c.html" title="Pocket lab GUI event handling." alt="" coords="5,137,228,221"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="854,59,726,69,571,85,405,109,240,140,229,143,227,137,239,135,404,103,571,80,725,64,854,53"/>
+<area shape="rect" id="Node000003" href="$pl__gui__views_8c.html" title="Pocket lab GUI views." alt="" coords="252,137,475,221"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="855,69,680,98,487,140,475,143,474,138,485,135,679,93,854,63"/>
+<area shape="rect" id="Node000004" href="$ad4130__iio_8c.html" title="Implementation of AD4130 IIO application interfaces." alt="" coords="499,145,721,214"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="855,95,706,147,704,142,854,90"/>
+<area shape="rect" id="Node000005" href="$ad4130__iio_2app_2app__config_8c.html" title="Application configurations module." alt="" coords="745,145,968,214"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="933,101,891,146,887,142,929,97"/>
+<area shape="rect" id="Node000006" href="$ad4170__iio_8c.html" title="Implementation of AD4170 IIO application interfaces." alt="" coords="992,145,1215,214"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="1030,97,1073,142,1069,146,1026,101"/>
+<area shape="rect" id="Node000007" href="$ad4170__iio_2app_2app__config_8c.html" title="Application configurations module." alt="" coords="1239,145,1461,214"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="1105,90,1255,142,1253,147,1103,95"/>
+<area shape="rect" id="Node000008" href="$ad7124__iio_8c.html" title="Main interface for AD7124 IIO Application firmware example program." alt="" coords="1485,145,1708,214"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="1105,63,1281,93,1475,135,1501,142,1500,147,1473,140,1280,98,1104,69"/>
+<area shape="rect" id="Node000009" href="$ad7124__iio_2app_2app__config_8c.html" title="Source file for the application configuration for AD7124 IIO Application." alt="" coords="1732,145,1955,214"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="1105,53,1234,64,1389,80,1556,103,1721,135,1750,142,1748,147,1720,140,1555,109,1388,85,1233,69,1104,59"/>
 </map>

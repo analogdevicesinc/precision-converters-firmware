@@ -1,12 +1,22 @@
 <map id="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/libraries/precision&#45;converters&#45;library/adi_console_menu/adi_console_menu.c" name="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/libraries/precision&#45;converters&#45;library/adi_console_menu/adi_console_menu.c">
-<area shape="rect" id="node1" title=": A simple console menu manager handler" alt="" coords="180,5,463,91"/>
-<area shape="rect" id="node2" title=" " alt="" coords="5,139,72,165"/>
-<area shape="rect" id="node3" title=" " alt="" coords="97,139,167,165"/>
-<area shape="rect" id="node4" title=" " alt="" coords="191,139,262,165"/>
-<area shape="rect" id="node5" title=" " alt="" coords="286,139,357,165"/>
-<area shape="rect" id="node6" title=" " alt="" coords="409,213,492,240"/>
-<area shape="rect" id="node7" title=" " alt="" coords="432,139,507,165"/>
-<area shape="rect" id="node8" href="$adi__console__menu_8h.html" title=": A simple console menu manager handler" alt="" coords="531,139,685,165"/>
-<area shape="rect" id="node9" title=" " alt="" coords="525,213,595,240"/>
-<area shape="rect" id="node10" title=" " alt="" coords="619,213,690,240"/>
+<area shape="rect" id="Node000001" title=": A simple console menu manager handler" alt="" coords="180,5,463,89"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,137,72,163"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="207,92,85,135,83,130,205,87"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="97,137,167,163"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="246,92,167,133,164,129,243,87"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="191,137,262,163"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="285,91,249,129,245,125,281,88"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="286,137,357,163"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="324,89,324,124,319,124,319,89"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="409,211,492,236"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="354,88,436,198,432,201,350,91"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="432,137,507,163"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="383,87,443,127,440,132,380,92"/>
+<area shape="rect" id="Node000008" href="$adi__console__menu_8h.html" title=": A simple console menu manager handler" alt="" coords="531,137,685,163"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="439,87,563,130,562,135,437,92"/>
+<area shape="poly" id="edge8_Node000008_Node000006" title=" " alt="" coords="584,165,490,207,488,203,582,160"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="525,211,595,236"/>
+<area shape="poly" id="edge9_Node000008_Node000009" title=" " alt="" coords="602,165,578,201,573,198,598,162"/>
+<area shape="rect" id="Node000010" title=" " alt="" coords="619,211,690,236"/>
+<area shape="poly" id="edge10_Node000008_Node000010" title=" " alt="" coords="618,162,642,198,637,201,613,164"/>
 </map>

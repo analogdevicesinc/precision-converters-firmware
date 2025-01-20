@@ -1,6 +1,57 @@
 <map id="adi_press_any_key_to_continue" name="adi_press_any_key_to_continue">
-<area shape="rect" id="node1" title="waits for any key to be pressed, and displays a prompt to the user" alt="" coords="221,71,387,112"/>
-<area shape="rect" id="node2" href="$adi__console__menu_8c.html#a79a0b315e56c61d25e5f41b1194b86ff" title="Handles the float type input from the user by displaying the menu message and provides a set number o..." alt="" coords="5,5,173,47"/>
-<area shape="rect" id="node3" href="$adi__console__menu_8c.html#abfb5543d72a6daeaa664cb22a70ae185" title="Handles the integer type input from the user by displaying the menu message and provides a set number..." alt="" coords="5,71,173,112"/>
-<area shape="rect" id="node4" href="$ad559xr__console_2app_2main_8c.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title=" " alt="" coords="62,137,117,163"/>
+<area shape="rect" id="Node000001" title="waits for any key to be pressed, and displays a prompt to the user" alt="" coords="268,724,433,764"/>
+<area shape="rect" id="Node000002" href="$adi__console__menu_8c.html#a79a0b315e56c61d25e5f41b1194b86ff" title="Handles the float type input from the user by displaying the menu message and provides a set number o..." alt="" coords="29,5,197,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="345,710,334,570,312,375,295,275,274,184,248,110,234,81,218,59,195,42,199,38,222,55,238,78,253,108,279,183,300,274,317,374,340,569,350,710"/>
+<area shape="rect" id="Node000003" href="$adi__console__menu_8c.html#abfb5543d72a6daeaa664cb22a70ae185" title="Handles the integer type input from the user by displaying the menu message and provides a set number..." alt="" coords="29,69,197,109"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="344,710,332,581,307,405,290,316,270,235,246,168,232,143,218,123,195,107,198,102,222,119,237,140,251,166,275,233,296,315,313,404,337,581,349,710"/>
+<area shape="rect" id="Node000004" href="$ad559xr__console_2app_2main_8c.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title=" " alt="" coords="85,134,140,159"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="344,711,331,590,306,428,289,347,268,273,245,213,232,190,218,173,201,160,181,153,140,148,141,143,182,148,203,156,222,169,236,187,250,210,274,271,294,346,311,428,336,590,349,710"/>
+<area shape="rect" id="Node000005" href="$ad717x__console__app_8c.html#a26ee816a097543ba194345f9d8c15b79" title="Handle the menu to connect input to channel." alt="" coords="9,183,217,209"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="343,711,328,600,302,453,285,379,265,312,243,258,218,222,203,211,206,207,222,218,248,256,270,311,290,378,308,452,334,599,348,710"/>
+<area shape="rect" id="Node000006" href="$ad717x__console__app_8c.html#ab8b6b233f8fe5d6836f9319250a6ad2d" title="Handle the menu to calibrate the device." alt="" coords="36,233,189,258"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="342,710,325,609,298,478,281,412,262,353,241,305,218,273,205,262,189,255,191,250,207,258,222,269,246,302,267,351,286,410,304,476,331,608,347,710"/>
+<area shape="rect" id="Node000007" href="$ad717x__console__app_8c.html#abe0684cef8f54d79e56073130a21432f" title="Samples all enabled channels and displays on the console." alt="" coords="5,283,220,323"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="346,710,340,634,321,533,304,480,282,428,254,379,218,337,203,325,206,321,222,333,258,376,287,426,309,478,326,532,345,633,351,710"/>
+<area shape="rect" id="Node000008" href="$ad717x__console__app_8c.html#af3c663140d338be4561052f9a9c6b4a7" title="Samples all enabled channels and displays in tabular form." alt="" coords="5,347,220,387"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="344,711,334,645,312,562,296,518,275,475,249,435,218,401,202,389,205,385,222,397,254,432,280,473,301,516,317,560,339,644,349,710"/>
+<area shape="rect" id="Node000009" href="$ad717x__console__app_8c.html#a14c7cd1d7360e5ceee372e5212039721" title="Handle the menu to display device setup." alt="" coords="35,411,191,437"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="342,711,330,653,307,583,291,546,271,511,247,478,218,450,190,435,192,430,222,446,251,475,275,508,295,544,312,581,335,652,347,710"/>
+<area shape="rect" id="Node000010" href="$ad717x__console__app_8c.html#ac0e6bc22320d7d16b755668e4a54f106" title="Handle the menu to select the filter type." alt="" coords="41,461,184,486"/>
+<area shape="poly" id="edge9_Node000001_Node000010" title=" " alt="" coords="339,712,324,664,299,607,264,549,243,523,219,501,183,484,186,479,221,496,247,519,269,546,304,604,329,662,344,710"/>
+<area shape="rect" id="Node000011" href="$ad717x__console__app_8c.html#aa93db1b032f623e922aa446c4a546ff3" title="Handle the menu to enable/disable the input buffers." alt="" coords="15,511,210,551"/>
+<area shape="poly" id="edge10_Node000001_Node000011" title=" " alt="" coords="332,713,314,678,288,638,256,599,218,565,198,553,200,548,222,561,260,595,292,635,318,675,337,710"/>
+<area shape="rect" id="Node000012" href="$ad717x__console__app_8c.html#aca2035977d5f1f4ac7c0c61341e4336e" title="Handle the menu to select the ODR value." alt="" coords="46,575,179,601"/>
+<area shape="poly" id="edge11_Node000001_Node000012" title=" " alt="" coords="326,715,280,662,251,636,219,614,179,599,180,594,221,610,254,632,284,659,330,711"/>
+<area shape="rect" id="Node000013" href="$ad717x__console__app_8c.html#a81d528cd2d4aabf34c9b0093929a1b9a" title="Handle the menu to perform open wire detection." alt="" coords="12,625,213,650"/>
+<area shape="poly" id="edge12_Node000001_Node000013" title=" " alt="" coords="311,718,268,689,219,664,185,653,187,647,221,659,271,685,314,714"/>
+<area shape="rect" id="Node000014" href="$ad717x__console__app_8c.html#aacbe5d4f1148a9f85246f76487dd8f8a" title="Handle the menu to select the polarity." alt="" coords="31,674,194,699"/>
+<area shape="poly" id="edge13_Node000001_Node000014" title=" " alt="" coords="255,723,219,715,167,702,168,697,221,709,256,718"/>
+<area shape="rect" id="Node000015" href="$ad717x__console__app_8c.html#acc958979028005fc80182b197b010a36" title="Handle the menu to enable/disable the post filter." alt="" coords="27,724,198,764"/>
+<area shape="poly" id="edge14_Node000001_Node000015" title=" " alt="" coords="254,747,198,747,198,741,254,741"/>
+<area shape="rect" id="Node000016" href="$ad717x__console__app_8c.html#a66e18e8add8ec5abe301b9124aa063e0" title="Handle the menu to select the post filter." alt="" coords="30,789,195,814"/>
+<area shape="poly" id="edge15_Node000001_Node000016" title=" " alt="" coords="256,770,221,779,168,791,167,786,219,773,255,765"/>
+<area shape="rect" id="Node000017" href="$ad717x__console__app_8c.html#a6fb3d5ef1a21aaaa02d46200a89dc3df" title="Handle the menu to read device ID." alt="" coords="55,838,170,863"/>
+<area shape="poly" id="edge16_Node000001_Node000017" title=" " alt="" coords="313,774,270,802,221,828,171,843,169,838,219,823,268,798,310,770"/>
+<area shape="rect" id="Node000018" href="$ad717x__console__app_8c.html#add2491b666fea5c97831584d518810d9" title="Handle the menu to read device status register." alt="" coords="41,887,184,913"/>
+<area shape="poly" id="edge17_Node000001_Node000018" title=" " alt="" coords="329,777,283,829,254,855,221,877,186,891,184,886,219,872,251,851,280,825,325,773"/>
+<area shape="rect" id="Node000019" href="$ad717x__console__app_8c.html#a8af7e7149997fb493d27ca5615a44d55" title="Handle the menu to read die temperature of device." alt="" coords="21,937,204,962"/>
+<area shape="poly" id="edge18_Node000001_Node000019" title=" " alt="" coords="337,778,319,813,293,853,260,893,221,926,196,939,194,934,219,922,257,889,289,850,314,810,333,775"/>
+<area shape="rect" id="Node000020" href="$ad717x__console__app_8c.html#aae4b7e61da809faac7ec723e0a9dbc20" title="Handle the menu to enable/disable the reference buffers." alt="" coords="23,987,203,1027"/>
+<area shape="poly" id="edge19_Node000001_Node000020" title=" " alt="" coords="342,778,325,822,300,875,266,929,245,954,222,975,201,989,198,984,218,971,241,950,262,926,295,873,320,820,337,776"/>
+<area shape="rect" id="Node000021" href="$ad717x__console__app_8c.html#a1525b715c50f885e4ebaf000a622c203" title="Handle the menu to select the reference source." alt="" coords="23,1051,202,1091"/>
+<area shape="poly" id="edge20_Node000001_Node000021" title=" " alt="" coords="347,778,334,835,310,905,274,978,250,1011,222,1041,204,1053,201,1049,218,1037,246,1008,269,975,305,903,329,833,341,777"/>
+<area shape="rect" id="Node000022" href="$ad717x__console__app_8c.html#a206145af8ed00a53e28da72b7108b7c6" title=" " alt="" coords="15,1115,210,1141"/>
+<area shape="poly" id="edge21_Node000001_Node000022" title=" " alt="" coords="350,778,341,847,321,935,304,982,283,1027,255,1068,222,1105,202,1117,200,1113,218,1101,251,1065,278,1024,299,979,315,934,336,846,345,778"/>
+<area shape="rect" id="Node000023" href="$ad717x__console__app_8c.html#a4a602a634b6d2a719d0b3a5dc4c18796" title="Handle the menu to select input pair for open wire detection." alt="" coords="24,1165,201,1190"/>
+<area shape="poly" id="edge22_Node000001_Node000023" title=" " alt="" coords="352,778,346,855,327,957,311,1010,288,1063,259,1111,222,1154,203,1167,200,1162,218,1150,255,1108,284,1060,306,1008,322,955,341,854,346,778"/>
+<area shape="rect" id="Node000024" href="$ad717x__console__app_8c.html#abdf1eac9de7626df424a0f12aec98c08" title="Samples all enabled channels once in Single Conversion mode." alt="" coords="21,1214,204,1239"/>
+<area shape="poly" id="edge23_Node000001_Node000024" title=" " alt="" coords="353,778,350,864,344,919,334,978,318,1039,294,1099,263,1155,222,1203,203,1216,200,1212,218,1199,258,1152,289,1097,312,1038,329,977,339,918,345,864,348,778"/>
+<area shape="rect" id="Node000025" href="$ad7124__temperature-measure_2app_2ad7124__console__app_8c.html#a5213402765cca2d9f877f72ff61db859" title="Perform the AD7124 internal/system calibration." alt="" coords="23,1263,203,1289"/>
+<area shape="poly" id="edge24_Node000001_Node000025" title=" " alt="" coords="348,778,333,886,306,1028,289,1099,269,1164,247,1216,222,1253,204,1265,201,1261,218,1249,242,1214,264,1162,284,1098,301,1027,327,885,343,777"/>
+<area shape="rect" id="Node000026" href="$ad7124__temperature-measure_2app_2ad7124__console__app_8c.html#af0ca741babdc187307c5ce129cdc46cb" title="Perform the multiple NTC thermistor sensors measurement." alt="" coords="25,1313,201,1353"/>
+<area shape="poly" id="edge25_Node000001_Node000026" title=" " alt="" coords="348,778,334,895,308,1051,291,1130,271,1202,248,1261,222,1302,202,1317,199,1313,218,1298,243,1258,266,1200,286,1129,303,1050,329,894,343,777"/>
+<area shape="rect" id="Node000027" href="$ad7124__temperature-measure_2app_2ad7124__console__app_8c.html#af832c590d7044c1c5adde9bc4b8850d6" title="Perform the multiple thermocouple sensors measurement." alt="" coords="27,1377,198,1417"/>
+<area shape="poly" id="edge26_Node000001_Node000027" title=" " alt="" coords="349,778,337,907,313,1083,296,1172,275,1254,251,1321,237,1347,222,1367,200,1384,197,1379,218,1363,232,1344,246,1319,270,1252,290,1171,307,1082,332,906,344,778"/>
+<area shape="rect" id="Node000028" href="$ad7124__temperature-measure_2app_2ad7124__console__app_8c.html#a45be2a24a6f7257285b3f14c5df10ae4" title="Display ADC calibration main menu." alt="" coords="37,1442,188,1467"/>
+<area shape="poly" id="edge27_Node000001_Node000028" title=" " alt="" coords="350,778,340,919,318,1115,301,1215,280,1305,254,1380,239,1409,222,1431,207,1443,189,1451,187,1446,204,1438,218,1427,234,1406,249,1378,275,1304,296,1213,313,1114,335,919,345,778"/>
 </map>

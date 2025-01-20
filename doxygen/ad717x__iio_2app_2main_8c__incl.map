@@ -1,9 +1,15 @@
 <map id="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad717x_iio/app/main.c" name="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad717x_iio/app/main.c">
-<area shape="rect" id="node1" title="Main interface for AD717x&#45;AD411x IIO firmware application." alt="" coords="38,5,261,76"/>
-<area shape="rect" id="node2" title=" " alt="" coords="5,124,88,151"/>
-<area shape="rect" id="node3" title=" " alt="" coords="112,124,187,151"/>
-<area shape="rect" id="node4" href="$ad717x__iio_8h.html" title="IIO Header file for AD717x and AD411x." alt="" coords="211,124,317,151"/>
-<area shape="rect" id="node5" title=" " alt="" coords="143,199,214,225"/>
-<area shape="rect" id="node6" title=" " alt="" coords="239,199,289,225"/>
-<area shape="rect" id="node7" title=" " alt="" coords="313,199,396,225"/>
+<area shape="rect" id="Node000001" title="Main interface for AD717x&#45;AD411x IIO firmware application." alt="" coords="38,5,261,75"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,123,88,148"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="114,77,72,115,68,111,110,73"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="112,123,187,148"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="152,75,152,109,147,109,147,75"/>
+<area shape="rect" id="Node000004" href="$ad717x__iio_8h.html" title="IIO Header file for AD717x and AD411x." alt="" coords="211,123,317,148"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="192,73,241,112,237,116,189,77"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="143,196,214,221"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="252,150,205,189,201,185,249,146"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="239,196,289,221"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="267,148,267,182,261,182,261,148"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="313,196,396,221"/>
+<area shape="poly" id="edge6_Node000004_Node000007" title=" " alt="" coords="280,146,331,185,327,189,277,150"/>
 </map>

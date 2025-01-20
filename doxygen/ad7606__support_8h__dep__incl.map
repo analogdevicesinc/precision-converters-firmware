@@ -1,6 +1,9 @@
 <map id="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad7606_iio/app/ad7606_support.h" name="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad7606_iio/app/ad7606_support.h">
-<area shape="rect" id="node1" title="Header for AD7606 No&#45;OS driver supports." alt="" coords="286,5,531,76"/>
-<area shape="rect" id="node2" href="$ad7606__support_8c.html" title="AD7606 No&#45;OS drivers support functionality." alt="" coords="5,124,249,195"/>
-<area shape="rect" id="node3" href="$ad7606__user__config_8c.html" title="User configuration file for AD7606 device." alt="" coords="274,124,543,195"/>
-<area shape="rect" id="node4" href="$iio__ad7606_8c.html" title="Implementation of AD7606 IIO application interfaces." alt="" coords="568,124,791,195"/>
+<area shape="rect" id="Node000001" title="Header for AD7606 No&#45;OS driver supports." alt="" coords="286,5,531,75"/>
+<area shape="rect" id="Node000002" href="$ad7606__support_8c.html" title="AD7606 No&#45;OS drivers support functionality." alt="" coords="5,123,249,192"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="315,82,211,125,209,120,313,78"/>
+<area shape="rect" id="Node000003" href="$ad7606__user__config_8c.html" title="User configuration file for AD7606 device." alt="" coords="274,123,543,192"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="411,89,411,122,406,122,406,89"/>
+<area shape="rect" id="Node000004" href="$iio__ad7606_8c.html" title="Implementation of AD7606 IIO application interfaces." alt="" coords="568,123,791,192"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="501,78,601,120,599,125,499,83"/>
 </map>

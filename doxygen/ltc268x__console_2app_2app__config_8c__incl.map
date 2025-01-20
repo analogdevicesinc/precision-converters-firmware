@@ -1,8 +1,13 @@
 <map id="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ltc268x_console/app/app_config.c" name="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ltc268x_console/app/app_config.c">
-<area shape="rect" id="node1" title="Application configurations module." alt="" coords="5,5,249,76"/>
-<area shape="rect" id="node2" href="$ltc268x__console_2app_2app__config_8h.html" title="Configuration file for LTC268X device applications." alt="" coords="75,124,179,151"/>
-<area shape="rect" id="node3" title=" " alt="" coords="25,199,96,225"/>
-<area shape="rect" id="node4" href="$ltc268x__console_2app_2app__config__mbed_8h.html" title="Header file for Mbed platform configurations." alt="" coords="120,199,268,225"/>
-<area shape="rect" id="node5" title=" " alt="" coords="83,273,183,300"/>
-<area shape="rect" id="node6" title=" " alt="" coords="207,273,304,300"/>
+<area shape="rect" id="Node000001" title="Application configurations module." alt="" coords="5,5,249,75"/>
+<area shape="rect" id="Node000002" href="$ltc268x__console_2app_2app__config_8h.html" title="Configuration file for LTC268X device applications." alt="" coords="75,123,179,148"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="130,75,130,109,125,109,125,75"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="25,196,96,221"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="118,150,83,188,79,184,114,147"/>
+<area shape="rect" id="Node000004" href="$ltc268x__console_2app_2app__config__mbed_8h.html" title="Header file for Mbed platform configurations." alt="" coords="120,196,268,221"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="140,147,176,184,172,188,136,150"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="83,269,183,295"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="186,223,154,261,150,257,182,220"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="207,269,304,295"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="206,220,238,257,234,261,202,223"/>
 </map>

@@ -1,11 +1,20 @@
 <map id="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad77681_iio/app/ad77681.c" name="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad77681_iio/app/ad77681.c">
-<area shape="rect" id="node1" title="Implementation of AD7768&#45;1 Driver." alt="" coords="167,5,390,76"/>
-<area shape="rect" id="node2" title=" " alt="" coords="5,124,72,151"/>
-<area shape="rect" id="node3" title=" " alt="" coords="97,124,167,151"/>
-<area shape="rect" id="node4" title=" " alt="" coords="196,199,279,225"/>
-<area shape="rect" id="node5" title=" " alt="" coords="243,124,314,151"/>
-<area shape="rect" id="node6" href="$ad77681_8h.html" title="Header file of the AD7768&#45;1 Driver." alt="" coords="339,124,429,151"/>
-<area shape="rect" id="node8" title=" " alt="" coords="453,124,563,151"/>
-<area shape="rect" id="node9" title=" " alt="" coords="587,124,701,151"/>
-<area shape="rect" id="node7" title=" " alt="" coords="335,199,433,225"/>
+<area shape="rect" id="Node000001" title="Implementation of AD7768&#45;1 Driver." alt="" coords="167,5,390,75"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,123,72,148"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="193,77,82,120,80,115,191,72"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="97,123,167,148"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="227,77,163,117,160,113,224,73"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="196,196,279,221"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="257,76,244,99,235,123,231,153,234,182,229,183,226,153,229,122,239,97,252,74"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="243,123,314,148"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="281,75,281,109,276,109,276,75"/>
+<area shape="rect" id="Node000006" href="$ad77681_8h.html" title="Header file of the AD7768&#45;1 Driver." alt="" coords="339,123,429,148"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="318,73,362,111,359,115,315,77"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="453,123,563,148"/>
+<area shape="poly" id="edge8_Node000001_Node000008" title=" " alt="" coords="362,72,468,115,466,120,360,77"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="587,123,701,148"/>
+<area shape="poly" id="edge9_Node000001_Node000009" title=" " alt="" coords="391,67,587,117,585,122,390,72"/>
+<area shape="poly" id="edge7_Node000006_Node000004" title=" " alt="" coords="362,150,275,192,272,188,359,146"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="335,196,433,221"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="387,148,387,182,381,182,381,148"/>
 </map>

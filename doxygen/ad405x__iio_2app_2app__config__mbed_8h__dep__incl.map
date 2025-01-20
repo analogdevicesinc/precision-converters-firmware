@@ -1,4 +1,23 @@
 <map id="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad405x_iio/app/app_config_mbed.h" name="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad405x_iio/app/app_config_mbed.h">
-<area shape="rect" id="node1" title="Header file for Mbed platform configurations." alt="" coords="5,5,260,76"/>
-<area shape="rect" id="node2" href="$ad405x__iio_2app_2app__config__mbed_8c.html" title="Application configurations module for Mbed platform." alt="" coords="5,124,260,195"/>
+<area shape="rect" id="Node000001" title="Header file for Mbed platform configurations." alt="" coords="653,5,908,75"/>
+<area shape="rect" id="Node000002" href="$ad405x__iio_2app_2app__config_8h.html" title="Application configurations module for AD405X." alt="" coords="596,123,819,192"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="754,88,731,124,727,121,749,85"/>
+<area shape="rect" id="Node000009" href="$ad405x__iio_2app_2app__config__mbed_8c.html" title="Application configurations module for Mbed platform." alt="" coords="796,240,1051,309"/>
+<area shape="poly" id="edge12_Node000001_Node000009" title=" " alt="" coords="811,85,905,239,901,241,806,88"/>
+<area shape="rect" id="Node000003" href="$ad405x__iio_8c.html" title="Implementation of AD405X IIO Application Interface." alt="" coords="5,357,228,427"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="582,163,460,169,330,182,270,192,216,206,174,222,144,242,126,267,117,297,114,328,115,357,109,357,109,328,112,296,122,265,140,238,171,217,215,201,269,187,329,177,460,163,582,157"/>
+<area shape="rect" id="Node000004" href="$ad405x__iio_8h.html" title="Header for AD405X IIO application." alt="" coords="448,240,671,309"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="655,203,604,242,601,238,652,198"/>
+<area shape="rect" id="Node000005" href="$ad405x__iio_2app_2app__config_8c.html" title="Application configurations module." alt="" coords="499,357,721,427"/>
+<area shape="poly" id="edge9_Node000002_Node000005" title=" " alt="" coords="709,206,702,258,684,310,669,336,649,359,645,355,664,333,680,308,696,256,703,206"/>
+<area shape="rect" id="Node000006" href="$ad405x__iio_2app_2app__config__stm32_8c.html" title="Source file for STM32 platform configurations." alt="" coords="745,357,1003,427"/>
+<area shape="poly" id="edge11_Node000002_Node000006" title=" " alt="" coords="728,204,753,256,785,308,808,333,832,355,828,359,804,337,781,311,748,258,723,206"/>
+<area shape="rect" id="Node000008" href="$ad405x__user__config_8c.html" title="User configuration file for AD405X." alt="" coords="154,240,423,309"/>
+<area shape="poly" id="edge8_Node000002_Node000008" title=" " alt="" coords="583,195,411,242,410,237,582,190"/>
+<area shape="poly" id="edge10_Node000002_Node000009" title=" " alt="" coords="783,196,861,237,859,242,781,201"/>
+<area shape="poly" id="edge4_Node000004_Node000003" title=" " alt="" coords="436,312,240,360,229,363,228,358,239,355,434,307"/>
+<area shape="poly" id="edge5_Node000004_Node000005" title=" " alt="" coords="582,321,598,356,593,358,577,323"/>
+<area shape="poly" id="edge6_Node000004_Node000006" title=" " alt="" coords="665,312,783,355,781,360,663,317"/>
+<area shape="rect" id="Node000007" href="$ad405x__iio_2app_2main_8c.html" title="Main interface for AD405X IIO firmware application." alt="" coords="252,357,475,427"/>
+<area shape="poly" id="edge7_Node000004_Node000007" title=" " alt="" coords="492,319,422,359,419,355,489,314"/>
 </map>

@@ -1,7 +1,11 @@
 <map id="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ltc268x_console/app/app_config_mbed.c" name="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ltc268x_console/app/app_config_mbed.c">
-<area shape="rect" id="node1" title="Application configurations module for Mbed platform." alt="" coords="5,5,293,76"/>
-<area shape="rect" id="node2" title=" " alt="" coords="39,124,121,151"/>
-<area shape="rect" id="node3" href="$ltc268x__console_2app_2app__config__mbed_8h.html" title="Header file for Mbed platform configurations." alt="" coords="146,124,294,151"/>
-<area shape="rect" id="node4" title=" " alt="" coords="109,199,209,225"/>
-<area shape="rect" id="node5" title=" " alt="" coords="233,199,330,225"/>
+<area shape="rect" id="Node000001" title="Application configurations module for Mbed platform." alt="" coords="5,5,293,75"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="39,123,121,148"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="126,76,99,113,95,110,122,73"/>
+<area shape="rect" id="Node000003" href="$ltc268x__console_2app_2app__config__mbed_8h.html" title="Header file for Mbed platform configurations." alt="" coords="146,123,294,148"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="177,73,205,110,201,113,173,76"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="109,196,209,221"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="212,150,180,187,176,184,208,147"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="233,196,330,221"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="232,147,264,184,260,187,228,150"/>
 </map>

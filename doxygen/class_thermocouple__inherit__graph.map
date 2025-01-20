@@ -1,11 +1,19 @@
 <map id="Thermocouple" name="Thermocouple">
-<area shape="rect" id="node1" title=" " alt="" coords="5,183,120,209"/>
-<area shape="rect" id="node2" href="$class_thermocouple___type___b.html" title=" " alt="" coords="169,5,337,32"/>
-<area shape="rect" id="node3" href="$class_thermocouple___type___e.html" title=" " alt="" coords="169,56,336,83"/>
-<area shape="rect" id="node4" href="$class_thermocouple___type___j.html" title=" " alt="" coords="171,107,334,133"/>
-<area shape="rect" id="node5" href="$class_thermocouple___type___k.html" title=" " alt="" coords="169,157,337,184"/>
-<area shape="rect" id="node6" href="$class_thermocouple___type___n.html" title=" " alt="" coords="168,208,337,235"/>
-<area shape="rect" id="node7" href="$class_thermocouple___type___r.html" title=" " alt="" coords="169,259,337,285"/>
-<area shape="rect" id="node8" href="$class_thermocouple___type___s.html" title=" " alt="" coords="169,309,336,336"/>
-<area shape="rect" id="node9" href="$class_thermocouple___type___t.html" title=" " alt="" coords="169,360,336,387"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,179,120,204"/>
+<area shape="rect" id="Node000002" href="$class_thermocouple___type___b.html" title=" " alt="" coords="169,5,337,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="73,165,108,102,135,69,166,40,188,28,190,33,170,44,139,72,113,105,77,167"/>
+<area shape="rect" id="Node000003" href="$class_thermocouple___type___e.html" title=" " alt="" coords="169,55,336,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="81,166,118,127,167,89,192,78,194,82,169,94,121,131,84,170"/>
+<area shape="rect" id="Node000004" href="$class_thermocouple___type___j.html" title=" " alt="" coords="171,104,334,129"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="98,170,167,138,201,127,203,132,169,143,101,175"/>
+<area shape="rect" id="Node000005" href="$class_thermocouple___type___k.html" title=" " alt="" coords="169,153,337,179"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="133,179,168,175,169,180,134,185"/>
+<area shape="rect" id="Node000006" href="$class_thermocouple___type___n.html" title=" " alt="" coords="168,203,337,228"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="134,198,168,202,167,207,133,203"/>
+<area shape="rect" id="Node000007" href="$class_thermocouple___type___r.html" title=" " alt="" coords="169,252,337,277"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="102,208,169,237,206,249,205,255,167,242,100,213"/>
+<area shape="rect" id="Node000008" href="$class_thermocouple___type___s.html" title=" " alt="" coords="169,301,336,327"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="85,213,122,250,169,286,198,299,195,304,167,291,118,254,81,216"/>
+<area shape="rect" id="Node000009" href="$class_thermocouple___type___t.html" title=" " alt="" coords="169,351,336,376"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="78,215,113,276,139,308,170,336,193,348,190,353,166,340,135,312,109,279,73,218"/>
 </map>

@@ -1,5 +1,7 @@
 <map id="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad559xr_console/app/app_config.h" name="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad559xr_console/app/app_config.h">
-<area shape="rect" id="node1" title=": AD5592R/AD5593R device selection. Pin mappings." alt="" coords="5,5,256,76"/>
-<area shape="rect" id="node2" title=" " alt="" coords="41,124,111,151"/>
-<area shape="rect" id="node3" title=" " alt="" coords="135,124,235,151"/>
+<area shape="rect" id="Node000001" title=": AD5592R/AD5593R device selection. Pin mappings." alt="" coords="5,5,256,75"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="41,123,111,148"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="113,76,92,112,87,109,109,73"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="135,123,235,148"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="153,73,174,109,169,112,148,76"/>
 </map>

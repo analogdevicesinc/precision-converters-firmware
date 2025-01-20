@@ -1,10 +1,18 @@
 <map id="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/libraries/precision&#45;converters&#45;library/pocket_lab/pl_gui_iio_wrapper.c" name="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/libraries/precision&#45;converters&#45;library/pocket_lab/pl_gui_iio_wrapper.c">
-<area shape="rect" id="node1" title="Pocket lab GUI IIO wrapper interfaces." alt="" coords="136,5,368,91"/>
-<area shape="rect" id="node2" title=" " alt="" coords="5,139,88,165"/>
-<area shape="rect" id="node3" title=" " alt="" coords="112,139,179,165"/>
-<area shape="rect" id="node4" title=" " alt="" coords="243,213,314,240"/>
-<area shape="rect" id="node5" title=" " alt="" coords="254,139,325,165"/>
-<area shape="rect" id="node6" href="$pl__gui__iio__wrapper_8h.html" title="Pocket lab GUI IIO wrapper interfaces." alt="" coords="349,139,504,165"/>
-<area shape="rect" id="node8" title=" " alt="" coords="528,139,637,165"/>
-<area shape="rect" id="node7" title=" " alt="" coords="401,213,452,240"/>
+<area shape="rect" id="Node000001" title="Pocket lab GUI IIO wrapper interfaces." alt="" coords="136,5,368,89"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,137,88,163"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="170,92,84,134,81,129,167,87"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="112,137,179,163"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="210,91,169,130,166,126,207,87"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="243,211,314,236"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="244,90,240,125,244,162,252,181,263,198,258,201,247,183,239,163,234,125,238,89"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="254,137,325,163"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="270,88,283,123,278,125,265,90"/>
+<area shape="rect" id="Node000006" href="$pl__gui__iio__wrapper_8h.html" title="Pocket lab GUI IIO wrapper interfaces." alt="" coords="349,137,504,163"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="324,87,396,128,393,133,322,92"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="528,137,637,163"/>
+<area shape="poly" id="edge8_Node000001_Node000008" title=" " alt="" coords="369,81,533,131,531,136,367,86"/>
+<area shape="poly" id="edge6_Node000006_Node000004" title=" " alt="" coords="404,165,316,207,314,202,402,160"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="401,211,452,236"/>
+<area shape="poly" id="edge7_Node000006_Node000007" title=" " alt="" coords="429,163,429,197,424,197,424,163"/>
 </map>

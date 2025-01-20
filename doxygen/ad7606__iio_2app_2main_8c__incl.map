@@ -1,10 +1,18 @@
 <map id="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad7606_iio/app/main.c" name="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad7606_iio/app/main.c">
-<area shape="rect" id="node1" title="Main module for AD7606 IIO application." alt="" coords="5,5,228,76"/>
-<area shape="rect" id="node2" title=" " alt="" coords="10,199,77,225"/>
-<area shape="rect" id="node3" title=" " alt="" coords="33,124,104,151"/>
-<area shape="rect" id="node4" title=" " alt="" coords="129,124,203,151"/>
-<area shape="rect" id="node5" href="$iio__ad7606_8h.html" title="Header file of iio_ad7606." alt="" coords="228,124,333,151"/>
-<area shape="rect" id="node6" title=" " alt="" coords="149,199,231,225"/>
-<area shape="rect" id="node7" title=" " alt="" coords="255,199,306,225"/>
-<area shape="rect" id="node8" title=" " alt="" coords="330,199,423,225"/>
+<area shape="rect" id="Node000001" title="Main module for AD7606 IIO application." alt="" coords="5,5,228,75"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="10,196,77,221"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="63,77,40,98,23,124,19,138,20,154,31,183,26,185,15,155,14,138,18,122,36,95,59,73"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="33,123,104,148"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="102,76,83,112,79,109,97,74"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="129,123,203,148"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="137,74,156,109,151,112,132,76"/>
+<area shape="rect" id="Node000005" href="$iio__ad7606_8h.html" title="Header file of iio_ad7606." alt="" coords="228,123,333,148"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="177,72,250,113,247,118,175,77"/>
+<area shape="poly" id="edge5_Node000005_Node000002" title=" " alt="" coords="243,151,91,196,89,191,242,145"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="149,196,231,221"/>
+<area shape="poly" id="edge6_Node000005_Node000006" title=" " alt="" coords="268,150,217,189,214,185,264,146"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="255,196,306,221"/>
+<area shape="poly" id="edge7_Node000005_Node000007" title=" " alt="" coords="283,148,283,182,278,182,278,148"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="330,196,423,221"/>
+<area shape="poly" id="edge8_Node000005_Node000008" title=" " alt="" coords="298,146,351,185,348,190,295,150"/>
 </map>

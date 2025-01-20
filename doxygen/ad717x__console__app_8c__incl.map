@@ -1,20 +1,41 @@
 <map id="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad717x_console/app/ad717x_console_app.c" name="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad717x_console/app/ad717x_console_app.c">
-<area shape="rect" id="node1" title=": Implementation of the menu functions which handles the functionality of AD717x and AD411x family of..." alt="" coords="574,5,885,76"/>
-<area shape="rect" id="node2" title=" " alt="" coords="5,124,72,151"/>
-<area shape="rect" id="node3" title=" " alt="" coords="97,124,167,151"/>
-<area shape="rect" id="node4" title=" " alt="" coords="177,273,260,300"/>
-<area shape="rect" id="node5" title=" " alt="" coords="694,124,765,151"/>
-<area shape="rect" id="node6" href="$ad717x__console_2app_2app__config_8h.html" title="Configuration file for AD717x/AD411x firmware example." alt="" coords="483,199,587,225"/>
-<area shape="rect" id="node9" title=" " alt="" coords="789,124,872,151"/>
-<area shape="rect" id="node10" title=" " alt="" coords="897,124,1087,151"/>
-<area shape="rect" id="node11" title=" " alt="" coords="1112,124,1211,151"/>
-<area shape="rect" id="node12" title=" " alt="" coords="1235,124,1333,151"/>
-<area shape="rect" id="node13" href="$ad717x__console__app_8h.html" title=": Header for AD717x/AD411x console application interface." alt="" coords="448,124,619,151"/>
-<area shape="rect" id="node16" href="$ad717x__menu__defines_8h.html" title=" " alt="" coords="243,124,423,151"/>
-<area shape="rect" id="node17" href="$ad717x__console_2app_2ad717x__support_8h.html" title=": Header for AD717x/AD411x No&#45;OS driver supports" alt="" coords="1357,124,1496,151"/>
-<area shape="rect" id="node18" title=" " alt="" coords="1520,124,1637,151"/>
-<area shape="rect" id="node7" title=" " alt="" coords="391,273,462,300"/>
-<area shape="rect" id="node8" title=" " alt="" coords="486,273,586,300"/>
-<area shape="rect" id="node14" href="$adi__console__menu_8h.html" title=": A simple console menu manager handler" alt="" coords="256,199,411,225"/>
-<area shape="rect" id="node15" title=" " alt="" coords="297,273,367,300"/>
+<area shape="rect" id="Node000001" title=": Implementation of the menu functions which handles the functionality of AD717x and AD411x family of..." alt="" coords="574,5,885,75"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,123,72,148"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="574,58,347,85,86,125,85,120,346,79,573,53"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="97,123,167,148"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="574,65,389,92,187,125,182,126,181,121,186,120,388,87,574,60"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="177,269,260,295"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="574,49,472,57,371,71,286,93,254,108,233,125,222,139,215,155,209,190,210,225,215,256,210,256,205,226,204,190,210,153,218,136,229,121,252,103,284,88,370,66,472,52,573,44"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="694,123,765,148"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="732,75,732,109,727,109,727,75"/>
+<area shape="rect" id="Node000006" href="$ad717x__console_2app_2app__config_8h.html" title="Configuration file for AD717x/AD411x firmware example." alt="" coords="483,196,587,221"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="704,77,671,113,632,150,570,192,567,187,629,146,668,110,701,73"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="789,123,872,148"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="768,73,810,111,806,115,764,77"/>
+<area shape="rect" id="Node000010" title=" " alt="" coords="897,123,1087,148"/>
+<area shape="poly" id="edge9_Node000001_Node000010" title=" " alt="" coords="825,72,948,116,946,121,823,77"/>
+<area shape="rect" id="Node000011" title=" " alt="" coords="1112,123,1211,148"/>
+<area shape="poly" id="edge10_Node000001_Node000011" title=" " alt="" coords="885,72,1099,118,1098,123,884,77"/>
+<area shape="rect" id="Node000012" title=" " alt="" coords="1235,123,1333,148"/>
+<area shape="poly" id="edge11_Node000001_Node000012" title=" " alt="" coords="885,64,1222,120,1221,125,885,69"/>
+<area shape="rect" id="Node000013" href="$ad717x__console__app_8h.html" title=": Header for AD717x/AD411x console application interface." alt="" coords="448,123,619,148"/>
+<area shape="poly" id="edge12_Node000001_Node000013" title=" " alt="" coords="660,77,571,119,569,114,657,72"/>
+<area shape="rect" id="Node000016" href="$ad717x__menu__defines_8h.html" title=" " alt="" coords="243,123,423,148"/>
+<area shape="poly" id="edge18_Node000001_Node000016" title=" " alt="" coords="587,77,396,122,395,117,586,72"/>
+<area shape="rect" id="Node000017" href="$ad717x__console_2app_2ad717x__support_8h.html" title=": Header for AD717x/AD411x No&#45;OS driver supports" alt="" coords="1357,123,1496,148"/>
+<area shape="poly" id="edge20_Node000001_Node000017" title=" " alt="" coords="885,59,1344,120,1343,125,885,64"/>
+<area shape="rect" id="Node000018" title=" " alt="" coords="1520,123,1637,148"/>
+<area shape="poly" id="edge21_Node000001_Node000018" title=" " alt="" coords="885,52,1170,80,1507,120,1506,125,1169,86,884,58"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="391,269,462,295"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="519,224,457,264,454,259,516,219"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="486,269,586,295"/>
+<area shape="poly" id="edge7_Node000006_Node000008" title=" " alt="" coords="538,222,538,256,533,256,532,222"/>
+<area shape="poly" id="edge17_Node000013_Node000006" title=" " alt="" coords="536,148,537,182,532,183,531,148"/>
+<area shape="rect" id="Node000014" href="$adi__console__menu_8h.html" title=": A simple console menu manager handler" alt="" coords="256,196,411,221"/>
+<area shape="poly" id="edge13_Node000013_Node000014" title=" " alt="" coords="502,151,380,194,378,189,500,146"/>
+<area shape="poly" id="edge14_Node000014_Node000004" title=" " alt="" coords="316,224,250,264,248,260,314,219"/>
+<area shape="poly" id="edge15_Node000014_Node000007" title=" " alt="" coords="350,219,402,259,399,263,347,223"/>
+<area shape="rect" id="Node000015" title=" " alt="" coords="297,269,367,295"/>
+<area shape="poly" id="edge16_Node000014_Node000015" title=" " alt="" coords="336,222,335,256,330,256,330,222"/>
+<area shape="poly" id="edge19_Node000016_Node000014" title=" " alt="" coords="336,148,336,182,331,182,331,148"/>
 </map>

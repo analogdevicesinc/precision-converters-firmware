@@ -1,5 +1,7 @@
 <map id="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad7124_iio/app/ad7124_user_config.h" name="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad7124_iio/app/ad7124_user_config.h">
-<area shape="rect" id="node1" title="Header file for User Configurations." alt="" coords="5,5,276,76"/>
-<area shape="rect" id="node2" title=" " alt="" coords="58,124,125,151"/>
-<area shape="rect" id="node3" title=" " alt="" coords="149,124,231,151"/>
+<area shape="rect" id="Node000001" title="Header file for User Configurations." alt="" coords="5,5,276,75"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="58,123,125,148"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="125,76,106,112,102,109,121,74"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="149,123,231,148"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="161,74,180,109,175,112,156,76"/>
 </map>

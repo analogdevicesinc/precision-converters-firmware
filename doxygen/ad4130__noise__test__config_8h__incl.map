@@ -1,5 +1,7 @@
 <map id="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad4130_iio/app/ad4130_noise_test_config.h" name="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad4130_iio/app/ad4130_noise_test_config.h">
-<area shape="rect" id="node1" title="Header for AD4130 noise test user configuration file." alt="" coords="5,5,315,76"/>
-<area shape="rect" id="node2" title=" " alt="" coords="74,124,145,151"/>
-<area shape="rect" id="node3" title=" " alt="" coords="169,124,252,151"/>
+<area shape="rect" id="Node000001" title="Header for AD4130 noise test user configuration file." alt="" coords="5,5,315,75"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="74,123,145,148"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="144,76,125,112,120,109,139,74"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="169,123,252,148"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="181,74,200,109,195,112,176,76"/>
 </map>

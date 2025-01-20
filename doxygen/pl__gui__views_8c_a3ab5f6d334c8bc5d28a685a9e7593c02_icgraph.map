@@ -1,0 +1,15 @@
+<map id="pl_gui_init" name="pl_gui_init">
+<area shape="rect" id="Node000001" title="Init pocket lab GUI." alt="" coords="312,55,401,80"/>
+<area shape="rect" id="Node000002" href="$ad4130__iio_8c.html#ae92881e9f4ea154620ea3b03c20880e6" title="Initialize the IIO interface for AD4130 IIO device." alt="" coords="108,5,264,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="298,53,230,33,232,28,299,48"/>
+<area shape="rect" id="Node000004" href="$ad4170__iio_8c.html#afe5b4999ffeb4ff59922c46515a4a8b1" title="Initialize the IIO interface for AD4170 IIO device." alt="" coords="108,55,264,80"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="298,70,264,70,264,65,298,65"/>
+<area shape="rect" id="Node000006" href="$ad7124__iio_8c.html#af012050c4da92d39f4302b89865a477f" title="Initialize the AD7124 IIO Interface." alt="" coords="108,104,264,129"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="299,87,232,106,230,101,298,81"/>
+<area shape="rect" id="Node000003" href="$ad4130__iio_2app_2main_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title="Main entry point to application." alt="" coords="5,5,60,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="94,21,60,21,60,15,94,15"/>
+<area shape="rect" id="Node000005" href="$ad4170__iio_2app_2main_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title="Main entry point to application." alt="" coords="5,55,60,80"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="94,70,60,70,60,65,94,65"/>
+<area shape="rect" id="Node000007" href="$ad7124__iio_2app_2main_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title="Main entry point to application." alt="" coords="5,104,60,129"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="94,119,60,119,60,114,94,114"/>
+</map>

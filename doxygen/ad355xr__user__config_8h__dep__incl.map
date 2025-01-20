@@ -1,6 +1,9 @@
 <map id="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad355xr_iio/app/ad355xr_user_config.h" name="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad355xr_iio/app/ad355xr_user_config.h">
-<area shape="rect" id="node1" title="Header for AD355XR user configuration file." alt="" coords="251,5,531,76"/>
-<area shape="rect" id="node2" href="$ad355xr__iio_8c.html" title="AD355XR IIO application interface module." alt="" coords="5,124,228,195"/>
-<area shape="rect" id="node3" href="$ad355xr__user__config_8c.html" title="User configuration file for AD355XR devices." alt="" coords="252,124,531,195"/>
-<area shape="rect" id="node4" href="$ad355xr__iio_2app_2app__config_8c.html" title="Application configurations module." alt="" coords="555,124,777,195"/>
+<area shape="rect" id="Node000001" title="Header for AD355XR user configuration file." alt="" coords="251,5,531,75"/>
+<area shape="rect" id="Node000002" href="$ad355xr__iio_8c.html" title="AD355XR IIO application interface module." alt="" coords="5,123,228,192"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="300,82,198,125,196,120,298,78"/>
+<area shape="rect" id="Node000003" href="$ad355xr__user__config_8c.html" title="User configuration file for AD355XR devices." alt="" coords="252,123,531,192"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="394,89,394,122,389,122,389,89"/>
+<area shape="rect" id="Node000004" href="$ad355xr__iio_2app_2app__config_8c.html" title="Application configurations module." alt="" coords="555,123,777,192"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="485,78,587,120,585,125,483,82"/>
 </map>

@@ -1,6 +1,9 @@
 <map id="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad717x_iio/app/ad717x_iio.h" name="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad717x_iio/app/ad717x_iio.h">
-<area shape="rect" id="node1" title="IIO Header file for AD717x and AD411x." alt="" coords="15,5,237,76"/>
-<area shape="rect" id="node2" title=" " alt="" coords="5,124,76,151"/>
-<area shape="rect" id="node3" title=" " alt="" coords="101,124,151,151"/>
-<area shape="rect" id="node4" title=" " alt="" coords="175,124,258,151"/>
+<area shape="rect" id="Node000001" title="IIO Header file for AD717x and AD411x." alt="" coords="15,5,237,75"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,123,76,148"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="97,77,63,114,59,110,93,73"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="101,123,151,148"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="129,75,129,109,123,109,123,75"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="175,123,258,148"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="161,73,198,111,194,114,157,77"/>
 </map>

@@ -1,5 +1,7 @@
 <map id="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ltc268x_console/app/app_config_mbed.h" name="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ltc268x_console/app/app_config_mbed.h">
-<area shape="rect" id="node1" title="Header file for Mbed platform configurations." alt="" coords="5,5,295,76"/>
-<area shape="rect" id="node2" title=" " alt="" coords="39,124,139,151"/>
-<area shape="rect" id="node3" title=" " alt="" coords="163,124,260,151"/>
+<area shape="rect" id="Node000001" title="Header file for Mbed platform configurations." alt="" coords="5,5,295,75"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="39,123,139,148"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="130,76,106,113,102,110,126,73"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="163,123,260,148"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="174,73,198,110,194,113,170,76"/>
 </map>

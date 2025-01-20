@@ -1,5 +1,7 @@
 <map id="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad559xr_console/app/ad5592r_console_app.h" name="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad559xr_console/app/ad5592r_console_app.h">
-<area shape="rect" id="node1" title="AD5592R console application interfaces." alt="" coords="153,5,474,76"/>
-<area shape="rect" id="node2" href="$ad5592r__console__app_8c.html" title="AD5592R console application interfaces." alt="" coords="5,124,325,195"/>
-<area shape="rect" id="node3" href="$ad559xr__console_2app_2main_8c.html" title=": main module for AD5592R application interface" alt="" coords="350,124,573,195"/>
+<area shape="rect" id="Node000001" title="AD5592R console application interfaces." alt="" coords="153,5,474,75"/>
+<area shape="rect" id="Node000002" href="$ad5592r__console__app_8c.html" title="AD5592R console application interfaces." alt="" coords="5,123,325,192"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="261,85,210,124,207,120,258,81"/>
+<area shape="rect" id="Node000003" href="$ad559xr__console_2app_2main_8c.html" title=": main module for AD5592R application interface" alt="" coords="350,123,573,192"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="369,81,419,120,416,124,366,85"/>
 </map>

@@ -1,6 +1,9 @@
 <map id="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad590_console/app/ltc2488.h" name="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad590_console/app/ltc2488.h">
-<area shape="rect" id="node1" title=" " alt="" coords="50,5,273,76"/>
-<area shape="rect" id="node2" title=" " alt="" coords="5,124,88,151"/>
-<area shape="rect" id="node3" title=" " alt="" coords="112,124,211,151"/>
-<area shape="rect" id="node4" title=" " alt="" coords="235,124,335,151"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="50,5,273,75"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,123,88,148"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="122,77,73,116,70,112,118,73"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="112,123,211,148"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="164,75,164,109,159,109,159,75"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="235,123,335,148"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="208,73,260,112,257,116,205,77"/>
 </map>

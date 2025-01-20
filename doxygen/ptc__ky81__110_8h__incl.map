@@ -1,5 +1,8 @@
 <map id="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/libraries/precision&#45;converters&#45;library/tempsensors/ptc_ky81_110.h" name="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/libraries/precision&#45;converters&#45;library/tempsensors/ptc_ky81_110.h">
-<area shape="rect" id="node1" title=": This file contains the global parameters for ptc_ky81_110 module" alt="" coords="5,5,228,91"/>
-<area shape="rect" id="node2" title=" " alt="" coords="81,213,152,240"/>
-<area shape="rect" id="node3" href="$thermistor_8h.html" title=":" alt="" coords="110,139,211,165"/>
+<area shape="rect" id="Node000001" title=": This file contains the global parameters for ptc_ky81_110 module" alt="" coords="5,5,228,89"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="81,211,152,236"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="106,90,100,125,101,162,110,197,105,198,95,163,95,125,101,89"/>
+<area shape="rect" id="Node000003" href="$thermistor_8h.html" title=":" alt="" coords="110,137,211,163"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="137,88,153,124,148,126,132,90"/>
+<area shape="poly" id="edge3_Node000003_Node000002" title=" " alt="" coords="156,164,133,200,129,198,151,162"/>
 </map>

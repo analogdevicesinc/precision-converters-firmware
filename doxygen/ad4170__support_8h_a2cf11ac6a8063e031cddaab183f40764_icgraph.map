@@ -1,0 +1,7 @@
+<map id="perform_sign_conversion" name="perform_sign_conversion">
+<area shape="rect" id="Node000001" title="Perform the sign conversion for handling negative voltages in bipolar mode." alt="" coords="217,45,404,70"/>
+<area shape="rect" id="Node000002" href="$ad4170__support_8c.html#ae06700fde5859790ef9e0fbc87072c01" title="Convert the ADC raw value into equivalent RTD resistance." alt="" coords="5,5,169,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="208,45,169,40,170,34,208,40"/>
+<area shape="rect" id="Node000003" href="$ad4170__support_8c.html#ac69e7b9fb116faa7ce307451691b83a0" title="Convert the ADC raw value into equivalent voltage." alt="" coords="9,69,165,109"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="208,75,166,81,165,76,208,69"/>
+</map>

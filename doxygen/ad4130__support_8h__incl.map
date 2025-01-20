@@ -1,5 +1,7 @@
 <map id="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad4130_iio/app/ad4130_support.h" name="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad4130_iio/app/ad4130_support.h">
-<area shape="rect" id="node1" title="Header for AD4130 No&#45;OS driver supports." alt="" coords="5,5,251,76"/>
-<area shape="rect" id="node2" title=" " alt="" coords="42,124,113,151"/>
-<area shape="rect" id="node3" title=" " alt="" coords="137,124,220,151"/>
+<area shape="rect" id="Node000001" title="Header for AD4130 No&#45;OS driver supports." alt="" coords="5,5,251,75"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="42,123,113,148"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="112,76,93,112,88,109,107,74"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="137,123,220,148"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="149,74,168,109,163,112,144,76"/>
 </map>

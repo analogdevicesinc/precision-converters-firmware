@@ -1,0 +1,5 @@
+<map id="stm32_cs_output_gpio_config" name="stm32_cs_output_gpio_config">
+<area shape="rect" id="Node000001" title="Configures the chip select pin as output mode." alt="" coords="251,5,419,45"/>
+<area shape="rect" id="Node000002" href="$ad405x__iio_8c.html#a0a6e8b6a22c7f2e20c3b2d5b59d3c570" title="Stop a data capture from continuous/burst mode." alt="" coords="5,13,203,38"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="237,28,203,28,203,23,237,23"/>
+</map>

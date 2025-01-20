@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['_5f100k_5fto_5fgnd_5fpower_5fdown_2',['_100K_TO_GND_POWER_DOWN',['../nanodac__console__app_8h.html#a2610dc9c992291404b853401d84fd92b',1,'nanodac_console_app.h']]],
-  ['_5f1k_5fto_5fgnd_5fpower_5fdown_3',['_1K_TO_GND_POWER_DOWN',['../nanodac__console__app_8h.html#a15bfd14f980877cd24e144cd20d9a1d5',1,'nanodac_console_app.h']]]
+  ['2_200_0',['Apache License 2.0',['../license_page.html',1,'']]],
+  ['24xx32a_5feeprom_5fiio_2ec_1',['24xx32a_eeprom_iio.c',['../24xx32a__eeprom__iio_8c.html',1,'']]],
+  ['24xx32a_5feeprom_5fiio_2eh_2',['24xx32a_eeprom_iio.h',['../24xx32a__eeprom__iio_8h.html',1,'']]]
 ];

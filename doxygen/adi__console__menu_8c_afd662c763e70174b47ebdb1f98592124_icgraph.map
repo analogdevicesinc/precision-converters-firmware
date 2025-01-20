@@ -1,14 +1,34 @@
 <map id="adi_do_console_menu" name="adi_do_console_menu">
-<area shape="rect" id="node1" title="Display a consoleMenu and handle User interaction." alt="" coords="311,259,477,285"/>
-<area shape="rect" id="node2" href="$ad7124__temperature-measure_2app_2ad7124__console__app_8c.html#a927ec56136cd86d238a797c056303e52" title="Display 2&#45;wire RTD measurement main menu." alt="" coords="43,5,225,32"/>
-<area shape="rect" id="node3" href="$ad7124__temperature-measure_2app_2ad7124__console__app_8c.html#aa59b2e8cd071f894f6b3ec49942ddc3e" title="Display 3&#45;wire RTD calibration main menu." alt="" coords="5,56,263,83"/>
-<area shape="rect" id="node4" href="$ad7124__temperature-measure_2app_2ad7124__console__app_8c.html#a28c780d7cd8f4e74501fd6859dacebd9" title="Display 3&#45;wire RTD measurement main menu." alt="" coords="43,107,225,133"/>
-<area shape="rect" id="node5" href="$ad7124__temperature-measure_2app_2ad7124__console__app_8c.html#ae0deea4711678c0ba6181d5ef581f6de" title="Display 4&#45;wire RTD measurement main menu." alt="" coords="43,157,225,184"/>
-<area shape="rect" id="node6" href="$ad7124__temperature-measure_2app_2ad7124__console__app_8c.html#a8adbd8828b2f3500983cc9145fcb8d57" title="Display ADC calibration main menu." alt="" coords="25,208,243,235"/>
-<area shape="rect" id="node7" href="$ad7124__temperature-measure_2app_2ad7124__console__app_8c.html#a1b0a63bee4859dfe9184f756d9e30347" title="Display thermistor measurement main menu." alt="" coords="27,259,241,285"/>
-<area shape="rect" id="node8" href="$ad7124__temperature-measure_2app_2ad7124__console__app_8c.html#a0cc3f4a268d04086ea44a1458069a47c" title="Display thermoucouple measurement main menu." alt="" coords="29,309,239,336"/>
-<area shape="rect" id="node9" href="$ad559xr__console_2app_2main_8c.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title=" " alt="" coords="107,360,161,387"/>
-<area shape="rect" id="node10" href="$ad717x__console__app_8c.html#acb1e5ad135438db9a9ed5f35fb1e774c" title="Display the menu to enable/disable channel selection." alt="" coords="37,411,231,453"/>
-<area shape="rect" id="node11" href="$ad717x__console__app_8c.html#adac61ba573af3e0936c4a66d209a5fb0" title="Handle the menu to read/write device registers." alt="" coords="24,477,244,504"/>
-<area shape="rect" id="node12" href="$ad717x__console__app_8c.html#a9001581f73f9721a393d983a64990fa7" title="Handle the menu to sample the channels." alt="" coords="45,528,223,555"/>
+<area shape="rect" id="Node000001" title="Display a consoleMenu and handle User interaction." alt="" coords="311,351,477,376"/>
+<area shape="poly" id="edge1_Node000001_Node000001" title=" " alt="" coords="440,341,437,337,429,333,394,329,366,331,351,336,348,342,356,349,352,352,343,342,348,332,365,326,394,324,431,328,441,333,445,338"/>
+<area shape="rect" id="Node000002" href="$ad7124__temperature-measure_2app_2ad7124__console__app_8c.html#a927ec56136cd86d238a797c056303e52" title="Display 2&#45;wire RTD measurement main menu." alt="" coords="43,5,225,31"/>
+<area shape="poly" id="edge2_Node000001_Node000002" title=" " alt="" coords="388,337,378,276,357,196,340,154,319,113,293,76,261,44,244,33,224,26,226,21,246,28,264,40,297,73,324,111,345,152,362,194,383,275,393,337"/>
+<area shape="rect" id="Node000003" href="$ad7124__temperature-measure_2app_2ad7124__console__app_8c.html#aa59b2e8cd071f894f6b3ec49942ddc3e" title="Display 3&#45;wire RTD calibration main menu." alt="" coords="5,55,263,80"/>
+<area shape="poly" id="edge3_Node000001_Node000003" title=" " alt="" coords="386,338,373,285,350,218,333,184,313,150,289,120,261,93,243,83,245,78,264,89,293,116,318,147,338,181,355,216,378,284,391,337"/>
+<area shape="rect" id="Node000004" href="$ad7124__temperature-measure_2app_2ad7124__console__app_8c.html#a28c780d7cd8f4e74501fd6859dacebd9" title="Display 3&#45;wire RTD measurement main menu." alt="" coords="43,104,225,129"/>
+<area shape="poly" id="edge4_Node000001_Node000004" title=" " alt="" coords="383,338,367,294,342,241,307,187,286,163,261,143,224,126,226,121,264,138,289,159,311,184,347,238,372,292,388,336"/>
+<area shape="rect" id="Node000005" href="$ad7124__temperature-measure_2app_2ad7124__console__app_8c.html#ae0deea4711678c0ba6181d5ef581f6de" title="Display 4&#45;wire RTD measurement main menu." alt="" coords="43,153,225,179"/>
+<area shape="poly" id="edge5_Node000001_Node000005" title=" " alt="" coords="379,339,361,305,335,265,301,225,261,192,224,177,226,172,264,188,305,221,339,262,365,303,384,337"/>
+<area shape="rect" id="Node000006" href="$ad7124__temperature-measure_2app_2ad7124__console__app_8c.html#a8adbd8828b2f3500983cc9145fcb8d57" title="Display ADC calibration main menu." alt="" coords="25,203,243,228"/>
+<area shape="poly" id="edge6_Node000001_Node000006" title=" " alt="" coords="373,341,326,290,296,263,261,242,234,231,236,226,264,237,299,259,330,286,377,338"/>
+<area shape="rect" id="Node000007" href="$ad7124__temperature-measure_2app_2ad7124__console__app_8c.html#a1b0a63bee4859dfe9184f756d9e30347" title="Display thermistor measurement main menu." alt="" coords="27,252,241,277"/>
+<area shape="poly" id="edge7_Node000001_Node000007" title=" " alt="" coords="363,345,316,317,262,291,223,280,224,275,264,286,319,312,365,341"/>
+<area shape="rect" id="Node000008" href="$ad7124__temperature-measure_2app_2ad7124__console__app_8c.html#a0cc3f4a268d04086ea44a1458069a47c" title="Display thermoucouple measurement main menu." alt="" coords="29,301,239,327"/>
+<area shape="poly" id="edge8_Node000001_Node000008" title=" " alt="" coords="314,351,262,341,203,329,204,324,263,335,315,345"/>
+<area shape="rect" id="Node000009" href="$ad559xr__console_2app_2main_8c.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title=" " alt="" coords="107,351,161,376"/>
+<area shape="poly" id="edge9_Node000001_Node000009" title=" " alt="" coords="297,366,161,366,161,361,297,361"/>
+<area shape="rect" id="Node000010" href="$ad5770r__console_2app_2main_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title=" " alt="" coords="107,400,161,425"/>
+<area shape="poly" id="edge10_Node000001_Node000010" title=" " alt="" coords="313,381,162,410,161,405,312,376"/>
+<area shape="rect" id="Node000011" href="$ad717x__console__app_8c.html#acb1e5ad135438db9a9ed5f35fb1e774c" title="Display the menu to enable/disable channel selection." alt="" coords="37,450,231,490"/>
+<area shape="poly" id="edge11_Node000001_Node000011" title=" " alt="" coords="363,386,317,413,264,439,225,452,223,447,262,434,315,408,361,381"/>
+<area shape="rect" id="Node000012" href="$ad717x__console__app_8c.html#a209308b1f737d5170c2a73f0610736bc" title="Handle the menu to configure and assign the device setup." alt="" coords="41,514,227,554"/>
+<area shape="poly" id="edge12_Node000001_Node000012" title=" " alt="" coords="379,389,332,447,300,478,264,504,228,520,226,515,261,500,297,474,328,444,375,386"/>
+<area shape="rect" id="Node000013" href="$ad717x__console__app_8c.html#a3f1f15edb56c5af7ebcf23b9b988fa7a" title="Display the menu selections to connect analog input pins to a channel." alt="" coords="41,578,227,618"/>
+<area shape="poly" id="edge13_Node000001_Node000013" title=" " alt="" coords="386,390,369,430,343,478,308,527,264,568,229,586,226,581,261,564,304,523,338,475,364,427,381,388"/>
+<area shape="rect" id="Node000014" href="$ad717x__console__app_8c.html#a81d528cd2d4aabf34c9b0093929a1b9a" title="Handle the menu to perform open wire detection." alt="" coords="33,643,235,668"/>
+<area shape="poly" id="edge14_Node000001_Node000014" title=" " alt="" coords="390,390,377,442,354,508,317,576,293,606,264,632,237,647,234,643,261,628,289,602,312,573,349,506,372,441,385,389"/>
+<area shape="rect" id="Node000015" href="$ad717x__console__app_8c.html#adac61ba573af3e0936c4a66d209a5fb0" title="Handle the menu to read/write device registers." alt="" coords="24,692,244,717"/>
+<area shape="poly" id="edge15_Node000001_Node000015" title=" " alt="" coords="393,390,383,450,361,530,344,571,323,612,296,649,264,681,244,694,241,690,261,677,292,646,318,609,339,569,356,528,377,449,387,389"/>
+<area shape="rect" id="Node000016" href="$ad717x__console__app_8c.html#a9001581f73f9721a393d983a64990fa7" title="Handle the menu to sample the channels." alt="" coords="45,741,223,767"/>
+<area shape="poly" id="edge16_Node000001_Node000016" title=" " alt="" coords="394,390,387,459,368,551,351,601,329,648,300,693,264,731,246,743,225,751,223,746,243,738,261,727,296,689,324,646,346,599,362,550,382,458,389,390"/>
 </map>

@@ -1,0 +1,7 @@
+<map id="ad719x_gpio_cs_init" name="ad719x_gpio_cs_init">
+<area shape="rect" id="Node000001" title="Function to initialize the cs pin gpio." alt="" coords="312,5,467,31"/>
+<area shape="rect" id="Node000002" href="$ad719x__iio_8c.html#aa04984aee6819593088c17ebc0f7a540" title="Initialize the ad719x IIO Interface." alt="" coords="108,5,264,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="298,21,264,21,264,15,298,15"/>
+<area shape="rect" id="Node000003" href="$ad719x__iio_2app_2main_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title=" " alt="" coords="5,5,60,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="94,21,60,21,60,15,94,15"/>
+</map>

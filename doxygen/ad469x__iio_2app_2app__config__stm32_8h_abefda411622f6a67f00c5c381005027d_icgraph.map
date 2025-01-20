@@ -1,0 +1,5 @@
+<map id="stm32_cnv_output_gpio_config" name="stm32_cnv_output_gpio_config">
+<area shape="rect" id="Node000001" title="Configures the conversion pin as output mode." alt="" coords="251,5,428,45"/>
+<area shape="rect" id="Node000002" href="$ad405x__iio_8c.html#a0a6e8b6a22c7f2e20c3b2d5b59d3c570" title="Stop a data capture from continuous/burst mode." alt="" coords="5,13,203,38"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="236,28,203,28,203,23,236,23"/>
+</map>

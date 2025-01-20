@@ -1,5 +1,7 @@
 <map id="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/libraries/precision&#45;converters&#45;library/pocket_lab/pl_gui_iio_wrapper.h" name="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/libraries/precision&#45;converters&#45;library/pocket_lab/pl_gui_iio_wrapper.h">
-<area shape="rect" id="node1" title="Pocket lab GUI IIO wrapper interfaces." alt="" coords="5,5,239,91"/>
-<area shape="rect" id="node2" title=" " alt="" coords="44,139,115,165"/>
-<area shape="rect" id="node3" title=" " alt="" coords="139,139,190,165"/>
+<area shape="rect" id="Node000001" title="Pocket lab GUI IIO wrapper interfaces." alt="" coords="5,5,239,89"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="44,137,115,163"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="107,90,92,126,87,124,102,88"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="139,137,190,163"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="142,88,157,124,152,126,137,90"/>
 </map>

@@ -1,0 +1,11 @@
+<map id="ad717x_adc_read_converted_sample" name="ad717x_adc_read_converted_sample">
+<area shape="rect" id="Node000001" title="Read ADC raw data for recently sampled channel." alt="" coords="705,5,913,45"/>
+<area shape="rect" id="Node000002" href="$ad717x__iio_8c.html#ae4566e1a89bd4705d081564f5ea7c746" title=" " alt="" coords="481,13,657,38"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="692,28,658,28,658,23,692,23"/>
+<area shape="rect" id="Node000003" href="$ad717x__iio_8c.html#a457cf699b9a80c01a0835c8e4f7f1ff7" title="Init for reading/writing and parameterization of a AD717x IIO device." alt="" coords="312,13,433,38"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="468,28,433,28,433,23,468,23"/>
+<area shape="rect" id="Node000004" href="$ad717x__iio_8c.html#acddf5b7a4d74fe84be7eceea2cd5f88d" title="Initialize the AD717x IIO Interface." alt="" coords="108,13,264,38"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="298,28,264,28,264,23,298,23"/>
+<area shape="rect" id="Node000005" href="$ad717x__iio_2app_2main_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title="Main entry point to application." alt="" coords="5,13,60,38"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="94,28,60,28,60,23,94,23"/>
+</map>

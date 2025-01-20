@@ -1,4 +1,9 @@
 <map id="ad77681_set_crc_sel" name="ad77681_set_crc_sel">
-<area shape="rect" id="node1" title=" " alt="" coords="175,5,332,32"/>
-<area shape="rect" id="node2" href="$ad77681_8c.html#a462935549432e532a6b9526b4807f862" title=" " alt="" coords="5,5,127,32"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="489,5,647,31"/>
+<area shape="rect" id="Node000002" href="$ad77681_8c.html#a462935549432e532a6b9526b4807f862" title=" " alt="" coords="320,5,441,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="475,21,442,21,442,15,475,15"/>
+<area shape="rect" id="Node000003" href="$ad77681__iio_8c.html#a40ce85e986a3bd49c843b926ce2566e3" title="Initialize the IIO interface for AD7768&#45;1 IIO device." alt="" coords="108,5,272,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="306,21,272,21,272,15,306,15"/>
+<area shape="rect" id="Node000004" href="$ad77681__iio_2app_2main_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title=" " alt="" coords="5,5,60,31"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="94,21,60,21,60,15,94,15"/>
 </map>

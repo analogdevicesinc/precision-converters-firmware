@@ -1,5 +1,7 @@
 <map id="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad77681_iio/app/ad77681.h" name="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad77681_iio/app/ad77681.h">
-<area shape="rect" id="node1" title="Header file of the AD7768&#45;1 Driver." alt="" coords="5,5,228,76"/>
-<area shape="rect" id="node2" title=" " alt="" coords="10,124,109,151"/>
-<area shape="rect" id="node3" title=" " alt="" coords="133,124,215,151"/>
+<area shape="rect" id="Node000001" title="Header file of the AD7768&#45;1 Driver." alt="" coords="5,5,228,75"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="10,123,109,148"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="98,76,76,112,71,109,94,73"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="133,123,215,148"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="140,73,162,109,157,112,135,76"/>
 </map>

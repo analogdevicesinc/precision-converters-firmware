@@ -1,8 +1,13 @@
 <map id="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad5770r_console/app/ad5770r_reset_config.c" name="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad5770r_console/app/ad5770r_reset_config.c">
-<area shape="rect" id="node1" title=": AD5770R initialization configuration" alt="" coords="85,5,404,76"/>
-<area shape="rect" id="node2" title=" " alt="" coords="5,124,76,151"/>
-<area shape="rect" id="node3" title=" " alt="" coords="101,124,183,151"/>
-<area shape="rect" id="node4" title=" " alt="" coords="207,124,282,151"/>
-<area shape="rect" id="node5" title=" " alt="" coords="306,124,405,151"/>
-<area shape="rect" id="node6" title=" " alt="" coords="429,124,516,151"/>
+<area shape="rect" id="Node000001" title=": AD5770R initialization configuration" alt="" coords="85,5,404,75"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,123,76,148"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="172,77,79,119,77,114,170,72"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="101,123,183,148"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="209,77,167,115,163,111,206,73"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="207,123,282,148"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="247,75,247,109,242,109,242,75"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="306,123,405,148"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="286,73,333,111,329,116,283,77"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="429,123,516,148"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="328,72,433,115,431,120,326,77"/>
 </map>

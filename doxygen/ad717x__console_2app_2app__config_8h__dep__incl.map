@@ -1,6 +1,10 @@
 <map id="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad717x_console/app/app_config.h" name="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad717x_console/app/app_config.h">
-<area shape="rect" id="node1" title="Configuration file for AD717x/AD411x firmware example." alt="" coords="134,5,379,76"/>
-<area shape="rect" id="node2" href="$ad717x__console__app_8c.html" title=": Implementation of the menu functions which handles the functionality of AD717x and AD411x family of..." alt="" coords="5,243,316,313"/>
-<area shape="rect" id="node3" href="$ad717x__console__app_8h.html" title=": Header for AD717x/AD411x console application interface." alt="" coords="199,124,509,195"/>
-<area shape="rect" id="node4" href="$ad717x__console_2app_2main_8c.html" title=": main module for AD717x/AD411x application interface" alt="" coords="340,243,563,313"/>
+<area shape="rect" id="Node000001" title="Configuration file for AD717x/AD411x firmware example." alt="" coords="134,5,379,75"/>
+<area shape="rect" id="Node000002" href="$ad717x__console__app_8c.html" title=": Implementation of the menu functions which handles the functionality of AD717x and AD411x family of..." alt="" coords="5,240,316,309"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="214,86,190,124,179,153,171,184,164,240,159,239,166,183,174,152,185,121,210,83"/>
+<area shape="rect" id="Node000003" href="$ad717x__console__app_8h.html" title=": Header for AD717x/AD411x console application interface." alt="" coords="199,123,509,192"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="296,84,328,121,323,124,292,87"/>
+<area shape="poly" id="edge3_Node000003_Node000002" title=" " alt="" coords="287,201,219,242,216,238,285,197"/>
+<area shape="rect" id="Node000004" href="$ad717x__console_2app_2main_8c.html" title=": main module for AD717x/AD411x application interface" alt="" coords="340,240,563,309"/>
+<area shape="poly" id="edge4_Node000003_Node000004" title=" " alt="" coords="394,201,425,238,421,242,390,205"/>
 </map>

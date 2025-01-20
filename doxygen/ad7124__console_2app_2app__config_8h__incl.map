@@ -1,5 +1,7 @@
 <map id="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad7124_console/app/app_config.h" name="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad7124_console/app/app_config.h">
-<area shape="rect" id="node1" title="Configuration file of AD7124 firmware example program." alt="" coords="5,5,251,76"/>
-<area shape="rect" id="node2" title=" " alt="" coords="38,124,109,151"/>
-<area shape="rect" id="node3" title=" " alt="" coords="133,124,233,151"/>
+<area shape="rect" id="Node000001" title="Configuration file of AD7124 firmware example program." alt="" coords="5,5,251,75"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="38,123,109,148"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="111,76,89,112,85,109,106,73"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="133,123,233,148"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="150,73,171,109,167,112,145,76"/>
 </map>

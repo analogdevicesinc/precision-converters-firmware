@@ -1,7 +1,11 @@
 <map id="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad77681_iio/app/ad77681_regs.c" name="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad77681_iio/app/ad77681_regs.c">
-<area shape="rect" id="node1" title="AD77681 registers map." alt="" coords="5,5,244,76"/>
-<area shape="rect" id="node2" title=" " alt="" coords="37,124,108,151"/>
-<area shape="rect" id="node3" href="$ad77681_8h.html" title="Header file of the AD7768&#45;1 Driver." alt="" coords="133,124,223,151"/>
-<area shape="rect" id="node4" title=" " alt="" coords="71,199,170,225"/>
-<area shape="rect" id="node5" title=" " alt="" coords="194,199,277,225"/>
+<area shape="rect" id="Node000001" title="AD77681 registers map." alt="" coords="5,5,244,75"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="37,123,108,148"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="108,76,88,112,84,109,104,73"/>
+<area shape="rect" id="Node000003" href="$ad77681_8h.html" title="Header file of the AD7768&#45;1 Driver." alt="" coords="133,123,223,148"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="146,73,167,109,162,112,142,76"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="71,196,170,221"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="171,150,141,187,137,183,166,147"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="194,196,277,221"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="190,147,219,183,215,187,185,150"/>
 </map>

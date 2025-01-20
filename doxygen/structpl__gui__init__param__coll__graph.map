@@ -1,6 +1,9 @@
 <map id="pl_gui_init_param" name="pl_gui_init_param">
-<area shape="rect" id="node1" title=" " alt="" coords="105,184,244,211"/>
-<area shape="rect" id="node2" href="$structpl__gui__device__param.html" title=" " alt="" coords="5,95,165,121"/>
-<area shape="rect" id="node3" href="$structadi__fft__init__params.html" title=" " alt="" coords="12,5,159,32"/>
-<area shape="rect" id="node4" href="$structpl__gui__views.html" title=" " alt="" coords="189,95,296,121"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="47,181,185,207"/>
+<area shape="rect" id="Node000002" href="$structpl__gui__views.html" title=" " alt="" coords="5,93,112,119"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="76,129,110,179,106,182,72,132"/>
+<area shape="rect" id="Node000003" href="$structpl__gui__device__param.html" title=" " alt="" coords="136,93,296,119"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="194,130,132,183,128,179,190,126"/>
+<area shape="rect" id="Node000004" href="$structadi__fft__init__params.html" title=" " alt="" coords="143,5,289,31"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="219,45,219,93,213,93,213,45"/>
 </map>

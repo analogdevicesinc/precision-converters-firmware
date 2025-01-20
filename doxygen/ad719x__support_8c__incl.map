@@ -1,10 +1,19 @@
 <map id="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad719x_iio/app/ad719x_support.c" name="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad719x_iio/app/ad719x_support.c">
-<area shape="rect" id="node1" title="Support file for AD719X device configurations." alt="" coords="206,5,450,76"/>
-<area shape="rect" id="node2" href="$ad719x__support_8h.html" title="Header for AD719X support configurations." alt="" coords="5,124,144,151"/>
-<area shape="rect" id="node4" href="$ad719x__user__config_8h.html" title="Header for AD719X user configuration file." alt="" coords="168,124,331,151"/>
-<area shape="rect" id="node5" href="$ad719x__iio_8h.html" title="Header file for ad719x IIO interface." alt="" coords="355,124,461,151"/>
-<area shape="rect" id="node8" title=" " alt="" coords="485,124,595,151"/>
-<area shape="rect" id="node3" title=" " alt="" coords="208,199,291,225"/>
-<area shape="rect" id="node6" title=" " alt="" coords="348,199,399,225"/>
-<area shape="rect" id="node7" title=" " alt="" coords="423,199,516,225"/>
+<area shape="rect" id="Node000001" title="Support file for AD719X device configurations." alt="" coords="206,5,450,75"/>
+<area shape="rect" id="Node000002" href="$ad719x__support_8h.html" title="Header for AD719X support configurations." alt="" coords="5,123,144,148"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="237,77,120,120,118,115,236,72"/>
+<area shape="rect" id="Node000004" href="$ad719x__user__config_8h.html" title="Header for AD719X user configuration file." alt="" coords="168,123,331,148"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="302,77,270,114,266,110,298,73"/>
+<area shape="rect" id="Node000005" href="$ad719x__iio_8h.html" title="Header file for ad719x IIO interface." alt="" coords="355,123,461,148"/>
+<area shape="poly" id="edge5_Node000001_Node000005" title=" " alt="" coords="359,73,391,110,387,114,355,77"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="485,123,595,148"/>
+<area shape="poly" id="edge9_Node000001_Node000008" title=" " alt="" coords="406,72,502,115,500,120,403,77"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="208,196,291,221"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="104,146,209,188,207,193,102,150"/>
+<area shape="poly" id="edge4_Node000004_Node000003" title=" " alt="" coords="252,148,252,182,247,182,247,148"/>
+<area shape="poly" id="edge8_Node000005_Node000003" title=" " alt="" coords="384,150,289,193,287,188,381,146"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="348,196,399,221"/>
+<area shape="poly" id="edge6_Node000005_Node000006" title=" " alt="" coords="405,150,387,185,383,182,400,147"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="423,196,516,221"/>
+<area shape="poly" id="edge7_Node000005_Node000007" title=" " alt="" coords="420,147,452,184,448,187,416,150"/>
 </map>

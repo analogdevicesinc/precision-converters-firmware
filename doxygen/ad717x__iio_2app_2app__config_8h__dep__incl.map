@@ -1,9 +1,16 @@
 <map id="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad717x_iio/app/app_config.h" name="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad717x_iio/app/app_config.h">
-<area shape="rect" id="node1" title="Configuration file for AD717x and AD411x IIO firmware application." alt="" coords="361,5,584,76"/>
-<area shape="rect" id="node2" href="$ad717x__iio_8c.html" title="Source file for the AD717x IIO Application." alt="" coords="5,243,228,313"/>
-<area shape="rect" id="node3" href="$ad717x__support_8c.html" title="Support file for AD717X device configurations." alt="" coords="69,124,313,195"/>
-<area shape="rect" id="node4" href="$ad717x__user__config_8h.html" title="User configuration file for AD717x&#45;AD411x IIO firmware application." alt="" coords="337,124,608,195"/>
-<area shape="rect" id="node6" href="$ad717x__iio_2app_2app__config_8c.html" title="Source file for the application configuration for AD717x IIO Application." alt="" coords="632,124,855,195"/>
-<area shape="rect" id="node7" href="$ad717x__iio_2app_2app__config__mbed_8c.html" title="Source file for the mbed configuration for AD717x IIO Application." alt="" coords="879,124,1133,195"/>
-<area shape="rect" id="node5" href="$ad717x__user__config_8c.html" title="User Configuration source for AD717x&#45;AD411x IIO Application." alt="" coords="338,243,607,313"/>
+<area shape="rect" id="Node000001" title="Configuration file for AD717x and AD411x IIO firmware application." alt="" coords="361,5,584,75"/>
+<area shape="rect" id="Node000002" href="$ad717x__iio_8c.html" title="Source file for the AD717x IIO Application." alt="" coords="5,240,228,309"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="347,51,261,61,175,75,103,96,77,109,59,124,51,137,48,151,53,181,68,211,87,238,83,241,63,214,48,183,43,151,46,135,55,121,74,105,101,91,174,70,261,55,347,46"/>
+<area shape="rect" id="Node000003" href="$ad717x__support_8c.html" title="Support file for AD717X device configurations." alt="" coords="69,123,313,192"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="379,82,275,125,273,120,377,78"/>
+<area shape="rect" id="Node000004" href="$ad717x__user__config_8h.html" title="User configuration file for AD717x&#45;AD411x IIO firmware application." alt="" coords="337,123,608,192"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="475,89,475,122,470,122,470,89"/>
+<area shape="rect" id="Node000006" href="$ad717x__iio_2app_2app__config_8c.html" title="Source file for the application configuration for AD717x IIO Application." alt="" coords="632,123,855,192"/>
+<area shape="poly" id="edge6_Node000001_Node000006" title=" " alt="" coords="565,78,665,120,663,125,563,83"/>
+<area shape="rect" id="Node000007" href="$ad717x__iio_2app_2app__config__mbed_8c.html" title="Source file for the mbed configuration for AD717x IIO Application." alt="" coords="879,123,1133,192"/>
+<area shape="poly" id="edge7_Node000001_Node000007" title=" " alt="" coords="598,63,868,120,879,123,878,128,867,125,597,69"/>
+<area shape="poly" id="edge4_Node000004_Node000002" title=" " alt="" coords="357,199,222,242,220,237,355,194"/>
+<area shape="rect" id="Node000005" href="$ad717x__user__config_8c.html" title="User Configuration source for AD717x&#45;AD411x IIO Application." alt="" coords="338,240,607,309"/>
+<area shape="poly" id="edge5_Node000004_Node000005" title=" " alt="" coords="475,206,475,240,470,240,470,206"/>
 </map>

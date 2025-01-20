@@ -1,7 +1,11 @@
 <map id="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad719x_iio/app/app_config.h" name="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad719x_iio/app/app_config.h">
-<area shape="rect" id="node1" title="Configuration file for ad719x IIO firmware application." alt="" coords="411,5,633,76"/>
-<area shape="rect" id="node2" href="$ad719x__iio_8c.html" title="Implementation of AD719X IIO application interfaces." alt="" coords="5,124,228,195"/>
-<area shape="rect" id="node3" href="$ad719x__user__config_8c.html" title="User configuration file for AD719X device." alt="" coords="253,124,522,195"/>
-<area shape="rect" id="node4" href="$ad719x__iio_2app_2app__config_8c.html" title="Application configurations module." alt="" coords="547,124,769,195"/>
-<area shape="rect" id="node5" href="$ad719x__iio_2app_2app__config__mbed_8c.html" title="Application configurations module for Mbed platform." alt="" coords="793,124,1048,195"/>
+<area shape="rect" id="Node000001" title="Configuration file for ad719x IIO firmware application." alt="" coords="411,5,633,75"/>
+<area shape="rect" id="Node000002" href="$ad719x__iio_8c.html" title="Implementation of AD719X IIO application interfaces." alt="" coords="5,123,228,192"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="398,79,229,127,227,122,396,74"/>
+<area shape="rect" id="Node000003" href="$ad719x__user__config_8c.html" title="User configuration file for AD719X device." alt="" coords="253,123,522,192"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="474,85,429,124,425,120,471,81"/>
+<area shape="rect" id="Node000004" href="$ad719x__iio_2app_2app__config_8c.html" title="Application configurations module." alt="" coords="547,123,769,192"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="574,81,620,120,616,124,570,85"/>
+<area shape="rect" id="Node000005" href="$ad719x__iio_2app_2app__config__mbed_8c.html" title="Application configurations module for Mbed platform." alt="" coords="793,123,1048,192"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="648,75,805,120,804,125,646,80"/>
 </map>

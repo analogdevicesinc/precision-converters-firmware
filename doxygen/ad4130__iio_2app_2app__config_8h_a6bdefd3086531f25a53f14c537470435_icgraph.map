@@ -1,0 +1,7 @@
+<map id="is_eeprom_valid_dev_addr_detected" name="is_eeprom_valid_dev_addr_detected">
+<area shape="rect" id="Node000001" title="Return the flag indicating if valid EEPROM address is detected." alt="" coords="323,5,483,45"/>
+<area shape="rect" id="Node000002" href="$24xx32a__eeprom__iio_8c.html#a77d3374b7fbb8a4f73edf8314501fc44" title="Initialize the IIO interface." alt="" coords="108,13,275,38"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="309,28,275,28,275,23,309,23"/>
+<area shape="rect" id="Node000003" href="$evb__discovery__firmware_2app_2main_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title=" " alt="" coords="5,13,60,38"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="94,28,60,28,60,23,94,23"/>
+</map>

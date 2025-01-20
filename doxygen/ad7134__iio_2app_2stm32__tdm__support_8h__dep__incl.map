@@ -1,5 +1,11 @@
 <map id="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad7134_iio/app/stm32_tdm_support.h" name="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad7134_iio/app/stm32_tdm_support.h">
-<area shape="rect" id="node1" title="Header file for STM32 TDM&#45;DMA Data Capture Wrapper file." alt="" coords="143,5,414,76"/>
-<area shape="rect" id="node2" href="$ad7134__iio_2app_2app__config__stm32_8c.html" title="STM32 Specific configuration files for AD7134 IIO Application." alt="" coords="5,124,264,195"/>
-<area shape="rect" id="node3" href="$ad7134__iio_2app_2stm32__tdm__support_8c.html" title=" " alt="" coords="287,124,558,195"/>
+<area shape="rect" id="Node000001" title="Header file for STM32 TDM&#45;DMA Data Capture Wrapper file." alt="" coords="376,5,647,75"/>
+<area shape="rect" id="Node000002" href="$ad7134__iio_8c.html" title="Implementation of AD7134 IIO apllication interfaces." alt="" coords="5,123,228,192"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="384,81,229,126,228,121,382,76"/>
+<area shape="rect" id="Node000003" href="$ad7134__support_8c.html" title="Source file for for AD7134 No&#45;OS driver support." alt="" coords="252,123,496,192"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="463,86,416,124,413,120,459,81"/>
+<area shape="rect" id="Node000004" href="$ad7134__iio_2app_2app__config__stm32_8c.html" title="STM32 Specific configuration files for AD7134 IIO Application." alt="" coords="521,123,779,192"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="564,81,611,120,608,124,561,86"/>
+<area shape="rect" id="Node000005" href="$ad7134__iio_2app_2stm32__tdm__support_8c.html" title=" " alt="" coords="803,123,1073,192"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="650,76,814,120,813,125,648,81"/>
 </map>

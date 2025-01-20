@@ -1,11 +1,19 @@
 <map id="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad719x_iio/app/app_config_stm32.c" name="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad719x_iio/app/app_config_stm32.c">
-<area shape="rect" id="node1" title="STM32 Specific configuration files for AD719x IIO Application." alt="" coords="173,5,431,76"/>
-<area shape="rect" id="node2" title=" " alt="" coords="170,124,279,151"/>
-<area shape="rect" id="node3" href="$ad719x__iio_2app_2app__config__stm32_8h.html" title="Header file for STM32 platform configurations." alt="" coords="303,124,455,151"/>
-<area shape="rect" id="node4" title=" " alt="" coords="5,199,113,225"/>
-<area shape="rect" id="node5" title=" " alt="" coords="138,199,239,225"/>
-<area shape="rect" id="node6" title=" " alt="" coords="263,199,365,225"/>
-<area shape="rect" id="node7" title=" " alt="" coords="389,199,500,225"/>
-<area shape="rect" id="node8" title=" " alt="" coords="524,199,659,225"/>
-<area shape="rect" id="node9" title=" " alt="" coords="683,199,750,225"/>
+<area shape="rect" id="Node000001" title="STM32 Specific configuration files for AD719x IIO Application." alt="" coords="173,5,431,75"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="170,123,279,148"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="276,76,245,114,241,110,272,73"/>
+<area shape="rect" id="Node000003" href="$ad719x__iio_2app_2app__config__stm32_8h.html" title="Header file for STM32 platform configurations." alt="" coords="303,123,455,148"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="332,73,363,110,359,114,328,76"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="5,196,113,221"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="328,151,125,196,124,190,327,145"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="138,196,239,221"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="350,151,234,193,232,188,348,146"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="263,196,365,221"/>
+<area shape="poly" id="edge5_Node000003_Node000006" title=" " alt="" coords="371,150,336,188,332,184,367,147"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="389,196,500,221"/>
+<area shape="poly" id="edge6_Node000003_Node000007" title=" " alt="" coords="392,147,427,184,423,188,388,150"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="524,196,659,221"/>
+<area shape="poly" id="edge7_Node000003_Node000008" title=" " alt="" coords="414,145,545,189,543,194,413,151"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="683,196,750,221"/>
+<area shape="poly" id="edge8_Node000003_Node000009" title=" " alt="" coords="440,145,670,193,669,198,439,151"/>
 </map>

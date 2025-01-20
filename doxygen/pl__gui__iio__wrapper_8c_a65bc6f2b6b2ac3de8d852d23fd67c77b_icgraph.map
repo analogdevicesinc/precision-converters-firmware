@@ -1,0 +1,5 @@
+<map id="pl_gui_read_chn_info" name="pl_gui_read_chn_info">
+<area shape="rect" id="Node000001" title="Read channel scan info." alt="" coords="195,5,353,31"/>
+<area shape="rect" id="Node000002" href="$pl__gui__events_8c.html#af58bdc315575d596c65a4bf30756dbdf" title="Read the pocket lab GUI event and form (an IIO) command string." alt="" coords="5,5,147,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="181,21,147,21,147,15,181,15"/>
+</map>

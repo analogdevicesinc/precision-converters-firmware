@@ -1,8 +1,13 @@
 <map id="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad77681_iio/app/main.c" name="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad77681_iio/app/main.c">
-<area shape="rect" id="node1" title="Main interface for AD7768&#45;1 IIO firmware application." alt="" coords="71,5,294,76"/>
-<area shape="rect" id="node2" href="$ad77681__iio_8h.html" title="Header file of ad77681_iio." alt="" coords="126,124,239,151"/>
-<area shape="rect" id="node3" title=" " alt="" coords="5,199,72,225"/>
-<area shape="rect" id="node4" title=" " alt="" coords="96,199,179,225"/>
-<area shape="rect" id="node5" title=" " alt="" coords="203,199,253,225"/>
-<area shape="rect" id="node6" title=" " alt="" coords="277,199,371,225"/>
+<area shape="rect" id="Node000001" title="Main interface for AD7768&#45;1 IIO firmware application." alt="" coords="71,5,294,75"/>
+<area shape="rect" id="Node000002" href="$ad77681__iio_8h.html" title="Header file of ad77681_iio." alt="" coords="126,123,239,148"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="185,75,185,109,180,109,180,75"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="5,196,72,221"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="161,150,76,192,73,187,158,146"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="96,196,179,221"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="177,150,154,186,150,183,173,147"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="203,196,253,221"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="192,147,216,183,211,186,188,150"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="277,196,371,221"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="207,146,290,187,288,192,204,150"/>
 </map>

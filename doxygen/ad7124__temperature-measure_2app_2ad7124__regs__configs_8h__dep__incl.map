@@ -1,8 +1,14 @@
 <map id="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad7124_temperature&#45;measure/app/ad7124_regs_configs.h" name="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad7124_temperature&#45;measure/app/ad7124_regs_configs.h">
-<area shape="rect" id="node1" title=" " alt="" coords="312,5,564,91"/>
-<area shape="rect" id="node2" href="$ad7124__temperature-measure_2app_2ad7124__console__app_8c.html" title="AD7124 temperature measurement firmware console interface." alt="" coords="373,272,625,357"/>
-<area shape="rect" id="node3" href="$ad7124__regs__config__rtd_8c.html" title="AD7124 register configuration file for RTD temperature sensor interface." alt="" coords="36,139,288,224"/>
-<area shape="rect" id="node4" href="$ad7124__regs__config__thermistor_8c.html" title="AD7124 register configuration file for thermistor sensor interface." alt="" coords="312,139,564,224"/>
-<area shape="rect" id="node5" href="$ad7124__regs__config__thermocouple_8c.html" title="AD7124 register configuration file for thermocouple sensor interface." alt="" coords="588,139,851,224"/>
-<area shape="rect" id="node6" href="$ad7124__temperature__sensor_8h.html" title=" " alt="" coords="875,139,1127,224"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="312,5,564,89"/>
+<area shape="rect" id="Node000002" href="$ad7124__temperature-measure_2app_2ad7124__console__app_8c.html" title="AD7124 temperature measurement firmware console interface." alt="" coords="373,269,625,353"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="298,63,215,74,134,90,67,111,42,125,25,139,12,160,8,179,12,199,25,220,47,237,80,253,121,266,168,277,272,292,373,302,373,307,271,298,167,282,119,271,78,258,44,242,21,223,7,201,3,179,7,158,21,136,39,120,65,107,133,85,214,68,297,57"/>
+<area shape="rect" id="Node000003" href="$ad7124__regs__config__rtd_8c.html" title="AD7124 register configuration file for RTD temperature sensor interface." alt="" coords="36,137,288,221"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="340,98,250,140,248,135,337,93"/>
+<area shape="rect" id="Node000004" href="$ad7124__regs__config__thermistor_8c.html" title="AD7124 register configuration file for thermistor sensor interface." alt="" coords="312,137,564,221"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="440,103,440,137,435,137,435,103"/>
+<area shape="rect" id="Node000005" href="$ad7124__regs__config__thermocouple_8c.html" title="AD7124 register configuration file for thermocouple sensor interface." alt="" coords="588,137,850,221"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="540,93,632,135,629,140,538,97"/>
+<area shape="rect" id="Node000006" href="$ad7124__temperature__sensor_8h.html" title=" " alt="" coords="874,137,1126,221"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="578,72,716,101,864,135,875,138,873,143,862,140,715,106,577,77"/>
+<area shape="poly" id="edge6_Node000006_Node000002" title=" " alt="" coords="862,224,626,283,625,278,861,219"/>
 </map>
