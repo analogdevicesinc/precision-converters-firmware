@@ -1,0 +1,6 @@
+numpy==1.22.4
+pyadi-iio==0.0.18
+pylibiio==0.25
+pynput==1.7.6
+pyserial==3.5
+scipy==1.11.2
