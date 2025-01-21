@@ -1,10 +1,10 @@
-<map id="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad353xr_iio/app/ad3530r_user_config.c" name="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad353xr_iio/app/ad3530r_user_config.c">
+<map id="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad3530r_iio/app/ad3530r_user_config.c" name="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad3530r_iio/app/ad3530r_user_config.c">
 <area shape="rect" id="Node000001" title="User configuration file for AD3530R." alt="" coords="802,5,1081,75"/>
 <area shape="rect" id="Node000002" title=" " alt="" coords="1243,269,1314,295"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="1082,71,1133,91,1184,118,1231,152,1270,195,1282,225,1284,255,1279,256,1277,226,1266,197,1228,156,1182,123,1131,96,1080,76"/>
 <area shape="rect" id="Node000003" href="$ad3530r__user__config_8h.html" title="Header for AD3530R user configuration file." alt="" coords="484,123,652,148"/>
 <area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="807,77,628,122,626,117,806,72"/>
-<area shape="rect" id="Node000005" href="$ad353xr__iio_2app_2app__config_8h.html" title="Application configurations module for AD3530R." alt="" coords="889,123,993,148"/>
+<area shape="rect" id="Node000005" href="$ad3530r__iio_2app_2app__config_8h.html" title="Application configurations module for AD3530R." alt="" coords="889,123,993,148"/>
 <area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="944,75,944,109,939,109,939,75"/>
 <area shape="rect" id="Node000014" title=" " alt="" coords="536,196,643,221"/>
 <area shape="poly" id="edge32_Node000001_Node000014" title=" " alt="" coords="872,77,627,193,625,188,869,72"/>
@@ -22,7 +22,7 @@
 <area shape="poly" id="edge17_Node000005_Node000016" title=" " alt="" coords="964,146,1040,187,1038,192,961,150"/>
 <area shape="rect" id="Node000017" title=" " alt="" coords="1145,196,1255,221"/>
 <area shape="poly" id="edge18_Node000005_Node000017" title=" " alt="" coords="984,145,1146,190,1144,195,982,151"/>
-<area shape="rect" id="Node000018" href="$ad353xr__iio_2app_2app__config__stm32_8h.html" title="Header file for STM32 platform configurations." alt="" coords="667,196,819,221"/>
+<area shape="rect" id="Node000018" href="$ad3530r__iio_2app_2app__config__stm32_8h.html" title="Header file for STM32 platform configurations." alt="" coords="667,196,819,221"/>
 <area shape="poly" id="edge19_Node000005_Node000018" title=" " alt="" coords="903,151,782,194,780,188,902,146"/>
 <area shape="poly" id="edge7_Node000006_Node000002" title=" " alt="" coords="1570,222,1328,272,1327,267,1569,216"/>
 <area shape="rect" id="Node000007" title=" " alt="" coords="1472,269,1555,295"/>

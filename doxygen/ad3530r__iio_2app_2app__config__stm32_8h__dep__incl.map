@@ -1,0 +1,22 @@
+<map id="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad3530r_iio/app/app_config_stm32.h" name="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad3530r_iio/app/app_config_stm32.h">
+<area shape="rect" id="Node000001" title="Header file for STM32 platform configurations." alt="" coords="541,5,805,75"/>
+<area shape="rect" id="Node000002" href="$ad3530r__iio_2app_2app__config_8h.html" title="Application configurations module for AD3530R." alt="" coords="561,123,784,192"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="666,89,667,122,662,123,661,89"/>
+<area shape="rect" id="Node000005" href="$ad3530r__iio_2app_2app__config__stm32_8c.html" title="Application configurations module for STM32 platform." alt="" coords="804,357,1067,427"/>
+<area shape="poly" id="edge11_Node000001_Node000005" title=" " alt="" coords="819,48,923,66,978,81,1033,101,1086,126,1135,157,1180,194,1218,238,1228,257,1232,275,1228,293,1217,311,1194,329,1159,345,1068,371,1066,366,1157,340,1192,325,1213,308,1223,291,1226,275,1223,259,1213,242,1176,198,1132,161,1083,131,1031,106,976,87,921,72,818,53"/>
+<area shape="poly" id="edge10_Node000002_Node000001" title=" " alt="" coords="679,109,678,75,684,75,684,109"/>
+<area shape="rect" id="Node000003" href="$ad3530r__iio_8c.html" title="Implementation of AD3530R IIO Application Interface." alt="" coords="5,357,228,427"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="548,164,433,171,313,185,258,195,209,208,170,223,143,242,125,267,116,297,113,328,114,357,109,357,108,328,111,296,120,265,139,238,167,219,207,203,257,190,312,179,433,166,547,159"/>
+<area shape="rect" id="Node000004" href="$ad3530r__iio_8h.html" title="Header for AD3530R IIO aplication." alt="" coords="153,240,376,309"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="549,196,377,245,375,239,547,191"/>
+<area shape="rect" id="Node000007" href="$ad3530r__support_8c.html" title=" " alt="" coords="400,240,655,309"/>
+<area shape="poly" id="edge7_Node000002_Node000007" title=" " alt="" coords="621,203,572,242,568,238,618,198"/>
+<area shape="rect" id="Node000008" href="$ad3530r__user__config_8c.html" title="User configuration file for AD3530R." alt="" coords="679,240,957,309"/>
+<area shape="poly" id="edge8_Node000002_Node000008" title=" " alt="" coords="727,198,777,238,774,242,724,203"/>
+<area shape="rect" id="Node000009" href="$ad3530r__iio_2app_2app__config_8c.html" title="Application configurations module." alt="" coords="981,240,1204,309"/>
+<area shape="poly" id="edge9_Node000002_Node000009" title=" " alt="" coords="798,190,982,240,980,245,796,195"/>
+<area shape="poly" id="edge4_Node000004_Node000003" title=" " alt="" coords="212,320,162,359,159,355,209,316"/>
+<area shape="poly" id="edge5_Node000004_Node000005" title=" " alt="" coords="390,307,612,346,804,373,804,378,611,352,389,312"/>
+<area shape="rect" id="Node000006" href="$ad3530r__iio_2app_2main_8c.html" title="Main interface for AD3530R IIO firmware application." alt="" coords="252,357,475,427"/>
+<area shape="poly" id="edge6_Node000004_Node000006" title=" " alt="" coords="304,318,336,355,332,359,300,322"/>
+</map>

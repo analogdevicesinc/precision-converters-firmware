@@ -1,7 +1,0 @@
-<map id="stm32_system_init" name="stm32_system_init">
-<area shape="rect" id="Node000001" title="Initialize the STM32 system peripherals." alt="" coords="232,31,379,56"/>
-<area shape="rect" id="Node000002" href="$ad353xr__iio_2app_2app__config_8c.html#aba990e48bb1b87852ff6a375f0c2f655" title="Initializing system peripherals." alt="" coords="45,5,144,31"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="218,36,144,27,145,21,219,30"/>
-<area shape="rect" id="Node000003" href="$ad353xr__iio_2app_2app__config__stm32_8c.html#af71ba79cb436be962f993524be96e30b" title="Reconfigure the STM32 specific system parameters with change in data streaming mode." alt="" coords="5,55,184,80"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="219,56,184,60,184,55,218,51"/>
-</map>
