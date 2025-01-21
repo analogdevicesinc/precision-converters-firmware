@@ -8,7 +8,7 @@ libraries/CMSIS-DSP/
 
 # Note: Comment out the project name to be compiled (one at a time)
 //projects/ad7689_iio/
-projects/ad353xr_iio/
+projects/ad3530r_iio/
 projects/ad355xr_iio/
 projects/ad405x_iio/
 projects/ad4130_iio/
