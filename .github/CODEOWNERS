@@ -1,0 +1,11 @@
+# This file contains code owners for Precision Converters Firmware Pull Requests to main.
+# Code owners are added automatically as reviewers. All PRs open against 
+# main will require approval of at least two code owners.
+#
+# More general documentation about code owners can be found here:
+# https://github.blog/2017-07-06-introducing-code-owners/
+
+# CODEOWNERS file format: <pattern> + <mail address of one or more owners>
+
+##### Global code owners (for whole files from repo) #####
+*	saikiran.gudla@analog.com janani.sunil@analog.com disha.d@analog.com gururajendra.prasad@analog.com
