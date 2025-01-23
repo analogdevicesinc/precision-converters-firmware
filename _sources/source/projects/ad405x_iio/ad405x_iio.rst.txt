@@ -8,28 +8,25 @@ Supported Hardware
 **Supported Devices:**
 
 * `AD4052 <https://www.analog.com/en/products/ad4052.html>`_ 
+* `AD4050 <https://www.analog.com/en/products/ad4050.html>`_
 
 **Supported Evaluation Boards:**
 
 * `EVAL-AD4052-ARDZ <https://www.analog.com/en/resources/evaluation-hardware-and-software/evaluation-boards-kits/eval-ad4052.html>`_
+* `EVAL-AD4050-ARDZ <https://www.analog.com/en/resources/evaluation-hardware-and-software/evaluation-boards-kits/eval-ad4050.html>`_
 
 **Supported Carrier Boards:**
 
-* SDP-K1 With `Mbed <https://os.mbed.com/platforms/SDP_K1/>`_ and STM32 platforms.
+* `SDP-K1  <https://www.analog.com/en/resources/evaluation-hardware-and-software/evaluation-boards-kits/sdp-k1.html#eb-overview>`_
 
 ============
 Introduction
 ============
 
-This page gives an overview of using the ARM platforms supported (default is Mbed) 
-firmware example with Analog Devices AD4052 Evaluation board and SDP-K1 controller board. 
+This page gives an overview of using the ARM platforms supported
+firmware example with Analog Devices AD4052/AD4050 Evaluation boards and SDP-K1 controller board.
 This example code leverages the ADI developed IIO (Industrial Input Output) ecosystem to 
-evaluate the AD4052 device by providing a device debug and data capture support.
-The code provides support for MBED and STM32 platforms, using the SDP-K1 controller board.
-
-The respective build guides for each of the platforms
-can be found in the further sections. The active platform can be chosen by selecting the appropriate 
-value for the ACTIVE_PLATFORM macro in the app_config.h (Default is mbed)
+evaluate the AD4052 or AD4050 device by providing a device debug and data capture support.
 
    .. image:: /source/tinyiiod/app_interface.png
       :width: 350
@@ -38,25 +35,25 @@ The interface used for communicating with PC based IIO clients is either Virtual
 IIO Firmware leverages the ADI created no-os and platform driver software layers
 to communicates with IIO device.
 
-.. SDP-K1 Mbed Section
+.. note::
 
-.. include:: /source/tinyiiod/sdp_k1_mbed.rst
+   This code has been developed and tested on the SDP-K1 Controller Board with
+   Arduino headers. However, the same code can be used with minimal modifications
+   on any STM32 enabled board which has Arduino Header support on it.
 
 .. Useful links Section
 
-.. include:: /source/useful_links.rst
+.. include:: /source/useful_links_stm32.rst
 
 ====================
 Hardware Connections
 ====================
 
-Required: SDP-K1 (or alternative Mbed enabled controller board, or an STM32 board ), EVAL-AD4052 board
-and USB cable.
+Required: SDP-K1 (or an STM32 board ), EVAL-AD4052 or EVAL-AD4050 board and USB cable.
 
-Connect the EVAL-AD042 board to SDP-K1 board (or any other Mbed enabled controller 
-board or an equivalent STM32 board). Connect controller board to the PC using the USB cable. 
+Connect the EVAL-AD4052/EVAL-AD4050 board to SDP-K1 board (or an equivalent STM32 board). Connect controller board to the PC using the USB cable.
 
-   .. image:: /source/projects/ad405x_iio/ad4052_connection_diagram.png
+   .. image:: /source/projects/ad405x_iio/ad405x_connection_diagram.png
       :width: 600
 
 
@@ -64,14 +61,14 @@ board or an equivalent STM32 board). Connect controller board to the PC using th
 Jumper Settings
 ===============
 
-SDP-K1 :
+**SDP-K1 :**
 
 Connect the VIO_ADJUST jumper on the SDP-K1 to 3.3V position 
 to drive SDP-K1 GPIOs at 3.3V
 
-**EVAL-AD4052:**
+**EVAL-AD4052/AD4050:**
 
-Please refer to the user guide for the jumper connections on the EVAL-AD4052 board
+Please refer to the user guide for the jumper connections on the EVAL-AD4052/AD4050 board
 
 .. Communication Interface section:
 
@@ -79,7 +76,7 @@ Please refer to the user guide for the jumper connections on the EVAL-AD4052 boa
 
 .. Project Build Section:
     
-.. include:: /source/build/project_build.rst
+.. include:: /source/build/project_build_stm32.rst
 
 .. IIO Ecosystem Section:
     
