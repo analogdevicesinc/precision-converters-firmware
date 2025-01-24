@@ -212,9 +212,7 @@ void stm32_system_init(void)
 	MX_UART5_Init();
 	MX_TIM1_Init();
 	MX_I2C1_Init();
-#ifdef USE_VIRTUAL_COM_PORT
 	MX_USB_DEVICE_Init();
-#endif
 }
 
 /**

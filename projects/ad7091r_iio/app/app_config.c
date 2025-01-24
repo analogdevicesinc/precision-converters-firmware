@@ -223,6 +223,9 @@ static int init_uart(void)
 	if (ret) {
 		return ret;
 	}
+
+	/* Set up the UART for standard I/O operations */
+	no_os_uart_stdio(uart_console_stdio_desc);
 #endif
 
 	return 0;
