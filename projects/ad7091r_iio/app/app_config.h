@@ -61,6 +61,17 @@
 #define USE_VIRTUAL_COM_PORT
 #endif
 
+/* Check if any serial port available for use as console stdio port */
+#if defined(USE_PHY_COM_PORT)
+/* If PHY com is selected, VCOM or alternate PHY com port can act as a console stdio port */
+#if (ACTIVE_PLATFORM == STM32_PLATFORM)
+#define CONSOLE_STDIO_PORT_AVAILABLE
+#endif
+#else
+/* If VCOM is selected, PHY com port will/should act as a console stdio port */
+#define CONSOLE_STDIO_PORT_AVAILABLE
+#endif
+
 /* Note: The STM32 platform supports SPI interrupt and SPI DMA Mode
  * for data capturing. (Default is SPI DMA mode)
  * */
