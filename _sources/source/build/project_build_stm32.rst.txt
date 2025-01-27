@@ -70,9 +70,13 @@ and generate executable file (.bin/.hex)
                .. image:: /source/build/stm32_exclude_syscalls.png
                   :width: 600
 
-            * Program by clicking on the "Run adxxxx_iio" option seen or by performing a copy->paste option of the .hex file seen in the STM32/Debug folder
+            * To generate the binary file, right click on the adxxxx_iio project seen in the project explorer and select "Properties", select "Settings" under the "C/C++ Build" section on the left pane, select "MCU Post build outputs" under "Tool Settings" section and check the "Convert to binary file (-O binary)" checkbox.
+               .. image:: /source/build/stm32_convert_to_binary.png
+                  :width: 600
 
-               .. image:: /source/build/stm32_run_option.png
+            * Build the project by right-clicking on the adxxxx_iio project seen in the project explorer and select "Build Project"
+
+               .. image:: /source/build/stm32_build_project.png
                   :width: 600
 
 
