@@ -153,7 +153,7 @@ struct no_os_dma_init_param ad3530r_dma_init_param = {
 	.id = 0,
 	.num_ch = DMA_NUM_CHANNELS,
 	.platform_ops = &dma_ops,
-	.sg_handler = receivecomplete_callback
+	.sg_handler = (void (*)(void *))receivecomplete_callback
 };
 #endif
 
