@@ -310,7 +310,7 @@ int stm32_timer_stop(void)
  * @brief  Abort DMA Transfers
  * @return None
  */
-void stm32_abort_dma_transfer(void)
+int stm32_abort_dma_transfer(void)
 {
 	int ret;
 	sdesc = ad3530r_dev_desc->spi->extra;
@@ -325,6 +325,8 @@ void stm32_abort_dma_transfer(void)
 	if (ret) {
 		return ret;
 	}
+
+	return 0;
 }
 
 /**

@@ -103,6 +103,9 @@ static int8_t dac_data_buffer[DATA_BUFFER_SIZE];
 #define	BYTE_SIZE	(uint32_t)8
 #define	BYTE_MASK	(uint32_t)0xff
 
+/* Number of IIO devices */
+#define NUM_OF_IIO_DEVICES	1
+
 /* IIO trigger name */
 #define AD3530R_IIO_TRIGGER_NAME		"ad3530r_iio_trigger"
 
@@ -392,6 +395,10 @@ static int ad353xr_get_sampling_rate(uint32_t *sampling_rate)
 static int ad353xr_set_sampling_rate(uint32_t sampling_rate)
 {
 	int ret;
+
+	if (!sampling_rate) {
+		return -EINVAL;
+	}
 
 	if (sampling_rate > MAX_SAMPLING_RATE) {
 		sampling_rate = MAX_SAMPLING_RATE;
@@ -1049,7 +1056,10 @@ static int32_t ad3530r_iio_close_channels(void *dev)
 	}
 
 	/* Abort DMA Transfers */
-	stm32_abort_dma_transfer();
+	ret = stm32_abort_dma_transfer();
+	if (ret) {
+		return ret;
+	}
 
 	/* De assert CS pin */
 	ret = no_os_gpio_set_value(csb_gpio_desc, NO_OS_GPIO_HIGH);
@@ -1093,6 +1103,10 @@ static int32_t ad3530r_iio_close_channels(void *dev)
  */
 static int update_iio_buffer_with_ch_ids(struct iio_device_data* iio_dev_data)
 {
+	if (!iio_dev_data) {
+		return -EINVAL;
+	}
+
 	uint16_t nb_of_samples_per_chn = iio_dev_data->buffer->size /
 					 (BYTES_PER_SAMPLE * num_of_active_channels); // number of samples per channel
 	uint32_t buff_len = iio_dev_data->buffer->size;
@@ -1101,10 +1115,6 @@ static int update_iio_buffer_with_ch_ids(struct iio_device_data* iio_dev_data)
 	int8_t* iio_buff = iio_dev_data->buffer->buf->buff;
 	int16_t sample_id;
 	int8_t ch_id;
-
-	if (!iio_dev_data) {
-		return -EINVAL;
-	}
 
 	/* Iterate over the samples per active channels in the iio buffer from backwards */
 	for (sample_id = nb_of_samples_per_chn - 1; sample_id >= 0; sample_id--) {
@@ -1134,13 +1144,15 @@ static int32_t ad3530r_iio_submit_samples(struct iio_device_data *iio_dev_data)
 {
 	int32_t ret;
 	uint16_t local_buff = 0;
-	num_of_samples = iio_dev_data->buffer->size / BYTES_PER_SAMPLE;
-	int8_t* iio_buff = iio_dev_data->buffer->buf->buff;
+	int8_t* iio_buff;
 	uint8_t addr;
 
 	if (!iio_dev_data) {
 		return -EINVAL;
 	}
+
+	num_of_samples = iio_dev_data->buffer->size / BYTES_PER_SAMPLE;
+	iio_buff = iio_dev_data->buffer->buf->buff;
 
 #if (INTERFACE_MODE == SPI_DMA)
 	if (!spi_dma_enabled) {
@@ -1258,7 +1270,7 @@ static int32_t debug_reg_search(uint32_t addr, uint32_t *reg_addr_offset)
 			*reg_addr_offset = 0;
 			found = true;
 			break;
-		} else if (addr < AD3530R_ADDR(ad3530r_regs[curr_indx])) {
+		} else if ((addr < AD3530R_ADDR(ad3530r_regs[curr_indx])) && (curr_indx != 0)) {
 			/* Get the input address offset from its base address for
 			 * multi-byte register entity and break the loop indicating input
 			 * address is located somewhere in the previous indexed register */
@@ -1467,10 +1479,11 @@ int32_t ad3530r_iio_initialize(void)
 		.name = AD3530R_IIO_TRIGGER_NAME,
 	};
 
-	struct iio_device_init iio_device_init_params = {
-		.name = (char *)ACTIVE_DEVICE_NAME,
-		.raw_buf = dac_data_buffer,
-		.raw_buf_len = DATA_BUFFER_SIZE / 2, // Allocate only half the buffer size to accommodate the other half for addresses
+	struct iio_device_init iio_device_init_params[NUM_OF_IIO_DEVICES] = {{
+			.name = (char *)ACTIVE_DEVICE_NAME,
+			.raw_buf = dac_data_buffer,
+			.raw_buf_len = DATA_BUFFER_SIZE / 2, // Allocate only half the buffer size to accommodate the other half for addresses
+		}
 	};
 
 	/* IIO interface init parameters */
@@ -1512,8 +1525,8 @@ int32_t ad3530r_iio_initialize(void)
 		iio_init_params.nb_devs++;
 
 		/* AD3530R IIO device init parameters */
-		iio_device_init_params.dev_descriptor = ad3530r_iio_dev;
-		iio_device_init_params.dev = &ad3530r_dev_desc;
+		iio_device_init_params[0].dev_descriptor = ad3530r_iio_dev;
+		iio_device_init_params[0].dev = &ad3530r_dev_desc;
 #if (INTERFACE_MODE == SPI_INTERRUPT)
 		iio_device_init_params.trigger_id = "trigger0";
 		iio_init_params.nb_trigs++;
@@ -1522,7 +1535,7 @@ int32_t ad3530r_iio_initialize(void)
 
 	/* Initialize the IIO interface */
 	iio_init_params.uart_desc = uart_iio_com_desc;
-	iio_init_params.devs = &iio_device_init_params;
+	iio_init_params.devs = iio_device_init_params;
 	ret = iio_init(&ad3530r_iio_desc, &iio_init_params);
 	if (ret) {
 		return ret;

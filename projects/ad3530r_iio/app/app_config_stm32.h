@@ -166,7 +166,7 @@ void receivecomplete_callback(DMA_HandleTypeDef* hdma);
 void tim8_config(void);
 int stm32_timer_stop(void);
 int stm32_timer_enable(void);
-void stm32_abort_dma_transfer(void);
+int stm32_abort_dma_transfer(void);
 #endif
 
 void stm32_system_init(void);
