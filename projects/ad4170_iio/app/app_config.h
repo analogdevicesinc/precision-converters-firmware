@@ -128,8 +128,8 @@
 /* Redefine the init params structure mapping w.r.t. platform */
 #define ticker_int_extra_init_params mbed_ticker_int_extra_init_params
 #if defined(USE_VIRTUAL_COM_PORT)
-#define uart_extra_init_params mbed_vcom_extra_init_params
-#define uart_ops mbed_virtual_com_ops
+#define vcom_extra_init_params mbed_vcom_extra_init_params
+#define vcom_ops mbed_virtual_com_ops
 #else
 #define uart_extra_init_params mbed_uart_extra_init_params
 #define uart_ops mbed_uart_ops
