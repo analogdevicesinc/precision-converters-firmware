@@ -573,9 +573,6 @@ static int get_adc_raw(void *device,
 		if (ret) {
 			break;
 		}
-		if (channel->scan_type.sign == 's')
-			adc_data_raw = no_os_sign_extend32(adc_data_raw,
-							   channel->scan_type.realbits - 1);
 
 		perform_sensor_measurement_and_update_scale(adc_data_raw, channel->ch_num);
 		return sprintf(buf, "%d", adc_data_raw);
@@ -2323,7 +2320,7 @@ static int32_t iio_ad4170_prepare_transfer(void *dev_instance,
 		return ret;
 	}
 
-	spi_init_param = ad4170_user_config_params.spi_init.extra;
+	spi_init_param = ad4170_init_params.spi_init.extra;
 	spi_init_param->dma_init = &ad4170_dma_init_param;
 
 	spi_init_param->irq_num = Rx_DMA_IRQ_ID;
@@ -2332,7 +2329,7 @@ static int32_t iio_ad4170_prepare_transfer(void *dev_instance,
 
 	/* Init SPI interface in DMA Mode */
 	ret = no_os_spi_init(&p_ad4170_dev_inst->spi_desc,
-			     &ad4170_user_config_params.spi_init);
+			     &ad4170_init_params.spi_init);
 	if (ret) {
 		return ret;
 	}
@@ -2380,12 +2377,12 @@ static int32_t iio_ad4170_end_transfer(void *dev)
 
 	stm32_abort_dma_transfer();
 
-	spi_init_param = ad4170_user_config_params.spi_init.extra;
+	spi_init_param = ad4170_init_params.spi_init.extra;
 	spi_init_param->dma_init = NULL;
 
 	/* Init SPI Interface in normal mode (Non DMA) */
 	ret = no_os_spi_init(&p_ad4170_dev_inst->spi_desc,
-			     &ad4170_user_config_params.spi_init);
+			     &ad4170_init_params.spi_init);
 	if (ret) {
 		return ret;
 	}

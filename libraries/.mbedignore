@@ -18,6 +18,8 @@ no-OS/drivers/adc/ad6676/
 no-OS/drivers/adc/ad7091r/
 no-OS/drivers/adc/ad7091r5/
 no-OS/drivers/adc/ad7280a/
+no-OS/drivers/adc/ad738x/
+no-OS/drivers/adc/ad7606/
 no-OS/drivers/adc/ad9081/
 no-OS/drivers/adc/ad9208/
 no-OS/drivers/adc/ad9250/
@@ -42,6 +44,7 @@ no-OS/drivers/dac/dac_demo/
 no-OS/drivers/dac/ad7293/
 no-OS/drivers/dac/ad9144/
 no-OS/drivers/dac/max538x/
+no-OS/drivers/dac/ad3552r/
 no-OS/drivers/dac/ad5449/
 no-OS/drivers/dac/ad5421/
 no-OS/drivers/dac/ad5446/
@@ -77,12 +80,15 @@ no-OS/drivers/platform/pico/
 no-OS/drivers/platform/chibios/
 no-OS/drivers/platform/freeRTOS/
 no-OS/drivers/potentiometer/
+no-OS/drivers/power/
 no-OS/drivers/rf-transceiver/
 no-OS/drivers/sd-card/
 no-OS/drivers/temperature/max31855/
 no-OS/drivers/temperature/max31875/
 no-OS/drivers/temperature/max31865pmb1/
+no-OS/drivers/temperature/max31827/
 no-OS/drivers/temperature/adt75/
+no-OS/drivers/temperature/ltc2983/
 no-OS/drivers/display/
 no-OS/drivers/filter/
 no-OS/drivers/switch/
@@ -100,7 +106,7 @@ no-OS/projects/
 no-OS/scripts/
 no-OS/tools/
 no-OS/v4l2_config/
-no-OS/jesd204/
+no-OS/drivers/api/no_os_i3c.c
 
 # Ignoring files for pocket lab applications
 lvgl/examples/
