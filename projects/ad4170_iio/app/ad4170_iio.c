@@ -3,7 +3,7 @@
  *   @brief   Implementation of AD4170 IIO application interfaces
  *   @details This module acts as an interface for AD4170 IIO application
 ********************************************************************************
- * Copyright (c) 2021-24 Analog Devices, Inc.
+ * Copyright (c) 2021-2025 Analog Devices, Inc.
  * All rights reserved.
  *
  * This software is proprietary to Analog Devices, Inc. and its licensors.
@@ -429,6 +429,25 @@ struct ad4170_cached_reg reg_values[N_REGISTERS_CACHED];
 /* Register index */
 uint8_t read_reg_id = 0;
 
+/* Permissible HW Mezzanine names */
+static const char *mezzanine_names[] = {
+	"EVAL-AD4170-4ARDZ",
+	"",
+	"",
+	"EVAL-AD4190-4ARDZ"
+};
+
+/* Active device available options */
+static const char* active_dev[] = {
+	"ad4170",
+	"",
+	"",
+	"ad4190",
+};
+
+/* Effective sampling rate of the device */
+static uint32_t sampling_rate = AD4170_MAX_SAMPLING_RATE;
+
 /******************************************************************************/
 /************************ Functions Prototypes ********************************/
 /******************************************************************************/
@@ -514,7 +533,7 @@ static int get_sampling_frequency(void *device,
 	 * indicate an actual sampling rate of device.
 	 * Refer the 'note' in function description above for timeout calculations */
 	return sprintf(buf, "%d",
-		       (AD4170_DEFLT_SAMPLING_FREQUENCY / num_of_channels));
+		       (sampling_rate / num_of_channels));
 }
 
 static int set_sampling_frequency(void *device,
@@ -544,7 +563,7 @@ static int get_adc_raw(void *device,
 		       intptr_t id)
 {
 	int32_t ret;
-	static int32_t adc_data_raw = 0;
+	static uint32_t adc_data_raw = 0;
 	int32_t offset = 0;
 	uint8_t setup = p_ad4170_dev_inst->config.setup[channel->ch_num].setup_n;
 	bool bipolar = p_ad4170_dev_inst->config.setups[setup].afe.bipolar;
@@ -1505,6 +1524,13 @@ int32_t debug_reg_read(void *dev, uint32_t reg, uint32_t *readval)
 
 	reg_base_add = debug_reg_search(reg, &reg_addr_offset);
 
+	if (p_ad4170_dev_inst->id == ID_AD4190) {
+		if ((reg_base_add >= AD4170_REG_FIR_CONTROL)
+		    && (reg_base_add <= AD4170_REG_DAC_INPUTB(0))) {
+			return -EINVAL;
+		}
+	}
+
 	/* Read data from device register */
 	ret = ad4170_spi_reg_read(dev, reg_base_add, readval);
 	if (ret) {
@@ -1536,6 +1562,13 @@ int32_t debug_reg_write(void *dev, uint32_t reg, uint32_t writeval)
 	}
 
 	reg_base_add = debug_reg_search(reg, &reg_addr_offset);
+
+	if (p_ad4170_dev_inst->id == ID_AD4190) {
+		if ((reg_base_add >= AD4170_REG_FIR_CONTROL)
+		    && (reg_base_add <= AD4170_REG_DAC_INPUTB(0))) {
+			return -EINVAL;
+		}
+	}
 
 	/* Read the register contents */
 	ret = ad4170_spi_reg_read(dev, reg_base_add, &data);
@@ -2853,6 +2886,45 @@ void ticker_callback(void *ctx)
 }
 
 /**
+ * @brief Configure filter parameters according to active device chosen
+ * @param None
+ * @return none
+ */
+void ad4170_configure_filter_params(void)
+{
+	uint16_t filter_fs;
+	uint8_t setup_id;
+	enum ad4170_filter_type  filter_type;
+
+	if (ad4170_init_params.id == ID_AD4170) {
+#if (INTERFACE_MODE == SPI_INTERRUPT_MODE)
+		filter_fs = FS_SINC5_AVG_24_KSPS;
+		filter_type = AD4170_FILT_SINC5_AVG;
+#else // TDM_MODE and SPI_DMA_MODE
+		filter_fs = FS_SINC5_512_KSPS;
+		filter_type = AD4170_FILT_SINC5;
+#endif
+	} else if (ad4170_init_params.id == ID_AD4190) {
+#if (INTERFACE_MODE == SPI_INTERRUPT_MODE)
+		filter_fs = FS_SINC5_AVG_24_KSPS;
+		filter_fs = AD4170_FILT_SINC5_AVG;
+#else // TDM_MODE and SPI_DMA Mode
+		filter_fs = FS_SINC3_62P5_KSPS;
+		filter_type = AD4170_FILT_SINC3;
+#endif
+	}
+
+	/* Update the setup register with the filter and FS value */
+	for (setup_id = 0; setup_id < AD4170_NUM_SETUPS; setup_id++) {
+		ad4170_init_params.config.setups[setup_id].filter.filter_type = filter_type;
+		ad4170_init_params.config.setups[setup_id].filter_fs = filter_fs;
+	}
+
+	/* Calculate the effective sampling rate of the device */
+	sampling_rate = (AD4170_INTERNAL_CLOCK / (FILTER_SCALE * filter_fs));
+}
+
+/**
  * @brief	Initialize the IIO interface for AD4170 IIO device
  * @return	none
  * @return	0 in case of success, negative error code otherwise
@@ -2860,6 +2932,7 @@ void ticker_callback(void *ctx)
 int32_t ad4170_iio_initialize(void)
 {
 	int32_t init_status;
+	uint8_t read_id;
 
 	/* Init the system peripherals */
 	init_status = init_system();
@@ -2868,15 +2941,25 @@ int32_t ad4170_iio_initialize(void)
 	}
 
 	/* Read context attributes */
-	init_status = get_iio_context_attributes(&iio_init_params.ctx_attrs,
-			&iio_init_params.nb_ctx_attr,
-			eeprom_desc,
-			HW_MEZZANINE_NAME,
-			STR(HW_CARRIER_NAME),
-			&hw_mezzanine_is_valid);
-	if (init_status) {
-		return init_status;
+	for (read_id = 0; read_id < NO_OS_ARRAY_SIZE(mezzanine_names); read_id++) {
+		init_status = get_iio_context_attributes(&iio_init_params.ctx_attrs,
+				&iio_init_params.nb_ctx_attr,
+				eeprom_desc,
+				mezzanine_names[read_id],
+				STR(HW_CARRIER_NAME),
+				&hw_mezzanine_is_valid);
+		if (init_status) {
+			return init_status;
+		}
+
+		if (hw_mezzanine_is_valid) {
+			ad4170_init_params.id = read_id;
+			break;
+		}
 	}
+
+	/* Re-assign the parameters according to the active device */
+	ad4170_configure_filter_params();
 
 	if (hw_mezzanine_is_valid) {
 		/* Initialize AD4170 device and peripheral interface */
@@ -2891,7 +2974,7 @@ int32_t ad4170_iio_initialize(void)
 			return init_status;
 		}
 
-		iio_device_init_params[0].name = ACTIVE_DEVICE_NAME;
+		iio_device_init_params[0].name = active_dev[p_ad4170_dev_inst->id];
 		iio_device_init_params[0].raw_buf = adc_data_buffer;
 		iio_device_init_params[0].raw_buf_len = DATA_BUFFER_SIZE;
 

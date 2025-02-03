@@ -2,7 +2,7 @@
  *   @file   ad4170_user_config.h
  *   @brief  Header for AD4170 default user configurations file
 ******************************************************************************
-* Copyright (c) 2021-22,24 Analog Devices, Inc.
+* Copyright (c) 2021-22,2024-25 Analog Devices, Inc.
 * All rights reserved.
 *
 * This software is proprietary to Analog Devices, Inc. and its licensors.

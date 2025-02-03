@@ -70,6 +70,11 @@
 #define DEVICE_NAME		    "DEV_AD4170"
 #define ACTIVE_DEVICE_ID    ID_AD4170
 #define HW_MEZZANINE_NAME	"EVAL-AD4170-4ARDZ"
+#elif defined (DEV_AD4190)
+#define ACTIVE_DEVICE_NAME	"ad4190"
+#define DEVICE_NAME		    "DEV_AD4190"
+#define ACTIVE_DEVICE_ID    ID_AD4190
+#define HW_MEZZANINE_NAME	"EVAL-AD4190-4ARDZ"
 #else
 #warning No/Unsupported ADxxxxy symbol defined. AD4170 defined
 #define DEV_AD4170
@@ -128,8 +133,8 @@
 /* Redefine the init params structure mapping w.r.t. platform */
 #define ticker_int_extra_init_params mbed_ticker_int_extra_init_params
 #if defined(USE_VIRTUAL_COM_PORT)
-#define vcom_extra_init_params mbed_vcom_extra_init_params
-#define vcom_ops mbed_virtual_com_ops
+#define uart_extra_init_params mbed_vcom_extra_init_params
+#define uart_ops mbed_virtual_com_ops
 #else
 #define uart_extra_init_params mbed_uart_extra_init_params
 #define uart_ops mbed_uart_ops
@@ -214,6 +219,9 @@
 #if defined(DEV_AD4170)
 #define	DIFFERENTIAL_CHNS	4
 #define	SINGLE_ENDED_CHNS	8
+#elif defined (DEV_AD4190)
+#define DIFFERENTIAL_CHNS	4
+#define SINGLE_ENDED_CHNS	8
 #endif
 
 /* Include user config files and params according to active/selected demo mode config */
@@ -294,6 +302,9 @@
 
 /* Default sampling frequency for AD4170 (in SPS) */
 #define AD4170_DEFLT_SAMPLING_FREQUENCY	(AD4170_INTERNAL_CLOCK / FS_TO_ODR_CONV_SCALER)
+
+/* Scale value for Filters - SINC5, SINC5_AVG and SINC3 */
+#define FILTER_SCALE		32
 
 /******************************************************************************/
 /************************ Public Declarations *********************************/

@@ -2,7 +2,7 @@
  *   @file   ad4170_thermistor_config.c
  *   @brief  Thermistor user configurations module for AD4170 IIO firmware
 ******************************************************************************
-* Copyright (c) 2021-22,24 Analog Devices, Inc.
+* Copyright (c) 2021-22,2024-25 Analog Devices, Inc.
 * All rights reserved.
 *
 * This software is proprietary to Analog Devices, Inc. and its licensors.
@@ -56,7 +56,11 @@ struct ad4170_init_param ad4170_thermistor_config_params = {
 		.pin_muxing = {
 			.chan_to_gpio = AD4170_CHANNEL_NOT_TO_GPIO,
 #if (INTERFACE_MODE == SPI_INTERRUPT_MODE)
+#if defined(DEV_AD4190)
+			.dig_aux2_ctrl = AD4170_DIG_AUX2_SYNC, // Used as START Input.
+#else
 			.dig_aux2_ctrl = AD4170_DIG_AUX2_LDAC,	// Used as h/w LDACB
+#endif // DEV_AD4190
 			.dig_aux1_ctrl = AD4170_DIG_AUX1_RDY,	// Used as RDY (end of conversion)
 #elif (INTERFACE_MODE == TDM_MODE)
 			.dig_aux1_ctrl = AD4170_DIG_AUX1_DISABLED,
@@ -113,6 +117,8 @@ struct ad4170_init_param ad4170_thermistor_config_params = {
 		.setups = {
 			// Setup 0
 			{
+				/* NOTE: chop_adc =  AD4170_CHOP_IEXC_CD and AD4170_CHOP_IEXC_ABCD
+				 * options are not available on the AD4190 */
 				.misc = {
 					.chop_iexc = AD4170_CHOP_IEXC_OFF,
 					.chop_adc = AD4170_CHOP_OFF,
@@ -211,6 +217,7 @@ struct ad4170_init_param ad4170_thermistor_config_params = {
 			{ .i_out_pin = AD4170_I_OUT_AIN0, .i_out_val = AD4170_I_OUT_0UA },
 			{ .i_out_pin = AD4170_I_OUT_AIN0, .i_out_val = AD4170_I_OUT_0UA }
 		},
+#if !defined(DEV_AD4190)
 		.fir_control = {
 			.fir_mode = AD4170_FIR_DEFAULT,
 			.coeff_set = AD4170_FIR_COEFF_SET0,
@@ -223,6 +230,7 @@ struct ad4170_init_param ad4170_thermistor_config_params = {
 			.hw_toggle = false,
 			.hw_ldac = false
 		}
+#endif
 	},
 
 	&gpio_init_sync_inb,

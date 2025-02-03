@@ -2,7 +2,7 @@
  *   @file   ad4170_loadcell_config.h
  *   @brief  Header for AD4170 Loadcell configurations module
 ******************************************************************************
-* Copyright (c) 2021-22 Analog Devices, Inc.
+* Copyright (c) 2021-22,25 Analog Devices, Inc.
 * All rights reserved.
 *
 * This software is proprietary to Analog Devices, Inc. and its licensors.
@@ -25,7 +25,8 @@
 /********************** Macros and Constants Definition ***********************/
 /******************************************************************************/
 
-/* Select the excitation type for load cell (AC/DC) - one at a time */
+/* Select the excitation type for load cell (AC/DC) - one at a time
+ * Note- AC excitation is not applicable in case of AD4190 */
 #define LOADCELL_DC_EXCITATION
 //#define LOADCELL_AC_EXCITATION
 

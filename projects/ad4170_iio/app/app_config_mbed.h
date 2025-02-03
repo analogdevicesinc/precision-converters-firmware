@@ -2,7 +2,7 @@
  *   @file    app_config_mbed.h
  *   @brief   Header file for Mbed platform configurations
 ********************************************************************************
- * Copyright (c) 2021-24 Analog Devices, Inc.
+ * Copyright (c) 2021-25 Analog Devices, Inc.
  * All rights reserved.
  *
  * This software is proprietary to Analog Devices, Inc. and its licensors.
@@ -94,6 +94,9 @@
 
 /* Max SPI Speed */
 #define AD4170_MAX_SPI_SPEED     22500000
+
+/* AD4170 Max sampling rate */
+#define AD4170_MAX_SAMPLING_RATE    32000
 
 /******************************************************************************/
 /********************** Public/Extern Declarations ****************************/
