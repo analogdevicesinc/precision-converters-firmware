@@ -8,6 +8,7 @@ Supported Hardware
 **Supported Devices:**
 
 * `AD4170 <https://www.analog.com/en/products/ad4170-4.html>`_ 
+* `AD4190 <https://www.analog.com/en/products/ad4190-4.html>`_ 
 
 **Supported Carrier Boards:**
 

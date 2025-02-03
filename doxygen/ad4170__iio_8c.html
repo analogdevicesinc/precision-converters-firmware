@@ -340,6 +340,9 @@ Functions</h2></td></tr>
 <tr class="memitem:a57c37c6b7af2f7586e6a924484a36155" id="r_a57c37c6b7af2f7586e6a924484a36155"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad4170__iio_8c.html#a57c37c6b7af2f7586e6a924484a36155">ticker_callback</a> (void *ctx)</td></tr>
 <tr class="memdesc:a57c37c6b7af2f7586e6a924484a36155"><td class="mdescLeft">&#160;</td><td class="mdescRight">This is an ISR (Interrupt Service Routine) for Ticker object.  <br /></td></tr>
 <tr class="separator:a57c37c6b7af2f7586e6a924484a36155"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1eaa6e18a407274c7109ca69d00e97cc" id="r_a1eaa6e18a407274c7109ca69d00e97cc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad4170__iio_8c.html#a1eaa6e18a407274c7109ca69d00e97cc">ad4170_configure_filter_params</a> (void)</td></tr>
+<tr class="memdesc:a1eaa6e18a407274c7109ca69d00e97cc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Configure filter parameters according to active device chosen.  <br /></td></tr>
+<tr class="separator:a1eaa6e18a407274c7109ca69d00e97cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afe5b4999ffeb4ff59922c46515a4a8b1" id="r_afe5b4999ffeb4ff59922c46515a4a8b1"><td class="memItemLeft" align="right" valign="top">int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad4170__iio_8c.html#afe5b4999ffeb4ff59922c46515a4a8b1">ad4170_iio_initialize</a> (void)</td></tr>
 <tr class="memdesc:afe5b4999ffeb4ff59922c46515a4a8b1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize the IIO interface for AD4170 IIO device.  <br /></td></tr>
 <tr class="separator:afe5b4999ffeb4ff59922c46515a4a8b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -397,7 +400,7 @@ Variables</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Implementation of AD4170 IIO application interfaces. </p>
 <p>This module acts as an interface for AD4170 IIO application</p>
-<p>Copyright (c) 2021-24 Analog Devices, Inc. All rights reserved.</p>
+<p>Copyright (c) 2021-2025 Analog Devices, Inc. All rights reserved.</p>
 <p>This software is proprietary to Analog Devices, Inc. and its licensors. By using this software you agree to the terms of the associated Analog Devices Software License Agreement. </p>
 </div><h2 class="groupheader">Macro Definition Documentation</h2>
 <a id="ac116081a28547549ad1c546c1db2f750" name="ac116081a28547549ad1c546c1db2f750"></a>
@@ -436,7 +439,7 @@ Variables</h2></td></tr>
 <div class="line">    .attributes = <a class="code hl_variable" href="ad4170__iio_8c.html#afe922f396cd6132d66abb5ec5d009deb">channel_input_attributes</a>\</div>
 <div class="line">}</div>
 <div class="ttc" id="aad2s1210__iio_8c_html_add66a0274e7149971cfe86329fa94473"><div class="ttname"><a href="ad2s1210__iio_8c.html#add66a0274e7149971cfe86329fa94473">chn_scan</a></div><div class="ttdeci">struct scan_type chn_scan[RESOLVER_CHANNELS]</div><div class="ttdef"><b>Definition</b> ad2s1210_iio.c:110</div></div>
-<div class="ttc" id="aad4170__iio_8c_html_afe922f396cd6132d66abb5ec5d009deb"><div class="ttname"><a href="ad4170__iio_8c.html#afe922f396cd6132d66abb5ec5d009deb">channel_input_attributes</a></div><div class="ttdeci">struct iio_attribute channel_input_attributes[]</div><div class="ttdef"><b>Definition</b> ad4170_iio.c:2467</div></div>
+<div class="ttc" id="aad4170__iio_8c_html_afe922f396cd6132d66abb5ec5d009deb"><div class="ttname"><a href="ad4170__iio_8c.html#afe922f396cd6132d66abb5ec5d009deb">channel_input_attributes</a></div><div class="ttdeci">struct iio_attribute channel_input_attributes[]</div><div class="ttdef"><b>Definition</b> ad4170_iio.c:2500</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -787,6 +790,45 @@ Variables</h2></td></tr>
 
 <p>Cache register values modified by attributes. </p>
 <dl class="section return"><dt>Returns</dt><dd>0 in case of success, negative error code otherwise </dd></dl>
+
+</div>
+</div>
+<a id="a1eaa6e18a407274c7109ca69d00e97cc" name="a1eaa6e18a407274c7109ca69d00e97cc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1eaa6e18a407274c7109ca69d00e97cc">&#9670;&#160;</a></span>ad4170_configure_filter_params()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ad4170_configure_filter_params </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Configure filter parameters according to active device chosen. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">None</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>none </dd></dl>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="ad4170__iio_8c_a1eaa6e18a407274c7109ca69d00e97cc_icgraph.png" border="0" usemap="#aad4170__iio_8c_a1eaa6e18a407274c7109ca69d00e97cc_icgraph" alt=""/></div>
+<map name="aad4170__iio_8c_a1eaa6e18a407274c7109ca69d00e97cc_icgraph" id="aad4170__iio_8c_a1eaa6e18a407274c7109ca69d00e97cc_icgraph">
+<area shape="rect" title="Configure filter parameters according to active device chosen." alt="" coords="312,5,487,45"/>
+<area shape="rect" href="ad4170__iio_8c.html#afe5b4999ffeb4ff59922c46515a4a8b1" title="Initialize the IIO interface for AD4170 IIO device." alt="" coords="108,13,264,38"/>
+<area shape="poly" title=" " alt="" coords="298,28,264,28,264,23,298,23"/>
+<area shape="rect" href="ad4170__iio_2app_2main_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title="Main entry point to application." alt="" coords="5,13,60,38"/>
+<area shape="poly" title=" " alt="" coords="94,28,60,28,60,23,94,23"/>
+</map>
+</div>
 
 </div>
 </div>
@@ -1181,8 +1223,8 @@ Here is the caller graph for this function:</div>
 <div class="line">}</div>
 <div class="ttc" id="aad4130__iio_2app_2app__config_8h_html_ad6af11c8af52e93da6eafa098285f631"><div class="ttname"><a href="ad4130__iio_2app_2app__config_8h.html#ad6af11c8af52e93da6eafa098285f631">ADC_MAX_COUNT_UNIPOLAR</a></div><div class="ttdeci">#define ADC_MAX_COUNT_UNIPOLAR</div><div class="ttdef"><b>Definition</b> app_config.h:184</div></div>
 <div class="ttc" id="aad4130__iio_2app_2app__config_8h_html_aed250e391fcc00823ec8cf976bc47482"><div class="ttname"><a href="ad4130__iio_2app_2app__config_8h.html#aed250e391fcc00823ec8cf976bc47482">ADC_MAX_COUNT_BIPOLAR</a></div><div class="ttdeci">#define ADC_MAX_COUNT_BIPOLAR</div><div class="ttdef"><b>Definition</b> app_config.h:187</div></div>
-<div class="ttc" id="aad4170__iio_2app_2app__config_8h_html_a411d8c86148016fdd9411c00e80f7bbc"><div class="ttname"><a href="ad4170__iio_2app_2app__config_8h.html#a411d8c86148016fdd9411c00e80f7bbc">AD4170_DEFLT_SAMPLING_FREQUENCY</a></div><div class="ttdeci">#define AD4170_DEFLT_SAMPLING_FREQUENCY</div><div class="ttdef"><b>Definition</b> app_config.h:296</div></div>
-<div class="ttc" id="aad4170__iio_2app_2app__config_8h_html_ad7b3848a9edd83e83744263d992a5d82"><div class="ttname"><a href="ad4170__iio_2app_2app__config_8h.html#ad7b3848a9edd83e83744263d992a5d82">AD4170_REFIN_REFOUT_VOLTAGE</a></div><div class="ttdeci">#define AD4170_REFIN_REFOUT_VOLTAGE</div><div class="ttdef"><b>Definition</b> app_config.h:261</div></div>
+<div class="ttc" id="aad4170__iio_2app_2app__config_8h_html_a411d8c86148016fdd9411c00e80f7bbc"><div class="ttname"><a href="ad4170__iio_2app_2app__config_8h.html#a411d8c86148016fdd9411c00e80f7bbc">AD4170_DEFLT_SAMPLING_FREQUENCY</a></div><div class="ttdeci">#define AD4170_DEFLT_SAMPLING_FREQUENCY</div><div class="ttdef"><b>Definition</b> app_config.h:304</div></div>
+<div class="ttc" id="aad4170__iio_2app_2app__config_8h_html_ad7b3848a9edd83e83744263d992a5d82"><div class="ttname"><a href="ad4170__iio_2app_2app__config_8h.html#ad7b3848a9edd83e83744263d992a5d82">AD4170_REFIN_REFOUT_VOLTAGE</a></div><div class="ttdeci">#define AD4170_REFIN_REFOUT_VOLTAGE</div><div class="ttdef"><b>Definition</b> app_config.h:269</div></div>
 <div class="ttc" id="aadi__fft_8h_html_aaa59666ca0e87b9cd77ef7d6e489c553"><div class="ttname"><a href="adi__fft_8h.html#aaa59666ca0e87b9cd77ef7d6e489c553">ADI_FFT_MAX_SAMPLES</a></div><div class="ttdeci">#define ADI_FFT_MAX_SAMPLES</div><div class="ttdef"><b>Definition</b> adi_fft.h:33</div></div>
 </div><!-- fragment -->
 </div>
