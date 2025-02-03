@@ -21,6 +21,7 @@
 #include "ad405x_iio.h"
 #include "ad405x_user_config.h"
 #include "common.h"
+#include "no_os_delay.h"
 #include "no_os_error.h"
 #include "no_os_gpio.h"
 #include "no_os_pwm.h"
@@ -219,8 +220,8 @@ static struct scan_type ad405x_iio_scan_type = {
 static char *ad405x_op_mode_str[] = {
 	"config_mode",
 	"adc_mode",
+	"averaging_mode",
 	"burst_averaging_mode",
-	"averaging_mode"
 };
 
 /* Averaging filter length values string representation */
@@ -645,9 +646,10 @@ static int iio_ad405x_attr_set(void *device,
 	enum ad405x_avg_filter_l filter_len;
 	enum ad405x_sample_rate burst_rate;
 	uint32_t requested_sampling_period;
+	uint32_t requested_sampling_rate;
 	uint32_t cnv_time;
 	int32_t ret;
-	uint8_t value;
+	uint8_t value = 0;
 
 	switch (priv) {
 	case ADC_RAW:
@@ -659,7 +661,7 @@ static int iio_ad405x_attr_set(void *device,
 
 	case ADC_OPERATING_MODE :
 		for (op_mode = AD405X_CONFIG_MODE_OP;
-		     op_mode <= AD405X_NON_PERSISTENT_AUTO_MODE_OP;
+		     op_mode <= AD405X_BURST_AVERAGING_MODE_OP;
 		     op_mode++) {
 			if (!strncmp(buf, ad405x_op_mode_str[op_mode], strlen(buf))) {
 				value = op_mode;
@@ -741,7 +743,11 @@ static int iio_ad405x_attr_set(void *device,
 #endif
 
 	case ADC_SAMPLE_RATE:
-		requested_sampling_period = CONV_TRIGGER_PERIOD_NSEC(no_os_str_to_uint32(buf));
+		requested_sampling_rate = no_os_str_to_uint32(buf);
+		if (requested_sampling_rate == 0) {
+			return -EINVAL;
+		}
+		requested_sampling_period = CONV_TRIGGER_PERIOD_NSEC(requested_sampling_rate);
 
 #if (ADC_CAPTURE_MODE == SAMPLE_MODE)
 		ad405x_sample_rate = no_os_str_to_uint32(buf);
@@ -798,7 +804,7 @@ static int iio_ad405x_attr_available_get(void *device,
 			       "%s %s %s",
 			       ad405x_op_mode_str[0],
 			       ad405x_op_mode_str[1],
-			       ad405x_op_mode_str[2]);
+			       ad405x_op_mode_str[3]);
 
 #if (ADC_CAPTURE_MODE != SAMPLE_MODE)
 #if (ADC_CAPTURE_MODE == BURST_AVERAGING_MODE)
@@ -1161,7 +1167,7 @@ static int32_t iio_ad405x_submit_samples(struct iio_device_data *iio_dev_data)
 
 	ad405x_conversion_flag = false;
 
-	dma_cycle_count = ((nb_of_samples) / spirxdma_ndtr) + 1;
+	dma_cycle_count = ((nb_of_samples) / rxdma_ndtr) + 1;
 
 	/* Set the callback count to twice the number of DMA cycles */
 	callback_count = dma_cycle_count * 2;
@@ -1444,6 +1450,7 @@ static int32_t ad405x_iio_trigger_param_init(struct iio_hw_trig **desc)
 	/* Initialize hardware trigger */
 	ret = iio_hw_trig_init(&hw_trig_desc, &ad405x_hw_trig_init_params);
 	if (ret) {
+		no_os_free(hw_trig_desc);
 		return ret;
 	}
 
@@ -1492,6 +1499,10 @@ int32_t iio_ad405x_initialize(void)
 		}
 	};
 
+	no_os_udelay(
+		1000000); // Add a fixed delay of 1 sec before system init for the PoR sequence to get completed
+
+
 	init_status = init_system();
 	if (init_status) {
 		return init_status;
@@ -1502,6 +1513,8 @@ int32_t iio_ad405x_initialize(void)
 		"EVAL-AD4050-ARDZ",
 		"EVAL-AD4052-ARDZ"
 	};
+
+	no_os_udelay(1000000); // Add delay between the i2c init and the eeprom read
 
 	/* Iterate twice to detect the correct attached board */
 	for (indx = 0; indx < NO_OS_ARRAY_SIZE(mezzanine_names); indx++) {
