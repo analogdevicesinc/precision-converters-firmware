@@ -3,7 +3,7 @@
  *   @brief   Application configurations module
  *   @details This module contains the configurations needed for IIO application
 ********************************************************************************
- * Copyright (c) 2021-24 Analog Devices, Inc.
+ * Copyright (c) 2021-25 Analog Devices, Inc.
  * All rights reserved.
  *
  * This software is proprietary to Analog Devices, Inc. and its licensors.
@@ -56,7 +56,8 @@ struct no_os_uart_init_param uart_init_params = {
 #endif
 };
 
-/* LDAC GPO init parameters. */
+/* LDAC GPO init parameters.
+ * NOTE: DIG_AUX_2 is used only as SYNC in case of AD4190 */
 struct no_os_gpio_init_param gpio_init_ldac_n = {
 	.number = DIG_AUX_2,
 	.port = DIG_AUX_2_PORT,

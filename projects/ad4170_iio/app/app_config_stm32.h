@@ -2,7 +2,7 @@
  *   @file    app_config_stm32.h
  *   @brief   Header file for STM32 platform configurations
 ********************************************************************************
- * Copyright (c) 2023-24 Analog Devices, Inc.
+ * Copyright (c) 2023-2025 Analog Devices, Inc.
  * All rights reserved.
  *
  * This software is proprietary to Analog Devices, Inc. and its licensors.
@@ -141,12 +141,27 @@
  * a value specific to the NUCLEO-H563ZI platform tested with a 10MHz SPI clock. The maximum
  * ODR might vary across platforms and data continuity is not guaranteed above this ODR
  * on the IIO Client*/
+
+/* Value corresponding to 24KSPS ODR (per channel) with Sinc5 average filter */
+#define FS_SINC5_AVG_24_KSPS	20
+
+/* Value corresponding to 512ksps ODR (per channel) with Sinc5 filter */
+#define FS_SINC5_512_KSPS		1
+
+/* Value corresponding to 62.5 ODR (per channel) with Sinc3 filter */
+#define FS_SINC3_62P5_KSPS		4
+
 #if (INTERFACE_MODE == SPI_INTERRUPT_MODE)
-#define FS_CONFIG_VALUE 	20 // Value corresponding to 24KSPS ODR (per channel) with Sinc5 average filter
-#elif (INTERFACE_MODE == SPI_DMA_MODE)
-#define FS_CONFIG_VALUE		1 // Value correspoinding to 512ksps ODR (per channel) with Sinc5 filter
-#else // TDM_MODE
-#define FS_CONFIG_VALUE		1 // Value correspoinding to 512ksps ODR (per channel) with Sinc5 filter
+#define FS_CONFIG_VALUE 	FS_SINC5_AVG_24_KSPS
+#define AD4170_MAX_SAMPLING_RATE    24000
+#else // TDM_MODE and SPI_DMA_MODE
+#if defined (DEV_AD4170)
+#define FS_CONFIG_VALUE		FS_SINC5_512_KSPS
+#define AD4170_MAX_SAMPLING_RATE    500000
+#elif defined (DEV_AD4190)
+#define FS_CONFIG_VALUE		FS_SINC3_62P5_KSPS
+#define AD4170_MAX_SAMPLING_RATE    62500
+#endif
 #endif
 
 #define TICKER_INTERRUPT_PERIOD_uSEC	(0) // unused
@@ -174,6 +189,8 @@ extern UART_HandleTypeDef huart3;
 extern UART_HandleTypeDef huart5;
 extern DMA_HandleTypeDef hdma_spi1_rx;
 extern DMA_HandleTypeDef hdma_tim8_ch1;
+extern USBD_HandleTypeDef hUsbDeviceHS;
+extern struct stm32_usb_uart_init_param stm32_vcom_extra_init_params;
 #endif
 extern bool data_capture_operation;
 extern struct iio_device_data *ad4170_iio_dev_data;
@@ -193,10 +210,6 @@ extern struct stm32_pwm_init_param stm32_tx_trigger_extra_init_params;
 extern struct no_os_dma_init_param ad4170_dma_init_param;
 extern struct stm32_dma_channel rxdma_channel;
 extern struct stm32_dma_channel txdma_channel;
-#endif
-#if defined (TARGET_SDP_K1)
-extern USBD_HandleTypeDef hUsbDeviceHS;
-extern struct stm32_usb_uart_init_param stm32_vcom_extra_init_params;
 #endif
 
 void tim8_config(void);

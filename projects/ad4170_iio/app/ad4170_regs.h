@@ -2,7 +2,7 @@
 *   @file   ad4170_regs.h
 *   @brief  Global declarations for ad4170_regs module
 ********************************************************************************
-* Copyright (c) 2021,2024 Analog Devices, Inc.
+* Copyright (c) 2021,2025 Analog Devices, Inc.
 * All rights reserved.
 *
 * This software is proprietary to Analog Devices, Inc. and its licensors.
