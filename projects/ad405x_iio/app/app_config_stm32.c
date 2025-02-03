@@ -443,5 +443,6 @@ int stm32_abort_dma_transfer(void)
 		return ret;
 	}
 
+	return 0;
 }
 #endif

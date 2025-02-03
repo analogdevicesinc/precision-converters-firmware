@@ -9,7 +9,8 @@ from adi import ad405x #TODO: Uncomment this later when driver is released to py
 from ad405x import * #TODO: Remove this later when driver is released to pyadi-iio
 
 
-iio_device = { 'DEV_AD4052': 'ad4052' }
+iio_device = { 'DEV_AD4050': 'ad4050',
+               'DEV_AD4052': 'ad4052' }
 MAX_EXPECTED_VOLTAGE = 1.9
 MIN_EXPECTED_VOLTAGE = 1.7
 
@@ -41,7 +42,8 @@ def test_ad405x(serial_port, device_name, target_reset):
     
     # Extract the data of enabled channels in rx_enabled_channels
     for sample_index in range(0, len(data)):
-        data[sample_index] = chn_data[ad405x_dev.rx_enabled_channels[0]]
+        # The eval board reports half of the actual input voltage
+        data[sample_index] = chn_data[ad405x_dev.rx_enabled_channels[0]] * 2
         sample_index = sample_index + len(ad405x_dev.channel)
     
     
