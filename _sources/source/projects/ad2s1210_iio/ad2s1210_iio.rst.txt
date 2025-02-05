@@ -50,8 +50,9 @@ Plug in the EVAL-AD2S1210 board to the ADZS-BRKOUT, populate flywires to the
 SDP-K1 board using the Arduino connector.
 
 The connections are as follows:
+
 +-------------+------------+
-| SDPK1	     |  BREAKOUT  |
+| SDPK1	      | BREAKOUT   |
 +-------------+------------+
 | DIGITAL-0   | 96  A0     |
 +-------------+------------+
