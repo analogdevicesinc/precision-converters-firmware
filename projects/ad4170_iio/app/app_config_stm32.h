@@ -132,25 +132,6 @@
 #define STM32_SAI_BASE	SAI1_Block_A
 #endif
 
-/* Note: The below macro and the type of digital filter chosen together
- * decides the output data rate to be configured for the device.
- * Filter configuration can be modified by changing the macro "AD4170_FILTER_CONFIG"
- * in the respective user configuration header file.
- * Please refer to the datasheet for more details on the other filter configurations.
- * It has to be noted that this is not the maximum ODR permissible by the device, but
- * a value specific to the NUCLEO-H563ZI platform tested with a 10MHz SPI clock. The maximum
- * ODR might vary across platforms and data continuity is not guaranteed above this ODR
- * on the IIO Client*/
-
-/* Value corresponding to 24KSPS ODR (per channel) with Sinc5 average filter */
-#define FS_SINC5_AVG_24_KSPS	20
-
-/* Value corresponding to 512ksps ODR (per channel) with Sinc5 filter */
-#define FS_SINC5_512_KSPS		1
-
-/* Value corresponding to 62.5 ODR (per channel) with Sinc3 filter */
-#define FS_SINC3_62P5_KSPS		4
-
 #if (INTERFACE_MODE == SPI_INTERRUPT_MODE)
 #define FS_CONFIG_VALUE 	FS_SINC5_AVG_24_KSPS
 #define AD4170_MAX_SAMPLING_RATE    24000

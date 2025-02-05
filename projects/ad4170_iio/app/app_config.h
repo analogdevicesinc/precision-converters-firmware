@@ -84,6 +84,25 @@
 #define HW_MEZZANINE_NAME	"EVAL-AD4170-4ARDZ"
 #endif
 
+/* Note: The below macro and the type of digital filter chosen together
+ * decides the output data rate to be configured for the device.
+ * Filter configuration can be modified by changing the macro "AD4170_FILTER_CONFIG"
+ * in the respective user configuration header file.
+ * Please refer to the datasheet for more details on the other filter configurations.
+ * It has to be noted that this is not the maximum ODR permissible by the device, but
+ * a value specific to the NUCLEO-H563ZI/SDP-K1 platform tested with a 10MHz SPI clock. The maximum
+ * ODR might vary across platforms and data continuity is not guaranteed above this ODR
+ * on the IIO Client*/
+
+/* Value corresponding to 24KSPS ODR (per channel) with Sinc5 average filter */
+#define FS_SINC5_AVG_24_KSPS	20
+
+/* Value corresponding to 512ksps ODR (per channel) with Sinc5 filter */
+#define FS_SINC5_512_KSPS		1
+
+/* Value corresponding to 62.5 ODR (per channel) with Sinc3 filter */
+#define FS_SINC3_62P5_KSPS		4
+
 /* Select the active platform (default is Mbed) */
 #if !defined(ACTIVE_PLATFORM)
 #define ACTIVE_PLATFORM		MBED_PLATFORM
@@ -132,13 +151,10 @@
 #define HW_CARRIER_NAME         TARGET_NAME
 /* Redefine the init params structure mapping w.r.t. platform */
 #define ticker_int_extra_init_params mbed_ticker_int_extra_init_params
-#if defined(USE_VIRTUAL_COM_PORT)
-#define uart_extra_init_params mbed_vcom_extra_init_params
-#define uart_ops mbed_virtual_com_ops
-#else
+#define vcom_extra_init_params mbed_vcom_extra_init_params
+#define vcom_ops mbed_virtual_com_ops
 #define uart_extra_init_params mbed_uart_extra_init_params
 #define uart_ops mbed_uart_ops
-#endif
 #define spi_extra_init_params mbed_spi_extra_init_params
 #define i2c_extra_init_params mbed_i2c_extra_init_params
 #define trigger_gpio_irq_extra_params mbed_trigger_gpio_irq_init_params
