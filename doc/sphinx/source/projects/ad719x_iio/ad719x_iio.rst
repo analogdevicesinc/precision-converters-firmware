@@ -18,6 +18,7 @@ Supported Hardware
 * `EVAL-AD7190 <https://www.analog.com/en/resources/evaluation-hardware-and-software/evaluation-boards-kits/eval-ad7190asdz.html>`_
 * `EVAL-AD7192 <https://www.analog.com/en/resources/evaluation-hardware-and-software/evaluation-boards-kits/eval-ad7192asdz.html>`_
 * `EVAL-AD7193 <https://www.analog.com/en/resources/evaluation-hardware-and-software/evaluation-boards-kits/eval-ad7193asdz.html>`_
+* `EVAL-AD7194 <https://www.analog.com/en/resources/evaluation-hardware-and-software/evaluation-boards-kits/eval-ad7194asdz.html>`_
 * `EVAL-AD7195 <https://www.analog.com/en/resources/evaluation-hardware-and-software/evaluation-boards-kits/eval-ad7195asdz.html>`_
 
 **Supported Carrier Boards:**
