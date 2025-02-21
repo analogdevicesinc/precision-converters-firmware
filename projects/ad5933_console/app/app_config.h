@@ -2,7 +2,7 @@
  *   @file   app_config.h
  *   @brief  Configuration file of AD5933 firmware example program
 ******************************************************************************
-* Copyright (c) 2019, 2022 Analog Devices, Inc.
+* Copyright (c) 2019, 2022, 2025 Analog Devices, Inc.
 *
 * All rights reserved.
 *
@@ -15,48 +15,27 @@
 #define _APP_CONFIG_H_
 
 #include <stdint.h>
-#include <PinNames.h>
 #include "ad5933.h"
 
-/**
-  The ADI SDP_K1 can be used with both arduino headers
-  or the 120-pin SDP connector found on ADI evaluation
-  boards. The default is the Arduino connector
+#define	MBED_PLATFORM		1
+#define STM32_PLATFORM      2
 
-  Uncomment the ARDUINO #define below to enable the ARDUINO connector
+/* Select the Active Platform */
+#if !defined(ACTIVE_PLATFORM)
+#define ACTIVE_PLATFORM		STM32_PLATFORM
+#endif
 
-*/
-//#define  ARDUINO
-
-//#warning  check this
-#ifdef ARDUINO
-/* Arduino interface pins*/
-#define I2C_SCL     ARDUINO_UNO_D15
-#define I2C_SDA     ARDUINO_UNO_D14
-
-#define SPI_CS		ARDUINO_UNO_D10
-#define SPI_MISO	ARDUINO_UNO_D12
-#define SPI_MOSI	ARDUINO_UNO_D11
-#define SPI_SCK		ARDUINO_UNO_D13
-
-#define GAIN_PIN	ARDUINO_UNO_D8
-#define RESET_PIN	ARDUINO_UNO_D9
-#define LDAC_PIN	ARDUINO_UNO_D7
-#define ADDR0_PIN	ARDUINO_UNO_D6
+#if (ACTIVE_PLATFORM == MBED_PLATFORM)
+#include "app_config_mbed.h"
+#define spi_init_extra_params	mbed_spi_extra_init_params
+#define spi_ops mbed_spi_ops
+#define i2c_init_extra_params   mbed_i2c_extra_init_params
 #else
-/* SDP-120 interface pins*/
-#define I2C_SCL     SDP_I2C_SCL
-#define I2C_SDA     SDP_I2C_SDA
-
-#define SPI_CS		SDP_SPI_CS_A
-#define SPI_MISO	SDP_SPI_MISO
-#define SPI_MOSI	SDP_SPI_MOSI
-#define SPI_SCK		SDP_SPI_SCK
-
-#define GAIN_PIN	SDP_GPIO_0
-#define RESET_PIN	SDP_GPIO_2
-#define LDAC_PIN	SDP_GPIO_3
-#define ADDR0_PIN	SDP_GPIO_4
+#include "app_config_stm32.h"
+#define spi_init_extra_params  stm32_spi_extra_init_params
+#define spi_ops stm32_spi_ops
+#define uart_extra_init_params 	stm32_uart_extra_init_params
+#define i2c_init_extra_params   stm32_i2c_extra_init_params
 #endif
 
 #endif //_APP_CONFIG_H_
