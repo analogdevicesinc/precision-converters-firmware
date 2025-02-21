@@ -2,7 +2,7 @@
  *   @file    ad7689_iio.c
  *   @brief   Implementation of AD7689 IIO application interfaces
 ********************************************************************************
- * Copyright (c) 2021-23 Analog Devices, Inc.
+ * Copyright (c) 2021-23,2025 Analog Devices, Inc.
  * All rights reserved.
  *
  * This software is proprietary to Analog Devices, Inc. and its licensors.
@@ -325,6 +325,19 @@ static int32_t iio_ad7689_prepare_transfer(void *dev_instance,
 	data_indx = 0;
 	buf_size_updated = false;
 
+	/* The UART interrupt needs to be prioritized over the GPIO (end of conversion) interrupt.
+	 * If not, the GPIO interrupt may occur during the period where there is a UART read happening
+	 * for the READBUF command. If UART interrupts are not prioritized, then it would lead to missing of
+	 * characters in the IIO command sent from the client. */
+#if (DATA_CAPTURE_MODE == CONTINUOUS_DATA_CAPTURE)
+#if (ACTIVE_PLATFORM == STM32_PLATFORM)
+	ret = no_os_irq_set_priority(trigger_irq_desc, TRIGGER_INT_ID, RDY_GPIO_PRIORITY);
+	if (ret) {
+		return ret;
+	}
+#endif
+#endif
+
 	/* Get the active channels count based on the channel mask set in an IIO
 	 * client application (channel mask starts from bit 0) */
 	for (uint8_t chn = 0; chn < ADC_CHN_COUNT; chn++) {
@@ -433,6 +446,15 @@ int32_t iio_ad7689_trigger_handler(struct iio_device_data *iio_dev_data)
 	if (ret) {
 		return ret;
 	}
+
+#if (ACTIVE_PLATFORM == STM32_PLATFORM)
+	/* Clear pending Interrupt before enabling back the trigger.
+	 * Else , a spurious interrupt is observed after a legitimate interrupt, */
+	ret = no_os_irq_clear_pending(trigger_irq_desc, IRQ_INT_ID);
+	if (ret) {
+		return ret;
+	}
+#endif
 
 	return 0;
 }

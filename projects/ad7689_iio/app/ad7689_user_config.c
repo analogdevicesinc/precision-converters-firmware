@@ -2,7 +2,7 @@
  * @file    ad7689_user_config.c
  * @brief   User configurations for AD7689 No-OS driver
 ********************************************************************************
-* Copyright (c) 2021-22 Analog Devices, Inc.
+* Copyright (c) 2021-22,2025 Analog Devices, Inc.
 * All rights reserved.
 *
 * This software is proprietary to Analog Devices, Inc. and its licensors.
@@ -39,6 +39,7 @@ struct ad7689_init_param ad7689_init_params = {
 	},
 
 	.spi_init = {
+		.device_id = SPI_DEVICE_ID,
 		.max_speed_hz = 22500000,
 		.mode = NO_OS_SPI_MODE_0,
 		.chip_select = SPI_CSB,
