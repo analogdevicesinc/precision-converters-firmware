@@ -7,7 +7,7 @@
   @details: main module for AD7124 application interface
 
  -----------------------------------------------------------------------------
- Copyright (c) 2019, 2020 Analog Devices, Inc.
+ Copyright (c) 2019, 2020,2025 Analog Devices, Inc.
  All rights reserved.
 
  This software is proprietary to Analog Devices, Inc. and its licensors.
@@ -18,6 +18,7 @@
 /*** includes ***/
 #include <stdio.h>
 #include "ad7124_console_app.h"
+#include "app_config.h"
 
 /*****************************************************************************/
 
@@ -34,6 +35,11 @@
 int main()
 {
 	int32_t setupResult;
+
+	/* Initialize the stm32 peripherals */
+#if (ACTIVE_PLATFORM == STM32_PLATFORM)
+	stm32_system_init();
+#endif
 
 	/* Initialize the AD7124 application before the main loop */
 	if ((setupResult = ad7124_app_initialize(AD7124_CONFIG_A)) < 0) {

@@ -1,8 +1,8 @@
 /*************************************************************************//**
- *   @file   app_config.h
- *   @brief  Configuration file of AD7124 firmware example program
+*   @file   app_config.h
+*   @brief  Configuration file of AD7124 firmware example program
 ******************************************************************************
-* Copyright (c) 2020,2022 Analog Devices, Inc.
+* Copyright (c) 2020,2022,2025 Analog Devices, Inc.
 *
 * All rights reserved.
 *
@@ -14,32 +14,40 @@
 #ifndef _APP_CONFIG_H_
 #define _APP_CONFIG_H_
 
+/******************************************************************************/
+/***************************** Include Files **********************************/
+/******************************************************************************/
+
 #include <stdint.h>
-#include <PinNames.h>
 
-/**
-*  The ADI SDP_K1 can be used with both arduino headers
-*  or the 120-pin SDP connector found on ADI evaluation
-*  boards. The default is the Arduino connector.
-*
-* Uncomment the SDP_120 #define below to enable the SDP-120 connector
-*/
+/******************************************************************************/
+/********************** Macros and Constants Definitions **********************/
+/******************************************************************************/
 
-//#define  SDP_120
+/* List of platforms supported */
+#define	MBED_PLATFORM		1
+#define STM32_PLATFORM      2
 
-#ifdef SDP_120
-#define SPI_CSB 	    SDP_SPI_CS_A
-#define SPI_HOST_SDI	SDP_SPI_MISO
-#define SPI_HOST_SDO	SDP_SPI_MOSI
-#define SPI_SCK		    SDP_SPI_SCK
-#else
-#define SPI_CSB 	    ARDUINO_UNO_D10
-#define SPI_HOST_SDI 	ARDUINO_UNO_D12
-#define SPI_HOST_SDO 	ARDUINO_UNO_D11
-#define SPI_SCK 		  ARDUINO_UNO_D13
+// **** Note for User on selection of Active Device ****//
+/* Define the device type here from the list of below device type defines
+ * (one at a time. Defining more than one device can result into compile error).
+ * e.g. #define DEV_AD7142_4= -> This will make AD7124-4 as an active device.
+ * The active device is default set to AD7124-4 if device type is not defined.
+ * */
+#define DEV_AD7124_4
+
+/* Select the active platform  */
+#if !defined(ACTIVE_PLATFORM)
+#define ACTIVE_PLATFORM		STM32_PLATFORM
 #endif
 
-// Common pin mappings
-#define LED_GREEN	LED3	// PK_5
+#if (ACTIVE_PLATFORM == MBED_PLATFORM)
+#include "app_config_mbed.h"
+#define spi_init_extra_params	mbed_spi_extra_init_params
+#else
+#include "app_config_stm32.h"
+#define spi_init_extra_params  stm32_spi_extra_init_params
+#define uart_extra_init_params 	stm32_uart_extra_init_params
+#endif
 
 #endif //_APP_CONFIG_H_

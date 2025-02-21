@@ -8,7 +8,7 @@
             The functions defined in this file performs the action
             based on user selected console menu.
  -----------------------------------------------------------------------------
- Copyright (c) 2019-2022 Analog Devices, Inc.
+ Copyright (c) 2019-2022,2025 Analog Devices, Inc.
  All rights reserved.
 
  This software is proprietary to Analog Devices, Inc. and its licensors.
@@ -24,12 +24,10 @@
 
 #include "app_config.h"
 
-#include "mbed_platform_support.h"
 #include "no_os_error.h"
 #include "no_os_gpio.h"
 #include "no_os_spi.h"
-#include "mbed_spi.h"
-#include "mbed_gpio.h"
+#include "no_os_uart.h"
 
 #include "ad7124.h"
 #include "ad7124_regs.h"
@@ -58,6 +56,8 @@
 #define MAX_PROGRAMMABLE_GAIN   128
 #define MAX_ANALOG_INPUTS       32
 
+/* The UART Descriptor */
+struct no_os_uart_desc *uart_desc;
 
 /* Private Variables */
 /*
@@ -73,7 +73,8 @@ static struct ad7124_dev * pAd7124_dev = NULL;
 static struct no_os_gpio_desc *activity_led_desc = NULL;
 static struct no_os_gpio_init_param activity_led_init_param = {
 	.number =  LED_GREEN,
-	.platform_ops = &mbed_gpio_ops,
+	.port = LED_PORT,
+	.platform_ops = &gpio_ops,
 	.extra = NULL
 };
 
@@ -138,6 +139,43 @@ typedef struct {
 	uint32_t adc_sample;       // ADC conversion sample
 } temp_loopup;
 
+/* UART init parameters structure */
+struct no_os_uart_init_param uart_init_params = {
+	.device_id = 0,
+	.baud_rate = 230400,
+	.size = NO_OS_UART_CS_8,
+	.parity = NO_OS_UART_PAR_NO,
+	.stop = NO_OS_UART_STOP_1_BIT,
+	.irq_id = UART_IRQ_ID,
+#if (ACTIVE_PLATFORM == STM32_PLATFORM)
+	.asynchronous_rx = false,
+	.platform_ops = &uart_ops,
+	.extra = &uart_extra_init_params
+#endif
+};
+
+/* Designated SPI Initialization Structure */
+struct no_os_spi_init_param	ad7124_spi_init = {
+	.device_id = SPI_DEVICE_ID,
+	.max_speed_hz = MAX_SPI_CLK, // Max SPI Speed
+	.chip_select =  SPI_CSB, // Chip Select pin
+	.mode = NO_OS_SPI_MODE_3, // CPOL = 1, CPHA =1
+	.extra = &spi_init_extra_params,  // SPI extra configurations
+	.platform_ops = &spi_ops
+};
+
+/* Used to create the ad7124 device */
+struct  ad7124_init_param sAd7124_init = {
+	.spi_init = &ad7124_spi_init,  // spi_init_param type
+	.regs = ad7124_regs,
+	.spi_rdy_poll_cnt = 10000, // Retry count for polling
+	.power_mode = AD7124_HIGH_POWER,
+#if defined(DEV_AD7124_4)
+	.active_device = ID_AD7124_4,
+#else
+	.active_device = ID_AD7124_8,
+#endif
+};
 
 /* Function protoypes */
 static int32_t menu_continuous_conversion_tabular(uint32_t);
@@ -273,12 +311,17 @@ static temp_loopup temperature_lookup[] = {
  */
 int32_t ad7124_app_initialize(uint8_t configID)
 {
-	// Init SPI extra parameters structure
-	struct mbed_spi_init_param spi_init_extra_params = {
-		.spi_clk_pin =	SPI_SCK,
-		.spi_miso_pin = SPI_HOST_SDI,
-		.spi_mosi_pin = SPI_HOST_SDO
-	};
+	int ret;
+
+#if (ACTIVE_PLATFORM == STM32_PLATFORM)
+	ret = no_os_uart_init(&uart_desc, &uart_init_params);
+	if (ret) {
+		return ret;
+	}
+
+	/* Set up the UART for standard I/O operations */
+	no_os_uart_stdio(uart_desc);
+#endif
 
 	// Create a new descriptor for activity led
 	if (no_os_gpio_get(&activity_led_desc, &activity_led_init_param) != 0) {
@@ -309,22 +352,6 @@ int32_t ad7124_app_initialize(uint8_t configID)
 		return -EINVAL;
 	}
 
-	// Designated SPI Initialization Structure
-	struct no_os_spi_init_param	ad7124_spi_init = {
-		.max_speed_hz = 2500000, // Max SPI Speed
-		.chip_select =  SPI_CSB, // Chip Select pin
-		.mode = NO_OS_SPI_MODE_3, // CPOL = 1, CPHA =1
-		.extra = &spi_init_extra_params,  // SPI extra configurations
-		.platform_ops = &mbed_spi_ops
-	};
-
-	// Used to create the ad7124 device
-	struct  ad7124_init_param sAd7124_init = {
-		&ad7124_spi_init,  // spi_init_param type
-		ad7124_register_map,
-		10000               // Retry count for polling
-	};
-
 	return (ad7124_setup(&pAd7124_dev, &sAd7124_init));
 }
 
@@ -337,15 +364,28 @@ int32_t ad7124_app_initialize(uint8_t configID)
  */
 static bool was_escape_key_pressed(void)
 {
-	char rxChar;
 	bool wasPressed = false;
 
-	// Check for Escape key pressed
+#if (ACTIVE_PLATFORM == MBED_PLATFORM)
+	char rxChar;
+
+	/* Check for Escape key pressed */
 	if ((rxChar = getchar_noblock()) > 0) {
 		if (rxChar == ESCAPE_KEY_CODE) {
 			wasPressed = true;
 		}
 	}
+
+#else  /* STM32_PLATFORM */
+	int32_t ret;
+
+	/* Check for Escape key pressed */
+	ret = check_escape_key_pressed();
+	if (ret) {
+		wasPressed = true;
+	}
+#endif
+
 	return (wasPressed);
 }
 
