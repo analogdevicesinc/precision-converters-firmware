@@ -159,7 +159,7 @@ static void print_invalid_input(void)
 	printf(EOL "Please enter a valid selection" EOL);
 	no_os_mdelay(2000);
 	/* Moves the cursor 2 lines up and clears the entire line*/
-	printf(VT100_MOVE_UP_N_LINES VT100_CLEAR_CURRENT_LINE,(uint8_t)2);
+	printf(VT100_MOVE_UP_N_LINES VT100_CLEAR_CURRENT_LINE, (uint8_t)2);
 }
 
 /*!
@@ -305,7 +305,7 @@ static int32_t interval_measure(uint32_t menu_id)
 	printf(EOL);
 	do {
 		printf("Enter the interval between each sample in seconds (%0.1f-%2.1f): ",
-		       (float)MIN_SAMPLE_INTERVAL,(float)MAX_SAMPLE_INTERVAL);
+		       (float)MIN_SAMPLE_INTERVAL, (float)MAX_SAMPLE_INTERVAL);
 		/* Restricting the input length to 4 characters */
 		interval = adi_get_decimal_float(4);
 		if (!float_in_range(interval, MIN_SAMPLE_INTERVAL, MAX_SAMPLE_INTERVAL)) {
@@ -317,11 +317,11 @@ static int32_t interval_measure(uint32_t menu_id)
 	} while (++max_try <= MAX_RETRY_ATTEMPTS);
 
 	print_conv_stop();
-	for(uint16_t i = 0 ; i < samples ; i++) {
+	for (uint16_t i = 0 ; i < samples ; i++) {
 		if (was_escape_key_pressed())
 			break;
 
-		printf(EOL " Sample :%d  ",i+1);
+		printf(EOL " Sample :%d  ", i + 1);
 		handle_read_write_print(2);
 		no_os_mdelay(interval * 1000);
 	}

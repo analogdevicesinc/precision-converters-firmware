@@ -17,9 +17,9 @@
 
 #include "app_config.h"
 #include "ad579x_iio.h"
-#include "ad579x_support.h"
 #include "ad5791.h"
 #include "ad579x_user_config.h"
+#include "ad579x_support.h"
 #include "common.h"
 #include "no_os_error.h"
 #include "no_os_util.h"
@@ -330,13 +330,13 @@ int32_t ad579x_set_sampling_rate(uint32_t *sampling_rate)
 	if (ret) {
 		return ret;
 	}
+#endif
 
 	/* Reconfigure the LDAC pin as GPIO output (non-PWM) */
-	ret = ad579x_reconfig_ldac(ad579x_dev_desc);
+	ret = ad579x_reconfig_ldac(ad579x_dev_desc, AD579x_LDAC_GPIO_OUTPUT);
 	if (ret) {
 		return ret;
 	}
-#endif
 
 	/* Get the updated value supported by the platform */
 	ret = no_os_pwm_get_period(pwm_desc, &pwm_period_ns);
@@ -862,6 +862,14 @@ static int32_t ad579x_iio_prepare_transfer(void *dev, uint32_t mask)
 		return -EINVAL;
 	}
 
+#if (ACTIVE_PLATFORM == STM32_PLATFORM)
+	/* Reconfigure the LDAC pin as PWM */
+	ret = ad579x_reconfig_ldac(ad579x_dev_desc, AD579x_LDAC_PWM);
+	if (ret) {
+		return ret;
+	}
+#endif
+
 	ret = iio_trig_enable(ad579x_hw_trig_desc);
 	if (ret) {
 		return ret;
@@ -899,7 +907,7 @@ static int32_t ad579x_iio_end_transfer(void *dev)
 	}
 
 	/* Reconfigure the LDAC pin as GPIO output (non-PWM) */
-	ret = ad579x_reconfig_ldac(ad579x_dev_desc);
+	ret = ad579x_reconfig_ldac(ad579x_dev_desc, AD579x_LDAC_GPIO_OUTPUT);
 	if (ret) {
 		return ret;
 	}
@@ -916,7 +924,7 @@ static int32_t ad579x_iio_end_transfer(void *dev)
 static int32_t ad579x_trigger_handler(struct iio_device_data *iio_dev_data)
 {
 	int32_t ret;
-	uint32_t dac_raw;	// Variable to store the raw dac code
+	uint32_t dac_raw = 0;	// Variable to store the raw dac code
 
 	ret = iio_buffer_pop_scan(iio_dev_data->buffer, &dac_raw);
 	if (ret) {
@@ -1044,7 +1052,6 @@ int32_t ad579x_iio_init()
 		return ret;
 	}
 
-#if (ACTIVE_PLATFORM == MBED_PLATFORM)
 	/* Read context attributes */
 	ret = get_iio_context_attributes(&iio_init_params.ctx_attrs,
 					 &iio_init_params.nb_ctx_attr,
@@ -1057,7 +1064,7 @@ int32_t ad579x_iio_init()
 	}
 
 	if (hw_mezzanine_is_valid) {
-#endif
+
 		/* Initialize the AD579x IIO app specific parameters */
 		ret = ad579x_iio_param_init(&ad579x_iio_dev);
 		if (ret) {
@@ -1073,10 +1080,7 @@ int32_t ad579x_iio_init()
 		iio_device_init_params[0].dev_descriptor = ad579x_iio_dev;
 		iio_device_init_params[0].trigger_id = "trigger0";
 		iio_init_params.nb_trigs++;
-
-#if (ACTIVE_PLATFORM == MBED_PLATFORM)
 	}
-#endif
 
 	/* Initialize the IIO interface */
 	iio_init_params.devs = iio_device_init_params;
@@ -1099,7 +1103,7 @@ int32_t ad579x_iio_init()
 	}
 
 	/* Reinitialize the LDAC pin as GPIO output (non-PWM) */
-	ret = ad579x_reconfig_ldac(ad579x_dev_desc);
+	ret = ad579x_reconfig_ldac(ad579x_dev_desc, AD579x_LDAC_GPIO_OUTPUT);
 	if (ret) {
 		return ret;
 	}
