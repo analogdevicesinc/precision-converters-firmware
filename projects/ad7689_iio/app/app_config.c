@@ -3,7 +3,7 @@
  *   @brief   Application configurations module (platform-agnostic)
  *   @details This module performs the system configurations
 ********************************************************************************
- * Copyright (c) 2021-23 Analog Devices, Inc.
+ * Copyright (c) 2021-23,2025 Analog Devices, Inc.
  * All rights reserved.
  *
  * This software is proprietary to Analog Devices, Inc. and its licensors.
@@ -42,13 +42,47 @@ static struct no_os_uart_init_param uart_init_params = {
 	.size = NO_OS_UART_CS_8,
 	.parity = NO_OS_UART_PAR_NO,
 	.stop = NO_OS_UART_STOP_1_BIT,
+#if (ACTIVE_PLATFORM == STM32_PLATFORM)
+	.asynchronous_rx = true,
+	.irq_id = UART_IRQ_ID,
+#endif
+#if defined(USE_VIRTUAL_COM_PORT)
+	.platform_ops = &vcom_ops,
+	.extra = &vcom_extra_init_params
+#else
 	.platform_ops = &uart_ops,
 	.extra = &uart_extra_init_params
+#endif
+};
+
+/* UART init parameters for console comm port */
+struct no_os_uart_init_param uart_console_stdio_init_params = {
+	.device_id = 0,
+	.baud_rate = IIO_UART_BAUD_RATE,
+	.size = NO_OS_UART_CS_8,
+	.parity = NO_OS_UART_PAR_NO,
+	.stop = NO_OS_UART_STOP_1_BIT,
+#if defined(USE_VIRTUAL_COM_PORT)
+	/* If virtual com port is primary IIO comm port, use physical port for stdio
+	 * console. Applications which does not support VCOM, should not satisfy this
+	 * condition */
+	.platform_ops = &uart_ops,
+	.extra = &uart_extra_init_params
+#else
+#if defined(CONSOLE_STDIO_PORT_AVAILABLE)
+	/* Applications which uses phy COM port as primary IIO comm port,
+	 * can use VCOM as console stdio port provided it is available.
+	 * Else, alternative phy com port can be used for console stdio ops if available */
+	.platform_ops = &vcom_ops,
+	.extra = &vcom_extra_init_params
+#endif
+#endif
 };
 
 /* LED GPO init parameters */
 static struct no_os_gpio_init_param led_gpio_init_params = {
 	.number = LED_GPO,
+	.port = LED_PORT,
 	.platform_ops = &gpio_ops,
 	.extra = NULL
 };
@@ -62,24 +96,38 @@ struct no_os_gpio_init_param trigger_gpio_param = {
 	.extra = &trigger_gpio_extra_init_params
 };
 
+#if (ACTIVE_PLATFORM == STM32_PLATFORM)
+/* PWM GPIO init parameters */
+struct no_os_gpio_init_param pwm_gpio_params = {
+	.port = TRIGGER_GPIO_PORT,
+	.number = TRIGGER_GPIO_PIN,
+	.platform_ops = &gpio_ops,
+	.extra = &pwm_gpio_extra_init_params
+};
+#endif
+
 /* Trigger GPIO IRQ parameters */
 struct no_os_irq_init_param trigger_gpio_irq_params = {
-	.irq_ctrl_id = 0,
+	.irq_ctrl_id = TRIGGER_INT_ID,
 	.platform_ops = &trigger_gpio_irq_ops,
 	.extra = &trigger_gpio_irq_extra_params
 };
 
 /* PWM init parameters */
 static struct no_os_pwm_init_param pwm_init_params = {
-	.id = 0,
+	.id = PWM_ID,
 	.period_ns = CONV_TRIGGER_PERIOD_NSEC,			// PWM period in nsec
-	.duty_cycle_ns = CONV_TRIGGER_DUTY_CYCLE_NSEC,	// PWM duty cycle in nsec
+	.duty_cycle_ns = CONV_TRIGGER_DUTY_CYCLE_NSEC,// PWM duty cycle in nsec
+	.platform_ops = &pwm_ops,
+#if (ACTIVE_PLATFORM == STM32_PLATFORM)
+	.pwm_gpio = &pwm_gpio_params,
+#endif
 	.extra = &pwm_extra_init_params
 };
 
 /* I2C init parameters */
 static struct no_os_i2c_init_param no_os_i2c_init_params = {
-	.device_id = 0,
+	.device_id = I2C_DEVICE_ID,
 	.platform_ops = &i2c_ops,
 	.max_speed_hz = 100000,
 	.extra = &i2c_extra_init_params
@@ -114,6 +162,9 @@ struct no_os_pwm_desc *pwm_desc;
 
 /* EEPROM descriptor */
 struct no_os_eeprom_desc *eeprom_desc;
+
+/* UART console descriptor */
+struct no_os_uart_desc *uart_console_stdio_desc;
 
 /******************************************************************************/
 /************************** Functions Declarations ****************************/
@@ -151,7 +202,27 @@ static int32_t init_gpio(void)
  */
 static int32_t init_uart(void)
 {
-	return no_os_uart_init(&uart_desc, &uart_init_params);
+	int ret;
+
+	ret = no_os_uart_init(&uart_desc, &uart_init_params);
+	if (ret) {
+		return ret;
+	}
+
+#if defined(CONSOLE_STDIO_PORT_AVAILABLE)
+	/* Initialize the serial link for console stdio communication */
+	ret = no_os_uart_init(&uart_console_stdio_desc,
+			      &uart_console_stdio_init_params);
+	if (ret) {
+		return ret;
+	}
+
+#if (ACTIVE_PLATFORM == STM32_PLATFORM)
+	no_os_uart_stdio(uart_console_stdio_desc);
+#endif
+#endif
+
+	return 0;
 }
 
 /**
@@ -212,6 +283,10 @@ int32_t init_pwm_trigger(void)
 int32_t init_system(void)
 {
 	int32_t ret;
+
+#if (ACTIVE_PLATFORM == STM32_PLATFORM)
+	stm32_system_init();
+#endif
 
 	ret = init_gpio();
 	if (ret) {
