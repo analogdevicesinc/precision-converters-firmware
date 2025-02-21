@@ -2,7 +2,7 @@
  *   @file   main.c
  *   @brief  main module for ltc268x console application interface
 ********************************************************************************
- * Copyright (c) 2022 Analog Devices, Inc.
+ * Copyright (c) 2022,2025 Analog Devices, Inc.
  *
  * All rights reserved.
  *
@@ -18,6 +18,7 @@
 #include <assert.h>
 #include "ltc268x_console_app.h"
 #include "no_os_error.h"
+#include "app_config.h"
 
 /******************************************************************************/
 /********************** Macros and Constants Definitions **********************/
@@ -32,6 +33,11 @@
 int main(void)
 {
 	int32_t init_status;
+
+	/* Initialize the stm32 peripherals */
+#if (ACTIVE_PLATFORM == STM32_PLATFORM)
+	stm32_system_init();
+#endif
 
 	/* Initialize the LTC268X device */
 	init_status = ltc268x_app_initialize();

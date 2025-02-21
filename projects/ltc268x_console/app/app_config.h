@@ -2,7 +2,7 @@
  *   @file   app_config.h
  *   @brief  Configuration file for LTC268X device applications
 ******************************************************************************
-* Copyright (c) 2022 Analog Devices, Inc.
+* Copyright (c) 2022,2025 Analog Devices, Inc.
 *
 * All rights reserved.
 *
@@ -23,9 +23,10 @@
 /******************************************************************************/
 /* List of supported platforms*/
 #define	MBED_PLATFORM		1
+#define STM32_PLATFORM      2
 
 /* Select the active platform */
-#define ACTIVE_PLATFORM		MBED_PLATFORM
+#define ACTIVE_PLATFORM		STM32_PLATFORM
 
 #if (ACTIVE_PLATFORM == MBED_PLATFORM)
 #include "app_config_mbed.h"
@@ -33,6 +34,12 @@
 /* Redefine the init params structure mapping w.r.t. platform */
 #define spi_extra_init_params mbed_spi_extra_init_params
 #define spi_ops mbed_spi_ops
+#elif(ACTIVE_PLATFORM == STM32_PLATFORM)
+#include "app_config_stm32.h"
+/* Redefine the init params structure mapping w.r.t. platform */
+#define spi_extra_init_params stm32_spi_extra_init_params
+#define uart_extra_init_params 	stm32_uart_extra_init_params
+#define spi_ops stm32_spi_ops
 #else
 #error "No/Invalid active platform selected"
 #endif

@@ -2,7 +2,7 @@
  *   @file    app_config_mbed.h
  *   @brief   Header file for Mbed platform configurations
 ********************************************************************************
- * Copyright (c) 2022 Analog Devices, Inc.
+ * Copyright (c) 2022,2025 Analog Devices, Inc.
  * All rights reserved.
  *
  * This software is proprietary to Analog Devices, Inc. and its licensors.
@@ -26,6 +26,9 @@
 #define SPI_HOST_SDO	ARDUINO_UNO_D11
 #define SPI_HOST_SDI	ARDUINO_UNO_D12
 #define SPI_SCK		    ARDUINO_UNO_D13
+
+/* Unused macros */
+#define SPI_DEVICE_ID 0
 
 /******************************************************************************/
 /********************** Public/Extern Declarations ****************************/
