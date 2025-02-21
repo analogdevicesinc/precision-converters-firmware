@@ -77,7 +77,7 @@ enum input_status ltc2488_data_process(const uint32_t *adc_code,
 	//Checks for the input range.
 	enum input_status range_check = LTC2488_INPUT_RANGE(*adc_code);
 
-	switch(range_check) {
+	switch (range_check) {
 
 	case OVER_RANGE : // Limits the ADC value to +1 the max 17-bit positive value
 		*adc_value = 0x00020000;

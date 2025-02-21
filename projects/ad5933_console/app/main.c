@@ -114,7 +114,8 @@ int main()
 		printf("\nTemperature: %f, AD5933 initialization successful!" EOL,
 		       temperature);
 	} else {
-		printf(EOL"AD5933 initialization reported a bad temperature - recommend debug :" EOL);
+		printf(EOL"AD5933 initialization reported a bad temperature - recommend debug :"
+		       EOL);
 	}
 
 	while (connected == 0) {
@@ -157,7 +158,8 @@ int main()
 //! Prints the title block
 void print_title()
 {
-	printf(EOL "*****************************************************************" EOL);
+	printf(EOL "*****************************************************************"
+	       EOL);
 	printf("* AD5933 Demonstration Program                                  *"EOL);
 	printf("*                                                               *"EOL);
 	printf("* This program demonstrates communication with the AD5933       *"EOL);
@@ -404,7 +406,8 @@ static uint8_t guide()
 	printf("This program can be used both as a demo of the AD5933 impedance " EOL);
 	printf("measurement system and as a starting point for developing a " EOL);
 	printf("more advanced program for prototyping. This program is not " EOL);
-	printf("provided as production-quality code, but as a helpful starting point." EOL);
+	printf("provided as production-quality code, but as a helpful starting point."
+	       EOL);
 
 	printf("As a quick start, the following steps can be implemented to ensure"EOL);
 	printf("firmware is communicating with the board and measurements taking place."EOL);

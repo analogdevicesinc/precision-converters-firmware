@@ -25,6 +25,7 @@
 
 /* List of supported platforms */
 #define	MBED_PLATFORM		1
+#define STM32_PLATFORM      2
 
 /* List of supported DAC data stream modes */
 #define CYCLIC_STREAM			0
@@ -47,7 +48,7 @@
 #endif
 
 /* Enable the UART/VirtualCOM port connection (default VCOM) */
-//#define USE_PHY_COM_PORT		// Uncomment to select UART
+#define USE_PHY_COM_PORT		// Uncomment to select UART
 
 #if !defined(USE_PHY_COM_PORT)
 #define USE_VIRTUAL_COM_PORT
@@ -164,6 +165,21 @@
 #define vcom_ops mbed_virtual_com_ops
 #define pwm_ops mbed_pwm_ops
 #define trigger_gpio_irq_ops mbed_gpio_irq_ops
+#elif (ACTIVE_PLATFORM == STM32_PLATFORM)
+#include "app_config_stm32.h"
+#define pwm_extra_init_params stm32_pwm_extra_init_params
+#define uart_extra_init_params stm32_uart_extra_init_params
+#define spi_extra_init_params stm32_spi_extra_init_params
+#define i2c_extra_init_params stm32_i2c_extra_init_params
+#define trigger_gpio_irq_extra_params stm32_trigger_gpio_irq_init_params
+#define vcom_extra_init_params  stm32_vcom_extra_init_params
+#define vcom_ops  stm32_usb_uart_ops
+#define gpio_ops               stm32_gpio_ops
+#define spi_ops stm32_spi_ops
+#define i2c_ops stm32_i2c_ops
+#define uart_ops stm32_uart_ops
+#define pwm_ops stm32_pwm_ops
+#define trigger_gpio_irq_ops stm32_gpio_irq_ops
 #else
 #error "No/Invalid active platform selected"
 #endif
@@ -191,7 +207,7 @@
 /* Check if any serial port available for use as console stdio port */
 #if defined(USE_PHY_COM_PORT)
 /* If PHY com is selected, VCOM or alternate PHY com port can act as a console stdio port */
-#if (ACTIVE_PLATFORM == MBED_PLATFORM)
+#if (ACTIVE_PLATFORM == MBED_PLATFORM || ACTIVE_PLATFORM == STM32_PLATFORM)
 #define CONSOLE_STDIO_PORT_AVAILABLE
 #endif
 #else
@@ -214,6 +230,7 @@ extern struct no_os_pwm_desc *pwm_desc;
 extern struct no_os_uart_desc *uart_iio_com_desc;
 extern struct no_os_uart_desc *uart_console_stdio_desc;
 extern struct no_os_irq_ctrl_desc *trigger_irq_desc;
+extern struct no_os_pwm_init_param pwm_init_params;
 extern struct no_os_eeprom_desc *eeprom_desc;
 
 int32_t init_pwm_trigger(void);

@@ -32,9 +32,16 @@
 /********************** Variables and User Defined Data Types *****************/
 /******************************************************************************/
 
+/* Two different configuarations of the LDAC PIN */
+enum ad579x_ldac_pin_state {
+	AD579x_LDAC_GPIO_OUTPUT,
+	AD579x_LDAC_PWM
+};
+
 /******************************************************************************/
 /********************** Public/Extern Declarations ****************************/
 /******************************************************************************/
-int ad579x_reconfig_ldac(struct ad5791_dev *device);
+int ad579x_reconfig_ldac(struct ad5791_dev *device,
+			 enum ad579x_ldac_pin_state pin_state);
 
 #endif /* AD579X_SUPPORT_H_ */

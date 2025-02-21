@@ -48,11 +48,21 @@
 /* Pins used to trigger a new (periodic) dac update event */
 #define PWM_TRIGGER		LDAC_PIN
 
+/* Port names (Unused) */
+#define LDAC_PORT				0
+#define RESET_PORT              0
+#define CLR_PORT                0
+
 /* Console pin mapping on SDP-K1 */
 #define UART_TX			CONSOLE_TX
 #define	UART_RX			CONSOLE_RX
 
 #define TRIGGER_INT_ID   GPIO_IRQ_ID1
+#define trigger_gpio_handle         0 // Unused macro
+#define TRIGGER_GPIO_PORT           0 // Unused macro
+#define LDAC_PWM_ID                 0 // Unused macro
+#define SPI_DEVICE_ID	            0 // Unused macro
+#define I2C_DEVICE_ID               0 // Unused macro
 #define trigger_gpio_handle 0	// Unused macro
 #define UART_ID	0	// Unused macro
 #define SPI_ID	0	// Unused macro

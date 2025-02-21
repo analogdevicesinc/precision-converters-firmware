@@ -331,7 +331,8 @@ static int32_t iio_ad7689_prepare_transfer(void *dev_instance,
 	 * characters in the IIO command sent from the client. */
 #if (DATA_CAPTURE_MODE == CONTINUOUS_DATA_CAPTURE)
 #if (ACTIVE_PLATFORM == STM32_PLATFORM)
-	ret = no_os_irq_set_priority(trigger_irq_desc, TRIGGER_INT_ID, RDY_GPIO_PRIORITY);
+	ret = no_os_irq_set_priority(trigger_irq_desc, TRIGGER_INT_ID,
+				     RDY_GPIO_PRIORITY);
 	if (ret) {
 		return ret;
 	}
