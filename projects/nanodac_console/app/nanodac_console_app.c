@@ -9,7 +9,7 @@
             The functions defined in this file performs the action
             based on user selected console menu.
  -----------------------------------------------------------------------------
- Copyright (c) 2020-2022 Analog Devices, Inc.
+ Copyright (c) 2020-2022,2025 Analog Devices, Inc.
  All rights reserved.
 
  This software is proprietary to Analog Devices, Inc. and its licensors.
@@ -26,17 +26,13 @@
 #include <stdbool.h>
 
 #include "app_config.h"
-
 #include "ad5686.h"
 #include "nanodac_console_app.h"
 #include "no_os_error.h"
 #include "no_os_delay.h"
 #include "no_os_i2c.h"
 #include "no_os_spi.h"
-#include "mbed_platform_support.h"
-#include "mbed_gpio.h"
-#include "mbed_i2c.h"
-#include "mbed_spi.h"
+#include "no_os_uart.h"
 
 /******************************************************************************/
 /********************** Macros and Constants Definitions **********************/
@@ -98,6 +94,23 @@ static const char *operating_mode_str[] = {
 	"Three State"
 };
 
+/* UART Descriptor */
+struct no_os_uart_desc *uart_desc;
+
+struct no_os_uart_init_param uart_init_params = {
+	.device_id = 0,
+	.baud_rate = 230400,
+	.size = NO_OS_UART_CS_8,
+	.parity = NO_OS_UART_PAR_NO,
+	.stop = NO_OS_UART_STOP_1_BIT,
+	.irq_id = UART_IRQ_ID,
+	.asynchronous_rx = false,
+#if (ACTIVE_PLATFORM == STM32_PLATFORM)
+	.platform_ops = &uart_ops,
+	.extra = &uart_extra_init_params
+#endif
+};
+
 // Menu pre-declarations
 extern console_menu dac_channel_select_menu;
 extern console_menu vref_select_menu;
@@ -125,65 +138,44 @@ int32_t nanodac_app_initialize(void)
 {
 	int32_t device_init_status;	// Init status of device
 
-	// Initialize the extra parameters for I2C initialization
-	struct mbed_i2c_init_param i2c_init_extra_params = {
-		.i2c_sda_pin = I2C_SDA,
-		.i2c_scl_pin = I2C_SCL
-	};
-
-	// Initialize the extra parameters for SPI initialization
-	struct mbed_spi_init_param spi_init_extra_params = {
-		.spi_clk_pin = SPI_SCK,
-		.spi_miso_pin = SPI_HOST_SDI,
-		.spi_mosi_pin = SPI_HOST_SDO,
-		.use_sw_csb = false
-	};
-
-	struct mbed_gpio_init_param reset_gpio_extra_init_params = {
-		.pin_mode = 0	// NA
-	};
-
-	struct mbed_gpio_init_param ldac_gpio_extra_init_params = {
-		.pin_mode = 0	// NA
-	};
-
-	struct mbed_gpio_init_param gain_gpio_extra_init_params = {
-		.pin_mode = 0	// NA
-	};
-
 	// Initialize the device structure
 	struct ad5686_init_param nanodac_init_params = {
 		// i2c_init_param
 		{
+			.device_id = I2C_DEVICE_ID,
 			.max_speed_hz = 100000,				// I2C max speed (Hz)
 			.slave_address = I2C_SLAVE_ADDRESS,	// I2C slave address
 			.extra = &i2c_init_extra_params,	// I2C extra init parameters
-			.platform_ops = &mbed_i2c_ops
+			.platform_ops = &i2c_ops
 		},
 
 		// spi_init_param
 		.spi_init = {
+			.device_id = SPI_DEVICE_ID,
 			.max_speed_hz = 2000000, 	    // SPI max speed (Hz)
 			.chip_select = SPI_CSB, 		// Chip select
 			.mode = NO_OS_SPI_MODE_2,		// SPI Mode
 			.extra = &spi_init_extra_params,	// SPI extra init parameters
-			.platform_ops = &mbed_spi_ops
+			.platform_ops = &spi_ops
 		},
 
 		// gpio_init_param
 		{
-			.number = RESET_PIN,            // Reset GPIO Pin
-			.platform_ops = &mbed_gpio_ops,
+			.number = RESET_PIN, // Reset GPIO Pin
+			.port = RESET_PORT,
+			.platform_ops = &gpio_ops,
 			.extra =  &reset_gpio_extra_init_params
 		},
 		{
-			.number = LDAC_PIN,				// LDAC GPIO Pin
-			.platform_ops = &mbed_gpio_ops,
+			.number = LDAC_PIN,	// LDAC GPIO Pin
+			.port = LDAC_PORT,
+			.platform_ops = &gpio_ops,
 			.extra =  &ldac_gpio_extra_init_params
 		},
 		{
 			.number = GAIN_PIN,             // Gain GPIO Pin
-			.platform_ops = &mbed_gpio_ops,
+			.port = GAIN_PORT,
+			.platform_ops = &gpio_ops,
 			.extra =  &gain_gpio_extra_init_params
 		},
 
@@ -191,6 +183,14 @@ int32_t nanodac_app_initialize(void)
 	};
 
 	do {
+#if (ACTIVE_PLATFORM == STM32_PLATFORM)
+		device_init_status = no_os_uart_init(&uart_desc, &uart_init_params);
+		if (device_init_status) {
+			return device_init_status;
+		}
+
+		no_os_uart_stdio(uart_desc);
+#endif
 		// Initialize the device
 		if ((device_init_status = ad5686_init(&nanodac_dev,
 						      nanodac_init_params)) != 0)

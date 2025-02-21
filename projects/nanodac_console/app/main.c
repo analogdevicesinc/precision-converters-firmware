@@ -7,7 +7,7 @@
   @details: main module for nanodac application interface
 
  -----------------------------------------------------------------------------
- Copyright (c) 2020, 2022 Analog Devices, Inc.
+ Copyright (c) 2020, 2022,2025 Analog Devices, Inc.
  All rights reserved.
 
  This software is proprietary to Analog Devices, Inc. and its licensors.
@@ -35,6 +35,11 @@
 int main()
 {
 	int32_t setupResult;
+
+	/* Initialize the stm32 peripherals */
+#if (ACTIVE_PLATFORM == STM32_PLATFORM)
+	stm32_system_init();
+#endif
 
 	/* Initialize the nanodac application */
 	if ((setupResult = nanodac_app_initialize()) < 0) {

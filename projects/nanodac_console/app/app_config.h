@@ -2,7 +2,7 @@
  *   @file   app_config.h
  *   @brief  Configuration file of nanodac firmware example program
 ******************************************************************************
-* Copyright (c) 2020, 2022 Analog Devices, Inc.
+* Copyright (c) 2020, 2022 , 2025 Analog Devices, Inc.
 *
 * All rights reserved.
 *
@@ -19,20 +19,18 @@
 /******************************************************************************/
 
 #include <stdint.h>
-#include <PinNames.h>
 
 /******************************************************************************/
 /********************** Macros and Constants Definitions **********************/
 /******************************************************************************/
 
-/**
-  The ADI SDP_K1 can be used with both arduino headers
-  or the 120-pin SDP connector found on ADI evaluation
-  boards. The default is the SDP connector.
-  Uncomment the ARDUINO #define below to enable the ARDUINO connector
-*/
+#define	MBED_PLATFORM		1
+#define STM32_PLATFORM      2
 
-//#define  ARDUINO
+/* Select the Active Platform */
+#if !defined(ACTIVE_PLATFORM)
+#define ACTIVE_PLATFORM		STM32_PLATFORM
+#endif
 
 // **** Note for User: ACTIVE_DEVICE selection ****
 // Define the device type here from the list of below device type defines
@@ -148,110 +146,21 @@
 #endif
 
 
-// Pin mapping of nanoDAC+ with SDP-120 way or Arduino connectors
-#ifdef ARDUINO
-#define I2C_SCL		ARDUINO_UNO_D15
-#define I2C_SDA		ARDUINO_UNO_D14
-
-#define SPI_CSB			ARDUINO_UNO_D10
-#define SPI_HOST_SDO	ARDUINO_UNO_D11
-#define SPI_HOST_SDI	ARDUINO_UNO_D12
-#define SPI_SCK			ARDUINO_UNO_D13
-
-#define GAIN_PIN	ARDUINO_UNO_D8
-#define RESET_PIN	ARDUINO_UNO_D9
-#define LDAC_PIN	ARDUINO_UNO_D7
-#define ADDR0_PIN	ARDUINO_UNO_D6
+#if (ACTIVE_PLATFORM == MBED_PLATFORM)
+#include "app_config_mbed.h"
+#define reset_gpio_extra_init_params mbed_gpio_reset_init_params
+#define ldac_gpio_extra_init_params mbed_gpio_ldac_init_params
+#define gain_gpio_extra_init_params mbed_gain_gpio_init_params
+#define spi_init_extra_params  mbed_spi_extra_init_params
+#define i2c_init_extra_params   mbed_i2c_extra_init_params
 #else
-#define I2C_SCL		SDP_I2C_SCL		// PH_7
-#define I2C_SDA		SDP_I2C_SDA		// PC_9
-
-#define SPI_CSB		    SDP_SPI_CS_A	// PB_9
-#define SPI_HOST_SDO	SDP_SPI_MOSI	// PF_9
-#define SPI_HOST_SDI	SDP_SPI_MISO	// PF_8
-#define SPI_SCK		    SDP_SPI_SCK		// PH_6
+#include "app_config_stm32.h"
+#define spi_init_extra_params  stm32_spi_extra_init_params
+#define uart_extra_init_params 	stm32_uart_extra_init_params
+#define i2c_init_extra_params   stm32_i2c_extra_init_params
+#define reset_gpio_extra_init_params stm32_gpio_reset_init_params
+#define ldac_gpio_extra_init_params stm32_gpio_ldac_init_params
+#define gain_gpio_extra_init_params stm32_gain_gpio_init_params
 #endif
-
-// Define the other GPIO mapping based on the compatible EVAL board
-// *Note: The 7-bit I2C slave address mentioned below is the default address for the
-//        device, set by combination of slave address bits (7:3) from the device
-//        datasheet and default logic level of A1 and A0 pins (bits 2:1) on the
-//        respective device EVAL board. For more information, refer the device
-//        datasheet and EVAL board manual.
-
-#if defined(DEV_AD5686R) || defined(DEV_AD5686) || \
-    defined(DEV_AD5684R) || defined(DEV_AD5684) || \
-    defined(DEV_AD5685R)
-// These devices support EVAL-AD5686RSDZ board
-#if !defined ARDUINO
-#define GAIN_PIN	SDP_GPIO_0
-#define RESET_PIN	SDP_GPIO_2
-#define LDAC_PIN	SDP_GPIO_3
-#endif
-#elif defined(DEV_AD5696R) || defined(DEV_AD5696) || \
-      defined(DEV_AD5694R) || defined(DEV_AD5694) || \
-      defined(DEV_AD5695R) || defined(DEV_AD5697R)
-// These devices support EVAL-AD5696RSDZ board
-#if !defined ARDUINO
-#define GAIN_PIN	SDP_GPIO_0
-#define RESET_PIN	SDP_GPIO_2
-#define LDAC_PIN	SDP_GPIO_3
-#endif
-#define I2C_SLAVE_ADDRESS	0x18
-#elif defined(DEV_AD5683) || defined(DEV_AD5683R) || defined(DEV_AD5682R) || \
-      defined(DEV_AD5681R)
-// These devices uses EVAL-AD5683R board
-#if !defined ARDUINO
-#define GAIN_PIN	SDP_GPIO_2
-#define RESET_PIN	SDP_GPIO_1
-#define LDAC_PIN	SDP_GPIO_0
-#endif
-#elif defined(DEV_AD5693) || defined(DEV_AD5693R) || defined(DEV_AD5692R) || \
-      defined(DEV_AD5691R)
-// These devices uses EVAL-AD5693R board
-#if !defined ARDUINO
-#define GAIN_PIN	SDP_GPIO_2
-#define RESET_PIN	SDP_GPIO_1
-#define LDAC_PIN	SDP_GPIO_0
-#endif
-#define I2C_SLAVE_ADDRESS	0x98
-#elif defined (DEV_AD5674R) || defined (DEV_AD5674) || \
-      defined (DEV_AD5679R) || defined (DEV_AD5679) || \
-      defined (DEV_AD5677R) || defined (DEV_AD5673R)
-// These devices uses EVAL-AD5679RSDZ/EVAL-AD567xRSDZ board
-#if !defined ARDUINO
-#define GAIN_PIN	SDP_GPIO_0
-#define RESET_PIN	SDP_GPIO_2
-#define LDAC_PIN	SDP_GPIO_1
-#endif
-#define I2C_SLAVE_ADDRESS	0x1E
-#elif defined (DEV_AD5676R) || defined (DEV_AD5676) || \
-      defined (DEV_AD5672R)
-// These devices uses EVAL-AD5676RSDZ board
-#if !defined ARDUINO
-#define GAIN_PIN	SDP_GPIO_2
-#define RESET_PIN	SDP_GPIO_1
-#define LDAC_PIN	SDP_GPIO_0
-#endif
-#elif defined (DEV_AD5671R) || defined (DEV_AD5675R)
-// These devices uses EVAL-AD5675RSDZ board
-#if !defined ARDUINO
-#define GAIN_PIN	SDP_GPIO_2
-#define RESET_PIN	SDP_GPIO_1
-#define LDAC_PIN	SDP_GPIO_0
-#endif
-#define I2C_SLAVE_ADDRESS	0x18
-#else
-#warning No/Unsupported EVAL board found. Using EVAL-AD5686R as default.
-#if !defined ARDUINO
-#define GAIN_PIN	SDP_GPIO_0
-#define RESET_PIN	SDP_GPIO_2
-#define LDAC_PIN	SDP_GPIO_3
-#endif
-#endif
-
-
-// Common pin mappings
-#define LED_GREEN	LED3	// PK_5
 
 #endif //_APP_CONFIG_H_
