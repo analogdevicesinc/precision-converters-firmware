@@ -2,7 +2,7 @@
  *   @file   ltc268x_user_config.c
  *   @brief  User configuration file for LTC268X device
 ******************************************************************************
-* Copyright (c) 2022 Analog Devices, Inc.
+* Copyright (c) 2022,2025 Analog Devices, Inc.
 *
 * All rights reserved.
 *
@@ -23,7 +23,8 @@
 /* Initialize the ltc268x device structure */
 struct ltc268x_init_param ltc268x_dev_init = {
 	{
-		.max_speed_hz = 44000000,			// Max SPI Speed
+		.device_id = SPI_DEVICE_ID,
+		.max_speed_hz = 22500000,			// Max SPI Speed
 		.chip_select = SPI_CSB,				// Chip Select
 		.mode = NO_OS_SPI_MODE_3,			// CPOL = 1, CPHA = 1
 		.platform_ops = &spi_ops,

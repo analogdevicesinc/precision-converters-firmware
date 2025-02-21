@@ -6,7 +6,7 @@
  *            based on user selected console menu.
  *
 ********************************************************************************
- * Copyright (c) 2022 Analog Devices, Inc.
+ * Copyright (c) 2022,2025 Analog Devices, Inc.
  *
  * All rights reserved.
  *
@@ -51,6 +51,23 @@ console_menu ltc268x_dither_clock_select_menu;
 console_menu ltc268x_dac_configurations_menu;
 console_menu ltc268x_dac_data_operations_menu;
 
+/* UART Descriptor */
+struct no_os_uart_desc *uart_desc;
+
+struct no_os_uart_init_param uart_init_params = {
+	.device_id = 0,
+	.baud_rate = 230400,
+	.size = NO_OS_UART_CS_8,
+	.parity = NO_OS_UART_PAR_NO,
+	.stop = NO_OS_UART_STOP_1_BIT,
+	.irq_id = UART_IRQ_ID,
+	.asynchronous_rx = false,
+#if (ACTIVE_PLATFORM == STM32_PLATFORM)
+	.platform_ops = &uart_ops,
+	.extra = &uart_extra_init_params
+#endif
+};
+
 /******************************************************************************/
 /***************************** Function Declarations **************************/
 /******************************************************************************/
@@ -78,6 +95,15 @@ static int32_t ltc268x_write_dac_voltage(uint32_t id);
 int32_t ltc268x_app_initialize(void)
 {
 	int32_t init_status;
+
+#if (ACTIVE_PLATFORM == STM32_PLATFORM)
+	init_status = no_os_uart_init(&uart_desc, &uart_init_params);
+	if (init_status) {
+		return init_status;
+	}
+
+	no_os_uart_stdio(uart_desc);
+#endif
 
 	/* Initialize ltc268x  device and peripheral interface */
 	init_status = ltc268x_init(&p_ltc268x_dev, ltc268x_dev_init);
