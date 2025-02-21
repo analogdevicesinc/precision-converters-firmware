@@ -2,7 +2,7 @@
  *   @file   main.c
  *   @brief  main module for ad590 console application interface
 ********************************************************************************
- * Copyright (c) 2021-22 Analog Devices, Inc.
+ * Copyright (c) 2021-22,2025 Analog Devices, Inc.
  *
  * All rights reserved.
  *
@@ -14,6 +14,7 @@
 #include <stdio.h>
 #include "no_os_error.h"
 #include "ad590_console_app.h"
+#include "ltc2488_user_config.h"
 
 /******************************************************************************/
 /********************** Macros and Constants Definitions **********************/
@@ -30,14 +31,20 @@
 int main(void)
 {
 	int32_t init_status;
+
+	/* Initialize the stm32 peripherals */
+#if (ACTIVE_PLATFORM == STM32_PLATFORM)
+	stm32_system_init();
+#endif
+
 	/* Initialize the ad590 device */
 	init_status = ltc2488_app_initialize();
 	if (init_status) {
 		printf(EOL "\tError setting up ad590 (%ld)" EOL EOL, init_status);
 	}
-
+	
 	while (1) {
-		if (init_status == 0) {
+		if (init_status == 0 ) {
 			/* display the console menu for the ad590 application */
 			adi_do_console_menu(&ad590_main_menu);
 		}

@@ -8,7 +8,7 @@
  *            based on user selected console menu.
  *
 ********************************************************************************
- * Copyright (c) 2021-22 Analog Devices, Inc.
+ * Copyright (c) 2021-22,2025 Analog Devices, Inc.
  *
  * All rights reserved.
  *
@@ -27,8 +27,8 @@
 
 #include "ltc2488_user_config.h"
 
-#include "mbed_platform_support.h"
 #include "no_os_delay.h"
+#include "no_os_uart.h"
 
 #include "ltc2488.h"
 #include "ad590_console_app.h"
@@ -58,6 +58,24 @@ static uint32_t adc_data;
 /* Flag to discard first ADC sample after power-on reset */
 static bool first_sample = false;
 
+/* The UART descriptor */
+struct no_os_uart_desc *uart_desc;
+
+/* UART init parameters structure */
+struct no_os_uart_init_param uart_init_params = {
+	.device_id = 0,
+	.baud_rate = 230400,
+	.size = NO_OS_UART_CS_8,
+	.parity = NO_OS_UART_PAR_NO,
+	.stop = NO_OS_UART_STOP_1_BIT,
+	.irq_id = UART_IRQ_ID,
+#if (ACTIVE_PLATFORM == STM32_PLATFORM)
+	.asynchronous_rx = false,
+	.platform_ops = &uart_ops,
+	.extra = &uart_extra_init_params
+#endif
+};
+
 /******************************************************************************/
 /***************************** Function Declarations **************************/
 /******************************************************************************/
@@ -84,6 +102,16 @@ static float voltage_to_temp_conversion(float channel_voltage);
 int32_t ltc2488_app_initialize(void)
 {
 	int32_t init_status;
+
+#if (ACTIVE_PLATFORM == STM32_PLATFORM)
+	init_status = no_os_uart_init(&uart_desc, &uart_init_params);
+	if (init_status) {
+		return init_status;
+	}
+
+	/* Set up the UART for standard I/O operations */
+	no_os_uart_stdio(uart_desc);
+#endif
 
 	/* Initialize LTC2488 device and peripheral interface */
 	init_status = ltc2488_init(&p_ltc2488_dev, &ltc2488_init_str);
@@ -131,7 +159,7 @@ static void print_invalid_input(void)
 	printf(EOL "Please enter a valid selection" EOL);
 	no_os_mdelay(2000);
 	/* Moves the cursor 2 lines up and clears the entire line*/
-	printf(VT100_MOVE_UP_N_LINES VT100_CLEAR_CURRENT_LINE, (uint8_t)2);
+	printf(VT100_MOVE_UP_N_LINES VT100_CLEAR_CURRENT_LINE,(uint8_t)2);
 }
 
 /*!
@@ -140,8 +168,10 @@ static void print_invalid_input(void)
  */
 static bool was_escape_key_pressed(void)
 {
-	char rxChar;
 	bool wasPressed = false;
+
+#if (ACTIVE_PLATFORM == MBED_PLATFORM)
+	char rxChar;
 
 	/* Check for Escape key pressed */
 	if ((rxChar = getchar_noblock()) > 0) {
@@ -149,6 +179,16 @@ static bool was_escape_key_pressed(void)
 			wasPressed = true;
 		}
 	}
+#else  /* STM32_PLATFORM */
+	int32_t ret;
+
+	/* Check for Escape key pressed */
+	ret = check_escape_key_pressed();
+	if (ret) {
+		wasPressed = true;
+	}
+#endif
+
 	return (wasPressed);
 }
 
@@ -265,7 +305,7 @@ static int32_t interval_measure(uint32_t menu_id)
 	printf(EOL);
 	do {
 		printf("Enter the interval between each sample in seconds (%0.1f-%2.1f): ",
-		       (float)MIN_SAMPLE_INTERVAL, (float)MAX_SAMPLE_INTERVAL);
+		       (float)MIN_SAMPLE_INTERVAL,(float)MAX_SAMPLE_INTERVAL);
 		/* Restricting the input length to 4 characters */
 		interval = adi_get_decimal_float(4);
 		if (!float_in_range(interval, MIN_SAMPLE_INTERVAL, MAX_SAMPLE_INTERVAL)) {
@@ -277,11 +317,11 @@ static int32_t interval_measure(uint32_t menu_id)
 	} while (++max_try <= MAX_RETRY_ATTEMPTS);
 
 	print_conv_stop();
-	for (uint16_t i = 0 ; i < samples ; i++) {
+	for(uint16_t i = 0 ; i < samples ; i++) {
 		if (was_escape_key_pressed())
 			break;
 
-		printf(EOL " Sample :%d  ", i + 1);
+		printf(EOL " Sample :%d  ",i+1);
 		handle_read_write_print(2);
 		no_os_mdelay(interval * 1000);
 	}

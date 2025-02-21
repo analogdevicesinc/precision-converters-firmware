@@ -2,7 +2,7 @@
  *   @file   ltc2488_user_config.h
  *   @brief  Header for ltc2488 user configuration file
 ******************************************************************************
-* Copyright (c) 2021-22 Analog Devices, Inc.
+* Copyright (c) 2021-22,2025 Analog Devices, Inc.
 *
 * All rights reserved.
 *
@@ -17,36 +17,27 @@
 /******************************************************************************/
 /***************************** Include Files **********************************/
 /******************************************************************************/
-#include <PinNames.h>
 
 /******************************************************************************/
 /********************** Macros and Constants Definition ***********************/
 /******************************************************************************/
 
-/**
-  The ADI SDP_K1 can be used with both arduino headers
-  or the 120-pin SDP connector found on ADI evaluation
-  boards. The default is the Arduino connector
+/* List of platforms supported */
+#define	MBED_PLATFORM		1
+#define STM32_PLATFORM      2
 
-  Comment the SDP_120 #define below to enable the Arduino connector
-*/
+/* Select the active platform  */
+#if !defined(ACTIVE_PLATFORM)
+#define ACTIVE_PLATFORM		STM32_PLATFORM
+#endif
 
-//#define SDP_120
-
-#ifdef SDP_120
-
-#define SPI_SS		SDP_SPI_CS_A
-#define SPI_MISO	SDP_SPI_MISO
-#define SPI_MOSI	SDP_SPI_MOSI
-#define SPI_SCK		SDP_SPI_SCK
-
-#else // ARDUINO
-
-#define SPI_SS		ARDUINO_UNO_D10
-#define SPI_MOSI	ARDUINO_UNO_D11
-#define SPI_MISO	ARDUINO_UNO_D12
-#define SPI_SCK		ARDUINO_UNO_D13
-
+#if (ACTIVE_PLATFORM == MBED_PLATFORM)
+#include "app_config_mbed.h"
+#define spi_init_extra_params	mbed_spi_extra_init_params
+#else
+#include "app_config_stm32.h"
+#define spi_init_extra_params  stm32_spi_extra_init_params
+#define uart_extra_init_params 	stm32_uart_extra_init_params
 #endif
 
 /******************************************************************************/
