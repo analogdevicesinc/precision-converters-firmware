@@ -432,16 +432,13 @@ uint8_t read_reg_id = 0;
 /* Permissible HW Mezzanine names */
 static const char *mezzanine_names[] = {
 	"EVAL-AD4170-4ARDZ",
-	"",
-	"",
+	"EVAL-AD4170-ASDZ",
 	"EVAL-AD4190-4ARDZ"
 };
 
 /* Active device available options */
 static const char* active_dev[] = {
 	"ad4170",
-	"",
-	"",
 	"ad4190",
 };
 
@@ -2953,7 +2950,24 @@ int32_t ad4170_iio_initialize(void)
 		}
 
 		if (hw_mezzanine_is_valid) {
-			ad4170_init_params.id = read_id;
+			switch (read_id) {
+			case 0:
+			case 1:
+				/* AD4170 Device */
+				ad4170_init_params.id = ID_AD4170;
+				iio_device_init_params[0].name = active_dev[0];
+				break;
+
+			case 2:
+				/* AD4190 Device */
+				ad4170_init_params.id = ID_AD4190;
+				iio_device_init_params[0].name = active_dev[1];
+				break;
+
+			default:
+				return -EINVAL;
+			}
+
 			break;
 		}
 	}
