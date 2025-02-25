@@ -1,0 +1,27 @@
+<map id="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad7124_console/app/app_config_stm32.c" name="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad7124_console/app/app_config_stm32.c">
+<area shape="rect" id="Node000001" title="STM32 Specific configuration files for AD7124 console Application." alt="" coords="314,5,606,75"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="251,123,360,148"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="406,77,338,118,335,113,403,73"/>
+<area shape="rect" id="Node000003" href="$ad7124__console_2app_2app__config__stm32_8h.html" title="Header file for STM32 platform configurations." alt="" coords="384,123,536,148"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="463,75,463,109,457,109,457,75"/>
+<area shape="rect" id="Node000010" href="$adi__console__menu_8h.html" title=": A simple console menu manager handler" alt="" coords="799,123,953,148"/>
+<area shape="poly" id="edge9_Node000001_Node000010" title=" " alt="" coords="607,71,812,117,811,122,606,76"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="5,196,107,221"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="394,151,121,198,120,193,393,145"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="131,196,239,221"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="417,151,244,195,242,190,415,145"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="264,196,363,221"/>
+<area shape="poly" id="edge5_Node000003_Node000006" title=" " alt="" coords="438,150,351,192,348,188,435,146"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="387,196,533,221"/>
+<area shape="poly" id="edge6_Node000003_Node000007" title=" " alt="" coords="463,148,463,182,457,182,457,148"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="557,196,624,221"/>
+<area shape="poly" id="edge7_Node000003_Node000008" title=" " alt="" coords="482,146,559,187,556,192,480,150"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="649,196,759,221"/>
+<area shape="poly" id="edge8_Node000003_Node000009" title=" " alt="" coords="500,145,652,190,651,195,498,151"/>
+<area shape="rect" id="Node000011" title=" " alt="" coords="784,196,867,221"/>
+<area shape="poly" id="edge10_Node000010_Node000011" title=" " alt="" coords="870,150,844,186,839,183,865,147"/>
+<area shape="rect" id="Node000012" title=" " alt="" coords="891,196,962,221"/>
+<area shape="poly" id="edge11_Node000010_Node000012" title=" " alt="" coords="887,147,913,183,908,186,882,150"/>
+<area shape="rect" id="Node000013" title=" " alt="" coords="986,196,1057,221"/>
+<area shape="poly" id="edge12_Node000010_Node000013" title=" " alt="" coords="901,146,987,188,984,192,898,150"/>
+</map>

@@ -86,43 +86,31 @@ $(document).ready(function() { init_codefold(0); });
 <div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="preprocessor">#define _APP_CONFIG_H_</span></div>
 <div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span> </div>
 <div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="preprocessor">#include &lt;stdint.h&gt;</span></div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="preprocessor">#include &lt;PinNames.h&gt;</span></div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="preprocessor">#include &quot;ad5933.h&quot;</span></div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span> </div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span><span class="comment">//#define  ARDUINO</span></div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span> </div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span><span class="comment">//#warning  check this</span></div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span><span class="preprocessor">#ifdef ARDUINO</span></div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span><span class="comment">/* Arduino interface pins*/</span></div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span><span class="preprocessor">#define I2C_SCL     ARDUINO_UNO_D15</span></div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span><span class="preprocessor">#define I2C_SDA     ARDUINO_UNO_D14</span></div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span> </div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span><span class="preprocessor">#define SPI_CS      ARDUINO_UNO_D10</span></div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span><span class="preprocessor">#define SPI_MISO    ARDUINO_UNO_D12</span></div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span><span class="preprocessor">#define SPI_MOSI    ARDUINO_UNO_D11</span></div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span><span class="preprocessor">#define SPI_SCK     ARDUINO_UNO_D13</span></div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span> </div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span><span class="preprocessor">#define GAIN_PIN    ARDUINO_UNO_D8</span></div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span><span class="preprocessor">#define RESET_PIN   ARDUINO_UNO_D9</span></div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span><span class="preprocessor">#define LDAC_PIN    ARDUINO_UNO_D7</span></div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span><span class="preprocessor">#define ADDR0_PIN   ARDUINO_UNO_D6</span></div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span><span class="preprocessor">#else</span></div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span><span class="comment">/* SDP-120 interface pins*/</span></div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno"><a class="line" href="ad5933__console_2app_2app__config_8h.html#a212ca328a6409c98f8c3dfbbe1ba561d">   48</a></span><span class="preprocessor">#define I2C_SCL     SDP_I2C_SCL</span></div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno"><a class="line" href="ad5933__console_2app_2app__config_8h.html#a18aefd12ad84d4c33dc97923cb821e47">   49</a></span><span class="preprocessor">#define I2C_SDA     SDP_I2C_SDA</span></div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span> </div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno"><a class="line" href="ad5933__console_2app_2app__config_8h.html#ade4259fa3cbb71732a4e73c18dcb9b0d">   51</a></span><span class="preprocessor">#define SPI_CS      SDP_SPI_CS_A</span></div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno"><a class="line" href="ad5933__console_2app_2app__config_8h.html#ab142cc77dfa97010c9d2b616d0992b64">   52</a></span><span class="preprocessor">#define SPI_MISO    SDP_SPI_MISO</span></div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno"><a class="line" href="ad5933__console_2app_2app__config_8h.html#a7dbebab5f7dd57885adccf6711b13592">   53</a></span><span class="preprocessor">#define SPI_MOSI    SDP_SPI_MOSI</span></div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno"><a class="line" href="ad5933__console_2app_2app__config_8h.html#a750ca7c9b92cfc9e57272ff3a49db48b">   54</a></span><span class="preprocessor">#define SPI_SCK     SDP_SPI_SCK</span></div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span> </div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno"><a class="line" href="ad5933__console_2app_2app__config_8h.html#aa5cee13c1f6a8320fbf8ee87072c8ca8">   56</a></span><span class="preprocessor">#define GAIN_PIN    SDP_GPIO_0</span></div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno"><a class="line" href="ad5933__console_2app_2app__config_8h.html#a08bca59db4b190eaaea4d47b7562869c">   57</a></span><span class="preprocessor">#define RESET_PIN   SDP_GPIO_2</span></div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno"><a class="line" href="ad5933__console_2app_2app__config_8h.html#a3aeb19f077f85e5fdea1e07eaaa6fa27">   58</a></span><span class="preprocessor">#define LDAC_PIN    SDP_GPIO_3</span></div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno"><a class="line" href="ad5933__console_2app_2app__config_8h.html#a5a2be5cc11d5775a0093e3a74725e82e">   59</a></span><span class="preprocessor">#define ADDR0_PIN   SDP_GPIO_4</span></div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span> </div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span><span class="preprocessor">#endif </span><span class="comment">//_APP_CONFIG_H_</span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="preprocessor">#include &quot;ad5933.h&quot;</span></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span> </div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno"><a class="line" href="ad5933__console_2app_2app__config_8h.html#a053837cf4ec7ed65d18c930324db4f1e">   20</a></span><span class="preprocessor">#define MBED_PLATFORM       1</span></div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno"><a class="line" href="ad5933__console_2app_2app__config_8h.html#adaf57100c5a484ccdbcea26419175a82">   21</a></span><span class="preprocessor">#define STM32_PLATFORM      2</span></div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span> </div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="comment">/* Select the Active Platform */</span></div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="preprocessor">#if !defined(ACTIVE_PLATFORM)</span></div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno"><a class="line" href="ad5933__console_2app_2app__config_8h.html#a1febd5b25e6629777aa06ad047592958">   25</a></span><span class="preprocessor">#define ACTIVE_PLATFORM     STM32_PLATFORM</span></div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span> </div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="preprocessor">#if (ACTIVE_PLATFORM == MBED_PLATFORM)</span></div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span><span class="preprocessor">#include &quot;<a class="code" href="nanodac__console_2app_2app__config__mbed_8h.html">app_config_mbed.h</a>&quot;</span></div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno"><a class="line" href="ad5933__console_2app_2app__config_8h.html#a7743e2deaf9fd761da296dcf8f9dc4e5">   30</a></span><span class="preprocessor">#define spi_init_extra_params   mbed_spi_extra_init_params</span></div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno"><a class="line" href="ad5933__console_2app_2app__config_8h.html#aa470d2a15f37bae689fd091f85b670a1">   31</a></span><span class="preprocessor">#define spi_ops mbed_spi_ops</span></div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno"><a class="line" href="ad5933__console_2app_2app__config_8h.html#ae0cff2fb4f94e6f7ea5a60aaaff89c57">   32</a></span><span class="preprocessor">#define i2c_init_extra_params   mbed_i2c_extra_init_params</span></div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span><span class="preprocessor">#else</span></div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span><span class="preprocessor">#include &quot;app_config_stm32.h&quot;</span></div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span><span class="preprocessor">#define spi_init_extra_params  stm32_spi_extra_init_params</span></div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="preprocessor">#define spi_ops stm32_spi_ops</span></div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span><span class="preprocessor">#define uart_extra_init_params  stm32_uart_extra_init_params</span></div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span><span class="preprocessor">#define i2c_init_extra_params   stm32_i2c_extra_init_params</span></div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span> </div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span><span class="preprocessor">#endif </span><span class="comment">//_APP_CONFIG_H_</span></div>
+<div class="ttc" id="ananodac__console_2app_2app__config__mbed_8h_html"><div class="ttname"><a href="nanodac__console_2app_2app__config__mbed_8h.html">app_config_mbed.h</a></div><div class="ttdoc">Header file for Mbed platform configurations.</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

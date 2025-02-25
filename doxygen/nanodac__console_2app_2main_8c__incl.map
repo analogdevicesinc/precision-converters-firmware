@@ -1,20 +1,31 @@
 <map id="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/nanodac_console/app/main.c" name="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/nanodac_console/app/main.c">
-<area shape="rect" id="Node000001" title=": main module for nanodac application interface" alt="" coords="39,5,262,75"/>
-<area shape="rect" id="Node000002" title=" " alt="" coords="44,123,111,148"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="126,76,97,113,93,110,122,73"/>
-<area shape="rect" id="Node000003" href="$nanodac__console__app_8h.html" title=": defines the console menu structure for the nanodac example code" alt="" coords="135,123,313,148"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="179,73,209,110,204,113,175,76"/>
-<area shape="rect" id="Node000004" href="$adi__console__menu_8h.html" title=": A simple console menu manager handler" alt="" coords="71,196,225,221"/>
-<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="214,150,172,188,169,185,210,146"/>
-<area shape="rect" id="Node000008" href="$nanodac__console_2app_2app__config_8h.html" title="Configuration file of nanodac firmware example program." alt="" coords="249,196,353,221"/>
-<area shape="poly" id="edge7_Node000003_Node000008" title=" " alt="" coords="238,146,280,185,277,188,235,150"/>
+<area shape="rect" id="Node000001" title=": main module for nanodac application interface" alt="" coords="17,5,239,75"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="21,123,88,148"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="104,76,74,113,70,110,99,73"/>
+<area shape="rect" id="Node000003" href="$nanodac__console__app_8h.html" title=": defines the console menu structure for the nanodac example code" alt="" coords="113,123,290,148"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="157,73,186,110,182,113,152,76"/>
+<area shape="rect" id="Node000004" href="$adi__console__menu_8h.html" title=": A simple console menu manager handler" alt="" coords="48,196,203,221"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="191,150,150,188,146,185,187,146"/>
+<area shape="rect" id="Node000008" href="$nanodac__console_2app_2app__config_8h.html" title="Configuration file of nanodac firmware example program." alt="" coords="227,196,331,221"/>
+<area shape="poly" id="edge7_Node000003_Node000008" title=" " alt="" coords="216,146,258,185,254,188,212,150"/>
 <area shape="rect" id="Node000005" title=" " alt="" coords="5,269,88,295"/>
-<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="133,224,76,263,73,259,130,219"/>
-<area shape="rect" id="Node000006" title=" " alt="" coords="207,269,278,295"/>
-<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="165,219,218,259,215,263,162,223"/>
-<area shape="rect" id="Node000007" title=" " alt="" coords="113,269,183,295"/>
-<area shape="poly" id="edge6_Node000004_Node000007" title=" " alt="" coords="151,222,151,256,145,256,145,222"/>
-<area shape="poly" id="edge8_Node000008_Node000006" title=" " alt="" coords="294,223,263,261,259,257,290,220"/>
-<area shape="rect" id="Node000009" title=" " alt="" coords="302,269,402,295"/>
-<area shape="poly" id="edge9_Node000008_Node000009" title=" " alt="" coords="312,220,338,257,334,260,308,223"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="114,223,71,262,68,258,111,219"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="103,343,174,368"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="129,222,139,329,134,329,124,222"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="163,269,234,295"/>
+<area shape="poly" id="edge6_Node000004_Node000007" title=" " alt="" coords="139,220,179,258,175,262,136,224"/>
+<area shape="poly" id="edge8_Node000008_Node000006" title=" " alt="" coords="279,222,269,258,260,278,247,296,218,321,185,339,183,335,215,317,243,293,255,275,264,256,274,221"/>
+<area shape="rect" id="Node000009" href="$nanodac__console_2app_2app__config__mbed_8h.html" title="Header file for Mbed platform configurations." alt="" coords="310,269,458,295"/>
+<area shape="poly" id="edge9_Node000008_Node000009" title=" " alt="" coords="297,219,357,259,354,264,294,224"/>
+<area shape="poly" id="edge10_Node000009_Node000006" title=" " alt="" coords="345,297,188,343,186,338,344,292"/>
+<area shape="rect" id="Node000010" title=" " alt="" coords="198,343,298,368"/>
+<area shape="poly" id="edge11_Node000009_Node000010" title=" " alt="" coords="363,297,283,339,281,334,361,292"/>
+<area shape="rect" id="Node000011" title=" " alt="" coords="322,343,419,368"/>
+<area shape="poly" id="edge12_Node000009_Node000011" title=" " alt="" coords="384,295,378,330,373,329,379,295"/>
+<area shape="rect" id="Node000012" title=" " alt="" coords="443,343,541,368"/>
+<area shape="poly" id="edge13_Node000009_Node000012" title=" " alt="" coords="403,292,464,333,461,337,400,297"/>
+<area shape="rect" id="Node000013" title=" " alt="" coords="565,343,672,368"/>
+<area shape="poly" id="edge14_Node000009_Node000013" title=" " alt="" coords="422,292,568,336,567,341,421,297"/>
+<area shape="rect" id="Node000014" title=" " alt="" coords="697,343,887,368"/>
+<area shape="poly" id="edge15_Node000009_Node000014" title=" " alt="" coords="450,292,713,338,712,343,449,297"/>
 </map>

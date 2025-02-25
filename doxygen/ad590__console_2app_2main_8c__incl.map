@@ -1,17 +1,28 @@
 <map id="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad590_console/app/main.c" name="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad590_console/app/main.c">
-<area shape="rect" id="Node000001" title="main module for ad590 console application interface" alt="" coords="39,5,262,75"/>
+<area shape="rect" id="Node000001" title="main module for ad590 console application interface" alt="" coords="119,5,342,75"/>
 <area shape="rect" id="Node000002" title=" " alt="" coords="5,123,72,148"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="112,77,65,116,62,111,109,73"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="163,77,76,119,74,114,160,72"/>
 <area shape="rect" id="Node000003" title=" " alt="" coords="96,123,205,148"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="153,75,153,109,148,109,148,75"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="204,77,172,114,168,110,200,73"/>
 <area shape="rect" id="Node000004" href="$ad590__console__app_8h.html" title="Header for ad590 console application interfaces." alt="" coords="229,123,392,148"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="210,72,281,113,278,118,207,77"/>
-<area shape="rect" id="Node000005" href="$adi__console__menu_8h.html" title=": A simple console menu manager handler" alt="" coords="233,196,388,221"/>
-<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="313,148,313,182,308,182,308,148"/>
-<area shape="rect" id="Node000006" title=" " alt="" coords="168,269,251,295"/>
-<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="296,224,239,263,236,259,293,219"/>
-<area shape="rect" id="Node000007" title=" " alt="" coords="275,269,346,295"/>
-<area shape="poly" id="edge6_Node000005_Node000007" title=" " alt="" coords="313,222,313,256,308,256,308,222"/>
-<area shape="rect" id="Node000008" title=" " alt="" coords="370,269,441,295"/>
-<area shape="poly" id="edge7_Node000005_Node000008" title=" " alt="" coords="327,219,380,259,377,263,324,223"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="262,73,294,110,290,114,258,77"/>
+<area shape="rect" id="Node000009" href="$ltc2488__user__config_8h.html" title="Header for ltc2488 user configuration file." alt="" coords="424,123,587,148"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="331,72,459,116,458,121,329,77"/>
+<area shape="rect" id="Node000005" href="$adi__console__menu_8h.html" title=": A simple console menu manager handler" alt="" coords="231,196,385,221"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="313,148,312,183,306,182,308,148"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="163,269,245,295"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="293,224,234,263,231,259,290,219"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="365,269,435,295"/>
+<area shape="poly" id="edge6_Node000005_Node000007" title=" " alt="" coords="324,219,376,259,373,263,321,223"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="270,269,341,295"/>
+<area shape="poly" id="edge7_Node000005_Node000008" title=" " alt="" coords="310,222,309,256,304,256,305,222"/>
+<area shape="rect" id="Node000010" href="$ad590__console_2app_2app__config__mbed_8h.html" title="Header file for Mbed platform configurations." alt="" coords="435,196,583,221"/>
+<area shape="poly" id="edge9_Node000009_Node000010" title=" " alt="" coords="509,148,511,182,505,183,503,148"/>
+<area shape="poly" id="edge10_Node000010_Node000007" title=" " alt="" coords="493,224,431,264,428,259,490,219"/>
+<area shape="rect" id="Node000011" title=" " alt="" coords="459,269,559,295"/>
+<area shape="poly" id="edge11_Node000010_Node000011" title=" " alt="" coords="512,222,512,256,507,256,507,222"/>
+<area shape="rect" id="Node000012" title=" " alt="" coords="583,269,681,295"/>
+<area shape="poly" id="edge12_Node000010_Node000012" title=" " alt="" coords="530,219,602,260,599,265,528,224"/>
+<area shape="rect" id="Node000013" title=" " alt="" coords="705,269,895,295"/>
+<area shape="poly" id="edge13_Node000010_Node000013" title=" " alt="" coords="557,219,741,263,739,269,555,224"/>
 </map>

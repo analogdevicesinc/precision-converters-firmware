@@ -1,9 +1,13 @@
 <map id="SystemClock_Config" name="SystemClock_Config">
-<area shape="rect" id="Node000001" title=" " alt="" coords="427,31,581,56"/>
-<area shape="rect" id="Node000002" href="$ad3530r__iio_2app_2app__config__stm32_8c.html#a7256d80c59f9d4eafcebc79f1b73ba72" title="Initialize the STM32 system peripherals." alt="" coords="232,31,379,56"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="413,46,379,46,379,41,413,41"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="427,80,581,105"/>
+<area shape="rect" id="Node000002" href="$ad3530r__iio_2app_2app__config__stm32_8c.html#a7256d80c59f9d4eafcebc79f1b73ba72" title="Initialize the STM32 system peripherals." alt="" coords="232,80,379,105"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="413,95,379,95,379,90,413,90"/>
 <area shape="rect" id="Node000003" href="$ad3530r__iio_2app_2app__config_8c.html#aba990e48bb1b87852ff6a375f0c2f655" title="Initializing system peripherals." alt="" coords="45,5,144,31"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="218,36,144,27,145,21,219,30"/>
-<area shape="rect" id="Node000004" href="$ad3530r__iio_2app_2app__config__stm32_8c.html#af71ba79cb436be962f993524be96e30b" title="Reconfigure the STM32 specific system parameters with change in data streaming mode." alt="" coords="5,55,184,80"/>
-<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="219,56,184,60,184,55,218,51"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="263,77,183,45,144,32,145,27,185,39,265,72"/>
+<area shape="rect" id="Node000004" href="$ad5933__console_2app_2main_8c.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title=" " alt="" coords="67,55,122,80"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="218,85,122,73,122,68,219,80"/>
+<area shape="rect" id="Node000005" href="$ad590__console_2app_2main_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title="Main entry point to application." alt="" coords="67,104,122,129"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="219,105,122,116,122,111,218,100"/>
+<area shape="rect" id="Node000006" href="$ad3530r__iio_2app_2app__config__stm32_8c.html#af71ba79cb436be962f993524be96e30b" title="Reconfigure the STM32 specific system parameters with change in data streaming mode." alt="" coords="5,153,184,179"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="263,113,185,143,144,156,143,151,183,138,261,108"/>
 </map>

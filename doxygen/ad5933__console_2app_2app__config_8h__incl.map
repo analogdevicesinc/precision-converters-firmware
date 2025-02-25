@@ -1,9 +1,20 @@
 <map id="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad5933_console/app/app_config.h" name="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad5933_console/app/app_config.h">
-<area shape="rect" id="Node000001" title="Configuration file of AD5933 firmware example program." alt="" coords="27,5,273,75"/>
-<area shape="rect" id="Node000002" title=" " alt="" coords="5,123,76,148"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="112,77,67,116,63,112,109,73"/>
-<area shape="rect" id="Node000003" title=" " alt="" coords="100,123,200,148"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="153,75,153,109,147,109,147,75"/>
-<area shape="rect" id="Node000004" title=" " alt="" coords="223,123,306,148"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="193,73,241,112,238,116,190,77"/>
+<area shape="rect" id="Node000001" title="Configuration file of AD5933 firmware example program." alt="" coords="7,5,253,75"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,196,76,221"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="108,76,79,124,52,184,47,182,74,121,104,74"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="89,123,171,148"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="133,75,133,109,127,109,127,75"/>
+<area shape="rect" id="Node000004" href="$ad5933__console_2app_2app__config__mbed_8h.html" title="Header file for Mbed platform configurations." alt="" coords="199,123,347,148"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="183,73,245,113,242,117,180,77"/>
+<area shape="poly" id="edge4_Node000004_Node000002" title=" " alt="" coords="236,151,90,195,88,190,235,145"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="100,196,200,221"/>
+<area shape="poly" id="edge5_Node000004_Node000005" title=" " alt="" coords="254,150,183,191,180,187,252,146"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="224,196,321,221"/>
+<area shape="poly" id="edge6_Node000004_Node000006" title=" " alt="" coords="275,148,275,182,270,182,270,148"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="345,196,443,221"/>
+<area shape="poly" id="edge7_Node000004_Node000007" title=" " alt="" coords="294,146,364,187,361,191,291,150"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="467,196,574,221"/>
+<area shape="poly" id="edge8_Node000004_Node000008" title=" " alt="" coords="313,145,468,190,467,195,312,151"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="599,196,789,221"/>
+<area shape="poly" id="edge9_Node000004_Node000009" title=" " alt="" coords="341,145,613,191,612,196,340,151"/>
 </map>

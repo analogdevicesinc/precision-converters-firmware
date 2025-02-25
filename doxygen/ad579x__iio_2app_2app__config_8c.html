@@ -164,6 +164,8 @@ Variables</h2></td></tr>
 <tr class="separator:ad89c42fd1f298cbded160888cf1ac641"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0b6bf22c29d6acff9e8eed8bd22f4f9f" id="r_a0b6bf22c29d6acff9e8eed8bd22f4f9f"><td class="memItemLeft" align="right" valign="top">struct no_os_uart_init_param&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad579x__iio_2app_2app__config_8c.html#a0b6bf22c29d6acff9e8eed8bd22f4f9f">uart_console_stdio_init_params</a></td></tr>
 <tr class="separator:a0b6bf22c29d6acff9e8eed8bd22f4f9f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3c5b93aa35e432fd19891b682bc88b56" id="r_a3c5b93aa35e432fd19891b682bc88b56"><td class="memItemLeft" align="right" valign="top">struct no_os_pwm_init_param&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad579x__iio_2app_2app__config_8c.html#a3c5b93aa35e432fd19891b682bc88b56">pwm_init_params</a></td></tr>
+<tr class="separator:a3c5b93aa35e432fd19891b682bc88b56"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2b2359da43effefaa4bb51c09733b2c4" id="r_a2b2359da43effefaa4bb51c09733b2c4"><td class="memItemLeft" align="right" valign="top">struct no_os_irq_init_param&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad579x__iio_2app_2app__config_8c.html#a2b2359da43effefaa4bb51c09733b2c4">trigger_gpio_irq_params</a></td></tr>
 <tr class="separator:a2b2359da43effefaa4bb51c09733b2c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa6f3be6e813afee496ddad30cd994987" id="r_aa6f3be6e813afee496ddad30cd994987"><td class="memItemLeft" align="right" valign="top">struct no_os_uart_desc *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad579x__iio_2app_2app__config_8c.html#aa6f3be6e813afee496ddad30cd994987">uart_iio_com_desc</a></td></tr>
@@ -254,6 +256,36 @@ Variables</h2></td></tr>
 
 </div>
 </div>
+<a id="a3c5b93aa35e432fd19891b682bc88b56" name="a3c5b93aa35e432fd19891b682bc88b56"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3c5b93aa35e432fd19891b682bc88b56">&#9670;&#160;</a></span>pwm_init_params</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">struct no_os_pwm_init_param pwm_init_params</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line">= {</div>
+<div class="line">    .id = <a class="code hl_define" href="ad3530r__iio_2app_2app__config__stm32_8h.html#a174cdb7a2bd39444998a6b0bb60d6962">LDAC_PWM_ID</a>,</div>
+<div class="line">    .period_ns = <a class="code hl_define" href="ad355xr__iio_2app_2app__config_8h.html#a12c69acae899581210ba3155cfbe7cd7">CONV_PERIOD_NSEC</a>(<a class="code hl_define" href="ad3530r__iio_2app_2app__config__stm32_8h.html#ab88af31958ca4e8909227fb9982ddd59">MAX_SAMPLING_RATE</a>),</div>
+<div class="line">    .duty_cycle_ns = <a class="code hl_define" href="ad355xr__iio_2app_2app__config_8h.html#a2295db488888a89685885360562add97">CONV_DUTY_CYCLE_NSEC</a>(<a class="code hl_define" href="ad3530r__iio_2app_2app__config__stm32_8h.html#ab88af31958ca4e8909227fb9982ddd59">MAX_SAMPLING_RATE</a>),</div>
+<div class="line">    .platform_ops = &amp;<a class="code hl_define" href="ad2s1210__iio_2app_2app__config_8h.html#a9b6ac61cf1859752ae6b375e319a55c5">pwm_ops</a>,</div>
+<div class="line">    .extra = &amp;<a class="code hl_define" href="ad2s1210__iio_2app_2app__config_8h.html#ae91096eb29d71a7778d1bb6dda3f6dcc">pwm_extra_init_params</a>,</div>
+<div class="line"> </div>
+<div class="line">    .pwm_gpio = &amp;pwm_gpio_init_params</div>
+<div class="line"> </div>
+<div class="line">}</div>
+<div class="ttc" id="aad2s1210__iio_2app_2app__config_8h_html_a9b6ac61cf1859752ae6b375e319a55c5"><div class="ttname"><a href="ad2s1210__iio_2app_2app__config_8h.html#a9b6ac61cf1859752ae6b375e319a55c5">pwm_ops</a></div><div class="ttdeci">#define pwm_ops</div><div class="ttdef"><b>Definition</b> app_config.h:89</div></div>
+<div class="ttc" id="aad2s1210__iio_2app_2app__config_8h_html_ae91096eb29d71a7778d1bb6dda3f6dcc"><div class="ttname"><a href="ad2s1210__iio_2app_2app__config_8h.html#ae91096eb29d71a7778d1bb6dda3f6dcc">pwm_extra_init_params</a></div><div class="ttdeci">#define pwm_extra_init_params</div><div class="ttdef"><b>Definition</b> app_config.h:77</div></div>
+<div class="ttc" id="aad3530r__iio_2app_2app__config__stm32_8h_html_a174cdb7a2bd39444998a6b0bb60d6962"><div class="ttname"><a href="ad3530r__iio_2app_2app__config__stm32_8h.html#a174cdb7a2bd39444998a6b0bb60d6962">LDAC_PWM_ID</a></div><div class="ttdeci">#define LDAC_PWM_ID</div><div class="ttdef"><b>Definition</b> app_config_stm32.h:69</div></div>
+<div class="ttc" id="aad3530r__iio_2app_2app__config__stm32_8h_html_ab88af31958ca4e8909227fb9982ddd59"><div class="ttname"><a href="ad3530r__iio_2app_2app__config__stm32_8h.html#ab88af31958ca4e8909227fb9982ddd59">MAX_SAMPLING_RATE</a></div><div class="ttdeci">#define MAX_SAMPLING_RATE</div><div class="ttdef"><b>Definition</b> app_config_stm32.h:121</div></div>
+<div class="ttc" id="aad355xr__iio_2app_2app__config_8h_html_a12c69acae899581210ba3155cfbe7cd7"><div class="ttname"><a href="ad355xr__iio_2app_2app__config_8h.html#a12c69acae899581210ba3155cfbe7cd7">CONV_PERIOD_NSEC</a></div><div class="ttdeci">#define CONV_PERIOD_NSEC(x)</div><div class="ttdef"><b>Definition</b> app_config.h:161</div></div>
+<div class="ttc" id="aad355xr__iio_2app_2app__config_8h_html_a2295db488888a89685885360562add97"><div class="ttname"><a href="ad355xr__iio_2app_2app__config_8h.html#a2295db488888a89685885360562add97">CONV_DUTY_CYCLE_NSEC</a></div><div class="ttdeci">#define CONV_DUTY_CYCLE_NSEC(x, y)</div><div class="ttdef"><b>Definition</b> app_config.h:163</div></div>
+</div><!-- fragment -->
+</div>
+</div>
 <a id="a2b2359da43effefaa4bb51c09733b2c4" name="a2b2359da43effefaa4bb51c09733b2c4"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a2b2359da43effefaa4bb51c09733b2c4">&#9670;&#160;</a></span>trigger_gpio_irq_params</h2>
 
@@ -323,22 +355,22 @@ Variables</h2></td></tr>
 <div class="line">    .parity = NO_OS_UART_PAR_NO,</div>
 <div class="line">    .stop = NO_OS_UART_STOP_1_BIT,</div>
 <div class="line"> </div>
+<div class="line"> </div>
+<div class="line"> </div>
+<div class="line"> </div>
+<div class="line"> </div>
+<div class="line"> </div>
+<div class="line"> </div>
+<div class="line"> </div>
 <div class="line">    </div>
-<div class="line">    .platform_ops = &amp;<a class="code hl_define" href="ad2s1210__iio_2app_2app__config_8h.html#acc53ed106567a5a56e1bdf6aa73728bc">uart_ops</a>,</div>
-<div class="line">    .extra = &amp;<a class="code hl_define" href="ad2s1210__iio_2app_2app__config_8h.html#a0218303728bba1f6bc0b725266ccbbd4">uart_extra_init_params</a></div>
-<div class="line"> </div>
-<div class="line"> </div>
-<div class="line"> </div>
-<div class="line"> </div>
-<div class="line"> </div>
-<div class="line"> </div>
-<div class="line"> </div>
+<div class="line">    .platform_ops = &amp;<a class="code hl_define" href="ad2s1210__iio_2app_2app__config_8h.html#ad7c095ac25ce9f903c7c0a9a50002bd4">vcom_ops</a>,</div>
+<div class="line">    .extra = &amp;<a class="code hl_define" href="ad2s1210__iio_2app_2app__config_8h.html#a5d0039d2f60b5109c03e1daf4134b20c">vcom_extra_init_params</a></div>
 <div class="line"> </div>
 <div class="line"> </div>
 <div class="line">}</div>
-<div class="ttc" id="aad2s1210__iio_2app_2app__config_8h_html_a0218303728bba1f6bc0b725266ccbbd4"><div class="ttname"><a href="ad2s1210__iio_2app_2app__config_8h.html#a0218303728bba1f6bc0b725266ccbbd4">uart_extra_init_params</a></div><div class="ttdeci">#define uart_extra_init_params</div><div class="ttdef"><b>Definition</b> app_config.h:78</div></div>
 <div class="ttc" id="aad2s1210__iio_2app_2app__config_8h_html_a1f21242d642bc7352daa4f657ff15a5a"><div class="ttname"><a href="ad2s1210__iio_2app_2app__config_8h.html#a1f21242d642bc7352daa4f657ff15a5a">IIO_UART_BAUD_RATE</a></div><div class="ttdeci">#define IIO_UART_BAUD_RATE</div><div class="ttdef"><b>Definition</b> app_config.h:164</div></div>
-<div class="ttc" id="aad2s1210__iio_2app_2app__config_8h_html_acc53ed106567a5a56e1bdf6aa73728bc"><div class="ttname"><a href="ad2s1210__iio_2app_2app__config_8h.html#acc53ed106567a5a56e1bdf6aa73728bc">uart_ops</a></div><div class="ttdeci">#define uart_ops</div><div class="ttdef"><b>Definition</b> app_config.h:87</div></div>
+<div class="ttc" id="aad2s1210__iio_2app_2app__config_8h_html_a5d0039d2f60b5109c03e1daf4134b20c"><div class="ttname"><a href="ad2s1210__iio_2app_2app__config_8h.html#a5d0039d2f60b5109c03e1daf4134b20c">vcom_extra_init_params</a></div><div class="ttdeci">#define vcom_extra_init_params</div><div class="ttdef"><b>Definition</b> app_config.h:79</div></div>
+<div class="ttc" id="aad2s1210__iio_2app_2app__config_8h_html_ad7c095ac25ce9f903c7c0a9a50002bd4"><div class="ttname"><a href="ad2s1210__iio_2app_2app__config_8h.html#ad7c095ac25ce9f903c7c0a9a50002bd4">vcom_ops</a></div><div class="ttdeci">#define vcom_ops</div><div class="ttdef"><b>Definition</b> app_config.h:88</div></div>
 <div class="ttc" id="aad3530r__iio_2app_2app__config__stm32_8h_html_a1de69c73f829a03f46f5e7690da7e79a"><div class="ttname"><a href="ad3530r__iio_2app_2app__config__stm32_8h.html#a1de69c73f829a03f46f5e7690da7e79a">UART_ID</a></div><div class="ttdeci">#define UART_ID</div><div class="ttdef"><b>Definition</b> app_config_stm32.h:76</div></div>
 </div><!-- fragment -->
 </div>
@@ -376,15 +408,20 @@ Variables</h2></td></tr>
 <div class="line">    .parity = NO_OS_UART_PAR_NO,</div>
 <div class="line">    .stop = NO_OS_UART_STOP_1_BIT,</div>
 <div class="line"> </div>
-<div class="line">    .platform_ops = &amp;<a class="code hl_define" href="ad2s1210__iio_2app_2app__config_8h.html#ad7c095ac25ce9f903c7c0a9a50002bd4">vcom_ops</a>,</div>
-<div class="line">    .extra = &amp;<a class="code hl_define" href="ad2s1210__iio_2app_2app__config_8h.html#a5d0039d2f60b5109c03e1daf4134b20c">vcom_extra_init_params</a></div>
+<div class="line">    .asynchronous_rx = <span class="keyword">true</span>,</div>
+<div class="line">    .irq_id = <a class="code hl_define" href="ad3530r__iio_2app_2app__config__stm32_8h.html#adff4ff00d8f3375e4fb198270ae24597">UART_IRQ_ID</a>,</div>
 <div class="line"> </div>
 <div class="line"> </div>
 <div class="line"> </div>
+<div class="line"> </div>
+<div class="line"> </div>
+<div class="line">    .platform_ops = &amp;<a class="code hl_define" href="ad2s1210__iio_2app_2app__config_8h.html#acc53ed106567a5a56e1bdf6aa73728bc">uart_ops</a>,</div>
+<div class="line">    .extra = &amp;<a class="code hl_define" href="ad2s1210__iio_2app_2app__config_8h.html#a0218303728bba1f6bc0b725266ccbbd4">uart_extra_init_params</a></div>
 <div class="line"> </div>
 <div class="line">}</div>
-<div class="ttc" id="aad2s1210__iio_2app_2app__config_8h_html_a5d0039d2f60b5109c03e1daf4134b20c"><div class="ttname"><a href="ad2s1210__iio_2app_2app__config_8h.html#a5d0039d2f60b5109c03e1daf4134b20c">vcom_extra_init_params</a></div><div class="ttdeci">#define vcom_extra_init_params</div><div class="ttdef"><b>Definition</b> app_config.h:79</div></div>
-<div class="ttc" id="aad2s1210__iio_2app_2app__config_8h_html_ad7c095ac25ce9f903c7c0a9a50002bd4"><div class="ttname"><a href="ad2s1210__iio_2app_2app__config_8h.html#ad7c095ac25ce9f903c7c0a9a50002bd4">vcom_ops</a></div><div class="ttdeci">#define vcom_ops</div><div class="ttdef"><b>Definition</b> app_config.h:88</div></div>
+<div class="ttc" id="aad2s1210__iio_2app_2app__config_8h_html_a0218303728bba1f6bc0b725266ccbbd4"><div class="ttname"><a href="ad2s1210__iio_2app_2app__config_8h.html#a0218303728bba1f6bc0b725266ccbbd4">uart_extra_init_params</a></div><div class="ttdeci">#define uart_extra_init_params</div><div class="ttdef"><b>Definition</b> app_config.h:78</div></div>
+<div class="ttc" id="aad2s1210__iio_2app_2app__config_8h_html_acc53ed106567a5a56e1bdf6aa73728bc"><div class="ttname"><a href="ad2s1210__iio_2app_2app__config_8h.html#acc53ed106567a5a56e1bdf6aa73728bc">uart_ops</a></div><div class="ttdeci">#define uart_ops</div><div class="ttdef"><b>Definition</b> app_config.h:87</div></div>
+<div class="ttc" id="aad3530r__iio_2app_2app__config__stm32_8h_html_adff4ff00d8f3375e4fb198270ae24597"><div class="ttname"><a href="ad3530r__iio_2app_2app__config__stm32_8h.html#adff4ff00d8f3375e4fb198270ae24597">UART_IRQ_ID</a></div><div class="ttdeci">#define UART_IRQ_ID</div><div class="ttdef"><b>Definition</b> app_config_stm32.h:43</div></div>
 </div><!-- fragment -->
 </div>
 </div>

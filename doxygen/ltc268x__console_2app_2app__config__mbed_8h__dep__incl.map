@@ -1,13 +1,15 @@
 <map id="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ltc268x_console/app/app_config_mbed.h" name="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ltc268x_console/app/app_config_mbed.h">
-<area shape="rect" id="Node000001" title="Header file for Mbed platform configurations." alt="" coords="429,5,719,75"/>
-<area shape="rect" id="Node000002" href="$ltc268x__console_2app_2app__config_8h.html" title="Configuration file for LTC268X device applications." alt="" coords="306,123,551,192"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="523,85,473,124,470,120,519,81"/>
-<area shape="rect" id="Node000006" href="$ltc268x__console_2app_2app__config__mbed_8c.html" title="Application configurations module for Mbed platform." alt="" coords="575,123,863,192"/>
-<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="629,81,678,120,675,124,625,85"/>
+<area shape="rect" id="Node000001" title="Header file for Mbed platform configurations." alt="" coords="595,5,884,75"/>
+<area shape="rect" id="Node000002" href="$ltc268x__console_2app_2app__config_8h.html" title="Configuration file for LTC268X device applications." alt="" coords="471,123,717,192"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="688,85,638,124,635,120,685,81"/>
+<area shape="rect" id="Node000007" href="$ltc268x__console_2app_2app__config__mbed_8c.html" title="Application configurations module for Mbed platform." alt="" coords="741,123,1029,192"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="794,81,844,120,840,124,791,85"/>
 <area shape="rect" id="Node000003" href="$ltc268x__console_2app_2app__config_8c.html" title="Application configurations module." alt="" coords="5,240,249,309"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="329,199,216,242,214,237,327,194"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="459,194,261,243,250,245,249,240,260,237,458,189"/>
 <area shape="rect" id="Node000004" href="$ltc268x__console__app_8c.html" title="ltc268x console application interfaces" alt="" coords="273,240,584,309"/>
-<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="431,206,431,240,426,240,426,206"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="536,202,479,242,476,237,533,198"/>
 <area shape="rect" id="Node000005" href="$ltc268x__user__config_8c.html" title="User configuration file for LTC268X device." alt="" coords="608,240,911,309"/>
-<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="539,194,664,237,662,242,537,199"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="655,198,712,237,709,242,652,202"/>
+<area shape="rect" id="Node000006" href="$ltc268x__console_2app_2main_8c.html" title="main module for ltc268x console application interface" alt="" coords="935,240,1157,309"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="731,190,924,237,935,240,934,245,923,243,730,195"/>
 </map>

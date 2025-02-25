@@ -156,6 +156,10 @@ Variables</h2></td></tr>
 <tr class="separator:ac95c90569814e6d42493a7619c67ad32"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a43db47a234d5880310bb044085174e1f" id="r_a43db47a234d5880310bb044085174e1f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structconsole__menu.html">console_menu</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ltc268x__console__app_8c.html#a43db47a234d5880310bb044085174e1f">ltc268x_dac_data_operations_menu</a></td></tr>
 <tr class="separator:a43db47a234d5880310bb044085174e1f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad5132545e75d00d2901088ff1886e41e" id="r_ad5132545e75d00d2901088ff1886e41e"><td class="memItemLeft" align="right" valign="top">struct no_os_uart_desc *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ltc268x__console__app_8c.html#ad5132545e75d00d2901088ff1886e41e">uart_desc</a></td></tr>
+<tr class="separator:ad5132545e75d00d2901088ff1886e41e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8059032a4575066cac632058790114ea" id="r_a8059032a4575066cac632058790114ea"><td class="memItemLeft" align="right" valign="top">struct no_os_uart_init_param&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ltc268x__console__app_8c.html#a8059032a4575066cac632058790114ea">uart_init_params</a></td></tr>
+<tr class="separator:a8059032a4575066cac632058790114ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a30be4634e9284a113faea36b3cbdf768" id="r_a30be4634e9284a113faea36b3cbdf768"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structconsole__menu.html">console_menu</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ltc268x__console__app_8c.html#a30be4634e9284a113faea36b3cbdf768">ltc268x_set_input_register_menu</a></td></tr>
 <tr class="separator:a30be4634e9284a113faea36b3cbdf768"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab3869ebf408773060c68017edb50e55d" id="r_ab3869ebf408773060c68017edb50e55d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structconsole__menu.html">console_menu</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ltc268x__console__app_8c.html#ab3869ebf408773060c68017edb50e55d">ltc268x_clock_select_menu</a></td></tr>
@@ -166,7 +170,7 @@ Variables</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>ltc268x console application interfaces </p>
 <p>This file is specific to ltc268x console menu application handle. The functions defined in this file performs the action based on user selected console menu.</p>
-<p>Copyright (c) 2022 Analog Devices, Inc.</p>
+<p>Copyright (c) 2022,2025 Analog Devices, Inc.</p>
 <p>All rights reserved.</p>
 <p>This software is proprietary to Analog Devices, Inc. and its licensor's. By using this software you agree to the terms of the associated Analog Devices Software License Agreement. </p>
 </div><h2 class="groupheader">Function Documentation</h2>
@@ -228,14 +232,14 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line">= {</div>
-<div class="line">    .title = <a class="code hl_define" href="adt7420__console_2app_2app__config_8h.html#a4e67e9429d48a2ba8f833ee3b1dceb5d">EOL</a> <span class="stringliteral">&quot;Command Summary : &quot;</span> <a class="code hl_define" href="adt7420__console_2app_2app__config_8h.html#a4e67e9429d48a2ba8f833ee3b1dceb5d">EOL</a>,</div>
+<div class="line">    .title = <a class="code hl_define" href="ad5933__console_2app_2main_8c.html#a4e67e9429d48a2ba8f833ee3b1dceb5d">EOL</a> <span class="stringliteral">&quot;Command Summary : &quot;</span> <a class="code hl_define" href="ad5933__console_2app_2main_8c.html#a4e67e9429d48a2ba8f833ee3b1dceb5d">EOL</a>,</div>
 <div class="line">    .items = ltc268x_clock_select_menu_items,</div>
 <div class="line">    .itemCount = NO_OS_ARRAY_SIZE(ltc268x_clock_select_menu_items),</div>
 <div class="line">    .headerItem = dac_settings_header,</div>
 <div class="line">    .footerItem = error_status_footer,</div>
 <div class="line">    .enableEscapeKey = <span class="keyword">false</span></div>
 <div class="line">}</div>
-<div class="ttc" id="aadt7420__console_2app_2app__config_8h_html_a4e67e9429d48a2ba8f833ee3b1dceb5d"><div class="ttname"><a href="adt7420__console_2app_2app__config_8h.html#a4e67e9429d48a2ba8f833ee3b1dceb5d">EOL</a></div><div class="ttdeci">#define EOL</div><div class="ttdef"><b>Definition</b> app_config.h:47</div></div>
+<div class="ttc" id="aad5933__console_2app_2main_8c_html_a4e67e9429d48a2ba8f833ee3b1dceb5d"><div class="ttname"><a href="ad5933__console_2app_2main_8c.html#a4e67e9429d48a2ba8f833ee3b1dceb5d">EOL</a></div><div class="ttdeci">#define EOL</div><div class="ttdef"><b>Definition</b> main.c:26</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -251,7 +255,7 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line">= {</div>
-<div class="line">    .title = <a class="code hl_define" href="adt7420__console_2app_2app__config_8h.html#a4e67e9429d48a2ba8f833ee3b1dceb5d">EOL</a> <span class="stringliteral">&quot;Command Summary : &quot;</span> <a class="code hl_define" href="adt7420__console_2app_2app__config_8h.html#a4e67e9429d48a2ba8f833ee3b1dceb5d">EOL</a>,</div>
+<div class="line">    .title = <a class="code hl_define" href="ad5933__console_2app_2main_8c.html#a4e67e9429d48a2ba8f833ee3b1dceb5d">EOL</a> <span class="stringliteral">&quot;Command Summary : &quot;</span> <a class="code hl_define" href="ad5933__console_2app_2main_8c.html#a4e67e9429d48a2ba8f833ee3b1dceb5d">EOL</a>,</div>
 <div class="line">    .items = ltc268x_dac_configurations_menu_item,</div>
 <div class="line">    .itemCount = NO_OS_ARRAY_SIZE(ltc268x_dac_configurations_menu_item),</div>
 <div class="line">    .headerItem = dac_settings_header,</div>
@@ -273,7 +277,7 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line">= {</div>
-<div class="line">    .title = <a class="code hl_define" href="adt7420__console_2app_2app__config_8h.html#a4e67e9429d48a2ba8f833ee3b1dceb5d">EOL</a> <span class="stringliteral">&quot;Command Summary : &quot;</span> <a class="code hl_define" href="adt7420__console_2app_2app__config_8h.html#a4e67e9429d48a2ba8f833ee3b1dceb5d">EOL</a>,</div>
+<div class="line">    .title = <a class="code hl_define" href="ad5933__console_2app_2main_8c.html#a4e67e9429d48a2ba8f833ee3b1dceb5d">EOL</a> <span class="stringliteral">&quot;Command Summary : &quot;</span> <a class="code hl_define" href="ad5933__console_2app_2main_8c.html#a4e67e9429d48a2ba8f833ee3b1dceb5d">EOL</a>,</div>
 <div class="line">    .items = ltc268x_dac_data_operations_menu_items,</div>
 <div class="line">    .itemCount = NO_OS_ARRAY_SIZE(ltc268x_dac_data_operations_menu_items),</div>
 <div class="line">    .headerItem = dac_settings_header,</div>
@@ -309,7 +313,7 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line">= {</div>
-<div class="line">    .title = <a class="code hl_define" href="adt7420__console_2app_2app__config_8h.html#a4e67e9429d48a2ba8f833ee3b1dceb5d">EOL</a> <span class="stringliteral">&quot;Command Summary : &quot;</span> <a class="code hl_define" href="adt7420__console_2app_2app__config_8h.html#a4e67e9429d48a2ba8f833ee3b1dceb5d">EOL</a>,</div>
+<div class="line">    .title = <a class="code hl_define" href="ad5933__console_2app_2main_8c.html#a4e67e9429d48a2ba8f833ee3b1dceb5d">EOL</a> <span class="stringliteral">&quot;Command Summary : &quot;</span> <a class="code hl_define" href="ad5933__console_2app_2main_8c.html#a4e67e9429d48a2ba8f833ee3b1dceb5d">EOL</a>,</div>
 <div class="line">    .items = ltc268x_dither_period_select_menu_items,</div>
 <div class="line">    .itemCount = NO_OS_ARRAY_SIZE(ltc268x_dither_period_select_menu_items),</div>
 <div class="line">    .headerItem = dac_settings_header,</div>
@@ -331,7 +335,7 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line">= {</div>
-<div class="line">    .title = <a class="code hl_define" href="adt7420__console_2app_2app__config_8h.html#a4e67e9429d48a2ba8f833ee3b1dceb5d">EOL</a> <span class="stringliteral">&quot;Command Summary : &quot;</span> <a class="code hl_define" href="adt7420__console_2app_2app__config_8h.html#a4e67e9429d48a2ba8f833ee3b1dceb5d">EOL</a>,</div>
+<div class="line">    .title = <a class="code hl_define" href="ad5933__console_2app_2main_8c.html#a4e67e9429d48a2ba8f833ee3b1dceb5d">EOL</a> <span class="stringliteral">&quot;Command Summary : &quot;</span> <a class="code hl_define" href="ad5933__console_2app_2main_8c.html#a4e67e9429d48a2ba8f833ee3b1dceb5d">EOL</a>,</div>
 <div class="line">    .items = ltc268x_dither_phase_select_menu_items,</div>
 <div class="line">    .itemCount = NO_OS_ARRAY_SIZE(ltc268x_dither_phase_select_menu_items),</div>
 <div class="line">    .headerItem = dac_settings_header,</div>
@@ -353,7 +357,7 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line">= {</div>
-<div class="line">    .title = <a class="code hl_define" href="adt7420__console_2app_2app__config_8h.html#a4e67e9429d48a2ba8f833ee3b1dceb5d">EOL</a> <span class="stringliteral">&quot;Command Summary : &quot;</span> <a class="code hl_define" href="adt7420__console_2app_2app__config_8h.html#a4e67e9429d48a2ba8f833ee3b1dceb5d">EOL</a>,</div>
+<div class="line">    .title = <a class="code hl_define" href="ad5933__console_2app_2main_8c.html#a4e67e9429d48a2ba8f833ee3b1dceb5d">EOL</a> <span class="stringliteral">&quot;Command Summary : &quot;</span> <a class="code hl_define" href="ad5933__console_2app_2main_8c.html#a4e67e9429d48a2ba8f833ee3b1dceb5d">EOL</a>,</div>
 <div class="line">    .items = ltc268x_dither_toggle_set_menu_items,</div>
 <div class="line">    .itemCount = NO_OS_ARRAY_SIZE(ltc268x_dither_toggle_set_menu_items),</div>
 <div class="line">    .headerItem = dac_settings_header,</div>
@@ -375,7 +379,7 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line">= {</div>
-<div class="line">    .title = <a class="code hl_define" href="adt7420__console_2app_2app__config_8h.html#a4e67e9429d48a2ba8f833ee3b1dceb5d">EOL</a> <span class="stringliteral">&quot;Command Summary : &quot;</span> <a class="code hl_define" href="adt7420__console_2app_2app__config_8h.html#a4e67e9429d48a2ba8f833ee3b1dceb5d">EOL</a>,</div>
+<div class="line">    .title = <a class="code hl_define" href="ad5933__console_2app_2main_8c.html#a4e67e9429d48a2ba8f833ee3b1dceb5d">EOL</a> <span class="stringliteral">&quot;Command Summary : &quot;</span> <a class="code hl_define" href="ad5933__console_2app_2main_8c.html#a4e67e9429d48a2ba8f833ee3b1dceb5d">EOL</a>,</div>
 <div class="line">    .items = ltc268x_main_menu_items,</div>
 <div class="line">    .itemCount = NO_OS_ARRAY_SIZE(ltc268x_main_menu_items),</div>
 <div class="line">    .headerItem = print_title,</div>
@@ -397,7 +401,7 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line">= {</div>
-<div class="line">    .title = <a class="code hl_define" href="adt7420__console_2app_2app__config_8h.html#a4e67e9429d48a2ba8f833ee3b1dceb5d">EOL</a> <span class="stringliteral">&quot;Command Summary : &quot;</span> <a class="code hl_define" href="adt7420__console_2app_2app__config_8h.html#a4e67e9429d48a2ba8f833ee3b1dceb5d">EOL</a>,</div>
+<div class="line">    .title = <a class="code hl_define" href="ad5933__console_2app_2main_8c.html#a4e67e9429d48a2ba8f833ee3b1dceb5d">EOL</a> <span class="stringliteral">&quot;Command Summary : &quot;</span> <a class="code hl_define" href="ad5933__console_2app_2main_8c.html#a4e67e9429d48a2ba8f833ee3b1dceb5d">EOL</a>,</div>
 <div class="line">    .items = ltc268x_power_select_menu_items,</div>
 <div class="line">    .itemCount = NO_OS_ARRAY_SIZE(ltc268x_power_select_menu_items),</div>
 <div class="line">    .headerItem = dac_settings_header,</div>
@@ -419,7 +423,7 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line">= {</div>
-<div class="line">    .title = <a class="code hl_define" href="adt7420__console_2app_2app__config_8h.html#a4e67e9429d48a2ba8f833ee3b1dceb5d">EOL</a> <span class="stringliteral">&quot;Command Summary : &quot;</span> <a class="code hl_define" href="adt7420__console_2app_2app__config_8h.html#a4e67e9429d48a2ba8f833ee3b1dceb5d">EOL</a>,</div>
+<div class="line">    .title = <a class="code hl_define" href="ad5933__console_2app_2main_8c.html#a4e67e9429d48a2ba8f833ee3b1dceb5d">EOL</a> <span class="stringliteral">&quot;Command Summary : &quot;</span> <a class="code hl_define" href="ad5933__console_2app_2main_8c.html#a4e67e9429d48a2ba8f833ee3b1dceb5d">EOL</a>,</div>
 <div class="line">    .items = ltc268x_set_input_register_menu_items,</div>
 <div class="line">    .itemCount = NO_OS_ARRAY_SIZE(ltc268x_set_input_register_menu_items),</div>
 <div class="line">    .headerItem = dac_settings_header,</div>
@@ -441,13 +445,57 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line">= {</div>
-<div class="line">    .title = <a class="code hl_define" href="adt7420__console_2app_2app__config_8h.html#a4e67e9429d48a2ba8f833ee3b1dceb5d">EOL</a> <span class="stringliteral">&quot;Command Summary : &quot;</span> <a class="code hl_define" href="adt7420__console_2app_2app__config_8h.html#a4e67e9429d48a2ba8f833ee3b1dceb5d">EOL</a>,</div>
+<div class="line">    .title = <a class="code hl_define" href="ad5933__console_2app_2main_8c.html#a4e67e9429d48a2ba8f833ee3b1dceb5d">EOL</a> <span class="stringliteral">&quot;Command Summary : &quot;</span> <a class="code hl_define" href="ad5933__console_2app_2main_8c.html#a4e67e9429d48a2ba8f833ee3b1dceb5d">EOL</a>,</div>
 <div class="line">    .items = ltc268x_span_select_menu_items,</div>
 <div class="line">    .itemCount = NO_OS_ARRAY_SIZE(ltc268x_span_select_menu_items),</div>
 <div class="line">    .headerItem = dac_settings_header,</div>
 <div class="line">    .footerItem = error_status_footer,</div>
 <div class="line">    .enableEscapeKey = <span class="keyword">true</span></div>
 <div class="line">}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="ad5132545e75d00d2901088ff1886e41e" name="ad5132545e75d00d2901088ff1886e41e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad5132545e75d00d2901088ff1886e41e">&#9670;&#160;</a></span>uart_desc</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">struct no_os_uart_desc* uart_desc</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a8059032a4575066cac632058790114ea" name="a8059032a4575066cac632058790114ea"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8059032a4575066cac632058790114ea">&#9670;&#160;</a></span>uart_init_params</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">struct no_os_uart_init_param uart_init_params</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line">= {</div>
+<div class="line">    .device_id = 0,</div>
+<div class="line">    .baud_rate = 230400,</div>
+<div class="line">    .size = NO_OS_UART_CS_8,</div>
+<div class="line">    .parity = NO_OS_UART_PAR_NO,</div>
+<div class="line">    .stop = NO_OS_UART_STOP_1_BIT,</div>
+<div class="line">    .irq_id = <a class="code hl_define" href="ad3530r__iio_2app_2app__config__stm32_8h.html#adff4ff00d8f3375e4fb198270ae24597">UART_IRQ_ID</a>,</div>
+<div class="line">    .asynchronous_rx = <span class="keyword">false</span>,</div>
+<div class="line"> </div>
+<div class="line">    .platform_ops = &amp;<a class="code hl_define" href="ad2s1210__iio_2app_2app__config_8h.html#acc53ed106567a5a56e1bdf6aa73728bc">uart_ops</a>,</div>
+<div class="line">    .extra = &amp;<a class="code hl_define" href="ad2s1210__iio_2app_2app__config_8h.html#a0218303728bba1f6bc0b725266ccbbd4">uart_extra_init_params</a></div>
+<div class="line"> </div>
+<div class="line">}</div>
+<div class="ttc" id="aad2s1210__iio_2app_2app__config_8h_html_a0218303728bba1f6bc0b725266ccbbd4"><div class="ttname"><a href="ad2s1210__iio_2app_2app__config_8h.html#a0218303728bba1f6bc0b725266ccbbd4">uart_extra_init_params</a></div><div class="ttdeci">#define uart_extra_init_params</div><div class="ttdef"><b>Definition</b> app_config.h:78</div></div>
+<div class="ttc" id="aad2s1210__iio_2app_2app__config_8h_html_acc53ed106567a5a56e1bdf6aa73728bc"><div class="ttname"><a href="ad2s1210__iio_2app_2app__config_8h.html#acc53ed106567a5a56e1bdf6aa73728bc">uart_ops</a></div><div class="ttdeci">#define uart_ops</div><div class="ttdef"><b>Definition</b> app_config.h:87</div></div>
+<div class="ttc" id="aad3530r__iio_2app_2app__config__stm32_8h_html_adff4ff00d8f3375e4fb198270ae24597"><div class="ttname"><a href="ad3530r__iio_2app_2app__config__stm32_8h.html#adff4ff00d8f3375e4fb198270ae24597">UART_IRQ_ID</a></div><div class="ttdeci">#define UART_IRQ_ID</div><div class="ttdef"><b>Definition</b> app_config_stm32.h:43</div></div>
 </div><!-- fragment -->
 </div>
 </div>
