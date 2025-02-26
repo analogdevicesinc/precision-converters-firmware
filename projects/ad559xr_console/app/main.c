@@ -5,7 +5,7 @@
   @details: main module for AD5592R application interface
 
  -----------------------------------------------------------------------------
- Copyright (c) 2020 Analog Devices, Inc.
+ Copyright (c) 2020, 2025 Analog Devices, Inc.
  All rights reserved.
 
  This software is proprietary to Analog Devices, Inc. and its licensors.
@@ -18,6 +18,7 @@
 /******************************************************************************/
 #include <stdio.h>
 #include "ad5592r_console_app.h"
+#include "app_config.h"
 
 /******************************************************************************/
 /***************************** Function Definitions **********************************/
@@ -32,6 +33,11 @@
 int main()
 {
 	int32_t status;
+
+	/* Initialize the STM32 peripherals */
+#if (ACTIVE_PLATFORM == STM32_PLATFORM)
+	stm32_system_init();
+#endif
 
 	if ((status = ad5592r_app_initalization()) < 0) {
 		printf(EOL "Error setting up device (%d)" EOL, status);
