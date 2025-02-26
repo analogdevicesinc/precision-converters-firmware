@@ -7,7 +7,7 @@
  *            based on user selected console menu.
  *
  -----------------------------------------------------------------------------
- Copyright (c) 2020-2022 Analog Devices, Inc.
+ Copyright (c) 2020-2022, 2025 Analog Devices, Inc.
  All rights reserved.
 
  This software is proprietary to Analog Devices, Inc. and its licensors.
@@ -25,13 +25,10 @@
 #include "app_config.h"
 #include "ad5592r_configs.h"
 
-#include "mbed_platform_support.h"
 #include "no_os_error.h"
 #include "no_os_gpio.h"
 #include "no_os_i2c.h"
 #include "no_os_spi.h"
-#include "mbed_spi.h"
-#include "mbed_i2c.h"
 
 #include "ad5592r-base.h"
 #include "ad5592r.h"
@@ -89,6 +86,24 @@ static bool active_channel_selections[NUM_CHANNELS] = {
 	false
 };
 
+/* UART init parameters  */
+struct no_os_uart_init_param uart_init_params = {
+	.device_id = 0,
+	.baud_rate = 230400,
+	.size = NO_OS_UART_CS_8,
+	.parity = NO_OS_UART_PAR_NO,
+	.stop = NO_OS_UART_STOP_1_BIT,
+	.irq_id = UART_IRQ_ID,
+#if (ACTIVE_PLATFORM == STM32_PLATFORM)
+	.asynchronous_rx = false,
+	.platform_ops = &uart_ops,
+	.extra = &uart_extra_init_params
+#endif
+};
+
+/* UART Descriptor */
+struct no_os_uart_desc *uart_desc;
+
 static uint16_t adc_channels_in_seq = AD5592R_REG_ADC_SEQ_TEMP_READBACK;
 
 /******************************************************************************/
@@ -132,11 +147,21 @@ extern console_menu adc_menu;
 int32_t ad5592r_app_initalization(void)
 {
 	int32_t status;
+	int32_t ret;
+
+#if (ACTIVE_PLATFORM == STM32_PLATFORM)
+	ret = no_os_uart_init(&uart_desc, &uart_init_params);
+	if (ret) {
+		return ret;
+	}
+
+	no_os_uart_stdio(uart_desc);
+#endif
 
 	memcpy(&sAd5592r_dev, &ad5592r_dev_user, sizeof(ad5592r_dev_user));
 
 #if (ACTIVE_DEVICE == DEV_AD5593R)
-	status = i2c_init(&sAd5592r_dev.i2c, &i2c_user_params);
+	status = no_os_i2c_init(&sAd5592r_dev.i2c, &i2c_user_params);
 	if (status != 0) {
 		return (status);
 	}
@@ -150,6 +175,56 @@ int32_t ad5592r_app_initalization(void)
 	status = ad5592r_init(&sAd5592r_dev, &ad5592r_user_param);
 #endif
 	return status;
+}
+
+/*!
+ * @brief  Read ad5592/93R adc channel
+ * @param  dev - The device structure.
+ * @param  chan - The channel number.
+ * @param  value - ADC value
+ * @return 0 in case of success, negative error code otherwise
+ */
+int32_t ad5592_read_adc(struct ad5592r_dev *dev, uint8_t chan,
+			uint16_t *value)
+{
+	int32_t ret;
+	int readback_reg;
+	if (!dev)
+		return -EINVAL;
+
+	dev->spi_msg = swab16((uint16_t)(AD5592R_REG_ADC_SEQ << 11) |
+			      NO_OS_BIT(chan));
+
+	ret = no_os_spi_write_and_read(dev->spi, (uint8_t *)&dev->spi_msg,
+				       sizeof(dev->spi_msg));
+	if (ret) {
+		return ret;
+	}
+
+	/*
+	 * Invalid data:
+	 * See Figure 40. Single-Channel ADC Conversion Sequence
+	 */
+	ad5592r_base_reg_read(&sAd5592r_dev, AD5592R_REG_CTRL, &readback_reg);
+	if ((readback_reg ^ NO_OS_BIT(8))) {
+		no_os_udelay(20);
+	} else {
+		no_os_udelay(5);
+	}
+
+	ret = ad5592r_spi_wnop_r16(dev, &dev->spi_msg);
+	if (ret) {
+		return ret;
+	}
+
+	ret = ad5592r_spi_wnop_r16(dev, &dev->spi_msg);
+	if (ret) {
+		return ret;
+	}
+
+	*value = dev->spi_msg;
+
+	return 0;
 }
 
 /*!
@@ -210,9 +285,13 @@ static int32_t do_read_die_temp(uint32_t id)
 	do {
 		for (int8_t i = 0; i < TEMP_SAMPLE_SIZE; i++) {
 			do {
+#if (ACTIVE_DEVICE == DEV_AD5593R)
 				status = sAd5592r_dev.ops->read_adc(&sAd5592r_dev,
 								    AD5592R_CHANNEL(8),
 								    readback_reg);
+#else
+				status = ad5592_read_adc(&sAd5592r_dev, AD5592R_CHANNEL(8), readback_reg);
+#endif
 			} while (0);
 			if (status != 0) {
 				// Break out of for loop if not successful

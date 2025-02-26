@@ -4,7 +4,7 @@
   @brief: AD5592R/AD5593R device selection. Pin mappings.
   @details:
  -----------------------------------------------------------------------------
- Copyright (c) 2020, 2022 Analog Devices, Inc.
+ Copyright (c) 2020, 2022, 2025 Analog Devices, Inc.
  All rights reserved.
 
  This software is proprietary to Analog Devices, Inc. and its licensors.
@@ -19,11 +19,19 @@
 #define _APP_CONFIG_H_
 
 #include <stdint.h>
-#include <PinNames.h>
 
 /******************************************************************************/
 /************************* Macros & Constant Definitions ***************************/
 /******************************************************************************/
+
+#define	MBED_PLATFORM		1
+#define STM32_PLATFORM      2
+
+/* Select the active platform  */
+#if !defined(ACTIVE_PLATFORM)
+#define ACTIVE_PLATFORM		STM32_PLATFORM
+#endif
+
 // Supported Devices
 #define DEV_AD5592R 0
 #define DEV_AD5593R 1
@@ -39,44 +47,19 @@
 #define ACTIVE_DEVICE  DEV_AD5592R
 #endif
 
-/**
-  The ADI SDP_K1 can be used with either arduino headers
-  or the 120-pin SDP connector found on ADI evaluation
-  boards. The default is the SDP connector.
-
-  Uncomment the ARDUINO #define below to enable the ARDUINO connector
-  This is required for most other boards
-*/
-
-//#define  ARDUINO
-
 #define NUM_CHANNELS 8
 
 #define AD5593R_I2C (0x10 | (AD5593R_A0_STATE & 0x01))
 
-// Pin mapping of with SDP-120 or Arduino connectors
-#ifdef ARDUINO
-#define I2C_SCL		    ARDUINO_UNO_D15		// I2C_SCL
-#define I2C_SDA		    ARDUINO_UNO_D14		// I2C_SDA
-
-#define SPI_CSB	        ARDUINO_UNO_D10		// SPI_CS
-#define SPI_HOST_SDO 	ARDUINO_UNO_D11		// SPI_MOSI
-#define SPI_HOST_SDI  	ARDUINO_UNO_D12		// SPI_MISO
-#define SPI_SCK		    ARDUINO_UNO_D13		// SPI_SCK
-
-#define GAIN_PIN	    ARDUINO_UNO_D8
-#define RESET_PIN	    ARDUINO_UNO_D9
-#define LDAC_PIN	    ARDUINO_UNO_D7
-#define ADDR0_PIN	    ARDUINO_UNO_D6
+#if (ACTIVE_PLATFORM == MBED_PLATFORM)
+#include "app_config_mbed.h"
+#define spi_init_extra_params	mbed_spi_extra_init_params
+#define i2c_init_extra_params   mbed_i2c_extra_init_params
 #else
-// SDP-120 connector
-#define I2C_SCL		    SDP_I2C_SCL		// PH_7
-#define I2C_SDA		    SDP_I2C_SDA		// PC_9
-
-#define SPI_CSB		    SDP_SPI_CS_A	// PB_9
-#define SPI_HOST_SDI 	SDP_SPI_MISO	// PF_8
-#define SPI_HOST_SDO	SDP_SPI_MOSI	// PF_9
-#define SPI_SCK		    SDP_SPI_SCK		// PH_6
+#include "app_config_stm32.h"
+#define spi_init_extra_params  stm32_spi_extra_init_params
+#define i2c_init_extra_params   stm32_i2c_extra_init_params
+#define uart_extra_init_params 	stm32_uart_extra_init_params
 #endif
 
 #endif //_APP_CONFIG_H_
