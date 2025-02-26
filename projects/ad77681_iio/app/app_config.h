@@ -3,7 +3,7 @@
  * @brief   Configuration file for AD77681 IIO firmware application
  * @details
 ******************************************************************************
- * Copyright (c) 2021-23 Analog Devices, Inc.
+ * Copyright (c) 2021-23, 2025 Analog Devices, Inc.
  * All rights reserved.
  *
  * This software is proprietary to Analog Devices, Inc. and its licensors.
@@ -26,6 +26,7 @@
 
 /* List of supported platforms*/
 #define	MBED_PLATFORM		1
+#define STM32_PLATFORM      2
 
 /* List of supported data capture modes for an application */
 #define BURST_DATA_CAPTURE			0
@@ -37,7 +38,7 @@
 
 /* Select the active platform (default is Mbed) */
 #if !defined(ACTIVE_PLATFORM)
-#define ACTIVE_PLATFORM		MBED_PLATFORM
+#define ACTIVE_PLATFORM		STM32_PLATFORM
 #endif
 
 /* Select the ADC data capture mode (default is CC mode) */
@@ -62,13 +63,8 @@
 
 /* Redefine the init params structure mapping w.r.t. platform */
 #define ext_int_extra_init_params mbed_ext_int_extra_init_params
-#if defined(USE_VIRTUAL_COM_PORT)
-#define uart_extra_init_params mbed_vcom_extra_init_params
-#define uart_ops mbed_virtual_com_ops
-#else
+#define vcom_extra_init_params mbed_vcom_extra_init_params
 #define uart_extra_init_params mbed_uart_extra_init_params
-#define uart_ops mbed_uart_ops
-#endif
 #define spi_extra_init_params mbed_spi_extra_init_params
 #define i2c_extra_init_params mbed_i2c_extra_init_params
 #define trigger_gpio_irq_extra_params mbed_trigger_gpio_irq_init_params
@@ -79,10 +75,30 @@
 #define spi_ops		mbed_spi_ops
 #define i2c_ops mbed_i2c_ops
 #define trigger_gpio_irq_ops mbed_gpio_irq_ops
+#define vcom_ops mbed_virtual_com_ops
+#define uart_ops mbed_uart_ops
 #define trigger_gpio_handle 0	// Unused macro
 #define TRIGGER_GPIO_PORT 0  // Unused macro
 #define TRIGGER_GPIO_PIN  CONV_MON
 #define TRIGGER_INT_ID	GPIO_IRQ_ID1
+#elif (ACTIVE_PLATFORM == STM32_PLATFORM)
+#include "app_config_stm32.h"
+/* Redefine the init params structure mapping w.r.t. platform */
+#define vcom_extra_init_params stm32_vcom_extra_init_params
+#define vcom_ops stm32_usb_uart_ops
+#define uart_extra_init_params stm32_uart_extra_init_params
+#define uart_ops stm32_uart_ops
+#define spi_extra_init_params stm32_spi_extra_init_params
+#define i2c_extra_init_params stm32_i2c_extra_init_params
+#define trigger_gpio_irq_extra_params stm32_trigger_gpio_irq_init_params
+#define trigger_gpio_extra_init_params stm32_trigger_gpio_extra_init_params
+#define trigger_gpio_ops stm32_gpio_ops
+#define irq_ops		stm32_gpio_irq_ops
+#define gpio_ops	stm32_gpio_ops
+#define spi_ops		stm32_spi_ops
+#define i2c_ops stm32_i2c_ops
+#define trigger_gpio_irq_ops stm32_gpio_irq_ops
+#define trigger_gpio_handle 0	// Unused macro
 #else
 #error "No/Invalid active platform selected"
 #endif
@@ -109,6 +125,39 @@
 
 /* Baud rate for IIO application UART interface */
 #define IIO_UART_BAUD_RATE (230400)
+
+/* Check if any serial port available for use as console stdio port */
+#if defined(USE_PHY_COM_PORT)
+/* If PHY com is selected, VCOM or alternate PHY com port can act as a console stdio port */
+#if (ACTIVE_PLATFORM == MBED_PLATFORM || ACTIVE_PLATFORM == STM32_PLATFORM)
+#define CONSOLE_STDIO_PORT_AVAILABLE
+#endif
+#else
+/* If VCOM is selected, PHY com port will/should act as a console stdio port */
+#define CONSOLE_STDIO_PORT_AVAILABLE
+#endif
+
+/* Define the max possible sampling frequency (or output data) rate for AD77681 (in SPS).
+ * This is also used to find the time period to trigger a periodic conversion event.
+ * Note: Max possible ODR is 64KSPS for continuous data capture on IIO Client.
+ * This is derived by capturing data from the firmware using the SDP-K1 controller board
+ * @22.5Mhz SPI clock. The max possible ODR can vary from board to board and
+ * data continuity is not guaranteed above this ODR on IIO oscilloscope */
+
+/* AD77681 default internal clock frequency (MCLK = 16.384 Mhz) */
+#define AD77681_MCLK (16384)
+
+/* AD77681 decimation rate */
+#define AD77681_DECIMATION_RATE	(32U)
+
+/* AD77681 default mclk_div value */
+#define AD77681_DEFAULT_MCLK_DIV (8)
+
+/* AD77681 ODR conversion */
+#define AD77681_ODR_CONV_SCALER	(AD77681_DECIMATION_RATE * AD77681_DEFAULT_MCLK_DIV)
+
+/* AD77681 default sampling frequency */
+#define AD77681_DEFAULT_SAMPLING_FREQ	((AD77681_MCLK * 1000) / AD77681_ODR_CONV_SCALER)
 
 /* Enable/Disable the use of SDRAM for ADC data capture buffer */
 //#define USE_SDRAM		// Uncomment to use SDRAM for data buffer

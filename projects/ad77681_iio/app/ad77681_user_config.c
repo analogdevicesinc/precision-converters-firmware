@@ -5,7 +5,7 @@
  *
  *   @details
 ******************************************************************************
-Copyright (c) 2021-22 Analog Devices, Inc. All Rights Reserved.
+Copyright (c) 2021-22, 2025 Analog Devices, Inc. All Rights Reserved.
 
 This software is proprietary to Analog Devices, Inc. and its licensors.
 By using this software you agree to the terms of the associated
@@ -18,7 +18,6 @@ Analog Devices Software License Agreement.
 #include <stdint.h>
 
 #include "app_config.h"
-#include "app_config_mbed.h"
 #include "ad77681_user_config.h"
 #include "no_os_spi.h"
 
@@ -31,6 +30,7 @@ struct ad77681_init_param sad77681_init = {
 	// Define SPI init parameters structure
 	.spi_eng_dev_init =
 	{
+		.device_id = SPI_DEVICE_ID,
 		.max_speed_hz = 22500000,		// Max SPI Speed
 		.chip_select = SPI_CSB,			// Chip Select
 		.mode = NO_OS_SPI_MODE_3,		// CPOL = 1, CPHA = 1
