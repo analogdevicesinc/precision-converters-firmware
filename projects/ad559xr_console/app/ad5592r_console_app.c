@@ -205,7 +205,11 @@ int32_t ad5592_read_adc(struct ad5592r_dev *dev, uint8_t chan,
 	 * Invalid data:
 	 * See Figure 40. Single-Channel ADC Conversion Sequence
 	 */
-	ad5592r_base_reg_read(&sAd5592r_dev, AD5592R_REG_CTRL, &readback_reg);
+	ret = ad5592r_base_reg_read(&sAd5592r_dev, AD5592R_REG_CTRL, &readback_reg);
+	if (ret) {
+		return ret;
+	}
+	
 	if ((readback_reg ^ NO_OS_BIT(8))) {
 		no_os_udelay(20);
 	} else {

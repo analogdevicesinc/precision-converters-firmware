@@ -3,7 +3,7 @@
  *   @brief   Implementation of AD7768-1 IIO application interfaces
  *   @details This module acts as an interface for AD7768-1 IIO application
 ********************************************************************************
- * Copyright (c) 2021-23 Analog Devices, Inc.
+ * Copyright (c) 2021-23, 2025 Analog Devices, Inc.
  * All rights reserved.
  *
  * This software is proprietary to Analog Devices, Inc. and its licensors.
@@ -612,7 +612,7 @@ static int32_t iio_ad77681_submit_buffer(struct iio_device_data *iio_dev_data)
 	}
 
 	while (sample_index < nb_of_samples) {
-		ret = ad77681_read_single_sample(&adc_raw);
+		ret = ad77681_read_converted_sample(&adc_raw);
 		if (ret) {
 			return ret;
 		}
@@ -640,7 +640,20 @@ static int32_t iio_ad77681_prepare_transfer(void *dev,
 {
 	int32_t ret;
 
+	/* The UART interrupt needs to be prioritized over the GPIO (end of conversion) interrupt.
+		 * If not, the GPIO interrupt may occur during the period where there is a UART read happening
+		 * for the READBUF command. If UART interrupts are not prioritized, then it would lead to missing of
+		 * characters in the IIO command sent from the client. */
 #if (DATA_CAPTURE_MODE == CONTINUOUS_DATA_CAPTURE)
+#if (ACTIVE_PLATFORM == STM32_PLATFORM)
+	ret = no_os_irq_set_priority(trigger_irq_desc, TRIGGER_INT_ID,
+				     CONV_GPIO_PRIORITY);
+	if (ret) {
+		return ret;
+	}
+#endif
+#endif
+
 	ret = ad77681_set_conv_mode(
 		      p_ad77681_dev_inst,
 		      AD77681_CONV_CONTINUOUS,
@@ -650,6 +663,7 @@ static int32_t iio_ad77681_prepare_transfer(void *dev,
 		return ret;
 	}
 
+#if (DATA_CAPTURE_MODE == CONTINUOUS_DATA_CAPTURE)
 	ret = iio_trig_enable(ad77681_hw_trig_desc);
 	if (ret) {
 		return ret;
@@ -705,6 +719,16 @@ int32_t iio_ad77681_trigger_handler(struct iio_device_data *iio_dev_data)
 	if (ret) {
 		return ret;
 	}
+
+#if (ACTIVE_PLATFORM == STM32_PLATFORM)
+	/* Clear pending Interrupt before enabling back the trigger.
+	 * Else , a spurious interrupt is observed after a legitimate interrupt,
+	 * as SPI SDO is on the same pin and is mistaken for an interrupt event */
+	ret = no_os_irq_clear_pending(trigger_irq_desc, TRIGGER_INT_ID);
+	if (ret) {
+		return ret;
+	}
+#endif
 
 	return 0;
 }
