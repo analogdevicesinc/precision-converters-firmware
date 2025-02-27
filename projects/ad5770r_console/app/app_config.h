@@ -33,7 +33,7 @@ Analog Devices Software License Agreement.
   Uncomment the ARDUINO #define to enable the ARDUINO connector
 */
 
-//#define  ARDUINO
+#define  ARDUINO
 
 // Pin mapping of AD5770R with SDP-K1/Arduino
 #ifdef ARDUINO
