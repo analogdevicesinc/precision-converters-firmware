@@ -31,6 +31,8 @@ STM32/sdp_k1/STM32F469NIHX_FLASH.ld
 STM32/sdp_k1/STM32F469NIHX_RAM.ld
 STM32/sdp_k1/Middlewares
 STM32/sdp_k1/USB_DEVICE
+STM32/sdp_k1/*.launch
+STM32/sdp_k1/*.cfg
 scripts/__pycache__
 tests/.pytest_cache
 tests/__pycache__
