@@ -65,7 +65,7 @@ static int32_t ad4170_code_to_straight_binary(uint32_t code, uint8_t chn);
 #define CJC_CHANNEL		2
 
 /*	Number of IIO devices */
-#define NUM_OF_IIO_DEVICES	1
+#define NUM_OF_IIO_DEVICES	2
 
 /* IIO trigger name */
 #define IIO_TRIGGER_NAME	"ad4170_iio_trigger"
@@ -130,7 +130,7 @@ static struct iio_desc *p_ad4170_iio_desc;
 struct ad4170_dev *p_ad4170_dev_inst = NULL;
 
 /* IIO device descriptor */
-struct iio_device *p_iio_ad4170_dev;
+struct iio_device *p_iio_ad4170_dev[NUM_OF_IIO_DEVICES];
 
 /* IIO hw trigger descriptor */
 static struct iio_hw_trig *ad4170_hw_trig_desc;
@@ -444,6 +444,18 @@ static const char* active_dev[] = {
 
 /* Effective sampling rate of the device */
 static uint32_t sampling_rate = AD4170_MAX_SAMPLING_RATE;
+
+/* Enum of channel status */
+enum ad4170_channel_status {
+	AD4170_CHN_DISABLED,
+	AD4170_CHN_ENABLED
+};
+
+/* Channel status available values */
+static const char *ad4170_chn_status_options[] = {
+	"disabled",
+	"enabled"
+};
 
 /******************************************************************************/
 /************************ Functions Prototypes ********************************/
@@ -1102,6 +1114,83 @@ static int set_fs(void *device,
 	}
 
 	return 0;
+}
+
+/*!
+ * @brief Getter/Setter for the channel enable attribute
+ * @param device[in]- pointer to IIO device structure
+ * @param buf[in]- pointer to buffer holding attribute value
+ * @param len[in]- length of buffer string data
+ * @param channel[in]- pointer to IIO channel structure
+ * @param id[in]- Attribute ID (optional)
+ * @return Number of characters read/written
+ */
+static int get_ch_status(void *device,
+			 char *buf,
+			 uint32_t len,
+			 const struct iio_ch_info *channel,
+			 intptr_t id)
+{
+	uint8_t val = no_os_field_get(NO_OS_BIT(channel->ch_num),
+				      ad4170_init_params.config.channel_en);
+
+	return sprintf(buf, "%s",
+		       ad4170_chn_status_options[val]);
+}
+
+static int set_ch_status(void *device,
+			 char *buf,
+			 uint32_t len,
+			 const struct iio_ch_info *channel,
+			 intptr_t id)
+{
+	uint8_t status_id;
+
+	for (status_id = AD4170_CHN_DISABLED; status_id <= AD4170_CHN_ENABLED;
+	     status_id++) {
+		if (!strcmp(buf, ad4170_chn_status_options[status_id])) {
+			break;
+		}
+	}
+
+	if (status_id) {
+		ad4170_init_params.config.channel_en |= NO_OS_BIT(channel->ch_num);
+	} else {
+		ad4170_init_params.config.channel_en &= ~(NO_OS_BIT(channel->ch_num));
+	}
+
+	return len;
+}
+
+/*!
+ * @brief Getter/Setter for the Channel status available values
+ * @param device[in]- pointer to IIO device structure
+ * @param buf[in]- pointer to buffer holding attribute value
+ * @param len[in]- length of buffer string data
+ * @param channel[in]- pointer to IIO channel structure
+ * @param id[in]- Attribute ID (optional)
+ * @return Number of characters read/written
+ */
+static int get_ch_status_available(void *device,
+				   char *buf,
+				   uint32_t len,
+				   const struct iio_ch_info *channel,
+				   intptr_t id)
+{
+	return sprintf(buf,
+		       "%s %s",
+		       ad4170_chn_status_options[0],
+		       ad4170_chn_status_options[1]);
+}
+
+static int set_ch_status_available(void *device,
+				   char *buf,
+				   uint32_t len,
+				   const struct iio_ch_info *channel,
+				   intptr_t id)
+{
+	/* NA- Can't set available mode value */
+	return len;
 }
 
 /*!
@@ -2572,6 +2661,22 @@ struct iio_attribute channel_input_attributes[] = {
 	END_ATTRIBUTES_ARRAY
 };
 
+/* Board level channels attributes list */
+struct iio_attribute ad4170_board_channel_attributes[] = {
+	{
+		.name = "ch_en",
+		.show = get_ch_status,
+		.store = set_ch_status
+	},
+	{
+		.name = "ch_en_available",
+		.show = get_ch_status_available,
+		.store = set_ch_status_available
+	},
+
+	END_ATTRIBUTES_ARRAY
+};
+
 /* IIOD device (global) attributes list */
 static struct iio_attribute global_attributes[] = {
 	{
@@ -2922,6 +3027,35 @@ void ad4170_configure_filter_params(void)
 }
 
 /**
+ * @brief Init for reading/writing and parameterization of a AD4170 Board IIO device
+ * @param desc[in,out] - IIO device descriptor
+ * @param dev_indx[in] - IIO Device index
+ * @return 0 in case of success, negative error code otherwise
+ */
+static int board_iio_params_init(struct iio_device** desc,
+				 uint8_t dev_indx)
+{
+	struct iio_device* iio_dev;
+
+	if (!desc) {
+		return -EINVAL;
+	}
+
+	iio_dev = calloc(1, sizeof(*iio_dev));
+	if (!iio_dev) {
+		return -ENOMEM;
+	}
+
+	iio_dev->num_ch = NO_OS_ARRAY_SIZE(iio_ad4170_channels);
+	iio_dev->channels = iio_ad4170_channels;
+	iio_dev->channels->attributes = ad4170_board_channel_attributes;
+
+	*desc = iio_dev;
+
+	return 0;
+}
+
+/**
  * @brief	Initialize the IIO interface for AD4170 IIO device
  * @return	none
  * @return	0 in case of success, negative error code otherwise
@@ -2983,7 +3117,7 @@ int32_t ad4170_iio_initialize(void)
 		}
 
 		/* Initialize the device if HW mezzanine status is valid */
-		init_status = ad4170_iio_init(&p_iio_ad4170_dev);
+		init_status = ad4170_iio_init(&p_iio_ad4170_dev[iio_init_params.nb_devs]);
 		if (init_status) {
 			return init_status;
 		}
@@ -2993,7 +3127,8 @@ int32_t ad4170_iio_initialize(void)
 		iio_device_init_params[0].raw_buf_len = DATA_BUFFER_SIZE;
 
 		iio_device_init_params[0].dev = p_ad4170_dev_inst;
-		iio_device_init_params[0].dev_descriptor = p_iio_ad4170_dev;
+		iio_device_init_params[0].dev_descriptor =
+			p_iio_ad4170_dev[iio_init_params.nb_devs];
 
 		iio_init_params.nb_devs++;
 
@@ -3001,6 +3136,19 @@ int32_t ad4170_iio_initialize(void)
 		iio_init_params.nb_trigs++;
 #endif
 	}
+
+	/* Initialize board IIO paramaters */
+	init_status = board_iio_params_init(&p_iio_ad4170_dev[iio_init_params.nb_devs],
+					    iio_init_params.nb_devs);
+	if (init_status) {
+		return init_status;
+	}
+
+	iio_device_init_params[iio_init_params.nb_devs].name = "system_config";
+	iio_device_init_params[iio_init_params.nb_devs].dev_descriptor =
+		p_iio_ad4170_dev[iio_init_params.nb_devs];
+	iio_init_params.nb_devs++;
+
 
 	/* Initialize the IIO interface */
 	iio_init_params.uart_desc = uart_desc;
