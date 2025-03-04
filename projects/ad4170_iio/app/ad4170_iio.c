@@ -2955,6 +2955,10 @@ static int32_t ad4170_iio_init(struct iio_device **desc, uint8_t dev_indx)
 	uint8_t chn;
 	uint8_t setup;
 	bool bipolar;
+	uint16_t chn_mask = p_ad4170_dev_inst->config.channel_en;
+	static struct iio_channel channels[TOTAL_CHANNELS];
+	uint16_t mask = 0x1;
+	uint8_t id = 0;
 
 	iio_ad4170_inst = calloc(1, sizeof(struct iio_device));
 	if (!iio_ad4170_inst) {
@@ -2983,10 +2987,18 @@ static int32_t ad4170_iio_init(struct iio_device **desc, uint8_t dev_indx)
 		chn_scan[chn].shift = 0;
 		chn_scan[chn].is_big_endian = false;
 #endif
+
+		/* Update the channel map structure to include the enabled channels only */
+		if (chn_mask & mask) {
+			channels[id] = iio_ad4170_channels[dev_indx][chn];
+			id++;
+		}
+
+		mask <<= 1;
 	}
 
-	iio_ad4170_inst->num_ch = NO_OS_ARRAY_SIZE(iio_ad4170_channels[dev_indx]);
-	iio_ad4170_inst->channels = iio_ad4170_channels[dev_indx];
+	iio_ad4170_inst->num_ch = no_os_hweight16(p_ad4170_dev_inst->config.channel_en);
+	iio_ad4170_inst->channels = channels;
 	iio_ad4170_inst->attributes = global_attributes;
 
 	iio_ad4170_inst->submit = iio_ad4170_submit_buffer;
