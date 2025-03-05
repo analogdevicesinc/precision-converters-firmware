@@ -608,8 +608,7 @@ static int get_sampling_frequency(void *device,
 	sampling_rate = (AD4170_INTERNAL_CLOCK / (FILTER_SCALE *
 			 ad4170_init_params.config.setups[0].filter_fs));
 
-	return sprintf(buf, "%d",
-		       (sampling_rate / num_of_channels));
+	return sprintf(buf, "%d", sampling_rate);
 }
 
 static int set_sampling_frequency(void *device,
@@ -622,6 +621,27 @@ static int set_sampling_frequency(void *device,
 	return -EINVAL;
 }
 
+/*!
+ * @brief Getter/Setter for the channel sampling frequency attribute value
+ * @param device[in]- pointer to IIO device structure
+ * @param buf[in]- pointer to buffer holding attribute value
+ * @param len[in]- length of buffer string data
+ * @param channel[in]- pointer to IIO channel structure
+ * @param id[in]- Attribute ID (optional)
+ * @return Number of characters read/written
+ */
+static int get_ch_sampling_frequency(void *device,
+				     char *buf,
+				     uint32_t len,
+				     const struct iio_ch_info *channel,
+				     intptr_t id)
+{
+	/* Calculate the effective sampling rate of the device */
+	sampling_rate = (AD4170_INTERNAL_CLOCK / (FILTER_SCALE *
+			 ad4170_init_params.config.setups[0].filter_fs));
+
+	return sprintf(buf, "%d", (sampling_rate / num_of_channels));
+}
 
 /*!
  * @brief	Getter/Setter for the raw, offset and scale attribute value
@@ -1112,7 +1132,6 @@ static int set_pga(void *device,
 
 	return 0;
 }
-
 /*!
  * @brief Getter/Setter for the PGA available values
  * @param device[in]- pointer to IIO device structure
@@ -2825,6 +2844,10 @@ struct iio_attribute channel_input_attributes[] = {
 		.show = get_pga_available,
 		.store = set_pga_available
 	},
+	{
+		.name = "sampling_frequency",
+		.show = get_ch_sampling_frequency,
+	},
 
 	END_ATTRIBUTES_ARRAY
 };
@@ -2858,6 +2881,7 @@ struct iio_attribute ad4170_board_channel_attributes[] = {
 		.store = set_filter_available,
 		.priv = FILTER_ATTR_ID
 	},
+
 
 	END_ATTRIBUTES_ARRAY
 };
@@ -2903,6 +2927,11 @@ static struct iio_attribute global_attributes[] = {
 		.name = "adc_mode",
 		.show = get_adc_mode,
 		.store = set_adc_mode
+	},
+	{
+		.name = "filter_available",
+		.show = get_filter_available,
+		.store = set_filter_available
 	},
 	{
 		.name = "clock_ctrl",
@@ -3232,7 +3261,6 @@ void ad4170_configure_filter_params(void)
 		ad4170_init_params.config.setups[setup_id].filter.filter_type = filter_type;
 		ad4170_init_params.config.setups[setup_id].filter_fs = filter_fs;
 	}
-
 }
 
 /**
