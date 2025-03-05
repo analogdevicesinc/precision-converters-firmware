@@ -2164,7 +2164,12 @@ static int32_t ad4170_read_burst_data_spi_dma(uint32_t nb_of_samples,
 		tim8_config();
 	}
 
-	dma_cycle_count = ((nb_of_samples) / rxdma_ndtr) + 1;
+	if (nb_of_samples == rxdma_ndtr) {
+		dma_cycle_count = 1;
+	} else {
+		dma_cycle_count = ((nb_of_samples) / rxdma_ndtr) + 1;
+	}
+	callback_count = dma_cycle_count * 2;
 	update_buff(local_buf, buff_start_addr);
 
 	TIM8->CNT = 0;
