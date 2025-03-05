@@ -457,6 +457,20 @@ static const char *ad4170_chn_status_options[] = {
 	"enabled"
 };
 
+/* PGA Gain available values */
+static const char *ad4170_pga_options[] = {
+	"pga_1",
+	"pga_2",
+	"pga_4",
+	"pga_8",
+	"pga_16",
+	"pga_32",
+	"pga_64",
+	"pga_128",
+	"pga_0p5",
+	"pga_1_percharge_buffer"
+};
+
 /* Restart IIO flag */
 static bool restart_iio_flag = false;
 
@@ -1034,6 +1048,110 @@ static int set_filter(void *device,
 	}
 
 	return 0;
+}
+
+/*!
+ * @brief Getter/Setter for the PGA attribute value
+ * @param device[in]- pointer to IIO device structure
+ * @param buf[in]- pointer to buffer holding attribute value
+ * @param len[in]- length of buffer string data
+ * @param channel[in]- pointer to IIO channel structure
+ * @param id[in]- Attribute ID (optional)
+ * @return Number of characters read/written
+ */
+static int get_pga(void *device,
+		   char *buf,
+		   uint32_t len,
+		   const struct iio_ch_info *channel,
+		   intptr_t id)
+{
+	enum ad4170_pga_gain pga;
+
+	pga = ad4170_init_params.config.setups[ad4170_init_params.config.setup[channel->ch_num].setup_n].afe.pga_gain;
+
+	return sprintf(buf, "%s", ad4170_pga_options[pga]);
+}
+
+static int set_pga(void *device,
+		   char *buf,
+		   uint32_t len,
+		   const struct iio_ch_info *channel,
+		   intptr_t id)
+{
+	enum ad4170_pga_gain pga_id;
+	int ret;
+	uint32_t reg_val;
+
+	for (pga_id = AD4170_PGA_GAIN_1; pga_id <= AD4170_PGA_GAIN_1_PRECHARGE;
+	     pga_id++) {
+		if (!strcmp(buf, ad4170_pga_options[pga_id])) {
+			break;
+		}
+	}
+
+	ad4170_init_params.config.setups[ad4170_init_params.config.setup[channel->ch_num].setup_n].afe.pga_gain
+		= pga_id;
+
+	/* Read the AFE register */
+	ret = ad4170_spi_reg_read(p_ad4170_dev_inst,
+				  AD4170_REG_ADC_SETUPS_AFE(
+					  ad4170_init_params.config.setup[channel->ch_num].setup_n), &reg_val);
+	if (ret) {
+		return ret;
+	}
+
+	/* Update the value of PGA Gain */
+	reg_val |= no_os_field_prep(AD4170_ADC_SETUPS_AFE_PGA_GAIN_MSK, pga_id);
+
+	ret = ad4170_spi_reg_write(p_ad4170_dev_inst,
+				   AD4170_REG_ADC_SETUPS_AFE(
+					   ad4170_init_params.config.setup[channel->ch_num].setup_n), reg_val);
+	if (ret) {
+		return ret;
+	}
+
+	return 0;
+}
+
+/*!
+ * @brief Getter/Setter for the PGA available values
+ * @param device[in]- pointer to IIO device structure
+ * @param buf[in]- pointer to buffer holding attribute value
+ * @param len[in]- length of buffer string data
+ * @param channel[in]- pointer to IIO channel structure
+ * @param id[in]- Attribute ID (optional)
+ * @return Number of characters read/written
+ */
+static int get_pga_available(void *device,
+			     char *buf,
+			     uint32_t len,
+			     const struct iio_ch_info *channel,
+			     intptr_t id)
+{
+	uint8_t val;
+
+	buf[0] = '\0';
+
+	for (val = 0; val < NO_OS_ARRAY_SIZE(ad4170_pga_options); val++) {
+		strcat(buf, ad4170_pga_options[val]);
+		strcat(buf, " ");
+	}
+
+	/* Remove extra trailing space at the end of the buffer string */
+	len = strlen(buf);
+	buf[len - 1] = '\0';
+
+	return len;
+}
+
+static int set_pga_available(void *device,
+			     char *buf,
+			     uint32_t len,
+			     const struct iio_ch_info *channel,
+			     intptr_t id)
+{
+	/* NA- Can't set available mode value */
+	return len;
 }
 
 /*!
@@ -2696,6 +2814,16 @@ struct iio_attribute channel_input_attributes[] = {
 		.show = get_reference_available,
 		.store = set_reference_available,
 		.priv = REF_SELECT_ATTR_ID
+	},
+	{
+		.name = "pga",
+		.show = get_pga,
+		.store = set_pga
+	},
+	{
+		.name = "pga_available",
+		.show = get_pga_available,
+		.store = set_pga_available
 	},
 
 	END_ATTRIBUTES_ARRAY
