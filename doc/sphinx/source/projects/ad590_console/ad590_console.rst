@@ -15,17 +15,17 @@ Supported Hardware
 
 **Supported Carrier Boards:**
 
-* `SDP-K1 With Mbed <https://os.mbed.com/platforms/SDP_K1/>`_
+* `SDP-K1  <https://www.analog.com/en/resources/evaluation-hardware-and-software/evaluation-boards-kits/sdp-k1.html#eb-overview>`_
 
 ============
 Introduction
 ============
 
-The page provides a starting point for developing your own code for Analog Devices EVAL-AD590-ARDZ board in your own environment utilizing the benefits of the Mbed platform. Analog Devices is an MBED Partner and develops code on the platform for multiple products.
+The page provides a starting point for developing your own code for Analog Devices EVAL-AD590-ARDZ board in your own environment. Analog Devices is an MBED Partner and develops code on the platform for multiple products.
 
-This guide will focus on the Analog Devices SDP-K1 controller board, as it is directly compatible with the EVAL-AD590-ARDZ evaluation board and is an MBED-Enabled device. Customers are of course, not limited to using the SDP-K1 board for code development, given that any ARM-based, MBED-enabled board that satisfies a small set of requirements can use the provided code and it will work with only minor changes to the source (see below).
+This guide will focus on the Analog Devices SDP-K1 controller board, as it is directly compatible with the EVAL-AD590-ARDZ evaluation board and is an MBED-Enabled device (or an STM32 board). Customers are of course, not limited to using the SDP-K1 board for code development, given that any ARM-based, MBED-enabled board (or an STM32 board) that satisfies a small set of requirements can use the provided code and it will work with only minor changes to the source (see below).
 
-It is further assumed that SDP-K1 board will be connected to the appropriate AD590 Eval-board such as the EVAL-AD590-ARDZ Evaluation board which has the LTC2488 (SPI) built in with the ability to connect external sensor via headers on the board.
+It is further assumed that SDP-K1 board will be connected to the appropriate AD590 Eval-board such as the EVAL-AD590-ARDZ Evaluation board which has the LTC2488 (SPI) built in with the ability to connect external sensor via headers on the board. It supports STM32 and Mbed platforms
 
 .. Useful links Section
 
@@ -48,12 +48,12 @@ The EVAL-AD590-ARDZ board supports remote AD590 through the P6 3-position wire t
    The P8 Jumper position can be switched between ARD_5V and SDP_5V according to the connector in use
 
 =============================
-EVAL-AD590-ARDZ Mbed Software
+EVAL-AD590-ARDZ Software
 =============================
 
-At this time Analog Devices supports Mbed code development only on the Mbed online-compiler. See here for instructions on setting up an account and using the compiler. Analog Devices may, at a later date support other offline-IDE's. This guide focuses on the SDP-K1, connected to the EVAL-AD590-ARDZ board, but it should be general enough to cover any compatible controller board (the controller board should be Mbed-enabled, and expose at least SPI or I2C and some GPIO's).
+At this time Analog Devices supports code development only on the Mbed online-compiler. See here for instructions on setting up an account and using the compiler. Analog Devices may, at a later date support other offline-IDE's. This guide focuses on the SDP-K1, connected to the EVAL-AD590-ARDZ board, but it should be general enough to cover any compatible controller board (the controller board should be Mbed-enabled or an STM32 board, and expose at least SPI or I2C and some GPIO's).
 
-The software described below allows for an Mbed enabled controller board to be connected with an Analog Devices evaluation board. Unmodified, the code will communicate over any serial terminal emulator (CoolTerm, putty, etc) using the UART provided by the controller board over USB.
+The software described below allows for an Mbed enabled controller board (or an STM32 board) to be connected with an Analog Devices evaluation board. Unmodified, the code will communicate over any serial terminal emulator (CoolTerm, putty, etc) using the UART provided by the controller board over USB.
 
 The software provides a basic user-interface for interacting with temperature sensors on the evaluation-board. All the main functionality of the AD590 is provided in the application-code in abstracted form and the user is free to customize the software to suit their own needs for working with the sensors
 
@@ -65,9 +65,9 @@ The software provides a basic user-interface for interacting with temperature se
 Quick Start
 ===========
 
-If you have some familiarity with the Mbed platform, the following is a basic list of steps required to start running the code, see below for more detail.
+If you have some familiarity with the Mbed or STM32 platform, the following is a basic list of steps required to start running the code, see below for more detail.
 
-* Connect the evaluation-board to the Mbed-enabled controller board using the SDP-120 or Arduino connector. (Switch the P8 Jumper accordingly).
+* Connect the evaluation-board to the Mbed-enabled controller board (or an STM32 board)using the SDP-120 or Arduino connector. (Switch the P8 Jumper accordingly).
 * Connect the controller board to your computer over USB. (Make sure that the VIO_ADJUST is set to 3.3 volts)
 * Go to the link provided above in the 'Build Guide' section and import code into Keil Studio Web IDE.
 * Ensure SDP-K1 controller board is selected (top right of online-compiler page).
