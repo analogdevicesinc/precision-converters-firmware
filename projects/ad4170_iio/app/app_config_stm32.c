@@ -31,6 +31,9 @@
 /******************** Variables and User Defined Data Types *******************/
 /******************************************************************************/
 
+/* Count to track the number of entries into the callback functions */
+volatile uint32_t callback_count = 0;
+
 /**
  * @brief 	Return the peripheral frequency
  * @return	Peripheral frequency in Hz
@@ -265,26 +268,25 @@ void ad4170_dma_rx_cplt(SAI_HandleTypeDef *hsai)
  */
 void ad4170_spi_dma_rx_cplt_callback(DMA_HandleTypeDef* hdma)
 {
+	callback_count--;
+
 #if (INTERFACE_MODE == SPI_DMA_MODE)
 #if (DATA_CAPTURE_MODE == BURST_DATA_CAPTURE)
-	if (dma_cycle_count) {
-		/* Copy second half of the data to the IIO buffer */
+	/* Update samples captured so far */
+	dma_cycle_count -= 1;
+
+	if (!dma_cycle_count) {
+		memcpy((void*)iio_buf_current_idx, dma_buf_current_idx, rxdma_ndtr / 2);
+
+		ad4170_dma_buff_full = true;
+		iio_buf_current_idx = iio_buf_start_idx;
+		dma_buf_current_idx = dma_buf_start_idx;
+	} else {
 		memcpy((void*)iio_buf_current_idx, dma_buf_current_idx, rxdma_ndtr / 2);
 
 		dma_buf_current_idx = dma_buf_start_idx;
 		iio_buf_current_idx += rxdma_ndtr / 2;
-	} else {
-		/* Reset SYNC to stop conversion */
-		HAL_GPIO_WritePin(SYNC_INB_PORT_ID, 1 << SYNC_INB, GPIO_PIN_RESET);
-
-		ad4170_dma_buff_full = true;
-
-		iio_buf_current_idx = iio_buf_start_idx;
-		dma_buf_current_idx = dma_buf_start_idx;
 	}
-
-	/* Update samples captured so far */
-	dma_cycle_count -= 1;
 
 #else // CONTUNUOUS_DATA_CAPTURE
 	no_os_cb_end_async_write(iio_dev_data_g->buffer->buf);
@@ -309,6 +311,8 @@ void ad4170_spi_dma_rx_half_cplt_callback(DMA_HandleTypeDef* hdma)
 	dma_buf_current_idx += rxdma_ndtr / 2;
 	iio_buf_current_idx += rxdma_ndtr / 2;
 #endif
+
+	callback_count--;
 }
 
 /**
@@ -406,4 +410,15 @@ void tim8_init(struct no_os_pwm_desc *pwm_desc)
 	TIM8->SMCR = TIM_SMCR_ETP | TIM_MASTERSLAVEMODE_ENABLE | TIM_SLAVEMODE_TRIGGER |
 		     TIM_TS_ETRF;
 #endif
+}
+
+void DMA2_Stream0_IRQHandler(void)
+{
+#if (DATA_CAPTURE_MODE == BURST_DATA_CAPTURE)
+	if (callback_count == 1) {
+		HAL_GPIO_WritePin(SYNC_INB_PORT_ID, 1 << SYNC_INB, GPIO_PIN_RESET);
+	}
+#endif
+
+	HAL_DMA_IRQHandler(&hdma_spi1_rx);
 }

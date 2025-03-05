@@ -204,4 +204,5 @@ void ad4170_spi_dma_rx_half_cplt_callback(DMA_HandleTypeDef* hdma);
 void update_buff(uint32_t* local_buf, uint32_t* buf_start_addr);
 void tim8_init(struct no_os_pwm_desc *pwm_desc);
 void MX_USB_DEVICE_Init(void);
+extern volatile uint32_t callback_count;
 #endif /* APP_CONFIG_STM32_H_ */
