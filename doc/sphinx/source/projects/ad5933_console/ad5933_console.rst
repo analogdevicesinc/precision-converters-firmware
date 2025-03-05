@@ -15,17 +15,17 @@ Supported Hardware
 
 **Supported Carrier Boards:**
 
-* `SDP-K1 With Mbed <https://os.mbed.com/platforms/SDP_K1/>`_
+* `SDP-K1  <https://www.analog.com/en/resources/evaluation-hardware-and-software/evaluation-boards-kits/sdp-k1.html#eb-overview>`_
 
 ============
 Introduction
 ============
 
-The AD5933 Mbed support software (also supports AD5934) can be used as a starting point for developing your own code for Analog Devices AD5933 products in your own environment utilizing the benefits of the Mbed platform. Analog Devices is an MBED Partner and develops code on the platform for multiple products. The Analog Devices Mbed code-repo can be found in the links below.
+The AD5933 Mbed support software (also supports AD5934) can be used as a starting point for developing your own code for Analog Devices AD5933 products in your own environment. Analog Devices is an MBED Partner and develops code on the platform for multiple products. The Analog Devices code-repo can be found in the links below.
 
-This guide will focus on the Analog Devices SDP-K1 controller board, as it is directly compatible with the AD5933 family of evaluation boards and is an MBED-Enabled device. Customers are of course, not limited to using the SDP-K1 board for code development, given that any ARM-based, MBED-enabled board that satisfies a small set of requirements can use the provided code and it will work with only minor changes to the source (see below).
+This guide will focus on the Analog Devices SDP-K1 controller board, as it is directly compatible with the AD5933 family of evaluation boards and is an MBED-Enabled device(or an STM32 board). Customers are of course, not limited to using the SDP-K1 board for code development, given that any ARM-based, MBED-enabled board(or an STM32 board) that satisfies a small set of requirements can use the provided code and it will work with only minor changes to the source (see below).
 
-This guide uses the Pmod IA evaluation board. This is a convenient, inexpensive path to evaluating the AD5933.
+This guide uses the Pmod IA evaluation board. This is a convenient, inexpensive path to evaluating the AD5933. It supports Mbed and STM32 platforms
 
 .. Useful links Section
 
@@ -59,12 +59,12 @@ The SDP-K1 can operate with the 120-pin SDP connector of the evaluation board su
     One thing to note here is that power and ground for the evaluation need to be provided and can be conveniently taken from the Arduino header as shown above. If using a different evaluation board to the DIGILENT PMOD IA, then consult the relevant evaluation board guides available through the product-page for your selected board.
 
 ====================
-AD5933 Mbed Firmware
+AD5933 Firmware
 ====================
 
-This guide focuses on the SDP-K1, connected to the Pmod IA evaluation board, but it should be general enough to cover any compatible controller board (the controller board should be Mbed-enabled, and expose I2C and some GPIO's).
+This guide focuses on the SDP-K1, connected to the Pmod IA evaluation board, but it should be general enough to cover any compatible controller board (the controller board should be Mbed-enabled (or an STM32 board), and expose I2C and some GPIO's).
 
-The software described below allows for an Mbed enabled controller board to be connected with the Pmod IA. Unmodified, the code will communicate over any serial terminal emulator (CoolTerm, putty, etc) using the UART provided by the controller board over USB.
+The software described below allows for an Mbed enabled controller board (or an STM32 board) to be connected with the Pmod IA. Unmodified, the code will communicate over any serial terminal emulator (CoolTerm, putty, etc) using the UART provided by the controller board over USB.
 
 .. Project Build Section:
     
@@ -74,10 +74,10 @@ The software described below allows for an Mbed enabled controller board to be c
 Quick Start
 ===========
 
-If you have some familiarity with the Mbed platform, the following is a basic list of steps required to start running the code, 
+If you have some familiarity with the Mbed or STM32 platform, the following is a basic list of steps required to start running the code, 
 see below for more detail:
 
-* Connect the evaluation-board to the Mbed-enabled controller board.
+* Connect the evaluation-board to the Mbed-enabled controller board (or an STM32 board).
 * Connect the controller board to your computer over USB.
 * Follow the steps mentioned in the Build Guide section above (Edit app_config.h file (defaults to SDP connector and AD5686R device) if evaluating any other device).
 * Start up a serial terminal emulator (e.g. Tera Term)
