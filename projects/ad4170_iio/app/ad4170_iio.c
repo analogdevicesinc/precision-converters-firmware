@@ -590,10 +590,10 @@ static int get_sampling_frequency(void *device,
 				  const struct iio_ch_info *channel,
 				  intptr_t id)
 {
-	/* The application set sampling frequency is divided by number of channels.
-	 * This is just used for IIO client timeout purpose and does not
-	 * indicate an actual sampling rate of device.
-	 * Refer the 'note' in function description above for timeout calculations */
+	/* Calculate the effective sampling rate of the device */
+	sampling_rate = (AD4170_INTERNAL_CLOCK / (FILTER_SCALE *
+			 ad4170_init_params.config.setups[0].filter_fs));
+
 	return sprintf(buf, "%d",
 		       (sampling_rate / num_of_channels));
 }
@@ -1006,7 +1006,7 @@ static int get_filter(void *device,
 	enum ad4170_filter_type filter_selected;
 
 	filter_selected =
-		p_ad4170_dev_inst->config.setups[channel->ch_num].filter.filter_type;
+		ad4170_init_params.config.setups[channel->ch_num].filter.filter_type;
 
 	return sprintf(buf, "%s", ad4170_filter_values[filter_selected]);
 }
@@ -1018,7 +1018,7 @@ static int set_filter(void *device,
 		      intptr_t id)
 {
 	uint8_t filter_id;
-	int ret;
+	uint8_t setup_id;
 
 	for (filter_id = AD4170_FILT_SINC5_AVG; filter_id <= AD4170_FILT_SINC3;
 	     filter_id++) {
@@ -1027,9 +1027,10 @@ static int set_filter(void *device,
 		}
 	}
 
-	ret = ad4170_set_filter(p_ad4170_dev_inst, channel->ch_num, filter_id);
-	if (ret) {
-		return ret;
+	/* Update the all setup registers with FS value */
+	for (setup_id = 0; setup_id < AD4170_NUM_SETUPS; setup_id++) {
+		ad4170_init_params.config.setups[channel->ch_num].filter.filter_type =
+			filter_id;
 	}
 
 	return 0;
@@ -1146,7 +1147,7 @@ static int get_fs(void *device,
 {
 	uint16_t fs;
 
-	fs = p_ad4170_dev_inst->config.setups[p_ad4170_dev_inst->config.setup[channel->ch_num].setup_n].filter_fs;
+	fs = ad4170_init_params.config.setups[p_ad4170_dev_inst->config.setup[channel->ch_num].setup_n].filter_fs;
 
 	return sprintf(buf, "%d", fs);
 }
@@ -1157,13 +1158,11 @@ static int set_fs(void *device,
 		  const struct iio_ch_info *channel,
 		  intptr_t id)
 {
-	int ret;
+	uint8_t setup_id;
 
-	ret = ad4170_set_fs(p_ad4170_dev_inst,
-			    p_ad4170_dev_inst->config.setup[channel->ch_num].setup_n, channel->ch_num,
-			    no_os_str_to_uint32(buf));
-	if (ret) {
-		return ret;
+	/* Update the all setup registers with FS value */
+	for (setup_id = 0; setup_id < AD4170_NUM_SETUPS; setup_id++) {
+		ad4170_init_params.config.setups[setup_id].filter_fs = no_os_str_to_uint32(buf);
 	}
 
 	return 0;
@@ -2687,19 +2686,6 @@ struct iio_attribute channel_input_attributes[] = {
 	},
 #endif
 	{
-		.name = "filter",
-		.show = get_filter,
-		.store = set_filter,
-		.priv = FILTER_ATTR_ID
-	},
-	{
-		.name = "filter_available",
-		.show = get_filter_available,
-		.store = set_filter_available,
-		.priv = FILTER_ATTR_ID
-	},
-
-	{
 		.name = "ref_select",
 		.show = get_reference,
 		.store = set_reference,
@@ -2711,11 +2697,7 @@ struct iio_attribute channel_input_attributes[] = {
 		.store = set_reference_available,
 		.priv = REF_SELECT_ATTR_ID
 	},
-	{
-		.name = "fs",
-		.show = get_fs,
-		.store = set_fs
-	},
+
 	END_ATTRIBUTES_ARRAY
 };
 
@@ -2730,6 +2712,23 @@ struct iio_attribute ad4170_board_channel_attributes[] = {
 		.name = "ch_en_available",
 		.show = get_ch_status_available,
 		.store = set_ch_status_available
+	},
+	{
+		.name = "fs",
+		.show = get_fs,
+		.store = set_fs
+	},
+	{
+		.name = "filter",
+		.show = get_filter,
+		.store = set_filter,
+		.priv = FILTER_ATTR_ID
+	},
+	{
+		.name = "filter_available",
+		.show = get_filter_available,
+		.store = set_filter_available,
+		.priv = FILTER_ATTR_ID
 	},
 
 	END_ATTRIBUTES_ARRAY
@@ -2776,11 +2775,6 @@ static struct iio_attribute global_attributes[] = {
 		.name = "adc_mode",
 		.show = get_adc_mode,
 		.store = set_adc_mode
-	},
-	{
-		.name = "filter_available",
-		.show = get_filter_available,
-		.store = set_filter_available
 	},
 	{
 		.name = "clock_ctrl",
@@ -3111,8 +3105,6 @@ void ad4170_configure_filter_params(void)
 		ad4170_init_params.config.setups[setup_id].filter_fs = filter_fs;
 	}
 
-	/* Calculate the effective sampling rate of the device */
-	sampling_rate = (AD4170_INTERNAL_CLOCK / (FILTER_SCALE * filter_fs));
 }
 
 /**
@@ -3160,6 +3152,7 @@ int32_t ad4170_iio_initialize(void)
 	int32_t init_status;
 	uint8_t read_id;
 	static bool entered = false;
+	static bool s_rate_configured = false;
 
 	if (!entered) {
 		/* Init the system peripherals */
@@ -3205,8 +3198,11 @@ int32_t ad4170_iio_initialize(void)
 		}
 	}
 
-	/* Re-assign the parameters according to the active device */
-	ad4170_configure_filter_params();
+	if (!s_rate_configured) {
+		/* Re-assign the parameters according to the active device */
+		ad4170_configure_filter_params();
+		s_rate_configured = true;
+	}
 
 	if (hw_mezzanine_is_valid) {
 		/* Initialize AD4170 device and peripheral interface */
