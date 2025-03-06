@@ -42,7 +42,7 @@
 
 #if defined (TARGET_SDP_K1)
 /* The below configurations are specific to STM32F469NIH6 MCU on SDP-K1 Board. */
-#define HW_CARRIER_NAME		SDP-K1
+#define HW_CARRIER_NAME		SDP_K1
 
 /* STM32 SPI Specific parameters */
 #define STM32_SPI_ID		1 // SPI1
