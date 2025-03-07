@@ -3468,7 +3468,11 @@ void ad4170_iio_event_handler(void)
 		}
 #endif
 
+		/* Remove IIO Parameters */
 		iio_params_deinit();
+
+		/* Remove IIO Context attributes */
+		remove_iio_context_attributes(iio_init_params.ctx_attrs);
 
 		/* Remove AD4170 Device descriptor */
 		ret = ad4170_remove(p_ad4170_dev_inst);
