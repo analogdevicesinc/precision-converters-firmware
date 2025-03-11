@@ -92,7 +92,7 @@
 <li><a class="reference internal" href="#introduction">Introduction</a></li>
 <li><a class="reference internal" href="#useful-links">Useful Links</a></li>
 <li><a class="reference internal" href="#hardware-connections">Hardware Connections</a></li>
-<li><a class="reference internal" href="#ad5933-mbed-firmware">AD5933 Mbed Firmware</a></li>
+<li><a class="reference internal" href="#ad5933-firmware">AD5933 Firmware</a></li>
 <li><a class="reference internal" href="#build-guide">Build Guide</a><ul>
 <li><a class="reference internal" href="#build-prerequisites">Build Prerequisites</a></li>
 <li><a class="reference internal" href="#building-a-project">Building a project</a></li>
@@ -193,14 +193,14 @@ Content on this topic
 </ul>
 <p><strong>Supported Carrier Boards:</strong></p>
 <ul class="simple">
-<li><p><a class="reference external" href="https://os.mbed.com/platforms/SDP_K1/">SDP-K1 With Mbed</a></p></li>
+<li><p><a class="reference external" href="https://www.analog.com/en/resources/evaluation-hardware-and-software/evaluation-boards-kits/sdp-k1.html#eb-overview">SDP-K1</a></p></li>
 </ul>
 </section>
 <section id="introduction">
 <h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading"></a></h2>
-<p>The AD5933 Mbed support software (also supports AD5934) can be used as a starting point for developing your own code for Analog Devices AD5933 products in your own environment utilizing the benefits of the Mbed platform. Analog Devices is an MBED Partner and develops code on the platform for multiple products. The Analog Devices Mbed code-repo can be found in the links below.</p>
-<p>This guide will focus on the Analog Devices SDP-K1 controller board, as it is directly compatible with the AD5933 family of evaluation boards and is an MBED-Enabled device. Customers are of course, not limited to using the SDP-K1 board for code development, given that any ARM-based, MBED-enabled board that satisfies a small set of requirements can use the provided code and it will work with only minor changes to the source (see below).</p>
-<p>This guide uses the Pmod IA evaluation board. This is a convenient, inexpensive path to evaluating the AD5933.</p>
+<p>The AD5933 Mbed support software (also supports AD5934) can be used as a starting point for developing your own code for Analog Devices AD5933 products in your own environment. Analog Devices is an MBED Partner and develops code on the platform for multiple products. The Analog Devices code-repo can be found in the links below.</p>
+<p>This guide will focus on the Analog Devices SDP-K1 controller board, as it is directly compatible with the AD5933 family of evaluation boards and is an MBED-Enabled device(or an STM32 board). Customers are of course, not limited to using the SDP-K1 board for code development, given that any ARM-based, MBED-enabled board(or an STM32 board) that satisfies a small set of requirements can use the provided code and it will work with only minor changes to the source (see below).</p>
+<p>This guide uses the Pmod IA evaluation board. This is a convenient, inexpensive path to evaluating the AD5933. It supports Mbed and STM32 platforms</p>
 </section>
 <section id="useful-links">
 <h2>Useful Links<a class="headerlink" href="#useful-links" title="Link to this heading"></a></h2>
@@ -252,10 +252,10 @@ they may be of interest if you require Linux and/or FPGA support.</p>
 <p>One thing to note here is that power and ground for the evaluation need to be provided and can be conveniently taken from the Arduino header as shown above. If using a different evaluation board to the DIGILENT PMOD IA, then consult the relevant evaluation board guides available through the product-page for your selected board.</p>
 </div>
 </section>
-<section id="ad5933-mbed-firmware">
-<h2>AD5933 Mbed Firmware<a class="headerlink" href="#ad5933-mbed-firmware" title="Link to this heading"></a></h2>
-<p>This guide focuses on the SDP-K1, connected to the Pmod IA evaluation board, but it should be general enough to cover any compatible controller board (the controller board should be Mbed-enabled, and expose I2C and some GPIO’s).</p>
-<p>The software described below allows for an Mbed enabled controller board to be connected with the Pmod IA. Unmodified, the code will communicate over any serial terminal emulator (CoolTerm, putty, etc) using the UART provided by the controller board over USB.</p>
+<section id="ad5933-firmware">
+<h2>AD5933 Firmware<a class="headerlink" href="#ad5933-firmware" title="Link to this heading"></a></h2>
+<p>This guide focuses on the SDP-K1, connected to the Pmod IA evaluation board, but it should be general enough to cover any compatible controller board (the controller board should be Mbed-enabled (or an STM32 board), and expose I2C and some GPIO’s).</p>
+<p>The software described below allows for an Mbed enabled controller board (or an STM32 board) to be connected with the Pmod IA. Unmodified, the code will communicate over any serial terminal emulator (CoolTerm, putty, etc) using the UART provided by the controller board over USB.</p>
 </section>
 <section id="build-guide">
 <h2>Build Guide<a class="headerlink" href="#build-guide" title="Link to this heading"></a></h2>
@@ -458,10 +458,10 @@ of all build steps.</p>
 </section>
 <section id="quick-start">
 <h2>Quick Start<a class="headerlink" href="#quick-start" title="Link to this heading"></a></h2>
-<p>If you have some familiarity with the Mbed platform, the following is a basic list of steps required to start running the code,
+<p>If you have some familiarity with the Mbed or STM32 platform, the following is a basic list of steps required to start running the code,
 see below for more detail:</p>
 <ul class="simple">
-<li><p>Connect the evaluation-board to the Mbed-enabled controller board.</p></li>
+<li><p>Connect the evaluation-board to the Mbed-enabled controller board (or an STM32 board).</p></li>
 <li><p>Connect the controller board to your computer over USB.</p></li>
 <li><p>Follow the steps mentioned in the Build Guide section above (Edit app_config.h file (defaults to SDP connector and AD5686R device) if evaluating any other device).</p></li>
 <li><dl class="simple">

@@ -200,16 +200,17 @@ Content on this topic
 </ul>
 <p><strong>Supported Carrier Boards:</strong></p>
 <ul class="simple">
-<li><p><a class="reference external" href="https://os.mbed.com/platforms/SDP_K1/">SDP-K1 With Mbed</a></p></li>
+<li><p><a class="reference external" href="https://www.analog.com/en/resources/evaluation-hardware-and-software/evaluation-boards-kits/sdp-k1.html#eb-overview">SDP-K1</a></p></li>
 </ul>
 </section>
 <section id="introduction">
 <h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading"></a></h2>
 <p>This guide gives an overview of using the IIO firmware application with Analog Devices
 AD7689 Evaluation board and SDP-K1 (or other compatible) MCU controller board,
-leveraging Mbed-OS as a primary software platform. This firmware application
+leveraging STM32 as a primary software platform. This firmware application
 leverages the ADI developed IIO (Industrial Input Output) ecosystem to evaluate
-the AD7689 (IIO) device by providing device configuration and data capture support.</p>
+the AD7689 (IIO) device by providing device configuration and data capture support.It supports
+STM32 and Mbed platforms</p>
 <blockquote>
 <div><a class="reference internal image-reference" href="../../../_images/app_interface.png"><img alt="../../../_images/app_interface.png" src="../../../_images/app_interface.png" style="width: 350px;" />
 </a>
@@ -217,13 +218,6 @@ the AD7689 (IIO) device by providing device configuration and data capture suppo
 <p>The interface used for communicating with PC based IIO clients is either Virtual Serial Or UART.
 IIO Firmware leverages the ADI created no-os and platform driver software layers
 to communicates with IIO device.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>This code has been developed and tested on the SDP-K1 Controller Board with
-Arduino headers. However, the same code can be used with minimal modifications
-on any Mbed enabled board which has Arduino Header support on it. To find out
-all supported Mbed boards, refer this link: <a class="reference external" href="https://os.mbed.com/platforms/">https://os.mbed.com/platforms/</a></p>
-</div>
 </section>
 <section id="useful-links">
 <h2>Useful Links<a class="headerlink" href="#useful-links" title="Link to this heading"></a></h2>

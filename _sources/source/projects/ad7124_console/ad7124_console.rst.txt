@@ -19,7 +19,7 @@ Supported Hardware
 
 **Supported Carrier Boards:**
 
-* `SDP-K1 With Mbed <https://os.mbed.com/platforms/SDP_K1/>`_
+* `SDP-K1  <https://www.analog.com/en/resources/evaluation-hardware-and-software/evaluation-boards-kits/sdp-k1.html#eb-overview>`_
 
 ============
 Introduction
@@ -27,7 +27,7 @@ Introduction
 
 This page gives an overview of using the AD7124 Firmware Example with SDP-K1 EVAL board and AD7124 EVAL board. 
 The firmware example comprises 3 layers of software (from top to bottom): Console Application Layer, Device No-OS
-Layer and Platform Drivers (Mbed-OS) layer.
+Layer and Platform Drivers layer. It supports Mbed and STM32 platforms
 
    .. image:: /source/projects/ad7124_console/ad7124_software_layers.jpg
       :width: 200
@@ -35,11 +35,11 @@ Layer and Platform Drivers (Mbed-OS) layer.
 The application layer uses the ADI Console Libraries to create console based User Interactive (UI). 
 The middle layer of No-OS device library have device specific APIs to interface with AD7124 device.
 These APIs allows direct access to device register map in order to read/write device registers. The bottom layer of Platform
-Drivers is responsible for Low Level Interface. The platform drivers uses mbed-os libraries to access low level peripheral 
+Drivers is responsible for Low Level Interface. The platform drivers uses underlying libraries to access low level peripheral 
 (like GPIOs, SPI, I2C, etc).
 
 The Mbed Platform simplifies the overall software development process by providing the low level driver support. This reduces 
-the hardware dependency as any Mbed enabled board can be used with same firmware with little modifications (precisely changing a pin mapping).
+the hardware dependency as any Mbed enabled board (or an STM32 board) can be used with same firmware with little modifications (precisely changing a pin mapping).
 
 =================
 Interface Diagram
@@ -101,9 +101,9 @@ from AIN1 for this. This requires an external RTD and reference resistor connect
 Temperature sensing application using AD7124 can be found `here <https://www.analog.com/media/en/reference-design-documentation/reference-designs/CN0383.pdf>`__
 
 ====================
-AD7124 Mbed Firmware
+AD7124 Firmware
 ====================
-This section briefs on the usage of MBED firmware. This also explains the steps to compile and build the application using
+This section briefs on the usage of firmware. This also explains the steps to compile and build the application using
 mbed and make based build.
 
 The software execution sequence for the AD7124 Firmware Example is shown below. This is a blocking application as it waits for 
@@ -123,7 +123,7 @@ AD7124 firmware uses Mbed libraries within Platform Drivers layer. AD7124 Firmwa
 Quick Start
 ===========
 
-If you have some familiarity with the Mbed platform, the following is a basic list of steps required to start running the code, 
+If you have some familiarity with the Mbed or STM32 platform, the following is a basic list of steps required to start running the code, 
 see below for more detail:
 
 * Connect the AD7124 EVAL-board to the SDP-K1 controller board.

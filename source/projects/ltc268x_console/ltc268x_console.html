@@ -195,21 +195,21 @@ Content on this topic
 </ul>
 <p><strong>Supported Carrier Boards:</strong></p>
 <ul class="simple">
-<li><p><a class="reference external" href="https://os.mbed.com/platforms/SDP_K1/">SDP-K1 With Mbed</a></p></li>
+<li><p><a class="reference external" href="https://www.analog.com/en/resources/evaluation-hardware-and-software/evaluation-boards-kits/sdp-k1.html#eb-overview">SDP-K1</a></p></li>
 </ul>
 </section>
 <section id="introduction">
 <h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading"></a></h2>
-<p>The LTC2686/8 are 8/16-channel, 16-bit, ±15 V digital-to-analog converters (DAC) with an integrated precision reference. The LTC268X Mbed example software can be used as a starting point for developing your own code for Analog Devices DC2873A-B or DC2904A board in your own environment utilizing the benefits of the Mbed platform. This guide will focus interfacing the DC2873A-B or DC2904A-B evaluation board with Analog Devices SDP-K1 controller board or any an MBED-Enabled board.
-The firmware example comprises 3 layers of software (from top to bottom): Console Application Layer, Device No-OS Layer and Platform Drivers (Mbed-OS) layer.</p>
+<p>The LTC2686/8 are 8/16-channel, 16-bit, ±15 V digital-to-analog converters (DAC) with an integrated precision reference. The LTC268X example software can be used as a starting point for developing your own code for Analog Devices DC2873A-B or DC2904A board in your own environment. This guide will focus interfacing the DC2873A-B or DC2904A-B evaluation board with Analog Devices SDP-K1 controller board or any an MBED-Enabled board (Or an STM32 board).
+The firmware example comprises 3 layers of software (from top to bottom): Console Application Layer, Device No-OS Layer and Platform Drivers layer.It supports Mbed and STM32 platforms</p>
 <blockquote>
 <div><a class="reference internal image-reference" href="../../../_images/ltc268x_architecture.jpg"><img alt="../../../_images/ltc268x_architecture.jpg" src="../../../_images/ltc268x_architecture.jpg" style="width: 200px;" />
 </a>
 </div></blockquote>
-<p>The application layer uses the ADI Console Libraries to create console-based User Interactive (UI). The middle layer of No-OS device library has device specific APIs to interface with LTC2686/8 devices. These APIs allows direct access to device register map in order to read/write device registers. The bottom layer of Platform Drivers is responsible for Low Level Interface. The platform drivers use mbed-os libraries to access low level peripheral (like GPIOs, SPI, I2C, etc). The devices from LTC2686/8 family use SPI communication interfaces respectively.</p>
-<p>This guide focuses on the SDP-K1, connected to the DC2873A-B or DC2904A-B board, but it should be general enough to cover any compatible controller board (the controller board should be Mbed-enabled, and expose at least SPI or I2C and some GPIO’s). The Mbed Platform simplifies the overall software development process by providing the low level driver support. This reduces
-the hardware dependency as any Mbed enabled board can be used with same firmware with little modifications (precisely changing a pin mapping).</p>
-<p>The software described below allows for an Mbed enabled controller board to be connected with an Analog Devices evaluation board. Unmodified, the code will communicate over any serial terminal emulator (CoolTerm, putty, etc) using the UART provided by the controller board over USB.</p>
+<p>The application layer uses the ADI Console Libraries to create console-based User Interactive (UI). The middle layer of No-OS device library has device specific APIs to interface with LTC2686/8 devices. These APIs allows direct access to device register map in order to read/write device registers. The bottom layer of Platform Drivers is responsible for Low Level Interface. The platform drivers use underlying libraries to access low level peripheral (like GPIOs, SPI, I2C, etc). The devices from LTC2686/8 family use SPI communication interfaces respectively.</p>
+<p>This guide focuses on the SDP-K1, connected to the DC2873A-B or DC2904A-B board, but it should be general enough to cover any compatible controller board (the controller board should be Mbed-enabled, and expose at least SPI or I2C and some GPIO’s). The Platform simplifies the overall software development process by providing the low level driver support. This reduces
+the hardware dependency as any Mbed enabled board (or an STM32 board) can be used with same firmware with little modifications (precisely changing a pin mapping).</p>
+<p>The software described below allows for an Mbed enabled (Or an STM32 board) controller board to be connected with an Analog Devices evaluation board. Unmodified, the code will communicate over any serial terminal emulator (CoolTerm, putty, etc) using the UART provided by the controller board over USB.</p>
 </section>
 <section id="interface-diagram">
 <h2>Interface Diagram<a class="headerlink" href="#interface-diagram" title="Link to this heading"></a></h2>
@@ -511,10 +511,10 @@ of all build steps.</p>
 </section>
 <section id="quick-start">
 <h2>Quick Start<a class="headerlink" href="#quick-start" title="Link to this heading"></a></h2>
-<p>If you have some familiarity with the Mbed platform, the following is a basic list of steps required to start running the code,
+<p>If you have some familiarity with the Mbed or STM32 platform, the following is a basic list of steps required to start running the code,
 see below for more detail:</p>
 <ul class="simple">
-<li><p>Connect the evaluation-board to the Mbed-enabled controller board using the Arduino connector and jumper wires.</p></li>
+<li><p>Connect the evaluation-board to the Mbed-enabled controller board (or an STM32 board) using the Arduino connector and jumper wires.</p></li>
 <li><p>Connect all the power supplies to the evaluation board as instructed in the hardware connection section.</p></li>
 <li><p>Connect the controller board to your computer over USB. (Make sure that the VIO_ADJUST is set to 3.3 volts)</p></li>
 <li><p>Follow the steps mentioned in the Build Guide section above.</p></li>

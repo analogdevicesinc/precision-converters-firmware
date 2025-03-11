@@ -17,20 +17,20 @@ Supported Hardware
 
 **Supported Carrier Boards:**
 
-* `SDP-K1 With Mbed <https://os.mbed.com/platforms/SDP_K1/>`_
+* `SDP-K1  <https://www.analog.com/en/resources/evaluation-hardware-and-software/evaluation-boards-kits/sdp-k1.html#eb-overview>`_
 
 ============
 Introduction
 ============
 
-The AD5592R/ AD5593R offer 8-Channel, 12-Bit, configurable ADC/DAC with on-chip reference and either SPI (AD5592R) or I2C interfaces (AD5593R). This page gives an overview of using the AD5592R/AD5593R firmware example with SDP-K1 EVAL board. The firmware example comprises 3 layers of software (from top to bottom): Console Application Layer, Device No-OS Layer and Platform Drivers (Mbed-OS) layer.
+The AD5592R/ AD5593R offer 8-Channel, 12-Bit, configurable ADC/DAC with on-chip reference and either SPI (AD5592R) or I2C interfaces (AD5593R). This page gives an overview of using the AD5592R/AD5593R firmware example with SDP-K1 EVAL board. The firmware example comprises 3 layers of software (from top to bottom): Console Application Layer, Device No-OS Layer and Platform Drivers layer.
 
    .. image:: /source/projects/ad559xr_console/ad5592r_software_architecture.jpg
       :width: 200
 
-The application layer uses the ADI Console Libraries to create console-based User Interactive (UI). The middle layer of No-OS device library has device specific APIs to interface with AD5592R/93R devices. These APIs allows direct access to device register map in order to read/write device registers. The bottom layer of Platform Drivers is responsible for Low Level Interface. The platform drivers use mbed-os libraries to access low level peripheral (like GPIOs, SPI, I2C, etc). The devices from AD5592R/AD5593R family use SPI and I2C communication interfaces respectively.
+The application layer uses the ADI Console Libraries to create console-based User Interactive (UI). The middle layer of No-OS device library has device specific APIs to interface with AD5592R/93R devices. These APIs allows direct access to device register map in order to read/write device registers. The bottom layer of Platform Drivers is responsible for Low Level Interface. The platform drivers use underlying libraries to access low level peripheral (like GPIOs, SPI, I2C, etc). The devices from AD5592R/AD5593R family use SPI and I2C communication interfaces respectively.
 
-The Mbed Platform simplifies the overall software development process by providing the low-level driver support. This reduces the hardware dependency as any Mbed enabled board can be used with same firmware with little modifications (changing a pin mapping).
+The Platform simplifies the overall software development process by providing the low-level driver support. This reduces the hardware dependency as any Mbed enabled board (or an STM32 board) can be used with same firmware with little modifications (changing a pin mapping).It supports Mbed and STM32 platforms.
 
 =================
 Interface Diagram
@@ -109,7 +109,7 @@ For the firmware example code set the links as follows
 Quick Start
 ===========
 
-If you have some familiarity with the Mbed platform, the following is a basic list of steps required to start running the code, see below for more detail:
+If you have some familiarity with the Mbed or STM32 platform, the following is a basic list of steps required to start running the code, see below for more detail:
 
 * Connect the AD5592R/AD55593R EVAL-board to the SDP-K1 controller board.
 * Connect the SDP-K1 controller board to your computer over USB.
