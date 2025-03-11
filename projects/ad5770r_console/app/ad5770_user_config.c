@@ -5,7 +5,7 @@
   @details:
  -----------------------------------------------------------------------------
  *
-Copyright (c) 2020-2022 Analog Devices, Inc. All Rights Reserved.
+Copyright (c) 2020-2022,2025 Analog Devices, Inc. All Rights Reserved.
 
 This software is proprietary to Analog Devices, Inc. and its licensors.
 By using this software you agree to the terms of the associated
@@ -22,28 +22,21 @@ Analog Devices Software License Agreement.
 
 #include "app_config.h"
 #include "no_os_spi.h"
-#include "mbed_spi.h"
 #include "ad5770r.h"
 
 /******************************************************************************/
 /********************** Variables and User Defined Data Types *****************/
 /******************************************************************************/
 
-struct mbed_spi_init_param spi_init_extra_params = {
-	.spi_clk_pin = SPI_SCK,
-	.spi_miso_pin = SPI_HOST_SDI,
-	.spi_mosi_pin = SPI_HOST_SDO,
-	.use_sw_csb = false
-};
-
 struct ad5770r_init_param ad5770r_user_param = {
 	/* SPI */
 	.spi_init = {
-		.max_speed_hz = 2500000,
+		.device_id = SPI_DEVICE_ID,
+		.max_speed_hz = MAX_SPI_CLK,
 		.chip_select = SPI_CSB,
 		.mode = NO_OS_SPI_MODE_0,
 		.extra = &spi_init_extra_params,
-		.platform_ops = &mbed_spi_ops
+		.platform_ops = &spi_ops
 	},
 
 	/* Device SPI Settings */

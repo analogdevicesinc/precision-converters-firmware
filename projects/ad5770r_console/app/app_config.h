@@ -4,7 +4,7 @@
  *   @brief  Configuration file of AD5770R firmware example program
 ******************************************************************************
  *
-Copyright (c) 2020-2022 Analog Devices, Inc. All Rights Reserved.
+Copyright (c) 2020-2022,2025 Analog Devices, Inc. All Rights Reserved.
 
 This software is proprietary to Analog Devices, Inc. and its licensors.
 By using this software you agree to the terms of the associated
@@ -19,35 +19,29 @@ Analog Devices Software License Agreement.
 /******************************************************************************/
 
 #include <stdint.h>
-#include <PinNames.h>
 
 /******************************************************************************/
 /********************** Macros and Constants Definitions **********************/
 /******************************************************************************/
 
-/**
-  The ADI SDP_K1 can be used with either arduino headers
-  or the 120-pin SDP connector found on ADI evaluation
-  boards. The default is the SDP-120 connector.
+/* List of active platforms supported */
+#define	MBED_PLATFORM		1
+#define STM32_PLATFORM      2
 
-  Uncomment the ARDUINO #define to enable the ARDUINO connector
-*/
+/* Select the Active Platform */
+#if !defined(ACTIVE_PLATFORM)
+#define ACTIVE_PLATFORM		STM32_PLATFORM
+#endif
 
-//#define  ARDUINO
-
-// Pin mapping of AD5770R with SDP-K1/Arduino
-#ifdef ARDUINO
-#define SPI_CSB			ARDUINO_UNO_D10
-#define SPI_HOST_SDO	ARDUINO_UNO_D11
-#define SPI_HOST_SDI	ARDUINO_UNO_D12
-#define SPI_SCK			ARDUINO_UNO_D13
-#define HW_LDACB		ARDUINO_UNO_D2
+#if (ACTIVE_PLATFORM == MBED_PLATFORM)
+#include "app_config_mbed.h"
+#define spi_init_extra_params	mbed_spi_extra_init_params
+#define hw_ldacb_extra_init_params mbed_gpio_ldac_init_params
 #else
-#define SPI_CSB		    SDP_SPI_CS_A	// PB_9
-#define SPI_HOST_SDO	SDP_SPI_MOSI	// PF_9
-#define SPI_HOST_SDI	SDP_SPI_MISO	// PF_8
-#define SPI_SCK		    SDP_SPI_SCK		// PH_6
-#define HW_LDACB        SDP_GPIO_0      // PJ_0
+#include "app_config_stm32.h"
+#define spi_init_extra_params  stm32_spi_extra_init_params
+#define uart_extra_init_params 	stm32_uart_extra_init_params
+#define hw_ldacb_extra_init_params stm32_gpio_ldac_init_params
 #endif
 
 #endif /* APP_CONFIG_H_ */

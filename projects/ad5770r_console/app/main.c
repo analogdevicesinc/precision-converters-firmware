@@ -4,7 +4,7 @@
  * @brief:
  *-----------------------------------------------------------------------------
  *
-Copyright (c) 2020-2022 Analog Devices, Inc. All Rights Reserved.
+Copyright (c) 2020-2022,2025 Analog Devices, Inc. All Rights Reserved.
 
 This software is proprietary to Analog Devices, Inc. and its licensors.
 By using this software you agree to the terms of the associated
@@ -20,6 +20,7 @@ Analog Devices Software License Agreement.
 
 #include "adi_console_menu.h"
 #include "ad5770r_console_app.h"
+#include "app_config.h"
 
 /******************************************************************************/
 /************************ Functions Definitions *******************************/
@@ -28,6 +29,11 @@ Analog Devices Software License Agreement.
 int main(void)
 {
 	int32_t setupResult;
+
+	/* Initialize the STM32 peripherals */
+#if (ACTIVE_PLATFORM == STM32_PLATFORM)
+	stm32_system_init();
+#endif
 
 	/* Initialize the AD7124 application before the main loop */
 	if ((setupResult = ad5770r_app_initialize()) != 0) {
