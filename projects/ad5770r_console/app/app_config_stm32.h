@@ -1,0 +1,79 @@
+/***************************************************************************//**
+ *   @file app_config_stm32.h
+ *   @brief Header file for STM32 platform configurations
+********************************************************************************
+ * Copyright (c) 2025 Analog Devices, Inc.
+ * All rights reserved.
+ *
+ * This software is proprietary to Analog Devices, Inc. and its licensors.
+ * By using this software you agree to the terms of the associated
+ * Analog Devices Software License Agreement.
+*******************************************************************************/
+
+#ifndef APP_CONFIG_STM32_H_
+#define APP_CONFIG_STM32_H_
+
+/******************************************************************************/
+/***************************** Include Files **********************************/
+/******************************************************************************/
+
+#include "stm32_spi.h"
+#include "stm32_uart.h"
+#include "stm32_irq.h"
+#include "stm32_gpio.h"
+#include "stm32_uart_stdio.h"
+#include "main.h"
+
+/******************************************************************************/
+/********************** Macros and Constants Definition ***********************/
+/******************************************************************************/
+
+/* Note: The SDP-K1 board with the STM32F469NI MCU has been used
+* for developing the firmware. The below parameters will change depending
+* on the controller used. */
+
+//#define ARDUINO
+
+#ifdef ARDUINO
+#define SPI_DEVICE_ID 1 // SPI1
+#define SPI_CS_PORT   0 // GPIO Port A
+#define SPI_CSB       15 // PA_15
+/* LDAC Parameters */
+#define HW_LDACB      7 // PG_7
+#define HW_LDACB_PORT 6 // GPIO Port G
+#else
+/* STM32 SPI Specific parameters */
+#define SPI_DEVICE_ID		5 // SPI5
+#define SPI_CS_PORT	1  // GPIO Port B
+#define SPI_CSB				9 // PB_9
+/* LDAC Parameters */
+#define HW_LDACB     0 // PJ_0
+#define HW_LDACB_PORT  9 // GPIO Port J
+#endif
+
+/* STM32 UART specific parameters */
+#define APP_UART_HANDLE     &huart5
+#define UART_IRQ_ID			UART5_IRQn
+
+/* Max SPI Clk Speed */
+#define MAX_SPI_CLK 2500000
+
+/* platform ops */
+#define spi_ops stm32_spi_ops
+#define uart_ops stm32_uart_ops
+#define gpio_ops stm32_gpio_ops
+
+/******************************************************************************/
+/********************** Public/Extern Declarations ****************************/
+/******************************************************************************/
+
+extern struct no_os_uart_desc *uart_desc;
+extern UART_HandleTypeDef huart5;
+
+extern struct stm32_uart_init_param stm32_uart_extra_init_params;
+extern struct stm32_spi_init_param stm32_spi_extra_init_params;
+extern struct stm32_gpio_init_param stm32_gpio_ldac_init_params;
+
+extern void stm32_system_init(void);
+
+#endif // APP_CONFIG_STM32_H_
