@@ -54,7 +54,7 @@
 
 /* Memory map for GPIOs on SDP-K1/STM32F4xxx MCU to read the values.
  * Mbed specific GPIO read/write library functions are very time stringent.
- * Since data capture on AD7134 is done using bit banging method, memory mapped
+ * Since data capture on AD4134 is done using bit banging method, memory mapped
  * IOs are used for faster access of IO pins.
  * IF USING ANY OTHER MBED BOARD MAKE SURE MEMORY MAP IS UPDATED ACCORDINGLY */
 
@@ -91,7 +91,7 @@
  * data continuity is not guaranteed above this ODR on IIO oscilloscope */
 #define SAMPLING_RATE		(12000)
 
-/* PWM period and duty cycle for AD7134 ASRC target mode. The low period of ODR as per specs
+/* PWM period and duty cycle for AD4134 ASRC target mode. The low period of ODR as per specs
  * must be minimum 3 * Tdclk in target mode. The min possible Fdclk for SDP-K1 (STM32F469NI)
  * platform is ~3Mhz (based on time to sample data over DOUT), which gives Tdclk as ~333nsec.
  * So ODR min low time must be 333ns * 3 = ~1usec. This is achieved by dividing total ODR
@@ -110,6 +110,6 @@ extern struct mbed_spi_init_param mbed_spi_extra_init_params;
 extern struct mbed_i2c_init_param mbed_i2c_extra_init_params;
 extern struct mbed_pwm_init_param mbed_pwm_extra_init_params;
 extern struct mbed_gpio_init_param mbed_pdn_extra_init_params;
-void ad7134_configure_intr_priority(void);
+void ad4134_configure_intr_priority(void);
 
 #endif /* APP_CONFIG_MBED_H_ */

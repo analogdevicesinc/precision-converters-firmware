@@ -1,6 +1,6 @@
 /***************************************************************************//**
- *   @file    ad7134_support.c
- *   @brief   Source file for for AD7134 No-OS driver support
+ *   @file    ad4134_support.c
+ *   @brief   Source file for for AD4134 No-OS driver support
 ********************************************************************************
  * Copyright (c) 2023 Analog Devices, Inc.
  * All rights reserved.
@@ -16,12 +16,12 @@
 
 #include <stdio.h>
 
-#include "ad7134_support.h"
+#include "ad4134_support.h"
 #include "no_os_gpio.h"
 #include "no_os_error.h"
 #include "no_os_delay.h"
 #include "app_config.h"
-#include "ad7134_iio.h"
+#include "ad4134_iio.h"
 #if (INTERFACE_MODE == TDM_MODE)
 #include "stm32_tdm_support.h"
 #endif
@@ -90,108 +90,108 @@ static uint8_t cntr;
 
 /*!
  * @brief   Perform the data capture initialization
- * @param dev[in] - AD7134 Device descriptor.
+ * @param dev[in] - AD4134 Device descriptor.
  * @return  0 in case of success, negative error code otherwise
- * @details This function configures the AD7134 registers to capture the data
+ * @details This function configures the AD4134 registers to capture the data
  */
-int32_t ad7134_data_capture_init(struct ad713x_dev *dev)
+int32_t ad4134_data_capture_init(struct ad4134_dev *dev)
 {
 	do {
 		/* Select High performance power mode */
-		if (ad713x_set_power_mode(dev, HIGH_POWER) != 0) {
+		if (ad4134_set_power_mode(dev, HIGH_POWER) != 0) {
 			break;
 		}
 
 #if (INTERFACE_MODE != TDM_MODE)
 		/* Select CH0 filter as wideband for required ODR */
-		if (ad713x_dig_filter_sel_ch(dev, FIR, 0) != 0) {
+		if (ad4134_dig_filter_sel_ch(dev, FIR, 0) != 0) {
 			break;
 		}
 #else // TDM_MODE
 		/* Select SINC3 filter to enable ODR higher than 374ksps */
-		if (ad713x_dig_filter_sel_ch(dev, SINC3, 0) != 0) {
+		if (ad4134_dig_filter_sel_ch(dev, SINC3, 0) != 0) {
 			break;
 		}
-		if (ad713x_dig_filter_sel_ch(dev, SINC3, 1) != 0) {
+		if (ad4134_dig_filter_sel_ch(dev, SINC3, 1) != 0) {
 			break;
 		}
-		if (ad713x_dig_filter_sel_ch(dev, SINC3, 2) != 0) {
+		if (ad4134_dig_filter_sel_ch(dev, SINC3, 2) != 0) {
 			break;
 		}
-		if (ad713x_dig_filter_sel_ch(dev, SINC3, 3) != 0) {
+		if (ad4134_dig_filter_sel_ch(dev, SINC3, 3) != 0) {
 			break;
 		}
 #endif
 
 		/* Set GPIO direction and value for gain selection of LT6373 */
-		if (ad713x_spi_reg_write(dev,
-					 AD713X_REG_GPIO_DIR_CTRL,
+		if (ad4134_spi_reg_write(dev,
+					 AD4134_REG_GPIO_DIR_CTRL,
 					 LT6373_GPIO_DIR_CTRL_VAL) != 0) {
 			break;
 		}
 
-		if (ad713x_spi_reg_write(dev,
-					 AD713X_REG_GPIO_DATA,
+		if (ad4134_spi_reg_write(dev,
+					 AD4134_REG_GPIO_DATA,
 					 LT6373_GPIO_DATA_VAL) != 0) {
 			break;
 		}
 
-#if (AD7134_ASRC_MODE == CONTROLLER_MODE)
+#if (AD4134_ASRC_MODE == CONTROLLER_MODE)
 		/* Set the DCLK frequency */
-		if (ad713x_spi_write_mask(dev,
-					  AD713X_REG_DATA_PACKET_CONFIG,
-					  AD713X_DATA_PACKET_CONFIG_DCLK_FREQ_MSK,
-					  AD713X_DATA_PACKET_CONFIG_DCLK_FREQ_MODE(DCLK_FREQ_SELECT)) != 0) {
+		if (ad4134_spi_write_mask(dev,
+					  AD4134_REG_DATA_PACKET_CONFIG,
+					  AD4134_DATA_PACKET_CONFIG_DCLK_FREQ_MSK,
+					  AD4134_DATA_PACKET_CONFIG_DCLK_FREQ_MODE(DCLK_FREQ_SELECT)) != 0) {
 			break;
 		}
 
 		/* Load the ODR value integer and floating registers (controller) */
-		if (ad713x_spi_reg_write(dev,
-					 AD713X_REG_ODR_VAL_INT_LSB,
+		if (ad4134_spi_reg_write(dev,
+					 AD4134_REG_ODR_VAL_INT_LSB,
 					 ODR_VAL_INT_LSB) != 0) {
 			break;
 		}
 
-		if (ad713x_spi_reg_write(dev,
-					 AD713X_REG_ODR_VAL_INT_MID,
+		if (ad4134_spi_reg_write(dev,
+					 AD4134_REG_ODR_VAL_INT_MID,
 					 ODR_VAL_INT_MID) != 0) {
 			break;
 		}
 
-		if (ad713x_spi_reg_write(dev,
-					 AD713X_REG_ODR_VAL_INT_MSB,
+		if (ad4134_spi_reg_write(dev,
+					 AD4134_REG_ODR_VAL_INT_MSB,
 					 ODR_VAL_INT_MSB) != 0) {
 			break;
 		}
 
-		if (ad713x_spi_reg_write(dev,
-					 AD713X_REG_ODR_VAL_FLT_LSB,
+		if (ad4134_spi_reg_write(dev,
+					 AD4134_REG_ODR_VAL_FLT_LSB,
 					 ODR_VAL_FLT_LSB) != 0) {
 			break;
 		}
 
-		if (ad713x_spi_reg_write(dev,
-					 AD713X_REG_ODR_VAL_FLT_MID0,
+		if (ad4134_spi_reg_write(dev,
+					 AD4134_REG_ODR_VAL_FLT_MID0,
 					 ODR_VAL_FLT_MID0) != 0) {
 			break;
 		}
 
-		if (ad713x_spi_reg_write(dev,
-					 AD713X_REG_ODR_VAL_FLT_MID1,
+		if (ad4134_spi_reg_write(dev,
+					 AD4134_REG_ODR_VAL_FLT_MID1,
 					 ODR_VAL_FLT_MID1) != 0) {
 			break;
 		}
 
-		if (ad713x_spi_reg_write(dev,
-					 AD713X_REG_ODR_VAL_FLT_MSB,
+		if (ad4134_spi_reg_write(dev,
+					 AD4134_REG_ODR_VAL_FLT_MSB,
 					 ODR_VAL_FLT_MSB) != 0) {
 			break;
 		}
 
 		/* Transfer controller registers data to target */
-		if (ad713x_spi_reg_write(dev,
-					 AD713X_REG_TRANSFER_REGISTER,
-					 AD713X_TRANSFER_MASTER_SLAVE_TX_BIT_MSK) != 0) {
+		if (ad4134_spi_reg_write(dev,
+					 AD4134_REG_TRANSFER_REGISTER,
+					 AD4134_TRANSFER_MASTER_SLAVE_TX_BIT_MSK) != 0) {
 			break;
 		}
 
@@ -206,7 +206,7 @@ int32_t ad7134_data_capture_init(struct ad713x_dev *dev)
 }
 
 /*!
- * @brief	Generate the ODR low to DCLK high delay in AD7134 target mode
+ * @brief	Generate the ODR low to DCLK high delay in AD4134 target mode
  * @return	none
  * @note	The delay is derived based on the NOP instruction and tested for
  *			STM32F469NI MCU on SDP-K1 controller board with GCC and ARMC compilers.
@@ -224,7 +224,7 @@ static void odr_low_to_dclk_high_delay(void)
 }
 
 /*!
- * @brief	Generate the DCLK high/low delay in AD7134 target mode
+ * @brief	Generate the DCLK high/low delay in AD4134 target mode
  * @return	none
  * @note	The delay is derived based on the NOP instruction and tested for
  *			STM32F469NI MCU on SDP-K1 controller board with GCC and ARMC compilers.
@@ -251,13 +251,13 @@ static void dclk_high_low_delay(void)
  * @param	curr_chn[in] - Channel for which data is to read
  * @return	0 in case of success, negative error code otherwise
  */
-int32_t ad7134_read_data(uint16_t *adc_data, uint8_t curr_chn)
+int32_t ad4134_read_data(uint16_t *adc_data, uint8_t curr_chn)
 {
-	uint16_t chn_data[AD7134_NUM_CHANNELS];
+	uint16_t chn_data[AD4134_NUM_CHANNELS];
 	static volatile uint8_t bit_cnt;
 
 #if (INTERFACE_MODE != TDM_MODE)
-#if (AD7134_ASRC_MODE == TARGET_MODE)
+#if (AD4134_ASRC_MODE == TARGET_MODE)
 	odr_low_to_dclk_high_delay();
 #endif
 
@@ -267,7 +267,7 @@ int32_t ad7134_read_data(uint16_t *adc_data, uint8_t curr_chn)
 	 **/
 	for (bit_cnt = 0; bit_cnt < (ADC_RESOLUTION * DUAL_CHN_MODE_OFFSET);
 	     bit_cnt++) {
-#if (AD7134_ASRC_MODE == CONTROLLER_MODE)
+#if (AD4134_ASRC_MODE == CONTROLLER_MODE)
 		/* Wait for DCLK pin to go high to sample DOUTx bit */
 		while (!(DCLK_IDR & DCLK_PIN_MASK)) ;
 #else
@@ -283,7 +283,7 @@ int32_t ad7134_read_data(uint16_t *adc_data, uint8_t curr_chn)
 		/* Store the PORTA IDR register value which corresponds to DOUT1 pin */
 		dout1_idr_vals[bit_cnt] = DOUT1_IDR;
 
-#if (AD7134_ASRC_MODE == CONTROLLER_MODE)
+#if (AD4134_ASRC_MODE == CONTROLLER_MODE)
 		/* Wait for DCLK pin to go low to sample next DOUTx bit */
 		while ((DCLK_IDR & DCLK_PIN_MASK)) ;
 #else
@@ -333,14 +333,14 @@ int32_t ad7134_read_data(uint16_t *adc_data, uint8_t curr_chn)
  * @param	curr_chn[in] - Channel for which data is to read
  * @return	0 in case of success, negative error code otherwise
  */
-int32_t ad7134_read_tdm_data(uint16_t *adc_data, uint8_t curr_chn)
+int32_t ad4134_read_tdm_data(uint16_t *adc_data, uint8_t curr_chn)
 {
 #if (INTERFACE_MODE == TDM_MODE)
 	int32_t ret;
 	uint8_t channel_data[8];
-	uint32_t timeout = AD7134_CONV_TIMEOUT;
+	uint32_t timeout = AD4134_CONV_TIMEOUT;
 
-	ret = no_os_tdm_read(ad7134_tdm_desc, channel_data, TDM_SLOTS_PER_FRAME);
+	ret = no_os_tdm_read(ad4134_tdm_desc, channel_data, TDM_SLOTS_PER_FRAME);
 	if (ret) {
 		return ret;
 	}
@@ -402,7 +402,7 @@ static int32_t wait_for_odr_gpio_state_change(bool new_gpio_state,
  * @param chn_data[out] - Pointer to adc data read variable
  * @return 0 in case of success, negative error code otherwise
  */
-int32_t ad7134_read_all_channels(uint16_t *chn_data)
+int32_t ad4134_read_all_channels(uint16_t *chn_data)
 {
 	static volatile uint8_t bit_cnt;
 	uint8_t curr_chn;
@@ -419,7 +419,7 @@ int32_t ad7134_read_all_channels(uint16_t *chn_data)
 		return -EINVAL;
 	}
 
-#if (AD7134_ASRC_MODE == TARGET_MODE)
+#if (AD4134_ASRC_MODE == TARGET_MODE)
 	odr_low_to_dclk_high_delay();
 #endif
 
@@ -429,7 +429,7 @@ int32_t ad7134_read_all_channels(uint16_t *chn_data)
 	 **/
 	for (bit_cnt = 0; bit_cnt < (ADC_RESOLUTION * DUAL_CHN_MODE_OFFSET);
 	     bit_cnt++) {
-#if (AD7134_ASRC_MODE == CONTROLLER_MODE)
+#if (AD4134_ASRC_MODE == CONTROLLER_MODE)
 		/* Wait for DCLK pin to go high to sample DOUTx bit */
 		while (!(DCLK_IDR & DCLK_PIN_MASK)) ;
 #else
@@ -445,7 +445,7 @@ int32_t ad7134_read_all_channels(uint16_t *chn_data)
 		/* Store the PORTA IDR register value which corresponds to DOUT1 pin */
 		dout1_idr_vals[bit_cnt] = DOUT1_IDR;
 
-#if (AD7134_ASRC_MODE == CONTROLLER_MODE)
+#if (AD4134_ASRC_MODE == CONTROLLER_MODE)
 		/* Wait for DCLK pin to go low to sample next DOUTx bit */
 		while ((DCLK_IDR & DCLK_PIN_MASK)) ;
 #else
@@ -486,7 +486,7 @@ int32_t ad7134_read_all_channels(uint16_t *chn_data)
  * @param	adc_data[out] - Pointer to adc data read variable
  * @return	0 in case of success, negative error code otherwise
  */
-int32_t ad7134_perform_conv_and_read_sample(uint8_t input_chn,
+int32_t ad4134_perform_conv_and_read_sample(uint8_t input_chn,
 		uint16_t *adc_data)
 {
 	int32_t ret;
@@ -504,11 +504,11 @@ int32_t ad7134_perform_conv_and_read_sample(uint8_t input_chn,
 		return -EINVAL;
 	}
 
-	if (ad7134_read_data(adc_data, input_chn) != 0) {
+	if (ad4134_read_data(adc_data, input_chn) != 0) {
 		return -EINVAL;
 	}
 #else // TDM_MODE
-	ret = ad7134_read_tdm_data(adc_data, input_chn);
+	ret = ad4134_read_tdm_data(adc_data, input_chn);
 	if (ret) {
 		return ret;
 	}

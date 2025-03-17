@@ -1,6 +1,6 @@
 /*************************************************************************//**
- *   @file   ad7134_user_config.c
- *   @brief  User configuration file for AD7134 device
+ *   @file   ad4134_user_config.c
+ *   @brief  User configuration file for AD4134 device
 ******************************************************************************
 * Copyright (c) 2020-21, 2023 Analog Devices, Inc.
 * All rights reserved.
@@ -14,7 +14,7 @@
 /***************************** Include Files **********************************/
 /******************************************************************************/
 
-#include "ad7134_user_config.h"
+#include "ad4134_user_config.h"
 #include "app_config.h"
 
 /******************************************************************************/
@@ -25,8 +25,8 @@
 /********************** Variables and User Defined Data Types *****************/
 /******************************************************************************/
 
-/* Initialize the ad7134 device init structure */
-struct ad713x_init_param ad713x_init_params = {
+/* Initialize the ad4134 device init structure */
+struct ad4134_init_param ad4134_init_params = {
 	/* Define SPI init parameters structure */
 	{
 		.max_speed_hz = 20000000,   	// Max SPI Speed
@@ -39,18 +39,18 @@ struct ad713x_init_param ad713x_init_params = {
 
 	/* gpio_init_params */
 
-	/* Optional - connected to IOVDD on AD7134 EVB for ASRC controller mode */
+	/* Optional - connected to IOVDD on AD4134 EVB for ASRC controller mode */
 	.gpio_mode = NULL,
 
-	/* Optional - connected to GND on AD7134 EVB for decimation ratio selection
+	/* Optional - connected to GND on AD4134 EVB for decimation ratio selection
 	 * in ASRC controller mode */
 	.gpio_dclkmode = NULL,
 
-	/* Optional - connected to IOVDD on AD7134 EVB to set DCLK pin as output
+	/* Optional - connected to IOVDD on AD4134 EVB to set DCLK pin as output
 	 * in ASRC controller mode */
 	.gpio_dclkio = NULL,
 
-	/* Optional - connected to IOVDD on AD7134 EVB */
+	/* Optional - connected to IOVDD on AD4134 EVB */
 	.gpio_resetn = NULL,
 
 	.gpio_pnd = &pdn_init_param,

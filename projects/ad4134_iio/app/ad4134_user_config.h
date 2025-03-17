@@ -1,6 +1,6 @@
 /*************************************************************************//**
- *   @file   ad7134_user_config.h
- *   @brief  Header for AD7134 user configuration file
+ *   @file   ad4134_user_config.h
+ *   @brief  Header for AD4134 user configuration file
 ******************************************************************************
 * Copyright (c) 2020-21 Analog Devices, Inc.
 * All rights reserved.
@@ -10,15 +10,15 @@
 * Analog Devices Software License Agreement.
 *****************************************************************************/
 
-#ifndef _AD7134_USER_CONFIG_H_
-#define _AD7134_USER_CONFIG_H_
+#ifndef _AD4134_USER_CONFIG_H_
+#define _AD4134_USER_CONFIG_H_
 
 /******************************************************************************/
 /***************************** Include Files **********************************/
 /******************************************************************************/
 
 #include <stdint.h>
-#include "ad713x.h"
+#include "ad4134.h"
 
 /******************************************************************************/
 /********************** Macros and Constants Definition ***********************/
@@ -28,6 +28,6 @@
 /********************** Variables and User Defined Data Types *****************/
 /******************************************************************************/
 
-extern struct ad713x_init_param ad713x_init_params;
+extern struct ad4134_init_param ad4134_init_params;
 
-#endif //_AD7134_USER_CONFIG_H_
+#endif //_AD4134_USER_CONFIG_H_
