@@ -1,0 +1,15 @@
+<map id="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad559xr_console/app/app_config_mbed.h" name="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad559xr_console/app/app_config_mbed.h">
+<area shape="rect" id="Node000001" title="Header file for Mbed platform configurations." alt="" coords="679,5,974,75"/>
+<area shape="rect" id="Node000002" href="$ad559xr__console_2app_2app__config_8h.html" title=": AD5592R/AD5593R device selection. Pin mappings." alt="" coords="553,123,804,192"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="774,85,724,124,721,120,771,81"/>
+<area shape="rect" id="Node000007" href="$ad559xr__console_2app_2app__config__mbed_8c.html" title="Source file for the mbed configuration for AD559xr Console Application." alt="" coords="828,123,1121,192"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="882,81,933,120,930,124,879,85"/>
+<area shape="rect" id="Node000003" href="$ad5592r__console__app_8c.html" title="AD5592R console application interfaces." alt="" coords="5,240,325,309"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="540,192,315,243,314,237,539,187"/>
+<area shape="rect" id="Node000004" href="$ad5592r__reset__config_8c.html" title=": Device parameters, structure and reset condition settings" alt="" coords="350,240,669,309"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="620,202,561,242,558,237,617,197"/>
+<area shape="rect" id="Node000005" href="$ad5592r__user__config_8c.html" title=": Device parameters, structure and initial condition settings" alt="" coords="693,240,1006,309"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="741,197,801,237,798,242,738,202"/>
+<area shape="rect" id="Node000006" href="$ad559xr__console_2app_2main_8c.html" title=": main module for AD5592R application interface" alt="" coords="1030,240,1253,309"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="818,190,1019,237,1030,240,1029,245,1018,243,817,195"/>
+</map>

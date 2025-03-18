@@ -1,0 +1,25 @@
+<map id="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad77681_iio/app/app_config_stm32.c" name="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad77681_iio/app/app_config_stm32.c">
+<area shape="rect" id="Node000001" title="STM32 Specific configuration files for AD7124 IIO Application." alt="" coords="363,5,630,75"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="365,123,474,148"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="471,76,440,114,436,110,467,73"/>
+<area shape="rect" id="Node000003" href="$ad77681__iio_2app_2app__config__stm32_8h.html" title="Header file for STM32 platform configurations." alt="" coords="498,123,650,148"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="527,73,558,110,553,114,523,76"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="5,196,113,221"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="498,149,127,199,127,193,497,144"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="138,196,239,221"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="513,151,253,198,252,193,512,145"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="263,196,365,221"/>
+<area shape="poly" id="edge5_Node000003_Node000006" title=" " alt="" coords="533,151,370,195,369,190,532,145"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="389,196,500,221"/>
+<area shape="poly" id="edge6_Node000003_Node000007" title=" " alt="" coords="554,150,479,191,477,187,552,146"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="525,196,623,221"/>
+<area shape="poly" id="edge7_Node000003_Node000008" title=" " alt="" coords="577,148,577,182,571,182,571,148"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="648,196,783,221"/>
+<area shape="poly" id="edge8_Node000003_Node000009" title=" " alt="" coords="598,146,681,187,679,192,596,150"/>
+<area shape="rect" id="Node000010" title=" " alt="" coords="807,196,874,221"/>
+<area shape="poly" id="edge9_Node000003_Node000010" title=" " alt="" coords="618,145,795,192,793,198,616,151"/>
+<area shape="rect" id="Node000011" title=" " alt="" coords="898,196,1045,221"/>
+<area shape="poly" id="edge10_Node000003_Node000011" title=" " alt="" coords="638,145,894,191,893,196,637,151"/>
+<area shape="rect" id="Node000012" title=" " alt="" coords="1069,196,1207,221"/>
+<area shape="poly" id="edge11_Node000003_Node000012" title=" " alt="" coords="650,143,1055,193,1054,198,650,148"/>
+</map>

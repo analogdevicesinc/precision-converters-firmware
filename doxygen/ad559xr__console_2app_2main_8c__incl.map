@@ -1,15 +1,31 @@
 <map id="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad559xr_console/app/main.c" name="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad559xr_console/app/main.c">
-<area shape="rect" id="Node000001" title=": main module for AD5592R application interface" alt="" coords="5,5,228,75"/>
-<area shape="rect" id="Node000002" title=" " alt="" coords="11,123,78,148"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="93,76,64,113,60,110,89,73"/>
-<area shape="rect" id="Node000003" href="$ad5592r__console__app_8h.html" title="AD5592R console application interfaces." alt="" coords="103,123,277,148"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="145,73,175,110,170,113,141,76"/>
-<area shape="rect" id="Node000004" href="$adi__console__menu_8h.html" title=": A simple console menu manager handler" alt="" coords="113,196,267,221"/>
-<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="193,148,193,182,187,182,187,148"/>
-<area shape="rect" id="Node000005" title=" " alt="" coords="47,269,130,295"/>
-<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="175,224,118,263,115,259,172,219"/>
-<area shape="rect" id="Node000006" title=" " alt="" coords="155,269,225,295"/>
-<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="193,222,193,256,187,256,187,222"/>
-<area shape="rect" id="Node000007" title=" " alt="" coords="249,269,320,295"/>
-<area shape="poly" id="edge6_Node000004_Node000007" title=" " alt="" coords="207,219,260,259,257,263,204,223"/>
+<area shape="rect" id="Node000001" title=": main module for AD5592R application interface" alt="" coords="73,5,295,75"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,123,72,148"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="133,77,70,117,67,113,130,73"/>
+<area shape="rect" id="Node000003" href="$ad5592r__console__app_8h.html" title="AD5592R console application interfaces." alt="" coords="97,123,271,148"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="187,75,187,109,181,109,181,75"/>
+<area shape="rect" id="Node000008" href="$ad559xr__console_2app_2app__config_8h.html" title=": AD5592R/AD5593R device selection. Pin mappings." alt="" coords="296,123,400,148"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="245,72,317,113,314,118,242,77"/>
+<area shape="rect" id="Node000004" href="$adi__console__menu_8h.html" title=": A simple console menu manager handler" alt="" coords="107,196,261,221"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="187,148,187,182,181,182,181,148"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="41,269,124,295"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="169,224,112,263,109,259,166,219"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="243,269,314,295"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="201,219,254,259,251,263,198,223"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="149,269,219,295"/>
+<area shape="poly" id="edge6_Node000004_Node000007" title=" " alt="" coords="187,222,187,256,181,256,181,222"/>
+<area shape="poly" id="edge8_Node000008_Node000006" title=" " alt="" coords="345,150,293,258,288,256,340,147"/>
+<area shape="rect" id="Node000009" href="$ad559xr__console_2app_2app__config__mbed_8h.html" title="Header file for Mbed platform configurations." alt="" coords="437,196,585,221"/>
+<area shape="poly" id="edge9_Node000008_Node000009" title=" " alt="" coords="375,146,473,188,470,193,373,150"/>
+<area shape="poly" id="edge10_Node000009_Node000006" title=" " alt="" coords="474,224,328,268,326,263,473,219"/>
+<area shape="rect" id="Node000010" title=" " alt="" coords="338,269,438,295"/>
+<area shape="poly" id="edge11_Node000009_Node000010" title=" " alt="" coords="492,224,421,265,418,260,490,219"/>
+<area shape="rect" id="Node000011" title=" " alt="" coords="462,269,559,295"/>
+<area shape="poly" id="edge12_Node000009_Node000011" title=" " alt="" coords="513,222,513,256,508,256,508,222"/>
+<area shape="rect" id="Node000012" title=" " alt="" coords="583,269,681,295"/>
+<area shape="poly" id="edge13_Node000009_Node000012" title=" " alt="" coords="532,219,602,260,599,265,529,224"/>
+<area shape="rect" id="Node000013" title=" " alt="" coords="705,269,812,295"/>
+<area shape="poly" id="edge14_Node000009_Node000013" title=" " alt="" coords="551,219,706,263,705,268,550,224"/>
+<area shape="rect" id="Node000014" title=" " alt="" coords="837,269,1027,295"/>
+<area shape="poly" id="edge15_Node000009_Node000014" title=" " alt="" coords="579,219,851,264,850,270,578,224"/>
 </map>

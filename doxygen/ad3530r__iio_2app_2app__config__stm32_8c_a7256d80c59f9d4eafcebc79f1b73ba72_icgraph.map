@@ -2,7 +2,7 @@
 <area shape="rect" id="Node000001" title="Initialize the STM32 system peripherals." alt="" coords="232,80,379,105"/>
 <area shape="rect" id="Node000002" href="$ad3530r__iio_2app_2app__config_8c.html#aba990e48bb1b87852ff6a375f0c2f655" title="Initializing system peripherals." alt="" coords="45,5,144,31"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="263,77,183,45,144,32,145,27,185,39,265,72"/>
-<area shape="rect" id="Node000003" href="$ad5933__console_2app_2main_8c.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title=" " alt="" coords="67,55,122,80"/>
+<area shape="rect" id="Node000003" href="$ad559xr__console_2app_2main_8c.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title=" " alt="" coords="67,55,122,80"/>
 <area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="218,85,122,73,122,68,219,80"/>
 <area shape="rect" id="Node000004" href="$ad590__console_2app_2main_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title="Main entry point to application." alt="" coords="67,104,122,129"/>
 <area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="219,105,122,116,122,111,218,100"/>

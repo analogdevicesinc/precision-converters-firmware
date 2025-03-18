@@ -1,9 +1,11 @@
 <map id="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad559xr_console/app/app_config.h" name="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad559xr_console/app/app_config.h">
-<area shape="rect" id="Node000001" title=": AD5592R/AD5593R device selection. Pin mappings." alt="" coords="384,5,635,75"/>
+<area shape="rect" id="Node000001" title=": AD5592R/AD5593R device selection. Pin mappings." alt="" coords="553,5,804,75"/>
 <area shape="rect" id="Node000002" href="$ad5592r__console__app_8c.html" title="AD5592R console application interfaces." alt="" coords="5,123,325,192"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="397,82,267,125,265,120,395,77"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="540,75,315,125,314,120,539,70"/>
 <area shape="rect" id="Node000003" href="$ad5592r__reset__config_8c.html" title=": Device parameters, structure and reset condition settings" alt="" coords="350,123,669,192"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="512,89,512,122,507,122,507,89"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="620,85,561,124,558,120,617,80"/>
 <area shape="rect" id="Node000004" href="$ad5592r__user__config_8c.html" title=": Device parameters, structure and initial condition settings" alt="" coords="693,123,1006,192"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="622,77,751,120,749,125,620,82"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="741,80,801,120,798,124,738,85"/>
+<area shape="rect" id="Node000005" href="$ad559xr__console_2app_2main_8c.html" title=": main module for AD5592R application interface" alt="" coords="1030,123,1253,192"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="818,71,1019,120,1030,123,1029,128,1018,125,816,76"/>
 </map>
