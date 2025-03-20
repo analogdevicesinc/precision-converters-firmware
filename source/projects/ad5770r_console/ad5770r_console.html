@@ -7,13 +7,15 @@
 
     <title>AD5770r Console Application &#8212; Precision Converters Firmware  documentation</title>
     <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=8e8a900e" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/app.min.css?v=3d3703ae" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/app.min.css?v=cad18f0a" />
     <script src="../../../_static/documentation_options.js?v=5929fcd5"></script>
     <script src="../../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script defer="" src="../../../_static/app.umd.js?v=dcfbb431"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="AD579X IIO Application" href="../ad579x_iio/ad579x_iio.html" />
+    <link rel="prev" title="AD5754R/CN0586 IIO Application" href="../ad5754r_iio/ad5754r_iio.html" />
    
   
   <meta name="repository" content="precision-converters-firmware">
@@ -129,11 +131,11 @@ Content on this topic
 </div>
 <div class="toc-tree">
   <html>
-  <body><ul>
+  <body><ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../build/project_build.html">Build Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../code_style.html">Code Styles</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../contributing.html">Contributing to PCFW Repository</a></li>
-<li class="toctree-l1"><input class="toctree-collapse" type="checkbox" name="toctree-collapse-1" id="toctree-collapse-1"/><div class="collapse"><a class="reference internal" href="../index.html">Firmware Applications</a><label for="toctree-collapse-1"><div class="icon"></div></label></div><ul>
+<li class="toctree-l1 current"><input class="toctree-collapse" type="checkbox" name="toctree-collapse-1" id="toctree-collapse-1" checked=""/><div class="collapse"><a class="reference internal" href="../index.html">Firmware Applications</a><label for="toctree-collapse-1"><div class="icon"></div></label></div><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../ad2s1210_iio/ad2s1210_iio.html">AD2S1210 IIO Application</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ad353xr_iio/ad353xr_iio.html">AD3530R IIO Application</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ad355xr_iio/ad355xr_iio.html">AD355XR IIO Application</a></li>
@@ -143,6 +145,7 @@ Content on this topic
 <li class="toctree-l2"><a class="reference internal" href="../ad4696_iio/ad4696_iio.html">AD4696 IIO Application</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ad559xr_console/ad559xr_console.html">AD559XR Console Application</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ad5754r_iio/ad5754r_iio.html">AD5754R/CN0586 IIO Application</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">AD5770r Console Application</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ad579x_iio/ad579x_iio.html">AD579X IIO Application</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ad590_console/ad590_console.html">AD590 Console Application</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ad5933_console/ad5933_console.html">AD5933 Console Application</a></li>
@@ -191,7 +194,7 @@ Content on this topic
 </ul>
 <p><strong>Supported Carrier Boards:</strong></p>
 <ul class="simple">
-<li><p><a class="reference external" href="https://os.mbed.com/platforms/SDP_K1/">SDP-K1 With Mbed</a></p></li>
+<li><p><a class="reference external" href="https://www.analog.com/en/resources/evaluation-hardware-and-software/evaluation-boards-kits/sdp-k1.html#eb-overview">SDP-K1</a></p></li>
 </ul>
 </section>
 <section id="introduction">
@@ -199,18 +202,18 @@ Content on this topic
 <p>The AD5770R is a 6-channel, 14-bit resolution, low noise, programmable current output digital-to-analog converter (DAC) for photonics control applications. This chip incorporates a 1.25 V on-chip voltage reference, a 2.5 kΩ precision resistor for reference current generation, die temperature, output monitoring functions, fault alarm, and reset functions.</p>
 <p>The AD5770R contains five 14-bit resolution current sourcing DAC channels and one 14-bit resolution current sourcing/ sinking DAC channel.</p>
 <p>Channel 0 can be configured to sink up to 60 mA and source up to 300 mA. Channel 1 to Channel 5 have multiple, programmable output current sourcing ranges, set by register access. Each DAC can operate with a wide power supply rail from 0.8 V to AVDD − 0.4 V for optimizing power efficiency and thermal power dissipation.</p>
-<p>This page describes the AD5770R firmware example running on the SDP-K1 controller board, interfacing with the AD5770R evaluation board. The firmware example comprises 3 layers of software, built on top of the Mbed OS.</p>
+<p>This page describes the AD5770R firmware example running on the SDP-K1 controller board, interfacing with the AD5770R evaluation board. The firmware example comprises 3 layers of software, It can support Mbed and STM32 platforms.</p>
 <ul>
 <li><p>Console Application - uses the ADI console libraries to provide a basic terminal UI</p></li>
 <li><p>AD5770R No-OS Driver - AD5770R device C API</p></li>
-<li><p>Mbed Platform Drivers - Hardware Abstraction Layer (SPI, GPIO, …) to adapt No-OS driver to Mbed OS</p>
+<li><p>Platform Drivers - Hardware Abstraction Layer (SPI, GPIO, …) to adapt No-OS driver</p>
 <blockquote>
 <div><a class="reference internal image-reference" href="../../../_images/ad5770r_architecture.jpg"><img alt="../../../_images/ad5770r_architecture.jpg" src="../../../_images/ad5770r_architecture.jpg" style="width: 400px;" />
 </a>
 </div></blockquote>
 </li>
 </ul>
-<p>The AD5770R Mbed firmware example can be used as a starting point for developing your own code in your own environment utilizing the benefits of the Mbed platform. The Mbed Platform simplifies the overall software development process by providing a common low level driver abstraction. This reduces the hardware dependency as any Mbed enabled board can be used with same firmware with little to no modifications, usually just changing the pin mapping.</p>
+<p>The AD5770R firmware example can be used as a starting point for developing your own code in your own environment. The Platform simplifies the overall software development process by providing a common low level driver abstraction. This reduces the hardware dependency as any Mbed enabled board(or an STM32 board) can be used with same firmware with little to no modifications, usually just changing the pin mapping.</p>
 </section>
 <section id="interface-diagram">
 <h2>Interface Diagram<a class="headerlink" href="#interface-diagram" title="Link to this heading"></a></h2>
@@ -442,7 +445,7 @@ of all build steps.</p>
 </section>
 <section id="quick-start">
 <h2>Quick Start<a class="headerlink" href="#quick-start" title="Link to this heading"></a></h2>
-<p>If you have some familiarity with the Mbed platform, the following is a basic list of steps required to start running the code,
+<p>If you have some familiarity with the Mbed or STM32 platform, the following is a basic list of steps required to start running the code,
 see below for more detail:</p>
 <ul class="simple">
 <li><p>Connect the evaluation board to the SDP-K1 controller board, and power it appropriately, usually 3.3V to AVDD.</p></li>
@@ -507,8 +510,8 @@ see below for more detail:</p>
           </div>
               <div class="related">
                 &nbsp;
-    <div></div>
-    <div></div>
+    <a href="../ad5754r_iio/ad5754r_iio.html" title="Previous document (Alt+Shift+LeftArrow)" class="prev">AD5754R/CN0586 IIO Application</a>
+    <a href="../ad579x_iio/ad579x_iio.html" title="Next document (Alt+Shift+RightArrow)" class="next">AD579X IIO Application</a>
               </div>
           
         </div>
