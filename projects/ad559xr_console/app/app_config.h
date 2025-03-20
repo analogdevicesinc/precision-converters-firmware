@@ -44,7 +44,7 @@
 // The ACTIVE_DEVICE is default set to AD5592R, if device type is not defined.
 
 #if !defined(ACTIVE_DEVICE)
-#define ACTIVE_DEVICE  DEV_AD5592R
+#define ACTIVE_DEVICE  DEV_AD5593R
 #endif
 
 #define NUM_CHANNELS 8
