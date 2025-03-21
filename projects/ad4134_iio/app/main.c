@@ -1,7 +1,7 @@
 /***************************************************************************//**
  *   @file    main.cpp
- *   @brief   main module for AD7134 IIO interface
- *   @details This module invokes the AD7134 IIO interfaces
+ *   @brief   main module for AD4134 IIO interface
+ *   @details This module invokes the AD4134 IIO interfaces
  *            through forever loop.
 ********************************************************************************
  * Copyright (c) 2020-21, 2023 Analog Devices, Inc.
@@ -17,7 +17,7 @@
 /******************************************************************************/
 
 #include <stdint.h>
-#include "ad7134_iio.h"
+#include "ad4134_iio.h"
 
 /******************************************************************************/
 /********************** Macros and Constants Definitions **********************/
@@ -28,17 +28,17 @@
 /******************************************************************************/
 
 /* @brief	Main function
- * @details	This is a main entry function for AD7134 IIO application
+ * @details	This is a main entry function for AD4134 IIO application
  */
 int main(void)
 {
-	/* Initialize the AD7134 IIO interface */
-	if (ad7134_iio_initialize() != 0) {
+	/* Initialize the AD4134 IIO interface */
+	if (ad4134_iio_initialize() != 0) {
 		printf("\r\n IIO Initialization Failure!\r\n");
 	}
 
 	while (1) {
 		/* Monitor the IIO client events */
-		ad7134_iio_event_handler();
+		ad4134_iio_event_handler();
 	}
 }

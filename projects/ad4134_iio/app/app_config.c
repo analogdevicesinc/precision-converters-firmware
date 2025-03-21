@@ -1,7 +1,7 @@
 /***************************************************************************//**
  *   @file    app_config.c
  *   @brief   Application configurations module
- *   @details This module contains the configurations needed for AD7134 IIO
+ *   @details This module contains the configurations needed for AD4134 IIO
  *            application
 ********************************************************************************
  * Copyright (c) 2021, 2023-24 Analog Devices, Inc.
@@ -97,7 +97,7 @@ static struct no_os_pwm_init_param pwm_init_params = {
 };
 #elif (INTERFACE_MODE == TDM_MODE)
 struct no_os_tdm_init_param tdm_init_param = {
-	.mode = NO_OS_TDM_SLAVE_RX,		// AD7134 acts as a controller and the STM board acts as a target
+	.mode = NO_OS_TDM_SLAVE_RX,		// AD4134 acts as a controller and the STM board acts as a target
 	.data_size = TDM_DATA_SIZE,			// 16 Bit data transfer mode
 	.data_offset = 0,
 	.data_lsb_first = false,
@@ -107,16 +107,16 @@ struct no_os_tdm_init_param tdm_init_param = {
 	.fs_lastbit = false,
 	.rising_edge_sampling = false,
 	.irq_id = DMA_IRQ_ID,
-	.rx_complete_callback = ad7134_dma_rx_cplt,
+	.rx_complete_callback = ad4134_dma_rx_cplt,
 #if (DATA_CAPTURE_MODE == CONTINUOUS_DATA_CAPTURE)
-	.rx_half_complete_callback = ad7134_dma_rx_half_cplt,
+	.rx_half_complete_callback = ad4134_dma_rx_half_cplt,
 #endif
 	.extra = &tdm_extra_init_params,
 	.platform_ops = &stm32_tdm_platform_ops
 };
 
 /* TDM Descriptor */
-struct no_os_tdm_desc *ad7134_tdm_desc;
+struct no_os_tdm_desc *ad4134_tdm_desc;
 #endif // INTERFACE_MODE
 
 /* Define the GPIO init parameter structure for DCLK pin */
@@ -219,7 +219,7 @@ static int32_t init_gpio(void)
 		}
 
 		/* Set DCLK direction as input */
-#if (AD7134_ASRC_MODE == CONTROLLER_MODE)
+#if (AD4134_ASRC_MODE == CONTROLLER_MODE)
 		if (no_os_gpio_direction_input(dclk_desc) != 0) {
 #else
 		if (no_os_gpio_direction_output(dclk_desc, NO_OS_GPIO_LOW) != 0) {
@@ -233,7 +233,7 @@ static int32_t init_gpio(void)
 		}
 
 		/* Set ODR direction as input */
-#if (AD7134_ASRC_MODE == CONTROLLER_MODE)
+#if (AD4134_ASRC_MODE == CONTROLLER_MODE)
 		if (no_os_gpio_direction_input(odr_desc) != 0) {
 #else
 		if (no_os_gpio_direction_output(odr_desc, NO_OS_GPIO_LOW) != 0) {
@@ -327,7 +327,7 @@ int32_t init_pwm(void)
 static int32_t init_tdm(void)
 {
 #if (INTERFACE_MODE == TDM_MODE)
-	if (no_os_tdm_init(&ad7134_tdm_desc, &tdm_init_param) != 0) {
+	if (no_os_tdm_init(&ad4134_tdm_desc, &tdm_init_param) != 0) {
 		return -EINVAL;
 	}
 #endif // ACTIVE_PLATFORM

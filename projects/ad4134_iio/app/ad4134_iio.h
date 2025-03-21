@@ -1,33 +1,40 @@
-/*************************************************************************//**
- *   @file   ad7134_user_config.h
- *   @brief  Header for AD7134 user configuration file
-******************************************************************************
+/***************************************************************************//**
+*   @file   ad4134_iio.h
+*   @brief  Header file AD4134 IIO interface
+********************************************************************************
 * Copyright (c) 2020-21 Analog Devices, Inc.
 * All rights reserved.
 *
 * This software is proprietary to Analog Devices, Inc. and its licensors.
 * By using this software you agree to the terms of the associated
 * Analog Devices Software License Agreement.
-*****************************************************************************/
-
-#ifndef _AD7134_USER_CONFIG_H_
-#define _AD7134_USER_CONFIG_H_
+*******************************************************************************/
+#ifndef AD4134_IIO_H_
+#define AD4134_IIO_H_
 
 /******************************************************************************/
 /***************************** Include Files **********************************/
 /******************************************************************************/
 
-#include <stdint.h>
-#include "ad713x.h"
+#include "iio.h"
+#include "iio_types.h"
+#include "ad4134.h"
 
 /******************************************************************************/
 /********************** Macros and Constants Definition ***********************/
 /******************************************************************************/
 
 /******************************************************************************/
-/********************** Variables and User Defined Data Types *****************/
+/********************** Public/Extern Declarations ****************************/
 /******************************************************************************/
 
-extern struct ad713x_init_param ad713x_init_params;
+/* AD4134 global device instance for accessing device specific APIs */
+extern struct ad4134_dev *p_ad4134_dev_inst;
 
-#endif //_AD7134_USER_CONFIG_H_
+/* Init the IIO interface */
+int32_t ad4134_iio_initialize(void);
+
+/* Run the IIO event handler */
+void ad4134_iio_event_handler(void);
+
+#endif /* AD4134_IIO_H_ */

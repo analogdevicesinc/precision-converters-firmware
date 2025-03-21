@@ -105,14 +105,14 @@ extern struct stm32_gpio_init_param stm32_pdn_extra_init_params;
 extern struct stm32_i2c_init_param stm32_i2c_extra_init_params;
 extern UART_HandleTypeDef huart3;
 extern bool data_capture_operation;
-extern struct iio_device_data *ad7134_iio_dev_data;
+extern struct iio_device_data *ad4134_iio_dev_data;
 extern void SystemClock_Config(void);
 extern HAL_StatusTypeDef HAL_Init(void);
 void MX_LPUART1_UART_Init(void);
 void MX_SPI1_Init(void);
 void MX_ICACHE_Init(void);
 void MX_GPIO_Init(void);
-void ad7134_dma_rx_cplt(SAI_HandleTypeDef *hsai);
-void ad7134_dma_rx_half_cplt(SAI_HandleTypeDef *hsai);
+void ad4134_dma_rx_cplt(SAI_HandleTypeDef *hsai);
+void ad4134_dma_rx_half_cplt(SAI_HandleTypeDef *hsai);
 #endif /* APP_CONFIG_STM32_H_ */
 

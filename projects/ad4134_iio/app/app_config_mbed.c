@@ -51,7 +51,7 @@ struct mbed_uart_init_param mbed_vcom_extra_init_params = {
 
 /* External interrupt Mbed platform specific parameters */
 struct mbed_gpio_irq_init_param mbed_ext_int_extra_init_params = {
-#if (AD7134_ASRC_MODE == CONTROLLER_MODE)
+#if (AD4134_ASRC_MODE == CONTROLLER_MODE)
 	.gpio_irq_pin = ODR_PIN,
 #else
 	.gpio_irq_pin = ODR_PIN,
@@ -92,7 +92,7 @@ struct mbed_gpio_init_param mbed_pdn_extra_init_params = {
  * @brief Configure the interrupt priorities
  * @return None
  */
-void ad7134_configure_intr_priority(void)
+void ad4134_configure_intr_priority(void)
 {
 	NVIC_SetPriority(GPIO_IRQ_INTR_PRIORITY, 1);
 }

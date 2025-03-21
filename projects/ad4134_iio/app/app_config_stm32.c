@@ -1,6 +1,6 @@
 /***************************************************************************//**
  * @file    app_config_stm32.c
- * @brief   STM32 Specific configuration files for AD7134 IIO Application
+ * @brief   STM32 Specific configuration files for AD4134 IIO Application
  * @details This module contains the STM32 platform specific configurations
 ********************************************************************************
 * Copyright (c) 2021,2023-24 Analog Devices, Inc.
@@ -97,11 +97,11 @@ void stm32_system_init(void)
  * @param hsai - pointer to a SAI_HandleTypeDef structure
  * @return None
  */
-void ad7134_dma_rx_half_cplt(SAI_HandleTypeDef *hsai)
+void ad4134_dma_rx_half_cplt(SAI_HandleTypeDef *hsai)
 {
 #if (DATA_CAPTURE_MODE == CONTINUOUS_DATA_CAPTURE)
 	if (data_capture_operation) {
-		end_tdm_dma_to_cb_transfer(ad7134_tdm_desc, ad7134_iio_dev_data,
+		end_tdm_dma_to_cb_transfer(ad4134_tdm_desc, ad4134_iio_dev_data,
 					   TDM_DMA_READ_SIZE, BYTES_PER_SAMPLE);
 	}
 #endif
@@ -112,18 +112,18 @@ void ad7134_dma_rx_half_cplt(SAI_HandleTypeDef *hsai)
  * @param hsai - pointer to a SAI_HandleTypeDef structure
  * @return None
  */
-void ad7134_dma_rx_cplt(SAI_HandleTypeDef *hsai)
+void ad4134_dma_rx_cplt(SAI_HandleTypeDef *hsai)
 {
 	update_dma_buffer_overflow();
 
 #if (DATA_CAPTURE_MODE == CONTINUOUS_DATA_CAPTURE)
 	if (data_capture_operation) {
-		end_tdm_dma_to_cb_transfer(ad7134_tdm_desc, ad7134_iio_dev_data,
+		end_tdm_dma_to_cb_transfer(ad4134_tdm_desc, ad4134_iio_dev_data,
 					   TDM_DMA_READ_SIZE, BYTES_PER_SAMPLE);
 
 		/* Start TDM DMA read as the peripheral is disabled in Normal(Linear)
 		 * Buffer Mode upon buffer completion */
-		no_os_tdm_read(ad7134_tdm_desc, dma_buff, TDM_DMA_READ_SIZE << 1);
+		no_os_tdm_read(ad4134_tdm_desc, dma_buff, TDM_DMA_READ_SIZE << 1);
 	}
 #endif
 }

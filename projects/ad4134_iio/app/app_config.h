@@ -1,6 +1,6 @@
 /*************************************************************************//**
  *   @file   app_config.h
- *   @brief  Configuration file for AD7134 device application
+ *   @brief  Configuration file for AD4134 device application
 ******************************************************************************
 * Copyright (c) 2020-21, 2023-24 Analog Devices, Inc.
 * All rights reserved.
@@ -18,7 +18,7 @@
 /******************************************************************************/
 
 #include <stdint.h>
-#include "ad713x.h"
+#include "ad4134.h"
 
 /******************************************************************************/
 /********************** Macros and Constants Definition ***********************/
@@ -32,7 +32,7 @@
 #define CONTINUOUS_DATA_CAPTURE		0
 #define BURST_DATA_CAPTURE		1
 
-/* AD7134 ASRC mode of operation for data interface */
+/* AD4134 ASRC mode of operation for data interface */
 #define CONTROLLER_MODE		0
 #define TARGET_MODE			1
 
@@ -47,7 +47,7 @@
 
 /* Select the platform (default is MBED platform) */
 #if !defined(ACTIVE_PLATFORM)
-#define ACTIVE_PLATFORM	MBED_PLATFORM
+#define ACTIVE_PLATFORM	STM32_PLATFORM
 #endif
 
 /* Macros for stringification */
@@ -56,16 +56,16 @@
 
 // **** Note for User: ACTIVE_DEVICE selection ****//
 /* Define the device type from the list of below device type defines (one at a time)
- * e.g. #define DEV_AD7134 -> This will make AD7134 as an active device.
+ * e.g. #define DEV_AD4134 -> This will make AD4134 as an active device.
  * The active device is default set to AD4134 if device type is not defined.
  * */
 //#define DEV_AD4134
 
 /* Name of active device */
-#if defined (DEV_AD7134)
-#define ACTIVE_DEVICE_NAME	"ad7134"
-#define HW_MEZZANINE_NAME   "EVAL-AD7134ARDZ"
-#define ACTIVE_DEVICE_ID    ID_AD7134
+#if defined (DEV_AD4134)
+#define ACTIVE_DEVICE_NAME	"ad4134"
+#define HW_MEZZANINE_NAME   "EVAL-AD4134ARDZ"
+#define ACTIVE_DEVICE_ID    ID_AD4134
 #elif defined (DEV_AD4134)
 #define ACTIVE_DEVICE_NAME	"ad4134"
 #define HW_MEZZANINE_NAME   "EVAL-CN0561-ARDZ"
@@ -151,10 +151,10 @@
 #define ADC_MAX_COUNT_BIPOLAR	(uint32_t)(1 << (ADC_RESOLUTION-1))
 
 /* Max ADC channels */
-#define AD7134_NUM_CHANNELS	4
+#define AD4134_NUM_CHANNELS	4
 
 /****** Macros used to form a VCOM serial number ******/
-#define DEVICE_NAME		"DEV_AD7134"
+#define DEVICE_NAME		"DEV_AD4134"
 
 #if !defined(PLATFORM_NAME)
 #if (ACTIVE_PLATFORM == MBED_PLATFORM)
@@ -165,7 +165,7 @@
 #endif // PLATFORM_NAME
 
 /* VCOM Serial number definition */
-#define	FIRMWARE_NAME	"ad7134_iio"
+#define	FIRMWARE_NAME	"ad4134_iio"
 
 /* Below USB configurations (VID and PID) are owned and assigned by ADI.
 * If intended to distribute software further, use the VID and PID owned by your
@@ -177,13 +177,13 @@
 /* Baud rate for IIO application UART interface */
 #define IIO_UART_BAUD_RATE	(230400)
 
-/* Set ASRC mode (one at a time, default is AD7134 as controller. The ASRC Mode
+/* Set ASRC mode (one at a time, default is AD4134 as controller. The ASRC Mode
  * selection is applicable only for the bit banging method of data capture.
- * and not in case of SAI-TDM method. For TDM, AD7134 can operate only as
+ * and not in case of SAI-TDM method. For TDM, AD4134 can operate only as
  * a controller)
  * Note: The mode configuration must be modified in the hardware to match the one set
  * in software. Refer project documentation for required h/w changes */
-#define AD7134_ASRC_MODE	CONTROLLER_MODE
+#define AD4134_ASRC_MODE	CONTROLLER_MODE
 
 /* Enable/Disable the use of SDRAM for ADC data capture buffer */
 // #define USE_SDRAM		// Uncomment to use SDRAM for data buffer
@@ -205,7 +205,7 @@
 extern struct no_os_uart_desc *uart_iio_com_desc;
 extern struct no_os_uart_desc *uart_console_stdio_desc;
 extern struct no_os_irq_ctrl_desc *external_int_desc;
-extern struct no_os_tdm_desc *ad7134_tdm_desc;
+extern struct no_os_tdm_desc *ad4134_tdm_desc;
 extern struct no_os_eeprom_desc *eeprom_desc;
 extern struct no_os_gpio_init_param pdn_init_param;
 int32_t init_system(void);
