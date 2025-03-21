@@ -7,7 +7,7 @@
   @details:
  -----------------------------------------------------------------------------
  *
-Copyright (c) 2020-2022 Analog Devices, Inc. All Rights Reserved.
+Copyright (c) 2020-2022,2025 Analog Devices, Inc. All Rights Reserved.
 
 This software is proprietary to Analog Devices, Inc. and its licensors.
 By using this software you agree to the terms of the associated
@@ -31,10 +31,9 @@ Analog Devices Software License Agreement.
 #include "no_os_error.h"
 #include "no_os_gpio.h"
 #include "no_os_spi.h"
-#include "mbed_platform_support.h"
-#include "mbed_gpio.h"
-#include "ad5770r.h"
+#include "no_os_uart.h"
 
+#include "ad5770r.h"
 #include "ad5770r_console_app.h"
 #include "ad5770r_user_config.h"
 #include "ad5770r_reset_config.h"
@@ -57,14 +56,31 @@ static struct ad5770r_channel_switches sw_ldac_shadow;
 
 // GPIO descriptor and init parameters for the HW LDACB pin
 static struct no_os_gpio_desc * hw_ldacb_desc = NULL;
-struct mbed_gpio_init_param hw_ldacb_extra_init_params = {
-	.pin_mode = 0	// NA
-};
+
 static struct no_os_gpio_init_param hw_ldacb_init_param = {
 	.number = HW_LDACB,
-	.platform_ops = &mbed_gpio_ops,
+	.port = HW_LDACB_PORT,
+	.platform_ops = &gpio_ops,
 	.extra = &hw_ldacb_extra_init_params
 };
+
+/* UART init parameters  */
+struct no_os_uart_init_param uart_init_params = {
+	.device_id = 0,
+	.baud_rate = 230400,
+	.size = NO_OS_UART_CS_8,
+	.parity = NO_OS_UART_PAR_NO,
+	.stop = NO_OS_UART_STOP_1_BIT,
+	.irq_id = UART_IRQ_ID,
+#if (ACTIVE_PLATFORM == STM32_PLATFORM)
+	.asynchronous_rx = false,
+	.platform_ops = &uart_ops,
+	.extra = &uart_extra_init_params
+#endif
+};
+
+/* UART Descriptor */
+struct no_os_uart_desc *uart_desc;
 
 // Forward Declaration
 static console_menu general_configuration_menu;
@@ -85,6 +101,17 @@ static console_menu dac_operations_menu;
  */
 int32_t ad5770r_app_initialize(void)
 {
+	int ret;
+
+#if (ACTIVE_PLATFORM == STM32_PLATFORM)
+	ret = no_os_uart_init(&uart_desc, &uart_init_params);
+	if (ret) {
+		return ret;
+	}
+
+	/* Set up the UART for standard I/O operations */
+	no_os_uart_stdio(uart_desc);
+#endif
 	// Create a new descriptor for HW LDACB
 	if (no_os_gpio_get(&hw_ldacb_desc, &hw_ldacb_init_param) != 0) {
 		return -EINVAL;
