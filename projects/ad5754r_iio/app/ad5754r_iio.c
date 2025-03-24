@@ -2,7 +2,7 @@
  *   @file    ad5754r_iio.c
  *   @brief   Implementation of AD5754R IIO application interfaces
 ********************************************************************************
- * Copyright (c) 2024 Analog Devices, Inc.
+ * Copyright (c) 2024, 2025 Analog Devices, Inc.
  * All rights reserved.
  *
  * This software is proprietary to Analog Devices, Inc. and its licensors.
@@ -115,9 +115,14 @@ static int ad5754r_iio_attr_available_set(void *device,
 #define		BYTE_SIZE		(uint32_t)8
 #define		BYTE_MASK		(uint32_t)0xff
 
-#define DATA_BUFFER_SIZE  (32768)
-
+/* DAC data buffer size */
+#if defined(USE_SDRAM)
+#define dac_data_buffer				SDRAM_START_ADDRESS
+#define DATA_BUFFER_SIZE			SDRAM_SIZE_BYTES
+#else
+#define DATA_BUFFER_SIZE			(32768)
 static int8_t dac_data_buffer[DATA_BUFFER_SIZE];
+#endif
 
 #ifdef DEV_CN0586
 #define AD5754R_ATTRS_OFFSET	6
@@ -320,6 +325,11 @@ static uint32_t sampling_rate = MAX_SAMPLING_RATE;
  * millivolts. */
 static float scale_factor = 1000;
 
+/* Pin States of the LDAC Pin */
+enum ad5754_ldac_pin_state {
+	AD5754_LDAC_GPIO_OUTPUT,
+	AD5754_LDAC_PWM
+};
 /******************************************************************************/
 /************************ Functions Definitions *******************************/
 /******************************************************************************/
@@ -327,9 +337,11 @@ static float scale_factor = 1000;
 /**
  * @brief	Reconfigure LDAC pin as GPIO output
  * @param 	device[in] - AD5754R device instance
+ * @param   pinstate[in] - State of conversion pin
  * @return	0 in case of success, negative error code otherwise
  */
-int ad5754r_reconfig_ldac(struct ad5754r_dev *device)
+int ad5754r_reconfig_ldac(struct ad5754r_dev *device,
+			  enum ad5754_ldac_pin_state pin_state)
 {
 	int ret;
 
@@ -342,19 +354,31 @@ int ad5754r_reconfig_ldac(struct ad5754r_dev *device)
 		return ret;
 	}
 
-	ret = no_os_gpio_get(&device->gpio_ldac, ad5754r_init_params.gpio_ldac_init);
+	ret = no_os_gpio_remove(pwm_desc->pwm_gpio);
 	if (ret) {
 		return ret;
 	}
 
-	ret = no_os_gpio_direction_output(device->gpio_ldac, NO_OS_GPIO_HIGH);
-	if (ret) {
-		return ret;
+	if (pin_state == AD5754_LDAC_GPIO_OUTPUT) {
+		ret = no_os_gpio_get(&device->gpio_ldac, ad5754r_init_params.gpio_ldac_init);
+		if (ret) {
+			return ret;
+		}
+
+		ret = no_os_gpio_direction_output(device->gpio_ldac, NO_OS_GPIO_HIGH);
+		if (ret) {
+			return ret;
+		}
+	} else {
+		/* Reconfigure the LDAC pin as Alternate Function Mode (for PWM) */
+		ret = no_os_gpio_get(&pwm_desc->pwm_gpio, pwm_init_params.pwm_gpio);
+		if (ret) {
+			return ret;
+		}
 	}
 
 	return 0;
 }
-
 
 /**
  * @brief	Get the sampling rate supported by MCU platform
@@ -1052,6 +1076,23 @@ static int32_t ad5754r_iio_prepare_transfer(void *dev, uint32_t mask)
 	}
 	num_of_active_channels = index;
 
+#if (ACTIVE_PLATFORM == STM32_PLATFORM)
+	/* Reconfigure the LDAC pin as Alternate Function Mode (for PWM) */
+	ret = ad5754r_reconfig_ldac(ad5754r_dev_inst, AD5754_LDAC_PWM);
+	if (ret) {
+		return ret;
+	}
+#endif
+
+#if (ACTIVE_PLATFORM == STM32_PLATFORM)
+	/* Clear pending Interrupt before enabling back the trigger.
+	 * Else , a spurious interrupt is observed after a legitimate interrupt, */
+	ret = no_os_irq_clear_pending(trigger_irq_desc, TRIGGER_INT_ID);
+	if (ret) {
+		return ret;
+	}
+#endif
+
 	ret = iio_trig_enable(ad5754r_hw_trig_desc);
 	if (ret) {
 		return ret;
@@ -1089,7 +1130,7 @@ static int32_t ad5754r_iio_end_transfer(void *dev)
 	}
 
 	/* Reconfigure the LDAC pin as GPIO output (non-PWM) */
-	ret = ad5754r_reconfig_ldac(ad5754r_dev_inst);
+	ret = ad5754r_reconfig_ldac(ad5754r_dev_inst, AD5754_LDAC_GPIO_OUTPUT);
 	if (ret) {
 		return ret;
 	}
@@ -1114,23 +1155,23 @@ static int32_t ad5754r_iio_end_transfer(void *dev)
 static int32_t ad5754r_trigger_handler(struct iio_device_data *iio_dev_data)
 {
 	volatile int32_t ret;
-	uint16_t dac_raw;	// Variable to store the raw dac code
+	static uint16_t dac_raw[4];
 	static uint8_t chn = 0;
+	uint8_t active_ch;
 
-	ret = iio_buffer_pop_scan(iio_dev_data->buffer, &dac_raw);
-	if (ret) {
-		return ret;
-	}
-
-	/* Write the value into the input register */
-	ad5754r_update_dac_ch_register(ad5754r_dev_inst, ad5754r_active_chns[chn],
-				       dac_raw);
-
-	if (chn != (num_of_active_channels - 1)) {
-		chn += 1;
-	} else {
+	if (!chn || chn == num_of_active_channels) {
+		ret = iio_buffer_pop_scan(iio_dev_data->buffer, dac_raw);
+		if (ret) {
+			return ret;
+		}
 		chn = 0;
 	}
+
+	active_ch = ad5754r_active_chns[chn];
+	/* Write the value into the input register */
+	ad5754r_update_dac_ch_register(ad5754r_dev_inst, active_ch,
+				       dac_raw[chn]);
+	chn += 1;
 
 	return 0;
 }
@@ -1379,7 +1420,7 @@ int32_t ad5754r_iio_init(void)
 	}
 
 	/* Reconfigure the LDAC pin as GPIO output (non-PWM) */
-	ret = ad5754r_reconfig_ldac(ad5754r_dev_inst);
+	ret = ad5754r_reconfig_ldac(ad5754r_dev_inst, AD5754_LDAC_GPIO_OUTPUT);
 	if (ret) {
 		return ret;
 	}

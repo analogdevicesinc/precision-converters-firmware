@@ -2,7 +2,7 @@
  *   @file   ad5754r_user_config.c
  *   @brief  User configuration file for AD5754R devices
 ******************************************************************************
-* Copyright (c) 2024 Analog Devices, Inc.
+* Copyright (c) 2024, 2025 Analog Devices, Inc.
 * All rights reserved.
 *
 * This software is proprietary to Analog Devices, Inc. and its licensors.
@@ -27,7 +27,8 @@
 
 /* SPI init parameters */
 struct no_os_spi_init_param spi_init_params = {
-	.max_speed_hz = 12500000,
+	.device_id = SPI_DEVICE_ID,
+	.max_speed_hz = MAX_SPI_CLK,
 	.mode = NO_OS_SPI_MODE_2,
 	.chip_select = SPI_CSB,
 	.platform_ops = &spi_ops,
