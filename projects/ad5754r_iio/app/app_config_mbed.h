@@ -2,7 +2,7 @@
  *   @file    app_config_mbed.h
  *   @brief   Header file for Mbed platform configurations
 ********************************************************************************
- * Copyright (c) 2024 Analog Devices, Inc.
+ * Copyright (c) 2024, 2025 Analog Devices, Inc.
  * All rights reserved.
  *
  * This software is proprietary to Analog Devices, Inc. and its licensors.
@@ -59,6 +59,19 @@
 #define vcom_ops mbed_virtual_com_ops
 #define pwm_ops mbed_pwm_ops
 #define trigger_gpio_irq_ops mbed_gpio_irq_ops
+
+/* Unused macros */
+#define SPI_DEVICE_ID   0
+#define I2C_DEV_ID      0
+#define LDAC_PWM_ID     0
+#define CLEAR_GPIO_PORT 0
+#define LDAC_GPIO_PORT  0
+#define LDAC_PWM_ID     0
+#define IRQ_CTRL_ID     0
+#define UART_ID         0
+
+/* Max spi clk speed */
+#define MAX_SPI_CLK 12500000
 
 /* Define the max possible sampling (or update) rate for a given platform.
  * Note: Max possible update rate is 58.82 KSPS per channel on IIO client.

@@ -2,7 +2,7 @@
  *   @file   app_config.h
  *   @brief  Configuration file for AD5754R device application
 ******************************************************************************
-* Copyright (c) 2024 Analog Devices, Inc.
+* Copyright (c) 2024,2025 Analog Devices, Inc.
 * All rights reserved.
 *
 * This software is proprietary to Analog Devices, Inc. and its licensors.
@@ -26,6 +26,7 @@
 
 /* List of supported platforms */
 #define	MBED_PLATFORM		1
+#define STM32_PLATFORM      2
 
 /* Macros for stringification */
 #define XSTR(s)		#s
@@ -35,7 +36,7 @@
 
 /* Select the active platform (default is Mbed) */
 #if !defined(ACTIVE_PLATFORM)
-#define ACTIVE_PLATFORM		MBED_PLATFORM
+#define ACTIVE_PLATFORM	 STM32_PLATFORM
 #endif
 
 // **** Note for User on selection of Active Device ****//
@@ -44,6 +45,7 @@
  * e.g. #define DEV_CN0586 -> This will make CN0586 as an active device.
  * The active device is default set to CN0586 if device type is not defined.
  * */
+
 #define DEV_CN0586
 
 #ifndef DEV_CN0586
@@ -100,6 +102,19 @@
 #define dac_gpio_ops mbed_gpio_ops
 #define TRIGGER_INT_ID GPIO_IRQ_ID1
 #define trigger_gpio_handle         0 // Unused macro
+
+#elif (ACTIVE_PLATFORM == STM32_PLATFORM)
+#include "app_config_stm32.h"
+#define HW_CARRIER_NAME TARGET_NAME
+#define pwm_extra_init_params stm32_pwm_extra_init_params
+#define uart_extra_init_params stm32_uart_extra_init_params
+#define vcom_extra_init_params stm32_vcom_extra_init_params
+#define spi_extra_init_params stm32_spi_extra_init_params
+#define trigger_gpio_irq_extra_params stm32_trigger_gpio_irq_init_params
+#define ldac_gpio_extra_init_params stm32_ldac_gpio_init_params
+#define clear_gpio_extra_init_params stm32_clear_gpio_init_params
+#define dac_gpio_ops stm32_gpio_ops
+#define trigger_gpio_handle         0 // Unused macro
 #else
 #error "No/Invalid active platform selected"
 #endif
@@ -127,13 +142,16 @@
 /* Check if any serial port available for use as console stdio port */
 #if defined(USE_PHY_COM_PORT)
 /* If PHY com is selected, VCOM or alternate PHY com port can act as a console stdio port */
-#if (ACTIVE_PLATFORM == MBED_PLATFORM)
+#if (ACTIVE_PLATFORM == MBED_PLATFORM || ACTIVE_PLATFORM == STM32_PLATFORM)
 #define CONSOLE_STDIO_PORT_AVAILABLE
 #endif
 #else
 /* If VCOM is selected, PHY com port will/should act as a console stdio port */
 #define CONSOLE_STDIO_PORT_AVAILABLE
 #endif
+
+/* Enable/Disable the use of SDRAM for ADC data capture buffer */
+//#define USE_SDRAM
 
 /* PWM period and duty cycle */
 #define CONV_TRIGGER_PERIOD_NSEC(x)		(((float)(1.0 / x) * 1000000) * 1000)
@@ -151,6 +169,7 @@ extern struct no_os_eeprom_desc *eeprom_desc;
 extern struct no_os_gpio_desc *trigger_gpio_desc;
 extern struct no_os_irq_ctrl_desc *trigger_irq_desc;
 extern struct no_os_pwm_desc *pwm_desc;
+extern struct no_os_pwm_init_param pwm_init_params;
 
 int32_t init_pwm(void);
 int32_t init_system(void);
