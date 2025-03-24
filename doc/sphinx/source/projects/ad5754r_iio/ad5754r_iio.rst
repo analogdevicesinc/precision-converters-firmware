@@ -12,23 +12,23 @@ Supported Hardware
 **Supported Evaluation Boards:**
 
 * `EVAL-CN0586-ARDZ <https://www.analog.com/en/resources/reference-designs/circuits-from-the-lab/cn0586.html#rd-overview>`_
-* `EVAL-AD5754R <https://www.analog.com/en/resources/evaluation-hardware-and-software/evaluation-boards-kits/eval-ad5754r.html?`_
+* `EVAL-AD5754R <https://www.analog.com/en/resources/evaluation-hardware-and-software/evaluation-boards-kits/eval-ad5754r.html?>`_
 
 **Supported Carrier Boards:**
 
-* SDP-K1 With `Mbed Platform <https://os.mbed.com/platforms/SDP_K1/>`_ 
+* `SDP-K1  <https://www.analog.com/en/resources/evaluation-hardware-and-software/evaluation-boards-kits/sdp-k1.html#eb-overview>`_ 
 
 ============
 Introduction
 ============
 
-This page gives an overview of using the ARM platforms supported (Mbed) 
+This page gives an overview of using the ARM platforms supported 
 firmware example with Analog Devices EVAL-CN0586-ARDZ and EVAL-AD5754R Evaluation boards and SDP-K1 controller board. 
 This example code leverages the ADI developed IIO (Industrial Input Output) ecosystem to 
 evaluate the AD5754R/CN0586 device by providing a device debug and data capture support.
-The code provides support for MBED platform, using the SDP-K1 controller board.
+The code provides support for MBED and STM32 platforms, using the SDP-K1 controller board.
 
-The build guide for the Mbed platform can be found in the further sections.
+The build guide for the Mbed and STM32 platform can be found in the further sections.
 
    .. image:: /source/tinyiiod/app_interface.png
       :width: 350
@@ -37,9 +37,11 @@ The interface used for communicating with PC based IIO clients is either Virtual
 IIO Firmware leverages the ADI created no-os and platform driver software layers
 to communicates with IIO device.
 
-.. SDP-K1 Mbed Section
+.. note::
 
-.. include:: /source/tinyiiod/sdp_k1_mbed.rst
+   This code has been developed and tested on the SDP-K1 Controller Board with
+   Arduino headers. However, the same code can be used with minimal modifications
+   on any STM32 enabled board which has Arduino Header support on it.
 
 .. Useful links Section
 
@@ -49,7 +51,7 @@ to communicates with IIO device.
 Hardware Connections
 ====================
 
-Required: SDP-K1 (or alternative Mbed enabled controller board), EVAL-AD5754R board or EVAL-CN0586-ARDZ board,
+Required: SDP-K1 (or alternative Mbed enabled controller board or an STM32 board), EVAL-AD5754R board or EVAL-CN0586-ARDZ board,
 and USB cable.
 
 When using the EVAL-CN0586-ARDZ, connect the EVAL-CN0586 board to the controller board by stacking the CN0586's digital interface pins 
@@ -72,7 +74,7 @@ When using the EVAL-AD5754R, make the connections as follows using jumper wires:
 +-------------+---------------+
 | D10         |  J8 Pin 10    |
 +-------------+---------------+
-| D6          |  J8 Pin 7     |
+| D6          |  J8 Pin 6     |
 +-------------+---------------+
 | D4          |  J8 Pin 4     |
 +-------------+---------------+
