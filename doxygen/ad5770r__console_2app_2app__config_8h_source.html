@@ -87,7 +87,7 @@ $(document).ready(function() { init_codefold(0); });
 <div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="comment"> *   @brief  Configuration file of AD5770R firmware example program</span></div>
 <div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="comment">******************************************************************************</span></div>
 <div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="comment"> *</span></div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="comment">Copyright (c) 2020-2022 Analog Devices, Inc. All Rights Reserved.</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="comment">Copyright (c) 2020-2022,2025 Analog Devices, Inc. All Rights Reserved.</span></div>
 <div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="comment"></span> </div>
 <div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="comment">This software is proprietary to Analog Devices, Inc. and its licensors.</span></div>
 <div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="comment">By using this software you agree to the terms of the associated</span></div>
@@ -102,30 +102,33 @@ $(document).ready(function() { init_codefold(0); });
 <div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="comment">/******************************************************************************/</span></div>
 <div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span> </div>
 <div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="preprocessor">#include &lt;stdint.h&gt;</span></div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="preprocessor">#include &lt;PinNames.h&gt;</span></div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span> </div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="comment">/******************************************************************************/</span></div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="comment">/********************** Macros and Constants Definitions **********************/</span></div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="comment">/******************************************************************************/</span></div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span> </div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="comment">//#define  ARDUINO</span></div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span> </div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span><span class="comment">// Pin mapping of AD5770R with SDP-K1/Arduino</span></div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span><span class="preprocessor">#ifdef ARDUINO</span></div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span><span class="preprocessor">#define SPI_CSB         ARDUINO_UNO_D10</span></div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span><span class="preprocessor">#define SPI_HOST_SDO    ARDUINO_UNO_D11</span></div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span><span class="preprocessor">#define SPI_HOST_SDI    ARDUINO_UNO_D12</span></div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span><span class="preprocessor">#define SPI_SCK         ARDUINO_UNO_D13</span></div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span><span class="preprocessor">#define HW_LDACB        ARDUINO_UNO_D2</span></div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span><span class="preprocessor">#else</span></div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno"><a class="line" href="ad5770r__console_2app_2app__config_8h.html#a6dc78fc30202ccac1f51bc2daedc14d1">   46</a></span><span class="preprocessor">#define SPI_CSB         SDP_SPI_CS_A    </span><span class="comment">// PB_9</span></div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno"><a class="line" href="ad5770r__console_2app_2app__config_8h.html#a0c6daf27aad5efe7ef0f2a42431f5f96">   47</a></span><span class="preprocessor">#define SPI_HOST_SDO    SDP_SPI_MOSI    </span><span class="comment">// PF_9</span></div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno"><a class="line" href="ad5770r__console_2app_2app__config_8h.html#ab9efd6c2292aa38f5c38c63cc3fc3054">   48</a></span><span class="preprocessor">#define SPI_HOST_SDI    SDP_SPI_MISO    </span><span class="comment">// PF_8</span></div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno"><a class="line" href="ad5770r__console_2app_2app__config_8h.html#a750ca7c9b92cfc9e57272ff3a49db48b">   49</a></span><span class="preprocessor">#define SPI_SCK         SDP_SPI_SCK     </span><span class="comment">// PH_6</span></div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno"><a class="line" href="ad5770r__console_2app_2app__config_8h.html#a22084b789a8251e356539eacdef95093">   50</a></span><span class="preprocessor">#define HW_LDACB        SDP_GPIO_0      </span><span class="comment">// PJ_0</span></div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span> </div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span><span class="preprocessor">#endif </span><span class="comment">/* APP_CONFIG_H_ */</span><span class="preprocessor"></span></div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span> </div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="comment">/******************************************************************************/</span></div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="comment">/********************** Macros and Constants Definitions **********************/</span></div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="comment">/******************************************************************************/</span></div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span> </div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="comment">/* List of active platforms supported */</span></div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno"><a class="line" href="ad5770r__console_2app_2app__config_8h.html#a053837cf4ec7ed65d18c930324db4f1e">   28</a></span><span class="preprocessor">#define MBED_PLATFORM       1</span></div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno"><a class="line" href="ad5770r__console_2app_2app__config_8h.html#adaf57100c5a484ccdbcea26419175a82">   29</a></span><span class="preprocessor">#define STM32_PLATFORM      2</span></div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span> </div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span><span class="comment">/* Select the Active Platform */</span></div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span><span class="preprocessor">#if !defined(ACTIVE_PLATFORM)</span></div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno"><a class="line" href="ad5770r__console_2app_2app__config_8h.html#a1febd5b25e6629777aa06ad047592958">   33</a></span><span class="preprocessor">#define ACTIVE_PLATFORM     STM32_PLATFORM</span></div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="preprocessor">#if (ACTIVE_PLATFORM == MBED_PLATFORM)</span></div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span><span class="preprocessor">#include &quot;<a class="code" href="nanodac__console_2app_2app__config__mbed_8h.html">app_config_mbed.h</a>&quot;</span></div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno"><a class="line" href="ad5770r__console_2app_2app__config_8h.html#a7743e2deaf9fd761da296dcf8f9dc4e5">   38</a></span><span class="preprocessor">#define spi_init_extra_params   mbed_spi_extra_init_params</span></div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno"><a class="line" href="ad5770r__console_2app_2app__config_8h.html#ae2e272402a45dd79f39d7795c0aab3be">   39</a></span><span class="preprocessor">#define hw_ldacb_extra_init_params mbed_gpio_ldac_init_params</span></div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span><span class="preprocessor">#else</span></div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span><span class="preprocessor">#include &quot;app_config_stm32.h&quot;</span></div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span><span class="preprocessor">#define spi_init_extra_params  stm32_spi_extra_init_params</span></div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span><span class="preprocessor">#define uart_extra_init_params  stm32_uart_extra_init_params</span></div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span><span class="preprocessor">#define hw_ldacb_extra_init_params stm32_gpio_ldac_init_params</span></div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span> </div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span><span class="preprocessor">#endif </span><span class="comment">/* APP_CONFIG_H_ */</span><span class="preprocessor"></span></div>
+<div class="ttc" id="ananodac__console_2app_2app__config__mbed_8h_html"><div class="ttname"><a href="nanodac__console_2app_2app__config__mbed_8h.html">app_config_mbed.h</a></div><div class="ttdoc">Header file for Mbed platform configurations.</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

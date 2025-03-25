@@ -1,0 +1,19 @@
+<map id="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad5770r_console/app/app_config_stm32.c" name="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad5770r_console/app/app_config_stm32.c">
+<area shape="rect" id="Node000001" title="STM32 Specific configuration files for AD5770R Console Application." alt="" coords="151,5,449,75"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="168,123,277,148"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="274,76,243,114,239,110,270,73"/>
+<area shape="rect" id="Node000003" href="$ad5770r__console_2app_2app__config__stm32_8h.html" title="Header file for STM32 platform configurations." alt="" coords="301,123,453,148"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="330,73,361,110,357,114,326,76"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="5,196,107,221"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="326,151,121,196,120,191,325,145"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="131,196,239,221"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="347,151,231,193,229,188,346,146"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="264,196,363,221"/>
+<area shape="poly" id="edge5_Node000003_Node000006" title=" " alt="" coords="369,150,335,188,331,184,365,147"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="387,196,498,221"/>
+<area shape="poly" id="edge6_Node000003_Node000007" title=" " alt="" coords="390,147,425,184,421,188,386,150"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="523,196,669,221"/>
+<area shape="poly" id="edge7_Node000003_Node000008" title=" " alt="" coords="413,145,548,189,547,194,412,151"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="693,196,760,221"/>
+<area shape="poly" id="edge8_Node000003_Node000009" title=" " alt="" coords="442,145,680,193,679,198,440,151"/>
+</map>
