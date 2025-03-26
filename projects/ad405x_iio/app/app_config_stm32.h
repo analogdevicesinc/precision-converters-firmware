@@ -22,16 +22,22 @@
 #include "stm32_i2c.h"
 #include "stm32_irq.h"
 #include "stm32_gpio_irq.h"
-#include "stm32_spi.h"
 #include "stm32_gpio.h"
 #include "stm32_uart.h"
 #include "stm32_dma.h"
 #include "stm32_pwm.h"
+
+#ifdef STM32F469xx
+#include "stm32_spi.h"
 #include "stm32_usb_uart.h"
+#endif
 
 /******************************************************************************/
 /********************** Macros and Constants Definition ***********************/
 /******************************************************************************/
+
+#ifdef STM32F469xx
+
 /* Note: The SDP-K1 board with the STM32F469NI MCU has been used
 * for developing the firmware. The below parameters will change depending
 * on the controller used. */
@@ -84,6 +90,8 @@
 #define AD405x_TxDMA_CHANNEL_NUM    DMA_CHANNEL_7
 #define AD405x_RxDMA_CHANNEL_NUM    DMA_CHANNEL_3
 #define Rx_DMA_IRQ_ID           DMA2_Stream0_IRQn
+
+#endif
 
 /* Redefine the init params structure mapping w.r.t. platform */
 #define uart_extra_init_params      stm32_uart_extra_init_params

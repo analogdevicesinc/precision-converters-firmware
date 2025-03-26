@@ -22,6 +22,7 @@
 #include "no_os_uart.h"
 #include "no_os_irq.h"
 #include "no_os_pwm.h"
+#include "common.h"
 
 /******************************************************************************/
 /********************** Macros and Constants Definition ***********************/
@@ -49,6 +50,9 @@
 #define ACTIVE_PLATFORM		STM32_PLATFORM
 #endif
 
+/* Enable/Disable the use of SDRAM for ADC data capture buffer */
+//#define USE_SDRAM	// Uncomment to use SDRAM as data buffer
+
 /* Enable the UART/VirtualCOM port connection (default VCOM) */
 //#define USE_PHY_COM_PORT		// Uncomment to select UART
 
@@ -58,7 +62,7 @@
 
 /* Select the application data capture mode (default is CC mode) */
 #if !defined(APP_CAPTURE_MODE)
-#define APP_CAPTURE_MODE	   WINDOWED_DATA_CAPTURE
+#define APP_CAPTURE_MODE	   CONTINUOUS_DATA_CAPTURE
 #endif
 
 /* Select the ADC output data format (default is twos complement mode) */
@@ -119,8 +123,25 @@
 /* Serial number string is formed as: application name + device (target) name + platform (host) name */
 #define VIRTUAL_COM_SERIAL_NUM	(FIRMWARE_NAME "_" DEVICE_NAME "_" STR(PLATFORM_NAME))
 
-/* Enable/Disable the use of SDRAM for ADC data capture buffer */
-//#define USE_SDRAM	// Uncomment to use SDRAM as data buffer
+/* ADC data buffer size */
+#if defined(USE_SDRAM)
+#define DATA_BUFFER_SIZE			SDRAM_SIZE_BYTES
+#else
+#define DATA_BUFFER_SIZE			(131072)		// 128kbytes
+#endif
+
+/******************************************************************************/
+
+#define STORAGE_BITS_SAMPLE 16
+#define AD4050_SAMPLE_RES   12
+#define AD4052_SAMPLE_RES   16
+
+#define STORAGE_BITS_AVG    32
+#define AD4050_AVG_RES      14
+#define AD4052_AVG_RES      20
+
+/* Number of storage bytes for each sample */
+#define BYTES_PER_SAMPLE(x)   (x/8)
 
 /******************************************************************************/
 /********************** Variables and User Defined Data Types *****************/
