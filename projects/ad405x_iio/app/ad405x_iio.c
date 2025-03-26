@@ -17,6 +17,7 @@
 #include <math.h>
 
 #include "app_config.h"
+#include "app_support.h"
 #include "ad405x.h"
 #include "ad405x_iio.h"
 #include "ad405x_user_config.h"
@@ -74,9 +75,7 @@ static int iio_ad405x_attr_available_set(void *device,
 /* ADC data buffer size */
 #if defined(USE_SDRAM)
 #define adc_data_buffer				SDRAM_START_ADDRESS
-#define DATA_BUFFER_SIZE			SDRAM_SIZE_BYTES
 #else
-#define DATA_BUFFER_SIZE			(131072)		// 128kbytes
 static int8_t adc_data_buffer[DATA_BUFFER_SIZE];
 #endif
 
@@ -89,17 +88,6 @@ static int8_t adc_data_buffer[DATA_BUFFER_SIZE];
 /* Device names */
 #define DEV_AD4050	"ad4050"
 #define DEV_AD4052	"ad4052"
-
-#define STORAGE_BITS_SAMPLE 16
-#define AD4050_SAMPLE_RES   12
-#define AD4052_SAMPLE_RES   16
-
-#define STORAGE_BITS_AVG    32
-#define AD4050_AVG_RES      14
-#define AD4052_AVG_RES      20
-
-/* Number of storage bytes for each sample */
-#define BYTES_PER_SAMPLE(x)   (x/8)
 
 /* Factor multiplied to calculated conversion time to ensure proper data capture */
 #define COMPENSATION_FACTOR	1.1
@@ -150,7 +138,7 @@ static struct iio_desc *p_ad405x_iio_desc;
 struct iio_device *p_iio_ad405x_dev[NUM_OF_IIO_DEVICES];
 
 /* ad405x IIO hw trigger descriptor */
-static struct iio_hw_trig *ad405x_hw_trig_desc;
+struct iio_hw_trig *ad405x_hw_trig_desc;
 
 /* IIO interface init parameters */
 static struct iio_init_param iio_init_params = {
@@ -172,14 +160,8 @@ enum ad405x_interface_modes ad405x_interface_mode = SPI_DMA;
 /* Variable to store data ready status of ADC */
 volatile bool data_ready = false;
 
-/* Variable to store number of requested samples */
-static uint32_t nb_of_samples;
-
 /* Variable to store start of buffer address */
 volatile uint8_t *buff_start_addr;
-
-/* Local SRAM buffer */
-uint8_t local_buf[MAX_LOCAL_BUF_SIZE];
 
 /* Flag to indicate if size of the buffer is updated according to requested
  * number of samples for the multi-channel IIO buffer data alignment */
@@ -332,12 +314,6 @@ static struct iio_attribute ad405x_debug_attributes[] = {
 /* Global Pointer for IIO Device Data */
 volatile struct iio_device_data* iio_dev_data_g;
 
-/* Global variable for number of samples */
-uint32_t nb_of_bytes_g;
-
-/* Global variable for data read from CB functions */
-uint32_t data_read;
-
 /* Variable to store ADC resolution based on device and mode */
 static uint8_t resolution;
 
@@ -345,7 +321,7 @@ static uint8_t resolution;
 static uint8_t storage_bits;
 
 /* Variable to store bytes per sample based on device and mode */
-static uint8_t bytes_per_sample;
+uint8_t bytes_per_sample;
 
 /* Variable to store maximum count of the ADC based on device and mode*/
 static uint32_t adc_max_count;
@@ -358,6 +334,9 @@ struct stm32_spi_init_param* spi_init_param;
 
 /* Restart IIO flag */
 static bool restart_iio_flag = false;
+
+/* Pointer to the support descriptor */
+static struct ad405x_support_desc *iio_ad405x_support_desc;
 
 /******************************************************************************/
 /************************** Functions Declarations ****************************/
@@ -895,115 +874,6 @@ static int iio_ad405x_attr_available_set(void *device,
 	return len;
 }
 
-/*!
- * @brief	Start a data capture in continuous/burst mode
- * @return	0 in case of success, negative error code otherwise
- */
-static int32_t ad405x_start_data_capture(void)
-{
-	int ret;
-
-	ret = ad405x_set_operation_mode(p_ad405x_dev, ad405x_operating_mode);
-	if (ret) {
-		return ret;
-	}
-
-	if (ad405x_interface_mode == SPI_INTR) {
-		ret = init_pwm();
-		if (ret) {
-			return ret;
-		}
-
-		ret = no_os_pwm_enable(pwm_desc);
-		if (ret) {
-			return ret;
-		}
-
-#if (APP_CAPTURE_MODE == CONTINUOUS_DATA_CAPTURE)
-		/* Clear any pending event that occurs from a unintended
-		* falling edge of busy pin before enabling the interrupt */
-		ret = no_os_irq_clear_pending(ad405x_hw_trig_desc->irq_ctrl,
-					      ad405x_hw_trig_desc->irq_id);
-		if (ret) {
-			return ret;
-		}
-
-		ret = iio_trig_enable(ad405x_hw_trig_desc);
-		if (ret) {
-			return ret;
-		}
-#else
-		/* Clear any pending event that occurs from a unintended
-		* falling edge of busy pin before enabling the interrupt */
-		ret = no_os_irq_clear_pending(trigger_irq_desc, TRIGGER_INT_ID);
-		if (ret) {
-			return ret;
-		}
-
-		ret = no_os_irq_enable(trigger_irq_desc, TRIGGER_INT_ID);
-		if (ret) {
-			return ret;
-		}
-#endif
-	}
-
-	return 0;
-}
-
-/*!
- * @brief	Stop a data capture from continuous/burst mode
- * @return	0 in case of success, negative error code otherwise
- */
-int32_t ad405x_stop_data_capture(void)
-{
-	int ret;
-
-	if (ad405x_interface_mode == SPI_INTR) {
-		ret = no_os_pwm_disable(pwm_desc);
-		if (ret) {
-			return ret;
-		}
-
-#if (APP_CAPTURE_MODE == CONTINUOUS_DATA_CAPTURE)
-		ret = iio_trig_disable(ad405x_hw_trig_desc);
-		if (ret) {
-			return ret;
-		}
-#else
-		ret = no_os_irq_disable(trigger_irq_desc, TRIGGER_INT_ID);
-		if (ret) {
-			return ret;
-		}
-#endif
-	}
-
-	if (ad405x_interface_mode == SPI_DMA) {
-		/* Abort DMA and Timers and configure CS as GPIO */
-		stm32_timer_stop();
-		stm32_abort_dma_transfer();
-		stm32_cs_output_gpio_config(true);
-
-		spi_init_param = ad405x_init_params.spi_init->extra;
-		spi_init_param->dma_init = NULL;
-		ad405x_init_params.spi_init->max_speed_hz = MAX_SPI_SCLK;
-		ret = no_os_spi_init(&p_ad405x_dev->spi_desc, ad405x_init_params.spi_init);
-		if (ret) {
-			return ret;
-		}
-
-		dma_config_updated = false;
-	}
-
-	buf_size_updated = false;
-
-	ret = ad405x_exit_command(p_ad405x_dev);
-	if (ret) {
-		return ret;
-	}
-
-	return 0;
-}
-
 /**
  * @brief  Prepares the device for data transfer.
  * @param  dev[in, out]- Application descriptor.
@@ -1012,48 +882,7 @@ int32_t ad405x_stop_data_capture(void)
  */
 static int32_t iio_ad405x_prepare_transfer(void *dev, uint32_t mask)
 {
-	int ret;
-
-	if (APP_CAPTURE_MODE == CONTINUOUS_DATA_CAPTURE
-	    && ad405x_interface_mode == SPI_INTR) {
-		return ad405x_start_data_capture();
-	}
-
-	if (ad405x_interface_mode == SPI_DMA) {
-		ret = ad405x_set_adc_mode(p_ad405x_dev);
-		if (ret) {
-			return ret;
-		}
-
-		/* Switch to faster SPI SCLK and
-		 * initialize Chip Select PWMs and DMA descriptors */
-		ad405x_init_params.spi_init->max_speed_hz = MAX_SPI_SCLK_45MHz;
-		spi_init_param = ad405x_init_params.spi_init->extra;
-		spi_init_param->pwm_init = (const struct no_os_pwm_init_param *)&cs_init_params;
-		spi_init_param->dma_init = &ad405x_dma_init_param;
-		spi_init_param->irq_num = Rx_DMA_IRQ_ID;
-		spi_init_param->rxdma_ch = &rxdma_channel;
-		spi_init_param->txdma_ch = &txdma_channel;
-
-		ret = no_os_spi_init(&p_ad405x_dev->spi_desc, ad405x_init_params.spi_init);
-		if (ret) {
-			return ret;
-		}
-
-		/* Use 16-bit SPI Data Frame Format during data capture */
-		stm32_config_spi_data_frame_format(true);
-
-		/* Configure CS gpio for alternate functionality as
-		 * Timer PWM outputs */
-		stm32_cs_output_gpio_config(false);
-
-		ret = init_pwm();
-		if (ret) {
-			return ret;
-		}
-	}
-
-	return 0;
+	return iio_ad405x_support_desc->pre_enable(dev, mask);
 }
 
 /**
@@ -1063,18 +892,7 @@ static int32_t iio_ad405x_prepare_transfer(void *dev, uint32_t mask)
  */
 static int32_t iio_ad405x_end_transfer(void *dev)
 {
-	if (ad405x_interface_mode == SPI_DMA) {
-		/* Revert to 8-bit SPI Data Frame Format after data capture */
-		stm32_config_spi_data_frame_format(false);
-
-		return ad405x_stop_data_capture();
-	} else {
-#if (APP_CAPTURE_MODE == CONTINUOUS_DATA_CAPTURE)
-		return ad405x_stop_data_capture();
-#endif
-	}
-
-	return 0;
+	return iio_ad405x_support_desc->post_disable(dev);
 }
 
 /**
@@ -1085,158 +903,7 @@ static int32_t iio_ad405x_end_transfer(void *dev)
  */
 static int32_t iio_ad405x_submit_samples(struct iio_device_data *iio_dev_data)
 {
-	uint32_t timeout = BUF_READ_TIMEOUT;
-	uint32_t sample_index = 0;
-	int32_t adc_data;
-	int32_t ret;
-	uint16_t spirxdma_ndtr;
-
-	data_ready = false;
-	nb_of_samples = iio_dev_data->buffer->size / bytes_per_sample;
-	nb_of_bytes_g = nb_of_samples * bytes_per_sample;
-	iio_dev_data_g = iio_dev_data;
-
-	if (!buf_size_updated) {
-		/* Update total buffer size according to bytes per scan for proper
-		 * alignment of multi-channel IIO buffer data */
-		iio_dev_data->buffer->buf->size = iio_dev_data->buffer->size;
-		buf_size_updated = true;
-	}
-
-	if (ad405x_interface_mode == SPI_INTR) {
-		ret = ad405x_start_data_capture();
-		if (ret) {
-			return ret;
-		}
-
-		while (sample_index < nb_of_samples) {
-			while (data_ready != true && timeout > 0) {
-				timeout--;
-			}
-
-			if (!timeout) {
-				return -EIO;
-			}
-
-			ret = ad405x_spi_data_read(p_ad405x_dev, &adc_data);
-			if (ret) {
-				return ret;
-			}
-
-			ret = no_os_cb_write(iio_dev_data->buffer->buf, &adc_data, bytes_per_sample);
-			if (ret) {
-				return ret;
-			}
-
-			sample_index++;
-			data_ready = false;
-		}
-
-		ret = ad405x_stop_data_capture();
-		if (ret) {
-			return ret;
-		}
-	} else {
-#if (APP_CAPTURE_MODE == WINDOWED_DATA_CAPTURE)
-		ret = no_os_cb_prepare_async_write(iio_dev_data->buffer->buf,
-						   nb_of_samples * (bytes_per_sample),
-						   (void **) &buff_start_addr,
-						   &data_read);
-		if (ret) {
-			return ret;
-		}
-
-		if (!dma_config_updated) {
-			/* Cap SPI RX DMA NDTR to MAX_DMA_NDTR. */
-			spirxdma_ndtr = no_os_min(MAX_DMA_NDTR, nb_of_samples);
-			rxdma_ndtr = spirxdma_ndtr;
-
-			/* Register half complete callback, for ping-pong buffers implementation. */
-			HAL_DMA_RegisterCallback(&hdma_spi1_rx,
-						 HAL_DMA_XFER_HALFCPLT_CB_ID,
-						 halfcmplt_callback);
-
-			struct no_os_spi_msg ad405x_spi_msg = {
-				.tx_buff = NULL,
-				.rx_buff = local_buf,
-				.bytes_number = spirxdma_ndtr
-			};
-
-			struct stm32_spi_desc* sdesc = p_ad405x_dev->spi_desc->extra;
-			ret = no_os_spi_transfer_dma_async(p_ad405x_dev->spi_desc,
-							   &ad405x_spi_msg,
-							   1,
-							   NULL,
-							   NULL);
-			if (ret) {
-				return ret;
-			}
-
-			/* Disable CS PWM and reset the counters */
-			no_os_pwm_disable(sdesc->pwm_desc); // CS PWM
-			htim2.Instance->CNT = 0;
-			htim1.Instance->CNT = 0;
-			TIM8->CNT = 0;
-
-			dma_config_updated = true;
-		}
-
-		ad405x_conversion_flag = false;
-
-		dma_cycle_count = ((nb_of_samples) / rxdma_ndtr) + 1;
-
-		/* Set the callback count to twice the number of DMA cycles */
-		callback_count = dma_cycle_count * 2;
-
-		update_buff(local_buf, (uint8_t *)buff_start_addr);
-		stm32_timer_enable();
-
-		while (ad405x_conversion_flag != true && timeout > 0) {
-			timeout--;
-		}
-
-		if (!timeout) {
-			return -EIO;
-		}
-
-		no_os_cb_end_async_write(iio_dev_data->buffer->buf);
-#else
-		if (!dma_config_updated) {
-			ret = no_os_cb_prepare_async_write(iio_dev_data->buffer->buf,
-							   nb_of_samples * (bytes_per_sample),
-							   (void **) &buff_start_addr,
-							   &data_read);
-			if (ret) {
-				return ret;
-			}
-
-			struct no_os_spi_msg ad405x_spi_msg = {
-				.tx_buff = NULL,
-				.rx_buff = buff_start_addr,
-				.bytes_number = spirxdma_ndtr
-			};
-
-			ret = no_os_spi_transfer_dma_async(p_ad405x_dev->spi_desc,
-							   &ad405x_spi_msg,
-							   1,
-							   NULL,
-							   NULL);
-			if (ret) {
-				return ret;
-			}
-			struct stm32_spi_desc* sdesc = p_ad405x_dev->spi_desc->extra;
-			no_os_pwm_disable(sdesc->pwm_desc); // CS PWM
-			htim2.Instance->CNT = 0;
-			htim1.Instance->CNT = 0;
-			TIM8->CNT = 0;
-			dma_config_updated = true;
-
-			stm32_timer_enable();
-		}
-
-#endif
-	}
-	return 0;
+	return iio_ad405x_support_desc->submit(iio_dev_data);
 }
 
 /**
@@ -1247,24 +914,7 @@ static int32_t iio_ad405x_submit_samples(struct iio_device_data *iio_dev_data)
  */
 static int32_t ad405x_trigger_handler(struct iio_device_data *iio_dev_data)
 {
-	int32_t ret;
-	int32_t adc_data;
-
-	if (!buf_size_updated) {
-		/* Update total buffer size according to bytes per scan for proper
-		 * alignment of multi-channel IIO buffer data */
-		iio_dev_data->buffer->buf->size = ((uint32_t)(DATA_BUFFER_SIZE /
-						   iio_dev_data->buffer->bytes_per_scan)) * iio_dev_data->buffer->bytes_per_scan;
-		buf_size_updated = true;
-	}
-
-	/* Read the sample for channel which has been sampled recently */
-	ret = ad405x_spi_data_read(p_ad405x_dev, &adc_data);
-	if (ret) {
-		return ret;
-	}
-
-	return no_os_cb_write(iio_dev_data->buffer->buf, &adc_data, bytes_per_sample);
+	return iio_ad405x_support_desc->trigger_handler(iio_dev_data);
 }
 
 /*!
@@ -1336,9 +986,10 @@ static int32_t iio_ad405x_debug_reg_write(void *dev,
 static int32_t ad405x_assign_device(enum ad405x_device_type dev_type,
 				    char** dev_name)
 {
+	ad405x_init_params.active_device = dev_type;
+
 	switch (dev_type) {
 	case ID_AD4050:
-		ad405x_init_params.active_device = ID_AD4050;
 		*dev_name = DEV_AD4050;
 		if (ad405x_operating_mode == AD405X_ADC_MODE_OP) {
 			resolution = AD4050_SAMPLE_RES;
@@ -1350,7 +1001,6 @@ static int32_t ad405x_assign_device(enum ad405x_device_type dev_type,
 		break;
 
 	case ID_AD4052:
-		ad405x_init_params.active_device = ID_AD4052;
 		*dev_name = DEV_AD4052;
 		if (ad405x_operating_mode == AD405X_ADC_MODE_OP) {
 			resolution = AD4052_SAMPLE_RES;
@@ -1372,6 +1022,10 @@ static int32_t ad405x_assign_device(enum ad405x_device_type dev_type,
 #else
 	adc_max_count = (uint32_t)(1 << (resolution - 1));
 #endif
+
+	iio_ad405x_support_desc = (struct ad405x_support_desc *) support_desc[dev_type];
+	if (!iio_ad405x_support_desc)
+		return -EINVAL;
 
 	return 0;
 }
