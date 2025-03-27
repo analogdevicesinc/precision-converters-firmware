@@ -1,0 +1,23 @@
+<map id="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad5754r_iio/app/app_config_stm32.h" name="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad5754r_iio/app/app_config_stm32.h">
+<area shape="rect" id="Node000001" title="Header file for STM32 platform configurations." alt="" coords="493,5,757,75"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,123,76,148"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="493,61,306,88,90,125,89,120,306,83,492,56"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="101,123,202,148"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="493,70,216,124,215,119,492,65"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="226,123,325,148"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="499,77,332,122,331,116,498,72"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="349,123,484,148"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="551,77,456,119,454,114,548,72"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="509,123,610,148"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="603,76,578,113,573,110,599,73"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="635,123,745,148"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="650,73,676,110,672,113,646,76"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="769,123,877,148"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="698,72,787,114,785,119,695,77"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="902,123,1017,148"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="746,72,906,116,904,121,745,77"/>
+<area shape="rect" id="Node000010" title=" " alt="" coords="1041,123,1179,148"/>
+<area shape="poly" id="edge9_Node000001_Node000010" title=" " alt="" coords="758,64,1037,117,1036,123,757,69"/>
+<area shape="rect" id="Node000011" title=" " alt="" coords="1203,123,1350,148"/>
+<area shape="poly" id="edge10_Node000001_Node000011" title=" " alt="" coords="757,58,1190,119,1189,124,757,63"/>
+</map>

@@ -248,12 +248,19 @@ Enumerations</h2></td></tr>
 <br />
  }</td></tr>
 <tr class="separator:affece98ed29b1fcd0535fbc308c7fc9f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad95dbb53ab87fa34f4e294a0f6d88c9a" id="r_ad95dbb53ab87fa34f4e294a0f6d88c9a"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad5754r__iio_8c.html#ad95dbb53ab87fa34f4e294a0f6d88c9a">ad5754_ldac_pin_state</a> { <br />
+&#160;&#160;<a class="el" href="ad5754r__iio_8c.html#ad95dbb53ab87fa34f4e294a0f6d88c9aa5c813200fd3acbbbf6d0bf531c1e515e">AD5754_LDAC_GPIO_OUTPUT</a>
+, <br />
+&#160;&#160;<a class="el" href="ad5754r__iio_8c.html#ad95dbb53ab87fa34f4e294a0f6d88c9aa35836e9df228820aeb3f1b0ba8cc092d">AD5754_LDAC_PWM</a>
+<br />
+ }</td></tr>
+<tr class="separator:ad95dbb53ab87fa34f4e294a0f6d88c9a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:ac4852b24b29417d5a5ad0ce70772ec52" id="r_ac4852b24b29417d5a5ad0ce70772ec52"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad5754r__iio_8c.html#ac4852b24b29417d5a5ad0ce70772ec52">ad5754r_reconfig_ldac</a> (struct ad5754r_dev *<a class="el" href="ad5933__console_2app_2main_8c.html#a327c7a7f8b7537a06ce7f4402bf3b24c">device</a>)</td></tr>
-<tr class="memdesc:ac4852b24b29417d5a5ad0ce70772ec52"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reconfigure LDAC pin as GPIO output.  <br /></td></tr>
-<tr class="separator:ac4852b24b29417d5a5ad0ce70772ec52"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adb4dffef4985ec77bf3b6c12efafe8a5" id="r_adb4dffef4985ec77bf3b6c12efafe8a5"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad5754r__iio_8c.html#adb4dffef4985ec77bf3b6c12efafe8a5">ad5754r_reconfig_ldac</a> (struct ad5754r_dev *<a class="el" href="ad5933__console_2app_2main_8c.html#a327c7a7f8b7537a06ce7f4402bf3b24c">device</a>, enum <a class="el" href="ad5754r__iio_8c.html#ad95dbb53ab87fa34f4e294a0f6d88c9a">ad5754_ldac_pin_state</a> pin_state)</td></tr>
+<tr class="memdesc:adb4dffef4985ec77bf3b6c12efafe8a5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reconfigure LDAC pin as GPIO output.  <br /></td></tr>
+<tr class="separator:adb4dffef4985ec77bf3b6c12efafe8a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af75390844f2453ece9d9763d07f194f6" id="r_af75390844f2453ece9d9763d07f194f6"><td class="memItemLeft" align="right" valign="top">int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad5754r__iio_8c.html#af75390844f2453ece9d9763d07f194f6">ad5754r_iio_init</a> (void)</td></tr>
 <tr class="memdesc:af75390844f2453ece9d9763d07f194f6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize the IIO interface for AD5754R IIO device.  <br /></td></tr>
 <tr class="separator:af75390844f2453ece9d9763d07f194f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -272,7 +279,7 @@ Variables</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Implementation of AD5754R IIO application interfaces. </p>
-<p>Copyright (c) 2024 Analog Devices, Inc. All rights reserved.</p>
+<p>Copyright (c) 2024, 2025 Analog Devices, Inc. All rights reserved.</p>
 <p>This software is proprietary to Analog Devices, Inc. and its licensors. By using this software you agree to the terms of the associated Analog Devices Software License Agreement. </p>
 </div><h2 class="groupheader">Macro Definition Documentation</h2>
 <a id="a0c46a9a097c023febe8ac6f064caf59a" name="a0c46a9a097c023febe8ac6f064caf59a"></a>
@@ -392,7 +399,7 @@ Variables</h2></td></tr>
 <div class="line">    .scan_type = &amp;<a class="code hl_variable" href="ad5754r__iio_8c.html#a132f9e5acfabcd0151c7aa0053b1e20b">iio_ad5754r_scan_type</a>,\</div>
 <div class="line">    .attributes = iio_ad5754r_dac_ch_attributes\</div>
 <div class="line">}</div>
-<div class="ttc" id="aad5754r__iio_8c_html_a132f9e5acfabcd0151c7aa0053b1e20b"><div class="ttname"><a href="ad5754r__iio_8c.html#a132f9e5acfabcd0151c7aa0053b1e20b">iio_ad5754r_scan_type</a></div><div class="ttdeci">struct scan_type iio_ad5754r_scan_type</div><div class="ttdef"><b>Definition</b> ad5754r_iio.c:188</div></div>
+<div class="ttc" id="aad5754r__iio_8c_html_a132f9e5acfabcd0151c7aa0053b1e20b"><div class="ttname"><a href="ad5754r__iio_8c.html#a132f9e5acfabcd0151c7aa0053b1e20b">iio_ad5754r_scan_type</a></div><div class="ttdeci">struct scan_type iio_ad5754r_scan_type</div><div class="ttdef"><b>Definition</b> ad5754r_iio.c:193</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -563,6 +570,24 @@ Variables</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Enumeration Type Documentation</h2>
+<a id="ad95dbb53ab87fa34f4e294a0f6d88c9a" name="ad95dbb53ab87fa34f4e294a0f6d88c9a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad95dbb53ab87fa34f4e294a0f6d88c9a">&#9670;&#160;</a></span>ad5754_ldac_pin_state</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="ad5754r__iio_8c.html#ad95dbb53ab87fa34f4e294a0f6d88c9a">ad5754_ldac_pin_state</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="ad95dbb53ab87fa34f4e294a0f6d88c9aa5c813200fd3acbbbf6d0bf531c1e515e" name="ad95dbb53ab87fa34f4e294a0f6d88c9aa5c813200fd3acbbbf6d0bf531c1e515e"></a>AD5754_LDAC_GPIO_OUTPUT&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="ad95dbb53ab87fa34f4e294a0f6d88c9aa35836e9df228820aeb3f1b0ba8cc092d" name="ad95dbb53ab87fa34f4e294a0f6d88c9aa35836e9df228820aeb3f1b0ba8cc092d"></a>AD5754_LDAC_PWM&#160;</td><td class="fielddoc"></td></tr>
+</table>
+
+</div>
+</div>
 <a id="affece98ed29b1fcd0535fbc308c7fc9f" name="affece98ed29b1fcd0535fbc308c7fc9f"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#affece98ed29b1fcd0535fbc308c7fc9f">&#9670;&#160;</a></span>ad5754r_attribute_ids</h2>
 
@@ -662,8 +687,8 @@ Here is the caller graph for this function:</div>
 
 </div>
 </div>
-<a id="ac4852b24b29417d5a5ad0ce70772ec52" name="ac4852b24b29417d5a5ad0ce70772ec52"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac4852b24b29417d5a5ad0ce70772ec52">&#9670;&#160;</a></span>ad5754r_reconfig_ldac()</h2>
+<a id="adb4dffef4985ec77bf3b6c12efafe8a5" name="adb4dffef4985ec77bf3b6c12efafe8a5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adb4dffef4985ec77bf3b6c12efafe8a5">&#9670;&#160;</a></span>ad5754r_reconfig_ldac()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -672,8 +697,18 @@ Here is the caller graph for this function:</div>
           <td class="memname">int ad5754r_reconfig_ldac </td>
           <td>(</td>
           <td class="paramtype">struct ad5754r_dev *&#160;</td>
-          <td class="paramname"><em>device</em></td><td>)</td>
+          <td class="paramname"><em>device</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">enum <a class="el" href="ad5754r__iio_8c.html#ad95dbb53ab87fa34f4e294a0f6d88c9a">ad5754_ldac_pin_state</a>&#160;</td>
+          <td class="paramname"><em>pin_state</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -682,6 +717,7 @@ Here is the caller graph for this function:</div>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">device[in]</td><td>- AD5754R device instance </td></tr>
+    <tr><td class="paramname">pinstate[in]</td><td>- State of conversion pin </td></tr>
   </table>
   </dd>
 </dl>
@@ -689,8 +725,8 @@ Here is the caller graph for this function:</div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="ad5754r__iio_8c_ac4852b24b29417d5a5ad0ce70772ec52_icgraph.png" border="0" usemap="#aad5754r__iio_8c_ac4852b24b29417d5a5ad0ce70772ec52_icgraph" alt=""/></div>
-<map name="aad5754r__iio_8c_ac4852b24b29417d5a5ad0ce70772ec52_icgraph" id="aad5754r__iio_8c_ac4852b24b29417d5a5ad0ce70772ec52_icgraph">
+<div class="center"><img src="ad5754r__iio_8c_adb4dffef4985ec77bf3b6c12efafe8a5_icgraph.png" border="0" usemap="#aad5754r__iio_8c_adb4dffef4985ec77bf3b6c12efafe8a5_icgraph" alt=""/></div>
+<map name="aad5754r__iio_8c_adb4dffef4985ec77bf3b6c12efafe8a5_icgraph" id="aad5754r__iio_8c_adb4dffef4985ec77bf3b6c12efafe8a5_icgraph">
 <area shape="rect" title="Reconfigure LDAC pin as GPIO output." alt="" coords="283,5,451,31"/>
 <area shape="rect" href="ad5754r__iio_8c.html#af75390844f2453ece9d9763d07f194f6" title="Initialize the IIO interface for AD5754R IIO device." alt="" coords="108,5,235,31"/>
 <area shape="poly" title=" " alt="" coords="269,21,235,21,235,15,269,15"/>
