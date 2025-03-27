@@ -209,7 +209,7 @@ int32_t ad5592_read_adc(struct ad5592r_dev *dev, uint8_t chan,
 	if (ret) {
 		return ret;
 	}
-	
+
 	if ((readback_reg ^ NO_OS_BIT(8))) {
 		no_os_udelay(20);
 	} else {
