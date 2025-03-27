@@ -23,7 +23,7 @@
 <area shape="poly" id="edge16_Node000004_Node000017" title=" " alt="" coords="309,354,255,359,255,354,308,348"/>
 <area shape="rect" id="Node000019" href="$ad7124__iio_8c.html#af012050c4da92d39f4302b89865a477f" title="Initialize the AD7124 IIO Interface." alt="" coords="113,400,269,425"/>
 <area shape="poly" id="edge18_Node000004_Node000019" title=" " alt="" coords="368,359,275,390,235,403,234,397,274,385,367,354"/>
-<area shape="rect" id="Node000021" href="$ad7134__iio_8c.html#a4c05ffbe1f6b58d3746137ef1bd30a10" title="Initialize the AD7134 device for iio interface." alt="" coords="113,449,269,475"/>
+<area shape="rect" id="Node000021" href="$ad4134__iio_8c.html#a4c05ffbe1f6b58d3746137ef1bd30a10" title="Initialize the AD7134 device for iio interface." alt="" coords="113,449,269,475"/>
 <area shape="poly" id="edge20_Node000004_Node000021" title=" " alt="" coords="393,363,341,401,276,439,243,452,241,447,274,434,338,397,390,358"/>
 <area shape="rect" id="Node000023" href="$ad717x__iio_8c.html#acddf5b7a4d74fe84be7eceea2cd5f88d" title="Initialize the AD717x IIO Interface." alt="" coords="113,499,269,524"/>
 <area shape="poly" id="edge22_Node000004_Node000023" title=" " alt="" coords="402,365,350,426,315,460,276,488,249,501,247,496,273,484,312,456,346,423,398,362"/>
@@ -51,7 +51,7 @@
 <area shape="poly" id="edge17_Node000017_Node000018" title=" " alt="" coords="114,366,60,366,60,361,114,361"/>
 <area shape="rect" id="Node000020" href="$ad7124__iio_2app_2main_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title="Main entry point to application." alt="" coords="5,400,60,425"/>
 <area shape="poly" id="edge19_Node000019_Node000020" title=" " alt="" coords="100,415,60,415,60,410,100,410"/>
-<area shape="rect" id="Node000022" href="$ad7134__iio_2app_2main_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title=" " alt="" coords="5,449,60,475"/>
+<area shape="rect" id="Node000022" href="$ad4134__iio_2app_2main_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title=" " alt="" coords="5,449,60,475"/>
 <area shape="poly" id="edge21_Node000021_Node000022" title=" " alt="" coords="100,465,60,465,60,459,100,459"/>
 <area shape="rect" id="Node000024" href="$ad717x__iio_2app_2main_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title="Main entry point to application." alt="" coords="5,499,60,524"/>
 <area shape="poly" id="edge23_Node000023_Node000024" title=" " alt="" coords="100,514,60,514,60,509,100,509"/>
