@@ -1,4 +1,4 @@
-AD7134 IIO Application
+AD4134/AD7134 IIO Application
 """"""""""""""""""""""
 
 ==================
@@ -67,7 +67,7 @@ Jumper Settings
 
 Connect the VIO_ADJUST jumper on the SDP-K1 board to 3.3V position to drive SDP-K1 GPIOs at 3.3V
 
-**EVAL-AD7134:**
+**EVAL-AD4134:**
 
 * Please refer to the respective board user guide on the product page of the chosen device.
 

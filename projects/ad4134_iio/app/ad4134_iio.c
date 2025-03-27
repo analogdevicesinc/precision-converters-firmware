@@ -17,10 +17,10 @@
 #include <stdio.h>
 #include <string.h>
 
-#include "ad7134_iio.h"
+#include "ad4134_iio.h"
 #include "app_config.h"
-#include "ad7134_support.h"
-#include "ad7134_user_config.h"
+#include "ad4134_support.h"
+#include "ad4134_user_config.h"
 #include "common.h"
 #include "no_os_error.h"
 #include "iio_trigger.h"

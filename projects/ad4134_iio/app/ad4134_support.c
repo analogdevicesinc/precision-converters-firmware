@@ -16,12 +16,12 @@
 
 #include <stdio.h>
 
-#include "ad7134_support.h"
+#include "ad4134_support.h"
 #include "no_os_gpio.h"
 #include "no_os_error.h"
 #include "no_os_delay.h"
 #include "app_config.h"
-#include "ad7134_iio.h"
+#include "ad4134_iio.h"
 #if (INTERFACE_MODE == TDM_MODE)
 #include "stm32_tdm_support.h"
 #endif

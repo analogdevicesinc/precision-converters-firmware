@@ -43,7 +43,7 @@ def init_data_capture():
     ######## User configuration ##########
     # Configure the backend for PC to IIOD interface
     uri = "serial:COM41,230400"  # For UART, baud rate must be same as set in the FW. COM port is physical Or VCOM.
-    device_name = 'ad7134'    # Name of the device must be same as set in the FW.
+    device_name = 'ad4134'    # Name of the device must be same as set in the FW.
     ######################################
 
     sleep(3)
