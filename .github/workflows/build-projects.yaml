@@ -91,7 +91,7 @@ jobs:
           - ad5933_console
           - ad7124_console
           - ad7124_temperature-measure
-          - ad7134_iio
+          - ad4134_iio
           - ad717x_console
           - ad717x_iio
           - ad719x_iio
