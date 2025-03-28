@@ -21,7 +21,7 @@ Firmware Applications
    /source/projects/ad7124_console/ad7124_console.rst
    /source/projects/ad7124_iio/ad7124_iio.rst
    /source/projects/ad7124_temperature-measure/ad7124_temperature-measure.rst
-   /source/projects/ad7134_iio/ad7134_iio.rst
+   /source/projects/ad4134_iio/ad4134_iio.rst
    /source/projects/ad717x_console/ad717x_console.rst
    /source/projects/ad717x_iio/ad717x_iio.rst
    /source/projects/ad719x_iio/ad719x_iio.rst
