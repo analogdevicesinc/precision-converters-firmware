@@ -73,6 +73,13 @@ an external jumper needs to be connected between D0 and D1 of the Arduino header
 
 Please refer to the user guide for the jumper connections on the EVAL-AD4170 board
 
+.. warning::
+   
+   Please make sure to enable/disable the channels of interest via the "system_config" attribute as shown below.
+   
+.. image:: /source/projects/ad4170_iio/ad4170_channel_enable.gif
+
+
 .. Communication Interface section:
 
 .. include:: /source/hardware/comm_interface.rst

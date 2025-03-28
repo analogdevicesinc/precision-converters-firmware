@@ -35,10 +35,23 @@ Configure/Access Device Attributes (Parameters)
 ===============================================
 
 The IIO Oscilloscope allows user to access and configure different device parameters, 
-called as 'Attributes“. There are 2 types of attributes:
+called as 'Attributes“. There are 3 types of attributes:
 
 * Device Attributes (Global): Access/Configure common device parameters.
 * Channel Attributes (Specific to channels): Access/Configure channel specific device parameters.
+* Board Level Attributes (Can be Global and Channel specific): Configure the board level parameters. 
+  Projects only receive the board-level attribute when deemed necessary, thus it is not a standard inclusion
+
+   .. image:: /source/iio_osc/iio_osc_attributes.png
+      :width: 500
+
+.. warning::
+   
+   After any board-level attribute is configured, the 'reconfigure_system' 
+   attribute must be enabled. This step ensures that the IIO Device is reinitialized and
+   the changes made through the selected board-level attributes are applied. 
+   If this step is neglected, the changes made on the attributes will not take effect on the device.
+   The IIO Oscilloscope application must be closed and re-opened to ensure continued communication with the IIO Device.
 
 Using IIO Oscilloscope for ADCs
 -------------------------------
