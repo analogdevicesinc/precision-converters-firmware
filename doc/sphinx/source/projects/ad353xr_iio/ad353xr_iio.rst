@@ -7,11 +7,16 @@ Supported Hardware
 
 **Supported Devices:**
 
-* `AD3530R <https://www.analog.com/en/ad3530r.html>`_ 
+* `AD3530R <https://www.analog.com/en/ad3530r.html>`_
+* `AD3530 <https://www.analog.com/en/products/AD3530.html>`_ 
+* `AD3531R <https://wcm2.cldnet.analog.com/en/products/AD3531R.html>`_
+* `AD3531 <https://wcm2.cldnet.analog.com/en/products/AD3531.html>`_ 
+
 
 **Supported Evaluation Boards:**
 
-* `EVAL-AD3530RARDZ <https://www.analog.com/eval-ad3530r>`_ 
+* `EVAL-AD3530RARDZ <https://www.analog.com/eval-ad3530r>`_
+* `EVAL-AD3531RARDZ <https://wcm2.cldnet.analog.com/en/resources/evaluation-hardware-and-software/evaluation-boards-kits/eval-ad3531r.html>`_ 
 
 **Supported Carrier Boards:**
 
@@ -22,9 +27,9 @@ Introduction
 ============
 
 This page gives an overview of using the ARM platforms supported 
-firmware example with Analog Devices AD3530r Evaluation board and SDP-K1 controller board. 
+firmware example with Analog Devices AD353xr Evaluation board and SDP-K1 controller board. 
 This example code leverages the ADI developed IIO (Industrial Input Output) ecosystem to 
-evaluate the AD3530r device by providing a device debug and data capture support.
+evaluate the AD353xr device by providing a device debug and data capture support.
 
    .. image:: /source/tinyiiod/app_interface.png
       :width: 350
@@ -47,10 +52,10 @@ to communicates with IIO device.
 Hardware Connections
 ====================
 
-Required: SDP-K1, EVAL-AD3530RARDZ board
+Required: SDP-K1, EVAL-AD353XRARDZ board
 and USB cable.
 
-Connect the EVAL-AD3530RARDZ board to SDP-K1 board (or any STM32 controller 
+Connect the EVAL-AD353XRARDZ board to SDP-K1 board (or any STM32 controller 
 board). Connect controller board to the PC using the USB cable. 
 
 
@@ -66,7 +71,7 @@ Jumper Settings
 
 Connect the VIO_ADJUST jumper on the SDP-K1 board to 3.3V position to drive SDP-K1 GPIOs at 3.3V
 
-**EVAL-AD3530R:**
+**EVAL-AD353XR:**
 
 * Please refer to the respective board user guide on the product page of the chosen device.
 
