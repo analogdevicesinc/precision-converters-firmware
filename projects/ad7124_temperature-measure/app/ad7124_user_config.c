@@ -2,7 +2,7 @@
  *   @file   ad7124_user_config.c
  *   @brief  User configuration file for AD7124 device
 ******************************************************************************
-* Copyright (c) 2021-22 Analog Devices, Inc.
+* Copyright (c) 2021-22, 2025 Analog Devices, Inc.
 *
 * All rights reserved.
 *
@@ -19,8 +19,8 @@
 
 #include "app_config.h"
 #include "ad7124_user_config.h"
-#include "mbed_spi.h"
-#include "mbed_gpio.h"
+#include "no_os_spi.h"
+#include "no_os_uart.h"
 
 /******************************************************************************/
 /********************** Macros and Constants Definition ***********************/
@@ -30,26 +30,44 @@
 /********************** Variables and User Defined Data Types *****************/
 /******************************************************************************/
 
-/* Define SPI extra init parameters structure */
-struct mbed_spi_init_param spi_init_extra_params = {
-	.spi_clk_pin = SPI_SCK,
-	.spi_miso_pin = SPI_MISO,
-	.spi_mosi_pin = SPI_MOSI,
-	.use_sw_csb = false
-};
-
-// Designated SPI Initialization Structure
-struct no_os_spi_init_param	ad7124_spi_init = {
-	.max_speed_hz = 10000000, // Max SPI Speed
-	.chip_select = SPI_SS,    // Chip Select pin
-	.mode = NO_OS_SPI_MODE_3,       // CPOL = 1, CPHA =1
-	.extra = &spi_init_extra_params,  // SPI extra configurations
-	.platform_ops = &mbed_spi_ops,
-};
-
-/* Define the AD7124 device init structure */
-struct ad7124_init_param ad7124_init_params = {
-	&ad7124_spi_init,  // spi_init_param type
-	ad7124_regs,       // AD7124 Register Map
-	10000              // SPI Ready Poll Count
+/* Used to create the ad7124 device */
+struct  ad7124_init_param ad7124_user_init_params = {
+	.spi_init = &spi_init_params,  // spi_init_param type
+	.regs = ad7124_regs,
+	.spi_rdy_poll_cnt = 10000, // count for polling RDY
+	.power_mode = AD7124_HIGH_POWER,
+	.ref_en = true,
+#if defined(DEV_AD7124_4)
+	.active_device = ID_AD7124_4,
+#else
+	.active_device = ID_AD7124_8,
+#endif
+	.setups = {
+		{ .bi_unipolar = true, .ref_buff = true, .ain_buff = true, .ref_source =  INTERNAL_REF },
+		{ .bi_unipolar = true, .ref_buff = false, .ain_buff = true, .ref_source = EXTERNAL_REFIN1 },
+		{ .bi_unipolar = true, .ref_buff = false, .ain_buff = true, .ref_source = EXTERNAL_REFIN1 },
+		{ .bi_unipolar = true, .ref_buff = false, .ain_buff = true, .ref_source = EXTERNAL_REFIN1},
+		{ .bi_unipolar = true, .ref_buff = false, .ain_buff = true, .ref_source = EXTERNAL_REFIN1 },
+		{ .bi_unipolar = true, .ref_buff = false, .ain_buff = true, .ref_source = EXTERNAL_REFIN1 },
+		{ .bi_unipolar = true, .ref_buff = false, .ain_buff = true, .ref_source = EXTERNAL_REFIN1 },
+		{ .bi_unipolar = true, .ref_buff = false, .ain_buff = true, .ref_source = EXTERNAL_REFIN1 },
+	},
+	.chan_map = {
+		{ .channel_enable = true, .setup_sel = 0, .ain.ainp = AD7124_AIN0, .ain.ainm = AD7124_AIN1 },
+		{ .channel_enable = false, .setup_sel = 0, .ain.ainp = AD7124_AIN2, .ain.ainm = AD7124_AIN3 },
+		{ .channel_enable = false, .setup_sel = 0, .ain.ainp = AD7124_AIN4, .ain.ainm = AD7124_AIN5 },
+		{ .channel_enable = false, .setup_sel = 0, .ain.ainp = AD7124_AIN0, .ain.ainm = AD7124_AIN1 },
+		{ .channel_enable = false, .setup_sel = 0, .ain.ainp = AD7124_AIN0, .ain.ainm = AD7124_AIN1 },
+		{ .channel_enable = false, .setup_sel = 0, .ain.ainp = AD7124_AIN0, .ain.ainm = AD7124_AIN1 },
+		{ .channel_enable = false, .setup_sel = 0, .ain.ainp = AD7124_AIN4, .ain.ainm = AD7124_AIN5 },
+		{ .channel_enable = false, .setup_sel = 0, .ain.ainp = AD7124_AIN0, .ain.ainm = AD7124_AIN1 },
+		{ .channel_enable = false, .setup_sel = 0, .ain.ainp = AD7124_AIN0, .ain.ainm = AD7124_AIN1 },
+		{ .channel_enable = false, .setup_sel = 0, .ain.ainp = AD7124_AIN0, .ain.ainm = AD7124_AIN1 },
+		{ .channel_enable = false, .setup_sel = 0, .ain.ainp = AD7124_AIN0, .ain.ainm = AD7124_AIN1 },
+		{ .channel_enable = false, .setup_sel = 0, .ain.ainp = AD7124_AIN0, .ain.ainm = AD7124_AIN1 },
+		{ .channel_enable = false, .setup_sel = 0, .ain.ainp = AD7124_AIN0, .ain.ainm = AD7124_AIN1 },
+		{ .channel_enable = false, .setup_sel = 0, .ain.ainp = AD7124_AIN0, .ain.ainm = AD7124_AIN1 },
+		{ .channel_enable = false, .setup_sel = 0, .ain.ainp = AD7124_AIN0, .ain.ainm = AD7124_AIN1 },
+		{ .channel_enable = false, .setup_sel = 0, .ain.ainp = AD7124_AIN0, .ain.ainm = AD7124_AIN1 }
+	}
 };
