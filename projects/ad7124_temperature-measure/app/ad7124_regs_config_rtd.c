@@ -3,7 +3,7 @@
  * @brief    AD7124 register configuration file for RTD temperature sensor interface
  * @details
 ********************************************************************************
-* Copyright (c) 2021 Analog Devices, Inc.
+* Copyright (c) 2021, 2025 Analog Devices, Inc.
 * All rights reserved.
 *
 * This software is proprietary to Analog Devices, Inc. and its licensors.
@@ -42,7 +42,7 @@ const struct ad7124_st_reg ad7124_regs_config_2wire_rtd[AD7124_REG_NO] = {
 	{ AD7124_ERR_REG, 0x0, 3, AD7124_R },
 	{
 		AD7124_ERREN_REG,
-		AD7124_ERR_REG_SPI_CRC_ERR | AD7124_ERR_REG_SPI_IGNORE_ERR |
+		AD7124_ERR_REG_SPI_IGNORE_ERR |
 		AD7124_ERREN_REG_ADC_CAL_ERR_EN, 		// Monitor ADC calibration error
 		3,
 		AD7124_RW
@@ -162,7 +162,7 @@ const struct ad7124_st_reg ad7124_regs_config_3wire_rtd[AD7124_REG_NO] = {
 	{ AD7124_ERR_REG, 0x0, 3, AD7124_R },
 	{
 		AD7124_ERREN_REG,
-		AD7124_ERR_REG_SPI_CRC_ERR | AD7124_ERR_REG_SPI_IGNORE_ERR |
+		AD7124_ERR_REG_SPI_IGNORE_ERR |
 		AD7124_ERREN_REG_ADC_CAL_ERR_EN, 		// Monitor ADC calibration error
 		3,
 		AD7124_RW
@@ -291,7 +291,7 @@ const struct ad7124_st_reg ad7124_regs_config_4wire_rtd[AD7124_REG_NO] = {
 	{ AD7124_ERR_REG, 0x0, 3, AD7124_R },
 	{
 		AD7124_ERREN_REG,
-		AD7124_ERR_REG_SPI_CRC_ERR | AD7124_ERR_REG_SPI_IGNORE_ERR |
+		AD7124_ERR_REG_SPI_IGNORE_ERR |
 		AD7124_ERREN_REG_ADC_CAL_ERR_EN, 		// Monitor ADC calibration error
 		3,
 		AD7124_RW
@@ -386,3 +386,45 @@ const struct ad7124_st_reg ad7124_regs_config_4wire_rtd[AD7124_REG_NO] = {
 	{AD7124_GAIN6_REG, 0x500000, 3, AD7124_RW },
 	{AD7124_GAIN7_REG, 0x500000, 3, AD7124_RW },
 };
+
+/* Used to create the ad7124 device */
+struct  ad7124_init_param ad7124_rtd_init_params = {
+	.spi_init = &spi_init_params,  // spi_init_param type
+	.regs = ad7124_regs_config_2wire_rtd,
+	.spi_rdy_poll_cnt = 10000, //  count for polling RDY
+	.power_mode = AD7124_HIGH_POWER,
+#if defined(DEV_AD7124_4)
+	.active_device = ID_AD7124_4,
+#else
+	.active_device = ID_AD7124_8,
+#endif
+	.setups = {
+		{ .bi_unipolar = true, .ref_buff = false, .ain_buff = true, .ref_source = EXTERNAL_REFIN1 },
+		{ .bi_unipolar = true, .ref_buff = false, .ain_buff = true, .ref_source = EXTERNAL_REFIN1 },
+		{ .bi_unipolar = true, .ref_buff = false, .ain_buff = true, .ref_source = EXTERNAL_REFIN1 },
+		{ .bi_unipolar = true, .ref_buff = false, .ain_buff = true, .ref_source = EXTERNAL_REFIN1},
+		{ .bi_unipolar = true, .ref_buff = false, .ain_buff = true, .ref_source = EXTERNAL_REFIN1 },
+		{ .bi_unipolar = true, .ref_buff = false, .ain_buff = true, .ref_source = EXTERNAL_REFIN1 },
+		{ .bi_unipolar = true, .ref_buff = false, .ain_buff = true, .ref_source = EXTERNAL_REFIN1 },
+		{ .bi_unipolar = true, .ref_buff = false, .ain_buff = true, .ref_source = EXTERNAL_REFIN1 },
+	},
+	.chan_map = {
+		{ .channel_enable = true, .setup_sel = 0, .ain.ainp = AD7124_AIN2, .ain.ainm = AD7124_AIN3 },
+		{ .channel_enable = false, .setup_sel = 0, .ain.ainp = AD7124_AIN4, .ain.ainm = AD7124_AIN5 },
+		{ .channel_enable = false, .setup_sel = 0, .ain.ainp = AD7124_AIN6, .ain.ainm = AD7124_AIN7 },
+		{ .channel_enable = false, .setup_sel = 0, .ain.ainp = AD7124_AIN9, .ain.ainm = AD7124_AIN10 },
+		{ .channel_enable = false, .setup_sel = 0, .ain.ainp = AD7124_AIN12, .ain.ainm = AD7124_AIN13 },
+		{ .channel_enable = false, .setup_sel = 0, .ain.ainp = AD7124_AIN0, .ain.ainm = AD7124_AIN1 },
+		{ .channel_enable = false, .setup_sel = 0, .ain.ainp = AD7124_AIN0, .ain.ainm = AD7124_AIN1 },
+		{ .channel_enable = false, .setup_sel = 0, .ain.ainp = AD7124_AIN0, .ain.ainm = AD7124_AIN1 },
+		{ .channel_enable = false, .setup_sel = 0, .ain.ainp = AD7124_AIN0, .ain.ainm = AD7124_AIN1 },
+		{ .channel_enable = false, .setup_sel = 0, .ain.ainp = AD7124_AIN0, .ain.ainm = AD7124_AIN1 },
+		{ .channel_enable = false, .setup_sel = 0, .ain.ainp = AD7124_AIN0, .ain.ainm = AD7124_AIN1 },
+		{ .channel_enable = false, .setup_sel = 0, .ain.ainp = AD7124_AIN0, .ain.ainm = AD7124_AIN1 },
+		{ .channel_enable = false, .setup_sel = 0, .ain.ainp = AD7124_AIN0, .ain.ainm = AD7124_AIN1 },
+		{ .channel_enable = false, .setup_sel = 0, .ain.ainp = AD7124_AIN0, .ain.ainm = AD7124_AIN1 },
+		{ .channel_enable = false, .setup_sel = 0, .ain.ainp = AD7124_AIN0, .ain.ainm = AD7124_AIN1 },
+		{ .channel_enable = false, .setup_sel = 0, .ain.ainp = AD7124_AIN0, .ain.ainm = AD7124_AIN1 }
+	}
+};
+

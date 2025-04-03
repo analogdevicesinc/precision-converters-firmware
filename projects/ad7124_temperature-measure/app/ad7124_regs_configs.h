@@ -191,5 +191,8 @@ extern const struct ad7124_st_reg ad7124_regs_config_4wire_rtd[AD7124_REG_NO];
 extern const struct ad7124_st_reg ad7124_regs_config_thermistor[AD7124_REG_NO];
 extern const struct ad7124_st_reg
 	ad7124_regs_config_thermocouple[AD7124_REG_NO];
+extern struct ad7124_init_param ad7124_rtd_init_params;
+extern struct ad7124_init_param ad7124_thermistor_init_params;
+extern struct ad7124_init_param ad7124_thermocouple_init_params;
 
 #endif /* AD7124_REGS_CONFIGS_H_ */

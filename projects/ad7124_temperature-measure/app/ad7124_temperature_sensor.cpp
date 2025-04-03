@@ -1,10 +1,11 @@
 
+
 /***************************************************************************//*
  * @file    ad7124_temperature_sensor.cpp
  * @brief   AD7124 temperature sensor functionality
  * @details
 ******************************************************************************
- * Copyright (c) 2021 Analog Devices, Inc. All Rights Reserved.
+ * Copyright (c) 2021, 2025 Analog Devices, Inc. All Rights Reserved.
  *
  * This software is proprietary to Analog Devices, Inc. and its licensors.
  * By using this software you agree to the terms of the associated
@@ -18,18 +19,18 @@
 #include <stdint.h>
 #include <math.h>
 
-#include <thermocouple.h>
-#include <ptxxx.h>
-#include <ntc_10k_44031.h>
-#include <ptc_ky81_110.h>
 
-#include "ad7124_temperature_sensor.h"
 
 #ifdef __cplusplus
 extern "C"
 {
 #endif //  _cplusplus
 
+#include <thermocouple.h>
+#include <ptxxx.h>
+#include <ntc_10k_44031.h>
+#include <ptc_ky81_110.h>
+#include "ad7124_temperature_sensor.h"
 #include "ad7124_regs_configs.h"
 #include "ad7124_support.h"
 
