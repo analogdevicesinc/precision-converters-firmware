@@ -19,7 +19,7 @@ Supported Hardware
 
 **Supported Carrier Boards:**
 
-* `SDP-K1 With Mbed <https://os.mbed.com/platforms/SDP_K1/>`_
+* `SDP-K1  <https://www.analog.com/en/resources/evaluation-hardware-and-software/evaluation-boards-kits/sdp-k1.html#eb-overview>`_
 
 ============
 Introduction
@@ -27,10 +27,10 @@ Introduction
 
 This guide gives an overview of using the temperature measurement console firmware 
 application with Analog Devices AD7124 Evaluation board and SDP-K1 (or other compatible)
-MCU controller board, leveraging Mbed-OS as a primary software platform. 
+MCU controller board, leveraging STM32 as a primary software platform. 
 The firmware application provides an user-interactive menu options for user to select 
 and configure the multiple temperature sensors at different instances, such as 
-2/3/4-wire RTDs, NTC Thermistors and Thermocouples.
+2/3/4-wire RTDs, NTC Thermistors and Thermocouples. It supports STM32 and Mbed platforms.
 
    .. image:: /source/projects/ad7124_temperature-measure/ad7124_interface.png
       :width: 600
@@ -39,9 +39,11 @@ The interface used for communicating with PC based console tools (e.g. Teraterm)
 Firmware leverages the ADI created no-os and platform driver software layers
 to communicates with ADC device.
 
-.. SDP-K1 Mbed Section
+.. note::
 
-.. include:: /source/tinyiiod/sdp_k1_mbed.rst
+   This code has been developed and tested on the SDP-K1 Controller Board with
+   Arduino headers. However, the same code can be used with minimal modifications
+   on any STM32 enabled board which has Arduino Header support on it.
 
 .. Useful links Section
 
@@ -62,9 +64,58 @@ Jumper Settings
 
 Connect the VIO_ADJUST jumper on the SDP-K1 board to 3.3V position to drive SDP-K1 GPIOs at 3.3V
 
-**EVAL-AD7124:**
+.. note::
 
-Refer user manual of required evaluation board.
+   Below jumper settings of AD7124 EVB are specific to sensor demo modes supported in the firmware. Change the
+   jumper settings according to your requirements/demo configurations.
+
++-----------------------+----------------+------------+----------------+
+|Jumper                 | Thermistor     | RTD        | Thermocouple   | 
++-----------------------+----------------+------------+----------------+
+|LK1, LK2               | Open           | Open       | Open           | 
++-----------------------+----------------+------------+----------------+
+|LK3                    | B              | B          | B              | 
++-----------------------+----------------+------------+----------------+
+|LK4                    | Short          | Short      | Short          | 
++-----------------------+----------------+------------+----------------+
+|LK5                    | B              | B          | B              | 
++-----------------------+----------------+------------+----------------+
+|LK6                    | A              | Open       | Open           | 
++-----------------------+----------------+------------+----------------+
+|LK7, LK8, LK9          | Open           | Open       | Open           | 
++-----------------------+----------------+------------+----------------+
+|LK10                   | Short          | Short      | Short          | 
++-----------------------+----------------+------------+----------------+
+|LK11                   | Open           | Open       | Open           | 
++-----------------------+----------------+------------+----------------+
+|LK12                   | Open           | Open       | Open           |   
++-----------------------+----------------+------------+----------------+
+|LK13, LK14             | Open           | Open       | Open           | 
++-----------------------+----------------+------------+----------------+
+|LK15                   | A              | A          | A              | 
++-----------------------+----------------+------------+----------------+
+|LK16                   | A              | A          | A              | 
++-----------------------+----------------+------------+----------------+
+|LK17                   | B              | B          | B              | 
++-----------------------+----------------+------------+----------------+
+|LK18                   | A              | A          | A              | 
++-----------------------+----------------+------------+----------------+
+|LK19                   | B              | B          | B              | 
++-----------------------+----------------+------------+----------------+
+|LK27                   | B              | B          | B              | 
++-----------------------+----------------+------------+----------------+
+|LK28                   | B              | B          | B              | 
++-----------------------+----------------+------------+----------------+
+|LK29                   | B              | B          | B              | 
++-----------------------+----------------+------------+----------------+
+|LK30                   | B              | B          | B              | 
++-----------------------+----------------+------------+----------------+
+|LK31                   | Short          | Short      | Short          | 
++-----------------------+----------------+------------+----------------+
+|T_AVDD                 | A              | A          | A              | 
++-----------------------+----------------+------------+----------------+
+|T_IOVDD                | A              | A          | A              | 
++-----------------------+----------------+------------+----------------+
 
 =======================
 Communication Interface
