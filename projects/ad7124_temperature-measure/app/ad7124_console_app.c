@@ -5,7 +5,7 @@
  *           The functions defined in this file performs the action
  *           based on user selected console menu.
 ********************************************************************************
-* Copyright (c) 2021-22 Analog Devices, Inc.
+* Copyright (c) 2021-22, 2025 Analog Devices, Inc.
 * All rights reserved.
 *
 * This software is proprietary to Analog Devices, Inc. and its licensors.
@@ -24,7 +24,6 @@
 
 #include "app_config.h"
 
-#include "mbed_platform_support.h"
 #include "no_os_util.h"
 #include "no_os_error.h"
 #include "no_os_spi.h"
@@ -34,8 +33,8 @@
 #include "ad7124_support.h"
 #include "ad7124_regs_configs.h"
 
-#include "ad7124_console_app.h"
 #include "ad7124_user_config.h"
+#include "ad7124_console_app.h"
 #include "ad7124_temperature_sensor.h"
 
 /******************************************************************************/
@@ -170,6 +169,9 @@ static const char *cjc_sensor_names[NUM_OF_CJC_SENSORS] = {
 	"PT1000 2-Wire RTD",
 };
 
+/* ad7124 init parameters structure */
+static struct ad7124_init_param ad7124_init_params;
+
 /* Current selected CJC sensor */
 static cjc_sensor_type current_cjc_sensor = PT100_4WIRE_RTD;
 
@@ -217,6 +219,20 @@ console_menu ntc_thermistor_menu;
 console_menu thermocouple_menu;
 console_menu adc_calibration_menu;
 
+/* The UART Descriptor */
+struct no_os_uart_desc *uart_desc;
+
+/* CS GPIO init parameters */
+static struct no_os_gpio_init_param csb_init_param = {
+	.number = SPI_CSB,
+	.port = SPI_CS_PORT,
+	.platform_ops = &stm32_gpio_ops,
+	.extra = NULL
+};
+
+/* Chip Select GPIO descriptor */
+struct no_os_gpio_desc *csb_gpio;
+
 /******************************************************************************/
 /************************** Functions Declarations ****************************/
 /******************************************************************************/
@@ -235,37 +251,46 @@ console_menu adc_calibration_menu;
  */
 int32_t ad7124_app_initialize(uint8_t config_id)
 {
+	int ret;
+
 	/*
 	 * Copy one of the default/user configs to the live register memory map
 	 * Requirement, not checked here, is that all the configs are the same size
 	 */
+
 	switch (config_id) {
 	case AD7124_CONFIG_RESET:
+		ad7124_init_params = ad7124_user_init_params;
 		memcpy(ad7124_register_map, ad7124_regs,
 		       sizeof(ad7124_register_map));
 		break;
 
 	case AD7124_CONFIG_2WIRE_RTD:
+		ad7124_init_params = ad7124_rtd_init_params;
 		memcpy(ad7124_register_map, ad7124_regs_config_2wire_rtd,
 		       sizeof(ad7124_register_map));
 		break;
 
 	case AD7124_CONFIG_3WIRE_RTD:
+		ad7124_init_params = ad7124_rtd_init_params;
 		memcpy(ad7124_register_map, ad7124_regs_config_3wire_rtd,
 		       sizeof(ad7124_register_map));
 		break;
 
 	case AD7124_CONFIG_4WIRE_RTD:
+		ad7124_init_params = ad7124_rtd_init_params;
 		memcpy(ad7124_register_map, ad7124_regs_config_4wire_rtd,
 		       sizeof(ad7124_register_map));
 		break;
 
 	case AD7124_CONFIG_THERMISTOR:
+		ad7124_init_params = ad7124_thermistor_init_params;
 		memcpy(ad7124_register_map, ad7124_regs_config_thermistor,
 		       sizeof(ad7124_register_map));
 		break;
 
 	case AD7124_CONFIG_THERMOCOUPLE:
+		ad7124_init_params = ad7124_thermocouple_init_params;
 		memcpy(ad7124_register_map, ad7124_regs_config_thermocouple,
 		       sizeof(ad7124_register_map));
 		break;
@@ -273,6 +298,11 @@ int32_t ad7124_app_initialize(uint8_t config_id)
 	default:
 		/* Not a defined configID */
 		return -EINVAL;
+	}
+
+	ret = no_os_gpio_get(&csb_gpio, &csb_init_param);
+	if (ret) {
+		return ret;
 	}
 
 	/* Get the current sensor configuration */
@@ -308,15 +338,26 @@ static int32_t init_with_configuration(uint8_t config_id)
  */
 static bool was_escape_key_pressed(void)
 {
-	char rxChar;
+
 	bool wasPressed = false;
 
+#if (ACTIVE_PLATFORM == MBED_PLATFORM)
+	char rxChar;
 	/* Check for Escape key pressed */
 	if ((rxChar = getchar_noblock()) > 0) {
 		if (rxChar == ESCAPE_KEY_CODE) {
 			wasPressed = true;
 		}
 	}
+#else
+	int32_t ret;
+
+	/* Check for Escape key pressed */
+	ret = check_escape_key_pressed();
+	if (ret) {
+		wasPressed = true;
+	}
+#endif
 
 	return (wasPressed);
 }
@@ -367,7 +408,6 @@ int32_t select_cjc_sensor(uint32_t cjc_sensor)
 	return MENU_CONTINUE;
 }
 
-
 /*!
  * @brief	Perform the ADC data conversion for input channel
  * @param	chn[in]- Channel to be sampled
@@ -384,6 +424,7 @@ static int32_t perform_adc_conversion(uint8_t chn,
 	int32_t sample_data;
 	int64_t avg_sample_data = 0;
 	uint16_t samples_cnt;
+	int ret;
 
 	/* Enable the current channel */
 	ad7124_register_map[AD7124_Channel_0 + chn].value |=
@@ -413,6 +454,10 @@ static int32_t perform_adc_conversion(uint8_t chn,
 
 	/* Read adc samples */
 	for (uint16_t sample = 0; sample < samples_cnt; sample++) {
+		ret = no_os_gpio_set_value(csb_gpio, NO_OS_GPIO_LOW);
+		if (ret) {
+			return ret;
+		}
 		/*
 		 *  this polls the status register READY/ bit to determine when conversion is done
 		 *  this also ensures the STATUS register value is up to date and contains the
