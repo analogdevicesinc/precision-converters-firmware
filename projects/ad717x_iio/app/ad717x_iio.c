@@ -420,8 +420,7 @@ static int32_t iio_ad717x_prepare_transfer(void *dev_instance,
 #if (DATA_CAPTURE_MODE == CONTINUOUS_DATA_CAPTURE)
 #if (ACTIVE_PLATFORM == STM32_PLATFORM)
 #if defined(USE_VIRTUAL_COM_PORT)
-	/* TODO : spikes being observed in VCOM
-	 * Added as temporary fix to the above issue.
+	/* Added as temporary fix to the above issue.
 	 * Makes the UART Interrupt low prior than the GPIO Interrupt
 	 */
 	ret = no_os_irq_set_priority(trigger_irq_desc, IRQ_INT_ID, 0);
@@ -429,6 +428,7 @@ static int32_t iio_ad717x_prepare_transfer(void *dev_instance,
 		return ret;
 	}
 
+	/* Increased the priority of usb uart interrupt as spikes were being observed with VCOM */
 	HAL_NVIC_SetPriority(OTG_HS_IRQn, 1, 1);
 #else
 	ret = no_os_irq_set_priority(trigger_irq_desc, IRQ_INT_ID, RDY_GPIO_PRIORITY);
