@@ -31,7 +31,7 @@
 #define ADC_REF_VOLTAGE		2.5		// in volts
 
 #if defined(DEV_AD7177_2)
-#define ADC_RESOLUTION		32		// in bits
+#define ADC_RESOLUTION		24		// in bits
 #else
 #define ADC_RESOLUTION		24		// in bits
 #endif
