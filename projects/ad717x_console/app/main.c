@@ -7,7 +7,7 @@
   @details: This module initialize the device and display the console menus
 
  -----------------------------------------------------------------------------
- Copyright (c) 2020,2022 Analog Devices, Inc.
+ Copyright (c) 2020,2022,2025 Analog Devices, Inc.
  All rights reserved.
 
  This software is proprietary to Analog Devices, Inc. and its licensors.
@@ -33,6 +33,11 @@
 int main()
 {
 	int32_t setupResult;
+
+	/* Initialize the STM32 peripherals */
+#if (ACTIVE_PLATFORM == STM32_PLATFORM)
+	stm32_system_init();
+#endif
 
 	/* Initialize the AD717x/AD411x application */
 	if ((setupResult = ad717x_app_initialize()) < 0) {

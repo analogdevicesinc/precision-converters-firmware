@@ -9,7 +9,7 @@
             The functions defined in this file performs the action
             based on user selected console menu.
  -----------------------------------------------------------------------------
- Copyright (c) 2020-2022 Analog Devices, Inc.
+ Copyright (c) 2020-2022,2025 Analog Devices, Inc.
  All rights reserved.
 
  This software is proprietary to Analog Devices, Inc. and its licensors.
@@ -27,11 +27,9 @@
 #include <ctype.h>
 
 #include "app_config.h"
-
 #include "ad717x.h"
-#include "mbed_platform_support.h"
 #include "no_os_spi.h"
-#include "mbed_spi.h"
+#include "no_os_uart.h"
 
 #include "ad717x_console_app.h"
 #include "ad717x_menu_defines.h"
@@ -46,42 +44,40 @@
 #if defined(DEV_AD4111) || defined(DEV_AD4112) || defined(DEV_AD4114) || \
 	defined(DEV_AD4115) || defined (DEV_AD4116)
 #include <ad411x_regs.h>
-static ad717x_st_reg *ad717x_device_map = ad4111_regs;
-static uint8_t ad717x_reg_count = sizeof(ad4111_regs) / sizeof(ad4111_regs[0]);
+#define AD717X_DEVICE_MAP ad4111_regs
+#define AD717x_NUM_REGS NO_OS_ARRAY_SIZE(ad4111_regs)
 #elif defined(DEV_AD7172_2)
 #include <ad7172_2_regs.h>
-static ad717x_st_reg *ad717x_device_map = ad7172_2_regs;
-static uint8_t ad717x_reg_count = sizeof(ad7172_2_regs) / sizeof(
-		ad7172_2_regs[0]);
+#define AD717X_DEVICE_MAP ad7172_2_regs
+#define AD717x_NUM_REGS NO_OS_ARRAY_SIZE(ad7172_2_regs)
 #elif defined(DEV_AD7172_4)
 #include <ad7172_4_regs.h>
-static ad717x_st_reg *ad717x_device_map = ad7172_4_regs;
-static uint8_t ad717x_reg_count = sizeof(ad7172_4_regs) / sizeof(
-		ad7172_4_regs[0]);
+#define AD717X_DEVICE_MAP ad7172_4_regs
+#define AD717x_NUM_REGS NO_OS_ARRAY_SIZE(ad7172_4_regs)
 #elif defined(DEV_AD7173_8)
 #include <ad7173_8_regs.h>
-static ad717x_st_reg *ad717x_device_map = ad7173_8_regs;
-static uint8_t ad717x_reg_count = sizeof(ad7173_8_regs) / sizeof(
-		ad7173_8_regs[0]);
+#define AD717X_DEVICE_MAP ad7173_8_regs
+#define AD717x_NUM_REGS NO_OS_ARRAY_SIZE(ad7173_8_regs)
 #elif defined(DEV_AD7175_2)
 #include <ad7175_2_regs.h>
-static ad717x_st_reg *ad717x_device_map = ad7175_2_regs;
-static uint8_t ad717x_reg_count = sizeof(ad7175_2_regs) / sizeof(
-		ad7175_2_regs[0]);
+#define AD717X_DEVICE_MAP ad7175_2_regs
+#define AD717x_NUM_REGS NO_OS_ARRAY_SIZE(ad7175_2_regs)
 #elif defined(DEV_AD7175_8)
 #include <ad7175_8_regs.h>
-static ad717x_st_reg *ad717x_device_map = ad7175_8_regs;
-static uint8_t ad717x_reg_count = sizeof(ad7175_8_regs) / sizeof(
-		ad7175_8_regs[0]);
+#define AD717X_DEVICE_MAP ad7175_8_regs
+#define AD717x_NUM_REGS NO_OS_ARRAY_SIZE(ad7175_8_regs)
 #elif defined(DEV_AD7176_2)
 #include <ad7176_2_regs.h>
-static ad717x_st_reg *ad717x_device_map = ad7176_2_regs;
-static uint8_t ad717x_reg_count = sizeof(ad7176_2_regs) / sizeof(
-		ad7176_2_regs[0]);
+#define AD717X_DEVICE_MAP ad7176_2_regs
+#define AD717x_NUM_REGS NO_OS_ARRAY_SIZE(ad7176_2_regs)
+#elif defined(DEV_AD7177_2)
+#include <ad7177_2_regs.h>
+#define AD717X_DEVICE_MAP ad7177_2_regs
+#define AD717x_NUM_REGS NO_OS_ARRAY_SIZE(ad7177_2_regs)
 #else
 #include <ad411x_regs.h>
-static ad717x_st_reg *ad717x_device_map = ad4111_regs;
-static uint8_t ad717x_reg_count = sizeof(ad4111_regs) / sizeof(ad4111_regs[0]);
+#define AD717X_DEVICE_MAP ad4111_regs
+#define AD717x_NUM_REGS NO_OS_ARRAY_SIZE(ad4111_regs)
 #endif
 
 
@@ -101,6 +97,9 @@ static uint8_t ad717x_reg_count = sizeof(ad4111_regs) / sizeof(ad4111_regs[0]);
 // Pointer to the struct representing the AD717x device
 static ad717x_dev *pad717x_dev = NULL;
 
+/* UART Descriptor */
+struct no_os_uart_desc *uart_desc;
+
 // Device setup
 static ad717x_setup_config device_setup;
 
@@ -118,6 +117,36 @@ static uint32_t analog_input_type;	// Analog input type
 static uint32_t channel_pair;		// Channel pair for open wire detection
 static int32_t open_wire_detect_sample_data[2]; // Sampled data for channel pair
 
+/* UART Initialization Parameters */
+struct no_os_uart_init_param uart_init_params = {
+	.device_id = 0,
+	.baud_rate = 230400,
+	.size = NO_OS_UART_CS_8,
+	.parity = NO_OS_UART_PAR_NO,
+	.stop = NO_OS_UART_STOP_1_BIT,
+	.irq_id = UART_IRQ_ID,
+#if(ACTIVE_PLATFORM == STM32_PLATFORM)
+	.asynchronous_rx = false,
+	.platform_ops = &uart_ops,
+	.extra = &uart_extra_init_params
+#endif
+};
+
+/* Used to create the ad717x device */
+ad717x_init_param ad717x_init = {
+	/* spi_init_param type */
+	.spi_init = {
+		.device_id = SPI_DEVICE_ID,
+		.max_speed_hz = MAX_SPI_CLK, 			// Max SPI Speed
+		.chip_select = SPI_CSB,				// Chip Select pin
+		.mode = NO_OS_SPI_MODE_3,			// CPOL = 1, CPHA =1
+		.extra = &spi_init_extra_params, 	// SPI extra configurations
+		.platform_ops = &spi_ops
+	},
+	.regs = AD717X_DEVICE_MAP,		// pointer to device register map
+	.num_regs = AD717x_NUM_REGS,		// number of device registers
+};
+
 /******************************************************************************/
 /************************ Functions Declarations ******************************/
 /******************************************************************************/
@@ -134,26 +163,17 @@ static bool was_escape_key_pressed(void);
  */
 int32_t ad717x_app_initialize(void)
 {
-	// Init SPI extra parameters structure
-	struct mbed_spi_init_param spi_init_extra_params = {
-		.spi_clk_pin = SPI_SCK,
-		.spi_miso_pin = SPI_HOST_SDI,
-		.spi_mosi_pin = SPI_HOST_SDO
-	};
+	int ret;
 
-	// Used to create the ad717x device
-	ad717x_init_param ad717x_init = {
-		// spi_init_param type
-		{
-			.max_speed_hz = 2500000, 			// Max SPI Speed
-			.chip_select = SPI_CSB,				// Chip Select pin
-			.mode = NO_OS_SPI_MODE_3,			// CPOL = 1, CPHA =1
-			.extra = &spi_init_extra_params, 	// SPI extra configurations
-			.platform_ops = &mbed_spi_ops
-		},
-		ad717x_device_map,		// pointer to device register map
-		ad717x_reg_count,		// number of device registers
-	};
+#if (ACTIVE_PLATFORM == STM32_PLATFORM)
+	ret = no_os_uart_init(&uart_desc, &uart_init_params);
+	if (ret) {
+		return ret;
+	}
+
+	/* Set up the UART for standard I/O operations */
+	no_os_uart_stdio(uart_desc);
+#endif
 
 	// Initialze the device
 	return (AD717X_Init(&pad717x_dev, ad717x_init));
@@ -166,15 +186,27 @@ int32_t ad717x_app_initialize(void)
  */
 static bool was_escape_key_pressed(void)
 {
-	char rxChar;
 	bool wasPressed = false;
 
-	// Check for Escape key pressed
+#if (ACTIVE_PLATFORM == MBED_PLATFORM)
+	char rxChar;
+
+	/* Check for Escape key pressed */
 	if ((rxChar = getchar_noblock()) > 0) {
 		if (rxChar == ESCAPE_KEY_CODE) {
 			wasPressed = true;
 		}
 	}
+
+#else  /* STM32_PLATFORM */
+	int32_t ret;
+
+	/* Check for Escape key pressed */
+	ret = check_escape_key_pressed();
+	if (ret) {
+		wasPressed = true;
+	}
+#endif
 
 	return (wasPressed);
 }
@@ -798,7 +830,7 @@ int32_t menu_channels_enable_disable(uint32_t action)
 {
 	char rx_char;                // received character from the serial port
 	uint8_t current_channel;     // channel to be enabled
-	ad717x_st_reg *device_chnmap_reg; 	// Pointer to channel map register
+	ad717x_st_reg *device_chnmap_reg; // Pointer to channel map register
 
 	do {
 		// Get the channel selection
