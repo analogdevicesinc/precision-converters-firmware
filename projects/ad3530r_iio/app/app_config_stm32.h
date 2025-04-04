@@ -71,6 +71,7 @@
 #define LDAC_PWM_CLK_DIVIDER 2 // multiplier to get timer clock from PLCK1
 #define PWM_GPIO_PORT       LDAC_PORT
 #define PWM_GPIO_PIN        LDAC_PIN
+#define LDAC_PWM_HANDLE     htim1
 
 /* Peripheral IDs (Unused) */
 #define UART_ID      0
@@ -80,6 +81,7 @@
 #define TIMER_8_PRESCALER                  0
 #define TIMER_8_CLK_DIVIDER                2
 #define TIMER_CHANNEL_1                    1
+#define TIMER8_HANDLE                  htim8
 
 #define Rx_DMA_IRQ_ID        DMA2_Stream0_IRQn
 #define TxDMA_CHANNEL_NUM    DMA_CHANNEL_7
@@ -150,10 +152,12 @@ extern struct stm32_pwm_init_param stm32_ldac_pwm_init_params;
 extern struct stm32_gpio_init_param stm32_pwm_ldac_gpio_init_params;
 extern UART_HandleTypeDef huart5;
 extern USBD_HandleTypeDef hUsbDeviceHS;
+extern TIM_HandleTypeDef LDAC_PWM_HANDLE;
 
 #if (INTERFACE_MODE == SPI_DMA)
 extern DMA_HandleTypeDef hdma_tim8_ch1;
 extern DMA_HandleTypeDef hdma_spi1_rx;
+extern TIM_HandleTypeDef TIMER8_HANDLE;
 
 extern struct stm32_gpio_init_param stm32_csb_gpio_init_params;
 extern struct stm32_pwm_init_param stm32_tx_trigger_extra_init_params;

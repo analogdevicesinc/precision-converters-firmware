@@ -84,7 +84,7 @@
 #define DAC_RESOLUTION		16
 
 /* Number of DAC channels */
-#define DAC_CHANNELS		8
+#define DAC_MAX_CHANNELS		16
 
 /* DAC reference voltage (Range: 2.5 to 3.3v) */
 #define DAC_REF_VOLTAGE		2.5

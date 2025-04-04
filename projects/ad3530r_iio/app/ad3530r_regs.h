@@ -30,5 +30,6 @@
 /******************************************************************************/
 
 extern const uint32_t ad3530r_regs [];
+extern const uint32_t ad3531r_regs [];
 
 #endif /* _AD3530R_REGS_H_ */

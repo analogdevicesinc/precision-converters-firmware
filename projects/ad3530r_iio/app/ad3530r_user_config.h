@@ -27,5 +27,6 @@
 /********************** Variables and User Defined Data Types *****************/
 /******************************************************************************/
 extern struct ad3530r_init_param ad3530r_init_params;
+extern struct ad3530r_init_param ad3531r_init_params;
 
 #endif /* AD3530R_USER_CONFIG_H */
