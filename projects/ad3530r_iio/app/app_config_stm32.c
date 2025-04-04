@@ -75,13 +75,14 @@ struct stm32_gpio_init_param stm32_gpio_reset_init_params = {
 
 /* STM32 LDAC PWM specific parameters */
 struct stm32_pwm_init_param stm32_ldac_pwm_init_params = {
+	.htimer = &LDAC_PWM_HANDLE,
 	.prescaler = LDAC_PWM_PRESCALER,
 	.timer_autoreload = true,
 	.mode = TIM_OC_PWM1,
 	.timer_chn = LDAC_PWM_CHANNEL,
 	.get_timer_clock = HAL_RCC_GetPCLK1Freq,
 	.clock_divider = LDAC_PWM_CLK_DIVIDER,
-	.trigger_enable = false,
+	.slave_mode = STM32_PWM_SM_DISABLE,
 	.trigger_output = PWM_TRGO_UPDATE
 };
 
@@ -96,6 +97,7 @@ struct stm32_gpio_init_param stm32_csb_gpio_init_params = {
 
 /* STM32 PWM specific init params */
 struct stm32_pwm_init_param stm32_tx_trigger_extra_init_params = {
+	.htimer = &TIMER8_HANDLE,
 	.prescaler = TIMER_8_PRESCALER,
 	.timer_autoreload = true,
 	.mode = TIM_OC_TOGGLE,
@@ -103,7 +105,7 @@ struct stm32_pwm_init_param stm32_tx_trigger_extra_init_params = {
 	.complementary_channel = false,
 	.get_timer_clock = HAL_RCC_GetPCLK1Freq,
 	.clock_divider = TIMER_8_CLK_DIVIDER,
-	.trigger_enable = true,
+	.slave_mode = STM32_PWM_SM_TRIGGER,
 	.trigger_source = PWM_TS_ITR0,
 	.dma_enable = true,
 	.repetitions = NUM_PULSE_REPETITIONS,

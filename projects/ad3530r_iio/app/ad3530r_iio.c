@@ -102,12 +102,13 @@ static int8_t dac_data_buffer[DATA_BUFFER_SIZE];
 
 #define	BYTE_SIZE	(uint32_t)8
 #define	BYTE_MASK	(uint32_t)0xff
+#define HALF_WORD_MASK	(uint32_t)0xffff
 
 /* Number of IIO devices */
 #define NUM_OF_IIO_DEVICES	1
 
 /* IIO trigger name */
-#define AD3530R_IIO_TRIGGER_NAME		"ad3530r_iio_trigger"
+#define AD3530R_IIO_TRIGGER_NAME		"ad353xr_iio_trigger"
 
 /* Descriptor to hold iio trigger details */
 static struct iio_trigger ad3530r_iio_trig_desc = {
@@ -132,7 +133,7 @@ struct iio_device *ad3530r_iio_dev;
 static struct iio_hw_trig *ad3530r_hw_trig_desc;
 
 /* Active channel sequence */
-static volatile uint8_t ad3530r_active_chns[DAC_CHANNELS];
+static volatile uint8_t ad3530r_active_chns[DAC_MAX_CHANNELS];
 
 /* Number of active channels */
 static uint8_t num_of_active_channels = 0;
@@ -322,10 +323,17 @@ static bool spi_dma_enabled = false;
 struct stm32_spi_init_param* spi_init_param;
 
 /* Array with channel addresses (2 bytes per channel) */
-static uint16_t ch_addr_array[DAC_CHANNELS];
+static uint16_t ch_addr_array[DAC_MAX_CHANNELS];
 
 /* Global variable for iio buffer */
 uint8_t* global_iio_buff;
+
+/* Variable to store regsister map */
+static uint32_t *ad353xr_regs;
+
+/* Variable to store number of mux selects */
+static int16_t num_of_mux_sels = AD3530R_NUM_MUX_OUT_SELECTS;
+
 #endif
 
 /******************************************************************************/
@@ -444,11 +452,15 @@ static int ad3530r_iio_attr_get(void *device,
 {
 	uint16_t val;
 	int ret;
+	uint32_t addr;
+	int16_t ch = channel->ch_num;
 
 	switch (priv) {
 	case DAC_RAW:
+		addr = get_reg_addr(AD3530R_REG_ADDR_DAC_CHN(ch), ad3530r_dev_desc->chip_id,
+				    AD3530R_CH_GRP(ch));
 		ret = ad3530r_reg_read(ad3530r_dev_desc,
-				       AD3530R_REG_ADDR_DAC_CHN(channel->ch_num),
+				       addr,
 				       &val);
 		if (ret) {
 			return ret;
@@ -457,8 +469,10 @@ static int ad3530r_iio_attr_get(void *device,
 		return sprintf(buf, "%d", val);
 
 	case DAC_INPUT:
+		addr = get_reg_addr(AD3530R_REG_ADDR_INPUT_CHN(ch), ad3530r_dev_desc->chip_id,
+				    AD3530R_CH_GRP(ch));
 		ret = ad3530r_reg_read(ad3530r_dev_desc,
-				       AD3530R_REG_ADDR_INPUT_CHN(channel->ch_num),
+				       addr,
 				       &val);
 		if (ret) {
 			return ret;
@@ -473,21 +487,26 @@ static int ad3530r_iio_attr_get(void *device,
 		return sprintf(buf, "%d", attr_offset_val);
 
 	case DAC_CHN_OP_SELECT:
+		addr = get_reg_addr(AD3530R_REG_ADDR_OPERATING_MODE_CHN(ch),
+				    ad3530r_dev_desc->chip_id,
+				    AD3530R_CH_GRP(ch));
 		ret = ad3530r_spi_read_mask(ad3530r_dev_desc,
-					    AD3530R_REG_ADDR_OPERATING_MODE_CHN(channel->ch_num),
-					    AD3530R_MASK_OPERATING_MODE(channel->ch_num),
+					    addr,
+					    AD3530R_MASK_OPERATING_MODE(ch),
 					    &val);
 		if (ret) {
 			return ret;
 		}
-		ad3530r_dev_desc->chn_op_mode[channel->ch_num] = val;
+		ad3530r_dev_desc->chn_op_mode[ch] = val;
 
 		return sprintf(buf, "%s", ad3530r_operating_mode_str[val]);
 
 	case DAC_CHN_HW_LDAC_EN:
+		addr = get_reg_addr(AD3530R_REG_ADDR_HW_LDAC_EN_0, ad3530r_dev_desc->chip_id,
+				    AD3530R_CH_GRP(ch));
 		ret = ad3530r_spi_read_mask(ad3530r_dev_desc,
-					    AD3530R_REG_ADDR_HW_LDAC_EN_0,
-					    AD3530R_MASK_HW_LDAC_EN_0(channel->ch_num),
+					    addr,
+					    AD3530R_MASK_HW_LDAC_EN_0(ch),
 					    &val);
 		if (ret) {
 			return ret;
@@ -495,9 +514,11 @@ static int ad3530r_iio_attr_get(void *device,
 		return sprintf(buf, "%s", ad3530r_ldac_bit_en_str[val]);
 
 	case DAC_CHN_SW_LDAC_EN:
+		addr = get_reg_addr(AD3530R_REG_ADDR_SW_LDAC_EN_0, ad3530r_dev_desc->chip_id,
+				    AD3530R_CH_GRP(ch));
 		ret = ad3530r_spi_read_mask(ad3530r_dev_desc,
-					    AD3530R_REG_ADDR_SW_LDAC_EN_0,
-					    AD3530R_MASK_SW_LDAC_EN_0(channel->ch_num),
+					    addr,
+					    AD3530R_MASK_SW_LDAC_EN_0(ch),
 					    &val);
 		if (ret) {
 			return ret;
@@ -505,8 +526,10 @@ static int ad3530r_iio_attr_get(void *device,
 		return sprintf(buf, "%s", ad3530r_ldac_bit_en_str[val]);
 
 	case DAC_VREF_SELECT:
+		addr = get_reg_addr(AD3530R_REG_ADDR_REF_CONTROL_0, ad3530r_dev_desc->chip_id,
+				    0);
 		ret = ad3530r_spi_read_mask(ad3530r_dev_desc,
-					    AD3530R_REG_ADDR_REF_CONTROL_0,
+					    addr,
 					    AD3530R_MASK_REERENCE_SELECT,
 					    &val);
 		if (ret) {
@@ -517,8 +540,10 @@ static int ad3530r_iio_attr_get(void *device,
 		return sprintf(buf, "%s", ad3530r_vref_str[val]);
 
 	case DAC_RANGE:
+		addr = get_reg_addr(AD3530R_REG_ADDR_OUTPUT_CONTROL_0,
+				    ad3530r_dev_desc->chip_id, 0);
 		ret = ad3530r_spi_read_mask(ad3530r_dev_desc,
-					    AD3530R_REG_ADDR_OUTPUT_CONTROL_0,
+					    addr,
 					    AD3530R_MASK_OUTPUT_RANGE,
 					    &val);
 		if (ret) {
@@ -533,23 +558,16 @@ static int ad3530r_iio_attr_get(void *device,
 		return sprintf(buf, "%s", ad3530r_ldac_trig_str[0]);
 
 	case DAC_MUX_OUT:
-		ret = ad3530r_spi_read_mask(ad3530r_dev_desc,
-					    AD3530R_REG_ADDR_MUX_OUT_SELECT,
-					    AD3530R_MASK_MUX_SELECT,
-					    &val);
-		if (ret) {
-			return ret;
-		}
-		ad3530r_dev_desc->mux_out_sel = val;
-
-		return sprintf(buf, "%s", ad3530r_mux_out_sel[val]);
+		return sprintf(buf, "%s", ad3530r_mux_out_sel[ad3530r_dev_desc->mux_out_sel]);
 
 	case DAC_ALL_CH_OP_MODE:
 		return sprintf(buf, "%s", ad3530r_operating_mode_str[all_chn_op_mode]);
 
 	case DAC_MULTI_DAC_CH:
+		addr = get_reg_addr(AD3530R_REG_ADDR_MULTI_DAC_CH, ad3530r_dev_desc->chip_id,
+				    0);
 		ret = ad3530r_reg_read(ad3530r_dev_desc,
-				       AD3530R_REG_ADDR_MULTI_DAC_CH,
+				       addr,
 				       &val);
 		if (ret) {
 			return ret;
@@ -558,8 +576,10 @@ static int ad3530r_iio_attr_get(void *device,
 		return sprintf(buf, "%d", val);
 
 	case DAC_MULTI_INPUT_CH:
+		addr = get_reg_addr(AD3530R_REG_ADDR_MULTI_INPUT_CH, ad3530r_dev_desc->chip_id,
+				    0);
 		ret = ad3530r_reg_read(ad3530r_dev_desc,
-				       AD3530R_REG_ADDR_MULTI_INPUT_CH,
+				       addr,
 				       &val);
 		if (ret) {
 			return ret;
@@ -613,9 +633,10 @@ static int ad3530r_iio_attr_set(void *device,
 				intptr_t priv)
 {
 	int ret;
-	uint8_t value;
+	uint16_t value;
 	uint8_t chn;
 	uint32_t write_val;
+	uint16_t mask = BYTE_MASK;
 
 	switch (priv) {
 	case DAC_SCALE:
@@ -666,7 +687,7 @@ static int ad3530r_iio_attr_set(void *device,
 			value = 1;
 		}
 
-		value = (ad3530r_dev_desc->hw_ldac_mask & ~AD3530R_MASK_HW_LDAC_EN_0(
+		value = (ad3530r_dev_desc->hw_ldac_mask & ~NO_OS_BIT(
 				 channel->ch_num)) | (value << channel->ch_num);
 
 		ret = ad3530r_set_hw_ldac(ad3530r_dev_desc, value);
@@ -682,7 +703,7 @@ static int ad3530r_iio_attr_set(void *device,
 			value = 1;
 		}
 
-		value = (ad3530r_dev_desc->sw_ldac_mask & ~AD3530R_MASK_SW_LDAC_EN_0(
+		value = (ad3530r_dev_desc->sw_ldac_mask & ~NO_OS_BIT(
 				 channel->ch_num)) | (value << channel->ch_num);
 
 		ret = ad3530r_set_sw_ldac(ad3530r_dev_desc, value);
@@ -774,7 +795,7 @@ static int ad3530r_iio_attr_set(void *device,
 				break;
 		}
 
-		for (chn = 0; chn < AD3530R_NUM_CH; chn++) {
+		for (chn = 0; chn < num_of_chns; chn++) {
 			ret = ad3530r_set_operating_mode(ad3530r_dev_desc, chn, value);
 			if (ret) {
 				return ret;
@@ -788,7 +809,7 @@ static int ad3530r_iio_attr_set(void *device,
 
 		ret = ad3530r_set_multidac_value(ad3530r_dev_desc,
 						 write_val,
-						 BYTE_MASK,
+						 mask,
 						 AD3530R_WRITE_DAC_REGS);
 		if (ret) {
 			return ret;
@@ -800,7 +821,7 @@ static int ad3530r_iio_attr_set(void *device,
 
 		ret = ad3530r_set_multidac_value(ad3530r_dev_desc,
 						 write_val,
-						 BYTE_MASK,
+						 mask,
 						 AD3530R_WRITE_INPUT_REGS);
 		if (ret) {
 			return ret;
@@ -894,9 +915,11 @@ static int ad3530r_iio_attr_available_get(void *device,
 		return sprintf(buf, "%s", ad3530r_ldac_trig_str[0]);
 
 	case DAC_MUX_OUT:
-		for (val = 0; val < AD3530R_NUM_MUX_OUT_SELECTS; val++) {
-			strcat(buf, ad3530r_mux_out_sel[val]);
-			strcat(buf, " ");
+		for (val = 0; val < num_of_mux_sels; val++) {
+			if ((ad3530r_dev_desc->chip_id != AD3531R_ID) || (val <= 12 || val > 24)) {
+				strcat(buf, ad3530r_mux_out_sel[val]);
+				strcat(buf, " ");
+			}
 		}
 		break;
 
@@ -952,13 +975,13 @@ static int ad3530r_iio_attr_available_set(void *device,
 static int32_t ad3530r_iio_prepare_transfer(void* dev, uint32_t mask)
 {
 	int32_t ret;
-	uint8_t ch_mask = 0x1;
+	uint16_t ch_mask = 0x1;
 	uint8_t index = 0;
 	uint8_t chn;
 
 	/* Store active channels based on channel mask set in the
 	 * IIO client */
-	for (chn = 0; chn < DAC_CHANNELS; chn++) {
+	for (chn = 0; chn < num_of_chns; chn++) {
 		if (ch_mask & mask) {
 			ad3530r_active_chns[index++] = chn;
 		}
@@ -1226,7 +1249,7 @@ static int32_t ad3530r_trigger_handler(struct iio_device_data *iio_dev_data)
 
 	int32_t ret;
 	uint8_t active_ch;
-	static uint16_t dac_raw[DAC_CHANNELS];
+	static uint16_t dac_raw[DAC_MAX_CHANNELS];
 	static uint8_t chan_idx;  // Current channel index
 
 	if (!chan_idx || chan_idx == num_of_active_channels) {
@@ -1266,16 +1289,16 @@ static int32_t debug_reg_search(uint32_t addr, uint32_t *reg_addr_offset)
 
 	/* Search for valid input register address in registers array */
 	for (curr_indx = 0; curr_indx <= AD3530R_NUM_REGS; curr_indx++) {
-		if (addr == AD3530R_ADDR(ad3530r_regs[curr_indx])) {
+		if (addr == AD3530R_ADDR(ad353xr_regs[curr_indx])) {
 			*reg_addr_offset = 0;
 			found = true;
 			break;
-		} else if ((addr < AD3530R_ADDR(ad3530r_regs[curr_indx])) && (curr_indx != 0)) {
+		} else if ((addr < AD3530R_ADDR(ad353xr_regs[curr_indx])) && (curr_indx != 0)) {
 			/* Get the input address offset from its base address for
 			 * multi-byte register entity and break the loop indicating input
 			 * address is located somewhere in the previous indexed register */
-			if (AD3530R_LEN(ad3530r_regs[curr_indx - 1]) > 1) {
-				*reg_addr_offset = addr - AD3530R_ADDR(ad3530r_regs[curr_indx - 1]);
+			if (AD3530R_LEN(ad353xr_regs[curr_indx - 1]) > 1) {
+				*reg_addr_offset = addr - AD3530R_ADDR(ad353xr_regs[curr_indx - 1]);
 				found = true;
 			}
 			break;
@@ -1285,9 +1308,9 @@ static int32_t debug_reg_search(uint32_t addr, uint32_t *reg_addr_offset)
 	/* Get the base address of register entity (single or multi byte) */
 	if (found) {
 		if (*reg_addr_offset > 0) {
-			reg_base_add = ad3530r_regs[curr_indx - 1];
+			reg_base_add = ad353xr_regs[curr_indx - 1];
 		} else {
-			reg_base_add = ad3530r_regs[curr_indx];
+			reg_base_add = ad353xr_regs[curr_indx];
 		}
 	} else {
 		return -EINVAL;
@@ -1396,7 +1419,8 @@ static int32_t ad3530r_iio_init(struct iio_device **desc)
 		return -EINVAL;
 	}
 
-	iio_ad3530r_inst->num_ch = NO_OS_ARRAY_SIZE(ad3530r_iio_channels);
+	iio_ad3530r_inst->attributes = ad3530r_iio_global_attributes;
+	iio_ad3530r_inst->num_ch = num_of_chns;
 	iio_ad3530r_inst->channels = ad3530r_iio_channels;
 	iio_ad3530r_inst->attributes = ad3530r_iio_global_attributes;
 	iio_ad3530r_inst->debug_attributes = NULL;
@@ -1465,13 +1489,65 @@ static int32_t ad3530r_iio_trigger_param_init(struct iio_hw_trig **desc)
 }
 
 /**
+ * @brief Assign device name and resolution
+ * @param dev_id[in] - The device id
+ * @param dev_name[out] - The device name
+ * @return 0 in case of success, negative error code otherwise.
+ */
+static int32_t ad353xr_assign_device(enum ad3530r_id dev_id,
+				     char** dev_name)
+{
+	int ret;
+
+	switch (dev_id) {
+	case AD3530R_ID:
+		/* Initialize AD3530R device and peripheral interface */
+		ret = ad3530r_init(&ad3530r_dev_desc, &ad3530r_init_params);
+		if (ret) {
+			return ret;
+		}
+		*dev_name = (char*)ACTIVE_DEVICE_NAME;
+		ad353xr_regs = ad3530r_regs;
+		num_of_mux_sels = AD3530R_NUM_MUX_OUT_SELECTS;
+
+		break;
+
+	case AD3531R_ID:
+		/* Initialize AD3531R device and peripheral interface */
+		ret = ad3530r_init(&ad3530r_dev_desc, &ad3531r_init_params);
+		if (ret) {
+			return ret;
+		}
+		*dev_name = (char*)"ad3531r";
+		ad353xr_regs = ad3531r_regs;
+		num_of_mux_sels = AD3531R_NUM_MUX_OUT_SELECTS;
+		num_of_chns = AD3531R_NUM_CH;
+
+		break;
+
+	default:
+		return -EINVAL;
+	}
+
+	/* Update channel addr array */
+	for (int i = 0; i < num_of_chns; i++) {
+		ch_addr_array[i] = get_reg_addr(AD3530R_REG_ADDR_INPUT_CHN(i), dev_id,
+						AD3530R_CH_GRP(i));
+	}
+
+	return 0;
+
+}
+
+/**
  * @brief	Initialize the IIO interface for AD3530R IIO device
  * @return	0 in case of success,negative error code otherwise
  */
 int32_t ad3530r_iio_initialize(void)
 {
 	int32_t ret;
-	uint8_t id;
+	enum ad3530r_id dev_id;
+	uint8_t indx;
 
 	/* IIO trigger init parameters */
 	struct iio_trigger_init iio_trigger_init_params = {
@@ -1480,7 +1556,6 @@ int32_t ad3530r_iio_initialize(void)
 	};
 
 	struct iio_device_init iio_device_init_params[NUM_OF_IIO_DEVICES] = {{
-			.name = (char *)ACTIVE_DEVICE_NAME,
 			.raw_buf = dac_data_buffer,
 			.raw_buf_len = DATA_BUFFER_SIZE / 2, // Allocate only half the buffer size to accommodate the other half for addresses
 		}
@@ -1494,29 +1569,48 @@ int32_t ad3530r_iio_initialize(void)
 #endif
 	};
 
+	/* Add a fixed delay of 1 sec before system init for the PoR sequence to get completed */
+	no_os_udelay(
+		1000000);
+
 	ret = init_system();
 	if (ret) {
 		return ret;
 	}
 
-	/* Initialize AD3530R device and peripheral interface */
-	ret = ad3530r_init(&ad3530r_dev_desc, &ad3530r_init_params);
-	if (ret) {
-		return ret;
-	}
-
 	/* Read context attributes */
-	ret = get_iio_context_attributes(&iio_init_params.ctx_attrs,
-					 &iio_init_params.nb_ctx_attr,
-					 eeprom_desc,
-					 HW_MEZZANINE_NAME,
-					 STR(HW_CARRIER_NAME),
-					 &hw_mezzanine_is_valid);
-	if (ret) {
-		return ret;
+	static const char *mezzanine_names[] = {"EVAL-AD3530RARDZ",
+						"EVAL-AD3531RARDZ"
+					       };
+
+	/* Add delay between the i2c init and the eeprom read */
+	no_os_mdelay(1000);
+
+	/* Iterate through the mezzanine ids to detect the correct attached board */
+	for (indx = 0; indx < NO_OS_ARRAY_SIZE(mezzanine_names); indx++) {
+		ret = get_iio_context_attributes(&iio_init_params.ctx_attrs,
+						 &iio_init_params.nb_ctx_attr,
+						 eeprom_desc,
+						 mezzanine_names[indx],
+						 STR(HW_CARRIER_NAME),
+						 &hw_mezzanine_is_valid);
+		if (ret) {
+			return ret;
+		}
+		if (hw_mezzanine_is_valid) {
+			dev_id = indx;
+			break;
+		}
 	}
 
 	if (hw_mezzanine_is_valid) {
+
+		/* Assign parameters and Initialize AD353xr device */
+		ret = ad353xr_assign_device(dev_id, &iio_device_init_params[0].name);
+		if (ret) {
+			return ret;
+		}
+
 		ret = ad3530r_iio_init(&ad3530r_iio_dev);
 		if (ret) {
 			return ret;
@@ -1551,11 +1645,6 @@ int32_t ad3530r_iio_initialize(void)
 	ret = init_pwm();
 	if (ret) {
 		return ret;
-	}
-
-	/* Update channel addr array */
-	for (id = 0; id < num_of_chns; id++) {
-		ch_addr_array[id] = AD3530R_REG_ADDR_INPUT_CHN(id);
 	}
 
 	return 0;
