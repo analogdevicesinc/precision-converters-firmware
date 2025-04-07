@@ -67,6 +67,7 @@
 #define PWM_CHANNEL     1 // Channel 1
 #define PWM_CLK_DIVIDER 2 // multiplier to get timer clock from PLCK1
 #define PWM_PRESCALER   3
+#define PWM_HANDLE      htim4
 
 /* Priority of RDY Interrupt */
 #define RDY_GPIO_PRIORITY 1
@@ -86,7 +87,8 @@
 /******************************************************************************/
 
 extern UART_HandleTypeDef huart5;
-extern USBD_HandleTypeDef	APP_UART_USB_HANDLE;
+extern USBD_HandleTypeDef APP_UART_USB_HANDLE;
+extern TIM_HandleTypeDef PWM_HANDLE;
 
 extern struct stm32_usb_uart_init_param stm32_vcom_extra_init_params;
 extern struct stm32_gpio_irq_init_param stm32_trigger_gpio_irq_init_params;

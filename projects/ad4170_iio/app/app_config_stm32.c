@@ -130,6 +130,7 @@ struct stm32_dma_channel rxdma_channel = {
 
 /* STM32 PWM specific init params */
 struct stm32_pwm_init_param stm32_tx_trigger_extra_init_params = {
+	.htimer = &TX_TRIGGER_TIMER_HANDLE,
 	.prescaler = TIMER_8_PRESCALER,
 	.timer_autoreload = true,
 	.mode = TIM_OC_PWM1,

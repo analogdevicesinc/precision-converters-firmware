@@ -76,10 +76,11 @@
 #define MAX_SAMPLING_RATE					(71428)
 
 /* STM32 LDAC PWM Specific parameters */
-#define LDAC_PWM_ID          4 //Timer12
+#define LDAC_PWM_ID          4 //Timer4
 #define LDAC_PWM_CHANNEL     1 // Channel 2
 #define LDAC_PWM_CLK_DIVIDER 2 // multiplier to get timer clock from PLCK1
 #define LDAC_PWM_PRESCALER   3
+#define LDAC_PWM_HANDLE      htim4
 
 /******************************************************************************/
 /********************** Variables and User Defined Data Types *****************/
@@ -96,6 +97,7 @@ extern struct stm32_pwm_init_param stm32_pwm_extra_init_params;
 extern struct stm32_gpio_init_param stm32_gpio_reset_init_params;
 extern struct stm32_gpio_init_param stm32_clear_gpio_init_params;
 
+extern TIM_HandleTypeDef htim4;
 extern UART_HandleTypeDef huart5;
 extern USBD_HandleTypeDef	APP_UART_USB_HANDLE;
 

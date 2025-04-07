@@ -26,7 +26,6 @@
 #include "stm32_i2c.h"
 #include "stm32_gpio_irq.h"
 #include "stm32_dma.h"
-#include "stm32_usb_uart.h"
 #include "app_config.h"
 
 /******************************************************************************/
@@ -41,7 +40,6 @@
 /* STM32 UART specific parameters */
 #define APP_UART_HANDLE     &huart5
 #define UART_IRQ_ID     UART5_IRQn
-#define APP_UART_USB_HANDLE &hUsbDeviceHS
 
 /* GPIO Pins associated with ADC */
 #define RESET_PIN       9  // PG9
@@ -75,6 +73,7 @@
 #define CNV_PWM_ID          1  // Timer 1
 #define CNV_PWM_CHANNEL     3  // Channel 3
 #define CNV_PWM_CLK_DIVIDER 2  // multiplier to get timer clock from PLCK1
+#define CNV_PWM_HANDLE	  	htim1
 #define PWM_GPIO_PORT       CNV_PORT
 #define PWM_GPIO_PIN        CNV_PIN
 
@@ -83,12 +82,14 @@
 #define CS_TIMER_PRESCALER      0
 #define CS_TIMER_CHANNEL        1
 #define TIMER_2_CLK_DIVIDER     2
+#define CS_TIMER_HANDLE         htim2
 
 /* Tx trigger Timer specifc parameters */
 #define TIMER8_ID                          8
 #define TIMER_8_PRESCALER                  0
 #define TIMER_8_CLK_DIVIDER                2
 #define TIMER_CHANNEL_1                    1
+#define TIMER8_HANDLE                      htim8
 
 #define Rx_DMA_IRQ_ID        DMA2_Stream0_IRQn
 #define TxDMA_CHANNEL_NUM    DMA_CHANNEL_7
@@ -109,7 +110,6 @@
 #define tx_trigger_extra_init_params  stm32_tx_trigger_extra_init_params
 #define cs_extra_init_params          stm32_cs_extra_init_params
 #define cs_pwm_gpio_extra_init_params stm32_cs_pwm_gpio_extra_init_params
-#define vcom_extra_init_params      stm32_vcom_extra_init_params
 
 /* Platform Ops */
 #define trigger_gpio_irq_ops    stm32_gpio_irq_ops
@@ -119,7 +119,6 @@
 #define uart_ops                stm32_uart_ops
 #define i2c_ops				    stm32_i2c_ops
 #define dma_ops                 stm32_dma_ops
-#define vcom_ops				stm32_usb_uart_ops
 
 /* Maximum SPI clock rate in Hz */
 #define MAX_SPI_SCLK            40000000
@@ -163,11 +162,11 @@ extern struct stm32_gpio_init_param stm32_gpio_gp0_extra_init_params;
 extern UART_HandleTypeDef huart5;
 extern TIM_HandleTypeDef htim1;
 extern TIM_HandleTypeDef htim2;
-extern USBD_HandleTypeDef hUsbDeviceHS;
 
 #if (INTERFACE_MODE == SPI_DMA)
 extern DMA_HandleTypeDef hdma_tim8_ch1;
 extern DMA_HandleTypeDef hdma_spi1_rx;
+extern TIM_HandleTypeDef htim8;
 extern uint32_t rxdma_ndtr;
 extern uint32_t dma_cycle_count;
 
@@ -176,7 +175,6 @@ extern struct stm32_pwm_init_param stm32_tx_trigger_extra_init_params;
 extern struct stm32_dma_channel rxdma_channel;
 extern struct stm32_dma_channel txdma_channel;
 extern struct stm32_gpio_init_param stm32_cs_pwm_gpio_extra_init_params;
-extern struct stm32_usb_uart_init_param stm32_vcom_extra_init_params;
 
 void receivecomplete_callback(DMA_HandleTypeDef* hdma);
 void halfcmplt_callback(DMA_HandleTypeDef* hdma);

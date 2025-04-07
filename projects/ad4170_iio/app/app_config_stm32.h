@@ -2,7 +2,7 @@
  *   @file    app_config_stm32.h
  *   @brief   Header file for STM32 platform configurations
 ********************************************************************************
- * Copyright (c) 2023-2025 Analog Devices, Inc.
+ * Copyright (c) 2023-24 Analog Devices, Inc.
  * All rights reserved.
  *
  * This software is proprietary to Analog Devices, Inc. and its licensors.
@@ -31,7 +31,6 @@
 #if (INTERFACE_MODE == SPI_DMA_MODE)
 #include "stm32_pwm.h"
 #endif
-
 #if defined (TARGET_SDP_K1)
 #include "stm32_usb_uart.h"
 #endif
@@ -80,6 +79,7 @@
 
 /* Tx Trigger timer parameters */
 #define TX_TRIGGER_TIMER_ID         8 // Timer 8
+#define TX_TRIGGER_TIMER_HANDLE     htim8
 /* Tx trigger period considering a MAX SPI clock of 22.5MHz and 32 bit transfer */
 #define TX_TRIGGER_PERIOD           2250
 #define TX_TRIGGER_DUTY_RATIO       240
@@ -132,6 +132,25 @@
 #define STM32_SAI_BASE	SAI1_Block_A
 #endif
 
+/* Note: The below macro and the type of digital filter chosen together
+ * decides the output data rate to be configured for the device.
+ * Filter configuration can be modified by changing the macro "AD4170_FILTER_CONFIG"
+ * in the respective user configuration header file.
+ * Please refer to the datasheet for more details on the other filter configurations.
+ * It has to be noted that this is not the maximum ODR permissible by the device, but
+ * a value specific to the NUCLEO-H563ZI platform tested with a 10MHz SPI clock. The maximum
+ * ODR might vary across platforms and data continuity is not guaranteed above this ODR
+ * on the IIO Client*/
+
+/* Value corresponding to 24KSPS ODR (per channel) with Sinc5 average filter */
+#define FS_SINC5_AVG_24_KSPS	20
+
+/* Value corresponding to 512ksps ODR (per channel) with Sinc5 filter */
+#define FS_SINC5_512_KSPS		1
+
+/* Value corresponding to 62.5 ODR (per channel) with Sinc3 filter */
+#define FS_SINC3_62P5_KSPS		4
+
 #if (INTERFACE_MODE == SPI_INTERRUPT_MODE)
 #define FS_CONFIG_VALUE 	FS_SINC5_AVG_24_KSPS
 #define AD4170_MAX_SAMPLING_RATE    24000
@@ -167,6 +186,7 @@ extern struct stm32_i2c_init_param stm32_i2c_extra_init_params;
 #if !defined (TARGET_SDP_K1)
 extern UART_HandleTypeDef huart3;
 #else
+extern TIM_HandleTypeDef htim8;
 extern UART_HandleTypeDef huart5;
 extern DMA_HandleTypeDef hdma_spi1_rx;
 extern DMA_HandleTypeDef hdma_tim8_ch1;

@@ -85,6 +85,7 @@
 #define MCLK_PWM_PRESCALER  1
 #define MCLK_PWM_CHANNEL    3 // Channel 3
 #define MCLK_PWM_CLK_DIVIDER 2
+#define MCLK_PWM_HANDLE     htim1
 
 /* I2C timing register value for standard mode of operation
  * Check here for more understanding on I2C timing register
@@ -154,6 +155,7 @@ extern struct stm32_tdm_init_param 	stm32_tdm_extra_init_params;
 extern struct stm32_pwm_init_param stm32_pwm_extra_init_params;
 extern struct stm32_i2c_init_param stm32_i2c_extra_init_params;
 extern UART_HandleTypeDef huart3;
+extern TIM_HandleTypeDef htim1;
 extern bool data_capture_operation;
 extern struct iio_device_data *ad777x_iio_dev_data;
 void SystemClock_Config(void);
