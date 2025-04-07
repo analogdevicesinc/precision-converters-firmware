@@ -207,9 +207,11 @@ Macros</h2></td></tr>
 <tr class="separator:a86fd4404b140711fdb77326609c0f393"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a25c8363b88d9b8f73cc6b1a98bba8d9c" id="r_a25c8363b88d9b8f73cc6b1a98bba8d9c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad3530r__iio_8c.html#a25c8363b88d9b8f73cc6b1a98bba8d9c">BYTE_MASK</a>&#160;&#160;&#160;(uint32_t)0xff</td></tr>
 <tr class="separator:a25c8363b88d9b8f73cc6b1a98bba8d9c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad4521e019aebe5a17b157e219f025891" id="r_ad4521e019aebe5a17b157e219f025891"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad3530r__iio_8c.html#ad4521e019aebe5a17b157e219f025891">HALF_WORD_MASK</a>&#160;&#160;&#160;(uint32_t)0xffff</td></tr>
+<tr class="separator:ad4521e019aebe5a17b157e219f025891"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6f2add8fcba3f86373808fbdd22c872b" id="r_a6f2add8fcba3f86373808fbdd22c872b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad3530r__iio_8c.html#a6f2add8fcba3f86373808fbdd22c872b">NUM_OF_IIO_DEVICES</a>&#160;&#160;&#160;1</td></tr>
 <tr class="separator:a6f2add8fcba3f86373808fbdd22c872b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a311803578f0f9ce5f737642ccb2961d5" id="r_a311803578f0f9ce5f737642ccb2961d5"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad3530r__iio_8c.html#a311803578f0f9ce5f737642ccb2961d5">AD3530R_IIO_TRIGGER_NAME</a>&#160;&#160;&#160;&quot;ad3530r_iio_trigger&quot;</td></tr>
+<tr class="memitem:a311803578f0f9ce5f737642ccb2961d5" id="r_a311803578f0f9ce5f737642ccb2961d5"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad3530r__iio_8c.html#a311803578f0f9ce5f737642ccb2961d5">AD3530R_IIO_TRIGGER_NAME</a>&#160;&#160;&#160;&quot;ad353xr_iio_trigger&quot;</td></tr>
 <tr class="separator:a311803578f0f9ce5f737642ccb2961d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="enum-members" name="enum-members"></a>
@@ -325,7 +327,7 @@ Variables</h2></td></tr>
 <div class="line">    .scan_type = &amp;<a class="code hl_variable" href="ad3530r__iio_8c.html#a88fecdcad6ba15615aa12d6374d4bfb9">ad3530r_iio_scan_type</a>,\</div>
 <div class="line">    .attributes = ad3530r_iio_ch_attributes\</div>
 <div class="line">}</div>
-<div class="ttc" id="aad3530r__iio_8c_html_a88fecdcad6ba15615aa12d6374d4bfb9"><div class="ttname"><a href="ad3530r__iio_8c.html#a88fecdcad6ba15615aa12d6374d4bfb9">ad3530r_iio_scan_type</a></div><div class="ttdeci">struct scan_type ad3530r_iio_scan_type</div><div class="ttdef"><b>Definition</b> ad3530r_iio.c:163</div></div>
+<div class="ttc" id="aad3530r__iio_8c_html_a88fecdcad6ba15615aa12d6374d4bfb9"><div class="ttname"><a href="ad3530r__iio_8c.html#a88fecdcad6ba15615aa12d6374d4bfb9">ad3530r_iio_scan_type</a></div><div class="ttdeci">struct scan_type ad3530r_iio_scan_type</div><div class="ttdef"><b>Definition</b> ad3530r_iio.c:164</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -404,7 +406,7 @@ Variables</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define AD3530R_IIO_TRIGGER_NAME&#160;&#160;&#160;&quot;ad3530r_iio_trigger&quot;</td>
+          <td class="memname">#define AD3530R_IIO_TRIGGER_NAME&#160;&#160;&#160;&quot;ad353xr_iio_trigger&quot;</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -489,6 +491,20 @@ Variables</h2></td></tr>
       <table class="memname">
         <tr>
           <td class="memname">#define DATA_BUFFER_SIZE&#160;&#160;&#160;(65536)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad4521e019aebe5a17b157e219f025891" name="ad4521e019aebe5a17b157e219f025891"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad4521e019aebe5a17b157e219f025891">&#9670;&#160;</a></span>HALF_WORD_MASK</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define HALF_WORD_MASK&#160;&#160;&#160;(uint32_t)0xffff</td>
         </tr>
       </table>
 </div><div class="memdoc">

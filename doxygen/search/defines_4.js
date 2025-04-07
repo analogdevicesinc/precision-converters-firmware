@@ -2,8 +2,8 @@ var searchData=
 [
   ['dac_5fch_5fspan_0',['DAC_CH_SPAN',['../ad579x__iio_2app_2app__config_8h.html#a79b656f52005e93f3112db2b9657447a',1,'app_config.h']]],
   ['dac_5fchannel_5fcount_1',['DAC_CHANNEL_COUNT',['../nanodac__console__app_8h.html#a2c5852def19df1cdb5f392754a4f62f3',1,'nanodac_console_app.h']]],
-  ['dac_5fchannels_2',['DAC_CHANNELS',['../ad3530r__iio_2app_2app__config_8h.html#ae647eb06e9c425c683feed2e4118cf11',1,'app_config.h']]],
-  ['dac_5fgpio_5fops_3',['dac_gpio_ops',['../ad5754r__iio_2app_2app__config_8h.html#adb012f508f254bd0318f8584b7a4d822',1,'app_config.h']]],
+  ['dac_5fgpio_5fops_2',['dac_gpio_ops',['../ad5754r__iio_2app_2app__config_8h.html#adb012f508f254bd0318f8584b7a4d822',1,'app_config.h']]],
+  ['dac_5fmax_5fchannels_3',['DAC_MAX_CHANNELS',['../ad3530r__iio_2app_2app__config_8h.html#aec4d38a3c903dcb125a613ce2401b5da',1,'app_config.h']]],
   ['dac_5fmax_5fcount_4',['dac_max_count',['../ad3530r__iio_2app_2app__config_8h.html#a0ffd68779c84731acaf9fc3d29270432',1,'DAC_MAX_COUNT:&#160;app_config.h'],['../ad579x__iio_2app_2app__config_8h.html#a0ffd68779c84731acaf9fc3d29270432',1,'DAC_MAX_COUNT:&#160;app_config.h'],['../ltc2672__iio_2app_2app__config_8h.html#a0ffd68779c84731acaf9fc3d29270432',1,'DAC_MAX_COUNT:&#160;app_config.h']]],
   ['dac_5fmax_5fcount_5f2s_5fcompl_5',['dac_max_count_2s_compl',['../ad5754r__iio_2app_2app__config_8h.html#a6492609582d65d6d7551e625e0228455',1,'DAC_MAX_COUNT_2S_COMPL:&#160;app_config.h'],['../ad579x__iio_2app_2app__config_8h.html#a6492609582d65d6d7551e625e0228455',1,'DAC_MAX_COUNT_2S_COMPL:&#160;app_config.h']]],
   ['dac_5fmax_5fcount_5fbin_5foffset_6',['dac_max_count_bin_offset',['../ad5754r__iio_2app_2app__config_8h.html#a653c425fe1a8e30cd67b8f94142f0127',1,'DAC_MAX_COUNT_BIN_OFFSET:&#160;app_config.h'],['../ad579x__iio_2app_2app__config_8h.html#a653c425fe1a8e30cd67b8f94142f0127',1,'DAC_MAX_COUNT_BIN_OFFSET:&#160;app_config.h']]],

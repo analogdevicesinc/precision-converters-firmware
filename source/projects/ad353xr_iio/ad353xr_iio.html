@@ -7,11 +7,11 @@
 
     <title>AD3530R IIO Application &#8212; Precision Converters Firmware  documentation</title>
     <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=8e8a900e" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/app.min.css?v=cad18f0a" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/app.min.css?v=0ea85bdb" />
     <script src="../../../_static/documentation_options.js?v=5929fcd5"></script>
     <script src="../../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script defer="" src="../../../_static/app.umd.js?v=dcfbb431"></script>
+    <script defer="" src="../../../_static/app.umd.js?v=25136f1d"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
     <link rel="next" title="AD355XR IIO Application" href="../ad355xr_iio/ad355xr_iio.html" />
@@ -184,6 +184,14 @@ Content on this topic
   <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper" id="top-anchor">
+          <div class="body-header">
+    <nav class="breadcrumb">
+        <ol>
+          <li><a href="../index.html">Firmware Applications</a></li>
+          </ol>
+    </nav>
+  </div>
+
           <div class="body" role="main">
             
   <section id="ad3530r-iio-application">
@@ -193,10 +201,14 @@ Content on this topic
 <p><strong>Supported Devices:</strong></p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://www.analog.com/en/ad3530r.html">AD3530R</a></p></li>
+<li><p><a class="reference external" href="https://www.analog.com/en/products/AD3530.html">AD3530</a></p></li>
+<li><p><a class="reference external" href="https://wcm2.cldnet.analog.com/en/products/AD3531R.html">AD3531R</a></p></li>
+<li><p><a class="reference external" href="https://wcm2.cldnet.analog.com/en/products/AD3531.html">AD3531</a></p></li>
 </ul>
 <p><strong>Supported Evaluation Boards:</strong></p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://www.analog.com/eval-ad3530r">EVAL-AD3530RARDZ</a></p></li>
+<li><p><a class="reference external" href="https://wcm2.cldnet.analog.com/en/resources/evaluation-hardware-and-software/evaluation-boards-kits/eval-ad3531r.html">EVAL-AD3531RARDZ</a></p></li>
 </ul>
 <p><strong>Supported Carrier Boards:</strong></p>
 <ul class="simple">
@@ -206,9 +218,9 @@ Content on this topic
 <section id="introduction">
 <h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading"></a></h2>
 <p>This page gives an overview of using the ARM platforms supported
-firmware example with Analog Devices AD3530r Evaluation board and SDP-K1 controller board.
+firmware example with Analog Devices AD353xr Evaluation board and SDP-K1 controller board.
 This example code leverages the ADI developed IIO (Industrial Input Output) ecosystem to
-evaluate the AD3530r device by providing a device debug and data capture support.</p>
+evaluate the AD353xr device by providing a device debug and data capture support.</p>
 <blockquote>
 <div><a class="reference internal image-reference" href="../../../_images/app_interface.png"><img alt="../../../_images/app_interface.png" src="../../../_images/app_interface.png" style="width: 350px;" />
 </a>
@@ -240,9 +252,9 @@ they may be of interest if you require Linux and/or FPGA support.</p>
 </section>
 <section id="hardware-connections">
 <h2>Hardware Connections<a class="headerlink" href="#hardware-connections" title="Link to this heading"></a></h2>
-<p>Required: SDP-K1, EVAL-AD3530RARDZ board
+<p>Required: SDP-K1, EVAL-AD353XRARDZ board
 and USB cable.</p>
-<p>Connect the EVAL-AD3530RARDZ board to SDP-K1 board (or any STM32 controller
+<p>Connect the EVAL-AD353XRARDZ board to SDP-K1 board (or any STM32 controller
 board). Connect controller board to the PC using the USB cable.</p>
 <blockquote>
 <div><a class="reference internal image-reference" href="../../../_images/ad3530r_hardware_interface.png"><img alt="../../../_images/ad3530r_hardware_interface.png" src="../../../_images/ad3530r_hardware_interface.png" style="width: 600px;" />
@@ -253,7 +265,7 @@ board). Connect controller board to the PC using the USB cable.</p>
 <h2>Jumper Settings<a class="headerlink" href="#jumper-settings" title="Link to this heading"></a></h2>
 <p><strong>SDP-K1:</strong></p>
 <p>Connect the VIO_ADJUST jumper on the SDP-K1 board to 3.3V position to drive SDP-K1 GPIOs at 3.3V</p>
-<p><strong>EVAL-AD3530R:</strong></p>
+<p><strong>EVAL-AD353XR:</strong></p>
 <ul class="simple">
 <li><p>Please refer to the respective board user guide on the product page of the chosen device.</p></li>
 </ul>
