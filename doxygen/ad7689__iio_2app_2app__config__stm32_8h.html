@@ -172,6 +172,8 @@ Macros</h2></td></tr>
 <tr class="separator:a1659f21ce4eb111093df2554c59b9f77"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6b8313be975d574c3128e2726bcbaeca" id="r_a6b8313be975d574c3128e2726bcbaeca"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad7689__iio_2app_2app__config__stm32_8h.html#a6b8313be975d574c3128e2726bcbaeca">PWM_PRESCALER</a>&#160;&#160;&#160;3</td></tr>
 <tr class="separator:a6b8313be975d574c3128e2726bcbaeca"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad6d026bb2e4c6900fba84fa0c6a739a2" id="r_ad6d026bb2e4c6900fba84fa0c6a739a2"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad7689__iio_2app_2app__config__stm32_8h.html#ad6d026bb2e4c6900fba84fa0c6a739a2">PWM_HANDLE</a>&#160;&#160;&#160;<a class="el" href="ad355xr__iio_2app_2app__config__stm32_8h.html#a85788cec5a97ee377e4ee2e74f026484">htim4</a></td></tr>
+<tr class="separator:ad6d026bb2e4c6900fba84fa0c6a739a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a03a017cd7aed209b5eae3f678a974693" id="r_a03a017cd7aed209b5eae3f678a974693"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad7689__iio_2app_2app__config__stm32_8h.html#a03a017cd7aed209b5eae3f678a974693">RDY_GPIO_PRIORITY</a>&#160;&#160;&#160;1</td></tr>
 <tr class="separator:a03a017cd7aed209b5eae3f678a974693"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a17889cf1cf83a54524c242fa5a353cf1" id="r_a17889cf1cf83a54524c242fa5a353cf1"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad7689__iio_2app_2app__config__stm32_8h.html#a17889cf1cf83a54524c242fa5a353cf1">SAMPLING_RATE</a>&#160;&#160;&#160;(62000)</td></tr>
@@ -193,6 +195,8 @@ Variables</h2></td></tr>
 <tr class="separator:a25a82fcf0cd24eb6d39977cb5864cec8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad975ad095258a3c642bd313481f317d5" id="r_ad975ad095258a3c642bd313481f317d5"><td class="memItemLeft" align="right" valign="top">USBD_HandleTypeDef&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad7689__iio_2app_2app__config__stm32_8h.html#ad975ad095258a3c642bd313481f317d5">APP_UART_USB_HANDLE</a></td></tr>
 <tr class="separator:ad975ad095258a3c642bd313481f317d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1f5f065ef510283e97c5a5f14cbed972" id="r_a1f5f065ef510283e97c5a5f14cbed972"><td class="memItemLeft" align="right" valign="top">TIM_HandleTypeDef&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad7689__iio_2app_2app__config__stm32_8h.html#a1f5f065ef510283e97c5a5f14cbed972">PWM_HANDLE</a></td></tr>
+<tr class="separator:a1f5f065ef510283e97c5a5f14cbed972"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad6c530882dee1bb34bfde4c8bf40eb9c" id="r_ad6c530882dee1bb34bfde4c8bf40eb9c"><td class="memItemLeft" align="right" valign="top">struct stm32_usb_uart_init_param&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad7689__iio_2app_2app__config__stm32_8h.html#ad6c530882dee1bb34bfde4c8bf40eb9c">stm32_vcom_extra_init_params</a></td></tr>
 <tr class="separator:ad6c530882dee1bb34bfde4c8bf40eb9c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae9b3636a64a6ddc6e338421a69ca0405" id="r_ae9b3636a64a6ddc6e338421a69ca0405"><td class="memItemLeft" align="right" valign="top">struct stm32_gpio_irq_init_param&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad7689__iio_2app_2app__config__stm32_8h.html#ae9b3636a64a6ddc6e338421a69ca0405">stm32_trigger_gpio_irq_init_params</a></td></tr>
@@ -363,6 +367,20 @@ Variables</h2></td></tr>
       <table class="memname">
         <tr>
           <td class="memname">#define PWM_CLK_DIVIDER&#160;&#160;&#160;2</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad6d026bb2e4c6900fba84fa0c6a739a2" name="ad6d026bb2e4c6900fba84fa0c6a739a2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad6d026bb2e4c6900fba84fa0c6a739a2">&#9670;&#160;</a></span>PWM_HANDLE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PWM_HANDLE&#160;&#160;&#160;<a class="el" href="ad355xr__iio_2app_2app__config__stm32_8h.html#a85788cec5a97ee377e4ee2e74f026484">htim4</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -587,6 +605,28 @@ Variables</h2></td></tr>
       <table class="memname">
         <tr>
           <td class="memname">UART_HandleTypeDef huart5</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a1f5f065ef510283e97c5a5f14cbed972" name="a1f5f065ef510283e97c5a5f14cbed972"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1f5f065ef510283e97c5a5f14cbed972">&#9670;&#160;</a></span>PWM_HANDLE</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">TIM_HandleTypeDef PWM_HANDLE</td>
         </tr>
       </table>
   </td>
