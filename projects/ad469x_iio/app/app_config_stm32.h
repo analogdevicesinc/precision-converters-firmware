@@ -89,6 +89,10 @@
 #define TIMER2_ID                          2
 #define TIMER8_ID                          8
 
+#define TIMER1_HANDLE                      htim1
+#define TIMER2_HANDLE                      htim2
+#define TIMER8_HANDLE                      htim8
+
 #define Rx_DMA_IRQ_ID               DMA2_Stream0_IRQn
 #define AD469x_TxDMA_CHANNEL_NUM    DMA_CHANNEL_7
 #define AD469x_RxDMA_CHANNEL_NUM    DMA_CHANNEL_3
@@ -125,6 +129,7 @@ extern SPI_HandleTypeDef hspi1;
 extern DMA_HandleTypeDef hdma_spi1_rx;
 extern TIM_HandleTypeDef htim1;
 extern TIM_HandleTypeDef htim2;
+extern TIM_HandleTypeDef htim8;
 extern DMA_HandleTypeDef hdma_tim1_ch3;
 extern DMA_HandleTypeDef hdma_tim1_ch2;
 extern TIM_HandleTypeDef htim12;

@@ -45,11 +45,6 @@ struct stm32_uart_init_param stm32_uart_init_params = {
 	.huart = APP_UART_HANDLE
 };
 
-/* VCOM Init Parameters */
-struct stm32_usb_uart_init_param stm32_vcom_extra_init_params = {
-	.husbdevice = APP_UART_USB_HANDLE
-};
-
 /* STM32 GPIO IRQ specific parameters */
 struct stm32_gpio_irq_init_param stm32_trigger_gpio_irq_init_params = {
 	.port_nb = GPIO_TRIGGER_INT_PORT
@@ -92,20 +87,20 @@ struct stm32_gpio_init_param stm32_gpio_gp0_extra_init_params = {
 
 /* STM32 CNV PWM specific parameters */
 struct stm32_pwm_init_param stm32_cnv_pwm_init_params = {
+	.htimer = &CNV_PWM_HANDLE,
 	.prescaler = CNV_PWM_PRESCALER,
 	.timer_autoreload = true,
 	.mode = TIM_OC_PWM2,
 	.timer_chn = CNV_PWM_CHANNEL,
 	.get_timer_clock = HAL_RCC_GetPCLK2Freq,
 	.clock_divider = CNV_PWM_CLK_DIVIDER,
-	.complementary_channel = false,
-	.trigger_enable = false,
-	.trigger_output = PWM_TRGO_RESET
+	.complementary_channel = false
 };
 
 #if (INTERFACE_MODE == SPI_DMA)
 /* STM32 PWM for specific parameters */
 struct stm32_pwm_init_param stm32_cs_extra_init_params = {
+	.htimer = &CS_TIMER_HANDLE,
 	.prescaler = CS_TIMER_PRESCALER,
 	.timer_autoreload = false,
 	.mode = TIM_OC_PWM2,
@@ -117,17 +112,14 @@ struct stm32_pwm_init_param stm32_cs_extra_init_params = {
 
 /* STM32 PWM specific init params */
 struct stm32_pwm_init_param stm32_tx_trigger_extra_init_params = {
+	.htimer = &TIMER8_HANDLE,
 	.prescaler = TIMER_8_PRESCALER,
 	.timer_autoreload = true,
 	.mode = TIM_OC_TOGGLE,
 	.timer_chn = TIMER_CHANNEL_1,
 	.complementary_channel = false,
 	.get_timer_clock = HAL_RCC_GetPCLK1Freq,
-	.clock_divider = TIMER_8_CLK_DIVIDER,
-	.trigger_output = PWM_TRGO_ENABLE,
-	.dma_enable = true,
-	.repetitions = 1,
-	.onepulse_enable = true
+	.clock_divider = TIMER_8_CLK_DIVIDER
 };
 
 /* STM32 Tx DMA channel extra init params */
@@ -212,7 +204,6 @@ void stm32_system_init(void)
 	MX_UART5_Init();
 	MX_TIM1_Init();
 	MX_I2C1_Init();
-	MX_USB_DEVICE_Init();
 }
 
 /**
@@ -237,8 +228,12 @@ void tim2_config(void)
  */
 void tim8_config(void)
 {
-	TIM8->SMCR |= (TIM_TS_ETRF | TIM_SLAVEMODE_TRIGGER |
-		       TIM_MASTERSLAVEMODE_ENABLE);
+	TIM8->RCR = BYTES_PER_SAMPLE - 1; // RCR value in one-pulse mode
+
+	TIM8->EGR = TIM_EGR_UG; // Generate update event
+
+	TIM8->DIER |=
+		TIM_DIER_CC1DE; // Generate DMA request after capture/compare event
 
 	TIM8->SMCR |=
 		TIM_TRIGGERPOLARITY_INVERTED; // Inverted Polarity for ETR trigger source (Busy falling edge)
@@ -252,10 +247,6 @@ void tim8_config(void)
 void stm32_timer_enable(void)
 {
 #if (INTERFACE_MODE == SPI_DMA)
-
-	/* Enable tx trigger timer */
-	no_os_pwm_enable(tx_trigger_desc);
-
 	TIM1->CNT = 0;
 	TIM2->CNT = 0;
 	TIM8->CNT = 0;

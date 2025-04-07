@@ -63,12 +63,14 @@
 #define LDAC_PWM_ID          12 //Timer12
 #define LDAC_PWM_CHANNEL     2 // Channel 2
 #define LDAC_PWM_CLK_DIVIDER 2 // multiplier to get timer clock from PLCK1
+#define LDAC_PWM_HANDLE      htim12
 
 /* STM32 PWM specific parameters to stop spi dma transfer */
 #define SPI_DMA_TX_STOP_PWM_ID   4 //Timer4
 #define SPI_DMA_TX_STOP_PWM_PRESCALER   0
 #define SPI_DMA_TX_STOP_PWM_CHANNEL     1 // Channel 1
 #define SPI_DMA_TX_STOP_PWM_CLK_DIVIDER 2 // multiplier to get timer clock from PLCK1
+#define SPI_DMA_TX_STOP_PWM_HANDLE 		htim4
 
 /* Redefine the init params structure mapping wrt platform */
 #define spi_extra_init_params   stm32_spi_init_params
@@ -121,6 +123,7 @@ extern struct stm32_pwm_init_param stm32_spi_dma_tx_stop_pwm_init_params;
 extern UART_HandleTypeDef huart5;
 extern SPI_HandleTypeDef hspi1;
 extern TIM_HandleTypeDef htim4;
+extern TIM_HandleTypeDef htim12;
 uint32_t spi_dma_tx_stop_pwm_frquency[NUMBER_OF_CHANNELS];
 
 int32_t stm32_spi_dma_enable(struct stm32_spi_desc* spidesc,

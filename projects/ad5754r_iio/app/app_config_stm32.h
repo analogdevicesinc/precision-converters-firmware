@@ -62,6 +62,7 @@
 #define LDAC_PWM_CHANNEL     3 // Channel3
 #define LDAC_PWM_CLK_DIVIDER 2 // multiplier to get timer clock from PLCK1
 #define LDAC_PWM_PRESCALER   3
+#define LDAC_PWM_HANDLE      htim1
 
 /* Priority of the LDAC Interrupt */
 #define LDAC_GPIO_PRIORITY 1

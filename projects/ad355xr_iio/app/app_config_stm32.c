@@ -70,6 +70,7 @@ struct stm32_gpio_init_param stm32_gpio_reset_init_params = {
 
 /* STM32 LDAC PWM specific parameters */
 struct stm32_pwm_init_param stm32_ldac_pwm_init_params = {
+	.htimer = &LDAC_PWM_HANDLE,
 	.prescaler = LDAC_PWM_PRESCALER,
 	.timer_autoreload = true,
 	.mode = TIM_OC_PWM1,
@@ -80,6 +81,7 @@ struct stm32_pwm_init_param stm32_ldac_pwm_init_params = {
 
 /* STM32 PWM specific parameters used to stop spi dma transfer */
 struct stm32_pwm_init_param stm32_spi_dma_tx_stop_pwm_init_params = {
+	.htimer = &SPI_DMA_TX_STOP_PWM_HANDLE,
 	.prescaler = SPI_DMA_TX_STOP_PWM_PRESCALER,
 	.timer_autoreload = true,
 	.mode = TIM_OC_PWM1,

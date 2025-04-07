@@ -124,6 +124,7 @@ struct stm32_tdm_init_param stm32_tdm_extra_init_params = {
 
 /* STM32 PWM specific parameters */
 struct stm32_pwm_init_param stm32_pwm_extra_init_params = {
+	.htimer = &MCLK_PWM_HANDLE,
 	.prescaler = MCLK_PWM_PRESCALER,
 	.timer_autoreload = true,
 	.mode = TIM_OC_PWM1,

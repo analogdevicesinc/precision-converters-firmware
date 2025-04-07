@@ -98,6 +98,7 @@ struct stm32_gpio_init_param stm32_pwm_gpio_extra_init_params = {
 
 /* STM32 PWM for specific parameters */
 struct stm32_pwm_init_param stm32_pwm_cnv_extra_init_params = {
+	.htimer = &TIMER1_HANDLE,
 	.prescaler = TIMER_1_PRESCALER,
 	.timer_autoreload = true,
 	.mode = TIM_OC_PWM1,
@@ -105,13 +106,19 @@ struct stm32_pwm_init_param stm32_pwm_cnv_extra_init_params = {
 	.complementary_channel = false,
 	.get_timer_clock = HAL_RCC_GetPCLK2Freq,
 	.clock_divider = TIMER_1_CLK_DIVIDER,
-	.trigger_enable = false,
+	.slave_mode = STM32_PWM_SM_DISABLE,
 	.trigger_output = PWM_TRGO_OC1
+};
+
+/* STM32 VCOM init parameters */
+struct stm32_usb_uart_init_param stm32_vcom_extra_init_params = {
+	.husbdevice = &hUsbDeviceHS,
 };
 
 #if (INTERFACE_MODE == SPI_DMA)
 /* STM32 PWM specific parameters */
 struct stm32_pwm_init_param stm32_cs_extra_init_params = {
+	.htimer = &TIMER2_HANDLE,
 	.prescaler = TIMER_2_PRESCALER,
 	.timer_autoreload = false,
 	.mode = TIM_OC_PWM1,
@@ -123,6 +130,7 @@ struct stm32_pwm_init_param stm32_cs_extra_init_params = {
 
 /* STM32 PWM specific init params */
 struct stm32_pwm_init_param stm32_tx_trigger_extra_init_params = {
+	.htimer = &TIMER8_HANDLE,
 	.prescaler = TIMER_8_PRESCALER,
 	.timer_autoreload = true,
 	.mode = TIM_OC_TOGGLE,
@@ -130,7 +138,7 @@ struct stm32_pwm_init_param stm32_tx_trigger_extra_init_params = {
 	.complementary_channel = false,
 	.get_timer_clock = HAL_RCC_GetPCLK1Freq,
 	.clock_divider = TIMER_8_CLK_DIVIDER,
-	.trigger_enable = true,
+	.slave_mode = STM32_PWM_SM_TRIGGER,
 	.trigger_source = PWM_TS_ITR0,
 	.repetitions = 1,
 	.onepulse_enable = true,
@@ -194,11 +202,6 @@ uint8_t* iio_buf_current_idx;
 uint8_t* dma_buf_current_idx;
 
 #endif
-
-/* STM32 VCOM init parameters */
-struct stm32_usb_uart_init_param stm32_vcom_extra_init_params = {
-	.husbdevice = &hUsbDeviceHS,
-};
 
 /******************************************************************************/
 /************************** Functions Declaration *****************************/

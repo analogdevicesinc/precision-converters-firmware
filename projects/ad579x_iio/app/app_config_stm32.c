@@ -78,6 +78,7 @@ struct stm32_gpio_init_param stm32_gpio_reset_init_params = {
 
 /* STM32 LDAC PWM specific parameters */
 struct stm32_pwm_init_param stm32_pwm_extra_init_params = {
+	.htimer = &LDAC_PWM_HANDLE,
 	.prescaler = LDAC_PWM_PRESCALER,
 	.timer_autoreload = true,
 	.mode = TIM_OC_PWM1,
