@@ -20,9 +20,9 @@ Introduction
 ============
 
 This page gives an overview of using the ARM platforms supported (default is Mbed) 
-firmware example with Analog Devices AD7134 Evaluation board and SDP-K1 controller board. 
+firmware example with Analog Devices AD4134/AD7134 Evaluation board and SDP-K1 controller board. 
 This example code leverages the ADI developed IIO (Industrial Input Output) ecosystem to 
-evaluate the AD7134 device by providing a device debug and data capture support.
+evaluate the AD4134/AD7134 device by providing a device debug and data capture support.
 
 The firmware supports mbed and STM32 platforms. The respective build guides for each of the platforms
 can be found in the further sections. The active platform can be chosen by selecting the appropriate 
@@ -49,10 +49,10 @@ to communicates with IIO device.
 Hardware Connections
 ====================
 
-Required: SDP-K1 (or alternative Mbed enabled controller board, or an STM32 board ), EVAL-AD7134 board
+Required: SDP-K1 (or alternative Mbed enabled controller board, or an STM32 board ), EVAL-AD4134/AD7134 board
 and USB cable.
 
-Connect the EVAL-AD7134 board to SDP-K1 board (or any other Mbed enabled controller 
+Connect the EVAL-AD4134/AD7134 board to SDP-K1 board (or any other Mbed enabled controller 
 board or an equivalent STM32 board). Connect controller board to the PC using the USB cable. 
 
    .. image:: /source/projects/ad7134_iio/ad7134_hardware_interface.png
