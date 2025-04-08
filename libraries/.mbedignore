@@ -79,6 +79,7 @@ no-OS/drivers/platform/xilinx/
 no-OS/drivers/platform/pico/
 no-OS/drivers/platform/chibios/
 no-OS/drivers/platform/freeRTOS/
+no-OS/drivers/platform/ftd2xx/
 no-OS/drivers/potentiometer/
 no-OS/drivers/power/
 no-OS/drivers/rf-transceiver/
