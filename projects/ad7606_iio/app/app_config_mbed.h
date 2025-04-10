@@ -2,7 +2,7 @@
  *   @file    app_config_mbed.h
  *   @brief   Header file for Mbed platform configurations
 ********************************************************************************
- * Copyright (c) 2021-23 Analog Devices, Inc.
+ * Copyright (c) 2021-23, 2025 Analog Devices, Inc.
  * All rights reserved.
  *
  * This software is proprietary to Analog Devices, Inc. and its licensors.
@@ -59,6 +59,20 @@
 /* Pins used to trigger and/or read a new (periodic) conversion event */
 #define PWM_TRIGGER		ARDUINO_UNO_D3
 #define INT_EVENT		ARDUINO_UNO_D3
+
+/* Unused macros */
+#define SPI_DEVICE_ID 0
+#define PWM_ID 0
+#define UART_ID 0
+#define LED_PORT 0
+#define OSR0_PORT 0
+#define OSR1_PORT 0
+#define OSR2_PORT 0
+#define RESET_PORT 0
+#define CONVST_PORT 0
+#define BUSY_PORT 0
+#define RANGE_PORT 0
+#define STDBY_PORT 0
 
 /* Define the max possible sampling (or output data) rate for a given platform.
  * This is also used to find the time period to trigger a periodic conversion event.

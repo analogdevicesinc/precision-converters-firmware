@@ -20,7 +20,7 @@
 #include <stdint.h>
 #include <assert.h>
 
-#include "iio_ad7606.h"
+#include "ad7606_iio.h"
 
 /******************************************************************************/
 /********************** Macros and Constants Definitions **********************/
