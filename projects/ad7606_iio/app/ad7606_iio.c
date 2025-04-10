@@ -1,5 +1,5 @@
 /***************************************************************************//**
- *   @file    iio_ad7606.c
+ *   @file    ad7606_iio.c
  *   @brief   Implementation of AD7606 IIO application interfaces
  *   @details This module acts as an interface for AD7606 IIO application
 ********************************************************************************
@@ -64,7 +64,7 @@
 #define	OFFSET_REG_RESOLUTION		1
 #endif
 
-/*	Number of IIO devices */
+/* Number of IIO devices */
 #define NUM_OF_IIO_DEVICES	1
 
 /* IIO trigger name */
