@@ -23,7 +23,7 @@ Supported Hardware
 
 **Supported Carrier Boards:**
 
-* `SDP-K1 With Mbed <https://os.mbed.com/platforms/SDP_K1/>`_
+* `SDP-K1  <https://www.analog.com/en/resources/evaluation-hardware-and-software/evaluation-boards-kits/sdp-k1.html#eb-overview>`_
 
 ============
 Introduction
@@ -31,7 +31,7 @@ Introduction
 
 The AD717x/AD411x family offer a complete integrated Sigma-Delta ADC solution which can be used in high precision, low noise single channel applications (Life Science measurements) or higher speed multiplexed applications (Factory Automation PLC Input modules).
 This page gives an overview of using the AD717x/AD411x firmware example with SDP-K1 EVAL board, interfacing with various EVAL boards supporting AD711x/AD411x family devices. 
-The firmware example comprises 3 layers of software (from top to bottom): Console Application Layer, Device No-OS Layer and Platform Drivers (Mbed-OS) layer.
+The firmware example comprises 3 layers of software (from top to bottom): Console Application Layer, Device No-OS Layer and Platform Drivers layer. It supports STM32 and Mbed platforms.
 
    .. image:: /source/projects/ad717x_console/ad717x_architecture.jpg
       :width: 200
@@ -39,11 +39,11 @@ The firmware example comprises 3 layers of software (from top to bottom): Consol
 The application layer uses the ADI Console Libraries to create console based User Interactive (UI). 
 The middle layer of No-OS device library have device specific APIs to interface with AD717x/AD411x device.
 These APIs allows direct access to device register map in order to read/write device registers. The bottom layer of Platform
-Drivers is responsible for Low Level Interface. The platform drivers uses mbed-os libraries to access low level peripheral 
+Drivers is responsible for Low Level Interface. The platform drivers uses underlying libraries to access low level peripheral 
 (like GPIOs, SPI, I2C, etc).
 
-The Mbed Platform simplifies the overall software development process by providing the low level driver support. This reduces 
-the hardware dependency as any Mbed enabled board can be used with same firmware with little modifications (precisely changing a pin mapping).
+The Platform simplifies the overall software development process by providing the low level driver support. This reduces 
+the hardware dependency as any Mbed enabled board (Or an STM32 board) can be used with same firmware with little modifications (precisely changing a pin mapping).
 
 =================
 Interface Diagram
@@ -87,15 +87,15 @@ The COM port assigned to a device can be seen through the device manager for win
       :width: 300
 
 ====================
-AD717x Mbed Firmware
+AD717x Firmware
 ====================
-This section briefs on the usage of MBED firmware. This also explains the steps to compile and build the application using
+This section briefs on the usage of firmware. This also explains the steps to compile and build the application using
 mbed and make based build.
 
 The software execution sequence for the AD717x/AD411x Firmware Example is shown below. This is a blocking application as it waits for user input over serial interface (UART). 
 The input is scanned and processed through 'adi console libraries'. The menu functionality is executed from ad717x_conole_app.c file. The application layer talks with No-OS layer 
 for device registers and data access. The No-OS layer interfaces with Platform Drivers layer for accessing low level peripherals. As name suggests, this layer is platform dependent.
-AD717x/AD411x firmware uses Mbed libraries within Platform Drivers layer.
+AD717x/AD411x firmware uses underlying libraries within Platform Drivers layer.
 
    .. image:: /source/projects/ad717x_console/sequence_diagram_ad717x.jpg
       :width: 700
@@ -108,7 +108,7 @@ AD717x/AD411x firmware uses Mbed libraries within Platform Drivers layer.
 Quick Start
 ===========
 
-If you have some familiarity with the Mbed platform, the following is a basic list of steps required to start running the code, 
+If you have some familiarity with the Mbed or STM32 platform, the following is a basic list of steps required to start running the code, 
 see below for more detail:
 
 * Connect the AD717x/AD411x EVAL-board to the SDP-K1 controller board.
