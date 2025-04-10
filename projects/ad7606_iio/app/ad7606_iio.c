@@ -1,9 +1,9 @@
 /***************************************************************************//**
- *   @file    iio_ad7606.c
+ *   @file    ad7606_iio.c
  *   @brief   Implementation of AD7606 IIO application interfaces
  *   @details This module acts as an interface for AD7606 IIO application
 ********************************************************************************
- * Copyright (c) 2020-2023 Analog Devices, Inc.
+ * Copyright (c) 2020-2023, 2025 Analog Devices, Inc.
  *
  * This software is proprietary to Analog Devices, Inc. and its licensors.
  * By using this software you agree to the terms of the associated
@@ -20,7 +20,7 @@
 #include <math.h>
 
 #include "app_config.h"
-#include "iio_ad7606.h"
+#include "ad7606_iio.h"
 #include "ad7606.h"
 #include "ad7606_support.h"
 #include "ad7606_user_config.h"
@@ -64,7 +64,7 @@
 #define	OFFSET_REG_RESOLUTION		1
 #endif
 
-/*	Number of IIO devices */
+/* Number of IIO devices */
 #define NUM_OF_IIO_DEVICES	1
 
 /* IIO trigger name */
@@ -361,7 +361,7 @@ static int set_operating_mode(void *device,
 
 	if (operating_mode_value < sizeof(operating_mode_str) / sizeof(
 		    operating_mode_str[0])) {
-		if (ad7606_spi_write_mask(device,
+		if (ad7606_reg_write_mask(device,
 					  AD7606_REG_CONFIG,
 					  AD7606_CONFIG_OPERATION_MODE_MSK,
 					  operating_mode_value) == 0) {
@@ -421,7 +421,7 @@ static int set_power_down_mode(void *device,
 {
 	uint8_t power_down_mode_value;
 	static enum ad7606_op_mode prev_power_down_mode = AD7606_NORMAL;
-	struct ad7606_config dev_config;
+	struct ad7606_config dev_config = {0};
 
 	sscanf(buf, "%d", &power_down_mode_value);
 
@@ -745,7 +745,7 @@ static int set_chn_range(void *device,
 			chn_range <<= CHANNEL_RANGE_MSK_OFFSET;
 		}
 
-		if (ad7606_spi_write_mask(device,
+		if (ad7606_reg_write_mask(device,
 					  AD7606_REG_RANGE_CH_ADDR(channel->ch_num),
 					  AD7606_RANGE_CH_MSK(channel->ch_num),
 					  chn_range) == 0) {
@@ -874,7 +874,7 @@ static int get_chn_temperature(void *device,
 	int32_t ret;
 
 	/* Configure the channel multiplexer to select temperature read */
-	if (ad7606_spi_write_mask(device,
+	if (ad7606_reg_write_mask(device,
 				  AD7606_REG_DIAGNOSTIC_MUX_CH(channel->ch_num),
 				  AD7606_DIAGN_MUX_CH_MSK(channel->ch_num),
 				  AD7606_DIAGN_MUX_CH_VAL((channel->ch_num),
@@ -900,7 +900,7 @@ static int get_chn_temperature(void *device,
 		temperature = ((voltage - 0.69068) / 0.019328) + 25.0;
 
 		/* Change channel mux back to analog input */
-		(void)ad7606_spi_write_mask(device,
+		(void)ad7606_reg_write_mask(device,
 					    AD7606_REG_DIAGNOSTIC_MUX_CH(channel->ch_num),
 					    AD7606_DIAGN_MUX_CH_MSK(channel->ch_num),
 					    AD7606_DIAGN_MUX_CH_VAL((channel->ch_num),
@@ -946,7 +946,7 @@ static int get_chn_vref(void *device,
 	int32_t ret;
 
 	/* Configure the channel multiplexer to select Vref read */
-	if (ad7606_spi_write_mask(device,
+	if (ad7606_reg_write_mask(device,
 				  AD7606_REG_DIAGNOSTIC_MUX_CH(channel->ch_num),
 				  AD7606_DIAGN_MUX_CH_MSK(channel->ch_num),
 				  AD7606_DIAGN_MUX_CH_VAL((channel->ch_num),
@@ -972,7 +972,7 @@ static int get_chn_vref(void *device,
 		vref_voltge /= VREF_MUX_MULTIPLIER;
 
 		/* Change channel mux back to analog input */
-		(void)ad7606_spi_write_mask(device,
+		(void)ad7606_reg_write_mask(device,
 					    AD7606_REG_DIAGNOSTIC_MUX_CH(channel->ch_num),
 					    AD7606_DIAGN_MUX_CH_MSK(channel->ch_num),
 					    AD7606_DIAGN_MUX_CH_VAL((channel->ch_num),
@@ -1018,7 +1018,7 @@ static int get_chn_vdrive(void *device,
 	int32_t ret;
 
 	/* Configure the channel multiplexer to select Vdrive read */
-	if (ad7606_spi_write_mask(device,
+	if (ad7606_reg_write_mask(device,
 				  AD7606_REG_DIAGNOSTIC_MUX_CH(channel->ch_num),
 				  AD7606_DIAGN_MUX_CH_MSK(channel->ch_num),
 				  AD7606_DIAGN_MUX_CH_VAL((channel->ch_num),
@@ -1041,7 +1041,7 @@ static int get_chn_vdrive(void *device,
 				attr_scale_val[channel->ch_num]);
 
 		/* Change channel mux back to analog input */
-		(void)ad7606_spi_write_mask(device,
+		(void)ad7606_reg_write_mask(device,
 					    AD7606_REG_DIAGNOSTIC_MUX_CH(channel->ch_num),
 					    AD7606_DIAGN_MUX_CH_MSK(channel->ch_num),
 					    AD7606_DIAGN_MUX_CH_VAL((channel->ch_num),
@@ -1087,7 +1087,7 @@ static int get_chn_aldo(void *device,
 	int32_t ret;
 
 	/* Configure the channel multiplexer to select ALDO read */
-	if (ad7606_spi_write_mask(device,
+	if (ad7606_reg_write_mask(device,
 				  AD7606_REG_DIAGNOSTIC_MUX_CH(channel->ch_num),
 				  AD7606_DIAGN_MUX_CH_MSK(channel->ch_num),
 				  AD7606_DIAGN_MUX_CH_VAL((channel->ch_num),
@@ -1113,7 +1113,7 @@ static int get_chn_aldo(void *device,
 		aldo_voltge /= VREF_MUX_MULTIPLIER;
 
 		/* Change channel mux back to analog input */
-		(void)ad7606_spi_write_mask(device,
+		(void)ad7606_reg_write_mask(device,
 					    AD7606_REG_DIAGNOSTIC_MUX_CH(channel->ch_num),
 					    AD7606_DIAGN_MUX_CH_MSK(channel->ch_num),
 					    AD7606_DIAGN_MUX_CH_VAL((channel->ch_num),
@@ -1159,7 +1159,7 @@ static int get_chn_dldo(void *device,
 	int32_t ret;
 
 	/* Configure the channel multiplexer to select DLDO read */
-	if (ad7606_spi_write_mask(device,
+	if (ad7606_reg_write_mask(device,
 				  AD7606_REG_DIAGNOSTIC_MUX_CH(channel->ch_num),
 				  AD7606_DIAGN_MUX_CH_MSK(channel->ch_num),
 				  AD7606_DIAGN_MUX_CH_VAL((channel->ch_num),
@@ -1185,7 +1185,7 @@ static int get_chn_dldo(void *device,
 		dldo_voltge /= VREF_MUX_MULTIPLIER;
 
 		/* Change channel mux back to analog input */
-		(void)ad7606_spi_write_mask(device,
+		(void)ad7606_reg_write_mask(device,
 					    AD7606_REG_DIAGNOSTIC_MUX_CH(channel->ch_num),
 					    AD7606_DIAGN_MUX_CH_MSK(channel->ch_num),
 					    AD7606_DIAGN_MUX_CH_VAL((channel->ch_num),
@@ -1299,10 +1299,6 @@ static int get_chn_open_circuit_detect_manual(void *device,
 			} else {
 				return -EINVAL;
 			}
-
-			/* Break if open circuit detection aborted (in case above conditions not met) */
-			if (open_detect_done)
-				break;
 
 			/* Set common mode low (disabling open circuit detect on channel) */
 			if (ad7606_spi_reg_write(device,
@@ -1717,6 +1713,20 @@ static int32_t iio_ad7606_prepare_transfer(void *dev_instance,
 	buf_size_updated = false;
 	chn_indx = 0;
 
+	/* The UART interrupt needs to be prioritized over the GPIO (end of conversion) interrupt.
+		 * If not, the GPIO interrupt may occur during the period where there is a UART read happening
+		 * for the READBUF command. If UART interrupts are not prioritized, then it would lead to missing of
+		 * characters in the IIO command sent from the client. */
+#if (DATA_CAPTURE_MODE == CONTINUOUS_DATA_CAPTURE)
+#if (ACTIVE_PLATFORM == STM32_PLATFORM)
+	ret = no_os_irq_set_priority(trigger_irq_desc, TRIGGER_INT_ID,
+				     RDY_GPIO_PRIORITY);
+	if (ret) {
+		return ret;
+	}
+#endif
+#endif
+
 	/* Get the active channels count based on the channel mask set in an IIO
 	 * client application (channel mask starts from bit 0) */
 	for (uint8_t chn = 0; chn < AD7606X_ADC_CHANNELS; chn++) {
@@ -2066,6 +2076,7 @@ static int32_t iio_ad7606_init(struct iio_device **desc)
 		/* Get input channel range */
 		if (ad7606_spi_reg_read(p_ad7606_dev_inst, AD7606_REG_RANGE_CH_ADDR(chn),
 					&read_val) != 0) {
+			free(iio_ad7606_inst);
 			return -EINVAL;
 		}
 
