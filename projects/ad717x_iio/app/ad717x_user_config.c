@@ -2,7 +2,7 @@
  * @file    ad717x_user_config.c
  * @brief   User Configuration source for AD717x-AD411x IIO Application
 ********************************************************************************
-* Copyright (c) 2021-22 Analog Devices, Inc.
+* Copyright (c) 2021-22,2025 Analog Devices, Inc.
 * All rights reserved.
 *
 * This software is proprietary to Analog Devices, Inc. and its licensors.
@@ -57,6 +57,10 @@
 #include <ad7176_2_regs.h>
 #define AD717X_DEVICE_MAP ad7176_2_regs
 #define AD717x_NUM_REGS NO_OS_ARRAY_SIZE(ad7176_2_regs)
+#elif defined (DEV_AD7177_2)
+#include <ad7177_2_regs.h>
+#define AD717X_DEVICE_MAP ad7177_2_regs
+#define AD717x_NUM_REGS NO_OS_ARRAY_SIZE(ad7172_2_regs)
 #else
 #include <ad411x_regs.h>
 #define AD717X_DEVICE_MAP ad4111_regs
@@ -66,7 +70,8 @@
 /* AD717x Init Parameters */
 ad717x_init_param ad717x_init_params = {
 	.spi_init = {
-		.max_speed_hz = 20000000,
+		.device_id = SPI_DEVICE_ID,
+		.max_speed_hz = MAX_SPI_SCLK,
 		.chip_select = SPI_CSB,
 		.mode = NO_OS_SPI_MODE_3,
 		.platform_ops = &spi_platform_ops,
