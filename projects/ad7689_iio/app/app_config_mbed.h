@@ -50,6 +50,12 @@
 #define I2C_SCL			ARDUINO_UNO_D15
 #define I2C_SDA			ARDUINO_UNO_D14
 
+/* Unused Macros */
+#define SPI_DEVICE_ID  0
+#define I2C_DEVICE_ID  0
+#define LED_PORT       0
+#define PWM_ID         0
+
 /* Define the max possible sampling (or output data) rate for a given platform.
  * This is also used to find the time period to trigger a periodic conversion event.
  * Note: Max possible ODR is 62.5KSPS per channel for continuous data capture on
