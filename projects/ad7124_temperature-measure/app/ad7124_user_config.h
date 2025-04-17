@@ -2,7 +2,7 @@
  *   @file   ad7124_user_config.h
  *   @brief  Header for AD7124 user configuration file
 ******************************************************************************
-* Copyright (c) 2021 Analog Devices, Inc.
+* Copyright (c) 2021, 2025 Analog Devices, Inc.
 *
 * All rights reserved.
 *
@@ -31,6 +31,6 @@
 /********************** Public/Extern Declarations ****************************/
 /******************************************************************************/
 
-extern struct ad7124_init_param ad7124_init_params;
+extern struct ad7124_init_param ad7124_user_init_params;
 
 #endif /* end of _AD7124_USER_CONFIG_H */

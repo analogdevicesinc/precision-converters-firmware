@@ -3,7 +3,7 @@
  * @brief    Main interface for AD7124 temperature measurement firmware example
  * @details
 ********************************************************************************
-* Copyright (c) 2021-22 Analog Devices, Inc.
+* Copyright (c) 2021-22, 2025 Analog Devices, Inc.
 * All rights reserved.
 *
 * This software is proprietary to Analog Devices, Inc. and its licensors.
@@ -17,9 +17,10 @@
 
 #include <stdint.h>
 #include <stdio.h>
-
+#include "app_config.h"
 #include "ad7124_console_app.h"
-
+#include "no_os_uart.h"
+#include "ad7124_user_config.h"
 /******************************************************************************/
 /************************** Functions Definitions *****************************/
 /******************************************************************************/
@@ -30,6 +31,22 @@
 int main(void)
 {
 	int32_t result;
+
+	/* Initialize the stm32 peripherals */
+#if (ACTIVE_PLATFORM == STM32_PLATFORM)
+	stm32_system_init();
+#endif
+
+#if(ACTIVE_PLATFORM == STM32_PLATFORM)
+	int ret;
+	ret = no_os_uart_init(&uart_desc, &uart_init_params);
+	if (ret) {
+		return ret;
+	}
+
+	/* Set up the UART for standard I/O operations */
+	no_os_uart_stdio(uart_desc);
+#endif
 
 	/* Initialize the AD7124 device and application */
 	if ((result = ad7124_app_initialize(AD7124_CONFIG_RESET)) != 0) {

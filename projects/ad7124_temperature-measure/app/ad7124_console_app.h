@@ -3,7 +3,7 @@
  * @brief   Defines the console menu structure for the AD7124 example code
  * @details
 ******************************************************************************
- * Copyright (c) 2021 Analog Devices, Inc. All Rights Reserved.
+ * Copyright (c) 2021, 2025 Analog Devices, Inc. All Rights Reserved.
  *
  * This software is proprietary to Analog Devices, Inc. and its licensors.
  * By using this software you agree to the terms of the associated
@@ -39,5 +39,8 @@ enum sensor_config_ids {
 
 int32_t ad7124_app_initialize(uint8_t configID);
 extern console_menu ad7124_main_menu;
+
+/* The UART Descriptor */
+extern struct no_os_uart_desc *uart_desc;
 
 #endif /* AD7124_CONSOLE_APP_H_ */
