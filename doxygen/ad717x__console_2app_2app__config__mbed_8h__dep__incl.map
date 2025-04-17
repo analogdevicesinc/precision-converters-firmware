@@ -1,0 +1,15 @@
+<map id="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad717x_console/app/app_config_mbed.h" name="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad717x_console/app/app_config_mbed.h">
+<area shape="rect" id="Node000001" title="Header file for Mbed platform configurations." alt="" coords="371,5,660,75"/>
+<area shape="rect" id="Node000002" href="$ad717x__console_2app_2app__config_8h.html" title="Configuration file for AD717x/AD411x firmware example." alt="" coords="313,123,558,192"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="486,88,461,124,457,121,482,85"/>
+<area shape="rect" id="Node000006" href="$ad717x__console_2app_2app__config__mbed_8c.html" title="Source file for the mbed configuration for AD717x IIO Application." alt="" coords="534,240,822,309"/>
+<area shape="poly" id="edge7_Node000001_Node000006" title=" " alt="" coords="549,85,657,238,652,241,545,88"/>
+<area shape="rect" id="Node000003" href="$ad717x__console__app_8c.html" title=": Implementation of the menu functions which handles the functionality of AD717x and AD411x family of..." alt="" coords="5,357,316,427"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="300,178,269,188,239,202,212,219,188,242,172,268,163,299,160,329,160,357,154,357,154,329,158,298,167,266,184,238,208,215,237,197,267,183,299,173"/>
+<area shape="rect" id="Node000004" href="$ad717x__console__app_8h.html" title=": Header for AD717x/AD411x console application interface." alt="" coords="199,240,509,309"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="406,205,380,241,376,238,401,202"/>
+<area shape="poly" id="edge6_Node000002_Node000006" title=" " alt="" coords="519,195,608,237,606,242,517,200"/>
+<area shape="poly" id="edge4_Node000004_Node000003" title=" " alt="" coords="287,319,219,359,216,355,285,314"/>
+<area shape="rect" id="Node000005" href="$ad717x__console_2app_2main_8c.html" title=": main module for AD717x/AD411x application interface" alt="" coords="340,357,563,427"/>
+<area shape="poly" id="edge5_Node000004_Node000005" title=" " alt="" coords="394,319,425,355,421,359,390,322"/>
+</map>
