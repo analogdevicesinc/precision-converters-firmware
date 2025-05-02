@@ -92,38 +92,13 @@ static int8_t adc_data_buffer[DATA_BUFFER_SIZE];
 /* Factor multiplied to calculated conversion time to ensure proper data capture */
 #define COMPENSATION_FACTOR	1.1
 
-/* Internal sampling frequency/period (2msps->500nsec) */
-#define INTERNAL_SAMPLING_CLK_NS     500
-
 /* Internal conversion time in nsec */
 #define CONVERSION_TIME_NS           250
-
-#define MAX_SAMPLING_TIME_NS          (((float)(1.0/SAMPLING_RATE) * 1000000000) / 2)
 
 #define MAX_SAMPLING_PERIOD_NSEC		2500000
 
 /* Converts pwm period in nanoseconds to sampling frequency in samples per second */
 #define PWM_PERIOD_TO_FREQUENCY(x)       (1000000000.0 / x)
-
-/* Timeout count to avoid stuck into potential infinite loop while checking
- * for new data whenever the BUSY pin goes low. The actual timeout factor is determined
- * through 'sampling_frequency' attribute of IIO app, but this period here makes sure
- * we are not stuck into a forever loop in case data capture is interrupted
- * or failed in between.
- * Note: This timeout factor is dependent upon the MCU clock frequency. Below timeout
- * is tested for SDP-K1 platform @180Mhz default core clock */
-#define BUF_READ_TIMEOUT	0xffffffff
-
-/* Number of samples after which the circular buffer indexes are
- * are updated for continuous mode with SPI DMA
- */
-#define BUFFER_UPDATE_RATE  400
-
-/* Maximum size of the local SRAM buffer */
-#define MAX_LOCAL_BUF_SIZE	32000
-
-/* Maximum value the DMA NDTR register can take */
-#define MAX_DMA_NDTR		(no_os_min(65535, MAX_LOCAL_BUF_SIZE/2))
 
 /******************************************************************************/
 /*************************** Types Declarations *******************************/
@@ -1168,8 +1143,8 @@ int32_t iio_ad405x_initialize(void)
 	int32_t init_status;
 	enum ad405x_device_type dev_type;
 	uint8_t indx;
-	static bool entered =
-		false;  // Flag to control the execution of system initialization
+	/* Flag to control the execution of system initialization */
+	static bool entered = false;
 
 #if	(APP_CAPTURE_MODE == CONTINUOUS_DATA_CAPTURE)
 	static struct iio_trigger ad405x_iio_trig_desc = {
