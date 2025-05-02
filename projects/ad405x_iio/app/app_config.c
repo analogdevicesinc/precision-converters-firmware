@@ -22,7 +22,6 @@
 #include "no_os_delay.h"
 #include "no_os_i2c.h"
 #include "no_os_dma.h"
-#include "stm32_dma.h"
 
 /******************************************************************************/
 /************************ Macros/Constants ************************************/
@@ -147,6 +146,7 @@ struct no_os_pwm_init_param tx_trigger_init_params = {
 	.extra = &tx_trigger_extra_init_params,
 };
 
+#if (APP_CAPTURE_MODE == WINDOWED_DATA_CAPTURE)
 /* External interrupt callback descriptor */
 static struct no_os_callback_desc ext_int_callback_desc = {
 	.callback = data_capture_callback,
@@ -154,6 +154,7 @@ static struct no_os_callback_desc ext_int_callback_desc = {
 	.event = NO_OS_EVT_GPIO,
 	.peripheral = NO_OS_GPIO_IRQ
 };
+#endif
 
 /* I2C init parameters */
 static struct no_os_i2c_init_param no_os_i2c_init_params = {

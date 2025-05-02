@@ -60,9 +60,9 @@
 #define USE_VIRTUAL_COM_PORT
 #endif
 
-/* Select the application data capture mode (default is CC mode) */
+/* Select the application data capture mode (default is Windowed mode) */
 #if !defined(APP_CAPTURE_MODE)
-#define APP_CAPTURE_MODE	   CONTINUOUS_DATA_CAPTURE
+#define APP_CAPTURE_MODE	   WINDOWED_DATA_CAPTURE
 #endif
 
 /* Select the ADC output data format (default is twos complement mode) */

@@ -356,7 +356,7 @@ void receivecomplete_callback(DMA_HandleTypeDef * hdma)
 	no_os_cb_end_async_write(iio_dev_data_g->buffer->buf);
 	no_os_cb_prepare_async_write(iio_dev_data_g->buffer->buf,
 				     nb_of_bytes_g,
-				     &buff_start_addr,
+				     (void **) &buff_start_addr,
 				     &data_read);
 #endif
 }
@@ -378,24 +378,6 @@ void stm32_cs_output_gpio_config(bool is_gpio)
 
 	no_os_gpio_get(&cs_gpio_desc, &cs_pwm_gpio_params);
 
-}
-
-/**
- * @brief 	Configures the conversion pin as output mode.
- * @param   is_gpio[in] Mode of the Pin
- * @return	None
- */
-void stm32_cnv_output_gpio_config(bool is_gpio)
-{
-	struct no_os_gpio_desc* cnv_gpio_desc;
-
-	if (is_gpio) {
-		pwm_gpio_params.extra = &stm32_gpio_cnv_extra_init_params;
-
-	} else {
-		pwm_gpio_params.extra = &stm32_pwm_gpio_extra_init_params;
-	}
-	no_os_gpio_get(&cnv_gpio_desc, &pwm_gpio_params);
 }
 
 /**

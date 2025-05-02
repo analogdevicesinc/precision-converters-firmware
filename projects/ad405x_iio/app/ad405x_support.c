@@ -152,10 +152,8 @@ static int32_t ad405x_post_disable_windowed(void *dev)
 static int32_t ad405x_submit_windowed(struct iio_device_data *iio_dev_data)
 {
 	uint32_t timeout = BUF_READ_TIMEOUT;
-	uint32_t sample_index = 0;
 	int32_t adc_data;
 	int32_t ret;
-	uint16_t spirxdma_ndtr;
 	uint32_t nb_of_samples;
 
 	data_ready = false;
@@ -198,7 +196,7 @@ static int32_t ad405x_submit_windowed(struct iio_device_data *iio_dev_data)
 			return ret;
 		}
 
-		while (sample_index < nb_of_samples) {
+		while (nb_of_samples--) {
 			while (data_ready != true && timeout > 0) {
 				timeout--;
 			}
@@ -217,7 +215,6 @@ static int32_t ad405x_submit_windowed(struct iio_device_data *iio_dev_data)
 				return ret;
 			}
 
-			sample_index++;
 			data_ready = false;
 		}
 
@@ -248,8 +245,7 @@ static int32_t ad405x_submit_windowed(struct iio_device_data *iio_dev_data)
 
 		if (!dma_config_updated) {
 			/* Cap SPI RX DMA NDTR to MAX_DMA_NDTR. */
-			spirxdma_ndtr = no_os_min(MAX_DMA_NDTR, nb_of_samples);
-			rxdma_ndtr = spirxdma_ndtr;
+			rxdma_ndtr = no_os_min(MAX_DMA_NDTR, nb_of_samples);
 
 			/* Register half complete callback, for ping-pong buffers implementation. */
 			HAL_DMA_RegisterCallback(&hdma_spi1_rx,
@@ -259,7 +255,7 @@ static int32_t ad405x_submit_windowed(struct iio_device_data *iio_dev_data)
 			struct no_os_spi_msg ad405x_spi_msg = {
 				.tx_buff = NULL,
 				.rx_buff = local_buf,
-				.bytes_number = spirxdma_ndtr
+				.bytes_number = rxdma_ndtr
 			};
 
 			struct stm32_spi_desc *sdesc = p_ad405x_dev->spi_desc->extra;
@@ -283,7 +279,7 @@ static int32_t ad405x_submit_windowed(struct iio_device_data *iio_dev_data)
 
 		ad405x_conversion_flag = false;
 
-		dma_cycle_count = ((nb_of_samples) / rxdma_ndtr) + 1;
+		dma_cycle_count = (nb_of_samples + rxdma_ndtr - 1) / rxdma_ndtr;
 
 		/* Set the callback count to twice the number of DMA cycles */
 		callback_count = dma_cycle_count * 2;
@@ -445,17 +441,12 @@ static int32_t ad405x_post_disable_continuous(void *dev)
 static int32_t ad405x_submit_continuous(struct iio_device_data *iio_dev_data)
 {
 	int32_t ret;
-	uint16_t spirxdma_ndtr;
 	uint32_t nb_of_samples;
 
 	data_ready = false;
 	nb_of_samples = iio_dev_data->buffer->size / bytes_per_sample;
 	nb_of_bytes_g = nb_of_samples * bytes_per_sample;
 	iio_dev_data_g = iio_dev_data;
-
-	/* Cap SPI RX DMA NDTR to MAX_DMA_NDTR. */
-	spirxdma_ndtr = no_os_min(MAX_DMA_NDTR, nb_of_samples);
-	rxdma_ndtr = spirxdma_ndtr;
 
 	if (!buf_size_updated) {
 		/* Update total buffer size according to bytes per scan for proper
@@ -473,10 +464,13 @@ static int32_t ad405x_submit_continuous(struct iio_device_data *iio_dev_data)
 			return ret;
 		}
 
+		/* Cap SPI RX DMA NDTR to MAX_DMA_NDTR. */
+		rxdma_ndtr = no_os_min(MAX_DMA_NDTR, nb_of_samples);
+
 		struct no_os_spi_msg ad405x_spi_msg = {
 			.tx_buff = NULL,
 			.rx_buff = (uint8_t *)buff_start_addr,
-			.bytes_number = spirxdma_ndtr
+			.bytes_number = rxdma_ndtr
 		};
 
 		ret = no_os_spi_transfer_dma_async(p_ad405x_dev->spi_desc,

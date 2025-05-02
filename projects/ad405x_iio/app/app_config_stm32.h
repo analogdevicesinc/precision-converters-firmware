@@ -134,10 +134,6 @@
 #endif
 #define CONV_TRIGGER_DUTY_CYCLE_NSEC(x)	   (x / 10)
 #define SAMPLING_RATE_SPI_DMA			   (1000000)
-#define DMA_MSB_DUTY_CYCLE_NS              200
-#define DMA_LSB_DUTY_CYCLE_NS              600
-#define OUTPUT_COMPARE_DUTY_CYCLE_NS       200
-#define CHIP_SELECT_DUTY_CYCLE_NS          800
 #define CONV_TRIGGER_PERIOD_NSEC(x)		   (((float)(1.0 / x) * 1000000) * 1000)
 
 /******************************************************************************/
@@ -145,12 +141,11 @@
 /******************************************************************************/
 extern I2C_HandleTypeDef hi2c1;
 extern SPI_HandleTypeDef hspi1;
-extern DMA_HandleTypeDef hdma_spi1_rx;
 extern TIM_HandleTypeDef htim1;
 extern TIM_HandleTypeDef htim2;
 extern TIM_HandleTypeDef htim8;
+extern DMA_HandleTypeDef hdma_spi1_rx;
 extern DMA_HandleTypeDef hdma_tim1_ch3;
-extern DMA_HandleTypeDef hdma_tim1_ch2;
 extern DMA_HandleTypeDef hdma_tim8_ch1;
 extern UART_HandleTypeDef huart5;
 extern USBD_HandleTypeDef hUsbDeviceHS;
@@ -168,7 +163,6 @@ extern struct stm32_gpio_irq_init_param stm32_gpio_irq_extra_init_params;
 
 extern struct stm32_pwm_init_param stm32_pwm_cnv_extra_init_params;
 extern struct stm32_pwm_init_param stm32_dma_extra_init_params;
-extern struct stm32_pwm_init_param stm32_oc_extra_init_params;
 extern struct stm32_pwm_init_param stm32_cs_extra_init_params;
 extern struct stm32_pwm_init_param stm32_tx_trigger_extra_init_params;
 extern volatile bool ad405x_conversion_flag;
@@ -185,7 +179,6 @@ void stm32_system_init(void);
 void stm32_timer_enable(void);
 void stm32_timer_stop(void);
 void stm32_cs_output_gpio_config(bool is_gpio);
-void stm32_cnv_output_gpio_config(bool is_gpio);
 void stm32_config_spi_data_frame_format(bool is_16_bit);
 void stm32_config_cnv_prescalar(void);
 int stm32_abort_dma_transfer(void);
