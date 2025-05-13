@@ -3317,6 +3317,10 @@ int32_t ad4170_iio_initialize(void)
 			return init_status;
 		}
 		entered = true;
+
+		/* Delay to ensure that the I2C peripheral is initialized
+		 * before an EEPROM read */
+		no_os_mdelay(10000);
 	}
 
 	/* Read context attributes */
