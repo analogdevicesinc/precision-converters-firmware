@@ -103,9 +103,9 @@
 /* Value corresponding to 62.5 ODR (per channel) with Sinc3 filter */
 #define FS_SINC3_62P5_KSPS		4
 
-/* Select the active platform (default is Mbed) */
+/* Select the active platform (default is STM32) */
 #if !defined(ACTIVE_PLATFORM)
-#define ACTIVE_PLATFORM		MBED_PLATFORM
+#define ACTIVE_PLATFORM		STM32_PLATFORM
 #endif
 
 /* Select active IIO client */
@@ -303,7 +303,7 @@
 #define IIO_UART_BAUD_RATE	(230400)
 
 /* Enable/Disable the use of SDRAM for ADC data capture buffer */
-//#define USE_SDRAM		// Uncomment to use SDRAM for data buffer
+#define USE_SDRAM		// Comment to disable SDRAM for data buffer
 
 /* Calculations for sampling frequency (used to define timeout in IIO client):
  * Note: Below calculations are based on default user configurations set in the

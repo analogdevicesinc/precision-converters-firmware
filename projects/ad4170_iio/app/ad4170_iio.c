@@ -32,6 +32,7 @@
 #include "common.h"
 #include "iio_trigger.h"
 #include "no_os_gpio.h"
+#include "no_os_alloc.h"
 
 #if (INTERFACE_MODE == TDM_MODE)
 #include "stm32_tdm_support.h"
@@ -2303,7 +2304,7 @@ static int32_t ad4170_read_burst_data_spi_dma(uint32_t nb_of_samples,
 	if (nb_of_samples == rxdma_ndtr) {
 		dma_cycle_count = 1;
 	} else {
-		dma_cycle_count = ((nb_of_samples) / rxdma_ndtr) + 1;
+		dma_cycle_count = (nb_of_samples + rxdma_ndtr - 1) / rxdma_ndtr;
 	}
 	callback_count = dma_cycle_count * 2;
 	update_buff(local_buf, buff_start_addr);
@@ -3279,7 +3280,7 @@ static int board_iio_params_init(struct iio_device** desc,
 		return -EINVAL;
 	}
 
-	iio_dev = calloc(1, sizeof(*iio_dev));
+	iio_dev = no_os_calloc(1, sizeof(*iio_dev));
 	if (!iio_dev) {
 		return -ENOMEM;
 	}
@@ -3440,7 +3441,7 @@ int iio_params_deinit(void)
 
 	for (indx = 0 ; indx < iio_init_params.nb_devs; indx++) {
 		if (p_iio_ad4170_dev[indx]) {
-			free(p_iio_ad4170_dev[indx]);
+			no_os_free(p_iio_ad4170_dev[indx]);
 			p_iio_ad4170_dev[indx] = NULL;
 		}
 	}

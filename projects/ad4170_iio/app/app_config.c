@@ -409,6 +409,9 @@ int32_t init_system(void)
 	stm32_system_init();
 #endif
 
+	/* Delay to ensure that the peripherals are initialized */
+	no_os_mdelay(2000);
+
 	ret = init_gpio();
 	if (ret) {
 		return ret;
