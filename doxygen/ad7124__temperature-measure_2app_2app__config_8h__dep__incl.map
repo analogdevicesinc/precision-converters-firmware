@@ -1,11 +1,15 @@
 <map id="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad7124_temperature&#45;measure/app/app_config.h" name="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad7124_temperature&#45;measure/app/app_config.h">
-<area shape="rect" id="Node000001" title=" " alt="" coords="307,5,559,89"/>
+<area shape="rect" id="Node000001" title="Configuration file of AD7124 firmware example program." alt="" coords="583,5,835,89"/>
 <area shape="rect" id="Node000002" href="$ad7124__temperature-measure_2app_2ad7124__console__app_8c.html" title="AD7124 temperature measurement firmware console interface." alt="" coords="5,401,257,485"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="320,98,265,129,210,168,162,215,141,242,124,270,114,303,112,337,115,370,121,400,116,402,109,371,106,337,109,302,120,268,137,239,158,211,207,164,262,124,317,93"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="569,66,434,93,364,113,296,140,238,165,193,188,157,220,124,270,114,303,112,337,115,370,121,400,116,402,109,371,106,337,109,302,120,268,153,216,190,184,236,160,294,135,362,108,433,87,568,61"/>
 <area shape="rect" id="Node000003" href="$ad7124__temperature-measure_2app_2ad7124__regs__configs_8h.html" title=" " alt="" coords="307,137,559,221"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="435,103,435,137,430,137,430,103"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="610,98,521,140,519,135,608,93"/>
 <area shape="rect" id="Node000008" href="$ad7124__temperature-measure_2app_2ad7124__user__config_8c.html" title="User configuration file for AD7124 device." alt="" coords="583,137,835,221"/>
-<area shape="poly" id="edge9_Node000001_Node000008" title=" " alt="" coords="533,93,623,135,621,140,531,98"/>
+<area shape="poly" id="edge9_Node000001_Node000008" title=" " alt="" coords="711,103,711,137,706,137,706,103"/>
+<area shape="rect" id="Node000009" href="$ad7124__temperature-measure_2app_2app__config_8c.html" title="Application configurations module." alt="" coords="859,137,1111,221"/>
+<area shape="poly" id="edge10_Node000001_Node000009" title=" " alt="" coords="809,93,899,135,897,140,807,98"/>
+<area shape="rect" id="Node000010" href="$ad7124__temperature-measure_2app_2main_8c.html" title="Main interface for AD7124 temperature measurement firmware example." alt="" coords="1135,145,1435,214"/>
+<area shape="poly" id="edge11_Node000001_Node000010" title=" " alt="" coords="849,75,1124,135,1155,142,1153,147,1123,140,848,80"/>
 <area shape="poly" id="edge3_Node000003_Node000002" title=" " alt="" coords="294,197,256,208,220,224,187,245,159,271,141,301,131,335,128,370,129,401,123,401,123,369,126,334,136,299,155,268,184,240,218,219,255,203,292,192"/>
 <area shape="rect" id="Node000004" href="$ad7124__regs__config__rtd_8c.html" title="AD7124 register configuration file for RTD temperature sensor interface." alt="" coords="169,269,421,353"/>
 <area shape="poly" id="edge4_Node000003_Node000004" title=" " alt="" coords="381,233,341,271,337,267,377,229"/>

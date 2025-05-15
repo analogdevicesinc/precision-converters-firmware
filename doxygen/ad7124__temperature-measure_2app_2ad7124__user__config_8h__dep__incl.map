@@ -1,7 +1,9 @@
 <map id="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad7124_temperature&#45;measure/app/ad7124_user_config.h" name="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad7124_temperature&#45;measure/app/ad7124_user_config.h">
-<area shape="rect" id="Node000001" title="Header for AD7124 user configuration file." alt="" coords="143,5,395,89"/>
+<area shape="rect" id="Node000001" title="Header for AD7124 user configuration file." alt="" coords="281,5,533,89"/>
 <area shape="rect" id="Node000002" href="$ad7124__temperature-measure_2app_2ad7124__console__app_8c.html" title="AD7124 temperature measurement firmware console interface." alt="" coords="5,137,257,221"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="217,101,177,139,173,135,213,97"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="309,98,219,140,217,135,307,93"/>
 <area shape="rect" id="Node000003" href="$ad7124__temperature-measure_2app_2ad7124__user__config_8c.html" title="User configuration file for AD7124 device." alt="" coords="281,137,533,221"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="324,97,365,135,361,139,321,101"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="410,103,410,137,405,137,405,103"/>
+<area shape="rect" id="Node000004" href="$ad7124__temperature-measure_2app_2main_8c.html" title="Main interface for AD7124 temperature measurement firmware example." alt="" coords="557,145,857,214"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="515,92,631,142,629,147,513,97"/>
 </map>

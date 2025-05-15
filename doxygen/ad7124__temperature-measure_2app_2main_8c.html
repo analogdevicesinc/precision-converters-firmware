@@ -83,26 +83,52 @@ $(function() {
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;stdint.h&gt;</code><br />
 <code>#include &lt;stdio.h&gt;</code><br />
+<code>#include &quot;<a class="el" href="ad7124__temperature-measure_2app_2app__config_8h_source.html">app_config.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="ad7124__temperature-measure_2app_2ad7124__console__app_8h_source.html">ad7124_console_app.h</a>&quot;</code><br />
+<code>#include &quot;no_os_uart.h&quot;</code><br />
+<code>#include &quot;<a class="el" href="ad7124__temperature-measure_2app_2ad7124__user__config_8h_source.html">ad7124_user_config.h</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for main.c:</div>
 <div class="dyncontent">
 <div class="center"><img src="ad7124__temperature-measure_2app_2main_8c__incl.png" border="0" usemap="#a_2home_2runner_2work_2precision-converters-firmware_2precision-converters-firmware_2projects_2ad7124__temperature-measure_2app_2main_8c" alt=""/></div>
 <map name="a_2home_2runner_2work_2precision-converters-firmware_2precision-converters-firmware_2projects_2ad7124__temperature-measure_2app_2main_8c" id="a_2home_2runner_2work_2precision-converters-firmware_2precision-converters-firmware_2projects_2ad7124__temperature-measure_2app_2main_8c">
-<area shape="rect" title="Main interface for AD7124 temperature measurement firmware example." alt="" coords="5,5,305,75"/>
-<area shape="rect" title=" " alt="" coords="56,269,127,295"/>
-<area shape="poly" title=" " alt="" coords="135,76,113,124,98,195,94,256,89,256,93,194,107,122,130,74"/>
-<area shape="rect" title=" " alt="" coords="122,123,189,148"/>
-<area shape="poly" title=" " alt="" coords="158,75,158,109,153,109,153,75"/>
-<area shape="rect" href="ad7124__temperature-measure_2app_2ad7124__console__app_8h.html" title=" " alt="" coords="213,123,383,148"/>
-<area shape="poly" title=" " alt="" coords="208,73,270,113,267,117,205,77"/>
-<area shape="rect" href="adi__console__menu_8h.html" title=": A simple console menu manager handler" alt="" coords="169,196,323,221"/>
-<area shape="poly" title=" " alt="" coords="292,150,265,186,260,183,287,147"/>
-<area shape="poly" title=" " alt="" coords="222,224,130,266,128,261,220,219"/>
-<area shape="rect" title=" " alt="" coords="178,269,261,295"/>
-<area shape="poly" title=" " alt="" coords="244,223,231,258,226,256,239,221"/>
-<area shape="rect" title=" " alt="" coords="285,269,356,295"/>
-<area shape="poly" title=" " alt="" coords="260,219,300,258,297,262,256,223"/>
+<area shape="rect" title="Main interface for AD7124 temperature measurement firmware example." alt="" coords="491,5,791,75"/>
+<area shape="rect" title=" " alt="" coords="597,269,668,295"/>
+<area shape="poly" title=" " alt="" coords="626,76,610,123,607,159,611,195,626,256,621,257,605,196,602,159,605,122,621,74"/>
+<area shape="rect" title=" " alt="" coords="478,123,545,148"/>
+<area shape="poly" title=" " alt="" coords="596,77,541,116,537,112,592,73"/>
+<area shape="rect" href="ad7124__temperature-measure_2app_2app__config_8h.html" title="Configuration file of AD7124 firmware example program." alt="" coords="350,123,454,148"/>
+<area shape="poly" title=" " alt="" coords="555,77,445,120,443,115,554,72"/>
+<area shape="rect" href="ad7124__temperature-measure_2app_2ad7124__console__app_8h.html" title=" " alt="" coords="937,123,1107,148"/>
+<area shape="poly" title=" " alt="" coords="779,72,962,117,961,122,778,77"/>
+<area shape="rect" title=" " alt="" coords="807,123,912,148"/>
+<area shape="poly" title=" " alt="" coords="721,72,821,115,819,120,719,77"/>
+<area shape="rect" href="ad7124__temperature-measure_2app_2ad7124__user__config_8h.html" title="Header for AD7124 user configuration file." alt="" coords="619,123,782,148"/>
+<area shape="poly" title=" " alt="" coords="665,73,688,109,683,112,660,76"/>
+<area shape="poly" title=" " alt="" coords="422,146,604,259,601,264,419,150"/>
+<area shape="rect" href="ad7124__temperature-measure_2app_2app__config__mbed_8h.html" title="Header file for Mbed platform configurations." alt="" coords="325,196,473,221"/>
+<area shape="poly" title=" " alt="" coords="404,148,403,183,398,182,399,148"/>
+<area shape="poly" title=" " alt="" coords="438,219,585,263,584,269,436,224"/>
+<area shape="rect" title=" " alt="" coords="473,269,573,295"/>
+<area shape="poly" title=" " alt="" coords="421,219,493,260,490,265,418,224"/>
+<area shape="rect" title=" " alt="" coords="5,269,103,295"/>
+<area shape="poly" title=" " alt="" coords="344,224,117,270,116,265,343,219"/>
+<area shape="rect" title=" " alt="" coords="127,269,317,295"/>
+<area shape="poly" title=" " alt="" coords="372,224,264,267,262,262,370,219"/>
+<area shape="rect" title=" " alt="" coords="342,269,449,295"/>
+<area shape="poly" title=" " alt="" coords="401,222,399,256,394,256,396,222"/>
+<area shape="rect" href="adi__console__menu_8h.html" title=": A simple console menu manager handler" alt="" coords="931,196,1086,221"/>
+<area shape="poly" title=" " alt="" coords="1022,149,1016,183,1011,182,1017,148"/>
+<area shape="poly" title=" " alt="" coords="949,224,682,274,681,269,948,219"/>
+<area shape="rect" title=" " alt="" coords="1018,269,1101,295"/>
+<area shape="poly" title=" " alt="" coords="1019,220,1045,257,1041,260,1015,223"/>
+<area shape="rect" title=" " alt="" coords="923,269,993,295"/>
+<area shape="poly" title=" " alt="" coords="1002,223,976,260,972,257,998,220"/>
+<area shape="poly" title=" " alt="" coords="693,150,676,171,660,197,648,227,640,257,635,255,643,226,656,195,672,168,688,147"/>
+<area shape="rect" title=" " alt="" coords="670,196,753,221"/>
+<area shape="poly" title=" " alt="" coords="705,148,710,182,705,183,700,149"/>
+<area shape="rect" title=" " alt="" coords="777,196,894,221"/>
+<area shape="poly" title=" " alt="" coords="724,146,802,187,800,192,721,150"/>
 </map>
 </div>
 </div><table class="memberdecls">
@@ -113,7 +139,7 @@ Functions</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Main interface for AD7124 temperature measurement firmware example. </p>
-<p>Copyright (c) 2021-22 Analog Devices, Inc. All rights reserved.</p>
+<p>Copyright (c) 2021-22, 2025 Analog Devices, Inc. All rights reserved.</p>
 <p>This software is proprietary to Analog Devices, Inc. and its licensors. By using this software you agree to the terms of the associated Analog Devices Software License Agreement. </p>
 </div><h2 class="groupheader">Function Documentation</h2>
 <a id="a840291bc02cba5474a4cb46a9b9566fe" name="a840291bc02cba5474a4cb46a9b9566fe"></a>

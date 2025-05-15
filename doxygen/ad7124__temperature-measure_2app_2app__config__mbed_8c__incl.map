@@ -1,0 +1,15 @@
+<map id="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad7124_temperature&#45;measure/app/app_config_mbed.c" name="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad7124_temperature&#45;measure/app/app_config_mbed.c">
+<area shape="rect" id="Node000001" title="Source file for the mbed configuration for AD7124 console Application." alt="" coords="147,5,399,89"/>
+<area shape="rect" id="Node000002" href="$ad7124__temperature-measure_2app_2app__config__mbed_8h.html" title="Header file for Mbed platform configurations." alt="" coords="199,137,347,163"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="275,89,275,124,270,124,270,89"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="5,211,76,236"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="236,165,90,210,88,205,235,160"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="100,211,200,236"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="254,165,183,206,180,201,252,160"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="224,211,321,236"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="275,163,275,197,270,197,270,163"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="345,211,536,236"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="301,160,402,203,400,208,299,165"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="561,211,667,236"/>
+<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="328,160,548,206,547,211,327,165"/>
+</map>
