@@ -65,7 +65,7 @@ static int32_t ad4170_code_to_straight_binary(uint32_t code, uint8_t chn);
 #define CJC_CHANNEL		2
 
 /*	Number of IIO devices */
-#define NUM_OF_IIO_DEVICES	1
+#define NUM_OF_IIO_DEVICES	2
 
 /* IIO trigger name */
 #define IIO_TRIGGER_NAME	"ad4170_iio_trigger"
@@ -130,7 +130,7 @@ static struct iio_desc *p_ad4170_iio_desc;
 struct ad4170_dev *p_ad4170_dev_inst = NULL;
 
 /* IIO device descriptor */
-struct iio_device *p_iio_ad4170_dev;
+struct iio_device *p_iio_ad4170_dev[NUM_OF_IIO_DEVICES];
 
 /* IIO hw trigger descriptor */
 static struct iio_hw_trig *ad4170_hw_trig_desc;
@@ -445,6 +445,40 @@ static const char* active_dev[] = {
 /* Effective sampling rate of the device */
 static uint32_t sampling_rate = AD4170_MAX_SAMPLING_RATE;
 
+/* Enum of channel status */
+enum ad4170_channel_status {
+	AD4170_CHN_DISABLED,
+	AD4170_CHN_ENABLED
+};
+
+/* Channel status available values */
+static const char *ad4170_chn_status_options[] = {
+	"disabled",
+	"enabled"
+};
+
+/* PGA Gain available values */
+static const char *ad4170_pga_options[] = {
+	"pga_1",
+	"pga_2",
+	"pga_4",
+	"pga_8",
+	"pga_16",
+	"pga_32",
+	"pga_64",
+	"pga_128",
+	"pga_0p5",
+	"pga_1_percharge_buffer"
+};
+
+/* Restart IIO flag */
+static bool restart_iio_flag = false;
+
+/* Restart IIO option */
+static const char *restart_iio_options[] = {
+	"Enable",
+};
+
 /******************************************************************************/
 /************************ Functions Prototypes ********************************/
 /******************************************************************************/
@@ -502,6 +536,51 @@ static int set_demo_config(void *device,
 	return -EINVAL;
 }
 
+/*!
+ * @brief Getter/Setter for the Reconfigure system attribute
+ * @param device[in]- pointer to IIO device structure
+ * @param buf[in]- pointer to buffer holding attribute value
+ * @param len[in] - length of buffer string data
+ * @param channel[in]- pointer to IIO channel structure
+ * @param id[in]- Attribute ID (optional)
+ * @return Number of characters read/written
+ */
+static int get_reconfigure_system(void *device,
+				  char *buf,
+				  uint32_t len,
+				  const struct iio_ch_info *channel,
+				  intptr_t id)
+{
+	return sprintf(buf, "%s", restart_iio_options[0]);
+}
+
+static int set_reconfigure_system(void *device,
+				  char *buf,
+				  uint32_t len,
+				  const struct iio_ch_info *channel,
+				  intptr_t id)
+{
+	/* Set flag to true */
+	restart_iio_flag = true;
+}
+
+/*!
+ * @brief Getter for reconfigure system available values
+ * @param device[in]- pointer to IIO device structure
+ * @param buf[in]- pointer to buffer holding attribute value
+ * @param len[in] - length of buffer string data
+ * @param channel[in]- pointer to IIO channel structure
+ * @param id[in]- Attribute ID (optional)
+ * @return	Number of characters read/written
+ */
+static int get_reconfigure_system_available(void *device,
+		char *buf,
+		uint32_t len,
+		const struct iio_ch_info *channel,
+		intptr_t id)
+{
+	return sprintf(buf, "%s", restart_iio_options[0]);
+}
 
 /*!
  * @brief	Getter/Setter for the sampling frequency attribute value
@@ -525,12 +604,11 @@ static int get_sampling_frequency(void *device,
 				  const struct iio_ch_info *channel,
 				  intptr_t id)
 {
-	/* The application set sampling frequency is divided by number of channels.
-	 * This is just used for IIO client timeout purpose and does not
-	 * indicate an actual sampling rate of device.
-	 * Refer the 'note' in function description above for timeout calculations */
-	return sprintf(buf, "%d",
-		       (sampling_rate / num_of_channels));
+	/* Calculate the effective sampling rate of the device */
+	sampling_rate = (AD4170_INTERNAL_CLOCK / (FILTER_SCALE *
+			 ad4170_init_params.config.setups[0].filter_fs));
+
+	return sprintf(buf, "%d", sampling_rate);
 }
 
 static int set_sampling_frequency(void *device,
@@ -543,6 +621,27 @@ static int set_sampling_frequency(void *device,
 	return -EINVAL;
 }
 
+/*!
+ * @brief Getter/Setter for the channel sampling frequency attribute value
+ * @param device[in]- pointer to IIO device structure
+ * @param buf[in]- pointer to buffer holding attribute value
+ * @param len[in]- length of buffer string data
+ * @param channel[in]- pointer to IIO channel structure
+ * @param id[in]- Attribute ID (optional)
+ * @return Number of characters read/written
+ */
+static int get_ch_sampling_frequency(void *device,
+				     char *buf,
+				     uint32_t len,
+				     const struct iio_ch_info *channel,
+				     intptr_t id)
+{
+	/* Calculate the effective sampling rate of the device */
+	sampling_rate = (AD4170_INTERNAL_CLOCK / (FILTER_SCALE *
+			 ad4170_init_params.config.setups[0].filter_fs));
+
+	return sprintf(buf, "%d", (sampling_rate / num_of_channels));
+}
 
 /*!
  * @brief	Getter/Setter for the raw, offset and scale attribute value
@@ -941,7 +1040,7 @@ static int get_filter(void *device,
 	enum ad4170_filter_type filter_selected;
 
 	filter_selected =
-		p_ad4170_dev_inst->config.setups[channel->ch_num].filter.filter_type;
+		ad4170_init_params.config.setups[channel->ch_num].filter.filter_type;
 
 	return sprintf(buf, "%s", ad4170_filter_values[filter_selected]);
 }
@@ -953,7 +1052,7 @@ static int set_filter(void *device,
 		      intptr_t id)
 {
 	uint8_t filter_id;
-	int ret;
+	uint8_t setup_id;
 
 	for (filter_id = AD4170_FILT_SINC5_AVG; filter_id <= AD4170_FILT_SINC3;
 	     filter_id++) {
@@ -962,12 +1061,116 @@ static int set_filter(void *device,
 		}
 	}
 
-	ret = ad4170_set_filter(p_ad4170_dev_inst, channel->ch_num, filter_id);
+	/* Update the all setup registers with FS value */
+	for (setup_id = 0; setup_id < AD4170_NUM_SETUPS; setup_id++) {
+		ad4170_init_params.config.setups[channel->ch_num].filter.filter_type =
+			filter_id;
+	}
+
+	return 0;
+}
+
+/*!
+ * @brief Getter/Setter for the PGA attribute value
+ * @param device[in]- pointer to IIO device structure
+ * @param buf[in]- pointer to buffer holding attribute value
+ * @param len[in]- length of buffer string data
+ * @param channel[in]- pointer to IIO channel structure
+ * @param id[in]- Attribute ID (optional)
+ * @return Number of characters read/written
+ */
+static int get_pga(void *device,
+		   char *buf,
+		   uint32_t len,
+		   const struct iio_ch_info *channel,
+		   intptr_t id)
+{
+	enum ad4170_pga_gain pga;
+
+	pga = ad4170_init_params.config.setups[ad4170_init_params.config.setup[channel->ch_num].setup_n].afe.pga_gain;
+
+	return sprintf(buf, "%s", ad4170_pga_options[pga]);
+}
+
+static int set_pga(void *device,
+		   char *buf,
+		   uint32_t len,
+		   const struct iio_ch_info *channel,
+		   intptr_t id)
+{
+	enum ad4170_pga_gain pga_id;
+	int ret;
+	uint32_t reg_val;
+
+	for (pga_id = AD4170_PGA_GAIN_1; pga_id <= AD4170_PGA_GAIN_1_PRECHARGE;
+	     pga_id++) {
+		if (!strcmp(buf, ad4170_pga_options[pga_id])) {
+			break;
+		}
+	}
+
+	ad4170_init_params.config.setups[ad4170_init_params.config.setup[channel->ch_num].setup_n].afe.pga_gain
+		= pga_id;
+
+	/* Read the AFE register */
+	ret = ad4170_spi_reg_read(p_ad4170_dev_inst,
+				  AD4170_REG_ADC_SETUPS_AFE(
+					  ad4170_init_params.config.setup[channel->ch_num].setup_n), &reg_val);
+	if (ret) {
+		return ret;
+	}
+
+	/* Update the value of PGA Gain */
+	reg_val |= no_os_field_prep(AD4170_ADC_SETUPS_AFE_PGA_GAIN_MSK, pga_id);
+
+	ret = ad4170_spi_reg_write(p_ad4170_dev_inst,
+				   AD4170_REG_ADC_SETUPS_AFE(
+					   ad4170_init_params.config.setup[channel->ch_num].setup_n), reg_val);
 	if (ret) {
 		return ret;
 	}
 
 	return 0;
+}
+/*!
+ * @brief Getter/Setter for the PGA available values
+ * @param device[in]- pointer to IIO device structure
+ * @param buf[in]- pointer to buffer holding attribute value
+ * @param len[in]- length of buffer string data
+ * @param channel[in]- pointer to IIO channel structure
+ * @param id[in]- Attribute ID (optional)
+ * @return Number of characters read/written
+ */
+static int get_pga_available(void *device,
+			     char *buf,
+			     uint32_t len,
+			     const struct iio_ch_info *channel,
+			     intptr_t id)
+{
+	uint8_t val;
+
+	buf[0] = '\0';
+
+	for (val = 0; val < NO_OS_ARRAY_SIZE(ad4170_pga_options); val++) {
+		strcat(buf, ad4170_pga_options[val]);
+		strcat(buf, " ");
+	}
+
+	/* Remove extra trailing space at the end of the buffer string */
+	len = strlen(buf);
+	buf[len - 1] = '\0';
+
+	return len;
+}
+
+static int set_pga_available(void *device,
+			     char *buf,
+			     uint32_t len,
+			     const struct iio_ch_info *channel,
+			     intptr_t id)
+{
+	/* NA- Can't set available mode value */
+	return len;
 }
 
 /*!
@@ -1081,7 +1284,7 @@ static int get_fs(void *device,
 {
 	uint16_t fs;
 
-	fs = p_ad4170_dev_inst->config.setups[p_ad4170_dev_inst->config.setup[channel->ch_num].setup_n].filter_fs;
+	fs = ad4170_init_params.config.setups[p_ad4170_dev_inst->config.setup[channel->ch_num].setup_n].filter_fs;
 
 	return sprintf(buf, "%d", fs);
 }
@@ -1092,16 +1295,91 @@ static int set_fs(void *device,
 		  const struct iio_ch_info *channel,
 		  intptr_t id)
 {
-	int ret;
+	uint8_t setup_id;
 
-	ret = ad4170_set_fs(p_ad4170_dev_inst,
-			    p_ad4170_dev_inst->config.setup[channel->ch_num].setup_n, channel->ch_num,
-			    no_os_str_to_uint32(buf));
-	if (ret) {
-		return ret;
+	/* Update the all setup registers with FS value */
+	for (setup_id = 0; setup_id < AD4170_NUM_SETUPS; setup_id++) {
+		ad4170_init_params.config.setups[setup_id].filter_fs = no_os_str_to_uint32(buf);
 	}
 
 	return 0;
+}
+
+/*!
+ * @brief Getter/Setter for the channel enable attribute
+ * @param device[in]- pointer to IIO device structure
+ * @param buf[in]- pointer to buffer holding attribute value
+ * @param len[in]- length of buffer string data
+ * @param channel[in]- pointer to IIO channel structure
+ * @param id[in]- Attribute ID (optional)
+ * @return Number of characters read/written
+ */
+static int get_ch_status(void *device,
+			 char *buf,
+			 uint32_t len,
+			 const struct iio_ch_info *channel,
+			 intptr_t id)
+{
+	uint8_t val = no_os_field_get(NO_OS_BIT(channel->ch_num),
+				      ad4170_init_params.config.channel_en);
+
+	return sprintf(buf, "%s",
+		       ad4170_chn_status_options[val]);
+}
+
+static int set_ch_status(void *device,
+			 char *buf,
+			 uint32_t len,
+			 const struct iio_ch_info *channel,
+			 intptr_t id)
+{
+	uint8_t status_id;
+
+	for (status_id = AD4170_CHN_DISABLED; status_id <= AD4170_CHN_ENABLED;
+	     status_id++) {
+		if (!strcmp(buf, ad4170_chn_status_options[status_id])) {
+			break;
+		}
+	}
+
+	if (status_id) {
+		ad4170_init_params.config.channel_en |= NO_OS_BIT(channel->ch_num);
+	} else {
+		ad4170_init_params.config.channel_en &= ~(NO_OS_BIT(channel->ch_num));
+	}
+
+	return len;
+}
+
+/*!
+ * @brief Getter/Setter for the Channel status available values
+ * @param device[in]- pointer to IIO device structure
+ * @param buf[in]- pointer to buffer holding attribute value
+ * @param len[in]- length of buffer string data
+ * @param channel[in]- pointer to IIO channel structure
+ * @param id[in]- Attribute ID (optional)
+ * @return Number of characters read/written
+ */
+static int get_ch_status_available(void *device,
+				   char *buf,
+				   uint32_t len,
+				   const struct iio_ch_info *channel,
+				   intptr_t id)
+{
+	return sprintf(buf,
+		       "%s %s",
+		       ad4170_chn_status_options[0],
+		       ad4170_chn_status_options[1]);
+}
+
+static int set_ch_status_available(void *device,
+				   char *buf,
+				   uint32_t len,
+				   const struct iio_ch_info *channel,
+				   intptr_t id)
+{
+	/* NA- Can't set available mode value */
+	return len;
 }
 
 /*!
@@ -2022,7 +2300,12 @@ static int32_t ad4170_read_burst_data_spi_dma(uint32_t nb_of_samples,
 		tim8_config();
 	}
 
-	dma_cycle_count = ((nb_of_samples) / rxdma_ndtr) + 1;
+	if (nb_of_samples == rxdma_ndtr) {
+		dma_cycle_count = 1;
+	} else {
+		dma_cycle_count = ((nb_of_samples) / rxdma_ndtr) + 1;
+	}
+	callback_count = dma_cycle_count * 2;
 	update_buff(local_buf, buff_start_addr);
 
 	TIM8->CNT = 0;
@@ -2280,7 +2563,7 @@ static int32_t iio_ad4170_prepare_transfer(void *dev_instance,
 
 	/* Enable/Disable channels based on channel mask set in the IIO client */
 	for (chn = 0; chn < AD4170_NUM_CHANNELS; chn++) {
-		if (chn_mask & mask) {
+		if (ad4170_init_params.config.channel_en & mask) {
 			num_of_active_channels++;
 			active_channels[index++] = chn;
 
@@ -2540,19 +2823,6 @@ struct iio_attribute channel_input_attributes[] = {
 	},
 #endif
 	{
-		.name = "filter",
-		.show = get_filter,
-		.store = set_filter,
-		.priv = FILTER_ATTR_ID
-	},
-	{
-		.name = "filter_available",
-		.show = get_filter_available,
-		.store = set_filter_available,
-		.priv = FILTER_ATTR_ID
-	},
-
-	{
 		.name = "ref_select",
 		.show = get_reference,
 		.store = set_reference,
@@ -2565,10 +2835,69 @@ struct iio_attribute channel_input_attributes[] = {
 		.priv = REF_SELECT_ATTR_ID
 	},
 	{
+		.name = "pga",
+		.show = get_pga,
+		.store = set_pga
+	},
+	{
+		.name = "pga_available",
+		.show = get_pga_available,
+		.store = set_pga_available
+	},
+	{
+		.name = "sampling_frequency",
+		.show = get_ch_sampling_frequency,
+	},
+
+	END_ATTRIBUTES_ARRAY
+};
+
+/* Board level channels attributes list */
+struct iio_attribute ad4170_board_channel_attributes[] = {
+	{
+		.name = "ch_en",
+		.show = get_ch_status,
+		.store = set_ch_status
+	},
+	{
+		.name = "ch_en_available",
+		.show = get_ch_status_available,
+		.store = set_ch_status_available
+	},
+	{
 		.name = "fs",
 		.show = get_fs,
 		.store = set_fs
 	},
+	{
+		.name = "filter",
+		.show = get_filter,
+		.store = set_filter,
+		.priv = FILTER_ATTR_ID
+	},
+	{
+		.name = "filter_available",
+		.show = get_filter_available,
+		.store = set_filter_available,
+		.priv = FILTER_ATTR_ID
+	},
+
+
+	END_ATTRIBUTES_ARRAY
+};
+
+/* Board level global attributes list */
+struct iio_attribute ad4170_board_global_attributes[] = {
+	{
+		.name = "reconfigure_system",
+		.show = get_reconfigure_system,
+		.store = set_reconfigure_system
+	},
+	{
+		.name = "reconfigure_system_available",
+		.show = get_reconfigure_system_available,
+	},
+
 	END_ATTRIBUTES_ARRAY
 };
 
@@ -2642,62 +2971,65 @@ static struct iio_attribute global_attributes[] = {
 	.attributes = channel_input_attributes\
 }
 
-static struct iio_channel iio_ad4170_channels[] = {
+static struct iio_channel
+	iio_ad4170_channels[NUM_OF_IIO_DEVICES][TOTAL_CHANNELS] = {
+	[0 ... NUM_OF_IIO_DEVICES - 1] = {
 #if (ACTIVE_DEMO_MODE_CONFIG == USER_DEFAULT_CONFIG)
-	AD4170_IIO_VOLT_CH("Chn0", 0),
-	AD4170_IIO_VOLT_CH("Chn1", 1),
-	AD4170_IIO_VOLT_CH("Chn2", 2),
+		AD4170_IIO_VOLT_CH("Chn0", 0),
+		AD4170_IIO_VOLT_CH("Chn1", 1),
+		AD4170_IIO_VOLT_CH("Chn2", 2),
 #if (TOTAL_CHANNELS > 3)
-	AD4170_IIO_VOLT_CH("Chn3", 3),
+		AD4170_IIO_VOLT_CH("Chn3", 3),
 #endif
 #if (TOTAL_CHANNELS > 4)
-	AD4170_IIO_VOLT_CH("Chn4", 4),
-	AD4170_IIO_VOLT_CH("Chn5", 5),
+		AD4170_IIO_VOLT_CH("Chn4", 4),
+		AD4170_IIO_VOLT_CH("Chn5", 5),
 #endif
 #if (TOTAL_CHANNELS > 6)
-	AD4170_IIO_VOLT_CH("Chn6", 6),
-	AD4170_IIO_VOLT_CH("Chn7", 7),
+		AD4170_IIO_VOLT_CH("Chn6", 6),
+		AD4170_IIO_VOLT_CH("Chn7", 7),
 #endif
 #if (TOTAL_CHANNELS > 8)
-	AD4170_IIO_VOLT_CH("Chn8", 8),
-	AD4170_IIO_VOLT_CH("Chn9", 9),
-	AD4170_IIO_VOLT_CH("Chn10", 10),
-	AD4170_IIO_VOLT_CH("Chn11", 11),
-	AD4170_IIO_VOLT_CH("Chn12", 12),
-	AD4170_IIO_VOLT_CH("Chn13", 13),
-	AD4170_IIO_VOLT_CH("Chn14", 14),
-	AD4170_IIO_VOLT_CH("Chn15", 15),
+		AD4170_IIO_VOLT_CH("Chn8", 8),
+		AD4170_IIO_VOLT_CH("Chn9", 9),
+		AD4170_IIO_VOLT_CH("Chn10", 10),
+		AD4170_IIO_VOLT_CH("Chn11", 11),
+		AD4170_IIO_VOLT_CH("Chn12", 12),
+		AD4170_IIO_VOLT_CH("Chn13", 13),
+		AD4170_IIO_VOLT_CH("Chn14", 14),
+		AD4170_IIO_VOLT_CH("Chn15", 15),
 #endif
 #elif (ACTIVE_DEMO_MODE_CONFIG == ACCELEROMETER_CONFIG)
-	/* Note" Channel type is considered as voltage as IIO oscilloscope doesn't
-	 * support accelerometer unit format of G */
-	AD4170_IIO_VOLT_CH("Sensor1", SENSOR_CHANNEL0),
+		/* Note" Channel type is considered as voltage as IIO oscilloscope doesn't
+		 * support accelerometer unit format of G */
+		AD4170_IIO_VOLT_CH("Sensor1", SENSOR_CHANNEL0),
 #elif (ACTIVE_DEMO_MODE_CONFIG == LOADCELL_CONFIG)
-	/* Note" Channel type is considered as voltage as IIO oscilloscope doesn't
-	 * support loadcell unit fomat of gram */
-	AD4170_IIO_VOLT_CH("Sensor1", SENSOR_CHANNEL0),
-	AD4170_IIO_VOLT_CH("Sensor2", SENSOR_CHANNEL1),
+		/* Note" Channel type is considered as voltage as IIO oscilloscope doesn't
+		 * support loadcell unit fomat of gram */
+		AD4170_IIO_VOLT_CH("Sensor1", SENSOR_CHANNEL0),
+		AD4170_IIO_VOLT_CH("Sensor2", SENSOR_CHANNEL1),
 #if defined(FOUR_WIRE_LOAD_CELL)
-	AD4170_IIO_VOLT_CH("Sensor3", SENSOR_CHANNEL2),
-	AD4170_IIO_VOLT_CH("Sensor4", SENSOR_CHANNEL3),
+		AD4170_IIO_VOLT_CH("Sensor3", SENSOR_CHANNEL2),
+		AD4170_IIO_VOLT_CH("Sensor4", SENSOR_CHANNEL3),
 #endif
 #elif (ACTIVE_DEMO_MODE_CONFIG == THERMISTOR_CONFIG)
-	AD4170_IIO_TEMP_CH("Sensor1", SENSOR_CHANNEL0),
-	AD4170_IIO_TEMP_CH("Sensor2", SENSOR_CHANNEL1),
-	AD4170_IIO_TEMP_CH("Sensor3", SENSOR_CHANNEL2),
-	AD4170_IIO_TEMP_CH("Sensor4", SENSOR_CHANNEL3),
+		AD4170_IIO_TEMP_CH("Sensor1", SENSOR_CHANNEL0),
+		AD4170_IIO_TEMP_CH("Sensor2", SENSOR_CHANNEL1),
+		AD4170_IIO_TEMP_CH("Sensor3", SENSOR_CHANNEL2),
+		AD4170_IIO_TEMP_CH("Sensor4", SENSOR_CHANNEL3),
 #elif (ACTIVE_DEMO_MODE_CONFIG == RTD_3WIRE_CONFIG)
-	AD4170_IIO_TEMP_CH("Sensor1", SENSOR_CHANNEL0),
-	AD4170_IIO_TEMP_CH("Sensor2", SENSOR_CHANNEL1),
+		AD4170_IIO_TEMP_CH("Sensor1", SENSOR_CHANNEL0),
+		AD4170_IIO_TEMP_CH("Sensor2", SENSOR_CHANNEL1),
 #elif (ACTIVE_DEMO_MODE_CONFIG == RTD_2WIRE_CONFIG || ACTIVE_DEMO_MODE_CONFIG == RTD_4WIRE_CONFIG)
-	AD4170_IIO_TEMP_CH("Sensor1", SENSOR_CHANNEL0),
-	AD4170_IIO_TEMP_CH("Sensor2", SENSOR_CHANNEL1),
-	AD4170_IIO_TEMP_CH("Sensor3", SENSOR_CHANNEL2),
+		AD4170_IIO_TEMP_CH("Sensor1", SENSOR_CHANNEL0),
+		AD4170_IIO_TEMP_CH("Sensor2", SENSOR_CHANNEL1),
+		AD4170_IIO_TEMP_CH("Sensor3", SENSOR_CHANNEL2),
 #elif (ACTIVE_DEMO_MODE_CONFIG == THERMOCOUPLE_CONFIG)
-	AD4170_IIO_TEMP_CH("Sensor1", SENSOR_CHANNEL0),
-	AD4170_IIO_TEMP_CH("Sensor2", SENSOR_CHANNEL1),
-	AD4170_IIO_TEMP_CH("CJC", SENSOR_CHANNEL2),
+		AD4170_IIO_TEMP_CH("Sensor1", SENSOR_CHANNEL0),
+		AD4170_IIO_TEMP_CH("Sensor2", SENSOR_CHANNEL1),
+		AD4170_IIO_TEMP_CH("CJC", SENSOR_CHANNEL2),
 #endif
+	}
 };
 
 /**
@@ -2770,14 +3102,19 @@ static int32_t ad4170_iio_trigger_param_init(struct iio_hw_trig **desc)
  * @brief	Init for reading/writing and parameterization of a
  * 			ad4170 IIO device
  * @param 	desc[in,out] - IIO device descriptor
+ * @param	dev_indx[in] - Device Index
  * @return	0 in case of success or negative value otherwise
  */
-static int32_t ad4170_iio_init(struct iio_device **desc)
+static int32_t ad4170_iio_init(struct iio_device **desc, uint8_t dev_indx)
 {
 	struct iio_device *iio_ad4170_inst;
 	uint8_t chn;
 	uint8_t setup;
 	bool bipolar;
+	uint16_t chn_mask = p_ad4170_dev_inst->config.channel_en;
+	static struct iio_channel channels[TOTAL_CHANNELS];
+	uint16_t mask = 0x1;
+	uint8_t id = 0;
 
 	iio_ad4170_inst = calloc(1, sizeof(struct iio_device));
 	if (!iio_ad4170_inst) {
@@ -2806,10 +3143,18 @@ static int32_t ad4170_iio_init(struct iio_device **desc)
 		chn_scan[chn].shift = 0;
 		chn_scan[chn].is_big_endian = false;
 #endif
+
+		/* Update the channel map structure to include the enabled channels only */
+		if (chn_mask & mask) {
+			channels[id] = iio_ad4170_channels[dev_indx][chn];
+			id++;
+		}
+
+		mask <<= 1;
 	}
 
-	iio_ad4170_inst->num_ch = NO_OS_ARRAY_SIZE(iio_ad4170_channels);
-	iio_ad4170_inst->channels = iio_ad4170_channels;
+	iio_ad4170_inst->num_ch = no_os_hweight16(chn_mask);
+	iio_ad4170_inst->channels = channels;
 	iio_ad4170_inst->attributes = global_attributes;
 
 	iio_ad4170_inst->submit = iio_ad4170_submit_buffer;
@@ -2916,9 +3261,41 @@ void ad4170_configure_filter_params(void)
 		ad4170_init_params.config.setups[setup_id].filter.filter_type = filter_type;
 		ad4170_init_params.config.setups[setup_id].filter_fs = filter_fs;
 	}
+}
 
-	/* Calculate the effective sampling rate of the device */
-	sampling_rate = (AD4170_INTERNAL_CLOCK / (FILTER_SCALE * filter_fs));
+/**
+ * @brief Init for reading/writing and parameterization of a AD4170 Board IIO device
+ * @param desc[in,out] - IIO device descriptor
+ * @param dev_indx[in] - IIO Device index
+ * @return 0 in case of success, negative error code otherwise
+ */
+static int board_iio_params_init(struct iio_device** desc,
+				 uint8_t dev_indx)
+{
+	struct iio_device* iio_dev;
+	uint8_t ch_id;
+
+	if (!desc) {
+		return -EINVAL;
+	}
+
+	iio_dev = calloc(1, sizeof(*iio_dev));
+	if (!iio_dev) {
+		return -ENOMEM;
+	}
+
+	iio_dev->num_ch = NO_OS_ARRAY_SIZE(iio_ad4170_channels[dev_indx]);
+	for (ch_id = 0; ch_id < TOTAL_CHANNELS; ch_id ++) {
+		iio_ad4170_channels[dev_indx][ch_id].attributes =
+			&ad4170_board_channel_attributes;
+	}
+
+	iio_dev->channels = iio_ad4170_channels[dev_indx];
+	iio_dev->attributes = ad4170_board_global_attributes;
+
+	*desc = iio_dev;
+
+	return 0;
 }
 
 /**
@@ -2930,11 +3307,20 @@ int32_t ad4170_iio_initialize(void)
 {
 	int32_t init_status;
 	uint8_t read_id;
+	static bool entered = false;
+	static bool s_rate_configured = false;
 
-	/* Init the system peripherals */
-	init_status = init_system();
-	if (init_status) {
-		return init_status;
+	if (!entered) {
+		/* Init the system peripherals */
+		init_status = init_system();
+		if (init_status) {
+			return init_status;
+		}
+		entered = true;
+
+		/* Delay to ensure that the I2C peripheral is initialized
+		 * before an EEPROM read */
+		no_os_mdelay(10000);
 	}
 
 	/* Read context attributes */
@@ -2972,8 +3358,11 @@ int32_t ad4170_iio_initialize(void)
 		}
 	}
 
-	/* Re-assign the parameters according to the active device */
-	ad4170_configure_filter_params();
+	if (!s_rate_configured) {
+		/* Re-assign the parameters according to the active device */
+		ad4170_configure_filter_params();
+		s_rate_configured = true;
+	}
 
 	if (hw_mezzanine_is_valid) {
 		/* Initialize AD4170 device and peripheral interface */
@@ -2983,7 +3372,8 @@ int32_t ad4170_iio_initialize(void)
 		}
 
 		/* Initialize the device if HW mezzanine status is valid */
-		init_status = ad4170_iio_init(&p_iio_ad4170_dev);
+		init_status = ad4170_iio_init(&p_iio_ad4170_dev[iio_init_params.nb_devs],
+					      iio_init_params.nb_devs);
 		if (init_status) {
 			return init_status;
 		}
@@ -2993,7 +3383,8 @@ int32_t ad4170_iio_initialize(void)
 		iio_device_init_params[0].raw_buf_len = DATA_BUFFER_SIZE;
 
 		iio_device_init_params[0].dev = p_ad4170_dev_inst;
-		iio_device_init_params[0].dev_descriptor = p_iio_ad4170_dev;
+		iio_device_init_params[0].dev_descriptor =
+			p_iio_ad4170_dev[iio_init_params.nb_devs];
 
 		iio_init_params.nb_devs++;
 
@@ -3001,6 +3392,19 @@ int32_t ad4170_iio_initialize(void)
 		iio_init_params.nb_trigs++;
 #endif
 	}
+
+	/* Initialize board IIO parameters */
+	init_status = board_iio_params_init(&p_iio_ad4170_dev[iio_init_params.nb_devs],
+					    iio_init_params.nb_devs);
+	if (init_status) {
+		return init_status;
+	}
+
+	iio_device_init_params[iio_init_params.nb_devs].name = "system_config";
+	iio_device_init_params[iio_init_params.nb_devs].dev_descriptor =
+		p_iio_ad4170_dev[iio_init_params.nb_devs];
+	iio_init_params.nb_devs++;
+
 
 	/* Initialize the IIO interface */
 	iio_init_params.uart_desc = uart_desc;
@@ -3031,12 +3435,68 @@ int32_t ad4170_iio_initialize(void)
 }
 
 /**
+ * @brief	DeInitialize the IIO parameters.
+ * @return	0 in case of success, negative error code otherwise
+ */
+int iio_params_deinit(void)
+{
+	uint8_t indx = 0;
+
+	for (indx = 0 ; indx < iio_init_params.nb_devs; indx++) {
+		if (p_iio_ad4170_dev[indx]) {
+			free(p_iio_ad4170_dev[indx]);
+			p_iio_ad4170_dev[indx] = NULL;
+		}
+	}
+
+	iio_init_params.nb_devs = 0;
+
+	return 0;
+}
+
+/**
  * @brief 	Run the AD4170 IIO event handler
  * @return	none
  * @details	This function monitors the new IIO client event
  */
 void ad4170_iio_event_handler(void)
 {
+	int ret;
+
+	if (restart_iio_flag) {
+#if (DATA_CAPTURE_MODE == CONTINUOUS_DATA_CAPTURE) && (INTERFACE_MODE != SPI_DMA_MODE)
+		/* Remove and free the pointers allocated during IIO init */
+		ret = iio_hw_trig_remove(ad4692_hw_trig_desc);
+		if (ret) {
+			return;
+		}
+#endif
+
+		/* Remove IIO Parameters */
+		iio_params_deinit();
+
+		/* Remove IIO Context attributes */
+		remove_iio_context_attributes(iio_init_params.ctx_attrs);
+
+		/* Remove AD4170 Device descriptor */
+		ret = ad4170_remove(p_ad4170_dev_inst);
+		if (ret) {
+			return;
+		}
+
+		/* Remove the AD4170 IIO Descriptor */
+		ret = iio_remove(p_ad4170_iio_desc);
+		if (ret) {
+			return;
+		}
+
+		/* Reset the restart_iio flag */
+		restart_iio_flag = false;
+
+		/* Initialize AD4170 device and peripheral interface */
+		ad4170_iio_initialize();
+	}
+
 	(void)iio_step(p_ad4170_iio_desc);
 #if (ACTIVE_IIO_CLIENT == IIO_CLIENT_LOCAL)
 	pl_gui_event_handle(LVGL_TICK_TIME_MS);
