@@ -2,7 +2,7 @@
  *   @file   ad7606_user_config.c
  *   @brief  User configuration file for AD7606 device
 ******************************************************************************
-* Copyright (c) 2020-2022 Analog Devices, Inc.
+* Copyright (c) 2020-2022, 2025 Analog Devices, Inc.
 * All rights reserved.
 *
 * This software is proprietary to Analog Devices, Inc. and its licensors.
@@ -32,48 +32,56 @@
 
 struct no_os_gpio_init_param gpio_init_reset = {
 	.number = RESET_PIN,
+	.port = RESET_PORT,
 	.platform_ops = &gpio_ops,
 	.extra = &reset_gpio_extra_init_params
 };
 
 struct no_os_gpio_init_param gpio_init_convst = {
 	.number = CONVST_PIN,
+	.port = CONVST_PORT,
 	.platform_ops = &gpio_ops,
 	.extra = &convst_gpio_extra_init_params
 };
 
 struct no_os_gpio_init_param gpio_init_busy = {
 	.number = BUSY_PIN,
+	.port = BUSY_PORT,
 	.platform_ops = &gpio_ops,
 	.extra = &busy_gpio_extra_init_params
 };
 
 struct no_os_gpio_init_param gpio_init_osr0 = {
 	.number = OSR0_PIN,
+	.port = OSR0_PORT,
 	.platform_ops = &gpio_ops,
 	.extra = &osr0_gpio_extra_init_params
 };
 
 struct no_os_gpio_init_param gpio_init_osr1 = {
 	.number = OSR1_PIN,
+	.port = OSR1_PORT,
 	.platform_ops = &gpio_ops,
 	.extra = &osr1_gpio_extra_init_params
 };
 
 struct no_os_gpio_init_param gpio_init_osr2 = {
 	.number = OSR2_PIN,
+	.port = OSR2_PORT,
 	.platform_ops = &gpio_ops,
 	.extra = &osr2_gpio_extra_init_params
 };
 
 struct no_os_gpio_init_param gpio_init_range = {
 	.number = RANGE_PIN,
+	.port = RANGE_PORT,
 	.platform_ops = &gpio_ops,
 	.extra = &range_gpio_extra_init_params
 };
 
 struct no_os_gpio_init_param gpio_init_stdby = {
 	.number = STDBY_PIN,
+	.port = STDBY_PORT,
 	.platform_ops = &gpio_ops,
 	.extra = &stdby_gpio_extra_init_params
 };
@@ -82,6 +90,7 @@ struct no_os_gpio_init_param gpio_init_stdby = {
 struct ad7606_init_param ad7606_init_str = {
 	// Define SPI init parameters structure
 	.spi_init = {
+		.device_id = SPI_DEVICE_ID,
 		.max_speed_hz = 22500000,   	// Max SPI Speed
 		.chip_select = SPI_CSB,   		// Chip Select
 		.mode = NO_OS_SPI_MODE_2,   	// CPOL = 1, CPHA = 0
@@ -106,7 +115,7 @@ struct ad7606_init_param ad7606_init_str = {
 	// Below settings (except range) applies only to AD7606B and AD7606C devices
 
 	/* Device Configs */
-	{
+	.config = {
 		.op_mode = AD7606_NORMAL,
 		.dout_format = AD7606_1_DOUT,
 		.ext_os_clock = false,
@@ -114,7 +123,7 @@ struct ad7606_init_param ad7606_init_str = {
 	},
 
 	/* Diagnostic flags setting */
-	{
+	.digital_diag_enable = {
 		.rom_crc_err_en = false,
 		.mm_crc_err_en = false,
 		.int_crc_err_en = false,
@@ -146,14 +155,14 @@ struct ad7606_init_param ad7606_init_str = {
 		{-USER_CONFIG_RANGE, USER_CONFIG_RANGE, true},
 		{-USER_CONFIG_RANGE, USER_CONFIG_RANGE, true},
 #else
-		{-USER_CONFIG_RANGE, USER_CONFIG_RANGE, false},
-		{-USER_CONFIG_RANGE, USER_CONFIG_RANGE, false},
-		{-USER_CONFIG_RANGE, USER_CONFIG_RANGE, false},
-		{-USER_CONFIG_RANGE, USER_CONFIG_RANGE, false},
-		{-USER_CONFIG_RANGE, USER_CONFIG_RANGE, false},
-		{-USER_CONFIG_RANGE, USER_CONFIG_RANGE, false},
-		{-USER_CONFIG_RANGE, USER_CONFIG_RANGE, false},
-		{-USER_CONFIG_RANGE, USER_CONFIG_RANGE, false}
+		{-USER_CONFIG_RANGE, USER_CONFIG_RANGE, AD7606_SW_RANGE_SINGLE_ENDED_BIPOLAR},
+		{-USER_CONFIG_RANGE, USER_CONFIG_RANGE, AD7606_SW_RANGE_SINGLE_ENDED_BIPOLAR},
+		{-USER_CONFIG_RANGE, USER_CONFIG_RANGE, AD7606_SW_RANGE_SINGLE_ENDED_BIPOLAR},
+		{-USER_CONFIG_RANGE, USER_CONFIG_RANGE, AD7606_SW_RANGE_SINGLE_ENDED_BIPOLAR},
+		{-USER_CONFIG_RANGE, USER_CONFIG_RANGE, AD7606_SW_RANGE_SINGLE_ENDED_BIPOLAR},
+		{-USER_CONFIG_RANGE, USER_CONFIG_RANGE, AD7606_SW_RANGE_SINGLE_ENDED_BIPOLAR},
+		{-USER_CONFIG_RANGE, USER_CONFIG_RANGE, AD7606_SW_RANGE_SINGLE_ENDED_BIPOLAR},
+		{-USER_CONFIG_RANGE, USER_CONFIG_RANGE, AD7606_SW_RANGE_SINGLE_ENDED_BIPOLAR}
 #endif
 	}
 };

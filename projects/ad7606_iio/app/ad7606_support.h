@@ -34,7 +34,6 @@
 #define DEFAULT_CHN_RANGE	(10.0)
 
 /* Diagnostic channels Mux configurations */
-#define AD7606_DIAGN_MUX_CH_MSK(ch)			(NO_OS_GENMASK(2, 0) << (3 * ((ch) % 2)))
 #define AD7606_DIAGN_MUX_CH_VAL(ch, val)	(val << (3 * ((ch) % 2)))
 
 #define AD7606_OPEN_DETECT_ENABLE_MSK(ch)	(NO_OS_GENMASK(7,0) & (~(1 << ch)))
