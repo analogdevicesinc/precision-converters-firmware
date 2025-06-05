@@ -20,3 +20,13 @@ Visual*
 .mbed
 gcc-*
 doc/sphinx/_build
+projects/*/STM32/*/*
+!projects/*/STM32/*/*.ioc
+!projects/*/STM32/*/*.extSettings
+**/__pycache__/
+**/Debug/
+**/Release/
+**/.pytest_cache/
+**/output/
+**/.idea/
+*/.vscode/
