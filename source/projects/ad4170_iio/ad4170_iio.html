@@ -261,6 +261,11 @@ to drive SDP-K1 / Nucleo-H563ZI GPIOs at 3.3V</p>
 <p>In case the firmware is being used with the SDP-K1 in the STM32 platform with SPI DMA Mode of operation,
 an external jumper needs to be connected between D0 and D1 of the Arduino header of the SDP-K1</p>
 <p>Please refer to the user guide for the jumper connections on the EVAL-AD4170 board</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Please make sure to enable/disable the channels of interest via the “system_config” attribute as shown below.</p>
+</div>
+<img alt="../../../_images/ad4170_channel_enable.gif" src="../../../_images/ad4170_channel_enable.gif" />
 </section>
 <section id="communication-interface">
 <h2>Communication Interface<a class="headerlink" href="#communication-interface" title="Link to this heading"></a></h2>

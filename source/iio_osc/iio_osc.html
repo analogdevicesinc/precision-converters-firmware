@@ -215,11 +215,26 @@ drag aside or close this window to see the main ‘Debug and DMM’ tab window.<
 <section id="configure-access-device-attributes-parameters">
 <h2>Configure/Access Device Attributes (Parameters)<a class="headerlink" href="#configure-access-device-attributes-parameters" title="Link to this heading"></a></h2>
 <p>The IIO Oscilloscope allows user to access and configure different device parameters,
-called as ‘Attributes“. There are 2 types of attributes:</p>
-<ul class="simple">
+called as ‘Attributes“. There are 3 types of attributes:</p>
+<ul>
 <li><p>Device Attributes (Global): Access/Configure common device parameters.</p></li>
 <li><p>Channel Attributes (Specific to channels): Access/Configure channel specific device parameters.</p></li>
+<li><p>Board Level Attributes (Can be Global and Channel specific): Configure the board level parameters.
+Projects only receive the board-level attribute when deemed necessary, thus it is not a standard inclusion</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../_images/iio_osc_attributes.png"><img alt="../../_images/iio_osc_attributes.png" src="../../_images/iio_osc_attributes.png" style="width: 500px;" />
+</a>
+</div></blockquote>
+</li>
 </ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>After any board-level attribute is configured, the ‘reconfigure_system’
+attribute must be enabled. This step ensures that the IIO Device is reinitialized and
+the changes made through the selected board-level attributes are applied.
+If this step is neglected, the changes made on the attributes will not take effect on the device.
+The IIO Oscilloscope application must be closed and re-opened to ensure continued communication with the IIO Device.</p>
+</div>
 </section>
 </section>
 <section id="using-iio-oscilloscope-for-adcs">
