@@ -1,7 +1,10 @@
 <map id="ad4170_configure_filter_params" name="ad4170_configure_filter_params">
-<area shape="rect" id="Node000001" title="Configure filter parameters according to active device chosen." alt="" coords="312,5,487,45"/>
-<area shape="rect" id="Node000002" href="$ad4170__iio_8c.html#afe5b4999ffeb4ff59922c46515a4a8b1" title="Initialize the IIO interface for AD4170 IIO device." alt="" coords="108,13,264,38"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="298,28,264,28,264,23,298,23"/>
-<area shape="rect" id="Node000003" href="$ad4170__iio_2app_2main_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title="Main entry point to application." alt="" coords="5,13,60,38"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="94,28,60,28,60,23,94,23"/>
+<area shape="rect" id="Node000001" title="Configure filter parameters according to active device chosen." alt="" coords="553,23,728,63"/>
+<area shape="rect" id="Node000002" href="$ad4170__iio_8c.html#afe5b4999ffeb4ff59922c46515a4a8b1" title="Initialize the IIO interface for AD4170 IIO device." alt="" coords="349,31,505,56"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="540,46,505,46,505,41,540,41"/>
+<area shape="rect" id="Node000003" href="$ad4170__iio_8c.html#a90df09e109b2513ba81975c0fabfdb60" title="Run the AD4170 IIO event handler." alt="" coords="108,5,301,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="335,36,301,32,302,26,336,30"/>
+<area shape="rect" id="Node000004" href="$ad4170__iio_2app_2main_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title="Main entry point to application." alt="" coords="5,31,60,56"/>
+<area shape="poly" id="edge4_Node000002_Node000004" title=" " alt="" coords="336,46,60,46,60,41,336,41"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="105,35,61,42,60,37,104,30"/>
 </map>

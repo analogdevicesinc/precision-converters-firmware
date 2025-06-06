@@ -101,6 +101,7 @@ $(function() {
 <code>#include &quot;<a class="el" href="common_8h_source.html">common.h</a>&quot;</code><br />
 <code>#include &quot;iio_trigger.h&quot;</code><br />
 <code>#include &quot;no_os_gpio.h&quot;</code><br />
+<code>#include &quot;no_os_alloc.h&quot;</code><br />
 <code>#include &quot;<a class="el" href="ad4170__iio_2app_2stm32__tdm__support_8h_source.html">stm32_tdm_support.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="pl__gui__views_8h_source.html">pl_gui_views.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="pl__gui__events_8h_source.html">pl_gui_events.h</a>&quot;</code><br />
@@ -110,117 +111,119 @@ Include dependency graph for ad4170_iio.c:</div>
 <div class="dyncontent">
 <div class="center"><img src="ad4170__iio_8c__incl.png" border="0" usemap="#a_2home_2runner_2work_2precision-converters-firmware_2precision-converters-firmware_2projects_2ad4170__iio_2app_2ad4170__iio_8c" alt=""/></div>
 <map name="a_2home_2runner_2work_2precision-converters-firmware_2precision-converters-firmware_2projects_2ad4170__iio_2app_2ad4170__iio_8c" id="a_2home_2runner_2work_2precision-converters-firmware_2precision-converters-firmware_2projects_2ad4170__iio_2app_2ad4170__iio_8c">
-<area shape="rect" title="Implementation of AD4170 IIO application interfaces." alt="" coords="2130,5,2353,75"/>
-<area shape="rect" title=" " alt="" coords="1318,284,1389,309"/>
-<area shape="poly" title=" " alt="" coords="2130,47,1944,56,1724,70,1516,93,1431,108,1367,125,1325,140,1292,155,1265,176,1241,212,1237,223,1239,233,1252,252,1277,267,1306,279,1304,284,1275,272,1249,256,1234,235,1232,223,1236,210,1261,173,1289,150,1323,135,1366,120,1430,103,1515,88,1723,65,1944,50,2130,42"/>
-<area shape="rect" title=" " alt="" coords="2573,284,2643,309"/>
-<area shape="poly" title=" " alt="" coords="2279,73,2377,163,2427,205,2465,234,2513,259,2560,277,2558,282,2511,263,2463,238,2424,209,2373,167,2275,77"/>
-<area shape="rect" title=" " alt="" coords="2212,284,2279,309"/>
-<area shape="poly" title=" " alt="" coords="2245,75,2248,270,2242,270,2239,75"/>
-<area shape="rect" title=" " alt="" coords="2497,130,2565,155"/>
-<area shape="poly" title=" " alt="" coords="2340,72,2478,120,2486,123,2484,128,2476,125,2338,77"/>
-<area shape="rect" href="ad4170__iio_8h.html" title="Header file of ad4170_iio." alt="" coords="2123,211,2229,236"/>
-<area shape="poly" title=" " alt="" coords="2232,76,2187,199,2182,197,2227,74"/>
-<area shape="rect" href="ad4170__iio_2app_2app__config_8h.html" title="Configuration file for AD4170 device application." alt="" coords="992,130,1096,155"/>
-<area shape="poly" title=" " alt="" coords="2130,51,1718,80,1195,125,1110,135,1109,130,1194,120,1718,75,2129,46"/>
-<area shape="rect" href="ad4170__regs_8h.html" title="Global declarations for ad4170_regs module." alt="" coords="1251,211,1368,236"/>
-<area shape="poly" title=" " alt="" coords="2130,47,1958,56,1757,70,1568,93,1492,108,1434,125,1404,141,1375,161,1330,202,1327,198,1372,157,1401,137,1432,120,1490,103,1567,88,1756,65,1958,50,2130,42"/>
-<area shape="rect" href="ad4170__support_8h.html" title=" " alt="" coords="749,211,888,236"/>
-<area shape="poly" title=" " alt="" coords="2130,44,1867,48,1535,60,1367,70,1212,84,1080,102,981,125,941,141,904,162,844,204,841,200,901,157,939,136,979,120,1079,97,1211,79,1367,65,1534,55,1867,43,2130,39"/>
-<area shape="rect" href="ad4170__temperature__sensor_8h.html" title=" " alt="" coords="1609,123,1767,163"/>
-<area shape="poly" title=" " alt="" coords="2130,64,1781,127,1780,122,2129,59"/>
-<area shape="rect" title=" " alt="" coords="2668,284,2777,309"/>
-<area shape="poly" title=" " alt="" coords="2306,72,2690,275,2688,280,2304,77"/>
-<area shape="rect" title=" " alt="" coords="2589,130,2685,155"/>
-<area shape="poly" title=" " alt="" coords="2354,64,2578,120,2590,123,2588,129,2577,125,2352,69"/>
-<area shape="rect" title=" " alt="" coords="2710,130,2823,155"/>
-<area shape="poly" title=" " alt="" coords="2353,56,2517,84,2698,120,2714,124,2713,129,2697,125,2516,89,2352,61"/>
-<area shape="rect" title=" " alt="" coords="2847,130,2947,155"/>
-<area shape="poly" title=" " alt="" coords="2353,49,2578,75,2708,95,2837,120,2851,124,2849,129,2835,125,2707,100,2577,80,2353,54"/>
-<area shape="rect" href="common_8h.html" title=" " alt="" coords="2304,211,2395,236"/>
-<area shape="poly" title=" " alt="" coords="2264,74,2338,197,2333,200,2259,76"/>
-<area shape="rect" title=" " alt="" coords="2972,130,3071,155"/>
-<area shape="poly" title=" " alt="" coords="2353,45,2631,70,2796,91,2961,120,2976,124,2974,129,2959,125,2795,96,2630,75,2353,50"/>
-<area shape="rect" title=" " alt="" coords="3095,130,3201,155"/>
-<area shape="poly" title=" " alt="" coords="2353,43,2499,51,2682,66,2883,88,3083,120,3100,124,3099,129,3082,125,2882,94,2681,71,2499,57,2353,48"/>
-<area shape="rect" href="ad4170__iio_2app_2stm32__tdm__support_8h.html" title="Header file for STM32 TDM&#45;DMA Data Capture Wrapper file." alt="" coords="1755,211,1919,236"/>
-<area shape="poly" title=" " alt="" coords="2212,77,2160,123,2129,146,2096,165,2063,177,2018,189,1916,211,1915,206,2016,184,2062,172,2094,160,2126,141,2157,119,2208,73"/>
-<area shape="rect" href="pl__gui__views_8h.html" title="Pocket lab GUI views." alt="" coords="1446,130,1565,155"/>
-<area shape="poly" title=" " alt="" coords="2130,55,1885,84,1596,125,1571,130,1570,125,1596,120,1884,79,2129,50"/>
-<area shape="rect" href="adi__fft_8h.html" title="FFT library implementation headers." alt="" coords="1605,211,1680,236"/>
-<area shape="poly" title=" " alt="" coords="2130,73,1947,125,1690,209,1688,204,1946,120,2129,68"/>
-<area shape="rect" href="pl__gui__events_8h.html" title="Pocket lab GUI event handling headers." alt="" coords="1959,130,2083,155"/>
-<area shape="poly" title=" " alt="" coords="2169,77,2060,127,2058,122,2166,72"/>
-<area shape="poly" title=" " alt="" coords="2189,234,2227,272,2223,276,2186,238"/>
-<area shape="rect" title=" " alt="" coords="1913,284,1996,309"/>
-<area shape="poly" title=" " alt="" coords="2141,239,2004,282,2002,277,2140,233"/>
-<area shape="rect" title=" " alt="" coords="2137,284,2188,309"/>
-<area shape="poly" title=" " alt="" coords="2176,237,2170,271,2165,270,2171,236"/>
-<area shape="rect" title=" " alt="" coords="2020,284,2113,309"/>
-<area shape="poly" title=" " alt="" coords="2160,238,2098,279,2095,274,2157,234"/>
-<area shape="poly" title=" " alt="" coords="1062,153,1120,191,1196,234,1252,258,1306,277,1304,282,1250,263,1193,238,1117,196,1059,158"/>
+<area shape="rect" title="Implementation of AD4170 IIO application interfaces." alt="" coords="2287,5,2510,75"/>
+<area shape="rect" title=" " alt="" coords="1401,284,1471,309"/>
+<area shape="poly" title=" " alt="" coords="2287,50,2015,68,1682,99,1525,119,1390,142,1291,169,1259,183,1241,198,1233,216,1236,232,1250,245,1271,257,1329,276,1388,287,1387,292,1327,281,1269,262,1247,250,1232,234,1227,215,1237,194,1256,178,1289,164,1389,137,1524,114,1681,94,2014,63,2287,45"/>
+<area shape="rect" title=" " alt="" coords="2686,284,2757,309"/>
+<area shape="poly" title=" " alt="" coords="2428,73,2501,151,2548,195,2598,234,2638,258,2679,276,2676,281,2636,262,2594,238,2544,199,2497,155,2424,77"/>
+<area shape="rect" title=" " alt="" coords="2325,284,2392,309"/>
+<area shape="poly" title=" " alt="" coords="2398,75,2375,236,2367,271,2362,270,2369,236,2392,75"/>
+<area shape="rect" title=" " alt="" coords="2589,123,2657,148"/>
+<area shape="poly" title=" " alt="" coords="2481,72,2583,115,2581,120,2479,77"/>
+<area shape="rect" href="ad4170__iio_8h.html" title="Header file of ad4170_iio." alt="" coords="2255,203,2361,229"/>
+<area shape="poly" title=" " alt="" coords="2384,76,2323,192,2318,190,2379,74"/>
+<area shape="rect" href="ad4170__iio_2app_2app__config_8h.html" title="Configuration file for AD4170 device application." alt="" coords="992,123,1096,148"/>
+<area shape="poly" title=" " alt="" coords="2287,51,1195,125,1110,132,1109,126,1194,120,2287,46"/>
+<area shape="rect" href="ad4170__regs_8h.html" title="Global declarations for ad4170_regs module." alt="" coords="1251,203,1368,229"/>
+<area shape="poly" title=" " alt="" coords="2287,47,2146,55,1971,69,1778,92,1587,125,1521,142,1456,162,1350,201,1348,196,1455,157,1520,137,1586,120,1778,87,1970,64,2146,50,2287,42"/>
+<area shape="rect" href="ad4170__support_8h.html" title=" " alt="" coords="749,203,888,229"/>
+<area shape="poly" title=" " alt="" coords="2287,44,1995,47,1616,58,1424,68,1247,82,1095,101,981,125,942,140,905,159,845,197,843,193,903,154,940,135,979,120,1094,96,1246,77,1424,63,1616,52,1995,41,2287,39"/>
+<area shape="rect" href="ad4170__temperature__sensor_8h.html" title=" " alt="" coords="1554,196,1713,236"/>
+<area shape="poly" title=" " alt="" coords="2287,64,1985,125,1714,195,1712,190,1983,120,2286,59"/>
+<area shape="rect" title=" " alt="" coords="2781,284,2891,309"/>
+<area shape="poly" title=" " alt="" coords="2455,72,2579,146,2804,275,2802,279,2576,150,2453,77"/>
+<area shape="rect" title=" " alt="" coords="2681,123,2777,148"/>
+<area shape="poly" title=" " alt="" coords="2511,70,2676,116,2675,121,2509,75"/>
+<area shape="rect" title=" " alt="" coords="2802,123,2915,148"/>
+<area shape="poly" title=" " alt="" coords="2511,61,2789,117,2788,123,2509,66"/>
+<area shape="rect" title=" " alt="" coords="2939,123,3039,148"/>
+<area shape="poly" title=" " alt="" coords="2511,55,2926,120,2926,125,2510,60"/>
+<area shape="rect" href="common_8h.html" title=" " alt="" coords="2436,203,2527,229"/>
+<area shape="poly" title=" " alt="" coords="2417,74,2472,190,2468,192,2412,76"/>
+<area shape="rect" title=" " alt="" coords="3064,123,3163,148"/>
+<area shape="poly" title=" " alt="" coords="2511,51,2754,79,3051,120,3050,125,2754,84,2510,56"/>
+<area shape="rect" title=" " alt="" coords="3187,123,3293,148"/>
+<area shape="poly" title=" " alt="" coords="2510,48,2806,76,3173,120,3173,125,2805,81,2510,53"/>
+<area shape="rect" title=" " alt="" coords="3318,123,3429,148"/>
+<area shape="poly" title=" " alt="" coords="2510,46,2860,73,3080,94,3304,120,3304,125,3079,100,2860,79,2510,51"/>
+<area shape="rect" href="ad4170__iio_2app_2stm32__tdm__support_8h.html" title="Header file for STM32 TDM&#45;DMA Data Capture Wrapper file." alt="" coords="1887,203,2051,229"/>
+<area shape="poly" title=" " alt="" coords="2355,77,2296,115,2228,150,2142,177,2035,203,2033,198,2141,172,2226,146,2293,111,2352,73"/>
+<area shape="rect" href="pl__gui__views_8h.html" title="Pocket lab GUI views." alt="" coords="1599,123,1718,148"/>
+<area shape="poly" title=" " alt="" coords="2287,58,1732,128,1731,122,2287,53"/>
+<area shape="rect" href="adi__fft_8h.html" title="FFT library implementation headers." alt="" coords="1737,203,1812,229"/>
+<area shape="poly" title=" " alt="" coords="2288,71,2079,125,1831,199,1822,202,1821,196,1830,193,2078,120,2287,66"/>
+<area shape="rect" href="pl__gui__events_8h.html" title="Pocket lab GUI event handling headers." alt="" coords="2091,123,2215,148"/>
+<area shape="poly" title=" " alt="" coords="2311,77,2197,120,2196,115,2309,72"/>
+<area shape="poly" title=" " alt="" coords="2318,227,2346,271,2341,274,2313,230"/>
+<area shape="rect" title=" " alt="" coords="2027,284,2109,309"/>
+<area shape="poly" title=" " alt="" coords="2274,231,2117,282,2115,277,2272,226"/>
+<area shape="rect" title=" " alt="" coords="2251,284,2301,309"/>
+<area shape="poly" title=" " alt="" coords="2306,230,2288,272,2284,270,2301,228"/>
+<area shape="rect" title=" " alt="" coords="2133,284,2227,309"/>
+<area shape="poly" title=" " alt="" coords="2291,231,2212,279,2209,274,2288,227"/>
+<area shape="poly" title=" " alt="" coords="1064,146,1139,194,1167,215,1196,234,1245,253,1296,267,1388,286,1386,291,1295,273,1244,258,1193,238,1164,220,1136,198,1061,150"/>
 <area shape="rect" title=" " alt="" coords="1003,284,1085,309"/>
-<area shape="poly" title=" " alt="" coords="1017,158,990,172,965,191,950,212,949,223,953,235,973,259,1000,276,997,280,970,263,948,237,944,223,945,210,961,187,987,168,1014,153"/>
-<area shape="rect" href="ad4170__iio_2app_2app__config__mbed_8h.html" title="Header file for Mbed platform configurations." alt="" coords="505,211,653,236"/>
-<area shape="poly" title=" " alt="" coords="992,155,661,211,660,206,992,150"/>
-<area shape="rect" href="ad4170__user__config_8h.html" title="Header for AD4170 default user configurations file." alt="" coords="963,211,1125,236"/>
-<area shape="poly" title=" " alt="" coords="1040,156,1038,197,1033,197,1035,155"/>
-<area shape="poly" title=" " alt="" coords="653,229,1304,288,1304,294,653,234"/>
+<area shape="poly" title=" " alt="" coords="1012,150,979,169,964,182,953,197,947,216,953,235,973,259,1000,276,997,280,970,263,948,237,942,216,948,195,960,178,976,165,1010,146"/>
+<area shape="rect" href="ad4170__iio_2app_2app__config__mbed_8h.html" title="Header file for Mbed platform configurations." alt="" coords="505,203,653,229"/>
+<area shape="poly" title=" " alt="" coords="992,148,661,204,660,198,992,143"/>
+<area shape="rect" href="ad4170__user__config_8h.html" title="Header for AD4170 default user configurations file." alt="" coords="963,203,1125,229"/>
+<area shape="poly" title=" " alt="" coords="1040,148,1038,190,1033,189,1035,148"/>
+<area shape="poly" title=" " alt="" coords="653,224,738,233,1111,267,1387,289,1387,294,1111,273,737,239,653,229"/>
 <area shape="rect" title=" " alt="" coords="651,284,751,309"/>
-<area shape="poly" title=" " alt="" coords="600,234,671,275,668,279,597,238"/>
+<area shape="poly" title=" " alt="" coords="598,227,673,274,670,279,595,231"/>
 <area shape="rect" title=" " alt="" coords="776,284,883,309"/>
-<area shape="poly" title=" " alt="" coords="620,233,776,278,775,283,618,239"/>
+<area shape="poly" title=" " alt="" coords="616,226,781,277,779,282,614,231"/>
 <area shape="rect" title=" " alt="" coords="5,284,109,309"/>
-<area shape="poly" title=" " alt="" coords="505,236,335,257,123,287,122,281,334,252,504,231"/>
+<area shape="poly" title=" " alt="" coords="505,230,123,286,122,281,504,225"/>
 <area shape="rect" title=" " alt="" coords="134,284,229,309"/>
-<area shape="poly" title=" " alt="" coords="513,239,243,286,242,281,512,233"/>
+<area shape="poly" title=" " alt="" coords="521,231,243,286,242,281,520,226"/>
 <area shape="rect" title=" " alt="" coords="253,284,384,309"/>
-<area shape="poly" title=" " alt="" coords="538,239,375,283,373,278,536,233"/>
+<area shape="poly" title=" " alt="" coords="542,231,370,283,369,278,540,226"/>
 <area shape="rect" title=" " alt="" coords="409,284,506,309"/>
-<area shape="poly" title=" " alt="" coords="561,238,490,279,487,275,558,234"/>
+<area shape="poly" title=" " alt="" coords="562,231,488,279,485,274,559,227"/>
 <area shape="rect" title=" " alt="" coords="530,284,627,309"/>
-<area shape="poly" title=" " alt="" coords="581,236,581,270,576,270,576,236"/>
-<area shape="poly" title=" " alt="" coords="1094,233,1305,282,1304,287,1093,239"/>
-<area shape="poly" title=" " alt="" coords="1048,210,1050,169,1055,169,1053,211"/>
-<area shape="poly" title=" " alt="" coords="1047,236,1047,270,1041,270,1041,236"/>
+<area shape="poly" title=" " alt="" coords="581,229,581,270,576,270,576,229"/>
+<area shape="poly" title=" " alt="" coords="1102,226,1388,283,1387,288,1100,231"/>
+<area shape="poly" title=" " alt="" coords="1048,203,1050,162,1055,162,1053,203"/>
+<area shape="poly" title=" " alt="" coords="1047,229,1047,270,1041,270,1041,229"/>
 <area shape="rect" title=" " alt="" coords="907,284,978,309"/>
-<area shape="poly" title=" " alt="" coords="1029,238,972,278,969,274,1026,234"/>
-<area shape="poly" title=" " alt="" coords="1319,235,1341,271,1337,274,1314,238"/>
-<area shape="poly" title=" " alt="" coords="856,233,995,277,994,282,854,239"/>
-<area shape="poly" title=" " alt="" coords="840,234,912,275,909,279,837,238"/>
-<area shape="poly" title=" " alt="" coords="1664,165,1610,201,1542,238,1470,266,1403,286,1401,281,1468,261,1540,234,1607,197,1661,161"/>
-<area shape="poly" title=" " alt="" coords="2304,233,2240,239,2006,251,1822,254,1638,261,1530,271,1402,287,1402,282,1529,265,1638,256,1822,249,2006,246,2240,233,2303,227"/>
-<area shape="poly" title=" " alt="" coords="2392,233,2560,279,2559,285,2390,239"/>
-<area shape="poly" title=" " alt="" coords="2334,238,2275,278,2272,274,2331,234"/>
-<area shape="poly" title=" " alt="" coords="2304,235,2010,286,2010,281,2303,229"/>
-<area shape="poly" title=" " alt="" coords="2320,239,2202,283,2200,278,2318,234"/>
-<area shape="poly" title=" " alt="" coords="2395,231,2655,280,2654,285,2394,236"/>
-<area shape="rect" title=" " alt="" coords="2457,284,2548,309"/>
-<area shape="poly" title=" " alt="" coords="2375,234,2466,276,2464,281,2373,238"/>
-<area shape="rect" title=" " alt="" coords="2303,284,2433,309"/>
-<area shape="poly" title=" " alt="" coords="2355,236,2364,270,2359,272,2350,237"/>
-<area shape="poly" title=" " alt="" coords="1755,238,1573,261,1403,287,1402,281,1572,256,1755,232"/>
-<area shape="poly" title=" " alt="" coords="1858,234,1925,274,1922,279,1855,238"/>
-<area shape="poly" title=" " alt="" coords="1875,233,2017,277,2015,282,1873,239"/>
-<area shape="rect" title=" " alt="" coords="1589,284,1760,309"/>
-<area shape="poly" title=" " alt="" coords="1812,238,1715,281,1713,276,1810,234"/>
-<area shape="rect" title=" " alt="" coords="1785,284,1890,309"/>
-<area shape="poly" title=" " alt="" coords="1840,236,1840,270,1835,270,1835,236"/>
-<area shape="poly" title=" " alt="" coords="1494,157,1433,213,1374,275,1370,271,1429,209,1490,153"/>
-<area shape="rect" title=" " alt="" coords="1443,211,1530,236"/>
-<area shape="poly" title=" " alt="" coords="1505,156,1495,198,1490,197,1500,155"/>
-<area shape="poly" title=" " alt="" coords="1527,153,1612,202,1609,206,1524,158"/>
-<area shape="poly" title=" " alt="" coords="1605,236,1403,286,1401,281,1604,231"/>
-<area shape="poly" title=" " alt="" coords="1681,231,1900,280,1899,285,1680,236"/>
-<area shape="rect" href="adi__fft__windowing_8h.html" title="FFT windowing functionality headers." alt="" coords="1413,284,1565,309"/>
-<area shape="poly" title=" " alt="" coords="1619,238,1528,281,1526,276,1617,234"/>
-<area shape="rect" title=" " alt="" coords="1439,357,1540,383"/>
-<area shape="poly" title=" " alt="" coords="1492,310,1492,344,1487,344,1487,310"/>
-<area shape="poly" title=" " alt="" coords="1960,157,1857,179,1744,213,1719,226,1693,239,1615,259,1551,268,1486,274,1403,287,1402,281,1485,269,1550,263,1614,254,1691,233,1716,221,1742,208,1856,174,1959,152"/>
-<area shape="rect" href="pl__gui__iio__wrapper_8h.html" title="Pocket lab GUI IIO wrapper interfaces." alt="" coords="1944,211,2099,236"/>
-<area shape="poly" title=" " alt="" coords="2024,156,2024,197,2019,197,2019,156"/>
-<area shape="poly" title=" " alt="" coords="1944,237,1931,239,1784,251,1668,258,1552,267,1403,287,1402,282,1551,262,1668,253,1784,246,1930,233,1943,232"/>
-<area shape="poly" title=" " alt="" coords="2045,234,2129,275,2126,280,2043,238"/>
+<area shape="poly" title=" " alt="" coords="1031,231,970,277,967,273,1027,227"/>
+<area shape="poly" title=" " alt="" coords="1329,227,1407,274,1404,279,1327,231"/>
+<area shape="poly" title=" " alt="" coords="852,226,999,277,998,282,851,231"/>
+<area shape="poly" title=" " alt="" coords="838,227,914,274,911,279,836,231"/>
+<area shape="poly" title=" " alt="" coords="1587,238,1479,281,1477,276,1585,234"/>
+<area shape="poly" title=" " alt="" coords="2436,229,2372,239,2242,251,2132,259,1944,265,1756,269,1515,287,1485,290,1485,285,1514,281,1755,264,1943,259,2131,254,2242,246,2372,233,2435,224"/>
+<area shape="poly" title=" " alt="" coords="2517,226,2674,277,2673,282,2515,231"/>
+<area shape="poly" title=" " alt="" coords="2465,231,2390,279,2387,274,2462,227"/>
+<area shape="poly" title=" " alt="" coords="2436,228,2124,286,2123,281,2435,223"/>
+<area shape="poly" title=" " alt="" coords="2452,231,2315,283,2313,278,2451,226"/>
+<area shape="poly" title=" " alt="" coords="2528,225,2772,278,2770,284,2526,230"/>
+<area shape="rect" title=" " alt="" coords="2571,284,2661,309"/>
+<area shape="poly" title=" " alt="" coords="2503,227,2586,275,2583,279,2500,231"/>
+<area shape="rect" title=" " alt="" coords="2417,284,2546,309"/>
+<area shape="poly" title=" " alt="" coords="2484,229,2484,270,2479,270,2479,229"/>
+<area shape="poly" title=" " alt="" coords="1910,231,1868,239,1692,264,1515,287,1485,291,1485,286,1514,281,1691,259,1868,233,1909,226"/>
+<area shape="poly" title=" " alt="" coords="1986,227,2044,273,2041,277,1982,231"/>
+<area shape="poly" title=" " alt="" coords="2001,226,2137,277,2135,282,1999,231"/>
+<area shape="rect" title=" " alt="" coords="1703,284,1873,309"/>
+<area shape="poly" title=" " alt="" coords="1944,231,1828,281,1826,276,1942,226"/>
+<area shape="rect" title=" " alt="" coords="1898,284,2003,309"/>
+<area shape="poly" title=" " alt="" coords="1969,229,1959,271,1954,270,1964,228"/>
+<area shape="poly" title=" " alt="" coords="1599,147,1500,166,1458,180,1433,198,1425,214,1423,233,1429,270,1424,271,1417,233,1420,213,1429,194,1456,176,1499,161,1598,141"/>
+<area shape="rect" title=" " alt="" coords="1443,203,1530,229"/>
+<area shape="poly" title=" " alt="" coords="1635,150,1525,200,1523,195,1633,146"/>
+<area shape="poly" title=" " alt="" coords="1677,146,1748,193,1745,198,1674,150"/>
+<area shape="poly" title=" " alt="" coords="1747,231,1725,239,1596,270,1485,290,1484,285,1594,264,1723,233,1745,226"/>
+<area shape="poly" title=" " alt="" coords="1813,225,2014,278,2013,283,1812,230"/>
+<area shape="rect" href="adi__fft__windowing_8h.html" title="FFT windowing functionality headers." alt="" coords="1527,284,1679,309"/>
+<area shape="poly" title=" " alt="" coords="1751,231,1641,281,1639,276,1749,226"/>
+<area shape="rect" title=" " alt="" coords="1552,357,1653,383"/>
+<area shape="poly" title=" " alt="" coords="1605,310,1605,344,1600,344,1600,310"/>
+<area shape="poly" title=" " alt="" coords="2092,149,1971,172,1915,185,1876,198,1861,208,1851,218,1841,229,1825,239,1486,291,1485,285,1823,233,1838,225,1848,214,1858,204,1874,194,1914,180,1970,166,2091,144"/>
+<area shape="rect" href="pl__gui__iio__wrapper_8h.html" title="Pocket lab GUI IIO wrapper interfaces." alt="" coords="2076,203,2231,229"/>
+<area shape="poly" title=" " alt="" coords="2156,148,2156,189,2151,189,2151,148"/>
+<area shape="poly" title=" " alt="" coords="2104,231,2063,239,1909,257,1789,265,1669,272,1515,287,1485,290,1485,285,1514,281,1669,267,1789,260,1909,252,2062,233,2103,226"/>
+<area shape="poly" title=" " alt="" coords="2173,227,2248,274,2245,279,2170,231"/>
 </map>
 </div>
 </div><table class="memberdecls">
@@ -238,7 +241,7 @@ Macros</h2></td></tr>
 <tr class="separator:a107b865ac06aba9032dc5555b7434f90"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a021a0f044ce3daf4aa682946fe586dad" id="r_a021a0f044ce3daf4aa682946fe586dad"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad4170__iio_8c.html#a021a0f044ce3daf4aa682946fe586dad">CJC_CHANNEL</a>&#160;&#160;&#160;2</td></tr>
 <tr class="separator:a021a0f044ce3daf4aa682946fe586dad"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6f2add8fcba3f86373808fbdd22c872b" id="r_a6f2add8fcba3f86373808fbdd22c872b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad4170__iio_8c.html#a6f2add8fcba3f86373808fbdd22c872b">NUM_OF_IIO_DEVICES</a>&#160;&#160;&#160;1</td></tr>
+<tr class="memitem:a6f2add8fcba3f86373808fbdd22c872b" id="r_a6f2add8fcba3f86373808fbdd22c872b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad4170__iio_8c.html#a6f2add8fcba3f86373808fbdd22c872b">NUM_OF_IIO_DEVICES</a>&#160;&#160;&#160;2</td></tr>
 <tr class="separator:a6f2add8fcba3f86373808fbdd22c872b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afc3b52aa7d9434d1c0c56e284a4b7631" id="r_afc3b52aa7d9434d1c0c56e284a4b7631"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad4170__iio_8c.html#afc3b52aa7d9434d1c0c56e284a4b7631">IIO_TRIGGER_NAME</a>&#160;&#160;&#160;&quot;ad4170_iio_trigger&quot;</td></tr>
 <tr class="separator:afc3b52aa7d9434d1c0c56e284a4b7631"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -256,7 +259,9 @@ Macros</h2></td></tr>
 <tr class="separator:a25c8363b88d9b8f73cc6b1a98bba8d9c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a70daa3c8a2012e9f7f314b8476476af2" id="r_a70daa3c8a2012e9f7f314b8476476af2"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad4170__iio_8c.html#a70daa3c8a2012e9f7f314b8476476af2">BUF_READ_TIMEOUT</a>&#160;&#160;&#160;0xffffffff</td></tr>
 <tr class="separator:a70daa3c8a2012e9f7f314b8476476af2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab723c5f0e9759c70ed582dfd77431ff7" id="r_ab723c5f0e9759c70ed582dfd77431ff7"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad4170__iio_8c.html#ab723c5f0e9759c70ed582dfd77431ff7">DATA_BUFFER_SIZE</a>&#160;&#160;&#160;(16384)</td></tr>
+<tr class="memitem:aca9774d2d61ff5879f0c93ac9f5e9b03" id="r_aca9774d2d61ff5879f0c93ac9f5e9b03"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad4170__iio_8c.html#aca9774d2d61ff5879f0c93ac9f5e9b03">adc_data_buffer</a>&#160;&#160;&#160;SDRAM_START_ADDRESS</td></tr>
+<tr class="separator:aca9774d2d61ff5879f0c93ac9f5e9b03"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab723c5f0e9759c70ed582dfd77431ff7" id="r_ab723c5f0e9759c70ed582dfd77431ff7"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad4170__iio_8c.html#ab723c5f0e9759c70ed582dfd77431ff7">DATA_BUFFER_SIZE</a>&#160;&#160;&#160;SDRAM_SIZE_BYTES</td></tr>
 <tr class="separator:ab723c5f0e9759c70ed582dfd77431ff7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3367fb2b2673895c8e50f7571be0a1a6" id="r_a3367fb2b2673895c8e50f7571be0a1a6"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad4170__iio_8c.html#a3367fb2b2673895c8e50f7571be0a1a6">APP_LOCAL_BACKEND_BUF_SIZE</a>&#160;&#160;&#160;0x1000</td></tr>
 <tr class="separator:a3367fb2b2673895c8e50f7571be0a1a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -316,6 +321,13 @@ Enumerations</h2></td></tr>
 <br />
  }</td></tr>
 <tr class="separator:a4166c12acef2cee0878e57eae40ff765"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a17f2dde53078e9e1dffd65f83c3d3d86" id="r_a17f2dde53078e9e1dffd65f83c3d3d86"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad4170__iio_8c.html#a17f2dde53078e9e1dffd65f83c3d3d86">ad4170_channel_status</a> { <br />
+&#160;&#160;<a class="el" href="ad4170__iio_8c.html#a17f2dde53078e9e1dffd65f83c3d3d86a66c0ae06854e5ed0e3f66c39193f5092">AD4170_CHN_DISABLED</a>
+, <br />
+&#160;&#160;<a class="el" href="ad4170__iio_8c.html#a17f2dde53078e9e1dffd65f83c3d3d86a7fb2144b9da931f070081bec91857431">AD4170_CHN_ENABLED</a>
+<br />
+ }</td></tr>
+<tr class="separator:a17f2dde53078e9e1dffd65f83c3d3d86"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
@@ -346,6 +358,9 @@ Functions</h2></td></tr>
 <tr class="memitem:afe5b4999ffeb4ff59922c46515a4a8b1" id="r_afe5b4999ffeb4ff59922c46515a4a8b1"><td class="memItemLeft" align="right" valign="top">int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad4170__iio_8c.html#afe5b4999ffeb4ff59922c46515a4a8b1">ad4170_iio_initialize</a> (void)</td></tr>
 <tr class="memdesc:afe5b4999ffeb4ff59922c46515a4a8b1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize the IIO interface for AD4170 IIO device.  <br /></td></tr>
 <tr class="separator:afe5b4999ffeb4ff59922c46515a4a8b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a62cf0788bdd51c50b87c9a0bd485088b" id="r_a62cf0788bdd51c50b87c9a0bd485088b"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad4170__iio_8c.html#a62cf0788bdd51c50b87c9a0bd485088b">iio_params_deinit</a> (void)</td></tr>
+<tr class="memdesc:a62cf0788bdd51c50b87c9a0bd485088b"><td class="mdescLeft">&#160;</td><td class="mdescRight">DeInitialize the IIO parameters.  <br /></td></tr>
+<tr class="separator:a62cf0788bdd51c50b87c9a0bd485088b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a90df09e109b2513ba81975c0fabfdb60" id="r_a90df09e109b2513ba81975c0fabfdb60"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad4170__iio_8c.html#a90df09e109b2513ba81975c0fabfdb60">ad4170_iio_event_handler</a> (void)</td></tr>
 <tr class="memdesc:a90df09e109b2513ba81975c0fabfdb60"><td class="mdescLeft">&#160;</td><td class="mdescRight">Run the AD4170 IIO event handler.  <br /></td></tr>
 <tr class="separator:a90df09e109b2513ba81975c0fabfdb60"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -354,8 +369,8 @@ Functions</h2></td></tr>
 Variables</h2></td></tr>
 <tr class="memitem:ab45b6d0561a9224c31adc942d76dab33" id="r_ab45b6d0561a9224c31adc942d76dab33"><td class="memItemLeft" align="right" valign="top">struct ad4170_dev *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad4170__iio_8c.html#ab45b6d0561a9224c31adc942d76dab33">p_ad4170_dev_inst</a> = NULL</td></tr>
 <tr class="separator:ab45b6d0561a9224c31adc942d76dab33"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abd1beab959b9e46f5658db1e9f1a6f84" id="r_abd1beab959b9e46f5658db1e9f1a6f84"><td class="memItemLeft" align="right" valign="top">struct iio_device *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad4170__iio_8c.html#abd1beab959b9e46f5658db1e9f1a6f84">p_iio_ad4170_dev</a></td></tr>
-<tr class="separator:abd1beab959b9e46f5658db1e9f1a6f84"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6ddef26a51d6f3d15da0cf2bed1db30e" id="r_a6ddef26a51d6f3d15da0cf2bed1db30e"><td class="memItemLeft" align="right" valign="top">struct iio_device *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad4170__iio_8c.html#a6ddef26a51d6f3d15da0cf2bed1db30e">p_iio_ad4170_dev</a> [<a class="el" href="ad2s1210__iio_8c.html#a6f2add8fcba3f86373808fbdd22c872b">NUM_OF_IIO_DEVICES</a>]</td></tr>
+<tr class="separator:a6ddef26a51d6f3d15da0cf2bed1db30e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8c4548a54972215e8bdf3ccf4f2d5071" id="r_a8c4548a54972215e8bdf3ccf4f2d5071"><td class="memItemLeft" align="right" valign="top">struct iio_device_init&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad4170__iio_8c.html#a8c4548a54972215e8bdf3ccf4f2d5071">iio_device_init_params</a> [<a class="el" href="ad2s1210__iio_8c.html#a6f2add8fcba3f86373808fbdd22c872b">NUM_OF_IIO_DEVICES</a>]</td></tr>
 <tr class="separator:a8c4548a54972215e8bdf3ccf4f2d5071"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9c26c9f9b7e76a3bba788a29af42a730" id="r_a9c26c9f9b7e76a3bba788a29af42a730"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad4170__iio_8c.html#a9c26c9f9b7e76a3bba788a29af42a730">num_of_active_channels</a></td></tr>
@@ -396,6 +411,10 @@ Variables</h2></td></tr>
 <tr class="separator:afc88af0d25c85119c1351d0b07ee2417"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afe922f396cd6132d66abb5ec5d009deb" id="r_afe922f396cd6132d66abb5ec5d009deb"><td class="memItemLeft" align="right" valign="top">struct iio_attribute&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad4170__iio_8c.html#afe922f396cd6132d66abb5ec5d009deb">channel_input_attributes</a> []</td></tr>
 <tr class="separator:afe922f396cd6132d66abb5ec5d009deb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1dbb5272e3d3d42072b36ed5d9ae6730" id="r_a1dbb5272e3d3d42072b36ed5d9ae6730"><td class="memItemLeft" align="right" valign="top">struct iio_attribute&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad4170__iio_8c.html#a1dbb5272e3d3d42072b36ed5d9ae6730">ad4170_board_channel_attributes</a> []</td></tr>
+<tr class="separator:a1dbb5272e3d3d42072b36ed5d9ae6730"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa8c2c1885c1b44b914c267947cf346bc" id="r_aa8c2c1885c1b44b914c267947cf346bc"><td class="memItemLeft" align="right" valign="top">struct iio_attribute&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad4170__iio_8c.html#aa8c2c1885c1b44b914c267947cf346bc">ad4170_board_global_attributes</a> []</td></tr>
+<tr class="separator:aa8c2c1885c1b44b914c267947cf346bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Implementation of AD4170 IIO application interfaces. </p>
@@ -439,7 +458,7 @@ Variables</h2></td></tr>
 <div class="line">    .attributes = <a class="code hl_variable" href="ad4170__iio_8c.html#afe922f396cd6132d66abb5ec5d009deb">channel_input_attributes</a>\</div>
 <div class="line">}</div>
 <div class="ttc" id="aad2s1210__iio_8c_html_add66a0274e7149971cfe86329fa94473"><div class="ttname"><a href="ad2s1210__iio_8c.html#add66a0274e7149971cfe86329fa94473">chn_scan</a></div><div class="ttdeci">struct scan_type chn_scan[RESOLVER_CHANNELS]</div><div class="ttdef"><b>Definition</b> ad2s1210_iio.c:110</div></div>
-<div class="ttc" id="aad4170__iio_8c_html_afe922f396cd6132d66abb5ec5d009deb"><div class="ttname"><a href="ad4170__iio_8c.html#afe922f396cd6132d66abb5ec5d009deb">channel_input_attributes</a></div><div class="ttdeci">struct iio_attribute channel_input_attributes[]</div><div class="ttdef"><b>Definition</b> ad4170_iio.c:2497</div></div>
+<div class="ttc" id="aad4170__iio_8c_html_afe922f396cd6132d66abb5ec5d009deb"><div class="ttname"><a href="ad4170__iio_8c.html#afe922f396cd6132d66abb5ec5d009deb">channel_input_attributes</a></div><div class="ttdeci">struct iio_attribute channel_input_attributes[]</div><div class="ttdef"><b>Definition</b> ad4170_iio.c:2781</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -479,6 +498,20 @@ Variables</h2></td></tr>
 <div class="line">    .attributes = <a class="code hl_variable" href="ad4170__iio_8c.html#afe922f396cd6132d66abb5ec5d009deb">channel_input_attributes</a>\</div>
 <div class="line">}</div>
 </div><!-- fragment -->
+</div>
+</div>
+<a id="aca9774d2d61ff5879f0c93ac9f5e9b03" name="aca9774d2d61ff5879f0c93ac9f5e9b03"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aca9774d2d61ff5879f0c93ac9f5e9b03">&#9670;&#160;</a></span>adc_data_buffer</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define adc_data_buffer&#160;&#160;&#160;SDRAM_START_ADDRESS</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
 </div>
 </div>
 <a id="a3367fb2b2673895c8e50f7571be0a1a6" name="a3367fb2b2673895c8e50f7571be0a1a6"></a>
@@ -586,7 +619,7 @@ Variables</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define DATA_BUFFER_SIZE&#160;&#160;&#160;(16384)</td>
+          <td class="memname">#define DATA_BUFFER_SIZE&#160;&#160;&#160;SDRAM_SIZE_BYTES</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -698,7 +731,7 @@ Variables</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define NUM_OF_IIO_DEVICES&#160;&#160;&#160;1</td>
+          <td class="memname">#define NUM_OF_IIO_DEVICES&#160;&#160;&#160;2</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -727,6 +760,24 @@ Variables</h2></td></tr>
 <tr><td class="fieldname"><a id="a58b7c54d91c89cdadfff6ac4f6bbbf9fa860a8a8a122da16a8ab028c90a862b4b" name="a58b7c54d91c89cdadfff6ac4f6bbbf9fa860a8a8a122da16a8ab028c90a862b4b"></a>LOADCELL_GAIN_CALIB_ID&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="a58b7c54d91c89cdadfff6ac4f6bbbf9fa8d0dfc4cec25f8687401d9264f0e2bec" name="a58b7c54d91c89cdadfff6ac4f6bbbf9fa8d0dfc4cec25f8687401d9264f0e2bec"></a>FILTER_ATTR_ID&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="a58b7c54d91c89cdadfff6ac4f6bbbf9fa2cb5196750ad96f01b5f21023e8e7a92" name="a58b7c54d91c89cdadfff6ac4f6bbbf9fa2cb5196750ad96f01b5f21023e8e7a92"></a>REF_SELECT_ATTR_ID&#160;</td><td class="fielddoc"></td></tr>
+</table>
+
+</div>
+</div>
+<a id="a17f2dde53078e9e1dffd65f83c3d3d86" name="a17f2dde53078e9e1dffd65f83c3d3d86"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a17f2dde53078e9e1dffd65f83c3d3d86">&#9670;&#160;</a></span>ad4170_channel_status</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="ad4170__iio_8c.html#a17f2dde53078e9e1dffd65f83c3d3d86">ad4170_channel_status</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a17f2dde53078e9e1dffd65f83c3d3d86a66c0ae06854e5ed0e3f66c39193f5092" name="a17f2dde53078e9e1dffd65f83c3d3d86a66c0ae06854e5ed0e3f66c39193f5092"></a>AD4170_CHN_DISABLED&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a17f2dde53078e9e1dffd65f83c3d3d86a7fb2144b9da931f070081bec91857431" name="a17f2dde53078e9e1dffd65f83c3d3d86a7fb2144b9da931f070081bec91857431"></a>AD4170_CHN_ENABLED&#160;</td><td class="fielddoc"></td></tr>
 </table>
 
 </div>
@@ -822,11 +873,14 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="ad4170__iio_8c_a1eaa6e18a407274c7109ca69d00e97cc_icgraph.png" border="0" usemap="#aad4170__iio_8c_a1eaa6e18a407274c7109ca69d00e97cc_icgraph" alt=""/></div>
 <map name="aad4170__iio_8c_a1eaa6e18a407274c7109ca69d00e97cc_icgraph" id="aad4170__iio_8c_a1eaa6e18a407274c7109ca69d00e97cc_icgraph">
-<area shape="rect" title="Configure filter parameters according to active device chosen." alt="" coords="312,5,487,45"/>
-<area shape="rect" href="ad4170__iio_8c.html#afe5b4999ffeb4ff59922c46515a4a8b1" title="Initialize the IIO interface for AD4170 IIO device." alt="" coords="108,13,264,38"/>
-<area shape="poly" title=" " alt="" coords="298,28,264,28,264,23,298,23"/>
-<area shape="rect" href="ad4170__iio_2app_2main_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title="Main entry point to application." alt="" coords="5,13,60,38"/>
-<area shape="poly" title=" " alt="" coords="94,28,60,28,60,23,94,23"/>
+<area shape="rect" title="Configure filter parameters according to active device chosen." alt="" coords="553,23,728,63"/>
+<area shape="rect" href="ad4170__iio_8c.html#afe5b4999ffeb4ff59922c46515a4a8b1" title="Initialize the IIO interface for AD4170 IIO device." alt="" coords="349,31,505,56"/>
+<area shape="poly" title=" " alt="" coords="540,46,505,46,505,41,540,41"/>
+<area shape="rect" href="ad4170__iio_8c.html#a90df09e109b2513ba81975c0fabfdb60" title="Run the AD4170 IIO event handler." alt="" coords="108,5,301,31"/>
+<area shape="poly" title=" " alt="" coords="335,36,301,32,302,26,336,30"/>
+<area shape="rect" href="ad4170__iio_2app_2main_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title="Main entry point to application." alt="" coords="5,31,60,56"/>
+<area shape="poly" title=" " alt="" coords="336,46,60,46,60,41,336,41"/>
+<area shape="poly" title=" " alt="" coords="105,35,61,42,60,37,104,30"/>
 </map>
 </div>
 
@@ -889,9 +943,12 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="ad4170__iio_8c_afe5b4999ffeb4ff59922c46515a4a8b1_icgraph.png" border="0" usemap="#aad4170__iio_8c_afe5b4999ffeb4ff59922c46515a4a8b1_icgraph" alt=""/></div>
 <map name="aad4170__iio_8c_afe5b4999ffeb4ff59922c46515a4a8b1_icgraph" id="aad4170__iio_8c_afe5b4999ffeb4ff59922c46515a4a8b1_icgraph">
-<area shape="rect" title="Initialize the IIO interface for AD4170 IIO device." alt="" coords="108,5,264,31"/>
-<area shape="rect" href="ad4170__iio_2app_2main_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title="Main entry point to application." alt="" coords="5,5,60,31"/>
-<area shape="poly" title=" " alt="" coords="94,21,60,21,60,15,94,15"/>
+<area shape="rect" title="Initialize the IIO interface for AD4170 IIO device." alt="" coords="349,31,505,56"/>
+<area shape="rect" href="ad4170__iio_8c.html#a90df09e109b2513ba81975c0fabfdb60" title="Run the AD4170 IIO event handler." alt="" coords="108,5,301,31"/>
+<area shape="poly" title=" " alt="" coords="335,36,301,32,302,26,336,30"/>
+<area shape="rect" href="ad4170__iio_2app_2main_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title="Main entry point to application." alt="" coords="5,31,60,56"/>
+<area shape="poly" title=" " alt="" coords="336,46,60,46,60,41,336,41"/>
+<area shape="poly" title=" " alt="" coords="105,35,61,42,60,37,104,30"/>
 </map>
 </div>
 
@@ -1035,6 +1092,39 @@ Here is the caller graph for this function:</div>
 
 </div>
 </div>
+<a id="a62cf0788bdd51c50b87c9a0bd485088b" name="a62cf0788bdd51c50b87c9a0bd485088b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a62cf0788bdd51c50b87c9a0bd485088b">&#9670;&#160;</a></span>iio_params_deinit()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int iio_params_deinit </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>DeInitialize the IIO parameters. </p>
+<dl class="section return"><dt>Returns</dt><dd>0 in case of success, negative error code otherwise </dd></dl>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="ad4170__iio_8c_a62cf0788bdd51c50b87c9a0bd485088b_icgraph.png" border="0" usemap="#aad4170__iio_8c_a62cf0788bdd51c50b87c9a0bd485088b_icgraph" alt=""/></div>
+<map name="aad4170__iio_8c_a62cf0788bdd51c50b87c9a0bd485088b_icgraph" id="aad4170__iio_8c_a62cf0788bdd51c50b87c9a0bd485088b_icgraph">
+<area shape="rect" title="DeInitialize the IIO parameters." alt="" coords="349,5,488,31"/>
+<area shape="rect" href="ad4170__iio_8c.html#a90df09e109b2513ba81975c0fabfdb60" title="Run the AD4170 IIO event handler." alt="" coords="108,5,301,31"/>
+<area shape="poly" title=" " alt="" coords="336,21,302,21,302,15,336,15"/>
+<area shape="rect" href="ad4170__iio_2app_2main_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title="Main entry point to application." alt="" coords="5,5,60,31"/>
+<area shape="poly" title=" " alt="" coords="94,21,60,21,60,15,94,15"/>
+</map>
+</div>
+
+</div>
+</div>
 <a id="a99da1e4b3602d07cef5c3a2962ef5331" name="a99da1e4b3602d07cef5c3a2962ef5331"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a99da1e4b3602d07cef5c3a2962ef5331">&#9670;&#160;</a></span>perform_adc_calibration()</h2>
 
@@ -1102,6 +1192,47 @@ Here is the caller graph for this function:</div>
 </div>
 </div>
 <h2 class="groupheader">Variable Documentation</h2>
+<a id="a1dbb5272e3d3d42072b36ed5d9ae6730" name="a1dbb5272e3d3d42072b36ed5d9ae6730"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1dbb5272e3d3d42072b36ed5d9ae6730">&#9670;&#160;</a></span>ad4170_board_channel_attributes</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">struct iio_attribute ad4170_board_channel_attributes[]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aa8c2c1885c1b44b914c267947cf346bc" name="aa8c2c1885c1b44b914c267947cf346bc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa8c2c1885c1b44b914c267947cf346bc">&#9670;&#160;</a></span>ad4170_board_global_attributes</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">struct iio_attribute ad4170_board_global_attributes[]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line">= {</div>
+<div class="line">    {</div>
+<div class="line">        .name = <span class="stringliteral">&quot;reconfigure_system&quot;</span>,</div>
+<div class="line">        .show = get_reconfigure_system,</div>
+<div class="line">        .store = set_reconfigure_system</div>
+<div class="line">    },</div>
+<div class="line">    {</div>
+<div class="line">        .name = <span class="stringliteral">&quot;reconfigure_system_available&quot;</span>,</div>
+<div class="line">        .show = get_reconfigure_system_available,</div>
+<div class="line">    },</div>
+<div class="line"> </div>
+<div class="line">    END_ATTRIBUTES_ARRAY</div>
+<div class="line">}</div>
+</div><!-- fragment -->
+</div>
+</div>
 <a id="a232340bf1883f94fc832a7e3c96aebaf" name="a232340bf1883f94fc832a7e3c96aebaf"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a232340bf1883f94fc832a7e3c96aebaf">&#9670;&#160;</a></span>ad4170_dma_buff_full</h2>
 
@@ -1321,14 +1452,14 @@ Here is the caller graph for this function:</div>
 
 </div>
 </div>
-<a id="abd1beab959b9e46f5658db1e9f1a6f84" name="abd1beab959b9e46f5658db1e9f1a6f84"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abd1beab959b9e46f5658db1e9f1a6f84">&#9670;&#160;</a></span>p_iio_ad4170_dev</h2>
+<a id="a6ddef26a51d6f3d15da0cf2bed1db30e" name="a6ddef26a51d6f3d15da0cf2bed1db30e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6ddef26a51d6f3d15da0cf2bed1db30e">&#9670;&#160;</a></span>p_iio_ad4170_dev</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">struct iio_device* p_iio_ad4170_dev</td>
+          <td class="memname">struct iio_device* p_iio_ad4170_dev[<a class="el" href="ad2s1210__iio_8c.html#a6f2add8fcba3f86373808fbdd22c872b">NUM_OF_IIO_DEVICES</a>]</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -1349,7 +1480,7 @@ Here is the caller graph for this function:</div>
 <b>Initial value:</b><div class="fragment"><div class="line">= {</div>
 <div class="line">    .fft_params = &amp;<a class="code hl_variable" href="ad4170__iio_8c.html#a3635a2eb5c5f72ee0b22669d9512d526">fft_init_params</a></div>
 <div class="line">}</div>
-<div class="ttc" id="aad4170__iio_8c_html_a3635a2eb5c5f72ee0b22669d9512d526"><div class="ttname"><a href="ad4170__iio_8c.html#a3635a2eb5c5f72ee0b22669d9512d526">fft_init_params</a></div><div class="ttdeci">struct adi_fft_init_params fft_init_params</div><div class="ttdef"><b>Definition</b> ad4170_iio.c:352</div></div>
+<div class="ttc" id="aad4170__iio_8c_html_a3635a2eb5c5f72ee0b22669d9512d526"><div class="ttname"><a href="ad4170__iio_8c.html#a3635a2eb5c5f72ee0b22669d9512d526">fft_init_params</a></div><div class="ttdeci">struct adi_fft_init_params fft_init_params</div><div class="ttdef"><b>Definition</b> ad4170_iio.c:353</div></div>
 </div><!-- fragment -->
 </div>
 </div>
