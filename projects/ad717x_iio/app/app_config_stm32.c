@@ -1,8 +1,8 @@
 /***************************************************************************//**
- * @file    app_config_mbed.c
- * @brief   Source file for the mbed configuration for AD717x IIO Application
+ * @file    app_config_stm32.c
+ * @brief   STM32 Specific configuration files for AD717x IIO Application
 ********************************************************************************
-* Copyright (c) 2021-23,2025 Analog Devices, Inc.
+* Copyright (c) 2025 Analog Devices, Inc.
 * All rights reserved.
 *
 * This software is proprietary to Analog Devices, Inc. and its licensors.
@@ -14,8 +14,9 @@
 /***************************** Include Files **********************************/
 /******************************************************************************/
 
+#include "no_os_error.h"
+#include "app_config_stm32.h"
 #include "app_config.h"
-#include "app_config_mbed.h"
 
 /******************************************************************************/
 /********************* Macros and Constants Definition ************************/
@@ -25,35 +26,25 @@
 /******************** Variables and User Defined Data Types *******************/
 /******************************************************************************/
 
-/* UART Mbed platform specific init parameters */
-struct mbed_uart_init_param mbed_uart_extra_init_params = {
-	.uart_tx_pin = UART_TX,
-	.uart_rx_pin = UART_RX
+/* UART STM32 Platform Specific Init Parameters */
+struct stm32_uart_init_param stm32_uart_extra_init_params = {
+	.huart = APP_UART_HANDLE
 };
 
-/* VCOM Mbed platform specific init parameters */
-struct mbed_uart_init_param mbed_vcom_extra_init_params = {
-	.vendor_id = VIRTUAL_COM_PORT_VID,
-	.product_id = VIRTUAL_COM_PORT_PID,
-	.serial_number = VIRTUAL_COM_SERIAL_NUM
+/* SPI STM32 Platform Specific Init Parameters */
+struct stm32_spi_init_param stm32_spi_extra_init_params = {
+	.chip_select_port = SPI_CS_PORT,
+	.get_input_clock = HAL_RCC_GetPCLK2Freq
 };
 
-/* SPI MBED Platform Specific Init Parameters */
-struct mbed_spi_init_param mbed_spi_extra_init_params = {
-	.spi_clk_pin = SPI_SCK,
-	.spi_miso_pin = SPI_HOST_SDI,
-	.spi_mosi_pin = SPI_HOST_SDO,
+/* STM32 GPIO IRQ specific parameters */
+struct stm32_gpio_irq_init_param stm32_trigger_gpio_irq_init_params = {
+	.port_nb = RDY_PORT,
 };
 
-/* External interrupt Mbed platform specific parameters */
-struct mbed_gpio_irq_init_param mbed_trigger_gpio_irq_init_params = {
-	.gpio_irq_pin = RDY_PIN,
-};
-
-/* I2C Mbed platform specific parameters */
-struct mbed_i2c_init_param mbed_i2c_extra_init_params = {
-	.i2c_sda_pin = I2C_SDA,
-	.i2c_scl_pin = I2C_SCL
+/* VCOM Init Parameter */
+struct stm32_usb_uart_init_param stm32_vcom_extra_init_params = {
+	.husbdevice = &APP_UART_USB_HANDLE
 };
 
 /******************************************************************************/
@@ -63,3 +54,21 @@ struct mbed_i2c_init_param mbed_i2c_extra_init_params = {
 /******************************************************************************/
 /************************** Functions Definition ******************************/
 /******************************************************************************/
+
+/**
+ * @brief Initialize the STM32 system peripherals
+ * @return None
+ */
+void stm32_system_init(void)
+{
+	HAL_Init();
+	SystemClock_Config();
+	MX_GPIO_Init();
+	MX_SPI5_Init();
+	MX_UART5_Init();
+	MX_I2C3_Init();
+	MX_I2C1_Init();
+	MX_SPI1_Init();
+	MX_USB_DEVICE_Init();
+}
+
