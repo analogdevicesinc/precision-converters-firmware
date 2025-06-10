@@ -27,6 +27,7 @@
 #include "no_os_eeprom.h"
 #include "no_os_tdm.h"
 #include "no_os_pwm.h"
+#include "no_os_delay.h"
 #if (ACTIVE_IIO_CLIENT == IIO_CLIENT_LOCAL)
 #include "pl_gui_events.h"
 #include "pl_gui_views.h"
@@ -409,9 +410,6 @@ int32_t init_system(void)
 	stm32_system_init();
 #endif
 
-	/* Delay to ensure that the peripherals are initialized */
-	no_os_mdelay(2000);
-
 	ret = init_gpio();
 	if (ret) {
 		return ret;
@@ -421,6 +419,9 @@ int32_t init_system(void)
 	if (ret) {
 		return ret;
 	}
+
+	/* Delay to ensure that the peripherals are initialized */
+	no_os_mdelay(2000);
 
 	ret = gpio_trigger_init();
 	if (ret) {
