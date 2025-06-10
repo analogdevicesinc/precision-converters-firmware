@@ -292,7 +292,7 @@ void ad4170_spi_dma_rx_cplt_callback(DMA_HandleTypeDef* hdma)
 #else // CONTUNUOUS_DATA_CAPTURE
 	no_os_cb_end_async_write(iio_dev_data_g->buffer->buf);
 	no_os_cb_prepare_async_write(iio_dev_data_g->buffer->buf,
-				     nb_of_samples_g * (BYTES_PER_SAMPLE), &buff_start_addr, &data_read);
+				     nb_of_samples_g, &buff_start_addr, &data_read);
 #endif // DATA_CAPTURE_MODE
 #endif // INTERFACE_MODE
 }
@@ -419,7 +419,9 @@ void DMA2_Stream0_IRQHandler(void)
 	if (callback_count == 1) {
 		HAL_GPIO_WritePin(SYNC_INB_PORT_ID, 1 << SYNC_INB, GPIO_PIN_RESET);
 	}
+#else
+	memcpy(iio_buf_current_idx,
+	       dma_buf_current_idx, rxdma_ndtr);
 #endif
-
 	HAL_DMA_IRQHandler(&hdma_spi1_rx);
 }

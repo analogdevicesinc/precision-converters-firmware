@@ -1064,7 +1064,7 @@ static int set_filter(void *device,
 
 	/* Update the all setup registers with FS value */
 	for (setup_id = 0; setup_id < AD4170_NUM_SETUPS; setup_id++) {
-		ad4170_init_params.config.setups[channel->ch_num].filter.filter_type =
+		ad4170_init_params.config.setups[setup_id].filter.filter_type =
 			filter_id;
 	}
 
@@ -2343,11 +2343,11 @@ static int32_t ad4170_read_burst_data_spi_dma(uint32_t nb_of_samples,
 	}
 #else
 	if (!dma_config_updated) {
-		/* SPI Message */
-		struct no_os_spi_msg ad4170_spi_msg = {
-			.tx_buff = (uint32_t*)local_tx_data,
-			.bytes_number = nb_of_samples * (BYTES_PER_SAMPLE)
-		};
+		ret = no_os_cb_prepare_async_write(iio_dev_data->buffer->buf,
+						   nb_of_samples, &buff_start_addr, &data_read);
+		if (ret) {
+			return ret;
+		}
 
 		/* Set SYNC Low */
 		ret = no_os_gpio_set_value(p_ad4170_dev_inst->gpio_sync_inb, NO_OS_GPIO_LOW);
@@ -2355,12 +2355,15 @@ static int32_t ad4170_read_burst_data_spi_dma(uint32_t nb_of_samples,
 			return ret;
 		}
 
-		ret = no_os_cb_prepare_async_write(iio_dev_data_g->buffer->buf,
-						   nb_of_samples * (BYTES_PER_SAMPLE), &buff_start_addr, &data_read);
-		if (ret) {
-			return ret;
-		}
-		ad4170_spi_msg.rx_buff = (uint32_t*)buff_start_addr;
+		/* Cap SPI RX DMA NDTR to MAX_DMA_NDTR. */
+		spirxdma_ndtr = no_os_min(MAX_DMA_NDTR, nb_of_samples);
+		rxdma_ndtr = spirxdma_ndtr;
+
+		struct no_os_spi_msg  ad4170_spi_msg = {
+			.tx_buff = (uint32_t*)local_tx_data,
+			.rx_buff = (uint32_t*)local_buf,
+			.bytes_number = spirxdma_ndtr
+		};
 
 		ret = no_os_spi_transfer_dma_async(p_ad4170_dev_inst->spi_desc, &ad4170_spi_msg,
 						   1, NULL, NULL);
@@ -2373,7 +2376,7 @@ static int32_t ad4170_read_burst_data_spi_dma(uint32_t nb_of_samples,
 		/* Configure Tx trigger timer parameters */
 		tim8_config();
 
-		TIM8->CNT = 0;
+		update_buff(local_buf, buff_start_addr);
 
 		/* Set CS Low to stream data continuously on SDO */
 		ret = no_os_gpio_set_value(csb_gpio_desc, NO_OS_GPIO_LOW);
