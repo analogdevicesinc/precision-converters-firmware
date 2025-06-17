@@ -3464,9 +3464,9 @@ void ad4170_iio_event_handler(void)
 	int ret;
 
 	if (restart_iio_flag) {
-#if (DATA_CAPTURE_MODE == CONTINUOUS_DATA_CAPTURE) && (INTERFACE_MODE != SPI_DMA_MODE)
+#if (DATA_CAPTURE_MODE == CONTINUOUS_DATA_CAPTURE) && (INTERFACE_MODE == TDM_MODE)
 		/* Remove and free the pointers allocated during IIO init */
-		ret = iio_hw_trig_remove(ad4692_hw_trig_desc);
+		ret = iio_hw_trig_remove(ad4170_hw_trig_desc);
 		if (ret) {
 			return;
 		}
