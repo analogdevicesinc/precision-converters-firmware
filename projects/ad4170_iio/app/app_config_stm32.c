@@ -413,6 +413,7 @@ void tim8_init(struct no_os_pwm_desc *pwm_desc)
 #endif
 }
 
+#if (INTERFACE_MODE == SPI_DMA_MODE)
 void DMA2_Stream0_IRQHandler(void)
 {
 #if (DATA_CAPTURE_MODE == BURST_DATA_CAPTURE)
@@ -425,3 +426,4 @@ void DMA2_Stream0_IRQHandler(void)
 #endif
 	HAL_DMA_IRQHandler(&hdma_spi1_rx);
 }
+#endif

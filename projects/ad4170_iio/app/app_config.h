@@ -303,7 +303,9 @@
 #define IIO_UART_BAUD_RATE	(230400)
 
 /* Enable/Disable the use of SDRAM for ADC data capture buffer */
+#if defined (TARGET_SDP_K1)
 #define USE_SDRAM		// Comment to disable SDRAM for data buffer
+#endif
 
 /* Calculations for sampling frequency (used to define timeout in IIO client):
  * Note: Below calculations are based on default user configurations set in the
