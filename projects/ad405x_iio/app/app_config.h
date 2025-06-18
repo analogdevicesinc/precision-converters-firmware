@@ -2,7 +2,7 @@
  *   @file   app_config.h
  *   @brief  Application configurations module for AD405X
 ******************************************************************************
-* Copyright (c) 2022-2024 Analog Devices, Inc.
+* Copyright (c) 2022-2025 Analog Devices, Inc.
 *
 * All rights reserved.
 *
@@ -34,18 +34,9 @@
 #define CONTINUOUS_DATA_CAPTURE		    0
 #define WINDOWED_DATA_CAPTURE			1
 
-/* List of supported data capture modes by device */
-#define SAMPLE_MODE			            0
-#define BURST_AVERAGING_MODE		    1
-#define AVERAGING_MODE					2
-
 /* List of supported data format by device */
 #define STRAIGHT_BINARY		            0
 #define TWOS_COMPLEMENT	                1
-
-/* List of data capture methods supported by hardware platform */
-#define SPI_DMA                         0
-#define SPI_INTERRUPT                   1
 
 /* Macros for stringification */
 #define XSTR(s)		#s
@@ -53,7 +44,7 @@
 
 /******************************************************************************/
 
-/* Select the active platform (default is Mbed) */
+/* Select the active platform (default is STM32) */
 #if !defined(ACTIVE_PLATFORM)
 #define ACTIVE_PLATFORM		STM32_PLATFORM
 #endif
@@ -70,25 +61,9 @@
 #define APP_CAPTURE_MODE	   WINDOWED_DATA_CAPTURE
 #endif
 
-/* Select the ADC data capture mode (default is sample mode) */
-#if !defined(ADC_CAPTURE_MODE)
-#define ADC_CAPTURE_MODE	   SAMPLE_MODE
-#endif
-
 /* Select the ADC output data format (default is twos complement mode) */
 #if !defined(ADC_DATA_FORMAT)
 #define ADC_DATA_FORMAT	       TWOS_COMPLEMENT
-#endif
-
-/* Note: The STM32 platform supports SPI interrupt and SPI DMA Mode
- * for data capturing. The MBED platform supports only SPI interrupt mode
- * */
-#if !defined(INTERFACE_MODE)
-#if (ACTIVE_PLATFORM == STM32_PLATFORM)
-#define INTERFACE_MODE   SPI_DMA
-#else // Mbed
-#define INTERFACE_MODE   SPI_INTERRUPT
-#endif
 #endif
 
 #define ACTIVE_DEVICE_NAME	"ad405x"
@@ -102,16 +77,8 @@
 #include "app_config_stm32.h"
 #define HW_CARRIER_NAME		    	TARGET_NAME
 #define CONSOLE_STDIO_PORT_AVAILABLE
-#if (INTERFACE_MODE != SPI_DMA)
 #define trigger_gpio_handle         0    // Unused macro
-#else
-#define trigger_gpio_handle         STM32_DMA_CONT_HANDLE
-#endif
-#if (INTERFACE_MODE == SPI_DMA)
-#define TRIGGER_INT_ID	            STM32_DMA_CONT_TRIGGER
-#else
 #define TRIGGER_INT_ID	            GP1_PIN_NUM
-#endif
 #else
 #error "No/Invalid active platform selected"
 #endif
@@ -170,21 +137,19 @@ extern struct no_os_irq_ctrl_desc *trigger_irq_desc;
 extern struct no_os_eeprom_desc *eeprom_desc;
 extern struct no_os_gpio_init_param cs_pwm_gpio_params;
 extern struct no_os_gpio_init_param pwm_gpio_params;
-extern struct no_os_pwm_init_param pwm_init_params;
-
-#if (INTERFACE_MODE == SPI_DMA)
+extern struct no_os_pwm_init_param spi_dma_pwm_init_params;
+extern struct no_os_pwm_init_param spi_intr_pwm_init_params;
 extern struct no_os_dma_xfer_desc dma_tx_desc;
 extern struct no_os_dma_ch dma_chan;
 extern struct no_os_pwm_init_param cs_init_params;
 extern struct no_os_dma_init_param ad405x_dma_init_param;
 extern struct no_os_gpio_init_param cs_pwm_gpio_params;
 extern struct no_os_gpio_init_param pwm_gpio_params;
-extern volatile uint32_t* buff_start_addr;
+extern volatile uint8_t *buff_start_addr;
 extern volatile struct iio_device_data* iio_dev_data_g;
 extern uint32_t nb_of_bytes_g;
-extern int32_t data_read;
+extern uint32_t data_read;
 extern struct no_os_pwm_desc* tx_trigger_desc;
-#endif
 
 int32_t init_pwm(void);
 int32_t ad405x_gpio_reset(void);

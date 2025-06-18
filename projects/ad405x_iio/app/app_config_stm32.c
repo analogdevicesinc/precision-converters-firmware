@@ -2,7 +2,7 @@
  * @file    app_config_stm32.c
  * @brief   Source file for STM32 platform configurations
 ********************************************************************************
-* Copyright (c) 2023-2024 Analog Devices, Inc.
+* Copyright (c) 2023-2025 Analog Devices, Inc.
 * All rights reserved.
 *
 * This software is proprietary to Analog Devices, Inc. and its licensors.
@@ -19,6 +19,7 @@
 #include "ad405x_iio.h"
 #include "ad405x.h"
 #include "iio.h"
+#include "usb_device.h"
 
 /******************************************************************************/
 /************************ Macros/Constants ************************************/
@@ -118,21 +119,22 @@ struct stm32_gpio_init_param stm32_pwm_gpio_extra_init_params = {
  * higher byte of 16-bit data.
  * */
 struct stm32_pwm_init_param stm32_pwm_cnv_extra_init_params = {
+	.htimer = &TIMER1_HANDLE,
 	.prescaler = TIMER_1_PRESCALER,
 	.timer_autoreload = true,
 	.mode = TIM_OC_PWM1,
 	.timer_chn = TIMER_CHANNEL_3,
 	.get_timer_clock = HAL_RCC_GetPCLK2Freq,
 	.clock_divider = TIMER_1_CLK_DIVIDER,
-	.trigger_enable = false,
+	.slave_mode = STM32_PWM_SM_DISABLE,
 	.trigger_output = PWM_TRGO_UPDATE
 };
 
-#if (INTERFACE_MODE == SPI_DMA)
 /* STM32 PWM for specific parameters for generating the
  * the chip select signals in PWM Mode 2.
  * */
 struct stm32_pwm_init_param stm32_cs_extra_init_params = {
+	.htimer = &TIMER2_HANDLE,
 	.prescaler = TIMER_2_PRESCALER,
 	.timer_autoreload = false,
 	.mode = TIM_OC_PWM2,
@@ -143,6 +145,7 @@ struct stm32_pwm_init_param stm32_cs_extra_init_params = {
 
 /* STM32 PWM specific init params */
 struct stm32_pwm_init_param stm32_tx_trigger_extra_init_params = {
+	.htimer = &TIMER8_HANDLE,
 	.prescaler = TIMER_8_PRESCALER,
 	.timer_autoreload = true,
 	.mode = TIM_OC_TOGGLE,
@@ -150,13 +153,12 @@ struct stm32_pwm_init_param stm32_tx_trigger_extra_init_params = {
 	.complementary_channel = false,
 	.get_timer_clock = HAL_RCC_GetPCLK1Freq,
 	.clock_divider = TIMER_8_CLK_DIVIDER,
-	.trigger_enable = true,
+	.slave_mode = STM32_PWM_SM_TRIGGER,
 	.trigger_source = PWM_TS_ITR0,
 	.repetitions = 0,
 	.onepulse_enable = true,
 	.dma_enable = true,
 };
-#endif
 
 /* STM32 SPI Descriptor*/
 volatile struct stm32_spi_desc* sdesc;
@@ -165,7 +167,6 @@ volatile struct stm32_spi_desc* sdesc;
  * samples is over. */
 volatile bool ad405x_conversion_flag = false;
 
-#if (INTERFACE_MODE == SPI_DMA)
 /* Number of times the DMA complete callback needs to be invoked for
  * capturing the desired number of samples*/
 int dma_cycle_count = 0;
@@ -188,11 +189,11 @@ uint8_t *iio_buf_current_idx;
 
 /* Pointer to the current location being written to, by the DMA */
 uint8_t *dma_buf_current_idx;
-#endif
 
 /******************************************************************************/
 /************************** Functions Declaration *****************************/
 /******************************************************************************/
+void SystemClock_Config(void);
 void receivecomplete_callback(DMA_HandleTypeDef * hdma);
 /******************************************************************************/
 /************************** Functions Definition ******************************/
@@ -205,14 +206,8 @@ void stm32_system_init(void)
 {
 	HAL_Init();
 	SystemClock_Config();
-#if (INTERFACE_MODE == SPI_DMA)
-	/* If SPI_DMA mode is enabled, we don't need DMA initialization
-	 * and Timer 2 initialization which is used for generating the
-	 * chip select signals.
-	 */
 	MX_DMA_Init();
 	MX_TIM2_Init();
-#endif
 	MX_GPIO_Init();
 	MX_UART5_Init();
 	MX_I2C1_Init();
@@ -220,28 +215,9 @@ void stm32_system_init(void)
 	MX_TIM8_Init();
 	MX_SPI1_Init();
 	MX_USB_DEVICE_Init();
-	HAL_NVIC_DisableIRQ(STM32_DMA_CONT_TRIGGER);
-#if (INTERFACE_MODE == SPI_INTERRUPT)
-	HAL_NVIC_DisableIRQ(STM32_DMA_SPI_RX_TRIGGER);
-	HAL_NVIC_EnableIRQ(STM32_GP1_IRQ);
-	/* The channel 1 of timer 1 is configured in output compare mode
-	 * to trigger the chip select signal generation in SPI_DMA mode.
-	 * However, this should be de-initialized in SPI_INTERRUPT mode
-	 * to avoid influence of output compare on the chip select generation.
-	 */
-	HAL_TIM_OC_DeInit(&htim1);
-#else
-#if (APP_CAPTURE_MODE == CONTINUOUS_DATA_CAPTURE)
-	HAL_NVIC_DisableIRQ(STM32_DMA_SPI_RX_TRIGGER);
-#else
-	HAL_DMA_RegisterCallback(&hdma_spi1_rx, HAL_DMA_XFER_CPLT_CB_ID,
-				 receivecomplete_callback);
-#endif
 	HAL_NVIC_DisableIRQ(STM32_GP1_IRQ);
-#endif
 }
 
-#if (INTERFACE_MODE == SPI_DMA)
 /**
   * @brief 	IRQ handler for RX DMA channel
   * @return None
@@ -288,10 +264,10 @@ void halfcmplt_callback(DMA_HandleTypeDef * hdma)
  * @param buf_start_addr[out] - Buffer start addr
  * @return	None
  */
-void update_buff(uint32_t* local_buf, uint32_t* buf_start_addr)
+void update_buff(uint8_t *local_buf, uint8_t *buf_start_addr)
 {
-	iio_buf_start_idx = (uint8_t*)buf_start_addr;
-	dma_buf_start_idx = (uint8_t*)local_buf;
+	iio_buf_start_idx = buf_start_addr;
+	dma_buf_start_idx = local_buf;
 
 	iio_buf_current_idx = iio_buf_start_idx;
 	dma_buf_current_idx = dma_buf_start_idx;
@@ -325,7 +301,6 @@ void stm32_timer_enable(void)
  */
 void stm32_timer_stop(void)
 {
-	int ret;
 	sdesc = p_ad405x_dev->spi_desc->extra;
 
 	TIM1->CR1 &= ~TIM_CR1_CEN;
@@ -445,4 +420,32 @@ int stm32_abort_dma_transfer(void)
 
 	return 0;
 }
-#endif
+
+/**
+ * @brief   Configures the SPI data frame format pin to 8/16 bit.
+ * @param   is_16_bit[in] - Boolean indicatin the data frame format.
+ * @return  None
+ */
+void stm32_config_spi_data_frame_format(bool is_16_bit)
+{
+	SPI1->CR1 &= ~SPI_CR1_SPE;
+	if (is_16_bit) {
+		SPI1->CR1 |= SPI_CR1_DFF;
+	} else {
+		SPI1->CR1 &= ~SPI_CR1_DFF;
+	}
+	SPI1->CR1 |= SPI_CR1_SPE;
+}
+
+/**
+ * @brief   Configures the prescalar according to the operating mode.
+ * @return  None
+ */
+void stm32_config_cnv_prescalar(void)
+{
+	if (ad405x_operating_mode == AD405X_BURST_AVERAGING_MODE_OP) {
+		stm32_pwm_cnv_extra_init_params.prescaler = TIMER_1_BURST_AVG_PRESCALER;
+	} else {
+		stm32_pwm_cnv_extra_init_params.prescaler = TIMER_1_PRESCALER;
+	}
+}

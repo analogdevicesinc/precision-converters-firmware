@@ -3,7 +3,7 @@
  *   @brief   Application configurations module
  *   @details This module contains the configurations needed for IIO application
 ********************************************************************************
- * Copyright (c) 2022-2024 Analog Devices, Inc.
+ * Copyright (c) 2022-2025 Analog Devices, Inc.
  * All rights reserved.
  *
  * This software is proprietary to Analog Devices, Inc. and its licensors.
@@ -21,11 +21,8 @@
 #include "ad405x_user_config.h"
 #include "no_os_delay.h"
 #include "no_os_i2c.h"
-
-#if (INTERFACE_MODE == SPI_DMA)
 #include "no_os_dma.h"
 #include "stm32_dma.h"
-#endif
 
 /******************************************************************************/
 /************************ Macros/Constants ************************************/
@@ -79,20 +76,12 @@ struct no_os_uart_init_param uart_console_stdio_init_params = {
 #endif
 };
 
-#if (INTERFACE_MODE == SPI_DMA)
-/* Trigger GPIO IRQ parameters */
-struct no_os_irq_init_param trigger_gpio_irq_params = {
-	.irq_ctrl_id = TRIGGER_INT_ID,
-	.platform_ops = &stm32_irq_ops
-};
-#else
 /* Trigger GPIO IRQ parameters */
 struct no_os_irq_init_param trigger_gpio_irq_params = {
 	.irq_ctrl_id = GP1_PIN_NUM,
 	.platform_ops = &trigger_gpio_irq_ops,
 	.extra = &trigger_gpio_irq_extra_params
 };
-#endif
 
 #if (ACTIVE_PLATFORM == STM32_PLATFORM)
 /* PWM GPIO init parameters */
@@ -105,15 +94,11 @@ struct no_os_gpio_init_param pwm_gpio_params = {
 #endif
 
 /* PWM init parameters for conversion pulses */
-struct no_os_pwm_init_param pwm_init_params = {
+struct no_os_pwm_init_param spi_dma_pwm_init_params = {
 	.id = TIMER1_ID,
-	.period_ns = CONV_TRIGGER_PERIOD_NSEC(SAMPLING_RATE),
-	.duty_cycle_ns = CONV_TRIGGER_PERIOD_NSEC(SAMPLING_RATE) - 360,
-#if (INTERFACE_MODE == SPI_DMA)
+	.period_ns = CONV_TRIGGER_PERIOD_NSEC(SAMPLING_RATE_SPI_DMA),
+	.duty_cycle_ns = CONV_TRIGGER_PERIOD_NSEC(SAMPLING_RATE_SPI_DMA) - 360,
 	.polarity = NO_OS_PWM_POLARITY_LOW,
-#else
-	.duty_cycle_ns = CONV_TRIGGER_DUTY_CYCLE_NSEC(CONV_TRIGGER_PERIOD_NSEC(SAMPLING_RATE)),
-#endif
 #if (ACTIVE_PLATFORM == STM32_PLATFORM)
 	.pwm_gpio = &pwm_gpio_params,
 #endif
@@ -121,7 +106,19 @@ struct no_os_pwm_init_param pwm_init_params = {
 	.extra = &pwm_extra_init_params
 };
 
-#if (INTERFACE_MODE == SPI_DMA)
+/* PWM init parameters for conversion pulses */
+struct no_os_pwm_init_param spi_intr_pwm_init_params = {
+	.id = TIMER1_ID,
+	.period_ns = CONV_TRIGGER_PERIOD_NSEC(SAMPLING_RATE_SPI_INTR),
+	.duty_cycle_ns = CONV_TRIGGER_DUTY_CYCLE_NSEC(CONV_TRIGGER_PERIOD_NSEC(SAMPLING_RATE_SPI_INTR)),
+	.polarity = NO_OS_PWM_POLARITY_HIGH,
+#if (ACTIVE_PLATFORM == STM32_PLATFORM)
+	.pwm_gpio = &pwm_gpio_params,
+#endif
+	.platform_ops = &pwm_ops,
+	.extra = &pwm_extra_init_params
+};
+
 struct no_os_gpio_init_param cs_pwm_gpio_params = {
 	.port = STM32_SPI_CS_PORT_NUM,
 	.number = SPI_CS_PIN_NUM,
@@ -132,8 +129,8 @@ struct no_os_gpio_init_param cs_pwm_gpio_params = {
 /* PWM chip select init parameters */
 struct no_os_pwm_init_param cs_init_params = {
 	.id = TIMER2_ID,
-	.period_ns = CONV_TRIGGER_PERIOD_NSEC(SAMPLING_RATE),
-	.duty_cycle_ns = CONV_TRIGGER_PERIOD_NSEC(SAMPLING_RATE) - 360,
+	.period_ns = CONV_TRIGGER_PERIOD_NSEC(SAMPLING_RATE_SPI_DMA),
+	.duty_cycle_ns = CONV_TRIGGER_PERIOD_NSEC(SAMPLING_RATE_SPI_DMA) - 360,
 	.polarity = NO_OS_PWM_POLARITY_HIGH,
 	.platform_ops = &pwm_ops,
 	.extra = &cs_extra_init_params,
@@ -149,7 +146,6 @@ struct no_os_pwm_init_param tx_trigger_init_params = {
 	.platform_ops = &pwm_ops,
 	.extra = &tx_trigger_extra_init_params,
 };
-#endif
 
 /* External interrupt callback descriptor */
 static struct no_os_callback_desc ext_int_callback_desc = {
@@ -193,7 +189,6 @@ struct no_os_gpio_desc *trigger_gpio_desc;
 struct no_os_irq_ctrl_desc *trigger_irq_desc;
 struct no_os_eeprom_desc *eeprom_desc;
 
-#if (INTERFACE_MODE == SPI_DMA)
 /* PWM descriptor for controlling the CS pulse.
  */
 struct no_os_pwm_desc *cs_desc;
@@ -205,11 +200,9 @@ struct no_os_pwm_desc* tx_trigger_desc;
 struct no_os_dma_init_param ad405x_dma_init_param = {
 	.id = 0,
 	.num_ch = AD405x_DMA_NUM_CHANNELS,
-	.platform_ops = &dma_ops,
+	.platform_ops = (struct no_os_dma_platform_ops *) &dma_ops,
 	.sg_handler = (void *)receivecomplete_callback,
 };
-
-#endif
 
 /******************************************************************************/
 /************************ Functions Prototypes ********************************/
@@ -248,7 +241,7 @@ static int32_t init_uart(void)
  * @brief 	Initialize the trigger GPIO and associated IRQ event
  * @return	0 in case of success, negative error code otherwise
  */
-static int32_t gpio_trigger_init(void)
+int32_t gpio_trigger_init(void)
 {
 	int32_t ret;
 
@@ -258,14 +251,16 @@ static int32_t gpio_trigger_init(void)
 		return ret;
 	}
 
-#if (APP_CAPTURE_MODE == WINDOWED_DATA_CAPTURE) && (INTERFACE_MODE == SPI_INTERRUPT)
-	ret = no_os_irq_register_callback(trigger_irq_desc, TRIGGER_INT_ID,
+#if (APP_CAPTURE_MODE == WINDOWED_DATA_CAPTURE)
+	ret = no_os_irq_register_callback(trigger_irq_desc,
+					  TRIGGER_INT_ID,
 					  &ext_int_callback_desc);
 	if (ret) {
 		return ret;
 	}
 
-	ret = no_os_irq_trigger_level_set(trigger_irq_desc, TRIGGER_INT_ID,
+	ret = no_os_irq_trigger_level_set(trigger_irq_desc,
+					  TRIGGER_INT_ID,
 					  NO_OS_IRQ_EDGE_FALLING);
 	if (ret) {
 		return ret;
@@ -293,27 +288,45 @@ int32_t init_pwm(void)
 	 * trigger dummy spi tx dma transcation to fetch higher byte of
 	 * 16-bit data
 	 * */
-	ret = no_os_pwm_init(&pwm_desc, &pwm_init_params);
-	if (ret) {
-		return ret;
-	}
-
-	ret = no_os_pwm_disable(pwm_desc);
-	if (ret) {
-		return ret;
-	}
-
-#if (INTERFACE_MODE == SPI_DMA)
-	ret = no_os_pwm_init(&tx_trigger_desc, &tx_trigger_init_params);
-	if (ret) {
-		return ret;
-	}
-
-	ret = no_os_pwm_disable(tx_trigger_desc);
-	if (ret) {
-		return ret;
-	}
+	if (ad405x_interface_mode == SPI_DMA) {
+#if (ACTIVE_PLATFORM == STM32_PLATFORM)
+		stm32_config_cnv_prescalar();
 #endif
+
+		ret = no_os_pwm_init(&pwm_desc, &spi_dma_pwm_init_params);
+		if (ret) {
+			return ret;
+		}
+
+		ret = no_os_pwm_disable(pwm_desc);
+		if (ret) {
+			return ret;
+		}
+
+		ret = no_os_pwm_init(&tx_trigger_desc, &tx_trigger_init_params);
+		if (ret) {
+			return ret;
+		}
+
+		ret = no_os_pwm_disable(tx_trigger_desc);
+		if (ret) {
+			return ret;
+		}
+	} else {
+#if (ACTIVE_PLATFORM == STM32_PLATFORM)
+		stm32_config_cnv_prescalar();
+#endif
+
+		ret = no_os_pwm_init(&pwm_desc, &spi_intr_pwm_init_params);
+		if (ret) {
+			return ret;
+		}
+
+		ret = no_os_pwm_disable(pwm_desc);
+		if (ret) {
+			return ret;
+		}
+	}
 
 	return 0;
 }
