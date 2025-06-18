@@ -2,7 +2,7 @@
  *   @file    app_config_stm32.h
  *   @brief   Header file for STM32 platform configurations
 ********************************************************************************
- * Copyright (c) 2023-2024 Analog Devices, Inc.
+ * Copyright (c) 2023-2025 Analog Devices, Inc.
  * All rights reserved.
  *
  * This software is proprietary to Analog Devices, Inc. and its licensors.
@@ -52,19 +52,14 @@
 #define GP1_PIN_NUM					11   // PG_11
 #define GP1_PORT_NUM				6    // PORTG = 6
 #define STM32_GP1_IRQ               EXTI15_10_IRQn
-#define STM32_DMA_CONT_HANDLE       hdma_tim1_ch2
 #define STM32_DMA_CONT_TRIGGER      DMA2_Stream2_IRQn
 #define STM32_DMA_SPI_RX_TRIGGER    DMA2_Stream0_IRQn
 
 /* Timer specific macros used for calculating pwm
  * period and duty cycle */
-#if (ADC_CAPTURE_MODE == BURST_AVERAGING_MODE)
-#define TIMER_1_PRESCALER                  7
-#define TIMER_2_PRESCALER                  3
-#else
+#define TIMER_1_BURST_AVG_PRESCALER        7
 #define TIMER_1_PRESCALER                  1
 #define TIMER_2_PRESCALER                  0
-#endif
 #define TIMER_1_CLK_DIVIDER                2
 #define TIMER_2_CLK_DIVIDER                2
 
@@ -76,14 +71,15 @@
 #define TIMER_8_PRESCALER                  0
 #define TIMER_8_CLK_DIVIDER                2
 
-#define TRIGGER_GPIO_PORT           0    // Unused macro
-#define TRIGGER_GPIO_PIN            PWM_TRIGGER
-
 #define TIMER1_ID                          1
 #define TIMER2_ID                          2
 #define TIMER8_ID                          8
 
-#define AD405x_DMA_NUM_CHANNELS             2
+#define TIMER1_HANDLE                      htim1
+#define TIMER2_HANDLE                      htim2
+#define TIMER8_HANDLE                      htim8
+
+#define AD405x_DMA_NUM_CHANNELS            2
 
 #define AD405x_TxDMA_CHANNEL_NUM    DMA_CHANNEL_7
 #define AD405x_RxDMA_CHANNEL_NUM    DMA_CHANNEL_3
@@ -123,20 +119,17 @@
  * The max possible ODR can vary from board to board and data continuity is not guaranteed
  * above this ODR on IIO oscilloscope
  */
-#if (INTERFACE_MODE == SPI_INTERRUPT)
 #if (APP_CAPTURE_MODE == WINDOWED_DATA_CAPTURE)
-#define SAMPLING_RATE					   62500
+#define SAMPLING_RATE_SPI_INTR					   62500
 #else
-#define SAMPLING_RATE					   30000 //Note: Can be set as high as 62500 with -O3 optimization on ARM GCC
+#define SAMPLING_RATE_SPI_INTR					   30000 //Note: Can be set as high as 62500 with -O3 optimization on ARM GCC
 #endif
-#define CONV_TRIGGER_DUTY_CYCLE_NSEC(x)	(x / 10)
-#else
-#define SAMPLING_RATE					   (1000000)
+#define CONV_TRIGGER_DUTY_CYCLE_NSEC(x)	   (x / 10)
+#define SAMPLING_RATE_SPI_DMA			   (1000000)
 #define DMA_MSB_DUTY_CYCLE_NS              200
 #define DMA_LSB_DUTY_CYCLE_NS              600
 #define OUTPUT_COMPARE_DUTY_CYCLE_NS       200
 #define CHIP_SELECT_DUTY_CYCLE_NS          800
-#endif
 #define CONV_TRIGGER_PERIOD_NSEC(x)		   (((float)(1.0 / x) * 1000000) * 1000)
 
 /******************************************************************************/
@@ -147,6 +140,7 @@ extern SPI_HandleTypeDef hspi1;
 extern DMA_HandleTypeDef hdma_spi1_rx;
 extern TIM_HandleTypeDef htim1;
 extern TIM_HandleTypeDef htim2;
+extern TIM_HandleTypeDef htim8;
 extern DMA_HandleTypeDef hdma_tim1_ch3;
 extern DMA_HandleTypeDef hdma_tim1_ch2;
 extern DMA_HandleTypeDef hdma_tim8_ch1;
@@ -165,7 +159,6 @@ extern struct stm32_gpio_init_param stm32_cs_pwm_gpio_extra_init_params;
 extern struct stm32_gpio_irq_init_param stm32_gpio_irq_extra_init_params;
 
 extern struct stm32_pwm_init_param stm32_pwm_cnv_extra_init_params;
-#if (INTERFACE_MODE == SPI_DMA)
 extern struct stm32_pwm_init_param stm32_dma_extra_init_params;
 extern struct stm32_pwm_init_param stm32_oc_extra_init_params;
 extern struct stm32_pwm_init_param stm32_cs_extra_init_params;
@@ -177,17 +170,16 @@ extern struct stm32_dma_channel txdma_channel;
 extern uint32_t rxdma_ndtr;
 extern int dma_cycle_count;
 extern uint32_t callback_count;
-#endif
 
 void halfcmplt_callback(DMA_HandleTypeDef * hdma);
-void update_buff(uint32_t* local_buf, uint32_t* buf_start_addr);
+void update_buff(uint8_t *local_buf, uint8_t *buf_start_addr);
 void stm32_system_init(void);
 void stm32_timer_enable(void);
 void stm32_timer_stop(void);
 void stm32_cs_output_gpio_config(bool is_gpio);
 void stm32_cnv_output_gpio_config(bool is_gpio);
-void stm32_configure_spi_dma(struct no_os_spi_init_param* spi_init_par,
-			     struct no_os_spi_desc* spi_desc, bool is_dma_mode);
+void stm32_config_spi_data_frame_format(bool is_16_bit);
+void stm32_config_cnv_prescalar(void);
 int stm32_abort_dma_transfer(void);
 void receivecomplete_callback(DMA_HandleTypeDef * hdma);
 
