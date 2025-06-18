@@ -7,7 +7,7 @@ import select
 import os
 import csv
 import math
-from ad405x import *
+from adi.ad405x import *
 
 # Global variables
 line = 0
