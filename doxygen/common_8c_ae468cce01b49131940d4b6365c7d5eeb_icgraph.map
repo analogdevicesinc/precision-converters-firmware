@@ -1,7 +1,15 @@
 <map id="remove_iio_context_attributes" name="remove_iio_context_attributes">
-<area shape="rect" id="Node000001" title="Free the resources allocated by get_iio_context_attributes()" alt="" coords="349,5,500,45"/>
-<area shape="rect" id="Node000002" href="$ad4170__iio_8c.html#a90df09e109b2513ba81975c0fabfdb60" title="Run the AD4170 IIO event handler." alt="" coords="108,13,301,38"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="336,28,301,28,301,23,336,23"/>
-<area shape="rect" id="Node000003" href="$ad4170__iio_2app_2main_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title="Main entry point to application." alt="" coords="5,13,60,38"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="94,28,60,28,60,23,94,23"/>
+<area shape="rect" id="Node000001" title="Free the resources allocated by get_iio_context_attributes()" alt="" coords="591,49,741,89"/>
+<area shape="rect" id="Node000002" href="$ad4170__iio_8c.html#a90df09e109b2513ba81975c0fabfdb60" title="Run the AD4170 IIO event handler." alt="" coords="349,5,543,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="577,51,501,33,503,28,578,46"/>
+<area shape="rect" id="Node000004" href="$ad405x__iio_8c.html#a561170c1f2302f5a33ec8be13aca99bc" title="Run the AD405X IIO event handler." alt="" coords="108,56,301,81"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="577,71,302,71,302,66,577,66"/>
+<area shape="rect" id="Node000006" href="$ad405x__iio_8c.html#ac0141386b392ad24a1e7636a9b4c99c9" title="Initialize the IIO interface for AD405X IIO device." alt="" coords="368,107,524,132"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="578,92,503,109,501,104,577,86"/>
+<area shape="rect" id="Node000003" href="$ad4170__iio_2app_2main_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title="Main entry point to application." alt="" coords="177,5,232,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="336,21,232,21,232,15,336,15"/>
+<area shape="rect" id="Node000005" href="$ad405x__iio_2app_2main_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title="Main entry point to application." alt="" coords="5,81,60,107"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="105,86,61,93,60,87,104,81"/>
+<area shape="poly" id="edge6_Node000006_Node000004" title=" " alt="" coords="371,106,265,84,266,79,372,101"/>
+<area shape="poly" id="edge7_Node000006_Node000005" title=" " alt="" coords="354,116,60,98,60,93,355,111"/>
 </map>

@@ -20,5 +20,6 @@ var searchData=
   ['reg_5ft_5fcrit_17',['REG_T_CRIT',['../adt7xxx__support_8h.html#a7496716d25746ab1958284dea9f5ff4fabd58cd6ee8592073c07badd66cfa2f3f',1,'adt7xxx_support.h']]],
   ['reg_5ft_5fhigh_18',['REG_T_HIGH',['../adt7xxx__support_8h.html#a7496716d25746ab1958284dea9f5ff4fa18ebf670b7a8187af7cf63796effaf18',1,'adt7xxx_support.h']]],
   ['reg_5ft_5flow_19',['REG_T_LOW',['../adt7xxx__support_8h.html#a7496716d25746ab1958284dea9f5ff4fab310f87e09a9f4157d7e4035f65718f4',1,'adt7xxx_support.h']]],
-  ['reg_5ftemp_20',['REG_TEMP',['../adt7xxx__support_8h.html#a7496716d25746ab1958284dea9f5ff4fa3a065aef57f8cc483c8961e825ac58e9',1,'adt7xxx_support.h']]]
+  ['reg_5ftemp_20',['REG_TEMP',['../adt7xxx__support_8h.html#a7496716d25746ab1958284dea9f5ff4fa3a065aef57f8cc483c8961e825ac58e9',1,'adt7xxx_support.h']]],
+  ['restart_5fiio_21',['RESTART_IIO',['../ad405x__iio_8c.html#a5491084bcf0a7193bec617fdc2e8f49da9efbff7c724cc7e13c144f2145397573',1,'ad405x_iio.c']]]
 ];

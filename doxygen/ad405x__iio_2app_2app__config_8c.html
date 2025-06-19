@@ -165,6 +165,9 @@ Include dependency graph for app_config.c:</div>
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
+<tr class="memitem:ad72e6b3c0ed6760bf4aa63984f880a0a" id="r_ad72e6b3c0ed6760bf4aa63984f880a0a"><td class="memItemLeft" align="right" valign="top">int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad405x__iio_2app_2app__config_8c.html#ad72e6b3c0ed6760bf4aa63984f880a0a">gpio_trigger_init</a> (void)</td></tr>
+<tr class="memdesc:ad72e6b3c0ed6760bf4aa63984f880a0a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize the trigger GPIO and associated IRQ event.  <br /></td></tr>
+<tr class="separator:ad72e6b3c0ed6760bf4aa63984f880a0a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adaf46e15c93e1851d175d9f2eb7daa91" id="r_adaf46e15c93e1851d175d9f2eb7daa91"><td class="memItemLeft" align="right" valign="top">int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad405x__iio_2app_2app__config_8c.html#adaf46e15c93e1851d175d9f2eb7daa91">init_pwm</a> (void)</td></tr>
 <tr class="memdesc:adaf46e15c93e1851d175d9f2eb7daa91"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize the PWM interface.  <br /></td></tr>
 <tr class="separator:adaf46e15c93e1851d175d9f2eb7daa91"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -182,8 +185,10 @@ Variables</h2></td></tr>
 <tr class="separator:a2b2359da43effefaa4bb51c09733b2c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acfb291dbf716f2613097926f29347f19" id="r_acfb291dbf716f2613097926f29347f19"><td class="memItemLeft" align="right" valign="top">struct no_os_gpio_init_param&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad405x__iio_2app_2app__config_8c.html#acfb291dbf716f2613097926f29347f19">pwm_gpio_params</a></td></tr>
 <tr class="separator:acfb291dbf716f2613097926f29347f19"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3c5b93aa35e432fd19891b682bc88b56" id="r_a3c5b93aa35e432fd19891b682bc88b56"><td class="memItemLeft" align="right" valign="top">struct no_os_pwm_init_param&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad405x__iio_2app_2app__config_8c.html#a3c5b93aa35e432fd19891b682bc88b56">pwm_init_params</a></td></tr>
-<tr class="separator:a3c5b93aa35e432fd19891b682bc88b56"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a309913f7bda618ff456d8344f6fe6dd2" id="r_a309913f7bda618ff456d8344f6fe6dd2"><td class="memItemLeft" align="right" valign="top">struct no_os_pwm_init_param&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad405x__iio_2app_2app__config_8c.html#a309913f7bda618ff456d8344f6fe6dd2">spi_dma_pwm_init_params</a></td></tr>
+<tr class="separator:a309913f7bda618ff456d8344f6fe6dd2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3a2456b96ba593e85f7abde8111c0121" id="r_a3a2456b96ba593e85f7abde8111c0121"><td class="memItemLeft" align="right" valign="top">struct no_os_pwm_init_param&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad405x__iio_2app_2app__config_8c.html#a3a2456b96ba593e85f7abde8111c0121">spi_intr_pwm_init_params</a></td></tr>
+<tr class="separator:a3a2456b96ba593e85f7abde8111c0121"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aaa3610f5e53a6e2fc769c17a9b9aae4d" id="r_aaa3610f5e53a6e2fc769c17a9b9aae4d"><td class="memItemLeft" align="right" valign="top">struct no_os_gpio_init_param&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad405x__iio_2app_2app__config_8c.html#aaa3610f5e53a6e2fc769c17a9b9aae4d">cs_pwm_gpio_params</a></td></tr>
 <tr class="separator:aaa3610f5e53a6e2fc769c17a9b9aae4d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab9be1b888a3c122624858abf0f074db3" id="r_ab9be1b888a3c122624858abf0f074db3"><td class="memItemLeft" align="right" valign="top">struct no_os_pwm_init_param&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad405x__iio_2app_2app__config_8c.html#ab9be1b888a3c122624858abf0f074db3">cs_init_params</a></td></tr>
@@ -216,9 +221,40 @@ Variables</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Application configurations module. </p>
 <p>This module contains the configurations needed for IIO application</p>
-<p>Copyright (c) 2022-2024 Analog Devices, Inc. All rights reserved.</p>
+<p>Copyright (c) 2022-2025 Analog Devices, Inc. All rights reserved.</p>
 <p>This software is proprietary to Analog Devices, Inc. and its licensors. By using this software you agree to the terms of the associated Analog Devices Software License Agreement. </p>
 </div><h2 class="groupheader">Function Documentation</h2>
+<a id="ad72e6b3c0ed6760bf4aa63984f880a0a" name="ad72e6b3c0ed6760bf4aa63984f880a0a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad72e6b3c0ed6760bf4aa63984f880a0a">&#9670;&#160;</a></span>gpio_trigger_init()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int32_t gpio_trigger_init </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Initialize the trigger GPIO and associated IRQ event. </p>
+<dl class="section return"><dt>Returns</dt><dd>0 in case of success, negative error code otherwise </dd></dl>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="ad405x__iio_2app_2app__config_8c_ad72e6b3c0ed6760bf4aa63984f880a0a_icgraph.png" border="0" usemap="#aad405x__iio_2app_2app__config_8c_ad72e6b3c0ed6760bf4aa63984f880a0a_icgraph" alt=""/></div>
+<map name="aad405x__iio_2app_2app__config_8c_ad72e6b3c0ed6760bf4aa63984f880a0a_icgraph" id="aad405x__iio_2app_2app__config_8c_ad72e6b3c0ed6760bf4aa63984f880a0a_icgraph">
+<area shape="rect" title="Initialize the trigger GPIO and associated IRQ event." alt="" coords="152,5,280,31"/>
+<area shape="rect" href="ad405x__iio_2app_2app__config_8c.html#aba990e48bb1b87852ff6a375f0c2f655" title="Initializing system peripherals." alt="" coords="5,5,104,31"/>
+<area shape="poly" title=" " alt="" coords="138,21,104,21,104,15,138,15"/>
+</map>
+</div>
+
+</div>
+</div>
 <a id="adaf46e15c93e1851d175d9f2eb7daa91" name="adaf46e15c93e1851d175d9f2eb7daa91"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#adaf46e15c93e1851d175d9f2eb7daa91">&#9670;&#160;</a></span>init_pwm()</h2>
 
@@ -292,12 +328,12 @@ Variables</h2></td></tr>
 <b>Initial value:</b><div class="fragment"><div class="line">= {</div>
 <div class="line">    .id = 0,</div>
 <div class="line">    .num_ch = <a class="code hl_define" href="ad405x__iio_2app_2app__config__stm32_8h.html#adc768b73efdb2144e1bc51080917a8d3">AD405x_DMA_NUM_CHANNELS</a>,</div>
-<div class="line">    .platform_ops = &amp;<a class="code hl_define" href="ad3530r__iio_2app_2app__config__stm32_8h.html#ab4b92eba8271021f58a561078d6e549d">dma_ops</a>,</div>
+<div class="line">    .platform_ops = (<span class="keyword">struct </span>no_os_dma_platform_ops *) &amp;<a class="code hl_define" href="ad3530r__iio_2app_2app__config__stm32_8h.html#ab4b92eba8271021f58a561078d6e549d">dma_ops</a>,</div>
 <div class="line">    .sg_handler = (<span class="keywordtype">void</span> *)<a class="code hl_function" href="ad3530r__iio_2app_2app__config__stm32_8c.html#aa599b1bdd18c25d273dded2a87a19a2f">receivecomplete_callback</a>,</div>
 <div class="line">}</div>
 <div class="ttc" id="aad3530r__iio_2app_2app__config__stm32_8c_html_aa599b1bdd18c25d273dded2a87a19a2f"><div class="ttname"><a href="ad3530r__iio_2app_2app__config__stm32_8c.html#aa599b1bdd18c25d273dded2a87a19a2f">receivecomplete_callback</a></div><div class="ttdeci">void receivecomplete_callback(DMA_HandleTypeDef *hdma)</div><div class="ttdoc">Callback function to flag the transfer of number of requested samples.</div><div class="ttdef"><b>Definition</b> app_config_stm32.c:340</div></div>
 <div class="ttc" id="aad3530r__iio_2app_2app__config__stm32_8h_html_ab4b92eba8271021f58a561078d6e549d"><div class="ttname"><a href="ad3530r__iio_2app_2app__config__stm32_8h.html#ab4b92eba8271021f58a561078d6e549d">dma_ops</a></div><div class="ttdeci">#define dma_ops</div><div class="ttdef"><b>Definition</b> app_config_stm32.h:112</div></div>
-<div class="ttc" id="aad405x__iio_2app_2app__config__stm32_8h_html_adc768b73efdb2144e1bc51080917a8d3"><div class="ttname"><a href="ad405x__iio_2app_2app__config__stm32_8h.html#adc768b73efdb2144e1bc51080917a8d3">AD405x_DMA_NUM_CHANNELS</a></div><div class="ttdeci">#define AD405x_DMA_NUM_CHANNELS</div><div class="ttdef"><b>Definition</b> app_config_stm32.h:86</div></div>
+<div class="ttc" id="aad405x__iio_2app_2app__config__stm32_8h_html_adc768b73efdb2144e1bc51080917a8d3"><div class="ttname"><a href="ad405x__iio_2app_2app__config__stm32_8h.html#adc768b73efdb2144e1bc51080917a8d3">AD405x_DMA_NUM_CHANNELS</a></div><div class="ttdeci">#define AD405x_DMA_NUM_CHANNELS</div><div class="ttdef"><b>Definition</b> app_config_stm32.h:82</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -342,19 +378,19 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line">= {</div>
 <div class="line">    .id = <a class="code hl_define" href="ad405x__iio_2app_2app__config__mbed_8h.html#a836a59f11c1b3420d8df4688cc93afe8">TIMER2_ID</a>,</div>
-<div class="line">    .period_ns = <a class="code hl_define" href="ad2s1210__iio_2app_2app__config__mbed_8h.html#a50a0c92dd8e7be44afcd089fbe5c28f9">CONV_TRIGGER_PERIOD_NSEC</a>(<a class="code hl_define" href="ad2s1210__iio_2app_2app__config__mbed_8h.html#a17889cf1cf83a54524c242fa5a353cf1">SAMPLING_RATE</a>),</div>
-<div class="line">    .duty_cycle_ns = <a class="code hl_define" href="ad2s1210__iio_2app_2app__config__mbed_8h.html#a50a0c92dd8e7be44afcd089fbe5c28f9">CONV_TRIGGER_PERIOD_NSEC</a>(<a class="code hl_define" href="ad2s1210__iio_2app_2app__config__mbed_8h.html#a17889cf1cf83a54524c242fa5a353cf1">SAMPLING_RATE</a>) - 360,</div>
+<div class="line">    .period_ns = <a class="code hl_define" href="ad2s1210__iio_2app_2app__config__mbed_8h.html#a50a0c92dd8e7be44afcd089fbe5c28f9">CONV_TRIGGER_PERIOD_NSEC</a>(<a class="code hl_define" href="ad405x__iio_2app_2app__config__stm32_8h.html#a14b83b283e3b989ec5372117fec423f3">SAMPLING_RATE_SPI_DMA</a>),</div>
+<div class="line">    .duty_cycle_ns = <a class="code hl_define" href="ad2s1210__iio_2app_2app__config__mbed_8h.html#a50a0c92dd8e7be44afcd089fbe5c28f9">CONV_TRIGGER_PERIOD_NSEC</a>(<a class="code hl_define" href="ad405x__iio_2app_2app__config__stm32_8h.html#a14b83b283e3b989ec5372117fec423f3">SAMPLING_RATE_SPI_DMA</a>) - 360,</div>
 <div class="line">    .polarity = NO_OS_PWM_POLARITY_HIGH,</div>
 <div class="line">    .platform_ops = &amp;<a class="code hl_define" href="ad2s1210__iio_2app_2app__config_8h.html#a9b6ac61cf1859752ae6b375e319a55c5">pwm_ops</a>,</div>
 <div class="line">    .extra = &amp;<a class="code hl_define" href="ad405x__iio_2app_2app__config__stm32_8h.html#a7ec36fd22b90108dc44e39940881151e">cs_extra_init_params</a>,</div>
 <div class="line">    .pwm_gpio = &amp;<a class="code hl_variable" href="ad405x__iio_2app_2app__config_8c.html#aaa3610f5e53a6e2fc769c17a9b9aae4d">cs_pwm_gpio_params</a></div>
 <div class="line">}</div>
 <div class="ttc" id="aad2s1210__iio_2app_2app__config_8h_html_a9b6ac61cf1859752ae6b375e319a55c5"><div class="ttname"><a href="ad2s1210__iio_2app_2app__config_8h.html#a9b6ac61cf1859752ae6b375e319a55c5">pwm_ops</a></div><div class="ttdeci">#define pwm_ops</div><div class="ttdef"><b>Definition</b> app_config.h:89</div></div>
-<div class="ttc" id="aad2s1210__iio_2app_2app__config__mbed_8h_html_a17889cf1cf83a54524c242fa5a353cf1"><div class="ttname"><a href="ad2s1210__iio_2app_2app__config__mbed_8h.html#a17889cf1cf83a54524c242fa5a353cf1">SAMPLING_RATE</a></div><div class="ttdeci">#define SAMPLING_RATE</div><div class="ttdef"><b>Definition</b> app_config_mbed.h:56</div></div>
 <div class="ttc" id="aad2s1210__iio_2app_2app__config__mbed_8h_html_a50a0c92dd8e7be44afcd089fbe5c28f9"><div class="ttname"><a href="ad2s1210__iio_2app_2app__config__mbed_8h.html#a50a0c92dd8e7be44afcd089fbe5c28f9">CONV_TRIGGER_PERIOD_NSEC</a></div><div class="ttdeci">#define CONV_TRIGGER_PERIOD_NSEC</div><div class="ttdef"><b>Definition</b> app_config_mbed.h:57</div></div>
-<div class="ttc" id="aad405x__iio_2app_2app__config_8c_html_aaa3610f5e53a6e2fc769c17a9b9aae4d"><div class="ttname"><a href="ad405x__iio_2app_2app__config_8c.html#aaa3610f5e53a6e2fc769c17a9b9aae4d">cs_pwm_gpio_params</a></div><div class="ttdeci">struct no_os_gpio_init_param cs_pwm_gpio_params</div><div class="ttdef"><b>Definition</b> app_config.c:125</div></div>
+<div class="ttc" id="aad405x__iio_2app_2app__config_8c_html_aaa3610f5e53a6e2fc769c17a9b9aae4d"><div class="ttname"><a href="ad405x__iio_2app_2app__config_8c.html#aaa3610f5e53a6e2fc769c17a9b9aae4d">cs_pwm_gpio_params</a></div><div class="ttdeci">struct no_os_gpio_init_param cs_pwm_gpio_params</div><div class="ttdef"><b>Definition</b> app_config.c:122</div></div>
 <div class="ttc" id="aad405x__iio_2app_2app__config__mbed_8h_html_a836a59f11c1b3420d8df4688cc93afe8"><div class="ttname"><a href="ad405x__iio_2app_2app__config__mbed_8h.html#a836a59f11c1b3420d8df4688cc93afe8">TIMER2_ID</a></div><div class="ttdeci">#define TIMER2_ID</div><div class="ttdef"><b>Definition</b> app_config_mbed.h:51</div></div>
-<div class="ttc" id="aad405x__iio_2app_2app__config__stm32_8h_html_a7ec36fd22b90108dc44e39940881151e"><div class="ttname"><a href="ad405x__iio_2app_2app__config__stm32_8h.html#a7ec36fd22b90108dc44e39940881151e">cs_extra_init_params</a></div><div class="ttdeci">#define cs_extra_init_params</div><div class="ttdef"><b>Definition</b> app_config_stm32.h:102</div></div>
+<div class="ttc" id="aad405x__iio_2app_2app__config__stm32_8h_html_a14b83b283e3b989ec5372117fec423f3"><div class="ttname"><a href="ad405x__iio_2app_2app__config__stm32_8h.html#a14b83b283e3b989ec5372117fec423f3">SAMPLING_RATE_SPI_DMA</a></div><div class="ttdeci">#define SAMPLING_RATE_SPI_DMA</div><div class="ttdef"><b>Definition</b> app_config_stm32.h:128</div></div>
+<div class="ttc" id="aad405x__iio_2app_2app__config__stm32_8h_html_a7ec36fd22b90108dc44e39940881151e"><div class="ttname"><a href="ad405x__iio_2app_2app__config__stm32_8h.html#a7ec36fd22b90108dc44e39940881151e">cs_extra_init_params</a></div><div class="ttdeci">#define cs_extra_init_params</div><div class="ttdef"><b>Definition</b> app_config_stm32.h:98</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -377,7 +413,7 @@ Variables</h2></td></tr>
 <div class="line">}</div>
 <div class="ttc" id="aad2s1210__iio_2app_2app__config_8h_html_a79830dd38aaae12b8956a81b716f7fa5"><div class="ttname"><a href="ad2s1210__iio_2app_2app__config_8h.html#a79830dd38aaae12b8956a81b716f7fa5">gpio_ops</a></div><div class="ttdeci">#define gpio_ops</div><div class="ttdef"><b>Definition</b> app_config.h:85</div></div>
 <div class="ttc" id="aad405x__iio_2app_2app__config__mbed_8h_html_ae68bd7e2628a795a081b621693a286ca"><div class="ttname"><a href="ad405x__iio_2app_2app__config__mbed_8h.html#ae68bd7e2628a795a081b621693a286ca">SPI_CS_PIN_NUM</a></div><div class="ttdeci">#define SPI_CS_PIN_NUM</div><div class="ttdef"><b>Definition</b> app_config_mbed.h:34</div></div>
-<div class="ttc" id="aad405x__iio_2app_2app__config__stm32_8h_html_a982082f3f1441034f0e7f77ced9a2ce8"><div class="ttname"><a href="ad405x__iio_2app_2app__config__stm32_8h.html#a982082f3f1441034f0e7f77ced9a2ce8">pwm_gpio_extra_init_params</a></div><div class="ttdeci">#define pwm_gpio_extra_init_params</div><div class="ttdef"><b>Definition</b> app_config_stm32.h:97</div></div>
+<div class="ttc" id="aad405x__iio_2app_2app__config__stm32_8h_html_a982082f3f1441034f0e7f77ced9a2ce8"><div class="ttname"><a href="ad405x__iio_2app_2app__config__stm32_8h.html#a982082f3f1441034f0e7f77ced9a2ce8">pwm_gpio_extra_init_params</a></div><div class="ttdeci">#define pwm_gpio_extra_init_params</div><div class="ttdef"><b>Definition</b> app_config_stm32.h:93</div></div>
 <div class="ttc" id="aad405x__iio_2app_2app__config__stm32_8h_html_ad58ae3f0d63ae499e260ca0a472f0537"><div class="ttname"><a href="ad405x__iio_2app_2app__config__stm32_8h.html#ad58ae3f0d63ae499e260ca0a472f0537">STM32_SPI_CS_PORT_NUM</a></div><div class="ttdeci">#define STM32_SPI_CS_PORT_NUM</div><div class="ttdef"><b>Definition</b> app_config_stm32.h:47</div></div>
 </div><!-- fragment -->
 </div>
@@ -432,26 +468,22 @@ Variables</h2></td></tr>
 </div><!-- fragment -->
 </div>
 </div>
-<a id="a3c5b93aa35e432fd19891b682bc88b56" name="a3c5b93aa35e432fd19891b682bc88b56"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3c5b93aa35e432fd19891b682bc88b56">&#9670;&#160;</a></span>pwm_init_params</h2>
+<a id="a309913f7bda618ff456d8344f6fe6dd2" name="a309913f7bda618ff456d8344f6fe6dd2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a309913f7bda618ff456d8344f6fe6dd2">&#9670;&#160;</a></span>spi_dma_pwm_init_params</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">struct no_os_pwm_init_param pwm_init_params</td>
+          <td class="memname">struct no_os_pwm_init_param spi_dma_pwm_init_params</td>
         </tr>
       </table>
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line">= {</div>
 <div class="line">    .id = <a class="code hl_define" href="ad405x__iio_2app_2app__config__mbed_8h.html#a8749c6d8a3a81101734b740bbff7e58b">TIMER1_ID</a>,</div>
-<div class="line">    .period_ns = <a class="code hl_define" href="ad2s1210__iio_2app_2app__config__mbed_8h.html#a50a0c92dd8e7be44afcd089fbe5c28f9">CONV_TRIGGER_PERIOD_NSEC</a>(<a class="code hl_define" href="ad2s1210__iio_2app_2app__config__mbed_8h.html#a17889cf1cf83a54524c242fa5a353cf1">SAMPLING_RATE</a>),</div>
-<div class="line">    .duty_cycle_ns = <a class="code hl_define" href="ad2s1210__iio_2app_2app__config__mbed_8h.html#a50a0c92dd8e7be44afcd089fbe5c28f9">CONV_TRIGGER_PERIOD_NSEC</a>(<a class="code hl_define" href="ad2s1210__iio_2app_2app__config__mbed_8h.html#a17889cf1cf83a54524c242fa5a353cf1">SAMPLING_RATE</a>) - 360,</div>
-<div class="line"> </div>
+<div class="line">    .period_ns = <a class="code hl_define" href="ad2s1210__iio_2app_2app__config__mbed_8h.html#a50a0c92dd8e7be44afcd089fbe5c28f9">CONV_TRIGGER_PERIOD_NSEC</a>(<a class="code hl_define" href="ad405x__iio_2app_2app__config__stm32_8h.html#a14b83b283e3b989ec5372117fec423f3">SAMPLING_RATE_SPI_DMA</a>),</div>
+<div class="line">    .duty_cycle_ns = <a class="code hl_define" href="ad2s1210__iio_2app_2app__config__mbed_8h.html#a50a0c92dd8e7be44afcd089fbe5c28f9">CONV_TRIGGER_PERIOD_NSEC</a>(<a class="code hl_define" href="ad405x__iio_2app_2app__config__stm32_8h.html#a14b83b283e3b989ec5372117fec423f3">SAMPLING_RATE_SPI_DMA</a>) - 360,</div>
 <div class="line">    .polarity = NO_OS_PWM_POLARITY_LOW,</div>
-<div class="line"> </div>
-<div class="line"> </div>
-<div class="line"> </div>
 <div class="line"> </div>
 <div class="line">    .pwm_gpio = &amp;<a class="code hl_variable" href="ad405x__iio_2app_2app__config_8c.html#acfb291dbf716f2613097926f29347f19">pwm_gpio_params</a>,</div>
 <div class="line"> </div>
@@ -459,8 +491,35 @@ Variables</h2></td></tr>
 <div class="line">    .extra = &amp;<a class="code hl_define" href="ad2s1210__iio_2app_2app__config_8h.html#ae91096eb29d71a7778d1bb6dda3f6dcc">pwm_extra_init_params</a></div>
 <div class="line">}</div>
 <div class="ttc" id="aad2s1210__iio_2app_2app__config_8h_html_ae91096eb29d71a7778d1bb6dda3f6dcc"><div class="ttname"><a href="ad2s1210__iio_2app_2app__config_8h.html#ae91096eb29d71a7778d1bb6dda3f6dcc">pwm_extra_init_params</a></div><div class="ttdeci">#define pwm_extra_init_params</div><div class="ttdef"><b>Definition</b> app_config.h:77</div></div>
-<div class="ttc" id="aad405x__iio_2app_2app__config_8c_html_acfb291dbf716f2613097926f29347f19"><div class="ttname"><a href="ad405x__iio_2app_2app__config_8c.html#acfb291dbf716f2613097926f29347f19">pwm_gpio_params</a></div><div class="ttdeci">struct no_os_gpio_init_param pwm_gpio_params</div><div class="ttdef"><b>Definition</b> app_config.c:99</div></div>
+<div class="ttc" id="aad405x__iio_2app_2app__config_8c_html_acfb291dbf716f2613097926f29347f19"><div class="ttname"><a href="ad405x__iio_2app_2app__config_8c.html#acfb291dbf716f2613097926f29347f19">pwm_gpio_params</a></div><div class="ttdeci">struct no_os_gpio_init_param pwm_gpio_params</div><div class="ttdef"><b>Definition</b> app_config.c:88</div></div>
 <div class="ttc" id="aad405x__iio_2app_2app__config__mbed_8h_html_a8749c6d8a3a81101734b740bbff7e58b"><div class="ttname"><a href="ad405x__iio_2app_2app__config__mbed_8h.html#a8749c6d8a3a81101734b740bbff7e58b">TIMER1_ID</a></div><div class="ttdeci">#define TIMER1_ID</div><div class="ttdef"><b>Definition</b> app_config_mbed.h:50</div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a3a2456b96ba593e85f7abde8111c0121" name="a3a2456b96ba593e85f7abde8111c0121"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3a2456b96ba593e85f7abde8111c0121">&#9670;&#160;</a></span>spi_intr_pwm_init_params</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">struct no_os_pwm_init_param spi_intr_pwm_init_params</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line">= {</div>
+<div class="line">    .id = <a class="code hl_define" href="ad405x__iio_2app_2app__config__mbed_8h.html#a8749c6d8a3a81101734b740bbff7e58b">TIMER1_ID</a>,</div>
+<div class="line">    .period_ns = <a class="code hl_define" href="ad2s1210__iio_2app_2app__config__mbed_8h.html#a50a0c92dd8e7be44afcd089fbe5c28f9">CONV_TRIGGER_PERIOD_NSEC</a>(<a class="code hl_define" href="ad405x__iio_2app_2app__config__stm32_8h.html#adc05ffad75b22e3a21bff31e53944d70">SAMPLING_RATE_SPI_INTR</a>),</div>
+<div class="line">    .duty_cycle_ns = <a class="code hl_define" href="ad2s1210__iio_2app_2app__config__mbed_8h.html#a65845bcad987d953fd52de66ef13f9b6">CONV_TRIGGER_DUTY_CYCLE_NSEC</a>(<a class="code hl_define" href="ad2s1210__iio_2app_2app__config__mbed_8h.html#a50a0c92dd8e7be44afcd089fbe5c28f9">CONV_TRIGGER_PERIOD_NSEC</a>(<a class="code hl_define" href="ad405x__iio_2app_2app__config__stm32_8h.html#adc05ffad75b22e3a21bff31e53944d70">SAMPLING_RATE_SPI_INTR</a>)),</div>
+<div class="line">    .polarity = NO_OS_PWM_POLARITY_HIGH,</div>
+<div class="line"> </div>
+<div class="line">    .pwm_gpio = &amp;<a class="code hl_variable" href="ad405x__iio_2app_2app__config_8c.html#acfb291dbf716f2613097926f29347f19">pwm_gpio_params</a>,</div>
+<div class="line"> </div>
+<div class="line">    .platform_ops = &amp;<a class="code hl_define" href="ad2s1210__iio_2app_2app__config_8h.html#a9b6ac61cf1859752ae6b375e319a55c5">pwm_ops</a>,</div>
+<div class="line">    .extra = &amp;<a class="code hl_define" href="ad2s1210__iio_2app_2app__config_8h.html#ae91096eb29d71a7778d1bb6dda3f6dcc">pwm_extra_init_params</a></div>
+<div class="line">}</div>
+<div class="ttc" id="aad2s1210__iio_2app_2app__config__mbed_8h_html_a65845bcad987d953fd52de66ef13f9b6"><div class="ttname"><a href="ad2s1210__iio_2app_2app__config__mbed_8h.html#a65845bcad987d953fd52de66ef13f9b6">CONV_TRIGGER_DUTY_CYCLE_NSEC</a></div><div class="ttdeci">#define CONV_TRIGGER_DUTY_CYCLE_NSEC</div><div class="ttdef"><b>Definition</b> app_config_mbed.h:58</div></div>
+<div class="ttc" id="aad405x__iio_2app_2app__config__stm32_8h_html_adc05ffad75b22e3a21bff31e53944d70"><div class="ttname"><a href="ad405x__iio_2app_2app__config__stm32_8h.html#adc05ffad75b22e3a21bff31e53944d70">SAMPLING_RATE_SPI_INTR</a></div><div class="ttdeci">#define SAMPLING_RATE_SPI_INTR</div><div class="ttdef"><b>Definition</b> app_config_stm32.h:123</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -490,10 +549,13 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line">= {</div>
-<div class="line">    .irq_ctrl_id = <a class="code hl_define" href="ad2s1210__iio_2app_2app__config_8h.html#a6beb114370125372ae6d3c4e467b4ed2">TRIGGER_INT_ID</a>,</div>
-<div class="line">    .platform_ops = &amp;stm32_irq_ops</div>
+<div class="line">    .irq_ctrl_id = <a class="code hl_define" href="ad405x__iio_2app_2app__config__mbed_8h.html#ab9a6818fcd5b0c436c78a43cc34a1791">GP1_PIN_NUM</a>,</div>
+<div class="line">    .platform_ops = &amp;<a class="code hl_define" href="ad2s1210__iio_2app_2app__config_8h.html#aea695cfd66cb4b1c25c5f56b59d9ad1e">trigger_gpio_irq_ops</a>,</div>
+<div class="line">    .extra = &amp;<a class="code hl_define" href="ad2s1210__iio_2app_2app__config_8h.html#a94a5e0dc135efcaaeacfbaf36f4f5ff4">trigger_gpio_irq_extra_params</a></div>
 <div class="line">}</div>
-<div class="ttc" id="aad2s1210__iio_2app_2app__config_8h_html_a6beb114370125372ae6d3c4e467b4ed2"><div class="ttname"><a href="ad2s1210__iio_2app_2app__config_8h.html#a6beb114370125372ae6d3c4e467b4ed2">TRIGGER_INT_ID</a></div><div class="ttdeci">#define TRIGGER_INT_ID</div><div class="ttdef"><b>Definition</b> app_config.h:95</div></div>
+<div class="ttc" id="aad2s1210__iio_2app_2app__config_8h_html_a94a5e0dc135efcaaeacfbaf36f4f5ff4"><div class="ttname"><a href="ad2s1210__iio_2app_2app__config_8h.html#a94a5e0dc135efcaaeacfbaf36f4f5ff4">trigger_gpio_irq_extra_params</a></div><div class="ttdeci">#define trigger_gpio_irq_extra_params</div><div class="ttdef"><b>Definition</b> app_config.h:81</div></div>
+<div class="ttc" id="aad2s1210__iio_2app_2app__config_8h_html_aea695cfd66cb4b1c25c5f56b59d9ad1e"><div class="ttname"><a href="ad2s1210__iio_2app_2app__config_8h.html#aea695cfd66cb4b1c25c5f56b59d9ad1e">trigger_gpio_irq_ops</a></div><div class="ttdeci">#define trigger_gpio_irq_ops</div><div class="ttdef"><b>Definition</b> app_config.h:90</div></div>
+<div class="ttc" id="aad405x__iio_2app_2app__config__mbed_8h_html_ab9a6818fcd5b0c436c78a43cc34a1791"><div class="ttname"><a href="ad405x__iio_2app_2app__config__mbed_8h.html#ab9a6818fcd5b0c436c78a43cc34a1791">GP1_PIN_NUM</a></div><div class="ttdeci">#define GP1_PIN_NUM</div><div class="ttdef"><b>Definition</b> app_config_mbed.h:61</div></div>
 </div><!-- fragment -->
 </div>
 </div>
