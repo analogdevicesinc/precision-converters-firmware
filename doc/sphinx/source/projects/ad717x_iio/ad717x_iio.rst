@@ -23,16 +23,16 @@ Supported Hardware
 
 **Supported Carrier Boards:**
 
-* `SDP-K1 With Mbed <https://os.mbed.com/platforms/SDP_K1/>`_
+* `SDP-K1  <https://www.analog.com/en/resources/evaluation-hardware-and-software/evaluation-boards-kits/sdp-k1.html#eb-overview>`_
 
 ============
 Introduction
 ============
 
-This page gives an overview of using the ARM platforms supported (default is Mbed) 
+This page gives an overview of using the ARM platforms supported (default is STM32) 
 firmware example with Analog Devices AD717x Evaluation board and SDP-K1 controller board. 
 This example code leverages the ADI developed IIO (Industrial Input Output) ecosystem to 
-evaluate the AD717x/AD411x device by providing a device debug and data capture support.
+evaluate the AD717x/AD411x device by providing a device debug and data capture support. It supports both STM32 and Mbed platforms.
 
    .. image:: /source/tinyiiod/app_interface.png
       :width: 350
@@ -41,9 +41,11 @@ The interface used for communicating with PC based IIO clients is either Virtual
 IIO Firmware leverages the ADI created no-os and platform driver software layers
 to communicates with IIO device.
 
-.. SDP-K1 Mbed Section
+.. note::
 
-.. include:: /source/tinyiiod/sdp_k1_mbed.rst
+   This code has been developed and tested on the SDP-K1 Controller Board with
+   Arduino headers. However, the same code can be used with minimal modifications
+   on any STM32 enabled board which has Arduino Header support on it.
 
 .. Useful links Section
 
@@ -53,12 +55,11 @@ to communicates with IIO device.
 Hardware Connections
 ====================
 
-Required: SDP-K1 (or alternative Mbed enabled controller board), EVAL-AD717x board
+Required: SDP-K1 (or alternative Mbed enabled controller board or an STM32 board), EVAL-AD717x board
 and USB cable.
 
 Connect the EVAL-AD717x board to SDP-K1 board (or any other Mbed enabled controller 
-board) using jumper wires. Connect SDP-K1 board to the PC using the USB cable. 
-
+board or an STM32 board) using jumper wires. Connect SDP-K1 board to the PC using the USB cable. 
 
    .. image:: /source/projects/ad717x_iio/ad717x_hardware_interface.png
       :width: 600
