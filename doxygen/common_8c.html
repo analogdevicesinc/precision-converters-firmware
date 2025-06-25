@@ -143,6 +143,9 @@ Functions</h2></td></tr>
 <tr class="memitem:a324cfd9f09344ffd8483a2398931b144" id="r_a324cfd9f09344ffd8483a2398931b144"><td class="memItemLeft" align="right" valign="top">int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="common_8c.html#a324cfd9f09344ffd8483a2398931b144">eeprom_init</a> (struct no_os_eeprom_desc **<a class="el" href="ad3530r__iio_2app_2app__config_8c.html#a3e28ad761469de0b6f49f66710c878a0">eeprom_desc</a>, struct no_os_eeprom_init_param *eeprom_init_params)</td></tr>
 <tr class="memdesc:a324cfd9f09344ffd8483a2398931b144"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize the EEPROM.  <br /></td></tr>
 <tr class="separator:a324cfd9f09344ffd8483a2398931b144"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6073e9e31b0cb5f1daf2765c20c8286c" id="r_a6073e9e31b0cb5f1daf2765c20c8286c"><td class="memItemLeft" align="right" valign="top">int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="common_8c.html#a6073e9e31b0cb5f1daf2765c20c8286c">eeprom_close</a> (struct no_os_eeprom_desc *<a class="el" href="ad3530r__iio_2app_2app__config_8c.html#a3e28ad761469de0b6f49f66710c878a0">eeprom_desc</a>)</td></tr>
+<tr class="memdesc:a6073e9e31b0cb5f1daf2765c20c8286c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Close the EEPROM.  <br /></td></tr>
+<tr class="separator:a6073e9e31b0cb5f1daf2765c20c8286c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a35e3530dcda840a346551f330aff99ae" id="r_a35e3530dcda840a346551f330aff99ae"><td class="memItemLeft" align="right" valign="top">int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="common_8c.html#a35e3530dcda840a346551f330aff99ae">load_eeprom_dev_address</a> (struct no_os_eeprom_desc *<a class="el" href="ad3530r__iio_2app_2app__config_8c.html#a3e28ad761469de0b6f49f66710c878a0">eeprom_desc</a>, uint8_t dev_addr)</td></tr>
 <tr class="memdesc:a35e3530dcda840a346551f330aff99ae"><td class="mdescLeft">&#160;</td><td class="mdescRight">Store the EEPROM device address.  <br /></td></tr>
 <tr class="separator:a35e3530dcda840a346551f330aff99ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -155,6 +158,9 @@ Functions</h2></td></tr>
 <tr class="memitem:aabca3ebb3bc7536cfa89b2e1531f9eac" id="r_aabca3ebb3bc7536cfa89b2e1531f9eac"><td class="memItemLeft" align="right" valign="top">int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="common_8c.html#aabca3ebb3bc7536cfa89b2e1531f9eac">get_iio_context_attributes</a> (struct iio_ctx_attr **ctx_attr, uint32_t *attrs_cnt, struct no_os_eeprom_desc *<a class="el" href="ad3530r__iio_2app_2app__config_8c.html#a3e28ad761469de0b6f49f66710c878a0">eeprom_desc</a>, const char *hw_mezzanine, const char *hw_carrier, bool *hw_mezzanine_is_valid)</td></tr>
 <tr class="memdesc:aabca3ebb3bc7536cfa89b2e1531f9eac"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read IIO context attributes.  <br /></td></tr>
 <tr class="separator:aabca3ebb3bc7536cfa89b2e1531f9eac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a35bd1d943d62a41c9b454559968c266c" id="r_a35bd1d943d62a41c9b454559968c266c"><td class="memItemLeft" align="right" valign="top">int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="common_8c.html#a35bd1d943d62a41c9b454559968c266c">get_iio_context_attributes_ex</a> (struct iio_ctx_attr **ctx_attr, uint32_t *attrs_cnt, struct no_os_eeprom_desc *<a class="el" href="ad3530r__iio_2app_2app__config_8c.html#a3e28ad761469de0b6f49f66710c878a0">eeprom_desc</a>, const char *hw_mezzanine, const char *hw_carrier, bool *hw_mezzanine_is_valid, const char *fw_version)</td></tr>
+<tr class="memdesc:a35bd1d943d62a41c9b454559968c266c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read IIO context attributes extended version (with fw_version attribute)  <br /></td></tr>
+<tr class="separator:a35bd1d943d62a41c9b454559968c266c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae468cce01b49131940d4b6365c7d5eeb" id="r_ae468cce01b49131940d4b6365c7d5eeb"><td class="memItemLeft" align="right" valign="top">int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="common_8c.html#ae468cce01b49131940d4b6365c7d5eeb">remove_iio_context_attributes</a> (struct iio_ctx_attr *ctx_attr)</td></tr>
 <tr class="memdesc:ae468cce01b49131940d4b6365c7d5eeb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Free the resources allocated by <a class="el" href="common_8c.html#aabca3ebb3bc7536cfa89b2e1531f9eac" title="Read IIO context attributes.">get_iio_context_attributes()</a>  <br /></td></tr>
 <tr class="separator:ae468cce01b49131940d4b6365c7d5eeb"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -203,6 +209,33 @@ Functions</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
+<a id="a6073e9e31b0cb5f1daf2765c20c8286c" name="a6073e9e31b0cb5f1daf2765c20c8286c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6073e9e31b0cb5f1daf2765c20c8286c">&#9670;&#160;</a></span>eeprom_close()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int32_t eeprom_close </td>
+          <td>(</td>
+          <td class="paramtype">struct no_os_eeprom_desc *&#160;</td>
+          <td class="paramname"><em>eeprom_desc</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Close the EEPROM. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">eeprom_desc[in]</td><td>- EEPROM descriptor </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>0 in case of success, negative error code otherwise </dd></dl>
+
+</div>
+</div>
 <a id="a324cfd9f09344ffd8483a2398931b144" name="a324cfd9f09344ffd8483a2398931b144"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a324cfd9f09344ffd8483a2398931b144">&#9670;&#160;</a></span>eeprom_init()</h2>
 
@@ -412,6 +445,79 @@ Here is the caller graph for this function:</div>
 
 </div>
 </div>
+<a id="a35bd1d943d62a41c9b454559968c266c" name="a35bd1d943d62a41c9b454559968c266c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a35bd1d943d62a41c9b454559968c266c">&#9670;&#160;</a></span>get_iio_context_attributes_ex()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int32_t get_iio_context_attributes_ex </td>
+          <td>(</td>
+          <td class="paramtype">struct iio_ctx_attr **&#160;</td>
+          <td class="paramname"><em>ctx_attr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t *&#160;</td>
+          <td class="paramname"><em>attrs_cnt</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">struct no_os_eeprom_desc *&#160;</td>
+          <td class="paramname"><em>eeprom_desc</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>hw_mezzanine</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>hw_carrier</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool *&#160;</td>
+          <td class="paramname"><em>hw_mezzanine_is_valid</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>fw_version</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Read IIO context attributes extended version (with fw_version attribute) </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ctx_attr[in,out]</td><td>- Pointer to IIO context attributes init param </td></tr>
+    <tr><td class="paramname">attrs_cnt[in,out]</td><td>- IIO context attributes count </td></tr>
+    <tr><td class="paramname">eeprom_desc[in]</td><td>- EEPROM descriptor </td></tr>
+    <tr><td class="paramname">hw_mezzanine[in,out]</td><td>- HW Mezzanine ID string </td></tr>
+    <tr><td class="paramname">hw_carrier[in,out]</td><td>- HW Carrier ID string </td></tr>
+    <tr><td class="paramname">hw_mezzanine_is_valid[in,out]</td><td>- HW Mezzanine valid status </td></tr>
+    <tr><td class="paramname">fw_version[in,out]</td><td>- Firmware version string </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>0 in case of success, negative error code otherwise </dd></dl>
+
+</div>
+</div>
 <a id="a6bdefd3086531f25a53f14c537470435" name="a6bdefd3086531f25a53f14c537470435"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a6bdefd3086531f25a53f14c537470435">&#9670;&#160;</a></span>is_eeprom_valid_dev_addr_detected()</h2>
 
@@ -435,42 +541,44 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="common_8c_a6bdefd3086531f25a53f14c537470435_icgraph.png" border="0" usemap="#acommon_8c_a6bdefd3086531f25a53f14c537470435_icgraph" alt=""/></div>
 <map name="acommon_8c_a6bdefd3086531f25a53f14c537470435_icgraph" id="acommon_8c_a6bdefd3086531f25a53f14c537470435_icgraph">
-<area shape="rect" title="Return the flag indicating if valid EEPROM address is detected." alt="" coords="804,346,964,386"/>
+<area shape="rect" title="Return the flag indicating if valid EEPROM address is detected." alt="" coords="827,371,987,411"/>
 <area shape="rect" href="24xx32a__eeprom__iio_8c.html#a77d3374b7fbb8a4f73edf8314501fc44" title="Initialize the IIO interface." alt="" coords="349,57,516,83"/>
-<area shape="poly" title=" " alt="" coords="850,339,791,287,711,222,616,155,515,96,487,85,489,80,517,92,619,151,714,218,794,283,853,335"/>
-<area shape="rect" href="common_8c.html#aabca3ebb3bc7536cfa89b2e1531f9eac" title="Read IIO context attributes." alt="" coords="564,379,756,404"/>
-<area shape="poly" title=" " alt="" coords="790,379,757,383,756,378,790,374"/>
+<area shape="poly" title=" " alt="" coords="873,364,812,307,726,236,624,161,570,127,515,96,487,85,489,80,517,92,573,122,627,157,729,232,815,303,877,360"/>
+<area shape="rect" href="common_8c.html#aabca3ebb3bc7536cfa89b2e1531f9eac" title="Read IIO context attributes." alt="" coords="575,379,767,404"/>
+<area shape="poly" title=" " alt="" coords="813,394,767,394,767,389,813,389"/>
+<area shape="rect" href="common_8c.html#a35bd1d943d62a41c9b454559968c266c" title="Read IIO context attributes extended version (with fw_version attribute)" alt="" coords="564,428,779,453"/>
+<area shape="poly" title=" " alt="" coords="814,413,733,431,732,425,813,408"/>
 <area shape="rect" href="evb__discovery__firmware_2app_2main_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title=" " alt="" coords="177,5,232,31"/>
 <area shape="poly" title=" " alt="" coords="362,57,231,27,233,21,363,52"/>
-<area shape="poly" title=" " alt="" coords="641,368,603,305,562,226,549,187,545,155,537,126,514,96,498,85,501,81,518,92,541,123,550,154,554,186,566,224,607,302,645,365"/>
+<area shape="poly" title=" " alt="" coords="652,368,609,300,562,214,549,179,544,149,535,123,514,96,497,85,500,80,518,92,540,120,549,148,554,177,566,212,614,297,656,365"/>
 <area shape="rect" href="ad3530r__iio_8c.html#a4d2d07ab4b13d997040993474d2a1921" title="Initialize the IIO interface for AD3530R IIO device." alt="" coords="352,107,513,132"/>
-<area shape="poly" title=" " alt="" coords="642,368,514,145,495,134,498,130,518,141,647,365"/>
+<area shape="poly" title=" " alt="" coords="653,368,574,237,514,145,495,134,497,130,518,141,578,234,658,366"/>
 <area shape="rect" href="ad4130__iio_8c.html#ae92881e9f4ea154620ea3b03c20880e6" title="Initialize the IIO interface for AD4130 IIO device." alt="" coords="355,156,511,181"/>
-<area shape="poly" title=" " alt="" coords="645,367,625,329,596,282,559,235,514,195,494,184,496,179,518,190,563,231,600,279,630,326,650,365"/>
+<area shape="poly" title=" " alt="" coords="655,368,633,329,602,283,562,235,515,195,493,184,495,179,517,190,565,231,606,279,638,326,660,365"/>
 <area shape="rect" href="ad4170__iio_8c.html#afe5b4999ffeb4ff59922c46515a4a8b1" title="Initialize the IIO interface for AD4170 IIO device." alt="" coords="355,205,511,231"/>
-<area shape="poly" title=" " alt="" coords="640,369,589,307,554,273,515,244,491,233,493,228,517,240,557,269,593,303,644,366"/>
+<area shape="poly" title=" " alt="" coords="650,369,594,307,556,273,515,244,490,233,492,228,517,240,559,269,597,303,654,366"/>
 <area shape="rect" href="ad469x__iio_8c.html#adf57bdf6c7d2d6dfa2a8531795e03e3f" title="Release resources allocated for IIO device." alt="" coords="355,255,511,280"/>
-<area shape="poly" title=" " alt="" coords="632,372,580,332,515,294,486,283,488,278,517,289,583,328,635,368"/>
+<area shape="poly" title=" " alt="" coords="642,373,585,333,515,294,485,283,487,278,517,289,588,328,645,368"/>
 <area shape="rect" href="ad5754r__iio_8c.html#af75390844f2453ece9d9763d07f194f6" title="Initialize the IIO interface for AD5754R IIO device." alt="" coords="369,304,496,329"/>
-<area shape="poly" title=" " alt="" coords="610,376,515,343,478,332,480,327,517,338,612,371"/>
+<area shape="poly" title=" " alt="" coords="619,377,515,343,478,332,479,327,517,338,620,372"/>
 <area shape="rect" href="ad579x__iio_8c.html#aa2a89d81a19aea6a5b4e6a03a2dd7124" title="Initialize the IIO interface for AD579x IIO device." alt="" coords="372,353,493,379"/>
-<area shape="poly" title=" " alt="" coords="550,382,493,375,494,370,550,376"/>
+<area shape="poly" title=" " alt="" coords="561,382,493,375,494,370,562,377"/>
 <area shape="rect" href="ad7091r__iio_8c.html#a526d44841f367222c787b008f38e76a9" title="Initialize the IIO interface for AD7091R IIO device." alt="" coords="369,403,496,428"/>
-<area shape="poly" title=" " alt="" coords="550,406,496,411,496,406,550,400"/>
+<area shape="poly" title=" " alt="" coords="562,405,497,412,496,406,561,400"/>
 <area shape="rect" href="ad7124__iio_8c.html#af012050c4da92d39f4302b89865a477f" title="Initialize the AD7124 IIO Interface." alt="" coords="355,452,511,477"/>
-<area shape="poly" title=" " alt="" coords="610,411,517,442,477,455,475,449,515,437,608,406"/>
+<area shape="poly" title=" " alt="" coords="590,410,565,418,541,429,517,442,481,454,479,449,515,437,539,425,563,413,588,405"/>
 <area shape="rect" href="ad4134__iio_8c.html#a4c05ffbe1f6b58d3746137ef1bd30a10" title="Initialize the AD7134 device for iio interface." alt="" coords="355,501,511,527"/>
-<area shape="poly" title=" " alt="" coords="634,415,582,453,517,491,484,504,483,499,515,486,579,449,631,410"/>
+<area shape="poly" title=" " alt="" coords="574,412,566,417,550,434,542,453,534,472,518,491,494,504,492,499,514,487,530,469,537,451,545,431,562,413,572,408"/>
 <area shape="rect" href="ad717x__iio_8c.html#acddf5b7a4d74fe84be7eceea2cd5f88d" title="Initialize the AD717x IIO Interface." alt="" coords="355,551,511,576"/>
-<area shape="poly" title=" " alt="" coords="643,417,592,478,556,512,517,540,490,553,488,548,515,536,553,508,588,475,639,414"/>
+<area shape="poly" title=" " alt="" coords="571,413,566,417,553,431,546,446,542,476,538,508,531,524,518,540,498,553,495,548,514,536,526,521,533,507,537,476,541,444,549,428,562,413,568,409"/>
 <area shape="rect" href="ad719x__iio_8c.html#aa04984aee6819593088c17ebc0f7a540" title="Initialize the ad719x IIO Interface." alt="" coords="355,600,511,625"/>
-<area shape="poly" title=" " alt="" coords="649,418,629,456,600,502,563,549,518,590,493,602,491,598,514,585,559,545,596,499,625,453,645,415"/>
+<area shape="poly" title=" " alt="" coords="570,414,566,417,550,437,543,458,542,501,541,545,534,567,518,589,500,602,497,598,514,585,529,565,536,544,537,500,537,457,545,435,562,413,566,410"/>
 <area shape="rect" href="ad7689__iio_8c.html#ad230f115f917fa129f5784eb1085eecf" title="Initialize the IIO interface for AD7689 IIO device." alt="" coords="355,649,511,675"/>
-<area shape="poly" title=" " alt="" coords="653,418,636,465,608,525,568,586,544,614,518,639,495,652,493,647,514,635,541,610,564,583,603,522,631,463,648,416"/>
+<area shape="poly" title=" " alt="" coords="570,414,566,417,547,444,539,470,538,497,542,525,545,553,545,581,537,610,518,639,501,651,498,647,514,635,532,608,540,580,540,553,536,525,533,497,534,469,542,441,562,414,566,410"/>
 <area shape="rect" href="ad777x__iio_8c.html#a968983df489fc93c1651d6a6d2d9b187" title="Initialize the IIO interface for AD777x IIO device." alt="" coords="355,699,511,724"/>
-<area shape="poly" title=" " alt="" coords="656,418,641,474,615,547,596,585,574,622,548,657,518,688,497,701,494,696,514,684,544,654,570,620,591,582,610,545,636,472,651,417"/>
+<area shape="poly" title=" " alt="" coords="569,414,566,417,543,450,535,482,536,515,541,549,547,583,548,618,540,653,518,688,501,701,498,696,514,684,535,651,543,617,542,584,536,550,530,516,530,482,539,447,562,414,565,410"/>
 <area shape="rect" href="ad405x__iio_8c.html#ac0141386b392ad24a1e7636a9b4c99c9" title="Initialize the IIO interface for AD405X IIO device." alt="" coords="355,748,511,773"/>
-<area shape="poly" title=" " alt="" coords="658,418,646,482,621,568,603,614,580,659,552,700,518,737,498,750,495,746,514,733,547,697,575,656,598,612,616,566,641,481,653,417"/>
+<area shape="poly" title=" " alt="" coords="569,414,566,417,551,437,540,456,531,495,533,534,541,573,549,614,552,654,543,695,533,716,518,737,502,750,498,746,514,733,529,714,538,694,547,654,544,614,536,574,528,534,526,494,535,454,546,434,562,414,565,410"/>
 <area shape="rect" href="ad3530r__iio_2app_2main_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title="Main entry point to application." alt="" coords="177,55,232,80"/>
 <area shape="poly" title=" " alt="" coords="362,106,231,76,233,71,363,101"/>
 <area shape="rect" href="ad4130__iio_2app_2main_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title="Main entry point to application." alt="" coords="177,104,232,129"/>
