@@ -1,0 +1,11 @@
+*.swp
+*.profile*
+.vs/
+.visualgdb/
+*.sln
+*.vgdbproj
+*.TMP
+*.user
+STM32/*/*
+!STM32/*/*.ioc
+!STM32/*/*.extSettings
