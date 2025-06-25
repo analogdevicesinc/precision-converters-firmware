@@ -201,7 +201,7 @@ Macros</h2></td></tr>
 <tr class="separator:a97a48b1e60b1197a423e2f65aedf87a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a635a0761c3c1c63eca588709c21b0b08" id="r_a635a0761c3c1c63eca588709c21b0b08"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad469x__iio_8c.html#a635a0761c3c1c63eca588709c21b0b08">MAX_LOCAL_BUF_SIZE</a>&#160;&#160;&#160;8000</td></tr>
 <tr class="separator:a635a0761c3c1c63eca588709c21b0b08"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a35fe7741c00803a7bb80d783507203f9" id="r_a35fe7741c00803a7bb80d783507203f9"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad469x__iio_8c.html#a35fe7741c00803a7bb80d783507203f9">MAX_DMA_NDTR</a>&#160;&#160;&#160;(no_os_min(65535, <a class="el" href="ad405x__iio_8c.html#a635a0761c3c1c63eca588709c21b0b08">MAX_LOCAL_BUF_SIZE</a>/2))</td></tr>
+<tr class="memitem:a35fe7741c00803a7bb80d783507203f9" id="r_a35fe7741c00803a7bb80d783507203f9"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad469x__iio_8c.html#a35fe7741c00803a7bb80d783507203f9">MAX_DMA_NDTR</a>&#160;&#160;&#160;(no_os_min(65535, <a class="el" href="ad405x__support_8c.html#a635a0761c3c1c63eca588709c21b0b08">MAX_LOCAL_BUF_SIZE</a>/2))</td></tr>
 <tr class="separator:a35fe7741c00803a7bb80d783507203f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="enum-members" name="enum-members"></a>
@@ -268,7 +268,7 @@ Variables</h2></td></tr>
 <tr class="separator:ab1f9376cbd0d5f7c631f2c2085431df1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a110616d894d7e10582454eae6fba7a14" id="r_a110616d894d7e10582454eae6fba7a14"><td class="memItemLeft" align="right" valign="top">struct no_os_dma_ch *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad469x__iio_8c.html#a110616d894d7e10582454eae6fba7a14">txch</a></td></tr>
 <tr class="separator:a110616d894d7e10582454eae6fba7a14"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a64753f7285011cab33065a7abb2574ef" id="r_a64753f7285011cab33065a7abb2574ef"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad469x__iio_8c.html#a64753f7285011cab33065a7abb2574ef">local_buf</a> [<a class="el" href="ad405x__iio_8c.html#a635a0761c3c1c63eca588709c21b0b08">MAX_LOCAL_BUF_SIZE</a>]</td></tr>
+<tr class="memitem:a64753f7285011cab33065a7abb2574ef" id="r_a64753f7285011cab33065a7abb2574ef"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad469x__iio_8c.html#a64753f7285011cab33065a7abb2574ef">local_buf</a> [<a class="el" href="ad405x__support_8c.html#a635a0761c3c1c63eca588709c21b0b08">MAX_LOCAL_BUF_SIZE</a>]</td></tr>
 <tr class="separator:a64753f7285011cab33065a7abb2574ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a610dc1e76f5b0fbdc5820c8786b268f2" id="r_a610dc1e76f5b0fbdc5820c8786b268f2"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad469x__iio_8c.html#a610dc1e76f5b0fbdc5820c8786b268f2">callback_count</a></td></tr>
 <tr class="separator:a610dc1e76f5b0fbdc5820c8786b268f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -453,7 +453,7 @@ Variables</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define MAX_DMA_NDTR&#160;&#160;&#160;(no_os_min(65535, <a class="el" href="ad405x__iio_8c.html#a635a0761c3c1c63eca588709c21b0b08">MAX_LOCAL_BUF_SIZE</a>/2))</td>
+          <td class="memname">#define MAX_DMA_NDTR&#160;&#160;&#160;(no_os_min(65535, <a class="el" href="ad405x__support_8c.html#a635a0761c3c1c63eca588709c21b0b08">MAX_LOCAL_BUF_SIZE</a>/2))</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -832,7 +832,7 @@ Here is the caller graph for this function:</div>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">uint8_t local_buf[<a class="el" href="ad405x__iio_8c.html#a635a0761c3c1c63eca588709c21b0b08">MAX_LOCAL_BUF_SIZE</a>]</td>
+          <td class="memname">uint8_t local_buf[<a class="el" href="ad405x__support_8c.html#a635a0761c3c1c63eca588709c21b0b08">MAX_LOCAL_BUF_SIZE</a>]</td>
         </tr>
       </table>
 </div><div class="memdoc">

@@ -1,20 +1,28 @@
 <map id="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad405x_iio/app/app_config.h" name="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad405x_iio/app/app_config.h">
-<area shape="rect" id="Node000001" title="Application configurations module for AD405X." alt="" coords="473,5,696,75"/>
+<area shape="rect" id="Node000001" title="Application configurations module for AD405X." alt="" coords="693,5,916,75"/>
 <area shape="rect" id="Node000002" href="$ad405x__iio_8c.html" title="Implementation of AD405X IIO Application Interface." alt="" coords="5,240,228,309"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="464,82,358,125,252,184,165,242,162,238,250,179,356,120,462,77"/>
-<area shape="rect" id="Node000003" href="$ad405x__iio_8h.html" title="Header for AD405X IIO application." alt="" coords="400,123,623,192"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="558,88,535,124,531,121,553,85"/>
-<area shape="rect" id="Node000004" href="$ad405x__iio_2app_2app__config_8c.html" title="Application configurations module." alt="" coords="252,240,475,309"/>
-<area shape="poly" id="edge8_Node000001_Node000004" title=" " alt="" coords="462,73,423,95,391,124,375,151,367,182,363,240,358,239,361,181,370,149,387,121,420,90,459,69"/>
-<area shape="rect" id="Node000005" href="$ad405x__iio_2app_2app__config__stm32_8c.html" title="Source file for STM32 platform configurations." alt="" coords="745,240,1003,309"/>
-<area shape="poly" id="edge10_Node000001_Node000005" title=" " alt="" coords="615,85,657,150,687,190,725,217,768,237,765,242,723,221,683,194,653,153,611,88"/>
-<area shape="rect" id="Node000007" href="$ad405x__user__config_8c.html" title="User configuration file for AD405X." alt="" coords="697,123,966,192"/>
-<area shape="poly" id="edge7_Node000001_Node000007" title=" " alt="" coords="670,78,760,120,758,125,668,83"/>
-<area shape="rect" id="Node000008" href="$ad405x__iio_2app_2app__config__mbed_8c.html" title="Application configurations module for Mbed platform." alt="" coords="991,123,1245,192"/>
-<area shape="poly" id="edge9_Node000001_Node000008" title=" " alt="" coords="710,64,979,120,991,123,990,128,977,125,709,69"/>
-<area shape="poly" id="edge3_Node000003_Node000002" title=" " alt="" coords="387,198,229,243,228,238,386,192"/>
-<area shape="poly" id="edge4_Node000003_Node000004" title=" " alt="" coords="459,203,408,242,405,238,456,198"/>
-<area shape="poly" id="edge5_Node000003_Node000005" title=" " alt="" coords="631,194,769,237,767,242,629,199"/>
-<area shape="rect" id="Node000006" href="$ad405x__iio_2app_2main_8c.html" title="Main interface for AD405X IIO firmware application." alt="" coords="499,240,721,309"/>
-<area shape="poly" id="edge6_Node000003_Node000006" title=" " alt="" coords="551,201,583,238,579,242,547,204"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="680,52,564,63,440,78,329,99,284,111,251,125,216,150,185,180,139,241,134,238,181,176,212,145,249,120,283,106,327,94,439,73,564,58,680,47"/>
+<area shape="rect" id="Node000003" href="$ad405x__iio_8h.html" title="Header for AD405X IIO application." alt="" coords="520,123,743,192"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="744,85,684,125,681,120,741,80"/>
+<area shape="rect" id="Node000005" href="$ad405x__iio_2app_2app__config_8c.html" title="Application configurations module." alt="" coords="767,240,989,309"/>
+<area shape="poly" id="edge9_Node000001_Node000005" title=" " alt="" coords="802,89,803,139,806,166,814,191,827,216,844,238,840,241,823,219,809,193,801,167,797,140,797,89"/>
+<area shape="rect" id="Node000006" href="$ad405x__iio_2app_2app__config__stm32_8c.html" title="Source file for STM32 platform configurations." alt="" coords="1013,240,1271,309"/>
+<area shape="poly" id="edge11_Node000001_Node000006" title=" " alt="" coords="812,88,826,142,839,168,857,190,876,200,913,212,1013,240,1012,245,911,218,874,205,854,194,835,171,821,144,806,89"/>
+<area shape="rect" id="Node000008" href="$ad405x__user__config_8c.html" title="User configuration file for AD405X." alt="" coords="867,123,1137,192"/>
+<area shape="poly" id="edge8_Node000001_Node000008" title=" " alt="" coords="875,79,946,120,943,125,873,84"/>
+<area shape="rect" id="Node000009" href="$ad405x__iio_2app_2app__config__mbed_8c.html" title="Application configurations module for Mbed platform." alt="" coords="1161,123,1416,192"/>
+<area shape="poly" id="edge10_Node000001_Node000009" title=" " alt="" coords="930,68,1149,120,1162,123,1161,128,1148,125,929,73"/>
+<area shape="rect" id="Node000010" href="$app__support_8c.html" title="Implementation of Application support functions." alt="" coords="1440,123,1663,192"/>
+<area shape="poly" id="edge12_Node000001_Node000010" title=" " alt="" coords="930,50,1163,77,1297,96,1429,120,1440,122,1439,128,1428,125,1296,102,1162,82,930,55"/>
+<area shape="rect" id="Node000011" href="$app__support_8h.html" title="Implementation of AD405x support functions." alt="" coords="263,123,485,192"/>
+<area shape="poly" id="edge13_Node000001_Node000011" title=" " alt="" coords="681,77,486,129,485,124,680,72"/>
+<area shape="poly" id="edge3_Node000003_Node000002" title=" " alt="" coords="507,192,497,195,368,218,240,243,229,245,228,240,239,237,367,213,496,189,506,187"/>
+<area shape="rect" id="Node000004" href="$ad405x__support_8c.html" title="Implementation of AD405x support functions." alt="" coords="252,240,496,309"/>
+<area shape="poly" id="edge4_Node000003_Node000004" title=" " alt="" coords="545,200,450,242,448,237,543,195"/>
+<area shape="poly" id="edge5_Node000003_Node000005" title=" " alt="" coords="717,195,807,237,805,242,715,200"/>
+<area shape="poly" id="edge6_Node000003_Node000006" title=" " alt="" coords="757,183,1003,237,1013,240,1012,245,1001,243,756,188"/>
+<area shape="rect" id="Node000007" href="$ad405x__iio_2app_2main_8c.html" title="Main interface for AD405X IIO firmware application." alt="" coords="520,240,743,309"/>
+<area shape="poly" id="edge7_Node000003_Node000007" title=" " alt="" coords="634,206,634,240,629,240,629,206"/>
+<area shape="poly" id="edge14_Node000011_Node000002" title=" " alt="" coords="287,200,193,242,191,237,285,195"/>
+<area shape="poly" id="edge15_Node000011_Node000004" title=" " alt="" coords="377,206,377,240,371,240,371,206"/>
 </map>

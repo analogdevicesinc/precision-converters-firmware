@@ -210,7 +210,6 @@ var searchData=
   ['osr1_5fpin_207',['OSR1_PIN',['../ad7606__iio_2app_2app__config__mbed_8h.html#af256264c9f1fb5fc272a27ed813d73ba',1,'app_config_mbed.h']]],
   ['osr2_5fgpio_5fextra_5finit_5fparams_208',['osr2_gpio_extra_init_params',['../ad7606__iio_2app_2app__config_8h.html#a3e904849e46b66d865b91d4446efbbe4',1,'app_config.h']]],
   ['osr2_5fpin_209',['OSR2_PIN',['../ad7606__iio_2app_2app__config__mbed_8h.html#a7a5dc99d4d014ae821bfa226c7e84eb8',1,'app_config_mbed.h']]],
-  ['output_5fcompare_5fduty_5fcycle_5fns_210',['OUTPUT_COMPARE_DUTY_CYCLE_NS',['../ad405x__iio_2app_2app__config__stm32_8h.html#a94320b15a7ac44dec6aadac89e229aa0',1,'app_config_stm32.h']]],
-  ['output_5fvoltage_5frange_211',['output_voltage_range',['../structad5933__config__data.html#a566ea499503f092e998aff45814e845d',1,'ad5933_config_data']]],
-  ['over_5frange_212',['OVER_RANGE',['../ltc2488_8h.html#ace41eea95341bdd951af20101ab169e2a942132a493b9a746622500a86b85b1f5',1,'ltc2488.h']]]
+  ['output_5fvoltage_5frange_210',['output_voltage_range',['../structad5933__config__data.html#a566ea499503f092e998aff45814e845d',1,'ad5933_config_data']]],
+  ['over_5frange_211',['OVER_RANGE',['../ltc2488_8h.html#ace41eea95341bdd951af20101ab169e2a942132a493b9a746622500a86b85b1f5',1,'ltc2488.h']]]
 ];

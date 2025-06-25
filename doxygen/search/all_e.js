@@ -6,7 +6,7 @@ var searchData=
   ['nanodac_5fconsole_5fapp_2ec_3',['nanodac_console_app.c',['../nanodac__console__app_8c.html',1,'']]],
   ['nanodac_5fconsole_5fapp_2eh_4',['nanodac_console_app.h',['../nanodac__console__app_8h.html',1,'']]],
   ['nanodac_5fmain_5fmenu_5',['nanodac_main_menu',['../nanodac__console__app_8h.html#aa20b80557788fe4b84d4891a6943fe33',1,'nanodac_main_menu:&#160;nanodac_console_app.c'],['../nanodac__console__app_8c.html#aa20b80557788fe4b84d4891a6943fe33',1,'nanodac_main_menu:&#160;nanodac_console_app.c']]],
-  ['nb_5fof_5fbytes_5fg_6',['nb_of_bytes_g',['../ad405x__iio_2app_2app__config_8h.html#ac7f2e489bd87f764ecb12d8a16208e37',1,'nb_of_bytes_g:&#160;ad405x_iio.c'],['../ad405x__iio_8c.html#ac7f2e489bd87f764ecb12d8a16208e37',1,'nb_of_bytes_g:&#160;ad405x_iio.c']]],
+  ['nb_5fof_5fbytes_5fg_6',['nb_of_bytes_g',['../app__support_8c.html#ac7f2e489bd87f764ecb12d8a16208e37',1,'nb_of_bytes_g:&#160;app_support.c'],['../ad405x__iio_2app_2app__config_8h.html#ac7f2e489bd87f764ecb12d8a16208e37',1,'nb_of_bytes_g:&#160;app_support.c']]],
   ['nb_5fof_5fsamples_5fg_7',['nb_of_samples_g',['../ad4170__iio_2app_2app__config__stm32_8h.html#a0e4a9e289104efa043759326a7ae0085',1,'nb_of_samples_g:&#160;ad4170_iio.c'],['../ad4170__iio_8c.html#a0e4a9e289104efa043759326a7ae0085',1,'nb_of_samples_g:&#160;ad4170_iio.c']]],
   ['neg_5fanalog_5finp_5fselect_8',['NEG_ANALOG_INP_SELECT',['../ad717x__menu__defines_8h.html#af2b5a38415a06f3cc19837e6286a21d7',1,'ad717x_menu_defines.h']]],
   ['neg_5fanalog_5finput_9',['neg_analog_input',['../structad717x__setup__config.html#abc8db93dbfceea6e99d9e5b7ab1096cc',1,'ad717x_setup_config::neg_analog_input'],['../structad7124__setup__config.html#a9385c85bce8241ce86673aee95179eb7',1,'ad7124_setup_config::neg_analog_input']]],

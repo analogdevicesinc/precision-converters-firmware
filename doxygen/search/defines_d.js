@@ -173,7 +173,7 @@ var searchData=
   ['odr_5f62500_5fstr_170',['ODR_62500_STR',['../ad717x__menu__defines_8h.html#a6e7a70ad9cc48d0b46c70cf238a8718e',1,'ad717x_menu_defines.h']]],
   ['odr_5fidr_171',['ODR_IDR',['../ad4134__iio_2app_2app__config__mbed_8h.html#a98ae2d1dc610c9576b4ef643a93b8b9a',1,'app_config_mbed.h']]],
   ['odr_5fint_5fval_172',['ODR_INT_VAL',['../ad4134__support_8c.html#a24dcf3fcb80d4587d370ff95a54f3ad9',1,'ad4134_support.c']]],
-  ['odr_5fpin_173',['odr_pin',['../ad4134__iio_2app_2app__config__mbed_8h.html#af2073cba676e5cf83ff7448c240cd394',1,'ODR_PIN:&#160;app_config_mbed.h'],['../ad4134__iio_2app_2app__config__stm32_8h.html#af2073cba676e5cf83ff7448c240cd394',1,'ODR_PIN:&#160;app_config_stm32.h']]],
+  ['odr_5fpin_173',['odr_pin',['../ad4134__iio_2app_2app__config__stm32_8h.html#af2073cba676e5cf83ff7448c240cd394',1,'ODR_PIN:&#160;app_config_stm32.h'],['../ad4134__iio_2app_2app__config__mbed_8h.html#af2073cba676e5cf83ff7448c240cd394',1,'ODR_PIN:&#160;app_config_mbed.h']]],
   ['odr_5fpin_5fmask_174',['odr_pin_mask',['../ad4134__iio_2app_2app__config__mbed_8h.html#a0b4db0b68f3ed045b30e5fc8d4428263',1,'ODR_PIN_MASK:&#160;app_config_mbed.h'],['../ad4134__iio_2app_2app__config__stm32_8h.html#a0b4db0b68f3ed045b30e5fc8d4428263',1,'ODR_PIN_MASK:&#160;app_config_stm32.h']]],
   ['odr_5fpin_5fnum_175',['ODR_PIN_NUM',['../ad4134__iio_2app_2app__config__mbed_8h.html#aa5b3cf8252a5fe68ff74d203d80c593d',1,'app_config_mbed.h']]],
   ['odr_5fres_5fbits_176',['ODR_RES_BITS',['../ad717x__menu__defines_8h.html#a3f0adc673fd449123210485d1fb1228b',1,'ad717x_menu_defines.h']]],
@@ -193,6 +193,5 @@ var searchData=
   ['osr1_5fgpio_5fextra_5finit_5fparams_190',['osr1_gpio_extra_init_params',['../ad7606__iio_2app_2app__config_8h.html#aebd9c7085b03a393a3b0903e190e4854',1,'app_config.h']]],
   ['osr1_5fpin_191',['OSR1_PIN',['../ad7606__iio_2app_2app__config__mbed_8h.html#af256264c9f1fb5fc272a27ed813d73ba',1,'app_config_mbed.h']]],
   ['osr2_5fgpio_5fextra_5finit_5fparams_192',['osr2_gpio_extra_init_params',['../ad7606__iio_2app_2app__config_8h.html#a3e904849e46b66d865b91d4446efbbe4',1,'app_config.h']]],
-  ['osr2_5fpin_193',['OSR2_PIN',['../ad7606__iio_2app_2app__config__mbed_8h.html#a7a5dc99d4d014ae821bfa226c7e84eb8',1,'app_config_mbed.h']]],
-  ['output_5fcompare_5fduty_5fcycle_5fns_194',['OUTPUT_COMPARE_DUTY_CYCLE_NS',['../ad405x__iio_2app_2app__config__stm32_8h.html#a94320b15a7ac44dec6aadac89e229aa0',1,'app_config_stm32.h']]]
+  ['osr2_5fpin_193',['OSR2_PIN',['../ad7606__iio_2app_2app__config__mbed_8h.html#a7a5dc99d4d014ae821bfa226c7e84eb8',1,'app_config_mbed.h']]]
 ];

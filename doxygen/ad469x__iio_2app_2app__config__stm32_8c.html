@@ -194,7 +194,7 @@ Functions</h2></td></tr>
 <tr class="memitem:a748af879b759fb21a9679dfade3057c3" id="r_a748af879b759fb21a9679dfade3057c3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad469x__iio_2app_2app__config__stm32_8c.html#a748af879b759fb21a9679dfade3057c3">halfcmplt_callback</a> (DMA_HandleTypeDef *hdma)</td></tr>
 <tr class="memdesc:a748af879b759fb21a9679dfade3057c3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Callback function to flag the capture of Half the number of requested samples.  <br /></td></tr>
 <tr class="separator:a748af879b759fb21a9679dfade3057c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aedc02b5a83ce2aec0bdd827a23822a30" id="r_aedc02b5a83ce2aec0bdd827a23822a30"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad469x__iio_2app_2app__config__stm32_8c.html#aedc02b5a83ce2aec0bdd827a23822a30">update_buff</a> (uint32_t *<a class="el" href="ad405x__iio_8c.html#a64753f7285011cab33065a7abb2574ef">local_buf</a>, uint32_t *buf_start_addr)</td></tr>
+<tr class="memitem:aedc02b5a83ce2aec0bdd827a23822a30" id="r_aedc02b5a83ce2aec0bdd827a23822a30"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad469x__iio_2app_2app__config__stm32_8c.html#aedc02b5a83ce2aec0bdd827a23822a30">update_buff</a> (uint32_t *<a class="el" href="ad405x__support_8c.html#a64753f7285011cab33065a7abb2574ef">local_buf</a>, uint32_t *buf_start_addr)</td></tr>
 <tr class="memdesc:aedc02b5a83ce2aec0bdd827a23822a30"><td class="mdescLeft">&#160;</td><td class="mdescRight">Update buffer index.  <br /></td></tr>
 <tr class="separator:aedc02b5a83ce2aec0bdd827a23822a30"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aaf6ce196dde98712e1223b99766e06c0" id="r_aaf6ce196dde98712e1223b99766e06c0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad469x__iio_2app_2app__config__stm32_8c.html#aaf6ce196dde98712e1223b99766e06c0">DMA2_Stream0_IRQHandler</a> (void)</td></tr>
@@ -732,19 +732,19 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line">= {</div>
-<div class="line">    .htimer = &amp;<a class="code hl_define" href="ad405x__iio_2app_2app__config__stm32_8h.html#af8cc2d1368030d8ebd87e75299113963">TIMER2_HANDLE</a>,</div>
-<div class="line">    .prescaler = <a class="code hl_define" href="ad405x__iio_2app_2app__config__stm32_8h.html#a218ab93cb879787ad1bc8d72b61e70f7">TIMER_2_PRESCALER</a>,</div>
+<div class="line">    .htimer = &amp;<a class="code hl_define" href="ad469x__iio_2app_2app__config__stm32_8h.html#af8cc2d1368030d8ebd87e75299113963">TIMER2_HANDLE</a>,</div>
+<div class="line">    .prescaler = <a class="code hl_define" href="ad469x__iio_2app_2app__config__stm32_8h.html#a218ab93cb879787ad1bc8d72b61e70f7">TIMER_2_PRESCALER</a>,</div>
 <div class="line">    .timer_autoreload = <span class="keyword">false</span>,</div>
 <div class="line">    .mode = TIM_OC_PWM1,</div>
 <div class="line">    .timer_chn = <a class="code hl_define" href="ad3530r__iio_2app_2app__config__stm32_8h.html#a88b3de863ccab79708a46ee7732703af">TIMER_CHANNEL_1</a>,</div>
 <div class="line">    .complementary_channel = <span class="keyword">false</span>,</div>
 <div class="line">    .get_timer_clock = HAL_RCC_GetPCLK1Freq,</div>
-<div class="line">    .clock_divider = <a class="code hl_define" href="ad405x__iio_2app_2app__config__stm32_8h.html#a11259b090a6a13151b49b1bd19f51bfd">TIMER_2_CLK_DIVIDER</a></div>
+<div class="line">    .clock_divider = <a class="code hl_define" href="ad469x__iio_2app_2app__config__stm32_8h.html#a11259b090a6a13151b49b1bd19f51bfd">TIMER_2_CLK_DIVIDER</a></div>
 <div class="line">}</div>
 <div class="ttc" id="aad3530r__iio_2app_2app__config__stm32_8h_html_a88b3de863ccab79708a46ee7732703af"><div class="ttname"><a href="ad3530r__iio_2app_2app__config__stm32_8h.html#a88b3de863ccab79708a46ee7732703af">TIMER_CHANNEL_1</a></div><div class="ttdeci">#define TIMER_CHANNEL_1</div><div class="ttdef"><b>Definition</b> app_config_stm32.h:83</div></div>
-<div class="ttc" id="aad405x__iio_2app_2app__config__stm32_8h_html_a11259b090a6a13151b49b1bd19f51bfd"><div class="ttname"><a href="ad405x__iio_2app_2app__config__stm32_8h.html#a11259b090a6a13151b49b1bd19f51bfd">TIMER_2_CLK_DIVIDER</a></div><div class="ttdeci">#define TIMER_2_CLK_DIVIDER</div><div class="ttdef"><b>Definition</b> app_config_stm32.h:64</div></div>
-<div class="ttc" id="aad405x__iio_2app_2app__config__stm32_8h_html_a218ab93cb879787ad1bc8d72b61e70f7"><div class="ttname"><a href="ad405x__iio_2app_2app__config__stm32_8h.html#a218ab93cb879787ad1bc8d72b61e70f7">TIMER_2_PRESCALER</a></div><div class="ttdeci">#define TIMER_2_PRESCALER</div><div class="ttdef"><b>Definition</b> app_config_stm32.h:62</div></div>
-<div class="ttc" id="aad405x__iio_2app_2app__config__stm32_8h_html_af8cc2d1368030d8ebd87e75299113963"><div class="ttname"><a href="ad405x__iio_2app_2app__config__stm32_8h.html#af8cc2d1368030d8ebd87e75299113963">TIMER2_HANDLE</a></div><div class="ttdeci">#define TIMER2_HANDLE</div><div class="ttdef"><b>Definition</b> app_config_stm32.h:79</div></div>
+<div class="ttc" id="aad469x__iio_2app_2app__config__stm32_8h_html_a11259b090a6a13151b49b1bd19f51bfd"><div class="ttname"><a href="ad469x__iio_2app_2app__config__stm32_8h.html#a11259b090a6a13151b49b1bd19f51bfd">TIMER_2_CLK_DIVIDER</a></div><div class="ttdeci">#define TIMER_2_CLK_DIVIDER</div><div class="ttdef"><b>Definition</b> app_config_stm32.h:79</div></div>
+<div class="ttc" id="aad469x__iio_2app_2app__config__stm32_8h_html_a218ab93cb879787ad1bc8d72b61e70f7"><div class="ttname"><a href="ad469x__iio_2app_2app__config__stm32_8h.html#a218ab93cb879787ad1bc8d72b61e70f7">TIMER_2_PRESCALER</a></div><div class="ttdeci">#define TIMER_2_PRESCALER</div><div class="ttdef"><b>Definition</b> app_config_stm32.h:77</div></div>
+<div class="ttc" id="aad469x__iio_2app_2app__config__stm32_8h_html_af8cc2d1368030d8ebd87e75299113963"><div class="ttname"><a href="ad469x__iio_2app_2app__config__stm32_8h.html#af8cc2d1368030d8ebd87e75299113963">TIMER2_HANDLE</a></div><div class="ttdeci">#define TIMER2_HANDLE</div><div class="ttdef"><b>Definition</b> app_config_stm32.h:93</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -887,21 +887,21 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line">= {</div>
-<div class="line">    .htimer = &amp;<a class="code hl_define" href="ad405x__iio_2app_2app__config__stm32_8h.html#a8427c5c57fb5d97a1c34b4ad5d62e9e9">TIMER1_HANDLE</a>,</div>
-<div class="line">    .prescaler = <a class="code hl_define" href="ad405x__iio_2app_2app__config__stm32_8h.html#a14a687c138f5c3f5afa9cabf917d2422">TIMER_1_PRESCALER</a>,</div>
+<div class="line">    .htimer = &amp;<a class="code hl_define" href="ad469x__iio_2app_2app__config__stm32_8h.html#a8427c5c57fb5d97a1c34b4ad5d62e9e9">TIMER1_HANDLE</a>,</div>
+<div class="line">    .prescaler = <a class="code hl_define" href="ad469x__iio_2app_2app__config__stm32_8h.html#a14a687c138f5c3f5afa9cabf917d2422">TIMER_1_PRESCALER</a>,</div>
 <div class="line">    .timer_autoreload = <span class="keyword">true</span>,</div>
 <div class="line">    .mode = TIM_OC_PWM1,</div>
-<div class="line">    .timer_chn = <a class="code hl_define" href="ad405x__iio_2app_2app__config__stm32_8h.html#a512547363586c59e256515b69389de1b">TIMER_CHANNEL_3</a>,</div>
+<div class="line">    .timer_chn = <a class="code hl_define" href="ad469x__iio_2app_2app__config__stm32_8h.html#a512547363586c59e256515b69389de1b">TIMER_CHANNEL_3</a>,</div>
 <div class="line">    .complementary_channel = <span class="keyword">false</span>,</div>
 <div class="line">    .get_timer_clock = HAL_RCC_GetPCLK2Freq,</div>
-<div class="line">    .clock_divider = <a class="code hl_define" href="ad405x__iio_2app_2app__config__stm32_8h.html#ae4c0ff9fa433bcc0af620d4f55b9f2db">TIMER_1_CLK_DIVIDER</a>,</div>
+<div class="line">    .clock_divider = <a class="code hl_define" href="ad469x__iio_2app_2app__config__stm32_8h.html#ae4c0ff9fa433bcc0af620d4f55b9f2db">TIMER_1_CLK_DIVIDER</a>,</div>
 <div class="line">    .slave_mode = STM32_PWM_SM_DISABLE,</div>
 <div class="line">    .trigger_output = PWM_TRGO_OC1</div>
 <div class="line">}</div>
-<div class="ttc" id="aad405x__iio_2app_2app__config__stm32_8h_html_a14a687c138f5c3f5afa9cabf917d2422"><div class="ttname"><a href="ad405x__iio_2app_2app__config__stm32_8h.html#a14a687c138f5c3f5afa9cabf917d2422">TIMER_1_PRESCALER</a></div><div class="ttdeci">#define TIMER_1_PRESCALER</div><div class="ttdef"><b>Definition</b> app_config_stm32.h:61</div></div>
-<div class="ttc" id="aad405x__iio_2app_2app__config__stm32_8h_html_a512547363586c59e256515b69389de1b"><div class="ttname"><a href="ad405x__iio_2app_2app__config__stm32_8h.html#a512547363586c59e256515b69389de1b">TIMER_CHANNEL_3</a></div><div class="ttdeci">#define TIMER_CHANNEL_3</div><div class="ttdef"><b>Definition</b> app_config_stm32.h:69</div></div>
-<div class="ttc" id="aad405x__iio_2app_2app__config__stm32_8h_html_a8427c5c57fb5d97a1c34b4ad5d62e9e9"><div class="ttname"><a href="ad405x__iio_2app_2app__config__stm32_8h.html#a8427c5c57fb5d97a1c34b4ad5d62e9e9">TIMER1_HANDLE</a></div><div class="ttdeci">#define TIMER1_HANDLE</div><div class="ttdef"><b>Definition</b> app_config_stm32.h:78</div></div>
-<div class="ttc" id="aad405x__iio_2app_2app__config__stm32_8h_html_ae4c0ff9fa433bcc0af620d4f55b9f2db"><div class="ttname"><a href="ad405x__iio_2app_2app__config__stm32_8h.html#ae4c0ff9fa433bcc0af620d4f55b9f2db">TIMER_1_CLK_DIVIDER</a></div><div class="ttdeci">#define TIMER_1_CLK_DIVIDER</div><div class="ttdef"><b>Definition</b> app_config_stm32.h:63</div></div>
+<div class="ttc" id="aad469x__iio_2app_2app__config__stm32_8h_html_a14a687c138f5c3f5afa9cabf917d2422"><div class="ttname"><a href="ad469x__iio_2app_2app__config__stm32_8h.html#a14a687c138f5c3f5afa9cabf917d2422">TIMER_1_PRESCALER</a></div><div class="ttdeci">#define TIMER_1_PRESCALER</div><div class="ttdef"><b>Definition</b> app_config_stm32.h:76</div></div>
+<div class="ttc" id="aad469x__iio_2app_2app__config__stm32_8h_html_a512547363586c59e256515b69389de1b"><div class="ttname"><a href="ad469x__iio_2app_2app__config__stm32_8h.html#a512547363586c59e256515b69389de1b">TIMER_CHANNEL_3</a></div><div class="ttdeci">#define TIMER_CHANNEL_3</div><div class="ttdef"><b>Definition</b> app_config_stm32.h:86</div></div>
+<div class="ttc" id="aad469x__iio_2app_2app__config__stm32_8h_html_a8427c5c57fb5d97a1c34b4ad5d62e9e9"><div class="ttname"><a href="ad469x__iio_2app_2app__config__stm32_8h.html#a8427c5c57fb5d97a1c34b4ad5d62e9e9">TIMER1_HANDLE</a></div><div class="ttdeci">#define TIMER1_HANDLE</div><div class="ttdef"><b>Definition</b> app_config_stm32.h:92</div></div>
+<div class="ttc" id="aad469x__iio_2app_2app__config__stm32_8h_html_ae4c0ff9fa433bcc0af620d4f55b9f2db"><div class="ttname"><a href="ad469x__iio_2app_2app__config__stm32_8h.html#ae4c0ff9fa433bcc0af620d4f55b9f2db">TIMER_1_CLK_DIVIDER</a></div><div class="ttdeci">#define TIMER_1_CLK_DIVIDER</div><div class="ttdef"><b>Definition</b> app_config_stm32.h:78</div></div>
 </div><!-- fragment -->
 </div>
 </div>
