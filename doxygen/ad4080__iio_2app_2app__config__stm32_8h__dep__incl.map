@@ -1,0 +1,13 @@
+<map id="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad4080_iio/app/app_config_stm32.h" name="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad4080_iio/app/app_config_stm32.h">
+<area shape="rect" id="Node000001" title="Header file for STM32 platform configurations." alt="" coords="366,5,625,75"/>
+<area shape="rect" id="Node000002" href="$ad4080__iio_2app_2app__config_8h.html" title="Configuration file for AD4080 IIO firmware application." alt="" coords="384,123,607,192"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="498,89,498,122,493,122,493,89"/>
+<area shape="rect" id="Node000003" href="$ad4080__iio_8c.html" title="Implementation of AD4080 IIO Appication Interface." alt="" coords="5,240,228,309"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="373,199,228,242,227,237,371,194"/>
+<area shape="rect" id="Node000004" href="$ad4080__iio_2app_2app__config_8c.html" title="Application configurations module." alt="" coords="252,240,475,309"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="448,203,404,242,400,238,445,199"/>
+<area shape="rect" id="Node000005" href="$ad4080__iio_2app_2app__config__stm32_8c.html" title="STM32 Specific configuration files for AD4080 IIO Application." alt="" coords="498,240,757,309"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="546,199,590,238,587,242,542,203"/>
+<area shape="rect" id="Node000006" href="$ad4080__iio_2app_2main_8c.html" title="Main interface for AD4080 IIO firmware application." alt="" coords="780,240,1003,309"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="620,192,781,238,779,244,619,197"/>
+</map>
