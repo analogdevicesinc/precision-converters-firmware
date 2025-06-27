@@ -10,6 +10,10 @@ Supported Hardware
 * `AD7134 <https://www.analog.com/en/products/ad7134.html>`_ 
 * `AD4134 <https://www.analog.com/en/products/ad4134.html>`_ 
 
+**Supported Evaluation Boards:**
+
+* `EVAL-CN0561-ARDZ <https://www.analog.com/en/resources/reference-designs/circuits-from-the-lab/cn0561.html>`_ 
+
 **Supported Carrier Boards:**
 
 * `SDP-K1 With Mbed Platform <https://os.mbed.com/platforms/SDP_K1/>`_
@@ -55,7 +59,7 @@ and USB cable.
 Connect the EVAL-AD4134/AD7134 board to SDP-K1 board (or any other Mbed enabled controller 
 board or an equivalent STM32 board). Connect controller board to the PC using the USB cable. 
 
-   .. image:: /source/projects/ad7134_iio/ad7134_hardware_interface.png
+   .. image:: /source/projects/ad4134_iio/ad4134_hardware_interface.png
       :width: 600
 
 
@@ -69,7 +73,16 @@ Connect the VIO_ADJUST jumper on the SDP-K1 board to 3.3V position to drive SDP-
 
 **EVAL-AD4134:**
 
-* Please refer to the respective board user guide on the product page of the chosen device.
+   .. image:: /source/projects/ad4134_iio/CN0561_Evaluation_Board.png
+      :width: 300
+
+* Please refer to the `Board user guide <https://wiki.analog.com/resources/eval/user-guides/cn0561>`_ for further information on the jumpers.
+
+Please ensure to follow the below mentioned configurations on the board:
+
+* External power supply to be provided via P16 or the Arduino connector
+
+* P10: Closed for target mode of operation and Open for controller mode
 
 .. Communication Interface section:
 
