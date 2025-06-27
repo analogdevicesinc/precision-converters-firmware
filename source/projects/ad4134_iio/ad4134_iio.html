@@ -197,6 +197,10 @@ Content on this topic
 <li><p><a class="reference external" href="https://www.analog.com/en/products/ad7134.html">AD7134</a></p></li>
 <li><p><a class="reference external" href="https://www.analog.com/en/products/ad4134.html">AD4134</a></p></li>
 </ul>
+<p><strong>Supported Evaluation Boards:</strong></p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.analog.com/en/resources/reference-designs/circuits-from-the-lab/cn0561.html">EVAL-CN0561-ARDZ</a></p></li>
+</ul>
 <p><strong>Supported Carrier Boards:</strong></p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://os.mbed.com/platforms/SDP_K1/">SDP-K1 With Mbed Platform</a></p></li>
@@ -251,7 +255,7 @@ and USB cable.</p>
 <p>Connect the EVAL-AD4134/AD7134 board to SDP-K1 board (or any other Mbed enabled controller
 board or an equivalent STM32 board). Connect controller board to the PC using the USB cable.</p>
 <blockquote>
-<div><a class="reference internal image-reference" href="source/projects/ad7134_iio/ad7134_hardware_interface.png"><img alt="source/projects/ad7134_iio/ad7134_hardware_interface.png" src="source/projects/ad7134_iio/ad7134_hardware_interface.png" style="width: 600px;" />
+<div><a class="reference internal image-reference" href="../../../_images/ad4134_hardware_interface.png"><img alt="../../../_images/ad4134_hardware_interface.png" src="../../../_images/ad4134_hardware_interface.png" style="width: 600px;" />
 </a>
 </div></blockquote>
 </section>
@@ -260,8 +264,17 @@ board or an equivalent STM32 board). Connect controller board to the PC using th
 <p><strong>SDP-K1:</strong></p>
 <p>Connect the VIO_ADJUST jumper on the SDP-K1 board to 3.3V position to drive SDP-K1 GPIOs at 3.3V</p>
 <p><strong>EVAL-AD4134:</strong></p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../../_images/CN0561_Evaluation_Board.png"><img alt="../../../_images/CN0561_Evaluation_Board.png" src="../../../_images/CN0561_Evaluation_Board.png" style="width: 300px;" />
+</a>
+</div></blockquote>
 <ul class="simple">
-<li><p>Please refer to the respective board user guide on the product page of the chosen device.</p></li>
+<li><p>Please refer to the <a class="reference external" href="https://wiki.analog.com/resources/eval/user-guides/cn0561">Board user guide</a> for further information on the jumpers.</p></li>
+</ul>
+<p>Please ensure to follow the below mentioned configurations on the board:</p>
+<ul class="simple">
+<li><p>External power supply to be provided via P16 or the Arduino connector</p></li>
+<li><p>P10: Closed for target mode of operation and Open for controller mode</p></li>
 </ul>
 </section>
 <section id="communication-interface">
