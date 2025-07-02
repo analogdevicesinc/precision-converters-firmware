@@ -92,6 +92,7 @@
 <li><a class="reference internal" href="#useful-links">Useful Links</a></li>
 <li><a class="reference internal" href="#hardware-connections">Hardware Connections</a></li>
 <li><a class="reference internal" href="#solder-bridge-and-jumper-settings">Solder Bridge and Jumper Settings</a></li>
+<li><a class="reference internal" href="#communication-interface">Communication Interface</a></li>
 <li><a class="reference internal" href="#build-guide">Build Guide</a><ul>
 <li><a class="reference internal" href="#build-prerequisites">Build Prerequisites</a></li>
 <li><a class="reference internal" href="#building-a-project">Building a project</a></li>
@@ -198,7 +199,7 @@ Content on this topic
 </ul>
 <p><strong>Supported Evaluation Boards:</strong></p>
 <ul class="simple">
-<li><p><a class="reference external" href="https://www.analog.com/en/resources/evaluation-hardware-and-software/evaluation-boards-kits/eval-ad4080ardz.html">EVAL-AD4080-ARDZ</a></p></li>
+<li><p><a class="reference external" href="https://www.analog.com/en/resources/evaluation-hardware-and-software/evaluation-boards-kits/eval-ad4080ardz.html">EVAL-AD4080ARDZ</a></p></li>
 </ul>
 <p><strong>Supported Carrier Boards:</strong></p>
 <ul class="simple">
@@ -264,6 +265,17 @@ for which the cable and adapter are provided with the evaluation board kit) and 
 <p>To configure the evaluation board for Single-SPI mode, connect RJ15, RJ16 and RJ17 to position ‘A’ (default).
 For Quad-SPI mode, connect them to position ‘B’.
 For more details on this and the jumper connections on the EVAL-AD4080 board, please refer to the user guide.</p>
+</section>
+<section id="communication-interface">
+<h2>Communication Interface<a class="headerlink" href="#communication-interface" title="Link to this heading"></a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For data transmission to IIO clients, IIO firmware applications uses <em>Virtual Serial</em>
+Or <em>UART</em> as primary communication links. Firmware by default uses the Virtual Serial
+interface for higher speed data transmission as SDP-K1 MCU board supports
+both Virtual Serial and UART interface. If you target a different MCU board that does not
+support Virtual Serial, just set UART as communication link in the firmware (app_config.h file).</p>
+</div>
 <p>SDP-K1 is powered through USB connection from the computer. SDP-K1 MCU board
 acts as a serial device when connected to PC, which creates a serial ports to connect to IIO
 client application running on PC. The serial port assigned to a device can be seen
@@ -275,6 +287,19 @@ through the device manager for windows-based OS as shown below:</p>
 <p>The serial port naming is used differently on different operating systems.
 For example, Linux uses terms such as dev/ttyUSB* and Mac uses terms such as dev/tty.USB*.
 Please check serial port naming for your selected OS.</p>
+</div>
+<p><strong>Identifying Virtual Serial Port (Windows-OS):</strong></p>
+<p>To identify if serial port is virtual, right click on the port name and select ‘Properties’.
+Select ‘Events’ from menu option and check for below highlighted VIDs/PIDs and
+firmware name which is currently running on MCU.</p>
+<a class="reference internal image-reference" href="../../../_images/identifying_virtual_serial_port.png"><img alt="../../../_images/identifying_virtual_serial_port.png" src="../../../_images/identifying_virtual_serial_port.png" style="width: 350px;" />
+</a>
+<p>SDP-K1 can support high speed Virtual Serial USB interface, so by default Virtual Serial
+is configured as default interface. The interface can be set to Physical (UART)
+serial port by defining macro <strong>USE_PHY_COM_PORT</strong> in the app_config.h file.</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="cm">/* Enable the UART/VirtualCOM port connection (default VCOM) */</span>
+<span class="c1">//#define USE_PHY_COM_PORT           // Uncomment to select UART</span>
+</pre></div>
 </div>
 </section>
 <section id="build-guide">

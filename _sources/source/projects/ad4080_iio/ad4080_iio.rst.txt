@@ -11,7 +11,7 @@ Supported Hardware
 
 **Supported Evaluation Boards:**
 
-* `EVAL-AD4080-ARDZ <https://www.analog.com/en/resources/evaluation-hardware-and-software/evaluation-boards-kits/eval-ad4080ardz.html>`_
+* `EVAL-AD4080ARDZ <https://www.analog.com/en/resources/evaluation-hardware-and-software/evaluation-boards-kits/eval-ad4080ardz.html>`_
 
 **Supported Carrier Boards:**
 
@@ -80,19 +80,7 @@ For more details on this and the jumper connections on the EVAL-AD4080 board, pl
 
 .. Communication Interface section:
 
-SDP-K1 is powered through USB connection from the computer. SDP-K1 MCU board
-acts as a serial device when connected to PC, which creates a serial ports to connect to IIO
-client application running on PC. The serial port assigned to a device can be seen
-through the device manager for windows-based OS as shown below:
-
-.. image:: /source/hardware/serial_ports_view.png
-   :width: 350
-
-.. note::
-
-   The serial port naming is used differently on different operating systems.
-   For example, Linux uses terms such as dev/ttyUSB* and Mac uses terms such as dev/tty.USB*.
-   Please check serial port naming for your selected OS.
+.. include:: /source/hardware/comm_interface.rst
 
 .. Project Build Section:
     
