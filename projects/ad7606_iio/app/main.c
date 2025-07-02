@@ -4,7 +4,7 @@
  *   @details This module invokes the AD7606 IIO interfaces
  *            through forever loop.
 ********************************************************************************
- * Copyright (c) 2020, 2022 Analog Devices, Inc.
+ * Copyright (c) 2020, 2022, 2025 Analog Devices, Inc.
  *
  * All rights reserved.
  *
@@ -20,7 +20,7 @@
 #include <stdint.h>
 #include <assert.h>
 
-#include "iio_ad7606.h"
+#include "ad7606_iio.h"
 
 /******************************************************************************/
 /********************** Macros and Constants Definitions **********************/

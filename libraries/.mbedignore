@@ -18,8 +18,8 @@ no-OS/drivers/adc/ad6676/
 no-OS/drivers/adc/ad7091r/
 no-OS/drivers/adc/ad7091r5/
 no-OS/drivers/adc/ad7280a/
-no-OS/drivers/adc/ad738x/
-no-OS/drivers/adc/ad7606/
+no-OS/drivers/adc/ad7606/iio_ad7606.c
+no-OS/drivers/adc/ad7606/iio_ad7606.h
 no-OS/drivers/adc/ad9081/
 no-OS/drivers/adc/ad9208/
 no-OS/drivers/adc/ad9250/
@@ -44,7 +44,6 @@ no-OS/drivers/dac/dac_demo/
 no-OS/drivers/dac/ad7293/
 no-OS/drivers/dac/ad9144/
 no-OS/drivers/dac/max538x/
-no-OS/drivers/dac/ad3552r/
 no-OS/drivers/dac/ad5449/
 no-OS/drivers/dac/ad5421/
 no-OS/drivers/dac/ad5446/
