@@ -50,11 +50,8 @@
 #define ACTIVE_PLATFORM		STM32_PLATFORM
 #endif
 
-/* Enable/Disable the use of SDRAM for ADC data capture buffer */
-//#define USE_SDRAM	// Uncomment to use SDRAM as data buffer
-
 /* Enable the UART/VirtualCOM port connection (default VCOM) */
-//#define USE_PHY_COM_PORT		// Uncomment to select UART
+// #define USE_PHY_COM_PORT		// Uncomment to select UART
 
 #if !defined(USE_PHY_COM_PORT)
 #define USE_VIRTUAL_COM_PORT
@@ -80,9 +77,10 @@
 #elif (ACTIVE_PLATFORM == STM32_PLATFORM)
 #include "app_config_stm32.h"
 #define HW_CARRIER_NAME		    	TARGET_NAME
-#define CONSOLE_STDIO_PORT_AVAILABLE
-#define trigger_gpio_handle         0    // Unused macro
-#define TRIGGER_INT_ID	            GP1_PIN_NUM
+#define IIO_TRIGGER_HANDLE_SPI      0    // Unused macro
+#define TRIGGER_INT_ID_SPI_INTR     GP1_PIN_NUM
+#define IIO_TRIGGER_HANDLE_I3C      CNV_TIMER_HANDLE
+#define TRIGGER_INT_ID_I3C_INTR	    CNV_PWM_TIMER_IRQ_ID
 #else
 #error "No/Invalid active platform selected"
 #endif
@@ -123,25 +121,53 @@
 /* Serial number string is formed as: application name + device (target) name + platform (host) name */
 #define VIRTUAL_COM_SERIAL_NUM	(FIRMWARE_NAME "_" DEVICE_NAME "_" STR(PLATFORM_NAME))
 
+/*
+ * Console STDIO on VCOM is supported only if the client is
+ * actively listening to the data on VCOM.
+ *
+ * Comment the below section to enable STDIO on VCOM.
+ */
+#ifdef USE_PHY_COM_PORT
+#ifdef CONSOLE_STDIO_PORT_AVAILABLE
+#undef CONSOLE_STDIO_PORT_AVAILABLE
+#endif
+#endif
+
 /* ADC data buffer size */
-#if defined(USE_SDRAM)
+#if defined(SDRAM_SUPPORT_AVAILABLE)
 #define DATA_BUFFER_SIZE			SDRAM_SIZE_BYTES
 #else
+#ifdef SPI_SUPPORT_AVAILABLE
 #define DATA_BUFFER_SIZE			(131072)		// 128kbytes
+#define DUMMY_DATA_COUNT			0
+#else
+#define DATA_BUFFER_SIZE			(524288)		// 512kbytes
+#define DUMMY_DATA_COUNT			1
 #endif
+#endif
+#define DATA_BUFFER_SIZE_CONT		64000
 
 /******************************************************************************/
 
 #define STORAGE_BITS_SAMPLE 16
 #define AD4050_SAMPLE_RES   12
 #define AD4052_SAMPLE_RES   16
+#define AD4060_SAMPLE_RES   12
+#define AD4062_SAMPLE_RES   16
 
 #define STORAGE_BITS_AVG    32
 #define AD4050_AVG_RES      14
 #define AD4052_AVG_RES      20
+#define AD4060_AVG_RES      14
+#define AD4062_AVG_RES      20
 
 /* Number of storage bytes for each sample */
 #define BYTES_PER_SAMPLE(x)   (x/8)
+
+/* Converts pwm period in nanoseconds to sampling frequency in samples per second */
+#define PWM_PERIOD_TO_FREQUENCY(x)       (1000000000.0 / x)
+/* Converts sampling frequency in samples per second to pwm period in nanoseconds */
+#define PWM_FREQUENCY_TO_PERIOD(x)       PWM_PERIOD_TO_FREQUENCY(x)
 
 /******************************************************************************/
 /********************** Variables and User Defined Data Types *****************/
@@ -150,12 +176,13 @@
 /******************************************************************************/
 /************************ Public Declarations *********************************/
 /******************************************************************************/
+extern struct no_os_eeprom_init_param eeprom_init_params;
 extern struct no_os_pwm_desc *pwm_desc;
+extern struct no_os_irq_ctrl_desc *pwm_irq_desc;
 extern struct no_os_uart_desc *uart_iio_com_desc;
 extern struct no_os_uart_desc *uart_console_stdio_desc;
 extern struct no_os_gpio_desc *trigger_gpio_desc;
 extern struct no_os_irq_ctrl_desc *trigger_irq_desc;
-extern struct no_os_eeprom_desc *eeprom_desc;
 extern struct no_os_gpio_init_param cs_pwm_gpio_params;
 extern struct no_os_gpio_init_param pwm_gpio_params;
 extern struct no_os_pwm_init_param spi_dma_pwm_init_params;
@@ -164,16 +191,24 @@ extern struct no_os_dma_xfer_desc dma_tx_desc;
 extern struct no_os_dma_ch dma_chan;
 extern struct no_os_pwm_init_param cs_init_params;
 extern struct no_os_dma_init_param ad405x_dma_init_param;
-extern struct no_os_gpio_init_param cs_pwm_gpio_params;
-extern struct no_os_gpio_init_param pwm_gpio_params;
 extern volatile uint8_t *buff_start_addr;
 extern volatile struct iio_device_data* iio_dev_data_g;
 extern uint32_t nb_of_bytes_g;
+extern uint32_t nb_of_bytes_remaining_g;
 extern uint32_t data_read;
 extern struct no_os_pwm_desc* tx_trigger_desc;
+extern struct no_os_dma_desc *ad405x_dma_desc;
+extern struct no_os_pwm_desc* cs_pwm_desc;
+extern struct no_os_dma_xfer_desc i3c_cr_dma_xfer;
+extern struct no_os_pwm_init_param i3c_dma_pwm_init_params;
+extern struct no_os_pwm_init_param i3c_intr_pwm_init_params;
+extern volatile uint8_t ad405x_i3c_dyn_addr;
+extern uint8_t bytes_per_sample;
 
 int32_t init_pwm(void);
+int32_t deinit_pwm(void);
 int32_t ad405x_gpio_reset(void);
 int32_t init_system(void);
+int32_t init_system_post_verification(void);
 
 #endif //APP_CONFIG_H
