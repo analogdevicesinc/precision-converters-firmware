@@ -30,7 +30,9 @@
 /* Enum of interface modes */
 enum ad405x_interface_modes {
 	SPI_DMA,
-	SPI_INTR
+	SPI_INTR,
+	I3C_DMA,
+	I3C_INTR
 };
 
 extern struct ad405x_dev *p_ad405x_dev;

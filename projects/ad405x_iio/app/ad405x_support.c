@@ -14,6 +14,7 @@
 /***************************** Include Files **********************************/
 /******************************************************************************/
 #include <stdint.h>
+#include <stdbool.h>
 
 #include "iio.h"
 #include "iio_trigger.h"
@@ -28,7 +29,7 @@
 /******************************************************************************/
 
 /* Maximum size of the local SRAM buffer */
-#define MAX_LOCAL_BUF_SIZE	32000
+#define MAX_LOCAL_BUF_SIZE	64000
 
 /* Maximum value the DMA NDTR register can take */
 #define MAX_DMA_NDTR		(no_os_min(65535, MAX_LOCAL_BUF_SIZE/2))
@@ -52,8 +53,51 @@ extern struct iio_hw_trig *ad405x_hw_trig_desc;
 
 extern uint8_t bytes_per_sample;
 
-#if APP_CAPTURE_MODE == WINDOWED_DATA_CAPTURE
+/*
+ * @brief  Reconfigures the SPI interface for data transfer.
+ * @param  enable_stream[in] - Flag to indicate streaming.
+ * @return 0 in case of success, error code otherwise.
+ */
+static int32_t ad405x_spi_reconfigure(bool enable_stream)
+{
+	int32_t ret = 0;
+	/* SPI init params */
+	struct no_os_spi_init_param *spi_init_param;
+	struct stm32_spi_init_param *stm32_spi_init_param;
 
+	spi_init_param = ad405x_init_params.comm_init.spi_init;
+	stm32_spi_init_param = (struct stm32_spi_init_param *) spi_init_param->extra;
+
+	if (enable_stream) {
+		spi_init_param->max_speed_hz = MAX_SPI_SCLK_45MHz;
+		stm32_spi_init_param->dma_init = &ad405x_dma_init_param;
+		stm32_spi_init_param->irq_num = Rx_DMA_IRQ_ID;
+		stm32_spi_init_param->rxdma_ch = &spi_dma_rxdma_channel;
+		stm32_spi_init_param->txdma_ch = &spi_dma_txdma_channel;
+	} else {
+		spi_init_param->max_speed_hz = MAX_SPI_SCLK;
+		stm32_spi_init_param->dma_init = NULL;
+	}
+
+	if (p_ad405x_dev->com_desc.spi_desc) {
+		ret = no_os_spi_remove(p_ad405x_dev->com_desc.spi_desc);
+		if (ret) {
+			return ret;
+		}
+	}
+	ret = no_os_spi_init(&p_ad405x_dev->com_desc.spi_desc, spi_init_param);
+	if (ret) {
+		return ret;
+	}
+
+	/* Use 16-bit SPI Data Frame Format during data capture */
+	/* Revert to 8-bit SPI Data Frame Format after data capture */
+	stm32_config_spi_data_frame_format(enable_stream);
+
+	return 0;
+}
+
+#if APP_CAPTURE_MODE == WINDOWED_DATA_CAPTURE
 /**
  * @brief  Prepares the device for data transfer.
  * @param  dev[in, out]- Application descriptor.
@@ -63,8 +107,6 @@ extern uint8_t bytes_per_sample;
 static int32_t ad405x_pre_enable_windowed(void *dev, uint32_t mask)
 {
 	int32_t ret;
-	/* SPI init params */
-	struct stm32_spi_init_param* spi_init_param;
 
 	if (ad405x_interface_mode == SPI_DMA) {
 		ret = ad405x_set_operation_mode(p_ad405x_dev, ad405x_operating_mode);
@@ -72,32 +114,14 @@ static int32_t ad405x_pre_enable_windowed(void *dev, uint32_t mask)
 			return ret;
 		}
 
-		/* Switch to faster SPI SCLK and
-		 * initialize Chip Select PWMs and DMA descriptors */
-		ad405x_init_params.spi_init->max_speed_hz = MAX_SPI_SCLK_45MHz;
-		spi_init_param = ad405x_init_params.spi_init->extra;
-		spi_init_param->pwm_init = (const struct no_os_pwm_init_param *)&cs_init_params;
-		spi_init_param->dma_init = &ad405x_dma_init_param;
-		spi_init_param->irq_num = Rx_DMA_IRQ_ID;
-		spi_init_param->rxdma_ch = &rxdma_channel;
-		spi_init_param->txdma_ch = &txdma_channel;
-
-		ret = no_os_spi_init(&p_ad405x_dev->spi_desc, ad405x_init_params.spi_init);
+		ret = ad405x_spi_reconfigure(true);
 		if (ret) {
 			return ret;
 		}
-
-		/* Use 16-bit SPI Data Frame Format during data capture */
-		stm32_config_spi_data_frame_format(true);
 
 		/* Configure CS and CNV gpios for alternate functionality as
 		 * Timer PWM outputs */
 		stm32_cs_output_gpio_config(false);
-
-		ret = init_pwm();
-		if (ret) {
-			return ret;
-		}
 	}
 
 	return 0;
@@ -111,22 +135,15 @@ static int32_t ad405x_pre_enable_windowed(void *dev, uint32_t mask)
 static int32_t ad405x_post_disable_windowed(void *dev)
 {
 	int32_t ret;
-	/* SPI init params */
-	struct stm32_spi_init_param* spi_init_param;
 
 	if (ad405x_interface_mode == SPI_DMA) {
-		/* Revert to 8-bit SPI Data Frame Format after data capture */
-		stm32_config_spi_data_frame_format(false);
+		stm32_timer_stop();
 
 		/* Abort DMA and Timers and configure CS and CNV as GPIOs */
-		stm32_timer_stop();
-		stm32_abort_dma_transfer();
+		no_os_spi_transfer_abort(p_ad405x_dev->com_desc.spi_desc);
 		stm32_cs_output_gpio_config(true);
 
-		spi_init_param = ad405x_init_params.spi_init->extra;
-		spi_init_param->dma_init = NULL;
-		ad405x_init_params.spi_init->max_speed_hz = MAX_SPI_SCLK;
-		ret = no_os_spi_init(&p_ad405x_dev->spi_desc, ad405x_init_params.spi_init);
+		ret = ad405x_spi_reconfigure(false);
 		if (ret) {
 			return ret;
 		}
@@ -152,7 +169,7 @@ static int32_t ad405x_post_disable_windowed(void *dev)
 static int32_t ad405x_submit_windowed(struct iio_device_data *iio_dev_data)
 {
 	uint32_t timeout = BUF_READ_TIMEOUT;
-	int32_t adc_data;
+	uint32_t adc_data;
 	int32_t ret;
 	uint32_t nb_of_samples;
 
@@ -173,29 +190,25 @@ static int32_t ad405x_submit_windowed(struct iio_device_data *iio_dev_data)
 		if (ret) {
 			return ret;
 		}
-		ret = init_pwm();
-		if (ret) {
-			return ret;
-		}
-		ret = no_os_pwm_enable(pwm_desc);
-		if (ret) {
-			return ret;
-		}
 
 		/*
 		 * Clear any pending event that occurs from a unintended
 		 * falling edge of busy pin before enabling the interrupt
 		 */
-		ret = no_os_irq_clear_pending(trigger_irq_desc, TRIGGER_INT_ID);
+		ret = no_os_irq_clear_pending(trigger_irq_desc, TRIGGER_INT_ID_SPI_INTR);
 		if (ret) {
 			return ret;
 		}
 
-		ret = no_os_irq_enable(trigger_irq_desc, TRIGGER_INT_ID);
+		ret = no_os_irq_enable(trigger_irq_desc, TRIGGER_INT_ID_SPI_INTR);
 		if (ret) {
 			return ret;
 		}
 
+		ret = no_os_pwm_enable(pwm_desc);
+		if (ret) {
+			return ret;
+		}
 		while (nb_of_samples--) {
 			while (data_ready != true && timeout > 0) {
 				timeout--;
@@ -205,7 +218,7 @@ static int32_t ad405x_submit_windowed(struct iio_device_data *iio_dev_data)
 				return -EIO;
 			}
 
-			ret = ad405x_spi_data_read(p_ad405x_dev, &adc_data);
+			ret = ad405x_get_raw(p_ad405x_dev, &adc_data);
 			if (ret) {
 				return ret;
 			}
@@ -223,7 +236,7 @@ static int32_t ad405x_submit_windowed(struct iio_device_data *iio_dev_data)
 			return ret;
 		}
 
-		ret = no_os_irq_disable(trigger_irq_desc, TRIGGER_INT_ID);
+		ret = no_os_irq_disable(trigger_irq_desc, TRIGGER_INT_ID_SPI_INTR);
 		if (ret) {
 			return ret;
 		}
@@ -250,7 +263,7 @@ static int32_t ad405x_submit_windowed(struct iio_device_data *iio_dev_data)
 			/* Register half complete callback, for ping-pong buffers implementation. */
 			HAL_DMA_RegisterCallback(&hdma_spi1_rx,
 						 HAL_DMA_XFER_HALFCPLT_CB_ID,
-						 halfcmplt_callback);
+						 receivecomplete_callback);
 
 			struct no_os_spi_msg ad405x_spi_msg = {
 				.tx_buff = NULL,
@@ -258,8 +271,7 @@ static int32_t ad405x_submit_windowed(struct iio_device_data *iio_dev_data)
 				.bytes_number = rxdma_ndtr
 			};
 
-			struct stm32_spi_desc *sdesc = p_ad405x_dev->spi_desc->extra;
-			ret = no_os_spi_transfer_dma_async(p_ad405x_dev->spi_desc,
+			ret = no_os_spi_transfer_dma_async(p_ad405x_dev->com_desc.spi_desc,
 							   &ad405x_spi_msg,
 							   1,
 							   NULL,
@@ -268,26 +280,19 @@ static int32_t ad405x_submit_windowed(struct iio_device_data *iio_dev_data)
 				return ret;
 			}
 
-			/* Disable CS PWM and reset the counters */
-			no_os_pwm_disable(sdesc->pwm_desc); // CS PWM
-			htim2.Instance->CNT = 0;
-			htim1.Instance->CNT = 0;
-			TIM8->CNT = 0;
-
 			dma_config_updated = true;
+			update_buff(local_buf, (uint8_t *)buff_start_addr);
+
+			stm32_timer_enable();
 		}
 
-		ad405x_conversion_flag = false;
+		dma_cycle_count = (nb_of_bytes_g + rxdma_ndtr - 1) / rxdma_ndtr;
+		nb_of_bytes_remaining_g = nb_of_bytes_g - (rxdma_ndtr * (dma_cycle_count - 1));
 
-		dma_cycle_count = (nb_of_samples + rxdma_ndtr - 1) / rxdma_ndtr;
+		/* Enable TIM DMA request */
+		no_os_pwm_enable(tx_trigger_desc);
 
-		/* Set the callback count to twice the number of DMA cycles */
-		callback_count = dma_cycle_count * 2;
-
-		update_buff(local_buf, (uint8_t *)buff_start_addr);
-		stm32_timer_enable();
-
-		while (ad405x_conversion_flag != true && timeout > 0) {
+		while (data_ready != true && timeout > 0) {
 			timeout--;
 		}
 
@@ -314,8 +319,6 @@ static int32_t ad405x_submit_windowed(struct iio_device_data *iio_dev_data)
 static int32_t ad405x_pre_enable_continuous(void *dev, uint32_t mask)
 {
 	int32_t ret;
-	/* SPI init params */
-	struct stm32_spi_init_param* spi_init_param;
 
 	ret = ad405x_set_operation_mode(p_ad405x_dev, ad405x_operating_mode);
 	if (ret) {
@@ -323,11 +326,6 @@ static int32_t ad405x_pre_enable_continuous(void *dev, uint32_t mask)
 	}
 
 	if (ad405x_interface_mode == SPI_INTR) {
-		ret = init_pwm();
-		if (ret) {
-			return ret;
-		}
-
 		ret = no_os_pwm_enable(pwm_desc);
 		if (ret) {
 			return ret;
@@ -348,32 +346,15 @@ static int32_t ad405x_pre_enable_continuous(void *dev, uint32_t mask)
 		}
 	} else {
 
-		/* Switch to faster SPI SCLK and
-		 * initialize Chip Select PWMs and DMA descriptors */
-		ad405x_init_params.spi_init->max_speed_hz = MAX_SPI_SCLK_45MHz;
-		spi_init_param = ad405x_init_params.spi_init->extra;
-		spi_init_param->pwm_init = (const struct no_os_pwm_init_param *)&cs_init_params;
-		spi_init_param->dma_init = &ad405x_dma_init_param;
-		spi_init_param->irq_num = Rx_DMA_IRQ_ID;
-		spi_init_param->rxdma_ch = &rxdma_channel;
-		spi_init_param->txdma_ch = &txdma_channel;
-
-		ret = no_os_spi_init(&p_ad405x_dev->spi_desc, ad405x_init_params.spi_init);
+		ret = ad405x_spi_reconfigure(true);
 		if (ret) {
 			return ret;
 		}
-
-		/* Use 16-bit SPI Data Frame Format during data capture */
-		stm32_config_spi_data_frame_format(true);
 
 		/* Configure CS and CNV gpios for alternate functionality as
 		 * Timer PWM outputs */
 		stm32_cs_output_gpio_config(false);
 
-		ret = init_pwm();
-		if (ret) {
-			return ret;
-		}
 	}
 
 	return 0;
@@ -389,21 +370,13 @@ static int32_t ad405x_post_disable_continuous(void *dev)
 	int32_t ret;
 
 	if (ad405x_interface_mode == SPI_DMA) {
-		/* SPI init params */
-		struct stm32_spi_init_param *spi_init_param;
-
-		/* Revert to 8-bit SPI Data Frame Format after data capture */
-		stm32_config_spi_data_frame_format(false);
 
 		/* Abort DMA and Timers and configure CS and CNV as GPIOs */
 		stm32_timer_stop();
-		stm32_abort_dma_transfer();
+		no_os_spi_transfer_abort(p_ad405x_dev->com_desc.spi_desc);
 		stm32_cs_output_gpio_config(true);
 
-		spi_init_param = ad405x_init_params.spi_init->extra;
-		spi_init_param->dma_init = NULL;
-		ad405x_init_params.spi_init->max_speed_hz = MAX_SPI_SCLK;
-		ret = no_os_spi_init(&p_ad405x_dev->spi_desc, ad405x_init_params.spi_init);
+		ret = ad405x_spi_reconfigure(false);
 		if (ret) {
 			return ret;
 		}
@@ -473,7 +446,7 @@ static int32_t ad405x_submit_continuous(struct iio_device_data *iio_dev_data)
 			.bytes_number = rxdma_ndtr
 		};
 
-		ret = no_os_spi_transfer_dma_async(p_ad405x_dev->spi_desc,
+		ret = no_os_spi_transfer_dma_async(p_ad405x_dev->com_desc.spi_desc,
 						   &ad405x_spi_msg,
 						   1,
 						   NULL,
@@ -481,14 +454,13 @@ static int32_t ad405x_submit_continuous(struct iio_device_data *iio_dev_data)
 		if (ret) {
 			return ret;
 		}
-		struct stm32_spi_desc* sdesc = p_ad405x_dev->spi_desc->extra;
-		no_os_pwm_disable(sdesc->pwm_desc); // CS PWM
-		htim2.Instance->CNT = 0;
-		htim1.Instance->CNT = 0;
-		TIM8->CNT = 0;
-		dma_config_updated = true;
 
+		AD405x_RxDMA_HANDLE.XferCpltCallback = receivecomplete_callback;
+
+		dma_config_updated = true;
 		stm32_timer_enable();
+
+		no_os_pwm_enable(tx_trigger_desc);
 	}
 
 	return 0;
@@ -504,7 +476,7 @@ static int32_t ad405x_trigger_handler_continuous(struct iio_device_data
 		*iio_dev_data)
 {
 	int32_t ret;
-	int32_t adc_data;
+	uint32_t adc_data;
 
 	if (!buf_size_updated) {
 		/* Update total buffer size according to bytes per scan for proper
@@ -515,7 +487,7 @@ static int32_t ad405x_trigger_handler_continuous(struct iio_device_data
 	}
 
 	/* Read the sample for channel which has been sampled recently */
-	ret = ad405x_spi_data_read(p_ad405x_dev, &adc_data);
+	ret = ad405x_get_raw(p_ad405x_dev, &adc_data);
 	if (ret) {
 		return ret;
 	}
