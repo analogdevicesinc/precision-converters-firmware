@@ -22,7 +22,7 @@ var searchData=
   ['ad7124_5finput_5fpolarity_19',['ad7124_input_polarity',['../ad7124__iio_2app_2ad7124__support_8h.html#a5c9cfdf679ced82bd7a1238caa9eadac',1,'ad7124_support.h']]],
   ['ad719x_5fattribute_5fids_20',['ad719x_attribute_ids',['../ad719x__iio_8c.html#ae24b84154567ea740a63c6825591a83a',1,'ad719x_iio.c']]],
   ['ad738x_5fattribute_5fid_21',['ad738x_attribute_id',['../ad738x__iio_8c.html#a8a4f34053bce768babeae2e3221fcdfb',1,'ad738x_iio.c']]],
-  ['ad7606_5fattribute_5fid_22',['ad7606_attribute_id',['../iio__ad7606_8c.html#a497ef5c0d88cbee217850935dd82355e',1,'iio_ad7606.c']]],
+  ['ad7606_5fattribute_5fid_22',['ad7606_attribute_id',['../ad7606__iio_8c.html#a497ef5c0d88cbee217850935dd82355e',1,'ad7606_iio.c']]],
   ['ad7761_5freset_5foption_23',['ad7761_reset_option',['../ad77681_8h.html#a1bea8268758a99a961ebdb8eb6b035ed',1,'ad77681.h']]],
   ['ad77681_5fainn_5fprecharge_24',['ad77681_AINn_precharge',['../ad77681_8h.html#a6ba00f027835c03d80f7b1059639c6fd',1,'ad77681.h']]],
   ['ad77681_5fainp_5fprecharge_25',['ad77681_AINp_precharge',['../ad77681_8h.html#a04d250ddc45b75114da4e3c4cf09c65c',1,'ad77681.h']]],

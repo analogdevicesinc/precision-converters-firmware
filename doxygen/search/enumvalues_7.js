@@ -1,7 +1,7 @@
 var searchData=
 [
   ['hi_5fthreshold_5fattr_5fid_0',['HI_THRESHOLD_ATTR_ID',['../ad4080__iio_8c.html#a8f6ae13bad6c5eb2bc450721c136082ea312550e835462884d21aa114455ff1d9',1,'ad4080_iio.c']]],
-  ['high_1',['HIGH',['../iio__ad7606_8c.html#a1d072e73707da78e148cc2f25af2bd87a0c3a1dacf94061154b3ee354359c5893',1,'iio_ad7606.c']]],
+  ['high_1',['HIGH',['../ad7606__iio_8c.html#a1d072e73707da78e148cc2f25af2bd87a0c3a1dacf94061154b3ee354359c5893',1,'ad7606_iio.c']]],
   ['hvout_5f0v_5f100v_2',['HVOUT_0V_100V',['../cn0586__support_8h.html#a48a83774b124b59f11ec8a20b7a3ed32aa107d86e848a4b9d81690874b9b97b53',1,'cn0586_support.h']]],
   ['hvout_5f0v_5f200v_3',['HVOUT_0V_200V',['../cn0586__support_8h.html#a48a83774b124b59f11ec8a20b7a3ed32a82289a0ba732133857a70445f437e05c',1,'cn0586_support.h']]],
   ['hvout_5fdisabled_4',['HVOUT_DISABLED',['../cn0586__support_8h.html#a846fc229dca132004c3ce4cc16fcc83aa861f2a99271451d19911f6fffb8b531a',1,'cn0586_support.h']]],

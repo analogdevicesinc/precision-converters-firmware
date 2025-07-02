@@ -155,7 +155,7 @@ Variables</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>User configuration file for AD7606 device. </p>
-<p>Copyright (c) 2020-2022 Analog Devices, Inc. All rights reserved.</p>
+<p>Copyright (c) 2020-2022, 2025 Analog Devices, Inc. All rights reserved.</p>
 <p>This software is proprietary to Analog Devices, Inc. and its licensors. By using this software you agree to the terms of the associated Analog Devices Software License Agreement. </p>
 </div><h2 class="groupheader">Macro Definition Documentation</h2>
 <a id="a3e1768ce23dc15a09ab19e1ca8398fc5" name="a3e1768ce23dc15a09ab19e1ca8398fc5"></a>
@@ -200,12 +200,14 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line">= {</div>
 <div class="line">    .number = <a class="code hl_define" href="ad7606__iio_2app_2app__config__mbed_8h.html#a18220360fc1f5e8a8f8590ec6d237951">BUSY_PIN</a>,</div>
+<div class="line">    .port = <a class="code hl_define" href="ad7606__iio_2app_2app__config__mbed_8h.html#ad0d837bcf61a94ded6afa3eb86350e5a">BUSY_PORT</a>,</div>
 <div class="line">    .platform_ops = &amp;<a class="code hl_define" href="ad2s1210__iio_2app_2app__config_8h.html#a79830dd38aaae12b8956a81b716f7fa5">gpio_ops</a>,</div>
 <div class="line">    .extra = &amp;<a class="code hl_define" href="ad7606__iio_2app_2app__config_8h.html#af6918816addfc916f1027ee99253f9f2">busy_gpio_extra_init_params</a></div>
 <div class="line">}</div>
 <div class="ttc" id="aad2s1210__iio_2app_2app__config_8h_html_a79830dd38aaae12b8956a81b716f7fa5"><div class="ttname"><a href="ad2s1210__iio_2app_2app__config_8h.html#a79830dd38aaae12b8956a81b716f7fa5">gpio_ops</a></div><div class="ttdeci">#define gpio_ops</div><div class="ttdef"><b>Definition</b> app_config.h:85</div></div>
-<div class="ttc" id="aad7606__iio_2app_2app__config_8h_html_af6918816addfc916f1027ee99253f9f2"><div class="ttname"><a href="ad7606__iio_2app_2app__config_8h.html#af6918816addfc916f1027ee99253f9f2">busy_gpio_extra_init_params</a></div><div class="ttdeci">#define busy_gpio_extra_init_params</div><div class="ttdef"><b>Definition</b> app_config.h:160</div></div>
+<div class="ttc" id="aad7606__iio_2app_2app__config_8h_html_af6918816addfc916f1027ee99253f9f2"><div class="ttname"><a href="ad7606__iio_2app_2app__config_8h.html#af6918816addfc916f1027ee99253f9f2">busy_gpio_extra_init_params</a></div><div class="ttdeci">#define busy_gpio_extra_init_params</div><div class="ttdef"><b>Definition</b> app_config.h:156</div></div>
 <div class="ttc" id="aad7606__iio_2app_2app__config__mbed_8h_html_a18220360fc1f5e8a8f8590ec6d237951"><div class="ttname"><a href="ad7606__iio_2app_2app__config__mbed_8h.html#a18220360fc1f5e8a8f8590ec6d237951">BUSY_PIN</a></div><div class="ttdeci">#define BUSY_PIN</div><div class="ttdef"><b>Definition</b> app_config_mbed.h:55</div></div>
+<div class="ttc" id="aad7606__iio_2app_2app__config__mbed_8h_html_ad0d837bcf61a94ded6afa3eb86350e5a"><div class="ttname"><a href="ad7606__iio_2app_2app__config__mbed_8h.html#ad0d837bcf61a94ded6afa3eb86350e5a">BUSY_PORT</a></div><div class="ttdeci">#define BUSY_PORT</div><div class="ttdef"><b>Definition</b> app_config_mbed.h:73</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -222,11 +224,13 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line">= {</div>
 <div class="line">    .number = <a class="code hl_define" href="ad7606__iio_2app_2app__config__mbed_8h.html#a1844ebc186d0df3c489464c04f18c6cb">CONVST_PIN</a>,</div>
+<div class="line">    .port = <a class="code hl_define" href="ad7606__iio_2app_2app__config__mbed_8h.html#aa3ec260ffe43f39472dc1f2cb2917960">CONVST_PORT</a>,</div>
 <div class="line">    .platform_ops = &amp;<a class="code hl_define" href="ad2s1210__iio_2app_2app__config_8h.html#a79830dd38aaae12b8956a81b716f7fa5">gpio_ops</a>,</div>
 <div class="line">    .extra = &amp;<a class="code hl_define" href="ad7606__iio_2app_2app__config_8h.html#ad2614e2115431239707ecbd855761920">convst_gpio_extra_init_params</a></div>
 <div class="line">}</div>
-<div class="ttc" id="aad7606__iio_2app_2app__config_8h_html_ad2614e2115431239707ecbd855761920"><div class="ttname"><a href="ad7606__iio_2app_2app__config_8h.html#ad2614e2115431239707ecbd855761920">convst_gpio_extra_init_params</a></div><div class="ttdeci">#define convst_gpio_extra_init_params</div><div class="ttdef"><b>Definition</b> app_config.h:159</div></div>
+<div class="ttc" id="aad7606__iio_2app_2app__config_8h_html_ad2614e2115431239707ecbd855761920"><div class="ttname"><a href="ad7606__iio_2app_2app__config_8h.html#ad2614e2115431239707ecbd855761920">convst_gpio_extra_init_params</a></div><div class="ttdeci">#define convst_gpio_extra_init_params</div><div class="ttdef"><b>Definition</b> app_config.h:155</div></div>
 <div class="ttc" id="aad7606__iio_2app_2app__config__mbed_8h_html_a1844ebc186d0df3c489464c04f18c6cb"><div class="ttname"><a href="ad7606__iio_2app_2app__config__mbed_8h.html#a1844ebc186d0df3c489464c04f18c6cb">CONVST_PIN</a></div><div class="ttdeci">#define CONVST_PIN</div><div class="ttdef"><b>Definition</b> app_config_mbed.h:54</div></div>
+<div class="ttc" id="aad7606__iio_2app_2app__config__mbed_8h_html_aa3ec260ffe43f39472dc1f2cb2917960"><div class="ttname"><a href="ad7606__iio_2app_2app__config__mbed_8h.html#aa3ec260ffe43f39472dc1f2cb2917960">CONVST_PORT</a></div><div class="ttdeci">#define CONVST_PORT</div><div class="ttdef"><b>Definition</b> app_config_mbed.h:72</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -243,11 +247,13 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line">= {</div>
 <div class="line">    .number = <a class="code hl_define" href="ad7606__iio_2app_2app__config__mbed_8h.html#a327fc8b13b7b8e1dc6eb4d0a9a3162d7">OSR0_PIN</a>,</div>
+<div class="line">    .port = <a class="code hl_define" href="ad7606__iio_2app_2app__config__mbed_8h.html#a7d40d52640b444f72d25738b89a21467">OSR0_PORT</a>,</div>
 <div class="line">    .platform_ops = &amp;<a class="code hl_define" href="ad2s1210__iio_2app_2app__config_8h.html#a79830dd38aaae12b8956a81b716f7fa5">gpio_ops</a>,</div>
 <div class="line">    .extra = &amp;<a class="code hl_define" href="ad7606__iio_2app_2app__config_8h.html#a7c0391ddf59b23b0b2426eea21db62aa">osr0_gpio_extra_init_params</a></div>
 <div class="line">}</div>
-<div class="ttc" id="aad7606__iio_2app_2app__config_8h_html_a7c0391ddf59b23b0b2426eea21db62aa"><div class="ttname"><a href="ad7606__iio_2app_2app__config_8h.html#a7c0391ddf59b23b0b2426eea21db62aa">osr0_gpio_extra_init_params</a></div><div class="ttdeci">#define osr0_gpio_extra_init_params</div><div class="ttdef"><b>Definition</b> app_config.h:161</div></div>
+<div class="ttc" id="aad7606__iio_2app_2app__config_8h_html_a7c0391ddf59b23b0b2426eea21db62aa"><div class="ttname"><a href="ad7606__iio_2app_2app__config_8h.html#a7c0391ddf59b23b0b2426eea21db62aa">osr0_gpio_extra_init_params</a></div><div class="ttdeci">#define osr0_gpio_extra_init_params</div><div class="ttdef"><b>Definition</b> app_config.h:157</div></div>
 <div class="ttc" id="aad7606__iio_2app_2app__config__mbed_8h_html_a327fc8b13b7b8e1dc6eb4d0a9a3162d7"><div class="ttname"><a href="ad7606__iio_2app_2app__config__mbed_8h.html#a327fc8b13b7b8e1dc6eb4d0a9a3162d7">OSR0_PIN</a></div><div class="ttdeci">#define OSR0_PIN</div><div class="ttdef"><b>Definition</b> app_config_mbed.h:50</div></div>
+<div class="ttc" id="aad7606__iio_2app_2app__config__mbed_8h_html_a7d40d52640b444f72d25738b89a21467"><div class="ttname"><a href="ad7606__iio_2app_2app__config__mbed_8h.html#a7d40d52640b444f72d25738b89a21467">OSR0_PORT</a></div><div class="ttdeci">#define OSR0_PORT</div><div class="ttdef"><b>Definition</b> app_config_mbed.h:68</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -264,10 +270,12 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line">= {</div>
 <div class="line">    .number = <a class="code hl_define" href="ad7606__iio_2app_2app__config__mbed_8h.html#af256264c9f1fb5fc272a27ed813d73ba">OSR1_PIN</a>,</div>
+<div class="line">    .port = <a class="code hl_define" href="ad7606__iio_2app_2app__config__mbed_8h.html#ad0e81bfd6e7bc532035d666350a71970">OSR1_PORT</a>,</div>
 <div class="line">    .platform_ops = &amp;<a class="code hl_define" href="ad2s1210__iio_2app_2app__config_8h.html#a79830dd38aaae12b8956a81b716f7fa5">gpio_ops</a>,</div>
 <div class="line">    .extra = &amp;<a class="code hl_define" href="ad7606__iio_2app_2app__config_8h.html#aebd9c7085b03a393a3b0903e190e4854">osr1_gpio_extra_init_params</a></div>
 <div class="line">}</div>
-<div class="ttc" id="aad7606__iio_2app_2app__config_8h_html_aebd9c7085b03a393a3b0903e190e4854"><div class="ttname"><a href="ad7606__iio_2app_2app__config_8h.html#aebd9c7085b03a393a3b0903e190e4854">osr1_gpio_extra_init_params</a></div><div class="ttdeci">#define osr1_gpio_extra_init_params</div><div class="ttdef"><b>Definition</b> app_config.h:162</div></div>
+<div class="ttc" id="aad7606__iio_2app_2app__config_8h_html_aebd9c7085b03a393a3b0903e190e4854"><div class="ttname"><a href="ad7606__iio_2app_2app__config_8h.html#aebd9c7085b03a393a3b0903e190e4854">osr1_gpio_extra_init_params</a></div><div class="ttdeci">#define osr1_gpio_extra_init_params</div><div class="ttdef"><b>Definition</b> app_config.h:158</div></div>
+<div class="ttc" id="aad7606__iio_2app_2app__config__mbed_8h_html_ad0e81bfd6e7bc532035d666350a71970"><div class="ttname"><a href="ad7606__iio_2app_2app__config__mbed_8h.html#ad0e81bfd6e7bc532035d666350a71970">OSR1_PORT</a></div><div class="ttdeci">#define OSR1_PORT</div><div class="ttdef"><b>Definition</b> app_config_mbed.h:69</div></div>
 <div class="ttc" id="aad7606__iio_2app_2app__config__mbed_8h_html_af256264c9f1fb5fc272a27ed813d73ba"><div class="ttname"><a href="ad7606__iio_2app_2app__config__mbed_8h.html#af256264c9f1fb5fc272a27ed813d73ba">OSR1_PIN</a></div><div class="ttdeci">#define OSR1_PIN</div><div class="ttdef"><b>Definition</b> app_config_mbed.h:51</div></div>
 </div><!-- fragment -->
 </div>
@@ -285,11 +293,13 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line">= {</div>
 <div class="line">    .number = <a class="code hl_define" href="ad7606__iio_2app_2app__config__mbed_8h.html#a7a5dc99d4d014ae821bfa226c7e84eb8">OSR2_PIN</a>,</div>
+<div class="line">    .port = <a class="code hl_define" href="ad7606__iio_2app_2app__config__mbed_8h.html#ae35e2af45202a5818725caaf302fc042">OSR2_PORT</a>,</div>
 <div class="line">    .platform_ops = &amp;<a class="code hl_define" href="ad2s1210__iio_2app_2app__config_8h.html#a79830dd38aaae12b8956a81b716f7fa5">gpio_ops</a>,</div>
 <div class="line">    .extra = &amp;<a class="code hl_define" href="ad7606__iio_2app_2app__config_8h.html#a3e904849e46b66d865b91d4446efbbe4">osr2_gpio_extra_init_params</a></div>
 <div class="line">}</div>
-<div class="ttc" id="aad7606__iio_2app_2app__config_8h_html_a3e904849e46b66d865b91d4446efbbe4"><div class="ttname"><a href="ad7606__iio_2app_2app__config_8h.html#a3e904849e46b66d865b91d4446efbbe4">osr2_gpio_extra_init_params</a></div><div class="ttdeci">#define osr2_gpio_extra_init_params</div><div class="ttdef"><b>Definition</b> app_config.h:163</div></div>
+<div class="ttc" id="aad7606__iio_2app_2app__config_8h_html_a3e904849e46b66d865b91d4446efbbe4"><div class="ttname"><a href="ad7606__iio_2app_2app__config_8h.html#a3e904849e46b66d865b91d4446efbbe4">osr2_gpio_extra_init_params</a></div><div class="ttdeci">#define osr2_gpio_extra_init_params</div><div class="ttdef"><b>Definition</b> app_config.h:159</div></div>
 <div class="ttc" id="aad7606__iio_2app_2app__config__mbed_8h_html_a7a5dc99d4d014ae821bfa226c7e84eb8"><div class="ttname"><a href="ad7606__iio_2app_2app__config__mbed_8h.html#a7a5dc99d4d014ae821bfa226c7e84eb8">OSR2_PIN</a></div><div class="ttdeci">#define OSR2_PIN</div><div class="ttdef"><b>Definition</b> app_config_mbed.h:52</div></div>
+<div class="ttc" id="aad7606__iio_2app_2app__config__mbed_8h_html_ae35e2af45202a5818725caaf302fc042"><div class="ttname"><a href="ad7606__iio_2app_2app__config__mbed_8h.html#ae35e2af45202a5818725caaf302fc042">OSR2_PORT</a></div><div class="ttdeci">#define OSR2_PORT</div><div class="ttdef"><b>Definition</b> app_config_mbed.h:70</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -306,11 +316,13 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line">= {</div>
 <div class="line">    .number = <a class="code hl_define" href="ad7606__iio_2app_2app__config__mbed_8h.html#a1333c465eb53f68c8fa67c62b3d40a01">RANGE_PIN</a>,</div>
+<div class="line">    .port = <a class="code hl_define" href="ad7606__iio_2app_2app__config__mbed_8h.html#a467b6a91f063d55049d03f3cadc73e91">RANGE_PORT</a>,</div>
 <div class="line">    .platform_ops = &amp;<a class="code hl_define" href="ad2s1210__iio_2app_2app__config_8h.html#a79830dd38aaae12b8956a81b716f7fa5">gpio_ops</a>,</div>
 <div class="line">    .extra = &amp;<a class="code hl_define" href="ad7606__iio_2app_2app__config_8h.html#a461f9f7acf80e6d18684362813fda510">range_gpio_extra_init_params</a></div>
 <div class="line">}</div>
-<div class="ttc" id="aad7606__iio_2app_2app__config_8h_html_a461f9f7acf80e6d18684362813fda510"><div class="ttname"><a href="ad7606__iio_2app_2app__config_8h.html#a461f9f7acf80e6d18684362813fda510">range_gpio_extra_init_params</a></div><div class="ttdeci">#define range_gpio_extra_init_params</div><div class="ttdef"><b>Definition</b> app_config.h:164</div></div>
+<div class="ttc" id="aad7606__iio_2app_2app__config_8h_html_a461f9f7acf80e6d18684362813fda510"><div class="ttname"><a href="ad7606__iio_2app_2app__config_8h.html#a461f9f7acf80e6d18684362813fda510">range_gpio_extra_init_params</a></div><div class="ttdeci">#define range_gpio_extra_init_params</div><div class="ttdef"><b>Definition</b> app_config.h:160</div></div>
 <div class="ttc" id="aad7606__iio_2app_2app__config__mbed_8h_html_a1333c465eb53f68c8fa67c62b3d40a01"><div class="ttname"><a href="ad7606__iio_2app_2app__config__mbed_8h.html#a1333c465eb53f68c8fa67c62b3d40a01">RANGE_PIN</a></div><div class="ttdeci">#define RANGE_PIN</div><div class="ttdef"><b>Definition</b> app_config_mbed.h:56</div></div>
+<div class="ttc" id="aad7606__iio_2app_2app__config__mbed_8h_html_a467b6a91f063d55049d03f3cadc73e91"><div class="ttname"><a href="ad7606__iio_2app_2app__config__mbed_8h.html#a467b6a91f063d55049d03f3cadc73e91">RANGE_PORT</a></div><div class="ttdeci">#define RANGE_PORT</div><div class="ttdef"><b>Definition</b> app_config_mbed.h:74</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -327,11 +339,13 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line">= {</div>
 <div class="line">    .number = <a class="code hl_define" href="ad3530r__iio_2app_2app__config__stm32_8h.html#a08bca59db4b190eaaea4d47b7562869c">RESET_PIN</a>,</div>
+<div class="line">    .port = <a class="code hl_define" href="ad3530r__iio_2app_2app__config__stm32_8h.html#a1ed4280c556a9f6d63204cc3ad5b3523">RESET_PORT</a>,</div>
 <div class="line">    .platform_ops = &amp;<a class="code hl_define" href="ad2s1210__iio_2app_2app__config_8h.html#a79830dd38aaae12b8956a81b716f7fa5">gpio_ops</a>,</div>
 <div class="line">    .extra = &amp;<a class="code hl_define" href="ad7606__iio_2app_2app__config_8h.html#a888f0caffe54a5acd6cc247902ba848b">reset_gpio_extra_init_params</a></div>
 <div class="line">}</div>
 <div class="ttc" id="aad3530r__iio_2app_2app__config__stm32_8h_html_a08bca59db4b190eaaea4d47b7562869c"><div class="ttname"><a href="ad3530r__iio_2app_2app__config__stm32_8h.html#a08bca59db4b190eaaea4d47b7562869c">RESET_PIN</a></div><div class="ttdeci">#define RESET_PIN</div><div class="ttdef"><b>Definition</b> app_config_stm32.h:47</div></div>
-<div class="ttc" id="aad7606__iio_2app_2app__config_8h_html_a888f0caffe54a5acd6cc247902ba848b"><div class="ttname"><a href="ad7606__iio_2app_2app__config_8h.html#a888f0caffe54a5acd6cc247902ba848b">reset_gpio_extra_init_params</a></div><div class="ttdeci">#define reset_gpio_extra_init_params</div><div class="ttdef"><b>Definition</b> app_config.h:158</div></div>
+<div class="ttc" id="aad3530r__iio_2app_2app__config__stm32_8h_html_a1ed4280c556a9f6d63204cc3ad5b3523"><div class="ttname"><a href="ad3530r__iio_2app_2app__config__stm32_8h.html#a1ed4280c556a9f6d63204cc3ad5b3523">RESET_PORT</a></div><div class="ttdeci">#define RESET_PORT</div><div class="ttdef"><b>Definition</b> app_config_stm32.h:48</div></div>
+<div class="ttc" id="aad7606__iio_2app_2app__config_8h_html_a888f0caffe54a5acd6cc247902ba848b"><div class="ttname"><a href="ad7606__iio_2app_2app__config_8h.html#a888f0caffe54a5acd6cc247902ba848b">reset_gpio_extra_init_params</a></div><div class="ttdeci">#define reset_gpio_extra_init_params</div><div class="ttdef"><b>Definition</b> app_config.h:154</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -348,10 +362,12 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line">= {</div>
 <div class="line">    .number = <a class="code hl_define" href="ad7606__iio_2app_2app__config__mbed_8h.html#adeee237c94bbab76e216a4df21e94b9a">STDBY_PIN</a>,</div>
+<div class="line">    .port = <a class="code hl_define" href="ad7606__iio_2app_2app__config__mbed_8h.html#a98ab395474325a66e0fadc7063c1f32d">STDBY_PORT</a>,</div>
 <div class="line">    .platform_ops = &amp;<a class="code hl_define" href="ad2s1210__iio_2app_2app__config_8h.html#a79830dd38aaae12b8956a81b716f7fa5">gpio_ops</a>,</div>
 <div class="line">    .extra = &amp;<a class="code hl_define" href="ad7606__iio_2app_2app__config_8h.html#ad7581cfd12331cc7fa5a8d23592eb878">stdby_gpio_extra_init_params</a></div>
 <div class="line">}</div>
-<div class="ttc" id="aad7606__iio_2app_2app__config_8h_html_ad7581cfd12331cc7fa5a8d23592eb878"><div class="ttname"><a href="ad7606__iio_2app_2app__config_8h.html#ad7581cfd12331cc7fa5a8d23592eb878">stdby_gpio_extra_init_params</a></div><div class="ttdeci">#define stdby_gpio_extra_init_params</div><div class="ttdef"><b>Definition</b> app_config.h:165</div></div>
+<div class="ttc" id="aad7606__iio_2app_2app__config_8h_html_ad7581cfd12331cc7fa5a8d23592eb878"><div class="ttname"><a href="ad7606__iio_2app_2app__config_8h.html#ad7581cfd12331cc7fa5a8d23592eb878">stdby_gpio_extra_init_params</a></div><div class="ttdeci">#define stdby_gpio_extra_init_params</div><div class="ttdef"><b>Definition</b> app_config.h:161</div></div>
+<div class="ttc" id="aad7606__iio_2app_2app__config__mbed_8h_html_a98ab395474325a66e0fadc7063c1f32d"><div class="ttname"><a href="ad7606__iio_2app_2app__config__mbed_8h.html#a98ab395474325a66e0fadc7063c1f32d">STDBY_PORT</a></div><div class="ttdeci">#define STDBY_PORT</div><div class="ttdef"><b>Definition</b> app_config_mbed.h:75</div></div>
 <div class="ttc" id="aad7606__iio_2app_2app__config__mbed_8h_html_adeee237c94bbab76e216a4df21e94b9a"><div class="ttname"><a href="ad7606__iio_2app_2app__config__mbed_8h.html#adeee237c94bbab76e216a4df21e94b9a">STDBY_PIN</a></div><div class="ttdeci">#define STDBY_PIN</div><div class="ttdef"><b>Definition</b> app_config_mbed.h:57</div></div>
 </div><!-- fragment -->
 </div>

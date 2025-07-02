@@ -99,13 +99,13 @@ This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
 <div class="center"><img src="ad7606__support_8h__dep__incl.png" border="0" usemap="#a_2home_2runner_2work_2precision-converters-firmware_2precision-converters-firmware_2projects_2ad7606__iio_2app_2ad7606__support_8hdep" alt=""/></div>
 <map name="a_2home_2runner_2work_2precision-converters-firmware_2precision-converters-firmware_2projects_2ad7606__iio_2app_2ad7606__support_8hdep" id="a_2home_2runner_2work_2precision-converters-firmware_2precision-converters-firmware_2projects_2ad7606__iio_2app_2ad7606__support_8hdep">
-<area shape="rect" title="Header for AD7606 No&#45;OS driver supports." alt="" coords="286,5,531,75"/>
-<area shape="rect" href="ad7606__support_8c.html" title="AD7606 No&#45;OS drivers support functionality." alt="" coords="5,123,249,192"/>
-<area shape="poly" title=" " alt="" coords="315,82,211,125,209,120,313,78"/>
-<area shape="rect" href="ad7606__user__config_8c.html" title="User configuration file for AD7606 device." alt="" coords="274,123,543,192"/>
-<area shape="poly" title=" " alt="" coords="411,89,411,122,406,122,406,89"/>
-<area shape="rect" href="iio__ad7606_8c.html" title="Implementation of AD7606 IIO application interfaces." alt="" coords="568,123,791,192"/>
-<area shape="poly" title=" " alt="" coords="501,78,601,120,599,125,499,83"/>
+<area shape="rect" title="Header for AD7606 No&#45;OS driver supports." alt="" coords="251,5,497,75"/>
+<area shape="rect" href="ad7606__iio_8c.html" title=" " alt="" coords="5,123,228,192"/>
+<area shape="poly" title=" " alt="" coords="287,83,193,125,191,120,285,78"/>
+<area shape="rect" href="ad7606__support_8c.html" title="AD7606 No&#45;OS drivers support functionality." alt="" coords="252,123,496,192"/>
+<area shape="poly" title=" " alt="" coords="377,89,377,122,371,122,371,89"/>
+<area shape="rect" href="ad7606__user__config_8c.html" title="User configuration file for AD7606 device." alt="" coords="521,123,790,192"/>
+<area shape="poly" title=" " alt="" coords="470,78,574,120,572,125,468,82"/>
 </map>
 </div>
 </div>
@@ -119,8 +119,6 @@ Macros</h2></td></tr>
 <tr class="separator:aaae64a07ccb34a232ce9acc07babf3b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1e2e8ef8c6ed747980a18fe57455fb6c" id="r_a1e2e8ef8c6ed747980a18fe57455fb6c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad7606__support_8h.html#a1e2e8ef8c6ed747980a18fe57455fb6c">DEFAULT_CHN_RANGE</a>&#160;&#160;&#160;(10.0)</td></tr>
 <tr class="separator:a1e2e8ef8c6ed747980a18fe57455fb6c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9b46f9c0052b42fa081e8ddf6825b5ff" id="r_a9b46f9c0052b42fa081e8ddf6825b5ff"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad7606__support_8h.html#a9b46f9c0052b42fa081e8ddf6825b5ff">AD7606_DIAGN_MUX_CH_MSK</a>(ch)&#160;&#160;&#160;(NO_OS_GENMASK(2, 0) &lt;&lt; (3 * ((ch) % 2)))</td></tr>
-<tr class="separator:a9b46f9c0052b42fa081e8ddf6825b5ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abc8b3738386524f3fd86c8dd49dd1eea" id="r_abc8b3738386524f3fd86c8dd49dd1eea"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad7606__support_8h.html#abc8b3738386524f3fd86c8dd49dd1eea">AD7606_DIAGN_MUX_CH_VAL</a>(ch,  val)&#160;&#160;&#160;(val &lt;&lt; (3 * ((ch) % 2)))</td></tr>
 <tr class="separator:abc8b3738386524f3fd86c8dd49dd1eea"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aff5e24b234f857b8d51153ad8ac5bb83" id="r_aff5e24b234f857b8d51153ad8ac5bb83"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad7606__support_8h.html#aff5e24b234f857b8d51153ad8ac5bb83">AD7606_OPEN_DETECT_ENABLE_MSK</a>(ch)&#160;&#160;&#160;(NO_OS_GENMASK(7,0) &amp; (~(1 &lt;&lt; ch)))</td></tr>
@@ -170,28 +168,10 @@ Functions</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Header for AD7606 No-OS driver supports. </p>
-<p>Copyright (c) 2020, 2022 Analog Devices, Inc.</p>
+<p>Copyright (c) 2020, 2022, 2025 Analog Devices, Inc.</p>
 <p>All rights reserved.</p>
 <p>This software is proprietary to Analog Devices, Inc. and its licensors. By using this software you agree to the terms of the associated Analog Devices Software License Agreement. </p>
 </div><h2 class="groupheader">Macro Definition Documentation</h2>
-<a id="a9b46f9c0052b42fa081e8ddf6825b5ff" name="a9b46f9c0052b42fa081e8ddf6825b5ff"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9b46f9c0052b42fa081e8ddf6825b5ff">&#9670;&#160;</a></span>AD7606_DIAGN_MUX_CH_MSK</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define AD7606_DIAGN_MUX_CH_MSK</td>
-          <td>(</td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">ch</td><td>)</td>
-          <td>&#160;&#160;&#160;(NO_OS_GENMASK(2, 0) &lt;&lt; (3 * ((ch) % 2)))</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
 <a id="abc8b3738386524f3fd86c8dd49dd1eea" name="abc8b3738386524f3fd86c8dd49dd1eea"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#abc8b3738386524f3fd86c8dd49dd1eea">&#9670;&#160;</a></span>AD7606_DIAGN_MUX_CH_VAL</h2>
 
@@ -515,7 +495,7 @@ Here is the caller graph for this function:</div>
 <div class="center"><img src="ad7606__support_8h_a8cd2ce458cc520e6dc86f85119219340_icgraph.png" border="0" usemap="#aad7606__support_8h_a8cd2ce458cc520e6dc86f85119219340_icgraph" alt=""/></div>
 <map name="aad7606__support_8h_a8cd2ce458cc520e6dc86f85119219340_icgraph" id="aad7606__support_8h_a8cd2ce458cc520e6dc86f85119219340_icgraph">
 <area shape="rect" title="Read ADC raw data for recently sampled channel." alt="" coords="196,5,375,45"/>
-<area shape="rect" href="iio__ad7606_8c.html#a95d003211f6a70e1eacebf75b452a13c" title="Push data into IIO buffer when trigger handler IRQ is invoked." alt="" coords="5,5,148,45"/>
+<area shape="rect" href="ad7606__iio_8c.html#a95d003211f6a70e1eacebf75b452a13c" title="Push data into IIO buffer when trigger handler IRQ is invoked." alt="" coords="5,5,148,45"/>
 <area shape="poly" title=" " alt="" coords="182,28,148,28,148,23,182,23"/>
 </map>
 </div>

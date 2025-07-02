@@ -163,6 +163,8 @@ Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
+<tr class="memitem:a0b6bf22c29d6acff9e8eed8bd22f4f9f" id="r_a0b6bf22c29d6acff9e8eed8bd22f4f9f"><td class="memItemLeft" align="right" valign="top">struct no_os_uart_init_param&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad7606__iio_2app_2app__config_8c.html#a0b6bf22c29d6acff9e8eed8bd22f4f9f">uart_console_stdio_init_params</a></td></tr>
+<tr class="separator:a0b6bf22c29d6acff9e8eed8bd22f4f9f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0c0621a3d55ae4c6b29977dac5336e19" id="r_a0c0621a3d55ae4c6b29977dac5336e19"><td class="memItemLeft" align="right" valign="top">struct no_os_gpio_init_param&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad7606__iio_2app_2app__config_8c.html#a0c0621a3d55ae4c6b29977dac5336e19">trigger_gpio_param</a></td></tr>
 <tr class="separator:a0c0621a3d55ae4c6b29977dac5336e19"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2b2359da43effefaa4bb51c09733b2c4" id="r_a2b2359da43effefaa4bb51c09733b2c4"><td class="memItemLeft" align="right" valign="top">struct no_os_irq_init_param&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad7606__iio_2app_2app__config_8c.html#a2b2359da43effefaa4bb51c09733b2c4">trigger_gpio_irq_params</a></td></tr>
@@ -171,6 +173,8 @@ Variables</h2></td></tr>
 <tr class="separator:a4809a80bd78ee1316fb8b4609e460e8a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad5132545e75d00d2901088ff1886e41e" id="r_ad5132545e75d00d2901088ff1886e41e"><td class="memItemLeft" align="right" valign="top">struct no_os_uart_desc *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad7606__iio_2app_2app__config_8c.html#ad5132545e75d00d2901088ff1886e41e">uart_desc</a></td></tr>
 <tr class="separator:ad5132545e75d00d2901088ff1886e41e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afe54820c1e9d26888bd767dd63680b2d" id="r_afe54820c1e9d26888bd767dd63680b2d"><td class="memItemLeft" align="right" valign="top">struct no_os_uart_desc *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad7606__iio_2app_2app__config_8c.html#afe54820c1e9d26888bd767dd63680b2d">uart_console_stdio_desc</a></td></tr>
+<tr class="separator:afe54820c1e9d26888bd767dd63680b2d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa3fa5b0f28aa02dd241b7c618836d06a" id="r_aa3fa5b0f28aa02dd241b7c618836d06a"><td class="memItemLeft" align="right" valign="top">struct no_os_gpio_desc *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad7606__iio_2app_2app__config_8c.html#aa3fa5b0f28aa02dd241b7c618836d06a">trigger_gpio_desc</a></td></tr>
 <tr class="separator:aa3fa5b0f28aa02dd241b7c618836d06a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2b20c5f31c6b6ef72967b7bad0420320" id="r_a2b20c5f31c6b6ef72967b7bad0420320"><td class="memItemLeft" align="right" valign="top">struct no_os_irq_ctrl_desc *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad7606__iio_2app_2app__config_8c.html#a2b20c5f31c6b6ef72967b7bad0420320">trigger_irq_desc</a></td></tr>
@@ -181,7 +185,7 @@ Variables</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Application configurations module (platform-agnostic) </p>
 <p>This module performs the system configurations</p>
-<p>Copyright (c) 2020-2023 Analog Devices, Inc. All rights reserved.</p>
+<p>Copyright (c) 2020-2023, 2025 Analog Devices, Inc. All rights reserved.</p>
 <p>This software is proprietary to Analog Devices, Inc. and its licensors. By using this software you agree to the terms of the associated Analog Devices Software License Agreement. </p>
 </div><h2 class="groupheader">Function Documentation</h2>
 <a id="a03e69dce277dea0117ffa2c6f7dc25c5" name="a03e69dce277dea0117ffa2c6f7dc25c5"></a>
@@ -281,10 +285,11 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line">= {</div>
-<div class="line">    .irq_ctrl_id = 0,</div>
+<div class="line">    .irq_ctrl_id = <a class="code hl_define" href="ad2s1210__iio_2app_2app__config_8h.html#a92b6f4925a12b92309246a665b090745">IRQ_INT_ID</a>,</div>
 <div class="line">    .platform_ops = &amp;<a class="code hl_define" href="ad2s1210__iio_2app_2app__config_8h.html#aea695cfd66cb4b1c25c5f56b59d9ad1e">trigger_gpio_irq_ops</a>,</div>
 <div class="line">    .extra = &amp;<a class="code hl_define" href="ad2s1210__iio_2app_2app__config_8h.html#a94a5e0dc135efcaaeacfbaf36f4f5ff4">trigger_gpio_irq_extra_params</a></div>
 <div class="line">}</div>
+<div class="ttc" id="aad2s1210__iio_2app_2app__config_8h_html_a92b6f4925a12b92309246a665b090745"><div class="ttname"><a href="ad2s1210__iio_2app_2app__config_8h.html#a92b6f4925a12b92309246a665b090745">IRQ_INT_ID</a></div><div class="ttdeci">#define IRQ_INT_ID</div><div class="ttdef"><b>Definition</b> app_config.h:92</div></div>
 <div class="ttc" id="aad2s1210__iio_2app_2app__config_8h_html_a94a5e0dc135efcaaeacfbaf36f4f5ff4"><div class="ttname"><a href="ad2s1210__iio_2app_2app__config_8h.html#a94a5e0dc135efcaaeacfbaf36f4f5ff4">trigger_gpio_irq_extra_params</a></div><div class="ttdeci">#define trigger_gpio_irq_extra_params</div><div class="ttdef"><b>Definition</b> app_config.h:81</div></div>
 <div class="ttc" id="aad2s1210__iio_2app_2app__config_8h_html_aea695cfd66cb4b1c25c5f56b59d9ad1e"><div class="ttname"><a href="ad2s1210__iio_2app_2app__config_8h.html#aea695cfd66cb4b1c25c5f56b59d9ad1e">trigger_gpio_irq_ops</a></div><div class="ttdeci">#define trigger_gpio_irq_ops</div><div class="ttdef"><b>Definition</b> app_config.h:90</div></div>
 </div><!-- fragment -->
@@ -327,6 +332,59 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+</div>
+</div>
+<a id="afe54820c1e9d26888bd767dd63680b2d" name="afe54820c1e9d26888bd767dd63680b2d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afe54820c1e9d26888bd767dd63680b2d">&#9670;&#160;</a></span>uart_console_stdio_desc</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">struct no_os_uart_desc* uart_console_stdio_desc</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a0b6bf22c29d6acff9e8eed8bd22f4f9f" name="a0b6bf22c29d6acff9e8eed8bd22f4f9f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0b6bf22c29d6acff9e8eed8bd22f4f9f">&#9670;&#160;</a></span>uart_console_stdio_init_params</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">struct no_os_uart_init_param uart_console_stdio_init_params</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line">= {</div>
+<div class="line">    .device_id = <a class="code hl_define" href="ad3530r__iio_2app_2app__config__stm32_8h.html#a1de69c73f829a03f46f5e7690da7e79a">UART_ID</a>,</div>
+<div class="line">    .asynchronous_rx = <span class="keyword">false</span>,</div>
+<div class="line">    .baud_rate = <a class="code hl_define" href="ad2s1210__iio_2app_2app__config_8h.html#a1f21242d642bc7352daa4f657ff15a5a">IIO_UART_BAUD_RATE</a>,</div>
+<div class="line">    .size = NO_OS_UART_CS_8,</div>
+<div class="line">    .parity = NO_OS_UART_PAR_NO,</div>
+<div class="line">    .stop = NO_OS_UART_STOP_1_BIT,</div>
+<div class="line"> </div>
+<div class="line">    </div>
+<div class="line">    .platform_ops = &amp;<a class="code hl_define" href="ad2s1210__iio_2app_2app__config_8h.html#acc53ed106567a5a56e1bdf6aa73728bc">uart_ops</a>,</div>
+<div class="line">    .extra = &amp;<a class="code hl_define" href="ad2s1210__iio_2app_2app__config_8h.html#a0218303728bba1f6bc0b725266ccbbd4">uart_extra_init_params</a></div>
+<div class="line"> </div>
+<div class="line"> </div>
+<div class="line"> </div>
+<div class="line"> </div>
+<div class="line"> </div>
+<div class="line"> </div>
+<div class="line"> </div>
+<div class="line"> </div>
+<div class="line"> </div>
+<div class="line">}</div>
+<div class="ttc" id="aad2s1210__iio_2app_2app__config_8h_html_a0218303728bba1f6bc0b725266ccbbd4"><div class="ttname"><a href="ad2s1210__iio_2app_2app__config_8h.html#a0218303728bba1f6bc0b725266ccbbd4">uart_extra_init_params</a></div><div class="ttdeci">#define uart_extra_init_params</div><div class="ttdef"><b>Definition</b> app_config.h:78</div></div>
+<div class="ttc" id="aad2s1210__iio_2app_2app__config_8h_html_a1f21242d642bc7352daa4f657ff15a5a"><div class="ttname"><a href="ad2s1210__iio_2app_2app__config_8h.html#a1f21242d642bc7352daa4f657ff15a5a">IIO_UART_BAUD_RATE</a></div><div class="ttdeci">#define IIO_UART_BAUD_RATE</div><div class="ttdef"><b>Definition</b> app_config.h:164</div></div>
+<div class="ttc" id="aad2s1210__iio_2app_2app__config_8h_html_acc53ed106567a5a56e1bdf6aa73728bc"><div class="ttname"><a href="ad2s1210__iio_2app_2app__config_8h.html#acc53ed106567a5a56e1bdf6aa73728bc">uart_ops</a></div><div class="ttdeci">#define uart_ops</div><div class="ttdef"><b>Definition</b> app_config.h:87</div></div>
+<div class="ttc" id="aad3530r__iio_2app_2app__config__stm32_8h_html_a1de69c73f829a03f46f5e7690da7e79a"><div class="ttname"><a href="ad3530r__iio_2app_2app__config__stm32_8h.html#a1de69c73f829a03f46f5e7690da7e79a">UART_ID</a></div><div class="ttdeci">#define UART_ID</div><div class="ttdef"><b>Definition</b> app_config_stm32.h:77</div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="ad5132545e75d00d2901088ff1886e41e" name="ad5132545e75d00d2901088ff1886e41e"></a>

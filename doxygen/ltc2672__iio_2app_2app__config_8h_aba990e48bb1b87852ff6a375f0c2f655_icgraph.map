@@ -28,7 +28,7 @@
 <area shape="poly" id="edge27_Node000001_Node000027" title=" " alt="" coords="582,610,521,639,484,652,482,647,519,634,580,606"/>
 <area shape="rect" id="Node000029" href="$ad738x__iio_8c.html#aca39994109d05202ac8e9ee9ad40a9cf" title="Initialize the IIO interface for AD738x IIO device." alt="" coords="357,699,513,724"/>
 <area shape="poly" id="edge29_Node000001_Node000029" title=" " alt="" coords="600,614,566,652,521,688,493,701,491,696,519,684,563,648,596,611"/>
-<area shape="rect" id="Node000031" href="$iio__ad7606_8c.html#af125d30ab8d373f729b7fb4a705681f9" title="Initialize the IIO interface for AD7606 IIO device." alt="" coords="357,748,513,773"/>
+<area shape="rect" id="Node000031" href="$ad7606__iio_8c.html#af125d30ab8d373f729b7fb4a705681f9" title="Initialize the IIO interface for AD7606 IIO device." alt="" coords="357,748,513,773"/>
 <area shape="poly" id="edge31_Node000001_Node000031" title=" " alt="" coords="608,615,576,676,551,709,522,737,498,750,495,746,518,733,547,706,571,673,604,613"/>
 <area shape="rect" id="Node000033" href="$ad7689__iio_8c.html#ad230f115f917fa129f5784eb1085eecf" title="Initialize the IIO interface for AD7689 IIO device." alt="" coords="357,797,513,823"/>
 <area shape="poly" id="edge33_Node000001_Node000033" title=" " alt="" coords="613,616,602,654,584,700,557,746,522,787,500,800,498,795,518,783,553,743,579,697,597,652,608,614"/>

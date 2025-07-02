@@ -1,11 +1,11 @@
 var searchData=
 [
   ['major_5fversion_0',['MAJOR_VERSION',['../version_8h.html#aa9e8f3bb466bb421d13913df7aeaa20c',1,'version.h']]],
-  ['manual_5fopen_5fdetect_5fcm_5fcnv_5fcnt_1',['MANUAL_OPEN_DETECT_CM_CNV_CNT',['../iio__ad7606_8c.html#a4c21dff668bcc168ddafe1d3dfb973b6',1,'iio_ad7606.c']]],
-  ['manual_5fopen_5fdetect_5fconv_5fcnts_2',['MANUAL_OPEN_DETECT_CONV_CNTS',['../iio__ad7606_8c.html#a7b6e361acb0de7d9dbf9d1588a977ef5',1,'iio_ad7606.c']]],
-  ['manual_5fopen_5fdetect_5fconv_5ftrshld_3',['MANUAL_OPEN_DETECT_CONV_TRSHLD',['../iio__ad7606_8c.html#a8c1ff0480df905d4ab2b709143ac5f97',1,'iio_ad7606.c']]],
-  ['manual_5fopen_5fdetect_5fentry_5ftrhld_4',['MANUAL_OPEN_DETECT_ENTRY_TRHLD',['../iio__ad7606_8c.html#aad860bdb55b035a8ff563c8e6bf93fe4',1,'iio_ad7606.c']]],
-  ['manual_5fopen_5fdetect_5fthreshold_5frpd50k_5',['MANUAL_OPEN_DETECT_THRESHOLD_RPD50K',['../iio__ad7606_8c.html#ae538378e60bc5845461a7facf240299d',1,'iio_ad7606.c']]],
+  ['manual_5fopen_5fdetect_5fcm_5fcnv_5fcnt_1',['MANUAL_OPEN_DETECT_CM_CNV_CNT',['../ad7606__iio_8c.html#a4c21dff668bcc168ddafe1d3dfb973b6',1,'ad7606_iio.c']]],
+  ['manual_5fopen_5fdetect_5fconv_5fcnts_2',['MANUAL_OPEN_DETECT_CONV_CNTS',['../ad7606__iio_8c.html#a7b6e361acb0de7d9dbf9d1588a977ef5',1,'ad7606_iio.c']]],
+  ['manual_5fopen_5fdetect_5fconv_5ftrshld_3',['MANUAL_OPEN_DETECT_CONV_TRSHLD',['../ad7606__iio_8c.html#a8c1ff0480df905d4ab2b709143ac5f97',1,'ad7606_iio.c']]],
+  ['manual_5fopen_5fdetect_5fentry_5ftrhld_4',['MANUAL_OPEN_DETECT_ENTRY_TRHLD',['../ad7606__iio_8c.html#aad860bdb55b035a8ff563c8e6bf93fe4',1,'ad7606_iio.c']]],
+  ['manual_5fopen_5fdetect_5fthreshold_5frpd50k_5',['MANUAL_OPEN_DETECT_THRESHOLD_RPD50K',['../ad7606__iio_8c.html#ae538378e60bc5845461a7facf240299d',1,'ad7606_iio.c']]],
   ['math_5fpi_6',['MATH_PI',['../ad2s1210__iio_2app_2app__config_8h.html#ac58cbaeae310f551049f77b7c098599e',1,'app_config.h']]],
   ['max_5fadc_5fcode_7',['MAX_ADC_CODE',['../ad5592r__console__app_8c.html#aff2d17ddc75d6eb13f924ccace13df69',1,'ad5592r_console_app.c']]],
   ['max_5fadc_5fsamples_8',['MAX_ADC_SAMPLES',['../ad7124__temperature-measure_2app_2ad7124__console__app_8c.html#a0a64a05c87ad5a7455186d605bd34d86',1,'ad7124_console_app.c']]],
