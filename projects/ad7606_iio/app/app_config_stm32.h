@@ -38,7 +38,7 @@
 #define HW_CARRIER_NAME		SDP_K1
 
 /* STM32 UART specific parameters */
-#define APP_UART_HANDLE     &huart5
+#define APP_UART_HANDLE     huart5
 #define UART_IRQ_ID         UART5_IRQn
 #define UART_ID             5
 #define APP_UART_USB_HANDLE hUsbDeviceHS
