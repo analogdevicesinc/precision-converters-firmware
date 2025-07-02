@@ -1,11 +1,7 @@
 """Define some fixtures to use in the project."""
 import pytest
-import serial
 from time import sleep
-import serial.tools.list_ports
 
-ADI_USB_VID = 0x0456
-ADI_USB_PID = 0xb66c
 firmware_name = 'ad7606_iio'
 
 def pytest_addoption(parser):
@@ -32,14 +28,6 @@ def platformname(pytestconfig):
 
 @pytest.fixture(scope="session")
 def serial_port(serialport, serialcomtype, devicename, platformname):
-    if (serialcomtype == 'USE_VIRTUAL_COM_PORT'):
-        vcom_serial_number = firmware_name + '_' + devicename + '_' + platformname
-        # Get the COM port number corresponding to virtualCOM port parameters
-        for vcom_serial_port in serial.tools.list_ports.comports():
-            if (vcom_serial_port.vid == ADI_USB_VID and vcom_serial_port.pid == ADI_USB_PID and (vcom_serial_port.serial_number).lower() == (vcom_serial_number).lower()):
-                break
-        yield vcom_serial_port.device
-    else:
         yield serialport
 
 @pytest.fixture(scope="session")

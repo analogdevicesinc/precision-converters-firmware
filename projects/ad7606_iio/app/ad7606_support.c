@@ -2,7 +2,7 @@
  *   @file   ad7606_support.c
  *   @brief  AD7606 No-OS drivers support functionality
 ******************************************************************************
-* Copyright (c) 2020, 2022 Analog Devices, Inc.
+* Copyright (c) 2020, 2022, 2025 Analog Devices, Inc.
 *
 * All rights reserved.
 *
@@ -76,7 +76,7 @@ int32_t ad7606_read_single_sample(struct ad7606_dev *dev,
 	}
 
 	/* This function monitors BUSY line for EOC and read ADC result post that */
-	ret = ad7606_read(dev, adc_raw);
+	ret = ad7606_read_one_sample(dev, adc_raw);
 	if (ret) {
 		return ret;
 	}
