@@ -2,7 +2,7 @@
  * @file    ad717x_iio.c
  * @brief   Source file for the AD717x IIO Application
 ********************************************************************************
-* Copyright (c) 2021-23 Analog Devices, Inc.
+* Copyright (c) 2021-23,2025 Analog Devices, Inc.
 * All rights reserved.
 *
 * This software is proprietary to Analog Devices, Inc. and its licensors.
@@ -33,7 +33,7 @@
 
 /* Define ADC Resolution in Bits */
 #if defined (DEV_AD7177_2)
-#define AD717x_RESOLUTION	32
+#define AD717x_RESOLUTION	24
 #else
 #define AD717x_RESOLUTION	24
 #endif
@@ -192,7 +192,7 @@ static int32_t get_adc_attribute(void *device,
 				 const struct iio_ch_info *channel,
 				 intptr_t id)
 {
-	int32_t adc_raw_data = 0;
+	uint32_t adc_raw_data = 0;
 	int32_t adc_offset = 0;
 
 	switch (id) {
@@ -200,7 +200,7 @@ static int32_t get_adc_attribute(void *device,
 		if (ad717x_single_read(device, channel->ch_num, &adc_raw_data) < 0)
 			return -EINVAL;
 
-		return sprintf(buf, "%d", adc_raw_data);
+		return sprintf(buf, "%lu", adc_raw_data);
 
 	case AD717x_SCALE_ATTR_ID:
 		return sprintf(buf, "%f", attr_scale_val[channel->ch_num]);
@@ -417,6 +417,28 @@ static int32_t iio_ad717x_prepare_transfer(void *dev_instance,
 	num_of_active_channels = 0;
 	buf_size_updated = false;
 
+#if (DATA_CAPTURE_MODE == CONTINUOUS_DATA_CAPTURE)
+#if (ACTIVE_PLATFORM == STM32_PLATFORM)
+#if defined(USE_VIRTUAL_COM_PORT)
+	/* Added as temporary fix to the above issue.
+	 * Makes the UART Interrupt low prior than the GPIO Interrupt
+	 */
+	ret = no_os_irq_set_priority(trigger_irq_desc, IRQ_INT_ID, 0);
+	if (ret) {
+		return ret;
+	}
+
+	/* Increased the priority of usb uart interrupt as spikes were being observed with VCOM */
+	HAL_NVIC_SetPriority(OTG_HS_IRQn, 1, 1);
+#else
+	ret = no_os_irq_set_priority(trigger_irq_desc, IRQ_INT_ID, RDY_GPIO_PRIORITY);
+	if (ret) {
+		return ret;
+	}
+#endif
+#endif
+#endif
+
 	/* Enable requested channels and Disable the remaining */
 	for (ch_id = 0;
 	     ch_id < NUMBER_OF_CHANNELS; ch_id++) {
@@ -440,6 +462,16 @@ static int32_t iio_ad717x_prepare_transfer(void *dev_instance,
 	if (ret) {
 		return ret;
 	}
+
+#if (ACTIVE_PLATFORM == STM32_PLATFORM)
+	/* Clear pending Interrupt before enabling back the trigger.
+	 * Else , a spurious interrupt is observed after a legitimate interrupt,
+	 * as SPI SDO is on the same pin and is mistaken for an interrupt event */
+	ret = no_os_irq_clear_pending(trigger_irq_desc, IRQ_INT_ID);
+	if (ret) {
+		return ret;
+	}
+#endif
 
 	ret = iio_trig_enable(ad717x_hw_trig_desc);
 	if (ret) {
@@ -605,6 +637,16 @@ int32_t ad717x_trigger_handler(struct iio_device_data *iio_dev_data)
 	if (ret) {
 		return ret;
 	}
+
+#if (ACTIVE_PLATFORM == STM32_PLATFORM)
+	/* Clear pending Interrupt before enabling back the trigger.
+	 * Else , a spurious interrupt is observed after a legitimate interrupt,
+	 * as SPI SDO is on the same pin and is mistaken for an interrupt event */
+	ret = no_os_irq_clear_pending(trigger_irq_desc, IRQ_INT_ID);
+	if (ret) {
+		return ret;
+	}
+#endif
 
 	/* Enable back the external interrupts */
 	ret = iio_trig_enable(ad717x_hw_trig_desc);
