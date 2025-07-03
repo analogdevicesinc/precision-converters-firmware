@@ -36,3 +36,4 @@ Firmware Applications
    /source/projects/ltc268x_console/ltc268x_console.rst
    /source/projects/ltc2672_iio/ltc2672_iio.rst
    /source/projects/nanodac_console/nanodac_console.rst
+   /source/projects/ad7191_iio/ad7191_iio.rst
