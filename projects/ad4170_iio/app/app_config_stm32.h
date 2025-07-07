@@ -80,11 +80,11 @@
 /* Tx Trigger timer parameters */
 #define TX_TRIGGER_TIMER_ID         8 // Timer 8
 #define TX_TRIGGER_TIMER_HANDLE     htim8
-/* Tx trigger period considering a MAX SPI clock of 22.5MHz and 32 bit transfer */
-#define TX_TRIGGER_PERIOD           2250
-#define TX_TRIGGER_DUTY_RATIO       240
+/* Tx trigger period considering a MAX SPI clock of 20MHz and 32 bit transfer */
+#define TX_TRIGGER_PERIOD           700
+#define TX_TRIGGER_DUTY_RATIO       30
 #define TIMER_8_PRESCALER           0
-#define TIMER_8_CLK_DIVIDER         1
+#define TIMER_8_CLK_DIVIDER         2
 #define TIMER_CHANNEL_1				1
 #else
 /* The below configurations are specific to STM32H563ZIT6 MCU on NUCLEO-H563ZI Board. */
