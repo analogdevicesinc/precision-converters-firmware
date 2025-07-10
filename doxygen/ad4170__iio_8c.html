@@ -401,8 +401,8 @@ Variables</h2></td></tr>
 <tr class="separator:a232340bf1883f94fc832a7e3c96aebaf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac662eceda82713d996bc90ff0cc60e80" id="r_ac662eceda82713d996bc90ff0cc60e80"><td class="memItemLeft" align="right" valign="top">volatile uint32_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad4170__iio_8c.html#ac662eceda82713d996bc90ff0cc60e80">buff_start_addr</a></td></tr>
 <tr class="separator:ac662eceda82713d996bc90ff0cc60e80"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a64753f7285011cab33065a7abb2574ef" id="r_a64753f7285011cab33065a7abb2574ef"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad4170__iio_8c.html#a64753f7285011cab33065a7abb2574ef">local_buf</a> [<a class="el" href="ad405x__support_8c.html#a635a0761c3c1c63eca588709c21b0b08">MAX_LOCAL_BUF_SIZE</a>]</td></tr>
-<tr class="separator:a64753f7285011cab33065a7abb2574ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaada27e8af72d2d6df2ff5c02c253f18" id="r_aaada27e8af72d2d6df2ff5c02c253f18"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad4170__iio_8c.html#aaada27e8af72d2d6df2ff5c02c253f18">local_buf</a> [<a class="el" href="ad405x__support_8c.html#a635a0761c3c1c63eca588709c21b0b08">MAX_LOCAL_BUF_SIZE</a>+(<a class="el" href="ad2s1210__iio_8c.html#a25065cd833bcfecfb404093aed3edaca">BYTES_PER_SAMPLE</a> *AD4170_NUM_CHANNELS)]</td></tr>
+<tr class="separator:aaada27e8af72d2d6df2ff5c02c253f18"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3d8766463af09ccf4afa286778c4e587" id="r_a3d8766463af09ccf4afa286778c4e587"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structad4170__cached__reg.html">ad4170_cached_reg</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad4170__iio_8c.html#a3d8766463af09ccf4afa286778c4e587">reg_values</a> [<a class="el" href="ad4170__iio_8c.html#a37ee5c2fefc9c5216a86ad457c845c46">N_REGISTERS_CACHED</a>]</td></tr>
 <tr class="separator:a3d8766463af09ccf4afa286778c4e587"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afc88af0d25c85119c1351d0b07ee2417" id="r_afc88af0d25c85119c1351d0b07ee2417"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad4170__iio_8c.html#afc88af0d25c85119c1351d0b07ee2417">read_reg_id</a> = 0</td></tr>
@@ -456,7 +456,7 @@ Variables</h2></td></tr>
 <div class="line">    .attributes = <a class="code hl_variable" href="ad4170__iio_8c.html#afe922f396cd6132d66abb5ec5d009deb">channel_input_attributes</a>\</div>
 <div class="line">}</div>
 <div class="ttc" id="aad2s1210__iio_8c_html_add66a0274e7149971cfe86329fa94473"><div class="ttname"><a href="ad2s1210__iio_8c.html#add66a0274e7149971cfe86329fa94473">chn_scan</a></div><div class="ttdeci">struct scan_type chn_scan[RESOLVER_CHANNELS]</div><div class="ttdef"><b>Definition</b> ad2s1210_iio.c:110</div></div>
-<div class="ttc" id="aad4170__iio_8c_html_afe922f396cd6132d66abb5ec5d009deb"><div class="ttname"><a href="ad4170__iio_8c.html#afe922f396cd6132d66abb5ec5d009deb">channel_input_attributes</a></div><div class="ttdeci">struct iio_attribute channel_input_attributes[]</div><div class="ttdef"><b>Definition</b> ad4170_iio.c:2784</div></div>
+<div class="ttc" id="aad4170__iio_8c_html_afe922f396cd6132d66abb5ec5d009deb"><div class="ttname"><a href="ad4170__iio_8c.html#afe922f396cd6132d66abb5ec5d009deb">channel_input_attributes</a></div><div class="ttdeci">struct iio_attribute channel_input_attributes[]</div><div class="ttdef"><b>Definition</b> ad4170_iio.c:2791</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1379,14 +1379,14 @@ Here is the caller graph for this function:</div>
 </div><!-- fragment -->
 </div>
 </div>
-<a id="a64753f7285011cab33065a7abb2574ef" name="a64753f7285011cab33065a7abb2574ef"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a64753f7285011cab33065a7abb2574ef">&#9670;&#160;</a></span>local_buf</h2>
+<a id="aaada27e8af72d2d6df2ff5c02c253f18" name="aaada27e8af72d2d6df2ff5c02c253f18"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaada27e8af72d2d6df2ff5c02c253f18">&#9670;&#160;</a></span>local_buf</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">uint8_t local_buf[<a class="el" href="ad405x__support_8c.html#a635a0761c3c1c63eca588709c21b0b08">MAX_LOCAL_BUF_SIZE</a>]</td>
+          <td class="memname">uint8_t local_buf[<a class="el" href="ad405x__support_8c.html#a635a0761c3c1c63eca588709c21b0b08">MAX_LOCAL_BUF_SIZE</a>+(<a class="el" href="ad2s1210__iio_8c.html#a25065cd833bcfecfb404093aed3edaca">BYTES_PER_SAMPLE</a> * AD4170_NUM_CHANNELS)]</td>
         </tr>
       </table>
 </div><div class="memdoc">
