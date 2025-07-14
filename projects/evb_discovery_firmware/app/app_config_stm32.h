@@ -36,6 +36,7 @@
 #if defined (TARGET_SDP_K1)
 #define APP_UART_HANDLE     &huart5 // UART5
 #define HW_CARRIER_NAME		SDP-K1
+#define I2C_DEVICE_ID_EX	{3}
 #else
 #define APP_UART_HANDLE     &huart3 // UART3
 #define HW_CARRIER_NAME		NUCLEO-H563ZI
@@ -46,6 +47,7 @@
 /******************************************************************************/
 
 extern struct stm32_i2c_init_param stm32_i2c_extra_init_params;
+extern struct stm32_i2c_init_param stm32_i2c_extra_init_params_ex[];
 extern struct stm32_uart_init_param stm32_uart_extra_init_params;
 #if defined (TARGET_SDP_K1)
 extern UART_HandleTypeDef huart5;

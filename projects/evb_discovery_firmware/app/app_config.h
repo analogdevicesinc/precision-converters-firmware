@@ -63,8 +63,15 @@
 #elif (ACTIVE_PLATFORM == STM32_PLATFORM)
 #include "app_config_stm32.h"
 
+#if defined (TARGET_SDP_K1)
+#define ENABLE_EXTENDED_EEPROM_SEARCH
+#endif
+
 #define uart_extra_init_params	stm32_uart_extra_init_params
 #define i2c_extra_init_params stm32_i2c_extra_init_params
+#ifdef ENABLE_EXTENDED_EEPROM_SEARCH
+#define i2c_extra_init_params_ex stm32_i2c_extra_init_params_ex
+#endif
 #define i2c_ops stm32_i2c_ops
 #define uart_ops stm32_uart_ops
 #else
@@ -100,5 +107,6 @@ extern struct no_os_uart_desc *uart_desc;
 extern struct no_os_eeprom_desc *eeprom_desc;
 
 int32_t init_system(void);
+int32_t get_next_eeprom_desc(struct no_os_eeprom_desc **desc, uint32_t *idx);
 
 #endif /* _APP_CONFIG_H_ */

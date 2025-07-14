@@ -32,6 +32,13 @@ struct stm32_i2c_init_param stm32_i2c_extra_init_params = {
 	.i2c_timing = I2C_TIMING
 };
 
+/* STM32 I2C Specific parameters */
+struct stm32_i2c_init_param stm32_i2c_extra_init_params_ex[] = {
+	{
+		.i2c_timing = I2C_TIMING
+	},
+};
+
 /* STM32 UART specific parameters */
 struct stm32_uart_init_param stm32_uart_extra_init_params = {
 	.huart = APP_UART_HANDLE
@@ -40,7 +47,7 @@ struct stm32_uart_init_param stm32_uart_extra_init_params = {
 /******************************************************************************/
 /************************** Functions Declarations ****************************/
 /******************************************************************************/
-
+void SystemClock_Config(void);
 /******************************************************************************/
 /************************** Functions Definitions *****************************/
 /******************************************************************************/

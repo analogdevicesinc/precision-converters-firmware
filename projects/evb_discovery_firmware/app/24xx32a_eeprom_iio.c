@@ -181,12 +181,12 @@ static int32_t evb_discovery_iio_dev_init(struct iio_device **desc)
 
 /**
  * @brief	Initialize the IIO interface
- * @return	none
  * @return	0 in case of success, negative error code otherwise
  */
 int32_t evb_discovery_iio_init(void)
 {
 	int32_t init_status;
+	uint32_t idx = 0;
 
 	/* IIO device descriptors */
 	struct iio_device *evb_discovery_iio_dev[NUM_OF_IIO_DEVICES] = {
@@ -217,6 +217,29 @@ int32_t evb_discovery_iio_init(void)
 	if (init_status) {
 		return init_status;
 	}
+
+#if defined(ENABLE_EXTENDED_EEPROM_SEARCH)
+	if (!is_eeprom_valid_dev_addr_detected()) {
+
+		init_status = get_next_eeprom_desc(&eeprom_desc, &idx);
+		if (init_status) {
+			return init_status;
+		}
+
+		while (eeprom_desc && !hw_mezzanine_is_valid) {
+			/* Read context attributes */
+			init_status = get_iio_context_attributes(&iio_init_params.ctx_attrs,
+					&iio_init_params.nb_ctx_attr,
+					eeprom_desc,
+					NULL,
+					STR(HW_CARRIER_NAME),
+					&hw_mezzanine_is_valid);
+			if (init_status) {
+				return init_status;
+			}
+		}
+	}
+#endif
 
 #if defined(ENABLE_EVB_EEPROM_IIO_DEV)
 	if (is_eeprom_valid_dev_addr_detected()) {
