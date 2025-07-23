@@ -4,11 +4,12 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta content="Pocket lab is a portable display-based embedded solution created primarily for demoing the ADCs functionality. Pocket Lab makes use of STM32F769NI-Discovery board from ST microelectronics and 3rd party library LVGL. The demo functionality was primarily focused on device configuration, register memory access, data capture and FFT analysis. This documentation describes various components of pocket lab application in subsequent sections." name="description" />
 
     <title>Introduction &#8212; Precision Converters Firmware  documentation</title>
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8e8a900e" />
-    <link rel="stylesheet" type="text/css" href="../../_static/app.min.css?v=25ed7d6a" />
-    <script defer="" src="../../_static/app.umd.js?v=80d097f0"></script>
+    <link rel="stylesheet" type="text/css" href="../../_static/app.min.css?v=33d8ff8e" />
+    <script async="async" src="../../_static/app.umd.js?v=cd58f2cb"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
    
@@ -56,7 +57,7 @@
     </div>
     <div id="right">
       <span>
-        <a id="logo-org" href="https://analog.com"></a>
+        <a id="logo-org" href="https://analog.com" aria-label="Analog Devices Inc. landing page"></a>
         <div class="vertical-divider"></div>
         <label id="show-repotoc" for="input-show-repotoc" title="Show/hide docs" tabindex="0">Docs</label>
         <a id="logo" href="../../index.html">
@@ -180,7 +181,7 @@ Content on this topic
   <section id="introduction">
 <h1>Introduction<a class="headerlink" href="#introduction" title="Link to this heading"></a></h1>
 <p>Pocket lab is a portable display-based embedded solution created primarily for demoing the ADCs functionality.
-Pocket Lab makes use of <a class="reference external" href="https://www.st.com/en/microcontrollers-microprocessors/stm32f769ni.html">STM32F769NI-Discovery board</a> from ST microelectronics and 3rd party library LVGL.
+Pocket Lab makes use of <a class="icon link reference external" href="https://www.st.com/en/microcontrollers-microprocessors/stm32f769ni.html" target="_blank">STM32F769NI-Discovery board</a> from ST microelectronics and 3rd party library LVGL.
 The demo functionality was primarily focused on device configuration, register memory access, data capture and FFT analysis.
 This documentation describes various components of pocket lab application in subsequent sections.</p>
 </section>
@@ -193,12 +194,12 @@ firmware applications.</p>
 </section>
 <section id="pocketlab-library">
 <h1>Pocketlab Library<a class="headerlink" href="#pocketlab-library" title="Link to this heading"></a></h1>
-<p>Source Code: <a class="reference external" href="https://github.com/analogdevicesinc/precision-converters-library/tree/main/pocket_lab">Precision Converters Library</a>
-Doxygen: <a class="reference external" href="https://analogdevicesinc.github.io/precision-converters-firmware/doxygen/dir_e754d0f20ca3746dccad9be70ecb80f9.html">Doxygen for Pocket Lab</a></p>
+<p>Source Code: <a class="icon link reference external" href="https://github.com/analogdevicesinc/precision-converters-library/tree/main/pocket_lab" target="_blank">Precision Converters Library</a>
+Doxygen: <a class="icon link reference external" href="https://analogdevicesinc.github.io/precision-converters-firmware/doxygen/dir_e754d0f20ca3746dccad9be70ecb80f9.html" target="_blank">Doxygen for Pocket Lab</a></p>
 <p>Pocket lab library makes use of ‘lvgl (Light versatile graphics library)’. LVGL is primarily targeted for the embedded display-based applications. LVGL is an abstracted library, which supports multiple display boards from the different vendors. So, it’s vendors responsibility to add lvgl support for their display board.
-This version of pocket lab library is based on the latest development version of lvgl library. The source code link is: <a class="reference external" href="https://github.com/lvgl/lvgl/tree/7506b61527195fdc96803fe94f5ba141b6e5a9e8">https://github.com/lvgl/lvgl/tree/7506b61527195fdc96803fe94f5ba141b6e5a9e8</a></p>
+This version of pocket lab library is based on the latest development version of lvgl library. The source code link is: <a class="icon link reference external" href="https://github.com/lvgl/lvgl/tree/7506b61527195fdc96803fe94f5ba141b6e5a9e8" target="_blank">https://github.com/lvgl/lvgl/tree/7506b61527195fdc96803fe94f5ba141b6e5a9e8</a></p>
 <p>LVGL uses vendor created portable library to handle the display and touchscreen events. Current version of pocket lab library is targeted for the STM32F769NI Discovery board from ST microelectronics.
-The lvgl portable library for the board used is present here: <a class="reference external" href="https://github.com/lvgl/lv_port_stm32f769_disco/tree/4f26b19d42816f10fb8e51a968b2ec924c1e75ba">https://github.com/lvgl/lv_port_stm32f769_disco/tree/4f26b19d42816f10fb8e51a968b2ec924c1e75ba</a></p>
+The lvgl portable library for the board used is present here: <a class="icon link reference external" href="https://github.com/lvgl/lv_port_stm32f769_disco/tree/4f26b19d42816f10fb8e51a968b2ec924c1e75ba" target="_blank">https://github.com/lvgl/lv_port_stm32f769_disco/tree/4f26b19d42816f10fb8e51a968b2ec924c1e75ba</a></p>
 <p>Pocket Lab library mainly contains 3 source modules:</p>
 <ul class="simple">
 <li><p>pl_gui_views.c/.h</p></li>
