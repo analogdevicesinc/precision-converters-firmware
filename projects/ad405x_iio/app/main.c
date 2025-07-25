@@ -16,6 +16,7 @@
 #include <stdio.h>
 #include <stdint.h>
 
+#include "no_os_error.h"
 #include "ad405x_iio.h"
 
 /******************************************************************************/
@@ -29,6 +30,7 @@
 /******************************************************************************/
 /************************** Functions Declaration *****************************/
 /******************************************************************************/
+int32_t init_system(void);
 
 /******************************************************************************/
 /************************** Functions Definition ******************************/
@@ -39,9 +41,14 @@
  */
 int main(void)
 {
+	if (init_system()) {
+		printf("System Initialization failure!!\r\n");
+		return -ENODEV;
+	}
 	/* Initialize the AD405X IIO interface */
 	if (iio_ad405x_initialize()) {
 		printf("IIO initialization failure!!\r\n");
+		return -ENODEV;
 	}
 
 	while (1) {

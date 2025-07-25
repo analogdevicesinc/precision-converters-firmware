@@ -29,6 +29,7 @@
 #include "no_os_alloc.h"
 #include "no_os_util.h"
 #include "iio_trigger.h"
+#include "version.h"
 
 /******** Forward declaration of getter/setter functions ********/
 static int iio_ad405x_attr_get(void *device,
@@ -73,10 +74,14 @@ static int iio_ad405x_attr_available_set(void *device,
 }
 
 /* ADC data buffer size */
-#if defined(USE_SDRAM)
-#define adc_data_buffer				SDRAM_START_ADDRESS
+#if defined(SDRAM_SUPPORT_AVAILABLE)
+#define adc_data_buffer				(int8_t *)SDRAM_START_ADDRESS
 #else
-static int8_t adc_data_buffer[DATA_BUFFER_SIZE];
+/* I3C generics require an extra sample to be read to start data conversion.
+ * This dummy data is included in the adc_data_buffer for DMA to easily
+ * accomodate the requirement.
+ */
+static int8_t adc_data_buffer[DATA_BUFFER_SIZE + (DUMMY_DATA_COUNT * 4)];
 #endif
 
 /*	Number of IIO devices */
@@ -88,6 +93,8 @@ static int8_t adc_data_buffer[DATA_BUFFER_SIZE];
 /* Device names */
 #define DEV_AD4050	"ad4050"
 #define DEV_AD4052	"ad4052"
+#define DEV_AD4060	"ad4060"
+#define DEV_AD4062	"ad4062"
 
 /* Factor multiplied to calculated conversion time to ensure proper data capture */
 #define COMPENSATION_FACTOR	1.1
@@ -96,9 +103,6 @@ static int8_t adc_data_buffer[DATA_BUFFER_SIZE];
 #define CONVERSION_TIME_NS           250
 
 #define MAX_SAMPLING_PERIOD_NSEC		2500000
-
-/* Converts pwm period in nanoseconds to sampling frequency in samples per second */
-#define PWM_PERIOD_TO_FREQUENCY(x)       (1000000000.0 / x)
 
 /******************************************************************************/
 /*************************** Types Declarations *******************************/
@@ -123,9 +127,6 @@ static struct iio_init_param iio_init_params = {
 /* Variable to store the sampling rate */
 static uint32_t ad405x_sample_rate;
 
-/* EVB HW validation status */
-static bool hw_mezzanine_is_valid;
-
 /* Selected operating mode. Default is sample mode */
 enum ad405x_operation_mode ad405x_operating_mode = AD405X_ADC_MODE_OP;
 
@@ -137,16 +138,6 @@ volatile bool data_ready = false;
 
 /* Variable to store start of buffer address */
 volatile uint8_t *buff_start_addr;
-
-/* Flag to indicate if size of the buffer is updated according to requested
- * number of samples for the multi-channel IIO buffer data alignment */
-static volatile bool buf_size_updated = false;
-
-/* Flag to indicate if DMA has been configured for windowed capture */
-volatile bool dma_config_updated = false;
-
-/* Variable to store the data sampling time period */
-static volatile uint32_t pwm_period;
 
 /* ad405x attribute unique IDs */
 enum ad405x_attribute_ids {
@@ -173,10 +164,10 @@ static struct scan_type ad405x_iio_scan_type = {
 
 /* Operating mode range values string representation */
 static char *ad405x_op_mode_str[] = {
-	"config_mode",
 	"adc_mode",
-	"averaging_mode",
 	"burst_averaging_mode",
+	"averaging_mode",
+	"config_mode",
 };
 
 /* Averaging filter length values string representation */
@@ -322,19 +313,27 @@ static struct ad405x_support_desc *iio_ad405x_support_desc;
 /******************************************************************************/
 /*!
  * @brief	Function to configure pwm period
- * @param	sampling_pwm_period[in] - Time period of sampling PWM.
+ * @param	requested_pwm_period[in] - Time period of sampling PWM.
  * @return	0 in case of success, negative error code otherwise
  */
-static int configure_pwm_period(uint32_t sampling_pwm_period)
+static int configure_pwm_period(uint32_t requested_pwm_period)
 {
 	int ret;
 
+#ifdef SPI_SUPPORT_AVAILABLE
 	if (ad405x_interface_mode == SPI_DMA) {
-		spi_dma_pwm_init_params.period_ns = CONV_TRIGGER_PERIOD_NSEC(
-				ad405x_sample_rate);
+		/* Updated the init params to keep sync when system_config is called */
+		spi_dma_pwm_init_params.period_ns = requested_pwm_period;
+		cs_init_params.period_ns = requested_pwm_period;
 
-		cs_init_params.period_ns = CONV_TRIGGER_PERIOD_NSEC(ad405x_sample_rate);
-		ret = init_pwm();
+		ret = no_os_pwm_set_period(pwm_desc,
+					   requested_pwm_period);
+		if (ret) {
+			return ret;
+		}
+
+		ret = no_os_pwm_set_period(cs_pwm_desc,
+					   requested_pwm_period);
 		if (ret) {
 			return ret;
 		}
@@ -346,17 +345,17 @@ static int configure_pwm_period(uint32_t sampling_pwm_period)
 		}
 #endif
 
-		spi_intr_pwm_init_params.period_ns = CONV_TRIGGER_PERIOD_NSEC(
-				ad405x_sample_rate);
+		/* Updated the init params to keep sync when system_config is called */
+		spi_intr_pwm_init_params.period_ns = requested_pwm_period;
 
 		ret = no_os_pwm_set_period(pwm_desc,
-					   sampling_pwm_period);
+					   requested_pwm_period);
 		if (ret) {
 			return ret;
 		}
 
 		ret = no_os_pwm_set_duty_cycle(pwm_desc,
-					       CONV_TRIGGER_DUTY_CYCLE_NSEC(sampling_pwm_period));
+					       CONV_TRIGGER_DUTY_CYCLE_NSEC(requested_pwm_period));
 		if (ret) {
 			return ret;
 		}
@@ -368,6 +367,39 @@ static int configure_pwm_period(uint32_t sampling_pwm_period)
 		}
 #endif
 	}
+#endif
+
+#ifdef I3C_SUPPORT_AVAILABLE
+	if ((ad405x_interface_mode == I3C_INTR) || (ad405x_interface_mode == I3C_DMA)) {
+
+		if (ad405x_interface_mode == I3C_INTR) {
+			i3c_intr_pwm_init_params.period_ns = requested_pwm_period;
+		} else {
+			i3c_dma_pwm_init_params.period_ns = requested_pwm_period;
+		}
+		ret = no_os_pwm_set_period(pwm_desc, requested_pwm_period);
+		if (ret) {
+			return ret;
+		}
+
+		/*
+		 * The duty cycle is calculated from the end to provide a delay factor initially
+		 * for the dummy conversion to complete. This becomes necessary in case of
+		 * burst averaging since the conversion time is significantly larger when compared
+		 * to sample mode.
+		 *
+		 * Pulse shall look like:- _____| |
+		 */
+		ret = no_os_pwm_set_duty_cycle(pwm_desc,
+					       requested_pwm_period - CONV_TRIGGER_DUTY_CYCLE_NSEC(requested_pwm_period));
+		if (ret) {
+			return ret;
+		}
+	}
+#endif
+	/* Update the ADC parameter when success */
+	ad405x_sample_rate = PWM_PERIOD_TO_FREQUENCY(requested_pwm_period);
+
 	return 0;
 }
 
@@ -414,10 +446,23 @@ static int calc_max_pwm_period(enum ad405x_attribute_ids attr_id,
 				    avg_length + 1) - 1) * (1000000 / ad405x_burst_sample_rates[fosc])
 			       + CONVERSION_TIME_NS) * COMPENSATION_FACTOR);
 
-	temp_pwm_period = no_os_max(cnv_time + MIN_DATA_CAPTURE_TIME_NS +
-				    MIN_INTERRUPT_OVER_HEAD, CONV_TRIGGER_PERIOD_NSEC(SAMPLING_RATE_SPI_INTR));
-
-	ad405x_sample_rate = PWM_PERIOD_TO_FREQUENCY(temp_pwm_period);
+	switch (ad405x_interface_mode) {
+	case SPI_INTR:
+		temp_pwm_period = no_os_max(cnv_time + MIN_DATA_CAPTURE_TIME_NS +
+					    MIN_INTERRUPT_OVER_HEAD, PWM_FREQUENCY_TO_PERIOD(SAMPLING_RATE_SPI_INTR));
+		break;
+	case I3C_DMA:
+		temp_pwm_period = no_os_max(cnv_time + MIN_DATA_CAPTURE_TIME_NS +
+					    MIN_INTERRUPT_OVER_HEAD, PWM_FREQUENCY_TO_PERIOD(SAMPLING_RATE_I3C_DMA));
+		break;
+	case I3C_INTR:
+		temp_pwm_period = no_os_max(cnv_time + MIN_DATA_CAPTURE_TIME_NS +
+					    MIN_INTERRUPT_OVER_HEAD, PWM_FREQUENCY_TO_PERIOD(SAMPLING_RATE_I3C_INTR));
+		break;
+	case SPI_DMA:
+	default:
+		return 0;
+	}
 
 	if (configure_pwm) {
 		return configure_pwm_period(temp_pwm_period);
@@ -443,10 +488,16 @@ static int calc_closest_burst_attr_val(enum ad405x_attribute_ids attr_id,
 	switch (attr_id) {
 	case ADC_FILTER_LENGTH:
 		lower_bound = AD405X_LENGTH_2;
-		if (p_ad405x_dev->active_device == ID_AD4050) {
+		switch (p_ad405x_dev->dev_type) {
+		case ID_AD4050:
+		case ID_AD4060:
 			upper_bound = AD405X_LENGTH_256;
-		} else {
+			break;
+		case ID_AD4052:
+		case ID_AD4062:
+		default:
 			upper_bound = AD405X_LENGTH_4096;
+			break;
 		}
 		break;
 
@@ -496,32 +547,52 @@ static int iio_ad405x_attr_get(void *device,
 	int32_t adc_raw_data;
 	static int32_t offset = 0;
 	float scale;
+	static volatile uint32_t pwm_period;
 	uint8_t reg_data;
 	uint32_t value;
+	struct no_os_gpio_desc **pp_gpio_cnv = &p_ad405x_dev->extra.spi_extra.gpio_cnv;
 
 	switch (priv) {
 	case ADC_RAW:
-		ret = no_os_gpio_remove(p_ad405x_dev->gpio_cnv);
-		if (ret) {
-			return ret;
-		}
+		if (p_ad405x_dev->comm_type == AD405X_SPI_COMM) {
+			ret = no_os_gpio_remove(*pp_gpio_cnv);
+			if (ret) {
+				return ret;
+			}
 
-		ret = no_os_gpio_get(&p_ad405x_dev->gpio_cnv, ad405x_init_params.gpio_cnv);
-		if (ret) {
-			return ret;
-		}
+			ret = no_os_gpio_get(pp_gpio_cnv, ad405x_init_params.gpio_cnv);
+			if (ret) {
+				return ret;
+			}
 
-		ret = no_os_gpio_direction_output(p_ad405x_dev->gpio_cnv, NO_OS_GPIO_LOW);
-		if (ret) {
-			return ret;
+			ret = no_os_gpio_direction_output(*pp_gpio_cnv, NO_OS_GPIO_LOW);
+			if (ret) {
+				return ret;
+			}
 		}
 
 		ret = ad405x_set_operation_mode(p_ad405x_dev, ad405x_operating_mode);
 		if (ret) {
 			return ret;
 		}
-
-		ret = ad405x_read_val(p_ad405x_dev, &adc_raw_data);
+		/*
+		 * A read from the data register triggers a new conversion.
+		 * So the 1st data is read to start a fresh conversion and get
+		 * the updated data.
+		 */
+		if ((ad405x_interface_mode == I3C_DMA) || (ad405x_interface_mode == I3C_INTR)) {
+			ret = ad405x_get_adc(p_ad405x_dev, &adc_raw_data);
+			if (ret) {
+				return ret;
+			}
+			do {
+				ret = no_os_gpio_get_value(p_ad405x_dev->gpio_gpio1, (uint8_t *)&value);
+				if (ret) {
+					return ret;
+				}
+			} while ((*(uint8_t *)&value) == NO_OS_GPIO_HIGH);
+		}
+		ret = ad405x_get_adc(p_ad405x_dev, &adc_raw_data);
 		if (ret) {
 			return ret;
 		}
@@ -554,14 +625,14 @@ static int iio_ad405x_attr_get(void *device,
 		return sprintf(buf, "%s", ad405x_burst_sample_rates_str[p_ad405x_dev->rate]);
 
 	case ADC_FILTER_LENGTH:
-		ret = ad405x_read(p_ad405x_dev, AD405X_REG_AVG_CONFIG, &reg_data);
+		ret = ad405x_read(p_ad405x_dev, AD405X_REG_AVG_CONFIG, &reg_data, 1);
 		if (ret) {
 			return ret;
 		}
 
 		reg_data &= AD405X_AVG_WIN_LEN_MSK;
 		if (reg_data != p_ad405x_dev->filter_length) {
-			ret = ad405x_set_averaging_filter_length(p_ad405x_dev, reg_data);
+			ret = ad405x_set_avg_filter_length(p_ad405x_dev, reg_data);
 			if (ret) {
 				return ret;
 			}
@@ -614,6 +685,7 @@ static int iio_ad405x_attr_set(void *device,
 	enum ad405x_sample_rate burst_rate;
 	uint32_t requested_sampling_period;
 	uint32_t requested_sampling_rate;
+	uint32_t max_burst_avg_sampling_period;
 	int32_t ret;
 	uint8_t value = 0;
 
@@ -626,8 +698,8 @@ static int iio_ad405x_attr_set(void *device,
 		return len;
 
 	case ADC_OPERATING_MODE :
-		for (op_mode = AD405X_CONFIG_MODE_OP;
-		     op_mode <= AD405X_BURST_AVERAGING_MODE_OP;
+		for (op_mode = AD405X_ADC_MODE_OP;
+		     op_mode <= AD405X_CONFIG_MODE_OP;
 		     op_mode++) {
 			if (!strncmp(buf, ad405x_op_mode_str[op_mode], strlen(buf))) {
 				value = op_mode;
@@ -642,13 +714,16 @@ static int iio_ad405x_attr_set(void *device,
 
 		ad405x_operating_mode = value;
 
+#ifdef SPI_SUPPORT_AVAILABLE
 		/* Choose SPI DMA interface mode when in sample mode */
 		if (ad405x_operating_mode == AD405X_ADC_MODE_OP) {
 			ad405x_interface_mode = SPI_DMA;
 		} else {
 			ad405x_interface_mode = SPI_INTR;
 		}
-
+#else
+		ad405x_interface_mode = I3C_DMA;
+#endif
 		return len;
 
 	case ADC_BURST_SAMPLE_RATE:
@@ -691,7 +766,7 @@ static int iio_ad405x_attr_set(void *device,
 			}
 		}
 
-		ret = ad405x_set_averaging_filter_length(p_ad405x_dev, value);
+		ret = ad405x_set_avg_filter_length(p_ad405x_dev, value);
 		if (ret) {
 			return ret;
 		}
@@ -703,33 +778,74 @@ static int iio_ad405x_attr_set(void *device,
 		if (requested_sampling_rate == 0) {
 			return -EINVAL;
 		}
-		requested_sampling_period = CONV_TRIGGER_PERIOD_NSEC(requested_sampling_rate);
 
 		if (ad405x_operating_mode == AD405X_ADC_MODE_OP) {
-			ad405x_sample_rate = no_os_str_to_uint32(buf);
-			if (((ad405x_interface_mode == SPI_DMA) &
-			     (ad405x_sample_rate > SAMPLING_RATE_SPI_DMA)) ||
-			    ((ad405x_interface_mode == SPI_INTR) &
-			     (ad405x_sample_rate > SAMPLING_RATE_SPI_INTR)) ||
-			    !ad405x_sample_rate) {
-				return len;
-			}
-		} else if (ad405x_operating_mode == AD405X_BURST_AVERAGING_MODE_OP) {
-			if (calc_max_pwm_period(ADC_SAMPLE_RATE,
-						0,
-						false) > requested_sampling_period) {
-				return -EINVAL;
-			}
-			ad405x_sample_rate = no_os_str_to_uint32(buf);
-		} else {
-			ad405x_sample_rate = no_os_str_to_uint32(buf);
-			if (ad405x_sample_rate > (SAMPLING_RATE_SPI_INTR / (1 <<
-						  (p_ad405x_dev->filter_length + 1)))) {
+			switch (ad405x_interface_mode) {
+			case SPI_DMA:
+				if (requested_sampling_rate > SAMPLING_RATE_SPI_DMA) {
+					requested_sampling_rate = SAMPLING_RATE_SPI_DMA;
+				}
+				break;
+			case SPI_INTR:
+				if (requested_sampling_rate > SAMPLING_RATE_SPI_INTR) {
+					requested_sampling_rate = SAMPLING_RATE_SPI_INTR;
+				}
+				break;
+			case I3C_DMA:
+				if (requested_sampling_rate > SAMPLING_RATE_I3C_DMA) {
+					requested_sampling_rate = SAMPLING_RATE_I3C_DMA;
+				}
+				break;
+			case I3C_INTR:
+				if (requested_sampling_rate > SAMPLING_RATE_I3C_INTR) {
+					requested_sampling_rate = SAMPLING_RATE_I3C_INTR;
+				}
+				break;
+			default:
 				return len;
 			}
 
+			requested_sampling_period = PWM_FREQUENCY_TO_PERIOD(requested_sampling_rate);
+		} else if (ad405x_operating_mode == AD405X_BURST_AVERAGING_MODE_OP) {
+			max_burst_avg_sampling_period = calc_max_pwm_period(ADC_SAMPLE_RATE,
+							0,
+							false);
+			if (!max_burst_avg_sampling_period) {
+				return len;
+			}
+			if (requested_sampling_rate > PWM_PERIOD_TO_FREQUENCY(
+				    max_burst_avg_sampling_period)) {
+				requested_sampling_period = max_burst_avg_sampling_period;
+			} else {
+				requested_sampling_period = PWM_FREQUENCY_TO_PERIOD(requested_sampling_rate);
+			}
+		} else {
+			switch (ad405x_interface_mode) {
+			case SPI_INTR:
+				if (ad405x_sample_rate > (SAMPLING_RATE_SPI_INTR / (1 <<
+							  (p_ad405x_dev->filter_length + 1)))) {
+					requested_sampling_rate = SAMPLING_RATE_SPI_INTR;
+				}
+				break;
+			case I3C_DMA:
+				if (ad405x_sample_rate > (SAMPLING_RATE_I3C_DMA / (1 <<
+							  (p_ad405x_dev->filter_length + 1)))) {
+					requested_sampling_rate = SAMPLING_RATE_I3C_DMA;
+				}
+				break;
+			case I3C_INTR:
+				if (ad405x_sample_rate > (SAMPLING_RATE_I3C_INTR / (1 <<
+							  (p_ad405x_dev->filter_length + 1)))) {
+					requested_sampling_rate = SAMPLING_RATE_I3C_INTR;
+				}
+				break;
+			case SPI_DMA:
+			default:
+				return len;
+			}
+
+			requested_sampling_period = PWM_FREQUENCY_TO_PERIOD(requested_sampling_rate);
 			requested_sampling_period /= (1 << (p_ad405x_dev->filter_length + 1));
-			ad405x_sample_rate = PWM_PERIOD_TO_FREQUENCY(requested_sampling_period);
 		}
 
 		ret = configure_pwm_period(requested_sampling_period);
@@ -769,8 +885,8 @@ static int iio_ad405x_attr_available_get(void *device,
 	case ADC_OPERATING_MODE :
 		return sprintf(buf,
 			       "%s %s",
-			       ad405x_op_mode_str[1],
-			       ad405x_op_mode_str[3]);
+			       ad405x_op_mode_str[0],
+			       ad405x_op_mode_str[1]);
 
 	case ADC_BURST_SAMPLE_RATE:
 		return sprintf(buf,
@@ -793,7 +909,8 @@ static int iio_ad405x_attr_available_get(void *device,
 			       ad405x_burst_sample_rates_str[15]);
 
 	case ADC_FILTER_LENGTH:
-		if (p_ad405x_dev->active_device == ID_AD4050) {
+		if ((p_ad405x_dev->dev_type == ID_AD4050)
+		    || (p_ad405x_dev->dev_type == ID_AD4060)) {
 			return sprintf(buf,
 				       "%s %s %s %s %s %s %s %s",
 				       ad405x_avg_filter_str[0],
@@ -914,15 +1031,19 @@ static int32_t iio_ad405x_debug_reg_read(void *dev,
 		uint32_t *readval)
 {
 	int32_t ret;
+	uint8_t reg_val;
 
 	if (!dev || !readval) {
 		return -EINVAL;
 	}
 
-	ret = ad405x_read(p_ad405x_dev, (uint8_t)reg, (uint8_t *)readval);
+	/* Creating a new uint8_t helps support both endianness */
+	ret = ad405x_read(p_ad405x_dev, (uint8_t)reg, &reg_val, 1);
 	if (NO_OS_IS_ERR_VALUE(ret)) {
 		return ret;
 	}
+
+	*readval = reg_val;
 
 	return 0;
 }
@@ -939,12 +1060,15 @@ static int32_t iio_ad405x_debug_reg_write(void *dev,
 		uint32_t writeval)
 {
 	int32_t ret;
+	uint8_t val;
 
 	if (!dev) {
 		return -EINVAL;
 	}
 
-	ret = ad405x_write(p_ad405x_dev, reg, writeval);
+	/* Creating a new uint8_t helps support both endianness */
+	val = (uint8_t) writeval;
+	ret = ad405x_write(p_ad405x_dev, (uint8_t) reg, &val, 1);
 	if (NO_OS_IS_ERR_VALUE(ret)) {
 		return ret;
 	}
@@ -953,15 +1077,43 @@ static int32_t iio_ad405x_debug_reg_write(void *dev,
 }
 
 /**
+ * @brief Verify if the platform supports the device.
+ * @param dev_type[in] - The device type
+ * @return 0 in case of success, negative error code otherwise.
+ */
+static int32_t ad405x_validate_platform(enum ad405x_type dev_type)
+{
+	switch (dev_type) {
+#ifdef SPI_SUPPORT_AVAILABLE
+	case ID_AD4050 ... ID_AD4052:
+		return 0;
+#endif
+#ifdef I3C_SUPPORT_AVAILABLE
+	case ID_AD4060 ... ID_AD4062:
+		return 0;
+#endif
+	default:
+		return -EINVAL;
+	}
+
+	return -EINVAL;
+}
+
+/**
  * @brief Assign device name and resolution
  * @param dev_type[in] - The device type
  * @param dev_name[out] - The device name
  * @return 0 in case of success, negative error code otherwise.
  */
-static int32_t ad405x_assign_device(enum ad405x_device_type dev_type,
-				    char** dev_name)
+static int32_t ad405x_assign_device(uint8_t dev_type,
+				    char **dev_name)
 {
-	ad405x_init_params.active_device = dev_type;
+	int ret;
+
+	ret = ad405x_validate_platform((enum ad405x_type) dev_type);
+	if (ret) {
+		return -ENOTSUP;
+	}
 
 	switch (dev_type) {
 	case ID_AD4050:
@@ -986,8 +1138,31 @@ static int32_t ad405x_assign_device(enum ad405x_device_type dev_type,
 		}
 		break;
 
-	default:
-		return -EINVAL;
+	case ID_AD4060:
+		*dev_name = DEV_AD4060;
+		ad405x_init_params.comm_init.i3c_init->pid = AD405X_I3C_GEN_PID(0xA,
+				AD405X_INSTANCE_ID);
+		if (ad405x_operating_mode == AD405X_ADC_MODE_OP) {
+			resolution = AD4060_SAMPLE_RES;
+			storage_bits = STORAGE_BITS_SAMPLE;
+		} else {
+			resolution = AD4060_AVG_RES;
+			storage_bits = STORAGE_BITS_AVG;
+		}
+		break;
+
+	case ID_AD4062:
+		*dev_name = DEV_AD4062;
+		ad405x_init_params.comm_init.i3c_init->pid = AD405X_I3C_GEN_PID(0xC,
+				AD405X_INSTANCE_ID);
+		if (ad405x_operating_mode == AD405X_ADC_MODE_OP) {
+			resolution = AD4062_SAMPLE_RES;
+			storage_bits = STORAGE_BITS_SAMPLE;
+		} else {
+			resolution = AD4062_AVG_RES;
+			storage_bits = STORAGE_BITS_AVG;
+		}
+		break;
 	}
 
 	bytes_per_sample = BYTES_PER_SAMPLE(storage_bits);
@@ -997,6 +1172,37 @@ static int32_t ad405x_assign_device(enum ad405x_device_type dev_type,
 #else
 	adc_max_count = (uint32_t)(1 << (resolution - 1));
 #endif
+
+	switch (dev_type) {
+	case ID_AD4050 ... ID_AD4052:
+		/* Choose SPI DMA interface mode when in sample mode */
+		if (ad405x_operating_mode == AD405X_ADC_MODE_OP) {
+			ad405x_interface_mode = SPI_DMA;
+		} else {
+			ad405x_interface_mode = SPI_INTR;
+		}
+		break;
+	case ID_AD4060 ... ID_AD4062:
+		ad405x_interface_mode = I3C_DMA;
+		break;
+	}
+
+	switch (ad405x_interface_mode) {
+	case SPI_DMA:
+		ad405x_sample_rate = SAMPLING_RATE_SPI_DMA;
+		break;
+	case SPI_INTR:
+		ad405x_sample_rate = SAMPLING_RATE_SPI_INTR;
+		break;
+	case I3C_DMA:
+		ad405x_sample_rate = SAMPLING_RATE_I3C_DMA;
+		break;
+	case I3C_INTR:
+		ad405x_sample_rate = SAMPLING_RATE_I3C_INTR;
+		break;
+	}
+
+	ad405x_init_params.dev_type = (enum ad405x_type) dev_type;
 
 	iio_ad405x_support_desc = (struct ad405x_support_desc *) support_desc[dev_type];
 	if (!iio_ad405x_support_desc)
@@ -1020,11 +1226,15 @@ static int32_t iio_ad405x_init(struct iio_device **desc)
 		return -EINVAL;
 	}
 
-	/* Resolution is assigned to the IIO channel */
 	iio_ad405x_channels[0].scan_type->realbits = resolution;
 
-	/* Storage bits is assigned to the IIO channel */
 	iio_ad405x_channels[0].scan_type->storagebits = storage_bits;
+
+	if (ad405x_interface_mode == I3C_DMA) {
+		iio_ad405x_channels[0].scan_type->is_big_endian = true;
+	} else {
+		iio_ad405x_channels[0].scan_type->is_big_endian = false;
+	}
 
 	iio_ad405x_inst->num_ch = NO_OS_ARRAY_SIZE(iio_ad405x_channels);
 	iio_ad405x_inst->channels = iio_ad405x_channels;
@@ -1067,14 +1277,22 @@ static int32_t ad405x_iio_trigger_param_init(struct iio_hw_trig **desc)
 		return -ENOMEM;
 	}
 
-	ad405x_hw_trig_init_params.irq_id = TRIGGER_INT_ID;
 	ad405x_hw_trig_init_params.name = AD405X_IIO_TRIGGER_NAME;
 	ad405x_hw_trig_init_params.irq_trig_lvl = NO_OS_IRQ_EDGE_FALLING;
 	ad405x_hw_trig_init_params.irq_ctrl = trigger_irq_desc;
 	ad405x_hw_trig_init_params.iio_desc = p_ad405x_iio_desc;
-	ad405x_hw_trig_init_params.cb_info.event = NO_OS_EVT_GPIO;
-	ad405x_hw_trig_init_params.cb_info.peripheral = NO_OS_GPIO_IRQ;
-	ad405x_hw_trig_init_params.cb_info.handle = trigger_gpio_handle;
+	if (ad405x_interface_mode == SPI_INTR) {
+		ad405x_hw_trig_init_params.irq_id = TRIGGER_INT_ID_SPI_INTR;
+		ad405x_hw_trig_init_params.cb_info.event = NO_OS_EVT_GPIO;
+		ad405x_hw_trig_init_params.cb_info.peripheral = NO_OS_GPIO_IRQ;
+		ad405x_hw_trig_init_params.cb_info.handle = IIO_TRIGGER_HANDLE_SPI;
+	} else if (ad405x_interface_mode == I3C_INTR) {
+		ad405x_hw_trig_init_params.irq_id = TRIGGER_INT_ID_I3C_INTR;
+		ad405x_hw_trig_init_params.irq_ctrl = pwm_irq_desc;
+		ad405x_hw_trig_init_params.cb_info.event = NO_OS_EVT_LPTIM_PWM_PULSE_FINISHED;
+		ad405x_hw_trig_init_params.cb_info.peripheral = NO_OS_LPTIM_IRQ;
+		ad405x_hw_trig_init_params.cb_info.handle = IIO_TRIGGER_HANDLE_I3C;
+	}
 
 	/* Initialize hardware trigger */
 	ret = iio_hw_trig_init(&hw_trig_desc, &ad405x_hw_trig_init_params);
@@ -1141,10 +1359,22 @@ int iio_params_deinit(void)
 int32_t iio_ad405x_initialize(void)
 {
 	int32_t init_status;
-	enum ad405x_device_type dev_type;
+	uint8_t dev_type;
 	uint8_t indx;
-	/* Flag to control the execution of system initialization */
-	static bool entered = false;
+	/* EVB HW validation status */
+	bool hw_mezzanine_is_valid;
+
+	struct no_os_eeprom_desc *eeprom_desc;
+
+	/* Read context attributes */
+	static const char *mezzanine_names[] = {
+		"EVAL-AD4050-ARDZ",
+		"EVAL-AD4052-ARDZ",
+		"EVAL-AD4056-ARDZ",
+		"EVAL-AD4058-ARDZ",
+		"EVAL-AD4060-ARDZ",
+		"EVAL-AD4062-ARDZ"
+	};
 
 #if	(APP_CAPTURE_MODE == CONTINUOUS_DATA_CAPTURE)
 	static struct iio_trigger ad405x_iio_trig_desc = {
@@ -1159,44 +1389,29 @@ int32_t iio_ad405x_initialize(void)
 	};
 #endif
 
-#if (APP_CAPTURE_MODE == CONTINUOUS_DATA_CAPTURE)
-	if (ad405x_interface_mode == SPI_INTR) {
-		iio_init_params.trigs = &iio_trigger_init_params;
-	}
-#endif
-
 	/* IIOD init parameters */
 	static struct iio_device_init iio_device_init_params[NUM_OF_IIO_DEVICES];
 
-	if (!entered) {
-		entered = true;
+	/* Add a fixed delay of 1 sec before system init for the PoR sequence to get completed */
+	no_os_mdelay(1000);
 
-		/* Add a fixed delay of 1 sec before system init for the PoR sequence to get completed */
-		no_os_udelay(1000000);
-
-		init_status = init_system();
-		if (init_status) {
-			return init_status;
-		}
-
-		/* Add delay between the i2c init and the eeprom read */
-		no_os_udelay(1000000);
+	init_status = eeprom_init(&eeprom_desc, &eeprom_init_params);
+	if (init_status) {
+		return init_status;
 	}
 
-	/* Read context attributes */
-	static const char *mezzanine_names[] = {
-		"EVAL-AD4050-ARDZ",
-		"EVAL-AD4052-ARDZ"
-	};
+	/* Add delay between the i2c init and the eeprom read */
+	no_os_mdelay(1000);
 
 	/* Iterate twice to detect the correct attached board */
 	for (indx = 0; indx < NO_OS_ARRAY_SIZE(mezzanine_names); indx++) {
-		init_status = get_iio_context_attributes(&iio_init_params.ctx_attrs,
+		init_status = get_iio_context_attributes_ex(&iio_init_params.ctx_attrs,
 				&iio_init_params.nb_ctx_attr,
 				eeprom_desc,
 				mezzanine_names[indx],
 				STR(HW_CARRIER_NAME),
-				&hw_mezzanine_is_valid);
+				&hw_mezzanine_is_valid,
+				FIRMWARE_VERSION);
 		if (init_status) {
 			return init_status;
 		}
@@ -1214,6 +1429,12 @@ int32_t iio_ad405x_initialize(void)
 		}
 	}
 
+	/* Close the EEPROM once mezzanine verification is completed */
+	init_status = eeprom_close(eeprom_desc);
+	if (init_status) {
+		return init_status;
+	}
+
 	/* Initialize board IIO paramaters */
 	init_status = board_iio_params_init(&p_iio_ad405x_dev[iio_init_params.nb_devs]);
 	if (init_status) {
@@ -1225,54 +1446,110 @@ int32_t iio_ad405x_initialize(void)
 		p_iio_ad405x_dev[iio_init_params.nb_devs];
 	iio_init_params.nb_devs++;
 
-	if (hw_mezzanine_is_valid) {
-		/* Initialize AD405X device and peripheral interface */
-		init_status = ad405x_assign_device(dev_type,
-						   &iio_device_init_params[iio_init_params.nb_devs].name);
-		if (init_status) {
-			return init_status;
-		}
+	if ((init_status == 0) && (hw_mezzanine_is_valid)) {
+		do {
+			/* Initialize AD405X device and peripheral interface */
+			init_status = ad405x_assign_device(dev_type,
+							   &iio_device_init_params[iio_init_params.nb_devs].name);
+			if (init_status) {
+				break;
+			}
 
-		init_status = ad405x_init(&p_ad405x_dev, ad405x_init_params);
-		if (init_status) {
-			return init_status;
-		}
+			init_status = init_system_post_verification();
+			if (init_status) {
+				break;
+			}
 
-		init_status = ad405x_set_gp_mode(p_ad405x_dev,
-						 AD405X_GP_1,
-						 AD405X_GP_MODE_DRDY);
-		if (init_status) {
-			return init_status;
-		}
+			init_status = ad405x_init(&p_ad405x_dev, ad405x_init_params);
+			if (init_status) {
+				break;
+			}
+
+			init_status = ad405x_set_gp_mode(p_ad405x_dev,
+							 AD405X_GP_1,
+							 AD405X_GP_MODE_DRDY);
+			if (init_status) {
+				ad405x_remove(p_ad405x_dev);
+				break;
+			}
 #if (ADC_DATA_FORMAT == STRAIGHT_BINARY)
-		init_status = ad405x_set_data_format(p_ad405x_dev, AD405X_STRAIGHT_BINARY);
+			init_status = ad405x_set_data_format(p_ad405x_dev, AD405X_STRAIGHT_BINARY);
 #else
-		init_status = ad405x_set_data_format(p_ad405x_dev, AD405X_TWOS_COMPLEMENT);
+			init_status = ad405x_set_data_format(p_ad405x_dev, AD405X_TWOS_COMPLEMENT);
 #endif
-		if (init_status) {
-			return init_status;
-		}
+			if (init_status) {
+				ad405x_remove(p_ad405x_dev);
+				break;
+			}
 
-		init_status = iio_ad405x_init(&p_iio_ad405x_dev[iio_init_params.nb_devs]);
-		if (init_status) {
-			return init_status;
-		}
+			init_status = init_pwm();
+			if (init_status) {
+				ad405x_remove(p_ad405x_dev);
+				break;
+			}
 
-		/* Initialize the IIO interface */
-		iio_device_init_params[iio_init_params.nb_devs].raw_buf = adc_data_buffer;
-		iio_device_init_params[iio_init_params.nb_devs].raw_buf_len = DATA_BUFFER_SIZE;
+			if ((ad405x_interface_mode == I3C_INTR) ||
+			    (ad405x_interface_mode == I3C_DMA)) {
+				/*
+				 * I3C generics do not have a config mode to fall to. So they must be in their
+				 * configured operating mode at all time.
+				 */
+				init_status = ad405x_set_operation_mode(p_ad405x_dev, ad405x_operating_mode);
+				if (init_status) {
+					deinit_pwm();
+					ad405x_remove(p_ad405x_dev);
+					break;
+				}
+			}
+			if (ad405x_operating_mode == AD405X_BURST_AVERAGING_MODE_OP) {
+				calc_max_pwm_period(ADC_SAMPLE_RATE, 0, true);
+			}
 
-		iio_device_init_params[iio_init_params.nb_devs].dev = p_ad405x_dev;
-		iio_device_init_params[iio_init_params.nb_devs].dev_descriptor =
-			p_iio_ad405x_dev[iio_init_params.nb_devs];
 
-		if (APP_CAPTURE_MODE == CONTINUOUS_DATA_CAPTURE
-		    && ad405x_interface_mode == SPI_INTR) {
-			iio_device_init_params[iio_init_params.nb_devs].trigger_id = "trigger0";
-			iio_init_params.nb_trigs++;
-		}
+			init_status = iio_ad405x_init(&p_iio_ad405x_dev[iio_init_params.nb_devs]);
+			if (init_status) {
+				deinit_pwm();
+				ad405x_remove(p_ad405x_dev);
+				break;
+			}
 
-		iio_init_params.nb_devs++;
+			iio_device_init_params[iio_init_params.nb_devs].dev = p_ad405x_dev;
+			iio_device_init_params[iio_init_params.nb_devs].dev_descriptor =
+				p_iio_ad405x_dev[iio_init_params.nb_devs];
+			iio_device_init_params[iio_init_params.nb_devs].raw_buf = adc_data_buffer;
+
+			if (APP_CAPTURE_MODE == CONTINUOUS_DATA_CAPTURE) {
+				iio_device_init_params[iio_init_params.nb_devs].raw_buf_len =
+					DATA_BUFFER_SIZE_CONT;
+			} else if (ad405x_interface_mode == I3C_DMA) {
+				/*
+				 * AD406x devices (I3C devices) start a transaction when the CONV_READ
+				 * register is read. So everytime we read ADC data it is the result of
+				 * previous conversion. In windowed mode of data capture this would
+				 * create a gap between the 1st and the 2nd data. To remove this break in
+				 * continuity of the data, 1 extra sample is reserved in the beginning of
+				 * adc_data_buffer and is used by I3C to read an extra sample.
+				 * So effectively for a request of N samples from the application the
+				 * firmware reads 1+N samples and drops the 1st sample.
+				 */
+				iio_device_init_params[iio_init_params.nb_devs].raw_buf = (int8_t *)(
+							adc_data_buffer + bytes_per_sample);
+				iio_device_init_params[iio_init_params.nb_devs].raw_buf_len = DATA_BUFFER_SIZE;
+			} else {
+				iio_device_init_params[iio_init_params.nb_devs].raw_buf_len = DATA_BUFFER_SIZE;
+			}
+
+#if (APP_CAPTURE_MODE == CONTINUOUS_DATA_CAPTURE)
+			if ((ad405x_interface_mode == SPI_INTR)
+			    || (ad405x_interface_mode == I3C_INTR)) {
+				iio_device_init_params[iio_init_params.nb_devs].trigger_id = "trigger0";
+				iio_init_params.nb_trigs++;
+				iio_init_params.trigs = &iio_trigger_init_params;
+			}
+#endif
+
+			iio_init_params.nb_devs++;
+		} while (false);
 	}
 
 	/* Initialize the IIO interface */
@@ -1280,29 +1557,35 @@ int32_t iio_ad405x_initialize(void)
 	iio_init_params.devs = iio_device_init_params;
 	init_status = iio_init(&p_ad405x_iio_desc, &iio_init_params);
 	if (init_status) {
-		return init_status;
+		goto iio_fail;
 	}
 
-	if (APP_CAPTURE_MODE == CONTINUOUS_DATA_CAPTURE
-	    && ad405x_interface_mode == SPI_INTR) {
+	if ((APP_CAPTURE_MODE == CONTINUOUS_DATA_CAPTURE) &&
+	    ((ad405x_interface_mode == SPI_INTR) || (ad405x_interface_mode == I3C_INTR))) {
 		init_status = ad405x_iio_trigger_param_init(&ad405x_hw_trig_desc);
 		if (init_status) {
 			return init_status;
 		}
 	}
 
-	if (ad405x_interface_mode == SPI_DMA) {
-		ad405x_sample_rate = SAMPLING_RATE_SPI_DMA;
-	} else {
-		ad405x_sample_rate = SAMPLING_RATE_SPI_INTR;
-	}
-
-	init_status = init_pwm();
-	if (init_status) {
-		return init_status;
-	}
-
 	return 0;
+iio_fail:
+	/* Free the PWM descriptors */
+	deinit_pwm();
+
+	/* Free AD405x device descriptors */
+	ad405x_remove(p_ad405x_dev);
+
+	/* De-Initialize the IIO Parameters */
+	iio_params_deinit();
+
+	/* Remove the IIO context attributes */
+	remove_iio_context_attributes(iio_init_params.ctx_attrs);
+
+	/* Remove IIO */
+	iio_remove(p_ad405x_iio_desc);
+
+	return init_status;
 }
 
 /**
@@ -1332,5 +1615,8 @@ void iio_ad405x_event_handler(void)
 		iio_ad405x_initialize();
 	}
 
+#ifdef USE_VIRTUAL_COM_PORT
+	ux_device_stack_tasks_run();
+#endif
 	iio_step(p_ad405x_iio_desc);
 }

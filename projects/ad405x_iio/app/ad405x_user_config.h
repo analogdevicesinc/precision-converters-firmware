@@ -23,11 +23,16 @@
 /********************** Macros and Constants Definition ***********************/
 /******************************************************************************/
 
+// Set the PID Instance ID to match the pins ADDR[2:0] (valid range: 0-7) (I3C only)
+#define AD405X_INSTANCE_ID						0
+#define AD405X_I3C_GEN_DYN_ADDR_DEFAULT			0x32
+#define AD405X_I3C_GEN_PID_(x)					(0x02ee00700000 | ((x & 0xF) << 16))
+#define AD405X_I3C_GEN_INSTANCE_ID(x)			(((uint64_t)x & 0x7) << 12)
+#define AD405X_I3C_GEN_PID(dev, x)				(AD405X_I3C_GEN_PID_(dev) | AD405X_I3C_GEN_INSTANCE_ID(x))
+
 /******************************************************************************/
 /********************** Variables and User Defined Data Types *****************/
 /******************************************************************************/
-extern struct no_os_gpio_init_param gpio_reset_param;
 extern struct ad405x_init_param ad405x_init_params;
-extern struct no_os_gpio_init_param gpio_gpio1_param;
 
 #endif /* AD405X_USER_CONFIG_H */
