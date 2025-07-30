@@ -6,7 +6,7 @@ Communication Interface
 
    For data transmission to IIO clients, IIO firmware applications uses *Virtual Serial*
    Or *UART* as primary communication links. Firmware by default uses the Virtual Serial
-   interface for SDP-K1 for higher speed data transmission as MCU board supports
+   interface for SDP-K1 for higher speed data transmission as SDP-K1 board supports
    both Virtual Serial and UART interface. The Nucleo-H563 supports only UART. If you target a different MCU board that does not 
    support Virtual Serial, just set UART as communication link in the firmware (app_config.h file).
 
