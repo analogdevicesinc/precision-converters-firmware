@@ -155,7 +155,7 @@ Running a project
 
 Once the firmware build is successful and binary file is generated, copy the
 generated binary into USB drive hosted by your MCU board (e.g. USB drive hosted
-by SDP-K1 board on windows). This will flash the binary file into MCU present
+by the supported MCU board on windows). This will flash the binary file into MCU present
 on the controller board. Programming might vary based on the tools used for building
 a project. The 'Project Build' section above talks about this exception at the end
 of all build steps.
