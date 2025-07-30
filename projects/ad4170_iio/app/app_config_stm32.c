@@ -281,7 +281,8 @@ void ad4170_spi_dma_rx_cplt_callback(DMA_HandleTypeDef* hdma)
 
 		ad4170_dma_buff_full = true;
 		iio_buf_current_idx = iio_buf_start_idx;
-		dma_buf_current_idx = dma_buf_start_idx;
+		dma_buf_current_idx = dma_buf_start_idx + (BYTES_PER_SAMPLE *
+				      num_of_active_channels);
 	} else {
 		memcpy((void*)iio_buf_current_idx, dma_buf_current_idx, rxdma_ndtr / 2);
 
@@ -326,7 +327,12 @@ void update_buff(uint32_t* local_buf, uint32_t* buf_start_addr)
 {
 #if (INTERFACE_MODE == SPI_DMA_MODE)
 	iio_buf_start_idx = (uint8_t*)buf_start_addr;
+#if (DATA_CAPTURE_MODE == BURST_DATA_CAPTURE)
+	dma_buf_start_idx = (uint8_t*)local_buf + (BYTES_PER_SAMPLE *
+			    num_of_active_channels);
+#else
 	dma_buf_start_idx = (uint8_t*)local_buf;
+#endif
 
 	iio_buf_current_idx = iio_buf_start_idx;
 	dma_buf_current_idx = dma_buf_start_idx;

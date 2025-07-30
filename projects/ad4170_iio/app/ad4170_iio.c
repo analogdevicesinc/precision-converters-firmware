@@ -399,7 +399,8 @@ volatile uint32_t* buff_start_addr;
 
 /* Local buffer */
 #define MAX_LOCAL_BUF_SIZE	8000
-uint8_t local_buf[MAX_LOCAL_BUF_SIZE];
+uint8_t local_buf[MAX_LOCAL_BUF_SIZE + (BYTES_PER_SAMPLE *
+					AD4170_NUM_CHANNELS)];
 
 /* Maximum value the DMA NDTR register can take */
 #define MAX_DMA_NDTR		(no_os_min(65535, MAX_LOCAL_BUF_SIZE))
@@ -2278,6 +2279,12 @@ static int32_t ad4170_read_burst_data_spi_dma(uint32_t nb_of_samples,
 		/* Cap SPI RX DMA NDTR to MAX_DMA_NDTR. */
 		spirxdma_ndtr = no_os_min(MAX_DMA_NDTR, nb_of_samples);
 		rxdma_ndtr = spirxdma_ndtr;
+
+		/* Capture an extra sample of each channel to ignore the first sample.
+		 * Since SYNC is not pulled high with reference to the main clock falling edge,
+		 * there will be a difference in the instant at which the ADC conversions are available
+		 * to be read, which leads to incorrect first sample */
+		spirxdma_ndtr += BYTES_PER_SAMPLE * num_of_active_channels;
 
 		/* Register half complete callback, for ping-pong buffers implementation. */
 		HAL_DMA_RegisterCallback(&hdma_spi1_rx,

@@ -1307,11 +1307,17 @@ int ad7091r_iio_init()
 	/* IIO device descriptor */
 	struct iio_device *ad7091r_iio_dev[NUM_OF_IIO_DEVICES];
 
+	/* Add a fixed delay of 1 sec before system init for the PoR sequence to get completed */
+	no_os_udelay(1000000);
+
 	/* Initialize the system peripherals */
 	ret = init_system();
 	if (ret) {
 		return ret;
 	}
+
+	/* Add delay between the i2c init and the eeprom read */
+	no_os_mdelay(1000);
 
 	/* Read context attributes */
 	ret = get_iio_context_attributes(&iio_init_params.ctx_attrs,
