@@ -212,6 +212,9 @@ RAMs. For example, SDP-K1 MCU board has 16Mbytes of onboard SDRAM, which allows
 larger data buffer size in the firmware. By enabling SDRAM in the SDP-K1 targetted
 Mbed firmware (app_config.h file), the data buffer size can be increased to 16Mbytes.
 
+The Nucleo-H563 does not have an SDRAM supported. Hence, the data buffer size is limited to 
+the buffer provided in the firmware.
+
 .. code-block:: C
 
     /* Enable/Disable the use of SDRAM for ADC data capture buffer */

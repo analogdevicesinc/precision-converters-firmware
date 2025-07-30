@@ -120,7 +120,8 @@ required streaming samples number is more than the size of data buffer, IIO
 firmware returns negative error code to IIO client which then terminates the 
 data streaming request.
 
-Buffer size can be increased to larger value by making use of internal/external RAMs. 
+Buffer size can be increased to larger value by making use of internal/external RAMs, if supported by the
+MCU platform enabled by the project. 
 For example, SDP-K1 MCU board has 16Mbytes of onboard SDRAM, which allows larger data 
 buffer size in the firmware. By enabling SDRAM in the SDP-K1 
 (using the macro in app_config.h file), the data buffer size can be increased to 16Mbytes.
