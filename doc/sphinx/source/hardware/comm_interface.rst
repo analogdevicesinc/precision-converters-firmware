@@ -6,11 +6,11 @@ Communication Interface
 
    For data transmission to IIO clients, IIO firmware applications uses *Virtual Serial*
    Or *UART* as primary communication links. Firmware by default uses the Virtual Serial
-   interface for higher speed data transmission as SDP-K1 MCU board supports
-   both Virtual Serial and UART interface. If you target a different MCU board that does not 
+   interface for SDP-K1 for higher speed data transmission as MCU board supports
+   both Virtual Serial and UART interface. The Nucleo-H563 supports only UART. If you target a different MCU board that does not 
    support Virtual Serial, just set UART as communication link in the firmware (app_config.h file).
 
-SDP-K1 is powered through USB connection from the computer. SDP-K1 MCU board 
+MCU board is powered through USB connection from the computer. It 
 acts as a serial device when connected to PC, which creates a serial ports to connect to IIO 
 client application running on PC. The serial port assigned to a device can be seen 
 through the device manager for windows-based OS as shown below:
@@ -36,6 +36,9 @@ firmware name which is currently running on MCU.
 SDP-K1 can support high speed Virtual Serial USB interface, so by default Virtual Serial
 is configured as default interface. The interface can be set to Physical (UART)
 serial port by defining macro **USE_PHY_COM_PORT** in the app_config.h file.
+
+Nucleo-H563 supports only UART interface, so by default Physical (UART) serial port
+is configured as default interface. 
 
 .. code-block:: C
 
