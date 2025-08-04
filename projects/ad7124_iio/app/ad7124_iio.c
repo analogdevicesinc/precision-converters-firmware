@@ -3,7 +3,7 @@
  * @brief   Main interface for AD7124 IIO Application firmware example program.
  * @details This module acts as an interface for the AD7124 IIO Application.
 *******************************************************************************
-* Copyright (c) 2023-24 Analog Devices, Inc.
+* Copyright (c) 2023-25 Analog Devices, Inc.
 
 * All rights reserved.
 *
@@ -24,7 +24,6 @@
 #include "no_os_util.h"
 #include "no_os_error.h"
 #include "common.h"
-#include "no_os_gpio.h"
 #include "no_os_irq.h"
 #include "ad7124_support.h"
 #include "iio_trigger.h"
@@ -661,9 +660,11 @@ static int iio_ad7124_local_backend_event_read(void *conn,
 		uint8_t *buf,
 		uint32_t len)
 {
+	int ret = 0;
 #if (ACTIVE_IIO_CLIENT == IIO_CLIENT_LOCAL)
-	return pl_gui_event_read(buf, len);
+	ret = pl_gui_event_read(buf, len);
 #endif
+	return ret;
 }
 
 /**
@@ -677,9 +678,11 @@ static int iio_ad7124_local_backend_event_write(void *conn,
 		uint8_t *buf,
 		uint32_t len)
 {
+	int ret = 0;
 #if (ACTIVE_IIO_CLIENT == IIO_CLIENT_LOCAL)
-	return pl_gui_event_write(buf, len);
+	ret = pl_gui_event_write(buf, len);
 #endif
+	return ret;
 }
 
 /**
@@ -728,13 +731,20 @@ static int32_t ad7124_iio_prepare_transfer(void* dev_instance, uint32_t ch_mask)
 	 * If not, the GPIO interrupt may occur during the period where there is a UART read happening
 	 * for the READBUF command. If UART interrupts are not prioritized, then it would lead to missing of
 	 * characters in the IIO command sent from the client. */
-#if(DATA_CAPTURE_MODE == CONTINUOUS_DATA_CAPTURE)
-#if(ACTIVE_PLATFORM == STM32_PLATFORM)
-	no_os_irq_set_priority(trigger_irq_desc, IRQ_INT_ID, RDY_GPIO_PRIORITY);
-#endif
+#if (DATA_CAPTURE_MODE == CONTINUOUS_DATA_CAPTURE)  && (ACTIVE_IIO_CLIENT == IIO_CLIENT_REMOTE)
+	ret = no_os_irq_set_priority(trigger_irq_desc, IRQ_INT_ID, RDY_GPIO_PRIORITY);
+	if (ret) {
+		return ret;
+	}
 #endif
 
 	ret = ad7124_trigger_data_capture(ad7124_dev_inst);
+	if (ret) {
+		return ret;
+	}
+
+	/* Clear pending interrupt to ensure first sample is valid data */
+	ret = no_os_irq_clear_pending(trigger_irq_desc, IRQ_INT_ID);
 	if (ret) {
 		return ret;
 	}
@@ -745,6 +755,15 @@ static int32_t ad7124_iio_prepare_transfer(void* dev_instance, uint32_t ch_mask)
 		return ret;
 	}
 #else /* Continuous Capture Mode */
+
+	/* Clear pending Interrupt before enabling back the trigger.
+	 * Else , a spurious interrupt is observed after a legitimate interrupt,
+	 * as SPI SDO is on the same pin and is mistaken for an interrupt event */
+	ret = no_os_irq_clear_pending(trigger_irq_desc, IRQ_INT_ID);
+	if (ret) {
+		return ret;
+	}
+
 	ret = iio_trig_enable(ad7124_hw_trig_desc);
 	if (ret) {
 		return ret;
@@ -826,7 +845,6 @@ int32_t ad7124_trigger_handler(struct iio_device_data *iio_dev_data)
 		return ret;
 	}
 
-#if (ACTIVE_PLATFORM == STM32_PLATFORM)
 	/* Clear pending Interrupt before enabling back the trigger.
 	 * Else , a spurious interrupt is observed after a legitimate interrupt,
 	 * as SPI SDO is on the same pin and is mistaken for an interrupt event */
@@ -834,7 +852,6 @@ int32_t ad7124_trigger_handler(struct iio_device_data *iio_dev_data)
 	if (ret) {
 		return ret;
 	}
-#endif
 
 	/* Enable back the interrupts to use RDY / SDO shared pin as end of
 	 * conversion interrupt event monitor pin */
@@ -912,7 +929,6 @@ static int32_t ad7124_iio_submit_buffer(struct iio_device_data *iio_dev_data)
 			return ret;
 		}
 
-#if (ACTIVE_PLATFORM == STM32_PLATFORM)
 		/* Clear pending Interrupt before enabling back the trigger.
 		 * Else, a spurious interrupt is observed after a legitimate interrupt,
 		 * as SPI SDO is on the same pin and is mistaken for an interrupt event */
@@ -920,7 +936,6 @@ static int32_t ad7124_iio_submit_buffer(struct iio_device_data *iio_dev_data)
 		if (ret) {
 			return ret;
 		}
-#endif
 
 		/* Interrupt is enabled back after data is pushed into buffer */
 		ret = no_os_irq_enable(trigger_irq_desc, IRQ_INT_ID);
@@ -1063,6 +1078,7 @@ int ad7124_iio_init(struct iio_device **desc, uint8_t dev_indx)
 				     ad7124_sampling_frequency,
 				     chn);
 		if (ret) {
+			free(iio_ad7124_inst);
 			return ret;
 		}
 	}
