@@ -8,11 +8,12 @@
 
     <title>Using DMM Tab to Read DC Voltage on Input Channels &#8212; Precision Converters Firmware  documentation</title>
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8e8a900e" />
-    <link rel="stylesheet" type="text/css" href="../../_static/app.min.css?v=33d8ff8e" />
-    <script async="async" src="../../_static/app.umd.js?v=cd58f2cb"></script>
+    <link rel="stylesheet" type="text/css" href="../../_static/app.min.css?v=04bde29a" />
+    <script async="async" src="../../_static/app.umd.js?v=470d438e"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
    
+  
   
   <meta name="repository" content="precision-converters-firmware">
   <meta name="version" content="">
@@ -59,7 +60,9 @@
       <span>
         <a id="logo-org" href="https://analog.com" aria-label="Analog Devices Inc. landing page"></a>
         <div class="vertical-divider"></div>
+        
         <label id="show-repotoc" for="input-show-repotoc" title="Show/hide docs" tabindex="0">Docs</label>
+        
         <a id="logo" href="../../index.html">
           <div>Precision Converters Firmware</div>
         </a>
@@ -167,7 +170,9 @@ Content on this topic
   <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper" id="top-anchor">
-          
+          <div class="body-header">
+  <nav class="breadcrumb empty"><ol></ol></nav>
+</div>
           <div class="body" role="main">
             
   <section id="using-dmm-tab-to-read-dc-voltage-on-input-channels">
@@ -341,6 +346,8 @@ which then terminates the data capture request.</p>
 RAMs. For example, SDP-K1 MCU board has 16Mbytes of onboard SDRAM, which allows
 larger data buffer size in the firmware. By enabling SDRAM in the SDP-K1 targetted
 Mbed firmware (app_config.h file), the data buffer size can be increased to 16Mbytes.</p>
+<p>The Nucleo-H563 does not have an SDRAM supported. Hence, the data buffer size is limited to
+the buffer provided in the firmware.</p>
 <div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="cm">/* Enable/Disable the use of SDRAM for ADC data capture buffer */</span>
 <span class="c1">//#define USE_SDRAM     // Uncomment to use SDRAM for data buffer</span>
 </pre></div>

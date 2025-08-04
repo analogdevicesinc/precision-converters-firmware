@@ -8,11 +8,12 @@
 
     <title>Build Guide &#8212; Precision Converters Firmware  documentation</title>
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8e8a900e" />
-    <link rel="stylesheet" type="text/css" href="../../_static/app.min.css?v=33d8ff8e" />
-    <script async="async" src="../../_static/app.umd.js?v=cd58f2cb"></script>
+    <link rel="stylesheet" type="text/css" href="../../_static/app.min.css?v=04bde29a" />
+    <script async="async" src="../../_static/app.umd.js?v=470d438e"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
    
+  
   
   <meta name="repository" content="precision-converters-firmware">
   <meta name="version" content="">
@@ -59,7 +60,9 @@
       <span>
         <a id="logo-org" href="https://analog.com" aria-label="Analog Devices Inc. landing page"></a>
         <div class="vertical-divider"></div>
+        
         <label id="show-repotoc" for="input-show-repotoc" title="Show/hide docs" tabindex="0">Docs</label>
+        
         <a id="logo" href="../../index.html">
           <div>Precision Converters Firmware</div>
         </a>
@@ -165,7 +168,9 @@ Content on this topic
   <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper" id="top-anchor">
-          
+          <div class="body-header">
+  <nav class="breadcrumb empty"><ol></ol></nav>
+</div>
           <div class="body" role="main">
             
   <section id="build-guide">
@@ -177,11 +182,24 @@ that the build process may find the necessary tools (compiler, linker, SDK etc.)
 Use the following steps to prepare your environment for building firmware projects
 for respective platform.</p>
 <div><div class="collapsible docutils container">
-<input class="collapsible_input" id="9b60f03671af37cc1496b82766f6a537cb67c60a" name="9b60f03671af37cc1496b82766f6a537cb67c60a" type="checkbox"></input><label for="9b60f03671af37cc1496b82766f6a537cb67c60a"><p>Windows</p>
+<input class="collapsible_input" id="c2875a1b1aa1c2a010c59a908fb40d61a7159c83" name="c2875a1b1aa1c2a010c59a908fb40d61a7159c83" type="checkbox"></input><label for="c2875a1b1aa1c2a010c59a908fb40d61a7159c83"><p>Windows</p>
 <div class="icon"></div></label><div class="collapsible_content docutils container">
 <div><div class="collapsible docutils container">
-<input class="collapsible_input" id="fa09a7188e5b64e6db36c1092089233b09fd75ba" name="fa09a7188e5b64e6db36c1092089233b09fd75ba" type="checkbox"></input><label for="fa09a7188e5b64e6db36c1092089233b09fd75ba"><p>STM32</p>
+<input class="collapsible_input" id="0b016c31a7c49aaf106d1a452555f2fe370a097f" name="0b016c31a7c49aaf106d1a452555f2fe370a097f" type="checkbox"></input><label for="0b016c31a7c49aaf106d1a452555f2fe370a097f"><p>STM32</p>
 <div class="icon"></div></label><div class="collapsible_content docutils container">
+<ul>
+<li><p>Clone Precision Converters Firmware repository with the –recursive flag:</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>--recursive<span class="w"> </span>https://github.com/analogdevicesinc/precision-converters-firmware
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p>If however you’ve already cloned the repository without the –recursive flag, you may initialize all the submodules in an existing cloned repo with:</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>submodule<span class="w"> </span>update<span class="w"> </span>--recursive<span class="w"> </span>--init
+</pre></div>
+</div>
 <div><div class="collapsible docutils container">
 <input class="collapsible_input" id="31dd6c13542299d944a089597884f96e3993de5c" name="31dd6c13542299d944a089597884f96e3993de5c" type="checkbox"></input><label for="31dd6c13542299d944a089597884f96e3993de5c"><p>For STM32 IDE based Build</p>
 <div class="icon"></div></label><div class="collapsible_content docutils container">
@@ -277,7 +295,7 @@ and generate executable file (.bin/.hex)</p>
 <h2>Running a project<a class="headerlink" href="#running-a-project" title="Link to this heading"></a></h2>
 <p>Once the firmware build is successful and binary file is generated, copy the
 generated binary into USB drive hosted by your MCU board (e.g. USB drive hosted
-by SDP-K1 board on windows). This will flash the binary file into MCU present
+by MCU board on windows). This will flash the binary file into MCU present
 on the controller board. Programming might vary based on the tools used for building
 a project. The ‘Project Build’ section above talks about this exception at the end
 of all build steps.</p>

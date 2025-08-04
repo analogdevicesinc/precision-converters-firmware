@@ -8,13 +8,14 @@
 
     <title>AD4134/AD7134 IIO Application &#8212; Precision Converters Firmware  documentation</title>
     <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=8e8a900e" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/app.min.css?v=33d8ff8e" />
-    <script async="async" src="../../../_static/app.umd.js?v=cd58f2cb"></script>
+    <link rel="stylesheet" type="text/css" href="../../../_static/app.min.css?v=04bde29a" />
+    <script async="async" src="../../../_static/app.umd.js?v=470d438e"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
     <link rel="next" title="AD717x / AD411x Console Application" href="../ad717x_console/ad717x_console.html" />
     <link rel="prev" title="AD7124 Temperature Measure Firmware Application" href="../ad7124_temperature-measure/ad7124_temperature-measure.html" />
    
+  
   
   <meta name="repository" content="precision-converters-firmware">
   <meta name="version" content="">
@@ -61,7 +62,9 @@
       <span>
         <a id="logo-org" href="https://analog.com" aria-label="Analog Devices Inc. landing page"></a>
         <div class="vertical-divider"></div>
+        
         <label id="show-repotoc" for="input-show-repotoc" title="Show/hide docs" tabindex="0">Docs</label>
+        
         <a id="logo" href="../../../index.html">
           <div>Precision Converters Firmware</div>
         </a>
@@ -181,13 +184,8 @@ Content on this topic
       <div class="documentwrapper">
         <div class="bodywrapper" id="top-anchor">
           <div class="body-header">
-    <nav class="breadcrumb">
-        <ol>
-          <li><a href="../index.html">Firmware Applications</a></li>
-          </ol>
-    </nav>
-  </div>
-
+  <nav class="breadcrumb"><ol><li><a href="../index.html">Firmware Applications</a></li></ol></nav>
+</div>
           <div class="body" role="main">
             
   <section id="ad4134-ad7134-iio-application">
@@ -285,11 +283,11 @@ board or an equivalent STM32 board). Connect controller board to the PC using th
 <p class="admonition-title">Note</p>
 <p>For data transmission to IIO clients, IIO firmware applications uses <em>Virtual Serial</em>
 Or <em>UART</em> as primary communication links. Firmware by default uses the Virtual Serial
-interface for higher speed data transmission as SDP-K1 MCU board supports
-both Virtual Serial and UART interface. If you target a different MCU board that does not
+interface for SDP-K1 for higher speed data transmission as SDP-K1 board supports
+both Virtual Serial and UART interface. The Nucleo-H563 supports only UART. If you target a different MCU board that does not
 support Virtual Serial, just set UART as communication link in the firmware (app_config.h file).</p>
 </div>
-<p>SDP-K1 is powered through USB connection from the computer. SDP-K1 MCU board
+<p>MCU board is powered through USB connection from the computer. It
 acts as a serial device when connected to PC, which creates a serial ports to connect to IIO
 client application running on PC. The serial port assigned to a device can be seen
 through the device manager for windows-based OS as shown below:</p>
@@ -310,6 +308,8 @@ firmware name which is currently running on MCU.</p>
 <p>SDP-K1 can support high speed Virtual Serial USB interface, so by default Virtual Serial
 is configured as default interface. The interface can be set to Physical (UART)
 serial port by defining macro <strong>USE_PHY_COM_PORT</strong> in the app_config.h file.</p>
+<p>Nucleo-H563 supports only UART interface, so by default Physical (UART) serial port
+is configured as default interface.</p>
 <div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="cm">/* Enable the UART/VirtualCOM port connection (default VCOM) */</span>
 <span class="c1">//#define USE_PHY_COM_PORT           // Uncomment to select UART</span>
 </pre></div>
@@ -508,7 +508,7 @@ mentioned in step2 and clean build project as mentioned in step3</p>
 <h3>Running a project<a class="headerlink" href="#running-a-project" title="Link to this heading"></a></h3>
 <p>Once the firmware build is successful and binary file is generated, copy the
 generated binary into USB drive hosted by your MCU board (e.g. USB drive hosted
-by SDP-K1 board on windows). This will flash the binary file into MCU present
+by the supported MCU board on windows). This will flash the binary file into MCU present
 on the controller board. Programming might vary based on the tools used for building
 a project. The ‘Project Build’ section above talks about this exception at the end
 of all build steps.</p>
