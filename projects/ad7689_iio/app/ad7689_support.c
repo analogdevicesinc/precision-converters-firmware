@@ -65,7 +65,6 @@ int32_t ad7689_read_single_sample(uint8_t input_chn, uint32_t *raw_data)
 		ad7689_current_config.inx = input_chn;
 		ad7689_current_config.incc = AD7689_TEMPERATURE_SENSOR;
 		ad7689_current_config.ref = AD7689_REF_INTERNAL_4p096V;
-		input_chn -= 1;
 	} else {
 		ad7689_current_config.inx = input_chn;
 		ad7689_current_config.incc = ADC_INPUT_TYPE_CFG;

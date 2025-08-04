@@ -16,6 +16,11 @@ iio_device = { 'DEV_AD7689': 'ad7689',
 MAX_EXPECTED_VOLTAGE = 2.6
 MIN_EXPECTED_VOLTAGE = 2.4
 
+voltages = {
+"voltage0" : 0,
+"voltage1" : 1
+}
+
 def test_ad7689(serial_port, device_name, serial_com_type, target_reset):
     uri_str = "serial:" + serial_port + ",230400"
 
@@ -31,15 +36,19 @@ def test_ad7689(serial_port, device_name, serial_com_type, target_reset):
     # *Note: Test is done based on the assumption that, fixed DC voltage of 2.5v is available to 
     #        chn0 of AD7689 device (All channels are 2.5v DC biased)
     print("\nData capture test for channel 0 => \n")
-    chn = "voltage0"
+    chn_name = "voltage0"
     ad7689_dev._rx_data_type = np.uint16
     ad7689_dev._rx_stack_interleaved = True
-    ad7689_dev.rx_enabled_channels = [chn]
+    ad7689_dev.rx_enabled_channels = [chn_name]
     ad7689_dev.rx_buffer_size = 100
     raw_data = ad7689_dev.rx()
 
     data = ndarray((ad7689_dev.rx_buffer_size,),int)
-    scale = ad7689_dev.channel[chn].scale
+
+    for chn in ad7689_dev.channel:
+        if (chn.name == chn_name):
+            scale = chn.scale
+
     for indx in range(ad7689_dev.rx_buffer_size):
         data[indx] = raw_data[indx] * scale
 
