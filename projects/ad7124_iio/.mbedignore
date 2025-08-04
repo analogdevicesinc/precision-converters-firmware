@@ -1,4 +1,0 @@
-STM32/
-app/app_config_stm32.h
-app/app_config_stm32.c
-app/stm32_gpio_irq_generated.c
