@@ -29,8 +29,8 @@
 /*****************************************************************************/
 
 /**
- * @brief Main entry point to application
- * @return none
+ * @brief	Main entry point to application
+ * @return	none
  */
 int main(void)
 {
