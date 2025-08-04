@@ -2,7 +2,7 @@
   *@file  ad7124_support.c
   *@brief Provides useful support functions for the AD7124 NoOS driver
 ******************************************************************************
-* Copyright (c) 2023-24 Analog Devices, Inc.
+* Copyright (c) 2023-25 Analog Devices, Inc.
 * All rights reserved.
 *
 * This software is proprietary to Analog Devices, Inc. and its licensors.
@@ -35,22 +35,23 @@
 /*****************************************************************************/
 
 /**
- * @brief Get the polarity of input channel
- * @param dev[in] - AD7124 device instance
- * @param chn[in] - Input channel
- * @param polarity[in,out] - Channel polarity
- * @return 0 in case of success, negative error code otherwise
+ * @brief	Get the polarity of input channel
+ * @param 	dev[in] - AD7124 device instance
+ * @param 	chn[in] - Input channel
+ * @param	polarity[in,out] - Channel polarity
+ * @return	0 in case of success, negative error code otherwise
  */
 int ad7124_get_polarity(struct ad7124_dev *dev,
 			uint8_t chn,
 			enum ad7124_input_polarity *polarity)
 {
 	uint8_t setup_id;
-	setup_id = dev->chan_map[chn].setup_sel;
 
 	if (!dev || !polarity) {
 		return -EINVAL;
 	}
+
+	setup_id = dev->chan_map[chn].setup_sel;
 
 	if (dev->setups[setup_id].bi_unipolar) {
 		*polarity = AD7124_BIPOLAR;
@@ -66,7 +67,7 @@ int ad7124_get_polarity(struct ad7124_dev *dev,
  * @param device[in] - AD7124 Device Descriptor
  * @param id[in] - Channel ID (number) requested
  * @param adc_raw_data[out] ADC Raw Value
- * @return 0 in case of success, negative error code otherwise.
+ * @return  0 in case of success, negative error code otherwise.
  */
 int ad7124_single_read(struct ad7124_dev* device,
 		       uint8_t id,

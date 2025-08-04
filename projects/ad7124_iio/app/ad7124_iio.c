@@ -3,7 +3,7 @@
  * @brief   Main interface for AD7124 IIO Application firmware example program.
  * @details This module acts as an interface for the AD7124 IIO Application.
 *******************************************************************************
-* Copyright (c) 2023-24 Analog Devices, Inc.
+* Copyright (c) 2023-25 Analog Devices, Inc.
 
 * All rights reserved.
 *
@@ -24,7 +24,6 @@
 #include "no_os_util.h"
 #include "no_os_error.h"
 #include "common.h"
-#include "no_os_gpio.h"
 #include "no_os_irq.h"
 #include "ad7124_support.h"
 #include "iio_trigger.h"
@@ -350,10 +349,10 @@ static char *ad7124_power_mode[] = {
 /************************** Functions Definition *****************************/
 /*****************************************************************************/
 /**
- * @brief Get the IIO scale for input channel
- * @param chn[in] - Input channel
- * @param scale[in,out] - Channel IIO scale value
- * @return 0 in case of success, negative error code otherwise
+ * @brief	Get the IIO scale for input channel
+ * @param 	chn[in] - Input channel
+ * @param	scale[in,out] - Channel IIO scale value
+ * @return	0 in case of success, negative error code otherwise
  */
 static int32_t ad7124_get_scale(uint8_t chn, float *scale)
 {
@@ -409,13 +408,13 @@ static int32_t ad7124_set_sampling_rate(void)
 }
 
 /**
- * @brief Getter for the raw attribute value
- * @param device[in]- pointer to IIO device instance
- * @param buf[in]- pointer to buffer holding attribute value
- * @param len[in]- length of buffer string data
- * @param channel[in]- pointer to IIO channel structure
- * @param id[in]- Attribute ID
- * @return len in case of success, negative error code otherwise.
+ * @brief	Getter for the raw attribute value
+ * @param	device[in]- pointer to IIO device instance
+ * @param	buf[in]- pointer to buffer holding attribute value
+ * @param	len[in]- length of buffer string data
+ * @param	channel[in]- pointer to IIO channel structure
+ * @param	id[in]- Attribute ID
+ * @return	len in case of success, negative error code otherwise.
  */
 static int32_t ad7124_iio_attr_get(void *device,
 				   char *buf,
@@ -478,13 +477,13 @@ static int32_t ad7124_iio_attr_get(void *device,
 }
 
 /**
- * @brief Setter for the raw attribute value
- * @param device[in]- pointer to IIO device instance
- * @param buf[in]- pointer to buffer holding attribute value
- * @param len[in]- length of buffer string data
- * @param channel[in]- pointer to IIO channel structure
- * @param id[in]- Attribute ID
- * @return len in case of success, negative error code otherwise.
+ * @brief	Setter for the raw attribute value
+ * @param	device[in]- pointer to IIO device instance
+ * @param	buf[in]- pointer to buffer holding attribute value
+ * @param	len[in]- length of buffer string data
+ * @param	channel[in]- pointer to IIO channel structure
+ * @param	id[in]- Attribute ID
+ * @return	len in case of success, negative error code otherwise.
  */
 static int32_t ad7124_iio_attr_set(void *device,
 				   char *buf,
@@ -661,25 +660,29 @@ static int iio_ad7124_local_backend_event_read(void *conn,
 		uint8_t *buf,
 		uint32_t len)
 {
+	int ret = 0;
 #if (ACTIVE_IIO_CLIENT == IIO_CLIENT_LOCAL)
-	return pl_gui_event_read(buf, len);
+	ret = pl_gui_event_read(buf, len);
 #endif
+	return ret;
 }
 
 /**
- * @brief Write the IIO local backend event data
- * @param conn[in] - connection descriptor
- * @param buf[in] - local backend data handling buffer
- * @param len[in] - Number of bytes to read
- * @return 0 in case of success, negative error code otherwise
+ * @brief	Write the IIO local backend event data
+ * @param	conn[in] - connection descriptor
+ * @param	buf[in] - local backend data handling buffer
+ * @param	len[in] - Number of bytes to read
+ * @return	0 in case of success, negative error code otherwise
  */
 static int iio_ad7124_local_backend_event_write(void *conn,
 		uint8_t *buf,
 		uint32_t len)
 {
+	int ret = 0;
 #if (ACTIVE_IIO_CLIENT == IIO_CLIENT_LOCAL)
-	return pl_gui_event_write(buf, len);
+	ret = pl_gui_event_write(buf, len);
 #endif
+	return ret;
 }
 
 /**
@@ -728,13 +731,20 @@ static int32_t ad7124_iio_prepare_transfer(void* dev_instance, uint32_t ch_mask)
 	 * If not, the GPIO interrupt may occur during the period where there is a UART read happening
 	 * for the READBUF command. If UART interrupts are not prioritized, then it would lead to missing of
 	 * characters in the IIO command sent from the client. */
-#if(DATA_CAPTURE_MODE == CONTINUOUS_DATA_CAPTURE)
-#if(ACTIVE_PLATFORM == STM32_PLATFORM)
-	no_os_irq_set_priority(trigger_irq_desc, IRQ_INT_ID, RDY_GPIO_PRIORITY);
-#endif
+#if (DATA_CAPTURE_MODE == CONTINUOUS_DATA_CAPTURE)  && (ACTIVE_IIO_CLIENT == IIO_CLIENT_REMOTE)
+	ret = no_os_irq_set_priority(trigger_irq_desc, IRQ_INT_ID, RDY_GPIO_PRIORITY);
+	if (ret) {
+		return ret;
+	}
 #endif
 
 	ret = ad7124_trigger_data_capture(ad7124_dev_inst);
+	if (ret) {
+		return ret;
+	}
+
+	/* Clear pending interrupt to ensure first sample is valid data */
+	ret = no_os_irq_clear_pending(trigger_irq_desc, IRQ_INT_ID);
 	if (ret) {
 		return ret;
 	}
@@ -745,6 +755,15 @@ static int32_t ad7124_iio_prepare_transfer(void* dev_instance, uint32_t ch_mask)
 		return ret;
 	}
 #else /* Continuous Capture Mode */
+
+	/* Clear pending Interrupt before enabling back the trigger.
+	 * Else , a spurious interrupt is observed after a legitimate interrupt,
+	 * as SPI SDO is on the same pin and is mistaken for an interrupt event */
+	ret = no_os_irq_clear_pending(trigger_irq_desc, IRQ_INT_ID);
+	if (ret) {
+		return ret;
+	}
+
 	ret = iio_trig_enable(ad7124_hw_trig_desc);
 	if (ret) {
 		return ret;
@@ -756,9 +775,9 @@ static int32_t ad7124_iio_prepare_transfer(void* dev_instance, uint32_t ch_mask)
 
 
 /**
- * @brief Perform tasks before end of current data transfer
- * @param dev_instance[in] - IIO device instance
- * @return 0 in case of success, negative error code otherwise
+ * @brief	Perform tasks before end of current data transfer
+ * @param	dev_instance[in] - IIO device instance
+ * @return	0 in case of success, negative error code otherwise
  */
 static int32_t ad7124_iio_end_transfer(void *dev)
 {
@@ -826,7 +845,6 @@ int32_t ad7124_trigger_handler(struct iio_device_data *iio_dev_data)
 		return ret;
 	}
 
-#if (ACTIVE_PLATFORM == STM32_PLATFORM)
 	/* Clear pending Interrupt before enabling back the trigger.
 	 * Else , a spurious interrupt is observed after a legitimate interrupt,
 	 * as SPI SDO is on the same pin and is mistaken for an interrupt event */
@@ -834,7 +852,6 @@ int32_t ad7124_trigger_handler(struct iio_device_data *iio_dev_data)
 	if (ret) {
 		return ret;
 	}
-#endif
 
 	/* Enable back the interrupts to use RDY / SDO shared pin as end of
 	 * conversion interrupt event monitor pin */
@@ -912,7 +929,6 @@ static int32_t ad7124_iio_submit_buffer(struct iio_device_data *iio_dev_data)
 			return ret;
 		}
 
-#if (ACTIVE_PLATFORM == STM32_PLATFORM)
 		/* Clear pending Interrupt before enabling back the trigger.
 		 * Else, a spurious interrupt is observed after a legitimate interrupt,
 		 * as SPI SDO is on the same pin and is mistaken for an interrupt event */
@@ -920,7 +936,6 @@ static int32_t ad7124_iio_submit_buffer(struct iio_device_data *iio_dev_data)
 		if (ret) {
 			return ret;
 		}
-#endif
 
 		/* Interrupt is enabled back after data is pushed into buffer */
 		ret = no_os_irq_enable(trigger_irq_desc, IRQ_INT_ID);
@@ -936,10 +951,10 @@ static int32_t ad7124_iio_submit_buffer(struct iio_device_data *iio_dev_data)
 }
 
 /**
- * @brief Convert ADC data to voltage without Vref
- * @param data[in] - ADC data in straight binary format (signed)
- * @param chn[in] - ADC channel
- * @return voltage
+ * @brief	Convert ADC data to voltage without Vref
+ * @param	data[in] - ADC data in straight binary format (signed)
+ * @param	chn[in] - ADC channel
+ * @return	voltage
  */
 static float ad7124_data_to_voltage_without_vref(int32_t data, uint8_t chn)
 {
@@ -954,10 +969,10 @@ static float ad7124_data_to_voltage_without_vref(int32_t data, uint8_t chn)
 }
 
 /**
- * @brief Convert ADC data to voltage with respect to Vref
- * @param data[in] - ADC data in straight binary format (signed)
- * @param chn[in] - ADC channel
- * @return voltage
+ * @brief	Convert ADC data to voltage with respect to Vref
+ * @param	data[in] - ADC data in straight binary format (signed)
+ * @param	chn[in] - ADC channel
+ * @return	voltage
  */
 static float ad7124_data_to_voltage_wrt_vref(int32_t data, uint8_t chn)
 {
@@ -972,10 +987,10 @@ static float ad7124_data_to_voltage_wrt_vref(int32_t data, uint8_t chn)
 }
 
 /**
- * @brief Convert ADC code to straight binary data
- * @param code[in] - ADC code (unsigned)
- * @param chn[in] - ADC channel
- * @return ADC straight binary data (signed)
+ * @brief	Convert ADC code to straight binary data
+ * @param	code[in] - ADC code (unsigned)
+ * @param	chn[in] - ADC channel
+ * @return	ADC straight binary data (signed)
  */
 static int32_t ad7124_code_to_straight_binary(uint32_t code, uint8_t chn)
 {
@@ -1019,11 +1034,11 @@ int ad7124_iio_remove(struct iio_desc *desc)
 }
 
 /**
- * @brief Init for reading/writing and parameterization of a
+ * @brief	Init for reading/writing and parameterization of a
  * 			AD7124 IIO device
- * @param desc[in,out] - IIO device descriptor
- * @param dev_indx[in] - IIO device number
- * @return 0 in case of success, negative error code otherwise
+ * @param 	desc[in,out] - IIO device descriptor
+ * @param   dev_indx[in] - IIO device number
+ * @return	0 in case of success, negative error code otherwise
  */
 int ad7124_iio_init(struct iio_device **desc, uint8_t dev_indx)
 {
@@ -1063,6 +1078,7 @@ int ad7124_iio_init(struct iio_device **desc, uint8_t dev_indx)
 				     ad7124_sampling_frequency,
 				     chn);
 		if (ret) {
+			free(iio_ad7124_inst);
 			return ret;
 		}
 	}
@@ -1119,8 +1135,8 @@ static int32_t ad7124_iio_trigger_param_init(struct iio_hw_trig **desc)
 }
 
 /**
- * @brief Initialize the AD7124 IIO Interface
- * @return 0 in case of success, negative error code otherwise
+ * @brief 	Initialize the AD7124 IIO Interface
+ * @return	0 in case of success, negative error code otherwise
  */
 int32_t ad7124_iio_initialize(void)
 {
@@ -1202,8 +1218,8 @@ int32_t ad7124_iio_initialize(void)
 }
 
 /**
- * @brief Run the AD7124 IIO event handler
- * @return None
+ * @brief 	Run the AD7124 IIO event handler
+ * @return	None
  */
 void ad7124_iio_event_handler(void)
 {
