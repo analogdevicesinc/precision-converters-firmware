@@ -2,7 +2,7 @@
  * @file    app_config.c
  * @brief   Source file for the application configuration for AD7124 IIO Application
 ********************************************************************************
-* Copyright (c) 2023-24 Analog Devices, Inc.
+* Copyright (c) 2023-25 Analog Devices, Inc.
 * All rights reserved.
 *
 * This software is proprietary to Analog Devices, Inc. and its licensors.
@@ -68,10 +68,8 @@ struct no_os_uart_init_param uart_init_params = {
 	.size = NO_OS_UART_CS_8,
 	.parity = NO_OS_UART_PAR_NO,
 	.stop = NO_OS_UART_STOP_1_BIT,
-#if (ACTIVE_PLATFORM == STM32_PLATFORM)
 	.asynchronous_rx = true,
 	.irq_id = UART_IRQ_ID,
-#endif
 #if defined(USE_VIRTUAL_COM_PORT)
 	.platform_ops = &vcom_ops,
 	.extra = &vcom_extra_init_params
@@ -173,20 +171,8 @@ struct no_os_irq_ctrl_desc *ticker_int_desc;
 /************************** Functions Definition ******************************/
 /******************************************************************************/
 
-#if (ACTIVE_IIO_CLIENT == IIO_CLIENT_LOCAL)
 /**
- * @brief 	lvgl tick update callback function for pocket lab
- * @param	ctx[in] - callback context
- * @return	none
- */
-void lvgl_tick_callback(void* ctx)
-{
-	pl_gui_lvgl_tick_update(LVGL_TICK_TIME_MS);
-}
-#endif
-
-/**
- * @brief Initialize the UART peripheral
+ * @brief 	Initialize the UART peripheral
  * @return	0 in case of success, negative error code otherwise
  */
 static int init_uart(void)
@@ -244,41 +230,8 @@ int init_interrupt(void)
 	return 0;
 }
 
-#if (ACTIVE_PLATFORM == MBED_PLATFORM)
 /**
- * @brief Initialize the lvgl timer peripheral
- * @return 0 in case of success, negative error code otherwise
- */
-static int32_t init_lvgl_timer(void)
-{
-	int32_t ret;
-
-	/* Init interrupt controller for Ticker interrupt */
-	ret = no_os_irq_ctrl_init(&ticker_int_desc, &ticker_int_init_params);
-	if (ret) {
-		return ret;
-	}
-
-	/* Register a callback function for Ticker interrupt */
-	ret = no_os_irq_register_callback(ticker_int_desc,
-					  TICKER_ID,
-					  &ticker_int_callback_desc);
-	if (ret) {
-		return ret;
-	}
-
-	/* Enable Ticker interrupt */
-	ret = no_os_irq_enable(ticker_int_desc, TICKER_ID);
-	if (ret) {
-		return ret;
-	}
-
-	return 0;
-}
-#endif
-
-/**
- * @brief Initialize the system peripherals
+ * @brief 	Initialize the system peripherals
  * @return	0 in case of success, negative error code otherwise
  */
 int init_system(void)
@@ -293,14 +246,6 @@ int init_system(void)
 	if (ret) {
 		return ret;
 	}
-
-#if (ACTIVE_IIO_CLIENT == IIO_CLIENT_LOCAL)
-	/* Initialize the lvgl timer */
-	ret = init_lvgl_timer();
-	if (ret) {
-		return ret;
-	}
-#endif
 
 	ret = no_os_gpio_get(&csb_gpio, &csb_init_param);
 	if (ret) {
@@ -322,19 +267,10 @@ int init_system(void)
 		return ret;
 	}
 
-#if(ACTIVE_PLATFORM == MBED_PLATFORM)
 	ret = no_os_gpio_direction_output(csb_gpio, NO_OS_GPIO_HIGH);
 	if (ret) {
 		return ret;
 	}
-
-#if defined(USE_SDRAM)
-	ret = sdram_init();
-	if (ret) {
-		return ret;
-	}
-#endif
-#endif
 
 	ret = init_interrupt();
 	if (ret) {
