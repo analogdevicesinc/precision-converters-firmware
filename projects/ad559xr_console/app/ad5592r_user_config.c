@@ -31,7 +31,7 @@
 /******************************************************************************/
 struct no_os_spi_init_param spi_user_params = {
 	.device_id = SPI_DEVICE_ID,
-	.max_speed_hz = 10000000,
+	.max_speed_hz = 20000000,
 	.chip_select = SPI_CSB,
 	.mode = NO_OS_SPI_MODE_2,
 	.platform_ops = &spi_ops,
@@ -50,17 +50,11 @@ struct no_os_i2c_init_param i2c_user_params = {
 /***************************** Constants  **********************************/
 /******************************************************************************/
 const struct ad5592r_init_param ad5592r_user_param = {
-	.int_ref = false
-};
-
-const struct ad5592r_dev ad5592r_dev_user = {
-	.ops = NULL,
-	.spi = NULL,
-	.i2c = NULL,
-	.spi_msg = 0,
-	.num_channels = NUM_CHANNELS,
-	.cached_dac = { 0, 0, 0, 0, 0, 0, 0 },
-	.cached_gp_ctrl = 0,
+	.spi_init = &spi_user_params,
+	.i2c_init = &i2c_user_params,
+	.int_ref = false,
+	.adc_range = ZERO_TO_VREF,
+	.dac_range = ZERO_TO_VREF,
 	.channel_modes = {
 		CH_MODE_UNUSED,
 		CH_MODE_UNUSED,
@@ -71,18 +65,5 @@ const struct ad5592r_dev ad5592r_dev_user = {
 		CH_MODE_UNUSED,
 		CH_MODE_UNUSED
 	},
-	.channel_offstate = {
-		CH_OFFSTATE_PULLDOWN,
-		CH_OFFSTATE_PULLDOWN,
-		CH_OFFSTATE_PULLDOWN,
-		CH_OFFSTATE_PULLDOWN,
-		CH_OFFSTATE_PULLDOWN,
-		CH_OFFSTATE_PULLDOWN,
-		CH_OFFSTATE_PULLDOWN,
-		CH_OFFSTATE_PULLDOWN
-	},
-	.gpio_out = 0,
-	.gpio_in = 0,
-	.gpio_val = 0,
-	.ldac_mode = 0,
+	.adc_buf = true,
 };
