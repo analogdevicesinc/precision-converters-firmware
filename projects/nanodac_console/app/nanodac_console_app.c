@@ -104,7 +104,7 @@ struct no_os_uart_init_param uart_init_params = {
 	.parity = NO_OS_UART_PAR_NO,
 	.stop = NO_OS_UART_STOP_1_BIT,
 	.irq_id = UART_IRQ_ID,
-	.asynchronous_rx = false,
+	.asynchronous_rx = true,
 #if (ACTIVE_PLATFORM == STM32_PLATFORM)
 	.platform_ops = &uart_ops,
 	.extra = &uart_extra_init_params
