@@ -449,7 +449,7 @@ static int iio_ad719x_attr_set(void *device,
 			       const struct iio_ch_info *channel,
 			       intptr_t priv)
 {
-	uint32_t value;
+	uint32_t value = 0;
 	int32_t ret;
 	uint8_t i;
 	struct ad719x_dev *desc = (struct ad719x_dev *)device;
@@ -458,6 +458,12 @@ static int iio_ad719x_attr_set(void *device,
 	/****************** ADC global setters ******************/
 	case ADC_RANGE:
 		for (i = AD719X_ADC_GAIN_1; i <= AD719X_ADC_GAIN_64; i++) {
+
+			if (i > 0) {
+				/* As Gain is mapped as 0,3,4,5,6,7 */
+				i = i - 2;
+			}
+
 			if (!strncmp(buf, ad719x_range_str[i], strlen(buf))) {
 				value = i;
 				break;
@@ -611,13 +617,11 @@ static int iio_ad719x_prepare_transfer(void *dev, uint32_t mask)
 		 * for the READBUF command. If UART interrupts are not prioritized, then it would lead to missing of
 		 * characters in the IIO command sent from the client. */
 #if(DATA_CAPTURE_MODE == CONTINUOUS_DATA_CAPTURE)
-#if(ACTIVE_PLATFORM == STM32_PLATFORM)
 	ret = no_os_irq_set_priority(trigger_irq_desc, TRIGGER_INT_ID,
 				     RDY_GPIO_PRIORITY);
 	if (ret) {
 		return ret;
 	}
-#endif
 #endif
 
 #if defined (DEV_AD7194)
@@ -692,6 +696,14 @@ static int iio_ad719x_prepare_transfer(void *dev, uint32_t mask)
 	}
 
 #if (DATA_CAPTURE_MODE == CONTINUOUS_DATA_CAPTURE)
+	/* Clear pending Interrupt before enabling back the trigger.
+	 * Else , a spurious interrupt is observed after a legitimate interrupt,
+	 * as SPI SDO is on the same pin and is mistaken for an interrupt event */
+	ret = no_os_irq_clear_pending(trigger_irq_desc, TRIGGER_INT_ID);
+	if (ret) {
+		return ret;
+	}
+
 	ret = iio_trig_enable(ad719x_hw_trig_desc);
 	if (ret) {
 		return ret;
@@ -786,7 +798,7 @@ static int iio_ad719x_close_channels(void *dev)
  */
 static int iio_ad719x_submit_samples(struct iio_device_data *iio_dev_data)
 {
-	uint32_t ret;
+	int32_t ret;
 	uint32_t count = 0;
 	uint8_t data_read[4] = { 0 };
 	volatile uint32_t timeout = BUF_READ_TIMEOUT;
@@ -835,7 +847,6 @@ static int iio_ad719x_submit_samples(struct iio_device_data *iio_dev_data)
 		no_os_swap(data_read[0], data_read[2]);
 		data_read[3] = 0;
 
-#if (ACTIVE_PLATFORM == STM32_PLATFORM)
 		/* Clear pending Interrupt before enabling back the trigger.
 		 * Else , a spurious interrupt is observed after a legitimate interrupt,
 		 * as SPI SDO is on the same pin and is mistaken for an interrupt event */
@@ -843,7 +854,6 @@ static int iio_ad719x_submit_samples(struct iio_device_data *iio_dev_data)
 		if (ret) {
 			return ret;
 		}
-#endif
 
 		ret = no_os_irq_enable(trigger_irq_desc, TRIGGER_INT_ID);
 		if (ret) {
@@ -916,7 +926,6 @@ static int32_t ad719x_trigger_handler(struct iio_device_data *iio_dev_data)
 		return ret;
 	}
 
-#if (ACTIVE_PLATFORM == STM32_PLATFORM)
 	/* Clear pending Interrupt before enabling back the trigger.
 	 * Else , a spurious interrupt is observed after a legitimate interrupt,
 	 * as SPI SDO is on the same pin and is mistaken for an interrupt event */
@@ -924,7 +933,6 @@ static int32_t ad719x_trigger_handler(struct iio_device_data *iio_dev_data)
 	if (ret) {
 		return ret;
 	}
-#endif
 
 	ret = iio_trig_enable(ad719x_hw_trig_desc);
 	if (ret) {

@@ -17,13 +17,11 @@
 /***************************** Include Files **********************************/
 /******************************************************************************/
 #include <stdint.h>
+#include <common_macros.h>
 
 /******************************************************************************/
 /********************** Macros and Constants Definition ***********************/
 /******************************************************************************/
-/* List of supported platforms*/
-#define	MBED_PLATFORM		1
-#define STM32_PLATFORM      2
 
 /* List of data capture modes for AD719X device */
 #define CONTINUOUS_DATA_CAPTURE		0
@@ -42,9 +40,9 @@
 #define DIFFERENTIAL_INPUT                 0
 #define PSEUDO_DIFFERENTIAL_INPUT          1
 
-/* Select the active platform (default is Mbed) */
+/* Select the active platform (default is STM32) */
 #if !defined(ACTIVE_PLATFORM)
-#define ACTIVE_PLATFORM		MBED_PLATFORM
+#define ACTIVE_PLATFORM		STM32_PLATFORM
 #endif
 
 /* Select the ADC data capture mode (default is CC mode) */
@@ -63,30 +61,7 @@
 #define XSTR(s)		#s
 #define STR(s)		XSTR(s)
 
-#if (ACTIVE_PLATFORM == MBED_PLATFORM)
-#include "app_config_mbed.h"
-#define HW_CARRIER_NAME		TARGET_NAME
-
-/* Redefine the init params structure mapping w.r.t. platform */
-#define spi_extra_init_params         mbed_spi_extra_init_params
-#if defined(USE_VIRTUAL_COM_PORT)
-#define uart_extra_init_params mbed_vcom_extra_init_params
-#define uart_ops mbed_virtual_com_ops
-#else
-#define uart_extra_init_params mbed_uart_extra_init_params
-#define uart_ops mbed_uart_ops
-#endif
-#define i2c_extra_init_params         mbed_i2c_extra_init_params
-#define gpio_sync_init_params         mbed_gpio_sync_extra_init_params
-#define trigger_gpio_irq_extra_params mbed_trigger_gpio_irq_init_params
-#define gpio_ops                      mbed_gpio_ops
-#define irq_ops                       mbed_irq_ops
-#define spi_ops                       mbed_spi_ops
-#define i2c_ops                       mbed_i2c_ops
-#define trigger_gpio_irq_ops          mbed_gpio_irq_ops
-#define trigger_gpio_handle           0 // Unused macro
-#define TRIGGER_INT_ID	              GPIO_IRQ_ID1
-#elif (ACTIVE_PLATFORM == STM32_PLATFORM)
+#if (ACTIVE_PLATFORM == STM32_PLATFORM)
 #include "app_config_stm32.h"
 /* Redefine the init params structure mapping wrt platform */
 #define gpio_ops		   stm32_gpio_ops
