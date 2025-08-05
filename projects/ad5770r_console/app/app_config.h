@@ -19,25 +19,18 @@ Analog Devices Software License Agreement.
 /******************************************************************************/
 
 #include <stdint.h>
+#include <common_macros.h>
 
 /******************************************************************************/
 /********************** Macros and Constants Definitions **********************/
 /******************************************************************************/
-
-/* List of active platforms supported */
-#define	MBED_PLATFORM		1
-#define STM32_PLATFORM      2
 
 /* Select the Active Platform */
 #if !defined(ACTIVE_PLATFORM)
 #define ACTIVE_PLATFORM		STM32_PLATFORM
 #endif
 
-#if (ACTIVE_PLATFORM == MBED_PLATFORM)
-#include "app_config_mbed.h"
-#define spi_init_extra_params	mbed_spi_extra_init_params
-#define hw_ldacb_extra_init_params mbed_gpio_ldac_init_params
-#else
+#if (ACTIVE_PLATFORM == STM32_PLATFORM)
 #include "app_config_stm32.h"
 #define spi_init_extra_params  stm32_spi_extra_init_params
 #define uart_extra_init_params 	stm32_uart_extra_init_params

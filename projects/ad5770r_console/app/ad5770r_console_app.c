@@ -72,11 +72,9 @@ struct no_os_uart_init_param uart_init_params = {
 	.parity = NO_OS_UART_PAR_NO,
 	.stop = NO_OS_UART_STOP_1_BIT,
 	.irq_id = UART_IRQ_ID,
-#if (ACTIVE_PLATFORM == STM32_PLATFORM)
-	.asynchronous_rx = false,
+	.asynchronous_rx = true,
 	.platform_ops = &uart_ops,
 	.extra = &uart_extra_init_params
-#endif
 };
 
 /* UART Descriptor */
@@ -103,7 +101,6 @@ int32_t ad5770r_app_initialize(void)
 {
 	int ret;
 
-#if (ACTIVE_PLATFORM == STM32_PLATFORM)
 	ret = no_os_uart_init(&uart_desc, &uart_init_params);
 	if (ret) {
 		return ret;
@@ -111,7 +108,7 @@ int32_t ad5770r_app_initialize(void)
 
 	/* Set up the UART for standard I/O operations */
 	no_os_uart_stdio(uart_desc);
-#endif
+
 	// Create a new descriptor for HW LDACB
 	if (no_os_gpio_get(&hw_ldacb_desc, &hw_ldacb_init_param) != 0) {
 		return -EINVAL;
