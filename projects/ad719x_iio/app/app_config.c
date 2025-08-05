@@ -35,10 +35,8 @@ struct no_os_uart_init_param uart_init_params = {
 	.size = NO_OS_UART_CS_8,
 	.parity = NO_OS_UART_PAR_NO,
 	.stop = NO_OS_UART_STOP_1_BIT,
-#if (ACTIVE_PLATFORM == STM32_PLATFORM)
 	.asynchronous_rx = true,
 	.irq_id = UART_IRQ_ID,
-#endif
 	.platform_ops = &uart_ops,
 	.extra = &uart_extra_init_params
 };
@@ -62,7 +60,6 @@ static struct no_os_i2c_init_param no_os_i2c_init_params = {
 	.device_id = I2C_DEVICE_ID,
 	.platform_ops = &i2c_ops,
 	.max_speed_hz = 100000,
-	.extra = &i2c_extra_init_params
 };
 
 /* EEPROM init parameters */
