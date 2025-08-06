@@ -39,10 +39,8 @@ struct no_os_uart_init_param uart_iio_comm_init_params = {
 	.size = NO_OS_UART_CS_8,
 	.parity = NO_OS_UART_PAR_NO,
 	.stop = NO_OS_UART_STOP_1_BIT,
-#if (ACTIVE_PLATFORM == STM32_PLATFORM)
 	.asynchronous_rx = true,
 	.irq_id = UART_IRQ_ID,
-#endif
 #if defined(USE_VIRTUAL_COM_PORT)
 	.platform_ops = &vcom_ops,
 	.extra = &vcom_extra_init_params
@@ -77,7 +75,6 @@ struct no_os_uart_init_param uart_console_stdio_init_params = {
 #endif
 };
 
-#if (ACTIVE_PLATFORM == STM32_PLATFORM)
 /* PWM GPIO init parameters */
 static struct no_os_gpio_init_param pwm_gpio_init_params = {
 	.number = LDAC_PIN,
@@ -85,7 +82,6 @@ static struct no_os_gpio_init_param pwm_gpio_init_params = {
 	.platform_ops = &gpio_ops,
 	.extra = &stm32_pwm_ldac_gpio_init_params
 };
-#endif
 
 /* I2C init parameters */
 static struct no_os_i2c_init_param no_os_i2c_init_params = {
@@ -102,9 +98,7 @@ struct no_os_pwm_init_param pwm_init_params = {
 	.duty_cycle_ns = CONV_DUTY_CYCLE_NSEC(MAX_SAMPLING_RATE),
 	.platform_ops = &pwm_ops,
 	.extra = &pwm_extra_init_params,
-#if (ACTIVE_PLATFORM == STM32_PLATFORM)
 	.pwm_gpio = &pwm_gpio_init_params
-#endif
 };
 
 /* Trigger GPIO IRQ parameters */
@@ -203,9 +197,7 @@ static int32_t init_uart(void)
 		return ret;
 	}
 
-#if (ACTIVE_PLATFORM == STM32_PLATFORM)
 	no_os_uart_stdio(uart_console_stdio_desc);
-#endif
 #endif
 
 	return 0;

@@ -40,24 +40,18 @@ struct ad5791_init_param ad579x_init_params =  {
 		.port = CLR_PORT,
 		.number = CLR_PIN,
 		.platform_ops = &gpio_ops,
-#if(ACTIVE_PLATFORM == STM32_PLATFORM)
 		.extra = &stm32_clear_gpio_init_params
-#endif
 	},
 	.gpio_ldac = {
 		.port = LDAC_PORT,
 		.number = LDAC_PIN,
 		.platform_ops = &gpio_ops,
-#if(ACTIVE_PLATFORM == STM32_PLATFORM)
 		.extra = &stm32_gpio_ldac_init_params
-#endif
 	},
 	.gpio_reset = {
 		.port = RESET_PORT,
 		.number = RESET_PIN,
 		.platform_ops = &gpio_ops,
-#if(ACTIVE_PLATFORM == STM32_PLATFORM)
 		.extra = &stm32_gpio_reset_init_params
-#endif
 	}
 };
