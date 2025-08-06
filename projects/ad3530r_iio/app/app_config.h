@@ -23,12 +23,11 @@
 #include "no_os_uart.h"
 #include "no_os_irq.h"
 #include "no_os_pwm.h"
+#include <common_macros.h>
 
 /******************************************************************************/
 /********************** Macros and Constants Definition ***********************/
 /******************************************************************************/
-/* List of supported platforms */
-#define STM32_PLATFORM      1
 
 /* List of data transmit methods supported by hardware platform */
 #define SPI_DMA				0
