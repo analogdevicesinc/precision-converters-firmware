@@ -343,13 +343,6 @@ int32_t ad469x_update_sampling_frequency(uint32_t* sampling_rate)
 
 	ad469x_sampling_frequency = PWM_PERIOD_TO_FREQUENCY(pwm_period_ns);
 #else
-#if (ACTIVE_PLATFORM == MBED_PLATFORM)
-	ret = no_os_pwm_enable(pwm_desc);
-	if (ret) {
-		return ret;
-	}
-#endif
-
 	ret = no_os_pwm_set_period(pwm_desc,
 				   CONV_TRIGGER_PERIOD_NSEC(ad469x_sampling_frequency));
 	if (ret) {
@@ -371,14 +364,7 @@ int32_t ad469x_update_sampling_frequency(uint32_t* sampling_rate)
 	}
 #endif
 
-#if (ACTIVE_PLATFORM == MBED_PLATFORM)
-	ret = no_os_pwm_disable(pwm_desc);
-	if (ret) {
-		return ret;
-	}
-#endif
 #endif // INTERFACE_MODE
-
 
 	return ret;
 }
@@ -601,18 +587,18 @@ static int ad469x_iio_attr_set(void *device,
 	case ADC_REFERENCE_SEL:
 		for (ref_sel = AD469x_2P4_2P75; ref_sel <= AD469x_4P5_5P1; ref_sel++) {
 			if (!strcmp(buf, ad469x_ref_sel[ref_sel])) {
+				/* Set the value of selected reference */
+				ret = ad469x_set_reference(device, ref_sel);
+				if (ret) {
+					return ret;
+				}
+
+				/* Update the scale value as per selected Vref */
+				ad469x_update_scale(ref_sel);
+
 				break;
 			}
 		}
-
-		/* Set the value of selected reference */
-		ret = ad469x_set_reference(device, ref_sel);
-		if (ret) {
-			return ret;
-		}
-
-		/* Update the scale value as per selected Vref */
-		ad469x_update_scale(ref_sel);
 
 		break;
 
@@ -1059,8 +1045,13 @@ static int32_t ad469x_iio_submit_samples(struct iio_device_data *iio_dev_data)
 	int32_t data_read;
 	ad469x_conversion_flag = false;
 	uint16_t local_tx_data = 0;
-	nb_of_samples = iio_dev_data->buffer->size / BYTES_PER_SAMPLE;
 	uint32_t spirxdma_ndtr;
+
+	if (!iio_dev_data) {
+		return -EINVAL;
+	}
+
+	nb_of_samples = iio_dev_data->buffer->size / BYTES_PER_SAMPLE;
 
 #if (INTERFACE_MODE == SPI_DMA)
 	/* STM32 SPI Descriptor */
@@ -1072,10 +1063,6 @@ static int32_t ad469x_iio_submit_samples(struct iio_device_data *iio_dev_data)
 		.bytes_number = nb_of_samples * (BYTES_PER_SAMPLE)
 	};
 #endif // INTERFACE_MODE
-
-	if (!iio_dev_data) {
-		return -EINVAL;
-	}
 
 	global_nb_of_samples = nb_of_samples;
 	global_iio_dev_data = iio_dev_data;
@@ -1327,7 +1314,7 @@ static int32_t ad469x_iio_remove(struct iio_desc *desc)
 static void ad469x_update_scale(uint8_t ref_set)
 {
 	/* ADC Raw to Voltage conversion default scale factor for IIO client */
-#if defined(PSEUDO_BIPOLAR_MODE)
+#if (DEFAULT_POLARITY_MODE == PSEUDO_BIPOLAR_MODE)
 	/* Device supports pseudo-bipolar mode only with INX- = Vref / 2 */
 	ad469x_attr_scale_val = (((ad469x_vref_values[ref_set]  / 2) /
 				  ADC_MAX_COUNT_BIPOLAR) * 1000);

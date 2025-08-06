@@ -115,7 +115,6 @@ int32_t ad469x_trigger_conversion(struct ad469x_dev *device)
 {
 	int32_t ret;
 
-#if (ACTIVE_PLATFORM == MBED_PLATFORM)
 	/* By default Mbed configures the I/O direction of a gpio
 	 * (when used for PWM) in analog mode, after disabling or
 	 * removing the PWM object.
@@ -139,7 +138,6 @@ int32_t ad469x_trigger_conversion(struct ad469x_dev *device)
 	if (ret) {
 		return ret;
 	}
-#endif
 
 	ret = no_os_gpio_set_value(device->gpio_convst, NO_OS_GPIO_HIGH);
 	if (ret) {
