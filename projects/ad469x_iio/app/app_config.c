@@ -88,7 +88,6 @@ static struct no_os_callback_desc ext_int_callback_desc = {
 	.peripheral = NO_OS_GPIO_IRQ
 };
 
-#if (ACTIVE_PLATFORM == STM32_PLATFORM)
 /* PWM GPIO init parameters */
 struct no_os_gpio_init_param pwm_gpio_params = {
 	.port = CNV_PORT_NUM,
@@ -96,7 +95,6 @@ struct no_os_gpio_init_param pwm_gpio_params = {
 	.platform_ops = &gpio_ops,
 	.extra = &pwm_gpio_extra_init_params
 };
-#endif
 
 /* PWM init parameters for conversion pulses */
 struct no_os_pwm_init_param pwm_init_params = {
@@ -111,9 +109,7 @@ struct no_os_pwm_init_param pwm_init_params = {
 #else
 	.duty_cycle_ns = CONV_TRIGGER_DUTY_CYCLE_NSEC(CONV_TRIGGER_PERIOD_NSEC(SAMPLING_RATE)),
 #endif
-#if (ACTIVE_PLATFORM == STM32_PLATFORM)
 	.pwm_gpio = &pwm_gpio_params,
-#endif
 	.platform_ops = &pwm_ops,
 	.extra = &pwm_extra_init_params
 };
@@ -134,9 +130,6 @@ static struct no_os_i2c_init_param no_os_i2c_init_params = {
 	.device_id = I2C_DEV_ID,
 	.platform_ops = &i2c_ops,
 	.max_speed_hz = 100000,
-#if (ACTIVE_PLATFORM == MBED_PLATFORM)
-	.extra = &i2c_extra_init_params
-#endif
 };
 
 /* EEPROM init parameters */
