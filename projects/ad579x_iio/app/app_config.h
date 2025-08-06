@@ -18,14 +18,11 @@
 /******************************************************************************/
 
 #include <stdint.h>
+#include <common_macros.h>
 
 /******************************************************************************/
 /********************** Macros and Constants Definition ***********************/
 /******************************************************************************/
-
-/* List of supported platforms */
-#define	MBED_PLATFORM		1
-#define STM32_PLATFORM      2
 
 /* List of supported DAC data stream modes */
 #define CYCLIC_STREAM			0
@@ -48,7 +45,7 @@
 #endif
 
 /* Enable the UART/VirtualCOM port connection (default VCOM) */
-#define USE_PHY_COM_PORT		// Uncomment to select UART
+//#define USE_PHY_COM_PORT		// Uncomment to select UART
 
 #if !defined(USE_PHY_COM_PORT)
 #define USE_VIRTUAL_COM_PORT
@@ -146,26 +143,7 @@
 /* Number of voltage spans possible for linearity compensation error handling */
 #define NUM_OF_V_SPANS  5
 
-#if (ACTIVE_PLATFORM == MBED_PLATFORM)
-#include "app_config_mbed.h"
-
-#define HW_CARRIER_NAME		TARGET_NAME
-
-/* Redefine the init params structure mapping w.r.t. platform */
-#define pwm_extra_init_params mbed_pwm_extra_init_params
-#define uart_extra_init_params mbed_uart_extra_init_params
-#define vcom_extra_init_params mbed_vcom_extra_init_params
-#define spi_extra_init_params mbed_spi_extra_init_params
-#define i2c_extra_init_params mbed_i2c_extra_init_params
-#define trigger_gpio_irq_extra_params mbed_trigger_gpio_irq_init_params
-#define gpio_ops               mbed_gpio_ops
-#define spi_ops mbed_spi_ops
-#define i2c_ops mbed_i2c_ops
-#define uart_ops mbed_uart_ops
-#define vcom_ops mbed_virtual_com_ops
-#define pwm_ops mbed_pwm_ops
-#define trigger_gpio_irq_ops mbed_gpio_irq_ops
-#elif (ACTIVE_PLATFORM == STM32_PLATFORM)
+#if (ACTIVE_PLATFORM == STM32_PLATFORM)
 #include "app_config_stm32.h"
 #define pwm_extra_init_params stm32_pwm_extra_init_params
 #define uart_extra_init_params stm32_uart_extra_init_params
@@ -204,16 +182,7 @@
 /* Serial number string is formed as: application name + device (target) name + platform (host) name */
 #define VIRTUAL_COM_SERIAL_NUM	(FIRMWARE_NAME "_" DEVICE_NAME "_" STR(PLATFORM_NAME))
 
-/* Check if any serial port available for use as console stdio port */
-#if defined(USE_PHY_COM_PORT)
-/* If PHY com is selected, VCOM or alternate PHY com port can act as a console stdio port */
-#if (ACTIVE_PLATFORM == MBED_PLATFORM || ACTIVE_PLATFORM == STM32_PLATFORM)
 #define CONSOLE_STDIO_PORT_AVAILABLE
-#endif
-#else
-/* If VCOM is selected, PHY com port will/should act as a console stdio port */
-#define CONSOLE_STDIO_PORT_AVAILABLE
-#endif
 
 /* Enable/Disable the use of SDRAM for DAC data streaming buffer */
 //#define USE_SDRAM		// Uncomment to use SDRAM for data buffer

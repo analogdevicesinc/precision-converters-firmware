@@ -301,15 +301,6 @@ int32_t ad579x_set_sampling_rate(uint32_t *sampling_rate)
 		return -EINVAL;
 	}
 
-#if (ACTIVE_PLATFORM == MBED_PLATFORM)
-	/* Enable PWM to get the PWM period (explicitly done for Mbed
-	 * platform as it needs pwm to be enabled to update pwm period) */
-	ret = no_os_pwm_enable(pwm_desc);
-	if (ret) {
-		return ret;
-	}
-#endif
-
 	if (*sampling_rate > MAX_SAMPLING_RATE) {
 		*sampling_rate = MAX_SAMPLING_RATE;
 	}
@@ -324,13 +315,6 @@ int32_t ad579x_set_sampling_rate(uint32_t *sampling_rate)
 	if (ret) {
 		return ret;
 	}
-
-#if (ACTIVE_PLATFORM == MBED_PLATFORM)
-	ret = no_os_pwm_disable(pwm_desc);
-	if (ret) {
-		return ret;
-	}
-#endif
 
 	/* Reconfigure the LDAC pin as GPIO output (non-PWM) */
 	ret = ad579x_reconfig_ldac(ad579x_dev_desc, AD579x_LDAC_GPIO_OUTPUT);
@@ -862,13 +846,11 @@ static int32_t ad579x_iio_prepare_transfer(void *dev, uint32_t mask)
 		return -EINVAL;
 	}
 
-#if (ACTIVE_PLATFORM == STM32_PLATFORM)
 	/* Reconfigure the LDAC pin as PWM */
 	ret = ad579x_reconfig_ldac(ad579x_dev_desc, AD579x_LDAC_PWM);
 	if (ret) {
 		return ret;
 	}
-#endif
 
 	ret = iio_trig_enable(ad579x_hw_trig_desc);
 	if (ret) {
