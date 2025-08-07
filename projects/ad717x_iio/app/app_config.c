@@ -2,7 +2,7 @@
  * @file    app_config.c
  * @brief   Source file for the application configuration for AD717x IIO Application
 ********************************************************************************
-* Copyright (c) 2021-23 Analog Devices, Inc.
+* Copyright (c) 2021-23,2025 Analog Devices, Inc.
 * All rights reserved.
 *
 * This software is proprietary to Analog Devices, Inc. and its licensors.
@@ -34,6 +34,9 @@
 /* The UART Descriptor */
 struct no_os_uart_desc *uart_desc;
 
+/* UART console descriptor */
+struct no_os_uart_desc *uart_console_stdio_desc;
+
 /* GPIO descriptor for the chip select pin */
 struct no_os_gpio_desc *csb_gpio;
 
@@ -48,24 +51,59 @@ struct no_os_eeprom_desc *eeprom_desc;
 
 /* UART Initialization Parameters */
 static struct no_os_uart_init_param uart_init_params = {
-	.device_id = NULL,
+	.device_id = UART_ID,
 	.baud_rate = IIO_UART_BAUD_RATE,
 	.size = NO_OS_UART_CS_8,
 	.parity = NO_OS_UART_PAR_NO,
 	.stop = NO_OS_UART_STOP_1_BIT,
+#if (ACTIVE_PLATFORM == STM32_PLATFORM)
+	.asynchronous_rx = true,
+	.irq_id = UART_IRQ_ID,
+#endif
+#if defined(USE_VIRTUAL_COM_PORT)
+	.platform_ops = &vcom_ops,
+	.extra = &vcom_extra_init_params
+#else
 	.platform_ops = &uart_ops,
 	.extra = &uart_extra_init_params
+#endif
+};
+
+/* UART init parameters for console comm port */
+struct no_os_uart_init_param uart_console_stdio_init_params = {
+	.device_id = 0,
+	.baud_rate = IIO_UART_BAUD_RATE,
+	.size = NO_OS_UART_CS_8,
+	.parity = NO_OS_UART_PAR_NO,
+	.stop = NO_OS_UART_STOP_1_BIT,
+#if defined(USE_VIRTUAL_COM_PORT)
+	/* If virtual com port is primary IIO comm port, use physical port for stdio
+	 * console. Applications which does not support VCOM, should not satisfy this
+	 * condition */
+	.platform_ops = &uart_ops,
+	.extra = &uart_extra_init_params
+#else
+#if defined(CONSOLE_STDIO_PORT_AVAILABLE)
+	/* Applications which uses phy COM port as primary IIO comm port,
+	 * can use VCOM as console stdio port provided it is available.
+	 * Else, alternative phy com port can be used for console stdio ops if available */
+	.platform_ops = &vcom_ops,
+	.extra = &vcom_extra_init_params
+#endif
+#endif
 };
 
 /* GPIO - Chip select Pin init parameters */
 static struct no_os_gpio_init_param csb_init_param = {
 	.number = SPI_CSB,
+	.port = SPI_CS_PORT,
 	.platform_ops = &csb_platform_ops,
 	.extra = NULL
 };
 
 /* GPIO RDY Pin init parameters */
 static struct no_os_gpio_init_param rdy_init_param = {
+	.port = RDY_PORT,
 	.number = RDY_PIN,
 	.platform_ops = &rdy_platform_ops,
 	.extra = NULL
@@ -73,17 +111,19 @@ static struct no_os_gpio_init_param rdy_init_param = {
 
 /* External interrupt init parameters */
 static struct no_os_irq_init_param trigger_gpio_irq_params = {
-	.irq_ctrl_id = 0,
+	.irq_ctrl_id = IRQ_INT_ID,
 	.platform_ops = &irq_platform_ops,
 	.extra = &ext_int_extra_init_params
 };
 
 /* I2C init parameters */
 static struct no_os_i2c_init_param no_os_i2c_init_params = {
-	.device_id = 0,
+	.device_id = I2C_DEVICE_ID,
 	.platform_ops = &i2c_ops,
 	.max_speed_hz = 100000,
+#if(ACTIVE_PLATFORM == MBED_PLATFORM)
 	.extra = &i2c_extra_init_params
+#endif
 };
 
 /* EEPROM init parameters */
@@ -112,7 +152,27 @@ static struct no_os_eeprom_init_param eeprom_init_params = {
  */
 static int32_t init_uart(void)
 {
-	return no_os_uart_init(&uart_desc, &uart_init_params);
+	int ret;
+
+	ret = no_os_uart_init(&uart_desc, &uart_init_params);
+	if (ret) {
+		return ret;
+	}
+
+#if defined(CONSOLE_STDIO_PORT_AVAILABLE)
+	/* Initialize the serial link for console stdio communication */
+	ret = no_os_uart_init(&uart_console_stdio_desc,
+			      &uart_console_stdio_init_params);
+	if (ret) {
+		return ret;
+	}
+
+#if (ACTIVE_PLATFORM == STM32_PLATFORM)
+	no_os_uart_stdio(uart_console_stdio_desc);
+#endif
+#endif
+
+	return 0;
 }
 
 
@@ -146,6 +206,10 @@ int32_t init_interrupt(void)
 int32_t init_system(void)
 {
 	int32_t ret;
+
+#if (ACTIVE_PLATFORM == STM32_PLATFORM)
+	stm32_system_init();
+#endif
 
 	if (init_uart() != 0) {
 		return -EINVAL;
