@@ -418,7 +418,6 @@ static int32_t iio_ad717x_prepare_transfer(void *dev_instance,
 	buf_size_updated = false;
 
 #if (DATA_CAPTURE_MODE == CONTINUOUS_DATA_CAPTURE)
-#if (ACTIVE_PLATFORM == STM32_PLATFORM)
 #if defined(USE_VIRTUAL_COM_PORT)
 	/* TODO : spikes being observed in VCOM
 	 * Added as temporary fix to the above issue.
@@ -435,7 +434,6 @@ static int32_t iio_ad717x_prepare_transfer(void *dev_instance,
 	if (ret) {
 		return ret;
 	}
-#endif
 #endif
 #endif
 
@@ -463,7 +461,6 @@ static int32_t iio_ad717x_prepare_transfer(void *dev_instance,
 		return ret;
 	}
 
-#if (ACTIVE_PLATFORM == STM32_PLATFORM)
 	/* Clear pending Interrupt before enabling back the trigger.
 	 * Else , a spurious interrupt is observed after a legitimate interrupt,
 	 * as SPI SDO is on the same pin and is mistaken for an interrupt event */
@@ -471,7 +468,6 @@ static int32_t iio_ad717x_prepare_transfer(void *dev_instance,
 	if (ret) {
 		return ret;
 	}
-#endif
 
 	ret = iio_trig_enable(ad717x_hw_trig_desc);
 	if (ret) {
@@ -638,7 +634,6 @@ int32_t ad717x_trigger_handler(struct iio_device_data *iio_dev_data)
 		return ret;
 	}
 
-#if (ACTIVE_PLATFORM == STM32_PLATFORM)
 	/* Clear pending Interrupt before enabling back the trigger.
 	 * Else , a spurious interrupt is observed after a legitimate interrupt,
 	 * as SPI SDO is on the same pin and is mistaken for an interrupt event */
@@ -646,7 +641,6 @@ int32_t ad717x_trigger_handler(struct iio_device_data *iio_dev_data)
 	if (ret) {
 		return ret;
 	}
-#endif
 
 	/* Enable back the external interrupts */
 	ret = iio_trig_enable(ad717x_hw_trig_desc);

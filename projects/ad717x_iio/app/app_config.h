@@ -18,15 +18,12 @@
 /***************************** Include Files **********************************/
 /******************************************************************************/
 #include <stdint.h>
+#include <common_macros.h>
 #include "no_os_gpio.h"
 
 /******************************************************************************/
 /********************** Macros and Constants Definition ***********************/
 /******************************************************************************/
-
-/* List of supported platforms */
-#define	MBED_PLATFORM		1
-#define STM32_PLATFORM      2
 
 /* List of data capture modes for AD717x device */
 #define CONTINUOUS_DATA_CAPTURE		0
@@ -132,25 +129,7 @@
 #define HW_MEZZANINE_NAME	"Eval-AD4111SDZ"
 #endif // Device Select (Active Device name definition)
 
-#if (ACTIVE_PLATFORM == MBED_PLATFORM)
-#include "app_config_mbed.h"
-#define HW_CARRIER_NAME         TARGET_NAME
-/* Redefine the init params structure mapping w.r.t. platform */
-#define vcom_extra_init_params mbed_vcom_extra_init_params
-#define uart_extra_init_params mbed_uart_extra_init_params
-#define spi_extra_init_params	mbed_spi_extra_init_params
-#define ext_int_extra_init_params mbed_trigger_gpio_irq_init_params
-#define i2c_extra_init_params mbed_i2c_extra_init_params
-#define uart_ops mbed_uart_ops
-#define vcom_ops mbed_virtual_com_ops
-#define csb_platform_ops mbed_gpio_ops
-#define rdy_platform_ops mbed_gpio_ops
-#define irq_platform_ops mbed_gpio_irq_ops
-#define spi_platform_ops mbed_spi_ops
-#define i2c_ops mbed_i2c_ops
-#define trigger_gpio_handle	0
-#define IRQ_INT_ID	GPIO_IRQ_ID1
-#elif (ACTIVE_PLATFORM == STM32_PLATFORM)
+#if (ACTIVE_PLATFORM == STM32_PLATFORM)
 #include "app_config_stm32.h"
 #define HW_CARRIER_NAME		    	TARGET_NAME
 /* Redefine the init params structure mapping w.r.t. platform */
@@ -375,16 +354,7 @@
 #endif
 #endif
 
-/* Check if any serial port available for use as console stdio port */
-#if defined(USE_PHY_COM_PORT)
-/* If PHY com is selected, VCOM or alternate PHY com port can act as a console stdio port */
-#if (ACTIVE_PLATFORM == MBED_PLATFORM || ACTIVE_PLATFORM == STM32_PLATFORM)
 #define CONSOLE_STDIO_PORT_AVAILABLE
-#endif
-#else
-/* If VCOM is selected, PHY com port will/should act as a console stdio port */
-#define CONSOLE_STDIO_PORT_AVAILABLE
-#endif
 
 /* Denominator of the scale factor to be applied while converting raw values to actual voltage */
 #if  defined(DEV_AD4111) || defined(DEV_AD4112) || \
