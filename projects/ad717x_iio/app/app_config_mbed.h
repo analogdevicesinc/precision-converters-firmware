@@ -2,7 +2,7 @@
  *   @file    app_config_mbed.h
  *   @brief   Header file for Mbed platform configurations.
 ********************************************************************************
- * Copyright (c) 2021-23 Analog Devices, Inc.
+ * Copyright (c) 2021-23,2025 Analog Devices, Inc.
  * All rights reserved.
  *
  * This software is proprietary to Analog Devices, Inc. and its licensors.
@@ -65,6 +65,13 @@
 #define I2C_SDA         SDP_I2C_SDA
 #endif // ARDUINO
 
+#define SPI_DEVICE_ID    0 //unused macro
+#define I2C_DEVICE_ID    0 //unused macro
+#define RDY_PORT         0 //unused macro
+#define UART_ID          0 //unused macro
+#define IRQ_INT_ID       0 //unused macro
+#define SPI_CS_PORT      0 //unused macro
+
 /* UART Common Pin Mapping on SDP-K1 */
 #define UART_TX		CONSOLE_TX
 #define	UART_RX		CONSOLE_RX
@@ -76,6 +83,9 @@
 * externally connected to D8 on the arduino header
 * of the micro-controller board via a jumper */
 #define RDY_PIN	    ARDUINO_UNO_D8
+
+/* Max SPI Clock Speed */
+#define MAX_SPI_SCLK            11250000
 
 /******************************************************************************/
 /********************** Public/Extern Declarations ****************************/

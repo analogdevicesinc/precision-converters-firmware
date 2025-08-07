@@ -1,21 +1,21 @@
 /***************************************************************************//**
- * @file    app_config_mbed.c
- * @brief   Source file for the mbed configuration for AD717x IIO Application
+ * @file    stm32_gpio_irq_generated.c
+ * @brief   GPIO IRQ specific functions for STM32 platform
 ********************************************************************************
-* Copyright (c) 2021-23,2025 Analog Devices, Inc.
-* All rights reserved.
-*
-* This software is proprietary to Analog Devices, Inc. and its licensors.
-* By using this software you agree to the terms of the associated
-* Analog Devices Software License Agreement.
+ * Copyright (c) 2025 Analog Devices, Inc.
+ * All rights reserved.
+ *
+ * This software is proprietary to Analog Devices, Inc. and its licensors.
+ * By using this software you agree to the terms of the associated
+ * Analog Devices Software License Agreement.
 *******************************************************************************/
 
 /******************************************************************************/
 /***************************** Include Files **********************************/
 /******************************************************************************/
 
-#include "app_config.h"
-#include "app_config_mbed.h"
+#include "no_os_error.h"
+#include "stm32_hal.h"
 
 /******************************************************************************/
 /********************* Macros and Constants Definition ************************/
@@ -25,37 +25,6 @@
 /******************** Variables and User Defined Data Types *******************/
 /******************************************************************************/
 
-/* UART Mbed platform specific init parameters */
-struct mbed_uart_init_param mbed_uart_extra_init_params = {
-	.uart_tx_pin = UART_TX,
-	.uart_rx_pin = UART_RX
-};
-
-/* VCOM Mbed platform specific init parameters */
-struct mbed_uart_init_param mbed_vcom_extra_init_params = {
-	.vendor_id = VIRTUAL_COM_PORT_VID,
-	.product_id = VIRTUAL_COM_PORT_PID,
-	.serial_number = VIRTUAL_COM_SERIAL_NUM
-};
-
-/* SPI MBED Platform Specific Init Parameters */
-struct mbed_spi_init_param mbed_spi_extra_init_params = {
-	.spi_clk_pin = SPI_SCK,
-	.spi_miso_pin = SPI_HOST_SDI,
-	.spi_mosi_pin = SPI_HOST_SDO,
-};
-
-/* External interrupt Mbed platform specific parameters */
-struct mbed_gpio_irq_init_param mbed_trigger_gpio_irq_init_params = {
-	.gpio_irq_pin = RDY_PIN,
-};
-
-/* I2C Mbed platform specific parameters */
-struct mbed_i2c_init_param mbed_i2c_extra_init_params = {
-	.i2c_sda_pin = I2C_SDA,
-	.i2c_scl_pin = I2C_SCL
-};
-
 /******************************************************************************/
 /************************** Functions Declaration *****************************/
 /******************************************************************************/
@@ -63,3 +32,51 @@ struct mbed_i2c_init_param mbed_i2c_extra_init_params = {
 /******************************************************************************/
 /************************** Functions Definition ******************************/
 /******************************************************************************/
+
+/**
+ * @brief Get the IRQ ID
+ * @param pin_nb[in] - Pin number
+ * @param irq_id[out] - Interrupt ID
+ * @return 0 if successful, negative error code otherwise.
+ */
+int stm32_get_exti_irq_id_from_pin(uint8_t pin_nb, IRQn_Type *irq_id)
+{
+	/* Note: The irq_id number used here are specific to STM32F469NI MCU on the SDP-K1 board
+	 * The below parameters will change depending on the controller used.
+	 * */
+	switch (pin_nb) {
+	case 4:
+		*irq_id = EXTI4_IRQn;
+		break;
+	case 0:
+		*irq_id = EXTI0_IRQn;
+		break;
+	case 2:
+		*irq_id = EXTI2_IRQn;
+		break;
+	case 1:
+		*irq_id = EXTI1_IRQn;
+		break;
+	case 3:
+		*irq_id = EXTI3_IRQn;
+		break;
+	case 5:
+	case 6:
+	case 7:
+	case 8:
+	case 9:
+		*irq_id = EXTI9_5_IRQn;
+		break;
+	case 10:
+	case 11:
+	case 12:
+	case 13:
+	case 14:
+	case 15:
+		*irq_id = EXTI15_10_IRQn;
+		break;
+	default:
+		return -ENOSYS;
+	}
+	return 0;
+}
