@@ -147,11 +147,9 @@ struct no_os_uart_init_param uart_init_params = {
 	.parity = NO_OS_UART_PAR_NO,
 	.stop = NO_OS_UART_STOP_1_BIT,
 	.irq_id = UART_IRQ_ID,
-#if (ACTIVE_PLATFORM == STM32_PLATFORM)
 	.asynchronous_rx = false,
 	.platform_ops = &uart_ops,
 	.extra = &uart_extra_init_params
-#endif
 };
 
 /* Designated SPI Initialization Structure */
@@ -313,7 +311,6 @@ int32_t ad7124_app_initialize(uint8_t configID)
 {
 	int ret;
 
-#if (ACTIVE_PLATFORM == STM32_PLATFORM)
 	ret = no_os_uart_init(&uart_desc, &uart_init_params);
 	if (ret) {
 		return ret;
@@ -321,7 +318,6 @@ int32_t ad7124_app_initialize(uint8_t configID)
 
 	/* Set up the UART for standard I/O operations */
 	no_os_uart_stdio(uart_desc);
-#endif
 
 	// Create a new descriptor for activity led
 	if (no_os_gpio_get(&activity_led_desc, &activity_led_init_param) != 0) {
@@ -366,17 +362,6 @@ static bool was_escape_key_pressed(void)
 {
 	bool wasPressed = false;
 
-#if (ACTIVE_PLATFORM == MBED_PLATFORM)
-	char rxChar;
-
-	/* Check for Escape key pressed */
-	if ((rxChar = getchar_noblock()) > 0) {
-		if (rxChar == ESCAPE_KEY_CODE) {
-			wasPressed = true;
-		}
-	}
-
-#else  /* STM32_PLATFORM */
 	int32_t ret;
 
 	/* Check for Escape key pressed */
@@ -384,7 +369,6 @@ static bool was_escape_key_pressed(void)
 	if (ret) {
 		wasPressed = true;
 	}
-#endif
 
 	return (wasPressed);
 }
@@ -581,14 +565,8 @@ static int32_t do_continuous_conversion(uint8_t display_mode)
 		 * No error, need to process the sample, what channel has been read? update that channelSample
 		 */
 		uint8_t channel_read = ad7124_register_map[AD7124_Status].value & 0x0000000F;
-
-		if (channel_read < AD7124_CHANNEL_COUNT) {
-			channel_samples[channel_read] = sample_data;
-			channel_samples_count[channel_read]++;
-		} else {
-			printf("Channel Read was %d, which is not < AD7124_CHANNEL_COUNT\r\n",
-			       channel_read);
-		}
+		channel_samples[channel_read] = sample_data;
+		channel_samples_count[channel_read]++;
 
 		dislay_channel_samples(SHOW_ENABLED_CHANNELS, display_mode);
 	}
@@ -710,24 +688,18 @@ static int32_t menu_single_conversion(uint32_t id)
 		 * No error, need to process the sample, what channel has been read? update that channelSample
 		 */
 		uint8_t channelRead = ad7124_register_map[AD7124_Status].value & 0x0000000F;
+		channel_samples[channelRead] = sample_data;
+		channel_samples_count[channelRead]++;
 
-		if (channelRead < AD7124_CHANNEL_COUNT) {
-			channel_samples[channelRead] = sample_data;
-			channel_samples_count[channelRead]++;
-
-			/* also need to clear the channel enable bit so the next single conversion cycle will sample the next channel */
-			ad7124_register_map[AD7124_Channel_0 + channelRead].value &=
-				~AD7124_CH_MAP_REG_CH_ENABLE;
-			if ((error_code = ad7124_write_register(pAd7124_dev,
-								ad7124_register_map[AD7124_Channel_0 + channelRead])) < 0) {
-				printf("Error (%ld) Clearing channel %d Enable bit.\r\n", error_code,
-				       channelRead);
-				adi_press_any_key_to_continue();
-				continue;
-			}
-		} else {
-			printf("Channel Read was %d, which is not < AD7124_CHANNEL_COUNT\r\n",
+		/* also need to clear the channel enable bit so the next single conversion cycle will sample the next channel */
+		ad7124_register_map[AD7124_Channel_0 + channelRead].value &=
+			~AD7124_CH_MAP_REG_CH_ENABLE;
+		if ((error_code = ad7124_write_register(pAd7124_dev,
+							ad7124_register_map[AD7124_Channel_0 + channelRead])) < 0) {
+			printf("Error (%ld) Clearing channel %d Enable bit.\r\n", error_code,
 			       channelRead);
+			adi_press_any_key_to_continue();
+			continue;
 		}
 	}
 
@@ -979,7 +951,12 @@ static int32_t menu_read_temperature(uint32_t id)
 
 	for (samples = 0; samples < 2; samples++) {
 		/* Wait for conversion to complete, then obtain sample */
-		ad7124_wait_for_conv_ready(pAd7124_dev, pAd7124_dev->spi_rdy_poll_cnt);
+		error_code = ad7124_wait_for_conv_ready(pAd7124_dev,
+							pAd7124_dev->spi_rdy_poll_cnt);
+		if (error_code) {
+			printf("Timed Out waiting for conversion");
+			return MENU_CONTINUE;
+		}
 
 		if ((error_code = ad7124_read_data(pAd7124_dev, &temp_readings) < 0)) {
 			printf("\r\n\tError reading temperature!!\r\n");
@@ -995,7 +972,7 @@ static int32_t menu_read_temperature(uint32_t id)
 	temperature >>= 1;
 
 	/* Validate temperaure range as specified in look-up table */
-	if (temperature >= -20 || temperature <= 50) {
+	if (temperature >= -20 && temperature <= 50) {
 		printf("\r\n\tTemperature: %d Celcius\r\n", temperature);
 	} else {
 		printf("\r\n\tError reading temperature!!\r\n");
@@ -1145,7 +1122,12 @@ static int32_t menu_channels_enable_disable(uint32_t action)
 		}
 
 		printf("\r\n\r\n\tDo you want to continue (y/n)?: ");
-		rx_char = toupper(getchar());
+		rx_char = (char)getchar();
+		if ((rx_char >= 'a' && rx_char <= 'z') || (rx_char >= 'A' && rx_char <= 'Z')) {
+			rx_char = toupper(rx_char);
+		} else {
+			printf(EOL"\tInvalid Entry!!");
+		}
 
 		if (rx_char != 'N' && rx_char != 'Y') {
 			printf("Invalid entry!!\r\n");
@@ -1155,6 +1137,8 @@ static int32_t menu_channels_enable_disable(uint32_t action)
 		}
 
 	} while (rx_char != 'N');
+
+	return 0;
 }
 
 
@@ -1201,7 +1185,12 @@ static void select_chn_assignment(uint8_t current_setup)
 
 	do {
 		printf("\r\n\r\n\tDo you want to assign setup to a channel (y/n)?: ");
-		rx_char = toupper(getchar());
+		rx_char = (char)getchar();
+		if ((rx_char >= 'a' && rx_char <= 'z') || (rx_char >= 'A' && rx_char <= 'Z')) {
+			rx_char = toupper(rx_char);
+		} else {
+			printf(EOL"\tInvalid Entry!!");
+		}
 
 		if (rx_char == 'Y') {
 			assign_setup_to_channel(current_setup);
@@ -1881,7 +1870,7 @@ static void config_filter_parameters(ad7124_setup_config *psetup)
 	 * has fixed data rates selectable from bits 19:17 of filter register */
 	while (current_selection_done == false) {
 		printf("\r\n\tEnter the filter Data Rate (in SPS): ");
-		filter_data_rate_raw = adi_get_decimal_float(sizeof(filter_data_rate_raw) * 2);
+		filter_data_rate_raw = adi_get_decimal_float(8);
 
 		// Get the value and round off to nearest integer
 		data_rate_fs = (uint16_t)(calculate_data_rate(psetup->filter, power_mode,
