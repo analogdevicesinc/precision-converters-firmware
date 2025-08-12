@@ -36,7 +36,7 @@ Introduction
 
 Analog Devices nanoDAC+® products are low power, single-channel, 16-/14-/12-bit buffered voltage output DACs. This page gives an overview of using the nanodac+® 
 firmware example with SDP-K1 EVAL board, interfacing with various EVAL boards supporting nanodac+ family devices.
-The firmware example comprises 3 layers of software (from top to bottom): Console Application Layer, Device No-OS Layer and Platform Drivers layer. It supports STM32 and Mbed Platforms.
+The firmware example comprises 3 layers of software (from top to bottom): Console Application Layer, Device No-OS Layer and Platform Drivers layer. It supports STM32 Platform.
 
    .. image:: /source/console/software_layers.jpg
       :width: 200
@@ -47,7 +47,7 @@ responsible for Low Level Interface. The platform drivers uses underlying librar
 The devices from nanodac+ family uses either SPI or I2C communication interface.
 
 The nanoDac+ firmware example can be used as a starting point for developing your own code for Analog Devices nanoDAC+ products in your own environment.
-This reduces the hardware dependency as any Mbed enabled board (or an STM32 board) can be used with same firmware with little modifications (precisely changing a pin mapping).
+This reduces the hardware dependency on any STM32 board can be used with same firmware with little modifications (precisely changing a pin mapping).
 
 =================
 Interface Diagram
@@ -67,7 +67,7 @@ The SDP-K1 acts as a Serial Device (UART) and firmware loaded into it interacts 
 
 .. Useful links Section
 
-.. include:: /source/useful_links.rst
+.. include:: /source/useful_links_stm32.rst
 
 ====================
 Hardware Connections
@@ -100,25 +100,25 @@ nanoDAC+ Firmware
 ======================
 
 This section briefs on the usage of firmware. This also explains the steps to compile and build the application using
-mbed, make based build and STM32CubeIDE builds.
+STM32CubeIDE builds.
 
 The software execution sequence for the nanodac+ Firmware Example is shown below. This is a blocking application as it waits for user input over serial interface (UART). 
 The input is scanned and processed through 'adi console libraries'. The menu functionality is executed from nanodac_conole_app.c file. The application layer talks with No-OS layer 
 for device registers and data access. The No-OS layer interfaces with Platform Drivers layer for accessing low level peripherals. 
-As name suggests, this layer is platform dependent. nanodac+ firmware uses Mbed libraries within Platform Drivers layer. And for the STM32 platform it uses underlying STM32 HAL libraries.
+As name suggests, this layer is platform dependent. nanodac+ firmware uses underlying STM32 HAL libraries.
 
    .. image:: /source/projects/nanodac_console/nanodac_software_sequence.jpg
       :width: 700
 
 .. Project Build Section:
     
-.. include:: /source/build/project_build.rst
+.. include:: /source/build/project_build_stm32.rst
 
 ===========
 Quick Start
 ===========
 
-If you have some familiarity with the Mbed or STM32 platform, the following is a basic list of steps required to start running the code, 
+If you have some familiarity with the STM32 platform, the following is a basic list of steps required to start running the code, 
 see below for more detail:
 
 * Connect the nanodac+ EVAL-board to the SDP-K1 controller board.
