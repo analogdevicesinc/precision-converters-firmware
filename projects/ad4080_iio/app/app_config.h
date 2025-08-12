@@ -16,12 +16,11 @@
 /***************************** Include Files **********************************/
 /******************************************************************************/
 #include <stdint.h>
+#include <common_macros.h>
 
 /******************************************************************************/
 /********************** Macros and Constants Definition ***********************/
 /******************************************************************************/
-/* List of supported platforms */
-#define STM32_PLATFORM		1
 
 /* List of supported data capture modes */
 #define BUSRT_DATA_CAPTURE			0
@@ -53,10 +52,6 @@
 #if !defined(ACTIVE_PLATFORM)
 #define ACTIVE_PLATFORM		STM32_PLATFORM
 #endif
-
-#if (ACTIVE_PLATFORM != STM32_PLATFORM)
-#error "No/Invalid active platform selected"
-#endif /* ACTIVE_PLATFORM */
 
 /* Select active oscillator */
 #if !defined(ACTIVE_OSC)

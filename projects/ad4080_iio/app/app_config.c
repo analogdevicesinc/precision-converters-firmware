@@ -73,10 +73,8 @@ struct no_os_uart_init_param uart_iio_comm_init_params = {
 	.size = NO_OS_UART_CS_8,
 	.parity = NO_OS_UART_PAR_NO,
 	.stop = NO_OS_UART_STOP_1_BIT,
-#if (ACTIVE_PLATFORM == STM32_PLATFORM)
 	.asynchronous_rx = true,
 	.irq_id = UART_IRQ_ID,
-#endif
 #if defined(USE_VIRTUAL_COM_PORT)
 	.platform_ops = &vcom_ops,
 	.extra = &vcom_extra_init_params,
