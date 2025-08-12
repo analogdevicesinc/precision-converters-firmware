@@ -49,4 +49,6 @@ int32_t ad4170_set_reference(struct ad4170_dev *dev, uint8_t chn,
 			     enum ad4170_ref_select ref);
 int32_t ad4170_set_fs(struct ad4170_dev *dev, uint8_t setup, uint8_t chn,
 		      uint16_t fs_val);
+int ad4170_determine_t_settle(float *t_settle,
+			      enum ad4170_filter_type  filter_type, uint32_t filter_fs);
 #endif	/* end of AD4170_SUPPORT_H_ */

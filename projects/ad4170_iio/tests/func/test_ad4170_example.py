@@ -4,6 +4,7 @@ import serial
 from time import sleep
 import csv
 import os
+from ad4170_system_config import *
 from adi.ad4170 import *
 
 iio_device = { 'DEV_AD4170': 'ad4170' }
@@ -12,14 +13,23 @@ MIN_EXPECTED_VOLTAGE = 1.7
 
 def test_ad4170(serial_port, device_name, serial_com_type, target_reset):
     uri_str = "serial:" + serial_port + ",230400"
+    # Allow VCOM connection to establish upon power-up
+    sleep(6)
+
+    dev = ad4170_system_config(uri_str, "system_config")
+    dev.channels[1].ch_en = 'disabled'
+    dev.channels[2].ch_en = 'disabled'
+    dev.channels[3].ch_en = 'disabled'
+    dev.reconfigure_system = 'Enable'
+    del dev._ctx
+    del dev
 
     # Allow VCOM connection to establish upon power-up
-    sleep(3)    
+    sleep(3)
 
     # Create a new instance of AD4170 class which creates
     # a device context as well for IIO interface
-    ad4170_dev = ad4170(uri_str, iio_device[device_name])
-
+    ad4170_dev = ad4170(uri_str, iio_device[device_name])  
     # *********** Perform data capture check ***********
     # TODO - The first value of the captured data seems to be offset from the expected result.
     #        Therefore it is discarded from the list. Once issue is resolved in the

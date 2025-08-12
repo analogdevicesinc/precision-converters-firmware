@@ -2,7 +2,7 @@
  *   @file   app_config.h
  *   @brief  Configuration file for AD4170 device application
 ******************************************************************************
-* Copyright (c) 2021-24 Analog Devices, Inc.
+* Copyright (c) 2021-25 Analog Devices, Inc.
 * All rights reserved.
 *
 * This software is proprietary to Analog Devices, Inc. and its licensors.
@@ -19,6 +19,7 @@
 
 #include <stdint.h>
 #include "ad4170.h"
+#include "common_macros.h"
 
 /******************************************************************************/
 /********************** Macros and Constants Definition ***********************/
@@ -27,10 +28,6 @@
 /* Macros for stringification */
 #define XSTR(s)		#s
 #define STR(s)		XSTR(s)
-
-/* List of supported platforms */
-#define	MBED_PLATFORM		1
-#define STM32_PLATFORM		2
 
 /* List of demo mode configurations */
 #define		USER_DEFAULT_CONFIG		0
@@ -52,11 +49,11 @@
 #define SPI_DMA_MODE    2
 
 /* List of supported IIO clients
- * Note: Local client is supported only for Mbed platform
- * for now
+ * - Local client is supported only on DISCO-F769NI (mbed & stm32 platform).
+ * - DISCO-F769NI only supports local client.
  * */
-#define IIO_CLIENT_REMOTE	0	// Remote (PC) IIO client
-#define IIO_CLIENT_LOCAL	1	// Local (display) IIO client
+#define IIO_CLIENT_REMOTE	1	// Remote (PC) IIO client
+#define IIO_CLIENT_LOCAL	2	// Local (display) IIO client
 
 // **** Note for User: ACTIVE_DEVICE selection ****//
 /* Define the device type from the list of below device type defines (one at a time)
@@ -121,8 +118,10 @@
 /* Note: SDP-K1 supports only SPI DMA Mode in stm32 platform*/
 #if defined (TARGET_SDP_K1)
 #define INTERFACE_MODE SPI_DMA_MODE
-#else // Nucleo H563
+#elif defined(NUCLEO_H563) // Nucleo H563
 #define INTERFACE_MODE TDM_MODE
+#else
+#define INTERFACE_MODE SPI_INTERRUPT_MODE
 #endif
 #else // Mbed
 #define INTERFACE_MODE SPI_INTERRUPT_MODE
@@ -136,7 +135,7 @@
 
 /* Select the ADC data capture mode (default is CC mode) */
 #if !defined(DATA_CAPTURE_MODE)
-#define DATA_CAPTURE_MODE	CONTINUOUS_DATA_CAPTURE
+#define DATA_CAPTURE_MODE	BURST_DATA_CAPTURE
 #endif
 
 /* Enable the UART/VirtualCOM port connection (default VCOM) */
@@ -146,38 +145,7 @@
 #define USE_VIRTUAL_COM_PORT
 #endif
 
-#if (ACTIVE_PLATFORM == MBED_PLATFORM)
-#include "app_config_mbed.h"
-#define HW_CARRIER_NAME         TARGET_NAME
-/* Redefine the init params structure mapping w.r.t. platform */
-#define ticker_int_extra_init_params mbed_ticker_int_extra_init_params
-#define vcom_extra_init_params mbed_vcom_extra_init_params
-#define vcom_ops mbed_virtual_com_ops
-#define uart_extra_init_params mbed_uart_extra_init_params
-#define uart_ops mbed_uart_ops
-#define spi_extra_init_params mbed_spi_extra_init_params
-#define i2c_extra_init_params mbed_i2c_extra_init_params
-#define trigger_gpio_irq_extra_params mbed_trigger_gpio_irq_init_params
-#define gpio_dig_aux1_extra_init_params mbed_dig_aux1_gpio_extra_init_params
-#define gpio_dig_aux2_extra_init_params mbed_dig_aux2_gpio_extra_init_params
-#define gpio_sync_inb_extra_init_params mbed_sync_inb_gpio_extra_init_params
-#define trigger_gpio_extra_init_params mbed_trigger_gpio_extra_init_params
-#define trigger_gpio_ops mbed_gpio_ops
-#define irq_ops		mbed_gpio_irq_ops
-#define ticker_irq_ops  mbed_irq_ops
-#define gpio_ops	mbed_gpio_ops
-#define spi_ops		mbed_spi_ops
-#define i2c_ops		mbed_i2c_ops
-#define trigger_gpio_irq_ops mbed_gpio_irq_ops
-#define trigger_gpio_handle 0	// Unused macro
-#define TRIGGER_GPIO_PORT 0  // Unused macro
-#define TRIGGER_GPIO_PIN  DIG_AUX_1
-#define TRIGGER_INT_ID	GPIO_IRQ_ID1
-#define TICKER_ID TICKER_INT_ID
-#define SPI_DEVICE_ID 	0 // unused
-#define I2C_DEVICE_ID	0 // Unused
-#define TRIGGER_GPIO_IRQ_CTRL_ID 0 // Unused
-#elif (ACTIVE_PLATFORM == STM32_PLATFORM)
+#if (ACTIVE_PLATFORM == STM32_PLATFORM)
 #include "app_config_stm32.h"
 
 #define spi_extra_init_params 	stm32_spi_extra_init_params
@@ -191,12 +159,8 @@
 #define ticker_int_extra_init_params	stm32_ticket_int_init_params
 #define tdm_extra_init_params stm32_tdm_extra_init_params
 #define i2c_extra_init_params stm32_i2c_extra_init_params
-#if (INTERFACE_MODE == SPI_DMA_MODE)
 #define tx_trigger_extra_init_params  stm32_tx_trigger_extra_init_params
-#endif
-#if defined (TARGET_SDP_K1)
 #define vcom_extra_init_params      stm32_vcom_extra_init_params
-#endif
 
 #define spi_ops		stm32_spi_ops
 #define uart_ops	stm32_uart_ops
@@ -204,14 +168,11 @@
 #define i2c_ops 	stm32_i2c_ops
 #define irq_ops		stm32_gpio_irq_ops
 #define tdm_ops      stm32_tdm_platform_ops
+#define DMA_IRQ_ID			 GPDMA1_Channel7_IRQn
 #define trigger_gpio_irq_ops stm32_gpio_irq_ops
-#if (INTERFACE_MODE == SPI_DMA_MODE)
 #define dma_ops stm32_dma_ops
 #define pwm_ops      stm32_pwm_ops
-#endif
-#if defined (TARGET_SDP_K1)
 #define vcom_ops                    stm32_usb_uart_ops
-#endif
 
 #define TRIGGER_GPIO_PORT 			DIG_AUX_1_PORT
 #define TRIGGER_GPIO_PIN  			DIG_AUX_1
@@ -222,7 +183,6 @@
 #define I2C_DEVICE_ID		STM32_I2C_ID
 #define TRIGGER_INT_ID 		0 // unused
 #define trigger_gpio_handle	0 // unused
-#define DMA_IRQ_ID			 GPDMA1_Channel7_IRQn
 #else
 #error "No/Invalid active platform selected"
 #endif
@@ -235,6 +195,12 @@
 #if defined(DEV_AD4170)
 #define	DIFFERENTIAL_CHNS	4
 #define	SINGLE_ENDED_CHNS	8
+#elif defined(DEV_AD4171)
+#define	DIFFERENTIAL_CHNS	8
+#define	SINGLE_ENDED_CHNS	16
+#elif defined(DEV_AD4172)
+#define	DIFFERENTIAL_CHNS	3
+#define	SINGLE_ENDED_CHNS	6
 #elif defined (DEV_AD4190)
 #define DIFFERENTIAL_CHNS	4
 #define SINGLE_ENDED_CHNS	8
@@ -320,9 +286,6 @@
 
 /* Default sampling frequency for AD4170 (in SPS) */
 #define AD4170_DEFLT_SAMPLING_FREQUENCY	(AD4170_INTERNAL_CLOCK / FS_TO_ODR_CONV_SCALER)
-
-/* Scale value for Filters - SINC5, SINC5_AVG and SINC3 */
-#define FILTER_SCALE		32
 
 /******************************************************************************/
 /************************ Public Declarations *********************************/
