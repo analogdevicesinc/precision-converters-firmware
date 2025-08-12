@@ -22,6 +22,9 @@
 /********************* Macros and Constants Definitions ***********************/
 /******************************************************************************/
 
+/* Scale value for Filters - SINC5, SINC5_AVG and SINC3 */
+#define FILTER_SCALE		32
+
 /******************************************************************************/
 /******************** Variables and User Defined Data Types *******************/
 /******************************************************************************/
@@ -39,7 +42,7 @@
 int32_t ad4170_read_single_sample(uint8_t input_chn, uint32_t *raw_data)
 {
 	int32_t ret;
-	struct ad4170_adc_ctrl adc_ctrl;
+	struct ad4170_adc_ctrl adc_ctrl = { 0 };
 	uint32_t prev_active_channels;
 	uint8_t adc_data[BYTES_PER_SAMPLE];
 
@@ -71,7 +74,7 @@ int32_t ad4170_read_single_sample(uint8_t input_chn, uint32_t *raw_data)
 #if (INTERFACE_MODE == SPI_INTERRUPT_MODE) || (INTERFACE_MODE == SPI_DMA_MODE)
 	/* Enable single conversion mode */
 	adc_ctrl = p_ad4170_dev_inst->config.adc_ctrl;
-	adc_ctrl.mode = AD4170_MODE_SINGLE;
+	adc_ctrl.mode = AD4170_MODE_CONT;
 	ret = ad4170_set_adc_ctrl(p_ad4170_dev_inst, adc_ctrl);
 	if (ret) {
 		return ret;
@@ -517,11 +520,12 @@ int32_t ad4170_set_filter(struct ad4170_dev *dev, uint8_t chn,
 {
 	uint8_t reg;
 	int32_t ret;
-	uint8_t setup = dev->config.setup[chn].setup_n;
 
 	if (!dev) {
 		return -EINVAL;
 	}
+
+	uint8_t setup = dev->config.setup[chn].setup_n;
 
 	reg = no_os_field_prep(AD4170_ADC_SETUPS_FILTER_TYPE_MSK,
 			       filt_type);
@@ -593,3 +597,60 @@ int32_t ad4170_set_fs(struct ad4170_dev *dev, uint8_t setup, uint8_t chn,
 
 	return 0;
 }
+
+/*!
+ * @brief Determine Settling time
+ * @param t_settle[out] - Settling time
+ * @param filter_type[in] - Filter type
+ * @param filter_fs[in] - Value of FS configured
+ * @return	0 in case of success, negative error code otherwise
+ */
+int ad4170_determine_t_settle(float *t_settle,
+			      enum ad4170_filter_type filter_type, uint32_t filter_fs)
+{
+	uint8_t filter_scaler = 0;
+
+	if (num_of_active_channels == 1) {
+		switch (filter_type) {
+		case AD4170_FILT_SINC5_AVG:
+			filter_scaler = 128;
+			break;
+
+		case AD4170_FILT_SINC5:
+		case AD4170_FILT_SINC3:
+			filter_scaler = 32;
+			break;
+
+		default:
+			return -EINVAL;
+		}
+
+		*t_settle = ((float)filter_scaler * filter_fs) / (float)AD4170_INTERNAL_CLOCK;
+
+		return 0;
+	}
+
+	/* Note: Calculation of effective sampling rate is different when more than one channel is enabled in the sequencer */
+	switch (filter_type) {
+	case AD4170_FILT_SINC5_AVG:
+		*t_settle = ((float)((4 + (filter_fs / 4)) * 128)) / (float)
+			    AD4170_INTERNAL_CLOCK;
+		break;
+
+	case AD4170_FILT_SINC5:
+		*t_settle = (float)(5 * FILTER_SCALE * filter_fs) / (float)
+			    AD4170_INTERNAL_CLOCK;
+		break;
+
+	case AD4170_FILT_SINC3:
+		*t_settle = (float)(3 * FILTER_SCALE * filter_fs) / (float)
+			    AD4170_INTERNAL_CLOCK;
+		break;
+
+	default:
+		return -EINVAL;
+	}
+
+	return 0;
+}
+

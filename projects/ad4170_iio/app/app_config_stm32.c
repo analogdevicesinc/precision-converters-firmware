@@ -2,7 +2,7 @@
  *   @file    app_config_stm32.c
  *   @brief   Application configurations module for STM32 platform
 ********************************************************************************
- * Copyright (c) 2023-24 Analog Devices, Inc.
+ * Copyright (c) 2023-25 Analog Devices, Inc.
  * All rights reserved.
  *
  * This software is proprietary to Analog Devices, Inc. and its licensors.
@@ -22,6 +22,9 @@
 #endif
 #include "ad4170_iio.h"
 #include "no_os_pwm.h"
+#if (ACTIVE_IIO_CLIENT == IIO_CLIENT_LOCAL)
+#include "pl_gui_events.h"
+#endif
 
 /******************************************************************************/
 /************************ Macros/Constants ************************************/
@@ -51,7 +54,7 @@ struct stm32_spi_init_param stm32_spi_extra_init_params = {
 
 /* UART STM32 Platform Specific Init Parameters */
 struct stm32_uart_init_param stm32_uart_extra_init_params = {
-	.huart = APP_UART_HANDLE
+	.huart = &APP_UART_HANDLE
 };
 
 /* STM32 GPIO specific parameters */
@@ -170,6 +173,10 @@ uint8_t* dma_buf_current_idx;
 struct stm32_spi_desc* sdesc;
 #endif
 
+#if (ACTIVE_IIO_CLIENT == IIO_CLIENT_LOCAL)
+/* LVGL tick counter */
+static uint32_t lvgl_tick_counter = 0;
+#endif
 /******************************************************************************/
 /************************** Functions Declarations ****************************/
 /******************************************************************************/
@@ -186,17 +193,26 @@ void stm32_system_init(void)
 {
 	HAL_Init();
 	SystemClock_Config();
-	MX_SPI1_Init();
 	MX_GPIO_Init();
+#if defined (NUCLEO_H563)
+	MX_SPI1_Init();
 	MX_SAI1_Init();
-#if !defined (TARGET_SDP_K1)
 	MX_USART3_UART_Init();
 	MX_GPDMA1_Init();
 	MX_ICACHE_Init();
-#else
+#elif defined (TARGET_SDP_K1)
+	MX_SPI1_Init();
+	MX_SAI1_Init();
 	MX_UART5_Init();
 	MX_DMA_Init();
 	MX_TIM8_Init();
+#ifdef USE_VIRTUAL_COM_PORT
+	MX_USB_DEVICE_Init();
+#endif
+#else
+	MX_SPI2_Init();
+	MX_USART6_UART_Init();
+	MX_I2C1_Init();
 #ifdef USE_VIRTUAL_COM_PORT
 	MX_USB_DEVICE_Init();
 #endif
@@ -208,26 +224,29 @@ void stm32_system_init(void)
  * @param hsai - pointer to a SAI_HandleTypeDef structure
  * @return None
  */
+#if (INTERFACE_MODE == TDM_MODE)
 void ad4170_dma_rx_half_cplt(SAI_HandleTypeDef *hsai)
 {
-#if (INTERFACE_MODE == TDM_MODE)
+
 #if (DATA_CAPTURE_MODE == CONTINUOUS_DATA_CAPTURE)
 	if ((tdm_read_started) && (data_capture_operation)) {
 		end_tdm_dma_to_cb_transfer(ad4170_tdm_desc, ad4170_iio_dev_data,
 					   TDM_DMA_READ_SIZE, BYTES_PER_SAMPLE);
 	}
-#endif
+
 #endif // INTERFACE_MODE
 }
+#endif
 
 /*!
  * @brief SAI DMA Receive Complete Callback function
  * @param hsai - pointer to a SAI_HandleTypeDef structure
  * @return None
  */
+#if (INTERFACE_MODE == TDM_MODE)
 void ad4170_dma_rx_cplt(SAI_HandleTypeDef *hsai)
 {
-#if (INTERFACE_MODE == TDM_MODE)
+
 	if (data_capture_operation) {
 #if (DATA_CAPTURE_MODE == CONTINUOUS_DATA_CAPTURE)
 		/* TDM read is not invoked in-time to read the first channel in sequencer
@@ -258,8 +277,8 @@ void ad4170_dma_rx_cplt(SAI_HandleTypeDef *hsai)
 	} else {
 		update_dma_buffer_overflow();
 	}
-#endif // INTERFACE_MODE
 }
+#endif // INTERFACE_MODE
 
 /**
  * @brief   Callback function to flag the capture of number
@@ -328,7 +347,7 @@ void update_buff(uint32_t* local_buf, uint32_t* buf_start_addr)
 #if (INTERFACE_MODE == SPI_DMA_MODE)
 	iio_buf_start_idx = (uint8_t*)buf_start_addr;
 #if (DATA_CAPTURE_MODE == BURST_DATA_CAPTURE)
-	dma_buf_start_idx = (uint8_t*)local_buf + (BYTES_PER_SAMPLE *
+	dma_buf_start_idx = (uint8_t*)local_buf  + (BYTES_PER_SAMPLE *
 			    num_of_active_channels);
 #else
 	dma_buf_start_idx = (uint8_t*)local_buf;
@@ -431,5 +450,33 @@ void DMA2_Stream0_IRQHandler(void)
 	       dma_buf_current_idx, rxdma_ndtr);
 #endif
 	HAL_DMA_IRQHandler(&hdma_spi1_rx);
+}
+#endif
+
+/**
+ * @brief Systick Handler definition
+ * @return none
+ */
+#if (ACTIVE_IIO_CLIENT == IIO_CLIENT_LOCAL)
+void SysTick_Handler(void)
+{
+	HAL_IncTick();
+	/* USER CODE BEGIN SysTick_IRQn 1 */
+	HAL_SYSTICK_IRQHandler();
+	/* USER CODE END SysTick_IRQn 1 */
+}
+
+/**
+ * @brief Systick Callback definition
+ * @return none
+ */
+void HAL_SYSTICK_Callback(void)
+{
+	lvgl_tick_counter++;
+	if (lvgl_tick_counter >= LVGL_TICK_TIME_MS) {
+		// 5ms interval (if SysTick is 1ms)
+		pl_gui_lvgl_tick_update(LVGL_TICK_TIME_MS); // or LVGL_TICK_TIME_MS
+		lvgl_tick_counter = 0;
+	}
 }
 #endif
