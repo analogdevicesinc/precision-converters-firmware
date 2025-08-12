@@ -22,12 +22,13 @@
 #include "stm32_uart.h"
 #include "stm32_gpio.h"
 #include "app_config.h"
-#if (INTERFACE_MODE != SPI_DMA_MODE)
+#if (INTERFACE_MODE == TDM_DMA_MODE)
+#include "stm32_tdm.h"
+#endif
 #include "stm32_gpio_irq.h"
-#else
+#if(INTERFACE_MODE == SPI_DMA_MODE)
 #include "stm32_dma.h"
 #endif
-#include "stm32_tdm.h"
 #if (INTERFACE_MODE == SPI_DMA_MODE)
 #include "stm32_pwm.h"
 #endif
@@ -52,7 +53,7 @@
 #define STM32_I2C_ID		1 // I2C1
 
 /* STM32 UART specific parameters */
-#define APP_UART_HANDLE     &huart5
+#define APP_UART_HANDLE     huart5
 #define UART_IRQ_ID         UART5_IRQn
 
 /* STM32 GPIO specific parameters */
@@ -86,7 +87,8 @@
 #define TIMER_8_PRESCALER           0
 #define TIMER_8_CLK_DIVIDER         2
 #define TIMER_CHANNEL_1				1
-#else
+
+#elif defined (NUCLEO_H563)
 /* The below configurations are specific to STM32H563ZIT6 MCU on NUCLEO-H563ZI Board. */
 #define HW_CARRIER_NAME		NUCLEO-H563ZI
 
@@ -99,7 +101,8 @@
 #define STM32_I2C_ID		1 // I2C1
 
 /* STM32 UART specific parameters */
-#define APP_UART_HANDLE     &huart3
+#define APP_UART_HANDLE     huart3
+#define UART_IRQ_ID			USART3_IRQn
 
 /* STM32 GPIO specific parameters */
 #define DIG_AUX_1    		14 // PG14
@@ -130,6 +133,42 @@
 #define TDM_DMA_READ_SIZE			TDM_N_SAMPLES_DMA_READ * TDM_SLOTS_PER_FRAME/2
 
 #define STM32_SAI_BASE	SAI1_Block_A
+#else
+/* The below configurations are specific to STM32F769NI MCU on Disco-F769NI Board. */
+#define HW_CARRIER_NAME		DISCO-F769NI
+
+/* STM32 SPI Specific parameters */
+#define STM32_SPI_ID		2 // SPI1
+#define STM32_SPI_CS_PORT	0  // GPIO Port D
+#define SPI_CSB				11 // PA_11
+
+/* STM32 UART specific parameters */
+#define APP_UART_HANDLE 	huart6
+
+/* UART Device ID */
+#define UART_IRQ_ID			USART6_IRQn
+
+#define STM32_I2C_ID           1 // I2C1
+
+/* I2C timing register value for standard mode of operation
+ * Check here for more understanding on I2C timing register
+ * configuration: TODO*/
+#define I2C_TIMING				0x40912732
+
+/* STM32 GPIO specific parameters */
+#define DIG_AUX_1    		1 // PJ1
+#define DIG_AUX_2			3 // PI3
+#define SYNC_INB			0 // PJ0
+
+#define DIG_AUX_1_PORT		9 // GPIOJ
+#define DIG_AUX_2_PORT		8 // GPIOI
+#define SYNC_INB_PORT		9 // GPIOJ
+
+#define GPIO_TRIGGER_INT_PORT  DIG_AUX_1_PORT
+
+/* Ticker for Pocket Lab */
+#define LVGL_TICK_TIME_US	5000
+#define LVGL_TICK_TIME_MS	(LVGL_TICK_TIME_US / 1000)
 #endif
 
 /* Note: The below macro and the type of digital filter chosen together
@@ -183,19 +222,19 @@ extern struct stm32_gpio_init_param stm32_csb_gpio_extra_init_params;
 extern struct stm32_gpio_irq_init_param stm32_trigger_gpio_irq_init_params;
 extern struct stm32_tdm_init_param stm32_tdm_extra_init_params;
 extern struct stm32_i2c_init_param stm32_i2c_extra_init_params;
-#if !defined (TARGET_SDP_K1)
-extern UART_HandleTypeDef huart3;
-#else
+extern UART_HandleTypeDef APP_UART_HANDLE;
+extern uint8_t num_of_active_channels;
+
+#if defined (TARGET_SDP_K1)
 extern TIM_HandleTypeDef htim8;
-extern UART_HandleTypeDef huart5;
 extern DMA_HandleTypeDef hdma_spi1_rx;
 extern DMA_HandleTypeDef hdma_tim8_ch1;
 extern USBD_HandleTypeDef hUsbDeviceHS;
 extern struct stm32_usb_uart_init_param stm32_vcom_extra_init_params;
 #endif
+#if defined(TARGET_SDP_K1) || defined(NUCLEO_H563)
 extern bool data_capture_operation;
 extern struct iio_device_data *ad4170_iio_dev_data;
-extern uint8_t num_of_active_channels;
 extern volatile bool tdm_read_started;
 extern volatile struct iio_device_data* iio_dev_data_g;
 extern uint32_t nb_of_samples_g;
@@ -225,4 +264,5 @@ void update_buff(uint32_t* local_buf, uint32_t* buf_start_addr);
 void tim8_init(struct no_os_pwm_desc *pwm_desc);
 void MX_USB_DEVICE_Init(void);
 extern volatile uint32_t callback_count;
+#endif
 #endif /* APP_CONFIG_STM32_H_ */
