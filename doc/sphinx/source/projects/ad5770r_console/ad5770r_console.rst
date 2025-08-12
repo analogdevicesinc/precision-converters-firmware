@@ -27,7 +27,7 @@ The AD5770R contains five 14-bit resolution current sourcing DAC channels and on
 
 Channel 0 can be configured to sink up to 60 mA and source up to 300 mA. Channel 1 to Channel 5 have multiple, programmable output current sourcing ranges, set by register access. Each DAC can operate with a wide power supply rail from 0.8 V to AVDD − 0.4 V for optimizing power efficiency and thermal power dissipation.
 
-This page describes the AD5770R firmware example running on the SDP-K1 controller board, interfacing with the AD5770R evaluation board. The firmware example comprises 3 layers of software, It can support Mbed and STM32 platforms.
+This page describes the AD5770R firmware example running on the SDP-K1 controller board, interfacing with the AD5770R evaluation board. The firmware example comprises 3 layers of software, It can support STM32 platform.
 
 * Console Application - uses the ADI console libraries to provide a basic terminal UI
 * AD5770R No-OS Driver - AD5770R device C API
@@ -36,7 +36,7 @@ This page describes the AD5770R firmware example running on the SDP-K1 controlle
    .. image:: /source/projects/ad5770r_console/ad5770r_architecture.jpg
       :width: 400
 
-The AD5770R firmware example can be used as a starting point for developing your own code in your own environment. The Platform simplifies the overall software development process by providing a common low level driver abstraction. This reduces the hardware dependency as any Mbed enabled board(or an STM32 board) can be used with same firmware with little to no modifications, usually just changing the pin mapping.
+The AD5770R firmware example can be used as a starting point for developing your own code in your own environment. The Platform simplifies the overall software development process by providing a common low level driver abstraction. This reduces the hardware dependency on any STM32 board can be used with same firmware with little to no modifications, usually just changing the pin mapping.
 
 =================
 Interface Diagram
@@ -54,17 +54,17 @@ The SDP-K1 is connected to a PC through a USB cable. The firmware image, a .BIN 
 
 .. Useful links Section
 
-.. include:: /source/useful_links.rst
+.. include:: /source/useful_links_stm32.rst
 
 .. Project Build Section:
     
-.. include:: /source/build/project_build.rst
+.. include:: /source/build/project_build_stm32.rst
 
 ===========
 Quick Start
 ===========
 
-If you have some familiarity with the Mbed or STM32 platform, the following is a basic list of steps required to start running the code, 
+If you have some familiarity with the STM32 platform, the following is a basic list of steps required to start running the code, 
 see below for more detail:
 
 * Connect the evaluation board to the SDP-K1 controller board, and power it appropriately, usually 3.3V to AVDD.
