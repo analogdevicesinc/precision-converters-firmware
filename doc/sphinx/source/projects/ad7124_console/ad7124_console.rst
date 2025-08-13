@@ -27,7 +27,7 @@ Introduction
 
 This page gives an overview of using the AD7124 Firmware Example with SDP-K1 EVAL board and AD7124 EVAL board. 
 The firmware example comprises 3 layers of software (from top to bottom): Console Application Layer, Device No-OS
-Layer and Platform Drivers layer. It supports Mbed and STM32 platforms
+Layer and Platform Drivers layer. It support STM32 platform
 
    .. image:: /source/projects/ad7124_console/ad7124_software_layers.jpg
       :width: 200
@@ -38,8 +38,8 @@ These APIs allows direct access to device register map in order to read/write de
 Drivers is responsible for Low Level Interface. The platform drivers uses underlying libraries to access low level peripheral 
 (like GPIOs, SPI, I2C, etc).
 
-The Mbed Platform simplifies the overall software development process by providing the low level driver support. This reduces 
-the hardware dependency as any Mbed enabled board (or an STM32 board) can be used with same firmware with little modifications (precisely changing a pin mapping).
+The Platform simplifies the overall software development process by providing the low level driver support. This reduces 
+the hardware dependency on any STM32 board can be used with same firmware with little modifications (precisely changing a pin mapping).
 
 =================
 Interface Diagram
@@ -104,7 +104,7 @@ Temperature sensing application using AD7124 can be found `here <https://www.ana
 AD7124 Firmware
 ====================
 This section briefs on the usage of firmware. This also explains the steps to compile and build the application using
-mbed and make based build.
+STM32CubeIDE build.
 
 The software execution sequence for the AD7124 Firmware Example is shown below. This is a blocking application as it waits for 
 user input over serial interface (UART). The input is scanned and processed through 'adi console libraries'. The menu functionality
@@ -117,13 +117,13 @@ AD7124 firmware uses Mbed libraries within Platform Drivers layer. AD7124 Firmwa
 
 .. Project Build Section:
     
-.. include:: /source/build/project_build.rst
+.. include:: /source/build/project_build_stm32.rst
 
 ===========
 Quick Start
 ===========
 
-If you have some familiarity with the Mbed or STM32 platform, the following is a basic list of steps required to start running the code, 
+If you have some familiarity with the STM32 platform, the following is a basic list of steps required to start running the code, 
 see below for more detail:
 
 * Connect the AD7124 EVAL-board to the SDP-K1 controller board.
