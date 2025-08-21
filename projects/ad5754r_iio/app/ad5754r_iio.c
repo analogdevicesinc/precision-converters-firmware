@@ -414,15 +414,6 @@ static int ad5754r_set_sampling_rate(uint32_t sampling_rate)
 {
 	int ret;
 
-#if (ACTIVE_PLATFORM == MBED_PLATFORM)
-	/* Enable PWM to get the PWM period (explicitly done for Mbed
-	 * platform as it needs pwm to be enabled to update pwm period) */
-	ret = no_os_pwm_enable(pwm_desc);
-	if (ret) {
-		return ret;
-	}
-#endif
-
 	if (sampling_rate > MAX_SAMPLING_RATE) {
 		sampling_rate = MAX_SAMPLING_RATE;
 	}
@@ -437,13 +428,6 @@ static int ad5754r_set_sampling_rate(uint32_t sampling_rate)
 	if (ret) {
 		return ret;
 	}
-
-#if (ACTIVE_PLATFORM == MBED_PLATFORM)
-	ret = no_os_pwm_disable(pwm_desc);
-	if (ret) {
-		return ret;
-	}
-#endif
 
 	return 0;
 }
@@ -1076,22 +1060,18 @@ static int32_t ad5754r_iio_prepare_transfer(void *dev, uint32_t mask)
 	}
 	num_of_active_channels = index;
 
-#if (ACTIVE_PLATFORM == STM32_PLATFORM)
 	/* Reconfigure the LDAC pin as Alternate Function Mode (for PWM) */
 	ret = ad5754r_reconfig_ldac(ad5754r_dev_inst, AD5754_LDAC_PWM);
 	if (ret) {
 		return ret;
 	}
-#endif
 
-#if (ACTIVE_PLATFORM == STM32_PLATFORM)
 	/* Clear pending Interrupt before enabling back the trigger.
 	 * Else , a spurious interrupt is observed after a legitimate interrupt, */
 	ret = no_os_irq_clear_pending(trigger_irq_desc, TRIGGER_INT_ID);
 	if (ret) {
 		return ret;
 	}
-#endif
 
 	ret = iio_trig_enable(ad5754r_hw_trig_desc);
 	if (ret) {
@@ -1368,11 +1348,13 @@ int32_t ad5754r_iio_init(void)
 		if (ad5754r_dev_inst) {
 			ret = cn0586_init(&cn0586_dev_inst, ad5754r_dev_inst);
 			if (ret) {
+				no_os_free(ad5754r_iio_dev);
 				return ret;
 			}
 
 			ret = cn0586_iio_param_init(&cn0586_iio_dev);
 			if (ret) {
+				no_os_free(ad5754r_iio_dev);
 				return ret;
 			}
 			iio_init_params.nb_devs++;
