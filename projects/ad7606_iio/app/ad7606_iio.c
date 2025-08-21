@@ -1718,13 +1718,11 @@ static int32_t iio_ad7606_prepare_transfer(void *dev_instance,
 		 * for the READBUF command. If UART interrupts are not prioritized, then it would lead to missing of
 		 * characters in the IIO command sent from the client. */
 #if (DATA_CAPTURE_MODE == CONTINUOUS_DATA_CAPTURE)
-#if (ACTIVE_PLATFORM == STM32_PLATFORM)
 	ret = no_os_irq_set_priority(trigger_irq_desc, TRIGGER_INT_ID,
 				     RDY_GPIO_PRIORITY);
 	if (ret) {
 		return ret;
 	}
-#endif
 #endif
 
 	/* Get the active channels count based on the channel mask set in an IIO
@@ -2076,7 +2074,7 @@ static int32_t iio_ad7606_init(struct iio_device **desc)
 		/* Get input channel range */
 		if (ad7606_spi_reg_read(p_ad7606_dev_inst, AD7606_REG_RANGE_CH_ADDR(chn),
 					&read_val) != 0) {
-			no_os_free(iio_ad7606_inst);
+			free(iio_ad7606_inst);
 			return -EINVAL;
 		}
 

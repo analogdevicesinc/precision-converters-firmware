@@ -45,7 +45,7 @@ Supported Hardware
 
 **Supported Carrier Boards:**
 
-* `SDP-K1 With Mbed <https://os.mbed.com/platforms/SDP_K1/>`_
+* `SDP-K1  <https://www.analog.com/en/resources/evaluation-hardware-and-software/evaluation-boards-kits/sdp-k1.html#eb-overview>`_
 
 ============
 Introduction
@@ -53,7 +53,7 @@ Introduction
 
 This guide gives an overview of using the IIO firmware application with Analog Devices 
 AD7606 Evaluation boards and SDP-K1 (or other compatible) MCU controller board, 
-leveraging Mbed-OS as a primary software platform. This firmware application 
+leveraging STM32 as a primary software platform. This firmware application 
 leverages the ADI developed IIO (Industrial Input Output) ecosystem to evaluate 
 the AD7606 (IIO) device by providing device configuration and data capture support.
 
@@ -64,13 +64,9 @@ The interface used for communicating with PC based IIO clients is either Virtual
 IIO Firmware leverages the ADI created no-os and platform driver software layers
 to communicates with IIO device.
 
-.. SDP-K1 Mbed Section
-
-.. include:: /source/tinyiiod/sdp_k1_mbed.rst
-
 .. Useful links Section
 
-.. include:: /source/useful_links.rst
+.. include:: /source/useful_links_stm32.rst
 
 ====================
 Hardware Connections
@@ -121,7 +117,7 @@ For other boards, refer respective user manual for more details.
 
 .. Project Build Section:
     
-.. include:: /source/build/project_build.rst
+.. include:: /source/build/project_build_stm32.rst
 
 .. IIO Ecosystem Section:
     
