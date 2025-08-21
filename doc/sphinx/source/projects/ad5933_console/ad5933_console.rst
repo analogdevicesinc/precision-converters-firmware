@@ -21,15 +21,15 @@ Supported Hardware
 Introduction
 ============
 
-The AD5933 Mbed support software (also supports AD5934) can be used as a starting point for developing your own code for Analog Devices AD5933 products in your own environment. Analog Devices is an MBED Partner and develops code on the platform for multiple products. The Analog Devices code-repo can be found in the links below.
+The AD5933 software (also supports AD5934) can be used as a starting point for developing your own code for Analog Devices AD5933 products in your own environment. The Analog Devices code-repo can be found in the links below.
 
-This guide will focus on the Analog Devices SDP-K1 controller board, as it is directly compatible with the AD5933 family of evaluation boards and is an MBED-Enabled device(or an STM32 board). Customers are of course, not limited to using the SDP-K1 board for code development, given that any ARM-based, MBED-enabled board(or an STM32 board) that satisfies a small set of requirements can use the provided code and it will work with only minor changes to the source (see below).
+This guide will focus on the Analog Devices SDP-K1 controller board, as it is directly compatible with the AD5933 family of evaluation boards and is an STM32 board. Customers are of course, not limited to using the SDP-K1 board for code development, given that any ARM-based, or an STM32 board that satisfies a small set of requirements can use the provided code and it will work with only minor changes to the source (see below).
 
 This guide uses the Pmod IA evaluation board. This is a convenient, inexpensive path to evaluating the AD5933. It supports Mbed and STM32 platforms
 
 .. Useful links Section
 
-.. include:: /source/useful_links.rst
+.. include:: /source/useful_links_stm32.rst
 
 ====================
 Hardware Connections
@@ -68,13 +68,13 @@ The software described below allows for an Mbed enabled controller board (or an 
 
 .. Project Build Section:
     
-.. include:: /source/build/project_build.rst
+.. include:: /source/build/project_build_stm32.rst
 
 ===========
 Quick Start
 ===========
 
-If you have some familiarity with the Mbed or STM32 platform, the following is a basic list of steps required to start running the code, 
+If you have some familiarity with the STM32 platform, the following is a basic list of steps required to start running the code, 
 see below for more detail:
 
 * Connect the evaluation-board to the Mbed-enabled controller board (or an STM32 board).
