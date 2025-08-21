@@ -154,8 +154,10 @@ int32_t ltc2488_init(struct ltc2488_dev **device,
 	return ret;
 
 error:
+	if (dev) {
+		ltc2488_remove(dev);
+	}
 	printf("ltc2488 initialization failed\n");
-	ltc2488_remove(dev);
 	return ret;
 }
 
