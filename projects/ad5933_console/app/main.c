@@ -12,6 +12,7 @@
 *****************************************************************************/
 
 #include <ctype.h>
+#include <limits.h>
 #include "no_os_i2c.h"
 #include "no_os_uart.h"
 #include "no_os_error.h"
@@ -67,10 +68,8 @@ struct no_os_uart_init_param uart_init_params = {
 	.stop = NO_OS_UART_STOP_1_BIT,
 	.irq_id = UART_IRQ_ID,
 	.asynchronous_rx = false,
-#if (ACTIVE_PLATFORM == STM32_PLATFORM)
 	.platform_ops = &uart_ops,
 	.extra = &uart_extra_init_params
-#endif
 };
 
 
@@ -96,13 +95,13 @@ int main()
 	int ret;
 #if (ACTIVE_PLATFORM == STM32_PLATFORM)
 	stm32_system_init();
+#endif
 	ret = no_os_uart_init(&uart_desc, &uart_init_params);
 	if (ret) {
 		return ret;
 	}
 
 	no_os_uart_stdio(uart_desc);
-#endif
 
 	uint8_t menu_select = 0;
 	print_title();
@@ -184,7 +183,13 @@ void print_prompt()
 
 static void getMenuSelect(uint8_t *menuSelect)
 {
-	scanf("%d", (int *)menuSelect);
+	int32_t ret;
+
+	ret = scanf("%d", (int *)menuSelect);
+	if (ret < 0) {
+		printf("Invalid Input\r\n");
+	}
+
 }
 
 static uint8_t read_temperature()
@@ -200,7 +205,15 @@ static uint8_t set_system_clock()
 	printf("  Select Internal (1) or external clock (2): ");
 
 	int input = 0;
-	scanf("%d", &input);
+	int invalid_check;
+	int ret;
+
+	invalid_check = scanf("%d", &input);
+	ret = input_check(input, 1, 2, invalid_check);
+	if (ret) {
+		return -EINVAL;
+	}
+
 	if (isdigit(input) == 0 && (input == 1 || input == 2)) {
 		input == 1 ? printf("\n  You selected Internal clock source" EOL) :
 		printf("  You selected external Source clock source" EOL);
@@ -213,7 +226,11 @@ static uint8_t set_system_clock()
 	if (input == 2) {
 
 		printf("  Enter external clock frequency in Hz ");
-		scanf("%d", &input);
+		invalid_check = scanf("%d", &input);
+		ret = input_check(input, 0, INT_MAX, invalid_check);
+		if (ret) {
+			return -EINVAL;
+		}
 		if (isdigit(input) == 0  && input > 0 && input < 20000000) {
 			printf("  External clk-source frequency set to %d " EOL, input);
 		} else {
@@ -235,6 +252,7 @@ static uint8_t set_vrange_and_pga_gain()
 {
 	int input;
 	uint8_t v_range = AD5933_RANGE_1000mVpp;
+	int invalid_check;
 
 	printf("  Select output voltage range" EOL);
 	printf("    1: 200mVpp typical:" EOL);
@@ -242,7 +260,10 @@ static uint8_t set_vrange_and_pga_gain()
 	printf("    3: 1Vpp typical:" EOL);
 
 
-	scanf("%d", &input);
+	invalid_check = scanf("%d", &input);
+	if (invalid_check == 0) {
+		return -EINVAL;
+	}
 	if (input >= 0 && input < 4) {
 		switch (input) {
 		case AD5933_RANGE_2000mVpp: {
@@ -270,7 +291,10 @@ static uint8_t set_vrange_and_pga_gain()
 	}
 
 	printf("\n  Select PGA Gain (0=X5, 1=X1)" EOL);
-	scanf("%d", &input);
+	invalid_check = scanf("%d", &input);
+	if (invalid_check == 0) {
+		return -EINVAL;
+	}
 	if (input >= 0 && input < 2) {
 		config_data.pga_gain = input;
 		config_data.output_voltage_range = v_range;
@@ -302,6 +326,8 @@ static int32_t configure_system()
 	int num_increments;
 	int num_settling_cycles;
 	int multiplier = AD5933_SETTLING_X1;
+	int invalid_check;
+	int ret;
 
 	printf("\n  Enter start-frequency as a decimal number: ");
 	if (scanf("%d", &start_freq) == 1) {
@@ -312,7 +338,11 @@ static int32_t configure_system()
 	}
 
 	printf("\n  Enter frequency-increment as a decimal number: ");
-	scanf("%d", &freq_inc);
+	invalid_check = scanf("%d", &freq_inc);
+	ret = input_check(freq_inc, 0, INT_MAX, invalid_check);
+	if (ret) {
+		return -EINVAL;
+	}
 	if (isdigit(freq_inc) != 0  || freq_inc <= 0) {
 		printf("  Invalid entry, write aborted: \n");
 		return -EINVAL;
@@ -321,21 +351,31 @@ static int32_t configure_system()
 	printf("\n  Enter the number of increments as a decimal number: ");
 	printf(EOL " Number of increments must be less than %d" EOL,
 	       MAX_FREQ_INCREMENTS);
-	scanf("%d", &num_increments);
+	invalid_check = scanf("%d", &num_increments);
+	ret = input_check(num_increments, 0, INT_MAX, invalid_check);
+	if (ret) {
+		return -EINVAL;
+	}
 	if (isdigit(num_increments) != 0  || num_increments > MAX_FREQ_INCREMENTS) {
 		printf("  Invalid entry, write aborted: " EOL);
 		return -EINVAL;
 	}
 
 	printf("Enter the number of settling-time cycles before ADC is triggered." EOL);
-	scanf("%d", &num_settling_cycles);
+	invalid_check = scanf("%d", &num_settling_cycles);
+	if (invalid_check == 0) {
+		return -EINVAL;
+	}
 	if (num_settling_cycles > MAX_SETTLING_CYCLES) {
 		printf("  Invalid entry, write aborted: " EOL);
 		return -EINVAL;
 	}
 
 	printf("Set the settling time multiplier (X1=0, X2=1, X4=2)." EOL);
-	scanf("%d", &multiplier);
+	invalid_check = scanf("%d", &multiplier);
+	if (invalid_check == 0) {
+		return -EINVAL;
+	}
 	if (multiplier > 2) {
 		printf("  Invalid entry, write aborted: " EOL);
 		return -EINVAL;
@@ -387,7 +427,10 @@ static uint8_t calculate_gain_factor()
 	ad5933_start_sweep(device);
 
 	printf("\nEnter calibration resistance in Ohms: ");
-	scanf("%le", &calibration_impedance);
+	int invalid_check = scanf("%le", &calibration_impedance);
+	if (invalid_check == 0) {
+		return -EINVAL;
+	}
 
 
 	printf("Calculating gain factor\n\r");
@@ -471,6 +514,27 @@ static uint8_t impedance_sweep()
 	return status;
 }
 
+/*******************************************************************************
+ * @brief Check if is an input is a digit and within valid range
+ *
+ * @param input_val - Value inputed by user
+ * @param lowest_accepted_val - Lowest acceptable value
+ * @param highest_accepted_val - Highest acceptable value
+ * @param invalid_check - Checks if unexpected type of data was entered in scanf
+ *
+ * @return 0 in case of success, negative error code otherwise
+ *******************************************************************************/
+int input_check(int input_val,
+		int lowest_accepted_val,
+		int highest_accepted_val,
+		int invalid_check)
+{
+	if (invalid_check == 0 || input_val < lowest_accepted_val
+	    || input_val > highest_accepted_val) {
+		printf(EOL EOL "*****   Invalid entry: No changes made *****" EOL);
+		no_os_mdelay(1000);
+		return -EINVAL;
+	}
 
-
-
+	return 0;
+}
