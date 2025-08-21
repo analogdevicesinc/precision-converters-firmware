@@ -14,7 +14,7 @@
 #ifndef LTC2488_USER_CONFIG_H_
 #define LTC2488_USER_CONFIG_H_
 
-#include<common_macros.h>
+#include "common_macros.h"
 
 /******************************************************************************/
 /***************************** Include Files **********************************/
