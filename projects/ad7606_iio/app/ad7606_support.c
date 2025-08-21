@@ -108,6 +108,16 @@ int32_t ad7606_read_converted_sample(struct ad7606_dev *dev, uint32_t *adc_data,
 	bytes_to_read = AD7606X_ADC_CHANNELS * SAMPLE_SIZE_IN_BYTE;
 	buffer_offset = input_chn * SAMPLE_SIZE_IN_BYTE;
 
+#if (AD7606X_ADC_RESOLUTION == 18)
+	uint32_t adc_raw[AD7606X_ADC_CHANNELS] = { 0 };
+
+	/* Read data over spi interface for all ADC channels */
+	ret = ad7606_spi_data_read(dev, adc_raw);
+	if (ret < 0) {
+		return ret;
+	}
+	*adc_data = adc_raw[input_chn];
+#else
 	/* Read data over spi interface for all ADC channels */
 	memset(dev->data, 0, sizeof(dev->data));
 	ret = no_os_spi_write_and_read(dev->spi_desc, dev->data, bytes_to_read);
@@ -115,12 +125,6 @@ int32_t ad7606_read_converted_sample(struct ad7606_dev *dev, uint32_t *adc_data,
 		return ret;
 	}
 
-#if (AD7606X_ADC_RESOLUTION == 18)
-	*adc_data =
-		(((uint32_t)dev->data[buffer_offset] << 16) | 		// MSB
-		 ((uint32_t)dev->data[buffer_offset + 1] << 8) |
-		 ((uint32_t)dev->data[buffer_offset + 2])); 		// LSB
-#else
 	*adc_data =
 		(uint16_t)(((uint16_t)dev->data[buffer_offset] << 8) |  	// MSB
 			   dev->data[buffer_offset + 1]);  		// LSB
