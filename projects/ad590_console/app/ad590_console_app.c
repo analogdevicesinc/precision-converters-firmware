@@ -47,7 +47,7 @@
 #define TEMP_CONVERSION_CONSTANT 273.15
 
 /* Comment out this line to print new sample on each line of screen */
-#define PRINT_IN_SINGLE_LINE  1
+//#define PRINT_IN_SINGLE_LINE  1
 
 /* Pointer to the structure representing the LTC2488 device */
 static struct ltc2488_dev *p_ltc2488_dev = NULL;
@@ -69,11 +69,9 @@ struct no_os_uart_init_param uart_init_params = {
 	.parity = NO_OS_UART_PAR_NO,
 	.stop = NO_OS_UART_STOP_1_BIT,
 	.irq_id = UART_IRQ_ID,
-#if (ACTIVE_PLATFORM == STM32_PLATFORM)
 	.asynchronous_rx = false,
 	.platform_ops = &uart_ops,
 	.extra = &uart_extra_init_params
-#endif
 };
 
 /******************************************************************************/
@@ -103,7 +101,6 @@ int32_t ltc2488_app_initialize(void)
 {
 	int32_t init_status;
 
-#if (ACTIVE_PLATFORM == STM32_PLATFORM)
 	init_status = no_os_uart_init(&uart_desc, &uart_init_params);
 	if (init_status) {
 		return init_status;
@@ -111,7 +108,6 @@ int32_t ltc2488_app_initialize(void)
 
 	/* Set up the UART for standard I/O operations */
 	no_os_uart_stdio(uart_desc);
-#endif
 
 	/* Initialize LTC2488 device and peripheral interface */
 	init_status = ltc2488_init(&p_ltc2488_dev, &ltc2488_init_str);
@@ -170,16 +166,6 @@ static bool was_escape_key_pressed(void)
 {
 	bool wasPressed = false;
 
-#if (ACTIVE_PLATFORM == MBED_PLATFORM)
-	char rxChar;
-
-	/* Check for Escape key pressed */
-	if ((rxChar = getchar_noblock()) > 0) {
-		if (rxChar == ESCAPE_KEY_CODE) {
-			wasPressed = true;
-		}
-	}
-#else  /* STM32_PLATFORM */
 	int32_t ret;
 
 	/* Check for Escape key pressed */
@@ -187,7 +173,6 @@ static bool was_escape_key_pressed(void)
 	if (ret) {
 		wasPressed = true;
 	}
-#endif
 
 	return (wasPressed);
 }
@@ -220,6 +205,9 @@ static void handle_read_write_print(uint8_t move_cursor_up)
 	 * */
 	if (first_sample == false) {
 		init_status = ltc2488_read_write(p_ltc2488_dev->spi_desc, adc_cmd, &adc_data);
+		if (init_status) {
+			return init_status;
+		}
 		no_os_mdelay(LTC2488_CHANNEL_CONV_TIME);
 		first_sample = true;
 	}
@@ -330,6 +318,7 @@ static int32_t interval_measure(uint32_t menu_id)
 retry_exceed:
 	printf(EOL "Maximum try limit exceeded" EOL);
 	adi_press_any_key_to_continue();
+	return MENU_CONTINUE;
 }
 
 /*!
