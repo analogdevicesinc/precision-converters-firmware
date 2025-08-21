@@ -18,15 +18,12 @@
 /******************************************************************************/
 
 #include <stdint.h>
+#include <common_macros.h>
 #include "ad5754r.h"
 
 /******************************************************************************/
 /********************** Macros and Constants Definition ***********************/
 /******************************************************************************/
-
-/* List of supported platforms */
-#define	MBED_PLATFORM		1
-#define STM32_PLATFORM      2
 
 /* Macros for stringification */
 #define XSTR(s)		#s
@@ -85,25 +82,8 @@
 #define USE_BINARY_CODING
 #endif
 
-#if (ACTIVE_PLATFORM == MBED_PLATFORM)
-#include "app_config_mbed.h"
 
-#define HW_CARRIER_NAME		TARGET_NAME
-
-/* Redefine the init params structure mapping w.r.t. platform */
-#define pwm_extra_init_params mbed_pwm_extra_init_params
-#define uart_extra_init_params mbed_uart_extra_init_params
-#define vcom_extra_init_params mbed_vcom_extra_init_params
-#define spi_extra_init_params mbed_spi_extra_init_params
-#define i2c_extra_init_params mbed_i2c_extra_init_params
-#define trigger_gpio_irq_extra_params mbed_trigger_gpio_irq_init_params
-#define ldac_gpio_extra_init_params mbed_ldac_gpio_init_params
-#define clear_gpio_extra_init_params mbed_clear_gpio_init_params
-#define dac_gpio_ops mbed_gpio_ops
-#define TRIGGER_INT_ID GPIO_IRQ_ID1
-#define trigger_gpio_handle         0 // Unused macro
-
-#elif (ACTIVE_PLATFORM == STM32_PLATFORM)
+#if (ACTIVE_PLATFORM == STM32_PLATFORM)
 #include "app_config_stm32.h"
 #define HW_CARRIER_NAME TARGET_NAME
 #define pwm_extra_init_params stm32_pwm_extra_init_params
@@ -142,7 +122,7 @@
 /* Check if any serial port available for use as console stdio port */
 #if defined(USE_PHY_COM_PORT)
 /* If PHY com is selected, VCOM or alternate PHY com port can act as a console stdio port */
-#if (ACTIVE_PLATFORM == MBED_PLATFORM || ACTIVE_PLATFORM == STM32_PLATFORM)
+#if (ACTIVE_PLATFORM == STM32_PLATFORM)
 #define CONSOLE_STDIO_PORT_AVAILABLE
 #endif
 #else
