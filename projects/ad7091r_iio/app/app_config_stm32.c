@@ -124,7 +124,11 @@ struct stm32_pwm_init_param stm32_tx_trigger_extra_init_params = {
 	.timer_chn = TIMER_CHANNEL_1,
 	.complementary_channel = false,
 	.get_timer_clock = HAL_RCC_GetPCLK1Freq,
-	.clock_divider = TIMER_8_CLK_DIVIDER
+	.clock_divider = TIMER_8_CLK_DIVIDER,
+	.trigger_output = PWM_TRGO_ENABLE,
+	.dma_enable = true,
+	.repetitions = 1,
+	.onepulse_enable = true
 };
 
 /* STM32 Tx DMA channel extra init params */
@@ -234,9 +238,8 @@ void tim2_config(void)
  */
 void tim8_config(void)
 {
-	TIM8->RCR = BYTES_PER_SAMPLE - 1; // RCR value in one-pulse mode
-
-	TIM8->EGR = TIM_EGR_UG; // Generate update event
+	TIM8->SMCR |= (TIM_TS_ETRF | TIM_SLAVEMODE_TRIGGER |
+		       TIM_MASTERSLAVEMODE_ENABLE);
 
 	TIM8->DIER |=
 		TIM_DIER_CC1DE; // Generate DMA request after capture/compare event

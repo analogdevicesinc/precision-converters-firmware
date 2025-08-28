@@ -138,7 +138,7 @@
 #define VIRTUAL_COM_SERIAL_NUM	(FIRMWARE_NAME "_" DEVICE_NAME "_" STR(PLATFORM_NAME))
 
 /* Enable/Disable the use of SDRAM for ADC data capture buffer */
-//#define USE_SDRAM		// Uncomment to use SDRAM for data buffer
+#define USE_SDRAM		// Uncomment to use SDRAM for data buffer
 
 /* PWM period and duty cycle */
 #define CONV_TRIGGER_PERIOD_NSEC(x) (((float)(1.0 / x) * 1000000) * 1000)
