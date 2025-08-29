@@ -194,7 +194,9 @@ Macros</h2></td></tr>
 <tr class="separator:aaf094666b088c711d3661f2fc30c7bbe"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa738f37918ae59512ca306e608015479" id="r_aa738f37918ae59512ca306e608015479"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad7091r__iio_8c.html#aa738f37918ae59512ca306e608015479">AD7091R_LIMIT_REG_BIT_SHIFT</a>&#160;&#160;&#160;3</td></tr>
 <tr class="separator:aa738f37918ae59512ca306e608015479"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab723c5f0e9759c70ed582dfd77431ff7" id="r_ab723c5f0e9759c70ed582dfd77431ff7"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad7091r__iio_8c.html#ab723c5f0e9759c70ed582dfd77431ff7">DATA_BUFFER_SIZE</a>&#160;&#160;&#160;(32768)</td></tr>
+<tr class="memitem:aca9774d2d61ff5879f0c93ac9f5e9b03" id="r_aca9774d2d61ff5879f0c93ac9f5e9b03"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad7091r__iio_8c.html#aca9774d2d61ff5879f0c93ac9f5e9b03">adc_data_buffer</a>&#160;&#160;&#160;SDRAM_START_ADDRESS</td></tr>
+<tr class="separator:aca9774d2d61ff5879f0c93ac9f5e9b03"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab723c5f0e9759c70ed582dfd77431ff7" id="r_ab723c5f0e9759c70ed582dfd77431ff7"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad7091r__iio_8c.html#ab723c5f0e9759c70ed582dfd77431ff7">DATA_BUFFER_SIZE</a>&#160;&#160;&#160;SDRAM_SIZE_BYTES</td></tr>
 <tr class="separator:ab723c5f0e9759c70ed582dfd77431ff7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a70daa3c8a2012e9f7f314b8476476af2" id="r_a70daa3c8a2012e9f7f314b8476476af2"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad7091r__iio_8c.html#a70daa3c8a2012e9f7f314b8476476af2">BUF_READ_TIMEOUT</a>&#160;&#160;&#160;0xffffffff</td></tr>
 <tr class="separator:a70daa3c8a2012e9f7f314b8476476af2"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -455,6 +457,20 @@ Variables</h2></td></tr>
 
 </div>
 </div>
+<a id="aca9774d2d61ff5879f0c93ac9f5e9b03" name="aca9774d2d61ff5879f0c93ac9f5e9b03"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aca9774d2d61ff5879f0c93ac9f5e9b03">&#9670;&#160;</a></span>adc_data_buffer</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define adc_data_buffer&#160;&#160;&#160;SDRAM_START_ADDRESS</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a70daa3c8a2012e9f7f314b8476476af2" name="a70daa3c8a2012e9f7f314b8476476af2"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a70daa3c8a2012e9f7f314b8476476af2">&#9670;&#160;</a></span>BUF_READ_TIMEOUT</h2>
 
@@ -504,7 +520,7 @@ Variables</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define DATA_BUFFER_SIZE&#160;&#160;&#160;(32768)</td>
+          <td class="memname">#define DATA_BUFFER_SIZE&#160;&#160;&#160;SDRAM_SIZE_BYTES</td>
         </tr>
       </table>
 </div><div class="memdoc">
