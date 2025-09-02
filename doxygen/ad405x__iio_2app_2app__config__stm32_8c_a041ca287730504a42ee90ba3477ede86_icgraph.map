@@ -1,0 +1,12 @@
+<map id="stm32_system_init_post_verification" name="stm32_system_init_post_verification">
+<area shape="rect" id="Node000001" title="Initialize the STM32 system peripherals after the device has been verified." alt="" coords="815,23,996,63"/>
+<area shape="rect" id="Node000002" href="$ad405x__iio_2app_2app__config_8c.html#a9eafe2cab5ddc95bca9f4d36be0744ae" title="Initializing system peripherals." alt="" coords="553,31,767,56"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="801,46,767,46,767,41,801,41"/>
+<area shape="rect" id="Node000003" href="$ad405x__iio_8c.html#ac0141386b392ad24a1e7636a9b4c99c9" title="Initialize the IIO interface for AD405X IIO device." alt="" coords="349,31,505,56"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="540,46,505,46,505,41,540,41"/>
+<area shape="rect" id="Node000004" href="$ad405x__iio_8c.html#a561170c1f2302f5a33ec8be13aca99bc" title="Run the AD405X IIO event handler." alt="" coords="108,5,301,31"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="335,36,301,32,302,26,336,30"/>
+<area shape="rect" id="Node000005" href="$ad405x__iio_2app_2main_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title="Main entry point to application." alt="" coords="5,31,60,56"/>
+<area shape="poly" id="edge5_Node000003_Node000005" title=" " alt="" coords="336,46,60,46,60,41,336,41"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="105,35,61,42,60,37,104,30"/>
+</map>

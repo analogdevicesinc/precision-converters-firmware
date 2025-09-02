@@ -74,6 +74,7 @@ $(function() {
 </div><!-- top -->
 <div class="header">
   <div class="summary">
+<a href="#define-members">Macros</a> &#124;
 <a href="#var-members">Variables</a>  </div>
   <div class="headertitle"><div class="title">ad405x_user_config.h File Reference</div></div>
 </div><!--header-->
@@ -111,21 +112,123 @@ This graph shows which files directly or indirectly include this file:</div>
 </div>
 <p><a href="ad405x__user__config_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
+Macros</h2></td></tr>
+<tr class="memitem:a23c43777050ac4b9ba383019d9e35992" id="r_a23c43777050ac4b9ba383019d9e35992"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad405x__user__config_8h.html#a23c43777050ac4b9ba383019d9e35992">AD405X_INSTANCE_ID</a>&#160;&#160;&#160;0</td></tr>
+<tr class="separator:a23c43777050ac4b9ba383019d9e35992"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab20555e3c6386d044c7911bae65aa705" id="r_ab20555e3c6386d044c7911bae65aa705"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad405x__user__config_8h.html#ab20555e3c6386d044c7911bae65aa705">AD405X_I3C_GEN_DYN_ADDR_DEFAULT</a>&#160;&#160;&#160;0x32</td></tr>
+<tr class="separator:ab20555e3c6386d044c7911bae65aa705"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1d7803d183e5a6487668c5e894960b44" id="r_a1d7803d183e5a6487668c5e894960b44"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad405x__user__config_8h.html#a1d7803d183e5a6487668c5e894960b44">AD405X_I3C_GEN_PID_</a>(x)&#160;&#160;&#160;(0x02ee00700000 | ((x &amp; 0xF) &lt;&lt; 16))</td></tr>
+<tr class="separator:a1d7803d183e5a6487668c5e894960b44"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6c5c504aa2405c25f009ef67646d4361" id="r_a6c5c504aa2405c25f009ef67646d4361"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad405x__user__config_8h.html#a6c5c504aa2405c25f009ef67646d4361">AD405X_I3C_GEN_INSTANCE_ID</a>(x)&#160;&#160;&#160;(((uint64_t)x &amp; 0x7) &lt;&lt; 12)</td></tr>
+<tr class="separator:a6c5c504aa2405c25f009ef67646d4361"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a38fcc2d761fbefcbc47b569d5f5bcaa7" id="r_a38fcc2d761fbefcbc47b569d5f5bcaa7"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad405x__user__config_8h.html#a38fcc2d761fbefcbc47b569d5f5bcaa7">AD405X_I3C_GEN_PID</a>(dev,  x)&#160;&#160;&#160;(<a class="el" href="ad405x__user__config_8h.html#a1d7803d183e5a6487668c5e894960b44">AD405X_I3C_GEN_PID_</a>(dev) | <a class="el" href="ad405x__user__config_8h.html#a6c5c504aa2405c25f009ef67646d4361">AD405X_I3C_GEN_INSTANCE_ID</a>(x))</td></tr>
+<tr class="separator:a38fcc2d761fbefcbc47b569d5f5bcaa7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
-<tr class="memitem:acf57858b1a32f29ccbad1a551197b091" id="r_acf57858b1a32f29ccbad1a551197b091"><td class="memItemLeft" align="right" valign="top">struct no_os_gpio_init_param&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad405x__user__config_8h.html#acf57858b1a32f29ccbad1a551197b091">gpio_reset_param</a></td></tr>
-<tr class="separator:acf57858b1a32f29ccbad1a551197b091"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9b8f85e94a8f0a48e7836f59bd700663" id="r_a9b8f85e94a8f0a48e7836f59bd700663"><td class="memItemLeft" align="right" valign="top">struct ad405x_init_param&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad405x__user__config_8h.html#a9b8f85e94a8f0a48e7836f59bd700663">ad405x_init_params</a></td></tr>
 <tr class="separator:a9b8f85e94a8f0a48e7836f59bd700663"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a095c755ff2098cdc6d3395d6dc6e4740" id="r_a095c755ff2098cdc6d3395d6dc6e4740"><td class="memItemLeft" align="right" valign="top">struct no_os_gpio_init_param&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad405x__user__config_8h.html#a095c755ff2098cdc6d3395d6dc6e4740">gpio_gpio1_param</a></td></tr>
-<tr class="separator:a095c755ff2098cdc6d3395d6dc6e4740"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Header for AD405X user configuration file. </p>
 <p>Copyright (c) 2023-2024 Analog Devices, Inc.</p>
 <p>All rights reserved.</p>
 <p>This software is proprietary to Analog Devices, Inc. and its licensors. By using this software you agree to the terms of the associated Analog Devices Software License Agreement. </p>
-</div><h2 class="groupheader">Variable Documentation</h2>
+</div><h2 class="groupheader">Macro Definition Documentation</h2>
+<a id="ab20555e3c6386d044c7911bae65aa705" name="ab20555e3c6386d044c7911bae65aa705"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab20555e3c6386d044c7911bae65aa705">&#9670;&#160;</a></span>AD405X_I3C_GEN_DYN_ADDR_DEFAULT</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define AD405X_I3C_GEN_DYN_ADDR_DEFAULT&#160;&#160;&#160;0x32</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a6c5c504aa2405c25f009ef67646d4361" name="a6c5c504aa2405c25f009ef67646d4361"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6c5c504aa2405c25f009ef67646d4361">&#9670;&#160;</a></span>AD405X_I3C_GEN_INSTANCE_ID</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define AD405X_I3C_GEN_INSTANCE_ID</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">x</td><td>)</td>
+          <td>&#160;&#160;&#160;(((uint64_t)x &amp; 0x7) &lt;&lt; 12)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a38fcc2d761fbefcbc47b569d5f5bcaa7" name="a38fcc2d761fbefcbc47b569d5f5bcaa7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a38fcc2d761fbefcbc47b569d5f5bcaa7">&#9670;&#160;</a></span>AD405X_I3C_GEN_PID</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define AD405X_I3C_GEN_PID</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">dev, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">x&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td>&#160;&#160;&#160;(<a class="el" href="ad405x__user__config_8h.html#a1d7803d183e5a6487668c5e894960b44">AD405X_I3C_GEN_PID_</a>(dev) | <a class="el" href="ad405x__user__config_8h.html#a6c5c504aa2405c25f009ef67646d4361">AD405X_I3C_GEN_INSTANCE_ID</a>(x))</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a1d7803d183e5a6487668c5e894960b44" name="a1d7803d183e5a6487668c5e894960b44"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1d7803d183e5a6487668c5e894960b44">&#9670;&#160;</a></span>AD405X_I3C_GEN_PID_</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define AD405X_I3C_GEN_PID_</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">x</td><td>)</td>
+          <td>&#160;&#160;&#160;(0x02ee00700000 | ((x &amp; 0xF) &lt;&lt; 16))</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a23c43777050ac4b9ba383019d9e35992" name="a23c43777050ac4b9ba383019d9e35992"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a23c43777050ac4b9ba383019d9e35992">&#9670;&#160;</a></span>AD405X_INSTANCE_ID</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define AD405X_INSTANCE_ID&#160;&#160;&#160;0</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Variable Documentation</h2>
 <a id="a9b8f85e94a8f0a48e7836f59bd700663" name="a9b8f85e94a8f0a48e7836f59bd700663"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a9b8f85e94a8f0a48e7836f59bd700663">&#9670;&#160;</a></span>ad405x_init_params</h2>
 
@@ -137,50 +240,6 @@ Variables</h2></td></tr>
       <table class="memname">
         <tr>
           <td class="memname">struct ad405x_init_param ad405x_init_params</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a095c755ff2098cdc6d3395d6dc6e4740" name="a095c755ff2098cdc6d3395d6dc6e4740"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a095c755ff2098cdc6d3395d6dc6e4740">&#9670;&#160;</a></span>gpio_gpio1_param</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">struct no_os_gpio_init_param gpio_gpio1_param</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="acf57858b1a32f29ccbad1a551197b091" name="acf57858b1a32f29ccbad1a551197b091"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#acf57858b1a32f29ccbad1a551197b091">&#9670;&#160;</a></span>gpio_reset_param</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">struct no_os_gpio_init_param gpio_reset_param</td>
         </tr>
       </table>
   </td>

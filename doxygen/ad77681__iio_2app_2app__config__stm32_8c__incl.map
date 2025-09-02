@@ -20,6 +20,18 @@
 <area shape="poly" id="edge9_Node000003_Node000010" title=" " alt="" coords="618,145,795,192,793,198,616,151"/>
 <area shape="rect" id="Node000011" title=" " alt="" coords="898,196,1045,221"/>
 <area shape="poly" id="edge10_Node000003_Node000011" title=" " alt="" coords="638,145,894,191,893,196,637,151"/>
-<area shape="rect" id="Node000012" title=" " alt="" coords="1069,196,1207,221"/>
+<area shape="rect" id="Node000012" href="$stm32__usb__uart_8h.html" title="VCOM driver for stm32 as a no_os_uart implementation." alt="" coords="1069,196,1207,221"/>
 <area shape="poly" id="edge11_Node000003_Node000012" title=" " alt="" coords="650,143,1055,193,1054,198,650,148"/>
+<area shape="rect" id="Node000013" title=" " alt="" coords="819,277,889,302"/>
+<area shape="poly" id="edge12_Node000012_Node000013" title=" " alt="" coords="1086,224,999,245,903,272,895,274,894,269,901,267,998,239,1084,219"/>
+<area shape="rect" id="Node000014" title=" " alt="" coords="914,277,997,302"/>
+<area shape="poly" id="edge13_Node000012_Node000014" title=" " alt="" coords="1112,224,996,274,994,269,1110,219"/>
+<area shape="rect" id="Node000015" title=" " alt="" coords="1021,277,1127,302"/>
+<area shape="poly" id="edge14_Node000012_Node000015" title=" " alt="" coords="1131,223,1094,268,1090,264,1126,220"/>
+<area shape="rect" id="Node000016" title=" " alt="" coords="1151,277,1253,302"/>
+<area shape="poly" id="edge15_Node000012_Node000016" title=" " alt="" coords="1150,220,1186,264,1182,268,1145,223"/>
+<area shape="rect" id="Node000017" title=" " alt="" coords="1278,277,1355,302"/>
+<area shape="poly" id="edge16_Node000012_Node000017" title=" " alt="" coords="1165,219,1279,269,1277,274,1163,224"/>
+<area shape="rect" id="Node000018" title=" " alt="" coords="1379,269,1537,309"/>
+<area shape="poly" id="edge17_Node000012_Node000018" title=" " alt="" coords="1185,219,1368,263,1367,269,1184,224"/>
 </map>

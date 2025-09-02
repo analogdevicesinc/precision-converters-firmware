@@ -83,93 +83,92 @@ $(function() {
 <p>Source file for STM32 platform configurations.  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;stdbool.h&gt;</code><br />
+<code>#include &lt;string.h&gt;</code><br />
 <code>#include &quot;<a class="el" href="ad405x__iio_2app_2app__config_8h_source.html">app_config.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="ad405x__iio_2app_2app__config__stm32_8h_source.html">app_config_stm32.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="ad405x__iio_8h_source.html">ad405x_iio.h</a>&quot;</code><br />
 <code>#include &quot;ad405x.h&quot;</code><br />
 <code>#include &quot;iio.h&quot;</code><br />
-<code>#include &quot;usb_device.h&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for app_config_stm32.c:</div>
 <div class="dyncontent">
 <div class="center"><img src="ad405x__iio_2app_2app__config__stm32_8c__incl.png" border="0" usemap="#a_2home_2runner_2work_2precision-converters-firmware_2precision-converters-firmware_2projects_2ad405x__iio_2app_2app__config__stm32_8c" alt=""/></div>
 <map name="a_2home_2runner_2work_2precision-converters-firmware_2precision-converters-firmware_2projects_2ad405x__iio_2app_2app__config__stm32_8c" id="a_2home_2runner_2work_2precision-converters-firmware_2precision-converters-firmware_2projects_2ad405x__iio_2app_2app__config__stm32_8c">
-<area shape="rect" title="Source file for STM32 platform configurations." alt="" coords="1025,5,1284,75"/>
+<area shape="rect" title="Source file for STM32 platform configurations." alt="" coords="369,5,628,75"/>
 <area shape="rect" title=" " alt="" coords="5,343,88,368"/>
-<area shape="poly" title=" " alt="" coords="1025,50,845,60,637,76,443,97,364,111,303,125,264,139,235,153,175,198,141,232,109,268,63,332,59,329,105,265,137,228,172,194,232,148,262,134,302,120,362,105,442,92,636,71,844,55,1025,44"/>
-<area shape="rect" href="ad405x__iio_2app_2app__config_8h.html" title="Application configurations module for AD405X." alt="" coords="1352,196,1456,221"/>
-<area shape="poly" title=" " alt="" coords="1187,73,1226,110,1272,146,1316,170,1359,189,1357,194,1313,175,1269,150,1223,114,1183,77"/>
-<area shape="rect" title=" " alt="" coords="112,343,163,368"/>
-<area shape="poly" title=" " alt="" coords="1025,50,817,64,574,91,457,111,351,135,264,164,230,180,203,198,177,227,159,263,148,298,143,329,137,328,143,297,155,261,173,224,200,194,227,176,262,159,350,130,456,106,573,86,817,59,1025,44"/>
-<area shape="rect" href="ad405x__iio_2app_2app__config__stm32_8h.html" title="Header file for STM32 platform configurations." alt="" coords="699,123,851,148"/>
-<area shape="poly" title=" " alt="" coords="1026,76,835,122,834,117,1024,70"/>
-<area shape="rect" href="ad405x__iio_8h.html" title="Header for AD405X IIO application." alt="" coords="1102,123,1207,148"/>
-<area shape="poly" title=" " alt="" coords="1157,75,1157,109,1152,109,1152,75"/>
-<area shape="rect" title=" " alt="" coords="1283,123,1365,148"/>
-<area shape="poly" title=" " alt="" coords="1217,72,1292,113,1289,118,1215,77"/>
-<area shape="rect" title=" " alt="" coords="1389,123,1496,148"/>
-<area shape="poly" title=" " alt="" coords="1259,72,1395,116,1394,121,1258,77"/>
-<area shape="rect" title=" " alt="" coords="1077,343,1147,368"/>
-<area shape="poly" title=" " alt="" coords="1456,208,1534,214,1612,227,1642,238,1663,253,1668,262,1669,273,1657,297,1630,310,1582,321,1443,338,1287,349,1161,355,1161,350,1287,344,1443,333,1581,316,1628,305,1653,293,1664,272,1663,264,1659,256,1640,243,1610,232,1533,219,1456,214"/>
-<area shape="rect" title=" " alt="" coords="1285,269,1392,295"/>
-<area shape="poly" title=" " alt="" coords="1395,223,1360,261,1357,257,1391,220"/>
-<area shape="rect" title=" " alt="" coords="1417,269,1522,295"/>
-<area shape="poly" title=" " alt="" coords="1417,220,1451,257,1448,261,1413,223"/>
-<area shape="rect" title=" " alt="" coords="1547,269,1643,295"/>
-<area shape="poly" title=" " alt="" coords="1436,219,1552,262,1550,267,1434,224"/>
-<area shape="rect" title=" " alt="" coords="1150,269,1261,295"/>
-<area shape="poly" title=" " alt="" coords="1373,224,1252,267,1250,262,1371,219"/>
-<area shape="rect" href="common_8h.html" title=" " alt="" coords="224,269,315,295"/>
-<area shape="poly" title=" " alt="" coords="1352,218,1290,224,731,260,329,281,328,275,731,255,1289,219,1351,213"/>
-<area shape="rect" href="ad405x__iio_2app_2app__config__mbed_8h.html" title="Header file for Mbed platform configurations." alt="" coords="1718,269,1866,295"/>
-<area shape="poly" title=" " alt="" coords="1457,217,1717,264,1716,269,1456,222"/>
-<area shape="poly" title=" " alt="" coords="234,297,96,341,95,336,233,292"/>
-<area shape="poly" title=" " alt="" coords="315,289,334,292,546,315,755,332,1063,349,1063,355,755,337,546,320,333,297,314,295"/>
-<area shape="rect" title=" " alt="" coords="187,343,258,368"/>
-<area shape="poly" title=" " alt="" coords="264,296,240,333,236,330,259,294"/>
-<area shape="rect" title=" " alt="" coords="283,343,349,368"/>
-<area shape="poly" title=" " alt="" coords="279,294,303,330,299,333,275,296"/>
-<area shape="poly" title=" " alt="" coords="249,297,172,338,170,334,247,292"/>
-<area shape="rect" title=" " alt="" coords="373,343,464,368"/>
-<area shape="poly" title=" " alt="" coords="294,292,383,334,381,339,292,297"/>
-<area shape="rect" title=" " alt="" coords="489,343,618,368"/>
-<area shape="poly" title=" " alt="" coords="316,292,495,337,494,342,314,297"/>
-<area shape="rect" title=" " alt="" coords="643,343,752,368"/>
-<area shape="poly" title=" " alt="" coords="315,289,334,292,630,340,629,345,333,297,314,294"/>
-<area shape="poly" title=" " alt="" coords="1718,295,1699,297,1162,352,1161,347,1698,292,1717,290"/>
-<area shape="rect" title=" " alt="" coords="1498,343,1598,368"/>
-<area shape="poly" title=" " alt="" coords="1754,297,1601,341,1600,336,1752,292"/>
-<area shape="rect" title=" " alt="" coords="1622,343,1719,368"/>
-<area shape="poly" title=" " alt="" coords="1774,297,1703,338,1701,333,1771,292"/>
-<area shape="rect" title=" " alt="" coords="1743,343,1841,368"/>
-<area shape="poly" title=" " alt="" coords="1795,295,1795,329,1789,329,1789,295"/>
-<area shape="rect" title=" " alt="" coords="1865,343,1972,368"/>
-<area shape="poly" title=" " alt="" coords="1814,292,1887,333,1885,338,1811,297"/>
-<area shape="rect" title=" " alt="" coords="1996,343,2127,368"/>
-<area shape="poly" title=" " alt="" coords="1836,292,2005,337,2004,342,1835,297"/>
-<area shape="rect" title=" " alt="" coords="2151,343,2262,368"/>
-<area shape="poly" title=" " alt="" coords="1859,292,2138,340,2137,345,1858,297"/>
-<area shape="rect" title=" " alt="" coords="1369,343,1473,368"/>
-<area shape="poly" title=" " alt="" coords="1733,297,1487,344,1486,339,1732,292"/>
-<area shape="poly" title=" " alt="" coords="699,139,543,142,370,154,296,164,240,179,223,188,212,198,210,208,217,220,233,231,261,242,346,264,461,285,592,303,862,331,1063,348,1062,353,862,336,592,308,460,290,345,270,259,248,230,236,213,223,205,208,208,195,220,184,239,174,295,159,369,148,543,137,699,134"/>
-<area shape="rect" title=" " alt="" coords="926,196,1029,221"/>
-<area shape="poly" title=" " alt="" coords="808,146,933,189,931,194,806,151"/>
-<area shape="rect" title=" " alt="" coords="1053,196,1155,221"/>
-<area shape="poly" title=" " alt="" coords="828,145,1040,191,1039,196,827,151"/>
-<area shape="rect" title=" " alt="" coords="1179,196,1277,221"/>
-<area shape="poly" title=" " alt="" coords="851,145,1166,193,1165,198,851,150"/>
-<area shape="rect" title=" " alt="" coords="226,196,361,221"/>
-<area shape="poly" title=" " alt="" coords="699,151,375,198,374,193,698,145"/>
-<area shape="rect" title=" " alt="" coords="385,196,495,221"/>
-<area shape="poly" title=" " alt="" coords="721,151,508,196,507,190,720,145"/>
-<area shape="rect" title=" " alt="" coords="519,196,627,221"/>
-<area shape="poly" title=" " alt="" coords="743,151,620,194,618,189,741,146"/>
-<area shape="rect" title=" " alt="" coords="651,196,762,221"/>
-<area shape="poly" title=" " alt="" coords="765,150,729,188,725,184,762,146"/>
-<area shape="rect" title=" " alt="" coords="787,196,901,221"/>
-<area shape="poly" title=" " alt="" coords="788,146,825,184,821,188,784,150"/>
-<area shape="poly" title=" " alt="" coords="1195,145,1351,190,1350,195,1194,151"/>
-<area shape="poly" title=" " alt="" coords="1208,146,1245,157,1278,174,1290,184,1297,196,1298,209,1292,223,1275,240,1256,248,1217,251,1178,251,1159,258,1141,271,1124,299,1116,330,1111,328,1119,297,1137,268,1156,253,1177,246,1217,245,1255,243,1271,235,1287,220,1293,208,1292,197,1286,188,1275,178,1243,162,1206,151"/>
+<area shape="poly" title=" " alt="" coords="439,77,360,125,195,242,73,336,70,332,192,238,357,120,436,72"/>
+<area shape="rect" title=" " alt="" coords="113,343,183,368"/>
+<area shape="poly" title=" " alt="" coords="454,77,394,125,266,241,171,334,167,331,262,237,390,121,451,73"/>
+<area shape="rect" href="ad405x__iio_2app_2app__config_8h.html" title="Application configurations module for AD405X." alt="" coords="605,196,709,221"/>
+<area shape="poly" title=" " alt="" coords="533,73,639,184,635,188,529,77"/>
+<area shape="rect" title=" " alt="" coords="208,343,259,368"/>
+<area shape="poly" title=" " alt="" coords="467,77,386,163,293,271,250,332,246,329,289,268,382,159,463,73"/>
+<area shape="rect" href="ad405x__iio_2app_2app__config__stm32_8h.html" title="Header file for STM32 platform configurations." alt="" coords="1327,123,1479,148"/>
+<area shape="poly" title=" " alt="" coords="628,52,1313,122,1313,127,628,57"/>
+<area shape="rect" href="ad405x__iio_8h.html" title="Header for AD405X IIO application." alt="" coords="446,123,551,148"/>
+<area shape="poly" title=" " alt="" coords="501,75,501,109,496,109,496,75"/>
+<area shape="rect" title=" " alt="" coords="1503,123,1585,148"/>
+<area shape="poly" title=" " alt="" coords="628,44,1010,68,1248,90,1489,120,1488,125,1247,95,1010,74,628,49"/>
+<area shape="rect" title=" " alt="" coords="777,343,847,368"/>
+<area shape="poly" title=" " alt="" coords="672,220,724,267,792,331,788,335,721,271,669,224"/>
+<area shape="rect" title=" " alt="" coords="604,269,711,295"/>
+<area shape="poly" title=" " alt="" coords="660,222,660,256,655,256,655,222"/>
+<area shape="rect" title=" " alt="" coords="786,269,891,295"/>
+<area shape="poly" title=" " alt="" coords="687,219,797,262,795,267,685,224"/>
+<area shape="rect" title=" " alt="" coords="916,269,1012,295"/>
+<area shape="poly" title=" " alt="" coords="707,219,903,264,902,269,706,224"/>
+<area shape="rect" title=" " alt="" coords="469,269,579,295"/>
+<area shape="poly" title=" " alt="" coords="637,224,559,265,557,260,635,219"/>
+<area shape="rect" href="common_8h.html" title=" " alt="" coords="303,269,393,295"/>
+<area shape="poly" title=" " alt="" coords="608,224,407,270,406,265,607,219"/>
+<area shape="rect" href="ad405x__iio_2app_2app__config__mbed_8h.html" title="Header file for Mbed platform configurations." alt="" coords="1111,269,1259,295"/>
+<area shape="poly" title=" " alt="" coords="710,214,1098,266,1097,272,709,220"/>
+<area shape="poly" title=" " alt="" coords="303,297,102,344,101,339,302,291"/>
+<area shape="poly" title=" " alt="" coords="317,297,195,340,193,335,315,292"/>
+<area shape="poly" title=" " alt="" coords="394,289,412,292,586,314,664,324,763,340,763,345,663,329,585,320,412,297,393,294"/>
+<area shape="rect" title=" " alt="" coords="571,343,637,368"/>
+<area shape="poly" title=" " alt="" coords="390,292,558,338,556,344,388,297"/>
+<area shape="poly" title=" " alt="" coords="331,297,265,338,262,333,328,292"/>
+<area shape="rect" title=" " alt="" coords="661,343,752,368"/>
+<area shape="poly" title=" " alt="" coords="394,290,648,340,647,345,393,295"/>
+<area shape="rect" title=" " alt="" coords="283,343,413,368"/>
+<area shape="poly" title=" " alt="" coords="351,295,351,329,345,329,345,295"/>
+<area shape="rect" title=" " alt="" coords="437,343,547,368"/>
+<area shape="poly" title=" " alt="" coords="372,292,457,334,455,339,370,297"/>
+<area shape="poly" title=" " alt="" coords="1118,297,862,345,861,340,1117,292"/>
+<area shape="rect" title=" " alt="" coords="1135,343,1235,368"/>
+<area shape="poly" title=" " alt="" coords="1188,295,1188,329,1183,329,1183,295"/>
+<area shape="rect" title=" " alt="" coords="1259,343,1357,368"/>
+<area shape="poly" title=" " alt="" coords="1206,292,1278,333,1275,338,1204,297"/>
+<area shape="rect" title=" " alt="" coords="1381,343,1478,368"/>
+<area shape="poly" title=" " alt="" coords="1225,292,1378,336,1376,341,1224,297"/>
+<area shape="rect" title=" " alt="" coords="1503,343,1609,368"/>
+<area shape="poly" title=" " alt="" coords="1245,292,1490,339,1489,344,1244,297"/>
+<area shape="rect" title=" " alt="" coords="1633,343,1764,368"/>
+<area shape="poly" title=" " alt="" coords="1260,291,1620,340,1619,345,1259,296"/>
+<area shape="rect" title=" " alt="" coords="871,343,982,368"/>
+<area shape="poly" title=" " alt="" coords="1144,297,982,342,981,336,1143,292"/>
+<area shape="rect" title=" " alt="" coords="1007,343,1111,368"/>
+<area shape="poly" title=" " alt="" coords="1166,297,1093,338,1090,333,1164,292"/>
+<area shape="poly" title=" " alt="" coords="1327,145,1184,164,1119,179,1094,188,1076,198,1065,209,1058,220,1051,245,1045,271,1038,284,1025,297,963,317,861,344,860,339,962,312,1023,292,1033,281,1040,269,1046,244,1053,218,1061,206,1073,194,1092,183,1118,174,1183,159,1326,140"/>
+<area shape="rect" title=" " alt="" coords="2035,196,2138,221"/>
+<area shape="poly" title=" " alt="" coords="1479,144,1491,145,1638,159,1755,167,1872,176,2022,193,2021,199,1871,182,1754,173,1638,164,1490,151,1479,149"/>
+<area shape="rect" title=" " alt="" coords="1087,196,1188,221"/>
+<area shape="poly" title=" " alt="" coords="1361,151,1194,195,1193,190,1359,145"/>
+<area shape="rect" title=" " alt="" coords="1212,196,1311,221"/>
+<area shape="poly" title=" " alt="" coords="1381,150,1298,192,1295,187,1379,146"/>
+<area shape="rect" title=" " alt="" coords="1335,196,1470,221"/>
+<area shape="poly" title=" " alt="" coords="1405,148,1405,182,1400,182,1400,148"/>
+<area shape="rect" title=" " alt="" coords="1494,196,1605,221"/>
+<area shape="poly" title=" " alt="" coords="1427,146,1514,188,1512,192,1425,150"/>
+<area shape="rect" title=" " alt="" coords="1629,196,1737,221"/>
+<area shape="poly" title=" " alt="" coords="1448,145,1625,190,1624,195,1447,151"/>
+<area shape="rect" title=" " alt="" coords="1761,196,1871,221"/>
+<area shape="poly" title=" " alt="" coords="1470,145,1747,193,1747,198,1469,151"/>
+<area shape="rect" title=" " alt="" coords="1896,196,2011,221"/>
+<area shape="poly" title=" " alt="" coords="1479,144,1491,145,1685,168,1883,193,1882,198,1685,173,1490,151,1479,149"/>
+<area shape="poly" title=" " alt="" coords="525,146,620,188,618,193,523,150"/>
+<area shape="poly" title=" " alt="" coords="492,150,473,178,454,217,448,237,446,257,450,276,459,293,480,308,511,319,594,330,685,335,763,340,763,346,684,340,593,336,510,324,478,313,455,296,445,278,441,257,443,236,449,215,468,175,487,147"/>
 </map>
 </div>
 </div><table class="memberdecls">
@@ -178,53 +177,28 @@ Functions</h2></td></tr>
 <tr class="memitem:a70af21c671abfcc773614a9a4f63d920" id="r_a70af21c671abfcc773614a9a4f63d920"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad405x__iio_2app_2app__config__stm32_8c.html#a70af21c671abfcc773614a9a4f63d920">SystemClock_Config</a> (void)</td></tr>
 <tr class="separator:a70af21c671abfcc773614a9a4f63d920"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa599b1bdd18c25d273dded2a87a19a2f" id="r_aa599b1bdd18c25d273dded2a87a19a2f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad405x__iio_2app_2app__config__stm32_8c.html#aa599b1bdd18c25d273dded2a87a19a2f">receivecomplete_callback</a> (DMA_HandleTypeDef *hdma)</td></tr>
-<tr class="memdesc:aa599b1bdd18c25d273dded2a87a19a2f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Callback function to flag the capture of number of requested samples.  <br /></td></tr>
+<tr class="memdesc:aa599b1bdd18c25d273dded2a87a19a2f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Callback function to flag the transfer of number of requested samples.  <br /></td></tr>
 <tr class="separator:aa599b1bdd18c25d273dded2a87a19a2f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7256d80c59f9d4eafcebc79f1b73ba72" id="r_a7256d80c59f9d4eafcebc79f1b73ba72"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad405x__iio_2app_2app__config__stm32_8c.html#a7256d80c59f9d4eafcebc79f1b73ba72">stm32_system_init</a> (void)</td></tr>
 <tr class="memdesc:a7256d80c59f9d4eafcebc79f1b73ba72"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize the STM32 system peripherals.  <br /></td></tr>
 <tr class="separator:a7256d80c59f9d4eafcebc79f1b73ba72"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aaf6ce196dde98712e1223b99766e06c0" id="r_aaf6ce196dde98712e1223b99766e06c0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad405x__iio_2app_2app__config__stm32_8c.html#aaf6ce196dde98712e1223b99766e06c0">DMA2_Stream0_IRQHandler</a> (void)</td></tr>
-<tr class="memdesc:aaf6ce196dde98712e1223b99766e06c0"><td class="mdescLeft">&#160;</td><td class="mdescRight">IRQ handler for RX DMA channel.  <br /></td></tr>
-<tr class="separator:aaf6ce196dde98712e1223b99766e06c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a748af879b759fb21a9679dfade3057c3" id="r_a748af879b759fb21a9679dfade3057c3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad405x__iio_2app_2app__config__stm32_8c.html#a748af879b759fb21a9679dfade3057c3">halfcmplt_callback</a> (DMA_HandleTypeDef *hdma)</td></tr>
-<tr class="memdesc:a748af879b759fb21a9679dfade3057c3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Callback function to flag the capture of half the number of requested samples.  <br /></td></tr>
-<tr class="separator:a748af879b759fb21a9679dfade3057c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a041ca287730504a42ee90ba3477ede86" id="r_a041ca287730504a42ee90ba3477ede86"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad405x__iio_2app_2app__config__stm32_8c.html#a041ca287730504a42ee90ba3477ede86">stm32_system_init_post_verification</a> (void)</td></tr>
+<tr class="memdesc:a041ca287730504a42ee90ba3477ede86"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize the STM32 system peripherals after the device has been verified.  <br /></td></tr>
+<tr class="separator:a041ca287730504a42ee90ba3477ede86"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5d3d4a0c72236ff1c70d56ecc1266670" id="r_a5d3d4a0c72236ff1c70d56ecc1266670"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad405x__iio_2app_2app__config__stm32_8c.html#a5d3d4a0c72236ff1c70d56ecc1266670">update_buff</a> (uint8_t *<a class="el" href="ad405x__support_8c.html#a64753f7285011cab33065a7abb2574ef">local_buf</a>, uint8_t *buf_start_addr)</td></tr>
 <tr class="memdesc:a5d3d4a0c72236ff1c70d56ecc1266670"><td class="mdescLeft">&#160;</td><td class="mdescRight">Update buffer index.  <br /></td></tr>
 <tr class="separator:a5d3d4a0c72236ff1c70d56ecc1266670"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a91403f8dbab4ddc9299c6bdb54d79863" id="r_a91403f8dbab4ddc9299c6bdb54d79863"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad405x__iio_2app_2app__config__stm32_8c.html#a91403f8dbab4ddc9299c6bdb54d79863">stm32_timer_enable</a> (void)</td></tr>
-<tr class="memdesc:a91403f8dbab4ddc9299c6bdb54d79863"><td class="mdescLeft">&#160;</td><td class="mdescRight">Starts the timer signal generation for PWM and OC channels all at once.  <br /></td></tr>
-<tr class="separator:a91403f8dbab4ddc9299c6bdb54d79863"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adc68d7f97d9907d3ef6fa6bc0cbd0d09" id="r_adc68d7f97d9907d3ef6fa6bc0cbd0d09"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad405x__iio_2app_2app__config__stm32_8c.html#adc68d7f97d9907d3ef6fa6bc0cbd0d09">stm32_timer_stop</a> (void)</td></tr>
-<tr class="memdesc:adc68d7f97d9907d3ef6fa6bc0cbd0d09"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stops generating timer signals.  <br /></td></tr>
-<tr class="separator:adc68d7f97d9907d3ef6fa6bc0cbd0d09"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5f112e13dcc13734d1eb3cc45089a409" id="r_a5f112e13dcc13734d1eb3cc45089a409"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad405x__iio_2app_2app__config__stm32_8c.html#a5f112e13dcc13734d1eb3cc45089a409">stm32_cs_output_gpio_config</a> (bool is_gpio)</td></tr>
-<tr class="memdesc:a5f112e13dcc13734d1eb3cc45089a409"><td class="mdescLeft">&#160;</td><td class="mdescRight">Configures the chip select pin as output mode.  <br /></td></tr>
-<tr class="separator:a5f112e13dcc13734d1eb3cc45089a409"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac9ffe987ead91e77389630cb9bda2905" id="r_ac9ffe987ead91e77389630cb9bda2905"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad405x__iio_2app_2app__config__stm32_8c.html#ac9ffe987ead91e77389630cb9bda2905">stm32_abort_dma_transfer</a> (void)</td></tr>
-<tr class="memdesc:ac9ffe987ead91e77389630cb9bda2905"><td class="mdescLeft">&#160;</td><td class="mdescRight">Abort ongoing SPI RX DMA transfer.  <br /></td></tr>
-<tr class="separator:ac9ffe987ead91e77389630cb9bda2905"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6986fe9cec363c5249018fc1c36c7504" id="r_a6986fe9cec363c5249018fc1c36c7504"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad405x__iio_2app_2app__config__stm32_8c.html#a6986fe9cec363c5249018fc1c36c7504">stm32_config_spi_data_frame_format</a> (bool is_16_bit)</td></tr>
-<tr class="memdesc:a6986fe9cec363c5249018fc1c36c7504"><td class="mdescLeft">&#160;</td><td class="mdescRight">Configures the SPI data frame format pin to 8/16 bit.  <br /></td></tr>
-<tr class="separator:a6986fe9cec363c5249018fc1c36c7504"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad999b5b9bf1a1d5de39036113bbe23c0" id="r_ad999b5b9bf1a1d5de39036113bbe23c0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad405x__iio_2app_2app__config__stm32_8c.html#ad999b5b9bf1a1d5de39036113bbe23c0">stm32_config_cnv_prescalar</a> (void)</td></tr>
 <tr class="memdesc:ad999b5b9bf1a1d5de39036113bbe23c0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Configures the prescalar according to the operating mode.  <br /></td></tr>
 <tr class="separator:ad999b5b9bf1a1d5de39036113bbe23c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a116881568b970d07bc1c61b475a6b284" id="r_a116881568b970d07bc1c61b475a6b284"><td class="memItemLeft" align="right" valign="top">__weak unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad405x__iio_2app_2app__config__stm32_8c.html#a116881568b970d07bc1c61b475a6b284">ux_device_stack_tasks_run</a> (void)</td></tr>
+<tr class="memdesc:a116881568b970d07bc1c61b475a6b284"><td class="mdescLeft">&#160;</td><td class="mdescRight">Dummy function for USBx middleware used in STM32H563.  <br /></td></tr>
+<tr class="separator:a116881568b970d07bc1c61b475a6b284"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
-<tr class="memitem:a117d16f5e47ab1da2ae9982aeffd5832" id="r_a117d16f5e47ab1da2ae9982aeffd5832"><td class="memItemLeft" align="right" valign="top">struct stm32_dma_channel&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad405x__iio_2app_2app__config__stm32_8c.html#a117d16f5e47ab1da2ae9982aeffd5832">txdma_channel</a></td></tr>
-<tr class="separator:a117d16f5e47ab1da2ae9982aeffd5832"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a561a42d82d21f905611582e83de10c1c" id="r_a561a42d82d21f905611582e83de10c1c"><td class="memItemLeft" align="right" valign="top">struct stm32_dma_channel&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad405x__iio_2app_2app__config__stm32_8c.html#a561a42d82d21f905611582e83de10c1c">rxdma_channel</a></td></tr>
-<tr class="separator:a561a42d82d21f905611582e83de10c1c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad01cbb0d92f894ddd7f2e1a62a11e91b" id="r_ad01cbb0d92f894ddd7f2e1a62a11e91b"><td class="memItemLeft" align="right" valign="top">struct stm32_uart_init_param&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad405x__iio_2app_2app__config__stm32_8c.html#ad01cbb0d92f894ddd7f2e1a62a11e91b">stm32_uart_extra_init_params</a></td></tr>
 <tr class="separator:ad01cbb0d92f894ddd7f2e1a62a11e91b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad6c530882dee1bb34bfde4c8bf40eb9c" id="r_ad6c530882dee1bb34bfde4c8bf40eb9c"><td class="memItemLeft" align="right" valign="top">struct stm32_usb_uart_init_param&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad405x__iio_2app_2app__config__stm32_8c.html#ad6c530882dee1bb34bfde4c8bf40eb9c">stm32_vcom_extra_init_params</a></td></tr>
-<tr class="separator:ad6c530882dee1bb34bfde4c8bf40eb9c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aee225d9d1b4e30e96142c0acdba48d3f" id="r_aee225d9d1b4e30e96142c0acdba48d3f"><td class="memItemLeft" align="right" valign="top">struct stm32_spi_init_param&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad405x__iio_2app_2app__config__stm32_8c.html#aee225d9d1b4e30e96142c0acdba48d3f">stm32_spi_extra_init_params</a></td></tr>
-<tr class="separator:aee225d9d1b4e30e96142c0acdba48d3f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a97f163e43d0be90d4a16d1aede890c5f" id="r_a97f163e43d0be90d4a16d1aede890c5f"><td class="memItemLeft" align="right" valign="top">struct stm32_gpio_init_param&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad405x__iio_2app_2app__config__stm32_8c.html#a97f163e43d0be90d4a16d1aede890c5f">stm32_gpio_cnv_extra_init_params</a></td></tr>
-<tr class="separator:a97f163e43d0be90d4a16d1aede890c5f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afa3f7a6a9a2d863c1477c56400d91376" id="r_afa3f7a6a9a2d863c1477c56400d91376"><td class="memItemLeft" align="right" valign="top">struct stm32_gpio_init_param&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad405x__iio_2app_2app__config__stm32_8c.html#afa3f7a6a9a2d863c1477c56400d91376">stm32_gpio_gp0_extra_init_params</a></td></tr>
 <tr class="separator:afa3f7a6a9a2d863c1477c56400d91376"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afae0e2b14ebf0da6731928cb751fde1c" id="r_afae0e2b14ebf0da6731928cb751fde1c"><td class="memItemLeft" align="right" valign="top">struct stm32_gpio_init_param&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad405x__iio_2app_2app__config__stm32_8c.html#afae0e2b14ebf0da6731928cb751fde1c">stm32_gpio_gp1_extra_init_params</a></td></tr>
@@ -239,82 +213,26 @@ Variables</h2></td></tr>
 <tr class="separator:acc244eafd7d37049f8c318718ae42544"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa73f240ba5aebf776b52d701627664dc" id="r_aa73f240ba5aebf776b52d701627664dc"><td class="memItemLeft" align="right" valign="top">struct stm32_pwm_init_param&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad405x__iio_2app_2app__config__stm32_8c.html#aa73f240ba5aebf776b52d701627664dc">stm32_pwm_cnv_extra_init_params</a></td></tr>
 <tr class="separator:aa73f240ba5aebf776b52d701627664dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7eec2914417d6aa33bf61daacbc2cd62" id="r_a7eec2914417d6aa33bf61daacbc2cd62"><td class="memItemLeft" align="right" valign="top">struct stm32_pwm_init_param&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad405x__iio_2app_2app__config__stm32_8c.html#a7eec2914417d6aa33bf61daacbc2cd62">stm32_cs_extra_init_params</a></td></tr>
-<tr class="separator:a7eec2914417d6aa33bf61daacbc2cd62"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab690a3e62918f223188033f190345b43" id="r_ab690a3e62918f223188033f190345b43"><td class="memItemLeft" align="right" valign="top">struct stm32_pwm_init_param&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad405x__iio_2app_2app__config__stm32_8c.html#ab690a3e62918f223188033f190345b43">stm32_tx_trigger_extra_init_params</a></td></tr>
-<tr class="separator:ab690a3e62918f223188033f190345b43"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acfaaba4fe6f2d6864fc84992cced08d3" id="r_acfaaba4fe6f2d6864fc84992cced08d3"><td class="memItemLeft" align="right" valign="top">volatile struct stm32_spi_desc *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad405x__iio_2app_2app__config__stm32_8c.html#acfaaba4fe6f2d6864fc84992cced08d3">sdesc</a></td></tr>
 <tr class="separator:acfaaba4fe6f2d6864fc84992cced08d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a448ea598b26c7ce27b4e6214a8ae6f63" id="r_a448ea598b26c7ce27b4e6214a8ae6f63"><td class="memItemLeft" align="right" valign="top">volatile bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad405x__iio_2app_2app__config__stm32_8c.html#a448ea598b26c7ce27b4e6214a8ae6f63">ad405x_conversion_flag</a> = false</td></tr>
-<tr class="separator:a448ea598b26c7ce27b4e6214a8ae6f63"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aaff309cfd077ce3b159451bf67816b2f" id="r_aaff309cfd077ce3b159451bf67816b2f"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad405x__iio_2app_2app__config__stm32_8c.html#aaff309cfd077ce3b159451bf67816b2f">dma_cycle_count</a> = 0</td></tr>
-<tr class="separator:aaff309cfd077ce3b159451bf67816b2f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a610dc1e76f5b0fbdc5820c8786b268f2" id="r_a610dc1e76f5b0fbdc5820c8786b268f2"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad405x__iio_2app_2app__config__stm32_8c.html#a610dc1e76f5b0fbdc5820c8786b268f2">callback_count</a></td></tr>
-<tr class="separator:a610dc1e76f5b0fbdc5820c8786b268f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2e7856b7007be9f1a350d2efee780860" id="r_a2e7856b7007be9f1a350d2efee780860"><td class="memItemLeft" align="right" valign="top">volatile int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad405x__iio_2app_2app__config__stm32_8c.html#a2e7856b7007be9f1a350d2efee780860">dma_cycle_count</a> = 0</td></tr>
+<tr class="separator:a2e7856b7007be9f1a350d2efee780860"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5915db76e1b5a75cfd23f3ee5d8d3bf6" id="r_a5915db76e1b5a75cfd23f3ee5d8d3bf6"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad405x__iio_2app_2app__config__stm32_8c.html#a5915db76e1b5a75cfd23f3ee5d8d3bf6">rxdma_ndtr</a></td></tr>
 <tr class="separator:a5915db76e1b5a75cfd23f3ee5d8d3bf6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab1108595d24f99a392abe59ce480444c" id="r_ab1108595d24f99a392abe59ce480444c"><td class="memItemLeft" align="right" valign="top">uint8_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad405x__iio_2app_2app__config__stm32_8c.html#ab1108595d24f99a392abe59ce480444c">iio_buf_start_idx</a></td></tr>
-<tr class="separator:ab1108595d24f99a392abe59ce480444c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afabd6651988b368666a9684f871e9439" id="r_afabd6651988b368666a9684f871e9439"><td class="memItemLeft" align="right" valign="top">uint8_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad405x__iio_2app_2app__config__stm32_8c.html#afabd6651988b368666a9684f871e9439">dma_buf_start_idx</a></td></tr>
-<tr class="separator:afabd6651988b368666a9684f871e9439"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a71f09aee1100f5bb559da0c8f9d43786" id="r_a71f09aee1100f5bb559da0c8f9d43786"><td class="memItemLeft" align="right" valign="top">uint8_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad405x__iio_2app_2app__config__stm32_8c.html#a71f09aee1100f5bb559da0c8f9d43786">iio_buf_current_idx</a></td></tr>
-<tr class="separator:a71f09aee1100f5bb559da0c8f9d43786"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9dcd1558d7c02d9ed32c17a94abd09f2" id="r_a9dcd1558d7c02d9ed32c17a94abd09f2"><td class="memItemLeft" align="right" valign="top">uint8_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad405x__iio_2app_2app__config__stm32_8c.html#a9dcd1558d7c02d9ed32c17a94abd09f2">dma_buf_current_idx</a></td></tr>
-<tr class="separator:a9dcd1558d7c02d9ed32c17a94abd09f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4e12d1b326843a8cd8c208952b733f64" id="r_a4e12d1b326843a8cd8c208952b733f64"><td class="memItemLeft" align="right" valign="top">volatile uint8_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad405x__iio_2app_2app__config__stm32_8c.html#a4e12d1b326843a8cd8c208952b733f64">iio_buf_start_idx</a></td></tr>
+<tr class="separator:a4e12d1b326843a8cd8c208952b733f64"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3896c6ae6e784e0353c0c3a6d6bb2258" id="r_a3896c6ae6e784e0353c0c3a6d6bb2258"><td class="memItemLeft" align="right" valign="top">volatile uint8_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad405x__iio_2app_2app__config__stm32_8c.html#a3896c6ae6e784e0353c0c3a6d6bb2258">dma_buf_start_idx</a></td></tr>
+<tr class="separator:a3896c6ae6e784e0353c0c3a6d6bb2258"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adfce2115182bf46127cd7574fb5056f9" id="r_adfce2115182bf46127cd7574fb5056f9"><td class="memItemLeft" align="right" valign="top">volatile uint8_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad405x__iio_2app_2app__config__stm32_8c.html#adfce2115182bf46127cd7574fb5056f9">iio_buf_current_idx</a></td></tr>
+<tr class="separator:adfce2115182bf46127cd7574fb5056f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a931271447045be5bdb9a26a4cc981eba" id="r_a931271447045be5bdb9a26a4cc981eba"><td class="memItemLeft" align="right" valign="top">volatile uint8_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad405x__iio_2app_2app__config__stm32_8c.html#a931271447045be5bdb9a26a4cc981eba">dma_buf_current_idx</a></td></tr>
+<tr class="separator:a931271447045be5bdb9a26a4cc981eba"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Source file for STM32 platform configurations. </p>
 <p>Copyright (c) 2023-2025 Analog Devices, Inc. All rights reserved.</p>
 <p>This software is proprietary to Analog Devices, Inc. and its licensors. By using this software you agree to the terms of the associated Analog Devices Software License Agreement. </p>
 </div><h2 class="groupheader">Function Documentation</h2>
-<a id="aaf6ce196dde98712e1223b99766e06c0" name="aaf6ce196dde98712e1223b99766e06c0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aaf6ce196dde98712e1223b99766e06c0">&#9670;&#160;</a></span>DMA2_Stream0_IRQHandler()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void DMA2_Stream0_IRQHandler </td>
-          <td>(</td>
-          <td class="paramtype">void&#160;</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>IRQ handler for RX DMA channel. </p>
-<dl class="section return"><dt>Returns</dt><dd>None </dd></dl>
-
-</div>
-</div>
-<a id="a748af879b759fb21a9679dfade3057c3" name="a748af879b759fb21a9679dfade3057c3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a748af879b759fb21a9679dfade3057c3">&#9670;&#160;</a></span>halfcmplt_callback()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void halfcmplt_callback </td>
-          <td>(</td>
-          <td class="paramtype">DMA_HandleTypeDef *&#160;</td>
-          <td class="paramname"><em>hdma</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Callback function to flag the capture of half the number of requested samples. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">hdma</td><td>- DMA Handler (Unused) </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>None </dd></dl>
-
-</div>
-</div>
 <a id="aa599b1bdd18c25d273dded2a87a19a2f" name="aa599b1bdd18c25d273dded2a87a19a2f"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aa599b1bdd18c25d273dded2a87a19a2f">&#9670;&#160;</a></span>receivecomplete_callback()</h2>
 
@@ -331,7 +249,22 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Callback function to flag the capture of number of requested samples. </p>
+<p>Callback function to flag the transfer of number of requested samples. </p>
+<p>Callback function to flag the capture of number of requested samples.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">hdma[in]</td><td>- DMA Handler (Unused) </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>None</dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">hdma</td><td>- DMA handler (Unused) </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>None</dd></dl>
 <p>Callback function to flag the transfer of number of requested samples.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -339,28 +272,14 @@ Variables</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>None </dd></dl>
-
-</div>
-</div>
-<a id="ac9ffe987ead91e77389630cb9bda2905" name="ac9ffe987ead91e77389630cb9bda2905"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac9ffe987ead91e77389630cb9bda2905">&#9670;&#160;</a></span>stm32_abort_dma_transfer()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int stm32_abort_dma_transfer </td>
-          <td>(</td>
-          <td class="paramtype">void&#160;</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Abort ongoing SPI RX DMA transfer. </p>
-<p>Abort DMA Transfers.</p>
+<dl class="section return"><dt>Returns</dt><dd>None</dd></dl>
+<p>Callback function to flag the transfer of number of requested samples.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">hdma</td><td>- DMA Handler (Unused) </td></tr>
+  </table>
+  </dd>
+</dl>
 <dl class="section return"><dt>Returns</dt><dd>None </dd></dl>
 
 </div>
@@ -396,60 +315,6 @@ Here is the caller graph for this function:</div>
 
 </div>
 </div>
-<a id="a6986fe9cec363c5249018fc1c36c7504" name="a6986fe9cec363c5249018fc1c36c7504"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6986fe9cec363c5249018fc1c36c7504">&#9670;&#160;</a></span>stm32_config_spi_data_frame_format()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void stm32_config_spi_data_frame_format </td>
-          <td>(</td>
-          <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>is_16_bit</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Configures the SPI data frame format pin to 8/16 bit. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">is_16_bit[in]</td><td>- Boolean indicatin the data frame format. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>None </dd></dl>
-
-</div>
-</div>
-<a id="a5f112e13dcc13734d1eb3cc45089a409" name="a5f112e13dcc13734d1eb3cc45089a409"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5f112e13dcc13734d1eb3cc45089a409">&#9670;&#160;</a></span>stm32_cs_output_gpio_config()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void stm32_cs_output_gpio_config </td>
-          <td>(</td>
-          <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>is_gpio</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Configures the chip select pin as output mode. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">is_gpio[in]</td><td>- Mode of the Pin </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>None </dd></dl>
-
-</div>
-</div>
 <a id="a7256d80c59f9d4eafcebc79f1b73ba72" name="a7256d80c59f9d4eafcebc79f1b73ba72"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a7256d80c59f9d4eafcebc79f1b73ba72">&#9670;&#160;</a></span>stm32_system_init()</h2>
 
@@ -471,14 +336,14 @@ Here is the caller graph for this function:</div>
 
 </div>
 </div>
-<a id="a91403f8dbab4ddc9299c6bdb54d79863" name="a91403f8dbab4ddc9299c6bdb54d79863"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a91403f8dbab4ddc9299c6bdb54d79863">&#9670;&#160;</a></span>stm32_timer_enable()</h2>
+<a id="a041ca287730504a42ee90ba3477ede86" name="a041ca287730504a42ee90ba3477ede86"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a041ca287730504a42ee90ba3477ede86">&#9670;&#160;</a></span>stm32_system_init_post_verification()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void stm32_timer_enable </td>
+          <td class="memname">void stm32_system_init_post_verification </td>
           <td>(</td>
           <td class="paramtype">void&#160;</td>
           <td class="paramname"></td><td>)</td>
@@ -487,31 +352,25 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p>Starts the timer signal generation for PWM and OC channels all at once. </p>
-<p>Starts the timer signal generation for PWM.</p>
+<p>Initialize the STM32 system peripherals after the device has been verified. </p>
 <dl class="section return"><dt>Returns</dt><dd>None </dd></dl>
-
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="ad405x__iio_2app_2app__config__stm32_8c_a041ca287730504a42ee90ba3477ede86_icgraph.png" border="0" usemap="#aad405x__iio_2app_2app__config__stm32_8c_a041ca287730504a42ee90ba3477ede86_icgraph" alt=""/></div>
+<map name="aad405x__iio_2app_2app__config__stm32_8c_a041ca287730504a42ee90ba3477ede86_icgraph" id="aad405x__iio_2app_2app__config__stm32_8c_a041ca287730504a42ee90ba3477ede86_icgraph">
+<area shape="rect" title="Initialize the STM32 system peripherals after the device has been verified." alt="" coords="815,23,996,63"/>
+<area shape="rect" href="ad405x__iio_2app_2app__config_8c.html#a9eafe2cab5ddc95bca9f4d36be0744ae" title="Initializing system peripherals." alt="" coords="553,31,767,56"/>
+<area shape="poly" title=" " alt="" coords="801,46,767,46,767,41,801,41"/>
+<area shape="rect" href="ad405x__iio_8c.html#ac0141386b392ad24a1e7636a9b4c99c9" title="Initialize the IIO interface for AD405X IIO device." alt="" coords="349,31,505,56"/>
+<area shape="poly" title=" " alt="" coords="540,46,505,46,505,41,540,41"/>
+<area shape="rect" href="ad405x__iio_8c.html#a561170c1f2302f5a33ec8be13aca99bc" title="Run the AD405X IIO event handler." alt="" coords="108,5,301,31"/>
+<area shape="poly" title=" " alt="" coords="335,36,301,32,302,26,336,30"/>
+<area shape="rect" href="ad405x__iio_2app_2main_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title="Main entry point to application." alt="" coords="5,31,60,56"/>
+<area shape="poly" title=" " alt="" coords="336,46,60,46,60,41,336,41"/>
+<area shape="poly" title=" " alt="" coords="105,35,61,42,60,37,104,30"/>
+</map>
 </div>
-</div>
-<a id="adc68d7f97d9907d3ef6fa6bc0cbd0d09" name="adc68d7f97d9907d3ef6fa6bc0cbd0d09"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#adc68d7f97d9907d3ef6fa6bc0cbd0d09">&#9670;&#160;</a></span>stm32_timer_stop()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void stm32_timer_stop </td>
-          <td>(</td>
-          <td class="paramtype">void&#160;</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Stops generating timer signals. </p>
-<p>Stop generating timer signals.</p>
-<dl class="section return"><dt>Returns</dt><dd>None </dd></dl>
 
 </div>
 </div>
@@ -591,126 +450,108 @@ Here is the caller graph for this function:</div>
 
 </div>
 </div>
+<a id="a116881568b970d07bc1c61b475a6b284" name="a116881568b970d07bc1c61b475a6b284"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a116881568b970d07bc1c61b475a6b284">&#9670;&#160;</a></span>ux_device_stack_tasks_run()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">__weak unsigned int ux_device_stack_tasks_run </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Dummy function for USBx middleware used in STM32H563. </p>
+<dl class="section return"><dt>Returns</dt><dd>0 </dd></dl>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="ad405x__iio_2app_2app__config__stm32_8c_a116881568b970d07bc1c61b475a6b284_icgraph.png" border="0" usemap="#aad405x__iio_2app_2app__config__stm32_8c_a116881568b970d07bc1c61b475a6b284_icgraph" alt=""/></div>
+<map name="aad405x__iio_2app_2app__config__stm32_8c_a116881568b970d07bc1c61b475a6b284_icgraph" id="aad405x__iio_2app_2app__config__stm32_8c_a116881568b970d07bc1c61b475a6b284_icgraph">
+<area shape="rect" title="Dummy function for USBx middleware used in STM32H563." alt="" coords="349,5,549,31"/>
+<area shape="rect" href="ad405x__iio_8c.html#a561170c1f2302f5a33ec8be13aca99bc" title="Run the AD405X IIO event handler." alt="" coords="108,5,301,31"/>
+<area shape="poly" title=" " alt="" coords="336,21,301,21,301,15,336,15"/>
+<area shape="rect" href="ad405x__iio_2app_2main_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title="Main entry point to application." alt="" coords="5,5,60,31"/>
+<area shape="poly" title=" " alt="" coords="94,21,60,21,60,15,94,15"/>
+</map>
+</div>
+
+</div>
+</div>
 <h2 class="groupheader">Variable Documentation</h2>
-<a id="a448ea598b26c7ce27b4e6214a8ae6f63" name="a448ea598b26c7ce27b4e6214a8ae6f63"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a448ea598b26c7ce27b4e6214a8ae6f63">&#9670;&#160;</a></span>ad405x_conversion_flag</h2>
+<a id="a931271447045be5bdb9a26a4cc981eba" name="a931271447045be5bdb9a26a4cc981eba"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a931271447045be5bdb9a26a4cc981eba">&#9670;&#160;</a></span>dma_buf_current_idx</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">volatile bool ad405x_conversion_flag = false</td>
+          <td class="memname">volatile uint8_t* dma_buf_current_idx</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 </div>
 </div>
-<a id="a610dc1e76f5b0fbdc5820c8786b268f2" name="a610dc1e76f5b0fbdc5820c8786b268f2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a610dc1e76f5b0fbdc5820c8786b268f2">&#9670;&#160;</a></span>callback_count</h2>
+<a id="a3896c6ae6e784e0353c0c3a6d6bb2258" name="a3896c6ae6e784e0353c0c3a6d6bb2258"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3896c6ae6e784e0353c0c3a6d6bb2258">&#9670;&#160;</a></span>dma_buf_start_idx</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">uint32_t callback_count</td>
+          <td class="memname">volatile uint8_t* dma_buf_start_idx</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 </div>
 </div>
-<a id="a9dcd1558d7c02d9ed32c17a94abd09f2" name="a9dcd1558d7c02d9ed32c17a94abd09f2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9dcd1558d7c02d9ed32c17a94abd09f2">&#9670;&#160;</a></span>dma_buf_current_idx</h2>
+<a id="a2e7856b7007be9f1a350d2efee780860" name="a2e7856b7007be9f1a350d2efee780860"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2e7856b7007be9f1a350d2efee780860">&#9670;&#160;</a></span>dma_cycle_count</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">uint8_t* dma_buf_current_idx</td>
+          <td class="memname">volatile int dma_cycle_count = 0</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 </div>
 </div>
-<a id="afabd6651988b368666a9684f871e9439" name="afabd6651988b368666a9684f871e9439"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#afabd6651988b368666a9684f871e9439">&#9670;&#160;</a></span>dma_buf_start_idx</h2>
+<a id="adfce2115182bf46127cd7574fb5056f9" name="adfce2115182bf46127cd7574fb5056f9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adfce2115182bf46127cd7574fb5056f9">&#9670;&#160;</a></span>iio_buf_current_idx</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">uint8_t* dma_buf_start_idx</td>
+          <td class="memname">volatile uint8_t* iio_buf_current_idx</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 </div>
 </div>
-<a id="aaff309cfd077ce3b159451bf67816b2f" name="aaff309cfd077ce3b159451bf67816b2f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aaff309cfd077ce3b159451bf67816b2f">&#9670;&#160;</a></span>dma_cycle_count</h2>
+<a id="a4e12d1b326843a8cd8c208952b733f64" name="a4e12d1b326843a8cd8c208952b733f64"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4e12d1b326843a8cd8c208952b733f64">&#9670;&#160;</a></span>iio_buf_start_idx</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int dma_cycle_count = 0</td>
+          <td class="memname">volatile uint8_t* iio_buf_start_idx</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-</div>
-</div>
-<a id="a71f09aee1100f5bb559da0c8f9d43786" name="a71f09aee1100f5bb559da0c8f9d43786"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a71f09aee1100f5bb559da0c8f9d43786">&#9670;&#160;</a></span>iio_buf_current_idx</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">uint8_t* iio_buf_current_idx</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="ab1108595d24f99a392abe59ce480444c" name="ab1108595d24f99a392abe59ce480444c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab1108595d24f99a392abe59ce480444c">&#9670;&#160;</a></span>iio_buf_start_idx</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">uint8_t* iio_buf_start_idx</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a561a42d82d21f905611582e83de10c1c" name="a561a42d82d21f905611582e83de10c1c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a561a42d82d21f905611582e83de10c1c">&#9670;&#160;</a></span>rxdma_channel</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">struct stm32_dma_channel rxdma_channel</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<b>Initial value:</b><div class="fragment"><div class="line">= {</div>
-<div class="line">    .hdma = &amp;<a class="code hl_variable" href="ad3530r__iio_2app_2app__config__stm32_8h.html#ad70fe79aa3139fc9184d8ffb5dfba323">hdma_spi1_rx</a>,</div>
-<div class="line">    .ch_num = AD405x_RxDMA_CHANNEL_NUM,</div>
-<div class="line">    .mem_increment = <span class="keyword">true</span>,</div>
-<div class="line">    .mem_data_alignment = DATA_ALIGN_HALF_WORD,</div>
-<div class="line">    .per_data_alignment = DATA_ALIGN_HALF_WORD,</div>
-<div class="line">    .dma_mode = DMA_CIRCULAR_MODE,</div>
-<div class="line">}</div>
-<div class="ttc" id="aad3530r__iio_2app_2app__config__stm32_8h_html_ad70fe79aa3139fc9184d8ffb5dfba323"><div class="ttname"><a href="ad3530r__iio_2app_2app__config__stm32_8h.html#ad70fe79aa3139fc9184d8ffb5dfba323">hdma_spi1_rx</a></div><div class="ttdeci">DMA_HandleTypeDef hdma_spi1_rx</div></div>
-</div><!-- fragment -->
 </div>
 </div>
 <a id="a5915db76e1b5a75cfd23f3ee5d8d3bf6" name="a5915db76e1b5a75cfd23f3ee5d8d3bf6"></a>
@@ -741,33 +582,6 @@ Here is the caller graph for this function:</div>
 
 </div>
 </div>
-<a id="a7eec2914417d6aa33bf61daacbc2cd62" name="a7eec2914417d6aa33bf61daacbc2cd62"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7eec2914417d6aa33bf61daacbc2cd62">&#9670;&#160;</a></span>stm32_cs_extra_init_params</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">struct stm32_pwm_init_param stm32_cs_extra_init_params</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<b>Initial value:</b><div class="fragment"><div class="line">= {</div>
-<div class="line">    .htimer = &amp;<a class="code hl_define" href="ad469x__iio_2app_2app__config__stm32_8h.html#af8cc2d1368030d8ebd87e75299113963">TIMER2_HANDLE</a>,</div>
-<div class="line">    .prescaler = <a class="code hl_define" href="ad469x__iio_2app_2app__config__stm32_8h.html#a218ab93cb879787ad1bc8d72b61e70f7">TIMER_2_PRESCALER</a>,</div>
-<div class="line">    .timer_autoreload = <span class="keyword">false</span>,</div>
-<div class="line">    .mode = TIM_OC_PWM2,</div>
-<div class="line">    .timer_chn = <a class="code hl_define" href="ad3530r__iio_2app_2app__config__stm32_8h.html#a88b3de863ccab79708a46ee7732703af">TIMER_CHANNEL_1</a>,</div>
-<div class="line">    .get_timer_clock = HAL_RCC_GetPCLK1Freq,</div>
-<div class="line">    .clock_divider = <a class="code hl_define" href="ad469x__iio_2app_2app__config__stm32_8h.html#a11259b090a6a13151b49b1bd19f51bfd">TIMER_2_CLK_DIVIDER</a></div>
-<div class="line">}</div>
-<div class="ttc" id="aad3530r__iio_2app_2app__config__stm32_8h_html_a88b3de863ccab79708a46ee7732703af"><div class="ttname"><a href="ad3530r__iio_2app_2app__config__stm32_8h.html#a88b3de863ccab79708a46ee7732703af">TIMER_CHANNEL_1</a></div><div class="ttdeci">#define TIMER_CHANNEL_1</div><div class="ttdef"><b>Definition</b> app_config_stm32.h:83</div></div>
-<div class="ttc" id="aad469x__iio_2app_2app__config__stm32_8h_html_a11259b090a6a13151b49b1bd19f51bfd"><div class="ttname"><a href="ad469x__iio_2app_2app__config__stm32_8h.html#a11259b090a6a13151b49b1bd19f51bfd">TIMER_2_CLK_DIVIDER</a></div><div class="ttdeci">#define TIMER_2_CLK_DIVIDER</div><div class="ttdef"><b>Definition</b> app_config_stm32.h:79</div></div>
-<div class="ttc" id="aad469x__iio_2app_2app__config__stm32_8h_html_a218ab93cb879787ad1bc8d72b61e70f7"><div class="ttname"><a href="ad469x__iio_2app_2app__config__stm32_8h.html#a218ab93cb879787ad1bc8d72b61e70f7">TIMER_2_PRESCALER</a></div><div class="ttdeci">#define TIMER_2_PRESCALER</div><div class="ttdef"><b>Definition</b> app_config_stm32.h:77</div></div>
-<div class="ttc" id="aad469x__iio_2app_2app__config__stm32_8h_html_af8cc2d1368030d8ebd87e75299113963"><div class="ttname"><a href="ad469x__iio_2app_2app__config__stm32_8h.html#af8cc2d1368030d8ebd87e75299113963">TIMER2_HANDLE</a></div><div class="ttdeci">#define TIMER2_HANDLE</div><div class="ttdef"><b>Definition</b> app_config_stm32.h:93</div></div>
-</div><!-- fragment -->
-</div>
-</div>
 <a id="a13f45a269e370472bc8da9dd32d9ac64" name="a13f45a269e370472bc8da9dd32d9ac64"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a13f45a269e370472bc8da9dd32d9ac64">&#9670;&#160;</a></span>stm32_cs_gpio_extra_init_params</h2>
 
@@ -781,7 +595,7 @@ Here is the caller graph for this function:</div>
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line">= {</div>
 <div class="line">    .mode = GPIO_MODE_OUTPUT_PP,</div>
-<div class="line">    .speed = GPIO_SPEED_FREQ_VERY_HIGH,</div>
+<div class="line">    .speed = GPIO_SPEED_FREQ_HIGH,</div>
 <div class="line">}</div>
 </div><!-- fragment -->
 </div>
@@ -799,26 +613,8 @@ Here is the caller graph for this function:</div>
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line">= {</div>
 <div class="line">    .mode = GPIO_MODE_AF_PP,</div>
-<div class="line">    .speed = GPIO_SPEED_FREQ_VERY_HIGH,</div>
+<div class="line">    .speed = GPIO_SPEED_FREQ_HIGH,</div>
 <div class="line">    .alternate = GPIO_AF1_TIM2</div>
-<div class="line">}</div>
-</div><!-- fragment -->
-</div>
-</div>
-<a id="a97f163e43d0be90d4a16d1aede890c5f" name="a97f163e43d0be90d4a16d1aede890c5f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a97f163e43d0be90d4a16d1aede890c5f">&#9670;&#160;</a></span>stm32_gpio_cnv_extra_init_params</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">struct stm32_gpio_init_param stm32_gpio_cnv_extra_init_params</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<b>Initial value:</b><div class="fragment"><div class="line">= {</div>
-<div class="line">    .mode = GPIO_MODE_OUTPUT_PP,</div>
-<div class="line">    .speed = GPIO_SPEED_FREQ_VERY_HIGH,</div>
 <div class="line">}</div>
 </div><!-- fragment -->
 </div>
@@ -836,7 +632,7 @@ Here is the caller graph for this function:</div>
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line">= {</div>
 <div class="line">    .mode = GPIO_MODE_INPUT,</div>
-<div class="line">    .speed = GPIO_SPEED_FREQ_VERY_HIGH,</div>
+<div class="line">    .speed = GPIO_SPEED_FREQ_HIGH,</div>
 <div class="line">}</div>
 </div><!-- fragment -->
 </div>
@@ -854,7 +650,7 @@ Here is the caller graph for this function:</div>
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line">= {</div>
 <div class="line">    .mode = GPIO_MODE_INPUT,</div>
-<div class="line">    .speed = GPIO_SPEED_FREQ_VERY_HIGH,</div>
+<div class="line">    .speed = GPIO_SPEED_FREQ_HIGH,</div>
 <div class="line">}</div>
 </div><!-- fragment -->
 </div>
@@ -889,20 +685,17 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line">= {</div>
-<div class="line">    .htimer = &amp;<a class="code hl_define" href="ad469x__iio_2app_2app__config__stm32_8h.html#a8427c5c57fb5d97a1c34b4ad5d62e9e9">TIMER1_HANDLE</a>,</div>
-<div class="line">    .prescaler = <a class="code hl_define" href="ad469x__iio_2app_2app__config__stm32_8h.html#a14a687c138f5c3f5afa9cabf917d2422">TIMER_1_PRESCALER</a>,</div>
+<div class="line">    .htimer = CNV_TIMER_HANDLE,</div>
+<div class="line">    .pwm_timer = CNV_TIMER_TYPE,</div>
+<div class="line">    .prescaler = CNV_TIMER_PRESCALER,</div>
 <div class="line">    .timer_autoreload = <span class="keyword">true</span>,</div>
 <div class="line">    .mode = TIM_OC_PWM1,</div>
-<div class="line">    .timer_chn = <a class="code hl_define" href="ad469x__iio_2app_2app__config__stm32_8h.html#a512547363586c59e256515b69389de1b">TIMER_CHANNEL_3</a>,</div>
+<div class="line">    .timer_chn = CNV_TIMER_CHANNEL,</div>
 <div class="line">    .get_timer_clock = HAL_RCC_GetPCLK2Freq,</div>
-<div class="line">    .clock_divider = <a class="code hl_define" href="ad469x__iio_2app_2app__config__stm32_8h.html#ae4c0ff9fa433bcc0af620d4f55b9f2db">TIMER_1_CLK_DIVIDER</a>,</div>
+<div class="line">    .clock_divider = CNV_TIMER_CLK_DIVIDER,</div>
 <div class="line">    .slave_mode = STM32_PWM_SM_DISABLE,</div>
 <div class="line">    .trigger_output = PWM_TRGO_UPDATE</div>
 <div class="line">}</div>
-<div class="ttc" id="aad469x__iio_2app_2app__config__stm32_8h_html_a14a687c138f5c3f5afa9cabf917d2422"><div class="ttname"><a href="ad469x__iio_2app_2app__config__stm32_8h.html#a14a687c138f5c3f5afa9cabf917d2422">TIMER_1_PRESCALER</a></div><div class="ttdeci">#define TIMER_1_PRESCALER</div><div class="ttdef"><b>Definition</b> app_config_stm32.h:76</div></div>
-<div class="ttc" id="aad469x__iio_2app_2app__config__stm32_8h_html_a512547363586c59e256515b69389de1b"><div class="ttname"><a href="ad469x__iio_2app_2app__config__stm32_8h.html#a512547363586c59e256515b69389de1b">TIMER_CHANNEL_3</a></div><div class="ttdeci">#define TIMER_CHANNEL_3</div><div class="ttdef"><b>Definition</b> app_config_stm32.h:86</div></div>
-<div class="ttc" id="aad469x__iio_2app_2app__config__stm32_8h_html_a8427c5c57fb5d97a1c34b4ad5d62e9e9"><div class="ttname"><a href="ad469x__iio_2app_2app__config__stm32_8h.html#a8427c5c57fb5d97a1c34b4ad5d62e9e9">TIMER1_HANDLE</a></div><div class="ttdeci">#define TIMER1_HANDLE</div><div class="ttdef"><b>Definition</b> app_config_stm32.h:92</div></div>
-<div class="ttc" id="aad469x__iio_2app_2app__config__stm32_8h_html_ae4c0ff9fa433bcc0af620d4f55b9f2db"><div class="ttname"><a href="ad469x__iio_2app_2app__config__stm32_8h.html#ae4c0ff9fa433bcc0af620d4f55b9f2db">TIMER_1_CLK_DIVIDER</a></div><div class="ttdeci">#define TIMER_1_CLK_DIVIDER</div><div class="ttdef"><b>Definition</b> app_config_stm32.h:78</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -919,60 +712,9 @@ Here is the caller graph for this function:</div>
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line">= {</div>
 <div class="line">    .mode = GPIO_MODE_AF_PP,</div>
-<div class="line">    .speed = GPIO_SPEED_FREQ_VERY_HIGH,</div>
+<div class="line">    .speed = GPIO_SPEED_FREQ_HIGH,</div>
 <div class="line">    .alternate = GPIO_AF1_TIM1</div>
 <div class="line">}</div>
-</div><!-- fragment -->
-</div>
-</div>
-<a id="aee225d9d1b4e30e96142c0acdba48d3f" name="aee225d9d1b4e30e96142c0acdba48d3f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aee225d9d1b4e30e96142c0acdba48d3f">&#9670;&#160;</a></span>stm32_spi_extra_init_params</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">struct stm32_spi_init_param stm32_spi_extra_init_params</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<b>Initial value:</b><div class="fragment"><div class="line">= {</div>
-<div class="line">    .chip_select_port = STM32_SPI_CS_PORT_NUM,</div>
-<div class="line">    .get_input_clock = HAL_RCC_GetPCLK2Freq,</div>
-<div class="line">    .alternate = GPIO_AF1_TIM2</div>
-<div class="line">}</div>
-</div><!-- fragment -->
-</div>
-</div>
-<a id="ab690a3e62918f223188033f190345b43" name="ab690a3e62918f223188033f190345b43"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab690a3e62918f223188033f190345b43">&#9670;&#160;</a></span>stm32_tx_trigger_extra_init_params</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">struct stm32_pwm_init_param stm32_tx_trigger_extra_init_params</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<b>Initial value:</b><div class="fragment"><div class="line">= {</div>
-<div class="line">    .htimer = &amp;<a class="code hl_define" href="ad3530r__iio_2app_2app__config__stm32_8h.html#a25cc43c1d693250a8cb18ce95c72f52f">TIMER8_HANDLE</a>,</div>
-<div class="line">    .prescaler = <a class="code hl_define" href="ad3530r__iio_2app_2app__config__stm32_8h.html#afde848f64d2336105820f69fec2162b9">TIMER_8_PRESCALER</a>,</div>
-<div class="line">    .timer_autoreload = <span class="keyword">true</span>,</div>
-<div class="line">    .mode = TIM_OC_TOGGLE,</div>
-<div class="line">    .timer_chn = <a class="code hl_define" href="ad3530r__iio_2app_2app__config__stm32_8h.html#a88b3de863ccab79708a46ee7732703af">TIMER_CHANNEL_1</a>,</div>
-<div class="line">    .complementary_channel = <span class="keyword">false</span>,</div>
-<div class="line">    .get_timer_clock = HAL_RCC_GetPCLK1Freq,</div>
-<div class="line">    .clock_divider = <a class="code hl_define" href="ad3530r__iio_2app_2app__config__stm32_8h.html#a59a70589ab470870f34b58b9e76d8247">TIMER_8_CLK_DIVIDER</a>,</div>
-<div class="line">    .slave_mode = STM32_PWM_SM_TRIGGER,</div>
-<div class="line">    .trigger_source = PWM_TS_ITR0,</div>
-<div class="line">    .repetitions = 0,</div>
-<div class="line">    .onepulse_enable = <span class="keyword">true</span>,</div>
-<div class="line">    .dma_enable = <span class="keyword">true</span>,</div>
-<div class="line">}</div>
-<div class="ttc" id="aad3530r__iio_2app_2app__config__stm32_8h_html_a25cc43c1d693250a8cb18ce95c72f52f"><div class="ttname"><a href="ad3530r__iio_2app_2app__config__stm32_8h.html#a25cc43c1d693250a8cb18ce95c72f52f">TIMER8_HANDLE</a></div><div class="ttdeci">#define TIMER8_HANDLE</div><div class="ttdef"><b>Definition</b> app_config_stm32.h:84</div></div>
-<div class="ttc" id="aad3530r__iio_2app_2app__config__stm32_8h_html_a59a70589ab470870f34b58b9e76d8247"><div class="ttname"><a href="ad3530r__iio_2app_2app__config__stm32_8h.html#a59a70589ab470870f34b58b9e76d8247">TIMER_8_CLK_DIVIDER</a></div><div class="ttdeci">#define TIMER_8_CLK_DIVIDER</div><div class="ttdef"><b>Definition</b> app_config_stm32.h:82</div></div>
-<div class="ttc" id="aad3530r__iio_2app_2app__config__stm32_8h_html_afde848f64d2336105820f69fec2162b9"><div class="ttname"><a href="ad3530r__iio_2app_2app__config__stm32_8h.html#afde848f64d2336105820f69fec2162b9">TIMER_8_PRESCALER</a></div><div class="ttdeci">#define TIMER_8_PRESCALER</div><div class="ttdef"><b>Definition</b> app_config_stm32.h:81</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -988,50 +730,9 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line">= {</div>
-<div class="line">    .huart = &amp;<a class="code hl_variable" href="ad3530r__iio_2app_2app__config__stm32_8h.html#a25a82fcf0cd24eb6d39977cb5864cec8">huart5</a>,</div>
+<div class="line">    .huart = &amp;<a class="code hl_variable" href="ad405x__iio_2app_2app__config__stm32_8h.html#a56100f32b580a7fd1c78f850fc10546c">UART_HANDLE</a>,</div>
 <div class="line">}</div>
-<div class="ttc" id="aad3530r__iio_2app_2app__config__stm32_8h_html_a25a82fcf0cd24eb6d39977cb5864cec8"><div class="ttname"><a href="ad3530r__iio_2app_2app__config__stm32_8h.html#a25a82fcf0cd24eb6d39977cb5864cec8">huart5</a></div><div class="ttdeci">UART_HandleTypeDef huart5</div></div>
-</div><!-- fragment -->
-</div>
-</div>
-<a id="ad6c530882dee1bb34bfde4c8bf40eb9c" name="ad6c530882dee1bb34bfde4c8bf40eb9c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad6c530882dee1bb34bfde4c8bf40eb9c">&#9670;&#160;</a></span>stm32_vcom_extra_init_params</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">struct stm32_usb_uart_init_param stm32_vcom_extra_init_params</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<b>Initial value:</b><div class="fragment"><div class="line">= {</div>
-<div class="line">    .husbdevice = &amp;<a class="code hl_variable" href="ad3530r__iio_2app_2app__config__stm32_8h.html#a5abca88253610d01e7e250f30d72cc5b">hUsbDeviceHS</a>,</div>
-<div class="line">}</div>
-<div class="ttc" id="aad3530r__iio_2app_2app__config__stm32_8h_html_a5abca88253610d01e7e250f30d72cc5b"><div class="ttname"><a href="ad3530r__iio_2app_2app__config__stm32_8h.html#a5abca88253610d01e7e250f30d72cc5b">hUsbDeviceHS</a></div><div class="ttdeci">USBD_HandleTypeDef hUsbDeviceHS</div></div>
-</div><!-- fragment -->
-</div>
-</div>
-<a id="a117d16f5e47ab1da2ae9982aeffd5832" name="a117d16f5e47ab1da2ae9982aeffd5832"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a117d16f5e47ab1da2ae9982aeffd5832">&#9670;&#160;</a></span>txdma_channel</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">struct stm32_dma_channel txdma_channel</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<b>Initial value:</b><div class="fragment"><div class="line">= {</div>
-<div class="line">    .hdma = &amp;<a class="code hl_variable" href="ad3530r__iio_2app_2app__config__stm32_8h.html#a345601683fc1603ff534ff52f0f69308">hdma_tim8_ch1</a>,</div>
-<div class="line">    .ch_num = AD405x_TxDMA_CHANNEL_NUM,</div>
-<div class="line">    .mem_increment = <span class="keyword">false</span>,</div>
-<div class="line">    .mem_data_alignment = DATA_ALIGN_BYTE,</div>
-<div class="line">    .per_data_alignment = DATA_ALIGN_BYTE,</div>
-<div class="line">    .dma_mode = DMA_CIRCULAR_MODE</div>
-<div class="line">}</div>
-<div class="ttc" id="aad3530r__iio_2app_2app__config__stm32_8h_html_a345601683fc1603ff534ff52f0f69308"><div class="ttname"><a href="ad3530r__iio_2app_2app__config__stm32_8h.html#a345601683fc1603ff534ff52f0f69308">hdma_tim8_ch1</a></div><div class="ttdeci">DMA_HandleTypeDef hdma_tim8_ch1</div></div>
+<div class="ttc" id="aad405x__iio_2app_2app__config__stm32_8h_html_a56100f32b580a7fd1c78f850fc10546c"><div class="ttname"><a href="ad405x__iio_2app_2app__config__stm32_8h.html#a56100f32b580a7fd1c78f850fc10546c">UART_HANDLE</a></div><div class="ttdeci">UART_HandleTypeDef UART_HANDLE</div></div>
 </div><!-- fragment -->
 </div>
 </div>

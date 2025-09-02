@@ -1,0 +1,33 @@
+<map id="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/_common/stm32/stm32_usb_uart.c" name="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/_common/stm32/stm32_usb_uart.c">
+<area shape="rect" id="Node000001" title="VCOM driver for stm32 as a no_os_uart implementation." alt="" coords="403,5,657,75"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,123,73,148"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="403,65,255,91,87,125,86,120,254,86,402,60"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="97,123,168,148"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="403,73,182,125,181,120,402,68"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="192,123,292,148"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="427,77,291,121,290,116,425,72"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="317,123,450,148"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="478,77,415,117,412,113,476,73"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="475,123,585,148"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="533,75,533,109,527,109,527,75"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="610,123,717,148"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="580,73,637,112,634,117,577,77"/>
+<area shape="rect" id="Node000008" href="$stm32__usb__uart_8h.html" title="VCOM driver for stm32 as a no_os_uart implementation." alt="" coords="741,123,879,148"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="632,72,763,116,762,121,630,77"/>
+<area shape="rect" id="Node000015" title=" " alt="" coords="903,123,1082,148"/>
+<area shape="poly" id="edge14_Node000001_Node000015" title=" " alt="" coords="658,64,923,117,922,123,657,70"/>
+<area shape="rect" id="Node000016" title=" " alt="" coords="1106,123,1234,148"/>
+<area shape="poly" id="edge15_Node000001_Node000016" title=" " alt="" coords="658,57,1093,120,1092,125,657,62"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="491,203,561,229"/>
+<area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="758,151,671,171,575,199,567,201,566,196,573,193,670,166,756,145"/>
+<area shape="rect" id="Node000010" title=" " alt="" coords="586,203,669,229"/>
+<area shape="poly" id="edge9_Node000008_Node000010" title=" " alt="" coords="784,150,668,200,666,195,782,146"/>
+<area shape="rect" id="Node000011" title=" " alt="" coords="693,203,799,229"/>
+<area shape="poly" id="edge10_Node000008_Node000011" title=" " alt="" coords="803,150,766,194,762,191,798,146"/>
+<area shape="rect" id="Node000012" title=" " alt="" coords="823,203,925,229"/>
+<area shape="poly" id="edge11_Node000008_Node000012" title=" " alt="" coords="822,146,858,191,854,194,817,150"/>
+<area shape="rect" id="Node000013" title=" " alt="" coords="950,203,1027,229"/>
+<area shape="poly" id="edge12_Node000008_Node000013" title=" " alt="" coords="837,146,951,195,949,200,835,150"/>
+<area shape="rect" id="Node000014" title=" " alt="" coords="1051,196,1209,236"/>
+<area shape="poly" id="edge13_Node000008_Node000014" title=" " alt="" coords="857,145,1040,190,1039,195,856,151"/>
+</map>

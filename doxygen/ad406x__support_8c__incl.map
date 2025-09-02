@@ -1,0 +1,64 @@
+<map id="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad405x_iio/app/ad406x_support.c" name="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad405x_iio/app/ad406x_support.c">
+<area shape="rect" id="Node000001" title="Implementation of AD406x support functions." alt="" coords="861,5,1105,75"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="998,343,1069,368"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="1055,73,1086,94,1114,121,1141,157,1156,190,1173,269,1176,283,1173,296,1159,309,1137,321,1083,342,1081,337,1135,316,1156,304,1168,293,1171,283,1168,270,1151,191,1136,160,1110,124,1083,98,1052,77"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="5,343,56,368"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="861,68,746,93,625,125,509,161,420,192,220,272,68,339,66,334,218,267,418,187,507,156,623,120,745,88,860,63"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="871,123,969,148"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="962,76,938,113,933,110,958,73"/>
+<area shape="rect" id="Node000005" href="$app__support_8h.html" title="Implementation of AD405x support functions." alt="" coords="636,123,751,148"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="879,77,743,121,741,116,877,72"/>
+<area shape="rect" id="Node000017" title=" " alt="" coords="1656,343,1765,368"/>
+<area shape="poly" id="edge35_Node000001_Node000017" title=" " alt="" coords="1062,72,1673,335,1671,340,1060,77"/>
+<area shape="rect" id="Node000027" href="$ad405x__iio_8h.html" title="Header for AD405X IIO application." alt="" coords="994,123,1099,148"/>
+<area shape="poly" id="edge32_Node000001_Node000027" title=" " alt="" coords="1008,73,1033,110,1029,113,1004,76"/>
+<area shape="poly" id="edge5_Node000005_Node000002" title=" " alt="" coords="680,150,660,170,642,197,631,225,624,248,626,270,639,293,664,310,699,322,744,329,793,333,897,335,985,340,984,346,896,341,793,338,743,334,698,327,661,315,635,296,621,272,619,248,626,223,638,195,655,167,677,146"/>
+<area shape="poly" id="edge6_Node000005_Node000003" title=" " alt="" coords="659,151,70,344,68,339,658,146"/>
+<area shape="rect" id="Node000006" href="$ad405x__iio_2app_2app__config_8h.html" title="Application configurations module for AD405X." alt="" coords="797,196,901,221"/>
+<area shape="poly" id="edge7_Node000005_Node000006" title=" " alt="" coords="719,146,812,188,810,193,717,150"/>
+<area shape="rect" id="Node000026" title=" " alt="" coords="652,196,735,221"/>
+<area shape="poly" id="edge31_Node000005_Node000026" title=" " alt="" coords="696,148,696,182,691,182,691,148"/>
+<area shape="poly" id="edge8_Node000006_Node000002" title=" " alt="" coords="797,217,738,226,683,241,662,251,649,263,647,277,655,293,678,309,712,321,754,328,802,332,900,335,985,340,984,346,900,341,801,337,754,333,711,326,676,314,651,296,641,277,645,261,659,247,681,236,737,221,796,212"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="665,269,772,295"/>
+<area shape="poly" id="edge9_Node000006_Node000007" title=" " alt="" coords="830,224,753,265,751,260,827,219"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="797,269,902,295"/>
+<area shape="poly" id="edge10_Node000006_Node000008" title=" " alt="" coords="852,222,852,256,847,256,847,222"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="927,269,1023,295"/>
+<area shape="poly" id="edge11_Node000006_Node000009" title=" " alt="" coords="871,219,944,260,941,265,868,224"/>
+<area shape="rect" id="Node000010" title=" " alt="" coords="1047,269,1158,295"/>
+<area shape="poly" id="edge12_Node000006_Node000010" title=" " alt="" coords="891,219,1049,263,1048,268,889,224"/>
+<area shape="rect" id="Node000011" href="$common_8h.html" title=" " alt="" coords="1284,269,1375,295"/>
+<area shape="poly" id="edge13_Node000006_Node000011" title=" " alt="" coords="902,215,1271,269,1270,275,901,220"/>
+<area shape="rect" id="Node000018" href="$ad405x__iio_2app_2app__config__mbed_8h.html" title="Header file for Mbed platform configurations." alt="" coords="391,269,539,295"/>
+<area shape="poly" id="edge22_Node000006_Node000018" title=" " alt="" coords="798,222,541,270,540,264,797,217"/>
+<area shape="poly" id="edge14_Node000011_Node000002" title=" " alt="" coords="1284,297,1082,345,1081,340,1283,292"/>
+<area shape="poly" id="edge18_Node000011_Node000003" title=" " alt="" coords="1284,290,1171,297,1004,304,862,305,620,301,503,302,378,308,236,321,70,346,69,340,236,316,377,302,503,296,620,296,862,300,1004,299,1171,292,1284,284"/>
+<area shape="rect" id="Node000012" title=" " alt="" coords="1093,343,1176,368"/>
+<area shape="poly" id="edge15_Node000011_Node000012" title=" " alt="" coords="1299,297,1180,340,1178,335,1297,292"/>
+<area shape="rect" id="Node000013" title=" " alt="" coords="1201,343,1271,368"/>
+<area shape="poly" id="edge16_Node000011_Node000013" title=" " alt="" coords="1316,297,1264,336,1260,332,1313,293"/>
+<area shape="rect" id="Node000014" title=" " alt="" coords="1296,343,1363,368"/>
+<area shape="poly" id="edge17_Node000011_Node000014" title=" " alt="" coords="1332,295,1332,329,1327,329,1327,295"/>
+<area shape="rect" id="Node000015" title=" " alt="" coords="1387,343,1477,368"/>
+<area shape="poly" id="edge19_Node000011_Node000015" title=" " alt="" coords="1347,292,1405,332,1402,337,1344,297"/>
+<area shape="rect" id="Node000016" title=" " alt="" coords="1502,343,1631,368"/>
+<area shape="poly" id="edge20_Node000011_Node000016" title=" " alt="" coords="1368,292,1516,336,1514,341,1367,297"/>
+<area shape="poly" id="edge21_Node000011_Node000017" title=" " alt="" coords="1375,289,1643,339,1642,344,1374,294"/>
+<area shape="poly" id="edge23_Node000018_Node000002" title=" " alt="" coords="540,290,559,292,770,312,864,322,985,340,984,345,864,327,770,317,558,297,539,295"/>
+<area shape="rect" id="Node000019" title=" " alt="" coords="499,343,599,368"/>
+<area shape="poly" id="edge24_Node000018_Node000019" title=" " alt="" coords="481,293,527,331,523,336,477,297"/>
+<area shape="rect" id="Node000020" title=" " alt="" coords="623,343,721,368"/>
+<area shape="poly" id="edge25_Node000018_Node000020" title=" " alt="" coords="499,292,626,336,625,341,498,297"/>
+<area shape="rect" id="Node000021" title=" " alt="" coords="745,343,842,368"/>
+<area shape="poly" id="edge26_Node000018_Node000021" title=" " alt="" coords="519,292,732,338,731,343,517,297"/>
+<area shape="rect" id="Node000022" title=" " alt="" coords="867,343,973,368"/>
+<area shape="poly" id="edge27_Node000018_Node000022" title=" " alt="" coords="540,292,854,340,853,345,539,297"/>
+<area shape="rect" id="Node000023" title=" " alt="" coords="80,343,211,368"/>
+<area shape="poly" id="edge28_Node000018_Node000023" title=" " alt="" coords="414,297,211,342,210,337,413,292"/>
+<area shape="rect" id="Node000024" title=" " alt="" coords="235,343,346,368"/>
+<area shape="poly" id="edge29_Node000018_Node000024" title=" " alt="" coords="438,297,333,340,331,335,436,292"/>
+<area shape="rect" id="Node000025" title=" " alt="" coords="371,343,475,368"/>
+<area shape="poly" id="edge30_Node000018_Node000025" title=" " alt="" coords="461,296,439,332,434,330,456,294"/>
+<area shape="poly" id="edge33_Node000027_Node000002" title=" " alt="" coords="1069,146,1110,171,1152,207,1169,228,1180,250,1182,273,1173,296,1159,309,1137,321,1083,342,1081,337,1135,316,1156,304,1168,293,1176,272,1174,252,1164,231,1148,211,1107,176,1067,150"/>
+<area shape="poly" id="edge34_Node000027_Node000006" title=" " alt="" coords="1016,151,895,194,894,189,1014,146"/>
+</map>
