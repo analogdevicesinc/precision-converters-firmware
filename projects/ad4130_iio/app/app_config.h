@@ -2,7 +2,7 @@
  *   @file   app_config.h
  *   @brief  Configuration file for AD4130 device applications
 ******************************************************************************
-* Copyright (c) 2020-23 Analog Devices, Inc.
+* Copyright (c) 2020-23, 2025 Analog Devices, Inc.
 * All rights reserved.
 *
 * This software is proprietary to Analog Devices, Inc. and its licensors.
@@ -18,13 +18,11 @@
 /******************************************************************************/
 
 #include <stdint.h>
+#include <common_macros.h>
 
 /******************************************************************************/
 /********************** Macros and Constants Definition ***********************/
 /******************************************************************************/
-
-/* List of supported platforms */
-#define	MBED_PLATFORM		1
 
 /* List of data capture modes for AD4130 device */
 #define BURST_DATA_CAPTURE			0
@@ -39,13 +37,15 @@
 #define		THERMISTOR_CONFIG		4
 #define		THERMOCOUPLE_CONFIG		5
 #define		LOADCELL_CONFIG			6
-#define		ECG_CONFIG				7
-#define		NOISE_TEST_CONFIG		8
-#define		POWER_TEST_CONFIG		9
+#define		NOISE_TEST_CONFIG		7
+#define		POWER_TEST_CONFIG		8
 
-/* List of supported IIO clients */
-#define		IIO_CLIENT_REMOTE		0
-#define		IIO_CLIENT_LOCAL		1
+/* List of supported IIO clients
+ * Local client is supported only on DISCO-F769NI (mbed & stm32 platform).
+ * DISCO-F769NI only supports local client.
+ */
+#define		IIO_CLIENT_REMOTE		1
+#define		IIO_CLIENT_LOCAL		2
 
 /* Macros for stringification */
 #define XSTR(s)		#s
@@ -60,9 +60,9 @@
 #define AD4130_WLCSP_PACKAGE_TYPE
 //#define AD4130_LFCSP_PACKAGE_TYPE
 
-/* Select the active platform (default is Mbed) */
+/* Select the active platform (default is stm32) */
 #if !defined(ACTIVE_PLATFORM)
-#define ACTIVE_PLATFORM		MBED_PLATFORM
+#define ACTIVE_PLATFORM		STM32_PLATFORM
 #endif
 
 /* Select active IIO client */
@@ -72,12 +72,20 @@
 
 /* Select the demo mode configuration (default is user config) */
 #if !defined(ACTIVE_DEMO_MODE_CONFIG)
-#define ACTIVE_DEMO_MODE_CONFIG		USER_DEFAULT_CONFIG
+#define ACTIVE_DEMO_MODE_CONFIG  USER_DEFAULT_CONFIG
 #endif
 
-/* Select the ADC data capture mode (default is CC mode) */
+/* Enable MCU power saving mode during FIFO data capture */
+//#define FIFO_MODE_MCU_POWER_SAVING_ENABLED
+
+#if defined(FIFO_MODE_MCU_POWER_SAVING_ENABLED)
+/* Force data capture mode to FIFO if power saving is needed */
+#define DATA_CAPTURE_MODE	FIFO_DATA_CAPTURE
+#else
 #if !defined(DATA_CAPTURE_MODE)
+/* Select the default ADC data capture mode */
 #define DATA_CAPTURE_MODE	CONTINUOUS_DATA_CAPTURE
+#endif
 #endif
 
 /* Enable the UART/VirtualCOM port connection (default VCOM) */
@@ -87,36 +95,30 @@
 #define USE_VIRTUAL_COM_PORT
 #endif
 
-#if (ACTIVE_PLATFORM == MBED_PLATFORM)
-#include "app_config_mbed.h"
-
-#define HW_CARRIER_NAME		TARGET_NAME
-
+#if (ACTIVE_PLATFORM == STM32_PLATFORM)
+#include "app_config_stm32.h"
+#define HW_CARRIER_NAME		    	TARGET_NAME
 /* Redefine the init params structure mapping w.r.t. platform */
-#define ext_int_extra_init_params mbed_ext_int_extra_init_params
-#define ticker_int_extra_init_params mbed_ticker_int_extra_init_params
-#if defined(USE_VIRTUAL_COM_PORT)
-#define uart_extra_init_params mbed_vcom_extra_init_params
-#define uart_ops mbed_virtual_com_ops
-#else
-#define uart_extra_init_params mbed_uart_extra_init_params
-#define uart_ops mbed_uart_ops
+#define vcom_extra_init_params stm32_vcom_extra_init_params
+#define uart_extra_init_params        stm32_uart_extra_init_params
+#define spi_extra_init_params         stm32_spi_extra_init_params
+#define i2c_extra_init_params stm32_i2c_extra_init_params
+#define trigger_gpio_irq_extra_params stm32_trigger_gpio_irq_init_params
+#define trigger_gpio_extra_init_params stm32_trigger_gpio_extra_init_params
+#define trigger_gpio_ops stm32_gpio_ops
+#define irq_ops		stm32_irq_ops
+#define gpio_ops	stm32_gpio_ops
+#define spi_ops		stm32_spi_ops
+#define i2c_ops		stm32_i2c_ops
+#define uart_ops    stm32_uart_ops
+#ifdef STM32F469xx
+#define vcom_ops    stm32_usb_uart_ops
 #endif
-#define spi_extra_init_params mbed_spi_extra_init_params
-#define i2c_extra_init_params mbed_i2c_extra_init_params
-#define trigger_gpio_irq_extra_params mbed_trigger_gpio_irq_init_params
-#define trigger_gpio_extra_init_params mbed_trigger_gpio_extra_init_params
-#define trigger_gpio_ops mbed_gpio_ops
-#define irq_ops		mbed_irq_ops
-#define gpio_ops	mbed_gpio_ops
-#define spi_ops		mbed_spi_ops
-#define i2c_ops		mbed_i2c_ops
-#define trigger_gpio_irq_ops mbed_gpio_irq_ops
+#define trigger_gpio_irq_ops stm32_gpio_irq_ops
 #define trigger_gpio_handle 0	// Unused macro
-#define TRIGGER_GPIO_PORT 0  // Unused macro
-#define TRIGGER_GPIO_PIN  CONV_MON
-#define TRIGGER_INT_ID	GPIO_IRQ_ID1
-#define TICKER_ID TICKER_INT_ID
+#define TRIGGER_GPIO_PORT CNV_PORT_NUM  // Unused macro
+#define TRIGGER_GPIO_PIN  CNV_PIN_NUM
+#define TRIGGER_INT_ID	CNV_PIN_NUM
 #else
 #error "No/Invalid active platform selected"
 #endif
@@ -143,9 +145,6 @@
 #elif (ACTIVE_DEMO_MODE_CONFIG == LOADCELL_CONFIG)
 #include "ad4130_loadcell_config.h"
 #define ad4130_init_params	ad4130_loadcell_config_params
-#elif (ACTIVE_DEMO_MODE_CONFIG == ECG_CONFIG)
-#include "ad4130_ecg_config.h"
-#define ad4130_init_params	ad4130_ecg_config_params
 #elif (ACTIVE_DEMO_MODE_CONFIG == NOISE_TEST_CONFIG)
 #include "ad4130_noise_test_config.h"
 #define ad4130_init_params	ad4130_noise_test_config_params
@@ -202,6 +201,17 @@
 #define VIRTUAL_COM_PORT_PID	0xb66c
 /* Serial number string is formed as: application name + device (target) name + platform (host) name */
 #define VIRTUAL_COM_SERIAL_NUM	(FIRMWARE_NAME "_" DEVICE_NAME "_" STR(PLATFORM_NAME))
+
+/* Check if any serial port available for use as console stdio port */
+#if defined(USE_PHY_COM_PORT)
+/* If PHY com is selected, VCOM or alternate PHY com port can act as a console stdio port */
+#if (ACTIVE_IIO_CLIENT == IIO_CLIENT_REMOTE)
+#define CONSOLE_STDIO_PORT_AVAILABLE
+#endif
+#else
+/* If VCOM is selected, PHY com port will/should act as a console stdio port */
+#define CONSOLE_STDIO_PORT_AVAILABLE
+#endif
 
 /* Baud rate for IIO application UART interface */
 #define IIO_UART_BAUD_RATE	(230400)
