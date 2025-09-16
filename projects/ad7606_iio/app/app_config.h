@@ -18,14 +18,11 @@
 /******************************************************************************/
 
 #include <stdint.h>
+#include <common_macros.h>
 
 /******************************************************************************/
 /********************** Macros and Constants Definition ***********************/
 /******************************************************************************/
-
-/* List of supported platforms*/
-#define	MBED_PLATFORM		1
-#define STM32_PLATFORM      2
 
 /* List of data capture modes */
 #define BURST_DATA_CAPTURE			0
@@ -138,40 +135,7 @@
 #define AD7606X_ADC_RESOLUTION	16
 #endif
 
-#if (ACTIVE_PLATFORM == MBED_PLATFORM)
-#include "app_config_mbed.h"
-#define HW_CARRIER_NAME		TARGET_NAME
-/* Redefine the init params structure mapping w.r.t. platform */
-#define pwm_extra_init_params mbed_pwm_extra_init_params
-#define vcom_extra_init_params mbed_vcom_extra_init_params
-#define vcom_ops mbed_virtual_com_ops
-#define uart_extra_init_params mbed_uart_extra_init_params
-#define uart_ops mbed_uart_ops
-#define spi_extra_init_params mbed_spi_extra_init_params
-#define i2c_extra_init_params mbed_i2c_extra_init_params
-#define trigger_gpio_irq_extra_params mbed_trigger_gpio_irq_init_params
-#define trigger_gpio_extra_init_params mbed_trigger_gpio_extra_init_params
-#define reset_gpio_extra_init_params mbed_reset_gpio_extra_init_params
-#define convst_gpio_extra_init_params mbed_convst_gpio_extra_init_params
-#define busy_gpio_extra_init_params mbed_busy_gpio_extra_init_params
-#define osr0_gpio_extra_init_params mbed_osr0_gpio_extra_init_params
-#define osr1_gpio_extra_init_params mbed_osr1_gpio_extra_init_params
-#define osr2_gpio_extra_init_params mbed_osr2_gpio_extra_init_params
-#define range_gpio_extra_init_params mbed_range_gpio_extra_init_params
-#define stdby_gpio_extra_init_params mbed_stdby_gpio_extra_init_params
-#define trigger_gpio_ops mbed_gpio_ops
-#define irq_ops mbed_gpio_irq_ops
-#define gpio_ops mbed_gpio_ops
-#define spi_ops mbed_spi_ops
-#define i2c_ops mbed_i2c_ops
-#define pwm_ops mbed_pwm_ops
-#define trigger_gpio_irq_ops mbed_gpio_irq_ops
-#define trigger_gpio_handle 0	// Unused macro
-#define IRQ_INT_ID GPIO_IRQ_ID1
-#define TRIGGER_GPIO_PORT 0  // Unused macro
-#define TRIGGER_GPIO_PIN  PWM_TRIGGER
-#define TRIGGER_INT_ID	GPIO_IRQ_ID1
-#elif (ACTIVE_PLATFORM == STM32_PLATFORM)
+#if (ACTIVE_PLATFORM == STM32_PLATFORM)
 #include "app_config_stm32.h"
 #define pwm_extra_init_params stm32_pwm_extra_init_params
 #define vcom_extra_init_params stm32_vcom_extra_init_params
