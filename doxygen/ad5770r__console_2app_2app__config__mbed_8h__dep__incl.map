@@ -1,5 +1,14 @@
 <map id="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad5770r_console/app/app_config_mbed.h" name="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad5770r_console/app/app_config_mbed.h">
-<area shape="rect" id="Node000001" title="Header file for Mbed platform configurations." alt="" coords="5,5,300,75"/>
-<area shape="rect" id="Node000002" href="$ad5770r__console_2app_2app__config__mbed_8c.html" title="Source file for the mbed configuration for AD5770r Console Application." alt="" coords="6,123,299,192"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="155,89,155,122,150,122,150,89"/>
+<area shape="rect" id="Node000001" title="Header file for Mbed platform configurations." alt="" coords="728,5,1023,75"/>
+<area shape="rect" id="Node000002" href="$ad5770r__console_2app_2app__config_8h.html" title=" " alt="" coords="669,123,919,192"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="846,88,820,124,816,121,841,85"/>
+<area shape="rect" id="Node000005" href="$ad5770r__console_2app_2app__config__mbed_8c.html" title="Source file for the mbed configuration for AD5770r Console Application." alt="" coords="930,240,1223,309"/>
+<area shape="poly" id="edge6_Node000001_Node000005" title=" " alt="" coords="916,84,1050,238,1046,242,912,87"/>
+<area shape="rect" id="Node000003" href="$ad5770__user__config_8c.html" title=": AD5770R user configuration" alt="" coords="5,240,313,309"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="655,185,326,243,314,245,313,240,326,237,654,179"/>
+<area shape="rect" id="Node000004" href="$ad5770r__console__app_8c.html" title=": Implementation for the menu functions that handle the AD5770R" alt="" coords="338,240,658,309"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="696,199,585,242,584,237,694,194"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="890,195,995,237,993,242,888,200"/>
+<area shape="rect" id="Node000006" href="$ad5770r__console_2app_2main_8c.html" title=":" alt="" coords="683,240,905,309"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="797,206,797,240,791,240,791,206"/>
 </map>

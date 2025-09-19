@@ -30,7 +30,7 @@ The AD5592R/ AD5593R offer 8-Channel, 12-Bit, configurable ADC/DAC with on-chip 
 
 The application layer uses the ADI Console Libraries to create console-based User Interactive (UI). The middle layer of No-OS device library has device specific APIs to interface with AD5592R/93R devices. These APIs allows direct access to device register map in order to read/write device registers. The bottom layer of Platform Drivers is responsible for Low Level Interface. The platform drivers use underlying libraries to access low level peripheral (like GPIOs, SPI, I2C, etc). The devices from AD5592R/AD5593R family use SPI and I2C communication interfaces respectively.
 
-The Platform simplifies the overall software development process by providing the low-level driver support. This reduces the hardware dependency as any STM32 board can be used with same firmware with little modifications (changing a pin mapping).It supports STM32 platform.
+The Platform simplifies the overall software development process by providing the low-level driver support. This reduces the hardware dependency as any Mbed enabled board (or an STM32 board) can be used with same firmware with little modifications (changing a pin mapping).It supports Mbed and STM32 platforms.
 
 =================
 Interface Diagram
@@ -47,7 +47,7 @@ The SDP-K1 is connected to PC through USB cable and appears as a USB disk device
 
 .. Useful links Section
 
-.. include:: /source/useful_links_stm32.rst
+.. include:: /source/useful_links.rst
 
 ====================
 Hardware Connections
@@ -103,13 +103,13 @@ For the firmware example code set the links as follows
 
 .. Project Build Section:
     
-.. include:: /source/build/project_build_stm32.rst
+.. include:: /source/build/project_build.rst
 
 ===========
 Quick Start
 ===========
 
-If you have some familiarity with STM32 platform, the following is a basic list of steps required to start running the code, see below for more detail:
+If you have some familiarity with the Mbed or STM32 platform, the following is a basic list of steps required to start running the code, see below for more detail:
 
 * Connect the AD5592R/AD55593R EVAL-board to the SDP-K1 controller board.
 * Connect the SDP-K1 controller board to your computer over USB.

@@ -44,9 +44,13 @@ The interface used for communicating with PC based IIO clients is either Virtual
 IIO Firmware leverages the ADI created no-os and platform driver software layers
 to communicates with IIO device.
 
+.. SDP-K1 Mbed Section
+
+.. include:: /source/tinyiiod/sdp_k1_mbed.rst
+
 .. Useful links Section
 
-.. include:: /source/useful_links_stm32.rst
+.. include:: /source/useful_links.rst
 
 ====================
 Hardware Connections
@@ -103,7 +107,7 @@ Connect the VIO_ADJUST jumper on the SDP-K1 board to 3.3V position to drive SDP-
 
 .. Project Build Section:
     
-.. include:: /source/build/project_build_stm32.rst
+.. include:: /source/build/project_build.rst
 
 .. IIO Ecosystem Section:
     
