@@ -19,13 +19,11 @@
 #define _APP_CONFIG_H_
 
 #include <stdint.h>
+#include <common_macros.h>
 
 /******************************************************************************/
 /************************* Macros & Constant Definitions ***************************/
 /******************************************************************************/
-
-#define	MBED_PLATFORM		1
-#define STM32_PLATFORM      2
 
 /* Select the active platform  */
 #if !defined(ACTIVE_PLATFORM)
@@ -51,11 +49,7 @@
 
 #define AD5593R_I2C (0x10 | (AD5593R_A0_STATE & 0x01))
 
-#if (ACTIVE_PLATFORM == MBED_PLATFORM)
-#include "app_config_mbed.h"
-#define spi_init_extra_params	mbed_spi_extra_init_params
-#define i2c_init_extra_params   mbed_i2c_extra_init_params
-#else
+#if (ACTIVE_PLATFORM == STM32_PLATFORM)
 #include "app_config_stm32.h"
 #define spi_init_extra_params  stm32_spi_extra_init_params
 #define i2c_init_extra_params   stm32_i2c_extra_init_params

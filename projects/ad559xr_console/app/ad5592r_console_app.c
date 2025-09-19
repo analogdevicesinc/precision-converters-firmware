@@ -59,7 +59,7 @@ float vref_voltage = EXTERNAL_VREF_VOLTAGE;
 #define ADC_GAIN_HIGH_CONVERSION_VALUE	1.327
 
 /* Private Variables */
-static struct ad5592r_dev sAd5592r_dev;
+static struct ad5592r_dev* sAd5592r_dev = NULL;
 
 static const char *mode_names[] = {
 	"Unused",
@@ -94,11 +94,9 @@ struct no_os_uart_init_param uart_init_params = {
 	.parity = NO_OS_UART_PAR_NO,
 	.stop = NO_OS_UART_STOP_1_BIT,
 	.irq_id = UART_IRQ_ID,
-#if (ACTIVE_PLATFORM == STM32_PLATFORM)
 	.asynchronous_rx = false,
 	.platform_ops = &uart_ops,
 	.extra = &uart_extra_init_params
-#endif
 };
 
 /* UART Descriptor */
@@ -149,29 +147,16 @@ int32_t ad5592r_app_initalization(void)
 	int32_t status;
 	int32_t ret;
 
-#if (ACTIVE_PLATFORM == STM32_PLATFORM)
 	ret = no_os_uart_init(&uart_desc, &uart_init_params);
 	if (ret) {
 		return ret;
 	}
 
 	no_os_uart_stdio(uart_desc);
-#endif
-
-	memcpy(&sAd5592r_dev, &ad5592r_dev_user, sizeof(ad5592r_dev_user));
 
 #if (ACTIVE_DEVICE == DEV_AD5593R)
-	status = no_os_i2c_init(&sAd5592r_dev.i2c, &i2c_user_params);
-	if (status != 0) {
-		return (status);
-	}
 	status = ad5593r_init(&sAd5592r_dev, &ad5592r_user_param);
 #else // Default to AD5592R device
-	status = no_os_spi_init(&sAd5592r_dev.spi, &spi_user_params);
-	if (status != 0) {
-		return (status);
-	}
-
 	status = ad5592r_init(&sAd5592r_dev, &ad5592r_user_param);
 #endif
 	return status;
@@ -201,25 +186,16 @@ int32_t ad5592_read_adc(struct ad5592r_dev *dev, uint8_t chan,
 		return ret;
 	}
 
-	/*
-	 * Invalid data:
-	 * See Figure 40. Single-Channel ADC Conversion Sequence
-	 */
-	ret = ad5592r_base_reg_read(&sAd5592r_dev, AD5592R_REG_CTRL, &readback_reg);
-	if (ret) {
-		return ret;
-	}
-
-	if ((readback_reg ^ NO_OS_BIT(8))) {
-		no_os_udelay(20);
-	} else {
-		no_os_udelay(5);
-	}
+	/* Delays are added to compensate for the additional track time needed in case of temp channel */
+	no_os_udelay(10);
 
 	ret = ad5592r_spi_wnop_r16(dev, &dev->spi_msg);
 	if (ret) {
 		return ret;
 	}
+
+	/* Delays are added to compensate for the additional track time needed in case of temp channel */
+	no_os_udelay(10);
 
 	ret = ad5592r_spi_wnop_r16(dev, &dev->spi_msg);
 	if (ret) {
@@ -242,23 +218,23 @@ static int32_t do_software_reset(uint32_t id)
 {
 	int32_t status;
 
-	if ((status = ad5592r_software_reset(&sAd5592r_dev)) == 0) {
+	if ((status = ad5592r_software_reset(sAd5592r_dev)) == 0) {
 		// Save spi_desc field, i2c_desc and device ops settings as it is not reset
-		struct no_os_spi_desc *spi_interface = sAd5592r_dev.spi;
-		struct no_os_i2c_desc *i2c_interface = sAd5592r_dev.i2c;
-		const struct ad5592r_rw_ops *dev_ops = sAd5592r_dev.ops;
+		struct no_os_spi_desc *spi_interface = sAd5592r_dev->spi;
+		struct no_os_i2c_desc *i2c_interface = sAd5592r_dev->i2c;
+		const struct ad5592r_rw_ops *dev_ops = sAd5592r_dev->ops;
 		// Copy over the reset state of the device
-		memcpy(&sAd5592r_dev, &ad5592r_dev_reset, sizeof(ad5592r_dev_reset));
+		memcpy(sAd5592r_dev, &ad5592r_dev_reset, sizeof(ad5592r_dev_reset));
 
 		// Restore device ops
-		sAd5592r_dev.ops = dev_ops;
+		sAd5592r_dev->ops = dev_ops;
 		if (ACTIVE_DEVICE == DEV_AD5592R) {
 			// Restore the spi_desc pointer field
-			sAd5592r_dev.spi = spi_interface;
+			sAd5592r_dev->spi = spi_interface;
 			printf(EOL " --- AD5592R Software Reset Successful---" EOL);
 		} else {
 			// Restore the i2c_desc pointer field
-			sAd5592r_dev.i2c = i2c_interface;
+			sAd5592r_dev->i2c = i2c_interface;
 			printf(EOL " --- AD5593R Reset Request Successful---" EOL);
 		}
 	} else {
@@ -282,19 +258,19 @@ static int32_t do_read_die_temp(uint32_t id)
 	int32_t status = 0, ch_state = 0;
 	float result = 0;
 
-	ch_state = sAd5592r_dev.channel_modes[7];
-	sAd5592r_dev.channel_modes[7] = CH_MODE_ADC;
+	ch_state = sAd5592r_dev->channel_modes[7];
+	sAd5592r_dev->channel_modes[7] = CH_MODE_ADC;
 	do_set_channel_modes();
 
 	do {
 		for (int8_t i = 0; i < TEMP_SAMPLE_SIZE; i++) {
 			do {
 #if (ACTIVE_DEVICE == DEV_AD5593R)
-				status = sAd5592r_dev.ops->read_adc(&sAd5592r_dev,
-								    AD5592R_CHANNEL(8),
-								    readback_reg);
+				status = sAd5592r_dev->ops->read_adc(sAd5592r_dev,
+								     AD5592R_CHANNEL(8),
+								     readback_reg);
 #else
-				status = ad5592_read_adc(&sAd5592r_dev, AD5592R_CHANNEL(8), readback_reg);
+				status = ad5592_read_adc(sAd5592r_dev, AD5592R_CHANNEL(8), readback_reg);
 #endif
 			} while (0);
 			if (status != 0) {
@@ -302,7 +278,7 @@ static int32_t do_read_die_temp(uint32_t id)
 				break;
 			}
 			result += die_temp_calculation(readback_reg[0],
-						       (AD5592R_REG_CTRL_ADC_RANGE & sAd5592r_dev.cached_gp_ctrl));
+						       (AD5592R_REG_CTRL_ADC_RANGE & sAd5592r_dev->cached_gp_ctrl));
 		}
 
 		result /= TEMP_SAMPLE_SIZE;
@@ -316,7 +292,7 @@ static int32_t do_read_die_temp(uint32_t id)
 		}
 	} while (0);
 
-	sAd5592r_dev.channel_modes[7] = ch_state;
+	sAd5592r_dev->channel_modes[7] = ch_state;
 	do_set_channel_modes();
 
 	adi_press_any_key_to_continue();
@@ -358,7 +334,7 @@ static float die_temp_calculation(uint16_t adc_temp_code, bool adc_gain)
 static void do_set_channel_modes(void)
 {
 	int32_t status;
-	if ((status =  ad5592r_set_channel_modes(&sAd5592r_dev)) != 0) {
+	if ((status =  ad5592r_set_channel_modes(sAd5592r_dev)) != 0) {
 		printf(EOL "Error configuring Channels (%d)" EOL, status);
 		adi_press_any_key_to_continue();
 	}
@@ -374,7 +350,7 @@ static void do_set_channel_modes(void)
 static int32_t do_toggle_channel_selection(uint32_t channel)
 {
 	if (channel == CLEAR_CHANNEL_SELECTION) {
-		for (uint8_t i = 0; i < sAd5592r_dev.num_channels; i++) {
+		for (uint8_t i = 0; i < sAd5592r_dev->num_channels; i++) {
 
 			active_channel_selections[i] = false;
 		}
@@ -395,9 +371,9 @@ static int32_t do_toggle_channel_selection(uint32_t channel)
  */
 static int32_t do_mode_selection(uint32_t mode)
 {
-	for (uint8_t i = 0; i < sAd5592r_dev.num_channels; i++) {
+	for (uint8_t i = 0; i < sAd5592r_dev->num_channels; i++) {
 		if (active_channel_selections[i] == true) {
-			sAd5592r_dev.channel_modes[i]	= mode;
+			sAd5592r_dev->channel_modes[i]	= mode;
 		}
 	}
 	do_set_channel_modes();
@@ -415,9 +391,9 @@ static int32_t do_mode_selection(uint32_t mode)
  */
 static int32_t do_offstate_selection(uint32_t mode)
 {
-	for (uint8_t i = 0; i < sAd5592r_dev.num_channels; i++) {
+	for (uint8_t i = 0; i < sAd5592r_dev->num_channels; i++) {
 		if (active_channel_selections[i] == true) {
-			sAd5592r_dev.channel_offstate[i]	= mode;
+			sAd5592r_dev->channel_offstate[i]	= mode;
 		}
 	}
 	do_set_channel_modes();
@@ -432,7 +408,7 @@ static int32_t do_offstate_selection(uint32_t mode)
  */
 static int32_t do_reset_channel_modes(uint32_t id)
 {
-	ad5592r_reset_channel_modes(&sAd5592r_dev);
+	ad5592r_reset_channel_modes(sAd5592r_dev);
 	do_toggle_channel_selection(CLEAR_CHANNEL_SELECTION);
 	return (MENU_CONTINUE);
 }
@@ -450,8 +426,8 @@ static int32_t do_reset_channel_modes(uint32_t id)
  */
 static int32_t do_channel_7_adc_indicator(uint32_t id)
 {
-	sAd5592r_dev.channel_modes[AD5592R_CHANNEL(7)] =
-		((sAd5592r_dev.channel_modes[AD5592R_CHANNEL(7)] == CH_MODE_UNUSED)
+	sAd5592r_dev->channel_modes[AD5592R_CHANNEL(7)] =
+		((sAd5592r_dev->channel_modes[AD5592R_CHANNEL(7)] == CH_MODE_UNUSED)
 		 ? CH_MODE_GPO : CH_MODE_UNUSED);
 	do_set_channel_modes();
 	do_general_settings_toggle(((AD5592R_REG_GPIO_OUT_EN << 12)
@@ -472,11 +448,11 @@ static int32_t do_general_settings_toggle(uint32_t reg_bit_id)
 	uint16_t reg_bit = (reg_bit_id & 0xFFF), readback_reg;
 	int32_t status;
 
-	if ((status = ad5592r_base_reg_read(&sAd5592r_dev, reg,
+	if ((status = ad5592r_base_reg_read(sAd5592r_dev, reg,
 					    &readback_reg)) != 0) {
 		printf(" *** Error Reading Setting Status (%x) *** " EOL, reg);
 		adi_press_any_key_to_continue();
-	} else if ((status = ad5592r_base_reg_write(&sAd5592r_dev, reg,
+	} else if ((status = ad5592r_base_reg_write(sAd5592r_dev, reg,
 			     (reg_bit ^ readback_reg))) != 0) {
 		printf(" *** Error  Toggling Setting (%x) *** " EOL, reg);
 		adi_press_any_key_to_continue();
@@ -502,16 +478,16 @@ static void display_general_setting_header(void)
 	uint16_t ctrl_reg_data = 0, pd_reg_data = 0;
 
 	do {
-		if ((status = ad5592r_base_reg_read(&sAd5592r_dev, AD5592R_REG_CTRL,
+		if ((status = ad5592r_base_reg_read(sAd5592r_dev, AD5592R_REG_CTRL,
 						    &ctrl_reg_data)) == 0) {
-			sAd5592r_dev.cached_gp_ctrl = ctrl_reg_data;
+			sAd5592r_dev->cached_gp_ctrl = ctrl_reg_data;
 		} else {
 			printf(" *** Error reading register (%x) *** " EOL, AD5592R_REG_CTRL);
 			adi_press_any_key_to_continue();
 			break;
 		}
 
-		if ((status = ad5592r_base_reg_read(&sAd5592r_dev, AD5592R_REG_PD,
+		if ((status = ad5592r_base_reg_read(sAd5592r_dev, AD5592R_REG_PD,
 						    &pd_reg_data)) == 0) {
 		} else {
 			printf(" *** Error reading register (%x) *** " EOL, AD5592R_REG_PD);
@@ -545,12 +521,12 @@ static void display_general_setting_header(void)
 static int32_t do_dac_input_reg_to_output(uint32_t id)
 {
 	int32_t status;
-	if ((status = ad5592r_base_reg_write(&sAd5592r_dev, AD5592R_REG_LDAC,
+	if ((status = ad5592r_base_reg_write(sAd5592r_dev, AD5592R_REG_LDAC,
 					     AD5592R_REG_LDAC_INPUT_REG_OUT)) != 0) {
 		printf("*** Error setting LDAC to write to output (%d) *** ", status);
 		adi_press_any_key_to_continue();
 	}
-	sAd5592r_dev.ldac_mode = AD5592R_REG_LDAC_INPUT_REG_ONLY;
+	sAd5592r_dev->ldac_mode = AD5592R_REG_LDAC_INPUT_REG_ONLY;
 	return (MENU_CONTINUE);
 }
 
@@ -594,12 +570,12 @@ static int32_t do_write_dac_value(uint32_t id)
 
 	for (uint8_t i = 0; i < NUM_CHANNELS; i++) {
 		if (active_channel_selections[i]) {
-			if ((status = sAd5592r_dev.ops->write_dac(&sAd5592r_dev, i,
+			if ((status = sAd5592r_dev->ops->write_dac(sAd5592r_dev, i,
 					user_code)) != 0) {
 				printf("*** Error writing DAC value to channel %d (%d) ***" EOL, i, status);
 				adi_press_any_key_to_continue();
 			}
-			sAd5592r_dev.cached_dac[i] = user_code;
+			sAd5592r_dev->cached_dac[i] = user_code;
 		}
 	}
 	return (MENU_CONTINUE);
@@ -613,10 +589,10 @@ static int32_t do_write_dac_value(uint32_t id)
  */
 static int32_t do_toggle_ldac_mode(uint32_t id)
 {
-	if (sAd5592r_dev.ldac_mode == AD5592R_REG_LDAC_INPUT_REG_ONLY) {
-		sAd5592r_dev.ldac_mode = AD5592R_REG_LDAC_IMMEDIATE_OUT;
+	if (sAd5592r_dev->ldac_mode == AD5592R_REG_LDAC_INPUT_REG_ONLY) {
+		sAd5592r_dev->ldac_mode = AD5592R_REG_LDAC_IMMEDIATE_OUT;
 	} else {
-		sAd5592r_dev.ldac_mode = AD5592R_REG_LDAC_INPUT_REG_ONLY;
+		sAd5592r_dev->ldac_mode = AD5592R_REG_LDAC_INPUT_REG_ONLY;
 	}
 	return (MENU_CONTINUE);
 }
@@ -631,7 +607,7 @@ static int32_t do_toggle_dac_powerdown(uint32_t id)
 	int32_t status;
 	uint16_t powerdown = 0;
 
-	if ((status = ad5592r_base_reg_read(&sAd5592r_dev, AD5592R_REG_PD,
+	if ((status = ad5592r_base_reg_read(sAd5592r_dev, AD5592R_REG_PD,
 					    &powerdown)) != 0) {
 		printf("*** Error Reading Power Down Config (%d)***" EOL, status);
 		adi_press_any_key_to_continue();
@@ -643,7 +619,7 @@ static int32_t do_toggle_dac_powerdown(uint32_t id)
 		}
 	}
 
-	if ((status = ad5592r_base_reg_write(&sAd5592r_dev, AD5592R_REG_PD,
+	if ((status = ad5592r_base_reg_write(sAd5592r_dev, AD5592R_REG_PD,
 					     powerdown)) != 0) {
 		printf("*** Error writing Power Down Config (%d)***" EOL, status);
 		adi_press_any_key_to_continue();
@@ -685,7 +661,7 @@ int32_t do_read_adc_sequence(uint32_t id)
 
 	samples = no_os_hweight8(adc_channels_in_seq);
 
-	if ((status = sAd5592r_dev.ops->multi_read_adc(&sAd5592r_dev,
+	if ((status = sAd5592r_dev->ops->multi_read_adc(sAd5592r_dev,
 			adc_channels_in_seq, adc_seq_data)) != 0) {
 		printf("*** Error reading adc_sequencer (%d)***" EOL, status);
 		adi_press_any_key_to_continue();
@@ -701,7 +677,7 @@ int32_t do_read_adc_sequence(uint32_t id)
 		if (chan == TEMPERATURE_READBACK_CHANNEL) {
 			temperature = die_temp_calculation(adc_code,
 							   (AD5592R_REG_CTRL_ADC_RANGE &
-							    sAd5592r_dev.cached_gp_ctrl));
+							    sAd5592r_dev->cached_gp_ctrl));
 			printf("\tTemp \t%x \t   \t\t%.1f" EOL,
 			       adc_code,
 			       temperature);
@@ -730,9 +706,9 @@ static int32_t do_set_gpio_input(uint32_t id)
 
 	for (uint8_t i = 0; i < NUM_CHANNELS; i++) {
 		if (active_channel_selections[i] == true) {
-			sAd5592r_dev.channel_modes[i] = CH_MODE_GPI;
+			sAd5592r_dev->channel_modes[i] = CH_MODE_GPI;
 			if ((status = ad5592r_gpio_direction_input
-				      (&sAd5592r_dev, AD5592R_CHANNEL(i))) != 0) {
+				      (sAd5592r_dev, AD5592R_CHANNEL(i))) != 0) {
 				printf(" *** Error Setting GPIO Input on Channel %d (%d) ***" EOL, i, status);
 				adi_press_any_key_to_continue();
 			}
@@ -755,9 +731,9 @@ static int32_t do_set_gpio_output(uint32_t value)
 
 	for (uint8_t i = 0; i < NUM_CHANNELS; i++) {
 		if (active_channel_selections[i] == true) {
-			sAd5592r_dev.channel_modes[i] = CH_MODE_GPO;
+			sAd5592r_dev->channel_modes[i] = CH_MODE_GPO;
 			if ((status = ad5592r_gpio_direction_output
-				      (&sAd5592r_dev, AD5592R_CHANNEL(i), NO_OS_GPIO_LOW)) != 0) {
+				      (sAd5592r_dev, AD5592R_CHANNEL(i), NO_OS_GPIO_LOW)) != 0) {
 				printf(" *** Error Setting GPIO Output on channel %d (%d) ***" EOL, i, status);
 				adi_press_any_key_to_continue();
 			}
@@ -780,9 +756,9 @@ static int32_t do_toggle_gpio_output(uint32_t id)
 
 	for (uint8_t i = 0; i < NUM_CHANNELS; i++) {
 		if (active_channel_selections[i] == true) {
-			if ((status = ad5592r_gpio_set(&sAd5592r_dev,
+			if ((status = ad5592r_gpio_set(sAd5592r_dev,
 						       AD5592R_CHANNEL(i),
-						       !ad5592r_gpio_get(&sAd5592r_dev, AD5592R_CHANNEL(i))) != 0)) {
+						       !ad5592r_gpio_get(sAd5592r_dev, AD5592R_CHANNEL(i))) != 0)) {
 				printf(" *** Error Toggling GPIO Output on Channel %d (%d) ***", i, status);
 				adi_press_any_key_to_continue();
 			}
@@ -838,15 +814,15 @@ static int32_t menu_gpio(uint32_t id)
 static void display_channel_selection_header(void)
 {
 	printf(" Configuration Lock: %s" EOL,
-	       (AD5592R_REG_CTRL_CONFIG_LOCK & sAd5592r_dev.cached_gp_ctrl)
+	       (AD5592R_REG_CTRL_CONFIG_LOCK & sAd5592r_dev->cached_gp_ctrl)
 	       ? "Enabled" : "Disabled");
 
 	printf("\tCh\tMode\t\tOffstate\tSelected" EOL);
-	for (uint8_t i = 0; i < sAd5592r_dev.num_channels; i++) {
+	for (uint8_t i = 0; i < sAd5592r_dev->num_channels; i++) {
 		printf("\t%d \t%s  \t%s \t\t%s" EOL,
 		       i,
-		       mode_names[sAd5592r_dev.channel_modes[i]],
-		       offstate_names[sAd5592r_dev.channel_offstate[i]],
+		       mode_names[sAd5592r_dev->channel_modes[i]],
+		       offstate_names[sAd5592r_dev->channel_offstate[i]],
 		       active_channel_selections[i] ? "X" : "\00");
 	}
 }
@@ -858,13 +834,13 @@ static void display_gpio_menu_header(void)
 {
 	printf("\tCh\tDir \tValue\tSelected" EOL);
 
-	for (uint8_t i = 0; i < sAd5592r_dev.num_channels; i++) {
+	for (uint8_t i = 0; i < sAd5592r_dev->num_channels; i++) {
 
 		printf("\t%d \t%s%s \t%s \t%s" EOL,
 		       i,
-		       (sAd5592r_dev.gpio_in &  AD5592R_GPIO(i)) ? "In " : "",
-		       (sAd5592r_dev.gpio_out & AD5592R_GPIO(i)) ? "Out " : "",
-		       ad5592r_gpio_get(&sAd5592r_dev, AD5592R_CHANNEL(i)) ? "High" : "Low",
+		       (sAd5592r_dev->gpio_in &  AD5592R_GPIO(i)) ? "In " : "",
+		       (sAd5592r_dev->gpio_out & AD5592R_GPIO(i)) ? "Out " : "",
+		       ad5592r_gpio_get(sAd5592r_dev, AD5592R_CHANNEL(i)) ? "High" : "Low",
 		       active_channel_selections[i] ? "X" : "\00"
 		      );
 	}
@@ -881,11 +857,11 @@ static void display_dac_menu_header(void)
 	char *dac_channel_state = "";
 
 	printf("\tLDAC mode: %s" EOL EOL,
-	       sAd5592r_dev.ldac_mode ? "Write to Input Register" : "Immediate Output");
+	       sAd5592r_dev->ldac_mode ? "Write to Input Register" : "Immediate Output");
 
 	printf("\tCH \tConfig \tCode \tVoltage \tSelected" EOL);
 
-	if ((status = ad5592r_base_reg_read(&sAd5592r_dev,
+	if ((status = ad5592r_base_reg_read(sAd5592r_dev,
 					    AD5592R_REG_PD,
 					    &powerdown_read))  != 0) {
 		printf("*** Error checking Power Down status (%d) ***" EOL, status);
@@ -894,27 +870,27 @@ static void display_dac_menu_header(void)
 
 	for (uint8_t i = 0; i < NUM_CHANNELS; i++) {
 		voltage = 0;
-		switch (sAd5592r_dev.channel_modes[i]) {
+		switch (sAd5592r_dev->channel_modes[i]) {
 		case CH_MODE_DAC:
 		case CH_MODE_DAC_AND_ADC:
 			if (powerdown_read &  AD5592R_REG_PD_CHANNEL(i)) {
 				dac_channel_state = "PD";
 			} else {
 				dac_channel_state = "DAC";
-				voltage = code_to_volts(sAd5592r_dev.cached_dac[i]);
+				voltage = code_to_volts(sAd5592r_dev->cached_dac[i]);
 			}
 			break;
 		default:
 			dac_channel_state = "-";
 			// Channel no longer set as DAC - Clear cached value
-			sAd5592r_dev.cached_dac[i] = 0;
+			sAd5592r_dev->cached_dac[i] = 0;
 			break;
 		}
 
 		printf("\t%d \t%s \t%x  \t%.2fV \t\t%s" EOL,
 		       i,
 		       dac_channel_state,
-		       sAd5592r_dev.cached_dac[i],
+		       sAd5592r_dev->cached_dac[i],
 		       voltage,
 		       active_channel_selections[i] ? "X" : "\00");
 	}
@@ -930,7 +906,7 @@ static void display_main_menu_header(void)
 	for (uint8_t i = 0; i < NUM_CHANNELS; i++) {
 		printf("\t%d \t%s" EOL,
 		       i,
-		       mode_names[sAd5592r_dev.channel_modes[i]]);
+		       mode_names[sAd5592r_dev->channel_modes[i]]);
 	}
 }
 
@@ -944,7 +920,7 @@ static void display_adc_menu_header(void)
 	printf("\tCh \tMode \tIncl \tSelected" EOL);
 
 	for (uint8_t i = 0; i < NUM_CHANNELS; i++) {
-		switch (sAd5592r_dev.channel_modes[i]) {
+		switch (sAd5592r_dev->channel_modes[i]) {
 		case CH_MODE_ADC:
 		case CH_MODE_DAC_AND_ADC:
 			adc_channel_state = "ADC";
