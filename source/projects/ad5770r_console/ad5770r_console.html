@@ -209,7 +209,7 @@ Content on this topic
 <p>The AD5770R is a 6-channel, 14-bit resolution, low noise, programmable current output digital-to-analog converter (DAC) for photonics control applications. This chip incorporates a 1.25 V on-chip voltage reference, a 2.5 kΩ precision resistor for reference current generation, die temperature, output monitoring functions, fault alarm, and reset functions.</p>
 <p>The AD5770R contains five 14-bit resolution current sourcing DAC channels and one 14-bit resolution current sourcing/ sinking DAC channel.</p>
 <p>Channel 0 can be configured to sink up to 60 mA and source up to 300 mA. Channel 1 to Channel 5 have multiple, programmable output current sourcing ranges, set by register access. Each DAC can operate with a wide power supply rail from 0.8 V to AVDD − 0.4 V for optimizing power efficiency and thermal power dissipation.</p>
-<p>This page describes the AD5770R firmware example running on the SDP-K1 controller board, interfacing with the AD5770R evaluation board. The firmware example comprises 3 layers of software, It can support Mbed and STM32 platforms.</p>
+<p>This page describes the AD5770R firmware example running on the SDP-K1 controller board, interfacing with the AD5770R evaluation board. The firmware example comprises 3 layers of software, It can support STM32 platform.</p>
 <ul>
 <li><p>Console Application - uses the ADI console libraries to provide a basic terminal UI</p></li>
 <li><p>AD5770R No-OS Driver - AD5770R device C API</p></li>
@@ -220,7 +220,7 @@ Content on this topic
 </div></blockquote>
 </li>
 </ul>
-<p>The AD5770R firmware example can be used as a starting point for developing your own code in your own environment. The Platform simplifies the overall software development process by providing a common low level driver abstraction. This reduces the hardware dependency as any Mbed enabled board(or an STM32 board) can be used with same firmware with little to no modifications, usually just changing the pin mapping.</p>
+<p>The AD5770R firmware example can be used as a starting point for developing your own code in your own environment. The Platform simplifies the overall software development process by providing a common low level driver abstraction. This reduces the hardware dependency on any STM32 board can be used with same firmware with little to no modifications, usually just changing the pin mapping.</p>
 </section>
 <section id="interface-diagram">
 <h2>Interface Diagram<a class="headerlink" href="#interface-diagram" title="Link to this heading"></a></h2>
@@ -240,8 +240,7 @@ Content on this topic
 <ul class="simple">
 <li><p><a class="icon link reference external" href="https://github.com/analogdevicesinc/precision-converters-firmware" target="_blank">Source Code: Precision Converters Firmware</a></p></li>
 <li><p><a class="icon link reference external" href="https://github.com/analogdevicesinc/no-OS" target="_blank">no-OS: Software drivers for systems without OS</a></p></li>
-<li><p><a class="icon link reference external" href="https://studio.keil.arm.com/auth/login/" target="_blank">Keil Studio Web IDE/Compiler</a></p></li>
-<li><p><a class="icon link reference external" href="https://os.mbed.com/platforms/SDP_K1/" target="_blank">SDP-K1 on Mbed</a></p></li>
+<li><p><a class="icon link reference external" href="https://www.analog.com/en/resources/evaluation-hardware-and-software/evaluation-boards-kits/sdp-k1.html#eb-overview" target="_blank">SDP-K1</a></p></li>
 <li><p><a class="icon link reference external" href="https://github.com/analogdevicesinc/linux" target="_blank">Linux Drivers</a></p></li>
 <li><p><a class="icon link reference external" href="https://github.com/analogdevicesinc/hdl" target="_blank">HDL Source Code</a></p></li>
 </ul>
@@ -260,54 +259,24 @@ that the build process may find the necessary tools (compiler, linker, SDK etc.)
 Use the following steps to prepare your environment for building firmware projects
 for respective platform.</p>
 <div><div class="collapsible docutils container">
-<input class="collapsible_input" id="d21ad2cb7a8b86eb27746a20544728dc233b644a" name="d21ad2cb7a8b86eb27746a20544728dc233b644a" type="checkbox"></input><label for="d21ad2cb7a8b86eb27746a20544728dc233b644a"><p>Windows</p>
+<input class="collapsible_input" id="c2875a1b1aa1c2a010c59a908fb40d61a7159c83" name="c2875a1b1aa1c2a010c59a908fb40d61a7159c83" type="checkbox"></input><label for="c2875a1b1aa1c2a010c59a908fb40d61a7159c83"><p>Windows</p>
 <div class="icon"></div></label><div class="collapsible_content docutils container">
 <div><div class="collapsible docutils container">
-<input class="collapsible_input" id="09fb7c01896ae766da2ee01308090388bae68d1b" name="09fb7c01896ae766da2ee01308090388bae68d1b" type="checkbox"></input><label for="09fb7c01896ae766da2ee01308090388bae68d1b"><p>Mbed</p>
+<input class="collapsible_input" id="0b016c31a7c49aaf106d1a452555f2fe370a097f" name="0b016c31a7c49aaf106d1a452555f2fe370a097f" type="checkbox"></input><label for="0b016c31a7c49aaf106d1a452555f2fe370a097f"><p>STM32</p>
 <div class="icon"></div></label><div class="collapsible_content docutils container">
-<div><div class="collapsible docutils container">
-<input class="collapsible_input" id="39f5f3bbb61ac4ff030ff90ba173d6b14ddaee72" name="39f5f3bbb61ac4ff030ff90ba173d6b14ddaee72" type="checkbox"></input><label for="39f5f3bbb61ac4ff030ff90ba173d6b14ddaee72"><p>For Web/Online Build</p>
-<div class="icon"></div></label><div class="collapsible_content docutils container">
-<ul class="simple">
-<li><p>Visit <a class="icon link reference external" href="https://www.keil.arm.com/" target="_blank">Arm Keil website</a> to create an user account for accessing the web based Keil Studio IDE.</p></li>
-<li><p>Open <a class="icon link reference external" href="https://studio.keil.arm.com/auth/login/" target="_blank">Keil Studio Web IDE</a> with registered user account</p></li>
-</ul>
-</div>
-</div>
-</div><div><div class="collapsible docutils container">
-<input class="collapsible_input" id="a16acbaf74415871cd32264793d63ec12b79936d" name="a16acbaf74415871cd32264793d63ec12b79936d" type="checkbox"></input><label for="a16acbaf74415871cd32264793d63ec12b79936d"><p>For Make Build</p>
-<div class="icon"></div></label><div class="collapsible_content docutils container">
-<ul class="simple">
-<li><p>Clone Precision Converters Firmware repository with the –recursive flag (not needed if building with web IDE for Mbed platform):</p></li>
-</ul>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>--recursive<span class="w"> </span>https://github.com/analogdevicesinc/precision-converters-firmware
+<ul>
+<li><p>Clone Precision Converters Firmware repository with the –recursive flag:</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>--recursive<span class="w"> </span>https://github.com/analogdevicesinc/precision-converters-firmware
 </pre></div>
 </div>
-<ul class="simple">
+</div></blockquote>
+</li>
 <li><p>If however you’ve already cloned the repository without the –recursive flag, you may initialize all the submodules in an existing cloned repo with:</p></li>
 </ul>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>submodule<span class="w"> </span>update<span class="w"> </span>--recursive<span class="w"> </span>--init
 </pre></div>
 </div>
-<ul>
-<li><p>Install <a class="icon link reference external" href="https://gnuwin32.sourceforge.net/packages/make.htm" target="_blank">Make</a> in the root of ‘C’ drive without any spaces in the installation path. The path must be <strong>C:\GnuWin32\…</strong>. Add this path into the system environmental path variable (as shown in below screenshot).</p></li>
-<li><p>Install <a class="icon link reference external" href="https://git-scm.com/downloads" target="_blank">Git</a> and add a path of <strong>C:\Program Files\Git\usr\bin\</strong> directory into system environmental path variable (please verify your git installation path is correct).</p></li>
-<li><p>Install Mbed CLI 1 as per guide <a class="icon link reference external" href="https://os.mbed.com/docs/mbed-os/v6.15/build-tools/install-and-set-up.html" target="_blank">here</a>.</p></li>
-<li><p>Install <a class="icon link reference external" href="https://developer.arm.com/downloads/-/gnu-rm." target="_blank">GNU Arm Embedded compiler</a> (for the development, 9-2019-q4-major version is used) and add a path of GNU Arm Embedded Toolchain bin directory into the system environmental path variable (as shown in below screenshot).</p></li>
-<li><p>Configure the compiler location with Mbed CLI. This can be carried out by running the <strong>mbed config -G GCC_ARM_PATH &lt;path-to-your-gcc-compiler&gt;</strong> in Command Prompt. For example you can run <strong>mbed config -G GCC_ARM_PATH “C:\Program Files (x86)\GNU Tools ARM Embedded\9 2019-q4-major\bin”</strong> in command prompt. It will set mentioned compiler path to all the Mbed Projects.</p>
-<blockquote>
-<div><a class="reference internal image-reference" href="../../../_images/environmental_variables.png"><img alt="../../../_images/environmental_variables.png" src="../../../_images/environmental_variables.png" style="width: 400px;" />
-</a>
-</div></blockquote>
-</li>
-</ul>
-</div>
-</div>
-</div></div>
-</div>
-</div><div><div class="collapsible docutils container">
-<input class="collapsible_input" id="fa09a7188e5b64e6db36c1092089233b09fd75ba" name="fa09a7188e5b64e6db36c1092089233b09fd75ba" type="checkbox"></input><label for="fa09a7188e5b64e6db36c1092089233b09fd75ba"><p>STM32</p>
-<div class="icon"></div></label><div class="collapsible_content docutils container">
 <div><div class="collapsible docutils container">
 <input class="collapsible_input" id="31dd6c13542299d944a089597884f96e3993de5c" name="31dd6c13542299d944a089597884f96e3993de5c" type="checkbox"></input><label for="31dd6c13542299d944a089597884f96e3993de5c"><p>For STM32 IDE based Build</p>
 <div class="icon"></div></label><div class="collapsible_content docutils container">
@@ -332,66 +301,13 @@ for respective platform.</p>
 <p>Once the build enviornment is setup, follow the guide below to build your project
 and generate executable file (.bin/.hex)</p>
 <div><div class="collapsible docutils container">
-<input class="collapsible_input" id="4e36d84c7a50755ee7cf6b38b7ce0c2fcb39378a" name="4e36d84c7a50755ee7cf6b38b7ce0c2fcb39378a" type="checkbox"></input><label for="4e36d84c7a50755ee7cf6b38b7ce0c2fcb39378a"><p>Windows</p>
+<input class="collapsible_input" id="177a48d1a1cc510eeeafd4ff955fe0a3d5492a25" name="177a48d1a1cc510eeeafd4ff955fe0a3d5492a25" type="checkbox"></input><label for="177a48d1a1cc510eeeafd4ff955fe0a3d5492a25"><p>Windows</p>
 <div class="icon"></div></label><div class="collapsible_content docutils container">
 <div><div class="collapsible docutils container">
-<input class="collapsible_input" id="8a96b2f5ce328a338a212ed635951e2db86e0faa" name="8a96b2f5ce328a338a212ed635951e2db86e0faa" type="checkbox"></input><label for="8a96b2f5ce328a338a212ed635951e2db86e0faa"><p>Mbed</p>
+<input class="collapsible_input" id="c9175659e704e1f0c11f6803eed9158192d06478" name="c9175659e704e1f0c11f6803eed9158192d06478" type="checkbox"></input><label for="c9175659e704e1f0c11f6803eed9158192d06478"><p>STM32</p>
 <div class="icon"></div></label><div class="collapsible_content docutils container">
 <div><div class="collapsible docutils container">
-<input class="collapsible_input" id="f2c48851e525d0a0dff128e83d63241bbb3850e3" name="f2c48851e525d0a0dff128e83d63241bbb3850e3" type="checkbox"></input><label for="f2c48851e525d0a0dff128e83d63241bbb3850e3"><p>Build Using Web/Online IDE</p>
-<div class="icon"></div></label><div class="collapsible_content docutils container">
-<ul>
-<li><p>Clone the <a class="icon link reference external" href="https://github.com/analogdevicesinc/precision-converters-firmware" target="_blank">Precision Converters Firmware repository</a> into Keil Studio using “File-&gt;clone…” menu.</p>
-<blockquote>
-<div><a class="reference internal image-reference" href="../../../_images/mbed_keil_studio_project_clone.png"><img alt="../../../_images/mbed_keil_studio_project_clone.png" src="../../../_images/mbed_keil_studio_project_clone.png" style="width: 600px;" />
-</a>
-</div></blockquote>
-</li>
-<li><p>Once the project repository is imported, wait until all library dependencies are imported as shown in below screenshot. Now, open the ‘.medignore’ file present in the root directory of repository. Add comment syntax (two forward slashes) in front of the project name which you want to build. This will ignore all other projects and build only the comment syntax selected project.</p>
-<blockquote>
-<div><a class="reference internal image-reference" href="../../../_images/mbedignore_changes.png"><img alt="../../../_images/mbedignore_changes.png" src="../../../_images/mbedignore_changes.png" style="width: 600px;" />
-</a>
-</div></blockquote>
-</li>
-<li><p>Select the target device (default used for development is SDP-K1) and click on ‘Clean build’ option to build the project. After a successful build a binary will be downloaded to your computer- store this on your drive. Drag and drop this binary to the USB drive hosted by your controller board to flash the MCU.</p>
-<blockquote>
-<div><a class="reference internal image-reference" href="../../../_images/mbed_build.png"><img alt="../../../_images/mbed_build.png" src="../../../_images/mbed_build.png" style="width: 400px;" />
-</a>
-</div></blockquote>
-</li>
-</ul>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>If you intend to build different project, then modify the .medignore file in the root directory as
-mentioned in step2 and clean build project as mentioned in step3</p>
-</div>
-</div>
-</div>
-</div><div><div class="collapsible docutils container">
-<input class="collapsible_input" id="392c4f82a53d51f38b7cc22de16957d050be656e" name="392c4f82a53d51f38b7cc22de16957d050be656e" type="checkbox"></input><label for="392c4f82a53d51f38b7cc22de16957d050be656e"><p>Build Using Make</p>
-<div class="icon"></div></label><div class="collapsible_content docutils container">
-<ul class="simple">
-<li><p>Open Git bash and change current directory to project directory (eg. <strong>precision-converters-firmware/projects/ad4130_iio</strong> directory) which you want to build.</p></li>
-<li><p>Type <strong>make</strong> on the git bash command prompt to build a project.</p></li>
-<li><p>After successful build, binary file will be created into the <strong>Project_Name/build</strong> directory.</p></li>
-<li><p>If you want to clean build, type <strong>make reset</strong> on git bash command which deletes all generated build files for the given project.</p></li>
-</ul>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Default TARGET_BOARD is SDP_K1 and COMPILER is GCC_ARM. Current Make based build only support GCC_ARM Compiler.</p>
-</div>
-<ul class="simple">
-<li><p>By default project is built for “SDP_K1” Board and “GCC_ARM” Compiler. If you want to build for other Mbed Board, For example If you want to build the project for “DISCO_F769NI” Board then run <strong>make TARGET_BOARD=DISCO_F769NI</strong> command in git bash command prompt. If you want to clean build, run <strong>make reset TARGET_BOARD=DISCO_F769NI</strong> command to delete the generated build files for the given project.</p></li>
-</ul>
-</div>
-</div>
-</div></div>
-</div>
-</div><div><div class="collapsible docutils container">
-<input class="collapsible_input" id="6d4692d8c91dfb061dfba381ec4ebfcee15fe389" name="6d4692d8c91dfb061dfba381ec4ebfcee15fe389" type="checkbox"></input><label for="6d4692d8c91dfb061dfba381ec4ebfcee15fe389"><p>STM32</p>
-<div class="icon"></div></label><div class="collapsible_content docutils container">
-<div><div class="collapsible docutils container">
-<input class="collapsible_input" id="40d95710ac8c485fd38ee69527a9ba568f6db616" name="40d95710ac8c485fd38ee69527a9ba568f6db616" type="checkbox"></input><label for="40d95710ac8c485fd38ee69527a9ba568f6db616"><p>Build Using STM32 IDE</p>
+<input class="collapsible_input" id="0613647c4123d0f32002dfe5b2e8b17c52cdbffc" name="0613647c4123d0f32002dfe5b2e8b17c52cdbffc" type="checkbox"></input><label for="0613647c4123d0f32002dfe5b2e8b17c52cdbffc"><p>Build Using STM32 IDE</p>
 <div class="icon"></div></label><div class="collapsible_content docutils container">
 <ul>
 <li><p>Open the respective project directory by navigating into the “precision_converters_firmware/projects/” folder.</p></li>
@@ -426,9 +342,21 @@ mentioned in step2 and clean build project as mentioned in step3</p>
 </a>
 </div></blockquote>
 </li>
-<li><p>Program by clicking on the “Run adxxxx_iio” option seen or by performing a copy-&gt;paste option of the .hex file seen in the STM32/Debug folder</p>
+<li><p>Exclude the generated file syscalls.c from the build process</p>
 <blockquote>
-<div><a class="reference internal image-reference" href="../../../_images/stm32_run_option.png"><img alt="../../../_images/stm32_run_option.png" src="../../../_images/stm32_run_option.png" style="width: 600px;" />
+<div><a class="reference internal image-reference" href="../../../_images/stm32_exclude_syscalls.png"><img alt="../../../_images/stm32_exclude_syscalls.png" src="../../../_images/stm32_exclude_syscalls.png" style="width: 600px;" />
+</a>
+</div></blockquote>
+</li>
+<li><dl>
+<dt>To generate the binary file, right click on the adxxxx_iio project seen in the project explorer and select “Properties”, select “Settings” under the “C/C++ Build” section on the left pane, select “MCU Post build outputs” under “Tool Settings” section and check the “Convert to binary file (-O binary)” checkbox.</dt><dd><a class="reference internal image-reference" href="../../../_images/stm32_convert_to_binary.png"><img alt="../../../_images/stm32_convert_to_binary.png" src="../../../_images/stm32_convert_to_binary.png" style="width: 600px;" />
+</a>
+</dd>
+</dl>
+</li>
+<li><p>Build the project by right-clicking on the adxxxx_iio project seen in the project explorer and select “Build Project”</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../../_images/stm32_build_project.png"><img alt="../../../_images/stm32_build_project.png" src="../../../_images/stm32_build_project.png" style="width: 600px;" />
 </a>
 </div></blockquote>
 </li>
@@ -444,7 +372,7 @@ mentioned in step2 and clean build project as mentioned in step3</p>
 <h3>Running a project<a class="headerlink" href="#running-a-project" title="Link to this heading"></a></h3>
 <p>Once the firmware build is successful and binary file is generated, copy the
 generated binary into USB drive hosted by your MCU board (e.g. USB drive hosted
-by the supported MCU board on windows). This will flash the binary file into MCU present
+by MCU board on windows). This will flash the binary file into MCU present
 on the controller board. Programming might vary based on the tools used for building
 a project. The ‘Project Build’ section above talks about this exception at the end
 of all build steps.</p>
@@ -452,7 +380,7 @@ of all build steps.</p>
 </section>
 <section id="quick-start">
 <h2>Quick Start<a class="headerlink" href="#quick-start" title="Link to this heading"></a></h2>
-<p>If you have some familiarity with the Mbed or STM32 platform, the following is a basic list of steps required to start running the code,
+<p>If you have some familiarity with the STM32 platform, the following is a basic list of steps required to start running the code,
 see below for more detail:</p>
 <ul class="simple">
 <li><p>Connect the evaluation board to the SDP-K1 controller board, and power it appropriately, usually 3.3V to AVDD.</p></li>

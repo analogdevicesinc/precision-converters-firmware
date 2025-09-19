@@ -12,22 +12,22 @@ Supported Hardware
 
 **Supported Carrier Boards:**
 
-* `SDP-K1 With Mbed Platform <https://os.mbed.com/platforms/SDP_K1/>`_
+* `SDP-K1  <https://www.analog.com/en/resources/evaluation-hardware-and-software/evaluation-boards-kits/sdp-k1.html#eb-overview>`_
 * `Nucleo-H563ZI With STM32 Platform <https://www.st.com/resource/en/reference_manual/rm0481-stm32h563h573-and-stm32h562-armbased-32bit-mcus-stmicroelectronics.pdf>`_
 
 ============
 Introduction
 ============
 
-This page gives an overview of using the ARM platforms supported (default is Mbed) 
+This page gives an overview of using the ARM platforms supported (default is STM32) 
 firmware example with Analog Devices AD4170 Evaluation board and SDP-K1 controller board. 
 This example code leverages the ADI developed IIO (Industrial Input Output) ecosystem to 
 evaluate the AD4170 device by providing a device debug and data capture support.
-The code provides support to MBED and STM32 platforms.
+The code provides support to STM32 platform.
 
 The respective build guides for each of the platforms
 can be found in the further sections. The active platform can be chosen by selecting the appropriate 
-value for the ACTIVE_PLATFORM macro in the app_config.h (Default is mbed)
+value for the ACTIVE_PLATFORM macro in the app_config.h (Default is STM32)
 
    .. image:: /source/tinyiiod/app_interface.png
       :width: 350
@@ -36,23 +36,18 @@ The interface used for communicating with PC based IIO clients is either Virtual
 IIO Firmware leverages the ADI created no-os and platform driver software layers
 to communicates with IIO device.
 
-.. SDP-K1 Mbed Section
-
-.. include:: /source/tinyiiod/sdp_k1_mbed.rst
-
 .. Useful links Section
 
-.. include:: /source/useful_links.rst
+.. include:: /source/useful_links_stm32.rst
 
 ====================
 Hardware Connections
 ====================
 
-Required: SDP-K1 (or alternative Mbed enabled controller board, or an STM32 board ), EVAL-AD4170 board
+Required: SDP-K1 (or an STM32 board ), EVAL-AD4170 board
 and USB cable.
 
-Connect the EVAL-AD4170 board to SDP-K1 board (or any other Mbed enabled controller 
-board or an equivalent STM32 board). Connect controller board to the PC using the USB cable. 
+Connect the EVAL-AD4170 board to SDP-K1 board (or an equivalent STM32 board). Connect controller board to the PC using the USB cable. 
 
    .. image:: /source/projects/ad4170_iio/ad4170_connection_diagram.png
       :width: 600
@@ -86,7 +81,7 @@ Please refer to the user guide for the jumper connections on the EVAL-AD4170 boa
 
 .. Project Build Section:
     
-.. include:: /source/build/project_build.rst
+.. include:: /source/build/project_build_stm32.rst
 
 .. IIO Ecosystem Section:
     
