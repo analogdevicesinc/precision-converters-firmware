@@ -19,14 +19,11 @@
 /******************************************************************************/
 
 #include <stdint.h>
+#include <common_macros.h>
 
 /******************************************************************************/
 /********************** Macros and Constants Definition ***********************/
 /******************************************************************************/
-
-/* List of supported platforms */
-#define	MBED_PLATFORM		0
-#define STM32_PLATFORM		1
 
 /* List of data capture modes for AD469X device */
 #define CONTINUOUS_DATA_CAPTURE		0
@@ -45,20 +42,16 @@
 #define DATA_CAPTURE_MODE	  CONTINUOUS_DATA_CAPTURE
 #endif
 
-/* Select the active platform (default is Mbed) */
+/* Select the active platform (default is stm32) */
 #if !defined(ACTIVE_PLATFORM)
-#define ACTIVE_PLATFORM		MBED_PLATFORM
+#define ACTIVE_PLATFORM		STM32_PLATFORM
 #endif
 
 /* Note: The STM32 platform supports SPI interrupt and SPI DMA Mode
  * for data capturing. The MBED platform supports only SPI interrupt mode
  * */
 #if !defined(INTERFACE_MODE)
-#if (ACTIVE_PLATFORM == STM32_PLATFORM)
 #define INTERFACE_MODE   SPI_DMA
-#else // Mbed
-#define INTERFACE_MODE   SPI_INTERRUPT
-#endif
 #endif
 
 /* Enable the UART/VirtualCOM port connection (default VCOM) */
@@ -72,20 +65,7 @@
 #define XSTR(s)		#s
 #define STR(s)		XSTR(s)
 
-#if (ACTIVE_PLATFORM == MBED_PLATFORM)
-#include "app_config_mbed.h"
-#define HW_CARRIER_NAME		TARGET_NAME
-#define uart_extra_init_params      mbed_uart_extra_init_params
-#define vcom_extra_init_params      mbed_vcom_extra_init_params
-#define bsy_extra_init_params  mbed_gpio_bsy_extra_init_params
-#define cnv_extra_init_params       mbed_gpio_cnv_extra_init_params
-#define reset_extra_init_params     mbed_gpio_reset_extra_init_params
-#define trigger_gpio_irq_extra_params mbed_trigger_gpio_irq_init_params
-#define spi_extra_init_params       mbed_spi_extra_init_params
-#define pwm_extra_init_params       mbed_pwm_extra_init_params
-#define i2c_extra_init_params       mbed_i2c_extra_init_params
-
-#elif (ACTIVE_PLATFORM == STM32_PLATFORM)
+#if (ACTIVE_PLATFORM == STM32_PLATFORM)
 #include "app_config_stm32.h"
 #define HW_CARRIER_NAME		    	TARGET_NAME
 /* Redefine the init params structure mapping w.r.t. platform */
@@ -120,6 +100,11 @@
 #define ACTIVE_DEVICE_NAME	"ad4696"
 #define HW_MEZZANINE_NAME	"EVAL-AD4696-ARDZ"
 #define	NO_OF_CHANNELS		16
+#elif defined(DEV_AD4697)
+#define ACTIVE_DEVICE		ID_AD4697
+#define ACTIVE_DEVICE_NAME	"ad4697"
+#define HW_MEZZANINE_NAME	"EVAL-AD4697-ARDZ"
+#define	NO_OF_CHANNELS		8
 #else
 #warning No/Unsupported ADxxxxy symbol defined. AD4696 defined
 #define DEV_AD4696
@@ -149,7 +134,7 @@
 
 /****** Macros used to form a VCOM serial number ******/
 #if !defined(DEVICE_NAME)
-#define DEVICE_NAME		"DEV_AD4696"
+#define DEVICE_NAME		"DEV_AD4697"
 #endif
 
 /* Used to form a VCOM serial number */
@@ -171,12 +156,7 @@
 #define IIO_UART_BAUD_RATE	(230400)
 
 /* Check if any serial port available for use as console stdio port */
-#if defined(USE_PHY_COM_PORT)
-/* If PHY com is selected, VCOM or alternate PHY com port can act as a console stdio port */
-#if (ACTIVE_PLATFORM == MBED_PLATFORM)
-#define CONSOLE_STDIO_PORT_AVAILABLE
-#endif
-#else
+#if defined(USE_VIRTUAL_COM_PORT)
 /* If VCOM is selected, PHY com port will/should act as a console stdio port */
 #define CONSOLE_STDIO_PORT_AVAILABLE
 #endif
