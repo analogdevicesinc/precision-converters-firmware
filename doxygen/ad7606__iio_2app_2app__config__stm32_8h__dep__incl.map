@@ -1,5 +1,16 @@
 <map id="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad7606_iio/app/app_config_stm32.h" name="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad7606_iio/app/app_config_stm32.h">
-<area shape="rect" id="Node000001" title="Header file for STM32 platform configurations." alt="" coords="5,5,264,75"/>
-<area shape="rect" id="Node000002" href="$ad7606__iio_2app_2app__config__stm32_8c.html" title="Application configurations module for STM32 platform." alt="" coords="5,123,264,192"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="137,89,137,122,132,122,132,89"/>
+<area shape="rect" id="Node000001" title="Header file for STM32 platform configurations." alt="" coords="385,5,643,75"/>
+<area shape="rect" id="Node000002" href="$ad7606__iio_2app_2app__config_8h.html" title="Header file for application configurations (platform&#45;agnostic)" alt="" coords="403,123,625,192"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="508,89,508,122,503,123,502,89"/>
+<area shape="rect" id="Node000007" href="$ad7606__iio_2app_2app__config__stm32_8c.html" title="Application configurations module for STM32 platform." alt="" coords="649,123,907,192"/>
+<area shape="poly" id="edge7_Node000001_Node000007" title=" " alt="" coords="605,78,702,120,700,125,602,83"/>
+<area shape="poly" id="edge6_Node000002_Node000001" title=" " alt="" coords="520,109,520,75,525,75,526,109"/>
+<area shape="rect" id="Node000003" href="$ad7606__iio_8c.html" title=" " alt="" coords="5,240,228,309"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="390,197,229,244,228,239,389,192"/>
+<area shape="rect" id="Node000004" href="$ad7606__support_8c.html" title="AD7606 No&#45;OS drivers support functionality." alt="" coords="252,240,496,309"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="464,203,417,242,413,238,461,199"/>
+<area shape="rect" id="Node000005" href="$ad7606__user__config_8c.html" title="User configuration file for AD7606 device." alt="" coords="521,240,790,309"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="568,199,615,238,612,242,564,203"/>
+<area shape="rect" id="Node000006" href="$ad7606__iio_2app_2app__config_8c.html" title="Application configurations module (platform&#45;agnostic)" alt="" coords="815,240,1037,309"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="639,191,815,240,814,245,638,196"/>
 </map>
