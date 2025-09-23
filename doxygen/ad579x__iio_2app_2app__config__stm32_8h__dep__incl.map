@@ -1,5 +1,23 @@
 <map id="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad579x_iio/app/app_config_stm32.h" name="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad579x_iio/app/app_config_stm32.h">
-<area shape="rect" id="Node000001" title="Header file for STM32 platform configurations." alt="" coords="5,5,264,75"/>
-<area shape="rect" id="Node000002" href="$ad579x__iio_2app_2app__config__stm32_8c.html" title="Application configurations module for STM32 platform." alt="" coords="5,123,264,192"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="137,89,137,122,132,122,132,89"/>
+<area shape="rect" id="Node000001" title="Header file for STM32 platform configurations." alt="" coords="533,5,791,75"/>
+<area shape="rect" id="Node000002" href="$ad579x__iio_2app_2app__config_8h.html" title="Configuration file for AD579x device application." alt="" coords="551,123,773,192"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="656,89,656,122,651,123,650,89"/>
+<area shape="rect" id="Node000010" href="$ad579x__iio_2app_2app__config__stm32_8c.html" title="Application configurations module for STM32 platform." alt="" coords="797,123,1055,192"/>
+<area shape="poly" id="edge11_Node000001_Node000010" title=" " alt="" coords="753,78,850,120,848,125,750,83"/>
+<area shape="poly" id="edge10_Node000002_Node000001" title=" " alt="" coords="668,109,668,75,673,75,674,109"/>
+<area shape="rect" id="Node000003" href="$ad579x__iio_8c.html" title="AD579x IIO application interface module." alt="" coords="5,357,228,427"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="537,165,426,172,309,186,256,196,208,209,170,224,144,242,126,267,117,297,114,328,115,357,109,357,109,328,112,296,122,265,140,238,168,219,207,203,255,191,309,180,426,166,537,159"/>
+<area shape="rect" id="Node000004" href="$ad579x__iio_8h.html" title="Header file for AD579x IIO application interfaces." alt="" coords="153,240,376,309"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="538,197,377,244,376,239,537,192"/>
+<area shape="rect" id="Node000006" href="$ad579x__support_8c.html" title=" " alt="" coords="400,240,644,309"/>
+<area shape="poly" id="edge6_Node000002_Node000006" title=" " alt="" coords="612,203,565,242,561,238,609,199"/>
+<area shape="rect" id="Node000007" href="$ad579x__user__config_8c.html" title="User configuration file for AD579x devices." alt="" coords="669,240,938,309"/>
+<area shape="poly" id="edge7_Node000002_Node000007" title=" " alt="" coords="716,199,763,238,760,242,712,203"/>
+<area shape="rect" id="Node000008" href="$ad579x__iio_2app_2app__config_8c.html" title="Application configurations module." alt="" coords="963,240,1185,309"/>
+<area shape="poly" id="edge8_Node000002_Node000008" title=" " alt="" coords="787,191,963,240,962,245,786,196"/>
+<area shape="rect" id="Node000009" href="$ad579x__iio_2app_2app__config__mbed_8c.html" title="Application configurations module for Mbed platform." alt="" coords="1209,240,1464,309"/>
+<area shape="poly" id="edge9_Node000002_Node000009" title=" " alt="" coords="787,190,903,207,994,214,1085,221,1198,237,1210,239,1209,245,1198,243,1084,227,994,220,902,212,786,195"/>
+<area shape="poly" id="edge4_Node000004_Node000003" title=" " alt="" coords="212,320,162,359,159,355,209,316"/>
+<area shape="rect" id="Node000005" href="$ad579x__iio_2app_2main_8c.html" title="Main interface for AD579x IIO firmware application." alt="" coords="252,357,475,427"/>
+<area shape="poly" id="edge5_Node000004_Node000005" title=" " alt="" coords="304,318,336,355,332,359,300,322"/>
 </map>
