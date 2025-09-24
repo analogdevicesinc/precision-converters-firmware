@@ -1,19 +1,34 @@
 <map id="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad7124_console/app/app_config_mbed.c" name="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad7124_console/app/app_config_mbed.c">
-<area shape="rect" id="Node000001" title="Source file for the mbed configuration for AD7124 console Application." alt="" coords="53,5,341,75"/>
-<area shape="rect" id="Node000002" href="$ad7124__console_2app_2app__config_8h.html" title="Configuration file of AD7124 firmware example program." alt="" coords="101,123,205,148"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="183,76,166,111,162,109,178,74"/>
-<area shape="rect" id="Node000004" href="$ad7124__console_2app_2app__config__mbed_8h.html" title="Header file for Mbed platform configurations." alt="" coords="168,196,316,221"/>
-<area shape="poly" id="edge9_Node000001_Node000004" title=" " alt="" coords="208,74,238,182,233,183,203,76"/>
-<area shape="rect" id="Node000003" title=" " alt="" coords="5,269,76,295"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="146,150,60,260,56,257,141,147"/>
-<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="169,146,218,185,215,189,165,150"/>
-<area shape="poly" id="edge4_Node000004_Node000003" title=" " alt="" coords="211,224,87,267,85,262,209,219"/>
-<area shape="rect" id="Node000005" title=" " alt="" coords="100,269,200,295"/>
-<area shape="poly" id="edge5_Node000004_Node000005" title=" " alt="" coords="229,223,177,263,174,259,226,219"/>
-<area shape="rect" id="Node000006" title=" " alt="" coords="224,269,321,295"/>
-<area shape="poly" id="edge6_Node000004_Node000006" title=" " alt="" coords="250,221,265,256,260,258,245,223"/>
-<area shape="rect" id="Node000007" title=" " alt="" coords="345,269,536,295"/>
-<area shape="poly" id="edge7_Node000004_Node000007" title=" " alt="" coords="275,219,396,262,394,267,273,224"/>
-<area shape="rect" id="Node000008" title=" " alt="" coords="561,269,667,295"/>
-<area shape="poly" id="edge8_Node000004_Node000008" title=" " alt="" coords="302,219,547,265,546,271,301,224"/>
+<area shape="rect" id="Node000001" title="Source file for the mbed configuration for AD7124 console Application." alt="" coords="409,5,697,75"/>
+<area shape="rect" id="Node000002" href="$ad7124__console_2app_2app__config_8h.html" title="Configuration file of AD7124 firmware example program." alt="" coords="427,123,531,148"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="528,76,499,113,494,110,524,73"/>
+<area shape="rect" id="Node000012" href="$ad7124__console_2app_2app__config__mbed_8h.html" title="Header file for Mbed platform configurations." alt="" coords="602,123,750,148"/>
+<area shape="poly" id="edge11_Node000001_Node000012" title=" " alt="" coords="599,73,651,112,648,116,596,77"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="487,196,558,221"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="488,147,511,183,506,186,484,150"/>
+<area shape="rect" id="Node000004" href="$common__macros_8h.html" title="The file contain common macros that needs to be followed same across all the projects." alt="" coords="140,196,287,221"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="437,151,270,195,269,190,435,145"/>
+<area shape="rect" id="Node000005" href="$ad7124__console_2app_2app__config__stm32_8h.html" title="Header file for STM32 platform configurations." alt="" coords="311,196,463,221"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="466,150,414,190,411,185,462,146"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="5,269,107,295"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="334,224,121,270,119,264,333,219"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="131,269,239,295"/>
+<area shape="poly" id="edge6_Node000005_Node000007" title=" " alt="" coords="355,224,232,267,230,262,353,219"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="264,269,363,295"/>
+<area shape="poly" id="edge7_Node000005_Node000008" title=" " alt="" coords="376,224,337,262,333,258,373,220"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="387,269,533,295"/>
+<area shape="poly" id="edge8_Node000005_Node000009" title=" " alt="" coords="401,220,440,258,436,262,397,224"/>
+<area shape="rect" id="Node000010" title=" " alt="" coords="557,269,624,295"/>
+<area shape="poly" id="edge9_Node000005_Node000010" title=" " alt="" coords="420,219,546,262,544,267,419,224"/>
+<area shape="rect" id="Node000011" title=" " alt="" coords="649,269,759,295"/>
+<area shape="poly" id="edge10_Node000005_Node000011" title=" " alt="" coords="438,219,640,264,639,269,437,224"/>
+<area shape="poly" id="edge12_Node000012_Node000003" title=" " alt="" coords="652,150,561,193,559,188,650,146"/>
+<area shape="rect" id="Node000013" title=" " alt="" coords="582,196,682,221"/>
+<area shape="poly" id="edge13_Node000012_Node000013" title=" " alt="" coords="671,150,649,186,644,183,666,147"/>
+<area shape="rect" id="Node000014" title=" " alt="" coords="706,196,803,221"/>
+<area shape="poly" id="edge14_Node000012_Node000014" title=" " alt="" coords="690,146,734,185,730,189,687,150"/>
+<area shape="rect" id="Node000015" title=" " alt="" coords="827,196,1018,221"/>
+<area shape="poly" id="edge15_Node000012_Node000015" title=" " alt="" coords="716,145,870,190,869,195,715,151"/>
+<area shape="rect" id="Node000016" title=" " alt="" coords="1043,196,1149,221"/>
+<area shape="poly" id="edge16_Node000012_Node000016" title=" " alt="" coords="745,145,1029,193,1028,198,744,151"/>
 </map>

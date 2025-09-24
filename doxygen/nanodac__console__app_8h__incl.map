@@ -1,27 +1,30 @@
 <map id="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/nanodac_console/app/nanodac_console_app.h" name="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/nanodac_console/app/nanodac_console_app.h">
-<area shape="rect" id="Node000001" title=": defines the console menu structure for the nanodac example code" alt="" coords="39,5,364,75"/>
-<area shape="rect" id="Node000002" href="$adi__console__menu_8h.html" title=": A simple console menu manager handler" alt="" coords="48,123,203,148"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="176,76,146,113,141,110,172,73"/>
-<area shape="rect" id="Node000006" href="$nanodac__console_2app_2app__config_8h.html" title="Configuration file of nanodac firmware example program." alt="" coords="227,123,331,148"/>
-<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="231,73,262,110,258,114,227,76"/>
+<area shape="rect" id="Node000001" title=": defines the console menu structure for the nanodac example code" alt="" coords="99,5,424,75"/>
+<area shape="rect" id="Node000002" href="$adi__console__menu_8h.html" title=": A simple console menu manager handler" alt="" coords="108,123,263,148"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="236,76,206,113,201,110,232,73"/>
+<area shape="rect" id="Node000006" href="$nanodac__console_2app_2app__config_8h.html" title="Configuration file of nanodac firmware example program." alt="" coords="305,123,409,148"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="298,73,337,111,334,115,294,77"/>
 <area shape="rect" id="Node000003" title=" " alt="" coords="5,196,88,221"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="114,150,71,189,68,185,111,146"/>
-<area shape="rect" id="Node000004" title=" " alt="" coords="103,269,174,295"/>
-<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="129,148,139,255,134,256,124,149"/>
-<area shape="rect" id="Node000005" title=" " alt="" coords="163,196,234,221"/>
-<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="139,146,179,184,175,188,136,150"/>
-<area shape="poly" id="edge6_Node000006_Node000004" title=" " alt="" coords="279,149,269,184,260,205,247,223,218,248,185,266,183,261,215,244,243,220,255,202,264,182,274,148"/>
-<area shape="rect" id="Node000007" href="$nanodac__console_2app_2app__config__mbed_8h.html" title="Header file for Mbed platform configurations." alt="" coords="310,196,458,221"/>
-<area shape="poly" id="edge7_Node000006_Node000007" title=" " alt="" coords="297,146,357,186,354,191,294,150"/>
-<area shape="poly" id="edge8_Node000007_Node000004" title=" " alt="" coords="345,224,188,269,186,264,344,219"/>
-<area shape="rect" id="Node000008" title=" " alt="" coords="198,269,298,295"/>
-<area shape="poly" id="edge9_Node000007_Node000008" title=" " alt="" coords="363,224,283,265,281,261,361,219"/>
-<area shape="rect" id="Node000009" title=" " alt="" coords="322,269,419,295"/>
-<area shape="poly" id="edge10_Node000007_Node000009" title=" " alt="" coords="384,222,378,256,373,255,379,221"/>
-<area shape="rect" id="Node000010" title=" " alt="" coords="443,269,541,295"/>
-<area shape="poly" id="edge11_Node000007_Node000010" title=" " alt="" coords="403,219,464,259,461,264,400,224"/>
-<area shape="rect" id="Node000011" title=" " alt="" coords="565,269,672,295"/>
-<area shape="poly" id="edge12_Node000007_Node000011" title=" " alt="" coords="422,219,568,263,567,268,421,224"/>
-<area shape="rect" id="Node000012" title=" " alt="" coords="697,269,887,295"/>
-<area shape="poly" id="edge13_Node000007_Node000012" title=" " alt="" coords="450,219,713,264,712,270,449,224"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="164,150,83,192,80,187,162,146"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="207,196,278,221"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="197,147,227,183,223,187,193,150"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="113,196,183,221"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="182,150,163,185,158,183,177,147"/>
+<area shape="poly" id="edge6_Node000006_Node000004" title=" " alt="" coords="340,150,274,191,272,186,338,146"/>
+<area shape="rect" id="Node000007" href="$common__macros_8h.html" title="The file contain common macros that needs to be followed same across all the projects." alt="" coords="303,196,449,221"/>
+<area shape="poly" id="edge7_Node000006_Node000007" title=" " alt="" coords="363,148,372,182,367,184,358,149"/>
+<area shape="rect" id="Node000008" href="$nanodac__console_2app_2app__config__stm32_8h.html" title="Header file for STM32 platform configurations." alt="" coords="473,196,625,221"/>
+<area shape="poly" id="edge8_Node000006_Node000008" title=" " alt="" coords="389,146,506,188,504,193,387,151"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="171,269,272,295"/>
+<area shape="poly" id="edge9_Node000008_Node000009" title=" " alt="" coords="497,224,286,269,285,264,496,219"/>
+<area shape="rect" id="Node000010" title=" " alt="" coords="297,269,405,295"/>
+<area shape="poly" id="edge10_Node000008_Node000010" title=" " alt="" coords="518,224,397,267,395,262,517,219"/>
+<area shape="rect" id="Node000011" title=" " alt="" coords="429,269,539,295"/>
+<area shape="poly" id="edge11_Node000008_Node000011" title=" " alt="" coords="541,223,506,261,502,257,537,220"/>
+<area shape="rect" id="Node000012" title=" " alt="" coords="564,269,665,295"/>
+<area shape="poly" id="edge12_Node000008_Node000012" title=" " alt="" coords="562,220,597,257,593,261,558,223"/>
+<area shape="rect" id="Node000013" title=" " alt="" coords="689,269,836,295"/>
+<area shape="poly" id="edge13_Node000008_Node000013" title=" " alt="" coords="584,219,716,262,714,267,583,224"/>
+<area shape="rect" id="Node000014" title=" " alt="" coords="860,269,927,295"/>
+<area shape="poly" id="edge14_Node000008_Node000014" title=" " alt="" coords="612,219,847,267,846,272,611,224"/>
 </map>

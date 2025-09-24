@@ -1,5 +1,14 @@
 <map id="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/nanodac_console/app/app_config_stm32.h" name="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/nanodac_console/app/app_config_stm32.h">
-<area shape="rect" id="Node000001" title="Header file for STM32 platform configurations." alt="" coords="5,5,305,75"/>
-<area shape="rect" id="Node000002" href="$nanodac__console_2app_2app__config__stm32_8c.html" title="STM32 Specific configuration files for nanodac Console Application." alt="" coords="6,123,305,192"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="158,89,158,122,153,122,153,89"/>
+<area shape="rect" id="Node000001" title="Header file for STM32 platform configurations." alt="" coords="267,5,567,75"/>
+<area shape="rect" id="Node000002" href="$nanodac__console_2app_2app__config_8h.html" title="Configuration file of nanodac firmware example program." alt="" coords="141,123,393,192"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="364,85,313,124,310,120,361,81"/>
+<area shape="rect" id="Node000006" href="$nanodac__console_2app_2app__config__stm32_8c.html" title="STM32 Specific configuration files for nanodac Console Application." alt="" coords="418,123,717,192"/>
+<area shape="poly" id="edge6_Node000001_Node000006" title=" " alt="" coords="473,81,525,120,521,124,470,85"/>
+<area shape="rect" id="Node000003" href="$nanodac__console__app_8c.html" title=": Implementation for the menu functions that handles the nanodac functionality" alt="" coords="5,357,329,427"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="221,204,195,241,184,270,176,301,170,358,165,357,171,300,179,269,190,239,217,201"/>
+<area shape="rect" id="Node000004" href="$nanodac__console__app_8h.html" title=": defines the console menu structure for the nanodac example code" alt="" coords="205,240,530,309"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="308,201,340,238,336,242,304,204"/>
+<area shape="poly" id="edge5_Node000004_Node000003" title=" " alt="" coords="298,319,227,359,224,355,296,314"/>
+<area shape="rect" id="Node000005" href="$nanodac__console_2app_2main_8c.html" title=": main module for nanodac application interface" alt="" coords="353,357,576,427"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="407,319,438,355,434,359,403,322"/>
 </map>

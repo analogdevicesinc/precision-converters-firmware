@@ -1,14 +1,5 @@
 <map id="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/nanodac_console/app/app_config_mbed.h" name="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/nanodac_console/app/app_config_mbed.h">
-<area shape="rect" id="Node000001" title="Header file for Mbed platform configurations." alt="" coords="267,5,563,75"/>
-<area shape="rect" id="Node000002" href="$nanodac__console_2app_2app__config_8h.html" title="Configuration file of nanodac firmware example program." alt="" coords="141,123,393,192"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="363,85,312,124,309,120,360,81"/>
-<area shape="rect" id="Node000006" href="$nanodac__console_2app_2app__config__mbed_8c.html" title="Source file for the mbed configuration for nanodac Console Application." alt="" coords="417,123,712,192"/>
-<area shape="poly" id="edge6_Node000001_Node000006" title=" " alt="" coords="471,81,522,120,519,124,468,85"/>
-<area shape="rect" id="Node000003" href="$nanodac__console__app_8c.html" title=": Implementation for the menu functions that handles the nanodac functionality" alt="" coords="5,357,329,427"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="221,204,195,241,184,270,176,301,170,358,165,357,171,300,179,269,190,239,217,201"/>
-<area shape="rect" id="Node000004" href="$nanodac__console__app_8h.html" title=": defines the console menu structure for the nanodac example code" alt="" coords="205,240,530,309"/>
-<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="308,201,340,238,336,242,304,204"/>
-<area shape="poly" id="edge5_Node000004_Node000003" title=" " alt="" coords="298,319,227,359,224,355,296,314"/>
-<area shape="rect" id="Node000005" href="$nanodac__console_2app_2main_8c.html" title=": main module for nanodac application interface" alt="" coords="353,357,576,427"/>
-<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="407,319,438,355,434,359,403,322"/>
+<area shape="rect" id="Node000001" title="Header file for Mbed platform configurations." alt="" coords="5,5,301,75"/>
+<area shape="rect" id="Node000002" href="$nanodac__console_2app_2app__config__mbed_8c.html" title="Source file for the mbed configuration for nanodac Console Application." alt="" coords="6,123,301,192"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="156,89,156,122,151,122,151,89"/>
 </map>
