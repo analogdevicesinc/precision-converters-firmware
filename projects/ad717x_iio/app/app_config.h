@@ -2,7 +2,7 @@
  *   @file   app_config.h
  *   @brief  Configuration file for AD717x and AD411x IIO firmware application
 ******************************************************************************
-* Copyright (c) 2021-23 Analog Devices, Inc.
+* Copyright (c) 2021-23,2025 Analog Devices, Inc.
 *
 * All rights reserved.
 *
@@ -18,14 +18,12 @@
 /***************************** Include Files **********************************/
 /******************************************************************************/
 #include <stdint.h>
+#include <common_macros.h>
 #include "no_os_gpio.h"
 
 /******************************************************************************/
 /********************** Macros and Constants Definition ***********************/
 /******************************************************************************/
-
-/* List of supported platforms */
-#define	MBED_PLATFORM		1
 
 /* List of data capture modes for AD717x device */
 #define CONTINUOUS_DATA_CAPTURE		0
@@ -37,7 +35,7 @@
 
 /* Select the active platform */
 #if !defined(ACTIVE_PLATFORM)
-#define ACTIVE_PLATFORM		MBED_PLATFORM
+#define ACTIVE_PLATFORM		STM32_PLATFORM
 #endif // ACTIVE_PLATFORM
 
 /* Enable the UART/VirtualCOM port connection (default VCOM) */
@@ -131,28 +129,29 @@
 #define HW_MEZZANINE_NAME	"Eval-AD4111SDZ"
 #endif // Device Select (Active Device name definition)
 
-#if (ACTIVE_PLATFORM == MBED_PLATFORM)
-#include "app_config_mbed.h"
-#define HW_CARRIER_NAME         TARGET_NAME
+#if (ACTIVE_PLATFORM == STM32_PLATFORM)
+#include "app_config_stm32.h"
+#define HW_CARRIER_NAME		    	TARGET_NAME
 /* Redefine the init params structure mapping w.r.t. platform */
-#if defined(USE_VIRTUAL_COM_PORT)
-#define uart_extra_init_params mbed_vcom_extra_init_params
-#define uart_ops mbed_virtual_com_ops
+#define uart_extra_init_params        stm32_uart_extra_init_params
+#define spi_extra_init_params         stm32_spi_extra_init_params
+#define vcom_extra_init_params  stm32_vcom_extra_init_params
+#define uart_extra_init_params        stm32_uart_extra_init_params
+#define ext_int_extra_init_params stm32_trigger_gpio_irq_init_params
+#define uart_ops stm32_uart_ops
+#define vcom_ops  stm32_usb_uart_ops
+#define irq_platform_ops stm32_gpio_irq_ops
+#define csb_platform_ops stm32_gpio_ops
+#define rdy_platform_ops stm32_gpio_ops
+#define spi_platform_ops stm32_spi_ops
+#define irq_ops          stm32_irq_ops
+#define i2c_ops		stm32_i2c_ops
+#define trigger_gpio_irq_ops stm32_gpio_irq_ops
+#define trigger_gpio_handle 0	// Unused macro
+#define IRQ_INT_ID  RDY_PIN
 #else
-#define uart_extra_init_params mbed_uart_extra_init_params
-#define uart_ops mbed_uart_ops
+#error "No/Invalid active platform selected"
 #endif
-#define spi_extra_init_params	mbed_spi_extra_init_params
-#define ext_int_extra_init_params mbed_trigger_gpio_irq_init_params
-#define i2c_extra_init_params mbed_i2c_extra_init_params
-#define csb_platform_ops mbed_gpio_ops
-#define rdy_platform_ops mbed_gpio_ops
-#define irq_platform_ops mbed_gpio_irq_ops
-#define spi_platform_ops mbed_spi_ops
-#define i2c_ops mbed_i2c_ops
-#define trigger_gpio_handle	0
-#define IRQ_INT_ID	GPIO_IRQ_ID1
-#endif // ACTIVE_PLATFORM
 
 /* VCOM Serial number definition */
 #define	FIRMWARE_NAME	"ad717x_iio"
@@ -354,6 +353,8 @@
 #endif // DEV_AD7177_2 warning
 #endif
 #endif
+
+#define CONSOLE_STDIO_PORT_AVAILABLE
 
 /* Denominator of the scale factor to be applied while converting raw values to actual voltage */
 #if  defined(DEV_AD4111) || defined(DEV_AD4112) || \
