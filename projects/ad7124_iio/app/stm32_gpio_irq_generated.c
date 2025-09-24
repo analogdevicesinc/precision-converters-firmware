@@ -2,7 +2,7 @@
  * @file    stm32_gpio_irq_generated.c
  * @brief   GPIO IRQ specific functions for STM32 platform
 ********************************************************************************
-* Copyright (c) 2024 Analog Devices, Inc.
+* Copyright (c) 2024-25 Analog Devices, Inc.
 * All rights reserved.
 *
 * This software is proprietary to Analog Devices, Inc. and its licensors.
@@ -41,6 +41,7 @@
  */
 int stm32_get_exti_irq_id_from_pin(uint8_t pin_nb, IRQn_Type *irq_id)
 {
+#ifdef STM32H563xx
 	/* Note: The irq_id number used here are specific to STM32H563ZIT6 MCU
 	 * on the Nucleo-H563ZI Board.
 	 * The below parameters will change depending on the controller used. */
@@ -97,4 +98,45 @@ int stm32_get_exti_irq_id_from_pin(uint8_t pin_nb, IRQn_Type *irq_id)
 		return -ENOSYS;
 	}
 	return 0;
+
+#else
+	/* Note: The irq_id number used here are specific to STM32F769NI MCU
+	 * on the Disco-769NI Board.
+	 * The below parameters will change depending on the controller used. */
+	switch (pin_nb) {
+	case 4:
+		*irq_id = EXTI4_IRQn;
+		break;
+	case 2:
+		*irq_id = EXTI2_IRQn;
+		break;
+	case 1:
+		*irq_id = EXTI1_IRQn;
+		break;
+	case 3:
+		*irq_id = EXTI3_IRQn;
+		break;
+	case 0:
+		*irq_id = EXTI0_IRQn;
+		break;
+	case 10:
+	case 11:
+	case 12:
+	case 13:
+	case 14:
+	case 15:
+		*irq_id = EXTI15_10_IRQn;
+		break;
+	case 5:
+	case 6:
+	case 7:
+	case 8:
+	case 9:
+		*irq_id = EXTI9_5_IRQn;
+		break;
+	default:
+		return -ENOSYS;
+	}
+	return 0;
+#endif
 }
