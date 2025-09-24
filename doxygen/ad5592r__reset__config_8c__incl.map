@@ -1,22 +1,27 @@
 <map id="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad559xr_console/app/ad5592r_reset_config.c" name="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad559xr_console/app/ad5592r_reset_config.c">
-<area shape="rect" id="Node000001" title=": Device parameters, structure and reset condition settings" alt="" coords="65,5,384,75"/>
-<area shape="rect" id="Node000002" href="$ad559xr__console_2app_2app__config_8h.html" title=": AD5592R/AD5593R device selection. Pin mappings." alt="" coords="105,123,209,148"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="202,76,175,113,171,110,198,73"/>
-<area shape="rect" id="Node000010" title=" " alt="" coords="233,123,355,148"/>
-<area shape="poly" id="edge10_Node000001_Node000010" title=" " alt="" coords="252,73,279,110,275,113,248,76"/>
-<area shape="rect" id="Node000003" title=" " alt="" coords="5,269,76,295"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="149,150,61,260,56,257,145,147"/>
-<area shape="rect" id="Node000004" href="$ad559xr__console_2app_2app__config__mbed_8h.html" title="Header file for Mbed platform configurations." alt="" coords="199,196,347,221"/>
-<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="177,146,243,186,241,191,174,150"/>
-<area shape="poly" id="edge4_Node000004_Node000003" title=" " alt="" coords="236,224,90,268,88,263,235,219"/>
-<area shape="rect" id="Node000005" title=" " alt="" coords="100,269,200,295"/>
-<area shape="poly" id="edge5_Node000004_Node000005" title=" " alt="" coords="254,224,183,265,180,260,252,219"/>
-<area shape="rect" id="Node000006" title=" " alt="" coords="224,269,321,295"/>
-<area shape="poly" id="edge6_Node000004_Node000006" title=" " alt="" coords="275,222,275,256,270,256,270,222"/>
-<area shape="rect" id="Node000007" title=" " alt="" coords="345,269,443,295"/>
-<area shape="poly" id="edge7_Node000004_Node000007" title=" " alt="" coords="294,219,364,260,361,265,291,224"/>
-<area shape="rect" id="Node000008" title=" " alt="" coords="467,269,574,295"/>
-<area shape="poly" id="edge8_Node000004_Node000008" title=" " alt="" coords="313,219,468,263,467,268,312,224"/>
-<area shape="rect" id="Node000009" title=" " alt="" coords="599,269,789,295"/>
-<area shape="poly" id="edge9_Node000004_Node000009" title=" " alt="" coords="341,219,613,264,612,270,340,224"/>
+<area shape="rect" id="Node000001" title=": Device parameters, structure and reset condition settings" alt="" coords="178,5,497,75"/>
+<area shape="rect" id="Node000002" href="$ad559xr__console_2app_2app__config_8h.html" title=": AD5592R/AD5593R device selection. Pin mappings." alt="" coords="217,123,321,148"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="315,76,288,113,284,110,311,73"/>
+<area shape="rect" id="Node000013" title=" " alt="" coords="345,123,468,148"/>
+<area shape="poly" id="edge12_Node000001_Node000013" title=" " alt="" coords="364,73,392,110,388,113,360,76"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="101,196,171,221"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="249,150,171,192,169,187,247,146"/>
+<area shape="rect" id="Node000004" href="$common__macros_8h.html" title="The file contain common macros that needs to be followed same across all the projects." alt="" coords="196,196,343,221"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="272,148,272,182,267,182,267,148"/>
+<area shape="rect" id="Node000005" href="$ad559xr__console_2app_2app__config__stm32_8h.html" title="Header file for STM32 platform configurations." alt="" coords="367,196,519,221"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="298,146,403,188,401,193,296,150"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="5,269,107,295"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="381,224,121,272,120,266,380,219"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="131,269,239,295"/>
+<area shape="poly" id="edge6_Node000005_Node000007" title=" " alt="" coords="402,224,241,268,239,263,401,219"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="264,269,363,295"/>
+<area shape="poly" id="edge7_Node000005_Node000008" title=" " alt="" coords="423,224,348,265,346,260,421,219"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="387,269,498,295"/>
+<area shape="poly" id="edge8_Node000005_Node000009" title=" " alt="" coords="445,222,445,256,440,256,440,222"/>
+<area shape="rect" id="Node000010" title=" " alt="" coords="523,269,624,295"/>
+<area shape="poly" id="edge9_Node000005_Node000010" title=" " alt="" coords="465,219,541,260,539,265,462,224"/>
+<area shape="rect" id="Node000011" title=" " alt="" coords="648,269,795,295"/>
+<area shape="poly" id="edge10_Node000005_Node000011" title=" " alt="" coords="488,219,664,263,662,268,487,224"/>
+<area shape="rect" id="Node000012" title=" " alt="" coords="819,269,885,295"/>
+<area shape="poly" id="edge11_Node000005_Node000012" title=" " alt="" coords="519,218,649,238,805,267,804,272,648,243,519,223"/>
 </map>

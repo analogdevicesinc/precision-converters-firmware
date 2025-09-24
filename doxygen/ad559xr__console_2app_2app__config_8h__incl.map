@@ -1,18 +1,23 @@
 <map id="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad559xr_console/app/app_config.h" name="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad559xr_console/app/app_config.h">
-<area shape="rect" id="Node000001" title=": AD5592R/AD5593R device selection. Pin mappings." alt="" coords="31,5,282,75"/>
-<area shape="rect" id="Node000002" title=" " alt="" coords="5,196,76,221"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="135,76,59,186,54,183,131,73"/>
-<area shape="rect" id="Node000003" href="$ad559xr__console_2app_2app__config__mbed_8h.html" title="Header file for Mbed platform configurations." alt="" coords="199,123,347,148"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="200,73,249,112,246,116,197,77"/>
-<area shape="poly" id="edge3_Node000003_Node000002" title=" " alt="" coords="236,151,90,195,88,190,235,145"/>
-<area shape="rect" id="Node000004" title=" " alt="" coords="100,196,200,221"/>
-<area shape="poly" id="edge4_Node000003_Node000004" title=" " alt="" coords="254,150,183,191,180,187,252,146"/>
-<area shape="rect" id="Node000005" title=" " alt="" coords="224,196,321,221"/>
-<area shape="poly" id="edge5_Node000003_Node000005" title=" " alt="" coords="275,148,275,182,270,182,270,148"/>
-<area shape="rect" id="Node000006" title=" " alt="" coords="345,196,443,221"/>
-<area shape="poly" id="edge6_Node000003_Node000006" title=" " alt="" coords="294,146,364,187,361,191,291,150"/>
-<area shape="rect" id="Node000007" title=" " alt="" coords="467,196,574,221"/>
-<area shape="poly" id="edge7_Node000003_Node000007" title=" " alt="" coords="313,145,468,190,467,195,312,151"/>
-<area shape="rect" id="Node000008" title=" " alt="" coords="599,196,789,221"/>
-<area shape="poly" id="edge8_Node000003_Node000008" title=" " alt="" coords="341,145,613,191,612,196,340,151"/>
+<area shape="rect" id="Node000001" title=": AD5592R/AD5593R device selection. Pin mappings." alt="" coords="144,5,395,75"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="101,123,171,148"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="223,77,166,117,162,112,220,73"/>
+<area shape="rect" id="Node000003" href="$common__macros_8h.html" title="The file contain common macros that needs to be followed same across all the projects." alt="" coords="196,123,343,148"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="272,75,272,109,267,109,267,75"/>
+<area shape="rect" id="Node000004" href="$ad559xr__console_2app_2app__config__stm32_8h.html" title="Header file for STM32 platform configurations." alt="" coords="367,123,519,148"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="333,72,410,114,408,118,331,77"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="5,196,107,221"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="381,151,121,198,120,193,380,145"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="131,196,239,221"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="402,151,241,195,239,190,401,145"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="264,196,363,221"/>
+<area shape="poly" id="edge6_Node000004_Node000007" title=" " alt="" coords="423,150,348,191,346,187,421,146"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="387,196,498,221"/>
+<area shape="poly" id="edge7_Node000004_Node000008" title=" " alt="" coords="445,148,445,182,440,182,440,148"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="523,196,624,221"/>
+<area shape="poly" id="edge8_Node000004_Node000009" title=" " alt="" coords="465,146,541,187,539,192,462,150"/>
+<area shape="rect" id="Node000010" title=" " alt="" coords="648,196,795,221"/>
+<area shape="poly" id="edge9_Node000004_Node000010" title=" " alt="" coords="488,145,664,190,662,195,487,151"/>
+<area shape="rect" id="Node000011" title=" " alt="" coords="819,196,885,221"/>
+<area shape="poly" id="edge10_Node000004_Node000011" title=" " alt="" coords="519,145,649,165,805,193,804,198,648,170,519,150"/>
 </map>

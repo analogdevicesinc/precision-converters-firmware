@@ -89,51 +89,46 @@ $(document).ready(function() { init_codefold(0); });
 <div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="preprocessor">#define _APP_CONFIG_H_</span></div>
 <div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span> </div>
 <div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="preprocessor">#include &lt;stdint.h&gt;</span></div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span> </div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="comment">/******************************************************************************/</span></div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="comment">/************************* Macros &amp; Constant Definitions ***************************/</span></div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="comment">/******************************************************************************/</span></div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span> </div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno"><a class="line" href="ad559xr__console_2app_2app__config_8h.html#a053837cf4ec7ed65d18c930324db4f1e">   27</a></span><span class="preprocessor">#define MBED_PLATFORM       1</span></div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno"><a class="line" href="ad559xr__console_2app_2app__config_8h.html#adaf57100c5a484ccdbcea26419175a82">   28</a></span><span class="preprocessor">#define STM32_PLATFORM      2</span></div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span> </div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span><span class="comment">/* Select the active platform  */</span></div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span><span class="preprocessor">#if !defined(ACTIVE_PLATFORM)</span></div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno"><a class="line" href="ad559xr__console_2app_2app__config_8h.html#a1febd5b25e6629777aa06ad047592958">   32</a></span><span class="preprocessor">#define ACTIVE_PLATFORM     STM32_PLATFORM</span></div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span> </div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span><span class="comment">// Supported Devices</span></div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno"><a class="line" href="ad559xr__console_2app_2app__config_8h.html#afd3ca03487de95a78f7a9fe6533011c6">   36</a></span><span class="preprocessor">#define DEV_AD5592R 0</span></div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno"><a class="line" href="ad559xr__console_2app_2app__config_8h.html#a5459e60cc3ae391f9930b63368c139d5">   37</a></span><span class="preprocessor">#define DEV_AD5593R 1</span></div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="preprocessor">#include &lt;<a class="code" href="common__macros_8h.html">common_macros.h</a>&gt;</span></div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span> </div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="comment">/******************************************************************************/</span></div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="comment">/************************* Macros &amp; Constant Definitions ***************************/</span></div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="comment">/******************************************************************************/</span></div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span> </div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="comment">/* Select the active platform  */</span></div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span><span class="preprocessor">#if !defined(ACTIVE_PLATFORM)</span></div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno"><a class="line" href="ad559xr__console_2app_2app__config_8h.html#a1febd5b25e6629777aa06ad047592958">   30</a></span><span class="preprocessor">#define ACTIVE_PLATFORM     STM32_PLATFORM</span></div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span> </div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span><span class="comment">// Supported Devices</span></div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno"><a class="line" href="ad559xr__console_2app_2app__config_8h.html#afd3ca03487de95a78f7a9fe6533011c6">   34</a></span><span class="preprocessor">#define DEV_AD5592R 0</span></div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno"><a class="line" href="ad559xr__console_2app_2app__config_8h.html#a5459e60cc3ae391f9930b63368c139d5">   35</a></span><span class="preprocessor">#define DEV_AD5593R 1</span></div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span> </div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno"><a class="line" href="ad559xr__console_2app_2app__config_8h.html#aae340fc1192f0353f366e05a246df4f3">   37</a></span><span class="preprocessor">#define AD5593R_A0_STATE 0</span></div>
 <div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span> </div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno"><a class="line" href="ad559xr__console_2app_2app__config_8h.html#aae340fc1192f0353f366e05a246df4f3">   39</a></span><span class="preprocessor">#define AD5593R_A0_STATE 0</span></div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span> </div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span><span class="comment">// **** Note for User: ACTIVE_DEVICE selection ****</span></div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span><span class="comment">// Define the device type here from the list of below device type defines</span></div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span><span class="comment">// e.g. #define ACTIVE_DEVICE ID_AD5593R -&gt; This will set AD5593R as an ACTIVE_DEVICE.</span></div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span><span class="comment">// The ACTIVE_DEVICE is default set to AD5592R, if device type is not defined.</span></div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span> </div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span><span class="preprocessor">#if !defined(ACTIVE_DEVICE)</span></div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno"><a class="line" href="ad559xr__console_2app_2app__config_8h.html#a0fc7203e096dd2150cf9b6618eba7223">   47</a></span><span class="preprocessor">#define ACTIVE_DEVICE  DEV_AD5592R</span></div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span><span class="comment">// **** Note for User: ACTIVE_DEVICE selection ****</span></div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span><span class="comment">// Define the device type here from the list of below device type defines</span></div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span><span class="comment">// e.g. #define ACTIVE_DEVICE ID_AD5593R -&gt; This will set AD5593R as an ACTIVE_DEVICE.</span></div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span><span class="comment">// The ACTIVE_DEVICE is default set to AD5592R, if device type is not defined.</span></div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span> </div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span><span class="preprocessor">#if !defined(ACTIVE_DEVICE)</span></div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno"><a class="line" href="ad559xr__console_2app_2app__config_8h.html#a0fc7203e096dd2150cf9b6618eba7223">   45</a></span><span class="preprocessor">#define ACTIVE_DEVICE  DEV_AD5592R</span></div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span> </div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno"><a class="line" href="ad559xr__console_2app_2app__config_8h.html#ae5597ce31d23d11493e6e674fe257d73">   48</a></span><span class="preprocessor">#define NUM_CHANNELS 8</span></div>
 <div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span> </div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno"><a class="line" href="ad559xr__console_2app_2app__config_8h.html#ae5597ce31d23d11493e6e674fe257d73">   50</a></span><span class="preprocessor">#define NUM_CHANNELS 8</span></div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno"><a class="line" href="ad559xr__console_2app_2app__config_8h.html#a0cb642290c66b466e70f0f5db750c526">   50</a></span><span class="preprocessor">#define AD5593R_I2C (0x10 | (AD5593R_A0_STATE &amp; 0x01))</span></div>
 <div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span> </div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno"><a class="line" href="ad559xr__console_2app_2app__config_8h.html#a0cb642290c66b466e70f0f5db750c526">   52</a></span><span class="preprocessor">#define AD5593R_I2C (0x10 | (AD5593R_A0_STATE &amp; 0x01))</span></div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span> </div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span><span class="preprocessor">#if (ACTIVE_PLATFORM == MBED_PLATFORM)</span></div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span><span class="preprocessor">#include &quot;<a class="code" href="nanodac__console_2app_2app__config__mbed_8h.html">app_config_mbed.h</a>&quot;</span></div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno"><a class="line" href="ad559xr__console_2app_2app__config_8h.html#a7743e2deaf9fd761da296dcf8f9dc4e5">   56</a></span><span class="preprocessor">#define spi_init_extra_params   mbed_spi_extra_init_params</span></div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno"><a class="line" href="ad559xr__console_2app_2app__config_8h.html#ae0cff2fb4f94e6f7ea5a60aaaff89c57">   57</a></span><span class="preprocessor">#define i2c_init_extra_params   mbed_i2c_extra_init_params</span></div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span><span class="preprocessor">#else</span></div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span><span class="preprocessor">#include &quot;app_config_stm32.h&quot;</span></div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span><span class="preprocessor">#define spi_init_extra_params  stm32_spi_extra_init_params</span></div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span><span class="preprocessor">#define i2c_init_extra_params   stm32_i2c_extra_init_params</span></div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span><span class="preprocessor">#define uart_extra_init_params  stm32_uart_extra_init_params</span></div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span> </div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span><span class="preprocessor">#endif </span><span class="comment">//_APP_CONFIG_H_</span></div>
-<div class="ttc" id="ananodac__console_2app_2app__config__mbed_8h_html"><div class="ttname"><a href="nanodac__console_2app_2app__config__mbed_8h.html">app_config_mbed.h</a></div><div class="ttdoc">Header file for Mbed platform configurations.</div></div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span><span class="preprocessor">#if (ACTIVE_PLATFORM == STM32_PLATFORM)</span></div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span><span class="preprocessor">#include &quot;<a class="code" href="nanodac__console_2app_2app__config__stm32_8h.html">app_config_stm32.h</a>&quot;</span></div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno"><a class="line" href="ad559xr__console_2app_2app__config_8h.html#a7743e2deaf9fd761da296dcf8f9dc4e5">   54</a></span><span class="preprocessor">#define spi_init_extra_params  stm32_spi_extra_init_params</span></div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno"><a class="line" href="ad559xr__console_2app_2app__config_8h.html#ae0cff2fb4f94e6f7ea5a60aaaff89c57">   55</a></span><span class="preprocessor">#define i2c_init_extra_params   stm32_i2c_extra_init_params</span></div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno"><a class="line" href="ad559xr__console_2app_2app__config_8h.html#a0218303728bba1f6bc0b725266ccbbd4">   56</a></span><span class="preprocessor">#define uart_extra_init_params  stm32_uart_extra_init_params</span></div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span> </div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span><span class="preprocessor">#endif </span><span class="comment">//_APP_CONFIG_H_</span></div>
+<div class="ttc" id="acommon__macros_8h_html"><div class="ttname"><a href="common__macros_8h.html">common_macros.h</a></div><div class="ttdoc">The file contain common macros that needs to be followed same across all the projects.</div></div>
+<div class="ttc" id="ananodac__console_2app_2app__config__stm32_8h_html"><div class="ttname"><a href="nanodac__console_2app_2app__config__stm32_8h.html">app_config_stm32.h</a></div><div class="ttdoc">Header file for STM32 platform configurations.</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
