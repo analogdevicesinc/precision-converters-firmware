@@ -48,6 +48,8 @@ struct no_os_uart_init_param uart_init_params = {
 	.size = NO_OS_UART_CS_8,
 	.parity = NO_OS_UART_PAR_NO,
 	.stop = NO_OS_UART_STOP_1_BIT,
+	.asynchronous_rx = true,
+	.irq_id = UART_IRQ_ID,
 #if defined(USE_VIRTUAL_COM_PORT)
 	.platform_ops = &vcom_ops,
 	.extra = &vcom_extra_init_params
@@ -80,13 +82,6 @@ struct no_os_gpio_init_param gpio_init_sync_inb = {
 	.port = SYNC_INB_PORT,
 	.platform_ops = &gpio_ops,
 	.extra = &gpio_sync_inb_extra_init_params
-};
-
-/* LED GPO init parameters */
-static struct no_os_gpio_init_param led_gpio_init_params = {
-	.number = LED_GPO,
-	.platform_ops = &gpio_ops,
-	.extra = NULL
 };
 
 #if (INTERFACE_MODE == SPI_INTERRUPT_MODE)
@@ -122,6 +117,7 @@ struct no_os_tdm_init_param tdm_init_param = {
 	.rising_edge_sampling = false,
 	.irq_id = DMA_IRQ_ID,
 	.rx_complete_callback = ad4170_dma_rx_cplt,
+	.active_slots = (1 << TDM_SLOTS_PER_FRAME) - 1,
 #if (DATA_CAPTURE_MODE == CONTINUOUS_DATA_CAPTURE)
 	.rx_half_complete_callback = ad4170_dma_rx_half_cplt,
 #endif
@@ -132,30 +128,6 @@ struct no_os_tdm_init_param tdm_init_param = {
 /* TDM Descriptor */
 struct no_os_tdm_desc *ad4170_tdm_desc;
 #endif // INTERFACE_MODE
-
-/* TODO: Ticker event for LED toggling in device error detection is
- * only supported for Mbed platform for now */
-#if (ACTIVE_PLATFORM == MBED_PLATFORM)
-/* Ticker interrupt init parameters
- * Note: Ticker timer is used for error LED toggling with remote
- * IIO client and for LVGL tick base with local (display)
- * IIO client
- * */
-static struct no_os_irq_init_param ticker_int_init_params = {
-	.irq_ctrl_id = TRIGGER_GPIO_IRQ_CTRL_ID,
-	.platform_ops = &ticker_irq_ops,
-	.extra = &ticker_int_extra_init_params
-};
-
-/* Ticker interrupt callback descriptor */
-static struct no_os_callback_desc ticker_int_callback_desc = {
-#if (ACTIVE_IIO_CLIENT == IIO_CLIENT_LOCAL)
-	.callback = lvgl_tick_callback,
-#else
-	.callback = ticker_callback,
-#endif
-};
-#endif // ACTIVE_PLATFORM
 
 /* I2C init parameters */
 static struct no_os_i2c_init_param no_os_i2c_init_params = {
@@ -240,18 +212,6 @@ struct no_os_gpio_desc* csb_gpio_desc;
 /************************ Functions Definitions *******************************/
 /******************************************************************************/
 
-#if (ACTIVE_IIO_CLIENT == IIO_CLIENT_LOCAL)
-/**
- * @brief 	lvgl tick update callback function for pocket lab
- * @param	ctx[in] - callback context
- * @return	none
- */
-void lvgl_tick_callback(void *ctx)
-{
-	pl_gui_lvgl_tick_update(LVGL_TICK_TIME_MS);
-}
-#endif
-
 /**
  * @brief 	Initialize the GPIOs
  * @return	0 in case of success, negative error code otherwise
@@ -260,17 +220,6 @@ void lvgl_tick_callback(void *ctx)
 static int32_t init_gpio(void)
 {
 	int32_t ret;
-
-	/* Initialize the LED GPO */
-	ret = no_os_gpio_get_optional(&led_gpio_desc, &led_gpio_init_params);
-	if (ret) {
-		return ret;
-	}
-
-	ret = no_os_gpio_direction_output(led_gpio_desc, NO_OS_GPIO_HIGH);
-	if (ret) {
-		return ret;
-	}
 
 #if (INTERFACE_MODE == TDM_MODE) || (INTERFACE_MODE == SPI_DMA_MODE)
 	/* Initialize the Chip select pin as a GPIO */
@@ -421,7 +370,7 @@ int32_t init_system(void)
 	}
 
 	/* Delay to ensure that the peripherals are initialized */
-	no_os_mdelay(2000);
+	no_os_mdelay(5000);
 
 	ret = gpio_trigger_init();
 	if (ret) {
