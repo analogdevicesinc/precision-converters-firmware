@@ -13,7 +13,7 @@
 #ifndef COMMON_MACROS_H
 #define COMMON_MACROS_H
 
-/* 
+/*
  * List of supported platforms.
  * One of these platforms is selected as the ACTIVE_PLATFORM in the app_config.h file of every project.
  */
