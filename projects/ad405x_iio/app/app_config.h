@@ -182,6 +182,7 @@ extern struct no_os_irq_ctrl_desc *pwm_irq_desc;
 extern struct no_os_uart_desc *uart_iio_com_desc;
 extern struct no_os_uart_desc *uart_console_stdio_desc;
 extern struct no_os_gpio_desc *trigger_gpio_desc;
+extern struct no_os_gpio_desc *cs_gpio_desc;
 extern struct no_os_irq_ctrl_desc *trigger_irq_desc;
 extern struct no_os_gpio_init_param cs_pwm_gpio_params;
 extern struct no_os_gpio_init_param pwm_gpio_params;

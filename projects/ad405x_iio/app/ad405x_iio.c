@@ -602,6 +602,18 @@ static int iio_ad405x_attr_get(void *device,
 			return ret;
 		}
 
+		if (p_ad405x_dev->comm_type == AD405X_SPI_COMM) {
+			ret = no_os_gpio_remove(*pp_gpio_cnv);
+			if (ret) {
+				return ret;
+			}
+
+			ret = no_os_gpio_get(pp_gpio_cnv, &pwm_gpio_params);
+			if (ret) {
+				return ret;
+			}
+		}
+
 #if (ADC_DATA_FORMAT == TWOS_COMPLEMENT)
 		if (adc_raw_data >= adc_max_count) {
 			offset = -(NO_OS_BIT(resolution) - 1);
