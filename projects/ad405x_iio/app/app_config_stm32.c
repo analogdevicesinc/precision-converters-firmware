@@ -623,7 +623,9 @@ void stm32_timer_stop(void)
  */
 void stm32_cs_output_gpio_config(bool is_gpio)
 {
-	struct no_os_gpio_desc *cs_gpio_desc;
+	if (cs_gpio_desc) {
+		no_os_gpio_remove(cs_gpio_desc);
+	}
 
 	if (is_gpio) {
 		cs_pwm_gpio_params.extra = &stm32_cs_gpio_extra_init_params;
@@ -632,7 +634,6 @@ void stm32_cs_output_gpio_config(bool is_gpio)
 	}
 
 	no_os_gpio_get(&cs_gpio_desc, &cs_pwm_gpio_params);
-
 }
 
 /**
