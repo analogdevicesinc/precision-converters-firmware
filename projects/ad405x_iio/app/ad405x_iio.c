@@ -164,7 +164,7 @@ static struct scan_type ad405x_iio_scan_type = {
 
 /* Operating mode range values string representation */
 static char *ad405x_op_mode_str[] = {
-	"adc_mode",
+	"sample_mode",
 	"burst_averaging_mode",
 	"averaging_mode",
 	"config_mode",
