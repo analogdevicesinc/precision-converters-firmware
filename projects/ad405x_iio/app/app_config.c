@@ -419,30 +419,28 @@ int32_t init_pwm(void)
  */
 int32_t deinit_pwm(void)
 {
-	int32_t ret;
-
 	if (tx_trigger_desc) {
-		ret = no_os_pwm_disable(tx_trigger_desc);
-		if (ret) {
-			return ret;
-		}
+		no_os_pwm_disable(tx_trigger_desc);
 
-		ret = no_os_pwm_remove(tx_trigger_desc);
-		if (ret) {
-			return ret;
-		}
+		no_os_pwm_remove(tx_trigger_desc);
+
+		tx_trigger_desc = NULL;
+	}
+
+	if (cs_pwm_desc) {
+		no_os_pwm_disable(cs_pwm_desc);
+
+		no_os_pwm_remove(cs_pwm_desc);
+
+		cs_pwm_desc = NULL;
 	}
 
 	if (pwm_desc) {
-		ret = no_os_pwm_disable(pwm_desc);
-		if (ret) {
-			return ret;
-		}
+		no_os_pwm_disable(pwm_desc);
 
-		ret = no_os_pwm_remove(pwm_desc);
-		if (ret) {
-			return ret;
-		}
+		no_os_pwm_remove(pwm_desc);
+
+		pwm_desc = NULL;
 	}
 
 	return 0;

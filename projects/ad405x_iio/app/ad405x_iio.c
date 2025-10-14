@@ -1600,6 +1600,7 @@ void iio_ad405x_event_handler(void)
 #if (APP_CAPTURE_MODE == CONTINUOUS_DATA_CAPTURE)
 		iio_hw_trig_remove(ad405x_hw_trig_desc);
 #endif
+		deinit_pwm();
 
 		ad405x_remove(p_ad405x_dev);
 
