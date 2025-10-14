@@ -351,7 +351,7 @@ void receivecomplete_callback(DMA_HandleTypeDef* hdma)
 			*  after the first linear/normal dma transfer is completed */
 			DMA2_Stream3->CR &= ~DMA_SxCR_EN; // Disable DMA
 			DMA2_Stream3->CR |= DMA_SxCR_CIRC; //circular mode enable
-			DMA2_Stream3->M0AR = global_iio_buff + 2;	// update memory address
+			DMA2_Stream3->M0AR = (uint32_t)(global_iio_buff + 2);	// update memory address
 			DMA2_Stream3->NDTR = num_of_samples * 2; // update NDTR
 
 			DMA2_Stream3->CR |= DMA_SxCR_EN; // Enable DMA
