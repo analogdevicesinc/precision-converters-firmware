@@ -12,18 +12,20 @@
 <area shape="poly" id="edge6_Node000001_Node000006" title=" " alt="" coords="297,72,419,116,417,121,295,77"/>
 <area shape="poly" id="edge5_Node000005_Node000003" title=" " alt="" coords="335,148,333,183,328,182,330,148"/>
 <area shape="poly" id="edge7_Node000006_Node000003" title=" " alt="" coords="442,150,364,192,362,187,440,146"/>
-<area shape="rect" id="Node000007" href="$ad4080__iio_2app_2app__config__stm32_8h.html" title="Header file for STM32 platform configurations." alt="" coords="389,196,541,221"/>
-<area shape="poly" id="edge8_Node000006_Node000007" title=" " alt="" coords="466,148,467,182,462,183,460,148"/>
-<area shape="rect" id="Node000008" title=" " alt="" coords="125,269,192,295"/>
-<area shape="poly" id="edge9_Node000007_Node000008" title=" " alt="" coords="414,224,206,272,205,266,413,219"/>
-<area shape="rect" id="Node000009" title=" " alt="" coords="217,269,325,295"/>
-<area shape="poly" id="edge10_Node000007_Node000009" title=" " alt="" coords="435,224,316,267,314,262,433,219"/>
-<area shape="rect" id="Node000010" title=" " alt="" coords="349,269,451,295"/>
-<area shape="poly" id="edge11_Node000007_Node000010" title=" " alt="" coords="457,223,422,261,418,257,453,220"/>
-<area shape="rect" id="Node000011" title=" " alt="" coords="475,269,586,295"/>
-<area shape="poly" id="edge12_Node000007_Node000011" title=" " alt="" coords="478,220,513,257,509,261,474,223"/>
-<area shape="rect" id="Node000012" title=" " alt="" coords="611,269,712,295"/>
-<area shape="poly" id="edge13_Node000007_Node000012" title=" " alt="" coords="498,219,617,262,616,267,496,224"/>
-<area shape="rect" id="Node000013" title=" " alt="" coords="737,269,847,295"/>
-<area shape="poly" id="edge14_Node000007_Node000013" title=" " alt="" coords="518,219,726,264,725,269,517,224"/>
+<area shape="rect" id="Node000007" href="$common__macros_8h.html" title="The file contain common macros that needs to be followed same across all the projects." alt="" coords="389,196,536,221"/>
+<area shape="poly" id="edge8_Node000006_Node000007" title=" " alt="" coords="465,148,465,182,460,182,460,148"/>
+<area shape="rect" id="Node000008" href="$ad4080__iio_2app_2app__config__stm32_8h.html" title="Header file for STM32 platform configurations." alt="" coords="560,196,712,221"/>
+<area shape="poly" id="edge9_Node000006_Node000008" title=" " alt="" coords="492,146,596,188,594,193,490,150"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="296,269,363,295"/>
+<area shape="poly" id="edge10_Node000008_Node000009" title=" " alt="" coords="585,224,377,272,376,266,584,219"/>
+<area shape="rect" id="Node000010" title=" " alt="" coords="387,269,495,295"/>
+<area shape="poly" id="edge11_Node000008_Node000010" title=" " alt="" coords="606,224,487,267,485,262,604,219"/>
+<area shape="rect" id="Node000011" title=" " alt="" coords="520,269,621,295"/>
+<area shape="poly" id="edge12_Node000008_Node000011" title=" " alt="" coords="627,223,592,261,589,257,623,220"/>
+<area shape="rect" id="Node000012" title=" " alt="" coords="646,269,757,295"/>
+<area shape="poly" id="edge13_Node000008_Node000012" title=" " alt="" coords="649,220,683,257,680,261,645,223"/>
+<area shape="rect" id="Node000013" title=" " alt="" coords="781,269,883,295"/>
+<area shape="poly" id="edge14_Node000008_Node000013" title=" " alt="" coords="668,219,788,262,786,267,667,224"/>
+<area shape="rect" id="Node000014" title=" " alt="" coords="907,269,1018,295"/>
+<area shape="poly" id="edge15_Node000008_Node000014" title=" " alt="" coords="689,219,897,264,896,269,688,224"/>
 </map>

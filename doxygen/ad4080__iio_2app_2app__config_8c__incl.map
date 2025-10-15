@@ -1,46 +1,48 @@
 <map id="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad4080_iio/app/app_config.c" name="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad4080_iio/app/app_config.c">
-<area shape="rect" id="Node000001" title="Application configurations module." alt="" coords="767,5,990,75"/>
+<area shape="rect" id="Node000001" title="Application configurations module." alt="" coords="823,5,1046,75"/>
 <area shape="rect" id="Node000002" title=" " alt="" coords="446,196,517,221"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="800,77,522,193,520,188,798,72"/>
-<area shape="rect" id="Node000003" href="$ad4080__iio_2app_2app__config_8h.html" title="Configuration file for AD4080 IIO firmware application." alt="" coords="429,123,533,148"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="768,70,544,122,543,117,766,65"/>
-<area shape="rect" id="Node000011" href="$common_8h.html" title=" " alt="" coords="751,123,841,148"/>
-<area shape="poly" id="edge11_Node000001_Node000011" title=" " alt="" coords="851,77,817,114,813,110,847,73"/>
-<area shape="rect" id="Node000018" title=" " alt="" coords="1179,196,1288,221"/>
-<area shape="poly" id="edge20_Node000001_Node000018" title=" " alt="" coords="881,74,887,113,895,131,907,146,1165,193,1165,198,904,150,891,133,882,114,875,75"/>
-<area shape="rect" id="Node000019" title=" " alt="" coords="917,123,1030,148"/>
-<area shape="poly" id="edge21_Node000001_Node000019" title=" " alt="" coords="915,73,954,111,950,115,911,77"/>
-<area shape="rect" id="Node000020" title=" " alt="" coords="1055,123,1161,148"/>
-<area shape="poly" id="edge22_Node000001_Node000020" title=" " alt="" coords="962,72,1068,115,1066,120,960,77"/>
-<area shape="rect" id="Node000021" title=" " alt="" coords="1185,123,1284,148"/>
-<area shape="poly" id="edge23_Node000001_Node000021" title=" " alt="" coords="991,68,1178,116,1177,122,990,73"/>
-<area shape="poly" id="edge3_Node000003_Node000002" title=" " alt="" coords="484,148,484,182,479,182,479,148"/>
-<area shape="rect" id="Node000004" href="$ad4080__iio_2app_2app__config__stm32_8h.html" title="Header file for STM32 platform configurations." alt="" coords="269,196,421,221"/>
-<area shape="poly" id="edge4_Node000003_Node000004" title=" " alt="" coords="461,150,381,192,378,187,458,146"/>
-<area shape="rect" id="Node000005" title=" " alt="" coords="5,269,72,295"/>
-<area shape="poly" id="edge5_Node000004_Node000005" title=" " alt="" coords="294,224,86,272,85,266,293,219"/>
-<area shape="rect" id="Node000006" title=" " alt="" coords="97,269,205,295"/>
-<area shape="poly" id="edge6_Node000004_Node000006" title=" " alt="" coords="315,224,196,267,194,262,313,219"/>
-<area shape="rect" id="Node000007" title=" " alt="" coords="229,269,331,295"/>
-<area shape="poly" id="edge7_Node000004_Node000007" title=" " alt="" coords="337,223,302,261,298,257,333,220"/>
-<area shape="rect" id="Node000008" title=" " alt="" coords="355,269,466,295"/>
-<area shape="poly" id="edge8_Node000004_Node000008" title=" " alt="" coords="358,220,393,257,389,261,354,223"/>
-<area shape="rect" id="Node000009" title=" " alt="" coords="491,269,592,295"/>
-<area shape="poly" id="edge9_Node000004_Node000009" title=" " alt="" coords="378,219,497,262,496,267,376,224"/>
-<area shape="rect" id="Node000010" title=" " alt="" coords="617,269,727,295"/>
-<area shape="poly" id="edge10_Node000004_Node000010" title=" " alt="" coords="398,219,606,264,605,269,397,224"/>
-<area shape="poly" id="edge12_Node000011_Node000002" title=" " alt="" coords="751,149,531,198,530,193,750,144"/>
-<area shape="rect" id="Node000012" title=" " alt="" coords="885,196,968,221"/>
-<area shape="poly" id="edge13_Node000011_Node000012" title=" " alt="" coords="818,146,895,187,892,192,816,150"/>
-<area shape="rect" id="Node000013" title=" " alt="" coords="993,196,1063,221"/>
-<area shape="poly" id="edge14_Node000011_Node000013" title=" " alt="" coords="834,145,980,190,979,195,832,151"/>
-<area shape="rect" id="Node000014" title=" " alt="" coords="1088,196,1155,221"/>
-<area shape="poly" id="edge15_Node000011_Node000014" title=" " alt="" coords="842,143,1075,193,1074,198,841,148"/>
-<area shape="rect" id="Node000015" title=" " alt="" coords="541,196,592,221"/>
-<area shape="poly" id="edge16_Node000011_Node000015" title=" " alt="" coords="760,151,606,198,604,193,758,145"/>
-<area shape="rect" id="Node000016" title=" " alt="" coords="616,196,707,221"/>
-<area shape="poly" id="edge17_Node000011_Node000016" title=" " alt="" coords="776,150,697,192,694,187,773,146"/>
-<area shape="rect" id="Node000017" title=" " alt="" coords="731,196,861,221"/>
-<area shape="poly" id="edge18_Node000011_Node000017" title=" " alt="" coords="799,148,799,182,793,182,793,148"/>
-<area shape="poly" id="edge19_Node000011_Node000018" title=" " alt="" coords="842,142,860,145,1165,193,1164,198,860,151,841,147"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="844,77,526,194,524,189,843,72"/>
+<area shape="rect" id="Node000003" href="$ad4080__iio_2app_2app__config_8h.html" title="Configuration file for AD4080 IIO firmware application." alt="" coords="361,123,465,148"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="823,64,479,125,478,120,822,59"/>
+<area shape="rect" id="Node000012" href="$common_8h.html" title=" " alt="" coords="807,123,897,148"/>
+<area shape="poly" id="edge12_Node000001_Node000012" title=" " alt="" coords="907,77,873,114,869,110,903,73"/>
+<area shape="rect" id="Node000019" title=" " alt="" coords="1179,196,1288,221"/>
+<area shape="poly" id="edge21_Node000001_Node000019" title=" " alt="" coords="937,74,944,112,951,131,963,146,1037,166,1166,192,1165,197,1036,171,960,150,947,133,939,114,932,75"/>
+<area shape="rect" id="Node000020" title=" " alt="" coords="973,123,1086,148"/>
+<area shape="poly" id="edge22_Node000001_Node000020" title=" " alt="" coords="971,73,1010,111,1006,115,967,77"/>
+<area shape="rect" id="Node000021" title=" " alt="" coords="1111,123,1217,148"/>
+<area shape="poly" id="edge23_Node000001_Node000021" title=" " alt="" coords="1018,72,1124,115,1122,120,1016,77"/>
+<area shape="rect" id="Node000022" title=" " alt="" coords="1241,123,1340,148"/>
+<area shape="poly" id="edge24_Node000001_Node000022" title=" " alt="" coords="1047,68,1234,116,1233,122,1046,73"/>
+<area shape="poly" id="edge3_Node000003_Node000002" title=" " alt="" coords="426,146,463,184,459,188,423,150"/>
+<area shape="rect" id="Node000004" href="$common__macros_8h.html" title="The file contain common macros that needs to be followed same across all the projects." alt="" coords="99,196,245,221"/>
+<area shape="poly" id="edge4_Node000003_Node000004" title=" " alt="" coords="375,151,225,195,224,189,374,145"/>
+<area shape="rect" id="Node000005" href="$ad4080__iio_2app_2app__config__stm32_8h.html" title="Header file for STM32 platform configurations." alt="" coords="269,196,421,221"/>
+<area shape="poly" id="edge5_Node000003_Node000005" title=" " alt="" coords="404,150,368,188,364,184,400,146"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="5,269,72,295"/>
+<area shape="poly" id="edge6_Node000005_Node000006" title=" " alt="" coords="294,224,86,272,85,266,293,219"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="97,269,205,295"/>
+<area shape="poly" id="edge7_Node000005_Node000007" title=" " alt="" coords="315,224,196,267,194,262,313,219"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="229,269,331,295"/>
+<area shape="poly" id="edge8_Node000005_Node000008" title=" " alt="" coords="337,223,302,261,298,257,333,220"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="355,269,466,295"/>
+<area shape="poly" id="edge9_Node000005_Node000009" title=" " alt="" coords="358,220,393,257,389,261,354,223"/>
+<area shape="rect" id="Node000010" title=" " alt="" coords="491,269,592,295"/>
+<area shape="poly" id="edge10_Node000005_Node000010" title=" " alt="" coords="378,219,497,262,496,267,376,224"/>
+<area shape="rect" id="Node000011" title=" " alt="" coords="617,269,727,295"/>
+<area shape="poly" id="edge11_Node000005_Node000011" title=" " alt="" coords="398,219,606,264,605,269,397,224"/>
+<area shape="poly" id="edge13_Node000012_Node000002" title=" " alt="" coords="807,147,531,198,530,193,806,142"/>
+<area shape="rect" id="Node000013" title=" " alt="" coords="811,196,893,221"/>
+<area shape="poly" id="edge14_Node000012_Node000013" title=" " alt="" coords="855,148,855,182,849,182,849,148"/>
+<area shape="rect" id="Node000014" title=" " alt="" coords="918,196,989,221"/>
+<area shape="poly" id="edge15_Node000012_Node000014" title=" " alt="" coords="870,146,927,186,924,190,867,150"/>
+<area shape="rect" id="Node000015" title=" " alt="" coords="1013,196,1080,221"/>
+<area shape="poly" id="edge16_Node000012_Node000015" title=" " alt="" coords="884,146,1003,189,1001,194,882,151"/>
+<area shape="rect" id="Node000016" title=" " alt="" coords="1104,196,1155,221"/>
+<area shape="poly" id="edge17_Node000012_Node000016" title=" " alt="" coords="898,145,1091,193,1090,198,897,150"/>
+<area shape="rect" id="Node000017" title=" " alt="" coords="541,196,632,221"/>
+<area shape="poly" id="edge18_Node000012_Node000017" title=" " alt="" coords="810,151,644,195,642,190,809,145"/>
+<area shape="rect" id="Node000018" title=" " alt="" coords="657,196,786,221"/>
+<area shape="poly" id="edge19_Node000012_Node000018" title=" " alt="" coords="832,150,756,192,753,187,830,146"/>
+<area shape="poly" id="edge20_Node000012_Node000019" title=" " alt="" coords="898,142,1166,192,1165,197,897,148"/>
 </map>
