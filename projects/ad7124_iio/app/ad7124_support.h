@@ -2,7 +2,7 @@
   *@file  ad7124_support.h
   *@brief Provides useful support functions for the AD7124 NoOS driver
 ******************************************************************************
-* Copyright (c) 2023-24 Analog Devices, Inc.
+* Copyright (c) 2023-25 Analog Devices, Inc.
 * All rights reserved.
 *
 * This software is proprietary to Analog Devices, Inc. and its licensors.
@@ -32,7 +32,7 @@
  * or failed in between.
  * Note: This timeout factor is dependent upon the MCU clock frequency. Below timeout
  * is tested for SDP-K1 platform @180Mhz default core clock */
-#define AD7124_CONV_TIMEOUT 1000000
+#define AD7124_CONV_TIMEOUT 0xffffffff
 
 /******************************************************************************/
 /********************** Variables and User Defined Data Types *****************/

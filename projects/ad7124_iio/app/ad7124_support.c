@@ -2,7 +2,7 @@
   *@file  ad7124_support.c
   *@brief Provides useful support functions for the AD7124 NoOS driver
 ******************************************************************************
-* Copyright (c) 2023-24 Analog Devices, Inc.
+* Copyright (c) 2023-25 Analog Devices, Inc.
 * All rights reserved.
 *
 * This software is proprietary to Analog Devices, Inc. and its licensors.
@@ -46,11 +46,12 @@ int ad7124_get_polarity(struct ad7124_dev *dev,
 			enum ad7124_input_polarity *polarity)
 {
 	uint8_t setup_id;
-	setup_id = dev->chan_map[chn].setup_sel;
 
 	if (!dev || !polarity) {
 		return -EINVAL;
 	}
+
+	setup_id = dev->chan_map[chn].setup_sel;
 
 	if (dev->setups[setup_id].bi_unipolar) {
 		*polarity = AD7124_BIPOLAR;
