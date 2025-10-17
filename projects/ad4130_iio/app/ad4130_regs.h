@@ -26,7 +26,7 @@
 
 /* Max register address available (last register address defined
  * in the ad413x.h file) */
-#define MAX_REGISTER_ADDRESS	(AD413X_ADDR(AD413X_REG_FIFO_DATA))
+#define AD4130_MAX_REGISTER_ADDRESS  (AD413X_ADDR(AD413X_REG_FIFO_DATA))
 
 /******************************************************************************/
 /************************ Public Declarations *********************************/
