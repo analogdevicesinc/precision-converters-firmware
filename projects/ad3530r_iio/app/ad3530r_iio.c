@@ -23,6 +23,7 @@
 #include "ad3530r_support.h"
 #include "no_os_error.h"
 #include "no_os_util.h"
+#include "no_os_delay.h"
 #include "no_os_gpio.h"
 #include "no_os_pwm.h"
 #include "no_os_alloc.h"
@@ -110,13 +111,6 @@ static int8_t dac_data_buffer[DATA_BUFFER_SIZE];
 /* IIO trigger name */
 #define AD3530R_IIO_TRIGGER_NAME		"ad353xr_iio_trigger"
 
-/* Descriptor to hold iio trigger details */
-static struct iio_trigger ad3530r_iio_trig_desc = {
-	.is_synchronous = true,
-	.enable = NULL,
-	.disable = NULL
-};
-
 /******************************************************************************/
 /*************************** Types Declarations *******************************/
 /******************************************************************************/
@@ -129,8 +123,10 @@ static struct iio_desc *ad3530r_iio_desc;
 /* AD3530R IIO device descriptor */
 struct iio_device *ad3530r_iio_dev;
 
+#if (INTERFACE_MODE == SPI_INTERRUPT)
 /* AD3530R IIO hw trigger descriptor */
 static struct iio_hw_trig *ad3530r_hw_trig_desc;
+#endif
 
 /* Active channel sequence */
 static volatile uint8_t ad3530r_active_chns[DAC_MAX_CHANNELS];
@@ -1238,6 +1234,7 @@ static int32_t ad3530r_iio_submit_samples(struct iio_device_data *iio_dev_data)
 	return 0;
 }
 
+#if (INTERFACE_MODE == SPI_INTERRUPT)
 /**
  * @brief	Pops one data-set from IIO buffer and writes into DAC when
 			IRQ is triggered.
@@ -1272,6 +1269,7 @@ static int32_t ad3530r_trigger_handler(struct iio_device_data *iio_dev_data)
 	chan_idx += 1;
 	return 0;
 }
+#endif
 
 /**
  * @brief	Search the debug register address in look-up table Or registers array
@@ -1447,6 +1445,7 @@ static int32_t ad3530r_iio_init(struct iio_device **desc)
 	return 0;
 }
 
+#if (INTERFACE_MODE == SPI_INTERRUPT)
 /**
  * @brief	Initialization of AD3530R IIO hardware trigger specific parameters
  * @param 	desc[in,out] - IIO hardware trigger descriptor
@@ -1487,6 +1486,7 @@ static int32_t ad3530r_iio_trigger_param_init(struct iio_hw_trig **desc)
 
 	return 0;
 }
+#endif
 
 /**
  * @brief Assign device name and resolution
@@ -1507,7 +1507,7 @@ static int32_t ad353xr_assign_device(enum ad3530r_id dev_id,
 			return ret;
 		}
 		*dev_name = (char*)ACTIVE_DEVICE_NAME;
-		ad353xr_regs = ad3530r_regs;
+		ad353xr_regs = (uint32_t *)ad3530r_regs;
 		num_of_mux_sels = AD3530R_NUM_MUX_OUT_SELECTS;
 
 		break;
@@ -1519,7 +1519,7 @@ static int32_t ad353xr_assign_device(enum ad3530r_id dev_id,
 			return ret;
 		}
 		*dev_name = (char*)"ad3531r";
-		ad353xr_regs = ad3531r_regs;
+		ad353xr_regs = (uint32_t *)ad3531r_regs;
 		num_of_mux_sels = AD3531R_NUM_MUX_OUT_SELECTS;
 		num_of_chns = AD3531R_NUM_CH;
 
@@ -1549,11 +1549,20 @@ int32_t ad3530r_iio_initialize(void)
 	enum ad3530r_id dev_id;
 	uint8_t indx;
 
+#if (INTERFACE_MODE == SPI_INTERRUPT)
+	/* Descriptor to hold iio trigger details */
+	struct iio_trigger ad3530r_iio_trig_desc = {
+		.is_synchronous = true,
+		.enable = NULL,
+		.disable = NULL
+	};
+
 	/* IIO trigger init parameters */
 	struct iio_trigger_init iio_trigger_init_params = {
 		.descriptor = &ad3530r_iio_trig_desc,
 		.name = AD3530R_IIO_TRIGGER_NAME,
 	};
+#endif
 
 	struct iio_device_init iio_device_init_params[NUM_OF_IIO_DEVICES] = {{
 			.raw_buf = dac_data_buffer,
