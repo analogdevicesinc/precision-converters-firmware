@@ -34,7 +34,7 @@ struct ad413x_init_param ad4130_user_config_params = {
 	.preset = {
 		// Setup 0
 		{
-			.ref_sel = AD413X_REFIN1,
+			.ref_sel = AD413X_REFOUT_AVSS,
 			.gain = AD413X_GAIN_1,
 			.filter = AD4130_FILTER_TYPE,
 			.s_time = AD413X_32_MCLK
@@ -146,13 +146,8 @@ struct ad413x_init_param ad4130_user_config_params = {
 	.chip_id = AD4130_8,
 	.mclk = AD413X_INT_76_8_KHZ_OUT_OFF,
 	.bipolar = true,
-	.int_ref = AD413X_INTREF_DISABLED,
-	.v_bias = NO_OS_BIT(0) | NO_OS_BIT(1) | NO_OS_BIT(2) | \
-	NO_OS_BIT(3) | NO_OS_BIT(4) | NO_OS_BIT(5) | \
-	NO_OS_BIT(6) | NO_OS_BIT(7) | NO_OS_BIT(8) | \
-	NO_OS_BIT(9) | NO_OS_BIT(10) | NO_OS_BIT(11) | \
-	NO_OS_BIT(12) | NO_OS_BIT(13) | NO_OS_BIT(14) | \
-	NO_OS_BIT(15),
+	.int_ref = AD413X_INTREF_2_5V,
+	.v_bias = 0,
 	.standby_ctrl = {
 		.standby_vbias_en = true
 	},

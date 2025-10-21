@@ -25,7 +25,7 @@
 /******************************************************************************/
 
 /* Select channel config for default user config (applicable to all channels) */
-//#define DIFFERENTIAL_CHN_CFG	// Uncomment to select differential config
+#define DIFFERENTIAL_CHN_CFG	// Uncomment to select differential config
 
 /* Select FS (or ODR) for default user config (applicable to all channels) */
 #if (FS_CONFIG_VALUE != 0)
