@@ -44,13 +44,13 @@
 #ifdef SDP_120
 
 /* STM32 SPI Specific parameters */
-#define SPI_DEVICE_ID		1 // SPI1
-#define SPI_CS_PORT	0  // GPIO Port A
-#define SPI_SS				15 // PA_15
-#else
 #define SPI_DEVICE_ID		5 // SPI5
 #define SPI_CS_PORT	1  // GPIO Port B
 #define SPI_SS				9 // PB_9
+#else
+#define SPI_DEVICE_ID		1 // SPI1
+#define SPI_CS_PORT	0  // GPIO Port A
+#define SPI_SS				15 // PA_15
 #endif
 
 /* STM32 UART specific parameters */
