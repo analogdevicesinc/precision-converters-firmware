@@ -3,7 +3,7 @@
  *   @brief   Implementation of AD4130 IIO application interfaces
  *   @details This module acts as an interface for AD4130 IIO application
 ********************************************************************************
- * Copyright (c) 2020-2023 Analog Devices, Inc.
+ * Copyright (c) 2020-2023, 2025 Analog Devices, Inc.
  * All rights reserved.
  *
  * This software is proprietary to Analog Devices, Inc. and its licensors.
@@ -330,8 +330,6 @@ static struct iio_channel ad4130_iio_channels[] = {
 	/* Note: Channel type is considered as voltage as IIO
 	 * oscilloscope doesn't support loadcell unit fomat of gram */
 	AD4130_CH("Sensor1", SENSOR_CHANNEL0, IIO_VOLTAGE),
-#elif (ACTIVE_DEMO_MODE_CONFIG == ECG_CONFIG)
-	AD4130_CH("Sensor1", SENSOR_CHANNEL0, IIO_VOLTAGE),
 #elif (ACTIVE_DEMO_MODE_CONFIG == NOISE_TEST_CONFIG)
 	AD4130_CH("Chn0", 0, IIO_VOLTAGE),
 #elif (ACTIVE_DEMO_MODE_CONFIG == POWER_TEST_CONFIG)
@@ -374,6 +372,7 @@ static bool hw_mezzanine_is_valid;
 #if (ACTIVE_IIO_CLIENT == IIO_CLIENT_LOCAL)
 /* Pocket lab GUI views init parameters */
 struct pl_gui_views pocket_lab_gui_views[] = {
+	PL_GUI_ADD_POWER_UP_DEF_VIEW,
 	PL_GUI_ADD_ATTR_EDIT_DEF_VIEW,
 	PL_GUI_ADD_REG_DEBUG_DEF_VIEW,
 	PL_GUI_ADD_DMM_DEF_VIEW,
@@ -451,8 +450,6 @@ static char *get_demo_mode_config(void)
 	return "Thermocouple";
 #elif (ACTIVE_DEMO_MODE_CONFIG == LOADCELL_CONFIG)
 	return "Loadcell";
-#elif (ACTIVE_DEMO_MODE_CONFIG == ECG_CONFIG)
-	return "ECG";
 #elif (ACTIVE_DEMO_MODE_CONFIG == NOISE_TEST_CONFIG)
 	return "Noise Test";
 #elif (ACTIVE_DEMO_MODE_CONFIG == POWER_TEST_CONFIG)
@@ -976,7 +973,7 @@ int32_t debug_reg_read(void *dev, uint32_t reg, uint32_t *readval)
 {
 	int32_t ret;
 
-	if (!dev || !readval || (reg > MAX_REGISTER_ADDRESS)) {
+	if (!dev || !readval || (reg > AD4130_MAX_REGISTER_ADDRESS)) {
 		return -EINVAL;
 	}
 
@@ -999,7 +996,7 @@ int32_t debug_reg_write(void *dev, uint32_t reg, uint32_t writeval)
 {
 	int32_t ret;
 
-	if (!dev || (reg > MAX_REGISTER_ADDRESS)) {
+	if (!dev || (reg > AD4130_MAX_REGISTER_ADDRESS)) {
 		return -EINVAL;
 	}
 
@@ -1108,6 +1105,16 @@ static int32_t read_fifo_data(struct iio_device_data *iio_dev_data,
 
 	/* Read all requeted samples into acquisition buffer */
 	do {
+#if defined(FIFO_MODE_MCU_POWER_SAVING_ENABLED)
+		while (!fifo_data_available) {
+			/* Put MCU into sleep mode until FIFO full event is detected
+			 * through RDY gpio external interrupt.
+			 * Note: The API used for putting MCU into sleep mode
+			 * is specific to STM32 ARM Cortex M4 MCUs. Mbed layer does not
+			 * provide any abstracted APIs for MCU power saving. */
+			HAL_PWR_EnterSLEEPMode(PWR_MAINREGULATOR_ON, PWR_SLEEPENTRY_WFI);
+		}
+#else
 		/* Wait for new FIFO event */
 		timeout = BUF_READ_TIMEOUT;
 		do {
@@ -1117,6 +1124,7 @@ static int32_t read_fifo_data(struct iio_device_data *iio_dev_data,
 		if (timeout == 0) {
 			return -EIO;
 		}
+#endif
 
 		fifo_data_available = false;
 
@@ -1275,6 +1283,14 @@ static int32_t iio_ad4130_prepare_transfer(void *dev,
 
 	/* Trigger new conversion */
 	ret = ad413x_set_adc_mode(ad4130_dev_inst, AD413X_CONTINOUS_CONV_MODE);
+	if (ret) {
+		return ret;
+	}
+
+	/* Clear pending Interrupt before enabling back the trigger.
+	 * Else , a spurious interrupt is observed after a legitimate interrupt,
+	 * as SPI SDO is on the same pin and is mistaken for an interrupt event */
+	ret = no_os_irq_clear_pending(trigger_irq_desc, TRIGGER_INT_ID);
 	if (ret) {
 		return ret;
 	}
@@ -1495,6 +1511,8 @@ static int iio_ad4130_local_backend_event_read(void *conn, uint8_t *buf,
 {
 #if (ACTIVE_IIO_CLIENT == IIO_CLIENT_LOCAL)
 	return pl_gui_event_read(buf, len);
+#else
+	return 0;
 #endif
 }
 
@@ -1510,6 +1528,8 @@ static int iio_ad4130_local_backend_event_write(void *conn, uint8_t *buf,
 {
 #if (ACTIVE_IIO_CLIENT == IIO_CLIENT_LOCAL)
 	return pl_gui_event_write(buf, len);
+#else
+	return 0;
 #endif
 }
 
@@ -1700,7 +1720,13 @@ int32_t ad4130_iio_initialize(void)
 	}
 
 	if (hw_mezzanine_is_valid) {
-		/* Initialize the device if HW mezzanine status is valid */
+
+		/* Perform data capture initialization */
+		init_status = ad4130_data_capture_init();
+		if (init_status) {
+			return init_status;
+		}
+
 		init_status = ad4130_iio_init(&p_iio_ad4130_dev);
 		if (init_status) {
 			return init_status;
@@ -1709,7 +1735,6 @@ int32_t ad4130_iio_initialize(void)
 		iio_device_init_params[0].name = ACTIVE_DEVICE_NAME;
 		iio_device_init_params[0].raw_buf = adc_data_buffer;
 		iio_device_init_params[0].raw_buf_len = DATA_BUFFER_SIZE;
-
 		iio_device_init_params[0].dev = ad4130_dev_inst;
 		iio_device_init_params[0].dev_descriptor = p_iio_ad4130_dev;
 
@@ -1736,12 +1761,6 @@ int32_t ad4130_iio_initialize(void)
 		return init_status;
 	}
 #endif
-
-	/* Perform data capture initialization */
-	init_status = ad4130_data_capture_init();
-	if (init_status) {
-		return init_status;
-	}
 
 #if (ACTIVE_IIO_CLIENT == IIO_CLIENT_LOCAL)
 	pocket_lab_gui_init_params.extra = &iio_init_params;
