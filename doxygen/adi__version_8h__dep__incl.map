@@ -1,11 +1,15 @@
 <map id="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/_common/adi_version.h" name="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/_common/adi_version.h">
-<area shape="rect" id="Node000001" title="ADI Version macros." alt="" coords="128,5,351,75"/>
+<area shape="rect" id="Node000001" title="ADI Version macros." alt="" coords="252,5,475,75"/>
 <area shape="rect" id="Node000002" href="$ad405x__iio_2app_2version_8h.html" title="Version macros for ADI AD405x." alt="" coords="5,123,228,192"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="195,86,154,124,151,121,191,83"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="280,83,190,125,188,120,278,78"/>
 <area shape="rect" id="Node000004" href="$ad4080__iio_2app_2version_8h.html" title="Version macros for AD4080 IIO Firmware." alt="" coords="252,123,475,192"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="288,83,329,121,325,124,284,86"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="366,89,366,122,361,122,361,89"/>
+<area shape="rect" id="Node000006" href="$ad5710r__iio_2app_2version_8h.html" title="Version macros for AD5710R IIO Firmware." alt="" coords="499,123,721,192"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="449,78,539,120,537,125,447,83"/>
 <area shape="rect" id="Node000003" href="$ad405x__iio_8c.html" title="Implementation of AD405X IIO Application Interface." alt="" coords="5,240,228,309"/>
 <area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="119,206,119,240,114,240,114,206"/>
 <area shape="rect" id="Node000005" href="$ad4080__iio_8c.html" title="Implementation of AD4080 IIO Appication Interface." alt="" coords="252,240,475,309"/>
 <area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="366,206,366,240,361,240,361,206"/>
+<area shape="rect" id="Node000007" href="$ad5710r__iio_8c.html" title="Implementation of AD5710R IIO Application Interface." alt="" coords="499,240,721,309"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="613,206,613,240,607,240,607,206"/>
 </map>

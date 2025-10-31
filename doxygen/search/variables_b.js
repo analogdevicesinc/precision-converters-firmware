@@ -10,7 +10,7 @@ var searchData=
   ['noise_5fbins_7',['noise_bins',['../structadi__fft__processing.html#a5dc44e53cf0c002d09922d8c15f2dcac',1,'adi_fft_processing']]],
   ['ntc_5fthermistor_5fmenu_8',['ntc_thermistor_menu',['../ad7124__temperature-measure_2app_2ad7124__console__app_8c.html#aaca3d5aab14cb1942195e8c21cd68f24',1,'ad7124_console_app.c']]],
   ['num_5fof_5factive_5fchannels_9',['num_of_active_channels',['../ad4170__iio_8c.html#a9c26c9f9b7e76a3bba788a29af42a730',1,'num_of_active_channels:&#160;ad4170_iio.c'],['../ad4170__iio_2app_2app__config__stm32_8h.html#a9c26c9f9b7e76a3bba788a29af42a730',1,'num_of_active_channels:&#160;ad4170_iio.c']]],
-  ['num_5fof_5fsamples_10',['num_of_samples',['../ad3530r__iio_8c.html#afc48f515dc4beca2e57b49651a6f2ab1',1,'num_of_samples:&#160;ad3530r_iio.c'],['../ad3530r__iio_8h.html#afc48f515dc4beca2e57b49651a6f2ab1',1,'num_of_samples:&#160;ad3530r_iio.c']]],
+  ['num_5fof_5fsamples_10',['num_of_samples',['../ad3530r__iio_8c.html#afc48f515dc4beca2e57b49651a6f2ab1',1,'num_of_samples:&#160;ad3530r_iio.c'],['../ad3530r__iio_8h.html#afc48f515dc4beca2e57b49651a6f2ab1',1,'num_of_samples:&#160;ad3530r_iio.c'],['../ad5710r__iio_8c.html#afc48f515dc4beca2e57b49651a6f2ab1',1,'num_of_samples:&#160;ad5710r_iio.c'],['../ad5710r__iio_8h.html#afc48f515dc4beca2e57b49651a6f2ab1',1,'num_of_samples:&#160;ad3530r_iio.c']]],
   ['number_5fincrements_11',['number_increments',['../structad5933__config__data.html#a667d40c07a7e76427c4366906460ce74',1,'ad5933_config_data']]],
   ['number_5fsettling_5fcycles_12',['number_settling_cycles',['../structad5933__config__data.html#a30c219f19ad00d3e4e072d1444204b13',1,'ad5933_config_data']]]
 ];
