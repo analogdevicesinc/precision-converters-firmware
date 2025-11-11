@@ -53,6 +53,8 @@ static int iio_ad4170_local_backend_event_write(void *conn, uint8_t *buf,
 static float ad4170_data_to_voltage_without_vref(int32_t data, uint8_t chn);
 static float ad4170_data_to_voltage_wrt_vref(int32_t data, uint8_t chn);
 static int32_t ad4170_code_to_straight_binary(uint32_t code, uint8_t chn);
+static int ad4170_determine_fs_actual(uint32_t fs, uint32_t *fs_actual,
+				      enum ad4170_filter_type filter);
 
 /******************************************************************************/
 /************************ Macros/Constants ************************************/
@@ -117,6 +119,15 @@ static char app_local_backend_buff[APP_LOCAL_BACKEND_BUF_SIZE];
 
 /* Max number of cached registers */
 #define N_REGISTERS_CACHED ADC_REGISTER_COUNT
+
+/* Limits for Filter FS values */
+#define AD4190_SINC5_FS_LOW			4
+#define SINC5_AVG_FS_HIGH			(uint16_t)65532
+#define SINC5_AVG_FS_LOW			4
+#define SINC5_FS_LOW				1
+#define SINC5_FS_HIGH				(uint16_t)0x100
+#define SINC3_FS_LOW				4
+#define SINC3_FS_HIGH				(uint16_t)0xFFFC
 
 /******************************************************************************/
 /*************************** Types Declarations *******************************/
@@ -435,7 +446,9 @@ uint8_t read_reg_id = 0;
 static const char *mezzanine_names[] = {
 	"EVAL-AD4170-4ARDZ",
 	"EVAL-AD4170-ASDZ",
-	"EVAL-AD4190-4ARDZ"
+	"EVAL-AD4190-4ARDZ",
+	"EVAL-AD4171-4ARDZ",
+	"EVAL-AD4172-4ARDZ",
 };
 
 /* Active device available options */
@@ -445,7 +458,7 @@ static const char* active_dev[] = {
 };
 
 /* Effective sampling rate of the device */
-static uint32_t sampling_rate = AD4170_MAX_SAMPLING_RATE;
+static float sampling_rate = AD4170_MAX_SAMPLING_RATE;
 
 /* Enum of channel status */
 enum ad4170_channel_status {
@@ -564,6 +577,8 @@ static int set_reconfigure_system(void *device,
 {
 	/* Set flag to true */
 	restart_iio_flag = true;
+
+	return len;
 }
 
 /*!
@@ -606,11 +621,21 @@ static int get_sampling_frequency(void *device,
 				  const struct iio_ch_info *channel,
 				  intptr_t id)
 {
-	/* Calculate the effective sampling rate of the device */
-	sampling_rate = (AD4170_INTERNAL_CLOCK / (FILTER_SCALE *
-			 ad4170_init_params.config.setups[0].filter_fs));
+	float t_settle = 0;
+	int ret;
 
-	return sprintf(buf, "%d", sampling_rate);
+	/* Determine T Settle */
+	ret = ad4170_determine_t_settle(&t_settle,
+					ad4170_init_params.config.setups[0].filter.filter_type,
+					ad4170_init_params.config.setups[0].filter_fs);
+	if (ret) {
+		return ret;
+	}
+
+	/* Calculate the effective sampling rate of the device */
+	sampling_rate = (1 / t_settle);
+
+	return sprintf(buf, "%.2f", sampling_rate);
 }
 
 static int set_sampling_frequency(void *device,
@@ -638,11 +663,21 @@ static int get_ch_sampling_frequency(void *device,
 				     const struct iio_ch_info *channel,
 				     intptr_t id)
 {
-	/* Calculate the effective sampling rate of the device */
-	sampling_rate = (AD4170_INTERNAL_CLOCK / (FILTER_SCALE *
-			 ad4170_init_params.config.setups[0].filter_fs));
+	int ret;
+	float t_settle = 0;
 
-	return sprintf(buf, "%d", (sampling_rate / num_of_channels));
+	/* Determine T Settle */
+	ret = ad4170_determine_t_settle(&t_settle,
+					ad4170_init_params.config.setups[0].filter.filter_type,
+					ad4170_init_params.config.setups[0].filter_fs);
+	if (ret) {
+		return ret;
+	}
+
+	/* Calculate the effective sampling rate of the device */
+	sampling_rate = 1 / t_settle;
+
+	return sprintf(buf, "%.2f", (sampling_rate / num_of_channels));
 }
 
 /*!
@@ -759,16 +794,14 @@ static int get_diag_error(void *device,
 	}
 
 	for (err_cnt = 0; err_cnt < NO_OS_ARRAY_SIZE(diagnostic_errors); err_cnt++) {
-		if (diag_err_status & mask)
-			break;
+		if (diag_err_status & mask) {
+			return sprintf(buf, "%s", diagnostic_errors[err_cnt]);
+		}
+
 		mask <<= 1;
 	}
 
-	if (diag_err_status) {
-		return sprintf(buf, "%s", diagnostic_errors[err_cnt]);
-	} else {
-		strcpy(buf, "No Error");
-	}
+	strcpy(buf, "No Error");
 
 	return len;
 }
@@ -1055,6 +1088,8 @@ static int set_filter(void *device,
 {
 	uint8_t filter_id;
 	uint8_t setup_id;
+	uint32_t fs_actual;
+	int ret;
 
 	for (filter_id = AD4170_FILT_SINC5_AVG; filter_id <= AD4170_FILT_SINC3;
 	     filter_id++) {
@@ -1067,6 +1102,18 @@ static int set_filter(void *device,
 	for (setup_id = 0; setup_id < AD4170_NUM_SETUPS; setup_id++) {
 		ad4170_init_params.config.setups[setup_id].filter.filter_type =
 			filter_id;
+	}
+
+	/* Update the all setup registers with FS value */
+	for (setup_id = 0; setup_id < AD4170_NUM_SETUPS; setup_id++) {
+		/* Update the FS parameters accordingly */
+		ret = ad4170_determine_fs_actual(
+			      ad4170_init_params.config.setups[setup_id].filter_fs, &fs_actual, filter_id);
+		if (ret) {
+			return ret;
+		}
+
+		ad4170_init_params.config.setups[setup_id].filter_fs = fs_actual;
 	}
 
 	return 0;
@@ -1291,6 +1338,64 @@ static int get_fs(void *device,
 	return sprintf(buf, "%d", fs);
 }
 
+/*!
+ * @brief Determine the actual value of FS bitfield
+ * @param fs[in] FS value configured by the user
+ * @param fs_actual[out] Actual value of the FS register
+ * @param filter[in] Type of filter
+ * @return 0 in case of Success, negative error code otherwise
+ */
+int ad4170_determine_fs_actual(uint32_t fs, uint32_t *fs_actual,
+			       enum ad4170_filter_type filter)
+{
+	uint32_t fs_low = 0;
+	uint32_t fs_high = 0;
+	uint32_t mask = 0;
+
+	switch (filter) {
+	case AD4170_FILT_SINC5_AVG:
+		fs_high = SINC5_AVG_FS_HIGH;
+		fs_low = SINC5_AVG_FS_LOW;
+		mask = 0xFFFC;
+		*fs_actual = no_os_clamp(fs, fs_low, fs_high) & mask;
+
+		break;
+	case AD4170_FILT_SINC5:
+		if (ad4170_init_params.id == ID_AD4170) {
+			fs_low = SINC5_FS_LOW;
+			fs_high = SINC5_FS_HIGH;
+
+			if (fs > 3) {
+				mask = 0xFFFC;
+				*fs_actual = fs & mask;
+			} else {
+				mask = 0xFFFE;
+				*fs_actual = fs & mask;
+			}
+			*fs_actual = no_os_clamp(*fs_actual, fs_low, fs_high);
+
+		} else if (ad4170_init_params.id == ID_AD4190) {
+			fs_low = AD4190_SINC5_FS_LOW;
+			fs_high = SINC5_FS_HIGH;
+			mask = 0xFFFC;
+			*fs_actual = no_os_clamp(fs, fs_low, fs_high) & mask;
+		}
+
+		break;
+	case AD4170_FILT_SINC3:
+		fs_low = SINC3_FS_LOW;
+		fs_high = SINC3_FS_HIGH;
+		mask = 0xFFFC;
+		*fs_actual = no_os_clamp(fs, fs_low, fs_high) & mask;
+
+		break;
+	default:
+		return -EINVAL;
+	}
+
+	return 0;
+}
+
 static int set_fs(void *device,
 		  char *buf,
 		  uint32_t len,
@@ -1298,10 +1403,17 @@ static int set_fs(void *device,
 		  intptr_t id)
 {
 	uint8_t setup_id;
+	enum ad4170_filter_type filter =
+		ad4170_init_params.config.setups[0].filter.filter_type;
+	uint32_t fs = no_os_str_to_uint32(buf);
+	uint32_t fs_actual;
+
+	/* Determine the actual value of FS */
+	ad4170_determine_fs_actual(fs, &fs_actual, filter);
 
 	/* Update the all setup registers with FS value */
 	for (setup_id = 0; setup_id < AD4170_NUM_SETUPS; setup_id++) {
-		ad4170_init_params.config.setups[setup_id].filter_fs = no_os_str_to_uint32(buf);
+		ad4170_init_params.config.setups[setup_id].filter_fs = fs_actual;
 	}
 
 	return 0;
@@ -1760,9 +1872,11 @@ static uint32_t debug_reg_search(uint32_t addr, uint32_t *reg_addr_offset)
 			/* Get the input address offset from its base address for
 			 * multi-byte register entity and break the loop indicating input
 			 * address is located somewhere in the previous indexed register */
-			if (AD4170_TRANSF_LEN(ad4170_regs[curr_indx - 1]) > 1) {
-				*reg_addr_offset = addr - AD4170_ADDR(ad4170_regs[curr_indx - 1]);
-				found = true;
+			if (curr_indx > 0) {
+				if (AD4170_TRANSF_LEN(ad4170_regs[curr_indx - 1]) > 1) {
+					*reg_addr_offset = addr - AD4170_ADDR(ad4170_regs[curr_indx - 1]);
+					found = true;
+				}
 			}
 			break;
 		}
@@ -3053,9 +3167,11 @@ static struct iio_channel
 static int iio_ad4170_local_backend_event_read(void *conn, uint8_t *buf,
 		uint32_t len)
 {
+	int ret = 0;
 #if (ACTIVE_IIO_CLIENT == IIO_CLIENT_LOCAL)
-	return pl_gui_event_read(buf, len);
+	ret = pl_gui_event_read(buf, len);
 #endif
+	return ret;
 }
 
 /**
@@ -3068,9 +3184,12 @@ static int iio_ad4170_local_backend_event_read(void *conn, uint8_t *buf,
 static int iio_ad4170_local_backend_event_write(void *conn, uint8_t *buf,
 		uint32_t len)
 {
+	int ret = 0;
 #if (ACTIVE_IIO_CLIENT == IIO_CLIENT_LOCAL)
-	return pl_gui_event_write(buf, len);
+	ret = pl_gui_event_write(buf, len);
 #endif
+	return ret;
+
 }
 
 /**
@@ -3245,9 +3364,9 @@ void ticker_callback(void *ctx)
  */
 void ad4170_configure_filter_params(void)
 {
-	uint16_t filter_fs;
+	uint16_t filter_fs = 0;
 	uint8_t setup_id;
-	enum ad4170_filter_type  filter_type;
+	enum ad4170_filter_type  filter_type = AD4170_FILT_SINC5_AVG;
 
 	if (ad4170_init_params.id == ID_AD4170) {
 #if (INTERFACE_MODE == SPI_INTERRUPT_MODE)
@@ -3260,7 +3379,7 @@ void ad4170_configure_filter_params(void)
 	} else if (ad4170_init_params.id == ID_AD4190) {
 #if (INTERFACE_MODE == SPI_INTERRUPT_MODE)
 		filter_fs = FS_SINC5_AVG_24_KSPS;
-		filter_fs = AD4170_FILT_SINC5_AVG;
+		filter_type = AD4170_FILT_SINC5_AVG;
 #else // TDM_MODE and SPI_DMA Mode
 		filter_fs = FS_SINC3_62P5_KSPS;
 		filter_type = AD4170_FILT_SINC3;
@@ -3385,7 +3504,6 @@ int32_t ad4170_iio_initialize(void)
 			return init_status;
 		}
 
-		iio_device_init_params[0].name = active_dev[p_ad4170_dev_inst->id];
 		iio_device_init_params[0].raw_buf = adc_data_buffer;
 		iio_device_init_params[0].raw_buf_len = DATA_BUFFER_SIZE;
 
@@ -3455,7 +3573,7 @@ int iio_params_deinit(void)
 			p_iio_ad4170_dev[indx] = NULL;
 		}
 	}
-
+	iio_init_params.nb_trigs = 0;
 	iio_init_params.nb_devs = 0;
 
 	return 0;
@@ -3471,7 +3589,7 @@ void ad4170_iio_event_handler(void)
 	int ret;
 
 	if (restart_iio_flag) {
-#if (DATA_CAPTURE_MODE == CONTINUOUS_DATA_CAPTURE) && (INTERFACE_MODE == TDM_MODE)
+#if (DATA_CAPTURE_MODE == CONTINUOUS_DATA_CAPTURE) && ((INTERFACE_MODE == SPI_INTERRUPT_MODE) || (INTERFACE_MODE == TDM_MODE))
 		/* Remove and free the pointers allocated during IIO init */
 		ret = iio_hw_trig_remove(ad4170_hw_trig_desc);
 		if (ret) {
@@ -3497,6 +3615,10 @@ void ad4170_iio_event_handler(void)
 			return;
 		}
 
+#if (ACTIVE_IIO_CLIENT == IIO_CLIENT_LOCAL)
+		no_os_free(pocket_lab_gui_desc);
+		pl_gui_remove();
+#endif
 		/* Reset the restart_iio flag */
 		restart_iio_flag = false;
 
