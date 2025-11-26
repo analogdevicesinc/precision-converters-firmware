@@ -200,23 +200,29 @@ Content on this topic
 <ul class="simple">
 <li><p><a class="icon link reference external" href="https://www.analog.com/en/products/ad4052.html" target="_blank">AD4052</a></p></li>
 <li><p><a class="icon link reference external" href="https://www.analog.com/en/products/ad4050.html" target="_blank">AD4050</a></p></li>
+<li><p><a class="icon link reference external" href="https://www.analog.com/en/products/ad4062.html" target="_blank">AD4062</a></p></li>
+<li><p><a class="icon link reference external" href="https://www.analog.com/en/products/ad4060.html" target="_blank">AD4060</a></p></li>
 </ul>
 <p><strong>Supported Evaluation Boards:</strong></p>
 <ul class="simple">
-<li><p><a class="icon link reference external" href="https://www.analog.com/en/resources/evaluation-hardware-and-software/evaluation-boards-kits/eval-ad4052.html" target="_blank">EVAL-AD4052-ARDZ</a></p></li>
-<li><p><a class="icon link reference external" href="https://www.analog.com/en/resources/evaluation-hardware-and-software/evaluation-boards-kits/eval-ad4050.html" target="_blank">EVAL-AD4050-ARDZ</a></p></li>
+<li><p><a class="icon link reference external" href="https://www.analog.com/en/resources/evaluation-hardware-and-software/evaluation-boards-kits/eval-ad4052-ardz.html" target="_blank">EVAL-AD4052-ARDZ</a></p></li>
+<li><p><a class="icon link reference external" href="https://www.analog.com/en/resources/evaluation-hardware-and-software/evaluation-boards-kits/eval-ad4050-ardz.html" target="_blank">EVAL-AD4050-ARDZ</a></p></li>
+<li><p><a class="icon link reference external" href="https://www.analog.com/en/resources/evaluation-hardware-and-software/evaluation-boards-kits/eval-ad4060-eval-ad4062.html" target="_blank">EVAL-AD4062-ARDZ</a></p></li>
+<li><p><a class="icon link reference external" href="https://www.analog.com/en/resources/evaluation-hardware-and-software/evaluation-boards-kits/eval-ad4060-eval-ad4062.html" target="_blank">EVAL-AD4060-ARDZ</a></p></li>
 </ul>
 <p><strong>Supported Carrier Boards:</strong></p>
 <ul class="simple">
-<li><p><a class="icon link reference external" href="https://www.analog.com/en/resources/evaluation-hardware-and-software/evaluation-boards-kits/sdp-k1.html#eb-overview" target="_blank">SDP-K1</a></p></li>
+<li><p><a class="icon link reference external" href="https://www.analog.com/en/resources/evaluation-hardware-and-software/evaluation-boards-kits/sdp-k1.html#eb-overview" target="_blank">SDP-K1</a> (Supports AD4050 and AD4052)</p></li>
+<li><p><a class="icon link reference external" href="https://www.st.com/en/evaluation-tools/nucleo-h563zi.html/" target="_blank">Nucleo-H563ZI</a> (Supports AD4060 and AD4062)</p></li>
 </ul>
 </section>
 <section id="introduction">
 <h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading"></a></h2>
 <p>This page gives an overview of using the ARM platforms supported
-firmware example with Analog Devices AD4052/AD4050 Evaluation boards and SDP-K1 controller board.
+firmware example with Analog Devices AD4052/AD4050/AD4062/AD4060 Evaluation boards and SDP-K1 and
+Nucleo-H563ZI controller boards.
 This example code leverages the ADI developed IIO (Industrial Input Output) ecosystem to
-evaluate the AD4052 or AD4050 device by providing a device debug and data capture support.</p>
+evaluate the supported devices by providing a device debug and data capture support.</p>
 <blockquote>
 <div><a class="reference internal image-reference" href="../../../_images/app_interface.png"><img alt="../../../_images/app_interface.png" src="../../../_images/app_interface.png" style="width: 350px;" />
 </a>
@@ -226,7 +232,7 @@ IIO Firmware leverages the ADI created no-os and platform driver software layers
 to communicates with IIO device.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>This code has been developed and tested on the SDP-K1 Controller Board with
+<p>This code has been developed and tested on the SDP-K1/Nucleo-H563ZI Controller Board with
 Arduino headers. However, the same code can be used with minimal modifications
 on any STM32 enabled board which has Arduino Header support on it.</p>
 </div>
@@ -248,10 +254,19 @@ they may be of interest if you require Linux and/or FPGA support.</p>
 </section>
 <section id="hardware-connections">
 <h2>Hardware Connections<a class="headerlink" href="#hardware-connections" title="Link to this heading"></a></h2>
-<p>Required: SDP-K1 (or an STM32 board ), EVAL-AD4052 or EVAL-AD4050 board and USB cable.</p>
-<p>Connect the EVAL-AD4052/EVAL-AD4050 board to SDP-K1 board (or an equivalent STM32 board). Connect controller board to the PC using the USB cable.</p>
+<p><strong>EVAL-AD4052-ARDZ or EVAL-AD4050-ARDZ</strong>
+Required: SDP-K1 (or an STM32 board ) and USB cable.</p>
+<p>Connect the EVAL-AD4052-ARDZ/EVAL-AD4050-ARDZ board to SDP-K1 board (or an equivalent STM32 board). Connect controller board to the PC using the USB cable.</p>
 <blockquote>
 <div><a class="reference internal image-reference" href="../../../_images/ad405x_connection_diagram.png"><img alt="../../../_images/ad405x_connection_diagram.png" src="../../../_images/ad405x_connection_diagram.png" style="width: 600px;" />
+</a>
+</div></blockquote>
+<p><strong>EVAL-AD4062 or EVAL-AD4060</strong>
+Required: Nucleo-H563ZI (or an STM32 board ) and USB cable.</p>
+<p>Connect the EVAL-AD4062-ARDZ/EVAL-AD4060-ARDZ board to Nucleo-H563ZI board (or an equivalent STM32 board).
+Connect controller board to the PC using the 2 USB cables on both the USB ports.</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../../_images/ad406x_connection_diagram.png"><img alt="../../../_images/ad406x_connection_diagram.png" src="../../../_images/ad406x_connection_diagram.png" style="width: 600px;" />
 </a>
 </div></blockquote>
 </section>
@@ -259,9 +274,12 @@ they may be of interest if you require Linux and/or FPGA support.</p>
 <h2>Jumper Settings<a class="headerlink" href="#jumper-settings" title="Link to this heading"></a></h2>
 <p><strong>SDP-K1 :</strong></p>
 <p>Connect the VIO_ADJUST jumper on the SDP-K1 to 3.3V position
-to drive SDP-K1 GPIOs at 3.3V</p>
-<p><strong>EVAL-AD4052/AD4050:</strong></p>
-<p>Please refer to the user guide for the jumper connections on the EVAL-AD4052/AD4050 board</p>
+to drive SDP-K1 GPIOs at 3.3V.</p>
+<p><strong>Nucleo-H563ZI:</strong></p>
+<p>Connect the JP4 jumper on the Nucleo-H563ZI board to 3.3V position
+to drive Nucleo-H563ZI GPIOs at 3.3V.</p>
+<p><strong>EVAL-AD4052/AD4050/AD4062/AD4060:</strong></p>
+<p>Please refer to the user guide for the jumper connections on the EVAL-AD4052/AD4050/AD4062/AD4060 board</p>
 </section>
 <section id="communication-interface">
 <h2>Communication Interface<a class="headerlink" href="#communication-interface" title="Link to this heading"></a></h2>
