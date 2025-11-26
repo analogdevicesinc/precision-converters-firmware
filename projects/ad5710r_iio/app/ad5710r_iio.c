@@ -26,6 +26,7 @@
 #include "no_os_gpio.h"
 #include "no_os_pwm.h"
 #include "no_os_alloc.h"
+#include "no_os_delay.h"
 #include "common.h"
 #include "iio_trigger.h"
 #include "version.h"
@@ -110,13 +111,6 @@ static int8_t dac_data_buffer[DATA_BUFFER_SIZE];
 /* IIO trigger name */
 #define AD5710R_IIO_TRIGGER_NAME		"ad5710r_iio_trigger"
 
-/* Descriptor to hold iio trigger details */
-static struct iio_trigger ad5710r_iio_trig_desc = {
-	.is_synchronous = true,
-	.enable = NULL,
-	.disable = NULL
-};
-
 /******************************************************************************/
 /*************************** Types Declarations *******************************/
 /******************************************************************************/
@@ -129,8 +123,17 @@ static struct iio_desc *ad5710r_iio_desc;
 /* AD5710R IIO device descriptor */
 struct iio_device *ad5710r_iio_dev;
 
+#if (INTERFACE_MODE == SPI_INTERRUPT)
+/* Descriptor to hold iio trigger details */
+static struct iio_trigger ad5710r_iio_trig_desc = {
+	.is_synchronous = true,
+	.enable = NULL,
+	.disable = NULL
+};
+
 /* AD5710R IIO hw trigger descriptor */
 static struct iio_hw_trig *ad5710r_hw_trig_desc;
+#endif
 
 /* Active channel sequence */
 static volatile uint8_t ad5710r_active_chns[DAC_CHANNELS];
@@ -325,20 +328,24 @@ static uint16_t num_of_mux_sels = AD5710R_NUM_MUX_OUT_SELECTS;
 static uint8_t num_of_chns = AD5710R_NUM_CH;
 static uint8_t num_of_op_modes = AD5710R_MAX_CHANNEL_OP_MODE_0;
 
+/* Array with channel addresses (2 bytes per channel) */
+static uint16_t ch_addr_array[DAC_CHANNELS];
+
+/* Pointer to device register map array */
+static const uint32_t *ad5710r_reg = NULL;
+
 #if (INTERFACE_MODE == SPI_DMA)
+/* Dummy receive buffer for SPI DMA transfers */
+static uint8_t local_buff;
+
 /* Flag to indicate if SPI DMA enabled */
 static bool spi_dma_enabled = false;
 
 /* STM32 SPI Init params */
 struct stm32_spi_init_param* spi_init_param;
 
-/* Array with channel addresses (2 bytes per channel) */
-static uint16_t ch_addr_array[DAC_CHANNELS];
-
 /* Global variable for iio buffer */
 uint8_t* global_iio_buff;
-
-static uint32_t *ad5710r_reg = NULL;
 #endif
 
 /******************************************************************************/
@@ -671,7 +678,7 @@ static int ad5710r_iio_attr_set(void *device,
 		break;
 
 	case DAC_CHN_OP_SELECT:
-		for (value = 0; value < AD5710R_MAX_CHANNEL_OP_MODE_0; value++) {
+		for (value = 0; value < NO_OS_ARRAY_SIZE(ad5710r_operating_mode_str); value++) {
 			if (!strncmp(buf, ad5710r_operating_mode_str[value], strlen(buf)))
 				break;
 		}
@@ -803,7 +810,7 @@ static int ad5710r_iio_attr_set(void *device,
 
 
 	case DAC_ALL_CH_OP_MODE:
-		for (value = 0; value < AD5710R_MAX_CHANNEL_OP_MODE_0; value++) {
+		for (value = 0; value < NO_OS_ARRAY_SIZE(ad5710r_operating_mode_str); value++) {
 			if (!strncmp(buf, ad5710r_operating_mode_str[value], strlen(buf)))
 				break;
 		}
@@ -1188,7 +1195,6 @@ static int update_iio_buffer_with_ch_ids(struct iio_device_data* iio_dev_data)
 static int32_t ad5710r_iio_submit_samples(struct iio_device_data *iio_dev_data)
 {
 	int32_t ret;
-	uint16_t local_buff = 0;
 	int8_t* iio_buff;
 	uint8_t addr;
 
@@ -1202,7 +1208,7 @@ static int32_t ad5710r_iio_submit_samples(struct iio_device_data *iio_dev_data)
 #if (INTERFACE_MODE == SPI_DMA)
 	if (!spi_dma_enabled) {
 		struct no_os_spi_msg ad5710r_spi_msg = {
-			.rx_buff = (uint8_t*)local_buff,
+			.rx_buff = &local_buff,
 		};
 
 		if (streaming_option == SINGLE_INSTRUCTION_MODE) {
@@ -1260,6 +1266,7 @@ static int32_t ad5710r_iio_submit_samples(struct iio_device_data *iio_dev_data)
 	return 0;
 }
 
+#if (INTERFACE_MODE == SPI_INTERRUPT)
 /**
  * @brief	Pops one data-set from IIO buffer and writes into DAC when
 			IRQ is triggered.
@@ -1294,6 +1301,48 @@ static int32_t ad5710r_trigger_handler(struct iio_device_data *iio_dev_data)
 	chan_idx += 1;
 	return 0;
 }
+
+/**
+ * @brief	Initialization of AD5710R IIO hardware trigger specific parameters
+ * @param 	desc[in,out] - IIO hardware trigger descriptor
+ * @return	0 in case of success, negative error code otherwise
+ */
+static int32_t ad5710r_iio_trigger_param_init(struct iio_hw_trig **desc)
+{
+	int32_t ret;
+	struct iio_hw_trig_init_param ad5710r_hw_trig_init_params;
+	struct iio_hw_trig *hw_trig_desc;
+
+	if (!desc) {
+		return -EINVAL;
+	}
+
+	hw_trig_desc = no_os_calloc(1, sizeof(struct iio_hw_trig));
+	if (!hw_trig_desc) {
+		return -ENOMEM;
+	}
+
+	ad5710r_hw_trig_init_params.irq_id = TRIGGER_INT_ID;
+	ad5710r_hw_trig_init_params.name = AD5710R_IIO_TRIGGER_NAME;
+	ad5710r_hw_trig_init_params.irq_trig_lvl = NO_OS_IRQ_EDGE_FALLING;
+	ad5710r_hw_trig_init_params.irq_ctrl = trigger_irq_desc;
+	ad5710r_hw_trig_init_params.cb_info.event = NO_OS_EVT_GPIO;
+	ad5710r_hw_trig_init_params.cb_info.peripheral = NO_OS_GPIO_IRQ;
+	ad5710r_hw_trig_init_params.cb_info.handle = trigger_gpio_handle;
+	ad5710r_hw_trig_init_params.iio_desc = ad5710r_iio_desc;
+
+	/* Initialize hardware trigger */
+	ret = iio_hw_trig_init(&hw_trig_desc, &ad5710r_hw_trig_init_params);
+	if (ret) {
+		no_os_free(hw_trig_desc);
+		return ret;
+	}
+
+	*desc = hw_trig_desc;
+
+	return 0;
+}
+#endif
 
 /**
  * @brief	Search the debug register address in look-up table Or registers array
@@ -1436,7 +1485,7 @@ static int32_t ad5710r_iio_init(struct iio_device **desc)
 		return -EINVAL;
 	}
 
-	iio_ad5710r_inst = calloc(1, sizeof(struct iio_device));
+	iio_ad5710r_inst = no_os_calloc(1, sizeof(struct iio_device));
 	if (!iio_ad5710r_inst) {
 		return -EINVAL;
 	}
@@ -1464,47 +1513,6 @@ static int32_t ad5710r_iio_init(struct iio_device **desc)
 	}
 
 	*desc = iio_ad5710r_inst;
-
-	return 0;
-}
-
-/**
- * @brief	Initialization of AD5710R IIO hardware trigger specific parameters
- * @param 	desc[in,out] - IIO hardware trigger descriptor
- * @return	0 in case of success, negative error code otherwise
- */
-static int32_t ad5710r_iio_trigger_param_init(struct iio_hw_trig **desc)
-{
-	int32_t ret;
-	struct iio_hw_trig_init_param ad5710r_hw_trig_init_params;
-	struct iio_hw_trig *hw_trig_desc;
-
-	if (!desc) {
-		return -EINVAL;
-	}
-
-	hw_trig_desc = calloc(1, sizeof(struct iio_hw_trig));
-	if (!hw_trig_desc) {
-		return -ENOMEM;
-	}
-
-	ad5710r_hw_trig_init_params.irq_id = TRIGGER_INT_ID;
-	ad5710r_hw_trig_init_params.name = AD5710R_IIO_TRIGGER_NAME;
-	ad5710r_hw_trig_init_params.irq_trig_lvl = NO_OS_IRQ_EDGE_FALLING;
-	ad5710r_hw_trig_init_params.irq_ctrl = trigger_irq_desc;
-	ad5710r_hw_trig_init_params.cb_info.event = NO_OS_EVT_GPIO;
-	ad5710r_hw_trig_init_params.cb_info.peripheral = NO_OS_GPIO_IRQ;
-	ad5710r_hw_trig_init_params.cb_info.handle = trigger_gpio_handle;
-	ad5710r_hw_trig_init_params.iio_desc = ad5710r_iio_desc;
-
-	/* Initialize hardware trigger */
-	ret = iio_hw_trig_init(&hw_trig_desc, &ad5710r_hw_trig_init_params);
-	if (ret) {
-		no_os_free(hw_trig_desc);
-		return ret;
-	}
-
-	*desc = hw_trig_desc;
 
 	return 0;
 }
@@ -1558,11 +1566,13 @@ int32_t ad5710r_iio_initialize(void)
 	uint8_t id;
 	struct no_os_eeprom_desc *eeprom_desc;
 
+#if (INTERFACE_MODE == SPI_INTERRUPT)
 	/* IIO trigger init parameters */
 	struct iio_trigger_init iio_trigger_init_params = {
 		.descriptor = &ad5710r_iio_trig_desc,
 		.name = AD5710R_IIO_TRIGGER_NAME,
 	};
+#endif
 
 	struct iio_device_init iio_device_init_params[NUM_OF_IIO_DEVICES] = {{
 			.name = (char *)ACTIVE_DEVICE_NAME,
@@ -1637,7 +1647,7 @@ int32_t ad5710r_iio_initialize(void)
 			iio_device_init_params[0].dev_descriptor = ad5710r_iio_dev;
 			iio_device_init_params[0].dev = &ad5710r_dev_desc;
 #if (INTERFACE_MODE == SPI_INTERRUPT)
-			iio_device_init_params.trigger_id = "trigger0";
+			iio_device_init_params[0].trigger_id = "trigger0";
 			iio_init_params.nb_trigs++;
 #endif
 

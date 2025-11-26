@@ -150,7 +150,7 @@ struct no_os_pwm_desc* tx_trigger_desc;
 struct no_os_dma_init_param ad5710r_dma_init_param = {
 	.id = 0,
 	.num_ch = DMA_NUM_CHANNELS,
-	.platform_ops = &dma_ops,
+	.platform_ops = (struct no_os_dma_platform_ops *)&dma_ops,
 	.sg_handler = (void (*)(void *))receivecomplete_callback
 };
 #endif
@@ -300,6 +300,7 @@ int32_t deinit_pwm(void)
 {
 	int32_t ret;
 
+#if (INTERFACE_MODE == SPI_DMA)
 	if (tx_trigger_desc) {
 		ret = no_os_pwm_disable(tx_trigger_desc);
 		if (ret) {
@@ -311,6 +312,7 @@ int32_t deinit_pwm(void)
 			return ret;
 		}
 	}
+#endif
 
 	if (pwm_desc) {
 		ret = no_os_pwm_disable(pwm_desc);
