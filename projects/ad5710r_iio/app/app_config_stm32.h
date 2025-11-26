@@ -143,6 +143,7 @@
 /********************** Variables and User Defined Data Types *****************/
 /******************************************************************************/
 extern struct stm32_uart_init_param stm32_uart_init_params;
+extern struct stm32_usb_uart_init_param stm32_vcom_extra_init_params;
 extern struct stm32_gpio_irq_init_param stm32_trigger_gpio_irq_init_params;
 extern struct stm32_spi_init_param stm32_spi_init_params;
 extern struct stm32_i2c_init_param stm32_i2c_init_params;
@@ -161,7 +162,6 @@ extern TIM_HandleTypeDef TIMER8_HANDLE;
 
 extern struct stm32_gpio_init_param stm32_csb_gpio_init_params;
 extern struct stm32_pwm_init_param stm32_tx_trigger_extra_init_params;
-extern struct stm32_usb_uart_init_param stm32_vcom_extra_init_params;
 extern struct stm32_dma_channel rxdma_channel;
 extern struct stm32_dma_channel txdma_channel_single_instr_mode;
 extern struct stm32_dma_channel txdma_channel_stream_mode;
