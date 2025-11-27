@@ -96,6 +96,7 @@ $(function() {
 <code>#include &quot;no_os_gpio.h&quot;</code><br />
 <code>#include &quot;no_os_pwm.h&quot;</code><br />
 <code>#include &quot;no_os_alloc.h&quot;</code><br />
+<code>#include &quot;no_os_delay.h&quot;</code><br />
 <code>#include &quot;<a class="el" href="common_8h_source.html">common.h</a>&quot;</code><br />
 <code>#include &quot;iio_trigger.h&quot;</code><br />
 <code>#include &quot;<a class="el" href="ad5710r__iio_2app_2version_8h_source.html">version.h</a>&quot;</code><br />
@@ -104,102 +105,104 @@ Include dependency graph for ad5710r_iio.c:</div>
 <div class="dyncontent">
 <div class="center"><img src="ad5710r__iio_8c__incl.png" border="0" usemap="#a_2home_2runner_2work_2precision-converters-firmware_2precision-converters-firmware_2projects_2ad5710r__iio_2app_2ad5710r__iio_8c" alt=""/></div>
 <map name="a_2home_2runner_2work_2precision-converters-firmware_2precision-converters-firmware_2projects_2ad5710r__iio_2app_2ad5710r__iio_8c" id="a_2home_2runner_2work_2precision-converters-firmware_2precision-converters-firmware_2projects_2ad5710r__iio_2app_2ad5710r__iio_8c">
-<area shape="rect" title="Implementation of AD5710R IIO Application Interface." alt="" coords="1405,5,1628,75"/>
-<area shape="rect" title=" " alt="" coords="5,343,76,368"/>
-<area shape="poly" title=" " alt="" coords="1405,47,1263,54,1086,67,892,91,700,125,608,148,514,175,336,236,184,295,80,339,78,335,182,290,334,231,513,170,606,143,699,120,892,85,1085,62,1263,48,1405,41"/>
-<area shape="rect" href="ad5710r__iio_2app_2app__config_8h.html" title="Application configurations module for AD5710R." alt="" coords="1246,196,1350,221"/>
-<area shape="poly" title=" " alt="" coords="1406,72,1362,94,1325,124,1310,153,1302,183,1297,182,1305,151,1321,121,1360,89,1404,67"/>
-<area shape="rect" href="common_8h.html" title=" " alt="" coords="467,269,558,295"/>
-<area shape="poly" title=" " alt="" coords="1405,49,1294,57,1160,71,1017,93,876,125,780,157,687,196,546,265,544,260,685,191,778,152,875,120,1016,88,1160,66,1293,51,1405,43"/>
-<area shape="rect" title=" " alt="" coords="101,343,210,368"/>
-<area shape="poly" title=" " alt="" coords="1405,49,1280,57,1127,71,961,94,797,125,680,157,591,190,503,227,390,272,201,340,199,335,388,267,501,222,589,185,678,152,796,120,960,88,1126,66,1279,52,1405,43"/>
-<area shape="rect" title=" " alt="" coords="1706,269,1813,295"/>
-<area shape="poly" title=" " alt="" coords="1629,57,1687,81,1713,99,1736,121,1754,154,1764,190,1766,226,1765,256,1760,256,1761,226,1758,191,1750,156,1732,124,1710,103,1684,86,1627,62"/>
-<area shape="rect" title=" " alt="" coords="1837,269,1948,295"/>
-<area shape="poly" title=" " alt="" coords="1629,62,1696,86,1761,120,1800,153,1834,189,1881,256,1877,259,1829,193,1796,156,1758,125,1694,91,1627,67"/>
-<area shape="rect" title=" " alt="" coords="1595,196,1681,221"/>
-<area shape="poly" title=" " alt="" coords="1521,74,1528,111,1544,146,1568,170,1597,188,1594,192,1565,174,1540,150,1523,113,1515,75"/>
-<area shape="rect" href="ad5710r__iio_8h.html" title="Header for AD5710R IIO aplication." alt="" coords="888,123,999,148"/>
-<area shape="poly" title=" " alt="" coords="1406,62,1013,126,1012,120,1405,57"/>
-<area shape="rect" href="ad5710r__user__config_8h.html" title="Header for AD5710R user configuration file." alt="" coords="1554,123,1722,148"/>
-<area shape="poly" title=" " alt="" coords="1562,73,1613,112,1610,116,1559,77"/>
-<area shape="rect" href="ad5710r__regs_8h.html" title="Header file for the ad5710r registers map." alt="" coords="1138,123,1261,148"/>
-<area shape="poly" title=" " alt="" coords="1406,76,1252,121,1251,116,1404,71"/>
-<area shape="rect" href="ad5710r__support_8h.html" title="AD5710r No&#45;OS driver support header file." alt="" coords="1336,123,1479,148"/>
-<area shape="poly" title=" " alt="" coords="1479,77,1433,116,1430,112,1475,73"/>
-<area shape="rect" title=" " alt="" coords="1848,123,1948,148"/>
-<area shape="poly" title=" " alt="" coords="1629,66,1838,117,1837,122,1628,71"/>
-<area shape="rect" title=" " alt="" coords="1972,123,2083,148"/>
-<area shape="poly" title=" " alt="" coords="1629,59,1959,119,1958,124,1628,64"/>
-<area shape="rect" title=" " alt="" coords="2107,123,2206,148"/>
-<area shape="poly" title=" " alt="" coords="1629,53,1840,82,2094,120,2093,125,1840,87,1628,58"/>
-<area shape="rect" href="ad5710r__iio_2app_2version_8h.html" title="Version macros for AD5710R IIO Firmware." alt="" coords="2230,123,2313,148"/>
-<area shape="poly" title=" " alt="" coords="1629,48,1893,76,2053,96,2216,120,2216,125,2052,101,1892,81,1628,54"/>
-<area shape="rect" title=" " alt="" coords="849,423,920,449"/>
-<area shape="poly" title=" " alt="" coords="1246,216,1174,227,1088,250,1045,266,1002,287,963,313,928,344,906,377,893,411,888,409,902,375,924,341,959,309,999,283,1042,261,1087,245,1173,222,1245,211"/>
-<area shape="poly" title=" " alt="" coords="1246,217,572,278,572,273,1246,212"/>
-<area shape="poly" title=" " alt="" coords="1351,215,1688,267,1693,267,1692,273,1687,272,1350,221"/>
-<area shape="rect" title=" " alt="" coords="2271,423,2376,449"/>
-<area shape="poly" title=" " alt="" coords="1343,219,1498,255,1694,292,1749,297,1817,299,1976,301,2058,304,2133,311,2199,322,2250,340,2270,355,2288,373,2314,409,2309,412,2284,376,2267,359,2247,345,2198,327,2133,316,2057,309,1976,306,1817,304,1748,302,1694,297,1496,260,1342,224"/>
-<area shape="rect" title=" " alt="" coords="1075,269,1171,295"/>
-<area shape="poly" title=" " alt="" coords="1271,224,1166,266,1164,262,1269,219"/>
-<area shape="poly" title=" " alt="" coords="1350,212,1553,233,1824,267,1823,272,1553,239,1350,218"/>
-<area shape="rect" href="common__macros_8h.html" title="The file contain common macros that needs to be followed same across all the projects." alt="" coords="1195,269,1342,295"/>
-<area shape="poly" title=" " alt="" coords="1296,223,1281,258,1276,256,1291,221"/>
-<area shape="rect" href="ad5710r__iio_2app_2app__config__stm32_8h.html" title="Header file for STM32 platform configurations." alt="" coords="1366,269,1518,295"/>
-<area shape="poly" title=" " alt="" coords="1316,219,1400,261,1398,266,1313,224"/>
-<area shape="poly" title=" " alt="" coords="468,291,305,311,90,345,89,340,304,306,467,286"/>
-<area shape="poly" title=" " alt="" coords="559,292,630,313,708,340,789,378,855,414,853,419,786,383,706,345,628,318,558,297"/>
-<area shape="rect" title=" " alt="" coords="589,423,671,449"/>
-<area shape="poly" title=" " alt="" coords="510,295,499,330,498,349,504,367,518,384,536,398,576,418,574,423,533,403,514,388,500,369,493,350,494,329,504,294"/>
-<area shape="rect" title=" " alt="" coords="514,343,581,368"/>
-<area shape="poly" title=" " alt="" coords="521,294,538,329,533,331,516,296"/>
-<area shape="rect" title=" " alt="" coords="234,343,285,368"/>
-<area shape="poly" title=" " alt="" coords="471,297,299,345,297,340,469,292"/>
-<area shape="rect" title=" " alt="" coords="605,343,695,368"/>
-<area shape="poly" title=" " alt="" coords="536,292,617,334,614,339,534,297"/>
-<area shape="rect" title=" " alt="" coords="309,343,439,368"/>
-<area shape="poly" title=" " alt="" coords="492,297,410,339,408,334,489,292"/>
-<area shape="poly" title=" " alt="" coords="468,295,224,343,223,338,467,290"/>
-<area shape="poly" title=" " alt="" coords="1424,271,1339,229,1342,225,1426,267"/>
-<area shape="poly" title=" " alt="" coords="1366,296,1354,297,1293,302,1240,302,1150,298,1107,299,1063,305,1016,320,962,345,942,359,925,376,899,413,895,410,921,373,939,355,959,340,1014,315,1062,300,1107,293,1150,293,1241,297,1293,297,1354,292,1365,291"/>
-<area shape="rect" title=" " alt="" coords="1653,343,1761,368"/>
-<area shape="poly" title=" " alt="" coords="1485,292,1652,336,1650,342,1484,297"/>
-<area shape="rect" title=" " alt="" coords="1786,343,1887,368"/>
-<area shape="poly" title=" " alt="" coords="1506,292,1773,340,1772,345,1505,297"/>
-<area shape="rect" title=" " alt="" coords="1912,343,2023,368"/>
-<area shape="poly" title=" " alt="" coords="1519,290,1899,340,1898,345,1518,295"/>
-<area shape="rect" title=" " alt="" coords="973,343,1071,368"/>
-<area shape="poly" title=" " alt="" coords="1371,297,1086,345,1085,340,1370,292"/>
-<area shape="rect" title=" " alt="" coords="1095,343,1210,368"/>
-<area shape="poly" title=" " alt="" coords="1396,297,1213,342,1212,337,1395,292"/>
-<area shape="rect" title=" " alt="" coords="1234,343,1335,368"/>
-<area shape="poly" title=" " alt="" coords="1418,297,1324,339,1322,335,1416,292"/>
-<area shape="rect" title=" " alt="" coords="1360,343,1495,368"/>
-<area shape="poly" title=" " alt="" coords="1442,296,1435,330,1430,329,1437,294"/>
-<area shape="rect" title=" " alt="" coords="1519,343,1629,368"/>
-<area shape="poly" title=" " alt="" coords="1464,292,1542,334,1539,338,1462,297"/>
-<area shape="rect" href="stm32__usb__uart_8h.html" title="VCOM driver for stm32 as a no_os_uart implementation." alt="" coords="2098,343,2237,368"/>
-<area shape="poly" title=" " alt="" coords="1519,288,2085,343,2084,349,1518,293"/>
-<area shape="poly" title=" " alt="" coords="2098,369,2080,371,1737,397,1402,417,934,436,934,431,1402,411,1736,392,2079,365,2097,363"/>
-<area shape="poly" title=" " alt="" coords="2098,366,2036,371,1698,387,1436,394,1174,401,837,419,685,432,685,426,836,413,1173,396,1436,389,1698,382,2035,365,2098,361"/>
-<area shape="poly" title=" " alt="" coords="2191,366,2290,415,2287,420,2189,370"/>
-<area shape="rect" title=" " alt="" coords="1860,423,1963,449"/>
-<area shape="poly" title=" " alt="" coords="2131,371,1963,422,1961,417,2129,365"/>
-<area shape="rect" title=" " alt="" coords="1987,423,2065,449"/>
-<area shape="poly" title=" " alt="" coords="2148,371,2060,419,2058,414,2145,366"/>
-<area shape="rect" title=" " alt="" coords="2089,416,2246,456"/>
-<area shape="poly" title=" " alt="" coords="2170,368,2170,402,2165,402,2165,368"/>
-<area shape="poly" title=" " alt="" coords="999,145,1233,192,1232,197,998,150"/>
-<area shape="poly" title=" " alt="" coords="888,150,849,168,831,181,818,197,796,241,791,280,799,320,818,367,835,393,857,413,853,417,831,396,813,369,794,321,786,280,791,239,813,195,828,177,846,163,886,145"/>
-<area shape="poly" title=" " alt="" coords="893,151,699,198,578,233,456,272,369,306,296,339,294,334,367,301,454,267,576,228,698,193,891,145"/>
-<area shape="poly" title=" " alt="" coords="1641,148,1641,182,1635,182,1635,148"/>
-<area shape="poly" title=" " alt="" coords="1169,150,1110,176,1037,217,1000,243,965,273,933,307,907,344,894,377,889,410,883,409,889,376,902,341,929,303,961,269,997,239,1034,213,1108,172,1167,146"/>
-<area shape="poly" title=" " alt="" coords="1261,144,1581,195,1580,201,1260,149"/>
-<area shape="poly" title=" " alt="" coords="1427,146,1494,183,1538,203,1583,219,1666,236,1759,245,1940,257,2010,267,2037,275,2056,287,2067,302,2069,320,2059,343,2037,370,2020,378,1986,385,1878,397,1551,417,1192,430,934,436,934,431,1192,425,1551,412,1877,392,1985,380,2018,373,2034,366,2054,340,2063,319,2062,303,2053,291,2034,280,2009,272,1939,262,1759,251,1665,241,1581,224,1536,207,1492,187,1425,151"/>
-<area shape="poly" title=" " alt="" coords="1445,145,1589,189,1587,195,1444,151"/>
-<area shape="rect" href="adi__version_8h.html" title="ADI Version macros." alt="" coords="2217,196,2326,221"/>
-<area shape="poly" title=" " alt="" coords="2274,148,2274,182,2269,182,2269,148"/>
+<area shape="rect" title="Implementation of AD5710R IIO Application Interface." alt="" coords="769,5,991,75"/>
+<area shape="rect" title=" " alt="" coords="66,343,137,368"/>
+<area shape="poly" title=" " alt="" coords="769,45,625,51,464,64,387,74,318,88,261,104,220,125,196,146,175,171,142,227,121,284,109,329,103,328,116,282,137,225,170,168,192,142,217,120,259,100,317,83,387,69,464,59,625,46,768,40"/>
+<area shape="rect" href="ad5710r__iio_2app_2app__config_8h.html" title="Application configurations module for AD5710R." alt="" coords="975,196,1079,221"/>
+<area shape="poly" title=" " alt="" coords="912,73,1009,184,1005,187,908,77"/>
+<area shape="rect" href="common_8h.html" title=" " alt="" coords="632,269,723,295"/>
+<area shape="poly" title=" " alt="" coords="824,77,794,99,767,124,742,158,720,194,689,258,684,255,715,191,737,155,763,121,791,95,821,73"/>
+<area shape="rect" title=" " alt="" coords="161,343,271,368"/>
+<area shape="poly" title=" " alt="" coords="769,51,618,62,454,79,315,100,268,112,243,125,226,147,214,173,207,200,204,229,206,284,213,329,207,329,200,285,199,229,202,199,209,171,222,144,240,121,266,107,314,94,453,73,618,57,768,45"/>
+<area shape="rect" title=" " alt="" coords="893,269,1000,295"/>
+<area shape="poly" title=" " alt="" coords="892,74,942,255,937,256,887,76"/>
+<area shape="rect" title=" " alt="" coords="2322,269,2433,295"/>
+<area shape="poly" title=" " alt="" coords="924,73,984,112,1054,146,1128,170,1191,186,1248,196,1302,202,1416,208,1560,219,1774,239,1985,255,2308,275,2308,280,1985,261,1774,244,1560,224,1415,213,1302,207,1248,201,1190,191,1126,175,1052,150,982,116,922,77"/>
+<area shape="rect" title=" " alt="" coords="254,196,341,221"/>
+<area shape="poly" title=" " alt="" coords="769,59,632,85,557,103,485,125,459,137,435,150,338,193,336,188,432,146,457,132,483,120,556,98,630,80,768,54"/>
+<area shape="rect" href="ad5710r__iio_8h.html" title="Header for AD5710R IIO aplication." alt="" coords="778,123,889,148"/>
+<area shape="poly" title=" " alt="" coords="866,76,848,111,843,109,861,74"/>
+<area shape="rect" href="ad5710r__user__config_8h.html" title="Header for AD5710R user configuration file." alt="" coords="253,123,421,148"/>
+<area shape="poly" title=" " alt="" coords="769,63,417,123,417,118,768,58"/>
+<area shape="rect" href="ad5710r__regs_8h.html" title="Header file for the ad5710r registers map." alt="" coords="5,123,128,148"/>
+<area shape="poly" title=" " alt="" coords="768,55,486,85,147,125,142,126,141,121,146,120,486,80,768,50"/>
+<area shape="rect" href="ad5710r__support_8h.html" title="AD5710r No&#45;OS driver support header file." alt="" coords="497,123,639,148"/>
+<area shape="poly" title=" " alt="" coords="769,77,620,121,618,116,767,72"/>
+<area shape="rect" title=" " alt="" coords="1066,123,1166,148"/>
+<area shape="poly" title=" " alt="" coords="966,72,1075,115,1073,120,964,77"/>
+<area shape="rect" title=" " alt="" coords="1190,123,1301,148"/>
+<area shape="poly" title=" " alt="" coords="992,67,1188,117,1187,122,991,72"/>
+<area shape="rect" title=" " alt="" coords="1325,123,1438,148"/>
+<area shape="poly" title=" " alt="" coords="992,59,1312,118,1311,124,991,65"/>
+<area shape="rect" title=" " alt="" coords="1463,123,1561,148"/>
+<area shape="poly" title=" " alt="" coords="992,53,1200,82,1449,120,1449,125,1199,87,991,59"/>
+<area shape="rect" href="ad5710r__iio_2app_2version_8h.html" title="Version macros for AD5710R IIO Firmware." alt="" coords="1585,123,1668,148"/>
+<area shape="poly" title=" " alt="" coords="992,49,1253,76,1572,120,1571,125,1252,81,991,54"/>
+<area shape="rect" title=" " alt="" coords="859,423,930,449"/>
+<area shape="poly" title=" " alt="" coords="1029,222,1026,256,1014,296,915,415,911,411,1010,293,1021,255,1024,221"/>
+<area shape="poly" title=" " alt="" coords="975,223,736,271,735,266,974,218"/>
+<area shape="poly" title=" " alt="" coords="1016,223,972,262,968,258,1012,219"/>
+<area shape="rect" title=" " alt="" coords="2253,423,2358,449"/>
+<area shape="poly" title=" " alt="" coords="1079,216,1098,219,1213,227,1358,230,1695,235,1866,244,2024,263,2095,276,2159,293,2215,315,2260,341,2276,355,2288,373,2302,409,2297,411,2283,375,2272,358,2257,345,2212,319,2158,298,2094,281,2023,268,1866,250,1695,240,1358,235,1212,232,1097,224,1078,221"/>
+<area shape="rect" title=" " alt="" coords="1395,269,1491,295"/>
+<area shape="poly" title=" " alt="" coords="1079,216,1381,266,1380,272,1078,221"/>
+<area shape="poly" title=" " alt="" coords="1079,216,1098,219,1281,234,1436,241,1700,244,1964,245,2120,252,2303,267,2309,267,2308,273,2302,272,2119,257,1964,250,1700,249,1436,247,1280,239,1097,224,1078,222"/>
+<area shape="rect" href="common__macros_8h.html" title="The file contain common macros that needs to be followed same across all the projects." alt="" coords="1515,269,1661,295"/>
+<area shape="poly" title=" " alt="" coords="1079,216,1098,219,1298,243,1502,267,1501,272,1297,249,1097,224,1078,221"/>
+<area shape="rect" href="ad5710r__iio_2app_2app__config__stm32_8h.html" title="Header file for STM32 platform configurations." alt="" coords="1219,269,1371,295"/>
+<area shape="poly" title=" " alt="" coords="1064,219,1232,263,1231,268,1062,224"/>
+<area shape="poly" title=" " alt="" coords="632,289,428,308,292,324,151,345,150,340,291,319,427,303,632,284"/>
+<area shape="poly" title=" " alt="" coords="687,294,714,328,752,366,800,395,848,416,846,421,798,400,749,370,710,332,683,297"/>
+<area shape="rect" title=" " alt="" coords="1345,423,1428,449"/>
+<area shape="poly" title=" " alt="" coords="693,293,746,334,796,366,841,379,902,390,1052,409,1208,422,1332,429,1331,435,1207,427,1052,414,901,396,840,384,794,370,743,338,690,297"/>
+<area shape="rect" title=" " alt="" coords="500,343,567,368"/>
+<area shape="poly" title=" " alt="" coords="655,297,570,339,568,334,653,292"/>
+<area shape="rect" title=" " alt="" coords="807,343,857,368"/>
+<area shape="poly" title=" " alt="" coords="703,292,795,334,793,339,701,297"/>
+<area shape="rect" title=" " alt="" coords="591,343,681,368"/>
+<area shape="poly" title=" " alt="" coords="673,296,652,332,647,329,668,294"/>
+<area shape="rect" title=" " alt="" coords="346,343,475,368"/>
+<area shape="poly" title=" " alt="" coords="635,297,468,342,467,336,634,292"/>
+<area shape="poly" title=" " alt="" coords="632,293,285,346,284,341,631,288"/>
+<area shape="poly" title=" " alt="" coords="1257,272,1089,227,1090,222,1259,267"/>
+<area shape="poly" title=" " alt="" coords="1219,294,1123,312,1072,326,1022,345,965,379,919,416,916,412,962,375,1020,340,1070,321,1122,307,1218,289"/>
+<area shape="rect" title=" " alt="" coords="1591,343,1699,368"/>
+<area shape="poly" title=" " alt="" coords="1352,292,1578,338,1577,343,1350,297"/>
+<area shape="rect" title=" " alt="" coords="1724,343,1825,368"/>
+<area shape="poly" title=" " alt="" coords="1371,291,1711,340,1710,345,1371,296"/>
+<area shape="rect" title=" " alt="" coords="1850,343,1961,368"/>
+<area shape="poly" title=" " alt="" coords="1371,291,1383,292,1608,314,1836,340,1836,345,1607,320,1382,297,1371,296"/>
+<area shape="rect" title=" " alt="" coords="1985,343,2084,368"/>
+<area shape="poly" title=" " alt="" coords="1371,291,1383,292,1547,306,1676,313,1806,322,1972,340,1971,345,1805,327,1675,319,1546,311,1382,297,1371,296"/>
+<area shape="rect" title=" " alt="" coords="1033,343,1148,368"/>
+<area shape="poly" title=" " alt="" coords="1263,297,1137,341,1136,336,1261,292"/>
+<area shape="rect" title=" " alt="" coords="1172,343,1273,368"/>
+<area shape="poly" title=" " alt="" coords="1285,297,1246,335,1242,331,1281,293"/>
+<area shape="rect" title=" " alt="" coords="1298,343,1433,368"/>
+<area shape="poly" title=" " alt="" coords="1308,293,1346,331,1342,335,1304,297"/>
+<area shape="rect" title=" " alt="" coords="1457,343,1567,368"/>
+<area shape="poly" title=" " alt="" coords="1330,292,1465,336,1463,341,1329,297"/>
+<area shape="rect" href="stm32__usb__uart_8h.html" title="VCOM driver for stm32 as a no_os_uart implementation." alt="" coords="2108,343,2247,368"/>
+<area shape="poly" title=" " alt="" coords="1371,291,1383,292,1581,308,1737,315,1894,323,2095,340,2094,345,1893,329,1737,321,1581,313,1382,297,1371,296"/>
+<area shape="poly" title=" " alt="" coords="2108,369,2096,371,1847,389,1507,408,944,435,944,430,1507,403,1847,384,2096,365,2107,364"/>
+<area shape="poly" title=" " alt="" coords="2108,369,2096,371,1723,409,1442,433,1441,428,1722,404,2096,365,2107,364"/>
+<area shape="poly" title=" " alt="" coords="2198,366,2276,414,2273,418,2195,370"/>
+<area shape="rect" title=" " alt="" coords="2126,423,2229,449"/>
+<area shape="poly" title=" " alt="" coords="2180,368,2180,409,2175,409,2175,368"/>
+<area shape="rect" title=" " alt="" coords="1843,423,1920,449"/>
+<area shape="poly" title=" " alt="" coords="2123,371,2033,391,1933,419,1924,421,1923,416,1931,413,2032,386,2122,365"/>
+<area shape="rect" title=" " alt="" coords="1944,416,2101,456"/>
+<area shape="poly" title=" " alt="" coords="2156,371,2073,412,2071,407,2153,366"/>
+<area shape="poly" title=" " alt="" coords="865,146,983,189,982,194,863,151"/>
+<area shape="poly" title=" " alt="" coords="838,148,892,409,887,410,833,149"/>
+<area shape="poly" title=" " alt="" coords="836,148,835,328,829,328,831,148"/>
+<area shape="poly" title=" " alt="" coords="333,150,313,185,308,183,328,147"/>
+<area shape="poly" title=" " alt="" coords="63,149,47,190,31,249,28,281,30,312,39,341,55,366,70,376,96,385,176,400,283,412,405,420,657,429,846,432,846,437,657,435,405,425,282,417,175,406,95,390,68,381,51,370,34,343,25,313,23,280,26,248,42,189,59,147"/>
+<area shape="poly" title=" " alt="" coords="105,145,248,189,246,195,103,151"/>
+<area shape="poly" title=" " alt="" coords="540,151,464,186,420,211,379,239,345,270,323,302,319,318,319,334,324,350,335,366,361,379,410,391,554,410,716,422,846,430,846,435,715,428,553,415,409,396,359,384,332,370,319,352,314,335,313,317,319,299,341,266,375,235,417,206,461,181,538,146"/>
+<area shape="poly" title=" " alt="" coords="525,151,354,195,353,190,524,145"/>
+<area shape="rect" href="adi__version_8h.html" title="ADI Version macros." alt="" coords="1572,196,1681,221"/>
+<area shape="poly" title=" " alt="" coords="1629,148,1629,182,1624,182,1624,148"/>
 </map>
 </div>
 </div><table class="memberdecls">
@@ -343,7 +346,7 @@ Variables</h2></td></tr>
 <div class="line">    .scan_type = &amp;<a class="code hl_variable" href="ad5710r__iio_8c.html#a4d7348014de1081362abe9a2d779b98c">ad5710r_iio_scan_type</a>,\</div>
 <div class="line">    .attributes = ad5710r_iio_ch_attributes\</div>
 <div class="line">}</div>
-<div class="ttc" id="aad5710r__iio_8c_html_a4d7348014de1081362abe9a2d779b98c"><div class="ttname"><a href="ad5710r__iio_8c.html#a4d7348014de1081362abe9a2d779b98c">ad5710r_iio_scan_type</a></div><div class="ttdeci">struct scan_type ad5710r_iio_scan_type</div><div class="ttdef"><b>Definition</b> ad5710r_iio.c:165</div></div>
+<div class="ttc" id="aad5710r__iio_8c_html_a4d7348014de1081362abe9a2d779b98c"><div class="ttname"><a href="ad5710r__iio_8c.html#a4d7348014de1081362abe9a2d779b98c">ad5710r_iio_scan_type</a></div><div class="ttdeci">struct scan_type ad5710r_iio_scan_type</div><div class="ttdef"><b>Definition</b> ad5710r_iio.c:168</div></div>
 </div><!-- fragment -->
 </div>
 </div>
