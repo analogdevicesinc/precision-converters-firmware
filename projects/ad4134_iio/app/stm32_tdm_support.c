@@ -2,7 +2,7 @@
  * @file    stm32_tdm_support.c
  * @brief   Wrapper file for TDM-DMA Data capturing
 ******************************************************************************
- * Copyright (c) 2023 Analog Devices, Inc. All Rights Reserved.
+ * Copyright (c) 2023, 2025 Analog Devices, Inc. All Rights Reserved.
  *
  * This software is proprietary to Analog Devices, Inc. and its licensors.
  * By using this software you agree to the terms of the associated

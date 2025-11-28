@@ -82,9 +82,8 @@ INFO_MSG(message("No / Unsupported ADxxxxy symbol defined.AD4134 defined"))
 #endif
 
 /* Note:
- * 1. The MBED platform supports Bit Banging Mode.
- * 2. In the STM32 platform, SDPK1 supports Bit Banging Mode.
- * 3. In the STM32 platform, Nucleo-H563 supports TDM Mode.
+ * 1. In the STM32 platform, SDPK1 supports Bit Banging Mode.
+ * 2. In the STM32 platform, Nucleo-H563 supports TDM Mode.
  */
 #if !defined(INTERFACE_MODE)
 #define INTERFACE_MODE 		BIT_BANGING_MODE

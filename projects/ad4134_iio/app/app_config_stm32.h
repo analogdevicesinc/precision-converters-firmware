@@ -148,10 +148,10 @@
 #define CONV_TRIGGER_DUTY_CYCLE_NSEC	(CONV_TRIGGER_PERIOD_NSEC / 40)
 
 /* Memory map for GPIOs on SDP-K1/STM32F4xxx MCU to read the values.
- * Mbed specific GPIO read/write library functions are very time stringent.
+ * STM32 for SDP-K1 GPIO read/write library functions are very time stringent.
  * Since data capture on AD7134 is done using bit banging method, memory mapped
  * IOs are used for faster access of IO pins.
- * IF USING ANY OTHER MBED BOARD MAKE SURE MEMORY MAP IS UPDATED ACCORDINGLY */
+ * IF USING ANY OTHER BOARD MAKE SURE MEMORY MAP IS UPDATED ACCORDINGLY */
 
 /* Memory address of PORTx IDR (input data) register (Base + 0x10 offset) */
 #define		DOUT1_IDR		(*((volatile uint32_t *)0x40020010)) // PORTA IDR
