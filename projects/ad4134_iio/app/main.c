@@ -1,10 +1,8 @@
 /***************************************************************************//**
- *   @file    main.cpp
- *   @brief   main module for AD7134 IIO interface
- *   @details This module invokes the AD7134 IIO interfaces
- *            through forever loop.
+ *   @file    main.c
+ *   @brief   Main interface for IIO firmware application
 ********************************************************************************
- * Copyright (c) 2020-21, 2023 Analog Devices, Inc.
+ * Copyright (c) 2020-21, 2023, 2025 Analog Devices, Inc.
  * All rights reserved.
  *
  * This software is proprietary to Analog Devices, Inc. and its licensors.
@@ -15,30 +13,48 @@
 /******************************************************************************/
 /***************************** Include Files **********************************/
 /******************************************************************************/
-
+#include <stdio.h>
 #include <stdint.h>
-#include "ad4134_iio.h"
+#include "no_os_error.h"
 
 /******************************************************************************/
 /********************** Macros and Constants Definitions **********************/
 /******************************************************************************/
 
 /******************************************************************************/
-/************************ Functions Definitions *******************************/
+/********************** Variables and User Defined Data Types *****************/
 /******************************************************************************/
 
-/* @brief	Main function
- * @details	This is a main entry function for AD7134 IIO application
+/******************************************************************************/
+/************************** Functions Declarations ****************************/
+/******************************************************************************/
+int32_t init_system(void);
+int32_t iio_app_initialize(void);
+void iio_app_event_handler(void);
+
+/******************************************************************************/
+/************************** Functions Definitions *****************************/
+/******************************************************************************/
+/**
+ * @brief	Main entry point to application
+ * @return	none
  */
 int main(void)
 {
-	/* Initialize the AD7134 IIO interface */
-	if (ad7134_iio_initialize() != 0) {
-		printf("\r\n IIO Initialization Failure!\r\n");
+	/* Initialize the system and peripherals */
+	if (init_system()) {
+		printf("System initialization failure!!\r\n");
+		return -ENODEV;
+	}
+
+	/* Initialize the IIO interface */
+	if (iio_app_initialize()) {
+		printf("IIO initialization failure!!\r\n");
+		return -ENODEV;
 	}
 
 	while (1) {
 		/* Monitor the IIO client events */
-		ad7134_iio_event_handler();
+		iio_app_event_handler();
 	}
 }
