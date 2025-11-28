@@ -15,6 +15,7 @@
 /******************************************************************************/
 
 #include "app_config.h"
+#include "ad4130_thermocouple_config.h"
 
 /******************************************************************************/
 /********************** Macros and Constants Definition ***********************/
@@ -56,7 +57,11 @@ struct ad413x_init_param ad4130_thermocouple_config_params = {
 #endif
 			.gain = AD413X_GAIN_1,
 			.filter = AD4130_FILTER_TYPE,
-			.s_time = AD413X_32_MCLK
+#if defined(USE_CJC_AS_RTD)
+			.s_time = AD413X_512_MCLK
+#else
+			.s_time = AD413X_32_MCLK,
+#endif
 		},
 	},
 
