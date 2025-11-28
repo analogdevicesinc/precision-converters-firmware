@@ -37,15 +37,14 @@
 
 /* UART init parameters for IIO comm port */
 struct no_os_uart_init_param uart_iio_comm_init_params = {
-	.device_id = 0,
+	.device_id = UART_ID,
+	.asynchronous_rx = false,
 	.baud_rate = IIO_UART_BAUD_RATE,
 	.size = NO_OS_UART_CS_8,
 	.parity = NO_OS_UART_PAR_NO,
 	.stop = NO_OS_UART_STOP_1_BIT,
-#if (ACTIVE_PLATFORM == STM32_PLATFORM)
 	.asynchronous_rx = true,
 	.irq_id = UART_IRQ_ID,
-#endif
 #if defined(USE_VIRTUAL_COM_PORT)
 	.platform_ops = &vcom_ops,
 	.extra = &vcom_extra_init_params
@@ -57,7 +56,8 @@ struct no_os_uart_init_param uart_iio_comm_init_params = {
 
 /* UART init parameters for console comm port */
 struct no_os_uart_init_param uart_console_stdio_init_params = {
-	.device_id = 0,
+	.device_id = UART_ID,
+	.asynchronous_rx = false,
 	.baud_rate = IIO_UART_BAUD_RATE,
 	.size = NO_OS_UART_CS_8,
 	.parity = NO_OS_UART_PAR_NO,
@@ -79,7 +79,6 @@ struct no_os_uart_init_param uart_console_stdio_init_params = {
 #endif
 };
 
-#if (ACTIVE_PLATFORM == STM32_PLATFORM)
 /* PWM GPIO init parameters */
 static struct no_os_gpio_init_param pwm_gpio_init_params = {
 	.number = LDAC_GPIO,
@@ -87,7 +86,6 @@ static struct no_os_gpio_init_param pwm_gpio_init_params = {
 	.platform_ops = &gpio_ops,
 	.extra = &stm32_pwm_gpio_init_params
 };
-#endif
 
 /* Trigger GPIO IRQ parameters */
 struct no_os_irq_init_param trigger_gpio_irq_params = {
@@ -102,9 +100,7 @@ struct no_os_pwm_init_param pwm_init_params = {
 	.period_ns = CONV_TRIGGER_PERIOD_NSEC(MAX_SAMPLING_RATE),
 	.duty_cycle_ns = CONV_TRIGGER_DUTY_CYCLE_NSEC(MAX_SAMPLING_RATE),
 	.platform_ops = &pwm_ops,
-#if (ACTIVE_PLATFORM == STM32_PLATFORM)
 	.pwm_gpio = &pwm_gpio_init_params,
-#endif
 	.extra = &pwm_extra_init_params
 
 };
@@ -114,9 +110,6 @@ static struct no_os_i2c_init_param no_os_i2c_init_params = {
 	.device_id = I2C_DEV_ID,
 	.platform_ops = &i2c_ops,
 	.max_speed_hz = 100000,
-#if (ACTIVE_PLATFORM == MBED_PLATFORM)
-	.extra = &i2c_extra_init_params
-#endif
 };
 
 /* LDAC GPIO init parameters */
@@ -195,9 +188,8 @@ static int32_t init_uart(void)
 	if (ret) {
 		return ret;
 	}
-#if (ACTIVE_PLATFORM == STM32_PLATFORM)
+
 	no_os_uart_stdio(uart_console_stdio_desc);
-#endif
 #endif
 
 	return 0;
@@ -220,12 +212,10 @@ static int32_t gpio_trigger_init(void)
 	/* Lowering the LDAC GPIO interrupt priority than uart because some
 	 * characters of iio command are missing when both LDAC GPIO interrupt
 	 * and uart interrupt occurs at same time.*/
-#if (ACTIVE_PLATFORM == STM32_PLATFORM)
 	ret = no_os_irq_set_priority(trigger_irq_desc, IRQ_CTRL_ID, LDAC_GPIO_PRIORITY);
 	if (ret) {
 		return ret;
 	}
-#endif
 
 	return 0;
 }
