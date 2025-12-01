@@ -1,5 +1,7 @@
 <map id="pl_gui_lvgl_tick_update" name="pl_gui_lvgl_tick_update">
-<area shape="rect" id="Node000001" title="Update lvgl tick timer." alt="" coords="192,5,367,31"/>
-<area shape="rect" id="Node000002" href="$ad4130__iio_2app_2app__config_8c.html#a416757598b978b4c9419ba8663eb72b0" title=" " alt="" coords="5,5,144,31"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="178,21,144,21,144,15,178,15"/>
+<area shape="rect" id="Node000001" title="Update lvgl tick timer." alt="" coords="225,31,400,56"/>
+<area shape="rect" id="Node000002" href="$ad4130__iio_2app_2app__config__stm32_8c.html#a5033855e81ba2071231b60599a3ce9a1" title="Systick Callback definition." alt="" coords="5,5,177,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="211,34,177,30,178,25,212,29"/>
+<area shape="rect" id="Node000003" href="$ad4130__iio_2app_2app__config_8c.html#a416757598b978b4c9419ba8663eb72b0" title=" " alt="" coords="22,55,161,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="212,57,161,62,161,57,211,52"/>
 </map>

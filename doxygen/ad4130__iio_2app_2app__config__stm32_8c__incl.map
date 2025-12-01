@@ -1,0 +1,40 @@
+<map id="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad4130_iio/app/app_config_stm32.c" name="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad4130_iio/app/app_config_stm32.c">
+<area shape="rect" id="Node000001" title="Source file for STM32 platform configurations." alt="" coords="576,5,835,75"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="541,123,624,148"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="663,77,610,116,607,112,659,73"/>
+<area shape="rect" id="Node000003" href="$ad4130__iio_2app_2app__config_8h.html" title="Configuration file for AD4130 device applications." alt="" coords="699,123,803,148"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="724,74,741,109,737,111,719,76"/>
+<area shape="rect" id="Node000006" href="$ad4130__iio_2app_2app__config__stm32_8h.html" title="Header file for STM32 platform configurations." alt="" coords="435,196,587,221"/>
+<area shape="poly" id="edge16_Node000001_Node000006" title=" " alt="" coords="692,77,669,114,638,150,601,175,562,193,559,189,598,171,634,146,665,111,687,74"/>
+<area shape="rect" id="Node000015" href="$pl__gui__events_8h.html" title="Pocket lab GUI event handling headers." alt="" coords="970,123,1094,148"/>
+<area shape="poly" id="edge17_Node000001_Node000015" title=" " alt="" coords="824,72,980,116,978,121,823,77"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="914,269,985,295"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="762,146,794,181,838,219,874,242,911,261,909,266,872,247,834,223,790,185,758,150"/>
+<area shape="rect" id="Node000005" href="$common__macros_8h.html" title="The file contain common macros that needs to be followed same across all the projects." alt="" coords="848,196,995,221"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="779,146,882,188,880,193,777,150"/>
+<area shape="poly" id="edge5_Node000003_Node000006" title=" " alt="" coords="713,151,564,195,562,189,711,145"/>
+<area shape="rect" id="Node000013" href="$ad4130__user__config_8h.html" title="Header for AD4130 user configuration file." alt="" coords="611,196,773,221"/>
+<area shape="poly" id="edge13_Node000003_Node000013" title=" " alt="" coords="743,150,712,187,708,184,739,147"/>
+<area shape="poly" id="edge6_Node000006_Node000004" title=" " alt="" coords="587,218,901,267,900,272,586,223"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="399,269,500,295"/>
+<area shape="poly" id="edge7_Node000006_Node000007" title=" " alt="" coords="503,223,470,261,466,257,499,220"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="524,269,623,295"/>
+<area shape="poly" id="edge8_Node000006_Node000008" title=" " alt="" coords="523,220,556,257,552,261,519,223"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="647,269,782,295"/>
+<area shape="poly" id="edge9_Node000006_Node000009" title=" " alt="" coords="544,219,670,262,668,267,543,224"/>
+<area shape="rect" id="Node000010" title=" " alt="" coords="5,269,107,295"/>
+<area shape="poly" id="edge10_Node000006_Node000010" title=" " alt="" coords="435,224,121,272,120,267,434,218"/>
+<area shape="rect" id="Node000011" title=" " alt="" coords="131,269,242,295"/>
+<area shape="poly" id="edge11_Node000006_Node000011" title=" " alt="" coords="459,224,253,269,252,264,458,219"/>
+<area shape="rect" id="Node000012" title=" " alt="" coords="266,269,374,295"/>
+<area shape="poly" id="edge12_Node000006_Node000012" title=" " alt="" coords="481,224,365,267,363,262,479,219"/>
+<area shape="poly" id="edge14_Node000013_Node000004" title=" " alt="" coords="734,219,902,265,900,270,733,224"/>
+<area shape="rect" id="Node000014" title=" " alt="" coords="807,269,889,295"/>
+<area shape="poly" id="edge15_Node000013_Node000014" title=" " alt="" coords="718,219,811,261,809,266,716,224"/>
+<area shape="poly" id="edge18_Node000015_Node000004" title=" " alt="" coords="1033,149,1025,183,1009,223,994,244,976,262,972,258,989,240,1004,220,1020,181,1028,148"/>
+<area shape="rect" id="Node000016" href="$pl__gui__iio__wrapper_8h.html" title="Pocket lab GUI IIO wrapper interfaces." alt="" coords="1069,196,1224,221"/>
+<area shape="poly" id="edge19_Node000015_Node000016" title=" " alt="" coords="1052,146,1118,186,1115,191,1049,150"/>
+<area shape="poly" id="edge20_Node000016_Node000004" title=" " alt="" coords="1116,224,995,267,994,262,1114,219"/>
+<area shape="rect" id="Node000017" title=" " alt="" coords="1121,269,1172,295"/>
+<area shape="poly" id="edge21_Node000016_Node000017" title=" " alt="" coords="1149,222,1149,256,1144,256,1144,222"/>
+</map>
