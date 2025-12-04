@@ -46,13 +46,13 @@ int main(void)
 		return -ENODEV;
 	}
 	/* Initialize the AD405X IIO interface */
-	if (iio_ad405x_initialize()) {
+	if (iio_app_initialize()) {
 		printf("IIO initialization failure!!\r\n");
 		return -ENODEV;
 	}
 
 	while (1) {
 		/* Monitor the IIO client events */
-		iio_ad405x_event_handler();
+		iio_app_event_handler();
 	}
 }

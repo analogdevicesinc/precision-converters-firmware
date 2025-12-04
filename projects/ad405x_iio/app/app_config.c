@@ -22,6 +22,7 @@
 #include "no_os_delay.h"
 #include "no_os_i2c.h"
 #include "no_os_dma.h"
+#include "no_os_delay.h"
 
 /******************************************************************************/
 /************************ Macros/Constants ************************************/
@@ -33,9 +34,7 @@
 /* UART init parameters for IIO comm port */
 struct no_os_uart_init_param uart_iio_comm_init_params = {
 	.device_id = UART_MODULE,
-#if (ACTIVE_PLATFORM == STM32_PLATFORM)
 	.asynchronous_rx = true,
-#endif
 	.baud_rate = IIO_UART_BAUD_RATE,
 	.size = NO_OS_UART_CS_8,
 	.parity = NO_OS_UART_PAR_NO,
@@ -58,6 +57,7 @@ struct no_os_uart_init_param uart_console_stdio_init_params = {
 	.size = NO_OS_UART_CS_8,
 	.parity = NO_OS_UART_PAR_NO,
 	.stop = NO_OS_UART_STOP_1_BIT,
+	.irq_id = UART_IRQ,
 #if defined(USE_VIRTUAL_COM_PORT)
 	/* If virtual com port is primary IIO comm port, use physical port for stdio
 	 * console. Applications which does not support VCOM, should not satisfy this
@@ -82,7 +82,6 @@ struct no_os_irq_init_param trigger_gpio_irq_params = {
 	.extra = &trigger_gpio_irq_extra_params
 };
 
-#if (ACTIVE_PLATFORM == STM32_PLATFORM)
 /* PWM GPIO init parameters */
 struct no_os_gpio_init_param pwm_gpio_params = {
 	.port = CNV_PORT_NUM,
@@ -90,7 +89,6 @@ struct no_os_gpio_init_param pwm_gpio_params = {
 	.platform_ops = &gpio_ops,
 	.extra = &pwm_gpio_extra_init_params
 };
-#endif
 
 /* PWM init parameters for conversion pulses */
 struct no_os_pwm_init_param spi_dma_pwm_init_params = {
@@ -98,9 +96,7 @@ struct no_os_pwm_init_param spi_dma_pwm_init_params = {
 	.period_ns = PWM_FREQUENCY_TO_PERIOD(SAMPLING_RATE_SPI_DMA),
 	.duty_cycle_ns = PWM_FREQUENCY_TO_PERIOD(SAMPLING_RATE_SPI_DMA) - 360,
 	.polarity = NO_OS_PWM_POLARITY_LOW,
-#if (ACTIVE_PLATFORM == STM32_PLATFORM)
 	.pwm_gpio = &pwm_gpio_params,
-#endif
 	.platform_ops = &pwm_ops,
 	.extra = &pwm_extra_init_params
 };
@@ -111,9 +107,7 @@ struct no_os_pwm_init_param spi_intr_pwm_init_params = {
 	.period_ns = PWM_FREQUENCY_TO_PERIOD(SAMPLING_RATE_SPI_INTR),
 	.duty_cycle_ns = CONV_TRIGGER_DUTY_CYCLE_NSEC(PWM_FREQUENCY_TO_PERIOD(SAMPLING_RATE_SPI_INTR)),
 	.polarity = NO_OS_PWM_POLARITY_HIGH,
-#if (ACTIVE_PLATFORM == STM32_PLATFORM)
 	.pwm_gpio = &pwm_gpio_params,
-#endif
 	.platform_ops = &pwm_ops,
 	.extra = &pwm_extra_init_params
 };
@@ -212,11 +206,7 @@ static struct no_os_i2c_init_param no_os_i2c_init_params = {
 	.device_id = I2C_DEV_ID,
 	.platform_ops = &i2c_ops,
 	.max_speed_hz = I2C_MAX_SPEED_HZ,
-#if (ACTIVE_PLATFORM == MBED_PLATFORM)
-	.extra = &i2c_extra_init_params
-#else
 	.extra = I2C_EXTRA_PARAM_PTR
-#endif
 };
 
 /* EEPROM init parameters */
@@ -285,10 +275,8 @@ static int32_t init_uart(void)
 	if (ret) {
 		return ret;
 	}
-#if (ACTIVE_PLATFORM == STM32_PLATFORM)
-	no_os_uart_stdio(uart_console_stdio_desc);
-#endif
 
+	no_os_uart_stdio(uart_console_stdio_desc);
 #endif
 
 	return 0;
@@ -339,9 +327,11 @@ int32_t gpio_trigger_init(void)
 int32_t init_pwm(void)
 {
 	int32_t ret;
+
 #if (ACTIVE_PLATFORM == STM32_PLATFORM)
 	stm32_config_cnv_prescalar();
 #endif
+
 #ifdef SPI_SUPPORT_AVAILABLE
 	/* Initialize the PWM interface to generate conversion signal.
 	 * If SPI_DMA is enabled, pwm interface is also used to
@@ -556,6 +546,9 @@ int32_t init_system(void)
 #endif
 
 #if defined(SDRAM_SUPPORT_AVAILABLE)
+	/* Wait for 2 seconds to ensure SDRAM power-up */
+	no_os_mdelay(2000);
+
 	ret = sdram_init();
 	if (ret) {
 		return ret;
@@ -572,7 +565,6 @@ int32_t init_system(void)
  */
 int32_t init_system_post_verification(void)
 {
-#if (ACTIVE_PLATFORM == STM32_PLATFORM)
 #ifdef I3C_SUPPORT_AVAILABLE
 	int32_t ret;
 	if (ad405x_interface_mode == I3C_DMA) {
@@ -582,8 +574,6 @@ int32_t init_system_post_verification(void)
 	}
 #endif
 	stm32_system_init_post_verification();
-
-#endif
 
 	return 0;
 }

@@ -283,6 +283,9 @@ volatile struct iio_device_data* iio_dev_data_g;
 /* Variable to store ADC resolution based on device and mode */
 static uint8_t resolution;
 
+/* Bitmask to isolate data bits based on resolution */
+static uint32_t adc_data_mask;
+
 /* Variable to store storage bits based on device and mode */
 static uint8_t storage_bits;
 
@@ -338,12 +341,6 @@ static int configure_pwm_period(uint32_t requested_pwm_period)
 			return ret;
 		}
 	} else {
-#if (ACTIVE_PLATFORM == MBED_PLATFORM)
-		ret = no_os_pwm_enable(pwm_desc);
-		if (ret) {
-			return ret;
-		}
-#endif
 
 		/* Updated the init params to keep sync when system_config is called */
 		spi_intr_pwm_init_params.period_ns = requested_pwm_period;
@@ -360,12 +357,6 @@ static int configure_pwm_period(uint32_t requested_pwm_period)
 			return ret;
 		}
 
-#if (ACTIVE_PLATFORM == MBED_PLATFORM)
-		ret = no_os_pwm_disable(pwm_desc);
-		if (ret) {
-			return ret;
-		}
-#endif
 	}
 #endif
 
@@ -544,7 +535,7 @@ static int iio_ad405x_attr_get(void *device,
 			       intptr_t priv)
 {
 	int ret;
-	int32_t adc_raw_data;
+	uint32_t adc_raw_data;
 	static int32_t offset = 0;
 	float scale;
 	static volatile uint32_t pwm_period;
@@ -581,7 +572,7 @@ static int iio_ad405x_attr_get(void *device,
 		 * the updated data.
 		 */
 		if ((ad405x_interface_mode == I3C_DMA) || (ad405x_interface_mode == I3C_INTR)) {
-			ret = ad405x_get_adc(p_ad405x_dev, &adc_raw_data);
+			ret = ad405x_get_adc(p_ad405x_dev, (int32_t *)&adc_raw_data);
 			if (ret) {
 				return ret;
 			}
@@ -592,7 +583,7 @@ static int iio_ad405x_attr_get(void *device,
 				}
 			} while ((*(uint8_t *)&value) == NO_OS_GPIO_HIGH);
 		}
-		ret = ad405x_get_adc(p_ad405x_dev, &adc_raw_data);
+		ret = ad405x_get_adc(p_ad405x_dev, (int32_t *)&adc_raw_data);
 		if (ret) {
 			return ret;
 		}
@@ -614,6 +605,9 @@ static int iio_ad405x_attr_get(void *device,
 			}
 		}
 
+		/* Mask the ADC raw data to retain only the resolution bits */
+		adc_raw_data &= adc_data_mask;
+
 #if (ADC_DATA_FORMAT == TWOS_COMPLEMENT)
 		if (adc_raw_data >= adc_max_count) {
 			offset = -(NO_OS_BIT(resolution) - 1);
@@ -621,7 +615,7 @@ static int iio_ad405x_attr_get(void *device,
 			offset = 0;
 		}
 #endif
-		return sprintf(buf, "%ld", adc_raw_data);
+		return sprintf(buf, "%lu", adc_raw_data);
 
 	case ADC_SCALE:
 		scale = (((ADC_REF_VOLTAGE) / adc_max_count) * 1000);
@@ -1178,6 +1172,7 @@ static int32_t ad405x_assign_device(uint8_t dev_type,
 	}
 
 	bytes_per_sample = BYTES_PER_SAMPLE(storage_bits);
+	adc_data_mask = NO_OS_GENMASK(resolution - 1, 0);
 
 #if (ADC_DATA_FORMAT == STRAIGHT_BINARY)
 	adc_max_count = (uint32_t)(1 << (resolution));
@@ -1368,7 +1363,7 @@ int iio_params_deinit(void)
  * @brief	Initialize the IIO interface for AD405X IIO device
  * @return	0 in case of success,negative error code otherwise
  */
-int32_t iio_ad405x_initialize(void)
+int32_t iio_app_initialize(void)
 {
 	int32_t init_status;
 	uint8_t dev_type;
@@ -1605,7 +1600,7 @@ iio_fail:
  * @return	none
  * @details	This function monitors the new IIO client event
  */
-void iio_ad405x_event_handler(void)
+void iio_app_event_handler(void)
 {
 	if (restart_iio_flag) {
 		/* Remove and free the pointers allocated during IIO init */
@@ -1625,7 +1620,7 @@ void iio_ad405x_event_handler(void)
 		/* Reset the restart_iio flag */
 		restart_iio_flag = false;
 
-		iio_ad405x_initialize();
+		iio_app_initialize();
 	}
 
 #ifdef USE_VIRTUAL_COM_PORT
