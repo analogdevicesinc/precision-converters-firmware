@@ -23,13 +23,11 @@
 #include "no_os_irq.h"
 #include "no_os_pwm.h"
 #include "common.h"
+#include <common_macros.h>
 
 /******************************************************************************/
 /********************** Macros and Constants Definition ***********************/
 /******************************************************************************/
-/* List of supported platforms */
-#define	MBED_PLATFORM		1
-#define STM32_PLATFORM		2
 
 /* List of data capture modes supported by application*/
 #define CONTINUOUS_DATA_CAPTURE		    0
@@ -70,11 +68,7 @@
 #define ACTIVE_DEVICE_NAME	"ad405x"
 #define DEVICE_NAME			"DEV_AD405x"
 
-#if (ACTIVE_PLATFORM == MBED_PLATFORM)
-#include "app_config_mbed.h"
-#define HW_CARRIER_NAME		    	TARGET_NAME
-#define CONSOLE_STDIO_PORT_AVAILABLE
-#elif (ACTIVE_PLATFORM == STM32_PLATFORM)
+#if (ACTIVE_PLATFORM == STM32_PLATFORM)
 #include "app_config_stm32.h"
 #define HW_CARRIER_NAME		    	TARGET_NAME
 #define IIO_TRIGGER_HANDLE_SPI      0    // Unused macro

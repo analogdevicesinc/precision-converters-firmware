@@ -341,12 +341,6 @@ static int configure_pwm_period(uint32_t requested_pwm_period)
 			return ret;
 		}
 	} else {
-#if (ACTIVE_PLATFORM == MBED_PLATFORM)
-		ret = no_os_pwm_enable(pwm_desc);
-		if (ret) {
-			return ret;
-		}
-#endif
 
 		/* Updated the init params to keep sync when system_config is called */
 		spi_intr_pwm_init_params.period_ns = requested_pwm_period;
@@ -363,12 +357,6 @@ static int configure_pwm_period(uint32_t requested_pwm_period)
 			return ret;
 		}
 
-#if (ACTIVE_PLATFORM == MBED_PLATFORM)
-		ret = no_os_pwm_disable(pwm_desc);
-		if (ret) {
-			return ret;
-		}
-#endif
 	}
 #endif
 
