@@ -2,7 +2,7 @@
  *   @file    app_config_mbed.c
  *   @brief   Application configurations module for Mbed platform
 ********************************************************************************
- * Copyright (c) 2022-2024 Analog Devices, Inc.
+ * Copyright (c) 2022-2023 Analog Devices, Inc.
  * All rights reserved.
  *
  * This software is proprietary to Analog Devices, Inc. and its licensors.
