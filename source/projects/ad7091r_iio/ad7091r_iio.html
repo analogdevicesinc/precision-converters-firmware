@@ -6,14 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta content="Supported Devices:" name="description" />
 
-    <title>AD4134/AD7134 IIO Application &#8212; Precision Converters Firmware  documentation</title>
+    <title>AD7091R IIO Application &#8212; Precision Converters Firmware  documentation</title>
     <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=8e8a900e" />
     <link rel="stylesheet" type="text/css" href="../../../_static/app.min.css?v=31a9e0ba" />
     <script async="async" src="../../../_static/app.umd.js?v=3a4867e9"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="AD717x / AD411x Console Application" href="../ad717x_console/ad717x_console.html" />
-    <link rel="prev" title="AD7124 Temperature Measure Firmware Application" href="../ad7124_temperature-measure/ad7124_temperature-measure.html" />
+    <link rel="next" title="AD7124 Console Application" href="../ad7124_console/ad7124_console.html" />
+    <link rel="prev" title="AD5933 Console Application" href="../ad5933_console/ad5933_console.html" />
    
   
   
@@ -93,13 +93,12 @@
         </div>
         <nav>
           <ul>
-<li><a class="reference internal" href="#">AD4134/AD7134 IIO Application</a><ul>
+<li><a class="reference internal" href="#">AD7091R IIO Application</a><ul>
 <li><a class="reference internal" href="#supported-hardware">Supported Hardware</a></li>
 <li><a class="reference internal" href="#introduction">Introduction</a></li>
 <li><a class="reference internal" href="#useful-links">Useful Links</a></li>
 <li><a class="reference internal" href="#hardware-connections">Hardware Connections</a></li>
 <li><a class="reference internal" href="#jumper-settings">Jumper Settings</a></li>
-<li><a class="reference internal" href="#communication-interface">Communication Interface</a></li>
 <li><a class="reference internal" href="#build-guide">Build Guide</a><ul>
 <li><a class="reference internal" href="#build-prerequisites">Build Prerequisites</a></li>
 <li><a class="reference internal" href="#building-a-project">Building a project</a></li>
@@ -109,6 +108,9 @@
 <li><a class="reference internal" href="#using-the-iio-ecosystem">Using the IIO Ecosystem</a></li>
 <li><a class="reference internal" href="#iio-tools">IIO Tools:</a></li>
 <li><a class="reference internal" href="#iio-firmware-structure">IIO Firmware Structure</a></li>
+<li><a class="reference internal" href="#configuring-sampling-frequency">Configuring Sampling Frequency</a></li>
+<li><a class="reference internal" href="#reference-voltage-configuration">Reference Voltage Configuration</a></li>
+<li><a class="reference internal" href="#changing-the-default-spi-clock-frequency-setting">Changing the default SPI clock frequency setting</a></li>
 <li><a class="reference internal" href="#support">Support</a></li>
 </ul>
 </li>
@@ -158,11 +160,11 @@ Content on this topic
 <li class="toctree-l2"><a class="reference internal" href="../ad579x_iio/ad579x_iio.html">AD579X IIO Application</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ad590_console/ad590_console.html">AD590 Console Application</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ad5933_console/ad5933_console.html">AD5933 Console Application</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ad7091r_iio/ad7091r_iio.html">AD7091R IIO Application</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">AD7091R IIO Application</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ad7124_console/ad7124_console.html">AD7124 Console Application</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ad7124_iio/ad7124_iio.html">AD7124 IIO Application</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ad7124_temperature-measure/ad7124_temperature-measure.html">AD7124 Temperature Measure Firmware Application</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">AD4134/AD7134 IIO Application</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ad4134_iio/ad4134_iio.html">AD4134/AD7134 IIO Application</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ad717x_console/ad717x_console.html">AD717x / AD411x Console Application</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ad717x_iio/ad717x_iio.html">AD717x / AD411x IIO Application</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ad719x_iio/ad719x_iio.html">AD719x IIO Application</a></li>
@@ -193,35 +195,29 @@ Content on this topic
 </div>
           <div class="body" role="main">
             
-  <section id="ad4134-ad7134-iio-application">
-<h1>AD4134/AD7134 IIO Application<a class="headerlink" href="#ad4134-ad7134-iio-application" title="Link to this heading"></a></h1>
+  <section id="ad7091r-iio-application">
+<h1>AD7091R IIO Application<a class="headerlink" href="#ad7091r-iio-application" title="Link to this heading"></a></h1>
 <section id="supported-hardware">
 <h2>Supported Hardware<a class="headerlink" href="#supported-hardware" title="Link to this heading"></a></h2>
 <p><strong>Supported Devices:</strong></p>
 <ul class="simple">
-<li><p><a class="icon link reference external" href="https://www.analog.com/en/products/ad7134.html" target="_blank">AD7134</a></p></li>
-<li><p><a class="icon link reference external" href="https://www.analog.com/en/products/ad4134.html" target="_blank">AD4134</a></p></li>
+<li><p><a class="icon link reference external" href="https://www.analog.com/en/products/ad7091r-8.html" target="_blank">AD7091R-8</a></p></li>
 </ul>
 <p><strong>Supported Evaluation Boards:</strong></p>
 <ul class="simple">
-<li><p><a class="icon link reference external" href="https://www.analog.com/en/resources/reference-designs/circuits-from-the-lab/cn0561.html" target="_blank">EVAL-CN0561-ARDZ</a></p></li>
+<li><p><a class="icon link reference external" href="https://www.analog.com/en/resources/evaluation-hardware-and-software/evaluation-boards-kits/eval-ad7091r-8.html" target="_blank">EVAL-AD7091R-8ARDZ</a></p></li>
 </ul>
 <p><strong>Supported Carrier Boards:</strong></p>
 <ul class="simple">
-<li><p><a class="icon link reference external" href="https://os.mbed.com/platforms/SDP_K1/" target="_blank">SDP-K1 With Mbed Platform</a></p></li>
-<li><p><a class="icon link reference external" href="https://www.st.com/en/evaluation-tools/nucleo-h563zi.html" target="_blank">Nucleo-H563ZI With STM32 Platform</a></p></li>
+<li><p><a class="icon link reference external" href="https://www.analog.com/en/resources/evaluation-hardware-and-software/evaluation-boards-kits/sdp-k1.html#eb-overview" target="_blank">SDP-K1</a></p></li>
 </ul>
 </section>
 <section id="introduction">
 <h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading"></a></h2>
-<p>This page gives an overview of using the ARM platforms supported (default is Mbed)
-firmware example with Analog Devices AD4134/AD7134 Evaluation board and SDP-K1 controller board.
+<p>This page gives an overview of using the ARM platforms supported
+firmware example with Analog Devices AD7091r Evaluation board and SDP-K1 controller board.
 This example code leverages the ADI developed IIO (Industrial Input Output) ecosystem to
-evaluate the AD4134/AD7134 device by providing a device debug and data capture support.</p>
-<p>The firmware supports mbed and STM32 platforms. The respective build guides for each of the platforms
-can be found in the further sections. The active platform can be chosen by selecting the appropriate
-value for the ACTIVE_PLATFORM macro in the app_config.h (Default is mbed)</p>
-<p>Example: #define ACTIVE_PLATFORM STM32_PLATFORM would enable the firmware to compile using the STM32 platform.</p>
+evaluate the AD7091r device by providing a device debug and data capture support.</p>
 <blockquote>
 <div><a class="reference internal image-reference" href="../../../_images/app_interface.png"><img alt="../../../_images/app_interface.png" src="../../../_images/app_interface.png" style="width: 350px;" />
 </a>
@@ -233,8 +229,7 @@ to communicates with IIO device.</p>
 <p class="admonition-title">Note</p>
 <p>This code has been developed and tested on the SDP-K1 Controller Board with
 Arduino headers. However, the same code can be used with minimal modifications
-on any Mbed enabled board which has Arduino Header support on it. To find out
-all supported Mbed boards, refer this link: <a class="icon link reference external" href="https://os.mbed.com/platforms/" target="_blank">https://os.mbed.com/platforms/</a></p>
+on any STM32 board which has Arduino Header support on it.</p>
 </div>
 </section>
 <section id="useful-links">
@@ -242,8 +237,7 @@ all supported Mbed boards, refer this link: <a class="icon link reference extern
 <ul class="simple">
 <li><p><a class="icon link reference external" href="https://github.com/analogdevicesinc/precision-converters-firmware" target="_blank">Source Code: Precision Converters Firmware</a></p></li>
 <li><p><a class="icon link reference external" href="https://github.com/analogdevicesinc/no-OS" target="_blank">no-OS: Software drivers for systems without OS</a></p></li>
-<li><p><a class="icon link reference external" href="https://studio.keil.arm.com/auth/login/" target="_blank">Keil Studio Web IDE/Compiler</a></p></li>
-<li><p><a class="icon link reference external" href="https://os.mbed.com/platforms/SDP_K1/" target="_blank">SDP-K1 on Mbed</a></p></li>
+<li><p><a class="icon link reference external" href="https://www.analog.com/en/resources/evaluation-hardware-and-software/evaluation-boards-kits/sdp-k1.html#eb-overview" target="_blank">SDP-K1</a></p></li>
 <li><p><a class="icon link reference external" href="https://github.com/analogdevicesinc/linux" target="_blank">Linux Drivers</a></p></li>
 <li><p><a class="icon link reference external" href="https://github.com/analogdevicesinc/hdl" target="_blank">HDL Source Code</a></p></li>
 </ul>
@@ -255,12 +249,12 @@ they may be of interest if you require Linux and/or FPGA support.</p>
 </section>
 <section id="hardware-connections">
 <h2>Hardware Connections<a class="headerlink" href="#hardware-connections" title="Link to this heading"></a></h2>
-<p>Required: SDP-K1 (or alternative Mbed enabled controller board, or an STM32 board ), EVAL-AD4134/AD7134 board
+<p>Required: SDP-K1, EVAL-AD7091R-8ARDZ board
 and USB cable.</p>
-<p>Connect the EVAL-AD4134/AD7134 board to SDP-K1 board (or any other Mbed enabled controller
-board or an equivalent STM32 board). Connect controller board to the PC using the USB cable.</p>
+<p>Connect the EVAL-AD7091R-8ARDZ board to SDP-K1 board (or any STM32 controller
+board). Connect controller board to the PC using the USB cable.</p>
 <blockquote>
-<div><a class="reference internal image-reference" href="../../../_images/ad4134_hardware_interface.png"><img alt="../../../_images/ad4134_hardware_interface.png" src="../../../_images/ad4134_hardware_interface.png" style="width: 600px;" />
+<div><a class="reference internal image-reference" href="../../../_images/ad7091r_hardware_interface.png"><img alt="../../../_images/ad7091r_hardware_interface.png" src="../../../_images/ad7091r_hardware_interface.png" style="width: 600px;" />
 </a>
 </div></blockquote>
 </section>
@@ -268,31 +262,15 @@ board or an equivalent STM32 board). Connect controller board to the PC using th
 <h2>Jumper Settings<a class="headerlink" href="#jumper-settings" title="Link to this heading"></a></h2>
 <p><strong>SDP-K1:</strong></p>
 <p>Connect the VIO_ADJUST jumper on the SDP-K1 board to 3.3V position to drive SDP-K1 GPIOs at 3.3V</p>
-<p><strong>EVAL-AD4134:</strong></p>
-<blockquote>
-<div><a class="reference internal image-reference" href="../../../_images/CN0561_Evaluation_Board.png"><img alt="../../../_images/CN0561_Evaluation_Board.png" src="../../../_images/CN0561_Evaluation_Board.png" style="width: 300px;" />
-</a>
-</div></blockquote>
+<p><strong>EVAL-AD7091R:</strong></p>
 <ul class="simple">
-<li><p>Please refer to the <a class="icon link reference external" href="https://wiki.analog.com/resources/eval/user-guides/cn0561" target="_blank">Board user guide</a> for further information on the jumpers.</p></li>
+<li><p>Please refer to the respective board user guide on the product page of the chosen device.</p></li>
 </ul>
-<p>Please ensure to follow the below mentioned configurations on the board:</p>
-<ul class="simple">
-<li><p>External power supply to be provided via P16 or the Arduino connector</p></li>
-<li><p>P10: Closed for target mode of operation and Open for controller mode</p></li>
-</ul>
-</section>
-<section id="communication-interface">
-<h2>Communication Interface<a class="headerlink" href="#communication-interface" title="Link to this heading"></a></h2>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>For data transmission to IIO clients, IIO firmware applications uses <em>Virtual Serial</em>
-Or <em>UART</em> as primary communication links. Firmware by default uses the Virtual Serial
-interface for SDP-K1 for higher speed data transmission as SDP-K1 board supports
-both Virtual Serial and UART interface. The Nucleo-H563 supports only UART. If you target a different MCU board that does not
-support Virtual Serial, just set UART as communication link in the firmware (app_config.h file).</p>
+<p>To capture data using the existing firmware example, you will need to connect the arduino header pin ARDUINO UNO D2 (GP0_Busy pin) to the ARDUINO UNO D1 pin using a flywire.</p>
 </div>
-<p>MCU board is powered through USB connection from the computer. It
+<p>SDP-K1 is powered through USB connection from the computer. SDP-K1 MCU board
 acts as a serial device when connected to PC, which creates a serial ports to connect to IIO
 client application running on PC. The serial port assigned to a device can be seen
 through the device manager for windows-based OS as shown below:</p>
@@ -304,21 +282,6 @@ through the device manager for windows-based OS as shown below:</p>
 For example, Linux uses terms such as dev/ttyUSB* and Mac uses terms such as dev/tty.USB*.
 Please check serial port naming for your selected OS.</p>
 </div>
-<p><strong>Identifying Virtual Serial Port (Windows-OS):</strong></p>
-<p>To identify if serial port is virtual, right click on the port name and select ‘Properties’.
-Select ‘Events’ from menu option and check for below highlighted VIDs/PIDs and
-firmware name which is currently running on MCU.</p>
-<a class="reference internal image-reference" href="../../../_images/identifying_virtual_serial_port.png"><img alt="../../../_images/identifying_virtual_serial_port.png" src="../../../_images/identifying_virtual_serial_port.png" style="width: 350px;" />
-</a>
-<p>SDP-K1 can support high speed Virtual Serial USB interface, so by default Virtual Serial
-is configured as default interface. The interface can be set to Physical (UART)
-serial port by defining macro <strong>USE_PHY_COM_PORT</strong> in the app_config.h file.</p>
-<p>Nucleo-H563 supports only UART interface, so by default Physical (UART) serial port
-is configured as default interface.</p>
-<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="cm">/* Enable the UART/VirtualCOM port connection (default VCOM) */</span>
-<span class="c1">//#define USE_PHY_COM_PORT           // Uncomment to select UART</span>
-</pre></div>
-</div>
 </section>
 <section id="build-guide">
 <h2>Build Guide<a class="headerlink" href="#build-guide" title="Link to this heading"></a></h2>
@@ -329,54 +292,24 @@ that the build process may find the necessary tools (compiler, linker, SDK etc.)
 Use the following steps to prepare your environment for building firmware projects
 for respective platform.</p>
 <div><div class="collapsible docutils container">
-<input class="collapsible_input" id="d21ad2cb7a8b86eb27746a20544728dc233b644a" name="d21ad2cb7a8b86eb27746a20544728dc233b644a" type="checkbox"></input><label for="d21ad2cb7a8b86eb27746a20544728dc233b644a"><p>Windows</p>
+<input class="collapsible_input" id="c2875a1b1aa1c2a010c59a908fb40d61a7159c83" name="c2875a1b1aa1c2a010c59a908fb40d61a7159c83" type="checkbox"></input><label for="c2875a1b1aa1c2a010c59a908fb40d61a7159c83"><p>Windows</p>
 <div class="icon"></div></label><div class="collapsible_content docutils container">
 <div><div class="collapsible docutils container">
-<input class="collapsible_input" id="09fb7c01896ae766da2ee01308090388bae68d1b" name="09fb7c01896ae766da2ee01308090388bae68d1b" type="checkbox"></input><label for="09fb7c01896ae766da2ee01308090388bae68d1b"><p>Mbed</p>
+<input class="collapsible_input" id="0b016c31a7c49aaf106d1a452555f2fe370a097f" name="0b016c31a7c49aaf106d1a452555f2fe370a097f" type="checkbox"></input><label for="0b016c31a7c49aaf106d1a452555f2fe370a097f"><p>STM32</p>
 <div class="icon"></div></label><div class="collapsible_content docutils container">
-<div><div class="collapsible docutils container">
-<input class="collapsible_input" id="39f5f3bbb61ac4ff030ff90ba173d6b14ddaee72" name="39f5f3bbb61ac4ff030ff90ba173d6b14ddaee72" type="checkbox"></input><label for="39f5f3bbb61ac4ff030ff90ba173d6b14ddaee72"><p>For Web/Online Build</p>
-<div class="icon"></div></label><div class="collapsible_content docutils container">
-<ul class="simple">
-<li><p>Visit <a class="icon link reference external" href="https://www.keil.arm.com/" target="_blank">Arm Keil website</a> to create an user account for accessing the web based Keil Studio IDE.</p></li>
-<li><p>Open <a class="icon link reference external" href="https://studio.keil.arm.com/auth/login/" target="_blank">Keil Studio Web IDE</a> with registered user account</p></li>
-</ul>
-</div>
-</div>
-</div><div><div class="collapsible docutils container">
-<input class="collapsible_input" id="a16acbaf74415871cd32264793d63ec12b79936d" name="a16acbaf74415871cd32264793d63ec12b79936d" type="checkbox"></input><label for="a16acbaf74415871cd32264793d63ec12b79936d"><p>For Make Build</p>
-<div class="icon"></div></label><div class="collapsible_content docutils container">
-<ul class="simple">
-<li><p>Clone Precision Converters Firmware repository with the –recursive flag (not needed if building with web IDE for Mbed platform):</p></li>
-</ul>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>--recursive<span class="w"> </span>https://github.com/analogdevicesinc/precision-converters-firmware
+<ul>
+<li><p>Clone Precision Converters Firmware repository with the –recursive flag:</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>--recursive<span class="w"> </span>https://github.com/analogdevicesinc/precision-converters-firmware
 </pre></div>
 </div>
-<ul class="simple">
+</div></blockquote>
+</li>
 <li><p>If however you’ve already cloned the repository without the –recursive flag, you may initialize all the submodules in an existing cloned repo with:</p></li>
 </ul>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>submodule<span class="w"> </span>update<span class="w"> </span>--recursive<span class="w"> </span>--init
 </pre></div>
 </div>
-<ul>
-<li><p>Install <a class="icon link reference external" href="https://gnuwin32.sourceforge.net/packages/make.htm" target="_blank">Make</a> in the root of ‘C’ drive without any spaces in the installation path. The path must be <strong>C:\GnuWin32\…</strong>. Add this path into the system environmental path variable (as shown in below screenshot).</p></li>
-<li><p>Install <a class="icon link reference external" href="https://git-scm.com/downloads" target="_blank">Git</a> and add a path of <strong>C:\Program Files\Git\usr\bin\</strong> directory into system environmental path variable (please verify your git installation path is correct).</p></li>
-<li><p>Install Mbed CLI 1 as per guide <a class="icon link reference external" href="https://os.mbed.com/docs/mbed-os/v6.15/build-tools/install-and-set-up.html" target="_blank">here</a>.</p></li>
-<li><p>Install <a class="icon link reference external" href="https://developer.arm.com/downloads/-/gnu-rm." target="_blank">GNU Arm Embedded compiler</a> (for the development, 9-2019-q4-major version is used) and add a path of GNU Arm Embedded Toolchain bin directory into the system environmental path variable (as shown in below screenshot).</p></li>
-<li><p>Configure the compiler location with Mbed CLI. This can be carried out by running the <strong>mbed config -G GCC_ARM_PATH &lt;path-to-your-gcc-compiler&gt;</strong> in Command Prompt. For example you can run <strong>mbed config -G GCC_ARM_PATH “C:\Program Files (x86)\GNU Tools ARM Embedded\9 2019-q4-major\bin”</strong> in command prompt. It will set mentioned compiler path to all the Mbed Projects.</p>
-<blockquote>
-<div><a class="reference internal image-reference" href="../../../_images/environmental_variables.png"><img alt="../../../_images/environmental_variables.png" src="../../../_images/environmental_variables.png" style="width: 400px;" />
-</a>
-</div></blockquote>
-</li>
-</ul>
-</div>
-</div>
-</div></div>
-</div>
-</div><div><div class="collapsible docutils container">
-<input class="collapsible_input" id="fa09a7188e5b64e6db36c1092089233b09fd75ba" name="fa09a7188e5b64e6db36c1092089233b09fd75ba" type="checkbox"></input><label for="fa09a7188e5b64e6db36c1092089233b09fd75ba"><p>STM32</p>
-<div class="icon"></div></label><div class="collapsible_content docutils container">
 <div><div class="collapsible docutils container">
 <input class="collapsible_input" id="31dd6c13542299d944a089597884f96e3993de5c" name="31dd6c13542299d944a089597884f96e3993de5c" type="checkbox"></input><label for="31dd6c13542299d944a089597884f96e3993de5c"><p>For STM32 IDE based Build</p>
 <div class="icon"></div></label><div class="collapsible_content docutils container">
@@ -401,66 +334,13 @@ for respective platform.</p>
 <p>Once the build enviornment is setup, follow the guide below to build your project
 and generate executable file (.bin/.hex)</p>
 <div><div class="collapsible docutils container">
-<input class="collapsible_input" id="4e36d84c7a50755ee7cf6b38b7ce0c2fcb39378a" name="4e36d84c7a50755ee7cf6b38b7ce0c2fcb39378a" type="checkbox"></input><label for="4e36d84c7a50755ee7cf6b38b7ce0c2fcb39378a"><p>Windows</p>
+<input class="collapsible_input" id="177a48d1a1cc510eeeafd4ff955fe0a3d5492a25" name="177a48d1a1cc510eeeafd4ff955fe0a3d5492a25" type="checkbox"></input><label for="177a48d1a1cc510eeeafd4ff955fe0a3d5492a25"><p>Windows</p>
 <div class="icon"></div></label><div class="collapsible_content docutils container">
 <div><div class="collapsible docutils container">
-<input class="collapsible_input" id="8a96b2f5ce328a338a212ed635951e2db86e0faa" name="8a96b2f5ce328a338a212ed635951e2db86e0faa" type="checkbox"></input><label for="8a96b2f5ce328a338a212ed635951e2db86e0faa"><p>Mbed</p>
+<input class="collapsible_input" id="c9175659e704e1f0c11f6803eed9158192d06478" name="c9175659e704e1f0c11f6803eed9158192d06478" type="checkbox"></input><label for="c9175659e704e1f0c11f6803eed9158192d06478"><p>STM32</p>
 <div class="icon"></div></label><div class="collapsible_content docutils container">
 <div><div class="collapsible docutils container">
-<input class="collapsible_input" id="f2c48851e525d0a0dff128e83d63241bbb3850e3" name="f2c48851e525d0a0dff128e83d63241bbb3850e3" type="checkbox"></input><label for="f2c48851e525d0a0dff128e83d63241bbb3850e3"><p>Build Using Web/Online IDE</p>
-<div class="icon"></div></label><div class="collapsible_content docutils container">
-<ul>
-<li><p>Clone the <a class="icon link reference external" href="https://github.com/analogdevicesinc/precision-converters-firmware" target="_blank">Precision Converters Firmware repository</a> into Keil Studio using “File-&gt;clone…” menu.</p>
-<blockquote>
-<div><a class="reference internal image-reference" href="../../../_images/mbed_keil_studio_project_clone.png"><img alt="../../../_images/mbed_keil_studio_project_clone.png" src="../../../_images/mbed_keil_studio_project_clone.png" style="width: 600px;" />
-</a>
-</div></blockquote>
-</li>
-<li><p>Once the project repository is imported, wait until all library dependencies are imported as shown in below screenshot. Now, open the ‘.medignore’ file present in the root directory of repository. Add comment syntax (two forward slashes) in front of the project name which you want to build. This will ignore all other projects and build only the comment syntax selected project.</p>
-<blockquote>
-<div><a class="reference internal image-reference" href="../../../_images/mbedignore_changes.png"><img alt="../../../_images/mbedignore_changes.png" src="../../../_images/mbedignore_changes.png" style="width: 600px;" />
-</a>
-</div></blockquote>
-</li>
-<li><p>Select the target device (default used for development is SDP-K1) and click on ‘Clean build’ option to build the project. After a successful build a binary will be downloaded to your computer- store this on your drive. Drag and drop this binary to the USB drive hosted by your controller board to flash the MCU.</p>
-<blockquote>
-<div><a class="reference internal image-reference" href="../../../_images/mbed_build.png"><img alt="../../../_images/mbed_build.png" src="../../../_images/mbed_build.png" style="width: 400px;" />
-</a>
-</div></blockquote>
-</li>
-</ul>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>If you intend to build different project, then modify the .medignore file in the root directory as
-mentioned in step2 and clean build project as mentioned in step3</p>
-</div>
-</div>
-</div>
-</div><div><div class="collapsible docutils container">
-<input class="collapsible_input" id="392c4f82a53d51f38b7cc22de16957d050be656e" name="392c4f82a53d51f38b7cc22de16957d050be656e" type="checkbox"></input><label for="392c4f82a53d51f38b7cc22de16957d050be656e"><p>Build Using Make</p>
-<div class="icon"></div></label><div class="collapsible_content docutils container">
-<ul class="simple">
-<li><p>Open Git bash and change current directory to project directory (eg. <strong>precision-converters-firmware/projects/ad4130_iio</strong> directory) which you want to build.</p></li>
-<li><p>Type <strong>make</strong> on the git bash command prompt to build a project.</p></li>
-<li><p>After successful build, binary file will be created into the <strong>Project_Name/build</strong> directory.</p></li>
-<li><p>If you want to clean build, type <strong>make reset</strong> on git bash command which deletes all generated build files for the given project.</p></li>
-</ul>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Default TARGET_BOARD is SDP_K1 and COMPILER is GCC_ARM. Current Make based build only support GCC_ARM Compiler.</p>
-</div>
-<ul class="simple">
-<li><p>By default project is built for “SDP_K1” Board and “GCC_ARM” Compiler. If you want to build for other Mbed Board, For example If you want to build the project for “DISCO_F769NI” Board then run <strong>make TARGET_BOARD=DISCO_F769NI</strong> command in git bash command prompt. If you want to clean build, run <strong>make reset TARGET_BOARD=DISCO_F769NI</strong> command to delete the generated build files for the given project.</p></li>
-</ul>
-</div>
-</div>
-</div></div>
-</div>
-</div><div><div class="collapsible docutils container">
-<input class="collapsible_input" id="6d4692d8c91dfb061dfba381ec4ebfcee15fe389" name="6d4692d8c91dfb061dfba381ec4ebfcee15fe389" type="checkbox"></input><label for="6d4692d8c91dfb061dfba381ec4ebfcee15fe389"><p>STM32</p>
-<div class="icon"></div></label><div class="collapsible_content docutils container">
-<div><div class="collapsible docutils container">
-<input class="collapsible_input" id="40d95710ac8c485fd38ee69527a9ba568f6db616" name="40d95710ac8c485fd38ee69527a9ba568f6db616" type="checkbox"></input><label for="40d95710ac8c485fd38ee69527a9ba568f6db616"><p>Build Using STM32 IDE</p>
+<input class="collapsible_input" id="0613647c4123d0f32002dfe5b2e8b17c52cdbffc" name="0613647c4123d0f32002dfe5b2e8b17c52cdbffc" type="checkbox"></input><label for="0613647c4123d0f32002dfe5b2e8b17c52cdbffc"><p>Build Using STM32 IDE</p>
 <div class="icon"></div></label><div class="collapsible_content docutils container">
 <ul>
 <li><p>Open the respective project directory by navigating into the “precision_converters_firmware/projects/” folder.</p></li>
@@ -495,9 +375,21 @@ mentioned in step2 and clean build project as mentioned in step3</p>
 </a>
 </div></blockquote>
 </li>
-<li><p>Program by clicking on the “Run adxxxx_iio” option seen or by performing a copy-&gt;paste option of the .hex file seen in the STM32/Debug folder</p>
+<li><p>Exclude the generated file syscalls.c from the build process</p>
 <blockquote>
-<div><a class="reference internal image-reference" href="../../../_images/stm32_run_option.png"><img alt="../../../_images/stm32_run_option.png" src="../../../_images/stm32_run_option.png" style="width: 600px;" />
+<div><a class="reference internal image-reference" href="../../../_images/stm32_exclude_syscalls.png"><img alt="../../../_images/stm32_exclude_syscalls.png" src="../../../_images/stm32_exclude_syscalls.png" style="width: 600px;" />
+</a>
+</div></blockquote>
+</li>
+<li><dl>
+<dt>To generate the binary file, right click on the adxxxx_iio project seen in the project explorer and select “Properties”, select “Settings” under the “C/C++ Build” section on the left pane, select “MCU Post build outputs” under “Tool Settings” section and check the “Convert to binary file (-O binary)” checkbox.</dt><dd><a class="reference internal image-reference" href="../../../_images/stm32_convert_to_binary.png"><img alt="../../../_images/stm32_convert_to_binary.png" src="../../../_images/stm32_convert_to_binary.png" style="width: 600px;" />
+</a>
+</dd>
+</dl>
+</li>
+<li><p>Build the project by right-clicking on the adxxxx_iio project seen in the project explorer and select “Build Project”</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../../_images/stm32_build_project.png"><img alt="../../../_images/stm32_build_project.png" src="../../../_images/stm32_build_project.png" style="width: 600px;" />
 </a>
 </div></blockquote>
 </li>
@@ -513,7 +405,7 @@ mentioned in step2 and clean build project as mentioned in step3</p>
 <h3>Running a project<a class="headerlink" href="#running-a-project" title="Link to this heading"></a></h3>
 <p>Once the firmware build is successful and binary file is generated, copy the
 generated binary into USB drive hosted by your MCU board (e.g. USB drive hosted
-by the supported MCU board on windows). This will flash the binary file into MCU present
+by MCU board on windows). This will flash the binary file into MCU present
 on the controller board. Programming might vary based on the tools used for building
 a project. The ‘Project Build’ section above talks about this exception at the end
 of all build steps.</p>
@@ -570,6 +462,38 @@ firmware applications.</p>
 <a class="reference internal image-reference" href="../../../_images/firmware_architecture.png"><img alt="../../../_images/firmware_architecture.png" src="../../../_images/firmware_architecture.png" style="width: 500px;" />
 </a>
 </section>
+<section id="configuring-sampling-frequency">
+<h2>Configuring Sampling Frequency<a class="headerlink" href="#configuring-sampling-frequency" title="Link to this heading"></a></h2>
+<p>Using the sampling_frequency iio attribute, the rate at which the converter samples the data can be controlled. In this case, it can go all the way from 1000SPS to 830KSPS in case of
+SPI-DMA based data capture.
+The attribute is set to maximum sampling rate supported by default by the platform and can be varied in the accepted ranges by writing to the it.</p>
+<p>Based on the sampling_frequency input, the FW calculates the nearest possible period value (based on the prescalers, counter resolutions and other settings) that can be acheived on the counter
+and returns back the same after setting it to the counter registers.</p>
+<dl>
+<dt>Here’s a simple formula that calculates the same:</dt><dd><a class="reference internal image-reference" href="../../../_images/sampling_frequency_calculation2.png"><img alt="../../../_images/sampling_frequency_calculation2.png" src="../../../_images/sampling_frequency_calculation2.png" style="width: 600px;" />
+</a>
+</dd>
+</dl>
+</section>
+<section id="reference-voltage-configuration">
+<h2>Reference Voltage Configuration<a class="headerlink" href="#reference-voltage-configuration" title="Link to this heading"></a></h2>
+<p>The reference voltage for AD7091R can be configured using the reference_sel and reference_value_volts iio attributes.
+The attribute can be read and written to get/set the reference voltage value in mV.</p>
+<p>When reference_sel is set to “internal”, the reference_value_volts is fixed at 2500mV and the attribute returns the same.
+When reference_sel is set to “external”, the reference_value_volts attribute can be used to set the external reference voltage value in mV ranging from 1000mV (Vref min) to 3300mV (VDD)</p>
+</section>
+<section id="changing-the-default-spi-clock-frequency-setting">
+<h2>Changing the default SPI clock frequency setting<a class="headerlink" href="#changing-the-default-spi-clock-frequency-setting" title="Link to this heading"></a></h2>
+<p>The default SPI clock frequency in the firmware is set to 40MHz, lowering the system clock frequency of SDP-K1 to 160MHz from 180MHz to get the maximum throughput of 830KSPS ODR (Output data rate).
+This is because of the bottleneck in data capture at 45MHz SPI clock rate using the SDP-K1.
+The SPI clock frequency can be changed to the default settings that SDP-K1 supports: 45Meg/22.5Meg by doing the following changes in the ioc file.</p>
+<dl>
+<dt>Change the HCLK setting from 160 to 180 (max supported) in the clock configuration tab opening the ioc file in the STM32CubeMX</dt><dd><a class="reference internal image-reference" href="../../../_images/clock_configuration.png"><img alt="../../../_images/clock_configuration.png" src="../../../_images/clock_configuration.png" style="width: 600px;" />
+</a>
+</dd>
+</dl>
+<p>Once the ioc file is changed, follow the build guide to build your project and generate executable file (.bin/.hex)</p>
+</section>
 <section id="support">
 <h2>Support<a class="headerlink" href="#support" title="Link to this heading"></a></h2>
 <p>Feel free to ask questions in the <a class="icon link reference external" href="https://ez.analog.com/data_converters" target="_blank">EngineerZone</a></p>
@@ -580,8 +504,8 @@ firmware applications.</p>
           </div>
               <div class="related">
                 &nbsp;
-    <a href="../ad7124_temperature-measure/ad7124_temperature-measure.html" title="Previous document (Alt+Shift+LeftArrow)" class="prev">AD7124 Temperature Measure Firmware Application</a>
-    <a href="../ad717x_console/ad717x_console.html" title="Next document (Alt+Shift+RightArrow)" class="next">AD717x / AD411x Console Application</a>
+    <a href="../ad5933_console/ad5933_console.html" title="Previous document (Alt+Shift+LeftArrow)" class="prev">AD5933 Console Application</a>
+    <a href="../ad7124_console/ad7124_console.html" title="Next document (Alt+Shift+RightArrow)" class="next">AD7124 Console Application</a>
               </div>
           
         </div>
