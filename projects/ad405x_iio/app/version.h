@@ -19,7 +19,7 @@
 /******************************************************************************/
 /* Define firmware_version string */
 #define MAJOR_VERSION		1
-#define MINOR_VERSION		0
+#define MINOR_VERSION		1
 #define PATCH_VERSION		0
 #define QUALITY_LEVEL          QUALITY_LEVEL_RC
 #define STATE_VERSION		0
