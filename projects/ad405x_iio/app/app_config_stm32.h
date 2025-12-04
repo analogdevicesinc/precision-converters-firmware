@@ -129,6 +129,7 @@
 
 /* Supports available in the platform */
 #define I3C_SUPPORT_AVAILABLE
+#define CONSOLE_STDIO_PORT_AVAILABLE
 
 /**** I2C Parameters ****/
 #define I2C_DEV_ID					1    // I2C1

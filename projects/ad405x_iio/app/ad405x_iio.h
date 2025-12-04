@@ -39,7 +39,7 @@ extern struct ad405x_dev *p_ad405x_dev;
 extern enum ad405x_interface_modes ad405x_interface_mode;
 extern enum ad405x_operation_mode ad405x_operating_mode;
 
-int32_t iio_ad405x_initialize(void);
-void iio_ad405x_event_handler(void);
+int32_t iio_app_initialize(void);
+void iio_app_event_handler(void);
 void data_capture_callback(void *context);
 #endif /* AD405X_IIO_H */

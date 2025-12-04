@@ -22,6 +22,7 @@
 #include "no_os_delay.h"
 #include "no_os_i2c.h"
 #include "no_os_dma.h"
+#include "no_os_delay.h"
 
 /******************************************************************************/
 /************************ Macros/Constants ************************************/
@@ -58,6 +59,7 @@ struct no_os_uart_init_param uart_console_stdio_init_params = {
 	.size = NO_OS_UART_CS_8,
 	.parity = NO_OS_UART_PAR_NO,
 	.stop = NO_OS_UART_STOP_1_BIT,
+	.irq_id = UART_IRQ,
 #if defined(USE_VIRTUAL_COM_PORT)
 	/* If virtual com port is primary IIO comm port, use physical port for stdio
 	 * console. Applications which does not support VCOM, should not satisfy this
@@ -556,6 +558,9 @@ int32_t init_system(void)
 #endif
 
 #if defined(SDRAM_SUPPORT_AVAILABLE)
+	/* Wait for 2 seconds to ensure SDRAM power-up */
+	no_os_mdelay(2000);
+
 	ret = sdram_init();
 	if (ret) {
 		return ret;
