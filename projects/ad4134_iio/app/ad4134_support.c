@@ -1,8 +1,8 @@
 /***************************************************************************//**
- *   @file    ad7134_support.c
- *   @brief   Source file for for AD7134 No-OS driver support
+ *   @file    ad4134_support.c
+ *   @brief   Source file for for AD4134 IIO Application
 ********************************************************************************
- * Copyright (c) 2023 Analog Devices, Inc.
+ * Copyright (c) 2023,2025 Analog Devices, Inc.
  * All rights reserved.
  *
  * This software is proprietary to Analog Devices, Inc. and its licensors.
@@ -13,15 +13,10 @@
 /******************************************************************************/
 /***************************** Include Files **********************************/
 /******************************************************************************/
-
-#include <stdio.h>
-
 #include "ad4134_support.h"
-#include "no_os_gpio.h"
 #include "no_os_error.h"
 #include "no_os_delay.h"
 #include "app_config.h"
-#include "ad4134_iio.h"
 #if (INTERFACE_MODE == TDM_MODE)
 #include "stm32_tdm_support.h"
 #endif
@@ -29,7 +24,6 @@
 /******************************************************************************/
 /********************** Macros and Constants Definitions **********************/
 /******************************************************************************/
-
 /* Min count for input pin debouncing. The count is dependent on the MCU
  * clock frequency and compiler used. The debounce count added below ensures
  * pins are debounced for this minimum count in a while loop */
@@ -53,9 +47,9 @@
  * DCLK(min) = ODR * chn per DOUT * (frame size + 6) =>
  * DCLK = 16KSPS * 2 * (16+6) => DCLK Value = 704KHz
  **/
-#if (INTERFACE_MODE != TDM_MODE)
+#if (INTERFACE_MODE == BIT_BANGING_MODE)
 #define DCLK_FREQ_SELECT	5	// Using 1.5MHz DCLK
-#else // TDM_MODE
+#elif (INTERFACE_MODE == TDM_MODE)
 #define DCLK_FREQ_SELECT	3	// Using 6MHz DCLK
 #endif
 
@@ -78,19 +72,71 @@
 /******************************************************************************/
 /********************** Variables and User Defined Data Types *****************/
 /******************************************************************************/
+/* Interface mode */
+static enum ad4134_interface_modes ad4134_iio_interface_mode =
+#if (INTERFACE_MODE == TDM_MODE)
+	INTERFACE_MODE_TDM;
+#elif (INTERFACE_MODE == BIT_BANGING_MODE)
+	INTERFACE_MODE_BIT_BANGING;
+#elif (INTERFACE_MODE == MINIMAL_IO_MODE)
+	INTERFACE_MODE_MINIMAL_IO;
+#endif
 
+/* Data capture mode */
+static enum ad4134_data_capture_modes ad4134_iio_data_capture_mode =
+#if (DATA_CAPTURE_MODE == CONTINUOUS_DATA_CAPTURE)
+	DATA_CAPTURE_MODE_CONTINUOUS;
+#elif (DATA_CAPTURE_MODE == BURST_DATA_CAPTURE)
+	DATA_CAPTURE_MODE_BURST;
+#endif
+
+/* ASRC mode */
+static enum ad4134_asrc_modes ad4134_iio_asrc_mode =
+#if (AD7134_ASRC_MODE == CONTROLLER_MODE)
+	ASRC_MODE_CONTROLLER;
+#elif (AD7134_ASRC_MODE == TARGET_MODE)
+	ASRC_MODE_TARGET;
+#endif
+
+#if (INTERFACE_MODE == BIT_BANGING_MODE)
 /* Variables holding the GPIO Input Data Register (IDR) values */
 static uint32_t dout0_idr_vals[ADC_RESOLUTION * DUAL_CHN_MODE_OFFSET];
 static uint32_t dout1_idr_vals[ADC_RESOLUTION * DUAL_CHN_MODE_OFFSET];
-static uint8_t cntr;
+#endif
 
 /******************************************************************************/
 /************************ Functions Definitions *******************************/
 /******************************************************************************/
+/**
+ * @brief 	Get the interface mode.
+ * @return 	Interface mode
+ */
+inline enum ad4134_interface_modes ad4134_get_interface_mode(void)
+{
+	return ad4134_iio_interface_mode;
+}
+
+/**
+ * @brief 	Get the data capture mode.
+ * @return 	Data capture mode
+ */
+inline enum ad4134_data_capture_modes ad4134_get_data_capture_mode(void)
+{
+	return ad4134_iio_data_capture_mode;
+}
+
+/**
+ * @brief 	Get the ASRC mode.
+ * @return 	ASRC mode
+ */
+inline enum ad4134_asrc_modes ad4134_get_asrc_mode(void)
+{
+	return ad4134_iio_asrc_mode;
+}
 
 /*!
  * @brief   Perform the data capture initialization
- * @param dev[in] - AD7134 Device descriptor.
+ * @param 	dev[in] - AD7134 Device descriptor.
  * @return  0 in case of success, negative error code otherwise
  * @details This function configures the AD7134 registers to capture the data
  */
@@ -102,26 +148,26 @@ int32_t ad7134_data_capture_init(struct ad713x_dev *dev)
 			break;
 		}
 
-#if (INTERFACE_MODE != TDM_MODE)
-		/* Select CH0 filter as wideband for required ODR */
-		if (ad713x_dig_filter_sel_ch(dev, FIR, 0) != 0) {
-			break;
+		if (ad4134_get_interface_mode() != INTERFACE_MODE_TDM) {
+			/* Select CH0 filter as wideband for required ODR */
+			if (ad713x_dig_filter_sel_ch(dev, FIR, 0) != 0) {
+				break;
+			}
+		} else {
+			/* Select SINC3 filter to enable ODR higher than 374ksps */
+			if (ad713x_dig_filter_sel_ch(dev, SINC3, 0) != 0) {
+				break;
+			}
+			if (ad713x_dig_filter_sel_ch(dev, SINC3, 1) != 0) {
+				break;
+			}
+			if (ad713x_dig_filter_sel_ch(dev, SINC3, 2) != 0) {
+				break;
+			}
+			if (ad713x_dig_filter_sel_ch(dev, SINC3, 3) != 0) {
+				break;
+			}
 		}
-#else // TDM_MODE
-		/* Select SINC3 filter to enable ODR higher than 374ksps */
-		if (ad713x_dig_filter_sel_ch(dev, SINC3, 0) != 0) {
-			break;
-		}
-		if (ad713x_dig_filter_sel_ch(dev, SINC3, 1) != 0) {
-			break;
-		}
-		if (ad713x_dig_filter_sel_ch(dev, SINC3, 2) != 0) {
-			break;
-		}
-		if (ad713x_dig_filter_sel_ch(dev, SINC3, 3) != 0) {
-			break;
-		}
-#endif
 
 		/* Set GPIO direction and value for gain selection of LT6373 */
 		if (ad713x_spi_reg_write(dev,
@@ -205,6 +251,7 @@ int32_t ad7134_data_capture_init(struct ad713x_dev *dev)
 	return -EINVAL;
 }
 
+#if (INTERFACE_MODE == BIT_BANGING_MODE)
 /*!
  * @brief	Generate the ODR low to DCLK high delay in AD7134 target mode
  * @return	none
@@ -246,86 +293,37 @@ static void dclk_high_low_delay(void)
 }
 
 /*!
- * @brief	Read ADC data over DOUT0 and DOUT1 pins using bit-banging method
- * @param	adc_data[out] - Pointer to adc data read variable
- * @param	curr_chn[in] - Channel for which data is to read
+ * @brief	Wait for ODR GPIO to change to new state for data read operation
+ * @param	new_gpio_state[out] - New expected GPIO state
+ * @param	timeout[in] - Timeout in ticks
  * @return	0 in case of success, negative error code otherwise
  */
-int32_t ad7134_read_data(uint16_t *adc_data, uint8_t curr_chn)
+static int32_t wait_for_odr_gpio_state_change(bool new_gpio_state,
+		uint16_t timeout)
 {
-	uint16_t chn_data[AD7134_NUM_CHANNELS];
-	static volatile uint8_t bit_cnt;
+	uint16_t odr_dbnc = 0;
 
-#if (INTERFACE_MODE != TDM_MODE)
-#if (AD7134_ASRC_MODE == TARGET_MODE)
-	odr_low_to_dclk_high_delay();
-#endif
+	if (ad4134_get_interface_mode() == INTERFACE_MODE_BIT_BANGING) {
+		do {
+			if (new_gpio_state == ((uint32_t)(ODR_IDR & ODR_PIN_MASK) >> ODR_PIN)) {
+				/* Increment debounce counter if new state is detected */
+				odr_dbnc++;
+			} else {
+				/* Reset debounce counter and increment timeout counter if new
+				 * state is not detected */
+				odr_dbnc = 0;
+				timeout--;
+			}
+		} while ((odr_dbnc < GPIO_MIN_DBNCE_CNT) && (timeout));
 
-	/* Read the ADC data for all channels using Dual channel data mode
-	 * Chn0 and 1 are output on DOUT0 pin
-	 * Chn2 and 3 are output on DOUT1 pin
-	 **/
-	for (bit_cnt = 0; bit_cnt < (ADC_RESOLUTION * DUAL_CHN_MODE_OFFSET);
-	     bit_cnt++) {
-#if (AD7134_ASRC_MODE == CONTROLLER_MODE)
-		/* Wait for DCLK pin to go high to sample DOUTx bit */
-		while (!(DCLK_IDR & DCLK_PIN_MASK)) ;
-#else
-		/* Set DCLK pin to high to sample next DOUT bit. High time is ~0.2usec
-		 * based on the non-loop delay */
-		DCLK_ODR |= (1 << DCLK_PIN_NUM);
-		dclk_high_low_delay();
-#endif
-
-		/* Store the PORTG IDR register value which corresponds to DOUT0 pin */
-		dout0_idr_vals[bit_cnt] = DOUT0_IDR;
-
-		/* Store the PORTA IDR register value which corresponds to DOUT1 pin */
-		dout1_idr_vals[bit_cnt] = DOUT1_IDR;
-
-#if (AD7134_ASRC_MODE == CONTROLLER_MODE)
-		/* Wait for DCLK pin to go low to sample next DOUTx bit */
-		while ((DCLK_IDR & DCLK_PIN_MASK)) ;
-#else
-		/* Set DCLK pin to low to sample next DOUT bit. Low time is ~0.2usec
-		 * based on the non-loop delay */
-		DCLK_ODR &= (uint32_t)(~(1 << DCLK_PIN_NUM));
-		dclk_high_low_delay();
-#endif
+		if (!timeout) {
+			return -ETIMEDOUT;
+		}
 	}
-
-	/* Clear channel data variables */
-	chn_data[0] = 0;
-	chn_data[1] = 0;
-	chn_data[2] = 0;
-	chn_data[3] = 0;
-
-	/* Extract DOUTx data bits from IDR register corresponding to each channel */
-	cntr = ADC_RESOLUTION - 1;
-	for (uint8_t frame_cntr = 0; frame_cntr < ADC_RESOLUTION; frame_cntr++) {
-		if (dout0_idr_vals[frame_cntr] & DOUT0_PIN_MASK) {
-			chn_data[0] |= (1 << cntr);
-		}
-
-		if (dout0_idr_vals[frame_cntr + ADC_RESOLUTION] & DOUT0_PIN_MASK) {
-			chn_data[1] |= (1 << cntr);
-		}
-
-		if (dout1_idr_vals[frame_cntr] & DOUT1_PIN_MASK) {
-			chn_data[2] |= (1 << cntr);
-		}
-
-		if (dout1_idr_vals[frame_cntr + ADC_RESOLUTION] & DOUT1_PIN_MASK) {
-			chn_data[3] |= (1 << cntr);
-		}
-		cntr--;
-	}
-
-	*adc_data = chn_data[curr_chn];
-#endif // INTERFACE_MODE
 
 	return 0;
 }
+#endif
 
 /*!
  * @brief	Read ADC data over SAI TDM Peripheral
@@ -333,7 +331,7 @@ int32_t ad7134_read_data(uint16_t *adc_data, uint8_t curr_chn)
  * @param	curr_chn[in] - Channel for which data is to read
  * @return	0 in case of success, negative error code otherwise
  */
-int32_t ad7134_read_tdm_data(uint16_t *adc_data, uint8_t curr_chn)
+static int32_t ad7134_read_tdm_data(uint16_t *adc_data, uint8_t curr_chn)
 {
 #if (INTERFACE_MODE == TDM_MODE)
 	int32_t ret;
@@ -356,109 +354,93 @@ int32_t ad7134_read_tdm_data(uint16_t *adc_data, uint8_t curr_chn)
 	dma_buffer_full = false;
 	*adc_data = no_os_get_unaligned_le16(&channel_data[curr_chn *
 						      BYTES_PER_SAMPLE]);
+
+	return 0;
 #endif
 
-	return 0;
+	return -EINVAL;
 }
 
 /*!
- * @brief	Wait for ODR GPIO to change to new state for data read operation
- * @param	new_gpio_state[out] - New expected GPIO state
- * @return	0 in case of success, negative error code otherwise
- */
-static int32_t wait_for_odr_gpio_state_change(bool new_gpio_state,
-		uint16_t timeout)
-{
-	static volatile uint16_t odr_dbnc;
-	static volatile uint16_t odr_dbnc_timeout;
-
-	/* Debounce the ODR GPIO for new state change*/
-	odr_dbnc = 0;
-	odr_dbnc_timeout = timeout;
-
-#if(ACTIVE_PLATFORM == MBED_PLATFORM)
-	do {
-		if (new_gpio_state == ((uint32_t)(ODR_IDR & ODR_PIN_MASK) >> ODR_PIN_NUM)) {
-			/* Increment debounce counter if new state is detected */
-			odr_dbnc++;
-		} else {
-			/* Reset debounce counter and increment timeout counter if new
-			 * state is not detected */
-			odr_dbnc = 0;
-			odr_dbnc_timeout--;
-		}
-	} while ((odr_dbnc < GPIO_MIN_DBNCE_CNT) && (odr_dbnc_timeout));
-
-	if (!odr_dbnc_timeout) {
-		odr_dbnc = 0;
-		return -ETIMEDOUT;
-	}
-#endif // ACTIVE_PLATFORM
-	return 0;
-}
-
-/*!
- * @brief Read all chahnnels over DOUT0 and DOUT1 pins using bit-banging method
- * @param chn_data[out] - Pointer to adc data read variable
+ * @brief	Read ADC data over DOUT0 and DOUT1 pins using bit-banging method for
+ * 			all channels
+ * @param 	chn_data[in, out] - Pointer to array for adc data for all channels
+ * @param 	check_odr_state[in] - Whether to check for ODR state change
  * @return 0 in case of success, negative error code otherwise
  */
-int32_t ad7134_read_all_channels(uint16_t *chn_data)
+int32_t ad7134_read_all_channels_bit_banging(uint16_t *chn_data,
+		bool check_odr_state)
 {
-	static volatile uint8_t bit_cnt;
-	uint8_t curr_chn;
+#if (INTERFACE_MODE == BIT_BANGING_MODE)
+	uint8_t bit_cnt;
+	uint8_t frame_cntr;
+	uint8_t cntr;
 
-	/* Debounce the ODR for HIGH (rising edge to ready for data read) */
-	if (wait_for_odr_gpio_state_change(NO_OS_GPIO_HIGH,
-					   ODR_TRIGGER_WAIT_DBNCE_CNT) != 0) {
-		return -EINVAL;
+	if (check_odr_state) {
+		/* Debounce the ODR for HIGH (rising edge to ready for data read) */
+		if (wait_for_odr_gpio_state_change(NO_OS_GPIO_HIGH,
+						   ODR_TRIGGER_WAIT_DBNCE_CNT) != 0) {
+			return -EINVAL;
+		}
+
+		/* Debounce the ODR for LOW to start data read */
+		if (wait_for_odr_gpio_state_change(NO_OS_GPIO_LOW,
+						   ODR_TRIGGER_WAIT_DBNCE_CNT) != 0) {
+			return -EINVAL;
+		}
 	}
-
-	/* Debounce the ODR for LOW to start data read */
-	if (wait_for_odr_gpio_state_change(NO_OS_GPIO_LOW,
-					   ODR_TRIGGER_WAIT_DBNCE_CNT) != 0) {
-		return -EINVAL;
-	}
-
-#if (AD7134_ASRC_MODE == TARGET_MODE)
-	odr_low_to_dclk_high_delay();
-#endif
 
 	/* Read the ADC data for all channels using Dual channel data mode
 	 * Chn0 and 1 are output on DOUT0 pin
 	 * Chn2 and 3 are output on DOUT1 pin
-	 **/
-	for (bit_cnt = 0; bit_cnt < (ADC_RESOLUTION * DUAL_CHN_MODE_OFFSET);
-	     bit_cnt++) {
-#if (AD7134_ASRC_MODE == CONTROLLER_MODE)
-		/* Wait for DCLK pin to go high to sample DOUTx bit */
-		while (!(DCLK_IDR & DCLK_PIN_MASK)) ;
-#else
-		/* Set DCLK pin to high to sample next DOUT bit. High time is ~0.2usec
-		 * based on the non-loop delay */
-		DCLK_ODR |= (1 << DCLK_PIN_NUM);
-		dclk_high_low_delay();
-#endif
+	 */
+	if (ad4134_get_asrc_mode() == ASRC_MODE_TARGET) {
+		odr_low_to_dclk_high_delay();
 
-		/* Store the PORTG IDR register value which corresponds to DOUT0 pin */
-		dout0_idr_vals[bit_cnt] = DOUT0_IDR;
+		for (bit_cnt = 0; bit_cnt < (ADC_RESOLUTION * DUAL_CHN_MODE_OFFSET);
+		     bit_cnt++) {
+			/* Set DCLK pin to high to sample next DOUT bit. High time is ~0.2usec
+			 * based on the non-loop delay */
+			DCLK_ODR |= (1 << DCLK_PIN);
+			dclk_high_low_delay();
 
-		/* Store the PORTA IDR register value which corresponds to DOUT1 pin */
-		dout1_idr_vals[bit_cnt] = DOUT1_IDR;
+			/* Store the PORTG IDR register value which corresponds to DOUT0 pin */
+			dout0_idr_vals[bit_cnt] = DOUT0_IDR;
 
-#if (AD7134_ASRC_MODE == CONTROLLER_MODE)
-		/* Wait for DCLK pin to go low to sample next DOUTx bit */
-		while ((DCLK_IDR & DCLK_PIN_MASK)) ;
-#else
-		/* Set DCLK pin to low to sample next DOUT bit. Low time is ~0.2usec
-		 * based on the non-loop delay */
-		DCLK_ODR &= (uint32_t)(~(1 << DCLK_PIN_NUM));
-		dclk_high_low_delay();
-#endif
+			/* Store the PORTA IDR register value which corresponds to DOUT1 pin */
+			dout1_idr_vals[bit_cnt] = DOUT1_IDR;
+
+			/* Set DCLK pin to low to sample next DOUT bit. Low time is ~0.2usec
+			 * based on the non-loop delay */
+			DCLK_ODR &= (uint32_t)(~(1 << DCLK_PIN));
+			dclk_high_low_delay();
+		}
+	} else {
+		for (bit_cnt = 0; bit_cnt < (ADC_RESOLUTION * DUAL_CHN_MODE_OFFSET);
+		     bit_cnt++) {
+			/* Wait for DCLK pin to go high to sample DOUTx bit */
+			while (!(DCLK_IDR & DCLK_PIN_MASK));
+
+			/* Store the PORTG IDR register value which corresponds to DOUT0 pin */
+			dout0_idr_vals[bit_cnt] = DOUT0_IDR;
+
+			/* Store the PORTA IDR register value which corresponds to DOUT1 pin */
+			dout1_idr_vals[bit_cnt] = DOUT1_IDR;
+
+			/* Wait for DCLK pin to go low to sample next DOUTx bit */
+			while ((DCLK_IDR & DCLK_PIN_MASK));
+		}
 	}
 
+	/* Clear channel data variables */
+	chn_data[0] = 0;
+	chn_data[1] = 0;
+	chn_data[2] = 0;
+	chn_data[3] = 0;
+
 	/* Extract DOUTx data bits from IDR register corresponding to each channel */
-	cntr = ADC_RESOLUTION - 1;
-	for (uint8_t frame_cntr = 0; frame_cntr < ADC_RESOLUTION; frame_cntr++) {
+	for (frame_cntr = 0, cntr = ADC_RESOLUTION - 1;
+	     frame_cntr < ADC_RESOLUTION; frame_cntr++) {
 		if (dout0_idr_vals[frame_cntr] & DOUT0_PIN_MASK) {
 			chn_data[0] |= (1 << cntr);
 		}
@@ -474,44 +456,62 @@ int32_t ad7134_read_all_channels(uint16_t *chn_data)
 		if (dout1_idr_vals[frame_cntr + ADC_RESOLUTION] & DOUT1_PIN_MASK) {
 			chn_data[3] |= (1 << cntr);
 		}
+
 		cntr--;
 	}
 
 	return 0;
+#endif
+
+	return -EINVAL;
+}
+
+/*!
+ * @brief	Read ADC data over DOUT0 and DOUT1 pins using bit-banging method for
+ * 			a single channel
+ * @param	adc_data[in, out] - Pointer to adc data read variable
+ * @param	ch[in] - Channel for which data is to read
+ * @param 	check_odr_state[in] - Whether to check for ODR GPIO state
+ * @return	0 in case of success, negative error code otherwise
+ */
+static int32_t ad7134_read_data_bit_banging(uint16_t *adc_data, uint8_t ch,
+		bool check_odr_state)
+{
+#if (INTERFACE_MODE == BIT_BANGING_MODE)
+	int32_t ret;
+	uint16_t chn_data[AD7134_NUM_CHANNELS] = {0};
+
+	/* Get all channels data */
+	ret = ad7134_read_all_channels_bit_banging(chn_data, check_odr_state);
+	if (ret) {
+		return ret;
+	}
+
+	*adc_data = chn_data[ch];
+
+	return 0;
+#endif
+
+	return -EINVAL;
 }
 
 /*!
  * @brief	Read ADC single sample data
- * @param	input_chn[in] - Channel for which data is to read
- * @param	adc_data[out] - Pointer to adc data read variable
+ * @param	adc_data[in, out] - Pointer to adc data read variable
+ * @param	ch[in] - Channel for which data is to read
  * @return	0 in case of success, negative error code otherwise
  */
-int32_t ad7134_perform_conv_and_read_sample(uint8_t input_chn,
-		uint16_t *adc_data)
+int32_t ad7134_perform_conv_and_read_sample(uint16_t *adc_data, uint8_t ch)
 {
-	int32_t ret;
+	switch (ad4134_get_interface_mode()) {
+	case INTERFACE_MODE_TDM:
+		return ad7134_read_tdm_data(adc_data, ch);
+	case INTERFACE_MODE_BIT_BANGING:
+		return ad7134_read_data_bit_banging(adc_data, ch, true);
 
-#if (INTERFACE_MODE != TDM_MODE)
-	/* Debounce the ODR for HIGH (rising edge to ready for data read) */
-	if (wait_for_odr_gpio_state_change(NO_OS_GPIO_HIGH,
-					   ODR_TRIGGER_WAIT_DBNCE_CNT) != 0) {
+	default:
 		return -EINVAL;
 	}
 
-	/* Debounce the ODR for LOW to start data read */
-	if (wait_for_odr_gpio_state_change(NO_OS_GPIO_LOW,
-					   ODR_TRIGGER_WAIT_DBNCE_CNT) != 0) {
-		return -EINVAL;
-	}
-
-	if (ad7134_read_data(adc_data, input_chn) != 0) {
-		return -EINVAL;
-	}
-#else // TDM_MODE
-	ret = ad7134_read_tdm_data(adc_data, input_chn);
-	if (ret) {
-		return ret;
-	}
-#endif // INTERFACE_MODE
 	return 0;
 }
