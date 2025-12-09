@@ -22,11 +22,10 @@
 <area shape="poly" id="edge9_Node000003_Node000010" title=" " alt="" coords="1752,177,2095,237,2107,239,2106,245,2094,243,1751,183"/>
 <area shape="rect" id="Node000011" href="$ad4170__iio_2app_2app__config_8c.html" title="Application configurations module." alt="" coords="2462,240,2685,309"/>
 <area shape="poly" id="edge12_Node000003_Node000011" title=" " alt="" coords="1752,162,2070,186,2260,208,2450,237,2463,240,2461,245,2449,243,2259,213,2069,192,1751,167"/>
-<area shape="rect" id="Node000012" href="$ad4170__iio_2app_2app__config__mbed_8c.html" title="Application configurations module for Mbed platform." alt="" coords="2709,240,2963,309"/>
-<area shape="poly" id="edge13_Node000003_Node000012" title=" " alt="" coords="1752,159,1937,166,2173,181,2435,204,2698,237,2709,239,2708,244,2697,243,2434,209,2172,186,1936,172,1752,164"/>
-<area shape="rect" id="Node000013" href="$ad4170__iio_2app_2app__config__stm32_8c.html" title="Application configurations module for STM32 platform." alt="" coords="2955,357,3213,427"/>
-<area shape="poly" id="edge14_Node000003_Node000013" title=" " alt="" coords="1752,157,2061,164,2442,177,2625,188,2785,201,2906,217,2949,227,2978,238,3062,356,3058,359,2974,242,2948,232,2906,223,2784,206,2625,193,2442,183,2061,169,1752,163"/>
-<area shape="rect" id="Node000014" href="$ad4170__iio_2app_2app__config__stm32_8h.html" title="Header file for STM32 platform configurations." alt="" coords="3039,240,3297,309"/>
-<area shape="poly" id="edge15_Node000003_Node000014" title=" " alt="" coords="1752,156,1988,161,2304,173,2661,197,2842,215,3020,237,3039,240,3038,245,3020,243,2842,220,2660,203,2303,179,1988,166,1752,162"/>
-<area shape="poly" id="edge16_Node000014_Node000013" title=" " alt="" coords="3137,322,3111,359,3106,356,3133,319"/>
+<area shape="rect" id="Node000012" href="$ad4170__iio_2app_2app__config__stm32_8c.html" title="Application configurations module for STM32 platform." alt="" coords="2675,357,2933,427"/>
+<area shape="poly" id="edge13_Node000003_Node000012" title=" " alt="" coords="1752,160,2000,169,2294,184,2553,207,2645,221,2699,238,2782,355,2778,359,2696,242,2644,227,2552,212,2293,190,2000,174,1751,165"/>
+<area shape="rect" id="Node000013" href="$ad4170__iio_2app_2app__config__stm32_8h.html" title="Header file for STM32 platform configurations." alt="" coords="2759,240,3017,309"/>
+<area shape="poly" id="edge14_Node000003_Node000013" title=" " alt="" coords="1752,159,1942,167,2185,181,2456,204,2728,237,2759,243,2758,248,2728,243,2456,209,2185,187,1941,172,1752,165"/>
+<area shape="poly" id="edge15_Node000013_Node000003" title=" " alt="" coords="2745,242,2459,208,2177,185,1928,171,1738,164,1738,158,1928,165,2178,179,2459,202,2745,236"/>
+<area shape="poly" id="edge16_Node000013_Node000012" title=" " alt="" coords="2857,322,2831,359,2826,356,2853,319"/>
 </map>

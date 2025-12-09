@@ -1,5 +1,31 @@
 <map id="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad4170_iio/app/app_config_stm32.h" name="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad4170_iio/app/app_config_stm32.h">
-<area shape="rect" id="Node000001" title="Header file for STM32 platform configurations." alt="" coords="5,5,264,75"/>
-<area shape="rect" id="Node000002" href="$ad4170__iio_2app_2app__config__stm32_8c.html" title="Application configurations module for STM32 platform." alt="" coords="5,123,264,192"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="137,89,137,122,132,122,132,89"/>
+<area shape="rect" id="Node000001" title="Header file for STM32 platform configurations." alt="" coords="1849,5,2107,75"/>
+<area shape="rect" id="Node000002" href="$ad4170__iio_2app_2app__config_8h.html" title="Configuration file for AD4170 device application." alt="" coords="1867,123,2089,192"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="1972,89,1972,122,1967,123,1966,89"/>
+<area shape="rect" id="Node000013" href="$ad4170__iio_2app_2app__config__stm32_8c.html" title="Application configurations module for STM32 platform." alt="" coords="2759,240,3018,309"/>
+<area shape="poly" id="edge16_Node000001_Node000013" title=" " alt="" coords="2122,75,2760,238,2759,243,2120,80"/>
+<area shape="poly" id="edge15_Node000002_Node000001" title=" " alt="" coords="1984,109,1984,75,1989,75,1990,109"/>
+<area shape="rect" id="Node000003" href="$ad4170__accelerometer__config_8c.html" title="Accelerometer user configurations module for AD4170 IIO firmware." alt="" coords="5,240,340,309"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="1853,162,1582,166,1209,179,783,203,565,220,352,243,341,244,340,239,351,237,564,215,783,197,1209,173,1582,161,1853,157"/>
+<area shape="rect" id="Node000004" href="$ad4170__iio_8c.html" title="Implementation of AD4170 IIO application interfaces." alt="" coords="364,240,587,309"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="1853,160,1618,162,1306,173,1132,183,953,198,774,218,598,243,587,245,586,239,598,237,773,212,953,193,1132,178,1306,168,1618,157,1853,155"/>
+<area shape="rect" id="Node000005" href="$ad4170__loadcell__config_8c.html" title="Loadcell user configurations module for AD4170 IIO firmware." alt="" coords="611,240,903,309"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="1853,166,1670,174,1436,189,1176,211,916,243,903,244,903,239,915,237,1176,206,1436,184,1670,169,1853,160"/>
+<area shape="rect" id="Node000006" href="$ad4170__rtd__config_8c.html" title="RTD (2/3/4&#45;wire) user configurations module for AD4170 IIO firmware." alt="" coords="927,240,1186,309"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="1853,169,1554,196,1376,216,1198,243,1187,245,1186,239,1198,237,1375,211,1553,190,1852,164"/>
+<area shape="rect" id="Node000007" href="$ad4170__support_8c.html" title=" " alt="" coords="1211,240,1455,309"/>
+<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="1853,178,1671,206,1468,243,1455,245,1454,240,1467,237,1670,201,1852,173"/>
+<area shape="rect" id="Node000008" href="$ad4170__thermistor__config_8c.html" title="Thermistor user configurations module for AD4170 IIO firmware." alt="" coords="1479,240,1789,309"/>
+<area shape="poly" id="edge7_Node000002_Node000008" title=" " alt="" coords="1866,199,1735,242,1734,237,1864,194"/>
+<area shape="rect" id="Node000009" href="$ad4170__thermocouple__config_8c.html" title="Thermocouple user configurations module for AD4170 IIO firmware." alt="" coords="1813,240,2143,309"/>
+<area shape="poly" id="edge8_Node000002_Node000009" title=" " alt="" coords="1981,206,1981,240,1975,240,1975,206"/>
+<area shape="rect" id="Node000010" href="$ad4170__user__config_8c.html" title="Default user configurations file for AD4170 device." alt="" coords="2133,357,2402,427"/>
+<area shape="poly" id="edge9_Node000002_Node000010" title=" " alt="" coords="2088,196,2124,215,2157,238,2175,255,2185,271,2208,308,2244,356,2240,359,2204,311,2181,274,2170,258,2154,242,2121,219,2086,200"/>
+<area shape="rect" id="Node000011" href="$ad4170__user__config_8h.html" title="Header for AD4170 default user configurations file." alt="" coords="2219,240,2489,309"/>
+<area shape="poly" id="edge10_Node000002_Node000011" title=" " alt="" coords="2093,194,2237,237,2235,242,2092,199"/>
+<area shape="rect" id="Node000012" href="$ad4170__iio_2app_2app__config_8c.html" title="Application configurations module." alt="" coords="2513,240,2736,309"/>
+<area shape="poly" id="edge13_Node000002_Node000012" title=" " alt="" coords="2104,172,2292,199,2501,237,2514,240,2513,245,2500,243,2291,204,2103,177"/>
+<area shape="poly" id="edge14_Node000002_Node000013" title=" " alt="" coords="2103,164,2398,191,2573,211,2748,237,2759,239,2759,245,2747,243,2573,217,2398,196,2103,170"/>
+<area shape="poly" id="edge12_Node000011_Node000002" title=" " alt="" coords="2239,238,2089,193,2090,188,2240,233"/>
+<area shape="poly" id="edge11_Node000011_Node000010" title=" " alt="" coords="2322,322,2295,359,2291,356,2318,319"/>
 </map>

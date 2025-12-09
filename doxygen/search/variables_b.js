@@ -2,9 +2,9 @@ var searchData=
 [
   ['n_0',['n',['../struct_thermocouple_1_1thermocouple__poly__subrange.html#a3e08ba04b2da9eb0dd0594a5cfb3b128',1,'Thermocouple::thermocouple_poly_subrange']]],
   ['nanodac_5fmain_5fmenu_1',['nanodac_main_menu',['../nanodac__console__app_8c.html#aa20b80557788fe4b84d4891a6943fe33',1,'nanodac_main_menu:&#160;nanodac_console_app.c'],['../nanodac__console__app_8h.html#aa20b80557788fe4b84d4891a6943fe33',1,'nanodac_main_menu:&#160;nanodac_console_app.c']]],
-  ['nb_5fof_5fbytes_5fg_2',['nb_of_bytes_g',['../ad405x__iio_2app_2app__config_8h.html#ac7f2e489bd87f764ecb12d8a16208e37',1,'nb_of_bytes_g:&#160;app_support.c'],['../app__support_8c.html#ac7f2e489bd87f764ecb12d8a16208e37',1,'nb_of_bytes_g:&#160;app_support.c']]],
+  ['nb_5fof_5fbytes_5fg_2',['nb_of_bytes_g',['../app__support_8c.html#ac7f2e489bd87f764ecb12d8a16208e37',1,'nb_of_bytes_g:&#160;app_support.c'],['../ad405x__iio_2app_2app__config_8h.html#ac7f2e489bd87f764ecb12d8a16208e37',1,'nb_of_bytes_g:&#160;app_support.c']]],
   ['nb_5fof_5fbytes_5fremaining_5fg_3',['nb_of_bytes_remaining_g',['../app__support_8c.html#af7fde1a3b6de1f1b69d87daf5e0de1a3',1,'nb_of_bytes_remaining_g:&#160;app_support.c'],['../ad405x__iio_2app_2app__config_8h.html#af7fde1a3b6de1f1b69d87daf5e0de1a3',1,'nb_of_bytes_remaining_g:&#160;app_support.c']]],
-  ['nb_5fof_5fsamples_5fg_4',['nb_of_samples_g',['../ad4170__iio_2app_2app__config__stm32_8h.html#a0e4a9e289104efa043759326a7ae0085',1,'nb_of_samples_g:&#160;ad4170_iio.c'],['../ad4170__iio_8c.html#a0e4a9e289104efa043759326a7ae0085',1,'nb_of_samples_g:&#160;ad4170_iio.c']]],
+  ['nb_5fof_5fsamples_5fg_4',['nb_of_samples_g',['../ad4170__iio_8c.html#a0e4a9e289104efa043759326a7ae0085',1,'ad4170_iio.c']]],
   ['neg_5fanalog_5finput_5',['neg_analog_input',['../structad7124__setup__config.html#a9385c85bce8241ce86673aee95179eb7',1,'ad7124_setup_config::neg_analog_input'],['../structad717x__setup__config.html#abc8db93dbfceea6e99d9e5b7ab1096cc',1,'ad717x_setup_config::neg_analog_input']]],
   ['no_5fos_5fi2c_5finit_5fparams_6',['no_os_i2c_init_params',['../ad4080__iio_2app_2app__config_8c.html#abce48bcbed77905e1ef45fa6ff7d317b',1,'app_config.c']]],
   ['noise_5fbins_7',['noise_bins',['../structadi__fft__processing.html#a5dc44e53cf0c002d09922d8c15f2dcac',1,'adi_fft_processing']]],

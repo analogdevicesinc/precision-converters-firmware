@@ -20,13 +20,12 @@
 <area shape="poly" id="edge9_Node000001_Node000010" title=" " alt="" coords="2165,78,2266,120,2264,125,2163,83"/>
 <area shape="rect" id="Node000011" href="$ad4170__iio_2app_2app__config_8c.html" title="Application configurations module." alt="" coords="2513,123,2736,192"/>
 <area shape="poly" id="edge12_Node000001_Node000011" title=" " alt="" coords="2204,60,2347,87,2501,120,2514,123,2513,128,2500,125,2346,93,2203,66"/>
-<area shape="rect" id="Node000012" href="$ad4170__iio_2app_2app__config__mbed_8c.html" title="Application configurations module for Mbed platform." alt="" coords="2760,123,3015,192"/>
-<area shape="poly" id="edge13_Node000001_Node000012" title=" " alt="" coords="2205,50,2456,77,2603,97,2748,120,2760,122,2759,128,2747,125,2602,102,2456,82,2204,55"/>
-<area shape="rect" id="Node000013" href="$ad4170__iio_2app_2app__config__stm32_8c.html" title="Application configurations module for STM32 platform." alt="" coords="3006,240,3265,309"/>
-<area shape="poly" id="edge14_Node000001_Node000013" title=" " alt="" coords="2204,44,2424,54,2679,71,2902,93,2981,106,3028,120,3114,238,3109,241,3024,125,2980,111,2902,98,2679,76,2424,60,2204,49"/>
-<area shape="rect" id="Node000014" href="$ad4170__iio_2app_2app__config__stm32_8h.html" title="Header file for STM32 platform configurations." alt="" coords="3090,123,3349,192"/>
-<area shape="poly" id="edge15_Node000001_Node000014" title=" " alt="" coords="2205,43,2376,52,2593,67,2832,89,3072,120,3090,123,3090,128,3071,125,2832,95,2592,72,2376,57,2204,49"/>
+<area shape="rect" id="Node000012" href="$ad4170__iio_2app_2app__config__stm32_8c.html" title="Application configurations module for STM32 platform." alt="" coords="2726,240,2985,309"/>
+<area shape="poly" id="edge13_Node000001_Node000012" title=" " alt="" coords="2204,42,2347,50,2505,64,2649,86,2706,102,2749,121,2834,238,2829,241,2746,125,2704,107,2648,92,2505,69,2347,55,2204,47"/>
+<area shape="rect" id="Node000013" href="$ad4170__iio_2app_2app__config__stm32_8h.html" title="Header file for STM32 platform configurations." alt="" coords="2810,123,3069,192"/>
+<area shape="poly" id="edge14_Node000001_Node000013" title=" " alt="" coords="2205,50,2470,77,2625,97,2780,120,2810,126,2809,131,2779,125,2624,102,2469,82,2204,55"/>
 <area shape="poly" id="edge11_Node000010_Node000001" title=" " alt="" coords="2268,120,2167,77,2169,72,2270,115"/>
 <area shape="poly" id="edge10_Node000010_Node000009" title=" " alt="" coords="2322,205,2295,241,2291,238,2318,202"/>
-<area shape="poly" id="edge16_Node000014_Node000013" title=" " alt="" coords="3189,205,3162,241,3158,238,3184,202"/>
+<area shape="poly" id="edge15_Node000013_Node000001" title=" " alt="" coords="2796,124,2629,99,2464,79,2191,52,2191,47,2465,74,2630,94,2796,119"/>
+<area shape="poly" id="edge16_Node000013_Node000012" title=" " alt="" coords="2909,205,2882,241,2878,238,2904,202"/>
 </map>

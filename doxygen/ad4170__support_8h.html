@@ -166,6 +166,9 @@ Functions</h2></td></tr>
 <tr class="memitem:ac5facb87a77bb761b02b6e496a2053c0" id="r_ac5facb87a77bb761b02b6e496a2053c0"><td class="memItemLeft" align="right" valign="top">int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad4170__support_8h.html#ac5facb87a77bb761b02b6e496a2053c0">ad4170_set_fs</a> (struct ad4170_dev *dev, uint8_t setup, uint8_t chn, uint16_t fs_val)</td></tr>
 <tr class="memdesc:ac5facb87a77bb761b02b6e496a2053c0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set Reference.  <br /></td></tr>
 <tr class="separator:ac5facb87a77bb761b02b6e496a2053c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acd80facc4a1d39ff81d6ef1085ab733d" id="r_acd80facc4a1d39ff81d6ef1085ab733d"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad4170__support_8h.html#acd80facc4a1d39ff81d6ef1085ab733d">ad4170_determine_t_settle</a> (float *t_settle, enum ad4170_filter_type <a class="el" href="ad7124__console_2app_2ad7124__console__app_8h.html#ab3b7281956317556f846daaebf75de72">filter_type</a>, uint32_t filter_fs)</td></tr>
+<tr class="memdesc:acd80facc4a1d39ff81d6ef1085ab733d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Determine Settling time.  <br /></td></tr>
+<tr class="separator:acd80facc4a1d39ff81d6ef1085ab733d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Macro Definition Documentation</h2>
 <a id="a57eeff4ee7e4ec2e1907d0a0c29d46a5" name="a57eeff4ee7e4ec2e1907d0a0c29d46a5"></a>
@@ -223,6 +226,51 @@ Here is the caller graph for this function:</div>
 <area shape="poly" title=" " alt="" coords="220,70,186,74,185,69,220,65"/>
 </map>
 </div>
+
+</div>
+</div>
+<a id="acd80facc4a1d39ff81d6ef1085ab733d" name="acd80facc4a1d39ff81d6ef1085ab733d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acd80facc4a1d39ff81d6ef1085ab733d">&#9670;&#160;</a></span>ad4170_determine_t_settle()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int ad4170_determine_t_settle </td>
+          <td>(</td>
+          <td class="paramtype">float *&#160;</td>
+          <td class="paramname"><em>t_settle</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">enum ad4170_filter_type&#160;</td>
+          <td class="paramname"><em>filter_type</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>filter_fs</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Determine Settling time. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">t_settle[out]</td><td>- Settling time </td></tr>
+    <tr><td class="paramname">filter_type[in]</td><td>- Filter type </td></tr>
+    <tr><td class="paramname">filter_fs[in]</td><td>- Value of FS configured </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>0 in case of success, negative error code otherwise </dd></dl>
 
 </div>
 </div>

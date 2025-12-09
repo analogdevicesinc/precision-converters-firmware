@@ -1,49 +1,37 @@
 <map id="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad4170_iio/app/app_config_stm32.h" name="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad4170_iio/app/app_config_stm32.h">
-<area shape="rect" id="Node000001" title="Header file for STM32 platform configurations." alt="" coords="405,5,664,75"/>
+<area shape="rect" id="Node000001" title="Header file for STM32 platform configurations." alt="" coords="537,5,796,75"/>
 <area shape="rect" id="Node000002" title=" " alt="" coords="5,123,72,148"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="405,65,256,91,86,125,85,120,255,86,405,60"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="537,58,329,85,86,125,85,120,329,80,537,53"/>
 <area shape="rect" id="Node000003" title=" " alt="" coords="96,123,197,148"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="406,75,208,122,207,117,404,70"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="538,67,211,125,210,120,537,62"/>
 <area shape="rect" id="Node000004" title=" " alt="" coords="221,123,323,148"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="441,77,318,121,316,116,439,72"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="538,74,334,122,333,117,536,69"/>
 <area shape="rect" id="Node000005" title=" " alt="" coords="347,123,455,148"/>
-<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="488,77,431,117,428,112,485,73"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="572,77,448,121,446,116,570,72"/>
 <area shape="rect" id="Node000006" title=" " alt="" coords="479,123,590,148"/>
-<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="537,75,537,109,532,109,532,75"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="621,77,564,117,561,112,617,73"/>
 <area shape="rect" id="Node000007" href="$ad4170__iio_2app_2app__config_8h.html" title="Configuration file for AD4170 device application." alt="" coords="615,123,719,148"/>
-<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="584,73,640,112,637,117,581,77"/>
-<area shape="rect" id="Node000020" title=" " alt="" coords="743,123,854,148"/>
-<area shape="poly" id="edge23_Node000001_Node000020" title=" " alt="" coords="631,72,754,116,752,121,629,77"/>
-<area shape="rect" id="Node000021" title=" " alt="" coords="878,123,986,148"/>
-<area shape="poly" id="edge24_Node000001_Node000021" title=" " alt="" coords="665,69,871,117,870,122,664,74"/>
-<area shape="rect" id="Node000022" title=" " alt="" coords="1011,123,1125,148"/>
-<area shape="poly" id="edge25_Node000001_Node000022" title=" " alt="" coords="665,61,998,119,997,124,664,66"/>
-<area shape="rect" id="Node000008" title=" " alt="" coords="721,269,791,295"/>
-<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="701,146,735,165,750,178,762,195,768,210,770,226,766,256,761,255,764,226,763,211,758,197,746,182,732,169,698,150"/>
-<area shape="rect" id="Node000009" title=" " alt="" coords="515,269,597,295"/>
-<area shape="poly" id="edge8_Node000007_Node000009" title=" " alt="" coords="638,150,605,169,589,182,576,197,563,226,559,256,553,255,558,225,571,195,585,178,602,165,636,146"/>
-<area shape="rect" id="Node000010" href="$ad4170__iio_2app_2app__config__mbed_8h.html" title="Header file for Mbed platform configurations." alt="" coords="1065,196,1213,221"/>
-<area shape="poly" id="edge9_Node000007_Node000010" title=" " alt="" coords="719,143,732,145,1051,193,1051,198,732,151,718,148"/>
-<area shape="rect" id="Node000018" href="$ad4170__user__config_8h.html" title="Header for AD4170 default user configurations file." alt="" coords="585,196,748,221"/>
-<area shape="poly" id="edge18_Node000007_Node000018" title=" " alt="" coords="662,148,661,183,655,182,657,148"/>
-<area shape="poly" id="edge10_Node000010_Node000008" title=" " alt="" coords="1068,224,805,272,804,267,1067,219"/>
-<area shape="rect" id="Node000011" title=" " alt="" coords="1333,269,1433,295"/>
-<area shape="poly" id="edge11_Node000010_Node000011" title=" " alt="" coords="1179,219,1331,263,1329,268,1177,224"/>
-<area shape="rect" id="Node000012" title=" " alt="" coords="1457,269,1564,295"/>
-<area shape="poly" id="edge12_Node000010_Node000012" title=" " alt="" coords="1199,219,1444,265,1443,271,1198,224"/>
-<area shape="rect" id="Node000013" title=" " alt="" coords="1588,269,1692,295"/>
-<area shape="poly" id="edge13_Node000010_Node000013" title=" " alt="" coords="1213,216,1575,267,1574,272,1212,222"/>
-<area shape="rect" id="Node000014" title=" " alt="" coords="815,269,910,295"/>
-<area shape="poly" id="edge14_Node000010_Node000014" title=" " alt="" coords="1095,224,921,268,920,263,1094,219"/>
-<area shape="rect" id="Node000015" title=" " alt="" coords="935,269,1065,295"/>
-<area shape="poly" id="edge15_Node000010_Node000015" title=" " alt="" coords="1118,224,1036,265,1034,261,1115,219"/>
-<area shape="rect" id="Node000016" title=" " alt="" coords="1090,269,1187,295"/>
-<area shape="poly" id="edge16_Node000010_Node000016" title=" " alt="" coords="1141,222,1141,256,1136,256,1136,222"/>
-<area shape="rect" id="Node000017" title=" " alt="" coords="1211,269,1309,295"/>
-<area shape="poly" id="edge17_Node000010_Node000017" title=" " alt="" coords="1160,219,1230,260,1227,265,1157,224"/>
-<area shape="poly" id="edge21_Node000018_Node000007" title=" " alt="" coords="671,196,673,162,678,162,676,196"/>
-<area shape="poly" id="edge19_Node000018_Node000008" title=" " alt="" coords="683,219,732,258,729,263,679,223"/>
-<area shape="poly" id="edge22_Node000018_Node000009" title=" " alt="" coords="650,224,587,264,584,259,647,219"/>
-<area shape="rect" id="Node000019" title=" " alt="" coords="626,269,697,295"/>
-<area shape="poly" id="edge20_Node000018_Node000019" title=" " alt="" coords="668,222,666,256,661,256,663,221"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="661,75,661,109,656,109,655,75"/>
+<area shape="rect" id="Node000013" title=" " alt="" coords="743,123,851,148"/>
+<area shape="poly" id="edge16_Node000001_Node000013" title=" " alt="" coords="715,73,771,112,768,117,712,77"/>
+<area shape="rect" id="Node000014" title=" " alt="" coords="875,123,1010,148"/>
+<area shape="poly" id="edge17_Node000001_Node000014" title=" " alt="" coords="767,72,896,116,895,121,765,77"/>
+<area shape="rect" id="Node000015" title=" " alt="" coords="1034,123,1145,148"/>
+<area shape="poly" id="edge18_Node000001_Node000015" title=" " alt="" coords="797,67,1025,117,1023,122,796,72"/>
+<area shape="rect" id="Node000016" title=" " alt="" coords="1169,123,1284,148"/>
+<area shape="poly" id="edge19_Node000001_Node000016" title=" " alt="" coords="797,60,1156,120,1155,125,796,65"/>
+<area shape="poly" id="edge10_Node000007_Node000001" title=" " alt="" coords="670,122,673,88,678,89,676,122"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="525,269,595,295"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="637,150,604,169,588,182,576,197,564,226,561,256,556,256,559,225,571,195,585,178,601,165,635,146"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="735,269,817,295"/>
+<area shape="poly" id="edge8_Node000007_Node000009" title=" " alt="" coords="698,146,732,165,748,178,762,195,775,225,779,255,774,256,770,226,758,197,745,182,729,169,695,150"/>
+<area shape="rect" id="Node000010" href="$common__macros_8h.html" title="The file contain common macros that needs to be followed same across all the projects." alt="" coords="823,196,969,221"/>
+<area shape="poly" id="edge9_Node000007_Node000010" title=" " alt="" coords="704,145,846,189,845,194,703,151"/>
+<area shape="rect" id="Node000011" href="$ad4170__user__config_8h.html" title="Header for AD4170 default user configurations file." alt="" coords="585,196,748,221"/>
+<area shape="poly" id="edge11_Node000007_Node000011" title=" " alt="" coords="662,148,661,183,655,182,657,148"/>
+<area shape="poly" id="edge14_Node000011_Node000007" title=" " alt="" coords="671,196,673,162,678,162,676,196"/>
+<area shape="poly" id="edge12_Node000011_Node000008" title=" " alt="" coords="651,224,590,264,587,259,648,219"/>
+<area shape="poly" id="edge15_Node000011_Node000009" title=" " alt="" coords="686,219,748,259,745,264,683,224"/>
+<area shape="rect" id="Node000012" title=" " alt="" coords="631,269,702,295"/>
+<area shape="poly" id="edge13_Node000011_Node000012" title=" " alt="" coords="669,222,669,256,664,256,664,222"/>
 </map>
