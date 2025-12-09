@@ -97,56 +97,87 @@ $(document).ready(function() { init_codefold(0); });
 <div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="preprocessor">#include &quot;stm32_gpio_irq.h&quot;</span></div>
 <div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="preprocessor">#include &quot;no_os_irq.h&quot;</span></div>
 <div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="preprocessor">#include &quot;main.h&quot;</span></div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span><span class="comment">/******************************************************************************/</span></div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span><span class="comment">/********************** Macros and Constants Definition ***********************/</span></div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span><span class="comment">/******************************************************************************/</span></div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span> </div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span><span class="comment">/* The below configurations are specific to STM32H563ZIT6 MCU on NUCLEO-H563ZI Board. */</span></div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno"><a class="line" href="ad7124__iio_2app_2app__config__stm32_8h.html#a53f88b148569ce9eaa56404b7b3c72f2">   34</a></span><span class="preprocessor">#define HW_CARRIER_NAME     NUCLEO-H563ZI</span></div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="comment">/* STM32 SPI Specific parameters */</span></div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno"><a class="line" href="ad7124__iio_2app_2app__config__stm32_8h.html#a2264889066fc41987d29395b4772bd17">   37</a></span><span class="preprocessor">#define SPI_DEVICE_ID       1 </span><span class="comment">// SPI1</span></div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno"><a class="line" href="ad7124__iio_2app_2app__config__stm32_8h.html#a9912b2a4108ecd9f98ad04eceef5f836">   38</a></span><span class="preprocessor">#define SPI_CS_PORT 3  </span><span class="comment">// GPIO Port D</span></div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno"><a class="line" href="ad7124__iio_2app_2app__config__stm32_8h.html#a6dc78fc30202ccac1f51bc2daedc14d1">   39</a></span><span class="preprocessor">#define SPI_CSB             14 </span><span class="comment">// PD_14</span></div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span> </div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span><span class="comment">/* STM32 UART specific parameters */</span></div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno"><a class="line" href="ad7124__iio_2app_2app__config__stm32_8h.html#a26e35b6d28f9337234bdfd7f653836c5">   42</a></span><span class="preprocessor">#define APP_UART_HANDLE     &amp;huart3</span></div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span> </div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span><span class="comment">/* UART Device ID */</span></div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno"><a class="line" href="ad7124__iio_2app_2app__config__stm32_8h.html#adff4ff00d8f3375e4fb198270ae24597">   45</a></span><span class="preprocessor">#define UART_IRQ_ID         USART3_IRQn</span></div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span> </div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span><span class="comment">/* RDY specific Port and Pin */</span></div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno"><a class="line" href="ad7124__iio_2app_2app__config__stm32_8h.html#a1f27d23df33acb903d6a4a4435d9a835">   48</a></span><span class="preprocessor">#define RDY_PORT    5</span></div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno"><a class="line" href="ad7124__iio_2app_2app__config__stm32_8h.html#a53eb094642a9f1bbcf5ac223315a9003">   49</a></span><span class="preprocessor">#define RDY_PIN 3</span></div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span> </div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno"><a class="line" href="ad7124__iio_2app_2app__config__stm32_8h.html#a03a017cd7aed209b5eae3f678a974693">   51</a></span><span class="preprocessor">#define RDY_GPIO_PRIORITY 1</span></div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span> </div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno"><a class="line" href="ad7124__iio_2app_2app__config__stm32_8h.html#add101091f60c4cd64e8422d06e17b95b">   53</a></span><span class="preprocessor">#define I2C_DEVICE_ID           1 </span><span class="comment">// I2C1</span></div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span> </div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span><span class="comment">/* I2C timing register value for standard mode of operation</span></div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span><span class="comment"> * Check here for more understanding on I2C timing register</span></div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span><span class="comment"> * configuration: https://wiki.analog.com/resources/no-os/drivers/i2c */</span></div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno"><a class="line" href="ad7124__iio_2app_2app__config__stm32_8h.html#a11e7d26bdb06febd4e1e79f765eab113">   58</a></span><span class="preprocessor">#define I2C_TIMING              0x00000E14</span></div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span> </div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span><span class="comment">/******************************************************************************/</span></div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span><span class="comment">/********************** Variables and User Defined Data Types *****************/</span></div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span><span class="comment">/******************************************************************************/</span></div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span> </div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span><span class="keyword">extern</span> <span class="keyword">struct </span>stm32_uart_init_param <a class="code hl_variable" href="ad405x__iio_2app_2app__config__stm32_8h.html#ad01cbb0d92f894ddd7f2e1a62a11e91b">stm32_uart_extra_init_params</a>;</div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span><span class="keyword">extern</span> <span class="keyword">struct </span>stm32_spi_init_param <a class="code hl_variable" href="ad4130__iio_2app_2app__config__stm32_8c.html#aee225d9d1b4e30e96142c0acdba48d3f">stm32_spi_extra_init_params</a>;</div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span><span class="keyword">extern</span> <span class="keyword">struct </span>stm32_i2c_init_param <a class="code hl_variable" href="ad405x__iio_2app_2app__config__stm32_8h.html#a247f0561bf59d7572c7894ad57822d3f">stm32_i2c_extra_init_params</a>;</div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span><span class="keyword">extern</span> <span class="keyword">struct </span>stm32_gpio_irq_init_param <a class="code hl_variable" href="ad3530r__iio_2app_2app__config__stm32_8h.html#ae9b3636a64a6ddc6e338421a69ca0405">stm32_trigger_gpio_irq_init_params</a>;</div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span><span class="keyword">extern</span> UART_HandleTypeDef <a class="code hl_variable" href="ad4134__iio_2app_2app__config__stm32_8h.html#ab7c63c1b0f65db92b6a4ea19edf957e1">huart3</a>;</div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span><span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code hl_function" href="ad3530r__iio_2app_2app__config__stm32_8h.html#a7256d80c59f9d4eafcebc79f1b73ba72">stm32_system_init</a>();</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="comment">/******************************************************************************/</span></div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span><span class="comment">/********************** Macros and Constants Definition ***********************/</span></div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span><span class="comment">/******************************************************************************/</span></div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span><span class="preprocessor">#ifdef STM32H563xx</span></div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span><span class="comment">/* The below configurations are specific to STM32H563ZIT6 MCU on NUCLEO-H563ZI Board. */</span></div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span><span class="preprocessor">#define HW_CARRIER_NAME     NUCLEO-H563ZI</span></div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span> </div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span><span class="comment">/* STM32 SPI Specific parameters */</span></div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="preprocessor">#define SPI_DEVICE_ID       1 </span><span class="comment">// SPI1</span></div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span><span class="preprocessor">#define SPI_CS_PORT 3  </span><span class="comment">// GPIO Port D</span></div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span><span class="preprocessor">#define SPI_CSB             14 </span><span class="comment">// PD_14</span></div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span> </div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span><span class="comment">/* STM32 UART specific parameters */</span></div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span><span class="preprocessor">#define APP_UART_HANDLE     huart3</span></div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span> </div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span><span class="comment">/* UART Device ID */</span></div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span><span class="preprocessor">#define UART_IRQ_ID         USART3_IRQn</span></div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span> </div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span><span class="comment">/* RDY specific Port and Pin */</span></div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span><span class="preprocessor">#define RDY_PORT    5</span></div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span><span class="preprocessor">#define RDY_PIN 3</span></div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span> </div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span><span class="preprocessor">#define RDY_GPIO_PRIORITY 1</span></div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span> </div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span><span class="preprocessor">#define I2C_DEVICE_ID           1 </span><span class="comment">// I2C1</span></div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span> </div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span><span class="comment">/* I2C timing register value for standard mode of operation</span></div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span><span class="comment"> * Check here for more understanding on I2C timing register</span></div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span><span class="comment"> * configuration: https://wiki.analog.com/resources/no-os/drivers/i2c */</span></div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span><span class="preprocessor">#define I2C_TIMING              0x00000E14</span></div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span> </div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span><span class="preprocessor">#else</span></div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span><span class="comment">/* The below configurations are specific to STM32769NI MCU on Disco-F769NI Board. */</span></div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno"><a class="line" href="ad7124__iio_2app_2app__config__stm32_8h.html#a53f88b148569ce9eaa56404b7b3c72f2">   61</a></span><span class="preprocessor">#define HW_CARRIER_NAME     DISCO-F769NI</span></div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span> </div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span><span class="comment">/* STM32 SPI Specific parameters */</span></div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno"><a class="line" href="ad7124__iio_2app_2app__config__stm32_8h.html#a2264889066fc41987d29395b4772bd17">   64</a></span><span class="preprocessor">#define SPI_DEVICE_ID       2 </span><span class="comment">// SPI1</span></div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno"><a class="line" href="ad7124__iio_2app_2app__config__stm32_8h.html#a9912b2a4108ecd9f98ad04eceef5f836">   65</a></span><span class="preprocessor">#define SPI_CS_PORT         0  </span><span class="comment">// GPIO Port D</span></div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno"><a class="line" href="ad7124__iio_2app_2app__config__stm32_8h.html#a6dc78fc30202ccac1f51bc2daedc14d1">   66</a></span><span class="preprocessor">#define SPI_CSB             11 </span><span class="comment">// PA_11</span></div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span> </div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span><span class="comment">/* STM32 UART specific parameters */</span></div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno"><a class="line" href="ad7124__iio_2app_2app__config__stm32_8h.html#a26e35b6d28f9337234bdfd7f653836c5">   69</a></span><span class="preprocessor">#define APP_UART_HANDLE     huart6</span></div>
 <div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span> </div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span><span class="preprocessor">#endif </span><span class="comment">// APP_CONFIG_STM32_H_</span></div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span><span class="comment">/* UART Device ID */</span></div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno"><a class="line" href="ad7124__iio_2app_2app__config__stm32_8h.html#adff4ff00d8f3375e4fb198270ae24597">   72</a></span><span class="preprocessor">#define UART_IRQ_ID         USART6_IRQn</span></div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span> </div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span><span class="comment">/* RDY specific Port and Pin */</span></div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno"><a class="line" href="ad7124__iio_2app_2app__config__stm32_8h.html#a1f27d23df33acb903d6a4a4435d9a835">   75</a></span><span class="preprocessor">#define RDY_PORT           9 </span><span class="comment">// GPIO Port J</span></div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno"><a class="line" href="ad7124__iio_2app_2app__config__stm32_8h.html#a53eb094642a9f1bbcf5ac223315a9003">   76</a></span><span class="preprocessor">#define RDY_PIN            4 </span><span class="comment">// PJ_4</span></div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span> </div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno"><a class="line" href="ad7124__iio_2app_2app__config__stm32_8h.html#add101091f60c4cd64e8422d06e17b95b">   78</a></span><span class="preprocessor">#define I2C_DEVICE_ID       1 </span><span class="comment">// I2C1</span></div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span> </div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span><span class="comment">/* I2C timing register value for standard mode of operation</span></div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span><span class="comment"> * Check here for more understanding on I2C timing register</span></div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span><span class="comment"> * configuration: TODO*/</span></div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno"><a class="line" href="ad7124__iio_2app_2app__config__stm32_8h.html#a11e7d26bdb06febd4e1e79f765eab113">   83</a></span><span class="preprocessor">#define I2C_TIMING      0x40912732</span></div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span> </div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span><span class="comment">/* Ticker for Pocket Lab */</span></div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno"><a class="line" href="ad7124__iio_2app_2app__config__stm32_8h.html#a236efa190e14e170276ad9139e71d3d8">   86</a></span><span class="preprocessor">#define LVGL_TICK_TIME_US       5000</span></div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno"><a class="line" href="ad7124__iio_2app_2app__config__stm32_8h.html#a9f884e0f8dfd7fa9558d01e78f1d7fa8">   87</a></span><span class="preprocessor">#define LVGL_TICK_TIME_MS       (LVGL_TICK_TIME_US / 1000)</span></div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span> </div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span><span class="comment">/******************************************************************************/</span></div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span><span class="comment">/********************** Variables and User Defined Data Types *****************/</span></div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span><span class="comment">/******************************************************************************/</span></div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span> </div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span><span class="keyword">extern</span> <span class="keyword">struct </span>stm32_uart_init_param <a class="code hl_variable" href="ad405x__iio_2app_2app__config__stm32_8h.html#ad01cbb0d92f894ddd7f2e1a62a11e91b">stm32_uart_extra_init_params</a>;</div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span><span class="keyword">extern</span> <span class="keyword">struct </span>stm32_spi_init_param <a class="code hl_variable" href="ad4130__iio_2app_2app__config__stm32_8c.html#aee225d9d1b4e30e96142c0acdba48d3f">stm32_spi_extra_init_params</a>;</div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span><span class="keyword">extern</span> <span class="keyword">struct </span>stm32_i2c_init_param <a class="code hl_variable" href="ad405x__iio_2app_2app__config__stm32_8h.html#a247f0561bf59d7572c7894ad57822d3f">stm32_i2c_extra_init_params</a>;</div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span><span class="keyword">extern</span> <span class="keyword">struct </span>stm32_gpio_irq_init_param <a class="code hl_variable" href="ad3530r__iio_2app_2app__config__stm32_8h.html#ae9b3636a64a6ddc6e338421a69ca0405">stm32_trigger_gpio_irq_init_params</a>;</div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span><span class="keyword">extern</span> UART_HandleTypeDef <a class="code hl_define" href="ad4080__iio_2app_2app__config__stm32_8h.html#a26e35b6d28f9337234bdfd7f653836c5">APP_UART_HANDLE</a>;</div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span> </div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span><span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code hl_function" href="ad3530r__iio_2app_2app__config__stm32_8h.html#a7256d80c59f9d4eafcebc79f1b73ba72">stm32_system_init</a>();</div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span> </div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span><span class="preprocessor">#endif </span><span class="comment">// APP_CONFIG_STM32_H_</span></div>
 <div class="ttc" id="aad3530r__iio_2app_2app__config__stm32_8h_html_a7256d80c59f9d4eafcebc79f1b73ba72"><div class="ttname"><a href="ad3530r__iio_2app_2app__config__stm32_8h.html#a7256d80c59f9d4eafcebc79f1b73ba72">stm32_system_init</a></div><div class="ttdeci">void stm32_system_init(void)</div><div class="ttdoc">Initialize the STM32 system peripherals.</div><div class="ttdef"><b>Definition</b> app_config_stm32.c:176</div></div>
 <div class="ttc" id="aad3530r__iio_2app_2app__config__stm32_8h_html_ae9b3636a64a6ddc6e338421a69ca0405"><div class="ttname"><a href="ad3530r__iio_2app_2app__config__stm32_8h.html#ae9b3636a64a6ddc6e338421a69ca0405">stm32_trigger_gpio_irq_init_params</a></div><div class="ttdeci">struct stm32_gpio_irq_init_param stm32_trigger_gpio_irq_init_params</div><div class="ttdef"><b>Definition</b> app_config_stm32.c:43</div></div>
 <div class="ttc" id="aad405x__iio_2app_2app__config__stm32_8h_html_a247f0561bf59d7572c7894ad57822d3f"><div class="ttname"><a href="ad405x__iio_2app_2app__config__stm32_8h.html#a247f0561bf59d7572c7894ad57822d3f">stm32_i2c_extra_init_params</a></div><div class="ttdeci">struct stm32_i2c_init_param stm32_i2c_extra_init_params</div><div class="ttdef"><b>Definition</b> app_config_stm32.c:152</div></div>
 <div class="ttc" id="aad405x__iio_2app_2app__config__stm32_8h_html_ad01cbb0d92f894ddd7f2e1a62a11e91b"><div class="ttname"><a href="ad405x__iio_2app_2app__config__stm32_8h.html#ad01cbb0d92f894ddd7f2e1a62a11e91b">stm32_uart_extra_init_params</a></div><div class="ttdeci">struct stm32_uart_init_param stm32_uart_extra_init_params</div><div class="ttdef"><b>Definition</b> app_config_stm32.c:102</div></div>
+<div class="ttc" id="aad4080__iio_2app_2app__config__stm32_8h_html_a26e35b6d28f9337234bdfd7f653836c5"><div class="ttname"><a href="ad4080__iio_2app_2app__config__stm32_8h.html#a26e35b6d28f9337234bdfd7f653836c5">APP_UART_HANDLE</a></div><div class="ttdeci">#define APP_UART_HANDLE</div><div class="ttdef"><b>Definition</b> app_config_stm32.h:131</div></div>
 <div class="ttc" id="aad4130__iio_2app_2app__config__stm32_8c_html_aee225d9d1b4e30e96142c0acdba48d3f"><div class="ttname"><a href="ad4130__iio_2app_2app__config__stm32_8c.html#aee225d9d1b4e30e96142c0acdba48d3f">stm32_spi_extra_init_params</a></div><div class="ttdeci">struct stm32_spi_init_param stm32_spi_extra_init_params</div><div class="ttdef"><b>Definition</b> app_config_stm32.c:43</div></div>
-<div class="ttc" id="aad4134__iio_2app_2app__config__stm32_8h_html_ab7c63c1b0f65db92b6a4ea19edf957e1"><div class="ttname"><a href="ad4134__iio_2app_2app__config__stm32_8h.html#ab7c63c1b0f65db92b6a4ea19edf957e1">huart3</a></div><div class="ttdeci">UART_HandleTypeDef huart3</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

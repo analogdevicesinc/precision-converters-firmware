@@ -1,43 +1,45 @@
 <map id="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/_common/common_macros.h" name="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/_common/common_macros.h">
-<area shape="rect" id="Node000001" title="The file contain common macros that needs to be followed same across all the projects." alt="" coords="16131,5,16353,75"/>
+<area shape="rect" id="Node000001" title="The file contain common macros that needs to be followed same across all the projects." alt="" coords="16615,5,16837,75"/>
 <area shape="rect" id="Node000002" href="$ad3530r__iio_2app_2app__config_8h.html" title="Application configurations module for AD3530R." alt="" coords="855,123,1077,192"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="16117,44,13800,49,9681,63,5235,88,3350,105,1935,125,1458,139,1078,154,1077,148,1457,134,1935,120,3350,99,5235,82,9681,58,13800,44,16117,39"/>
-<area shape="rect" id="Node000011" href="$ad4080__iio_2app_2app__config_8h.html" title="Configuration file for AD4080 IIO firmware application." alt="" coords="1948,123,2171,192"/>
-<area shape="poly" id="edge13_Node000001_Node000011" title=" " alt="" coords="16117,44,11714,67,8123,91,4374,125,3080,142,2171,157,2171,151,3080,137,4374,120,8123,86,11714,62,16117,39"/>
-<area shape="rect" id="Node000016" href="$ad4130__iio_2app_2app__config_8h.html" title="Configuration file for AD4130 device applications." alt="" coords="4387,123,4609,192"/>
-<area shape="poly" id="edge18_Node000001_Node000016" title=" " alt="" coords="16117,45,4610,158,4610,152,16117,40"/>
-<area shape="rect" id="Node000030" href="$ad4170__iio_2app_2app__config_8h.html" title="Configuration file for AD4170 device application." alt="" coords="7936,123,8159,192"/>
-<area shape="poly" id="edge32_Node000001_Node000030" title=" " alt="" coords="16117,46,10217,125,8159,157,8159,152,10217,120,16117,40"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="16601,44,14212,49,9947,62,7590,73,5338,86,3383,104,1917,125,1450,139,1078,154,1077,148,1450,134,1917,120,3383,99,5338,81,7590,67,9947,57,14212,43,16601,39"/>
+<area shape="rect" id="Node000011" href="$ad4080__iio_2app_2app__config_8h.html" title="Configuration file for AD4080 IIO firmware application." alt="" coords="1929,123,2152,192"/>
+<area shape="poly" id="edge13_Node000001_Node000011" title=" " alt="" coords="16601,44,12032,67,8296,91,4394,125,3076,142,2152,157,2152,151,3076,137,4394,120,8296,86,12032,61,16601,39"/>
+<area shape="rect" id="Node000016" href="$ad4130__iio_2app_2app__config_8h.html" title="Configuration file for AD4130 device applications." alt="" coords="4407,123,4629,192"/>
+<area shape="poly" id="edge18_Node000001_Node000016" title=" " alt="" coords="16600,45,13151,74,7525,125,4630,157,4630,152,7525,120,13151,68,16600,40"/>
+<area shape="rect" id="Node000030" href="$ad4170__iio_2app_2app__config_8h.html" title="Configuration file for AD4170 device application." alt="" coords="7537,123,7760,192"/>
+<area shape="poly" id="edge32_Node000001_Node000030" title=" " alt="" coords="16601,46,10217,125,7760,157,7760,152,10217,120,16601,40"/>
 <area shape="rect" id="Node000043" href="$ad469x__iio_2app_2app__config_8h.html" title="Configuration file for AD469x device applications." alt="" coords="10229,123,10452,192"/>
-<area shape="poly" id="edge49_Node000001_Node000043" title=" " alt="" coords="16117,46,14334,74,11614,125,10452,155,10452,150,11614,120,14334,69,16117,40"/>
-<area shape="rect" id="Node000050" href="$ad559xr__console_2app_2app__config_8h.html" title=": AD5592R/AD5593R device selection. Pin mappings." alt="" coords="11626,123,11877,192"/>
-<area shape="poly" id="edge56_Node000001_Node000050" title=" " alt="" coords="16117,47,11877,155,11877,150,16117,42"/>
-<area shape="rect" id="Node000055" href="$ad5710r__iio_2app_2app__config_8h.html" title="Application configurations module for AD5710R." alt="" coords="13128,123,13351,192"/>
-<area shape="poly" id="edge61_Node000001_Node000055" title=" " alt="" coords="16117,49,13351,154,13351,149,16117,43"/>
-<area shape="rect" id="Node000064" href="$ad5754r__iio_2app_2app__config_8h.html" title="Configuration file for AD5754R device application." alt="" coords="14205,123,14428,192"/>
-<area shape="poly" id="edge73_Node000001_Node000064" title=" " alt="" coords="16117,51,14428,152,14428,147,16117,46"/>
-<area shape="rect" id="Node000073" href="$ad5770r__console_2app_2app__config_8h.html" title=" " alt="" coords="15506,123,15757,192"/>
-<area shape="poly" id="edge86_Node000001_Node000073" title=" " alt="" coords="16118,67,15757,135,15756,130,16117,62"/>
-<area shape="rect" id="Node000078" href="$ad579x__iio_2app_2app__config_8h.html" title="Configuration file for AD579x device application." alt="" coords="16743,123,16965,192"/>
-<area shape="poly" id="edge91_Node000001_Node000078" title=" " alt="" coords="16367,62,16743,132,16742,138,16366,67"/>
+<area shape="poly" id="edge49_Node000001_Node000043" title=" " alt="" coords="16601,46,14677,74,13221,97,11715,125,10452,156,10452,150,11715,120,13221,92,14676,68,16601,40"/>
+<area shape="rect" id="Node000050" href="$ad559xr__console_2app_2app__config_8h.html" title=": AD5592R/AD5593R device selection. Pin mappings." alt="" coords="11727,123,11978,192"/>
+<area shape="poly" id="edge56_Node000001_Node000050" title=" " alt="" coords="16601,47,13117,125,11978,155,11978,150,13117,120,16601,41"/>
+<area shape="rect" id="Node000055" href="$ad5710r__iio_2app_2app__config_8h.html" title="Application configurations module for AD5710R." alt="" coords="13129,123,13352,192"/>
+<area shape="poly" id="edge61_Node000001_Node000055" title=" " alt="" coords="16601,48,14185,125,13352,155,13352,149,14185,120,16601,43"/>
+<area shape="rect" id="Node000064" href="$ad5754r__iio_2app_2app__config_8h.html" title="Configuration file for AD5754R device application." alt="" coords="14197,123,14420,192"/>
+<area shape="poly" id="edge73_Node000001_Node000064" title=" " alt="" coords="16601,50,14420,153,14420,148,16601,45"/>
+<area shape="rect" id="Node000073" href="$ad5770r__console_2app_2app__config_8h.html" title=" " alt="" coords="15611,123,15862,192"/>
+<area shape="poly" id="edge86_Node000001_Node000073" title=" " alt="" coords="16601,58,15862,144,15862,139,16601,53"/>
+<area shape="rect" id="Node000078" href="$ad579x__iio_2app_2app__config_8h.html" title="Configuration file for AD579x device application." alt="" coords="16615,123,16837,192"/>
+<area shape="poly" id="edge91_Node000001_Node000078" title=" " alt="" coords="16729,89,16729,122,16723,122,16723,89"/>
 <area shape="rect" id="Node000088" href="$ltc2488__user__config_8h.html" title="Header for ltc2488 user configuration file." alt="" coords="17926,123,18222,192"/>
-<area shape="poly" id="edge103_Node000001_Node000088" title=" " alt="" coords="16367,47,17926,144,17926,149,16367,52"/>
+<area shape="poly" id="edge103_Node000001_Node000088" title=" " alt="" coords="16851,49,17926,141,17925,146,16851,55"/>
 <area shape="rect" id="Node000092" href="$ad5933__console_2app_2app__config_8h.html" title="Configuration file of AD5933 firmware example program." alt="" coords="18399,123,18645,192"/>
-<area shape="poly" id="edge107_Node000001_Node000092" title=" " alt="" coords="16367,41,16692,47,17154,62,17689,85,18234,120,18399,137,18399,142,18234,125,17689,90,17154,67,16692,53,16367,46"/>
+<area shape="poly" id="edge107_Node000001_Node000092" title=" " alt="" coords="16851,43,17448,69,17839,91,18234,120,18399,137,18399,143,18234,125,17838,96,17448,74,16851,48"/>
 <area shape="rect" id="Node000094" href="$ad7124__console_2app_2app__config_8h.html" title="Configuration file of AD7124 firmware example program." alt="" coords="18985,123,19230,192"/>
-<area shape="poly" id="edge109_Node000001_Node000094" title=" " alt="" coords="16367,41,17317,66,17980,89,18657,120,18985,143,18984,148,18657,125,17979,94,17317,71,16367,46"/>
-<area shape="rect" id="Node000097" href="$ad717x__iio_2app_2app__config_8h.html" title="Configuration file for AD717x and AD411x IIO firmware application." alt="" coords="20213,123,20436,192"/>
-<area shape="poly" id="edge112_Node000001_Node000097" title=" " alt="" coords="16367,42,19242,120,20213,150,20213,155,19242,125,16367,47"/>
-<area shape="rect" id="Node000106" href="$ad719x__iio_2app_2app__config_8h.html" title="Configuration file for ad719x IIO firmware application." alt="" coords="21335,123,21557,192"/>
-<area shape="poly" id="edge124_Node000001_Node000106" title=" " alt="" coords="16367,40,17994,67,19201,91,20447,120,21335,149,21334,154,20447,125,19201,96,17994,72,16367,46"/>
-<area shape="rect" id="Node000111" href="$ad7606__iio_2app_2app__config_8h.html" title="Header file for application configurations (platform&#45;agnostic)" alt="" coords="22403,123,22625,192"/>
-<area shape="poly" id="edge129_Node000001_Node000111" title=" " alt="" coords="16367,40,18408,62,19961,86,21569,120,22032,134,22402,149,22402,154,22032,140,21569,125,19961,91,18408,67,16367,45"/>
-<area shape="rect" id="Node000118" href="$ad7689__iio_2app_2app__config_8h.html" title=" " alt="" coords="23821,123,24044,192"/>
-<area shape="poly" id="edge137_Node000001_Node000118" title=" " alt="" coords="16367,40,18800,64,20683,88,22637,120,23309,136,23821,150,23821,155,23309,141,22637,125,20683,93,18799,69,16367,45"/>
-<area shape="rect" id="Node000125" href="$nanodac__console_2app_2app__config_8h.html" title="Configuration file of nanodac firmware example program." alt="" coords="24503,123,24755,192"/>
-<area shape="poly" id="edge145_Node000001_Node000125" title=" " alt="" coords="16367,39,17715,46,19945,60,22308,85,23305,101,24055,120,24293,131,24503,144,24502,150,24293,136,24055,125,23305,106,22307,90,19945,66,17715,51,16367,44"/>
+<area shape="poly" id="edge109_Node000001_Node000094" title=" " alt="" coords="16851,43,17614,70,18131,93,18657,120,18985,143,18984,149,18657,125,18130,98,17614,75,16851,48"/>
+<area shape="rect" id="Node000097" href="$ad7124__iio_2app_2app__config_8h.html" title=" " alt="" coords="20156,123,20379,192"/>
+<area shape="poly" id="edge112_Node000001_Node000097" title=" " alt="" coords="16851,43,19242,120,20156,150,20156,155,19242,125,16851,48"/>
+<area shape="rect" id="Node000106" href="$ad717x__iio_2app_2app__config_8h.html" title="Configuration file for AD717x and AD411x IIO firmware application." alt="" coords="21561,123,21784,192"/>
+<area shape="poly" id="edge121_Node000001_Node000106" title=" " alt="" coords="16851,41,20390,120,21561,150,21561,156,20390,125,16851,47"/>
+<area shape="rect" id="Node000115" href="$ad719x__iio_2app_2app__config_8h.html" title="Configuration file for ad719x IIO firmware application." alt="" coords="22960,123,23183,192"/>
+<area shape="poly" id="edge133_Node000001_Node000115" title=" " alt="" coords="16851,40,18797,67,20271,91,21795,120,22960,150,22960,155,21795,125,20271,96,18797,73,16851,46"/>
+<area shape="rect" id="Node000120" href="$ad7606__iio_2app_2app__config_8h.html" title="Header file for application configurations (platform&#45;agnostic)" alt="" coords="24039,123,24261,192"/>
+<area shape="poly" id="edge138_Node000001_Node000120" title=" " alt="" coords="16852,39,17761,45,19311,58,21217,82,22214,99,23194,120,23664,134,24039,149,24038,154,23664,140,23194,125,22214,105,21217,88,19311,63,17761,50,16851,45"/>
+<area shape="rect" id="Node000127" href="$ad7689__iio_2app_2app__config_8h.html" title=" " alt="" coords="25356,123,25579,192"/>
+<area shape="poly" id="edge146_Node000001_Node000127" title=" " alt="" coords="16851,39,17890,45,19702,59,21943,83,23118,100,24273,120,24885,135,25356,150,25356,155,24884,140,24273,125,23118,105,21943,89,19702,64,17890,50,16851,45"/>
+<area shape="rect" id="Node000134" href="$nanodac__console_2app_2app__config_8h.html" title="Configuration file of nanodac firmware example program." alt="" coords="26121,123,26373,192"/>
+<area shape="poly" id="edge154_Node000001_Node000134" title=" " alt="" coords="16851,39,18359,46,20894,60,23592,85,24733,101,25590,120,25875,132,26121,145,26121,151,25875,137,25590,125,24733,106,23592,90,20894,66,18359,51,16851,44"/>
 <area shape="rect" id="Node000003" href="$ad3530r__iio_8c.html" title="Implementation of AD3530R IIO Application Interface." alt="" coords="1368,357,1591,427"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="1091,159,1156,167,1225,182,1294,205,1358,238,1377,254,1387,270,1396,288,1409,308,1451,356,1446,359,1405,311,1392,290,1383,273,1373,257,1355,242,1292,210,1224,187,1155,173,1091,165"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="1091,159,1156,167,1225,182,1294,205,1358,238,1376,254,1387,270,1395,288,1408,308,1449,355,1445,359,1404,311,1390,290,1382,273,1372,257,1355,242,1292,209,1224,187,1155,172,1090,164"/>
 <area shape="rect" id="Node000004" href="$ad3530r__iio_8h.html" title="Header for AD3530R IIO aplication." alt="" coords="1123,240,1345,309"/>
 <area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="1058,195,1157,237,1155,242,1056,200"/>
 <area shape="rect" id="Node000007" href="$ad3530r__support_8c.html" title=" " alt="" coords="5,240,260,309"/>
@@ -55,68 +57,68 @@
 <area shape="poly" id="edge6_Node000004_Node000006" title=" " alt="" coords="1236,323,1236,357,1230,357,1231,323"/>
 <area shape="poly" id="edge11_Node000010_Node000002" title=" " alt="" coords="972,226,972,192,977,192,978,226"/>
 <area shape="poly" id="edge12_Node000010_Node000005" title=" " alt="" coords="969,323,969,357,963,357,963,323"/>
-<area shape="rect" id="Node000012" href="$ad4080__iio_8c.html" title="Implementation of AD4080 IIO Appication Interface." alt="" coords="1948,240,2171,309"/>
-<area shape="poly" id="edge14_Node000011_Node000012" title=" " alt="" coords="2062,206,2062,240,2057,240,2057,206"/>
-<area shape="rect" id="Node000013" href="$ad4080__iio_2app_2app__config_8c.html" title="Application configurations module." alt="" coords="2195,240,2417,309"/>
-<area shape="poly" id="edge15_Node000011_Node000013" title=" " alt="" coords="2145,195,2235,237,2233,242,2143,200"/>
-<area shape="rect" id="Node000014" href="$ad4080__iio_2app_2app__config__stm32_8c.html" title="STM32 Specific configuration files for AD4080 IIO Application." alt="" coords="1419,240,1678,309"/>
-<area shape="poly" id="edge16_Node000011_Node000014" title=" " alt="" coords="1935,188,1689,243,1679,245,1678,240,1688,237,1934,183"/>
-<area shape="rect" id="Node000015" href="$ad4080__iio_2app_2main_8c.html" title="Main interface for AD4080 IIO firmware application." alt="" coords="1701,240,1924,309"/>
-<area shape="poly" id="edge17_Node000011_Node000015" title=" " alt="" coords="1976,200,1886,242,1884,237,1974,195"/>
-<area shape="rect" id="Node000017" href="$ad4130__ecg__config_8c.html" title="ECG user configurations file for AD4130 device." alt="" coords="4231,240,4495,309"/>
-<area shape="poly" id="edge19_Node000016_Node000017" title=" " alt="" coords="4450,203,4405,242,4401,238,4447,199"/>
-<area shape="rect" id="Node000018" href="$ad4130__iio_8c.html" title="Implementation of AD4130 IIO application interfaces." alt="" coords="4520,240,4743,309"/>
-<area shape="poly" id="edge20_Node000016_Node000018" title=" " alt="" coords="4549,199,4594,238,4590,242,4546,203"/>
-<area shape="rect" id="Node000019" href="$ad4130__loadcell__config_8c.html" title="Loadcell user configurations file for AD4130 device." alt="" coords="4767,240,5059,309"/>
-<area shape="poly" id="edge21_Node000016_Node000019" title=" " alt="" coords="4623,191,4793,237,4791,243,4622,196"/>
-<area shape="rect" id="Node000020" href="$ad4130__noise__test__config_8c.html" title="Noise test user configurations file for AD4130 device." alt="" coords="5083,240,5391,309"/>
-<area shape="poly" id="edge22_Node000016_Node000020" title=" " alt="" coords="4623,172,4833,200,5070,237,5083,240,5082,245,5070,243,4832,206,4623,177"/>
-<area shape="rect" id="Node000021" href="$ad4130__power__test__config_8c.html" title="Power test user configurations file for AD4130 device." alt="" coords="5415,240,5728,309"/>
-<area shape="poly" id="edge23_Node000016_Node000021" title=" " alt="" coords="4623,163,4974,189,5188,211,5402,237,5415,239,5414,245,5402,243,5188,216,4974,195,4623,168"/>
-<area shape="rect" id="Node000022" href="$ad4130__rtd__config_8c.html" title="RTD user configurations file for AD4130 device." alt="" coords="5753,240,6011,309"/>
-<area shape="poly" id="edge24_Node000016_Node000022" title=" " alt="" coords="4623,157,4835,163,5114,176,5426,200,5585,217,5740,237,5753,239,5752,245,5739,243,5584,222,5425,205,5113,182,4835,168,4623,163"/>
-<area shape="rect" id="Node000023" href="$ad4130__support_8c.html" title="AD4130 device No&#45;OS driver supports." alt="" coords="6036,240,6280,309"/>
-<area shape="poly" id="edge25_Node000016_Node000023" title=" " alt="" coords="4623,160,5340,187,5735,210,5899,223,6024,237,6036,239,6036,245,6023,243,5899,228,5735,215,5340,192,4623,165"/>
-<area shape="rect" id="Node000024" href="$ad4130__thermistor__config_8c.html" title="Thermistor user configurations file for AD4130 device." alt="" coords="2441,240,2750,309"/>
-<area shape="poly" id="edge26_Node000016_Node000024" title=" " alt="" coords="4373,161,4084,163,3685,174,3460,184,3227,199,2992,218,2762,243,2750,244,2750,239,2762,237,2991,213,3226,193,3460,179,3685,169,4084,158,4373,155"/>
-<area shape="rect" id="Node000025" href="$ad4130__thermocouple__config_8c.html" title="Thermocouple user configurations file for AD4130 device." alt="" coords="2774,240,3105,309"/>
-<area shape="poly" id="edge27_Node000016_Node000025" title=" " alt="" coords="4373,163,4139,170,3827,184,3474,207,3117,243,3105,244,3105,239,3116,237,3473,202,3827,178,4139,165,4373,158"/>
-<area shape="rect" id="Node000026" href="$ad4130__user__config_8c.html" title="User configuration file for AD4130 device." alt="" coords="3129,240,3398,309"/>
-<area shape="poly" id="edge28_Node000016_Node000026" title=" " alt="" coords="4373,165,4186,172,3945,187,3678,209,3410,243,3399,245,3398,239,3410,237,3678,204,3945,181,4185,167,4373,159"/>
-<area shape="rect" id="Node000027" href="$ad4130__iio_2app_2app__config_8c.html" title="Application configurations module." alt="" coords="3423,240,3645,309"/>
-<area shape="poly" id="edge29_Node000016_Node000027" title=" " alt="" coords="4373,167,4227,176,4048,191,3852,213,3657,243,3646,245,3645,240,3656,237,3851,207,4047,185,4227,171,4373,161"/>
-<area shape="rect" id="Node000028" href="$ad4130__iio_2app_2app__config__mbed_8c.html" title="Application configurations module for Mbed platform." alt="" coords="3669,240,3924,309"/>
-<area shape="poly" id="edge30_Node000016_Node000028" title=" " alt="" coords="4373,176,4168,204,3937,243,3925,245,3924,240,3936,237,4168,199,4373,171"/>
-<area shape="rect" id="Node000029" href="$ad4130__iio_2app_2app__config__stm32_8c.html" title="Source file for STM32 platform configurations." alt="" coords="3949,240,4207,309"/>
-<area shape="poly" id="edge31_Node000016_Node000029" title=" " alt="" coords="4374,195,4201,243,4200,237,4373,190"/>
-<area shape="rect" id="Node000031" href="$ad4170__accelerometer__config_8c.html" title="Accelerometer user configurations module for AD4170 IIO firmware." alt="" coords="8785,240,9120,309"/>
-<area shape="poly" id="edge33_Node000030_Node000031" title=" " alt="" coords="8173,167,8449,196,8774,237,8785,239,8784,244,8774,243,8448,201,8172,173"/>
-<area shape="rect" id="Node000032" href="$ad4170__iio_8c.html" title="Implementation of AD4170 IIO application interfaces." alt="" coords="9144,240,9367,309"/>
-<area shape="poly" id="edge34_Node000030_Node000032" title=" " alt="" coords="8173,158,8360,164,8599,177,8865,201,9000,217,9132,237,9144,240,9143,245,9131,243,8999,223,8865,206,8599,183,8360,169,8173,163"/>
-<area shape="rect" id="Node000033" href="$ad4170__loadcell__config_8c.html" title="Loadcell user configurations module for AD4170 IIO firmware." alt="" coords="6304,240,6596,309"/>
-<area shape="poly" id="edge35_Node000030_Node000033" title=" " alt="" coords="7922,162,7679,167,7353,179,6983,203,6794,221,6609,243,6597,244,6596,239,6608,237,6793,216,6982,198,7352,174,7679,162,7922,157"/>
-<area shape="rect" id="Node000034" href="$ad4170__rtd__config_8c.html" title="RTD (2/3/4&#45;wire) user configurations module for AD4170 IIO firmware." alt="" coords="6621,240,6879,309"/>
-<area shape="poly" id="edge36_Node000030_Node000034" title=" " alt="" coords="7922,164,7724,170,7467,184,7180,207,6892,243,6880,245,6879,239,6891,237,7179,202,7466,178,7724,165,7922,158"/>
-<area shape="rect" id="Node000035" href="$ad4170__support_8c.html" title=" " alt="" coords="6904,240,7148,309"/>
-<area shape="poly" id="edge37_Node000030_Node000035" title=" " alt="" coords="7922,167,7578,191,7369,213,7161,243,7149,245,7148,240,7160,237,7369,208,7577,186,7922,162"/>
-<area shape="rect" id="Node000036" href="$ad4170__thermistor__config_8c.html" title="Thermistor user configurations module for AD4170 IIO firmware." alt="" coords="7173,240,7482,309"/>
-<area shape="poly" id="edge38_Node000030_Node000036" title=" " alt="" coords="7923,178,7721,206,7494,243,7483,245,7482,239,7494,237,7721,201,7922,173"/>
-<area shape="rect" id="Node000037" href="$ad4170__thermocouple__config_8c.html" title="Thermocouple user configurations module for AD4170 IIO firmware." alt="" coords="7506,240,7837,309"/>
-<area shape="poly" id="edge39_Node000030_Node000037" title=" " alt="" coords="7925,199,7782,242,7780,237,7924,194"/>
-<area shape="rect" id="Node000038" href="$ad4170__user__config_8c.html" title="Default user configurations file for AD4170 device." alt="" coords="7826,357,8095,427"/>
-<area shape="poly" id="edge40_Node000030_Node000038" title=" " alt="" coords="7942,201,7919,219,7902,241,7894,259,7892,273,7902,308,7914,333,7930,356,7925,359,7909,336,7897,310,7887,274,7889,257,7897,239,7915,216,7938,197"/>
-<area shape="rect" id="Node000039" href="$ad4170__user__config_8h.html" title="Header for AD4170 default user configurations file." alt="" coords="7912,240,8183,309"/>
-<area shape="poly" id="edge41_Node000030_Node000039" title=" " alt="" coords="8041,206,8042,240,8036,240,8036,206"/>
-<area shape="rect" id="Node000040" href="$ad4170__iio_2app_2app__config_8c.html" title="Application configurations module." alt="" coords="8207,240,8429,309"/>
-<area shape="poly" id="edge44_Node000030_Node000040" title=" " alt="" coords="8140,195,8240,237,8238,242,8138,200"/>
-<area shape="rect" id="Node000041" href="$ad4170__iio_2app_2app__config__stm32_8c.html" title="Application configurations module for STM32 platform." alt="" coords="8421,357,8679,427"/>
-<area shape="poly" id="edge45_Node000030_Node000041" title=" " alt="" coords="8173,159,8238,167,8308,182,8378,205,8442,238,8528,355,8524,359,8439,242,8376,209,8307,187,8237,172,8172,164"/>
-<area shape="rect" id="Node000042" href="$ad4170__iio_2app_2app__config__stm32_8h.html" title="Header file for STM32 platform configurations." alt="" coords="8503,240,8762,309"/>
-<area shape="poly" id="edge46_Node000030_Node000042" title=" " alt="" coords="8173,180,8473,237,8504,244,8503,249,8472,243,8172,185"/>
-<area shape="poly" id="edge43_Node000039_Node000030" title=" " alt="" coords="8054,226,8053,192,8058,192,8059,226"/>
-<area shape="poly" id="edge42_Node000039_Node000038" title=" " alt="" coords="8016,322,7988,359,7984,356,8011,319"/>
-<area shape="poly" id="edge47_Node000042_Node000030" title=" " alt="" coords="8490,241,8158,179,8159,174,8491,236"/>
-<area shape="poly" id="edge48_Node000042_Node000041" title=" " alt="" coords="8603,322,8576,359,8572,356,8598,319"/>
+<area shape="rect" id="Node000012" href="$ad4080__iio_8c.html" title="Implementation of AD4080 IIO Appication Interface." alt="" coords="1419,240,1641,309"/>
+<area shape="poly" id="edge14_Node000011_Node000012" title=" " alt="" coords="1916,186,1653,243,1642,245,1641,240,1652,237,1915,180"/>
+<area shape="rect" id="Node000013" href="$ad4080__iio_2app_2app__config_8c.html" title="Application configurations module." alt="" coords="1665,240,1888,309"/>
+<area shape="poly" id="edge15_Node000011_Node000013" title=" " alt="" coords="1952,200,1855,242,1853,237,1950,195"/>
+<area shape="rect" id="Node000014" href="$ad4080__iio_2app_2app__config__stm32_8c.html" title="STM32 Specific configuration files for AD4080 IIO Application." alt="" coords="1911,240,2170,309"/>
+<area shape="poly" id="edge16_Node000011_Node000014" title=" " alt="" coords="2043,206,2043,240,2038,240,2038,206"/>
+<area shape="rect" id="Node000015" href="$ad4080__iio_2app_2main_8c.html" title="Main interface for AD4080 IIO firmware application." alt="" coords="2193,240,2416,309"/>
+<area shape="poly" id="edge17_Node000011_Node000015" title=" " alt="" coords="2131,195,2229,237,2226,242,2129,200"/>
+<area shape="rect" id="Node000017" href="$ad4130__ecg__config_8c.html" title="ECG user configurations file for AD4130 device." alt="" coords="2441,240,2705,309"/>
+<area shape="poly" id="edge19_Node000016_Node000017" title=" " alt="" coords="4393,164,4027,173,3544,190,3066,213,2868,227,2717,243,2705,244,2704,239,2716,237,2867,222,3066,207,3544,184,4027,168,4393,159"/>
+<area shape="rect" id="Node000018" href="$ad4130__iio_8c.html" title="Implementation of AD4130 IIO application interfaces." alt="" coords="2729,240,2952,309"/>
+<area shape="poly" id="edge20_Node000016_Node000018" title=" " alt="" coords="4393,164,4074,174,3662,190,3258,213,3091,227,2964,243,2953,245,2952,239,2963,237,3090,222,3258,208,3662,185,4074,169,4393,159"/>
+<area shape="rect" id="Node000019" href="$ad4130__loadcell__config_8c.html" title="Loadcell user configurations file for AD4130 device." alt="" coords="2976,240,3268,309"/>
+<area shape="poly" id="edge21_Node000016_Node000019" title=" " alt="" coords="4393,164,4181,170,3904,184,3593,207,3280,243,3268,244,3268,239,3279,237,3592,202,3904,179,4181,165,4393,158"/>
+<area shape="rect" id="Node000020" href="$ad4130__noise__test__config_8c.html" title="Noise test user configurations file for AD4130 device." alt="" coords="3292,240,3600,309"/>
+<area shape="poly" id="edge22_Node000016_Node000020" title=" " alt="" coords="4393,168,4041,194,3826,215,3612,243,3601,244,3600,239,3611,237,3826,210,4040,189,4393,163"/>
+<area shape="rect" id="Node000021" href="$ad4130__power__test__config_8c.html" title="Power test user configurations file for AD4130 device." alt="" coords="3624,240,3937,309"/>
+<area shape="poly" id="edge23_Node000016_Node000021" title=" " alt="" coords="4393,177,4185,206,3950,243,3938,245,3937,240,3950,237,4185,201,4392,172"/>
+<area shape="rect" id="Node000022" href="$ad4130__rtd__config_8c.html" title="RTD user configurations file for AD4130 device." alt="" coords="3962,240,4221,309"/>
+<area shape="poly" id="edge24_Node000016_Node000022" title=" " alt="" coords="4394,195,4216,243,4215,237,4393,190"/>
+<area shape="rect" id="Node000023" href="$ad4130__support_8c.html" title="AD4130 device No&#45;OS driver supports." alt="" coords="4245,240,4489,309"/>
+<area shape="poly" id="edge25_Node000016_Node000023" title=" " alt="" coords="4465,203,4413,242,4410,237,4462,198"/>
+<area shape="rect" id="Node000024" href="$ad4130__thermistor__config_8c.html" title="Thermistor user configurations file for AD4130 device." alt="" coords="4514,240,4823,309"/>
+<area shape="poly" id="edge26_Node000016_Node000024" title=" " alt="" coords="4574,198,4626,237,4623,242,4571,203"/>
+<area shape="rect" id="Node000025" href="$ad4130__thermocouple__config_8c.html" title="Thermocouple user configurations file for AD4130 device." alt="" coords="4847,240,5178,309"/>
+<area shape="poly" id="edge27_Node000016_Node000025" title=" " alt="" coords="4643,185,4869,237,4868,243,4642,190"/>
+<area shape="rect" id="Node000026" href="$ad4130__user__config_8c.html" title="User configuration file for AD4130 device." alt="" coords="5202,240,5471,309"/>
+<area shape="poly" id="edge28_Node000016_Node000026" title=" " alt="" coords="4644,167,4897,195,5044,214,5190,237,5202,239,5201,245,5190,243,5043,220,4896,200,4643,173"/>
+<area shape="rect" id="Node000027" href="$ad4130__iio_2app_2app__config_8c.html" title="Application configurations module." alt="" coords="5496,240,5719,309"/>
+<area shape="poly" id="edge29_Node000016_Node000027" title=" " alt="" coords="4643,159,4811,167,5021,181,5252,204,5484,237,5496,240,5495,245,5483,243,5252,209,5020,187,4810,172,4643,165"/>
+<area shape="rect" id="Node000028" href="$ad4130__iio_2app_2app__config__mbed_8c.html" title="Application configurations module for Mbed platform." alt="" coords="5743,240,5997,309"/>
+<area shape="poly" id="edge30_Node000016_Node000028" title=" " alt="" coords="4643,158,4851,163,5122,177,5425,200,5580,217,5730,237,5743,239,5742,245,5730,243,5579,222,5425,206,5121,182,4850,169,4643,163"/>
+<area shape="rect" id="Node000029" href="$ad4130__iio_2app_2app__config__stm32_8c.html" title="Source file for STM32 platform configurations." alt="" coords="6022,240,6281,309"/>
+<area shape="poly" id="edge31_Node000016_Node000029" title=" " alt="" coords="4643,155,4894,158,5234,170,5620,194,5817,213,6009,237,6022,239,6021,245,6008,243,5816,219,5619,200,5234,175,4894,164,4643,161"/>
+<area shape="rect" id="Node000031" href="$ad4170__accelerometer__config_8c.html" title="Accelerometer user configurations module for AD4170 IIO firmware." alt="" coords="7179,240,7513,309"/>
+<area shape="poly" id="edge33_Node000030_Node000031" title=" " alt="" coords="7549,199,7435,242,7434,237,7547,194"/>
+<area shape="rect" id="Node000032" href="$ad4170__iio_8c.html" title="Implementation of AD4170 IIO application interfaces." alt="" coords="7537,240,7760,309"/>
+<area shape="poly" id="edge34_Node000030_Node000032" title=" " alt="" coords="7651,206,7651,240,7646,240,7646,206"/>
+<area shape="rect" id="Node000033" href="$ad4170__loadcell__config_8c.html" title="Loadcell user configurations module for AD4170 IIO firmware." alt="" coords="7784,240,8076,309"/>
+<area shape="poly" id="edge35_Node000030_Node000033" title=" " alt="" coords="7745,195,7849,237,7847,242,7743,200"/>
+<area shape="rect" id="Node000034" href="$ad4170__rtd__config_8c.html" title="RTD (2/3/4&#45;wire) user configurations module for AD4170 IIO firmware." alt="" coords="8101,240,8359,309"/>
+<area shape="poly" id="edge36_Node000030_Node000034" title=" " alt="" coords="7774,178,8088,237,8101,240,8100,245,8087,243,7773,183"/>
+<area shape="rect" id="Node000035" href="$ad4170__support_8c.html" title=" " alt="" coords="8384,240,8628,309"/>
+<area shape="poly" id="edge37_Node000030_Node000035" title=" " alt="" coords="7774,165,8049,192,8211,212,8372,237,8384,240,8383,245,8371,243,8210,217,8049,197,7774,170"/>
+<area shape="rect" id="Node000036" href="$ad4170__thermistor__config_8c.html" title="Thermistor user configurations module for AD4170 IIO firmware." alt="" coords="8653,240,8962,309"/>
+<area shape="poly" id="edge38_Node000030_Node000036" title=" " alt="" coords="7774,162,8161,187,8400,209,8640,237,8653,239,8652,245,8639,243,8400,214,8161,192,7774,167"/>
+<area shape="rect" id="Node000037" href="$ad4170__thermocouple__config_8c.html" title="Thermocouple user configurations module for AD4170 IIO firmware." alt="" coords="8986,240,9317,309"/>
+<area shape="poly" id="edge39_Node000030_Node000037" title=" " alt="" coords="7774,158,7999,166,8298,180,8635,203,8974,237,8986,239,8985,244,8974,243,8634,208,8297,185,7999,171,7774,164"/>
+<area shape="rect" id="Node000038" href="$ad4170__user__config_8c.html" title="Default user configurations file for AD4170 device." alt="" coords="8053,357,8322,427"/>
+<area shape="poly" id="edge40_Node000030_Node000038" title=" " alt="" coords="7774,157,8171,164,8675,178,8914,189,9117,202,9263,218,9307,227,9330,238,9343,256,9347,275,9343,293,9331,311,9311,325,9279,336,9184,355,9057,370,8908,380,8591,391,8322,394,8322,388,8591,386,8908,375,9056,364,9183,350,9277,331,9308,320,9327,307,9338,291,9342,275,9338,258,9327,242,9306,232,9262,223,9117,207,8914,194,8674,183,8170,169,7774,163"/>
+<area shape="rect" id="Node000039" href="$ad4170__user__config_8h.html" title="Header for AD4170 default user configurations file." alt="" coords="6884,240,7155,309"/>
+<area shape="poly" id="edge41_Node000030_Node000039" title=" " alt="" coords="7524,179,7349,207,7155,243,7154,237,7348,202,7523,174"/>
+<area shape="rect" id="Node000040" href="$ad4170__iio_2app_2app__config_8c.html" title="Application configurations module." alt="" coords="6587,240,6809,309"/>
+<area shape="poly" id="edge44_Node000030_Node000040" title=" " alt="" coords="7524,168,7207,193,7017,214,6828,243,6810,246,6809,241,6827,237,7016,209,7207,187,7524,162"/>
+<area shape="rect" id="Node000041" href="$ad4170__iio_2app_2app__config__stm32_8c.html" title="Application configurations module for STM32 platform." alt="" coords="6510,357,6769,427"/>
+<area shape="poly" id="edge45_Node000030_Node000041" title=" " alt="" coords="7524,162,7356,168,7167,180,7075,191,6993,204,6923,221,6873,242,6856,257,6847,274,6839,292,6822,311,6782,338,6739,360,6737,355,6780,334,6819,307,6834,290,6842,272,6852,254,6870,238,6922,216,6991,199,7074,186,7166,175,7356,162,7523,157"/>
+<area shape="rect" id="Node000042" href="$ad4170__iio_2app_2app__config__stm32_8h.html" title="Header file for STM32 platform configurations." alt="" coords="6305,240,6563,309"/>
+<area shape="poly" id="edge46_Node000030_Node000042" title=" " alt="" coords="7524,164,7336,171,7097,186,6830,209,6563,243,6562,237,6829,203,7096,180,7336,166,7524,159"/>
+<area shape="poly" id="edge43_Node000039_Node000030" title=" " alt="" coords="7167,239,7177,237,7367,203,7537,175,7537,180,7368,208,7179,243,7168,245"/>
+<area shape="poly" id="edge42_Node000039_Node000038" title=" " alt="" coords="7169,307,7416,338,7659,360,7878,375,8053,383,8052,389,7878,380,7659,366,7415,344,7168,312"/>
+<area shape="poly" id="edge47_Node000042_Node000030" title=" " alt="" coords="6576,239,6586,237,6852,203,7118,180,7355,166,7537,159,7537,164,7355,171,7118,186,6853,209,6586,243,6577,244"/>
+<area shape="poly" id="edge48_Node000042_Node000041" title=" " alt="" coords="6507,314,6581,355,6578,359,6505,319"/>
 <area shape="rect" id="Node000044" href="$ad469x__iio_8c.html" title="Implementation of AD469x IIO application interfaces." alt="" coords="10493,240,10716,309"/>
 <area shape="poly" id="edge50_Node000043_Node000044" title=" " alt="" coords="10431,195,10529,237,10526,242,10429,200"/>
 <area shape="rect" id="Node000045" href="$ad469x__support_8c.html" title="AD469x device No&#45;OS driver supports." alt="" coords="10740,240,10984,309"/>
@@ -129,81 +131,81 @@
 <area shape="poly" id="edge54_Node000043_Node000048" title=" " alt="" coords="10247,200,10143,242,10141,237,10245,195"/>
 <area shape="rect" id="Node000049" href="$ad469x__iio_2app_2app__config__stm32_8c.html" title="Source file for STM32 platform configurations." alt="" coords="10211,240,10470,309"/>
 <area shape="poly" id="edge55_Node000043_Node000049" title=" " alt="" coords="10343,206,10343,240,10338,240,10338,206"/>
-<area shape="rect" id="Node000051" href="$ad5592r__console__app_8c.html" title="AD5592R console application interfaces." alt="" coords="11591,240,11911,309"/>
-<area shape="poly" id="edge57_Node000050_Node000051" title=" " alt="" coords="11754,206,11754,240,11749,240,11749,206"/>
-<area shape="rect" id="Node000052" href="$ad5592r__reset__config_8c.html" title=": Device parameters, structure and reset condition settings" alt="" coords="11936,240,12255,309"/>
-<area shape="poly" id="edge58_Node000050_Node000052" title=" " alt="" coords="11865,194,11996,237,11994,242,11864,199"/>
-<area shape="rect" id="Node000053" href="$ad5592r__user__config_8c.html" title=": Device parameters, structure and initial condition settings" alt="" coords="11008,240,11321,309"/>
-<area shape="poly" id="edge59_Node000050_Node000053" title=" " alt="" coords="11613,188,11333,243,11322,245,11321,240,11332,237,11612,183"/>
-<area shape="rect" id="Node000054" href="$ad559xr__console_2app_2main_8c.html" title=": main module for AD5592R application interface" alt="" coords="11345,240,11568,309"/>
-<area shape="poly" id="edge60_Node000050_Node000054" title=" " alt="" coords="11653,200,11544,242,11542,237,11651,195"/>
-<area shape="rect" id="Node000056" href="$ad5710r__iio_8c.html" title="Implementation of AD5710R IIO Application Interface." alt="" coords="13476,357,13699,427"/>
-<area shape="poly" id="edge62_Node000055_Node000056" title=" " alt="" coords="13365,165,13444,175,13523,190,13590,211,13615,223,13632,238,13640,252,13645,268,13642,299,13631,331,13615,359,13610,356,13626,329,13637,298,13639,268,13636,254,13628,242,13612,228,13588,215,13522,195,13444,180,13364,171"/>
-<area shape="rect" id="Node000057" href="$ad5710r__iio_8h.html" title="Header for AD5710R IIO aplication." alt="" coords="13396,240,13619,309"/>
-<area shape="poly" id="edge63_Node000055_Node000057" title=" " alt="" coords="13331,195,13430,237,13428,242,13329,200"/>
-<area shape="rect" id="Node000060" href="$ad5710r__support_8c.html" title=" " alt="" coords="12279,240,12533,309"/>
-<area shape="poly" id="edge67_Node000055_Node000060" title=" " alt="" coords="13114,171,12851,198,12698,218,12545,243,12534,245,12533,239,12544,237,12697,213,12851,193,13114,166"/>
-<area shape="rect" id="Node000061" href="$ad5710r__user__config_8c.html" title="User configuration file for AD5710R." alt="" coords="12557,240,12836,309"/>
-<area shape="poly" id="edge68_Node000055_Node000061" title=" " alt="" coords="13115,187,12848,243,12837,245,12836,240,12847,237,13114,181"/>
-<area shape="rect" id="Node000062" href="$ad5710r__iio_2app_2app__config_8c.html" title="Application configurations module." alt="" coords="12860,240,13083,309"/>
-<area shape="poly" id="edge69_Node000055_Node000062" title=" " alt="" coords="13150,200,13051,242,13049,237,13147,195"/>
-<area shape="rect" id="Node000063" href="$ad5710r__iio_2app_2app__config__stm32_8h.html" title="Header file for STM32 platform configurations." alt="" coords="13107,240,13371,309"/>
-<area shape="poly" id="edge70_Node000055_Node000063" title=" " alt="" coords="13233,206,13234,240,13228,240,13228,206"/>
-<area shape="poly" id="edge64_Node000057_Node000056" title=" " alt="" coords="13541,319,13566,356,13562,359,13537,323"/>
-<area shape="rect" id="Node000058" href="$ad5710r__iio_2app_2app__config__stm32_8c.html" title="Application configurations module for STM32 platform." alt="" coords="12943,357,13205,427"/>
-<area shape="poly" id="edge65_Node000057_Node000058" title=" " alt="" coords="13383,312,13202,360,13201,355,13382,307"/>
-<area shape="rect" id="Node000059" href="$ad5710r__iio_2app_2main_8c.html" title="Main interface for AD5710R IIO firmware application." alt="" coords="13229,357,13452,427"/>
-<area shape="poly" id="edge66_Node000057_Node000059" title=" " alt="" coords="13449,320,13391,359,13388,355,13446,315"/>
-<area shape="poly" id="edge71_Node000063_Node000055" title=" " alt="" coords="13246,226,13245,192,13250,192,13251,226"/>
-<area shape="poly" id="edge72_Node000063_Node000058" title=" " alt="" coords="13181,320,13124,359,13121,355,13178,315"/>
-<area shape="rect" id="Node000065" href="$ad5754r__iio_8c.html" title="Implementation of AD5754R IIO application interfaces." alt="" coords="14256,357,14479,427"/>
-<area shape="poly" id="edge74_Node000064_Node000065" title=" " alt="" coords="14193,181,14092,207,14053,223,14029,242,14019,259,14016,275,14019,291,14029,308,14052,330,14075,343,14098,349,14123,351,14178,348,14209,349,14244,355,14257,358,14255,363,14243,360,14209,354,14178,353,14123,356,14097,355,14073,348,14049,335,14025,311,14014,293,14010,275,14014,257,14025,238,14051,219,14091,202,14191,176"/>
-<area shape="rect" id="Node000066" href="$ad5754r__iio_8h.html" title="Header file for AD5754R IIO interface." alt="" coords="13743,240,13965,309"/>
-<area shape="poly" id="edge75_Node000064_Node000066" title=" " alt="" coords="14193,191,13984,243,13966,247,13965,242,13983,237,14191,186"/>
-<area shape="rect" id="Node000067" href="$ad5754r__iio_2app_2app__config__stm32_8c.html" title="Source file for STM32 platform configurations." alt="" coords="13723,357,13985,427"/>
-<area shape="poly" id="edge81_Node000064_Node000067" title=" " alt="" coords="14192,160,14063,164,13925,177,13862,187,13806,202,13762,220,13732,242,13722,258,13720,273,13723,289,13732,308,13753,334,13779,355,13776,359,13749,338,13728,311,13718,291,13714,273,13717,256,13728,238,13759,215,13804,196,13861,182,13925,172,14062,159,14191,155"/>
-<area shape="rect" id="Node000069" href="$ad5754r__user__config_8c.html" title="User configuration file for AD5754R devices." alt="" coords="14040,240,14319,309"/>
-<area shape="poly" id="edge79_Node000064_Node000069" title=" " alt="" coords="14268,203,14221,242,14218,238,14265,199"/>
-<area shape="rect" id="Node000070" href="$ad5754r__iio_2app_2app__config_8c.html" title="Application configurations module (platform&#45;agnostic)" alt="" coords="14343,240,14565,309"/>
-<area shape="poly" id="edge80_Node000064_Node000070" title=" " alt="" coords="14369,199,14415,238,14412,242,14365,203"/>
-<area shape="rect" id="Node000071" href="$cn0586__support_8c.html" title="CN0586 support module." alt="" coords="14670,357,14918,427"/>
-<area shape="poly" id="edge82_Node000064_Node000071" title=" " alt="" coords="14442,157,14558,163,14680,176,14736,187,14785,200,14825,217,14852,238,14861,252,14865,268,14860,300,14845,331,14826,359,14822,356,14841,328,14855,298,14859,268,14856,254,14848,242,14822,222,14783,205,14735,192,14679,181,14557,168,14441,162"/>
-<area shape="rect" id="Node000072" href="$cn0586__support_8h.html" title="Header file for CN0586 supporting APIs." alt="" coords="14589,240,14839,309"/>
-<area shape="poly" id="edge83_Node000064_Node000072" title=" " alt="" coords="14442,192,14599,237,14598,242,14441,197"/>
-<area shape="poly" id="edge76_Node000066_Node000065" title=" " alt="" coords="13979,306,13984,307,14114,330,14244,355,14257,358,14255,363,14243,360,14113,336,13983,312,13978,311"/>
-<area shape="poly" id="edge77_Node000066_Node000067" title=" " alt="" coords="13857,323,13857,357,13851,357,13851,323"/>
-<area shape="rect" id="Node000068" href="$ad5754r__iio_2app_2main_8c.html" title="Main interface for AD5754R IIO firmware application." alt="" coords="14009,357,14232,427"/>
-<area shape="poly" id="edge78_Node000066_Node000068" title=" " alt="" coords="13945,312,14044,355,14042,360,13943,317"/>
-<area shape="poly" id="edge84_Node000072_Node000065" title=" " alt="" coords="14601,316,14469,360,14468,355,14599,311"/>
-<area shape="poly" id="edge85_Node000072_Node000071" title=" " alt="" coords="14748,319,14773,356,14768,359,14743,323"/>
-<area shape="rect" id="Node000074" href="$ad5770__user__config_8c.html" title=": AD5770R user configuration" alt="" coords="15477,240,15785,309"/>
-<area shape="poly" id="edge87_Node000073_Node000074" title=" " alt="" coords="15634,206,15634,240,15629,240,15629,206"/>
-<area shape="rect" id="Node000075" href="$ad5770r__console__app_8c.html" title=": Implementation for the menu functions that handle the AD5770R" alt="" coords="15810,240,16130,309"/>
-<area shape="poly" id="edge88_Node000073_Node000075" title=" " alt="" coords="15744,194,15872,237,15870,242,15742,199"/>
-<area shape="rect" id="Node000076" href="$ad5770r__console_2app_2app__config__mbed_8c.html" title="Source file for the mbed configuration for AD5770r Console Application." alt="" coords="14913,240,15206,309"/>
-<area shape="poly" id="edge89_Node000073_Node000076" title=" " alt="" coords="15493,188,15219,243,15207,245,15206,240,15217,237,15492,183"/>
-<area shape="rect" id="Node000077" href="$ad5770r__console_2app_2main_8c.html" title=":" alt="" coords="15231,240,15453,309"/>
-<area shape="poly" id="edge90_Node000073_Node000077" title=" " alt="" coords="15535,200,15428,242,15426,237,15533,195"/>
-<area shape="rect" id="Node000079" href="$ad579x__iio_8c.html" title="AD579x IIO application interface module." alt="" coords="16056,357,16279,427"/>
-<area shape="poly" id="edge92_Node000078_Node000079" title=" " alt="" coords="16729,169,16574,180,16407,196,16266,217,16219,229,16193,242,16176,267,16167,297,16164,329,16165,357,16160,357,16158,329,16161,296,16171,265,16190,238,16217,224,16265,212,16406,191,16574,175,16729,163"/>
-<area shape="rect" id="Node000080" href="$ad579x__iio_8h.html" title="Header file for AD579x IIO application interfaces." alt="" coords="16204,240,16427,309"/>
-<area shape="poly" id="edge93_Node000078_Node000080" title=" " alt="" coords="16729,183,16589,210,16439,243,16428,245,16426,240,16437,237,16588,205,16728,178"/>
-<area shape="rect" id="Node000082" href="$ad579x__support_8c.html" title=" " alt="" coords="16451,240,16695,309"/>
-<area shape="poly" id="edge96_Node000078_Node000082" title=" " alt="" coords="16760,200,16656,242,16654,237,16758,195"/>
-<area shape="rect" id="Node000083" href="$ad579x__user__config_8c.html" title="User configuration file for AD579x devices." alt="" coords="16719,240,16989,309"/>
-<area shape="poly" id="edge97_Node000078_Node000083" title=" " alt="" coords="16857,206,16857,240,16851,240,16851,206"/>
-<area shape="rect" id="Node000084" href="$ad579x__iio_2app_2app__config_8c.html" title="Application configurations module." alt="" coords="17013,240,17236,309"/>
-<area shape="poly" id="edge98_Node000078_Node000084" title=" " alt="" coords="16947,195,17047,237,17045,242,16945,200"/>
-<area shape="rect" id="Node000085" href="$ad579x__iio_2app_2app__config__mbed_8c.html" title="Application configurations module for Mbed platform." alt="" coords="17260,240,17515,309"/>
-<area shape="poly" id="edge99_Node000078_Node000085" title=" " alt="" coords="16979,181,17248,237,17261,240,17259,245,17247,243,16978,186"/>
-<area shape="rect" id="Node000086" href="$ad579x__iio_2app_2app__config__stm32_8h.html" title="Header file for STM32 platform configurations." alt="" coords="17539,240,17798,309"/>
-<area shape="poly" id="edge100_Node000078_Node000086" title=" " alt="" coords="16979,168,17227,195,17371,215,17514,237,17539,242,17538,247,17514,243,17370,220,17226,201,16979,173"/>
-<area shape="poly" id="edge94_Node000080_Node000079" title=" " alt="" coords="16263,320,16212,359,16209,355,16260,316"/>
-<area shape="rect" id="Node000081" href="$ad579x__iio_2app_2main_8c.html" title="Main interface for AD579x IIO firmware application." alt="" coords="16303,357,16525,427"/>
-<area shape="poly" id="edge95_Node000080_Node000081" title=" " alt="" coords="16355,318,16387,355,16383,359,16351,322"/>
-<area shape="poly" id="edge101_Node000086_Node000078" title=" " alt="" coords="17525,240,17373,217,17221,197,16966,170,16966,165,17222,192,17374,211,17526,235"/>
-<area shape="rect" id="Node000087" href="$ad579x__iio_2app_2app__config__stm32_8c.html" title="Application configurations module for STM32 platform." alt="" coords="17539,357,17798,427"/>
-<area shape="poly" id="edge102_Node000086_Node000087" title=" " alt="" coords="17671,323,17671,357,17666,357,17666,323"/>
+<area shape="rect" id="Node000051" href="$ad5592r__console__app_8c.html" title="AD5592R console application interfaces." alt="" coords="11009,240,11329,309"/>
+<area shape="poly" id="edge57_Node000050_Node000051" title=" " alt="" coords="11714,182,11341,243,11329,245,11328,239,11340,237,11713,177"/>
+<area shape="rect" id="Node000052" href="$ad5592r__reset__config_8c.html" title=": Device parameters, structure and reset condition settings" alt="" coords="11353,240,11672,309"/>
+<area shape="poly" id="edge58_Node000050_Node000052" title=" " alt="" coords="11742,199,11613,242,11611,237,11740,194"/>
+<area shape="rect" id="Node000053" href="$ad5592r__user__config_8c.html" title=": Device parameters, structure and initial condition settings" alt="" coords="11696,240,12009,309"/>
+<area shape="poly" id="edge59_Node000050_Node000053" title=" " alt="" coords="11855,206,11855,240,11850,240,11850,206"/>
+<area shape="rect" id="Node000054" href="$ad559xr__console_2app_2main_8c.html" title=": main module for AD5592R application interface" alt="" coords="12033,240,12256,309"/>
+<area shape="poly" id="edge60_Node000050_Node000054" title=" " alt="" coords="11952,195,12060,237,12058,242,11950,200"/>
+<area shape="rect" id="Node000056" href="$ad5710r__iio_8c.html" title="Implementation of AD5710R IIO Application Interface." alt="" coords="13397,357,13620,427"/>
+<area shape="poly" id="edge62_Node000055_Node000056" title=" " alt="" coords="13366,165,13446,175,13525,190,13591,211,13616,223,13633,238,13644,256,13647,274,13643,291,13634,311,13613,338,13586,359,13582,355,13609,334,13629,308,13638,290,13641,273,13639,258,13629,242,13613,228,13589,215,13524,195,13445,180,13366,171"/>
+<area shape="rect" id="Node000057" href="$ad5710r__iio_8h.html" title="Header for AD5710R IIO aplication." alt="" coords="13397,240,13620,309"/>
+<area shape="poly" id="edge63_Node000055_Node000057" title=" " alt="" coords="13333,195,13431,237,13429,242,13330,200"/>
+<area shape="rect" id="Node000060" href="$ad5710r__support_8c.html" title=" " alt="" coords="12280,240,12535,309"/>
+<area shape="poly" id="edge67_Node000055_Node000060" title=" " alt="" coords="13115,171,12853,198,12699,218,12546,243,12535,245,12534,239,12546,237,12698,213,12852,193,13115,166"/>
+<area shape="rect" id="Node000061" href="$ad5710r__user__config_8c.html" title="User configuration file for AD5710R." alt="" coords="12559,240,12837,309"/>
+<area shape="poly" id="edge68_Node000055_Node000061" title=" " alt="" coords="13116,187,12849,243,12838,245,12837,240,12848,237,13115,181"/>
+<area shape="rect" id="Node000062" href="$ad5710r__iio_2app_2app__config_8c.html" title="Application configurations module." alt="" coords="12861,240,13084,309"/>
+<area shape="poly" id="edge69_Node000055_Node000062" title=" " alt="" coords="13151,200,13052,242,13050,237,13149,195"/>
+<area shape="rect" id="Node000063" href="$ad5710r__iio_2app_2app__config__stm32_8h.html" title="Header file for STM32 platform configurations." alt="" coords="13109,240,13373,309"/>
+<area shape="poly" id="edge70_Node000055_Node000063" title=" " alt="" coords="13234,206,13235,240,13230,240,13229,206"/>
+<area shape="poly" id="edge64_Node000057_Node000056" title=" " alt="" coords="13511,323,13511,357,13506,357,13506,323"/>
+<area shape="rect" id="Node000058" href="$ad5710r__iio_2app_2app__config__stm32_8c.html" title="Application configurations module for STM32 platform." alt="" coords="12864,357,13127,427"/>
+<area shape="poly" id="edge65_Node000057_Node000058" title=" " alt="" coords="13385,312,13260,337,13139,360,13127,362,13126,357,13137,355,13259,332,13384,307"/>
+<area shape="rect" id="Node000059" href="$ad5710r__iio_2app_2main_8c.html" title="Main interface for AD5710R IIO firmware application." alt="" coords="13151,357,13373,427"/>
+<area shape="poly" id="edge66_Node000057_Node000059" title=" " alt="" coords="13425,318,13335,360,13333,355,13423,313"/>
+<area shape="poly" id="edge71_Node000063_Node000055" title=" " alt="" coords="13247,226,13246,192,13252,192,13252,226"/>
+<area shape="poly" id="edge72_Node000063_Node000058" title=" " alt="" coords="13158,318,13068,360,13066,355,13156,313"/>
+<area shape="rect" id="Node000065" href="$ad5754r__iio_8c.html" title="Implementation of AD5754R IIO application interfaces." alt="" coords="14177,357,14400,427"/>
+<area shape="poly" id="edge74_Node000064_Node000065" title=" " alt="" coords="14185,182,14089,208,14052,224,14029,242,14019,259,14016,275,14020,291,14029,307,14079,327,14178,357,14176,362,14077,332,14026,311,14015,292,14011,275,14014,257,14025,238,14050,219,14088,203,14183,177"/>
+<area shape="rect" id="Node000066" href="$ad5754r__iio_8h.html" title="Header file for AD5754R IIO interface." alt="" coords="13744,240,13967,309"/>
+<area shape="poly" id="edge75_Node000064_Node000066" title=" " alt="" coords="14185,192,13985,243,13967,247,13966,242,13984,237,14184,187"/>
+<area shape="rect" id="Node000067" href="$ad5754r__iio_2app_2app__config__stm32_8c.html" title="Source file for STM32 platform configurations." alt="" coords="13644,357,13907,427"/>
+<area shape="poly" id="edge81_Node000064_Node000067" title=" " alt="" coords="14184,161,14057,165,13922,178,13860,188,13806,202,13762,220,13733,242,13725,254,13722,268,13724,298,13736,328,13752,356,13747,358,13731,330,13719,299,13716,267,13721,252,13729,238,13760,215,13804,197,13859,183,13922,172,14057,160,14183,155"/>
+<area shape="rect" id="Node000069" href="$ad5754r__user__config_8c.html" title="User configuration file for AD5754R devices." alt="" coords="14313,240,14592,309"/>
+<area shape="poly" id="edge79_Node000064_Node000069" title=" " alt="" coords="14363,199,14412,238,14409,242,14360,203"/>
+<area shape="rect" id="Node000070" href="$ad5754r__iio_2app_2app__config_8c.html" title="Application configurations module (platform&#45;agnostic)" alt="" coords="14616,240,14839,309"/>
+<area shape="poly" id="edge80_Node000064_Node000070" title=" " alt="" coords="14434,190,14617,240,14615,245,14433,195"/>
+<area shape="rect" id="Node000071" href="$cn0586__support_8c.html" title="CN0586 support module." alt="" coords="14587,357,14835,427"/>
+<area shape="poly" id="edge82_Node000064_Node000071" title=" " alt="" coords="14434,157,14552,162,14676,175,14733,186,14784,200,14824,217,14852,238,14863,256,14866,273,14862,291,14852,311,14830,338,14801,359,14798,355,14826,334,14848,308,14857,290,14861,273,14858,258,14848,242,14822,221,14782,205,14732,191,14675,181,14551,168,14433,162"/>
+<area shape="rect" id="Node000072" href="$cn0586__support_8h.html" title="Header file for CN0586 supporting APIs." alt="" coords="14040,240,14289,309"/>
+<area shape="poly" id="edge83_Node000064_Node000072" title=" " alt="" coords="14257,203,14209,242,14205,238,14254,199"/>
+<area shape="poly" id="edge76_Node000066_Node000065" title=" " alt="" coords="13980,306,14165,355,14178,358,14176,363,14164,360,13979,311"/>
+<area shape="poly" id="edge77_Node000066_Node000067" title=" " alt="" coords="13826,323,13801,359,13797,356,13822,319"/>
+<area shape="rect" id="Node000068" href="$ad5754r__iio_2app_2main_8c.html" title="Main interface for AD5754R IIO firmware application." alt="" coords="13931,357,14153,427"/>
+<area shape="poly" id="edge78_Node000066_Node000068" title=" " alt="" coords="13923,314,13989,355,13986,359,13920,319"/>
+<area shape="poly" id="edge84_Node000072_Node000065" title=" " alt="" coords="14213,317,14254,355,14251,359,14210,321"/>
+<area shape="poly" id="edge85_Node000072_Node000071" title=" " alt="" coords="14303,307,14588,365,14587,370,14302,312"/>
+<area shape="rect" id="Node000074" href="$ad5770__user__config_8c.html" title=": AD5770R user configuration" alt="" coords="14913,240,15221,309"/>
+<area shape="poly" id="edge87_Node000073_Node000074" title=" " alt="" coords="15598,182,15234,243,15222,245,15221,240,15234,237,15597,177"/>
+<area shape="rect" id="Node000075" href="$ad5770r__console__app_8c.html" title=": Implementation for the menu functions that handle the AD5770R" alt="" coords="15246,240,15566,309"/>
+<area shape="poly" id="edge88_Node000073_Node000075" title=" " alt="" coords="15628,199,15504,242,15502,237,15626,194"/>
+<area shape="rect" id="Node000076" href="$ad5770r__console_2app_2app__config__mbed_8c.html" title="Source file for the mbed configuration for AD5770r Console Application." alt="" coords="15590,240,15883,309"/>
+<area shape="poly" id="edge89_Node000073_Node000076" title=" " alt="" coords="15739,206,15739,240,15734,240,15734,206"/>
+<area shape="rect" id="Node000077" href="$ad5770r__console_2app_2main_8c.html" title=":" alt="" coords="15908,240,16131,309"/>
+<area shape="poly" id="edge90_Node000073_Node000077" title=" " alt="" coords="15833,195,15938,237,15936,242,15831,200"/>
+<area shape="rect" id="Node000079" href="$ad579x__iio_8c.html" title="AD579x IIO application interface module." alt="" coords="16388,357,16611,427"/>
+<area shape="poly" id="edge92_Node000078_Node000079" title=" " alt="" coords="16602,171,16566,181,16532,195,16501,215,16476,241,16465,269,16465,299,16472,329,16483,356,16478,358,16467,330,16459,299,16460,267,16472,239,16498,211,16529,191,16564,176,16600,166"/>
+<area shape="rect" id="Node000080" href="$ad579x__iio_8h.html" title="Header file for AD579x IIO application interfaces." alt="" coords="16487,240,16709,309"/>
+<area shape="poly" id="edge93_Node000078_Node000080" title=" " alt="" coords="16680,203,16637,242,16634,238,16677,199"/>
+<area shape="rect" id="Node000082" href="$ad579x__support_8c.html" title=" " alt="" coords="16733,240,16977,309"/>
+<area shape="poly" id="edge96_Node000078_Node000082" title=" " alt="" coords="16776,199,16819,238,16816,242,16772,203"/>
+<area shape="rect" id="Node000083" href="$ad579x__user__config_8c.html" title="User configuration file for AD579x devices." alt="" coords="17002,240,17271,309"/>
+<area shape="poly" id="edge97_Node000078_Node000083" title=" " alt="" coords="16851,191,17018,237,17016,243,16850,196"/>
+<area shape="rect" id="Node000084" href="$ad579x__iio_2app_2app__config_8c.html" title="Application configurations module." alt="" coords="17296,240,17519,309"/>
+<area shape="poly" id="edge98_Node000078_Node000084" title=" " alt="" coords="16852,170,17055,197,17284,237,17297,240,17295,245,17283,243,17054,203,16851,175"/>
+<area shape="rect" id="Node000085" href="$ad579x__iio_2app_2app__config__mbed_8c.html" title="Application configurations module for Mbed platform." alt="" coords="17543,240,17797,309"/>
+<area shape="poly" id="edge99_Node000078_Node000085" title=" " alt="" coords="16852,164,17161,189,17346,210,17530,237,17543,240,17542,245,17530,243,17345,216,17161,195,16851,169"/>
+<area shape="rect" id="Node000086" href="$ad579x__iio_2app_2app__config__stm32_8h.html" title="Header file for STM32 platform configurations." alt="" coords="16154,240,16413,309"/>
+<area shape="poly" id="edge100_Node000078_Node000086" title=" " alt="" coords="16602,191,16405,243,16403,237,16601,186"/>
+<area shape="poly" id="edge94_Node000080_Node000079" title=" " alt="" coords="16562,322,16530,359,16526,355,16558,318"/>
+<area shape="rect" id="Node000081" href="$ad579x__iio_2app_2main_8c.html" title="Main interface for AD579x IIO firmware application." alt="" coords="16635,357,16857,427"/>
+<area shape="poly" id="edge95_Node000080_Node000081" title=" " alt="" coords="16654,316,16704,355,16701,359,16650,320"/>
+<area shape="poly" id="edge101_Node000086_Node000078" title=" " alt="" coords="16425,236,16614,187,16615,192,16427,241"/>
+<area shape="rect" id="Node000087" href="$ad579x__iio_2app_2app__config__stm32_8c.html" title="Application configurations module for STM32 platform." alt="" coords="16106,357,16365,427"/>
+<area shape="poly" id="edge102_Node000086_Node000087" title=" " alt="" coords="16266,323,16252,358,16247,356,16262,321"/>
 <area shape="rect" id="Node000089" href="$ad590__console__app_8c.html" title="ad590 console application interfaces" alt="" coords="18068,240,18363,309"/>
 <area shape="poly" id="edge104_Node000088_Node000089" title=" " alt="" coords="18128,199,18175,238,18172,242,18124,203"/>
 <area shape="rect" id="Node000090" href="$ltc2488__user__config_8c.html" title="User configuration file for LTC2488 device." alt="" coords="18387,240,18681,309"/>
@@ -216,64 +218,80 @@
 <area shape="poly" id="edge110_Node000094_Node000095" title=" " alt="" coords="19110,206,19110,240,19105,240,19105,206"/>
 <area shape="rect" id="Node000096" href="$ad7124__console_2app_2app__config__mbed_8c.html" title="Source file for the mbed configuration for AD7124 console Application." alt="" coords="19287,240,19575,309"/>
 <area shape="poly" id="edge111_Node000094_Node000096" title=" " alt="" coords="19215,194,19338,237,19336,242,19214,199"/>
-<area shape="rect" id="Node000098" href="$ad717x__iio_8c.html" title="Source file for the AD717x IIO Application." alt="" coords="19587,357,19809,427"/>
-<area shape="poly" id="edge113_Node000097_Node000098" title=" " alt="" coords="20199,167,20038,178,19862,193,19715,215,19666,228,19640,242,19632,254,19629,268,19633,298,19648,328,19669,356,19664,359,19644,331,19628,300,19623,268,19627,252,19636,238,19664,223,19714,210,19861,188,20037,172,20199,162"/>
-<area shape="rect" id="Node000099" href="$ad717x__support_8c.html" title="Support file for AD717X device configurations." alt="" coords="19651,240,19895,309"/>
-<area shape="poly" id="edge114_Node000097_Node000099" title=" " alt="" coords="20201,184,19907,243,19895,245,19894,240,19905,237,20200,178"/>
-<area shape="rect" id="Node000100" href="$ad717x__user__config_8h.html" title="User configuration file for AD717x&#45;AD411x IIO firmware application." alt="" coords="19919,240,20189,309"/>
-<area shape="poly" id="edge115_Node000097_Node000100" title=" " alt="" coords="20234,200,20134,242,20132,237,20232,195"/>
-<area shape="rect" id="Node000102" href="$ad717x__iio_2app_2app__config_8c.html" title="Source file for the application configuration for AD717x IIO Application." alt="" coords="20213,240,20436,309"/>
-<area shape="poly" id="edge118_Node000097_Node000102" title=" " alt="" coords="20327,206,20327,240,20322,240,20322,206"/>
-<area shape="rect" id="Node000103" href="$ad717x__iio_2app_2app__config__mbed_8c.html" title="Source file for the mbed configuration for AD717x IIO Application." alt="" coords="20460,240,20715,309"/>
-<area shape="poly" id="edge119_Node000097_Node000103" title=" " alt="" coords="20415,195,20512,237,20509,242,20413,200"/>
-<area shape="rect" id="Node000104" href="$ad717x__iio_2app_2app__config__stm32_8c.html" title="STM32 Specific configuration files for AD717x IIO Application." alt="" coords="20706,357,20965,427"/>
-<area shape="poly" id="edge120_Node000097_Node000104" title=" " alt="" coords="20450,158,20517,166,20589,181,20661,204,20728,238,20814,355,20809,359,20724,242,20659,209,20588,186,20517,171,20450,163"/>
-<area shape="rect" id="Node000105" href="$ad717x__iio_2app_2app__config__stm32_8h.html" title="Header file for STM32 platform configurations." alt="" coords="20790,240,21049,309"/>
-<area shape="poly" id="edge121_Node000097_Node000105" title=" " alt="" coords="20450,179,20760,237,20790,244,20789,249,20759,243,20449,184"/>
-<area shape="poly" id="edge116_Node000100_Node000098" title=" " alt="" coords="19938,316,19803,360,19801,355,19937,311"/>
-<area shape="rect" id="Node000101" href="$ad717x__user__config_8c.html" title="User Configuration source for AD717x&#45;AD411x IIO Application." alt="" coords="19919,357,20189,427"/>
-<area shape="poly" id="edge117_Node000100_Node000101" title=" " alt="" coords="20057,323,20057,357,20051,357,20051,323"/>
-<area shape="poly" id="edge122_Node000105_Node000097" title=" " alt="" coords="20776,241,20436,179,20437,173,20777,236"/>
-<area shape="poly" id="edge123_Node000105_Node000104" title=" " alt="" coords="20889,322,20862,359,20858,356,20884,319"/>
-<area shape="rect" id="Node000107" href="$ad719x__iio_8c.html" title="Implementation of AD719X IIO application interfaces." alt="" coords="21597,240,21820,309"/>
-<area shape="poly" id="edge125_Node000106_Node000107" title=" " alt="" coords="21536,195,21633,237,21631,242,21534,200"/>
-<area shape="rect" id="Node000108" href="$ad719x__user__config_8c.html" title="User configuration file for AD719X device." alt="" coords="21845,240,22114,309"/>
-<area shape="poly" id="edge126_Node000106_Node000108" title=" " alt="" coords="21571,182,21832,237,21845,240,21844,246,21831,243,21570,187"/>
-<area shape="rect" id="Node000109" href="$ad719x__iio_2app_2app__config_8c.html" title="Application configurations module." alt="" coords="21072,240,21295,309"/>
-<area shape="poly" id="edge127_Node000106_Node000109" title=" " alt="" coords="21358,200,21261,242,21259,237,21356,195"/>
-<area shape="rect" id="Node000110" href="$ad719x__iio_2app_2app__config__mbed_8c.html" title="Application configurations module for Mbed platform." alt="" coords="21319,240,21573,309"/>
-<area shape="poly" id="edge128_Node000106_Node000110" title=" " alt="" coords="21449,206,21449,240,21443,240,21443,206"/>
-<area shape="rect" id="Node000112" href="$ad7606__iio_8c.html" title=" " alt="" coords="22667,240,22889,309"/>
-<area shape="poly" id="edge130_Node000111_Node000112" title=" " alt="" coords="22605,195,22702,237,22700,242,22602,200"/>
-<area shape="rect" id="Node000113" href="$ad7606__support_8c.html" title="AD7606 No&#45;OS drivers support functionality." alt="" coords="22913,240,23157,309"/>
-<area shape="poly" id="edge131_Node000111_Node000113" title=" " alt="" coords="22639,181,22901,237,22914,240,22913,245,22900,243,22638,186"/>
-<area shape="rect" id="Node000114" href="$ad7606__user__config_8c.html" title="User configuration file for AD7606 device." alt="" coords="23182,240,23451,309"/>
-<area shape="poly" id="edge132_Node000111_Node000114" title=" " alt="" coords="22639,168,22885,196,23169,237,23182,240,23181,245,23168,243,22884,201,22639,173"/>
-<area shape="rect" id="Node000115" href="$ad7606__iio_2app_2app__config_8c.html" title="Application configurations module (platform&#45;agnostic)" alt="" coords="22139,240,22361,309"/>
-<area shape="poly" id="edge133_Node000111_Node000115" title=" " alt="" coords="22426,200,22328,242,22326,237,22423,195"/>
-<area shape="rect" id="Node000116" href="$ad7606__iio_2app_2app__config__stm32_8h.html" title="Header file for STM32 platform configurations." alt="" coords="22385,240,22643,309"/>
-<area shape="poly" id="edge134_Node000111_Node000116" title=" " alt="" coords="22508,206,22508,240,22503,240,22502,206"/>
-<area shape="poly" id="edge135_Node000116_Node000111" title=" " alt="" coords="22520,226,22520,192,22525,192,22526,226"/>
-<area shape="rect" id="Node000117" href="$ad7606__iio_2app_2app__config__stm32_8c.html" title="Application configurations module for STM32 platform." alt="" coords="22385,357,22643,427"/>
-<area shape="poly" id="edge136_Node000116_Node000117" title=" " alt="" coords="22517,323,22517,357,22511,357,22511,323"/>
-<area shape="rect" id="Node000119" href="$ad7689__iio_8c.html" title="Implementation of AD7689 IIO application interfaces." alt="" coords="23904,357,24127,427"/>
-<area shape="poly" id="edge138_Node000118_Node000119" title=" " alt="" coords="23971,202,23991,239,24009,301,24016,357,24011,358,24003,302,23986,241,23966,204"/>
-<area shape="rect" id="Node000120" href="$ad7689__support_8h.html" title="Header for AD7689 no&#45;os driver support file." alt="" coords="24053,240,24298,309"/>
-<area shape="poly" id="edge139_Node000118_Node000120" title=" " alt="" coords="24017,195,24106,237,24103,242,24015,200"/>
-<area shape="rect" id="Node000122" href="$ad7689__user__config_8c.html" title="User configurations for AD7689 No&#45;OS driver." alt="" coords="24322,240,24591,309"/>
-<area shape="poly" id="edge142_Node000118_Node000122" title=" " alt="" coords="24058,183,24311,237,24322,240,24321,245,24309,243,24057,188"/>
-<area shape="rect" id="Node000123" href="$ad7689__iio_2app_2app__config_8c.html" title="Application configurations module (platform&#45;agnostic)" alt="" coords="23476,240,23699,309"/>
-<area shape="poly" id="edge143_Node000118_Node000123" title=" " alt="" coords="23820,199,23689,242,23687,237,23818,194"/>
-<area shape="rect" id="Node000124" href="$ad7689__iio_2app_2app__config__mbed_8c.html" title="Application configurations module for Mbed platform." alt="" coords="23723,240,23977,309"/>
-<area shape="poly" id="edge144_Node000118_Node000124" title=" " alt="" coords="23903,205,23876,241,23872,238,23898,202"/>
-<area shape="poly" id="edge140_Node000120_Node000119" title=" " alt="" coords="24119,320,24064,359,24061,355,24116,315"/>
-<area shape="rect" id="Node000121" href="$ad7689__support_8c.html" title="AD7689 no&#45;os drivers support file." alt="" coords="24151,357,24395,427"/>
-<area shape="poly" id="edge141_Node000120_Node000121" title=" " alt="" coords="24215,319,24246,355,24242,359,24211,322"/>
-<area shape="rect" id="Node000126" href="$nanodac__console__app_8c.html" title=": Implementation for the menu functions that handles the nanodac functionality" alt="" coords="24467,357,24791,427"/>
-<area shape="poly" id="edge146_Node000125_Node000126" title=" " alt="" coords="24631,206,24631,357,24626,357,24626,206"/>
-<area shape="rect" id="Node000127" href="$nanodac__console__app_8h.html" title=": defines the console menu structure for the nanodac example code" alt="" coords="24666,240,24991,309"/>
-<area shape="poly" id="edge147_Node000125_Node000127" title=" " alt="" coords="24700,197,24772,238,24769,242,24698,201"/>
-<area shape="poly" id="edge149_Node000127_Node000126" title=" " alt="" coords="24760,319,24688,359,24686,355,24757,314"/>
-<area shape="rect" id="Node000128" href="$nanodac__console_2app_2main_8c.html" title=": main module for nanodac application interface" alt="" coords="24815,357,25037,427"/>
-<area shape="poly" id="edge148_Node000127_Node000128" title=" " alt="" coords="24868,319,24900,355,24895,359,24864,322"/>
+<area shape="rect" id="Node000098" href="$ad7124__iio_8h.html" title="IIO Header file for AD7124." alt="" coords="20701,240,20924,309"/>
+<area shape="poly" id="edge113_Node000097_Node000098" title=" " alt="" coords="20393,178,20536,205,20691,237,20702,240,20700,245,20689,243,20535,210,20392,183"/>
+<area shape="rect" id="Node000101" href="$ad7124__iio_2app_2ad7124__support_8c.html" title=" " alt="" coords="20948,240,21192,309"/>
+<area shape="poly" id="edge116_Node000097_Node000101" title=" " alt="" coords="20393,167,20644,194,20791,214,20936,237,20948,240,20947,245,20935,243,20790,219,20644,199,20392,172"/>
+<area shape="rect" id="Node000102" href="$ad7124__iio_2app_2ad7124__user__config_8c.html" title="User Configurations for AD7124." alt="" coords="19599,240,19869,309"/>
+<area shape="poly" id="edge117_Node000097_Node000102" title=" " alt="" coords="20143,187,19881,243,19870,245,19868,240,19880,237,20142,182"/>
+<area shape="rect" id="Node000103" href="$ad7124__iio_2app_2app__config_8c.html" title="Source file for the application configuration for AD7124 IIO Application." alt="" coords="19893,240,20116,309"/>
+<area shape="poly" id="edge118_Node000097_Node000103" title=" " alt="" coords="20179,200,20083,242,20080,237,20177,195"/>
+<area shape="rect" id="Node000104" href="$ad7124__iio_2app_2app__config__mbed_8c.html" title="Source file for the mbed configuration for AD7124 IIO Application." alt="" coords="20140,240,20395,309"/>
+<area shape="poly" id="edge119_Node000097_Node000104" title=" " alt="" coords="20270,206,20270,240,20265,240,20265,206"/>
+<area shape="rect" id="Node000105" href="$ad7124__iio_2app_2app__config__stm32_8c.html" title="STM32 Specific configuration files for AD7124 IIO Application." alt="" coords="20419,240,20678,309"/>
+<area shape="poly" id="edge120_Node000097_Node000105" title=" " alt="" coords="20363,195,20467,237,20465,242,20361,200"/>
+<area shape="rect" id="Node000099" href="$ad7124__iio_8c.html" title="Main interface for AD7124 IIO Application firmware example program." alt="" coords="20825,357,21048,427"/>
+<area shape="poly" id="edge114_Node000098_Node000099" title=" " alt="" coords="20861,317,20902,355,20899,359,20858,321"/>
+<area shape="rect" id="Node000100" href="$ad7124__iio_2app_2main_8c.html" title="Main module for AD7124 IIO application." alt="" coords="20579,357,20801,427"/>
+<area shape="poly" id="edge115_Node000098_Node000100" title=" " alt="" coords="20768,321,20728,359,20724,355,20765,317"/>
+<area shape="rect" id="Node000107" href="$ad717x__iio_8c.html" title="Source file for the AD717x IIO Application." alt="" coords="21935,357,22157,427"/>
+<area shape="poly" id="edge122_Node000106_Node000107" title=" " alt="" coords="21752,197,21808,238,21824,257,21833,274,21842,291,21858,307,21899,334,21942,355,21940,360,21896,338,21855,311,21838,294,21828,277,21819,260,21804,242,21749,201"/>
+<area shape="rect" id="Node000108" href="$ad717x__support_8c.html" title="Support file for AD717X device configurations." alt="" coords="21551,240,21795,309"/>
+<area shape="poly" id="edge123_Node000106_Node000108" title=" " alt="" coords="21675,206,21675,240,21670,240,21670,206"/>
+<area shape="rect" id="Node000109" href="$ad717x__user__config_8h.html" title="User configuration file for AD717x&#45;AD411x IIO firmware application." alt="" coords="22395,240,22665,309"/>
+<area shape="poly" id="edge124_Node000106_Node000109" title=" " alt="" coords="21798,166,22067,194,22225,213,22382,237,22395,240,22394,245,22382,243,22225,219,22067,199,21798,172"/>
+<area shape="rect" id="Node000111" href="$ad717x__iio_2app_2app__config_8c.html" title="Source file for the application configuration for AD717x IIO Application." alt="" coords="21869,240,22092,309"/>
+<area shape="poly" id="edge127_Node000106_Node000111" title=" " alt="" coords="21776,194,21892,237,21890,242,21775,199"/>
+<area shape="rect" id="Node000112" href="$ad717x__iio_2app_2app__config__mbed_8c.html" title="Source file for the mbed configuration for AD717x IIO Application." alt="" coords="22116,240,22371,309"/>
+<area shape="poly" id="edge128_Node000106_Node000112" title=" " alt="" coords="21798,178,22104,237,22117,240,22115,245,22103,243,21797,183"/>
+<area shape="rect" id="Node000113" href="$ad717x__iio_2app_2app__config__stm32_8c.html" title="STM32 Specific configuration files for AD717x IIO Application." alt="" coords="21231,357,21490,427"/>
+<area shape="poly" id="edge129_Node000106_Node000113" title=" " alt="" coords="21548,169,21461,178,21375,192,21302,213,21275,227,21257,242,21248,258,21246,273,21249,289,21258,308,21276,334,21300,355,21297,359,21272,338,21253,311,21244,291,21240,273,21243,256,21253,238,21272,222,21300,209,21374,187,21461,172,21547,163"/>
+<area shape="rect" id="Node000114" href="$ad717x__iio_2app_2app__config__stm32_8h.html" title="Header file for STM32 platform configurations." alt="" coords="21267,240,21526,309"/>
+<area shape="poly" id="edge130_Node000106_Node000114" title=" " alt="" coords="21572,200,21470,242,21468,237,21570,195"/>
+<area shape="poly" id="edge125_Node000109_Node000107" title=" " alt="" coords="22382,314,22158,367,22157,362,22381,309"/>
+<area shape="rect" id="Node000110" href="$ad717x__user__config_8c.html" title="User Configuration source for AD717x&#45;AD411x IIO Application." alt="" coords="22395,357,22665,427"/>
+<area shape="poly" id="edge126_Node000109_Node000110" title=" " alt="" coords="22533,323,22533,357,22527,357,22527,323"/>
+<area shape="poly" id="edge131_Node000114_Node000106" title=" " alt="" coords="21497,232,21599,190,21601,195,21499,237"/>
+<area shape="poly" id="edge132_Node000114_Node000113" title=" " alt="" coords="21384,324,21374,358,21369,356,21379,322"/>
+<area shape="rect" id="Node000116" href="$ad719x__iio_8c.html" title="Implementation of AD719X IIO application interfaces." alt="" coords="22689,240,22912,309"/>
+<area shape="poly" id="edge134_Node000115_Node000116" title=" " alt="" coords="22981,200,22881,242,22879,237,22979,195"/>
+<area shape="rect" id="Node000117" href="$ad719x__user__config_8c.html" title="User configuration file for AD719X device." alt="" coords="22937,240,23206,309"/>
+<area shape="poly" id="edge135_Node000115_Node000117" title=" " alt="" coords="23074,206,23074,240,23069,240,23069,206"/>
+<area shape="rect" id="Node000118" href="$ad719x__iio_2app_2app__config_8c.html" title="Application configurations module." alt="" coords="23231,240,23453,309"/>
+<area shape="poly" id="edge136_Node000115_Node000118" title=" " alt="" coords="23164,195,23264,237,23262,242,23162,200"/>
+<area shape="rect" id="Node000119" href="$ad719x__iio_2app_2app__config__mbed_8c.html" title="Application configurations module for Mbed platform." alt="" coords="23477,240,23732,309"/>
+<area shape="poly" id="edge137_Node000115_Node000119" title=" " alt="" coords="23197,181,23465,237,23478,240,23477,245,23464,243,23196,186"/>
+<area shape="rect" id="Node000121" href="$ad7606__iio_8c.html" title=" " alt="" coords="24039,240,24261,309"/>
+<area shape="poly" id="edge139_Node000120_Node000121" title=" " alt="" coords="24153,206,24153,240,24147,240,24147,206"/>
+<area shape="rect" id="Node000122" href="$ad7606__support_8c.html" title="AD7606 No&#45;OS drivers support functionality." alt="" coords="24285,240,24529,309"/>
+<area shape="poly" id="edge140_Node000120_Node000122" title=" " alt="" coords="24239,195,24333,237,24331,242,24237,200"/>
+<area shape="rect" id="Node000123" href="$ad7606__user__config_8c.html" title="User configuration file for AD7606 device." alt="" coords="24554,240,24823,309"/>
+<area shape="poly" id="edge141_Node000120_Node000123" title=" " alt="" coords="24275,181,24541,237,24555,240,24553,246,24540,243,24274,187"/>
+<area shape="rect" id="Node000124" href="$ad7606__iio_2app_2app__config_8c.html" title="Application configurations module (platform&#45;agnostic)" alt="" coords="24848,240,25071,309"/>
+<area shape="poly" id="edge142_Node000120_Node000124" title=" " alt="" coords="24276,165,24535,192,24686,212,24836,237,24849,240,24847,245,24835,243,24685,217,24534,197,24275,171"/>
+<area shape="rect" id="Node000125" href="$ad7606__iio_2app_2app__config__stm32_8h.html" title="Header file for STM32 platform configurations." alt="" coords="23757,240,24015,309"/>
+<area shape="poly" id="edge143_Node000120_Node000125" title=" " alt="" coords="24053,200,23956,242,23954,237,24051,195"/>
+<area shape="poly" id="edge144_Node000125_Node000120" title=" " alt="" coords="23983,232,24080,190,24082,195,23985,237"/>
+<area shape="rect" id="Node000126" href="$ad7606__iio_2app_2app__config__stm32_8c.html" title="Application configurations module for STM32 platform." alt="" coords="23757,357,24015,427"/>
+<area shape="poly" id="edge145_Node000125_Node000126" title=" " alt="" coords="23889,323,23889,357,23883,357,23883,323"/>
+<area shape="rect" id="Node000128" href="$ad7689__iio_8c.html" title="Implementation of AD7689 IIO application interfaces." alt="" coords="25276,357,25499,427"/>
+<area shape="poly" id="edge147_Node000127_Node000128" title=" " alt="" coords="25435,204,25415,241,25399,302,25392,358,25386,357,25393,301,25410,239,25430,202"/>
+<area shape="rect" id="Node000129" href="$ad7689__support_8h.html" title="Header for AD7689 no&#45;os driver support file." alt="" coords="25425,240,25670,309"/>
+<area shape="poly" id="edge148_Node000127_Node000129" title=" " alt="" coords="25501,202,25526,238,25522,241,25497,205"/>
+<area shape="rect" id="Node000131" href="$ad7689__user__config_8c.html" title="User configurations for AD7689 No&#45;OS driver." alt="" coords="25694,240,25963,309"/>
+<area shape="poly" id="edge151_Node000127_Node000131" title=" " alt="" coords="25587,194,25724,237,25722,242,25585,199"/>
+<area shape="rect" id="Node000132" href="$ad7689__iio_2app_2app__config_8c.html" title="Application configurations module (platform&#45;agnostic)" alt="" coords="25988,240,26211,309"/>
+<area shape="poly" id="edge152_Node000127_Node000132" title=" " alt="" coords="25593,172,25775,200,25976,237,25989,240,25987,245,25975,243,25774,205,25592,178"/>
+<area shape="rect" id="Node000133" href="$ad7689__iio_2app_2app__config__mbed_8c.html" title="Application configurations module for Mbed platform." alt="" coords="25095,240,25349,309"/>
+<area shape="poly" id="edge153_Node000127_Node000133" title=" " alt="" coords="25385,200,25295,242,25293,237,25382,195"/>
+<area shape="poly" id="edge149_Node000129_Node000128" title=" " alt="" coords="25491,320,25436,359,25433,355,25488,315"/>
+<area shape="rect" id="Node000130" href="$ad7689__support_8c.html" title="AD7689 no&#45;os drivers support file." alt="" coords="25523,357,25767,427"/>
+<area shape="poly" id="edge150_Node000129_Node000130" title=" " alt="" coords="25587,319,25618,355,25614,359,25583,322"/>
+<area shape="rect" id="Node000135" href="$nanodac__console__app_8c.html" title=": Implementation for the menu functions that handles the nanodac functionality" alt="" coords="26085,357,26409,427"/>
+<area shape="poly" id="edge155_Node000134_Node000135" title=" " alt="" coords="26250,206,26250,357,26245,357,26245,206"/>
+<area shape="rect" id="Node000136" href="$nanodac__console__app_8h.html" title=": defines the console menu structure for the nanodac example code" alt="" coords="26285,240,26610,309"/>
+<area shape="poly" id="edge156_Node000134_Node000136" title=" " alt="" coords="26319,197,26390,238,26388,242,26316,201"/>
+<area shape="poly" id="edge158_Node000136_Node000135" title=" " alt="" coords="26378,319,26307,359,26304,355,26376,314"/>
+<area shape="rect" id="Node000137" href="$nanodac__console_2app_2main_8c.html" title=": main module for nanodac application interface" alt="" coords="26433,357,26656,427"/>
+<area shape="poly" id="edge157_Node000136_Node000137" title=" " alt="" coords="26487,319,26518,355,26514,359,26483,322"/>
 </map>
