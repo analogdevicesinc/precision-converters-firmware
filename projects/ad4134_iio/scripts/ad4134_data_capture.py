@@ -1,6 +1,6 @@
-# @file    ad4110_data_capture.py
-# @brief   Data capturing for the AD4110 device
-# Copyright (c) 2022,2024 Analog Devices, Inc.
+# @file    ad4134_data_capture.py
+# @brief   Data capturing for the AD4134 device
+# Copyright (c) 2022,2024-25 Analog Devices, Inc.
 # All rights reserved.
 # 
 # This software is proprietary to Analog Devices, Inc. and its licensors.

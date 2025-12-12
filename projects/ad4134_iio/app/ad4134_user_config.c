@@ -1,8 +1,8 @@
 /*************************************************************************//**
- *   @file   ad7134_user_config.c
- *   @brief  User configuration file for AD7134 device
+ *   @file   ad4134_user_config.c
+ *   @brief  User configuration file for AD4134 device
 ******************************************************************************
-* Copyright (c) 2020-21, 2023 Analog Devices, Inc.
+* Copyright (c) 2020-21, 2023, 2025 Analog Devices, Inc.
 * All rights reserved.
 *
 * This software is proprietary to Analog Devices, Inc. and its licensors.
@@ -68,7 +68,7 @@ struct ad713x_init_param ad713x_init_params = {
 	.adc_data_len = ADC_16_BIT_DATA, /* DO NOT CHANGE */
 	.crc_header = NO_CRC,			 /* DO NOT CHANGE */
 
-#if (INTERFACE_MODE != TDM_MODE)
+#if (INTERFACE_MODE == BIT_BANGING_MODE)
 	/* DOUT0 and DOUT1 are used in dual channel mode. Chn0 & Chn1 data is available
 	 * on DOUT0 pin and Chn2 & Chn3 data is available on DOUT1 pin */
 	.format = DUAL_CH_DC,	/* DO NOT CHANGE */
