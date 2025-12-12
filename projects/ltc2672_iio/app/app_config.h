@@ -2,7 +2,7 @@
  *   @file   app_config.h
  *   @brief  Configuration file for LTC2672 device application
 ******************************************************************************
-* Copyright (c) 2023-24 Analog Devices, Inc.
+* Copyright (c) 2023-25 Analog Devices, Inc.
 * All rights reserved.
 *
 * This software is proprietary to Analog Devices, Inc. and its licensors.
@@ -19,24 +19,29 @@
 
 #include <stdint.h>
 #include "ltc2672.h"
+#include "no_os_pwm.h"
+#include "version.h"
+#include "common_macros.h"
 
 /******************************************************************************/
 /********************** Macros and Constants Definition ***********************/
 /******************************************************************************/
 
-/* List of supported platforms */
-#define	MBED_PLATFORM		1
-#define STM32_PLATFORM		2
-
 /* Macros for stringification */
 #define XSTR(s)		#s
 #define STR(s)		XSTR(s)
 
+#ifdef FIRMWARE_VERSION
+#define GET_FIRMWARE_VERSION (FIRMWARE_VERSION)
+#else
+#define GET_FIRMWARE_VERSION NULL
+#endif
+
 /******************************************************************************/
 
-/* Select the active platform (default is Mbed) */
+/* Select the active platform (default is STM32) */
 #if !defined(ACTIVE_PLATFORM)
-#define ACTIVE_PLATFORM		MBED_PLATFORM
+#define ACTIVE_PLATFORM		STM32_PLATFORM
 #endif
 
 /* Enable the UART/VirtualCOM port connection (default VCOM) */
@@ -46,6 +51,10 @@
 #define USE_VIRTUAL_COM_PORT
 #endif
 
+/* Support for Arduino interfaced board is enabled by default */
+//#define DC2903A			// Uncomment to select Linduino interfaced board
+
+#if defined(DC2903A)
 //*** Note for user to select active device ***//
 /* Define the device type here
  * (use only one define at time. Defining multiple devices gives compilation error)
@@ -74,14 +83,22 @@
 #define DAC_RESOLUTION 16
 #define DAC_MAX_COUNT	LTC2672_16BIT_RESO
 #endif
+#else	// For Arduino interfaced board
+#define DAC_RESOLUTION		16
+#define DAC_MAX_COUNT		LTC2672_16BIT_RESO
+#define DEVICE_LTC2662_16	"ltc2662-16"
+#define DEVICE_LTC2672_16	"ltc2672-16"
+#endif
 
 /* DAC Reference Voltage */
 #define DAC_VREF  1.25
 
-#if (ACTIVE_PLATFORM == MBED_PLATFORM)
-#include "app_config_mbed.h"
-#elif (ACTIVE_PLATFORM == STM32_PLATFORM)
+/* Full Scale Adjusted Resitor Value in kohm */
+#define DAC_FSADJ_RESISTOR  20
+
+#if (ACTIVE_PLATFORM == STM32_PLATFORM)
 #include "app_config_stm32.h"
+#define CONSOLE_STDIO_PORT_AVAILABLE
 #else
 #error "No/Invalid active platform selected"
 #endif
@@ -111,18 +128,10 @@
 #define VIRTUAL_COM_SERIAL_NUM	(FIRMWARE_NAME "_" DEVICE_NAME "_" STR(PLATFORM_NAME))
 
 /* Check if any serial port available for use as console stdio port */
-#if defined(USE_PHY_COM_PORT)
-/* If PHY com is selected, VCOM or alternate PHY com port can act as a console stdio port */
-#if (ACTIVE_PLATFORM == MBED_PLATFORM)
-#define CONSOLE_STDIO_PORT_AVAILABLE
-#endif
-#else
+#if defined(USE_VIRTUAL_COM_PORT)
 /* If VCOM is selected, PHY com port will/should act as a console stdio port */
 #define CONSOLE_STDIO_PORT_AVAILABLE
 #endif
-
-/* Enable/Disable the use of SDRAM for DAC data streaming buffer */
-//#define USE_SDRAM		// Uncomment to use SDRAM for data buffer
 
 /* PWM period and duty cycle */
 #define CONV_TRIGGER_PERIOD_NSEC		(((float)(1.0 / SAMPLING_RATE) * 1000000) * 1000)
@@ -134,7 +143,15 @@
 
 extern struct no_os_uart_desc *uart_iio_com_desc;
 extern struct no_os_uart_desc *uart_console_stdio_desc;
-
+extern struct no_os_eeprom_desc *eeprom_desc;
+extern struct no_os_gpio_desc *gpio_ldac_desc;
+extern struct no_os_gpio_desc *gpio_clear_desc;
+extern struct no_os_gpio_desc *gpio_toggle_desc;
+extern struct no_os_pwm_desc *toggle_pwm_desc;
+extern struct no_os_pwm_desc *ldac_pwm_desc;
+extern struct no_os_irq_ctrl_desc *trigger_irq_desc;
+extern struct no_os_gpio_init_param toggle_pwm_gpio_params;
 int32_t init_system(void);
+int32_t init_pwm(void);
 
 #endif /* APP_CONFIG_H_ */

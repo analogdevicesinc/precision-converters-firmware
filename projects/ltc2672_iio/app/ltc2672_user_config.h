@@ -2,7 +2,7 @@
  * @file    ltc2672_user_config.h
  * @brief   User configurations for LTC2672 No-OS driver
 ******************************************************************************
- * Copyright (c) 2023 Analog Devices, Inc.
+ * Copyright (c) 2023-25 Analog Devices, Inc.
  * All rights reserved.
  *
  * This software is proprietary to Analog Devices, Inc. and its licensors.
@@ -27,6 +27,9 @@
 /********************** Public/Extern Declarations ****************************/
 /******************************************************************************/
 
+extern struct no_os_gpio_init_param gpio_ldac_params;
+extern struct no_os_gpio_init_param gpio_clear_params;
+extern struct no_os_gpio_init_param gpio_toggle_params;
 extern struct ltc2672_init_param ltc2672_init_params;
 
 #endif /* LTC2672_USER_CONFIG_H_ */
