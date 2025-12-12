@@ -1,10 +1,10 @@
 <map id="init_system_post_verification" name="init_system_post_verification">
-<area shape="rect" id="Node000001" title="Initializing system peripherals." alt="" coords="553,31,767,56"/>
-<area shape="rect" id="Node000002" href="$ad405x__iio_8c.html#ac0141386b392ad24a1e7636a9b4c99c9" title="Initialize the IIO interface for AD405X IIO device." alt="" coords="349,31,505,56"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="540,46,505,46,505,41,540,41"/>
-<area shape="rect" id="Node000003" href="$ad405x__iio_8c.html#a561170c1f2302f5a33ec8be13aca99bc" title="Run the AD405X IIO event handler." alt="" coords="108,5,301,31"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="335,36,301,32,302,26,336,30"/>
+<area shape="rect" id="Node000001" title="Initializing system peripherals." alt="" coords="505,31,719,56"/>
+<area shape="rect" id="Node000002" href="$ad405x__iio_8c.html#a7aa4c35d34a7370a9365923c3e18f500" title="Initialize the IIO interface for AD405X IIO device." alt="" coords="325,31,457,56"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="491,46,458,46,458,41,491,41"/>
+<area shape="rect" id="Node000003" href="$ad405x__iio_8c.html#a20b15ec49897aaf6440bb800ad6641e0" title="Run the AD405X IIO event handler." alt="" coords="108,5,277,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="311,36,277,31,278,26,312,31"/>
 <area shape="rect" id="Node000004" href="$ad405x__iio_2app_2main_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title="Main entry point to application." alt="" coords="5,31,60,56"/>
-<area shape="poly" id="edge4_Node000002_Node000004" title=" " alt="" coords="336,46,60,46,60,41,336,41"/>
-<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="105,35,61,42,60,37,104,30"/>
+<area shape="poly" id="edge4_Node000002_Node000004" title=" " alt="" coords="312,46,60,46,60,41,312,41"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="99,35,61,42,60,36,99,30"/>
 </map>

@@ -1,11 +1,11 @@
 <map id="deinit_pwm" name="deinit_pwm">
-<area shape="rect" id="Node000001" title="DeInitialize the PWM interface." alt="" coords="553,31,652,56"/>
-<area shape="rect" id="Node000002" href="$ad405x__iio_8c.html#a561170c1f2302f5a33ec8be13aca99bc" title="Run the AD405X IIO event handler." alt="" coords="108,5,301,31"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="540,42,301,27,302,21,540,37"/>
-<area shape="rect" id="Node000004" href="$ad405x__iio_8c.html#ac0141386b392ad24a1e7636a9b4c99c9" title="Initialize the IIO interface for AD405X IIO device." alt="" coords="349,56,505,81"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="540,55,506,60,505,55,540,50"/>
+<area shape="rect" id="Node000001" title="DeInitialize the PWM interface." alt="" coords="505,31,604,56"/>
+<area shape="rect" id="Node000002" href="$ad405x__iio_8c.html#a20b15ec49897aaf6440bb800ad6641e0" title="Run the AD405X IIO event handler." alt="" coords="108,5,277,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="491,42,277,27,278,21,492,36"/>
+<area shape="rect" id="Node000004" href="$ad405x__iio_8c.html#a7aa4c35d34a7370a9365923c3e18f500" title="Initialize the IIO interface for AD405X IIO device." alt="" coords="325,56,457,81"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="492,56,458,61,457,56,491,50"/>
 <area shape="rect" id="Node000003" href="$ad405x__iio_2app_2main_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title="Main entry point to application." alt="" coords="5,31,60,56"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="105,35,61,42,60,37,104,30"/>
-<area shape="poly" id="edge4_Node000004_Node000002" title=" " alt="" coords="357,55,261,33,262,28,358,50"/>
-<area shape="poly" id="edge5_Node000004_Node000003" title=" " alt="" coords="335,65,60,48,60,42,336,60"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="99,35,61,42,60,36,99,30"/>
+<area shape="poly" id="edge4_Node000004_Node000002" title=" " alt="" coords="327,55,242,33,244,28,328,50"/>
+<area shape="poly" id="edge5_Node000004_Node000003" title=" " alt="" coords="311,66,60,48,60,43,312,60"/>
 </map>

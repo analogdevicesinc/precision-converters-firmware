@@ -1,18 +1,18 @@
 <map id="eeprom_init" name="eeprom_init">
-<area shape="rect" id="Node000001" title="Initialize the EEPROM." alt="" coords="559,80,659,105"/>
-<area shape="rect" id="Node000002" href="$ad5710r__iio_8c.html#a22103aabadc62e36cf8e30021aab5ced" title="Initialize the IIO interface for AD5710R IIO device." alt="" coords="349,5,511,31"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="573,76,510,44,478,33,480,28,512,40,575,71"/>
-<area shape="rect" id="Node000004" href="$ad405x__iio_8c.html#ac0141386b392ad24a1e7636a9b4c99c9" title="Initialize the IIO interface for AD405X IIO device." alt="" coords="352,55,508,80"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="544,86,508,81,508,76,545,81"/>
-<area shape="rect" id="Node000007" href="$ad4080__iio_2app_2app__config_8c.html#a8227e28a723c0f1acd14d895daed012f" title="Initializing system peripherals." alt="" coords="381,104,479,129"/>
-<area shape="poly" id="edge7_Node000001_Node000007" title=" " alt="" coords="545,104,480,113,479,107,544,99"/>
-<area shape="rect" id="Node000008" href="$ad3530r__iio_2app_2app__config_8c.html#aba990e48bb1b87852ff6a375f0c2f655" title="Initializing system peripherals." alt="" coords="381,153,479,179"/>
-<area shape="poly" id="edge8_Node000001_Node000008" title=" " alt="" coords="575,114,512,144,479,156,477,151,510,140,572,109"/>
-<area shape="rect" id="Node000003" href="$ad5710r__iio_2app_2main_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title="Main entry point to application." alt="" coords="177,5,232,31"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="335,21,232,21,232,15,335,15"/>
-<area shape="rect" id="Node000005" href="$ad405x__iio_8c.html#a561170c1f2302f5a33ec8be13aca99bc" title="Run the AD405X IIO event handler." alt="" coords="108,55,301,80"/>
-<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="338,70,302,70,302,65,338,65"/>
+<area shape="rect" id="Node000001" title="Initialize the EEPROM." alt="" coords="535,80,635,105"/>
+<area shape="rect" id="Node000002" href="$ad5710r__iio_8c.html#a22103aabadc62e36cf8e30021aab5ced" title="Initialize the IIO interface for AD5710R IIO device." alt="" coords="325,5,487,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="549,76,486,44,454,33,456,28,488,40,551,71"/>
+<area shape="rect" id="Node000004" href="$ad405x__iio_8c.html#a7aa4c35d34a7370a9365923c3e18f500" title="Initialize the IIO interface for AD405X IIO device." alt="" coords="340,55,472,80"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="521,86,472,79,473,74,521,81"/>
+<area shape="rect" id="Node000007" href="$ad4080__iio_2app_2app__config_8c.html#a8227e28a723c0f1acd14d895daed012f" title="Initializing system peripherals." alt="" coords="357,104,455,129"/>
+<area shape="poly" id="edge7_Node000001_Node000007" title=" " alt="" coords="521,104,456,113,455,107,520,99"/>
+<area shape="rect" id="Node000008" href="$ad3530r__iio_2app_2app__config_8c.html#aba990e48bb1b87852ff6a375f0c2f655" title="Initializing system peripherals." alt="" coords="357,153,455,179"/>
+<area shape="poly" id="edge8_Node000001_Node000008" title=" " alt="" coords="551,114,488,144,455,156,453,151,486,140,548,109"/>
+<area shape="rect" id="Node000003" href="$ad5710r__iio_2app_2main_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title="Main entry point to application." alt="" coords="165,5,220,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="311,21,220,21,220,15,311,15"/>
+<area shape="rect" id="Node000005" href="$ad405x__iio_8c.html#a20b15ec49897aaf6440bb800ad6641e0" title="Run the AD405X IIO event handler." alt="" coords="108,55,277,80"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="326,70,277,70,277,65,326,65"/>
 <area shape="rect" id="Node000006" href="$ad405x__iio_2app_2main_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title="Main entry point to application." alt="" coords="5,80,60,105"/>
-<area shape="poly" id="edge6_Node000004_Node000006" title=" " alt="" coords="364,85,302,95,233,100,166,100,60,97,60,92,166,95,233,94,301,90,363,80"/>
-<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="105,85,61,91,60,86,104,79"/>
+<area shape="poly" id="edge6_Node000004_Node000006" title=" " alt="" coords="340,85,278,95,156,100,60,97,60,92,156,95,277,90,339,80"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="99,85,61,91,60,86,99,80"/>
 </map>
