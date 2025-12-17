@@ -1,13 +1,30 @@
 <map id="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ltc2672_iio/app/app_config_stm32.c" name="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ltc2672_iio/app/app_config_stm32.c">
-<area shape="rect" id="Node000001" title="Application configurations module for STM32 platform." alt="" coords="89,5,347,75"/>
-<area shape="rect" id="Node000002" href="$ltc2672__iio_2app_2app__config__stm32_8h.html" title="Header file for STM32 platform configurations." alt="" coords="142,123,294,148"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="221,75,221,109,215,109,215,75"/>
-<area shape="rect" id="Node000003" title=" " alt="" coords="5,196,76,221"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="190,150,83,193,81,188,189,146"/>
-<area shape="rect" id="Node000004" title=" " alt="" coords="100,196,208,221"/>
-<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="209,150,175,188,171,184,205,147"/>
-<area shape="rect" id="Node000005" title=" " alt="" coords="233,196,334,221"/>
-<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="231,147,265,184,262,188,227,150"/>
-<area shape="rect" id="Node000006" title=" " alt="" coords="359,196,469,221"/>
-<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="250,146,370,189,368,194,249,151"/>
+<area shape="rect" id="Node000001" title="Application configurations module for STM32 platform." alt="" coords="218,5,476,75"/>
+<area shape="rect" id="Node000002" href="$ltc2672__iio_2app_2app__config__stm32_8h.html" title="Header file for STM32 platform configurations." alt="" coords="195,123,347,148"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="322,76,291,113,287,110,318,73"/>
+<area shape="rect" id="Node000014" title=" " alt="" coords="371,123,478,148"/>
+<area shape="poly" id="edge14_Node000001_Node000014" title=" " alt="" coords="377,73,408,110,404,114,373,76"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="92,277,162,302"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="195,146,87,165,42,179,25,188,14,198,9,208,9,218,22,238,49,255,80,270,78,274,46,260,19,242,4,220,4,207,10,194,22,184,40,175,86,160,195,141"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="25,196,133,221"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="241,151,124,193,123,188,239,146"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="158,196,259,221"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="263,150,230,187,226,184,259,147"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="283,196,384,221"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="283,147,316,184,312,187,279,150"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="409,196,520,221"/>
+<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="303,146,421,189,419,194,301,151"/>
+<area shape="rect" id="Node000008" href="$stm32__usb__uart_8h.html" title="VCOM driver for stm32 as a no_os_uart implementation." alt="" coords="544,196,683,221"/>
+<area shape="poly" id="edge7_Node000002_Node000008" title=" " alt="" coords="327,145,546,191,544,196,326,151"/>
+<area shape="poly" id="edge8_Node000008_Node000003" title=" " alt="" coords="544,224,177,283,176,278,544,219"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="326,277,408,302"/>
+<area shape="poly" id="edge9_Node000008_Node000009" title=" " alt="" coords="577,224,423,272,414,275,412,270,421,267,575,219"/>
+<area shape="rect" id="Node000010" title=" " alt="" coords="433,277,538,302"/>
+<area shape="poly" id="edge10_Node000008_Node000010" title=" " alt="" coords="596,224,518,272,515,267,593,219"/>
+<area shape="rect" id="Node000011" title=" " alt="" coords="562,277,665,302"/>
+<area shape="poly" id="edge11_Node000008_Node000011" title=" " alt="" coords="616,222,616,263,611,263,611,222"/>
+<area shape="rect" id="Node000012" title=" " alt="" coords="690,277,767,302"/>
+<area shape="poly" id="edge12_Node000008_Node000012" title=" " alt="" coords="632,219,702,267,699,271,629,224"/>
+<area shape="rect" id="Node000013" title=" " alt="" coords="791,269,948,309"/>
+<area shape="poly" id="edge13_Node000008_Node000013" title=" " alt="" coords="652,219,796,263,794,268,650,224"/>
 </map>

@@ -86,21 +86,38 @@ $(function() {
 <div class="textblock"><code>#include &lt;stdint.h&gt;</code><br />
 <code>#include &quot;stm32_uart.h&quot;</code><br />
 <code>#include &quot;stm32_spi.h&quot;</code><br />
+<code>#include &quot;stm32_i2c.h&quot;</code><br />
 <code>#include &quot;stm32_gpio.h&quot;</code><br />
+<code>#include &quot;<a class="el" href="stm32__usb__uart_8h_source.html">stm32_usb_uart.h</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for app_config_stm32.h:</div>
 <div class="dyncontent">
 <div class="center"><img src="ltc2672__iio_2app_2app__config__stm32_8h__incl.png" border="0" usemap="#a_2home_2runner_2work_2precision-converters-firmware_2precision-converters-firmware_2projects_2ltc2672__iio_2app_2app__config__stm32_8h" alt=""/></div>
 <map name="a_2home_2runner_2work_2precision-converters-firmware_2precision-converters-firmware_2projects_2ltc2672__iio_2app_2app__config__stm32_8h" id="a_2home_2runner_2work_2precision-converters-firmware_2precision-converters-firmware_2projects_2ltc2672__iio_2app_2app__config__stm32_8h">
-<area shape="rect" title="Header file for STM32 platform configurations." alt="" coords="89,5,347,75"/>
-<area shape="rect" title=" " alt="" coords="5,123,76,148"/>
-<area shape="poly" title=" " alt="" coords="155,77,76,118,74,114,153,72"/>
-<area shape="rect" title=" " alt="" coords="100,123,208,148"/>
-<area shape="poly" title=" " alt="" coords="197,76,172,113,168,110,193,73"/>
-<area shape="rect" title=" " alt="" coords="233,123,334,148"/>
-<area shape="poly" title=" " alt="" coords="244,73,269,110,265,113,239,76"/>
-<area shape="rect" title=" " alt="" coords="359,123,469,148"/>
-<area shape="poly" title=" " alt="" coords="290,72,379,114,376,119,288,77"/>
+<area shape="rect" title="Header file for STM32 platform configurations." alt="" coords="141,5,400,75"/>
+<area shape="rect" title=" " alt="" coords="91,203,162,229"/>
+<area shape="poly" title=" " alt="" coords="142,53,105,63,71,77,40,98,14,124,9,135,9,145,23,165,48,182,79,196,77,201,46,187,19,169,4,147,4,134,10,121,36,94,68,73,104,58,140,48"/>
+<area shape="rect" title=" " alt="" coords="25,123,133,148"/>
+<area shape="poly" title=" " alt="" coords="202,77,116,119,113,114,200,72"/>
+<area shape="rect" title=" " alt="" coords="157,123,259,148"/>
+<area shape="poly" title=" " alt="" coords="250,76,226,113,221,110,246,73"/>
+<area shape="rect" title=" " alt="" coords="283,123,384,148"/>
+<area shape="poly" title=" " alt="" coords="295,73,320,110,316,113,291,76"/>
+<area shape="rect" title=" " alt="" coords="409,123,519,148"/>
+<area shape="poly" title=" " alt="" coords="341,72,429,114,426,119,339,77"/>
+<area shape="rect" href="stm32__usb__uart_8h.html" title="VCOM driver for stm32 as a no_os_uart implementation." alt="" coords="544,123,683,148"/>
+<area shape="poly" title=" " alt="" coords="395,72,559,116,557,122,394,77"/>
+<area shape="poly" title=" " alt="" coords="544,150,176,209,175,204,543,145"/>
+<area shape="rect" title=" " alt="" coords="325,203,408,229"/>
+<area shape="poly" title=" " alt="" coords="576,151,422,199,413,201,412,196,420,193,574,146"/>
+<area shape="rect" title=" " alt="" coords="433,203,538,229"/>
+<area shape="poly" title=" " alt="" coords="596,150,517,198,514,194,593,146"/>
+<area shape="rect" title=" " alt="" coords="562,203,665,229"/>
+<area shape="poly" title=" " alt="" coords="616,148,616,189,611,189,611,148"/>
+<area shape="rect" title=" " alt="" coords="689,203,767,229"/>
+<area shape="poly" title=" " alt="" coords="632,146,701,193,698,198,629,150"/>
+<area shape="rect" title=" " alt="" coords="791,196,948,236"/>
+<area shape="poly" title=" " alt="" coords="651,145,795,189,794,195,650,151"/>
 </map>
 </div>
 </div><div class="textblock"><div class="dynheader">
@@ -108,9 +125,17 @@ This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
 <div class="center"><img src="ltc2672__iio_2app_2app__config__stm32_8h__dep__incl.png" border="0" usemap="#a_2home_2runner_2work_2precision-converters-firmware_2precision-converters-firmware_2projects_2ltc2672__iio_2app_2app__config__stm32_8hdep" alt=""/></div>
 <map name="a_2home_2runner_2work_2precision-converters-firmware_2precision-converters-firmware_2projects_2ltc2672__iio_2app_2app__config__stm32_8hdep" id="a_2home_2runner_2work_2precision-converters-firmware_2precision-converters-firmware_2projects_2ltc2672__iio_2app_2app__config__stm32_8hdep">
-<area shape="rect" title="Header file for STM32 platform configurations." alt="" coords="5,5,264,75"/>
-<area shape="rect" href="ltc2672__iio_2app_2app__config__stm32_8c.html" title="Application configurations module for STM32 platform." alt="" coords="5,123,264,192"/>
-<area shape="poly" title=" " alt="" coords="137,89,137,122,132,122,132,89"/>
+<area shape="rect" title="Header file for STM32 platform configurations." alt="" coords="366,5,625,75"/>
+<area shape="rect" href="ltc2672__iio_2app_2app__config_8h.html" title="Configuration file for LTC2672 device application." alt="" coords="252,123,475,192"/>
+<area shape="poly" title=" " alt="" coords="448,86,404,124,400,120,445,82"/>
+<area shape="rect" href="ltc2672__iio_2app_2app__config__stm32_8c.html" title="Application configurations module for STM32 platform." alt="" coords="498,123,757,192"/>
+<area shape="poly" title=" " alt="" coords="546,82,590,120,587,124,542,86"/>
+<area shape="rect" href="ltc2672__iio_2app_2app__config_8c.html" title="Application configurations module (platform&#45;agnostic)" alt="" coords="5,240,228,309"/>
+<area shape="poly" title=" " alt="" coords="280,200,190,242,188,237,278,195"/>
+<area shape="rect" href="ltc2672__iio_8c.html" title="Implementation of LTC2672 IIO application interfaces." alt="" coords="252,240,475,309"/>
+<area shape="poly" title=" " alt="" coords="366,206,366,240,361,240,361,206"/>
+<area shape="rect" href="ltc2672__user__config_8c.html" title="User configurations for LTC2672 No&#45;OS driver." alt="" coords="499,240,769,309"/>
+<area shape="poly" title=" " alt="" coords="456,195,556,237,554,242,454,200"/>
 </map>
 </div>
 </div>
@@ -124,24 +149,84 @@ Macros</h2></td></tr>
 <tr class="separator:a26e35b6d28f9337234bdfd7f653836c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adff4ff00d8f3375e4fb198270ae24597" id="r_adff4ff00d8f3375e4fb198270ae24597"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ltc2672__iio_2app_2app__config__stm32_8h.html#adff4ff00d8f3375e4fb198270ae24597">UART_IRQ_ID</a>&#160;&#160;&#160;UART5_IRQn</td></tr>
 <tr class="separator:adff4ff00d8f3375e4fb198270ae24597"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac617edcaff8f15e6f16ca30f28a883b3" id="r_ac617edcaff8f15e6f16ca30f28a883b3"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ltc2672__iio_2app_2app__config__stm32_8h.html#ac617edcaff8f15e6f16ca30f28a883b3">I2C_DEV_ID</a>&#160;&#160;&#160;1</td></tr>
+<tr class="separator:ac617edcaff8f15e6f16ca30f28a883b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2264889066fc41987d29395b4772bd17" id="r_a2264889066fc41987d29395b4772bd17"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ltc2672__iio_2app_2app__config__stm32_8h.html#a2264889066fc41987d29395b4772bd17">SPI_DEVICE_ID</a>&#160;&#160;&#160;1</td></tr>
 <tr class="separator:a2264889066fc41987d29395b4772bd17"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6dc78fc30202ccac1f51bc2daedc14d1" id="r_a6dc78fc30202ccac1f51bc2daedc14d1"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ltc2672__iio_2app_2app__config__stm32_8h.html#a6dc78fc30202ccac1f51bc2daedc14d1">SPI_CSB</a>&#160;&#160;&#160;15</td></tr>
 <tr class="separator:a6dc78fc30202ccac1f51bc2daedc14d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aaba079e97fe22f8d442335d255d410ba" id="r_aaba079e97fe22f8d442335d255d410ba"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ltc2672__iio_2app_2app__config__stm32_8h.html#aaba079e97fe22f8d442335d255d410ba">STM32_SPI_CS_PORT</a>&#160;&#160;&#160;0</td></tr>
 <tr class="separator:aaba079e97fe22f8d442335d255d410ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa7f8a683fd3bf396cb721f0ea3b800d9" id="r_aa7f8a683fd3bf396cb721f0ea3b800d9"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ltc2672__iio_2app_2app__config__stm32_8h.html#aa7f8a683fd3bf396cb721f0ea3b800d9">MAX_SPI_SCLK</a>&#160;&#160;&#160;18000000</td></tr>
+<tr class="separator:aa7f8a683fd3bf396cb721f0ea3b800d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4ecb2360c84a3f55fda53bb26538f11d" id="r_a4ecb2360c84a3f55fda53bb26538f11d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ltc2672__iio_2app_2app__config__stm32_8h.html#a4ecb2360c84a3f55fda53bb26538f11d">GPIO_CLR_PIN</a>&#160;&#160;&#160;10</td></tr>
+<tr class="separator:a4ecb2360c84a3f55fda53bb26538f11d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adf6dc36779dcb536ed9b1103ca5a301d" id="r_adf6dc36779dcb536ed9b1103ca5a301d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ltc2672__iio_2app_2app__config__stm32_8h.html#adf6dc36779dcb536ed9b1103ca5a301d">GPIO_CLR_PORT</a>&#160;&#160;&#160;6</td></tr>
+<tr class="separator:adf6dc36779dcb536ed9b1103ca5a301d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a382973334080858d05d0bb83db4ef383" id="r_a382973334080858d05d0bb83db4ef383"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ltc2672__iio_2app_2app__config__stm32_8h.html#a382973334080858d05d0bb83db4ef383">GPIO_LDAC_PIN</a>&#160;&#160;&#160;10</td></tr>
+<tr class="separator:a382973334080858d05d0bb83db4ef383"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9a2df5cbbf7e873951b9bc590f9bd9d2" id="r_a9a2df5cbbf7e873951b9bc590f9bd9d2"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ltc2672__iio_2app_2app__config__stm32_8h.html#a9a2df5cbbf7e873951b9bc590f9bd9d2">GPIO_LDAC_PORT</a>&#160;&#160;&#160;0</td></tr>
+<tr class="separator:a9a2df5cbbf7e873951b9bc590f9bd9d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5b90c6f3f5ae5a3dbd385bbf7b5492f7" id="r_a5b90c6f3f5ae5a3dbd385bbf7b5492f7"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ltc2672__iio_2app_2app__config__stm32_8h.html#a5b90c6f3f5ae5a3dbd385bbf7b5492f7">GPIO_TGP_PIN</a>&#160;&#160;&#160;11</td></tr>
+<tr class="separator:a5b90c6f3f5ae5a3dbd385bbf7b5492f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6a5b97cd43341cb8af5448f535f60014" id="r_a6a5b97cd43341cb8af5448f535f60014"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ltc2672__iio_2app_2app__config__stm32_8h.html#a6a5b97cd43341cb8af5448f535f60014">GPIO_TGP_PORT</a>&#160;&#160;&#160;0</td></tr>
+<tr class="separator:a6a5b97cd43341cb8af5448f535f60014"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a583d752e0eb5265369f4eb90c69993a9" id="r_a583d752e0eb5265369f4eb90c69993a9"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ltc2672__iio_2app_2app__config__stm32_8h.html#a583d752e0eb5265369f4eb90c69993a9">GPIO_FAULT_PIN</a>&#160;&#160;&#160;12</td></tr>
+<tr class="separator:a583d752e0eb5265369f4eb90c69993a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8a074199c95fe95ec564f63e280d7114" id="r_a8a074199c95fe95ec564f63e280d7114"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ltc2672__iio_2app_2app__config__stm32_8h.html#a8a074199c95fe95ec564f63e280d7114">GPIO_FAULT_PORT</a>&#160;&#160;&#160;3</td></tr>
+<tr class="separator:a8a074199c95fe95ec564f63e280d7114"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a27c2aa74e962fe345d18a7522a8414d7" id="r_a27c2aa74e962fe345d18a7522a8414d7"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ltc2672__iio_2app_2app__config__stm32_8h.html#a27c2aa74e962fe345d18a7522a8414d7">TOGGLE_PWM_ID</a>&#160;&#160;&#160;1</td></tr>
+<tr class="separator:a27c2aa74e962fe345d18a7522a8414d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a03b014d5adba4f8c7c5f2e35434e97a3" id="r_a03b014d5adba4f8c7c5f2e35434e97a3"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ltc2672__iio_2app_2app__config__stm32_8h.html#a03b014d5adba4f8c7c5f2e35434e97a3">TOGGLE_PWM_PRESCALER</a>&#160;&#160;&#160;1</td></tr>
+<tr class="separator:a03b014d5adba4f8c7c5f2e35434e97a3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9779c82dd358c5328b74dd16b94418a4" id="r_a9779c82dd358c5328b74dd16b94418a4"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ltc2672__iio_2app_2app__config__stm32_8h.html#a9779c82dd358c5328b74dd16b94418a4">TOGGLE_PWM_CHANNEL</a>&#160;&#160;&#160;4</td></tr>
+<tr class="separator:a9779c82dd358c5328b74dd16b94418a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1fba2444c956b4849cc4967404873ecc" id="r_a1fba2444c956b4849cc4967404873ecc"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ltc2672__iio_2app_2app__config__stm32_8h.html#a1fba2444c956b4849cc4967404873ecc">TOGGLE_PWM_CLK_MULTIPLIER</a>&#160;&#160;&#160;2</td></tr>
+<tr class="separator:a1fba2444c956b4849cc4967404873ecc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4da01785924029f2edca372ce61bc74b" id="r_a4da01785924029f2edca372ce61bc74b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ltc2672__iio_2app_2app__config__stm32_8h.html#a4da01785924029f2edca372ce61bc74b">TOGGLE_PWM_HANDLE</a>&#160;&#160;&#160;<a class="el" href="ad469x__iio_2app_2app__config__stm32_8h.html#a25fc663547539bc49fecc0011bd76ab5">htim1</a></td></tr>
+<tr class="separator:a4da01785924029f2edca372ce61bc74b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1de69c73f829a03f46f5e7690da7e79a" id="r_a1de69c73f829a03f46f5e7690da7e79a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ltc2672__iio_2app_2app__config__stm32_8h.html#a1de69c73f829a03f46f5e7690da7e79a">UART_ID</a>&#160;&#160;&#160;0</td></tr>
 <tr class="separator:a1de69c73f829a03f46f5e7690da7e79a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab8a3cecf3246ca49585f55dbb7b9d435" id="r_ab8a3cecf3246ca49585f55dbb7b9d435"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ltc2672__iio_2app_2app__config__stm32_8h.html#ab8a3cecf3246ca49585f55dbb7b9d435">spi_extra_init_params</a>&#160;&#160;&#160;<a class="el" href="ad3530r__iio_2app_2app__config__stm32_8c.html#a5f3dc167565aa4172277c027f847a48f">stm32_spi_init_params</a></td></tr>
 <tr class="separator:ab8a3cecf3246ca49585f55dbb7b9d435"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0218303728bba1f6bc0b725266ccbbd4" id="r_a0218303728bba1f6bc0b725266ccbbd4"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ltc2672__iio_2app_2app__config__stm32_8h.html#a0218303728bba1f6bc0b725266ccbbd4">uart_extra_init_params</a>&#160;&#160;&#160;<a class="el" href="ad3530r__iio_2app_2app__config__stm32_8c.html#af17f32e64f9b5e345c8caf210d177b14">stm32_uart_init_params</a></td></tr>
 <tr class="separator:a0218303728bba1f6bc0b725266ccbbd4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5d0039d2f60b5109c03e1daf4134b20c" id="r_a5d0039d2f60b5109c03e1daf4134b20c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ltc2672__iio_2app_2app__config__stm32_8h.html#a5d0039d2f60b5109c03e1daf4134b20c">vcom_extra_init_params</a>&#160;&#160;&#160;<a class="el" href="ad3530r__iio_2app_2app__config__stm32_8c.html#ad6c530882dee1bb34bfde4c8bf40eb9c">stm32_vcom_extra_init_params</a></td></tr>
+<tr class="separator:a5d0039d2f60b5109c03e1daf4134b20c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acd77116b0ea0060040ff4a153c35d2ac" id="r_acd77116b0ea0060040ff4a153c35d2ac"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ltc2672__iio_2app_2app__config__stm32_8h.html#acd77116b0ea0060040ff4a153c35d2ac">gpio_ldac_extra_params</a>&#160;&#160;&#160;<a class="el" href="ltc2672__iio_2app_2app__config__stm32_8c.html#a4fe8c427095752a48e5848aa87a478bf">stm32_gpio_ldac_params</a></td></tr>
+<tr class="separator:acd77116b0ea0060040ff4a153c35d2ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a35ca19f31d9c32342d01e729357aa2bc" id="r_a35ca19f31d9c32342d01e729357aa2bc"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ltc2672__iio_2app_2app__config__stm32_8h.html#a35ca19f31d9c32342d01e729357aa2bc">gpio_clear_extra_params</a>&#160;&#160;&#160;<a class="el" href="ltc2672__iio_2app_2app__config__stm32_8c.html#a655a8a6a8a56deaa70c3f1554425b262">stm32_gpio_clear_params</a></td></tr>
+<tr class="separator:a35ca19f31d9c32342d01e729357aa2bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a41624f9741c34ed9be1fca567e33be76" id="r_a41624f9741c34ed9be1fca567e33be76"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ltc2672__iio_2app_2app__config__stm32_8h.html#a41624f9741c34ed9be1fca567e33be76">gpio_toggle_extra_params</a>&#160;&#160;&#160;<a class="el" href="ltc2672__iio_2app_2app__config__stm32_8c.html#abafcabd690b9a0e7b3329b5d275f3aee">stm32_gpio_toggle_params</a></td></tr>
+<tr class="separator:a41624f9741c34ed9be1fca567e33be76"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4684e76cfb78e35883ec624ac58a094c" id="r_a4684e76cfb78e35883ec624ac58a094c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ltc2672__iio_2app_2app__config__stm32_8h.html#a4684e76cfb78e35883ec624ac58a094c">gpio_fault_extra_params</a>&#160;&#160;&#160;<a class="el" href="ltc2672__iio_2app_2app__config__stm32_8c.html#a90e049d31fb2a557421f676a3cf540b2">stm32_gpio_fault_params</a></td></tr>
+<tr class="separator:a4684e76cfb78e35883ec624ac58a094c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad8b57f342df0100c4ba6097ccc8c6a7f" id="r_ad8b57f342df0100c4ba6097ccc8c6a7f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ltc2672__iio_2app_2app__config__stm32_8h.html#ad8b57f342df0100c4ba6097ccc8c6a7f">toggle_pwm_extra_init_params</a>&#160;&#160;&#160;<a class="el" href="ltc2672__iio_2app_2app__config__stm32_8c.html#aefaa7d4d5d0f7257ef47a13caafda268">stm32_toggle_pwm_init_params</a></td></tr>
+<tr class="separator:ad8b57f342df0100c4ba6097ccc8c6a7f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afed0eee99f4a3a6266b0bb6dff91b3ef" id="r_afed0eee99f4a3a6266b0bb6dff91b3ef"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ltc2672__iio_2app_2app__config__stm32_8h.html#afed0eee99f4a3a6266b0bb6dff91b3ef">toggle_pwm_gpio_extra_params</a>&#160;&#160;&#160;<a class="el" href="ltc2672__iio_2app_2app__config__stm32_8c.html#aea0f33c16eae8282571af99baef747ff">stm32_toggle_pwm_gpio_params</a></td></tr>
+<tr class="separator:afed0eee99f4a3a6266b0bb6dff91b3ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a94a5e0dc135efcaaeacfbaf36f4f5ff4" id="r_a94a5e0dc135efcaaeacfbaf36f4f5ff4"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ltc2672__iio_2app_2app__config__stm32_8h.html#a94a5e0dc135efcaaeacfbaf36f4f5ff4">trigger_gpio_irq_extra_params</a>&#160;&#160;&#160;<a class="el" href="ltc2672__iio_2app_2app__config__stm32_8h.html#a2c8c7b29e44281c4beb0530e9b8394e4">stm32_trigger_gpio_irq_params</a></td></tr>
+<tr class="separator:a94a5e0dc135efcaaeacfbaf36f4f5ff4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a79830dd38aaae12b8956a81b716f7fa5" id="r_a79830dd38aaae12b8956a81b716f7fa5"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ltc2672__iio_2app_2app__config__stm32_8h.html#a79830dd38aaae12b8956a81b716f7fa5">gpio_ops</a>&#160;&#160;&#160;stm32_gpio_ops</td></tr>
 <tr class="separator:a79830dd38aaae12b8956a81b716f7fa5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7bb5897c5faa9b4edb6bf5868a8dc75d" id="r_a7bb5897c5faa9b4edb6bf5868a8dc75d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ltc2672__iio_2app_2app__config__stm32_8h.html#a7bb5897c5faa9b4edb6bf5868a8dc75d">i2c_ops</a>&#160;&#160;&#160;stm32_i2c_ops</td></tr>
+<tr class="separator:a7bb5897c5faa9b4edb6bf5868a8dc75d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa470d2a15f37bae689fd091f85b670a1" id="r_aa470d2a15f37bae689fd091f85b670a1"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ltc2672__iio_2app_2app__config__stm32_8h.html#aa470d2a15f37bae689fd091f85b670a1">spi_ops</a>&#160;&#160;&#160;stm32_spi_ops</td></tr>
 <tr class="separator:aa470d2a15f37bae689fd091f85b670a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acc53ed106567a5a56e1bdf6aa73728bc" id="r_acc53ed106567a5a56e1bdf6aa73728bc"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ltc2672__iio_2app_2app__config__stm32_8h.html#acc53ed106567a5a56e1bdf6aa73728bc">uart_ops</a>&#160;&#160;&#160;stm32_uart_ops</td></tr>
 <tr class="separator:acc53ed106567a5a56e1bdf6aa73728bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad7c095ac25ce9f903c7c0a9a50002bd4" id="r_ad7c095ac25ce9f903c7c0a9a50002bd4"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ltc2672__iio_2app_2app__config__stm32_8h.html#ad7c095ac25ce9f903c7c0a9a50002bd4">vcom_ops</a>&#160;&#160;&#160;<a class="el" href="stm32__usb__uart_8c.html#a6dceccf184841511477807d38729696b">stm32_usb_uart_ops</a></td></tr>
+<tr class="separator:ad7c095ac25ce9f903c7c0a9a50002bd4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9b6ac61cf1859752ae6b375e319a55c5" id="r_a9b6ac61cf1859752ae6b375e319a55c5"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ltc2672__iio_2app_2app__config__stm32_8h.html#a9b6ac61cf1859752ae6b375e319a55c5">pwm_ops</a>&#160;&#160;&#160;stm32_pwm_ops</td></tr>
+<tr class="separator:a9b6ac61cf1859752ae6b375e319a55c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aea695cfd66cb4b1c25c5f56b59d9ad1e" id="r_aea695cfd66cb4b1c25c5f56b59d9ad1e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ltc2672__iio_2app_2app__config__stm32_8h.html#aea695cfd66cb4b1c25c5f56b59d9ad1e">trigger_gpio_irq_ops</a>&#160;&#160;&#160;stm32_gpio_irq_ops</td></tr>
+<tr class="separator:aea695cfd66cb4b1c25c5f56b59d9ad1e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a33955f4422376f81452075c653e5ef50" id="r_a33955f4422376f81452075c653e5ef50"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ltc2672__iio_2app_2app__config__stm32_8h.html#a33955f4422376f81452075c653e5ef50">LTC2672_MAX_TOGGLE_RATE</a>&#160;&#160;&#160;500000</td></tr>
+<tr class="separator:a33955f4422376f81452075c653e5ef50"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa60a24bd23f9d8c79dd61aec85521bed" id="r_aa60a24bd23f9d8c79dd61aec85521bed"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ltc2672__iio_2app_2app__config__stm32_8h.html#aa60a24bd23f9d8c79dd61aec85521bed">FREQ_TO_NSEC</a>(x)&#160;&#160;&#160;(((float)(1.0 / x) * 1000000) * 1000)</td></tr>
+<tr class="separator:aa60a24bd23f9d8c79dd61aec85521bed"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad92f0583e945a22dbba38a3b6873fc37" id="r_ad92f0583e945a22dbba38a3b6873fc37"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ltc2672__iio_2app_2app__config__stm32_8h.html#ad92f0583e945a22dbba38a3b6873fc37">DUTY_CYCLE_NSEC</a>(x)&#160;&#160;&#160;((x) / 2)</td></tr>
+<tr class="separator:ad92f0583e945a22dbba38a3b6873fc37"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
@@ -153,14 +238,38 @@ Functions</h2></td></tr>
 Variables</h2></td></tr>
 <tr class="memitem:af17f32e64f9b5e345c8caf210d177b14" id="r_af17f32e64f9b5e345c8caf210d177b14"><td class="memItemLeft" align="right" valign="top">struct stm32_uart_init_param&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ltc2672__iio_2app_2app__config__stm32_8h.html#af17f32e64f9b5e345c8caf210d177b14">stm32_uart_init_params</a></td></tr>
 <tr class="separator:af17f32e64f9b5e345c8caf210d177b14"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad6c530882dee1bb34bfde4c8bf40eb9c" id="r_ad6c530882dee1bb34bfde4c8bf40eb9c"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structstm32__usb__uart__init__param.html">stm32_usb_uart_init_param</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ltc2672__iio_2app_2app__config__stm32_8h.html#ad6c530882dee1bb34bfde4c8bf40eb9c">stm32_vcom_extra_init_params</a></td></tr>
+<tr class="separator:ad6c530882dee1bb34bfde4c8bf40eb9c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5f3dc167565aa4172277c027f847a48f" id="r_a5f3dc167565aa4172277c027f847a48f"><td class="memItemLeft" align="right" valign="top">struct stm32_spi_init_param&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ltc2672__iio_2app_2app__config__stm32_8h.html#a5f3dc167565aa4172277c027f847a48f">stm32_spi_init_params</a></td></tr>
 <tr class="separator:a5f3dc167565aa4172277c027f847a48f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4fe8c427095752a48e5848aa87a478bf" id="r_a4fe8c427095752a48e5848aa87a478bf"><td class="memItemLeft" align="right" valign="top">struct stm32_gpio_init_param&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ltc2672__iio_2app_2app__config__stm32_8h.html#a4fe8c427095752a48e5848aa87a478bf">stm32_gpio_ldac_params</a></td></tr>
+<tr class="separator:a4fe8c427095752a48e5848aa87a478bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a655a8a6a8a56deaa70c3f1554425b262" id="r_a655a8a6a8a56deaa70c3f1554425b262"><td class="memItemLeft" align="right" valign="top">struct stm32_gpio_init_param&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ltc2672__iio_2app_2app__config__stm32_8h.html#a655a8a6a8a56deaa70c3f1554425b262">stm32_gpio_clear_params</a></td></tr>
+<tr class="separator:a655a8a6a8a56deaa70c3f1554425b262"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abafcabd690b9a0e7b3329b5d275f3aee" id="r_abafcabd690b9a0e7b3329b5d275f3aee"><td class="memItemLeft" align="right" valign="top">struct stm32_gpio_init_param&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ltc2672__iio_2app_2app__config__stm32_8h.html#abafcabd690b9a0e7b3329b5d275f3aee">stm32_gpio_toggle_params</a></td></tr>
+<tr class="separator:abafcabd690b9a0e7b3329b5d275f3aee"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a90e049d31fb2a557421f676a3cf540b2" id="r_a90e049d31fb2a557421f676a3cf540b2"><td class="memItemLeft" align="right" valign="top">struct stm32_gpio_init_param&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ltc2672__iio_2app_2app__config__stm32_8h.html#a90e049d31fb2a557421f676a3cf540b2">stm32_gpio_fault_params</a></td></tr>
+<tr class="separator:a90e049d31fb2a557421f676a3cf540b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aefaa7d4d5d0f7257ef47a13caafda268" id="r_aefaa7d4d5d0f7257ef47a13caafda268"><td class="memItemLeft" align="right" valign="top">struct stm32_pwm_init_param&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ltc2672__iio_2app_2app__config__stm32_8h.html#aefaa7d4d5d0f7257ef47a13caafda268">stm32_toggle_pwm_init_params</a></td></tr>
+<tr class="separator:aefaa7d4d5d0f7257ef47a13caafda268"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aea0f33c16eae8282571af99baef747ff" id="r_aea0f33c16eae8282571af99baef747ff"><td class="memItemLeft" align="right" valign="top">struct stm32_gpio_init_param&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ltc2672__iio_2app_2app__config__stm32_8h.html#aea0f33c16eae8282571af99baef747ff">stm32_toggle_pwm_gpio_params</a></td></tr>
+<tr class="separator:aea0f33c16eae8282571af99baef747ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3690af1355fa3833b4284df337b841ba" id="r_a3690af1355fa3833b4284df337b841ba"><td class="memItemLeft" align="right" valign="top">struct stm32_pwm_init_param&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ltc2672__iio_2app_2app__config__stm32_8h.html#a3690af1355fa3833b4284df337b841ba">stm32_ldac_pwm_init_params</a></td></tr>
+<tr class="separator:a3690af1355fa3833b4284df337b841ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a56eb5ab9aa3ba25f64bba9d2f6a639ac" id="r_a56eb5ab9aa3ba25f64bba9d2f6a639ac"><td class="memItemLeft" align="right" valign="top">struct stm32_gpio_init_param&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ltc2672__iio_2app_2app__config__stm32_8h.html#a56eb5ab9aa3ba25f64bba9d2f6a639ac">stm32_ldac_pwm_gpio_params</a></td></tr>
+<tr class="separator:a56eb5ab9aa3ba25f64bba9d2f6a639ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2c8c7b29e44281c4beb0530e9b8394e4" id="r_a2c8c7b29e44281c4beb0530e9b8394e4"><td class="memItemLeft" align="right" valign="top">struct stm32_gpio_irq_init_param&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ltc2672__iio_2app_2app__config__stm32_8h.html#a2c8c7b29e44281c4beb0530e9b8394e4">stm32_trigger_gpio_irq_params</a></td></tr>
+<tr class="separator:a2c8c7b29e44281c4beb0530e9b8394e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a25a82fcf0cd24eb6d39977cb5864cec8" id="r_a25a82fcf0cd24eb6d39977cb5864cec8"><td class="memItemLeft" align="right" valign="top">UART_HandleTypeDef&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ltc2672__iio_2app_2app__config__stm32_8h.html#a25a82fcf0cd24eb6d39977cb5864cec8">huart5</a></td></tr>
 <tr class="separator:a25a82fcf0cd24eb6d39977cb5864cec8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5abca88253610d01e7e250f30d72cc5b" id="r_a5abca88253610d01e7e250f30d72cc5b"><td class="memItemLeft" align="right" valign="top">USBD_HandleTypeDef&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ltc2672__iio_2app_2app__config__stm32_8h.html#a5abca88253610d01e7e250f30d72cc5b">hUsbDeviceHS</a></td></tr>
+<tr class="separator:a5abca88253610d01e7e250f30d72cc5b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2440c9322e39fe3548dc2be6720ac1cf" id="r_a2440c9322e39fe3548dc2be6720ac1cf"><td class="memItemLeft" align="right" valign="top">TIM_HandleTypeDef&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ltc2672__iio_2app_2app__config__stm32_8h.html#a2440c9322e39fe3548dc2be6720ac1cf">TOGGLE_PWM_HANDLE</a></td></tr>
+<tr class="separator:a2440c9322e39fe3548dc2be6720ac1cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Header file for STM32 platform configurations. </p>
-<p>Copyright (c) 2024 Analog Devices, Inc. All rights reserved.</p>
+<p>Copyright (c) 2024-25 Analog Devices, Inc. All rights reserved.</p>
 <p>This software is proprietary to Analog Devices, Inc. and its licensors. By using this software you agree to the terms of the associated Analog Devices Software License Agreement. </p>
 </div><h2 class="groupheader">Macro Definition Documentation</h2>
 <a id="a26e35b6d28f9337234bdfd7f653836c5" name="a26e35b6d28f9337234bdfd7f653836c5"></a>
@@ -177,6 +286,168 @@ Variables</h2></td></tr>
 
 </div>
 </div>
+<a id="ad92f0583e945a22dbba38a3b6873fc37" name="ad92f0583e945a22dbba38a3b6873fc37"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad92f0583e945a22dbba38a3b6873fc37">&#9670;&#160;</a></span>DUTY_CYCLE_NSEC</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define DUTY_CYCLE_NSEC</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">x</td><td>)</td>
+          <td>&#160;&#160;&#160;((x) / 2)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aa60a24bd23f9d8c79dd61aec85521bed" name="aa60a24bd23f9d8c79dd61aec85521bed"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa60a24bd23f9d8c79dd61aec85521bed">&#9670;&#160;</a></span>FREQ_TO_NSEC</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define FREQ_TO_NSEC</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">x</td><td>)</td>
+          <td>&#160;&#160;&#160;(((float)(1.0 / x) * 1000000) * 1000)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a35ca19f31d9c32342d01e729357aa2bc" name="a35ca19f31d9c32342d01e729357aa2bc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a35ca19f31d9c32342d01e729357aa2bc">&#9670;&#160;</a></span>gpio_clear_extra_params</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define gpio_clear_extra_params&#160;&#160;&#160;<a class="el" href="ltc2672__iio_2app_2app__config__stm32_8c.html#a655a8a6a8a56deaa70c3f1554425b262">stm32_gpio_clear_params</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a4ecb2360c84a3f55fda53bb26538f11d" name="a4ecb2360c84a3f55fda53bb26538f11d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4ecb2360c84a3f55fda53bb26538f11d">&#9670;&#160;</a></span>GPIO_CLR_PIN</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define GPIO_CLR_PIN&#160;&#160;&#160;10</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="adf6dc36779dcb536ed9b1103ca5a301d" name="adf6dc36779dcb536ed9b1103ca5a301d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adf6dc36779dcb536ed9b1103ca5a301d">&#9670;&#160;</a></span>GPIO_CLR_PORT</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define GPIO_CLR_PORT&#160;&#160;&#160;6</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a4684e76cfb78e35883ec624ac58a094c" name="a4684e76cfb78e35883ec624ac58a094c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4684e76cfb78e35883ec624ac58a094c">&#9670;&#160;</a></span>gpio_fault_extra_params</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define gpio_fault_extra_params&#160;&#160;&#160;<a class="el" href="ltc2672__iio_2app_2app__config__stm32_8c.html#a90e049d31fb2a557421f676a3cf540b2">stm32_gpio_fault_params</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a583d752e0eb5265369f4eb90c69993a9" name="a583d752e0eb5265369f4eb90c69993a9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a583d752e0eb5265369f4eb90c69993a9">&#9670;&#160;</a></span>GPIO_FAULT_PIN</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define GPIO_FAULT_PIN&#160;&#160;&#160;12</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a8a074199c95fe95ec564f63e280d7114" name="a8a074199c95fe95ec564f63e280d7114"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8a074199c95fe95ec564f63e280d7114">&#9670;&#160;</a></span>GPIO_FAULT_PORT</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define GPIO_FAULT_PORT&#160;&#160;&#160;3</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="acd77116b0ea0060040ff4a153c35d2ac" name="acd77116b0ea0060040ff4a153c35d2ac"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acd77116b0ea0060040ff4a153c35d2ac">&#9670;&#160;</a></span>gpio_ldac_extra_params</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define gpio_ldac_extra_params&#160;&#160;&#160;<a class="el" href="ltc2672__iio_2app_2app__config__stm32_8c.html#a4fe8c427095752a48e5848aa87a478bf">stm32_gpio_ldac_params</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a382973334080858d05d0bb83db4ef383" name="a382973334080858d05d0bb83db4ef383"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a382973334080858d05d0bb83db4ef383">&#9670;&#160;</a></span>GPIO_LDAC_PIN</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define GPIO_LDAC_PIN&#160;&#160;&#160;10</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a9a2df5cbbf7e873951b9bc590f9bd9d2" name="a9a2df5cbbf7e873951b9bc590f9bd9d2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9a2df5cbbf7e873951b9bc590f9bd9d2">&#9670;&#160;</a></span>GPIO_LDAC_PORT</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define GPIO_LDAC_PORT&#160;&#160;&#160;0</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a79830dd38aaae12b8956a81b716f7fa5" name="a79830dd38aaae12b8956a81b716f7fa5"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a79830dd38aaae12b8956a81b716f7fa5">&#9670;&#160;</a></span>gpio_ops</h2>
 
@@ -185,6 +456,118 @@ Variables</h2></td></tr>
       <table class="memname">
         <tr>
           <td class="memname">#define gpio_ops&#160;&#160;&#160;stm32_gpio_ops</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a5b90c6f3f5ae5a3dbd385bbf7b5492f7" name="a5b90c6f3f5ae5a3dbd385bbf7b5492f7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5b90c6f3f5ae5a3dbd385bbf7b5492f7">&#9670;&#160;</a></span>GPIO_TGP_PIN</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define GPIO_TGP_PIN&#160;&#160;&#160;11</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a6a5b97cd43341cb8af5448f535f60014" name="a6a5b97cd43341cb8af5448f535f60014"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6a5b97cd43341cb8af5448f535f60014">&#9670;&#160;</a></span>GPIO_TGP_PORT</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define GPIO_TGP_PORT&#160;&#160;&#160;0</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a41624f9741c34ed9be1fca567e33be76" name="a41624f9741c34ed9be1fca567e33be76"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a41624f9741c34ed9be1fca567e33be76">&#9670;&#160;</a></span>gpio_toggle_extra_params</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define gpio_toggle_extra_params&#160;&#160;&#160;<a class="el" href="ltc2672__iio_2app_2app__config__stm32_8c.html#abafcabd690b9a0e7b3329b5d275f3aee">stm32_gpio_toggle_params</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ac617edcaff8f15e6f16ca30f28a883b3" name="ac617edcaff8f15e6f16ca30f28a883b3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac617edcaff8f15e6f16ca30f28a883b3">&#9670;&#160;</a></span>I2C_DEV_ID</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define I2C_DEV_ID&#160;&#160;&#160;1</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a7bb5897c5faa9b4edb6bf5868a8dc75d" name="a7bb5897c5faa9b4edb6bf5868a8dc75d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7bb5897c5faa9b4edb6bf5868a8dc75d">&#9670;&#160;</a></span>i2c_ops</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define i2c_ops&#160;&#160;&#160;stm32_i2c_ops</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a33955f4422376f81452075c653e5ef50" name="a33955f4422376f81452075c653e5ef50"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a33955f4422376f81452075c653e5ef50">&#9670;&#160;</a></span>LTC2672_MAX_TOGGLE_RATE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define LTC2672_MAX_TOGGLE_RATE&#160;&#160;&#160;500000</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aa7f8a683fd3bf396cb721f0ea3b800d9" name="aa7f8a683fd3bf396cb721f0ea3b800d9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa7f8a683fd3bf396cb721f0ea3b800d9">&#9670;&#160;</a></span>MAX_SPI_SCLK</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MAX_SPI_SCLK&#160;&#160;&#160;18000000</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a9b6ac61cf1859752ae6b375e319a55c5" name="a9b6ac61cf1859752ae6b375e319a55c5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9b6ac61cf1859752ae6b375e319a55c5">&#9670;&#160;</a></span>pwm_ops</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define pwm_ops&#160;&#160;&#160;stm32_pwm_ops</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -275,6 +658,132 @@ Variables</h2></td></tr>
 
 </div>
 </div>
+<a id="a9779c82dd358c5328b74dd16b94418a4" name="a9779c82dd358c5328b74dd16b94418a4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9779c82dd358c5328b74dd16b94418a4">&#9670;&#160;</a></span>TOGGLE_PWM_CHANNEL</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define TOGGLE_PWM_CHANNEL&#160;&#160;&#160;4</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a1fba2444c956b4849cc4967404873ecc" name="a1fba2444c956b4849cc4967404873ecc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1fba2444c956b4849cc4967404873ecc">&#9670;&#160;</a></span>TOGGLE_PWM_CLK_MULTIPLIER</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define TOGGLE_PWM_CLK_MULTIPLIER&#160;&#160;&#160;2</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad8b57f342df0100c4ba6097ccc8c6a7f" name="ad8b57f342df0100c4ba6097ccc8c6a7f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad8b57f342df0100c4ba6097ccc8c6a7f">&#9670;&#160;</a></span>toggle_pwm_extra_init_params</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define toggle_pwm_extra_init_params&#160;&#160;&#160;<a class="el" href="ltc2672__iio_2app_2app__config__stm32_8c.html#aefaa7d4d5d0f7257ef47a13caafda268">stm32_toggle_pwm_init_params</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="afed0eee99f4a3a6266b0bb6dff91b3ef" name="afed0eee99f4a3a6266b0bb6dff91b3ef"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afed0eee99f4a3a6266b0bb6dff91b3ef">&#9670;&#160;</a></span>toggle_pwm_gpio_extra_params</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define toggle_pwm_gpio_extra_params&#160;&#160;&#160;<a class="el" href="ltc2672__iio_2app_2app__config__stm32_8c.html#aea0f33c16eae8282571af99baef747ff">stm32_toggle_pwm_gpio_params</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a4da01785924029f2edca372ce61bc74b" name="a4da01785924029f2edca372ce61bc74b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4da01785924029f2edca372ce61bc74b">&#9670;&#160;</a></span>TOGGLE_PWM_HANDLE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define TOGGLE_PWM_HANDLE&#160;&#160;&#160;<a class="el" href="ad469x__iio_2app_2app__config__stm32_8h.html#a25fc663547539bc49fecc0011bd76ab5">htim1</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a27c2aa74e962fe345d18a7522a8414d7" name="a27c2aa74e962fe345d18a7522a8414d7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a27c2aa74e962fe345d18a7522a8414d7">&#9670;&#160;</a></span>TOGGLE_PWM_ID</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define TOGGLE_PWM_ID&#160;&#160;&#160;1</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a03b014d5adba4f8c7c5f2e35434e97a3" name="a03b014d5adba4f8c7c5f2e35434e97a3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a03b014d5adba4f8c7c5f2e35434e97a3">&#9670;&#160;</a></span>TOGGLE_PWM_PRESCALER</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define TOGGLE_PWM_PRESCALER&#160;&#160;&#160;1</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a94a5e0dc135efcaaeacfbaf36f4f5ff4" name="a94a5e0dc135efcaaeacfbaf36f4f5ff4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a94a5e0dc135efcaaeacfbaf36f4f5ff4">&#9670;&#160;</a></span>trigger_gpio_irq_extra_params</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define trigger_gpio_irq_extra_params&#160;&#160;&#160;<a class="el" href="ltc2672__iio_2app_2app__config__stm32_8h.html#a2c8c7b29e44281c4beb0530e9b8394e4">stm32_trigger_gpio_irq_params</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aea695cfd66cb4b1c25c5f56b59d9ad1e" name="aea695cfd66cb4b1c25c5f56b59d9ad1e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aea695cfd66cb4b1c25c5f56b59d9ad1e">&#9670;&#160;</a></span>trigger_gpio_irq_ops</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define trigger_gpio_irq_ops&#160;&#160;&#160;stm32_gpio_irq_ops</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a0218303728bba1f6bc0b725266ccbbd4" name="a0218303728bba1f6bc0b725266ccbbd4"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a0218303728bba1f6bc0b725266ccbbd4">&#9670;&#160;</a></span>uart_extra_init_params</h2>
 
@@ -331,6 +840,34 @@ Variables</h2></td></tr>
 
 </div>
 </div>
+<a id="a5d0039d2f60b5109c03e1daf4134b20c" name="a5d0039d2f60b5109c03e1daf4134b20c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5d0039d2f60b5109c03e1daf4134b20c">&#9670;&#160;</a></span>vcom_extra_init_params</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define vcom_extra_init_params&#160;&#160;&#160;<a class="el" href="ad3530r__iio_2app_2app__config__stm32_8c.html#ad6c530882dee1bb34bfde4c8bf40eb9c">stm32_vcom_extra_init_params</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad7c095ac25ce9f903c7c0a9a50002bd4" name="ad7c095ac25ce9f903c7c0a9a50002bd4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad7c095ac25ce9f903c7c0a9a50002bd4">&#9670;&#160;</a></span>vcom_ops</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define vcom_ops&#160;&#160;&#160;<a class="el" href="stm32__usb__uart_8c.html#a6dceccf184841511477807d38729696b">stm32_usb_uart_ops</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <h2 class="groupheader">Function Documentation</h2>
 <a id="a7256d80c59f9d4eafcebc79f1b73ba72" name="a7256d80c59f9d4eafcebc79f1b73ba72"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a7256d80c59f9d4eafcebc79f1b73ba72">&#9670;&#160;</a></span>stm32_system_init()</h2>
@@ -376,6 +913,160 @@ Variables</h2></td></tr>
 
 </div>
 </div>
+<a id="a5abca88253610d01e7e250f30d72cc5b" name="a5abca88253610d01e7e250f30d72cc5b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5abca88253610d01e7e250f30d72cc5b">&#9670;&#160;</a></span>hUsbDeviceHS</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">USBD_HandleTypeDef hUsbDeviceHS</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a655a8a6a8a56deaa70c3f1554425b262" name="a655a8a6a8a56deaa70c3f1554425b262"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a655a8a6a8a56deaa70c3f1554425b262">&#9670;&#160;</a></span>stm32_gpio_clear_params</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">struct stm32_gpio_init_param stm32_gpio_clear_params</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a90e049d31fb2a557421f676a3cf540b2" name="a90e049d31fb2a557421f676a3cf540b2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a90e049d31fb2a557421f676a3cf540b2">&#9670;&#160;</a></span>stm32_gpio_fault_params</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">struct stm32_gpio_init_param stm32_gpio_fault_params</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a4fe8c427095752a48e5848aa87a478bf" name="a4fe8c427095752a48e5848aa87a478bf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4fe8c427095752a48e5848aa87a478bf">&#9670;&#160;</a></span>stm32_gpio_ldac_params</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">struct stm32_gpio_init_param stm32_gpio_ldac_params</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="abafcabd690b9a0e7b3329b5d275f3aee" name="abafcabd690b9a0e7b3329b5d275f3aee"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abafcabd690b9a0e7b3329b5d275f3aee">&#9670;&#160;</a></span>stm32_gpio_toggle_params</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">struct stm32_gpio_init_param stm32_gpio_toggle_params</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a56eb5ab9aa3ba25f64bba9d2f6a639ac" name="a56eb5ab9aa3ba25f64bba9d2f6a639ac"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a56eb5ab9aa3ba25f64bba9d2f6a639ac">&#9670;&#160;</a></span>stm32_ldac_pwm_gpio_params</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">struct stm32_gpio_init_param stm32_ldac_pwm_gpio_params</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a3690af1355fa3833b4284df337b841ba" name="a3690af1355fa3833b4284df337b841ba"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3690af1355fa3833b4284df337b841ba">&#9670;&#160;</a></span>stm32_ldac_pwm_init_params</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">struct stm32_pwm_init_param stm32_ldac_pwm_init_params</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a5f3dc167565aa4172277c027f847a48f" name="a5f3dc167565aa4172277c027f847a48f"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a5f3dc167565aa4172277c027f847a48f">&#9670;&#160;</a></span>stm32_spi_init_params</h2>
 
@@ -398,6 +1089,72 @@ Variables</h2></td></tr>
 
 </div>
 </div>
+<a id="aea0f33c16eae8282571af99baef747ff" name="aea0f33c16eae8282571af99baef747ff"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aea0f33c16eae8282571af99baef747ff">&#9670;&#160;</a></span>stm32_toggle_pwm_gpio_params</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">struct stm32_gpio_init_param stm32_toggle_pwm_gpio_params</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aefaa7d4d5d0f7257ef47a13caafda268" name="aefaa7d4d5d0f7257ef47a13caafda268"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aefaa7d4d5d0f7257ef47a13caafda268">&#9670;&#160;</a></span>stm32_toggle_pwm_init_params</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">struct stm32_pwm_init_param stm32_toggle_pwm_init_params</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a2c8c7b29e44281c4beb0530e9b8394e4" name="a2c8c7b29e44281c4beb0530e9b8394e4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2c8c7b29e44281c4beb0530e9b8394e4">&#9670;&#160;</a></span>stm32_trigger_gpio_irq_params</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">struct stm32_gpio_irq_init_param stm32_trigger_gpio_irq_params</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="af17f32e64f9b5e345c8caf210d177b14" name="af17f32e64f9b5e345c8caf210d177b14"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#af17f32e64f9b5e345c8caf210d177b14">&#9670;&#160;</a></span>stm32_uart_init_params</h2>
 
@@ -409,6 +1166,50 @@ Variables</h2></td></tr>
       <table class="memname">
         <tr>
           <td class="memname">struct stm32_uart_init_param stm32_uart_init_params</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad6c530882dee1bb34bfde4c8bf40eb9c" name="ad6c530882dee1bb34bfde4c8bf40eb9c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad6c530882dee1bb34bfde4c8bf40eb9c">&#9670;&#160;</a></span>stm32_vcom_extra_init_params</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">struct <a class="el" href="structstm32__usb__uart__init__param.html">stm32_usb_uart_init_param</a> stm32_vcom_extra_init_params</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a2440c9322e39fe3548dc2be6720ac1cf" name="a2440c9322e39fe3548dc2be6720ac1cf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2440c9322e39fe3548dc2be6720ac1cf">&#9670;&#160;</a></span>TOGGLE_PWM_HANDLE</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">TIM_HandleTypeDef TOGGLE_PWM_HANDLE</td>
         </tr>
       </table>
   </td>

@@ -1,0 +1,11 @@
+<map id="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ltc2672_iio/app/version.h" name="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ltc2672_iio/app/version.h">
+<area shape="rect" id="Node000001" title="Version macros for ADI LTC2672." alt="" coords="252,5,475,75"/>
+<area shape="rect" id="Node000002" href="$ltc2672__iio_2app_2app__config_8h.html" title="Configuration file for LTC2672 device application." alt="" coords="252,123,475,192"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="366,89,366,122,361,122,361,89"/>
+<area shape="rect" id="Node000003" href="$ltc2672__iio_2app_2app__config_8c.html" title="Application configurations module (platform&#45;agnostic)" alt="" coords="5,240,228,309"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="280,200,190,242,188,237,278,195"/>
+<area shape="rect" id="Node000004" href="$ltc2672__iio_8c.html" title="Implementation of LTC2672 IIO application interfaces." alt="" coords="252,240,475,309"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="366,206,366,240,361,240,361,206"/>
+<area shape="rect" id="Node000005" href="$ltc2672__user__config_8c.html" title="User configurations for LTC2672 No&#45;OS driver." alt="" coords="499,240,769,309"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="456,195,556,237,554,242,454,200"/>
+</map>

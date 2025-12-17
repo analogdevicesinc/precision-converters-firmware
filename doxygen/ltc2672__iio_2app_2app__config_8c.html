@@ -83,65 +83,86 @@ $(function() {
 <p>Application configurations module (platform-agnostic)  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="ltc2672__iio_2app_2app__config_8h_source.html">app_config.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="ltc2672__user__config_8h_source.html">ltc2672_user_config.h</a>&quot;</code><br />
 <code>#include &quot;no_os_util.h&quot;</code><br />
 <code>#include &quot;<a class="el" href="common_8h_source.html">common.h</a>&quot;</code><br />
 <code>#include &quot;no_os_error.h&quot;</code><br />
 <code>#include &quot;no_os_uart.h&quot;</code><br />
-<code>#include &quot;no_os_irq.h&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for app_config.c:</div>
 <div class="dyncontent">
 <div class="center"><img src="ltc2672__iio_2app_2app__config_8c__incl.png" border="0" usemap="#a_2home_2runner_2work_2precision-converters-firmware_2precision-converters-firmware_2projects_2ltc2672__iio_2app_2app__config_8c" alt=""/></div>
 <map name="a_2home_2runner_2work_2precision-converters-firmware_2precision-converters-firmware_2projects_2ltc2672__iio_2app_2app__config_8c" id="a_2home_2runner_2work_2precision-converters-firmware_2precision-converters-firmware_2projects_2ltc2672__iio_2app_2app__config_8c">
-<area shape="rect" title="Application configurations module (platform&#45;agnostic)" alt="" coords="1033,5,1256,75"/>
-<area shape="rect" href="ltc2672__iio_2app_2app__config_8h.html" title="Configuration file for LTC2672 device application." alt="" coords="494,123,598,148"/>
-<area shape="poly" title=" " alt="" coords="1034,61,612,126,611,121,1033,56"/>
-<area shape="rect" title=" " alt="" coords="1139,123,1239,148"/>
-<area shape="poly" title=" " alt="" coords="1163,74,1180,109,1175,111,1158,76"/>
-<area shape="rect" href="common_8h.html" title=" " alt="" coords="973,123,1063,148"/>
-<area shape="poly" title=" " alt="" coords="1101,77,1047,116,1043,112,1097,73"/>
-<area shape="rect" title=" " alt="" coords="1310,196,1419,221"/>
-<area shape="poly" title=" " alt="" coords="1130,76,1120,113,1122,130,1129,146,1150,157,1192,169,1297,192,1296,197,1190,174,1148,162,1125,150,1117,132,1115,112,1124,74"/>
-<area shape="rect" title=" " alt="" coords="1263,123,1368,148"/>
-<area shape="poly" title=" " alt="" coords="1208,72,1284,114,1281,118,1205,77"/>
-<area shape="rect" title=" " alt="" coords="1393,123,1489,148"/>
-<area shape="poly" title=" " alt="" coords="1252,72,1392,116,1391,121,1251,77"/>
-<area shape="rect" title=" " alt="" coords="631,269,701,295"/>
-<area shape="poly" title=" " alt="" coords="556,147,612,220,647,258,643,261,608,223,552,150"/>
-<area shape="rect" title=" " alt="" coords="465,196,547,221"/>
-<area shape="poly" title=" " alt="" coords="542,150,522,185,517,183,537,147"/>
-<area shape="rect" href="ltc2672__iio_2app_2app__config__mbed_8h.html" title="Header file for Mbed platform configurations." alt="" coords="292,196,440,221"/>
-<area shape="poly" title=" " alt="" coords="518,151,409,193,407,188,516,146"/>
-<area shape="poly" title=" " alt="" coords="415,219,618,267,617,272,414,224"/>
-<area shape="rect" title=" " alt="" coords="5,269,105,295"/>
-<area shape="poly" title=" " alt="" coords="317,224,119,269,118,264,315,219"/>
-<area shape="rect" title=" " alt="" coords="130,269,234,295"/>
-<area shape="poly" title=" " alt="" coords="337,224,226,267,224,262,335,219"/>
-<area shape="rect" title=" " alt="" coords="259,269,353,295"/>
-<area shape="poly" title=" " alt="" coords="358,223,327,261,322,257,354,220"/>
-<area shape="rect" title=" " alt="" coords="377,269,475,295"/>
-<area shape="poly" title=" " alt="" coords="378,220,410,257,405,261,374,223"/>
-<area shape="rect" title=" " alt="" coords="499,269,606,295"/>
-<area shape="poly" title=" " alt="" coords="397,219,510,262,509,267,395,224"/>
-<area shape="poly" title=" " alt="" coords="1015,149,992,186,975,207,954,224,894,252,829,270,768,280,715,283,715,278,767,274,828,265,892,247,951,219,971,203,988,183,1010,147"/>
-<area shape="rect" title=" " alt="" coords="1017,196,1099,221"/>
-<area shape="poly" title=" " alt="" coords="1027,147,1047,183,1042,185,1022,150"/>
-<area shape="rect" title=" " alt="" coords="1124,196,1195,221"/>
-<area shape="poly" title=" " alt="" coords="1042,146,1125,187,1123,192,1040,150"/>
-<area shape="rect" title=" " alt="" coords="1219,196,1286,221"/>
-<area shape="poly" title=" " alt="" coords="1056,145,1207,191,1206,196,1055,151"/>
-<area shape="rect" title=" " alt="" coords="622,196,673,221"/>
-<area shape="poly" title=" " alt="" coords="973,146,847,166,686,199,685,193,847,161,972,140"/>
-<area shape="rect" title=" " alt="" coords="697,196,787,221"/>
-<area shape="poly" title=" " alt="" coords="974,151,801,195,799,190,973,145"/>
-<area shape="rect" title=" " alt="" coords="812,196,941,221"/>
-<area shape="poly" title=" " alt="" coords="996,150,913,192,911,187,994,146"/>
-<area shape="poly" title=" " alt="" coords="1064,143,1297,191,1296,196,1063,149"/>
+<area shape="rect" title="Application configurations module (platform&#45;agnostic)" alt="" coords="1264,5,1487,75"/>
+<area shape="rect" href="ltc2672__iio_2app_2app__config_8h.html" title="Configuration file for LTC2672 device application." alt="" coords="379,123,483,148"/>
+<area shape="poly" title=" " alt="" coords="1264,55,497,130,497,125,1264,50"/>
+<area shape="rect" title=" " alt="" coords="1619,350,1724,375"/>
+<area shape="poly" title=" " alt="" coords="1487,50,1560,67,1635,94,1672,113,1706,136,1736,163,1762,195,1770,214,1771,235,1766,256,1757,276,1729,313,1699,343,1695,339,1725,310,1752,273,1761,254,1766,235,1765,216,1757,197,1732,167,1702,140,1669,118,1633,99,1558,72,1486,55"/>
+<area shape="rect" href="ltc2672__user__config_8h.html" title=" " alt="" coords="931,123,1094,148"/>
+<area shape="poly" title=" " alt="" coords="1264,72,1071,122,1070,117,1263,67"/>
+<area shape="rect" title=" " alt="" coords="1385,123,1485,148"/>
+<area shape="poly" title=" " alt="" coords="1399,73,1423,109,1418,112,1395,76"/>
+<area shape="rect" href="common_8h.html" title=" " alt="" coords="1270,123,1361,148"/>
+<area shape="poly" title=" " alt="" coords="1356,76,1333,112,1328,109,1351,73"/>
+<area shape="rect" title=" " alt="" coords="1638,196,1747,221"/>
+<area shape="poly" title=" " alt="" coords="1440,72,1660,187,1658,192,1438,77"/>
+<area shape="rect" title=" " alt="" coords="656,350,727,375"/>
+<area shape="poly" title=" " alt="" coords="435,148,440,177,451,216,469,257,496,293,529,317,568,335,607,347,643,354,642,359,606,352,566,340,527,322,492,297,464,260,446,217,435,178,430,148"/>
+<area shape="rect" title=" " alt="" coords="867,196,950,221"/>
+<area shape="poly" title=" " alt="" coords="484,142,854,197,853,202,483,147"/>
+<area shape="rect" title=" " alt="" coords="5,196,116,221"/>
+<area shape="poly" title=" " alt="" coords="380,149,130,197,129,192,379,144"/>
+<area shape="rect" href="ltc2672__iio_2app_2version_8h.html" title="Version macros for ADI LTC2672." alt="" coords="141,196,223,221"/>
+<area shape="poly" title=" " alt="" coords="392,151,236,195,235,190,391,145"/>
+<area shape="rect" href="common__macros_8h.html" title="The file contain common macros that needs to be followed same across all the projects." alt="" coords="247,196,394,221"/>
+<area shape="poly" title=" " alt="" coords="415,150,352,191,349,186,412,146"/>
+<area shape="rect" href="ltc2672__iio_2app_2app__config__stm32_8h.html" title="Header file for STM32 platform configurations." alt="" coords="627,196,779,221"/>
+<area shape="poly" title=" " alt="" coords="476,145,647,190,646,195,474,151"/>
+<area shape="rect" href="adi__version_8h.html" title="ADI Version macros." alt="" coords="127,269,237,295"/>
+<area shape="poly" title=" " alt="" coords="185,222,185,256,179,256,179,222"/>
+<area shape="poly" title=" " alt="" coords="628,215,595,221,563,232,534,248,511,271,503,288,507,302,518,314,537,325,589,342,643,353,642,358,587,347,535,330,515,319,502,304,498,287,506,268,531,244,561,227,594,216,627,210"/>
+<area shape="rect" title=" " alt="" coords="520,269,628,295"/>
+<area shape="poly" title=" " alt="" coords="684,224,609,265,606,260,681,219"/>
+<area shape="rect" title=" " alt="" coords="653,269,754,295"/>
+<area shape="poly" title=" " alt="" coords="706,222,706,256,701,256,701,222"/>
+<area shape="rect" title=" " alt="" coords="778,269,879,295"/>
+<area shape="poly" title=" " alt="" coords="725,219,798,260,795,265,722,224"/>
+<area shape="rect" title=" " alt="" coords="904,269,1015,295"/>
+<area shape="poly" title=" " alt="" coords="745,219,906,263,904,268,744,224"/>
+<area shape="rect" href="stm32__usb__uart_8h.html" title="VCOM driver for stm32 as a no_os_uart implementation." alt="" coords="1170,269,1309,295"/>
+<area shape="poly" title=" " alt="" coords="780,217,1157,267,1156,272,779,223"/>
+<area shape="poly" title=" " alt="" coords="1170,296,741,357,740,352,1170,291"/>
+<area shape="rect" title=" " alt="" coords="1479,350,1562,375"/>
+<area shape="poly" title=" " alt="" coords="1281,292,1467,344,1466,349,1280,297"/>
+<area shape="poly" title=" " alt="" coords="1306,292,1574,340,1605,346,1604,351,1574,345,1305,297"/>
+<area shape="rect" title=" " alt="" coords="1188,350,1291,375"/>
+<area shape="poly" title=" " alt="" coords="1242,295,1242,336,1237,336,1237,295"/>
+<area shape="rect" title=" " alt="" coords="1315,350,1393,375"/>
+<area shape="poly" title=" " alt="" coords="1258,293,1327,340,1324,344,1255,297"/>
+<area shape="rect" title=" " alt="" coords="1006,343,1163,383"/>
+<area shape="poly" title=" " alt="" coords="1218,297,1135,339,1133,334,1215,292"/>
+<area shape="poly" title=" " alt="" coords="997,150,939,190,936,186,994,146"/>
+<area shape="poly" title=" " alt="" coords="1270,143,1144,162,1085,178,1063,187,1048,198,1040,209,1037,221,1039,245,1042,271,1038,284,1029,297,1008,311,978,323,901,342,815,354,741,361,740,356,815,349,900,336,977,318,1006,306,1025,293,1033,282,1036,270,1034,246,1032,220,1035,207,1044,194,1060,183,1083,173,1143,157,1269,138"/>
+<area shape="poly" title=" " alt="" coords="1361,143,1493,170,1550,184,1577,194,1587,212,1591,232,1589,252,1583,272,1564,310,1542,340,1538,337,1560,307,1578,270,1584,251,1586,232,1582,214,1574,198,1548,189,1492,176,1360,148"/>
+<area shape="rect" title=" " alt="" coords="1057,196,1128,221"/>
+<area shape="poly" title=" " alt="" coords="1280,151,1142,194,1140,189,1279,145"/>
+<area shape="rect" title=" " alt="" coords="1153,196,1219,221"/>
+<area shape="poly" title=" " alt="" coords="1296,150,1221,191,1218,187,1293,146"/>
+<area shape="rect" title=" " alt="" coords="1243,196,1294,221"/>
+<area shape="poly" title=" " alt="" coords="1310,150,1286,186,1282,183,1305,147"/>
+<area shape="rect" title=" " alt="" coords="1318,196,1409,221"/>
+<area shape="poly" title=" " alt="" coords="1325,147,1350,183,1346,186,1321,150"/>
+<area shape="rect" title=" " alt="" coords="1433,196,1563,221"/>
+<area shape="poly" title=" " alt="" coords="1346,146,1456,188,1454,193,1344,151"/>
+<area shape="poly" title=" " alt="" coords="1361,143,1374,145,1625,192,1624,197,1374,151,1360,148"/>
 </map>
 </div>
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
+<tr class="memitem:adaf46e15c93e1851d175d9f2eb7daa91" id="r_adaf46e15c93e1851d175d9f2eb7daa91"><td class="memItemLeft" align="right" valign="top">int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ltc2672__iio_2app_2app__config_8c.html#adaf46e15c93e1851d175d9f2eb7daa91">init_pwm</a> (void)</td></tr>
+<tr class="memdesc:adaf46e15c93e1851d175d9f2eb7daa91"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize the PWM interface.  <br /></td></tr>
+<tr class="separator:adaf46e15c93e1851d175d9f2eb7daa91"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aba990e48bb1b87852ff6a375f0c2f655" id="r_aba990e48bb1b87852ff6a375f0c2f655"><td class="memItemLeft" align="right" valign="top">int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ltc2672__iio_2app_2app__config_8c.html#aba990e48bb1b87852ff6a375f0c2f655">init_system</a> (void)</td></tr>
 <tr class="memdesc:aba990e48bb1b87852ff6a375f0c2f655"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize the system peripherals.  <br /></td></tr>
 <tr class="separator:aba990e48bb1b87852ff6a375f0c2f655"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -152,17 +173,54 @@ Variables</h2></td></tr>
 <tr class="separator:ad89c42fd1f298cbded160888cf1ac641"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0b6bf22c29d6acff9e8eed8bd22f4f9f" id="r_a0b6bf22c29d6acff9e8eed8bd22f4f9f"><td class="memItemLeft" align="right" valign="top">struct no_os_uart_init_param&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ltc2672__iio_2app_2app__config_8c.html#a0b6bf22c29d6acff9e8eed8bd22f4f9f">uart_console_stdio_init_params</a></td></tr>
 <tr class="separator:a0b6bf22c29d6acff9e8eed8bd22f4f9f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a73c9d910439350311c24465038864a07" id="r_a73c9d910439350311c24465038864a07"><td class="memItemLeft" align="right" valign="top">struct no_os_gpio_init_param&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ltc2672__iio_2app_2app__config_8c.html#a73c9d910439350311c24465038864a07">toggle_pwm_gpio_params</a></td></tr>
+<tr class="separator:a73c9d910439350311c24465038864a07"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a50a30966de60662d6e5a9409f1f48c47" id="r_a50a30966de60662d6e5a9409f1f48c47"><td class="memItemLeft" align="right" valign="top">struct no_os_pwm_init_param&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ltc2672__iio_2app_2app__config_8c.html#a50a30966de60662d6e5a9409f1f48c47">toggle_pwm_init_params</a></td></tr>
+<tr class="separator:a50a30966de60662d6e5a9409f1f48c47"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa6f3be6e813afee496ddad30cd994987" id="r_aa6f3be6e813afee496ddad30cd994987"><td class="memItemLeft" align="right" valign="top">struct no_os_uart_desc *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ltc2672__iio_2app_2app__config_8c.html#aa6f3be6e813afee496ddad30cd994987">uart_iio_com_desc</a></td></tr>
 <tr class="separator:aa6f3be6e813afee496ddad30cd994987"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afe54820c1e9d26888bd767dd63680b2d" id="r_afe54820c1e9d26888bd767dd63680b2d"><td class="memItemLeft" align="right" valign="top">struct no_os_uart_desc *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ltc2672__iio_2app_2app__config_8c.html#afe54820c1e9d26888bd767dd63680b2d">uart_console_stdio_desc</a></td></tr>
 <tr class="separator:afe54820c1e9d26888bd767dd63680b2d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3e28ad761469de0b6f49f66710c878a0" id="r_a3e28ad761469de0b6f49f66710c878a0"><td class="memItemLeft" align="right" valign="top">struct no_os_eeprom_desc *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ltc2672__iio_2app_2app__config_8c.html#a3e28ad761469de0b6f49f66710c878a0">eeprom_desc</a></td></tr>
+<tr class="separator:a3e28ad761469de0b6f49f66710c878a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaefac3f513dbc6eafc729de0571d75d8" id="r_aaefac3f513dbc6eafc729de0571d75d8"><td class="memItemLeft" align="right" valign="top">struct no_os_gpio_desc *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ltc2672__iio_2app_2app__config_8c.html#aaefac3f513dbc6eafc729de0571d75d8">gpio_ldac_desc</a></td></tr>
+<tr class="separator:aaefac3f513dbc6eafc729de0571d75d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a02143831315a70eaac9bf45e0e9401be" id="r_a02143831315a70eaac9bf45e0e9401be"><td class="memItemLeft" align="right" valign="top">struct no_os_gpio_desc *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ltc2672__iio_2app_2app__config_8c.html#a02143831315a70eaac9bf45e0e9401be">gpio_clear_desc</a></td></tr>
+<tr class="separator:a02143831315a70eaac9bf45e0e9401be"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a10ce467e7562e4542d33db55c5419e3e" id="r_a10ce467e7562e4542d33db55c5419e3e"><td class="memItemLeft" align="right" valign="top">struct no_os_gpio_desc *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ltc2672__iio_2app_2app__config_8c.html#a10ce467e7562e4542d33db55c5419e3e">gpio_toggle_desc</a></td></tr>
+<tr class="separator:a10ce467e7562e4542d33db55c5419e3e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afdf1beed0a94090062441ed999a0d869" id="r_afdf1beed0a94090062441ed999a0d869"><td class="memItemLeft" align="right" valign="top">struct no_os_pwm_desc *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ltc2672__iio_2app_2app__config_8c.html#afdf1beed0a94090062441ed999a0d869">toggle_pwm_desc</a></td></tr>
+<tr class="separator:afdf1beed0a94090062441ed999a0d869"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a90ca77ca028c4f50b8a539d01af5b310" id="r_a90ca77ca028c4f50b8a539d01af5b310"><td class="memItemLeft" align="right" valign="top">struct no_os_pwm_desc *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ltc2672__iio_2app_2app__config_8c.html#a90ca77ca028c4f50b8a539d01af5b310">ldac_pwm_desc</a></td></tr>
+<tr class="separator:a90ca77ca028c4f50b8a539d01af5b310"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Application configurations module (platform-agnostic) </p>
 <p>This module performs the system configurations</p>
-<p>Copyright (c) 2023-24 Analog Devices, Inc. All rights reserved.</p>
+<p>Copyright (c) 2023-25 Analog Devices, Inc. All rights reserved.</p>
 <p>This software is proprietary to Analog Devices, Inc. and its licensors. By using this software you agree to the terms of the associated Analog Devices Software License Agreement. </p>
 </div><h2 class="groupheader">Function Documentation</h2>
+<a id="adaf46e15c93e1851d175d9f2eb7daa91" name="adaf46e15c93e1851d175d9f2eb7daa91"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adaf46e15c93e1851d175d9f2eb7daa91">&#9670;&#160;</a></span>init_pwm()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int32_t init_pwm </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Initialize the PWM interface. </p>
+<dl class="section return"><dt>Returns</dt><dd>0 in case of success, negative error code otherwise. </dd></dl>
+
+</div>
+</div>
 <a id="aba990e48bb1b87852ff6a375f0c2f655" name="aba990e48bb1b87852ff6a375f0c2f655"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aba990e48bb1b87852ff6a375f0c2f655">&#9670;&#160;</a></span>init_system()</h2>
 
@@ -195,6 +253,144 @@ Here is the caller graph for this function:</div>
 </div>
 </div>
 <h2 class="groupheader">Variable Documentation</h2>
+<a id="a3e28ad761469de0b6f49f66710c878a0" name="a3e28ad761469de0b6f49f66710c878a0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3e28ad761469de0b6f49f66710c878a0">&#9670;&#160;</a></span>eeprom_desc</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">struct no_os_eeprom_desc* eeprom_desc</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a02143831315a70eaac9bf45e0e9401be" name="a02143831315a70eaac9bf45e0e9401be"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a02143831315a70eaac9bf45e0e9401be">&#9670;&#160;</a></span>gpio_clear_desc</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">struct no_os_gpio_desc* gpio_clear_desc</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aaefac3f513dbc6eafc729de0571d75d8" name="aaefac3f513dbc6eafc729de0571d75d8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaefac3f513dbc6eafc729de0571d75d8">&#9670;&#160;</a></span>gpio_ldac_desc</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">struct no_os_gpio_desc* gpio_ldac_desc</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a10ce467e7562e4542d33db55c5419e3e" name="a10ce467e7562e4542d33db55c5419e3e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a10ce467e7562e4542d33db55c5419e3e">&#9670;&#160;</a></span>gpio_toggle_desc</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">struct no_os_gpio_desc* gpio_toggle_desc</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a90ca77ca028c4f50b8a539d01af5b310" name="a90ca77ca028c4f50b8a539d01af5b310"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a90ca77ca028c4f50b8a539d01af5b310">&#9670;&#160;</a></span>ldac_pwm_desc</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">struct no_os_pwm_desc* ldac_pwm_desc</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="afdf1beed0a94090062441ed999a0d869" name="afdf1beed0a94090062441ed999a0d869"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afdf1beed0a94090062441ed999a0d869">&#9670;&#160;</a></span>toggle_pwm_desc</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">struct no_os_pwm_desc* toggle_pwm_desc</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a73c9d910439350311c24465038864a07" name="a73c9d910439350311c24465038864a07"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a73c9d910439350311c24465038864a07">&#9670;&#160;</a></span>toggle_pwm_gpio_params</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">struct no_os_gpio_init_param toggle_pwm_gpio_params</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line">= {</div>
+<div class="line">    .port = <a class="code hl_define" href="ltc2672__iio_2app_2app__config__stm32_8h.html#a6a5b97cd43341cb8af5448f535f60014">GPIO_TGP_PORT</a>,</div>
+<div class="line">    .number = <a class="code hl_define" href="ltc2672__iio_2app_2app__config__stm32_8h.html#a5b90c6f3f5ae5a3dbd385bbf7b5492f7">GPIO_TGP_PIN</a>,</div>
+<div class="line">    .platform_ops = &amp;<a class="code hl_define" href="ad2s1210__iio_2app_2app__config_8h.html#a79830dd38aaae12b8956a81b716f7fa5">gpio_ops</a>,</div>
+<div class="line">    .extra = &amp;<a class="code hl_define" href="ltc2672__iio_2app_2app__config__stm32_8h.html#afed0eee99f4a3a6266b0bb6dff91b3ef">toggle_pwm_gpio_extra_params</a></div>
+<div class="line">}</div>
+<div class="ttc" id="aad2s1210__iio_2app_2app__config_8h_html_a79830dd38aaae12b8956a81b716f7fa5"><div class="ttname"><a href="ad2s1210__iio_2app_2app__config_8h.html#a79830dd38aaae12b8956a81b716f7fa5">gpio_ops</a></div><div class="ttdeci">#define gpio_ops</div><div class="ttdef"><b>Definition</b> app_config.h:85</div></div>
+<div class="ttc" id="altc2672__iio_2app_2app__config__stm32_8h_html_a5b90c6f3f5ae5a3dbd385bbf7b5492f7"><div class="ttname"><a href="ltc2672__iio_2app_2app__config__stm32_8h.html#a5b90c6f3f5ae5a3dbd385bbf7b5492f7">GPIO_TGP_PIN</a></div><div class="ttdeci">#define GPIO_TGP_PIN</div><div class="ttdef"><b>Definition</b> app_config_stm32.h:58</div></div>
+<div class="ttc" id="altc2672__iio_2app_2app__config__stm32_8h_html_a6a5b97cd43341cb8af5448f535f60014"><div class="ttname"><a href="ltc2672__iio_2app_2app__config__stm32_8h.html#a6a5b97cd43341cb8af5448f535f60014">GPIO_TGP_PORT</a></div><div class="ttdeci">#define GPIO_TGP_PORT</div><div class="ttdef"><b>Definition</b> app_config_stm32.h:59</div></div>
+<div class="ttc" id="altc2672__iio_2app_2app__config__stm32_8h_html_afed0eee99f4a3a6266b0bb6dff91b3ef"><div class="ttname"><a href="ltc2672__iio_2app_2app__config__stm32_8h.html#afed0eee99f4a3a6266b0bb6dff91b3ef">toggle_pwm_gpio_extra_params</a></div><div class="ttdeci">#define toggle_pwm_gpio_extra_params</div><div class="ttdef"><b>Definition</b> app_config_stm32.h:82</div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a50a30966de60662d6e5a9409f1f48c47" name="a50a30966de60662d6e5a9409f1f48c47"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a50a30966de60662d6e5a9409f1f48c47">&#9670;&#160;</a></span>toggle_pwm_init_params</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">struct no_os_pwm_init_param toggle_pwm_init_params</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line">= {</div>
+<div class="line">    .id = <a class="code hl_define" href="ltc2672__iio_2app_2app__config__stm32_8h.html#a27c2aa74e962fe345d18a7522a8414d7">TOGGLE_PWM_ID</a>,</div>
+<div class="line">    .period_ns = <a class="code hl_define" href="ltc2672__iio_2app_2app__config__stm32_8h.html#aa60a24bd23f9d8c79dd61aec85521bed">FREQ_TO_NSEC</a>(<a class="code hl_define" href="ltc2672__iio_2app_2app__config__stm32_8h.html#a33955f4422376f81452075c653e5ef50">LTC2672_MAX_TOGGLE_RATE</a>),</div>
+<div class="line">    .duty_cycle_ns = <a class="code hl_define" href="ltc2672__iio_2app_2app__config__stm32_8h.html#ad92f0583e945a22dbba38a3b6873fc37">DUTY_CYCLE_NSEC</a>(<a class="code hl_define" href="ltc2672__iio_2app_2app__config__stm32_8h.html#aa60a24bd23f9d8c79dd61aec85521bed">FREQ_TO_NSEC</a>(<a class="code hl_define" href="ltc2672__iio_2app_2app__config__stm32_8h.html#a33955f4422376f81452075c653e5ef50">LTC2672_MAX_TOGGLE_RATE</a>)),</div>
+<div class="line">    .polarity = NO_OS_PWM_POLARITY_LOW,</div>
+<div class="line">    .platform_ops = &amp;<a class="code hl_define" href="ad2s1210__iio_2app_2app__config_8h.html#a9b6ac61cf1859752ae6b375e319a55c5">pwm_ops</a>,</div>
+<div class="line">    .extra = &amp;<a class="code hl_define" href="ltc2672__iio_2app_2app__config__stm32_8h.html#ad8b57f342df0100c4ba6097ccc8c6a7f">toggle_pwm_extra_init_params</a>,</div>
+<div class="line">    .pwm_gpio = &amp;<a class="code hl_variable" href="ltc2672__iio_2app_2app__config_8c.html#a73c9d910439350311c24465038864a07">toggle_pwm_gpio_params</a></div>
+<div class="line">}</div>
+<div class="ttc" id="aad2s1210__iio_2app_2app__config_8h_html_a9b6ac61cf1859752ae6b375e319a55c5"><div class="ttname"><a href="ad2s1210__iio_2app_2app__config_8h.html#a9b6ac61cf1859752ae6b375e319a55c5">pwm_ops</a></div><div class="ttdeci">#define pwm_ops</div><div class="ttdef"><b>Definition</b> app_config.h:89</div></div>
+<div class="ttc" id="altc2672__iio_2app_2app__config_8c_html_a73c9d910439350311c24465038864a07"><div class="ttname"><a href="ltc2672__iio_2app_2app__config_8c.html#a73c9d910439350311c24465038864a07">toggle_pwm_gpio_params</a></div><div class="ttdeci">struct no_os_gpio_init_param toggle_pwm_gpio_params</div><div class="ttdef"><b>Definition</b> app_config.c:79</div></div>
+<div class="ttc" id="altc2672__iio_2app_2app__config__stm32_8h_html_a27c2aa74e962fe345d18a7522a8414d7"><div class="ttname"><a href="ltc2672__iio_2app_2app__config__stm32_8h.html#a27c2aa74e962fe345d18a7522a8414d7">TOGGLE_PWM_ID</a></div><div class="ttdeci">#define TOGGLE_PWM_ID</div><div class="ttdef"><b>Definition</b> app_config_stm32.h:64</div></div>
+<div class="ttc" id="altc2672__iio_2app_2app__config__stm32_8h_html_a33955f4422376f81452075c653e5ef50"><div class="ttname"><a href="ltc2672__iio_2app_2app__config__stm32_8h.html#a33955f4422376f81452075c653e5ef50">LTC2672_MAX_TOGGLE_RATE</a></div><div class="ttdeci">#define LTC2672_MAX_TOGGLE_RATE</div><div class="ttdef"><b>Definition</b> app_config_stm32.h:94</div></div>
+<div class="ttc" id="altc2672__iio_2app_2app__config__stm32_8h_html_aa60a24bd23f9d8c79dd61aec85521bed"><div class="ttname"><a href="ltc2672__iio_2app_2app__config__stm32_8h.html#aa60a24bd23f9d8c79dd61aec85521bed">FREQ_TO_NSEC</a></div><div class="ttdeci">#define FREQ_TO_NSEC(x)</div><div class="ttdef"><b>Definition</b> app_config_stm32.h:96</div></div>
+<div class="ttc" id="altc2672__iio_2app_2app__config__stm32_8h_html_ad8b57f342df0100c4ba6097ccc8c6a7f"><div class="ttname"><a href="ltc2672__iio_2app_2app__config__stm32_8h.html#ad8b57f342df0100c4ba6097ccc8c6a7f">toggle_pwm_extra_init_params</a></div><div class="ttdeci">#define toggle_pwm_extra_init_params</div><div class="ttdef"><b>Definition</b> app_config_stm32.h:81</div></div>
+<div class="ttc" id="altc2672__iio_2app_2app__config__stm32_8h_html_ad92f0583e945a22dbba38a3b6873fc37"><div class="ttname"><a href="ltc2672__iio_2app_2app__config__stm32_8h.html#ad92f0583e945a22dbba38a3b6873fc37">DUTY_CYCLE_NSEC</a></div><div class="ttdeci">#define DUTY_CYCLE_NSEC(x)</div><div class="ttdef"><b>Definition</b> app_config_stm32.h:97</div></div>
+</div><!-- fragment -->
+</div>
+</div>
 <a id="afe54820c1e9d26888bd767dd63680b2d" name="afe54820c1e9d26888bd767dd63680b2d"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#afe54820c1e9d26888bd767dd63680b2d">&#9670;&#160;</a></span>uart_console_stdio_desc</h2>
 
@@ -222,6 +418,7 @@ Here is the caller graph for this function:</div>
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line">= {</div>
 <div class="line">    .device_id = <a class="code hl_define" href="ad3530r__iio_2app_2app__config__stm32_8h.html#a1de69c73f829a03f46f5e7690da7e79a">UART_ID</a>,</div>
+<div class="line">    .asynchronous_rx = <span class="keyword">false</span>,</div>
 <div class="line">    .baud_rate = <a class="code hl_define" href="ad2s1210__iio_2app_2app__config_8h.html#a1f21242d642bc7352daa4f657ff15a5a">IIO_UART_BAUD_RATE</a>,</div>
 <div class="line">    .size = NO_OS_UART_CS_8,</div>
 <div class="line">    .parity = NO_OS_UART_PAR_NO,</div>
@@ -278,10 +475,8 @@ Here is the caller graph for this function:</div>
 <div class="line">    .size = NO_OS_UART_CS_8,</div>
 <div class="line">    .parity = NO_OS_UART_PAR_NO,</div>
 <div class="line">    .stop = NO_OS_UART_STOP_1_BIT,</div>
-<div class="line"> </div>
 <div class="line">    .asynchronous_rx = <span class="keyword">true</span>,</div>
 <div class="line">    .irq_id = <a class="code hl_define" href="ad3530r__iio_2app_2app__config__stm32_8h.html#adff4ff00d8f3375e4fb198270ae24597">UART_IRQ_ID</a>,</div>
-<div class="line"> </div>
 <div class="line"> </div>
 <div class="line">    .platform_ops = &amp;<a class="code hl_define" href="ad2s1210__iio_2app_2app__config_8h.html#ad7c095ac25ce9f903c7c0a9a50002bd4">vcom_ops</a>,</div>
 <div class="line">    .extra = &amp;<a class="code hl_define" href="ad2s1210__iio_2app_2app__config_8h.html#a5d0039d2f60b5109c03e1daf4134b20c">vcom_extra_init_params</a></div>
