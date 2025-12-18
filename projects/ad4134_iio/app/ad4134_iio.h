@@ -2,7 +2,7 @@
 *   @file   ad7134_iio.h
 *   @brief  Header file AD7134 IIO interface
 ********************************************************************************
-* Copyright (c) 2020-21 Analog Devices, Inc.
+* Copyright (c) 2020-21, 2025 Analog Devices, Inc.
 * All rights reserved.
 *
 * This software is proprietary to Analog Devices, Inc. and its licensors.
