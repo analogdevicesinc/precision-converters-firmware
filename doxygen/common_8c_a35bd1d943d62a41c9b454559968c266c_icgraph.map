@@ -1,22 +1,29 @@
 <map id="get_iio_context_attributes_ex" name="get_iio_context_attributes_ex">
-<area shape="rect" id="Node000001" title="Read IIO context attributes extended version (with fw_version attribute)" alt="" coords="535,80,749,105"/>
-<area shape="rect" id="Node000002" href="$ad4080__iio_8c.html#a84e33dce3fb1647f5156bdbabc482296" title="Initialize the IIO interface for AD4080 IIO device." alt="" coords="328,5,484,31"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="589,78,486,45,449,33,451,28,487,39,591,73"/>
-<area shape="rect" id="Node000004" href="$ad5710r__iio_8c.html#a22103aabadc62e36cf8e30021aab5ced" title="Initialize the IIO interface for AD5710R IIO device." alt="" coords="325,55,487,80"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="521,82,487,79,487,73,521,77"/>
-<area shape="rect" id="Node000006" href="$ad405x__iio_8c.html#a7aa4c35d34a7370a9365923c3e18f500" title="Initialize the IIO interface for AD405X IIO device." alt="" coords="340,104,472,129"/>
-<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="521,108,473,113,472,107,521,102"/>
-<area shape="rect" id="Node000009" href="$ltc2672__iio_8c.html#a0b7691679f3d320893e560c442791146" title="Initialize the IIO interface for LTC2672 IIO device." alt="" coords="345,179,467,204"/>
-<area shape="poly" id="edge9_Node000001_Node000009" title=" " alt="" coords="599,113,439,181,437,176,597,108"/>
-<area shape="rect" id="Node000003" href="$ad4080__iio_2app_2main_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title="Main entry point to application." alt="" coords="165,5,220,31"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="314,21,220,21,220,15,314,15"/>
-<area shape="rect" id="Node000005" href="$ad5710r__iio_2app_2main_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title="Main entry point to application." alt="" coords="165,55,220,80"/>
-<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="311,70,220,70,220,65,311,65"/>
-<area shape="rect" id="Node000007" href="$ad405x__iio_8c.html#a20b15ec49897aaf6440bb800ad6641e0" title="Run the AD405X IIO event handler." alt="" coords="108,104,277,129"/>
-<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="326,119,277,119,277,114,326,114"/>
-<area shape="rect" id="Node000008" href="$ad405x__iio_2app_2main_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title="Main entry point to application." alt="" coords="5,129,60,155"/>
-<area shape="poly" id="edge8_Node000006_Node000008" title=" " alt="" coords="336,135,278,143,156,148,60,146,60,141,156,143,277,138,335,129"/>
-<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="99,134,61,140,60,135,99,129"/>
-<area shape="rect" id="Node000010" href="$ltc2672__iio_2app_2main_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title="Main entry point to application." alt="" coords="165,205,220,231"/>
-<area shape="poly" id="edge10_Node000009_Node000010" title=" " alt="" coords="332,203,221,217,220,212,331,198"/>
+<area shape="rect" id="Node000001" title="Read IIO context attributes extended version (with fw_version attribute)" alt="" coords="540,148,755,173"/>
+<area shape="rect" id="Node000002" href="$ad4080__iio_8c.html#a84e33dce3fb1647f5156bdbabc482296" title="Initialize the IIO interface for AD4080 IIO device." alt="" coords="333,12,489,37"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="616,142,559,104,491,63,443,40,445,35,493,58,561,99,619,138"/>
+<area shape="rect" id="Node000004" href="$ad5710r__iio_8c.html#a22103aabadc62e36cf8e30021aab5ced" title="Initialize the IIO interface for AD5710R IIO device." alt="" coords="331,73,492,99"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="592,146,451,101,453,96,594,141"/>
+<area shape="rect" id="Node000006" href="$dpot__iio_8c.html#a50bd299204acb08dab16ba66a9bd6b00" title="Initialize the IIO interface for digipot IIO device." alt="" coords="360,148,463,173"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="526,163,463,163,463,158,526,158"/>
+<area shape="rect" id="Node000009" href="$ad405x__iio_8c.html#a7aa4c35d34a7370a9365923c3e18f500" title="Initialize the IIO interface for AD405X IIO device." alt="" coords="345,205,477,231"/>
+<area shape="poly" id="edge9_Node000001_Node000009" title=" " alt="" coords="582,179,465,208,464,203,580,174"/>
+<area shape="rect" id="Node000012" href="$ltc2672__iio_8c.html#a0b7691679f3d320893e560c442791146" title="Initialize the IIO interface for LTC2672 IIO device." alt="" coords="351,280,472,305"/>
+<area shape="poly" id="edge13_Node000001_Node000012" title=" " alt="" coords="612,183,437,282,434,278,610,178"/>
+<area shape="rect" id="Node000003" href="$ad4080__iio_2app_2main_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title="Main entry point to application." alt="" coords="168,5,223,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="319,24,223,21,223,16,319,19"/>
+<area shape="rect" id="Node000005" href="$ad5710r__iio_2app_2main_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title="Main entry point to application." alt="" coords="168,55,223,80"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="317,81,223,72,223,67,317,75"/>
+<area shape="rect" id="Node000007" href="$dpot__iio_8c.html#aeb4a5e2443bea7c9fcf7e68371b8ba10" title="Run the digipot IIO event handler." alt="" coords="108,104,283,129"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="346,150,258,132,259,127,347,145"/>
+<area shape="rect" id="Node000008" href="$digipots__iio_2app_2main_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title="Main entry point to application." alt="" coords="5,129,60,155"/>
+<area shape="poly" id="edge8_Node000006_Node000008" title=" " alt="" coords="346,160,60,146,60,141,346,155"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="100,134,61,140,60,135,100,129"/>
+<area shape="rect" id="Node000010" href="$ad405x__iio_8c.html#a20b15ec49897aaf6440bb800ad6641e0" title="Run the AD405X IIO event handler." alt="" coords="111,205,280,231"/>
+<area shape="poly" id="edge10_Node000009_Node000010" title=" " alt="" coords="331,221,280,221,280,215,331,215"/>
+<area shape="rect" id="Node000011" href="$ad405x__iio_2app_2main_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title="Main entry point to application." alt="" coords="5,231,60,256"/>
+<area shape="poly" id="edge12_Node000009_Node000011" title=" " alt="" coords="342,236,283,245,158,250,60,247,60,242,158,244,282,239,341,231"/>
+<area shape="poly" id="edge11_Node000010_Node000011" title=" " alt="" coords="100,236,61,242,60,237,100,230"/>
+<area shape="rect" id="Node000013" href="$ltc2672__iio_2app_2main_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title="Main entry point to application." alt="" coords="168,307,223,332"/>
+<area shape="poly" id="edge14_Node000012_Node000013" title=" " alt="" coords="337,304,223,319,223,313,337,299"/>
 </map>

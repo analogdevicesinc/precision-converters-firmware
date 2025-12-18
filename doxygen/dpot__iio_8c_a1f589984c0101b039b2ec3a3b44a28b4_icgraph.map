@@ -1,0 +1,10 @@
+<map id="init_default" name="init_default">
+<area shape="rect" id="Node000001" title="Initialize default values for the active device and interface type if unset." alt="" coords="481,31,577,56"/>
+<area shape="rect" id="Node000002" href="$dpot__iio_8c.html#a50bd299204acb08dab16ba66a9bd6b00" title="Initialize the IIO interface for digipot IIO device." alt="" coords="331,31,433,56"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="468,46,434,46,434,41,468,41"/>
+<area shape="rect" id="Node000003" href="$dpot__iio_8c.html#aeb4a5e2443bea7c9fcf7e68371b8ba10" title="Run the digipot IIO event handler." alt="" coords="108,5,283,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="317,37,283,33,283,27,317,32"/>
+<area shape="rect" id="Node000004" href="$digipots__iio_2app_2main_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title="Main entry point to application." alt="" coords="5,31,60,56"/>
+<area shape="poly" id="edge4_Node000002_Node000004" title=" " alt="" coords="317,46,60,46,60,41,317,41"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="100,36,61,42,60,37,100,30"/>
+</map>

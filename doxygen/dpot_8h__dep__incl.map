@@ -1,0 +1,36 @@
+<map id="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/digipots_iio/app/dpot.h" name="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/digipots_iio/app/dpot.h">
+<area shape="rect" id="Node000001" title=" " alt="" coords="2055,5,2277,75"/>
+<area shape="rect" id="Node000002" href="$digipots__iio_2app_2app__config_8h.html" title="Application configurations module headers for digipots IIO FW." alt="" coords="893,123,1116,192"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="2042,56,1116,148,1116,142,2041,51"/>
+<area shape="rect" id="Node000014" href="$dpot__support_8c.html" title=" " alt="" coords="2026,357,2255,427"/>
+<area shape="poly" id="edge17_Node000001_Node000014" title=" " alt="" coords="2165,88,2146,357,2140,357,2160,88"/>
+<area shape="rect" id="Node000015" href="$dpot__user__config_8c.html" title="User configurations for digipot No&#45;OS drivers." alt="" coords="2280,357,2535,427"/>
+<area shape="poly" id="edge18_Node000001_Node000015" title=" " alt="" coords="2178,87,2193,139,2218,191,2252,239,2291,284,2367,355,2363,359,2287,288,2248,243,2213,193,2189,140,2173,89"/>
+<area shape="rect" id="Node000016" href="$dpot_8c.html" title=" " alt="" coords="2228,123,2451,192"/>
+<area shape="poly" id="edge16_Node000001_Node000016" title=" " alt="" coords="2229,80,2290,120,2287,125,2227,85"/>
+<area shape="rect" id="Node000003" href="$digipots__iio_2app_2app__config_8c.html" title="Application configurations module for digipots IIO FW." alt="" coords="487,240,709,309"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="881,196,710,244,709,239,879,191"/>
+<area shape="rect" id="Node000004" href="$digipots__iio_2app_2app__config__stm32_8h.html" title="Header file for STM32 platform configurations." alt="" coords="733,240,996,309"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="947,202,899,242,896,238,943,198"/>
+<area shape="rect" id="Node000006" href="$dpot__info__table_8c.html" title=" " alt="" coords="1021,240,1266,309"/>
+<area shape="poly" id="edge6_Node000002_Node000006" title=" " alt="" coords="1057,199,1104,238,1101,242,1054,203"/>
+<area shape="rect" id="Node000007" href="$dpot__user__config_8h.html" title="User configurations for digipot No&#45;OS drivers." alt="" coords="1291,240,1545,309"/>
+<area shape="poly" id="edge7_Node000002_Node000007" title=" " alt="" coords="1130,191,1298,237,1297,243,1129,196"/>
+<area shape="poly" id="edge4_Node000004_Node000002" title=" " alt="" coords="923,229,970,190,974,194,926,233"/>
+<area shape="rect" id="Node000005" href="$digipots__iio_2app_2app__config__stm32_8c.html" title="Application configurations module for STM32 platform." alt="" coords="5,357,268,427"/>
+<area shape="poly" id="edge5_Node000004_Node000005" title=" " alt="" coords="720,312,595,329,497,336,401,343,280,360,269,362,268,357,279,355,400,338,497,331,594,323,719,307"/>
+<area shape="rect" id="Node000008" href="$ad514x__user__config_8c.html" title="User configurations for AD514x No&#45;OS drivers." alt="" coords="539,357,812,427"/>
+<area shape="poly" id="edge8_Node000007_Node000008" title=" " alt="" coords="1277,312,1149,329,1048,336,949,344,824,360,813,362,812,357,823,355,948,338,1048,331,1148,324,1277,307"/>
+<area shape="rect" id="Node000009" href="$ad516x__user__config_8c.html" title="User configurations for AD5161 No&#45;OS drivers." alt="" coords="836,357,1109,427"/>
+<area shape="poly" id="edge9_Node000007_Node000009" title=" " alt="" coords="1278,315,1103,360,1102,355,1277,310"/>
+<area shape="rect" id="Node000010" href="$ad517x__user__config_8c.html" title=" " alt="" coords="1133,357,1407,427"/>
+<area shape="poly" id="edge10_Node000007_Node000010" title=" " alt="" coords="1366,320,1315,359,1312,355,1362,316"/>
+<area shape="rect" id="Node000011" href="$ad524x__user__config_8c.html" title="User configurations for AD524x No&#45;OS drivers." alt="" coords="1431,357,1704,427"/>
+<area shape="poly" id="edge11_Node000007_Node000011" title=" " alt="" coords="1474,316,1525,355,1522,359,1471,320"/>
+<area shape="rect" id="Node000012" href="$ad525x__user__config_8c.html" title=" " alt="" coords="1728,357,2001,427"/>
+<area shape="poly" id="edge12_Node000007_Node000012" title=" " alt="" coords="1559,309,1735,355,1734,360,1558,315"/>
+<area shape="rect" id="Node000013" href="$dpot__iio_8c.html" title=" " alt="" coords="292,357,515,427"/>
+<area shape="poly" id="edge13_Node000007_Node000013" title=" " alt="" coords="1277,312,1163,326,1065,332,899,334,734,336,639,344,526,360,515,362,514,357,526,355,638,339,734,331,899,328,1065,327,1162,320,1277,307"/>
+<area shape="poly" id="edge14_Node000007_Node000014" title=" " alt="" coords="1559,288,1774,315,2013,355,2026,357,2025,363,2012,360,1773,320,1559,293"/>
+<area shape="poly" id="edge15_Node000007_Node000015" title=" " alt="" coords="1559,281,1884,306,2076,327,2268,355,2280,357,2279,362,2267,360,2076,333,1883,312,1559,286"/>
+</map>

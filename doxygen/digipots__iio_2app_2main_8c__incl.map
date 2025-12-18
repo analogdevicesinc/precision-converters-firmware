@@ -1,0 +1,13 @@
+<map id="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/digipots_iio/app/main.c" name="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/digipots_iio/app/main.c">
+<area shape="rect" id="Node000001" title=" " alt="" coords="21,5,243,75"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,123,72,148"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="100,77,62,115,58,111,96,73"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="97,123,167,148"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="135,75,135,109,129,109,129,75"/>
+<area shape="rect" id="Node000004" href="$dpot__iio_8h.html" title="Header file for Digipot IIO interface." alt="" coords="191,123,278,148"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="171,73,213,111,210,115,167,77"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="161,196,212,221"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="229,150,204,186,200,183,225,147"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="236,196,329,221"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="245,147,270,183,265,186,240,150"/>
+</map>

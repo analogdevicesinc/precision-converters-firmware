@@ -1,0 +1,7 @@
+<map id="dpot_send_cmd" name="dpot_send_cmd">
+<area shape="rect" id="Node000001" title="Send command word to the digital potentiometer." alt="" coords="263,31,387,56"/>
+<area shape="rect" id="Node000002" href="$dpot__support_8c.html#ab6bd5e495ebdc9fc0c9e07bc3e8e3816" title="Set NVM programming of digital potentiometer." alt="" coords="5,5,215,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="249,37,215,33,215,28,250,32"/>
+<area shape="rect" id="Node000003" href="$dpot__support_8c.html#ab85ac7b21e2f005315331f706b191329" title="Set RDAC write protect of digital potentiometer." alt="" coords="41,55,179,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="249,54,180,62,179,57,249,49"/>
+</map>

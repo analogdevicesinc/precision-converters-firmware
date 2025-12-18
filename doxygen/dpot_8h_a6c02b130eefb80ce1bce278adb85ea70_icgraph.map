@@ -1,0 +1,7 @@
+<map id="dpot_remove" name="dpot_remove">
+<area shape="rect" id="Node000001" title="Free the memory allocated by dpot_init()." alt="" coords="331,5,439,31"/>
+<area shape="rect" id="Node000002" href="$dpot__iio_8c.html#aeb4a5e2443bea7c9fcf7e68371b8ba10" title="Run the digipot IIO event handler." alt="" coords="108,5,283,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="317,21,283,21,283,15,317,15"/>
+<area shape="rect" id="Node000003" href="$digipots__iio_2app_2main_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title="Main entry point to application." alt="" coords="5,5,60,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="95,21,60,21,60,15,95,15"/>
+</map>
