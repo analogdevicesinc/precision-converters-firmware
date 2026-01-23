@@ -62,10 +62,8 @@ struct no_os_uart_init_param uart_init_params = {
 	.stop = NO_OS_UART_STOP_1_BIT,
 	.irq_id = UART_IRQ_ID,
 	.asynchronous_rx = false,
-#if (ACTIVE_PLATFORM == STM32_PLATFORM)
 	.platform_ops = &uart_ops,
 	.extra = &uart_extra_init_params
-#endif
 };
 
 /******************************************************************************/
@@ -96,14 +94,12 @@ int32_t ltc268x_app_initialize(void)
 {
 	int32_t init_status;
 
-#if (ACTIVE_PLATFORM == STM32_PLATFORM)
 	init_status = no_os_uart_init(&uart_desc, &uart_init_params);
 	if (init_status) {
 		return init_status;
 	}
 
 	no_os_uart_stdio(uart_desc);
-#endif
 
 	/* Initialize ltc268x  device and peripheral interface */
 	init_status = ltc268x_init(&p_ltc268x_dev, ltc268x_dev_init);

@@ -23,18 +23,18 @@ Supported Hardware
 Introduction
 ============
 
-The LTC2686/8 are 8/16-channel, 16-bit, ±15 V digital-to-analog converters (DAC) with an integrated precision reference. The LTC268X example software can be used as a starting point for developing your own code for Analog Devices DC2873A-B or DC2904A board in your own environment. This guide will focus interfacing the DC2873A-B or DC2904A-B evaluation board with Analog Devices SDP-K1 controller board or any an MBED-Enabled board (Or an STM32 board).
-The firmware example comprises 3 layers of software (from top to bottom): Console Application Layer, Device No-OS Layer and Platform Drivers layer.It supports Mbed and STM32 platforms
+The LTC2686/8 are 8/16-channel, 16-bit, ±15 V digital-to-analog converters (DAC) with an integrated precision reference. The LTC268X example software can be used as a starting point for developing your own code for Analog Devices DC2873A-B or DC2904A board in your own environment. This guide will focus interfacing the DC2873A-B or DC2904A-B evaluation board with Analog Devices SDP-K1 controller board or an STM32 board.
+The firmware example comprises 3 layers of software (from top to bottom): Console Application Layer, Device No-OS Layer and Platform Drivers layer.It supports STM32 platform.
 
    .. image:: /source/projects/ltc268x_console/ltc268x_architecture.jpg
       :width: 200
 
 The application layer uses the ADI Console Libraries to create console-based User Interactive (UI). The middle layer of No-OS device library has device specific APIs to interface with LTC2686/8 devices. These APIs allows direct access to device register map in order to read/write device registers. The bottom layer of Platform Drivers is responsible for Low Level Interface. The platform drivers use underlying libraries to access low level peripheral (like GPIOs, SPI, I2C, etc). The devices from LTC2686/8 family use SPI communication interfaces respectively.
 
-This guide focuses on the SDP-K1, connected to the DC2873A-B or DC2904A-B board, but it should be general enough to cover any compatible controller board (the controller board should be Mbed-enabled, and expose at least SPI or I2C and some GPIO's). The Platform simplifies the overall software development process by providing the low level driver support. This reduces 
-the hardware dependency as any Mbed enabled board (or an STM32 board) can be used with same firmware with little modifications (precisely changing a pin mapping).
+This guide focuses on the SDP-K1, connected to the DC2873A-B or DC2904A-B board, but it should be general enough to cover any compatible controller board (the controller board should expose at least SPI or I2C and some GPIO's). The Platform simplifies the overall software development process by providing the low level driver support. This reduces 
+the hardware dependency as an STM32 board can be used with same firmware with little modifications (precisely changing a pin mapping).
 
-The software described below allows for an Mbed enabled (Or an STM32 board) controller board to be connected with an Analog Devices evaluation board. Unmodified, the code will communicate over any serial terminal emulator (CoolTerm, putty, etc) using the UART provided by the controller board over USB.
+The software described below allows an STM32 controller board to be connected with an Analog Devices evaluation board. Unmodified, the code will communicate over any serial terminal emulator (CoolTerm, putty, etc) using the UART provided by the controller board over USB.
 
 =================
 Interface Diagram
@@ -47,7 +47,7 @@ The DC2873A-B/DC2904A-B evaluation board is connected to SDP-K1 using the Arduin
 
 .. Useful links Section
 
-.. include:: /source/useful_links.rst
+.. include:: /source/useful_links_stm32.rst
 
 ====================
 Hardware Connections
@@ -101,16 +101,16 @@ The power to the evaluation board should be supplied through the on-board turret
 
 .. Project Build Section:
     
-.. include:: /source/build/project_build.rst
+.. include:: /source/build/project_build_stm32.rst
 
 ===========
 Quick Start
 ===========
 
-If you have some familiarity with the Mbed or STM32 platform, the following is a basic list of steps required to start running the code, 
+If you have some familiarity with the STM32 platform, the following is a basic list of steps required to start running the code, 
 see below for more detail:
 
-* Connect the evaluation-board to the Mbed-enabled controller board (or an STM32 board) using the Arduino connector and jumper wires.
+* Connect the evaluation-board to SDP-K1 board using the Arduino connector and jumper wires.
 * Connect all the power supplies to the evaluation board as instructed in the hardware connection section.
 * Connect the controller board to your computer over USB. (Make sure that the VIO_ADJUST is set to 3.3 volts)
 * Follow the steps mentioned in the Build Guide section above.
