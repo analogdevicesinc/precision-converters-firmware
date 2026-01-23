@@ -17,24 +17,16 @@
 /***************************** Include Files **********************************/
 /******************************************************************************/
 #include <stdint.h>
+#include "common_macros.h"
 
 /******************************************************************************/
 /********************** Macros and Constants Definition ***********************/
 /******************************************************************************/
-/* List of supported platforms*/
-#define	MBED_PLATFORM		1
-#define STM32_PLATFORM      2
 
 /* Select the active platform */
 #define ACTIVE_PLATFORM		STM32_PLATFORM
 
-#if (ACTIVE_PLATFORM == MBED_PLATFORM)
-#include "app_config_mbed.h"
-
-/* Redefine the init params structure mapping w.r.t. platform */
-#define spi_extra_init_params mbed_spi_extra_init_params
-#define spi_ops mbed_spi_ops
-#elif(ACTIVE_PLATFORM == STM32_PLATFORM)
+#if (ACTIVE_PLATFORM == STM32_PLATFORM)
 #include "app_config_stm32.h"
 /* Redefine the init params structure mapping w.r.t. platform */
 #define spi_extra_init_params stm32_spi_extra_init_params
