@@ -31,7 +31,7 @@ Introduction
 
 The AD717x/AD411x family offer a complete integrated Sigma-Delta ADC solution which can be used in high precision, low noise single channel applications (Life Science measurements) or higher speed multiplexed applications (Factory Automation PLC Input modules).
 This page gives an overview of using the AD717x/AD411x firmware example with SDP-K1 EVAL board, interfacing with various EVAL boards supporting AD711x/AD411x family devices. 
-The firmware example comprises 3 layers of software (from top to bottom): Console Application Layer, Device No-OS Layer and Platform Drivers layer. It supports STM32 and Mbed platforms.
+The firmware example comprises 3 layers of software (from top to bottom): Console Application Layer, Device No-OS Layer and Platform Drivers layer. It supports STM32 platform.
 
    .. image:: /source/projects/ad717x_console/ad717x_architecture.jpg
       :width: 200
@@ -43,7 +43,7 @@ Drivers is responsible for Low Level Interface. The platform drivers uses underl
 (like GPIOs, SPI, I2C, etc).
 
 The Platform simplifies the overall software development process by providing the low level driver support. This reduces 
-the hardware dependency as any Mbed enabled board (Or an STM32 board) can be used with same firmware with little modifications (precisely changing a pin mapping).
+the hardware dependency as any STM32 board can be used with same firmware with little modifications (precisely changing a pin mapping).
 
 =================
 Interface Diagram
@@ -61,7 +61,7 @@ The SDP-K1 acts as a Serial Device (UART) and firmware loaded into it interacts 
    The firmware provides a basic user-interface for interacting with the evaluation-board. All the main functionality of the AD411x/AD711x is provided in the application-code in abstracted form and the user is free to customize the software to suit their own needs for working with the AD711x/AD411x.
 
 .. Useful links Section
-.. include:: /source/useful_links.rst
+.. include:: /source/useful_links_stm32.rst
 
 ====================
 Hardware Connections
@@ -90,7 +90,7 @@ The COM port assigned to a device can be seen through the device manager for win
 AD717x Firmware
 ====================
 This section briefs on the usage of firmware. This also explains the steps to compile and build the application using
-mbed and make based build.
+STM32CubeIDE.
 
 The software execution sequence for the AD717x/AD411x Firmware Example is shown below. This is a blocking application as it waits for user input over serial interface (UART). 
 The input is scanned and processed through 'adi console libraries'. The menu functionality is executed from ad717x_conole_app.c file. The application layer talks with No-OS layer 
@@ -101,14 +101,14 @@ AD717x/AD411x firmware uses underlying libraries within Platform Drivers layer.
       :width: 700
 
 .. Project Build Section:
-    
-.. include:: /source/build/project_build.rst
+
+.. include:: /source/build/project_build_stm32.rst
 
 ===========
 Quick Start
 ===========
 
-If you have some familiarity with the Mbed or STM32 platform, the following is a basic list of steps required to start running the code, 
+If you have some familiarity with the STM32 platform, the following is a basic list of steps required to start running the code, 
 see below for more detail:
 
 * Connect the AD717x/AD411x EVAL-board to the SDP-K1 controller board.
