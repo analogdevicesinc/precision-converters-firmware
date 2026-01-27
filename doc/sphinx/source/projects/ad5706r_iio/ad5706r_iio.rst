@@ -11,7 +11,7 @@ Supported Hardware
 
 **Supported Evaluation Boards:**
 
-* `EVAL-AD5706r <https://www.analog.com/en/resources/evaluation-hardware-and-software/evaluation-boards-kits/eval-ad5706r.html#eb-overview>`
+* `EVAL-AD5706r <https://www.analog.com/en/resources/evaluation-hardware-and-software/evaluation-boards-kits/eval-ad5706r.html#eb-overview>`_
 
 **Supported Carrier Boards:**
 
@@ -52,7 +52,7 @@ Required: SDP-K1 (or alternative STM32 enabled controller board), EVAL-AD5706r b
 Connect the EVAL-AD5706r board to SDP-K1 board (or any other STM32 enabled controller board). 
 Connect SDP-K1 board to the PC using the USB cable.
 
-   .. image:: /source/projects/ad5706_iio/ad5706_connection_diagram.png
+   .. image:: /source/projects/ad5706r_iio/ad5706r_connection_diagram.png
       :width: 700
 
 ===============
