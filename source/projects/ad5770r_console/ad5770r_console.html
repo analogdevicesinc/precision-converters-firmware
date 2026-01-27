@@ -8,8 +8,8 @@
 
     <title>AD5770r Console Application &#8212; Precision Converters Firmware  documentation</title>
     <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=8e8a900e" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/app.min.css?v=31a9e0ba" />
-    <script async="async" src="../../../_static/app.umd.js?v=3a4867e9"></script>
+    <link rel="stylesheet" type="text/css" href="../../../_static/app.min.css?v=5d595293" />
+    <script async="async" src="../../../_static/app.umd.js?v=46a18818"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
     <link rel="next" title="AD579X IIO Application" href="../ad579x_iio/ad579x_iio.html" />
@@ -151,6 +151,7 @@ Content on this topic
 <li class="toctree-l2"><a class="reference internal" href="../ad4170_iio/ad4170_iio.html">AD4170 IIO Application</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ad4696_iio/ad4696_iio.html">AD4696 IIO Application</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ad559xr_console/ad559xr_console.html">AD559XR Console Application</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ad5706r_iio/ad5706r_iio.html">AD5706r IIO Application</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ad5710r_iio/ad5710r_iio.html">AD5710R IIO Application</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ad5754r_iio/ad5754r_iio.html">AD5754R/CN0586 IIO Application</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">AD5770r Console Application</a></li>
@@ -220,7 +221,7 @@ Content on this topic
 <li><p>AD5770R No-OS Driver - AD5770R device C API</p></li>
 <li><p>Platform Drivers - Hardware Abstraction Layer (SPI, GPIO, …) to adapt No-OS driver</p>
 <blockquote>
-<div><a class="reference internal image-reference" href="../../../_images/ad5770r_architecture.jpg"><img alt="../../../_images/ad5770r_architecture.jpg" src="../../../_images/ad5770r_architecture.jpg" style="width: 400px;" />
+<div><a class="reference internal image-reference" href="../../../_images/ad5770r_architecture.jpg"><img alt="../../../_images/ad5770r_architecture.jpg" src="../../../_images/ad5770r_architecture.jpg" width="400" />
 </a>
 </div></blockquote>
 </li>
@@ -230,7 +231,7 @@ Content on this topic
 <section id="interface-diagram">
 <h2>Interface Diagram<a class="headerlink" href="#interface-diagram" title="Link to this heading"></a></h2>
 <blockquote>
-<div><a class="reference internal image-reference" href="../../../_images/ad5770r_interface_diagram.jpg"><img alt="../../../_images/ad5770r_interface_diagram.jpg" src="../../../_images/ad5770r_interface_diagram.jpg" style="width: 500px;" />
+<div><a class="reference internal image-reference" href="../../../_images/ad5770r_interface_diagram.jpg"><img alt="../../../_images/ad5770r_interface_diagram.jpg" src="../../../_images/ad5770r_interface_diagram.jpg" width="500" />
 </a>
 </div></blockquote>
 <p>The AD5770R Evaluation Board is connected to SDP-K1 using the 120-pin SDP Connector. The evaluation board must be powered externally, typically using an external 3.3V DC supply connected to the AVDD input supply terminal, if using the default power supply jumper settings.</p>
@@ -289,7 +290,7 @@ for respective platform.</p>
 <li><p>Install <a class="icon link reference external" href="https://www.st.com/en/development-tools/stm32cubeide.html" target="_blank">STM32CubeIDE</a></p></li>
 <li><p>Install <a class="icon link reference external" href="https://www.st.com/en/development-tools/stm32cubemx.html" target="_blank">STM32CubeMX</a></p>
 <blockquote>
-<div><a class="reference internal image-reference" href="../../../_images/environmental_variables.png"><img alt="../../../_images/environmental_variables.png" src="../../../_images/environmental_variables.png" style="width: 400px;" />
+<div><a class="reference internal image-reference" href="../../../_images/environmental_variables.png"><img alt="../../../_images/environmental_variables.png" src="../../../_images/environmental_variables.png" width="400" />
 </a>
 </div></blockquote>
 </li>
@@ -318,50 +319,50 @@ and generate executable file (.bin/.hex)</p>
 <li><p>Open the respective project directory by navigating into the “precision_converters_firmware/projects/” folder.</p></li>
 <li><p>In the “STM32” folder present within the project directory, double click and open the .ioc file present within.</p>
 <blockquote>
-<div><a class="reference internal image-reference" href="../../../_images/stm32_project_directory.png"><img alt="../../../_images/stm32_project_directory.png" src="../../../_images/stm32_project_directory.png" style="width: 600px;" />
+<div><a class="reference internal image-reference" href="../../../_images/stm32_project_directory.png"><img alt="../../../_images/stm32_project_directory.png" src="../../../_images/stm32_project_directory.png" width="600" />
 </a>
 </div></blockquote>
 </li>
 <li><p>Click on the “Generate Code” option seen on the top right corner</p>
 <blockquote>
-<div><a class="reference internal image-reference" href="../../../_images/stm32_generate_code.png"><img alt="../../../_images/stm32_generate_code.png" src="../../../_images/stm32_generate_code.png" style="width: 600px;" />
+<div><a class="reference internal image-reference" href="../../../_images/stm32_generate_code.png"><img alt="../../../_images/stm32_generate_code.png" src="../../../_images/stm32_generate_code.png" width="600" />
 </a>
 </div></blockquote>
 </li>
 <li><p>Upon successful generation of drivers for the selected MCU, the autogenerated files would be seen in the same directory where the .ioc file was present. Double click and open the “.project” file seen in the list of files</p>
 <blockquote>
-<div><a class="reference internal image-reference" href="../../../_images/stm32_auto_generated_files.png"><img alt="../../../_images/stm32_auto_generated_files.png" src="../../../_images/stm32_auto_generated_files.png" style="width: 600px;" />
+<div><a class="reference internal image-reference" href="../../../_images/stm32_auto_generated_files.png"><img alt="../../../_images/stm32_auto_generated_files.png" src="../../../_images/stm32_auto_generated_files.png" width="600" />
 </a>
 </div></blockquote>
 </li>
 <li><p>After the project is loaded to the STM32CubeIDE, unfold the adxxxx_iio project seen in the project explorer, right click the “app” folder, select “Settings” under the “C/C++ Build” section on the left pane and un-check the “Exclude resources from build” checkbox. This would ensure that the project specific files are included by the build system</p>
 <blockquote>
-<div><a class="reference internal image-reference" href="../../../_images/stm32_exclude_files_option.png"><img alt="../../../_images/stm32_exclude_files_option.png" src="../../../_images/stm32_exclude_files_option.png" style="width: 600px;" />
+<div><a class="reference internal image-reference" href="../../../_images/stm32_exclude_files_option.png"><img alt="../../../_images/stm32_exclude_files_option.png" src="../../../_images/stm32_exclude_files_option.png" width="600" />
 </a>
 </div></blockquote>
 </li>
 <li><p>In order to choose STM32 platform in the firmware, select the “ACTIVE_PLATFORM” as “STM32_PLATFORM” in the app_config.h from the respective project. Alternately , add compiler flag “ACTIVE_PLATFORM=value of STM32_PLATFORM in app_config.h” for selecting stm32 platform.</p></li>
 <li><p>Add compiler flags “-u _printf_float” to the project settings.</p>
 <blockquote>
-<div><a class="reference internal image-reference" href="../../../_images/stm32_compiler_flag.png"><img alt="../../../_images/stm32_compiler_flag.png" src="../../../_images/stm32_compiler_flag.png" style="width: 600px;" />
+<div><a class="reference internal image-reference" href="../../../_images/stm32_compiler_flag.png"><img alt="../../../_images/stm32_compiler_flag.png" src="../../../_images/stm32_compiler_flag.png" width="600" />
 </a>
 </div></blockquote>
 </li>
 <li><p>Exclude the generated file syscalls.c from the build process</p>
 <blockquote>
-<div><a class="reference internal image-reference" href="../../../_images/stm32_exclude_syscalls.png"><img alt="../../../_images/stm32_exclude_syscalls.png" src="../../../_images/stm32_exclude_syscalls.png" style="width: 600px;" />
+<div><a class="reference internal image-reference" href="../../../_images/stm32_exclude_syscalls.png"><img alt="../../../_images/stm32_exclude_syscalls.png" src="../../../_images/stm32_exclude_syscalls.png" width="600" />
 </a>
 </div></blockquote>
 </li>
 <li><dl>
-<dt>To generate the binary file, right click on the adxxxx_iio project seen in the project explorer and select “Properties”, select “Settings” under the “C/C++ Build” section on the left pane, select “MCU Post build outputs” under “Tool Settings” section and check the “Convert to binary file (-O binary)” checkbox.</dt><dd><a class="reference internal image-reference" href="../../../_images/stm32_convert_to_binary.png"><img alt="../../../_images/stm32_convert_to_binary.png" src="../../../_images/stm32_convert_to_binary.png" style="width: 600px;" />
+<dt>To generate the binary file, right click on the adxxxx_iio project seen in the project explorer and select “Properties”, select “Settings” under the “C/C++ Build” section on the left pane, select “MCU Post build outputs” under “Tool Settings” section and check the “Convert to binary file (-O binary)” checkbox.</dt><dd><a class="reference internal image-reference" href="../../../_images/stm32_convert_to_binary.png"><img alt="../../../_images/stm32_convert_to_binary.png" src="../../../_images/stm32_convert_to_binary.png" width="600" />
 </a>
 </dd>
 </dl>
 </li>
 <li><p>Build the project by right-clicking on the adxxxx_iio project seen in the project explorer and select “Build Project”</p>
 <blockquote>
-<div><a class="reference internal image-reference" href="../../../_images/stm32_build_project.png"><img alt="../../../_images/stm32_build_project.png" src="../../../_images/stm32_build_project.png" style="width: 600px;" />
+<div><a class="reference internal image-reference" href="../../../_images/stm32_build_project.png"><img alt="../../../_images/stm32_build_project.png" src="../../../_images/stm32_build_project.png" width="600" />
 </a>
 </div></blockquote>
 </li>
@@ -415,7 +416,7 @@ see below for more detail:</p>
 <h2>Main Menu<a class="headerlink" href="#main-menu" title="Link to this heading"></a></h2>
 <p>The AD5770R Console App main menu provides basic initialization/reset type functions, and access to several sub-menus that provide more detailed configuration and control settings. Like most menus in the firmware, the menu options are framed by a header and footer that display status information related to the functions on the menu.</p>
 <blockquote>
-<div><a class="reference internal image-reference" href="../../../_images/ad5770r_console_application.jpg"><img alt="../../../_images/ad5770r_console_application.jpg" src="../../../_images/ad5770r_console_application.jpg" style="width: 400px;" />
+<div><a class="reference internal image-reference" href="../../../_images/ad5770r_console_application.jpg"><img alt="../../../_images/ad5770r_console_application.jpg" src="../../../_images/ad5770r_console_application.jpg" width="400" />
 </a>
 </div></blockquote>
 <p>The value of the scratchpad register is displayed in both the header and the footer. After reading the scratchpad value for the header, the value is incremented and written back to the device, such that the scratchpad footer value should always be equal to the header value + 1. This can be useful a debug aid to confirm communications.</p>
@@ -424,7 +425,7 @@ see below for more detail:</p>
 <h2>DAC Operaions<a class="headerlink" href="#dac-operaions" title="Link to this heading"></a></h2>
 <p>This menu provides the ability to set the Input and DAC register values, and control the update of the DAC using both the hardware and software LDAC functions. The ordering of menu items is intended to follow the order in which actions are typically performed by the user.</p>
 <blockquote>
-<div><a class="reference internal image-reference" href="../../../_images/ad5770r_dac_operations.jpg"><img alt="../../../_images/ad5770r_dac_operations.jpg" src="../../../_images/ad5770r_dac_operations.jpg" style="width: 400px;" />
+<div><a class="reference internal image-reference" href="../../../_images/ad5770r_dac_operations.jpg"><img alt="../../../_images/ad5770r_dac_operations.jpg" src="../../../_images/ad5770r_dac_operations.jpg" width="400" />
 </a>
 </div></blockquote>
 <p>There are three ways in which the DAC output may be controlled using this menu.</p>

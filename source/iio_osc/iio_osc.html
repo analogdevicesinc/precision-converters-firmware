@@ -8,8 +8,8 @@
 
     <title>IIO Oscilloscope &#8212; Precision Converters Firmware  documentation</title>
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8e8a900e" />
-    <link rel="stylesheet" type="text/css" href="../../_static/app.min.css?v=31a9e0ba" />
-    <script async="async" src="../../_static/app.umd.js?v=3a4867e9"></script>
+    <link rel="stylesheet" type="text/css" href="../../_static/app.min.css?v=5d595293" />
+    <script async="async" src="../../_static/app.umd.js?v=46a18818"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
    
@@ -160,6 +160,7 @@ Content on this topic
 <li class="toctree-l2"><a class="reference internal" href="../projects/ad4170_iio/ad4170_iio.html">AD4170 IIO Application</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../projects/ad4696_iio/ad4696_iio.html">AD4696 IIO Application</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../projects/ad559xr_console/ad559xr_console.html">AD559XR Console Application</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../projects/ad5706r_iio/ad5706r_iio.html">AD5706r IIO Application</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../projects/ad5710r_iio/ad5710r_iio.html">AD5710R IIO Application</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../projects/ad5754r_iio/ad5754r_iio.html">AD5754R/CN0586 IIO Application</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../projects/ad5770r_console/ad5770r_console.html">AD5770r Console Application</a></li>
@@ -217,13 +218,13 @@ Content on this topic
 settings as shown below. Click on refresh button and device should pop-up
 in the IIO devices list.</p>
 <blockquote>
-<div><a class="reference internal image-reference" href="../../_images/iio_osc_connect_window.png"><img alt="../../_images/iio_osc_connect_window.png" src="../../_images/iio_osc_connect_window.png" style="width: 300px;" />
+<div><a class="reference internal image-reference" href="../../_images/iio_osc_connect_window.png"><img alt="../../_images/iio_osc_connect_window.png" src="../../_images/iio_osc_connect_window.png" width="300" />
 </a>
 </div></blockquote>
 <p>Click ‘Connect’ and it should by default open the data ‘Capture’ window. You can
 drag aside or close this window to see the main ‘Debug and DMM’ tab window.</p>
 <blockquote>
-<div><a class="reference internal image-reference" href="../../_images/iio_osc_tabs.png"><img alt="../../_images/iio_osc_tabs.png" src="../../_images/iio_osc_tabs.png" style="width: 500px;" />
+<div><a class="reference internal image-reference" href="../../_images/iio_osc_tabs.png"><img alt="../../_images/iio_osc_tabs.png" src="../../_images/iio_osc_tabs.png" width="500" />
 </a>
 </div></blockquote>
 </section>
@@ -237,7 +238,7 @@ called as ‘Attributes“. There are 3 types of attributes:</p>
 <li><p>Board Level Attributes (Can be Global and Channel specific): Configure the board level parameters.
 Projects only receive the board-level attribute when deemed necessary, thus it is not a standard inclusion</p>
 <blockquote>
-<div><a class="reference internal image-reference" href="../../_images/iio_osc_attributes.png"><img alt="../../_images/iio_osc_attributes.png" src="../../_images/iio_osc_attributes.png" style="width: 500px;" />
+<div><a class="reference internal image-reference" href="../../_images/iio_osc_attributes.png"><img alt="../../_images/iio_osc_attributes.png" src="../../_images/iio_osc_attributes.png" width="500" />
 </a>
 </div></blockquote>
 </li>
@@ -266,7 +267,7 @@ capture or Debug tab as this could impact data capturing. All uses same
 communication bus to access the data which could result into access/busy conflicts
 during data capture.</p>
 </div>
-<a class="reference internal image-reference" href="../../_images/iio_osc_dmm_tab.png"><img alt="../../_images/iio_osc_dmm_tab.png" src="../../_images/iio_osc_dmm_tab.png" style="width: 500px;" />
+<a class="reference internal image-reference" href="../../_images/iio_osc_dmm_tab.png"><img alt="../../_images/iio_osc_dmm_tab.png" src="../../_images/iio_osc_dmm_tab.png" width="500" />
 </a>
 </section>
 <section id="iio-data-capture-for-adcs">
@@ -286,9 +287,9 @@ also allows users to save the data, which can further be used to process and ana
 is an 8-channel DAS. A 1Khz signal is applied on inputs of all 8 analog channels.
 The max data capturing rate in firmware is ~30 to 40 KSPS. The data is transmitted
 from firmware application using Virtual Serial or UART serial link.</p>
-<a class="reference internal image-reference" href="../../_images/iio_osc_sine_wave_capture.png"><img alt="../../_images/iio_osc_sine_wave_capture.png" src="../../_images/iio_osc_sine_wave_capture.png" style="width: 800px;" />
+<a class="reference internal image-reference" href="../../_images/iio_osc_sine_wave_capture.png"><img alt="../../_images/iio_osc_sine_wave_capture.png" src="../../_images/iio_osc_sine_wave_capture.png" width="800" />
 </a>
-<a class="reference internal image-reference" href="../../_images/iio_osc_trapezoidal_wave_capture.png"><img alt="../../_images/iio_osc_trapezoidal_wave_capture.png" src="../../_images/iio_osc_trapezoidal_wave_capture.png" style="width: 800px;" />
+<a class="reference internal image-reference" href="../../_images/iio_osc_trapezoidal_wave_capture.png"><img alt="../../_images/iio_osc_trapezoidal_wave_capture.png" src="../../_images/iio_osc_trapezoidal_wave_capture.png" width="800" />
 </a>
 <p>The channels for which data is to be captured can be selected from the GUI window,
 along with the number of samples to display on screen in a single data read query.
@@ -296,7 +297,7 @@ As shown below, all 8 channels are selected for data capture and the number of
 requested samples is set at 400 (default). This means, IIO oscilloscope requests
 400 samples per channel, so in this case total 3200 samples. The channels are
 stored as shown below:</p>
-<a class="reference internal image-reference" href="../../_images/iio_osc_select_chn_samples.png"><img alt="../../_images/iio_osc_select_chn_samples.png" src="../../_images/iio_osc_select_chn_samples.png" style="width: 800px;" />
+<a class="reference internal image-reference" href="../../_images/iio_osc_select_chn_samples.png"><img alt="../../_images/iio_osc_select_chn_samples.png" src="../../_images/iio_osc_select_chn_samples.png" width="800" />
 </a>
 </section>
 <section id="data-capture-from-iio-device">
@@ -314,12 +315,12 @@ could result into access/busy conflicts during data capture.</p>
 </div>
 <p><em>Time Domain plot:</em></p>
 <blockquote>
-<div><a class="reference internal image-reference" href="../../_images/iio_osc_time_domain_plot.png"><img alt="../../_images/iio_osc_time_domain_plot.png" src="../../_images/iio_osc_time_domain_plot.png" style="width: 800px;" />
+<div><a class="reference internal image-reference" href="../../_images/iio_osc_time_domain_plot.png"><img alt="../../_images/iio_osc_time_domain_plot.png" src="../../_images/iio_osc_time_domain_plot.png" width="800" />
 </a>
 </div></blockquote>
 <p><em>Frequency Domain plot:</em></p>
 <blockquote>
-<div><a class="reference internal image-reference" href="../../_images/iio_osc_freq_domain_plot.png"><img alt="../../_images/iio_osc_freq_domain_plot.png" src="../../_images/iio_osc_freq_domain_plot.png" style="width: 800px;" />
+<div><a class="reference internal image-reference" href="../../_images/iio_osc_freq_domain_plot.png"><img alt="../../_images/iio_osc_freq_domain_plot.png" src="../../_images/iio_osc_freq_domain_plot.png" width="800" />
 </a>
 </div></blockquote>
 <div class="admonition note">
@@ -338,7 +339,7 @@ channel during save option and only requested number of samples can be saved. So
 if 400 samples are requested, the data for only 400 samples would get saved into
 .csv file. The data is raw adc data and no extra processing is performed it while
 saving or capturing.</p>
-<a class="reference internal image-reference" href="../../_images/iio_osc_data_save.png"><img alt="../../_images/iio_osc_data_save.png" src="../../_images/iio_osc_data_save.png" style="width: 600px;" />
+<a class="reference internal image-reference" href="../../_images/iio_osc_data_save.png"><img alt="../../_images/iio_osc_data_save.png" src="../../_images/iio_osc_data_save.png" width="600" />
 </a>
 <p>The data saving feature is also available with other IIO client applications such as
 python and ACE.</p>
@@ -375,7 +376,7 @@ signals with frequencies of 4Khz and less when no oversampling is present. At OS
 the data rate drops down and so higher frequency signals can’t be reproduced correctly.
 Below plot is captured with 17Khz analog input on channel 1 and it can be seen that
 the signal is not a pure sine wave.</p>
-<a class="reference internal image-reference" href="../../_images/iio_osc_high_frequency_graph.png"><img alt="../../_images/iio_osc_high_frequency_graph.png" src="../../_images/iio_osc_high_frequency_graph.png" style="width: 800px;" />
+<a class="reference internal image-reference" href="../../_images/iio_osc_high_frequency_graph.png"><img alt="../../_images/iio_osc_high_frequency_graph.png" src="../../_images/iio_osc_high_frequency_graph.png" width="800" />
 </a>
 <p><strong>Data Transmission Rate (serial link) of MCU:</strong></p>
 <p>This is the rate or speed at which data can be transmitted to IIO client
@@ -401,7 +402,7 @@ Please follow the below steps to <strong>increase the timeout</strong> of iio os
 * Download the <a class="icon link reference external" href="https://github.com/analogdevicesinc/iio-oscilloscope/actions/runs/8153749871" target="_blank">iio-oscilloscope.exe</a>
 * Navigate to the configuration file .osc_profile.ini (This can be usually found at: C:UsersdishaAppDataLocal)
 * Add a variable capture_timeout and set it to a value (in ms) suited for your application.</p>
-<a class="reference internal image-reference" href="../../_images/osc_ini.png"><img alt="../../_images/osc_ini.png" src="../../_images/osc_ini.png" style="width: 400px;" />
+<a class="reference internal image-reference" href="../../_images/osc_ini.png"><img alt="../../_images/osc_ini.png" src="../../_images/osc_ini.png" width="400" />
 </a>
 <p>An example of a minimum  content of a .ini file:
 [IIO Oscilloscope]
@@ -433,7 +434,7 @@ the buffer provided in the firmware.</p>
 </div>
 <p>IIO firmware maintains the circular data buffer with dedicated read and write indices.
 Below diagram illustrates the use of circular buffer in the firmware.</p>
-<a class="reference internal image-reference" href="../../_images/iio_data_capture_in_firmware.png"><img alt="../../_images/iio_data_capture_in_firmware.png" src="../../_images/iio_data_capture_in_firmware.png" style="width: 600px;" />
+<a class="reference internal image-reference" href="../../_images/iio_data_capture_in_firmware.png"><img alt="../../_images/iio_data_capture_in_firmware.png" src="../../_images/iio_data_capture_in_firmware.png" width="600" />
 </a>
 </section>
 </section>
@@ -481,13 +482,13 @@ binary file.</p>
 <p>On the IIO Oscilloscope, open the DAC Data Manager tab as indicated below
 after connecting to the iio device.</p>
 <blockquote>
-<div><a class="reference internal image-reference" href="../../_images/iio_osc_data_manager.jpg"><img alt="../../_images/iio_osc_data_manager.jpg" src="../../_images/iio_osc_data_manager.jpg" style="width: 600px;" />
+<div><a class="reference internal image-reference" href="../../_images/iio_osc_data_manager.jpg"><img alt="../../_images/iio_osc_data_manager.jpg" src="../../_images/iio_osc_data_manager.jpg" width="600" />
 </a>
 </div></blockquote>
 <p>Click on the File Selection section to input the wavefrom data binary file created.
 Copy the binary file path and paste it in the Location section, then click Open.</p>
 <blockquote>
-<div><a class="reference internal image-reference" href="../../_images/iio_osc_file_section.jpg"><img alt="../../_images/iio_osc_file_section.jpg" src="../../_images/iio_osc_file_section.jpg" style="width: 600px;" />
+<div><a class="reference internal image-reference" href="../../_images/iio_osc_file_section.jpg"><img alt="../../_images/iio_osc_file_section.jpg" src="../../_images/iio_osc_file_section.jpg" width="600" />
 </a>
 </div></blockquote>
 <div class="admonition note">
@@ -499,7 +500,7 @@ enabled, and otherwise may result in incorrrect data being streamed.</p>
 or disable cyclic streaming of data. Click the Load button to load the data. The
 message “Waveform loaded successfully” shows up if the data is loaded correctly.</p>
 <blockquote>
-<div><a class="reference internal image-reference" href="../../_images/iio_osc_load_data.jpg"><img alt="../../_images/iio_osc_load_data.jpg" src="../../_images/iio_osc_load_data.jpg" style="width: 600px;" />
+<div><a class="reference internal image-reference" href="../../_images/iio_osc_load_data.jpg"><img alt="../../_images/iio_osc_load_data.jpg" src="../../_images/iio_osc_load_data.jpg" width="600" />
 </a>
 </div></blockquote>
 <div class="admonition note">

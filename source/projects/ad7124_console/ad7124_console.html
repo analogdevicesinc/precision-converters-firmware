@@ -8,8 +8,8 @@
 
     <title>AD7124 Console Application &#8212; Precision Converters Firmware  documentation</title>
     <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=8e8a900e" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/app.min.css?v=31a9e0ba" />
-    <script async="async" src="../../../_static/app.umd.js?v=3a4867e9"></script>
+    <link rel="stylesheet" type="text/css" href="../../../_static/app.min.css?v=5d595293" />
+    <script async="async" src="../../../_static/app.umd.js?v=46a18818"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
     <link rel="next" title="AD7124 IIO Application" href="../ad7124_iio/ad7124_iio.html" />
@@ -153,6 +153,7 @@ Content on this topic
 <li class="toctree-l2"><a class="reference internal" href="../ad4170_iio/ad4170_iio.html">AD4170 IIO Application</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ad4696_iio/ad4696_iio.html">AD4696 IIO Application</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ad559xr_console/ad559xr_console.html">AD559XR Console Application</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ad5706r_iio/ad5706r_iio.html">AD5706r IIO Application</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ad5710r_iio/ad5710r_iio.html">AD5710R IIO Application</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ad5754r_iio/ad5754r_iio.html">AD5754R/CN0586 IIO Application</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ad5770r_console/ad5770r_console.html">AD5770r Console Application</a></li>
@@ -219,7 +220,7 @@ Content on this topic
 The firmware example comprises 3 layers of software (from top to bottom): Console Application Layer, Device No-OS
 Layer and Platform Drivers layer. It support STM32 platform</p>
 <blockquote>
-<div><a class="reference internal image-reference" href="../../../_images/ad7124_software_layers.jpg"><img alt="../../../_images/ad7124_software_layers.jpg" src="../../../_images/ad7124_software_layers.jpg" style="width: 200px;" />
+<div><a class="reference internal image-reference" href="../../../_images/ad7124_software_layers.jpg"><img alt="../../../_images/ad7124_software_layers.jpg" src="../../../_images/ad7124_software_layers.jpg" width="200" />
 </a>
 </div></blockquote>
 <p>The application layer uses the ADI Console Libraries to create console based User Interactive (UI).
@@ -233,7 +234,7 @@ the hardware dependency on any STM32 board can be used with same firmware with l
 <section id="interface-diagram">
 <h2>Interface Diagram<a class="headerlink" href="#interface-diagram" title="Link to this heading"></a></h2>
 <blockquote>
-<div><a class="reference internal image-reference" href="../../../_images/ad7124_interface_diagram.jpg"><img alt="../../../_images/ad7124_interface_diagram.jpg" src="../../../_images/ad7124_interface_diagram.jpg" style="width: 500px;" />
+<div><a class="reference internal image-reference" href="../../../_images/ad7124_interface_diagram.jpg"><img alt="../../../_images/ad7124_interface_diagram.jpg" src="../../../_images/ad7124_interface_diagram.jpg" width="500" />
 </a>
 </div></blockquote>
 <p>The AD7124-EVAL board is connected to SDP-K1 through 120-pin SDP Connector. The AD7124-EVAL board has external connector to connect
@@ -260,7 +261,7 @@ they may be of interest if you require Linux and/or FPGA support.</p>
 <section id="hardware-connections">
 <h2>Hardware Connections<a class="headerlink" href="#hardware-connections" title="Link to this heading"></a></h2>
 <blockquote>
-<div><a class="reference internal image-reference" href="../../../_images/hardware_connections_ad7124-eval.jpg"><img alt="../../../_images/hardware_connections_ad7124-eval.jpg" src="../../../_images/hardware_connections_ad7124-eval.jpg" style="width: 400px;" />
+<div><a class="reference internal image-reference" href="../../../_images/hardware_connections_ad7124-eval.jpg"><img alt="../../../_images/hardware_connections_ad7124-eval.jpg" src="../../../_images/hardware_connections_ad7124-eval.jpg" width="400" />
 </a>
 </div></blockquote>
 </section>
@@ -271,7 +272,7 @@ SDP-K1 is powered through USB connection to PC. SDP-K1 acts as a Serial device w
 a COM Port to connect to Serial Terminals like Teraterm, Putty, etc. The COM port assigned to a device can be seen
 through the device manager for windows based OS.</p>
 <blockquote>
-<div><a class="reference internal image-reference" href="../../../_images/com_port_sdp-k1.jpg"><img alt="../../../_images/com_port_sdp-k1.jpg" src="../../../_images/com_port_sdp-k1.jpg" style="width: 300px;" />
+<div><a class="reference internal image-reference" href="../../../_images/com_port_sdp-k1.jpg"><img alt="../../../_images/com_port_sdp-k1.jpg" src="../../../_images/com_port_sdp-k1.jpg" width="300" />
 </a>
 </div></blockquote>
 </section>
@@ -288,7 +289,7 @@ This uses an internal reference and has a bias voltage enabled on AIN2. A suitab
 connected to A2 for this measurement. AIN4/AIN5 are an RTD1000 measurement on channel 1. Excitation is provided
 from AIN1 for this. This requires an external RTD and reference resistor connected as show in the figure below.</p>
 <blockquote>
-<div><a class="reference internal image-reference" href="../../../_images/ad7124_rtd_thermocouple_connections.png"><img alt="../../../_images/ad7124_rtd_thermocouple_connections.png" src="../../../_images/ad7124_rtd_thermocouple_connections.png" style="width: 200px;" />
+<div><a class="reference internal image-reference" href="../../../_images/ad7124_rtd_thermocouple_connections.png"><img alt="../../../_images/ad7124_rtd_thermocouple_connections.png" src="../../../_images/ad7124_rtd_thermocouple_connections.png" width="200" />
 </a>
 </div></blockquote>
 <p>Temperature sensing application using AD7124 can be found <a class="icon link reference external" href="https://www.analog.com/media/en/reference-design-documentation/reference-designs/CN0383.pdf" target="_blank">here</a></p>
@@ -303,7 +304,7 @@ is executed from ad7124_conole_app.c file. The application layer talks with No-O
 layer interfaces with Platform Drivers layer for accessing low level peripherals. As name suggests, this layer is platform dependent.
 AD7124 firmware uses Mbed libraries within Platform Drivers layer. AD7124 Firmware Example is shown below.</p>
 <blockquote>
-<div><a class="reference internal image-reference" href="../../../_images/ad7124_software_sequence.jpg"><img alt="../../../_images/ad7124_software_sequence.jpg" src="../../../_images/ad7124_software_sequence.jpg" style="width: 700px;" />
+<div><a class="reference internal image-reference" href="../../../_images/ad7124_software_sequence.jpg"><img alt="../../../_images/ad7124_software_sequence.jpg" src="../../../_images/ad7124_software_sequence.jpg" width="700" />
 </a>
 </div></blockquote>
 </section>
@@ -341,7 +342,7 @@ for respective platform.</p>
 <li><p>Install <a class="icon link reference external" href="https://www.st.com/en/development-tools/stm32cubeide.html" target="_blank">STM32CubeIDE</a></p></li>
 <li><p>Install <a class="icon link reference external" href="https://www.st.com/en/development-tools/stm32cubemx.html" target="_blank">STM32CubeMX</a></p>
 <blockquote>
-<div><a class="reference internal image-reference" href="../../../_images/environmental_variables.png"><img alt="../../../_images/environmental_variables.png" src="../../../_images/environmental_variables.png" style="width: 400px;" />
+<div><a class="reference internal image-reference" href="../../../_images/environmental_variables.png"><img alt="../../../_images/environmental_variables.png" src="../../../_images/environmental_variables.png" width="400" />
 </a>
 </div></blockquote>
 </li>
@@ -370,50 +371,50 @@ and generate executable file (.bin/.hex)</p>
 <li><p>Open the respective project directory by navigating into the “precision_converters_firmware/projects/” folder.</p></li>
 <li><p>In the “STM32” folder present within the project directory, double click and open the .ioc file present within.</p>
 <blockquote>
-<div><a class="reference internal image-reference" href="../../../_images/stm32_project_directory.png"><img alt="../../../_images/stm32_project_directory.png" src="../../../_images/stm32_project_directory.png" style="width: 600px;" />
+<div><a class="reference internal image-reference" href="../../../_images/stm32_project_directory.png"><img alt="../../../_images/stm32_project_directory.png" src="../../../_images/stm32_project_directory.png" width="600" />
 </a>
 </div></blockquote>
 </li>
 <li><p>Click on the “Generate Code” option seen on the top right corner</p>
 <blockquote>
-<div><a class="reference internal image-reference" href="../../../_images/stm32_generate_code.png"><img alt="../../../_images/stm32_generate_code.png" src="../../../_images/stm32_generate_code.png" style="width: 600px;" />
+<div><a class="reference internal image-reference" href="../../../_images/stm32_generate_code.png"><img alt="../../../_images/stm32_generate_code.png" src="../../../_images/stm32_generate_code.png" width="600" />
 </a>
 </div></blockquote>
 </li>
 <li><p>Upon successful generation of drivers for the selected MCU, the autogenerated files would be seen in the same directory where the .ioc file was present. Double click and open the “.project” file seen in the list of files</p>
 <blockquote>
-<div><a class="reference internal image-reference" href="../../../_images/stm32_auto_generated_files.png"><img alt="../../../_images/stm32_auto_generated_files.png" src="../../../_images/stm32_auto_generated_files.png" style="width: 600px;" />
+<div><a class="reference internal image-reference" href="../../../_images/stm32_auto_generated_files.png"><img alt="../../../_images/stm32_auto_generated_files.png" src="../../../_images/stm32_auto_generated_files.png" width="600" />
 </a>
 </div></blockquote>
 </li>
 <li><p>After the project is loaded to the STM32CubeIDE, unfold the adxxxx_iio project seen in the project explorer, right click the “app” folder, select “Settings” under the “C/C++ Build” section on the left pane and un-check the “Exclude resources from build” checkbox. This would ensure that the project specific files are included by the build system</p>
 <blockquote>
-<div><a class="reference internal image-reference" href="../../../_images/stm32_exclude_files_option.png"><img alt="../../../_images/stm32_exclude_files_option.png" src="../../../_images/stm32_exclude_files_option.png" style="width: 600px;" />
+<div><a class="reference internal image-reference" href="../../../_images/stm32_exclude_files_option.png"><img alt="../../../_images/stm32_exclude_files_option.png" src="../../../_images/stm32_exclude_files_option.png" width="600" />
 </a>
 </div></blockquote>
 </li>
 <li><p>In order to choose STM32 platform in the firmware, select the “ACTIVE_PLATFORM” as “STM32_PLATFORM” in the app_config.h from the respective project. Alternately , add compiler flag “ACTIVE_PLATFORM=value of STM32_PLATFORM in app_config.h” for selecting stm32 platform.</p></li>
 <li><p>Add compiler flags “-u _printf_float” to the project settings.</p>
 <blockquote>
-<div><a class="reference internal image-reference" href="../../../_images/stm32_compiler_flag.png"><img alt="../../../_images/stm32_compiler_flag.png" src="../../../_images/stm32_compiler_flag.png" style="width: 600px;" />
+<div><a class="reference internal image-reference" href="../../../_images/stm32_compiler_flag.png"><img alt="../../../_images/stm32_compiler_flag.png" src="../../../_images/stm32_compiler_flag.png" width="600" />
 </a>
 </div></blockquote>
 </li>
 <li><p>Exclude the generated file syscalls.c from the build process</p>
 <blockquote>
-<div><a class="reference internal image-reference" href="../../../_images/stm32_exclude_syscalls.png"><img alt="../../../_images/stm32_exclude_syscalls.png" src="../../../_images/stm32_exclude_syscalls.png" style="width: 600px;" />
+<div><a class="reference internal image-reference" href="../../../_images/stm32_exclude_syscalls.png"><img alt="../../../_images/stm32_exclude_syscalls.png" src="../../../_images/stm32_exclude_syscalls.png" width="600" />
 </a>
 </div></blockquote>
 </li>
 <li><dl>
-<dt>To generate the binary file, right click on the adxxxx_iio project seen in the project explorer and select “Properties”, select “Settings” under the “C/C++ Build” section on the left pane, select “MCU Post build outputs” under “Tool Settings” section and check the “Convert to binary file (-O binary)” checkbox.</dt><dd><a class="reference internal image-reference" href="../../../_images/stm32_convert_to_binary.png"><img alt="../../../_images/stm32_convert_to_binary.png" src="../../../_images/stm32_convert_to_binary.png" style="width: 600px;" />
+<dt>To generate the binary file, right click on the adxxxx_iio project seen in the project explorer and select “Properties”, select “Settings” under the “C/C++ Build” section on the left pane, select “MCU Post build outputs” under “Tool Settings” section and check the “Convert to binary file (-O binary)” checkbox.</dt><dd><a class="reference internal image-reference" href="../../../_images/stm32_convert_to_binary.png"><img alt="../../../_images/stm32_convert_to_binary.png" src="../../../_images/stm32_convert_to_binary.png" width="600" />
 </a>
 </dd>
 </dl>
 </li>
 <li><p>Build the project by right-clicking on the adxxxx_iio project seen in the project explorer and select “Build Project”</p>
 <blockquote>
-<div><a class="reference internal image-reference" href="../../../_images/stm32_build_project.png"><img alt="../../../_images/stm32_build_project.png" src="../../../_images/stm32_build_project.png" style="width: 600px;" />
+<div><a class="reference internal image-reference" href="../../../_images/stm32_build_project.png"><img alt="../../../_images/stm32_build_project.png" src="../../../_images/stm32_build_project.png" width="600" />
 </a>
 </div></blockquote>
 </li>
@@ -465,12 +466,12 @@ Stop bits: 1</p>
 <p>Configure your serial terminal (<a class="icon link reference external" href="https://osdn.net/projects/ttssh2/releases/" target="_blank">Tera Term</a>)
 for below settings:</p>
 <blockquote>
-<div><a class="reference internal image-reference" href="../../../_images/baud_rate_update.png"><img alt="../../../_images/baud_rate_update.png" src="../../../_images/baud_rate_update.png" style="width: 400px;" />
+<div><a class="reference internal image-reference" href="../../../_images/baud_rate_update.png"><img alt="../../../_images/baud_rate_update.png" src="../../../_images/baud_rate_update.png" width="400" />
 </a>
 </div></blockquote>
 <p>The AD7124 Main menu looks like below (with Tera Term):</p>
 <blockquote>
-<div><a class="reference internal image-reference" href="../../../_images/ad7124_main_menu.jpg"><img alt="../../../_images/ad7124_main_menu.jpg" src="../../../_images/ad7124_main_menu.jpg" style="width: 400px;" />
+<div><a class="reference internal image-reference" href="../../../_images/ad7124_main_menu.jpg"><img alt="../../../_images/ad7124_main_menu.jpg" src="../../../_images/ad7124_main_menu.jpg" width="400" />
 </a>
 </div></blockquote>
 <p>The firmware is designed to be intuitive to use, and requires little explanation, simply enter a number corresponding to the required command and follow the on-screen prompts.</p>
