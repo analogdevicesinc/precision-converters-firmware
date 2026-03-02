@@ -1,0 +1,9 @@
+<map id="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad5706r_iio/app/ad5706r_iio.h" name="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad5706r_iio/app/ad5706r_iio.h">
+<area shape="rect" id="Node000001" title="Header file for AD5706R IIO interface." alt="" coords="252,5,475,75"/>
+<area shape="rect" id="Node000002" href="$ad5706r__iio_8c.html" title="Implementation of AD5706R IIO Appication Interface." alt="" coords="5,123,228,192"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="280,83,190,125,188,120,278,78"/>
+<area shape="rect" id="Node000003" href="$ad5706r__iio_2app_2app__config_8c.html" title="Application configurations module." alt="" coords="252,123,475,192"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="366,89,366,122,361,122,361,89"/>
+<area shape="rect" id="Node000004" href="$ad5706r__iio_2app_2main_8c.html" title="Main interface for AD5706R IIO firmware application." alt="" coords="499,123,721,192"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="449,78,539,120,537,125,447,83"/>
+</map>

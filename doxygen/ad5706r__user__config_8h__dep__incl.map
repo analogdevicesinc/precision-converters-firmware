@@ -1,0 +1,11 @@
+<map id="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad5706r_iio/app/ad5706r_user_config.h" name="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad5706r_iio/app/ad5706r_user_config.h">
+<area shape="rect" id="Node000001" title="Header for AD5706R user configuration file." alt="" coords="389,5,669,75"/>
+<area shape="rect" id="Node000002" href="$ad5706r__iio_8c.html" title="Implementation of AD5706R IIO Appication Interface." alt="" coords="5,123,228,192"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="396,81,229,128,228,122,395,76"/>
+<area shape="rect" id="Node000003" href="$ad5706r__user__config_8c.html" title="User configuration source for the AD5706R IIO Application." alt="" coords="252,123,531,192"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="480,86,433,124,430,120,477,81"/>
+<area shape="rect" id="Node000004" href="$ad5706r__iio_2app_2app__config_8c.html" title="Application configurations module." alt="" coords="555,123,777,192"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="581,81,627,120,624,124,577,86"/>
+<area shape="rect" id="Node000005" href="$ad5706r__iio_2app_2app__config__stm32_8c.html" title="Source file for STM32 platform configurations." alt="" coords="801,123,1064,192"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="661,76,816,120,814,125,659,81"/>
+</map>

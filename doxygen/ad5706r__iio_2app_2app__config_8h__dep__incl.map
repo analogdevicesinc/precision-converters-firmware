@@ -1,0 +1,15 @@
+<map id="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad5706r_iio/app/app_config.h" name="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad5706r_iio/app/app_config.h">
+<area shape="rect" id="Node000001" title="Configuration file for AD5706R IIO firmware application." alt="" coords="628,5,851,75"/>
+<area shape="rect" id="Node000002" href="$ad5706r__iio_8c.html" title="Implementation of AD5706R IIO Appication Interface." alt="" coords="5,123,228,192"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="615,61,437,88,241,125,229,128,227,123,240,120,437,83,614,55"/>
+<area shape="rect" id="Node000003" href="$ad5706r__user__config_8c.html" title="User configuration source for the AD5706R IIO Application." alt="" coords="252,123,531,192"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="626,82,494,125,492,120,624,77"/>
+<area shape="rect" id="Node000004" href="$ad5706r__iio_2app_2app__config_8c.html" title="Application configurations module." alt="" coords="555,123,777,192"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="713,88,690,124,685,121,708,85"/>
+<area shape="rect" id="Node000005" href="$ad5706r__iio_2app_2app__config__stm32_8c.html" title="Source file for STM32 platform configurations." alt="" coords="767,240,1029,309"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="771,85,842,190,876,238,871,241,837,194,766,88"/>
+<area shape="rect" id="Node000006" href="$ad5706r__iio_2app_2app__config__stm32_8h.html" title="Header file for STM32 platform configurations." alt="" coords="851,123,1115,192"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="816,78,905,120,903,125,813,83"/>
+<area shape="poly" id="edge6_Node000006_Node000001" title=" " alt="" coords="907,119,818,77,820,72,909,114"/>
+<area shape="poly" id="edge7_Node000006_Node000005" title=" " alt="" coords="952,205,925,241,921,238,948,202"/>
+</map>

@@ -1,0 +1,15 @@
+<map id="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad5706r_iio/app/app_config_stm32.h" name="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad5706r_iio/app/app_config_stm32.h">
+<area shape="rect" id="Node000001" title="Header file for STM32 platform configurations." alt="" coords="534,5,798,75"/>
+<area shape="rect" id="Node000002" href="$ad5706r__iio_2app_2app__config_8h.html" title="Configuration file for AD5706R IIO firmware application." alt="" coords="555,123,777,192"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="660,89,660,122,655,123,654,89"/>
+<area shape="rect" id="Node000006" href="$ad5706r__iio_2app_2app__config__stm32_8c.html" title="Source file for STM32 platform configurations." alt="" coords="801,240,1064,309"/>
+<area shape="poly" id="edge7_Node000001_Node000006" title=" " alt="" coords="735,80,790,121,854,181,906,238,902,241,850,185,787,125,732,84"/>
+<area shape="poly" id="edge6_Node000002_Node000001" title=" " alt="" coords="672,109,672,75,677,75,678,109"/>
+<area shape="rect" id="Node000003" href="$ad5706r__iio_8c.html" title="Implementation of AD5706R IIO Appication Interface." alt="" coords="5,240,228,309"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="542,182,397,209,240,243,229,245,228,240,239,237,396,204,541,177"/>
+<area shape="rect" id="Node000004" href="$ad5706r__user__config_8c.html" title="User configuration source for the AD5706R IIO Application." alt="" coords="252,240,531,309"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="574,200,473,242,471,237,572,195"/>
+<area shape="rect" id="Node000005" href="$ad5706r__iio_2app_2app__config_8c.html" title="Application configurations module." alt="" coords="555,240,777,309"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="669,206,669,240,663,240,663,206"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="757,195,856,237,854,242,755,200"/>
+</map>

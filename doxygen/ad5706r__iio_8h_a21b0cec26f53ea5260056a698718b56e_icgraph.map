@@ -1,0 +1,8 @@
+<map id="ad5706r_iio_initialize" name="ad5706r_iio_initialize">
+<area shape="rect" id="Node000001" title="Initialize the IIO interface for AD5706R IIO device." alt="" coords="355,31,516,56"/>
+<area shape="rect" id="Node000002" href="$ad5706r__iio_8c.html#a09e570353dfb1f8675491c751adc2819" title="Run the AD5706R IIO event handler." alt="" coords="108,5,307,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="341,36,306,32,307,26,341,30"/>
+<area shape="rect" id="Node000003" href="$ad5706r__iio_2app_2main_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title="Main entry point to application." alt="" coords="5,31,60,56"/>
+<area shape="poly" id="edge3_Node000001_Node000003" title=" " alt="" coords="341,46,60,46,60,41,341,41"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="106,35,61,42,60,37,106,30"/>
+</map>
