@@ -70,10 +70,6 @@
 #include <ad7176_2_regs.h>
 #define AD717X_DEVICE_MAP ad7176_2_regs
 #define AD717x_NUM_REGS NO_OS_ARRAY_SIZE(ad7176_2_regs)
-#elif defined(DEV_AD7177_2)
-#include <ad7177_2_regs.h>
-#define AD717X_DEVICE_MAP ad7177_2_regs
-#define AD717x_NUM_REGS NO_OS_ARRAY_SIZE(ad7177_2_regs)
 #else
 #include <ad411x_regs.h>
 #define AD717X_DEVICE_MAP ad4111_regs
@@ -125,11 +121,9 @@ struct no_os_uart_init_param uart_init_params = {
 	.parity = NO_OS_UART_PAR_NO,
 	.stop = NO_OS_UART_STOP_1_BIT,
 	.irq_id = UART_IRQ_ID,
-#if(ACTIVE_PLATFORM == STM32_PLATFORM)
 	.asynchronous_rx = false,
 	.platform_ops = &uart_ops,
 	.extra = &uart_extra_init_params
-#endif
 };
 
 /* Used to create the ad717x device */
@@ -165,7 +159,6 @@ int32_t ad717x_app_initialize(void)
 {
 	int ret;
 
-#if (ACTIVE_PLATFORM == STM32_PLATFORM)
 	ret = no_os_uart_init(&uart_desc, &uart_init_params);
 	if (ret) {
 		return ret;
@@ -173,7 +166,6 @@ int32_t ad717x_app_initialize(void)
 
 	/* Set up the UART for standard I/O operations */
 	no_os_uart_stdio(uart_desc);
-#endif
 
 	// Initialze the device
 	return (AD717X_Init(&pad717x_dev, ad717x_init));
@@ -188,17 +180,6 @@ static bool was_escape_key_pressed(void)
 {
 	bool wasPressed = false;
 
-#if (ACTIVE_PLATFORM == MBED_PLATFORM)
-	char rxChar;
-
-	/* Check for Escape key pressed */
-	if ((rxChar = getchar_noblock()) > 0) {
-		if (rxChar == ESCAPE_KEY_CODE) {
-			wasPressed = true;
-		}
-	}
-
-#else  /* STM32_PLATFORM */
 	int32_t ret;
 
 	/* Check for Escape key pressed */
@@ -206,7 +187,6 @@ static bool was_escape_key_pressed(void)
 	if (ret) {
 		wasPressed = true;
 	}
-#endif
 
 	return (wasPressed);
 }
@@ -303,7 +283,12 @@ static char select_chn_assignment(void)
 
 	do {
 		printf(EOL EOL "\tDo you want to assign setup to a channel (y/n)?: ");
-		rx_char = toupper(getchar());
+		rx_char = (char) getchar();
+		if ((rx_char >= 'a' && rx_char <= 'z') || (rx_char >= 'A' && rx_char <= 'Z')) {
+			rx_char = toupper(rx_char);
+		} else {
+			printf(EOL"\tInvalid Entry!!");
+		}
 
 		if (rx_char == 'Y') {
 			assign_setup_to_channel(device_setup.setup);
@@ -539,6 +524,7 @@ static int32_t do_continuous_conversion(uint8_t display_mode)
 {
 	int32_t error_code;
 	int32_t sample_data;
+	uint8_t channelRead;
 	ad717x_st_reg *device_mode_reg;
 	ad717x_st_reg *device_chnmap_reg;
 	ad717x_st_reg *device_status_reg;
@@ -615,16 +601,20 @@ static int32_t do_continuous_conversion(uint8_t display_mode)
 		 * No error, need to process the sample, what channel has been read? update that channelSample
 		 */
 		device_status_reg = AD717X_GetReg(pad717x_dev, AD717X_STATUS_REG);
-		uint8_t channelRead = device_status_reg->value & 0x0000000F;
 
-		if (channelRead < NUMBER_OF_CHANNELS) {
-			channel_samples[channelRead] = sample_data;
-			channel_samples_count[channelRead]++;
-		} else {
-			printf("Channel Read was %d, which is not < %d" EOL,
-			       channelRead,
-			       NUMBER_OF_CHANNELS);
-		}
+#if defined(DEV_AD4111) || defined(DEV_AD4112) || \
+	defined(DEV_AD4114) || defined(DEV_AD4115) || \
+	defined(DEV_AD7173_8) || defined(DEV_AD7175_8) ||\
+	defined(DEV_AD4116)
+		channelRead = device_status_reg->value & 0x0000000F;
+#elif defined(DEV_AD7172_4)
+		channelRead = device_status_reg->value & 0x00000007;
+#else
+		channelRead = device_status_reg->value & 0x00000003;
+#endif
+
+		channel_samples[channelRead] = sample_data;
+		channel_samples_count[channelRead]++;
 
 		dislay_channel_samples(SHOW_ENABLED_CHANNELS, display_mode);
 	}
@@ -692,6 +682,7 @@ int32_t menu_single_conversion(uint32_t channel_id)
 	uint16_t   channel_enable_mask = 0;
 	uint8_t    channel_count = 0;
 	int32_t    sample_data;
+	uint8_t   channelRead;
 	ad717x_st_reg *device_chnmap_reg;
 	ad717x_st_reg *device_mode_reg;
 	ad717x_st_reg *device_status_reg;
@@ -754,30 +745,36 @@ int32_t menu_single_conversion(uint32_t channel_id)
 		 * No error, need to process the sample, what channel has been read? update that channelSample
 		 */
 		device_status_reg = AD717X_GetReg(pad717x_dev, AD717X_STATUS_REG);
-		uint8_t channelRead = device_status_reg->value & 0x0000000F;
 
-		if (channelRead < NUMBER_OF_CHANNELS) {
-			channel_samples[channelRead] = sample_data;
-			channel_samples_count[channelRead]++;
+#if defined(DEV_AD4111) || defined(DEV_AD4112) || \
+	defined(DEV_AD4114) || defined(DEV_AD4115) || \
+	defined(DEV_AD7173_8) || defined(DEV_AD7175_8) ||\
+	defined(DEV_AD4116)
+		channelRead = device_status_reg->value & 0x0000000F;
+#elif defined(DEV_AD7172_4)
+		channelRead = device_status_reg->value & 0x00000007;
+#else
+		channelRead = device_status_reg->value & 0x00000003;
+#endif
 
-			// Get the pointer to channel register
-			device_chnmap_reg = AD717X_GetReg(pad717x_dev, AD717X_CHMAP0_REG + channelRead);
+		channel_samples[channelRead] = sample_data;
+		channel_samples_count[channelRead]++;
 
-			/* also need to clear the channel enable bit so the next single conversion cycle will sample the next channel */
-			device_chnmap_reg->value &= (~AD717X_CHMAP_REG_CH_EN);
-			if ((error_code = AD717X_WriteRegister(pad717x_dev,
-							       AD717X_CHMAP0_REG + channelRead)) != 0) {
-				printf("Error (%ld) Clearing channel %d Enable bit." EOL,
-				       error_code,
-				       channelRead);
+		// Get the pointer to channel register
+		device_chnmap_reg = AD717X_GetReg(pad717x_dev, AD717X_CHMAP0_REG + channelRead);
 
-				adi_press_any_key_to_continue();
-				continue;
-			}
-		} else {
-			printf("Channel Read was %d, which is not < AD717x_CHANNEL_COUNT" EOL,
+		/* also need to clear the channel enable bit so the next single conversion cycle will sample the next channel */
+		device_chnmap_reg->value &= (~AD717X_CHMAP_REG_CH_EN);
+		if ((error_code = AD717X_WriteRegister(pad717x_dev,
+						       AD717X_CHMAP0_REG + channelRead)) != 0) {
+			printf("Error (%ld) Clearing channel %d Enable bit." EOL,
+			       error_code,
 			       channelRead);
+
+			adi_press_any_key_to_continue();
+			continue;
 		}
+
 	}
 
 	// All done, ADC put into standby mode
@@ -858,7 +855,13 @@ int32_t menu_channels_enable_disable(uint32_t action)
 		}
 
 		printf(EOL EOL "\tDo you want to continue (y/n)?: ");
-		rx_char = toupper(getchar());
+		rx_char = (char) getchar();
+		if ((rx_char >= 'a' && rx_char <= 'z') || (rx_char >= 'A' && rx_char <= 'Z')) {
+			rx_char = toupper(rx_char);
+		} else {
+			printf(EOL"\tInvalid Entry!!");
+		}
+
 
 		if ((rx_char != 'N') && (rx_char != 'Y')) {
 			printf("Invalid entry!!" EOL);
@@ -1499,6 +1502,7 @@ int32_t menu_read_temperature(uint32_t menu_id)
 	float conversion_result; 		// raw sample data to voltage conversion result
 	int32_t prev_adc_reg_values[3];	// Holds the previous register values
 	bool temperature_read_error;	// Temperature read error status
+	int32_t ret;
 
 	temperature_read_error = false;
 
@@ -1583,7 +1587,10 @@ int32_t menu_read_temperature(uint32_t menu_id)
 
 		for (uint8_t samples = 0; samples < 2; samples++) {
 			// Wait for conversion to complete, then obtain sample
-			AD717X_WaitForReady(pad717x_dev, 10000);
+			ret = AD717X_WaitForReady(pad717x_dev, 10000);
+			if (ret) {
+				printf("\n Error waiting for conversion");
+			}
 
 			if (AD717X_ReadData(pad717x_dev, &sample_data) != 0) {
 				temperature_read_error = true;
