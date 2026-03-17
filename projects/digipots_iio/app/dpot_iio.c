@@ -67,6 +67,9 @@ static struct scan_type chn_scan = {
 #define NUM_OF_IIO_DEV   1
 #endif
 
+/* Converts interface type to interface index */
+#define INTF_TYPE_TO_INDEX(intf_type) ((intf_type) - 1)
+
 #define DPOT_CHN_ATTR(_name, _priv) {\
 	.name = _name,\
 	.priv = _priv,\
@@ -382,15 +385,6 @@ static enum dpot_rdac_linear_status dpot_rdac_linear_indx;
 /* Dpot RDAC 6dB value index */
 static enum dpot_rdac_6db_status dpot_rdac_6db_indx;
 
-/* Dpot software lrdac status */
-static bool dpot_sw_lrdac_enable;
-
-/* Dpot rdac to eeprom copy status */
-static bool dpot_copy_rdac_to_eeprom_enable;
-
-/* Dpot eeprom to rdac copy status */
-static bool dpot_copy_eeprom_to_rdac_enable;
-
 /* Dpot RDAC WP status index */
 static uint8_t dpot_rdac_wp_indx;
 
@@ -423,13 +417,11 @@ static const char *dpot_chn_shutdown_status[] = {
 
 /* SW LRDAC status available options */
 static const char *dpot_sw_lrdac_status[] = {
-	"disable",
 	"enable"
 };
 
 /* RDAC to EEPROM and vice a versa copy status available options */
 static const char *dpot_rdac_eeprom_copy_status[] = {
-	"disable",
 	"enable"
 };
 
@@ -446,7 +438,6 @@ static const char *dpot_nvm_programming_status[] = {
 };
 
 static const char *dpot_mid_scale_options[] = {
-	"disable",
 	"enable"
 };
 
@@ -567,27 +558,15 @@ static int dpot_iio_attr_get(void *device, char *buf, uint32_t len,
 		break;
 
 	case DPOT_SW_LRDAC_ATTR_ID:
-		if (!dpot_sw_lrdac_enable) {
-			len = sprintf(buf, "%s", dpot_sw_lrdac_status[0]);
-		} else {
-			len = sprintf(buf, "%s", dpot_sw_lrdac_status[1]);
-		}
+		len = sprintf(buf, "%s", dpot_sw_lrdac_status[0]);
 		break;
 
 	case DPOT_COPY_RDAC_TO_EEPROM_ATTR_ID:
-		if (!dpot_copy_rdac_to_eeprom_enable) {
-			len = sprintf(buf, "%s", dpot_rdac_eeprom_copy_status[0]);
-		} else {
-			len = 	sprintf(buf, "%s", dpot_rdac_eeprom_copy_status[1]);
-		}
+		len = sprintf(buf, "%s", dpot_rdac_eeprom_copy_status[0]);
 		break;
 
 	case DPOT_COPY_EEPROM_TO_RDAC_ATTR_ID:
-		if (!dpot_copy_eeprom_to_rdac_enable) {
-			len = sprintf(buf, "%s", dpot_rdac_eeprom_copy_status[0]);
-		} else {
-			len = 	sprintf(buf, "%s", dpot_rdac_eeprom_copy_status[1]);
-		}
+		len = sprintf(buf, "%s", dpot_rdac_eeprom_copy_status[0]);
 		break;
 
 	case DPOT_OPERATING_MODE_ATTR_ID:
@@ -707,14 +686,8 @@ static int dpot_iio_attr_set(void *device, char *buf, uint32_t len,
 		if (ret) {
 			return ret;
 		}
-
-		if (dpot_copy_rdac_to_eeprom_enable) {
-			ret = dpot_copy_rdac_to_nvm(dpot_dev_desc, channel->ch_num);
-			if (ret) {
-				return ret;
-			}
-		}
 		break;
+
 	case DPOT_TOLERANCE_ATTR_ID:
 		break;
 	case DPOT_SCALE_ATTR_ID:
@@ -755,13 +728,6 @@ static int dpot_iio_attr_set(void *device, char *buf, uint32_t len,
 		ret = dpot_nvm_write(dpot_dev_desc, channel->ch_num, (uint8_t)val);
 		if (ret) {
 			return ret;
-		}
-
-		if (dpot_copy_eeprom_to_rdac_enable) {
-			ret = dpot_copy_nvm_to_rdac(dpot_dev_desc, channel->ch_num);
-			if (ret) {
-				return ret;
-			}
 		}
 		break;
 
@@ -905,6 +871,9 @@ static int dpot_iio_attr_set(void *device, char *buf, uint32_t len,
 		for (int i = 0; i < DPOT_NUM_SUPPORTED_DEVICES; i++) {
 			if (!strcmp(buf, dpot_info[i].device_name)) {
 				oactive_dev.active_device = i;
+				oactive_dev.intf_type =
+					dpot_info[oactive_dev.active_device].dpot_init_params.intf_type;
+				dpot_interface_indx = INTF_TYPE_TO_INDEX(oactive_dev.intf_type);
 				break;
 			}
 		}
@@ -921,13 +890,12 @@ static int dpot_iio_attr_set(void *device, char *buf, uint32_t len,
 		/* Set flag to true */
 		if (!strcmp(buf, "I2C")) {
 			oactive_dev.intf_type = AD_I2C_INTERFACE;
-			dpot_interface_indx = 1;
 		} else if (!strcmp(buf, "SPI")) {
-			dpot_interface_indx = 0;
 			oactive_dev.intf_type = AD_SPI_INTERFACE;
 		} else {
 			return -EINVAL;
 		}
+		dpot_interface_indx = INTF_TYPE_TO_INDEX(oactive_dev.intf_type);
 		break;
 
 	default:
@@ -966,15 +934,14 @@ static int dpot_iio_attr_available_get(void *device, char *buf, uint32_t len,
 		break;
 
 	case DPOT_SW_LRDAC_AVL_ATTR_ID:
-		len = sprintf(buf, "%s %s", dpot_sw_lrdac_status[0], dpot_sw_lrdac_status[1]);
+		len = sprintf(buf, "%s", dpot_sw_lrdac_status[0]);
 		break;
 
 	case DPOT_COPY_RDAC_TO_EEPROM_AVL_ATTR_ID:
 	case DPOT_COPY_EEPROM_TO_RDAC_AVL_ATTR_ID:
 		len = sprintf(buf,
-			      "%s %s",
-			      dpot_rdac_eeprom_copy_status[0],
-			      dpot_rdac_eeprom_copy_status[1]);
+			      "%s",
+			      dpot_rdac_eeprom_copy_status[0]);
 		break;
 
 	case DPOT_OPERATING_MODE_AVL_ATTR_ID:
@@ -1049,9 +1016,8 @@ static int dpot_iio_attr_available_get(void *device, char *buf, uint32_t len,
 
 	case DPOT_SET_MID_SCALE_AVL_ATTR_ID:
 		len = sprintf(buf,
-			      "%s %s",
-			      dpot_mid_scale_options[0],
-			      dpot_mid_scale_options[1]);
+			      "%s",
+			      dpot_mid_scale_options[0]);
 		break;
 
 	default:
@@ -1233,18 +1199,18 @@ int dpot_iio_init(void)
 
 		/* Add delay between the i2c init and the eeprom read */
 		no_os_mdelay(2000);
-	}
 
-	/* Read context attributes */
-	ret = get_iio_context_attributes_ex(&dpot_iio_init_params.ctx_attrs,
-					    &dpot_iio_init_params.nb_ctx_attr,
-					    eeprom_desc,
-					    HW_MEZZANINE_NAME,
-					    STR(HW_CARRIER_NAME),
-					    &hw_mezzanine_is_valid,
-					    FIRMWARE_VERSION);
-	if (ret) {
-		return ret;
+		/* Read context attributes */
+		ret = get_iio_context_attributes_ex(&dpot_iio_init_params.ctx_attrs,
+						    &dpot_iio_init_params.nb_ctx_attr,
+						    eeprom_desc,
+						    HW_MEZZANINE_NAME,
+						    STR(HW_CARRIER_NAME),
+						    &hw_mezzanine_is_valid,
+						    FIRMWARE_VERSION);
+		if (ret) {
+			return ret;
+		}
 	}
 
 #ifndef DPOT_ADD_BOARD_DEVICE
