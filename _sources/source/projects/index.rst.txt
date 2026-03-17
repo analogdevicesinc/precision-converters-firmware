@@ -35,6 +35,7 @@ Firmware Applications
    /source/projects/ad77681_iio/ad77681_iio.rst
    /source/projects/ad777x_iio/ad777x_iio.rst
    /source/projects/adt7420_console/adt7420_console.rst
+   /source/projects/digipots_iio/digipots_iio.rst
    /source/projects/evb_discovery_firmware.rst
    /source/projects/ltc268x_console/ltc268x_console.rst
    /source/projects/ltc2672_iio/ltc2672_iio.rst

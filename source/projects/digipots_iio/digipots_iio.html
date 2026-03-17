@@ -6,14 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta content="Supported Devices:" name="description" />
 
-    <title>AD4080 IIO Application &#8212; Precision Converters Firmware  documentation</title>
+    <title>Digipots IIO Application &#8212; Precision Converters Firmware  documentation</title>
     <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=8e8a900e" />
     <link rel="stylesheet" type="text/css" href="../../../_static/app.min.css?v=5c8d5ce8" />
     <script async="async" src="../../../_static/app.umd.js?v=f78f54ff"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="AD4130 IIO Application" href="../ad4130_iio/ad4130_iio.html" />
-    <link rel="prev" title="AD405x IIO Application" href="../ad405x_iio/ad405x_iio.html" />
+    <link rel="next" title="LTC268x Console Application" href="../ltc268x_console/ltc268x_console.html" />
+    <link rel="prev" title="ADT7420 Console Application" href="../adt7420_console/adt7420_console.html" />
    
   
   
@@ -93,12 +93,12 @@
         </div>
         <nav>
           <ul>
-<li><a class="reference internal" href="#">AD4080 IIO Application</a><ul>
+<li><a class="reference internal" href="#">Digipots IIO Application</a><ul>
 <li><a class="reference internal" href="#supported-hardware">Supported Hardware</a></li>
 <li><a class="reference internal" href="#introduction">Introduction</a></li>
 <li><a class="reference internal" href="#useful-links">Useful Links</a></li>
 <li><a class="reference internal" href="#hardware-connections">Hardware Connections</a></li>
-<li><a class="reference internal" href="#solder-bridge-and-jumper-settings">Solder Bridge and Jumper Settings</a></li>
+<li><a class="reference internal" href="#jumper-settings">Jumper Settings</a></li>
 <li><a class="reference internal" href="#communication-interface">Communication Interface</a></li>
 <li><a class="reference internal" href="#build-guide">Build Guide</a><ul>
 <li><a class="reference internal" href="#build-prerequisites">Build Prerequisites</a></li>
@@ -146,7 +146,7 @@ Content on this topic
 <li class="toctree-l2"><a class="reference internal" href="../ad353xr_iio/ad353xr_iio.html">AD3530R IIO Application</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ad355xr_iio/ad355xr_iio.html">AD355XR IIO Application</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ad405x_iio/ad405x_iio.html">AD405x IIO Application</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">AD4080 IIO Application</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ad4080_iio/ad4080_iio.html">AD4080 IIO Application</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ad4130_iio/ad4130_iio.html">AD4130 IIO Application</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ad4170_iio/ad4170_iio.html">AD4170 IIO Application</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ad4696_iio/ad4696_iio.html">AD4696 IIO Application</a></li>
@@ -172,7 +172,7 @@ Content on this topic
 <li class="toctree-l2"><a class="reference internal" href="../ad77681_iio/ad77681_iio.html">AD7768-1 IIO Application</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ad777x_iio/ad777x_iio.html">AD777x IIO Application</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../adt7420_console/adt7420_console.html">ADT7420 Console Application</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../digipots_iio/digipots_iio.html">Digipots IIO Application</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Digipots IIO Application</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ltc268x_console/ltc268x_console.html">LTC268x Console Application</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ltc2672_iio/ltc2672_iio.html">LTC2672 IIO Application</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../nanodac_console/nanodac_console.html">nanoDAC+ Console Application</a></li>
@@ -193,30 +193,62 @@ Content on this topic
 </div>
           <div class="body" role="main">
             
-  <section id="ad4080-iio-application">
-<h1>AD4080 IIO Application<a class="headerlink" href="#ad4080-iio-application" title="Link to this heading"></a></h1>
+  <section id="digipots-iio-application">
+<h1>Digipots IIO Application<a class="headerlink" href="#digipots-iio-application" title="Link to this heading"></a></h1>
 <section id="supported-hardware">
 <h2>Supported Hardware<a class="headerlink" href="#supported-hardware" title="Link to this heading"></a></h2>
 <p><strong>Supported Devices:</strong></p>
 <ul class="simple">
-<li><p><a class="icon link reference external" href="https://www.analog.com/en/products/ad4080.html" target="_blank">AD4080</a></p></li>
+<li><p><a class="icon link reference external" href="https://www.analog.com/media/en/technical-documentation/data-sheets/AD5121_5141.pdf" target="_blank">AD5141</a></p></li>
+<li><p><a class="icon link reference external" href="https://www.analog.com/media/en/technical-documentation/data-sheets/ad5122_5142.pdf" target="_blank">AD5142</a></p></li>
+<li><p><a class="icon link reference external" href="https://www.analog.com/media/en/technical-documentation/data-sheets/ad5122a_5142a.pdf" target="_blank">AD5142A</a></p></li>
+<li><p><a class="icon link reference external" href="https://www.analog.com/media/en/technical-documentation/data-sheets/ad5123_5143.pdf" target="_blank">AD5143</a></p></li>
+<li><p><a class="icon link reference external" href="https://www.analog.com/media/en/technical-documentation/data-sheets/ad5124_5144_5144a.pdf" target="_blank">AD5144</a></p></li>
+<li><p><a class="icon link reference external" href="https://www.analog.com/media/en/technical-documentation/data-sheets/ad5160.pdf" target="_blank">AD5160</a></p></li>
+<li><p><a class="icon link reference external" href="https://www.analog.com/media/en/technical-documentation/data-sheets/AD5161.pdf" target="_blank">AD5161</a></p></li>
+<li><p><a class="icon link reference external" href="https://www.analog.com/media/en/technical-documentation/data-sheets/AD5165.pdf" target="_blank">AD5165</a></p></li>
+<li><p><a class="icon link reference external" href="https://www.analog.com/media/en/technical-documentation/data-sheets/AD5171.pdf" target="_blank">AD5171</a></p></li>
+<li><p><a class="icon link reference external" href="https://www.analog.com/media/en/technical-documentation/data-sheets/ad5241_ad5242.pdf" target="_blank">AD5241</a></p></li>
+<li><p><a class="icon link reference external" href="https://www.analog.com/media/en/technical-documentation/data-sheets/ad5241_ad5242.pdf" target="_blank">AD5242</a></p></li>
+<li><p><a class="icon link reference external" href="https://www.analog.com/media/en/technical-documentation/data-sheets/ad5245.pdf" target="_blank">AD5245</a></p></li>
+<li><p><a class="icon link reference external" href="https://www.analog.com/media/en/technical-documentation/data-sheets/AD5246.pdf" target="_blank">AD5246</a></p></li>
+<li><p><a class="icon link reference external" href="https://www.analog.com/media/en/technical-documentation/data-sheets/AD5258.pdf" target="_blank">AD5258</a></p></li>
+<li><p><a class="icon link reference external" href="https://www.analog.com/media/en/technical-documentation/data-sheets/ad5259.pdf" target="_blank">AD5259</a></p></li>
+<li><p><a class="icon link reference external" href="https://www.analog.com/media/en/technical-documentation/data-sheets/ad5273.pdf" target="_blank">AD5273</a></p></li>
 </ul>
 <p><strong>Supported Evaluation Boards:</strong></p>
 <ul class="simple">
-<li><p><a class="icon link reference external" href="https://www.analog.com/en/resources/evaluation-hardware-and-software/evaluation-boards-kits/eval-ad4080ardz.html" target="_blank">EVAL-AD4080ARDZ</a></p></li>
+<li><p><a class="icon link reference external" href="https://www.analog.com/en/resources/evaluation-hardware-and-software/evaluation-boards-kits/eval-ad5141.html" target="_blank">EVAL-AD5141</a></p></li>
+<li><p><a class="icon link reference external" href="https://www.analog.com/en/resources/evaluation-hardware-and-software/evaluation-boards-kits/eval-ad5142.html" target="_blank">EVAL-AD5142</a></p></li>
+<li><p><a class="icon link reference external" href="https://www.analog.com/en/resources/evaluation-hardware-and-software/evaluation-boards-kits/eval-ad5142a.html" target="_blank">EVAL-AD5142A</a></p></li>
+<li><p><a class="icon link reference external" href="https://www.analog.com/en/resources/evaluation-hardware-and-software/evaluation-boards-kits/eval-ad5143.html" target="_blank">EVAL-AD5143</a></p></li>
+<li><p><a class="icon link reference external" href="https://www.analog.com/en/resources/evaluation-hardware-and-software/evaluation-boards-kits/eval-ad5144.html" target="_blank">EVAL-AD5144</a></p></li>
+<li><p><a class="icon link reference external" href="https://www.analog.com/en/resources/evaluation-hardware-and-software/evaluation-boards-kits/eval-ad5160.html" target="_blank">EVAL-AD5160</a></p></li>
+<li><p><a class="icon link reference external" href="https://www.analog.com/en/resources/evaluation-hardware-and-software/evaluation-boards-kits/eval-ad5161.html" target="_blank">EVAL-AD5161</a></p></li>
+<li><p><a class="icon link reference external" href="https://www.analog.com/en/resources/evaluation-hardware-and-software/evaluation-boards-kits/eval-ad5165.html" target="_blank">EVAL-AD5165</a></p></li>
+<li><p><a class="icon link reference external" href="https://www.analog.com/en/resources/evaluation-hardware-and-software/evaluation-boards-kits/eval-ad5171.html" target="_blank">EVAL-AD5171</a></p></li>
+<li><p><a class="icon link reference external" href="https://www.analog.com/en/resources/evaluation-hardware-and-software/evaluation-boards-kits/eval-ad5242.html" target="_blank">EVAL-AD5242</a></p></li>
+<li><p><a class="icon link reference external" href="https://www.analog.com/en/resources/evaluation-hardware-and-software/evaluation-boards-kits/eval-ad5245.html" target="_blank">EVAL-AD5245</a></p></li>
+<li><p><a class="icon link reference external" href="https://www.analog.com/en/resources/evaluation-hardware-and-software/evaluation-boards-kits/eval-ad5246.html" target="_blank">EVAL-AD5246</a></p></li>
+<li><p><a class="icon link reference external" href="https://www.analog.com/en/resources/evaluation-hardware-and-software/evaluation-boards-kits/eval-ad5258.html" target="_blank">EVAL-AD5258</a></p></li>
+<li><p><a class="icon link reference external" href="https://www.analog.com/en/resources/evaluation-hardware-and-software/evaluation-boards-kits/eval-ad5259.html" target="_blank">EVAL-AD5259</a></p></li>
+<li><p><a class="icon link reference external" href="https://www.analog.com/en/resources/evaluation-hardware-and-software/evaluation-boards-kits/eval-ad5273.html" target="_blank">EVAL-AD5273</a></p></li>
+</ul>
+<p><strong>Evaluation Mother Board:</strong></p>
+<ul class="simple">
+<li><p><a class="reference external" href="TODO:Linktobeaddedwhenreleased">EVAL-MB-LV-ARDZ</a></p></li>
 </ul>
 <p><strong>Supported Carrier Boards:</strong></p>
 <ul class="simple">
 <li><p><a class="icon link reference external" href="https://www.analog.com/en/resources/evaluation-hardware-and-software/evaluation-boards-kits/sdp-k1.html#eb-overview" target="_blank">SDP-K1</a></p></li>
-<li><p><a class="icon link reference external" href="https://www.st.com/en/evaluation-tools/nucleo-h563zi.html/" target="_blank">Nucleo-H563ZI</a> (supports Quad-SPI)</p></li>
 </ul>
 </section>
 <section id="introduction">
 <h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading"></a></h2>
 <p>This page gives an overview of using the ARM platforms supported
-firmware example with Analog Devices AD4080 Evaluation board and SDP-K1/Nucleo-H563ZI controller board.
+firmware example with Analog Devices EVAL-MB-LV-ARDZ board and SDP-K1 controller board.
 This example code leverages the ADI developed IIO (Industrial Input Output) ecosystem to
-evaluate the AD4080 device by providing a device debug and data capture support.</p>
+evaluate the digital potentiometer device by providing a device configuration support.</p>
 <blockquote>
 <div><a class="reference internal image-reference" href="../../../_images/app_interface.png"><img alt="../../../_images/app_interface.png" src="../../../_images/app_interface.png" width="350" />
 </a>
@@ -227,10 +259,8 @@ to communicate with IIO device.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>This code has been developed and tested on the SDP-K1 Controller Board with
-Arduino headers and on the Nucleo-H563ZI Controller Board with extended ST Zio connector headers.
-However, the same code can be used with minimal modifications
-on any STM32 enabled board which has Arduino Header support on it. The extended
-ST Zio connector headers are necessary to support Quad-SPI.</p>
+Arduino headers. However, the same code can be used with minimal modifications
+on any STM32 enabled board which has Arduino Header support on it.</p>
 </div>
 </section>
 <section id="useful-links">
@@ -250,25 +280,19 @@ they may be of interest if you require Linux and/or FPGA support.</p>
 </section>
 <section id="hardware-connections">
 <h2>Hardware Connections<a class="headerlink" href="#hardware-connections" title="Link to this heading"></a></h2>
-<p>Required: SDP-K1 (or an STM32 board like Nucleo-H563ZI), EVAL-AD4080 board (requires an external power supply,
-for which the cable and adapter are provided with the evaluation board kit) and USB cable.</p>
-<p>Connect the EVAL-AD4080 board to SDP-K1 board (or an STM32 board). Connect controller board to the PC using the USB cable.</p>
+<p>Required: SDP-K1 (or an STM32 board), any supported DigiPOT evaluation board, EVAL-MB-LV-ARDZ motherboard and USB cable.</p>
+<p>Connect the EVAL-MB-LV-ARDZ motherboard with the evaluation board to SDP-K1 board (or an equivalent STM32 board). Connect controller board to the PC using the USB cable.</p>
 <blockquote>
-<div><a class="reference internal image-reference" href="../../../_images/ad4080_connection_diagram.png"><img alt="../../../_images/ad4080_connection_diagram.png" src="../../../_images/ad4080_connection_diagram.png" width="600" />
+<div><a class="reference internal image-reference" href="../../../_images/digipots_connection_diagram.png"><img alt="../../../_images/digipots_connection_diagram.png" src="../../../_images/digipots_connection_diagram.png" width="600" />
 </a>
 </div></blockquote>
 </section>
-<section id="solder-bridge-and-jumper-settings">
-<h2>Solder Bridge and Jumper Settings<a class="headerlink" href="#solder-bridge-and-jumper-settings" title="Link to this heading"></a></h2>
-<p><strong>Nucleo-H563ZI:</strong></p>
-<p>SB70 solder bridge should be in the ‘ON’ state (i.e. place a small amount of solder paste between the two pads to be bridged).</p>
-<p>Connect the JP4 jumper on the Nucleo-H563ZI board to 3.3V position to drive Nucleo-H563ZI GPIOs at 3.3V.</p>
+<section id="jumper-settings">
+<h2>Jumper Settings<a class="headerlink" href="#jumper-settings" title="Link to this heading"></a></h2>
 <p><strong>SDP-K1:</strong></p>
 <p>Connect the VIO_ADJUST jumper on the SDP-K1 to 3.3V position to drive SDP-K1 GPIOs at 3.3V.</p>
-<p><strong>EVAL-AD4080:</strong></p>
-<p>To configure the evaluation board for Single-SPI mode, connect RJ15, RJ16 and RJ17 to position ‘A’ (default).
-For Quad-SPI mode, connect them to position ‘B’.
-For more details on this and the jumper connections on the EVAL-AD4080 board, please refer to the user guide.</p>
+<p><strong>EVAL-MB-LV-ARDZ:</strong></p>
+<p>Please refer to the user guide for the jumper connections on the EVAL-MB-LV-ARDZ board</p>
 </section>
 <section id="communication-interface">
 <h2>Communication Interface<a class="headerlink" href="#communication-interface" title="Link to this heading"></a></h2>
@@ -497,8 +521,8 @@ firmware applications.</p>
           </div>
               <div class="related">
                 &nbsp;
-    <a href="../ad405x_iio/ad405x_iio.html" title="Previous document (Alt+Shift+LeftArrow)" class="prev">AD405x IIO Application</a>
-    <a href="../ad4130_iio/ad4130_iio.html" title="Next document (Alt+Shift+RightArrow)" class="next">AD4130 IIO Application</a>
+    <a href="../adt7420_console/adt7420_console.html" title="Previous document (Alt+Shift+LeftArrow)" class="prev">ADT7420 Console Application</a>
+    <a href="../ltc268x_console/ltc268x_console.html" title="Next document (Alt+Shift+RightArrow)" class="next">LTC268x Console Application</a>
               </div>
           
         </div>
