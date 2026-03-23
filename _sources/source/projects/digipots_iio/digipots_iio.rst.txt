@@ -44,7 +44,7 @@ Supported Hardware
 
 **Evaluation Mother Board:**
 
-* `EVAL-MB-LV-ARDZ <TODO: Link to be added when released>`_
+* EVAL-MB-LV-ARDZ
 
 **Supported Carrier Boards:**
 
