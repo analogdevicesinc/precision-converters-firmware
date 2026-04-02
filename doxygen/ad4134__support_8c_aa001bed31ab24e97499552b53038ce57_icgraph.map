@@ -1,0 +1,5 @@
+<map id="ad7134_read_all_channels_bit_banging" name="ad7134_read_all_channels_bit_banging">
+<area shape="rect" id="Node000001" title="Read ADC data over DOUT0 and DOUT1 pins using bit&#45;banging method for all channels." alt="" coords="224,5,419,45"/>
+<area shape="rect" id="Node000002" href="$ad4134__iio_2app_2app__config__stm32_8c.html#a738473a5b43f6c92b80ce1d3d6f77ed9" title="This function handles EXTI line[15:10] interrupts." alt="" coords="5,13,176,38"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="211,28,176,28,176,23,211,23"/>
+</map>

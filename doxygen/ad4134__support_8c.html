@@ -79,73 +79,64 @@ $(function() {
   <div class="headertitle"><div class="title">ad4134_support.c File Reference</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &lt;stdio.h&gt;</code><br />
-<code>#include &quot;<a class="el" href="ad4134__support_8h_source.html">ad4134_support.h</a>&quot;</code><br />
-<code>#include &quot;no_os_gpio.h&quot;</code><br />
+
+<p>Source file for for AD4134 IIO Application.  
+<a href="#details">More...</a></p>
+<div class="textblock"><code>#include &quot;<a class="el" href="ad4134__support_8h_source.html">ad4134_support.h</a>&quot;</code><br />
 <code>#include &quot;no_os_error.h&quot;</code><br />
 <code>#include &quot;no_os_delay.h&quot;</code><br />
 <code>#include &quot;<a class="el" href="ad4134__iio_2app_2app__config_8h_source.html">app_config.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="ad4134__iio_8h_source.html">ad4134_iio.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="ad4134__iio_2app_2stm32__tdm__support_8h_source.html">stm32_tdm_support.h</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for ad4134_support.c:</div>
 <div class="dyncontent">
 <div class="center"><img src="ad4134__support_8c__incl.png" border="0" usemap="#a_2home_2runner_2work_2precision-converters-firmware_2precision-converters-firmware_2projects_2ad4134__iio_2app_2ad4134__support_8c" alt=""/></div>
 <map name="a_2home_2runner_2work_2precision-converters-firmware_2precision-converters-firmware_2projects_2ad4134__iio_2app_2ad4134__support_8c" id="a_2home_2runner_2work_2precision-converters-firmware_2precision-converters-firmware_2projects_2ad4134__iio_2app_2ad4134__support_8c">
-<area shape="rect" title=" " alt="" coords="537,5,781,75"/>
-<area shape="rect" title=" " alt="" coords="170,196,237,221"/>
-<area shape="poly" title=" " alt="" coords="537,52,447,62,356,77,277,98,247,110,226,125,217,137,211,152,205,182,200,182,206,150,212,134,223,121,245,106,275,93,355,72,447,57,537,47"/>
-<area shape="rect" href="ad4134__support_8h.html" title=" " alt="" coords="237,123,375,148"/>
-<area shape="poly" title=" " alt="" coords="538,76,364,122,362,117,537,71"/>
-<area shape="rect" title=" " alt="" coords="846,123,953,148"/>
-<area shape="poly" title=" " alt="" coords="747,72,858,115,856,120,745,77"/>
-<area shape="rect" title=" " alt="" coords="977,123,1086,148"/>
-<area shape="poly" title=" " alt="" coords="782,69,973,117,972,122,781,74"/>
-<area shape="rect" title=" " alt="" coords="1111,123,1224,148"/>
-<area shape="poly" title=" " alt="" coords="782,61,1097,119,1096,124,781,66"/>
-<area shape="rect" href="ad4134__iio_2app_2app__config_8h.html" title="Configuration file for AD7134 device application." alt="" coords="399,123,503,148"/>
-<area shape="poly" title=" " alt="" coords="585,77,491,119,489,114,583,72"/>
-<area shape="rect" href="ad4134__iio_8h.html" title=" " alt="" coords="528,123,633,148"/>
-<area shape="poly" title=" " alt="" coords="633,77,602,114,597,110,629,73"/>
-<area shape="rect" href="ad4134__iio_2app_2stm32__tdm__support_8h.html" title="Header file for STM32 TDM&#45;DMA Data Capture Wrapper file." alt="" coords="657,123,821,148"/>
-<area shape="poly" title=" " alt="" coords="690,73,722,110,718,114,686,77"/>
-<area shape="poly" title=" " alt="" coords="291,150,233,190,230,186,288,146"/>
-<area shape="rect" title=" " alt="" coords="619,196,702,221"/>
-<area shape="poly" title=" " alt="" coords="365,145,606,193,605,198,364,151"/>
-<area shape="rect" title=" " alt="" coords="262,196,345,221"/>
-<area shape="poly" title=" " alt="" coords="308,148,307,183,302,182,303,148"/>
-<area shape="poly" title=" " alt="" coords="429,150,341,192,339,188,426,146"/>
-<area shape="rect" title=" " alt="" coords="727,196,797,221"/>
-<area shape="poly" title=" " alt="" coords="503,145,714,193,713,198,502,151"/>
-<area shape="rect" href="ad4134__iio_2app_2app__config__stm32_8h.html" title="Header file for STM32 platform configurations." alt="" coords="369,196,521,221"/>
-<area shape="poly" title=" " alt="" coords="446,149,441,183,436,182,441,148"/>
-<area shape="poly" title=" " alt="" coords="450,195,455,161,460,162,455,196"/>
-<area shape="rect" title=" " alt="" coords="5,269,113,295"/>
-<area shape="poly" title=" " alt="" coords="383,224,128,271,127,266,382,219"/>
-<area shape="rect" title=" " alt="" coords="138,269,239,295"/>
-<area shape="poly" title=" " alt="" coords="404,224,244,268,242,263,403,219"/>
-<area shape="rect" title=" " alt="" coords="264,269,367,295"/>
-<area shape="poly" title=" " alt="" coords="425,224,350,265,348,260,423,219"/>
-<area shape="rect" title=" " alt="" coords="391,269,499,295"/>
-<area shape="poly" title=" " alt="" coords="447,222,447,256,442,256,442,222"/>
-<area shape="rect" title=" " alt="" coords="523,269,633,295"/>
-<area shape="poly" title=" " alt="" coords="467,219,545,260,543,265,465,224"/>
-<area shape="rect" title=" " alt="" coords="658,269,759,295"/>
-<area shape="poly" title=" " alt="" coords="488,219,653,263,652,268,486,224"/>
-<area shape="rect" title=" " alt="" coords="784,269,919,295"/>
-<area shape="poly" title=" " alt="" coords="510,219,773,264,772,270,510,224"/>
-<area shape="poly" title=" " alt="" coords="537,151,359,196,358,191,535,145"/>
-<area shape="rect" title=" " alt="" coords="545,196,595,221"/>
-<area shape="poly" title=" " alt="" coords="582,149,576,183,571,182,576,148"/>
-<area shape="rect" title=" " alt="" coords="822,196,915,221"/>
-<area shape="poly" title=" " alt="" coords="628,145,809,190,808,195,626,151"/>
-<area shape="poly" title=" " alt="" coords="728,150,685,189,682,185,725,146"/>
-<area shape="poly" title=" " alt="" coords="746,148,757,182,752,184,741,149"/>
-<area shape="poly" title=" " alt="" coords="761,146,836,187,834,191,759,150"/>
-<area shape="rect" title=" " alt="" coords="1070,196,1241,221"/>
-<area shape="poly" title=" " alt="" coords="807,145,1076,191,1075,196,806,151"/>
-<area shape="rect" title=" " alt="" coords="940,196,1045,221"/>
-<area shape="poly" title=" " alt="" coords="781,145,939,190,938,195,779,151"/>
+<area shape="rect" title="Source file for for AD4134 IIO Application." alt="" coords="557,5,801,75"/>
+<area shape="rect" href="ad4134__support_8h.html" title="Header for AD4134 IIO application." alt="" coords="760,123,899,148"/>
+<area shape="poly" title=" " alt="" coords="734,73,801,113,798,118,732,77"/>
+<area shape="rect" title=" " alt="" coords="488,123,597,148"/>
+<area shape="poly" title=" " alt="" coords="631,77,573,117,570,112,628,73"/>
+<area shape="rect" title=" " alt="" coords="622,123,735,148"/>
+<area shape="poly" title=" " alt="" coords="681,75,681,109,676,109,676,75"/>
+<area shape="rect" href="ad4134__iio_2app_2app__config_8h.html" title="Configuration file for AD4134 device application." alt="" coords="360,123,464,148"/>
+<area shape="poly" title=" " alt="" coords="583,77,459,121,457,116,582,72"/>
+<area shape="rect" href="ad4134__iio_2app_2stm32__tdm__support_8h.html" title="Header file for STM32 TDM&#45;DMA Data Capture Wrapper file." alt="" coords="923,123,1087,148"/>
+<area shape="poly" title=" " alt="" coords="797,72,953,116,951,121,796,77"/>
+<area shape="rect" title=" " alt="" coords="788,196,871,221"/>
+<area shape="poly" title=" " alt="" coords="832,148,832,182,827,182,827,148"/>
+<area shape="rect" title=" " alt="" coords="531,196,613,221"/>
+<area shape="poly" title=" " alt="" coords="789,151,627,195,626,190,787,145"/>
+<area shape="poly" title=" " alt="" coords="439,146,534,188,532,193,437,150"/>
+<area shape="rect" title=" " alt="" coords="674,196,745,221"/>
+<area shape="poly" title=" " alt="" coords="460,145,661,193,660,198,459,151"/>
+<area shape="rect" href="common__macros_8h.html" title="The file contain common macros that needs to be followed same across all the projects." alt="" coords="165,196,312,221"/>
+<area shape="poly" title=" " alt="" coords="385,150,281,193,279,188,383,146"/>
+<area shape="rect" href="ad4134__iio_2app_2app__config__stm32_8h.html" title="Header file for STM32 platform configurations." alt="" coords="336,196,488,221"/>
+<area shape="poly" title=" " alt="" coords="408,148,406,183,401,182,402,148"/>
+<area shape="poly" title=" " alt="" coords="416,196,418,162,423,162,422,196"/>
+<area shape="rect" title=" " alt="" coords="5,269,72,295"/>
+<area shape="poly" title=" " alt="" coords="342,224,86,272,85,266,341,219"/>
+<area shape="rect" title=" " alt="" coords="97,269,205,295"/>
+<area shape="poly" title=" " alt="" coords="371,224,207,268,206,263,369,219"/>
+<area shape="rect" title=" " alt="" coords="229,269,331,295"/>
+<area shape="poly" title=" " alt="" coords="392,224,315,265,312,260,390,219"/>
+<area shape="rect" title=" " alt="" coords="355,269,469,295"/>
+<area shape="poly" title=" " alt="" coords="415,222,415,256,409,256,409,222"/>
+<area shape="rect" title=" " alt="" coords="494,269,605,295"/>
+<area shape="poly" title=" " alt="" coords="435,219,516,261,514,265,433,224"/>
+<area shape="rect" title=" " alt="" coords="629,269,731,295"/>
+<area shape="poly" title=" " alt="" coords="456,219,624,263,623,268,454,224"/>
+<area shape="rect" title=" " alt="" coords="755,269,890,295"/>
+<area shape="poly" title=" " alt="" coords="478,219,743,264,743,270,478,224"/>
+<area shape="poly" title=" " alt="" coords="978,150,872,193,870,188,976,146"/>
+<area shape="poly" title=" " alt="" coords="958,151,759,198,757,193,957,145"/>
+<area shape="rect" title=" " alt="" coords="895,196,1065,221"/>
+<area shape="poly" title=" " alt="" coords="1004,149,991,184,986,182,999,147"/>
+<area shape="rect" title=" " alt="" coords="1089,196,1183,221"/>
+<area shape="poly" title=" " alt="" coords="1028,146,1104,187,1102,192,1025,150"/>
+<area shape="rect" title=" " alt="" coords="1207,196,1313,221"/>
+<area shape="poly" title=" " alt="" coords="1047,145,1207,190,1205,195,1046,151"/>
 </map>
 </div>
 </div><table class="memberdecls">
@@ -161,7 +152,7 @@ Macros</h2></td></tr>
 <tr class="separator:aaeb90f9af36445c05caf68cfcdab32e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0944f10e6c6a031842e36229cbbb2505" id="r_a0944f10e6c6a031842e36229cbbb2505"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad4134__support_8c.html#a0944f10e6c6a031842e36229cbbb2505">LT6373_GPIO_DATA_VAL</a>&#160;&#160;&#160;0x84</td></tr>
 <tr class="separator:a0944f10e6c6a031842e36229cbbb2505"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7cd98b69d5967220c1451758e2542341" id="r_a7cd98b69d5967220c1451758e2542341"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad4134__support_8c.html#a7cd98b69d5967220c1451758e2542341">DCLK_FREQ_SELECT</a>&#160;&#160;&#160;3</td></tr>
+<tr class="memitem:a7cd98b69d5967220c1451758e2542341" id="r_a7cd98b69d5967220c1451758e2542341"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad4134__support_8c.html#a7cd98b69d5967220c1451758e2542341">DCLK_FREQ_SELECT</a>&#160;&#160;&#160;5</td></tr>
 <tr class="separator:a7cd98b69d5967220c1451758e2542341"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a027de6fabf836f218c14bccf96002fe5" id="r_a027de6fabf836f218c14bccf96002fe5"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad4134__support_8c.html#a027de6fabf836f218c14bccf96002fe5">MCLK_FREQ</a>&#160;&#160;&#160;(48000000)</td></tr>
 <tr class="separator:a027de6fabf836f218c14bccf96002fe5"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -186,23 +177,30 @@ Macros</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
+<tr class="memitem:a5f66dc6b463fbd759e91a45c5da6a8c3" id="r_a5f66dc6b463fbd759e91a45c5da6a8c3"><td class="memItemLeft" align="right" valign="top">enum <a class="el" href="ad4134__support_8h.html#a9206197d64bc73996d59b767451cd648">ad4134_interface_modes</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad4134__support_8c.html#a5f66dc6b463fbd759e91a45c5da6a8c3">ad4134_get_interface_mode</a> (void)</td></tr>
+<tr class="memdesc:a5f66dc6b463fbd759e91a45c5da6a8c3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the interface mode.  <br /></td></tr>
+<tr class="separator:a5f66dc6b463fbd759e91a45c5da6a8c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abf38d8eeeed9f773de83c25d1997bac6" id="r_abf38d8eeeed9f773de83c25d1997bac6"><td class="memItemLeft" align="right" valign="top">enum <a class="el" href="ad4134__support_8h.html#acddb79a52d4fbb1ee9ea27ae884bbdd9">ad4134_data_capture_modes</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad4134__support_8c.html#abf38d8eeeed9f773de83c25d1997bac6">ad4134_get_data_capture_mode</a> (void)</td></tr>
+<tr class="memdesc:abf38d8eeeed9f773de83c25d1997bac6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the data capture mode.  <br /></td></tr>
+<tr class="separator:abf38d8eeeed9f773de83c25d1997bac6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a49112bed6fb894d4fa93bc0ac1106975" id="r_a49112bed6fb894d4fa93bc0ac1106975"><td class="memItemLeft" align="right" valign="top">enum <a class="el" href="ad4134__support_8h.html#a30d23823702fbedab76bc204ba518a44">ad4134_asrc_modes</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad4134__support_8c.html#a49112bed6fb894d4fa93bc0ac1106975">ad4134_get_asrc_mode</a> (void)</td></tr>
+<tr class="memdesc:a49112bed6fb894d4fa93bc0ac1106975"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the ASRC mode.  <br /></td></tr>
+<tr class="separator:a49112bed6fb894d4fa93bc0ac1106975"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a72c4f28aee7909203c8e864f621371ff" id="r_a72c4f28aee7909203c8e864f621371ff"><td class="memItemLeft" align="right" valign="top">int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad4134__support_8c.html#a72c4f28aee7909203c8e864f621371ff">ad7134_data_capture_init</a> (struct ad713x_dev *dev)</td></tr>
 <tr class="memdesc:a72c4f28aee7909203c8e864f621371ff"><td class="mdescLeft">&#160;</td><td class="mdescRight">Perform the data capture initialization.  <br /></td></tr>
 <tr class="separator:a72c4f28aee7909203c8e864f621371ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8202b64bea5ef1adfcea92f666d484eb" id="r_a8202b64bea5ef1adfcea92f666d484eb"><td class="memItemLeft" align="right" valign="top">int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad4134__support_8c.html#a8202b64bea5ef1adfcea92f666d484eb">ad7134_read_data</a> (uint16_t *<a class="el" href="structadc__data.html">adc_data</a>, uint8_t curr_chn)</td></tr>
-<tr class="memdesc:a8202b64bea5ef1adfcea92f666d484eb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read ADC data over DOUT0 and DOUT1 pins using bit-banging method.  <br /></td></tr>
-<tr class="separator:a8202b64bea5ef1adfcea92f666d484eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0ff36c89637620b2b66938eccbe622cd" id="r_a0ff36c89637620b2b66938eccbe622cd"><td class="memItemLeft" align="right" valign="top">int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad4134__support_8c.html#a0ff36c89637620b2b66938eccbe622cd">ad7134_read_tdm_data</a> (uint16_t *<a class="el" href="structadc__data.html">adc_data</a>, uint8_t curr_chn)</td></tr>
-<tr class="memdesc:a0ff36c89637620b2b66938eccbe622cd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read ADC data over SAI TDM Peripheral.  <br /></td></tr>
-<tr class="separator:a0ff36c89637620b2b66938eccbe622cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7067554e88fda75f3605f815d374cb19" id="r_a7067554e88fda75f3605f815d374cb19"><td class="memItemLeft" align="right" valign="top">int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad4134__support_8c.html#a7067554e88fda75f3605f815d374cb19">ad7134_read_all_channels</a> (uint16_t *chn_data)</td></tr>
-<tr class="memdesc:a7067554e88fda75f3605f815d374cb19"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read all chahnnels over DOUT0 and DOUT1 pins using bit-banging method.  <br /></td></tr>
-<tr class="separator:a7067554e88fda75f3605f815d374cb19"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a588c967cf373724fa46b7846c82cbce9" id="r_a588c967cf373724fa46b7846c82cbce9"><td class="memItemLeft" align="right" valign="top">int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad4134__support_8c.html#a588c967cf373724fa46b7846c82cbce9">ad7134_perform_conv_and_read_sample</a> (uint8_t input_chn, uint16_t *<a class="el" href="structadc__data.html">adc_data</a>)</td></tr>
-<tr class="memdesc:a588c967cf373724fa46b7846c82cbce9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read ADC single sample data.  <br /></td></tr>
-<tr class="separator:a588c967cf373724fa46b7846c82cbce9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa001bed31ab24e97499552b53038ce57" id="r_aa001bed31ab24e97499552b53038ce57"><td class="memItemLeft" align="right" valign="top">int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad4134__support_8c.html#aa001bed31ab24e97499552b53038ce57">ad7134_read_all_channels_bit_banging</a> (uint16_t *chn_data, bool check_odr_state)</td></tr>
+<tr class="memdesc:aa001bed31ab24e97499552b53038ce57"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read ADC data over DOUT0 and DOUT1 pins using bit-banging method for all channels.  <br /></td></tr>
+<tr class="separator:aa001bed31ab24e97499552b53038ce57"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acdf49a57a90a5d2211bcf5ea30ea08bf" id="r_acdf49a57a90a5d2211bcf5ea30ea08bf"><td class="memItemLeft" align="right" valign="top">int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad4134__support_8c.html#acdf49a57a90a5d2211bcf5ea30ea08bf">ad7134_perform_conv_and_read_sample</a> (uint16_t *<a class="el" href="structadc__data.html">adc_data</a>, uint8_t ch)</td></tr>
+<tr class="memdesc:acdf49a57a90a5d2211bcf5ea30ea08bf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read ADC single sample data.  <br /></td></tr>
+<tr class="separator:acdf49a57a90a5d2211bcf5ea30ea08bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Macro Definition Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Source file for for AD4134 IIO Application. </p>
+<p>Copyright (c) 2023,2025 Analog Devices, Inc. All rights reserved.</p>
+<p>This software is proprietary to Analog Devices, Inc. and its licensors. By using this software you agree to the terms of the associated Analog Devices Software License Agreement. </p>
+</div><h2 class="groupheader">Macro Definition Documentation</h2>
 <a id="a7cd98b69d5967220c1451758e2542341" name="a7cd98b69d5967220c1451758e2542341"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a7cd98b69d5967220c1451758e2542341">&#9670;&#160;</a></span>DCLK_FREQ_SELECT</h2>
 
@@ -210,7 +208,7 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define DCLK_FREQ_SELECT&#160;&#160;&#160;3</td>
+          <td class="memname">#define DCLK_FREQ_SELECT&#160;&#160;&#160;5</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -428,6 +426,133 @@ Functions</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
+<a id="a49112bed6fb894d4fa93bc0ac1106975" name="a49112bed6fb894d4fa93bc0ac1106975"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a49112bed6fb894d4fa93bc0ac1106975">&#9670;&#160;</a></span>ad4134_get_asrc_mode()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="ad4134__support_8h.html#a30d23823702fbedab76bc204ba518a44">ad4134_asrc_modes</a> ad4134_get_asrc_mode </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Get the ASRC mode. </p>
+<dl class="section return"><dt>Returns</dt><dd>ASRC mode </dd></dl>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="ad4134__support_8c_a49112bed6fb894d4fa93bc0ac1106975_icgraph.png" border="0" usemap="#aad4134__support_8c_a49112bed6fb894d4fa93bc0ac1106975_icgraph" alt=""/></div>
+<map name="aad4134__support_8c_a49112bed6fb894d4fa93bc0ac1106975_icgraph" id="aad4134__support_8c_a49112bed6fb894d4fa93bc0ac1106975_icgraph">
+<area shape="rect" title="Get the ASRC mode." alt="" coords="467,42,643,67"/>
+<area shape="rect" href="ad4134__support_8c.html#aa001bed31ab24e97499552b53038ce57" title="Read ADC data over DOUT0 and DOUT1 pins using bit&#45;banging method for all channels." alt="" coords="224,5,419,45"/>
+<area shape="poly" title=" " alt="" coords="452,45,419,40,419,35,453,39"/>
+<area shape="rect" href="ad4134__iio_8c.html#a7aa4c35d34a7370a9365923c3e18f500" title="Initialize the AD7134 device for iio interface." alt="" coords="255,70,387,95"/>
+<area shape="poly" title=" " alt="" coords="453,70,388,77,387,72,452,64"/>
+<area shape="rect" href="ad4134__iio_2app_2app__config__stm32_8c.html#a738473a5b43f6c92b80ce1d3d6f77ed9" title="This function handles EXTI line[15:10] interrupts." alt="" coords="5,13,176,38"/>
+<area shape="poly" title=" " alt="" coords="211,28,176,28,176,23,211,23"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="abf38d8eeeed9f773de83c25d1997bac6" name="abf38d8eeeed9f773de83c25d1997bac6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abf38d8eeeed9f773de83c25d1997bac6">&#9670;&#160;</a></span>ad4134_get_data_capture_mode()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="ad4134__support_8h.html#acddb79a52d4fbb1ee9ea27ae884bbdd9">ad4134_data_capture_modes</a> ad4134_get_data_capture_mode </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Get the data capture mode. </p>
+<dl class="section return"><dt>Returns</dt><dd>Data capture mode </dd></dl>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="ad4134__support_8c_abf38d8eeeed9f773de83c25d1997bac6_icgraph.png" border="0" usemap="#aad4134__support_8c_abf38d8eeeed9f773de83c25d1997bac6_icgraph" alt=""/></div>
+<map name="aad4134__support_8c_abf38d8eeeed9f773de83c25d1997bac6_icgraph" id="aad4134__support_8c_abf38d8eeeed9f773de83c25d1997bac6_icgraph">
+<area shape="rect" title="Get the data capture mode." alt="" coords="185,5,420,31"/>
+<area shape="rect" href="ad4134__iio_8c.html#a7aa4c35d34a7370a9365923c3e18f500" title="Initialize the AD7134 device for iio interface." alt="" coords="5,5,137,31"/>
+<area shape="poly" title=" " alt="" coords="172,21,138,21,138,15,172,15"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a5f66dc6b463fbd759e91a45c5da6a8c3" name="a5f66dc6b463fbd759e91a45c5da6a8c3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5f66dc6b463fbd759e91a45c5da6a8c3">&#9670;&#160;</a></span>ad4134_get_interface_mode()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="ad4134__support_8h.html#a9206197d64bc73996d59b767451cd648">ad4134_interface_modes</a> ad4134_get_interface_mode </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Get the interface mode. </p>
+<dl class="section return"><dt>Returns</dt><dd>Interface mode </dd></dl>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="ad4134__support_8c_a5f66dc6b463fbd759e91a45c5da6a8c3_icgraph.png" border="0" usemap="#aad4134__support_8c_a5f66dc6b463fbd759e91a45c5da6a8c3_icgraph" alt=""/></div>
+<map name="aad4134__support_8c_a5f66dc6b463fbd759e91a45c5da6a8c3_icgraph" id="aad4134__support_8c_a5f66dc6b463fbd759e91a45c5da6a8c3_icgraph">
+<area shape="rect" title="Get the interface mode." alt="" coords="424,63,631,88"/>
+<area shape="rect" href="ad4134__support_8c.html#a72c4f28aee7909203c8e864f621371ff" title="Perform the data capture initialization." alt="" coords="185,5,376,31"/>
+<area shape="poly" title=" " alt="" coords="458,62,335,33,337,28,459,57"/>
+<area shape="rect" href="ad4134__support_8c.html#acdf49a57a90a5d2211bcf5ea30ea08bf" title="Read ADC single sample data." alt="" coords="197,55,364,95"/>
+<area shape="poly" title=" " alt="" coords="410,78,364,78,364,73,410,73"/>
+<area shape="rect" href="ad4134__iio_8c.html#a131384efce62790bd67e409708741231" title=" " alt="" coords="193,120,369,145"/>
+<area shape="poly" title=" " alt="" coords="459,94,337,123,335,117,458,89"/>
+<area shape="rect" href="ad4134__iio_8c.html#a7aa4c35d34a7370a9365923c3e18f500" title="Initialize the AD7134 device for iio interface." alt="" coords="5,5,137,31"/>
+<area shape="poly" title=" " alt="" coords="172,21,138,21,138,15,172,15"/>
+</map>
+</div>
+
+</div>
+</div>
 <a id="a72c4f28aee7909203c8e864f621371ff" name="a72c4f28aee7909203c8e864f621371ff"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a72c4f28aee7909203c8e864f621371ff">&#9670;&#160;</a></span>ad7134_data_capture_init()</h2>
 
@@ -458,18 +583,16 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="ad4134__support_8c_a72c4f28aee7909203c8e864f621371ff_icgraph.png" border="0" usemap="#aad4134__support_8c_a72c4f28aee7909203c8e864f621371ff_icgraph" alt=""/></div>
 <map name="aad4134__support_8c_a72c4f28aee7909203c8e864f621371ff_icgraph" id="aad4134__support_8c_a72c4f28aee7909203c8e864f621371ff_icgraph">
-<area shape="rect" title="Perform the data capture initialization." alt="" coords="312,5,503,31"/>
-<area shape="rect" href="ad4134__iio_8c.html#a4c05ffbe1f6b58d3746137ef1bd30a10" title="Initialize the AD7134 device for iio interface." alt="" coords="108,5,264,31"/>
-<area shape="poly" title=" " alt="" coords="298,21,264,21,264,15,298,15"/>
-<area shape="rect" href="ad4134__iio_2app_2main_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title=" " alt="" coords="5,5,60,31"/>
-<area shape="poly" title=" " alt="" coords="94,21,60,21,60,15,94,15"/>
+<area shape="rect" title="Perform the data capture initialization." alt="" coords="185,5,376,31"/>
+<area shape="rect" href="ad4134__iio_8c.html#a7aa4c35d34a7370a9365923c3e18f500" title="Initialize the AD7134 device for iio interface." alt="" coords="5,5,137,31"/>
+<area shape="poly" title=" " alt="" coords="172,21,138,21,138,15,172,15"/>
 </map>
 </div>
 
 </div>
 </div>
-<a id="a588c967cf373724fa46b7846c82cbce9" name="a588c967cf373724fa46b7846c82cbce9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a588c967cf373724fa46b7846c82cbce9">&#9670;&#160;</a></span>ad7134_perform_conv_and_read_sample()</h2>
+<a id="acdf49a57a90a5d2211bcf5ea30ea08bf" name="acdf49a57a90a5d2211bcf5ea30ea08bf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acdf49a57a90a5d2211bcf5ea30ea08bf">&#9670;&#160;</a></span>ad7134_perform_conv_and_read_sample()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -477,14 +600,14 @@ Here is the caller graph for this function:</div>
         <tr>
           <td class="memname">int32_t ad7134_perform_conv_and_read_sample </td>
           <td>(</td>
-          <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>input_chn</em>, </td>
+          <td class="paramtype">uint16_t *&#160;</td>
+          <td class="paramname"><em>adc_data</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">uint16_t *&#160;</td>
-          <td class="paramname"><em>adc_data</em>&#160;</td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>ch</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -497,8 +620,8 @@ Here is the caller graph for this function:</div>
 <p>Read ADC single sample data. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">input_chn[in]</td><td>- Channel for which data is to read </td></tr>
-    <tr><td class="paramname">adc_data[out]</td><td>- Pointer to adc data read variable </td></tr>
+    <tr><td class="paramname">adc_data[in,out]</td><td>- Pointer to adc data read variable </td></tr>
+    <tr><td class="paramname">ch[in]</td><td>- Channel for which data is to read </td></tr>
   </table>
   </dd>
 </dl>
@@ -506,60 +629,23 @@ Here is the caller graph for this function:</div>
 
 </div>
 </div>
-<a id="a7067554e88fda75f3605f815d374cb19" name="a7067554e88fda75f3605f815d374cb19"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7067554e88fda75f3605f815d374cb19">&#9670;&#160;</a></span>ad7134_read_all_channels()</h2>
+<a id="aa001bed31ab24e97499552b53038ce57" name="aa001bed31ab24e97499552b53038ce57"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa001bed31ab24e97499552b53038ce57">&#9670;&#160;</a></span>ad7134_read_all_channels_bit_banging()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int32_t ad7134_read_all_channels </td>
+          <td class="memname">int32_t ad7134_read_all_channels_bit_banging </td>
           <td>(</td>
           <td class="paramtype">uint16_t *&#160;</td>
-          <td class="paramname"><em>chn_data</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Read all chahnnels over DOUT0 and DOUT1 pins using bit-banging method. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">chn_data[out]</td><td>- Pointer to adc data read variable </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>0 in case of success, negative error code otherwise </dd></dl>
-<div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="ad4134__support_8c_a7067554e88fda75f3605f815d374cb19_icgraph.png" border="0" usemap="#aad4134__support_8c_a7067554e88fda75f3605f815d374cb19_icgraph" alt=""/></div>
-<map name="aad4134__support_8c_a7067554e88fda75f3605f815d374cb19_icgraph" id="aad4134__support_8c_a7067554e88fda75f3605f815d374cb19_icgraph">
-<area shape="rect" title="Read all chahnnels over DOUT0 and DOUT1 pins using bit&#45;banging method." alt="" coords="229,5,424,31"/>
-<area shape="rect" href="ad4134__iio_8c.html#a131384efce62790bd67e409708741231" title=" " alt="" coords="5,5,181,31"/>
-<area shape="poly" title=" " alt="" coords="216,21,181,21,181,15,216,15"/>
-</map>
-</div>
-
-</div>
-</div>
-<a id="a8202b64bea5ef1adfcea92f666d484eb" name="a8202b64bea5ef1adfcea92f666d484eb"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8202b64bea5ef1adfcea92f666d484eb">&#9670;&#160;</a></span>ad7134_read_data()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int32_t ad7134_read_data </td>
-          <td>(</td>
-          <td class="paramtype">uint16_t *&#160;</td>
-          <td class="paramname"><em>adc_data</em>, </td>
+          <td class="paramname"><em>chn_data</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>curr_chn</em>&#160;</td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>check_odr_state</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -569,11 +655,11 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p>Read ADC data over DOUT0 and DOUT1 pins using bit-banging method. </p>
+<p>Read ADC data over DOUT0 and DOUT1 pins using bit-banging method for all channels. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">adc_data[out]</td><td>- Pointer to adc data read variable </td></tr>
-    <tr><td class="paramname">curr_chn[in]</td><td>- Channel for which data is to read </td></tr>
+    <tr><td class="paramname">chn_data[in,out]</td><td>- Pointer to array for adc data for all channels </td></tr>
+    <tr><td class="paramname">check_odr_state[in]</td><td>- Whether to check for ODR state change </td></tr>
   </table>
   </dd>
 </dl>
@@ -581,59 +667,11 @@ Here is the caller graph for this function:</div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="ad4134__support_8c_a8202b64bea5ef1adfcea92f666d484eb_icgraph.png" border="0" usemap="#aad4134__support_8c_a8202b64bea5ef1adfcea92f666d484eb_icgraph" alt=""/></div>
-<map name="aad4134__support_8c_a8202b64bea5ef1adfcea92f666d484eb_icgraph" id="aad4134__support_8c_a8202b64bea5ef1adfcea92f666d484eb_icgraph">
-<area shape="rect" title="Read ADC data over DOUT0 and DOUT1 pins using bit&#45;banging method." alt="" coords="220,13,363,38"/>
-<area shape="rect" href="ad4134__support_8c.html#a588c967cf373724fa46b7846c82cbce9" title="Read ADC single sample data." alt="" coords="5,5,172,45"/>
-<area shape="poly" title=" " alt="" coords="206,28,172,28,172,23,206,23"/>
-</map>
-</div>
-
-</div>
-</div>
-<a id="a0ff36c89637620b2b66938eccbe622cd" name="a0ff36c89637620b2b66938eccbe622cd"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0ff36c89637620b2b66938eccbe622cd">&#9670;&#160;</a></span>ad7134_read_tdm_data()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int32_t ad7134_read_tdm_data </td>
-          <td>(</td>
-          <td class="paramtype">uint16_t *&#160;</td>
-          <td class="paramname"><em>adc_data</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>curr_chn</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Read ADC data over SAI TDM Peripheral. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">adc_data[out]</td><td>- Pointer to adc data read variable </td></tr>
-    <tr><td class="paramname">curr_chn[in]</td><td>- Channel for which data is to read </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>0 in case of success, negative error code otherwise </dd></dl>
-<div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="ad4134__support_8c_a0ff36c89637620b2b66938eccbe622cd_icgraph.png" border="0" usemap="#aad4134__support_8c_a0ff36c89637620b2b66938eccbe622cd_icgraph" alt=""/></div>
-<map name="aad4134__support_8c_a0ff36c89637620b2b66938eccbe622cd_icgraph" id="aad4134__support_8c_a0ff36c89637620b2b66938eccbe622cd_icgraph">
-<area shape="rect" title="Read ADC data over SAI TDM Peripheral." alt="" coords="220,13,395,38"/>
-<area shape="rect" href="ad4134__support_8c.html#a588c967cf373724fa46b7846c82cbce9" title="Read ADC single sample data." alt="" coords="5,5,172,45"/>
-<area shape="poly" title=" " alt="" coords="206,28,172,28,172,23,206,23"/>
+<div class="center"><img src="ad4134__support_8c_aa001bed31ab24e97499552b53038ce57_icgraph.png" border="0" usemap="#aad4134__support_8c_aa001bed31ab24e97499552b53038ce57_icgraph" alt=""/></div>
+<map name="aad4134__support_8c_aa001bed31ab24e97499552b53038ce57_icgraph" id="aad4134__support_8c_aa001bed31ab24e97499552b53038ce57_icgraph">
+<area shape="rect" title="Read ADC data over DOUT0 and DOUT1 pins using bit&#45;banging method for all channels." alt="" coords="224,5,419,45"/>
+<area shape="rect" href="ad4134__iio_2app_2app__config__stm32_8c.html#a738473a5b43f6c92b80ce1d3d6f77ed9" title="This function handles EXTI line[15:10] interrupts." alt="" coords="5,13,176,38"/>
+<area shape="poly" title=" " alt="" coords="211,28,176,28,176,23,211,23"/>
 </map>
 </div>
 

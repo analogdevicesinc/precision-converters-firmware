@@ -80,72 +80,81 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p>STM32 Specific configuration files for AD7134 IIO Application.  
+<p>STM32 Specific configuration files for AD4134 IIO Application.  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="ad4134__iio_2app_2app__config_8h_source.html">app_config.h</a>&quot;</code><br />
 <code>#include &quot;no_os_error.h&quot;</code><br />
 <code>#include &quot;<a class="el" href="ad4134__iio_2app_2app__config__stm32_8h_source.html">app_config_stm32.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="ad4134__iio_2app_2stm32__tdm__support_8h_source.html">stm32_tdm_support.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="ad4134__support_8h_source.html">ad4134_support.h</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for app_config_stm32.c:</div>
 <div class="dyncontent">
 <div class="center"><img src="ad4134__iio_2app_2app__config__stm32_8c__incl.png" border="0" usemap="#a_2home_2runner_2work_2precision-converters-firmware_2precision-converters-firmware_2projects_2ad4134__iio_2app_2app__config__stm32_8c" alt=""/></div>
 <map name="a_2home_2runner_2work_2precision-converters-firmware_2precision-converters-firmware_2projects_2ad4134__iio_2app_2app__config__stm32_8c" id="a_2home_2runner_2work_2precision-converters-firmware_2precision-converters-firmware_2projects_2ad4134__iio_2app_2app__config__stm32_8c">
-<area shape="rect" title="STM32 Specific configuration files for AD7134 IIO Application." alt="" coords="509,5,767,75"/>
-<area shape="rect" href="ad4134__iio_2app_2app__config_8h.html" title="Configuration file for AD7134 device application." alt="" coords="521,123,625,148"/>
-<area shape="poly" title=" " alt="" coords="617,76,591,113,587,110,612,73"/>
-<area shape="rect" href="ad4134__iio_2app_2app__config__stm32_8h.html" title="Header file for STM32 platform configurations." alt="" coords="369,196,521,221"/>
-<area shape="poly" title=" " alt="" coords="576,77,542,99,510,125,483,155,461,186,457,183,479,152,507,121,539,95,573,73"/>
-<area shape="rect" title=" " alt="" coords="649,123,758,148"/>
-<area shape="poly" title=" " alt="" coords="664,73,689,110,685,113,659,76"/>
-<area shape="rect" href="ad4134__iio_2app_2stm32__tdm__support_8h.html" title="Header file for STM32 TDM&#45;DMA Data Capture Wrapper file." alt="" coords="808,123,972,148"/>
-<area shape="poly" title=" " alt="" coords="730,72,847,115,845,120,728,77"/>
-<area shape="rect" title=" " alt="" coords="652,196,723,221"/>
-<area shape="poly" title=" " alt="" coords="592,146,658,186,656,191,590,150"/>
-<area shape="rect" title=" " alt="" coords="545,196,627,221"/>
-<area shape="poly" title=" " alt="" coords="577,148,584,182,579,183,572,149"/>
-<area shape="poly" title=" " alt="" coords="547,150,472,191,469,186,544,146"/>
-<area shape="poly" title=" " alt="" coords="471,193,546,153,549,157,474,198"/>
-<area shape="rect" title=" " alt="" coords="5,269,113,295"/>
-<area shape="poly" title=" " alt="" coords="383,224,128,271,127,266,382,219"/>
-<area shape="rect" title=" " alt="" coords="138,269,239,295"/>
-<area shape="poly" title=" " alt="" coords="404,224,244,268,242,263,403,219"/>
-<area shape="rect" title=" " alt="" coords="264,269,367,295"/>
-<area shape="poly" title=" " alt="" coords="425,224,350,265,348,260,423,219"/>
-<area shape="rect" title=" " alt="" coords="391,269,499,295"/>
-<area shape="poly" title=" " alt="" coords="447,222,447,256,442,256,442,222"/>
-<area shape="rect" title=" " alt="" coords="523,269,633,295"/>
-<area shape="poly" title=" " alt="" coords="467,219,545,260,543,265,465,224"/>
-<area shape="rect" title=" " alt="" coords="658,269,759,295"/>
-<area shape="poly" title=" " alt="" coords="488,219,653,263,652,268,486,224"/>
-<area shape="rect" title=" " alt="" coords="784,269,919,295"/>
-<area shape="poly" title=" " alt="" coords="510,219,773,264,772,270,510,224"/>
-<area shape="poly" title=" " alt="" coords="858,151,734,194,732,189,857,146"/>
-<area shape="rect" title=" " alt="" coords="875,196,958,221"/>
-<area shape="poly" title=" " alt="" coords="897,147,910,182,905,184,892,149"/>
-<area shape="rect" title=" " alt="" coords="982,196,1153,221"/>
-<area shape="poly" title=" " alt="" coords="919,146,1027,188,1025,193,918,150"/>
-<area shape="rect" title=" " alt="" coords="1177,196,1270,221"/>
-<area shape="poly" title=" " alt="" coords="944,145,1164,192,1163,197,943,151"/>
-<area shape="rect" title=" " alt="" coords="747,196,852,221"/>
-<area shape="poly" title=" " alt="" coords="877,150,827,189,823,185,874,146"/>
+<area shape="rect" title="STM32 Specific configuration files for AD4134 IIO Application." alt="" coords="700,5,959,75"/>
+<area shape="rect" href="ad4134__iio_2app_2app__config_8h.html" title="Configuration file for AD4134 device application." alt="" coords="777,123,881,148"/>
+<area shape="poly" title=" " alt="" coords="832,75,832,109,827,109,827,75"/>
+<area shape="rect" href="ad4134__iio_2app_2app__config__stm32_8h.html" title="Header file for STM32 platform configurations." alt="" coords="927,196,1079,221"/>
+<area shape="poly" title=" " alt="" coords="866,73,983,185,979,188,863,77"/>
+<area shape="rect" title=" " alt="" coords="956,123,1065,148"/>
+<area shape="poly" title=" " alt="" coords="896,72,977,114,974,118,894,77"/>
+<area shape="rect" href="ad4134__iio_2app_2stm32__tdm__support_8h.html" title="Header file for STM32 TDM&#45;DMA Data Capture Wrapper file." alt="" coords="347,123,511,148"/>
+<area shape="poly" title=" " alt="" coords="700,74,492,122,491,117,699,69"/>
+<area shape="rect" href="ad4134__support_8h.html" title="Header for AD4134 IIO application." alt="" coords="615,123,753,148"/>
+<area shape="poly" title=" " alt="" coords="778,77,715,117,712,113,775,73"/>
+<area shape="rect" title=" " alt="" coords="554,196,625,221"/>
+<area shape="poly" title=" " alt="" coords="792,151,639,196,637,190,790,145"/>
+<area shape="rect" title=" " alt="" coords="649,196,732,221"/>
+<area shape="poly" title=" " alt="" coords="808,150,727,192,724,187,806,146"/>
+<area shape="rect" href="common__macros_8h.html" title="The file contain common macros that needs to be followed same across all the projects." alt="" coords="756,196,903,221"/>
+<area shape="poly" title=" " alt="" coords="832,148,832,182,827,182,827,148"/>
+<area shape="poly" title=" " alt="" coords="851,146,956,189,954,193,849,150"/>
+<area shape="poly" title=" " alt="" coords="980,198,876,155,878,150,982,193"/>
+<area shape="rect" title=" " alt="" coords="596,269,663,295"/>
+<area shape="poly" title=" " alt="" coords="933,224,677,272,676,266,932,219"/>
+<area shape="rect" title=" " alt="" coords="687,269,795,295"/>
+<area shape="poly" title=" " alt="" coords="961,224,798,268,796,263,960,219"/>
+<area shape="rect" title=" " alt="" coords="820,269,921,295"/>
+<area shape="poly" title=" " alt="" coords="983,224,905,265,903,260,980,219"/>
+<area shape="rect" title=" " alt="" coords="945,269,1060,295"/>
+<area shape="poly" title=" " alt="" coords="1005,222,1005,256,1000,256,1000,222"/>
+<area shape="rect" title=" " alt="" coords="1085,269,1195,295"/>
+<area shape="poly" title=" " alt="" coords="1026,219,1107,261,1104,265,1024,224"/>
+<area shape="rect" title=" " alt="" coords="1220,269,1321,295"/>
+<area shape="poly" title=" " alt="" coords="1046,219,1215,263,1214,268,1045,224"/>
+<area shape="rect" title=" " alt="" coords="1346,269,1481,295"/>
+<area shape="poly" title=" " alt="" coords="1069,219,1334,264,1333,270,1068,224"/>
+<area shape="poly" title=" " alt="" coords="456,146,552,188,550,193,454,150"/>
+<area shape="rect" title=" " alt="" coords="447,196,529,221"/>
+<area shape="poly" title=" " alt="" coords="441,147,472,184,468,187,437,150"/>
+<area shape="rect" title=" " alt="" coords="5,196,176,221"/>
+<area shape="poly" title=" " alt="" coords="375,151,159,196,158,191,374,145"/>
+<area shape="rect" title=" " alt="" coords="200,196,293,221"/>
+<area shape="poly" title=" " alt="" coords="401,151,290,193,288,188,399,146"/>
+<area shape="rect" title=" " alt="" coords="318,196,423,221"/>
+<area shape="poly" title=" " alt="" coords="422,150,391,187,387,184,418,147"/>
+<area shape="poly" title=" " alt="" coords="688,148,691,182,686,183,682,149"/>
+<area shape="poly" title=" " alt="" coords="653,151,534,194,532,189,652,146"/>
 </map>
 </div>
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a5af92b722dd742067f8b919b2872eceb" id="r_a5af92b722dd742067f8b919b2872eceb"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad4134__iio_2app_2app__config__stm32_8c.html#a5af92b722dd742067f8b919b2872eceb">HAL_RCC_GetSysClockFreq_app</a> ()</td></tr>
-<tr class="memdesc:a5af92b722dd742067f8b919b2872eceb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the peripheral frequency.  <br /></td></tr>
-<tr class="separator:a5af92b722dd742067f8b919b2872eceb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a70af21c671abfcc773614a9a4f63d920" id="r_a70af21c671abfcc773614a9a4f63d920"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad4134__iio_2app_2app__config__stm32_8c.html#a70af21c671abfcc773614a9a4f63d920">SystemClock_Config</a> (void)</td></tr>
+<tr class="separator:a70af21c671abfcc773614a9a4f63d920"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a738473a5b43f6c92b80ce1d3d6f77ed9" id="r_a738473a5b43f6c92b80ce1d3d6f77ed9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad4134__iio_2app_2app__config__stm32_8c.html#a738473a5b43f6c92b80ce1d3d6f77ed9">EXTI15_10_IRQHandler</a> (void)</td></tr>
+<tr class="memdesc:a738473a5b43f6c92b80ce1d3d6f77ed9"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function handles EXTI line[15:10] interrupts.  <br /></td></tr>
+<tr class="separator:a738473a5b43f6c92b80ce1d3d6f77ed9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7256d80c59f9d4eafcebc79f1b73ba72" id="r_a7256d80c59f9d4eafcebc79f1b73ba72"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad4134__iio_2app_2app__config__stm32_8c.html#a7256d80c59f9d4eafcebc79f1b73ba72">stm32_system_init</a> (void)</td></tr>
 <tr class="memdesc:a7256d80c59f9d4eafcebc79f1b73ba72"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize the STM32 system peripherals.  <br /></td></tr>
 <tr class="separator:a7256d80c59f9d4eafcebc79f1b73ba72"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5fa6d1fee8b67d5a02cee000125e104b" id="r_a5fa6d1fee8b67d5a02cee000125e104b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad4134__iio_2app_2app__config__stm32_8c.html#a5fa6d1fee8b67d5a02cee000125e104b">ad7134_dma_rx_half_cplt</a> (SAI_HandleTypeDef *hsai)</td></tr>
-<tr class="memdesc:a5fa6d1fee8b67d5a02cee000125e104b"><td class="mdescLeft">&#160;</td><td class="mdescRight">SAI DMA Receive Half Complete Callback function.  <br /></td></tr>
-<tr class="separator:a5fa6d1fee8b67d5a02cee000125e104b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af31dad6f65ec19bb300fdd94269b9e8f" id="r_af31dad6f65ec19bb300fdd94269b9e8f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad4134__iio_2app_2app__config__stm32_8c.html#af31dad6f65ec19bb300fdd94269b9e8f">ad7134_dma_rx_cplt</a> (SAI_HandleTypeDef *hsai)</td></tr>
-<tr class="memdesc:af31dad6f65ec19bb300fdd94269b9e8f"><td class="mdescLeft">&#160;</td><td class="mdescRight">SAI DMA Receive Complete Callback function.  <br /></td></tr>
-<tr class="separator:af31dad6f65ec19bb300fdd94269b9e8f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad949cd8302c7eb31bd636da1c3a0438a" id="r_ad949cd8302c7eb31bd636da1c3a0438a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad4134__iio_2app_2app__config__stm32_8c.html#ad949cd8302c7eb31bd636da1c3a0438a">ad7134_dma_rx_half_cplt</a> (void *hsai)</td></tr>
+<tr class="memdesc:ad949cd8302c7eb31bd636da1c3a0438a"><td class="mdescLeft">&#160;</td><td class="mdescRight">SAI DMA Receive Half Complete Callback function.  <br /></td></tr>
+<tr class="separator:ad949cd8302c7eb31bd636da1c3a0438a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a76c5d9e210bd2ebae7b76881e10dd42d" id="r_a76c5d9e210bd2ebae7b76881e10dd42d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad4134__iio_2app_2app__config__stm32_8c.html#a76c5d9e210bd2ebae7b76881e10dd42d">ad7134_dma_rx_cplt</a> (void *hsai)</td></tr>
+<tr class="memdesc:a76c5d9e210bd2ebae7b76881e10dd42d"><td class="mdescLeft">&#160;</td><td class="mdescRight">SAI DMA Receive Complete Callback function.  <br /></td></tr>
+<tr class="separator:a76c5d9e210bd2ebae7b76881e10dd42d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
@@ -161,15 +170,25 @@ Variables</h2></td></tr>
 <tr class="separator:ad3de3d35084c611d563938544b067895"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a247f0561bf59d7572c7894ad57822d3f" id="r_a247f0561bf59d7572c7894ad57822d3f"><td class="memItemLeft" align="right" valign="top">struct stm32_i2c_init_param&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad4134__iio_2app_2app__config__stm32_8c.html#a247f0561bf59d7572c7894ad57822d3f">stm32_i2c_extra_init_params</a></td></tr>
 <tr class="separator:a247f0561bf59d7572c7894ad57822d3f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa73ae9fdbbf568f6591a07951a53f414" id="r_aa73ae9fdbbf568f6591a07951a53f414"><td class="memItemLeft" align="right" valign="top">struct stm32_pwm_init_param&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad4134__iio_2app_2app__config__stm32_8c.html#aa73ae9fdbbf568f6591a07951a53f414">stm32_pwm_extra_init_params</a></td></tr>
+<tr class="separator:aa73ae9fdbbf568f6591a07951a53f414"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a90089a594e60b38d43b785db59e0aa1a" id="r_a90089a594e60b38d43b785db59e0aa1a"><td class="memItemLeft" align="right" valign="top">struct stm32_gpio_init_param&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad4134__iio_2app_2app__config__stm32_8c.html#a90089a594e60b38d43b785db59e0aa1a">stm32_pwm_gpio_init_params</a></td></tr>
+<tr class="separator:a90089a594e60b38d43b785db59e0aa1a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2131e76bf42f7b7dc6bedd33133f6b1a" id="r_a2131e76bf42f7b7dc6bedd33133f6b1a"><td class="memItemLeft" align="right" valign="top">struct stm32_gpio_init_param&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad4134__iio_2app_2app__config__stm32_8c.html#a2131e76bf42f7b7dc6bedd33133f6b1a">stm32_input_extra_init_params</a></td></tr>
+<tr class="separator:a2131e76bf42f7b7dc6bedd33133f6b1a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a230ccad7cf0c83f7638b14240d096593" id="r_a230ccad7cf0c83f7638b14240d096593"><td class="memItemLeft" align="right" valign="top">struct stm32_gpio_init_param&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad4134__iio_2app_2app__config__stm32_8c.html#a230ccad7cf0c83f7638b14240d096593">stm32_output_extra_init_params</a></td></tr>
+<tr class="separator:a230ccad7cf0c83f7638b14240d096593"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aec1833c23a0633704d08ea97032d0933" id="r_aec1833c23a0633704d08ea97032d0933"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad4134__iio_2app_2app__config__stm32_8c.html#aec1833c23a0633704d08ea97032d0933">adc_data_continuous_mode</a> [<a class="el" href="ad4134__iio_2app_2app__config_8h.html#aaeb00d6de0428847f14be1928cb526f8">AD7134_NUM_CHANNELS</a>]</td></tr>
+<tr class="separator:aec1833c23a0633704d08ea97032d0933"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>STM32 Specific configuration files for AD7134 IIO Application. </p>
+<div class="textblock"><p>STM32 Specific configuration files for AD4134 IIO Application. </p>
 <p>This module contains the STM32 platform specific configurations</p>
-<p>Copyright (c) 2021,2023-24 Analog Devices, Inc. All rights reserved.</p>
+<p>Copyright (c) 2021,2023-25 Analog Devices, Inc. All rights reserved.</p>
 <p>This software is proprietary to Analog Devices, Inc. and its licensors. By using this software you agree to the terms of the associated Analog Devices Software License Agreement. </p>
 </div><h2 class="groupheader">Function Documentation</h2>
-<a id="af31dad6f65ec19bb300fdd94269b9e8f" name="af31dad6f65ec19bb300fdd94269b9e8f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af31dad6f65ec19bb300fdd94269b9e8f">&#9670;&#160;</a></span>ad7134_dma_rx_cplt()</h2>
+<a id="a76c5d9e210bd2ebae7b76881e10dd42d" name="a76c5d9e210bd2ebae7b76881e10dd42d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a76c5d9e210bd2ebae7b76881e10dd42d">&#9670;&#160;</a></span>ad7134_dma_rx_cplt()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -177,7 +196,7 @@ Variables</h2></td></tr>
         <tr>
           <td class="memname">void ad7134_dma_rx_cplt </td>
           <td>(</td>
-          <td class="paramtype">SAI_HandleTypeDef *&#160;</td>
+          <td class="paramtype">void *&#160;</td>
           <td class="paramname"><em>hsai</em></td><td>)</td>
           <td></td>
         </tr>
@@ -187,7 +206,7 @@ Variables</h2></td></tr>
 <p>SAI DMA Receive Complete Callback function. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">hsai</td><td>- pointer to a SAI_HandleTypeDef structure </td></tr>
+    <tr><td class="paramname">hsai</td><td>- pointer to a SAI Handle structure </td></tr>
   </table>
   </dd>
 </dl>
@@ -195,8 +214,8 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a id="a5fa6d1fee8b67d5a02cee000125e104b" name="a5fa6d1fee8b67d5a02cee000125e104b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5fa6d1fee8b67d5a02cee000125e104b">&#9670;&#160;</a></span>ad7134_dma_rx_half_cplt()</h2>
+<a id="ad949cd8302c7eb31bd636da1c3a0438a" name="ad949cd8302c7eb31bd636da1c3a0438a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad949cd8302c7eb31bd636da1c3a0438a">&#9670;&#160;</a></span>ad7134_dma_rx_half_cplt()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -204,7 +223,7 @@ Variables</h2></td></tr>
         <tr>
           <td class="memname">void ad7134_dma_rx_half_cplt </td>
           <td>(</td>
-          <td class="paramtype">SAI_HandleTypeDef *&#160;</td>
+          <td class="paramtype">void *&#160;</td>
           <td class="paramname"><em>hsai</em></td><td>)</td>
           <td></td>
         </tr>
@@ -214,7 +233,7 @@ Variables</h2></td></tr>
 <p>SAI DMA Receive Half Complete Callback function. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">hsai</td><td>- pointer to a SAI_HandleTypeDef structure </td></tr>
+    <tr><td class="paramname">hsai</td><td>- pointer to a SAI Handle </td></tr>
   </table>
   </dd>
 </dl>
@@ -222,23 +241,23 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a id="a5af92b722dd742067f8b919b2872eceb" name="a5af92b722dd742067f8b919b2872eceb"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5af92b722dd742067f8b919b2872eceb">&#9670;&#160;</a></span>HAL_RCC_GetSysClockFreq_app()</h2>
+<a id="a738473a5b43f6c92b80ce1d3d6f77ed9" name="a738473a5b43f6c92b80ce1d3d6f77ed9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a738473a5b43f6c92b80ce1d3d6f77ed9">&#9670;&#160;</a></span>EXTI15_10_IRQHandler()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">uint32_t HAL_RCC_GetSysClockFreq_app </td>
+          <td class="memname">void EXTI15_10_IRQHandler </td>
           <td>(</td>
+          <td class="paramtype">void&#160;</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Return the peripheral frequency. </p>
-<dl class="section return"><dt>Returns</dt><dd>Peripheral frequency in Hz </dd></dl>
+<p>This function handles EXTI line[15:10] interrupts. </p>
 
 </div>
 </div>
@@ -263,7 +282,55 @@ Variables</h2></td></tr>
 
 </div>
 </div>
+<a id="a70af21c671abfcc773614a9a4f63d920" name="a70af21c671abfcc773614a9a4f63d920"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a70af21c671abfcc773614a9a4f63d920">&#9670;&#160;</a></span>SystemClock_Config()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SystemClock_Config </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <h2 class="groupheader">Variable Documentation</h2>
+<a id="aec1833c23a0633704d08ea97032d0933" name="aec1833c23a0633704d08ea97032d0933"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aec1833c23a0633704d08ea97032d0933">&#9670;&#160;</a></span>adc_data_continuous_mode</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint16_t adc_data_continuous_mode[<a class="el" href="ad4134__iio_2app_2app__config_8h.html#aaeb00d6de0428847f14be1928cb526f8">AD7134_NUM_CHANNELS</a>]</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a247f0561bf59d7572c7894ad57822d3f" name="a247f0561bf59d7572c7894ad57822d3f"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a247f0561bf59d7572c7894ad57822d3f">&#9670;&#160;</a></span>stm32_i2c_extra_init_params</h2>
 
@@ -279,6 +346,44 @@ Variables</h2></td></tr>
 <div class="line">    .i2c_timing = <a class="code hl_define" href="ad3530r__iio_2app_2app__config__stm32_8h.html#a11e7d26bdb06febd4e1e79f765eab113">I2C_TIMING</a></div>
 <div class="line">}</div>
 <div class="ttc" id="aad3530r__iio_2app_2app__config__stm32_8h_html_a11e7d26bdb06febd4e1e79f765eab113"><div class="ttname"><a href="ad3530r__iio_2app_2app__config__stm32_8h.html#a11e7d26bdb06febd4e1e79f765eab113">I2C_TIMING</a></div><div class="ttdeci">#define I2C_TIMING</div><div class="ttdef"><b>Definition</b> app_config_stm32.h:60</div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a2131e76bf42f7b7dc6bedd33133f6b1a" name="a2131e76bf42f7b7dc6bedd33133f6b1a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2131e76bf42f7b7dc6bedd33133f6b1a">&#9670;&#160;</a></span>stm32_input_extra_init_params</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">struct stm32_gpio_init_param stm32_input_extra_init_params</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line">= {</div>
+<div class="line">    .mode = GPIO_MODE_INPUT,</div>
+<div class="line">    .speed = GPIO_SPEED_FREQ_HIGH,</div>
+<div class="line">    .alternate = 0</div>
+<div class="line">}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a230ccad7cf0c83f7638b14240d096593" name="a230ccad7cf0c83f7638b14240d096593"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a230ccad7cf0c83f7638b14240d096593">&#9670;&#160;</a></span>stm32_output_extra_init_params</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">struct stm32_gpio_init_param stm32_output_extra_init_params</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line">= {</div>
+<div class="line">    .mode = GPIO_MODE_OUTPUT_PP,</div>
+<div class="line">    .speed = GPIO_SPEED_FREQ_HIGH,</div>
+<div class="line">    .alternate = 0</div>
+<div class="line">}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -299,6 +404,52 @@ Variables</h2></td></tr>
 </div><!-- fragment -->
 </div>
 </div>
+<a id="aa73ae9fdbbf568f6591a07951a53f414" name="aa73ae9fdbbf568f6591a07951a53f414"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa73ae9fdbbf568f6591a07951a53f414">&#9670;&#160;</a></span>stm32_pwm_extra_init_params</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">struct stm32_pwm_init_param stm32_pwm_extra_init_params</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line">= {</div>
+<div class="line">    .htimer = &amp;<a class="code hl_define" href="ad4134__iio_2app_2app__config__stm32_8h.html#ad6d026bb2e4c6900fba84fa0c6a739a2">PWM_HANDLE</a>,</div>
+<div class="line">    .prescaler = <a class="code hl_define" href="ad4134__iio_2app_2app__config__stm32_8h.html#a6b8313be975d574c3128e2726bcbaeca">PWM_PRESCALER</a>,</div>
+<div class="line">    .timer_autoreload = <span class="keyword">true</span>,</div>
+<div class="line">    .mode = TIM_OC_PWM1,</div>
+<div class="line">    .timer_chn = <a class="code hl_define" href="ad4134__iio_2app_2app__config__stm32_8h.html#acd1dba11989277eab79a76f9f2731bf9">PWM_CHANNEL</a>,</div>
+<div class="line">    .get_timer_clock = HAL_RCC_GetPCLK1Freq,</div>
+<div class="line">    .clock_divider = <a class="code hl_define" href="ad4134__iio_2app_2app__config__stm32_8h.html#a1659f21ce4eb111093df2554c59b9f77">PWM_CLK_DIVIDER</a></div>
+<div class="line">}</div>
+<div class="ttc" id="aad4134__iio_2app_2app__config__stm32_8h_html_a1659f21ce4eb111093df2554c59b9f77"><div class="ttname"><a href="ad4134__iio_2app_2app__config__stm32_8h.html#a1659f21ce4eb111093df2554c59b9f77">PWM_CLK_DIVIDER</a></div><div class="ttdeci">#define PWM_CLK_DIVIDER</div><div class="ttdef"><b>Definition</b> app_config_stm32.h:134</div></div>
+<div class="ttc" id="aad4134__iio_2app_2app__config__stm32_8h_html_a6b8313be975d574c3128e2726bcbaeca"><div class="ttname"><a href="ad4134__iio_2app_2app__config__stm32_8h.html#a6b8313be975d574c3128e2726bcbaeca">PWM_PRESCALER</a></div><div class="ttdeci">#define PWM_PRESCALER</div><div class="ttdef"><b>Definition</b> app_config_stm32.h:135</div></div>
+<div class="ttc" id="aad4134__iio_2app_2app__config__stm32_8h_html_acd1dba11989277eab79a76f9f2731bf9"><div class="ttname"><a href="ad4134__iio_2app_2app__config__stm32_8h.html#acd1dba11989277eab79a76f9f2731bf9">PWM_CHANNEL</a></div><div class="ttdeci">#define PWM_CHANNEL</div><div class="ttdef"><b>Definition</b> app_config_stm32.h:133</div></div>
+<div class="ttc" id="aad4134__iio_2app_2app__config__stm32_8h_html_ad6d026bb2e4c6900fba84fa0c6a739a2"><div class="ttname"><a href="ad4134__iio_2app_2app__config__stm32_8h.html#ad6d026bb2e4c6900fba84fa0c6a739a2">PWM_HANDLE</a></div><div class="ttdeci">#define PWM_HANDLE</div><div class="ttdef"><b>Definition</b> app_config_stm32.h:136</div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a90089a594e60b38d43b785db59e0aa1a" name="a90089a594e60b38d43b785db59e0aa1a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a90089a594e60b38d43b785db59e0aa1a">&#9670;&#160;</a></span>stm32_pwm_gpio_init_params</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">struct stm32_gpio_init_param stm32_pwm_gpio_init_params</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line">= {</div>
+<div class="line">    .mode = GPIO_MODE_AF_PP,</div>
+<div class="line">    .speed = GPIO_SPEED_FREQ_VERY_HIGH,</div>
+<div class="line">    .alternate = GPIO_AF2_TIM4</div>
+<div class="line">}</div>
+</div><!-- fragment -->
+</div>
+</div>
 <a id="aee225d9d1b4e30e96142c0acdba48d3f" name="aee225d9d1b4e30e96142c0acdba48d3f"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aee225d9d1b4e30e96142c0acdba48d3f">&#9670;&#160;</a></span>stm32_spi_extra_init_params</h2>
 
@@ -312,10 +463,14 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line">= {</div>
 <div class="line">    .chip_select_port = <a class="code hl_define" href="ad3530r__iio_2app_2app__config__stm32_8h.html#aaba079e97fe22f8d442335d255d410ba">STM32_SPI_CS_PORT</a>,</div>
-<div class="line">    .get_input_clock = <a class="code hl_function" href="ad4134__iio_2app_2app__config__stm32_8c.html#a5af92b722dd742067f8b919b2872eceb">HAL_RCC_GetSysClockFreq_app</a></div>
+<div class="line">    .get_input_clock = HAL_RCC_GetPCLK2Freq,</div>
+<div class="line">    .dma_init = NULL,</div>
+<div class="line">    .rxdma_ch = NULL,</div>
+<div class="line">    .txdma_ch = NULL,</div>
+<div class="line">    .irq_num = 0,</div>
+<div class="line">    .alternate = 0,</div>
 <div class="line">}</div>
 <div class="ttc" id="aad3530r__iio_2app_2app__config__stm32_8h_html_aaba079e97fe22f8d442335d255d410ba"><div class="ttname"><a href="ad3530r__iio_2app_2app__config__stm32_8h.html#aaba079e97fe22f8d442335d255d410ba">STM32_SPI_CS_PORT</a></div><div class="ttdeci">#define STM32_SPI_CS_PORT</div><div class="ttdef"><b>Definition</b> app_config_stm32.h:56</div></div>
-<div class="ttc" id="aad4134__iio_2app_2app__config__stm32_8c_html_a5af92b722dd742067f8b919b2872eceb"><div class="ttname"><a href="ad4134__iio_2app_2app__config__stm32_8c.html#a5af92b722dd742067f8b919b2872eceb">HAL_RCC_GetSysClockFreq_app</a></div><div class="ttdeci">uint32_t HAL_RCC_GetSysClockFreq_app()</div><div class="ttdoc">Return the peripheral frequency.</div><div class="ttdef"><b>Definition</b> app_config_stm32.c:35</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -331,9 +486,8 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line">= {</div>
-<div class="line">    .base = <a class="code hl_define" href="ad4134__iio_2app_2app__config__stm32_8h.html#a22a7ae96185be9a1756f903dcb36b277">STM32_SAI_BASE</a>,</div>
+<div class="line">    .base = STM32_SAI_BASE,</div>
 <div class="line">}</div>
-<div class="ttc" id="aad4134__iio_2app_2app__config__stm32_8h_html_a22a7ae96185be9a1756f903dcb36b277"><div class="ttname"><a href="ad4134__iio_2app_2app__config__stm32_8h.html#a22a7ae96185be9a1756f903dcb36b277">STM32_SAI_BASE</a></div><div class="ttdeci">#define STM32_SAI_BASE</div><div class="ttdef"><b>Definition</b> app_config_stm32.h:51</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -367,7 +521,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line">= {</div>
-<div class="line">    .huart = <a class="code hl_define" href="ad3530r__iio_2app_2app__config__stm32_8h.html#a26e35b6d28f9337234bdfd7f653836c5">APP_UART_HANDLE</a></div>
+<div class="line">    .huart = &amp;<a class="code hl_define" href="ad3530r__iio_2app_2app__config__stm32_8h.html#a26e35b6d28f9337234bdfd7f653836c5">APP_UART_HANDLE</a></div>
 <div class="line">}</div>
 <div class="ttc" id="aad3530r__iio_2app_2app__config__stm32_8h_html_a26e35b6d28f9337234bdfd7f653836c5"><div class="ttname"><a href="ad3530r__iio_2app_2app__config__stm32_8h.html#a26e35b6d28f9337234bdfd7f653836c5">APP_UART_HANDLE</a></div><div class="ttdeci">#define APP_UART_HANDLE</div><div class="ttdef"><b>Definition</b> app_config_stm32.h:42</div></div>
 </div><!-- fragment -->

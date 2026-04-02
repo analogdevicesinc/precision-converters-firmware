@@ -1,0 +1,11 @@
+<map id="ad4134_get_interface_mode" name="ad4134_get_interface_mode">
+<area shape="rect" id="Node000001" title="Get the interface mode." alt="" coords="424,63,631,88"/>
+<area shape="rect" id="Node000002" href="$ad4134__support_8c.html#a72c4f28aee7909203c8e864f621371ff" title="Perform the data capture initialization." alt="" coords="185,5,376,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="458,62,335,33,337,28,459,57"/>
+<area shape="rect" id="Node000004" href="$ad4134__support_8c.html#acdf49a57a90a5d2211bcf5ea30ea08bf" title="Read ADC single sample data." alt="" coords="197,55,364,95"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="410,78,364,78,364,73,410,73"/>
+<area shape="rect" id="Node000005" href="$ad4134__iio_8c.html#a131384efce62790bd67e409708741231" title=" " alt="" coords="193,120,369,145"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="459,94,337,123,335,117,458,89"/>
+<area shape="rect" id="Node000003" href="$ad4134__iio_8c.html#a7aa4c35d34a7370a9365923c3e18f500" title="Initialize the AD7134 device for iio interface." alt="" coords="5,5,137,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="172,21,138,21,138,15,172,15"/>
+</map>

@@ -80,93 +80,100 @@ $(function() {
   <div class="headertitle"><div class="title">ad4134_iio.c File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Implementation of AD4134 IIO Application interfaces.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;stdint.h&gt;</code><br />
-<code>#include &lt;stdio.h&gt;</code><br />
 <code>#include &lt;string.h&gt;</code><br />
-<code>#include &quot;<a class="el" href="ad4134__iio_8h_source.html">ad4134_iio.h</a>&quot;</code><br />
+<code>#include &quot;no_os_error.h&quot;</code><br />
+<code>#include &quot;no_os_alloc.h&quot;</code><br />
+<code>#include &quot;no_os_pwm.h&quot;</code><br />
 <code>#include &quot;<a class="el" href="ad4134__iio_2app_2app__config_8h_source.html">app_config.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="common_8h_source.html">common.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="ad4134__support_8h_source.html">ad4134_support.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="ad4134__user__config_8h_source.html">ad4134_user_config.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="common_8h_source.html">common.h</a>&quot;</code><br />
-<code>#include &quot;no_os_error.h&quot;</code><br />
 <code>#include &quot;iio_trigger.h&quot;</code><br />
 <code>#include &quot;<a class="el" href="ad4134__iio_2app_2stm32__tdm__support_8h_source.html">stm32_tdm_support.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="ad4134__iio_2app_2version_8h_source.html">version.h</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for ad4134_iio.c:</div>
 <div class="dyncontent">
 <div class="center"><img src="ad4134__iio_8c__incl.png" border="0" usemap="#a_2home_2runner_2work_2precision-converters-firmware_2precision-converters-firmware_2projects_2ad4134__iio_2app_2ad4134__iio_8c" alt=""/></div>
 <map name="a_2home_2runner_2work_2precision-converters-firmware_2precision-converters-firmware_2projects_2ad4134__iio_2app_2ad4134__iio_8c" id="a_2home_2runner_2work_2precision-converters-firmware_2precision-converters-firmware_2projects_2ad4134__iio_2app_2ad4134__iio_8c">
-<area shape="rect" title=" " alt="" coords="814,5,1037,75"/>
-<area shape="rect" title=" " alt="" coords="449,196,519,221"/>
-<area shape="poly" title=" " alt="" coords="814,45,698,50,574,64,517,74,467,87,427,104,401,124,396,133,395,141,404,158,423,174,446,187,444,192,420,178,400,161,390,142,391,131,397,121,425,100,465,82,516,69,574,58,698,45,814,40"/>
-<area shape="rect" title=" " alt="" coords="1008,196,1075,221"/>
-<area shape="poly" title=" " alt="" coords="967,73,989,96,1009,121,1025,152,1037,182,1032,184,1020,154,1004,124,985,99,963,77"/>
-<area shape="rect" title=" " alt="" coords="1367,196,1438,221"/>
-<area shape="poly" title=" " alt="" coords="1035,72,1173,120,1230,146,1355,190,1354,195,1228,150,1171,125,1033,77"/>
-<area shape="rect" href="ad4134__iio_8h.html" title=" " alt="" coords="598,123,703,148"/>
-<area shape="poly" title=" " alt="" coords="827,77,698,121,697,116,825,72"/>
-<area shape="rect" href="ad4134__iio_2app_2app__config_8h.html" title="Configuration file for AD7134 device application." alt="" coords="728,123,832,148"/>
-<area shape="poly" title=" " alt="" coords="874,77,811,117,808,113,871,73"/>
-<area shape="rect" href="ad4134__support_8h.html" title=" " alt="" coords="856,123,995,148"/>
-<area shape="poly" title=" " alt="" coords="928,75,928,109,923,109,923,75"/>
-<area shape="rect" href="ad4134__user__config_8h.html" title=" " alt="" coords="411,123,573,148"/>
-<area shape="poly" title=" " alt="" coords="814,68,559,122,558,117,813,63"/>
-<area shape="rect" href="common_8h.html" title=" " alt="" coords="1069,123,1160,148"/>
-<area shape="poly" title=" " alt="" coords="995,72,1080,114,1078,119,993,77"/>
-<area shape="rect" title=" " alt="" coords="1463,196,1572,221"/>
-<area shape="poly" title=" " alt="" coords="1037,65,1127,90,1220,120,1274,146,1365,172,1450,192,1449,197,1364,178,1272,150,1218,125,1126,95,1036,70"/>
-<area shape="rect" title=" " alt="" coords="1285,123,1384,148"/>
-<area shape="poly" title=" " alt="" coords="1038,64,1272,117,1271,122,1037,69"/>
-<area shape="rect" href="ad4134__iio_2app_2stm32__tdm__support_8h.html" title="Header file for STM32 TDM&#45;DMA Data Capture Wrapper file." alt="" coords="171,123,335,148"/>
-<area shape="poly" title=" " alt="" coords="814,59,350,123,349,118,814,54"/>
-<area shape="rect" title=" " alt="" coords="933,196,984,221"/>
-<area shape="poly" title=" " alt="" coords="704,144,920,193,919,198,703,150"/>
-<area shape="rect" title=" " alt="" coords="331,196,424,221"/>
-<area shape="poly" title=" " alt="" coords="607,151,435,195,434,190,606,145"/>
-<area shape="rect" title=" " alt="" coords="544,196,627,221"/>
-<area shape="poly" title=" " alt="" coords="642,150,607,188,603,184,638,147"/>
-<area shape="poly" title=" " alt="" coords="733,151,533,198,532,193,732,145"/>
-<area shape="poly" title=" " alt="" coords="750,151,631,194,629,189,748,146"/>
-<area shape="rect" href="ad4134__iio_2app_2app__config__stm32_8h.html" title="Header file for STM32 platform configurations." alt="" coords="651,196,803,221"/>
-<area shape="poly" title=" " alt="" coords="766,150,738,186,733,183,762,147"/>
-<area shape="poly" title=" " alt="" coords="740,194,769,158,773,162,744,198"/>
-<area shape="rect" title=" " alt="" coords="287,269,395,295"/>
-<area shape="poly" title=" " alt="" coords="665,224,410,271,409,266,664,219"/>
-<area shape="rect" title=" " alt="" coords="420,269,521,295"/>
-<area shape="poly" title=" " alt="" coords="686,224,526,268,524,263,685,219"/>
-<area shape="rect" title=" " alt="" coords="546,269,649,295"/>
-<area shape="poly" title=" " alt="" coords="707,224,632,265,630,260,705,219"/>
-<area shape="rect" title=" " alt="" coords="673,269,781,295"/>
-<area shape="poly" title=" " alt="" coords="729,222,729,256,724,256,724,222"/>
-<area shape="rect" title=" " alt="" coords="805,269,915,295"/>
-<area shape="poly" title=" " alt="" coords="749,219,827,260,825,265,747,224"/>
-<area shape="rect" title=" " alt="" coords="940,269,1041,295"/>
-<area shape="poly" title=" " alt="" coords="770,219,935,263,934,268,768,224"/>
-<area shape="rect" title=" " alt="" coords="1066,269,1201,295"/>
-<area shape="poly" title=" " alt="" coords="792,219,1055,264,1054,270,792,224"/>
-<area shape="poly" title=" " alt="" coords="945,146,1012,186,1009,191,943,150"/>
-<area shape="poly" title=" " alt="" coords="870,151,641,198,640,193,869,145"/>
-<area shape="rect" title=" " alt="" coords="827,196,909,221"/>
-<area shape="poly" title=" " alt="" coords="918,150,888,187,884,183,914,147"/>
-<area shape="poly" title=" " alt="" coords="493,149,489,183,484,182,488,148"/>
-<area shape="poly" title=" " alt="" coords="509,146,561,185,558,190,505,150"/>
-<area shape="poly" title=" " alt="" coords="1069,144,1007,151,771,170,667,180,533,199,533,194,666,174,771,164,1006,145,1069,139"/>
-<area shape="poly" title=" " alt="" coords="1104,150,1065,188,1061,184,1101,146"/>
-<area shape="poly" title=" " alt="" coords="1161,145,1355,193,1354,198,1160,150"/>
-<area shape="poly" title=" " alt="" coords="1091,150,998,193,996,188,1089,146"/>
-<area shape="poly" title=" " alt="" coords="1076,151,922,195,920,190,1074,145"/>
-<area shape="rect" title=" " alt="" coords="1099,196,1189,221"/>
-<area shape="poly" title=" " alt="" coords="1122,147,1136,182,1132,184,1117,149"/>
-<area shape="rect" title=" " alt="" coords="1214,196,1343,221"/>
-<area shape="poly" title=" " alt="" coords="1142,146,1241,188,1238,193,1140,150"/>
-<area shape="poly" title=" " alt="" coords="1161,142,1450,193,1449,198,1160,147"/>
-<area shape="poly" title=" " alt="" coords="291,145,437,190,435,195,290,151"/>
-<area shape="poly" title=" " alt="" coords="275,146,347,187,344,191,272,150"/>
-<area shape="poly" title=" " alt="" coords="336,142,581,166,813,193,813,199,581,171,335,147"/>
-<area shape="rect" title=" " alt="" coords="5,196,176,221"/>
-<area shape="poly" title=" " alt="" coords="228,150,131,193,129,188,226,146"/>
-<area shape="rect" title=" " alt="" coords="201,196,306,221"/>
-<area shape="poly" title=" " alt="" coords="256,148,256,182,251,182,251,148"/>
+<area shape="rect" title="Implementation of AD4134 IIO Application interfaces." alt="" coords="1134,5,1357,75"/>
+<area shape="rect" title=" " alt="" coords="1219,196,1290,221"/>
+<area shape="poly" title=" " alt="" coords="1135,73,1104,88,1082,105,1072,125,1073,135,1079,146,1095,155,1127,167,1207,192,1205,197,1125,172,1093,160,1075,150,1068,136,1067,124,1077,102,1101,83,1132,69"/>
+<area shape="rect" title=" " alt="" coords="441,196,511,221"/>
+<area shape="poly" title=" " alt="" coords="1134,58,954,85,751,125,626,160,521,194,520,189,624,155,750,120,953,80,1134,53"/>
+<area shape="rect" title=" " alt="" coords="536,196,645,221"/>
+<area shape="poly" title=" " alt="" coords="1134,62,992,89,838,125,727,160,634,193,632,188,725,155,837,120,991,84,1133,57"/>
+<area shape="rect" title=" " alt="" coords="1567,123,1678,148"/>
+<area shape="poly" title=" " alt="" coords="1358,66,1564,117,1563,122,1356,71"/>
+<area shape="rect" title=" " alt="" coords="1702,123,1813,148"/>
+<area shape="poly" title=" " alt="" coords="1358,59,1689,119,1688,124,1357,64"/>
+<area shape="rect" href="ad4134__iio_2app_2app__config_8h.html" title="Configuration file for AD4134 device application." alt="" coords="1439,123,1543,148"/>
+<area shape="poly" title=" " alt="" coords="1335,72,1448,115,1447,120,1333,77"/>
+<area shape="rect" href="common_8h.html" title=" " alt="" coords="431,123,521,148"/>
+<area shape="poly" title=" " alt="" coords="1134,57,535,130,534,124,1134,52"/>
+<area shape="rect" href="ad4134__support_8h.html" title="Header for AD4134 IIO application." alt="" coords="1089,123,1228,148"/>
+<area shape="poly" title=" " alt="" coords="1216,77,1181,114,1177,111,1212,73"/>
+<area shape="rect" href="ad4134__user__config_8h.html" title="Header for AD4134 user configuration file." alt="" coords="1252,123,1415,148"/>
+<area shape="poly" title=" " alt="" coords="1279,73,1315,111,1311,114,1275,77"/>
+<area shape="rect" title=" " alt="" coords="1837,123,1936,148"/>
+<area shape="poly" title=" " alt="" coords="1357,53,1569,82,1824,120,1823,125,1568,87,1357,58"/>
+<area shape="rect" href="ad4134__iio_2app_2stm32__tdm__support_8h.html" title="Header file for STM32 TDM&#45;DMA Data Capture Wrapper file." alt="" coords="850,123,1014,148"/>
+<area shape="poly" title=" " alt="" coords="1135,77,985,121,983,116,1133,72"/>
+<area shape="rect" href="ad4134__iio_2app_2version_8h.html" title="Version macros for AD4134 IIO Firmware." alt="" coords="1960,123,2043,148"/>
+<area shape="poly" title=" " alt="" coords="1357,48,1622,76,1783,96,1946,120,1946,125,1782,101,1622,81,1357,54"/>
+<area shape="poly" title=" " alt="" coords="1454,151,1304,195,1302,190,1452,145"/>
+<area shape="rect" title=" " alt="" coords="1315,196,1397,221"/>
+<area shape="poly" title=" " alt="" coords="1470,150,1391,192,1389,187,1468,146"/>
+<area shape="rect" href="common__macros_8h.html" title="The file contain common macros that needs to be followed same across all the projects." alt="" coords="1597,196,1744,221"/>
+<area shape="poly" title=" " alt="" coords="1521,146,1630,188,1628,193,1519,151"/>
+<area shape="rect" href="ad4134__iio_2app_2app__config__stm32_8h.html" title="Header file for STM32 platform configurations." alt="" coords="1421,196,1573,221"/>
+<area shape="poly" title=" " alt="" coords="1488,148,1489,183,1484,183,1482,148"/>
+<area shape="poly" title=" " alt="" coords="1500,196,1499,162,1504,161,1506,196"/>
+<area shape="rect" title=" " alt="" coords="1091,269,1157,295"/>
+<area shape="poly" title=" " alt="" coords="1427,224,1172,272,1171,266,1426,219"/>
+<area shape="rect" title=" " alt="" coords="1182,269,1290,295"/>
+<area shape="poly" title=" " alt="" coords="1456,224,1292,268,1291,263,1455,219"/>
+<area shape="rect" title=" " alt="" coords="1315,269,1416,295"/>
+<area shape="poly" title=" " alt="" coords="1477,224,1400,265,1398,260,1475,219"/>
+<area shape="rect" title=" " alt="" coords="1440,269,1555,295"/>
+<area shape="poly" title=" " alt="" coords="1500,222,1500,256,1495,256,1495,222"/>
+<area shape="rect" title=" " alt="" coords="1579,269,1690,295"/>
+<area shape="poly" title=" " alt="" coords="1521,219,1601,261,1599,265,1518,224"/>
+<area shape="rect" title=" " alt="" coords="1715,269,1816,295"/>
+<area shape="poly" title=" " alt="" coords="1541,219,1710,263,1708,268,1540,224"/>
+<area shape="rect" title=" " alt="" coords="1841,269,1975,295"/>
+<area shape="poly" title=" " alt="" coords="1564,219,1829,264,1828,270,1563,224"/>
+<area shape="poly" title=" " alt="" coords="522,135,806,150,1003,168,1206,194,1205,199,1002,173,806,156,521,141"/>
+<area shape="poly" title=" " alt="" coords="479,148,479,182,473,182,473,148"/>
+<area shape="poly" title=" " alt="" coords="496,146,562,186,559,191,493,150"/>
+<area shape="rect" title=" " alt="" coords="1112,196,1195,221"/>
+<area shape="poly" title=" " alt="" coords="522,137,764,155,928,171,1099,193,1098,199,928,176,764,160,521,142"/>
+<area shape="rect" title=" " alt="" coords="349,196,416,221"/>
+<area shape="poly" title=" " alt="" coords="463,150,410,190,407,185,459,146"/>
+<area shape="rect" title=" " alt="" coords="5,196,56,221"/>
+<area shape="poly" title=" " alt="" coords="431,144,275,163,174,178,70,199,69,193,173,173,274,157,430,138"/>
+<area shape="rect" title=" " alt="" coords="80,196,171,221"/>
+<area shape="poly" title=" " alt="" coords="431,148,185,198,183,193,430,143"/>
+<area shape="rect" title=" " alt="" coords="195,196,325,221"/>
+<area shape="poly" title=" " alt="" coords="442,151,309,194,307,189,440,145"/>
+<area shape="poly" title=" " alt="" coords="1191,146,1312,189,1310,194,1189,151"/>
+<area shape="poly" title=" " alt="" coords="1160,149,1158,183,1153,182,1155,148"/>
+<area shape="poly" title=" " alt="" coords="1322,150,1279,189,1276,185,1319,146"/>
+<area shape="poly" title=" " alt="" coords="1340,148,1351,182,1346,184,1335,149"/>
+<area shape="poly" title=" " alt="" coords="987,145,1206,193,1205,198,986,151"/>
+<area shape="poly" title=" " alt="" coords="968,145,1106,189,1104,194,967,151"/>
+<area shape="rect" title=" " alt="" coords="917,196,1088,221"/>
+<area shape="poly" title=" " alt="" coords="946,146,984,184,980,188,942,150"/>
+<area shape="rect" title=" " alt="" coords="669,196,763,221"/>
+<area shape="poly" title=" " alt="" coords="898,151,765,194,763,189,896,145"/>
+<area shape="rect" title=" " alt="" coords="787,196,893,221"/>
+<area shape="poly" title=" " alt="" coords="919,150,867,190,864,185,916,146"/>
+<area shape="rect" href="adi__version_8h.html" title="ADI Version macros." alt="" coords="1947,196,2056,221"/>
+<area shape="poly" title=" " alt="" coords="2004,148,2004,182,1999,182,1999,148"/>
 </map>
 </div>
 </div><table class="memberdecls">
@@ -193,27 +200,31 @@ Functions</h2></td></tr>
 <tr class="separator:ac196152ceed9e63b50ef8c8cdecb3f60"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a131384efce62790bd67e409708741231" id="r_a131384efce62790bd67e409708741231"><td class="memItemLeft" align="right" valign="top">int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad4134__iio_8c.html#a131384efce62790bd67e409708741231">ad7134_trigger_handler</a> (struct iio_device_data *iio_dev_data)</td></tr>
 <tr class="separator:a131384efce62790bd67e409708741231"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4c05ffbe1f6b58d3746137ef1bd30a10" id="r_a4c05ffbe1f6b58d3746137ef1bd30a10"><td class="memItemLeft" align="right" valign="top">int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad4134__iio_8c.html#a4c05ffbe1f6b58d3746137ef1bd30a10">ad7134_iio_initialize</a> (void)</td></tr>
-<tr class="memdesc:a4c05ffbe1f6b58d3746137ef1bd30a10"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize the AD7134 device for iio interface.  <br /></td></tr>
-<tr class="separator:a4c05ffbe1f6b58d3746137ef1bd30a10"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a947925e0e267ee142268a1bb30431464" id="r_a947925e0e267ee142268a1bb30431464"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad4134__iio_8c.html#a947925e0e267ee142268a1bb30431464">ad7134_iio_event_handler</a> (void)</td></tr>
-<tr class="memdesc:a947925e0e267ee142268a1bb30431464"><td class="mdescLeft">&#160;</td><td class="mdescRight">Run the AD7134 IIO event handler.  <br /></td></tr>
-<tr class="separator:a947925e0e267ee142268a1bb30431464"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7aa4c35d34a7370a9365923c3e18f500" id="r_a7aa4c35d34a7370a9365923c3e18f500"><td class="memItemLeft" align="right" valign="top">int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad4134__iio_8c.html#a7aa4c35d34a7370a9365923c3e18f500">iio_app_initialize</a> (void)</td></tr>
+<tr class="memdesc:a7aa4c35d34a7370a9365923c3e18f500"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize the AD7134 device for iio interface.  <br /></td></tr>
+<tr class="separator:a7aa4c35d34a7370a9365923c3e18f500"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a20b15ec49897aaf6440bb800ad6641e0" id="r_a20b15ec49897aaf6440bb800ad6641e0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad4134__iio_8c.html#a20b15ec49897aaf6440bb800ad6641e0">iio_app_event_handler</a> (void)</td></tr>
+<tr class="memdesc:a20b15ec49897aaf6440bb800ad6641e0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Run the AD7134 IIO event handler.  <br /></td></tr>
+<tr class="separator:a20b15ec49897aaf6440bb800ad6641e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
-<tr class="memitem:a0e1892dcfcdd3c3c5bb0ec966178a809" id="r_a0e1892dcfcdd3c3c5bb0ec966178a809"><td class="memItemLeft" align="right" valign="top">struct ad713x_dev *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad4134__iio_8c.html#a0e1892dcfcdd3c3c5bb0ec966178a809">p_ad7134_dev_inst</a> = NULL</td></tr>
-<tr class="separator:a0e1892dcfcdd3c3c5bb0ec966178a809"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab7f31d2bd82a2572bef3d8a3a4fffe17" id="r_ab7f31d2bd82a2572bef3d8a3a4fffe17"><td class="memItemLeft" align="right" valign="top">struct iio_device_data *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad4134__iio_8c.html#ab7f31d2bd82a2572bef3d8a3a4fffe17">ad7134_iio_dev_data</a></td></tr>
-<tr class="separator:ab7f31d2bd82a2572bef3d8a3a4fffe17"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa53aa5662427813f24fde5da1379c097" id="r_aa53aa5662427813f24fde5da1379c097"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad4134__iio_8c.html#aa53aa5662427813f24fde5da1379c097">data_capture_operation</a> = false</td></tr>
-<tr class="separator:aa53aa5662427813f24fde5da1379c097"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afe922f396cd6132d66abb5ec5d009deb" id="r_afe922f396cd6132d66abb5ec5d009deb"><td class="memItemLeft" align="right" valign="top">struct iio_attribute&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad4134__iio_8c.html#afe922f396cd6132d66abb5ec5d009deb">channel_input_attributes</a> []</td></tr>
 <tr class="separator:afe922f396cd6132d66abb5ec5d009deb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9cc940769fc35a9a72f9ab69de14d132" id="r_a9cc940769fc35a9a72f9ab69de14d132"><td class="memItemLeft" align="right" valign="top">struct scan_type&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad4134__iio_8c.html#a9cc940769fc35a9a72f9ab69de14d132">chn_scan</a></td></tr>
 <tr class="separator:a9cc940769fc35a9a72f9ab69de14d132"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab7f31d2bd82a2572bef3d8a3a4fffe17" id="r_ab7f31d2bd82a2572bef3d8a3a4fffe17"><td class="memItemLeft" align="right" valign="top">struct iio_device_data *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad4134__iio_8c.html#ab7f31d2bd82a2572bef3d8a3a4fffe17">ad7134_iio_dev_data</a></td></tr>
+<tr class="separator:ab7f31d2bd82a2572bef3d8a3a4fffe17"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa53aa5662427813f24fde5da1379c097" id="r_aa53aa5662427813f24fde5da1379c097"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad4134__iio_8c.html#aa53aa5662427813f24fde5da1379c097">data_capture_operation</a> = false</td></tr>
+<tr class="separator:aa53aa5662427813f24fde5da1379c097"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aec1833c23a0633704d08ea97032d0933" id="r_aec1833c23a0633704d08ea97032d0933"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad4134__iio_8c.html#aec1833c23a0633704d08ea97032d0933">adc_data_continuous_mode</a> [<a class="el" href="ad4134__iio_2app_2app__config_8h.html#aaeb00d6de0428847f14be1928cb526f8">AD7134_NUM_CHANNELS</a>] = {0}</td></tr>
+<tr class="separator:aec1833c23a0633704d08ea97032d0933"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Macro Definition Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Implementation of AD4134 IIO Application interfaces. </p>
+<p>Copyright (c) 2020-21, 2023-25 Analog Devices, Inc.</p>
+<p>This software is proprietary to Analog Devices, Inc. and its licensors. By using this software you agree to the terms of the associated Analog Devices Software License Agreement. </p>
+</div><h2 class="groupheader">Macro Definition Documentation</h2>
 <a id="a4fb462cd6513aaa15b625ba48596338f" name="a4fb462cd6513aaa15b625ba48596338f"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a4fb462cd6513aaa15b625ba48596338f">&#9670;&#160;</a></span>AD7134_IIO_TRIGGER_NAME</h2>
 
@@ -285,69 +296,6 @@ Variables</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="a947925e0e267ee142268a1bb30431464" name="a947925e0e267ee142268a1bb30431464"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a947925e0e267ee142268a1bb30431464">&#9670;&#160;</a></span>ad7134_iio_event_handler()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void ad7134_iio_event_handler </td>
-          <td>(</td>
-          <td class="paramtype">void&#160;</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Run the AD7134 IIO event handler. </p>
-<dl class="section return"><dt>Returns</dt><dd>none</dd></dl>
-<p>This function monitors the new IIO client event </p>
-<div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="ad4134__iio_8c_a947925e0e267ee142268a1bb30431464_icgraph.png" border="0" usemap="#aad4134__iio_8c_a947925e0e267ee142268a1bb30431464_icgraph" alt=""/></div>
-<map name="aad4134__iio_8c_a947925e0e267ee142268a1bb30431464_icgraph" id="aad4134__iio_8c_a947925e0e267ee142268a1bb30431464_icgraph">
-<area shape="rect" title="Run the AD7134 IIO event handler." alt="" coords="108,5,301,31"/>
-<area shape="rect" href="ad4134__iio_2app_2main_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title=" " alt="" coords="5,5,60,31"/>
-<area shape="poly" title=" " alt="" coords="94,21,60,21,60,15,94,15"/>
-</map>
-</div>
-
-</div>
-</div>
-<a id="a4c05ffbe1f6b58d3746137ef1bd30a10" name="a4c05ffbe1f6b58d3746137ef1bd30a10"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4c05ffbe1f6b58d3746137ef1bd30a10">&#9670;&#160;</a></span>ad7134_iio_initialize()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int32_t ad7134_iio_initialize </td>
-          <td>(</td>
-          <td class="paramtype">void&#160;</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Initialize the AD7134 device for iio interface. </p>
-<dl class="section return"><dt>Returns</dt><dd>0 in case of success, negative error code otherwise </dd></dl>
-<div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="ad4134__iio_8c_a4c05ffbe1f6b58d3746137ef1bd30a10_icgraph.png" border="0" usemap="#aad4134__iio_8c_a4c05ffbe1f6b58d3746137ef1bd30a10_icgraph" alt=""/></div>
-<map name="aad4134__iio_8c_a4c05ffbe1f6b58d3746137ef1bd30a10_icgraph" id="aad4134__iio_8c_a4c05ffbe1f6b58d3746137ef1bd30a10_icgraph">
-<area shape="rect" title="Initialize the AD7134 device for iio interface." alt="" coords="108,5,264,31"/>
-<area shape="rect" href="ad4134__iio_2app_2main_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title=" " alt="" coords="5,5,60,31"/>
-<area shape="poly" title=" " alt="" coords="94,21,60,21,60,15,94,15"/>
-</map>
-</div>
-
-</div>
-</div>
 <a id="a131384efce62790bd67e409708741231" name="a131384efce62790bd67e409708741231"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a131384efce62790bd67e409708741231">&#9670;&#160;</a></span>ad7134_trigger_handler()</h2>
 
@@ -456,6 +404,51 @@ Here is the caller graph for this function:</div>
 
 </div>
 </div>
+<a id="a20b15ec49897aaf6440bb800ad6641e0" name="a20b15ec49897aaf6440bb800ad6641e0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a20b15ec49897aaf6440bb800ad6641e0">&#9670;&#160;</a></span>iio_app_event_handler()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void iio_app_event_handler </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Run the AD7134 IIO event handler. </p>
+<p>Run the AD405X IIO event handler.</p>
+<dl class="section return"><dt>Returns</dt><dd>none</dd></dl>
+<p>This function monitors the new IIO client event </p>
+
+</div>
+</div>
+<a id="a7aa4c35d34a7370a9365923c3e18f500" name="a7aa4c35d34a7370a9365923c3e18f500"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7aa4c35d34a7370a9365923c3e18f500">&#9670;&#160;</a></span>iio_app_initialize()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int32_t iio_app_initialize </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Initialize the AD7134 device for iio interface. </p>
+<p>Initialize the IIO interface for AD405X IIO device.</p>
+<dl class="section return"><dt>Returns</dt><dd>0 in case of success, negative error code otherwise </dd></dl>
+
+</div>
+</div>
 <h2 class="groupheader">Variable Documentation</h2>
 <a id="ab7f31d2bd82a2572bef3d8a3a4fffe17" name="ab7f31d2bd82a2572bef3d8a3a4fffe17"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ab7f31d2bd82a2572bef3d8a3a4fffe17">&#9670;&#160;</a></span>ad7134_iio_dev_data</h2>
@@ -465,6 +458,20 @@ Here is the caller graph for this function:</div>
       <table class="memname">
         <tr>
           <td class="memname">struct iio_device_data* ad7134_iio_dev_data</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aec1833c23a0633704d08ea97032d0933" name="aec1833c23a0633704d08ea97032d0933"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aec1833c23a0633704d08ea97032d0933">&#9670;&#160;</a></span>adc_data_continuous_mode</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint16_t adc_data_continuous_mode[<a class="el" href="ad4134__iio_2app_2app__config_8h.html#aaeb00d6de0428847f14be1928cb526f8">AD7134_NUM_CHANNELS</a>] = {0}</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -534,20 +541,6 @@ Here is the caller graph for this function:</div>
       <table class="memname">
         <tr>
           <td class="memname">bool data_capture_operation = false</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a0e1892dcfcdd3c3c5bb0ec966178a809" name="a0e1892dcfcdd3c3c5bb0ec966178a809"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0e1892dcfcdd3c3c5bb0ec966178a809">&#9670;&#160;</a></span>p_ad7134_dev_inst</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">struct ad713x_dev* p_ad7134_dev_inst = NULL</td>
         </tr>
       </table>
 </div><div class="memdoc">
