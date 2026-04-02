@@ -1,5 +1,14 @@
 <map id="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad717x_console/app/app_config_stm32.h" name="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad717x_console/app/app_config_stm32.h">
-<area shape="rect" id="Node000001" title="Header file for STM32 platform configurations." alt="" coords="5,5,299,75"/>
-<area shape="rect" id="Node000002" href="$ad717x__console_2app_2app__config__stm32_8c.html" title="STM32 Specific configuration files for AD719x IIO Application." alt="" coords="6,123,298,192"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="155,89,155,122,149,122,149,89"/>
+<area shape="rect" id="Node000001" title="Header file for STM32 platform configurations." alt="" coords="257,5,550,75"/>
+<area shape="rect" id="Node000002" href="$ad717x__console_2app_2app__config_8h.html" title="Configuration file for AD717x/AD411x firmware example." alt="" coords="134,123,379,192"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="352,85,301,124,298,120,348,81"/>
+<area shape="rect" id="Node000006" href="$ad717x__console_2app_2app__config__stm32_8c.html" title="STM32 Specific configuration files for AD719x IIO Application." alt="" coords="404,123,696,192"/>
+<area shape="poly" id="edge6_Node000001_Node000006" title=" " alt="" coords="458,81,509,120,505,124,455,85"/>
+<area shape="rect" id="Node000003" href="$ad717x__console__app_8c.html" title=": Implementation of the menu functions which handles the functionality of AD717x and AD411x family of..." alt="" coords="5,357,316,427"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="214,204,190,241,179,270,171,301,164,357,159,356,166,300,174,269,185,239,210,201"/>
+<area shape="rect" id="Node000004" href="$ad717x__console__app_8h.html" title=": Header for AD717x/AD411x console application interface." alt="" coords="199,240,509,309"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="296,201,328,238,323,242,292,205"/>
+<area shape="poly" id="edge4_Node000004_Node000003" title=" " alt="" coords="287,319,219,359,216,355,285,314"/>
+<area shape="rect" id="Node000005" href="$ad717x__console_2app_2main_8c.html" title=": main module for AD717x/AD411x application interface" alt="" coords="340,357,563,427"/>
+<area shape="poly" id="edge5_Node000004_Node000005" title=" " alt="" coords="394,319,425,355,421,359,390,322"/>
 </map>

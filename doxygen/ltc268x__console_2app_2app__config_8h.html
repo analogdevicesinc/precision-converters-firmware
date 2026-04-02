@@ -82,21 +82,32 @@ $(function() {
 <p>Configuration file for LTC268X device applications.  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;stdint.h&gt;</code><br />
-<code>#include &quot;<a class="el" href="ltc268x__console_2app_2app__config__mbed_8h_source.html">app_config_mbed.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="common__macros_8h_source.html">common_macros.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="ltc268x__console_2app_2app__config__stm32_8h_source.html">app_config_stm32.h</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for app_config.h:</div>
 <div class="dyncontent">
 <div class="center"><img src="ltc268x__console_2app_2app__config_8h__incl.png" border="0" usemap="#a_2home_2runner_2work_2precision-converters-firmware_2precision-converters-firmware_2projects_2ltc268x__console_2app_2app__config_8h" alt=""/></div>
 <map name="a_2home_2runner_2work_2precision-converters-firmware_2precision-converters-firmware_2projects_2ltc268x__console_2app_2app__config_8h" id="a_2home_2runner_2work_2precision-converters-firmware_2precision-converters-firmware_2projects_2ltc268x__console_2app_2app__config_8h">
-<area shape="rect" title="Configuration file for LTC268X device applications." alt="" coords="5,5,251,75"/>
-<area shape="rect" title=" " alt="" coords="26,123,97,148"/>
-<area shape="poly" title=" " alt="" coords="106,76,80,113,76,110,102,73"/>
-<area shape="rect" href="ltc268x__console_2app_2app__config__mbed_8h.html" title="Header file for Mbed platform configurations." alt="" coords="121,123,269,148"/>
-<area shape="poly" title=" " alt="" coords="154,73,180,110,176,113,150,76"/>
-<area shape="rect" title=" " alt="" coords="83,196,183,221"/>
-<area shape="poly" title=" " alt="" coords="187,150,154,187,150,184,183,147"/>
-<area shape="rect" title=" " alt="" coords="207,196,305,221"/>
-<area shape="poly" title=" " alt="" coords="207,147,239,184,235,187,203,150"/>
+<area shape="rect" title="Configuration file for LTC268X device applications." alt="" coords="91,5,336,75"/>
+<area shape="rect" title=" " alt="" coords="45,123,115,148"/>
+<area shape="poly" title=" " alt="" coords="167,77,110,117,106,112,164,73"/>
+<area shape="rect" href="common__macros_8h.html" title="The file contain common macros that needs to be followed same across all the projects." alt="" coords="140,123,287,148"/>
+<area shape="poly" title=" " alt="" coords="216,75,216,109,211,109,211,75"/>
+<area shape="rect" href="ltc268x__console_2app_2app__config__stm32_8h.html" title="Header file for STM32 platform configurations." alt="" coords="311,123,463,148"/>
+<area shape="poly" title=" " alt="" coords="277,72,354,114,352,118,275,77"/>
+<area shape="rect" title=" " alt="" coords="5,196,107,221"/>
+<area shape="poly" title=" " alt="" coords="334,151,121,196,119,191,333,145"/>
+<area shape="rect" title=" " alt="" coords="131,196,239,221"/>
+<area shape="poly" title=" " alt="" coords="355,151,232,194,230,189,353,146"/>
+<area shape="rect" title=" " alt="" coords="264,196,363,221"/>
+<area shape="poly" title=" " alt="" coords="376,150,337,188,333,184,373,146"/>
+<area shape="rect" title=" " alt="" coords="387,196,533,221"/>
+<area shape="poly" title=" " alt="" coords="401,146,440,184,436,188,397,150"/>
+<area shape="rect" title=" " alt="" coords="557,196,624,221"/>
+<area shape="poly" title=" " alt="" coords="420,146,546,189,544,194,419,151"/>
+<area shape="rect" title=" " alt="" coords="649,196,759,221"/>
+<area shape="poly" title=" " alt="" coords="438,145,640,190,639,196,437,151"/>
 </map>
 </div>
 </div><div class="textblock"><div class="dynheader">
@@ -120,15 +131,13 @@ This graph shows which files directly or indirectly include this file:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
 Macros</h2></td></tr>
-<tr class="memitem:a053837cf4ec7ed65d18c930324db4f1e" id="r_a053837cf4ec7ed65d18c930324db4f1e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ltc268x__console_2app_2app__config_8h.html#a053837cf4ec7ed65d18c930324db4f1e">MBED_PLATFORM</a>&#160;&#160;&#160;1</td></tr>
-<tr class="separator:a053837cf4ec7ed65d18c930324db4f1e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adaf57100c5a484ccdbcea26419175a82" id="r_adaf57100c5a484ccdbcea26419175a82"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ltc268x__console_2app_2app__config_8h.html#adaf57100c5a484ccdbcea26419175a82">STM32_PLATFORM</a>&#160;&#160;&#160;2</td></tr>
-<tr class="separator:adaf57100c5a484ccdbcea26419175a82"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1febd5b25e6629777aa06ad047592958" id="r_a1febd5b25e6629777aa06ad047592958"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ltc268x__console_2app_2app__config_8h.html#a1febd5b25e6629777aa06ad047592958">ACTIVE_PLATFORM</a>&#160;&#160;&#160;<a class="el" href="common__macros_8h.html#adaf57100c5a484ccdbcea26419175a82">STM32_PLATFORM</a></td></tr>
 <tr class="separator:a1febd5b25e6629777aa06ad047592958"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab8a3cecf3246ca49585f55dbb7b9d435" id="r_ab8a3cecf3246ca49585f55dbb7b9d435"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ltc268x__console_2app_2app__config_8h.html#ab8a3cecf3246ca49585f55dbb7b9d435">spi_extra_init_params</a>&#160;&#160;&#160;<a class="el" href="ad2s1210__iio_2app_2app__config__mbed_8c.html#af5c771905ea3e771be70b2d0f975bcdd">mbed_spi_extra_init_params</a></td></tr>
+<tr class="memitem:ab8a3cecf3246ca49585f55dbb7b9d435" id="r_ab8a3cecf3246ca49585f55dbb7b9d435"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ltc268x__console_2app_2app__config_8h.html#ab8a3cecf3246ca49585f55dbb7b9d435">spi_extra_init_params</a>&#160;&#160;&#160;<a class="el" href="ad4130__iio_2app_2app__config__stm32_8c.html#aee225d9d1b4e30e96142c0acdba48d3f">stm32_spi_extra_init_params</a></td></tr>
 <tr class="separator:ab8a3cecf3246ca49585f55dbb7b9d435"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa470d2a15f37bae689fd091f85b670a1" id="r_aa470d2a15f37bae689fd091f85b670a1"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ltc268x__console_2app_2app__config_8h.html#aa470d2a15f37bae689fd091f85b670a1">spi_ops</a>&#160;&#160;&#160;mbed_spi_ops</td></tr>
+<tr class="memitem:a0218303728bba1f6bc0b725266ccbbd4" id="r_a0218303728bba1f6bc0b725266ccbbd4"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ltc268x__console_2app_2app__config_8h.html#a0218303728bba1f6bc0b725266ccbbd4">uart_extra_init_params</a>&#160;&#160;&#160;<a class="el" href="ad405x__iio_2app_2app__config__stm32_8c.html#ad01cbb0d92f894ddd7f2e1a62a11e91b">stm32_uart_extra_init_params</a></td></tr>
+<tr class="separator:a0218303728bba1f6bc0b725266ccbbd4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa470d2a15f37bae689fd091f85b670a1" id="r_aa470d2a15f37bae689fd091f85b670a1"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ltc268x__console_2app_2app__config_8h.html#aa470d2a15f37bae689fd091f85b670a1">spi_ops</a>&#160;&#160;&#160;stm32_spi_ops</td></tr>
 <tr class="separator:aa470d2a15f37bae689fd091f85b670a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abb8e964d94932db6d921df39f7502cf2" id="r_abb8e964d94932db6d921df39f7502cf2"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ltc268x__console_2app_2app__config_8h.html#abb8e964d94932db6d921df39f7502cf2">DEV_LTC2688</a></td></tr>
 <tr class="separator:abb8e964d94932db6d921df39f7502cf2"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -183,20 +192,6 @@ Macros</h2></td></tr>
 
 </div>
 </div>
-<a id="a053837cf4ec7ed65d18c930324db4f1e" name="a053837cf4ec7ed65d18c930324db4f1e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a053837cf4ec7ed65d18c930324db4f1e">&#9670;&#160;</a></span>MBED_PLATFORM</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define MBED_PLATFORM&#160;&#160;&#160;1</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
 <a id="ab8a3cecf3246ca49585f55dbb7b9d435" name="ab8a3cecf3246ca49585f55dbb7b9d435"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ab8a3cecf3246ca49585f55dbb7b9d435">&#9670;&#160;</a></span>spi_extra_init_params</h2>
 
@@ -204,7 +199,7 @@ Macros</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define spi_extra_init_params&#160;&#160;&#160;<a class="el" href="ad2s1210__iio_2app_2app__config__mbed_8c.html#af5c771905ea3e771be70b2d0f975bcdd">mbed_spi_extra_init_params</a></td>
+          <td class="memname">#define spi_extra_init_params&#160;&#160;&#160;<a class="el" href="ad4130__iio_2app_2app__config__stm32_8c.html#aee225d9d1b4e30e96142c0acdba48d3f">stm32_spi_extra_init_params</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -218,21 +213,21 @@ Macros</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define spi_ops&#160;&#160;&#160;mbed_spi_ops</td>
+          <td class="memname">#define spi_ops&#160;&#160;&#160;stm32_spi_ops</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 </div>
 </div>
-<a id="adaf57100c5a484ccdbcea26419175a82" name="adaf57100c5a484ccdbcea26419175a82"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#adaf57100c5a484ccdbcea26419175a82">&#9670;&#160;</a></span>STM32_PLATFORM</h2>
+<a id="a0218303728bba1f6bc0b725266ccbbd4" name="a0218303728bba1f6bc0b725266ccbbd4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0218303728bba1f6bc0b725266ccbbd4">&#9670;&#160;</a></span>uart_extra_init_params</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define STM32_PLATFORM&#160;&#160;&#160;2</td>
+          <td class="memname">#define uart_extra_init_params&#160;&#160;&#160;<a class="el" href="ad405x__iio_2app_2app__config__stm32_8c.html#ad01cbb0d92f894ddd7f2e1a62a11e91b">stm32_uart_extra_init_params</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
