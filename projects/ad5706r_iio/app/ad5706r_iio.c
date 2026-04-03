@@ -1047,6 +1047,11 @@ static int iio_ad5706r_attr_set(void *device,
 			}
 		}
 
+		/* Check if a valid option was found */
+		if (val >= NO_OS_ARRAY_SIZE(ad5706r_ldac_trigger_chn_options)) {
+			return -EINVAL;
+		}
+
 		if (!val) {
 			dev->ldac_cfg.ldac_sync_async_mask |=
 				(AD5706R_CHANNEL_SEL(channel->ch_num));
@@ -1106,6 +1111,11 @@ static int iio_ad5706r_attr_set(void *device,
 			}
 		}
 
+		/* Check if a valid option was found */
+		if (val >= NO_OS_ARRAY_SIZE(ad5706r_toggle_trigger_chn_options)) {
+			return -EINVAL;
+		}
+
 		if (!val) {
 			dev->ldac_cfg.ldac_sync_async_mask |=
 				(AD5706R_CHANNEL_SEL(channel->ch_num));
@@ -1163,6 +1173,11 @@ static int iio_ad5706r_attr_set(void *device,
 			if (!strcmp(buf, ad5706r_dither_trigger_chn_options[val])) {
 				break;
 			}
+		}
+
+		/* Check if a valid option was found */
+		if (val >= NO_OS_ARRAY_SIZE(ad5706r_dither_trigger_chn_options)) {
+			return -EINVAL;
 		}
 
 		if (!val) {

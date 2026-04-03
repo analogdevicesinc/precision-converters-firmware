@@ -66,7 +66,7 @@
 /* Check if any serial port available for use as console stdio port */
 #if defined(USE_PHY_COM_PORT)
 /* If PHY com is selected, VCOM or alternate PHY com port can act as a console stdio port */
-#if (ACTIVE_PLATFORM == MBED_PLATFORM)
+#if (ACTIVE_PLATFORM == STM32_PLATFORM)
 #define CONSOLE_STDIO_PORT_AVAILABLE
 #endif
 #else
@@ -88,14 +88,6 @@
 #define PLATFORM_NAME	HW_CARRIER_NAME
 #endif
 /******/
-
-/* Below USB configurations (VID and PID) are owned and assigned by ADI.
- * If intended to distribute software further, use the VID and PID owned by your
- * organization */
-#define VIRTUAL_COM_PORT_VID	0x0456
-#define VIRTUAL_COM_PORT_PID	0xb66c
-/* Serial number string is formed as: application name + device (target) name + platform (host) name */
-#define VIRTUAL_COM_SERIAL_NUM	(FIRMWARE_NAME "_" DEVICE_NAME "_" STR(PLATFORM_NAME))
 
 /* Enable/Disable the use of SDRAM for DAC data buffer */
 //#define USE_SDRAM	// Uncomment to use SDRAM as data buffer
