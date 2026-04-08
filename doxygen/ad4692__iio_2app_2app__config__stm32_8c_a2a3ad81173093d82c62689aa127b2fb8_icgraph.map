@@ -1,0 +1,9 @@
+<map id="ad4692_stop_timer" name="ad4692_stop_timer">
+<area shape="rect" id="Node000001" title="Stop timers and DMA transfers." alt="" coords="441,42,588,67"/>
+<area shape="rect" id="Node000002" href="$ad4692__iio_8c.html#afe930a83bd4db7a6382ad38d9af29b61" title="Set the sampling rate and get the updated value supported by MCU platform." alt="" coords="204,5,393,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="427,46,393,41,394,36,428,40"/>
+<area shape="rect" id="Node000004" href="$ad4692__iio_2app_2app__config_8c.html#a6510899fc3dff2c6c97c4935333d59cd" title="Initialize CNV PWM." alt="" coords="257,70,340,95"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="428,69,341,80,340,75,427,63"/>
+<area shape="rect" id="Node000003" href="$ad4692__iio_8c.html#a171811e94bb04123b0203d72a2aaaaa5" title="Setter function for AD4692 attributes." alt="" coords="5,13,156,38"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="190,28,156,28,156,23,190,23"/>
+</map>

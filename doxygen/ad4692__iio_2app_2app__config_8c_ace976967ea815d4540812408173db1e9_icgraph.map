@@ -1,0 +1,6 @@
+<map id="init_gpio" name="init_gpio">
+<area shape="rect" id="Node000001" title="Initialize the GPIO peripheral." alt="" coords="152,29,231,55"/>
+<area shape="poly" id="edge1_Node000001_Node000001" title=" " alt="" coords="214,18,207,11,191,8,177,10,170,15,169,20,173,28,168,30,163,21,166,11,175,5,191,3,210,6,218,14"/>
+<area shape="rect" id="Node000002" href="$ad5706r__iio_2app_2app__config_8c.html#aba990e48bb1b87852ff6a375f0c2f655" title="Initializing system peripherals." alt="" coords="5,29,104,55"/>
+<area shape="poly" id="edge2_Node000001_Node000002" title=" " alt="" coords="139,45,104,45,104,39,139,39"/>
+</map>

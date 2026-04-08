@@ -1,0 +1,5 @@
+<map id="ad4692_update_sampling_frequency" name="ad4692_update_sampling_frequency">
+<area shape="rect" id="Node000001" title="Set the sampling rate and get the updated value supported by MCU platform." alt="" coords="204,5,393,45"/>
+<area shape="rect" id="Node000002" href="$ad4692__iio_8c.html#a171811e94bb04123b0203d72a2aaaaa5" title="Setter function for AD4692 attributes." alt="" coords="5,13,156,38"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="190,28,156,28,156,23,190,23"/>
+</map>

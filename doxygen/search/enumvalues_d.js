@@ -7,6 +7,8 @@ var searchData=
   ['pl_5fgui_5fstart_5fcapture_4',['PL_GUI_START_CAPTURE',['../pl__gui__events_8c.html#acfab9b6fba6fb319b36b7fa1135bbff9a270d89df92daaa8bbc572adb7f1abf47',1,'pl_gui_events.c']]],
   ['positive_5frange_5',['POSITIVE_RANGE',['../ltc2488_8h.html#ace41eea95341bdd951af20101ab169e2a4803be48f9908a8fcb7234643bccdeec',1,'ltc2488.h']]],
   ['power_5fdown_5fmode_6',['POWER_DOWN_MODE',['../ad7124__temperature-measure_2app_2ad7124__support_8h.html#a08f65bd1cd77f78f81d078923053ab26a77f6b0b0c6216af3964e6de42df99133',1,'ad7124_support.h']]],
-  ['pt1000_5f2wire_5frtd_7',['PT1000_2WIRE_RTD',['../ad7124__temperature-measure_2app_2ad7124__regs__configs_8h.html#a085992cbb5c72460bb1b4b90e8f3887aad7bbcb3f6b125d41ea5190b239afdc60',1,'ad7124_regs_configs.h']]],
-  ['pt100_5f4wire_5frtd_8',['PT100_4WIRE_RTD',['../ad7124__temperature-measure_2app_2ad7124__regs__configs_8h.html#a085992cbb5c72460bb1b4b90e8f3887aa997d5904f5e9bc8f2bc014645506e421',1,'ad7124_regs_configs.h']]]
+  ['priority_7',['PRIORITY',['../ad4692__iio_8c.html#abd62873e6b79b02e47ce2927da357483a117d4e929adf16e40bd27b3e7c7cee51',1,'ad4692_iio.c']]],
+  ['priority_5favailable_8',['PRIORITY_AVAILABLE',['../ad4692__iio_8c.html#abd62873e6b79b02e47ce2927da357483aaccfd57a58dbae208af3665a2b4a78f9',1,'ad4692_iio.c']]],
+  ['pt1000_5f2wire_5frtd_9',['PT1000_2WIRE_RTD',['../ad7124__temperature-measure_2app_2ad7124__regs__configs_8h.html#a085992cbb5c72460bb1b4b90e8f3887aad7bbcb3f6b125d41ea5190b239afdc60',1,'ad7124_regs_configs.h']]],
+  ['pt100_5f4wire_5frtd_10',['PT100_4WIRE_RTD',['../ad7124__temperature-measure_2app_2ad7124__regs__configs_8h.html#a085992cbb5c72460bb1b4b90e8f3887aa997d5904f5e9bc8f2bc014645506e421',1,'ad7124_regs_configs.h']]]
 ];

@@ -1,0 +1,5 @@
+<map id="stm32_tim4_init" name="stm32_tim4_init">
+<area shape="rect" id="Node000001" title="Initialize Timer 4." alt="" coords="136,5,264,31"/>
+<area shape="rect" id="Node000002" href="$ad4692__iio_2app_2app__config_8c.html#a6510899fc3dff2c6c97c4935333d59cd" title="Initialize CNV PWM." alt="" coords="5,5,88,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="122,21,88,21,88,15,122,15"/>
+</map>

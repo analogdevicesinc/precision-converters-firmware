@@ -1,0 +1,20 @@
+<map id="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad4692_iio/app/app_config_stm32.h" name="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad4692_iio/app/app_config_stm32.h">
+<area shape="rect" id="Node000001" title="Header file for STM32 platform configurations." alt="" coords="581,5,840,75"/>
+<area shape="rect" id="Node000002" href="$ad4692__iio_2app_2app__config_8h.html" title="Configuration file for AD4692 device applications." alt="" coords="599,123,822,192"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="704,89,705,122,700,123,699,89"/>
+<area shape="rect" id="Node000008" href="$ad4692__iio_2app_2app__config__stm32_8c.html" title="Source file for STM32 platform configurations." alt="" coords="1116,240,1375,309"/>
+<area shape="poly" id="edge10_Node000001_Node000008" title=" " alt="" coords="801,78,1169,237,1167,242,799,83"/>
+<area shape="poly" id="edge9_Node000002_Node000001" title=" " alt="" coords="717,109,716,75,722,75,722,109"/>
+<area shape="rect" id="Node000003" href="$ad4692__attrs_8h.html" title="Header file of ad4692 IIO attributes." alt="" coords="5,240,232,309"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="586,181,426,208,251,243,233,247,232,241,250,237,425,203,585,176"/>
+<area shape="rect" id="Node000004" href="$ad4692__iio_8c.html" title="Implementation of AD4692 IIO application interfaces." alt="" coords="82,357,305,427"/>
+<area shape="poly" id="edge4_Node000002_Node000004" title=" " alt="" coords="586,175,419,202,346,221,296,242,262,287,216,359,212,356,258,284,293,238,344,216,418,197,585,170"/>
+<area shape="rect" id="Node000005" href="$ad4692__support_8c.html" title="Support file for AD4692 device." alt="" coords="307,240,551,309"/>
+<area shape="poly" id="edge5_Node000002_Node000005" title=" " alt="" coords="617,200,513,242,511,237,615,195"/>
+<area shape="rect" id="Node000006" href="$ad4692__user__config_8c.html" title="User configuration file for AD4692 device." alt="" coords="576,240,845,309"/>
+<area shape="poly" id="edge6_Node000002_Node000006" title=" " alt="" coords="713,206,713,240,708,240,708,206"/>
+<area shape="rect" id="Node000007" href="$ad4692__iio_2app_2app__config_8c.html" title="Application configurations module." alt="" coords="870,240,1093,309"/>
+<area shape="poly" id="edge7_Node000002_Node000007" title=" " alt="" coords="803,195,903,237,901,242,801,200"/>
+<area shape="poly" id="edge8_Node000002_Node000008" title=" " alt="" coords="836,181,1106,237,1116,240,1115,245,1105,243,835,186"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="150,320,174,356,169,359,146,322"/>
+</map>

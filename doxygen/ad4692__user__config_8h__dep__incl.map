@@ -1,0 +1,11 @@
+<map id="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad4692_iio/app/ad4692_user_config.h" name="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad4692_iio/app/ad4692_user_config.h">
+<area shape="rect" id="Node000001" title="Header for AD4692 user configuration file." alt="" coords="387,5,657,75"/>
+<area shape="rect" id="Node000002" href="$ad4692__iio_8c.html" title="Implementation of AD4692 IIO application interfaces." alt="" coords="5,123,228,192"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="391,81,229,127,227,122,390,76"/>
+<area shape="rect" id="Node000003" href="$ad4692__user__config_8c.html" title="User configuration file for AD4692 device." alt="" coords="253,123,522,192"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="474,85,429,124,425,120,471,81"/>
+<area shape="rect" id="Node000004" href="$ad4692__iio_2app_2app__config_8c.html" title="Application configurations module." alt="" coords="547,123,769,192"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="574,81,620,120,616,124,570,85"/>
+<area shape="rect" id="Node000005" href="$ad4692__iio_2app_2app__config__stm32_8c.html" title="Source file for STM32 platform configurations." alt="" coords="793,123,1051,192"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="653,76,806,120,805,125,651,81"/>
+</map>
