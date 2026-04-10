@@ -2,7 +2,7 @@
  * @file    ad717x_user_config.c
  * @brief   User Configuration source for AD717x-AD411x IIO Application
 ********************************************************************************
-* Copyright (c) 2021-22,2025 Analog Devices, Inc.
+* Copyright (c) 2021-22,2025-26 Analog Devices, Inc.
 * All rights reserved.
 *
 * This software is proprietary to Analog Devices, Inc. and its licensors.
@@ -19,6 +19,15 @@
 #include "ad717x.h"
 #include "ad717x_iio.h"
 #include "no_os_util.h"
+#include "ad411x_regs.h"
+#include "ad4113_regs.h"
+#include "ad7172_2_regs.h"
+#include "ad7172_4_regs.h"
+#include "ad7173_8_regs.h"
+#include "ad7175_2_regs.h"
+#include "ad7175_8_regs.h"
+#include "ad7176_2_regs.h"
+#include "ad7177_2_regs.h"
 
 /******************************************************************************/
 /********************* Macros and Constants Definition ************************/
@@ -28,44 +37,191 @@
 /******************** Variables and User Defined Data Types *******************/
 /******************************************************************************/
 
-#if defined(DEV_AD4111) || defined(DEV_AD4112) || defined(DEV_AD4114) || \
-	defined(DEV_AD4115) || defined (DEV_AD4116)
-#include <ad411x_regs.h>
-#define AD717X_DEVICE_MAP ad4111_regs
-#define AD717x_NUM_REGS NO_OS_ARRAY_SIZE(ad4111_regs)
-#elif defined(DEV_AD7172_2)
-#include <ad7172_2_regs.h>
-#define AD717X_DEVICE_MAP ad7172_2_regs
-#define AD717x_NUM_REGS NO_OS_ARRAY_SIZE(ad7172_2_regs)
-#elif defined(DEV_AD7172_4)
-#include <ad7172_4_regs.h>
-#define AD717X_DEVICE_MAP ad7172_4_regs
-#define AD717x_NUM_REGS NO_OS_ARRAY_SIZE(ad7172_4_regs)
-#elif defined(DEV_AD7173_8)
-#include <ad7173_8_regs.h>
-#define AD717X_DEVICE_MAP ad7173_8_regs
-#define AD717x_NUM_REGS NO_OS_ARRAY_SIZE(ad7173_8_regs)
-#elif defined(DEV_AD7175_2)
-#include <ad7175_2_regs.h>
-#define AD717X_DEVICE_MAP ad7175_2_regs
-#define AD717x_NUM_REGS NO_OS_ARRAY_SIZE(ad7175_2_regs)
-#elif defined(DEV_AD7175_8)
-#include <ad7175_8_regs.h>
-#define AD717X_DEVICE_MAP ad7175_8_regs
-#define AD717x_NUM_REGS NO_OS_ARRAY_SIZE(ad7175_8_regs)
-#elif defined(DEV_AD7176_2)
-#include <ad7176_2_regs.h>
-#define AD717X_DEVICE_MAP ad7176_2_regs
-#define AD717x_NUM_REGS NO_OS_ARRAY_SIZE(ad7176_2_regs)
-#elif defined (DEV_AD7177_2)
-#include <ad7177_2_regs.h>
-#define AD717X_DEVICE_MAP ad7177_2_regs
-#define AD717x_NUM_REGS NO_OS_ARRAY_SIZE(ad7172_2_regs)
-#else
-#include <ad411x_regs.h>
-#define AD717X_DEVICE_MAP ad4111_regs
-#define AD717x_NUM_REGS NO_OS_ARRAY_SIZE(ad4111_regs)
-#endif
+struct ad717x_device_map_info device_map_table[] = {
+	[ID_AD4111] = {
+		.name = "ad4111",
+		.regs = ad4111_regs,
+		.num_regs = NO_OS_ARRAY_SIZE(ad4111_regs),
+		.num_channels = 16,
+		.num_setups = 8,
+		.use_input_pairs = true,
+		.scale_factor = 0.1,
+		.resolution = 24,
+		.supports_open_wire = true
+	},
+	[ID_AD4112] = {
+		.name = "ad4112",
+		.regs = ad4111_regs,
+		.num_regs = NO_OS_ARRAY_SIZE(ad4111_regs),
+		.num_channels = 16,
+		.num_setups = 8,
+		.use_input_pairs = true,
+		.scale_factor = 0.1,
+		.resolution = 24,
+		.supports_open_wire = false
+	},
+	[ID_AD4113] = {
+		.name = "ad4113",
+		.regs = ad4113_regs,
+		.num_regs = NO_OS_ARRAY_SIZE(ad4113_regs),
+		.num_channels = 16,
+		.num_setups = 8,
+		.use_input_pairs = true,
+		.scale_factor = 0.1,
+		.resolution = 16,
+		.supports_open_wire = true
+	},
+	[ID_AD4114] = {
+		.name = "ad4114",
+		.regs = ad4111_regs,
+		.num_regs = NO_OS_ARRAY_SIZE(ad4111_regs),
+		.num_channels = 16,
+		.num_setups = 8,
+		.use_input_pairs = true,
+		.scale_factor = 0.1,
+		.resolution = 24,
+		.supports_open_wire = false
+	},
+	[ID_AD4115] = {
+		.name = "ad4115",
+		.regs = ad4111_regs,
+		.num_regs = NO_OS_ARRAY_SIZE(ad4111_regs),
+		.num_channels = 16,
+		.num_setups = 8,
+		.use_input_pairs = true,
+		.scale_factor = 0.1,
+		.resolution = 24,
+		.supports_open_wire = false
+	},
+	[ID_AD4116] = {
+		.name = "ad4116",
+		.regs = ad4111_regs,
+		.num_regs = NO_OS_ARRAY_SIZE(ad4111_regs),
+		.num_channels = 16,
+		.num_setups = 8,
+		.use_input_pairs = true,
+		.scale_factor = 0.1,
+		.resolution = 24,
+		.supports_open_wire = false
+	},
+	[ID_AD7172_2] = {
+		.name = "ad7172-2",
+		.regs = ad7172_2_regs,
+		.num_regs = NO_OS_ARRAY_SIZE(ad7172_2_regs),
+		.num_channels = 4,
+		.num_setups = 4,
+		.use_input_pairs = false,
+		.scale_factor = 1.0,
+		.resolution = 24,
+		.supports_open_wire = false
+	},
+	[ID_AD7172_4] = {
+		.name = "ad7172-4",
+		.regs = ad7172_4_regs,
+		.num_regs = NO_OS_ARRAY_SIZE(ad7172_4_regs),
+		.num_channels = 8,
+		.num_setups = 8,
+		.use_input_pairs = false,
+		.scale_factor = 1.0,
+		.resolution = 24,
+		.supports_open_wire = false
+	},
+	[ID_AD7173_8] = {
+		.name = "ad7173-8",
+		.regs = ad7173_8_regs,
+		.num_regs = NO_OS_ARRAY_SIZE(ad7173_8_regs),
+		.num_channels = 16,
+		.num_setups = 8,
+		.use_input_pairs = false,
+		.scale_factor = 1.0,
+		.resolution = 24,
+		.supports_open_wire = false
+	},
+	[ID_AD7175_2] = {
+		.name = "ad7175-2",
+		.regs = ad7175_2_regs,
+		.num_regs = NO_OS_ARRAY_SIZE(ad7175_2_regs),
+		.num_channels = 4,
+		.num_setups = 4,
+		.use_input_pairs = false,
+		.scale_factor = 1.0,
+		.resolution = 24,
+		.supports_open_wire = false
+	},
+	[ID_AD7175_8] = {
+		.name = "ad7175-8",
+		.regs = ad7175_8_regs,
+		.num_regs = NO_OS_ARRAY_SIZE(ad7175_8_regs),
+		.num_channels = 16,
+		.num_setups = 8,
+		.use_input_pairs = false,
+		.scale_factor = 1.0,
+		.resolution = 24,
+		.supports_open_wire = false
+	},
+	[ID_AD7176_2] = {
+		.name = "ad7176-2",
+		.regs = ad7176_2_regs,
+		.num_regs = NO_OS_ARRAY_SIZE(ad7176_2_regs),
+		.num_channels = 4,
+		.num_setups = 4,
+		.use_input_pairs = false,
+		.scale_factor = 1.0,
+		.resolution = 24,
+		.supports_open_wire = false
+	},
+	[ID_AD7177_2] = {
+		.name = "ad7177-2",
+		.regs = ad7177_2_regs,
+		.num_regs = NO_OS_ARRAY_SIZE(ad7177_2_regs),
+		.num_channels = 4,
+		.num_setups = 4,
+		.use_input_pairs = false,
+		.scale_factor = 1.0,
+		.resolution = 24,
+		.supports_open_wire = false
+	}
+};
+
+/* Default setup configuration */
+struct ad717x_channel_setup default_setups[AD717x_MAX_SETUPS] = {
+	[0 ... AD717x_MAX_SETUPS - 1] = {
+		.bi_unipolar = true,
+		.ref_buff = false,
+		.input_buff = true,
+		.ref_source = INTERNAL_REF,
+	}
+};
+
+/* Default AD717x family filter configuration */
+struct ad717x_filtcon default_ad717x_filtcons[AD717x_MAX_SETUPS] = {
+	[0 ... AD717x_MAX_SETUPS - 1] = {
+		.sinc3_map = false,
+		.enhfilten = false,
+		.enhfilt = sps27_db47_ms36p7,
+		.oder = sinc5_sinc1,
+		.odr = sps_31250_a
+	}
+};
+
+/* Default AD411x family channel map entry */
+struct ad717x_channel_map default_ad411x_chan_maps[AD717x_MAX_CHANNELS] = {
+	[0 ... AD717x_MAX_CHANNELS - 1] = {
+		.channel_enable = false,
+		.setup_sel = 0,
+		.analog_inputs.analog_input_pairs = VIN0_VIN1,
+	}
+};
+
+/* Default AD717x family channel map entry */
+struct ad717x_channel_map default_ad717x_chan_maps[AD717x_MAX_CHANNELS] = {
+	[0 ... AD717x_MAX_CHANNELS - 1] = {
+		.channel_enable = false,
+		.setup_sel = 0,
+		.analog_inputs.ainp.pos_analog_input = AIN0,
+		.analog_inputs.ainp.neg_analog_input = AIN1,
+	}
+};
 
 /* AD717x Init Parameters */
 ad717x_init_param ad717x_init_params = {
@@ -77,82 +233,8 @@ ad717x_init_param ad717x_init_params = {
 		.platform_ops = &spi_platform_ops,
 		.extra = &spi_extra_init_params
 	},
-	.num_regs = AD717x_NUM_REGS,
-	.regs = AD717X_DEVICE_MAP,
 	.ref_en = true,
-	.active_device = ACTIVE_DEVICE_ID,
-	.num_channels = NUMBER_OF_CHANNELS,
-	.num_setups = NUMBER_OF_SETUPS,
 	.mode =  CONTINUOUS,
-	.setups = {
-		{ .bi_unipolar = true, .ref_buff = false, .input_buff = true, .ref_source = INTERNAL_REF },
-		{ .bi_unipolar = true, .ref_buff = false, .input_buff = true, .ref_source = INTERNAL_REF },
-		{ .bi_unipolar = true, .ref_buff = false, .input_buff = true, .ref_source = INTERNAL_REF },
-		{ .bi_unipolar = true, .ref_buff = false, .input_buff = true, .ref_source = INTERNAL_REF },
-#if (NUMBER_OF_SETUPS != 4)
-		{ .bi_unipolar = true, .ref_buff = false, .input_buff = true, .ref_source = INTERNAL_REF },
-		{ .bi_unipolar = true, .ref_buff = false, .input_buff = true, .ref_source = INTERNAL_REF },
-		{ .bi_unipolar = true, .ref_buff = false, .input_buff = true, .ref_source = INTERNAL_REF },
-		{ .bi_unipolar = true, .ref_buff = false, .input_buff = true, .ref_source = INTERNAL_REF },
-#endif
-	},
-	.chan_map = {
-#if defined (DEV_AD4111) || defined (DEV_AD4112) || defined (DEV_AD4114) || defined (DEV_AD4115) || defined (DEV_AD4116)
-		{ .channel_enable = false, .setup_sel = 0, .analog_inputs.analog_input_pairs = VIN0_VIN1 },
-		{ .channel_enable = false, .setup_sel = 1, .analog_inputs.analog_input_pairs = VIN0_VIN1 },
-		{ .channel_enable = false, .setup_sel = 0, .analog_inputs.analog_input_pairs = VIN0_VIN1 },
-		{ .channel_enable = false, .setup_sel = 0, .analog_inputs.analog_input_pairs = VIN0_VIN1 },
-#if (NUMBER_OF_CHANNELS != 4)
-		{ .channel_enable = false, .setup_sel = 0, .analog_inputs.analog_input_pairs = VIN0_VIN1 },
-		{ .channel_enable = false, .setup_sel = 0, .analog_inputs.analog_input_pairs = VIN0_VIN1 },
-		{ .channel_enable = false, .setup_sel = 0, .analog_inputs.analog_input_pairs = VIN0_VIN1 },
-		{ .channel_enable = false, .setup_sel = 0, .analog_inputs.analog_input_pairs = VIN0_VIN1 },
-#if (NUMBER_OF_CHANNELS != 4) && (NUMBER_OF_CHANNELS != 8)
-		{ .channel_enable = false, .setup_sel = 0, .analog_inputs.analog_input_pairs = VIN0_VIN1 },
-		{ .channel_enable = false, .setup_sel = 0, .analog_inputs.analog_input_pairs = VIN0_VIN1 },
-		{ .channel_enable = false, .setup_sel = 0, .analog_inputs.analog_input_pairs = VIN0_VIN1 },
-		{ .channel_enable = false, .setup_sel = 0, .analog_inputs.analog_input_pairs = VIN0_VIN1 },
-		{ .channel_enable = false, .setup_sel = 0, .analog_inputs.analog_input_pairs = VIN0_VIN1 },
-		{ .channel_enable = false, .setup_sel = 0, .analog_inputs.analog_input_pairs = VIN0_VIN1 },
-		{ .channel_enable = false, .setup_sel = 0, .analog_inputs.analog_input_pairs = VIN0_VIN1 },
-		{ .channel_enable = false, .setup_sel = 0, .analog_inputs.analog_input_pairs = VIN0_VIN1 },
-#endif
-#endif
-#else // AD717x Family
-		{ .channel_enable = false, .setup_sel = 0, .analog_inputs.ainp.pos_analog_input = AIN0, .analog_inputs.ainp.neg_analog_input = AIN1 },
-		{ .channel_enable = false, .setup_sel = 0, .analog_inputs.ainp.pos_analog_input = AIN0, .analog_inputs.ainp.neg_analog_input = AIN1 },
-		{ .channel_enable = false, .setup_sel = 0, .analog_inputs.ainp.pos_analog_input = AIN0, .analog_inputs.ainp.neg_analog_input = AIN1 },
-		{ .channel_enable = false, .setup_sel = 0, .analog_inputs.ainp.pos_analog_input = AIN0, .analog_inputs.ainp.neg_analog_input = AIN1 },
-#if (NUMBER_OF_CHANNELS != 4)
-		{ .channel_enable = false, .setup_sel = 0, .analog_inputs.ainp.pos_analog_input = AIN0, .analog_inputs.ainp.neg_analog_input = AIN1 },
-		{ .channel_enable = false, .setup_sel = 0, .analog_inputs.ainp.pos_analog_input = AIN0, .analog_inputs.ainp.neg_analog_input = AIN1 },
-		{ .channel_enable = false, .setup_sel = 0, .analog_inputs.ainp.pos_analog_input = AIN0, .analog_inputs.ainp.neg_analog_input = AIN1 },
-		{ .channel_enable = false, .setup_sel = 0, .analog_inputs.ainp.pos_analog_input = AIN0, .analog_inputs.ainp.neg_analog_input = AIN1 },
-#if (NUMBER_OF_CHANNELS != 4) && (NUMBER_OF_CHANNELS != 8)
-		{ .channel_enable = false, .setup_sel = 0, .analog_inputs.ainp.pos_analog_input = AIN0, .analog_inputs.ainp.neg_analog_input = AIN1 },
-		{ .channel_enable = false, .setup_sel = 0, .analog_inputs.ainp.pos_analog_input = AIN0, .analog_inputs.ainp.neg_analog_input = AIN1 },
-		{ .channel_enable = false, .setup_sel = 0, .analog_inputs.ainp.pos_analog_input = AIN0, .analog_inputs.ainp.neg_analog_input = AIN1 },
-		{ .channel_enable = false, .setup_sel = 0, .analog_inputs.ainp.pos_analog_input = AIN0, .analog_inputs.ainp.neg_analog_input = AIN1 },
-		{ .channel_enable = false, .setup_sel = 0, .analog_inputs.ainp.pos_analog_input = AIN0, .analog_inputs.ainp.neg_analog_input = AIN1 },
-		{ .channel_enable = false, .setup_sel = 0, .analog_inputs.ainp.pos_analog_input = AIN0, .analog_inputs.ainp.neg_analog_input = AIN1 },
-		{ .channel_enable = false, .setup_sel = 0, .analog_inputs.ainp.pos_analog_input = AIN0, .analog_inputs.ainp.neg_analog_input = AIN1 },
-		{ .channel_enable = false, .setup_sel = 0, .analog_inputs.ainp.pos_analog_input = AIN0, .analog_inputs.ainp.neg_analog_input = AIN1 },
-#endif // (NUMBER_OF_CHANNELS != 4) && (NUMBER_OF_CHANNELS != 8)
-#endif // (NUMBER_OF_CHANNELS != 4)
-#endif // (DEV_AD4111),(DEV_AD4112),(DEV_AD4114),(DEV_AD4115), (DEV_AD4116)
-	},
-	.filter_configuration = {
-		{.odr = AD717x_ODR_SEL},
-		{.odr = AD717x_ODR_SEL},
-		{.odr = AD717x_ODR_SEL},
-		{.odr = AD717x_ODR_SEL},
-#if (NUMBER_OF_SETUPS != 4)
-		{.odr = AD717x_ODR_SEL},
-		{.odr = AD717x_ODR_SEL},
-		{.odr = AD717x_ODR_SEL},
-		{.odr = AD717x_ODR_SEL},
-#endif // (NUMBER_OF_SETUPS!= 4)
-	}
 };
 
 /******************************************************************************/

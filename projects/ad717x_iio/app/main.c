@@ -1,52 +1,59 @@
 /***************************************************************************//**
- * @file    main.c
- * @brief   Main interface for AD717x-AD411x IIO firmware application
+ *   @file    main.c
+ *   @brief   Main interface for IIO firmware application
 ********************************************************************************
-* Copyright (c) 2021-22 Analog Devices, Inc.
-* All rights reserved.
-*
-* This software is proprietary to Analog Devices, Inc. and its licensors.
-* By using this software you agree to the terms of the associated
-* Analog Devices Software License Agreement.
+ * Copyright (c) 2021-22, 2026 Analog Devices, Inc.
+ *
+ * This software is proprietary to Analog Devices, Inc. and its licensors.
+ * By using this software you agree to the terms of the associated
+ * Analog Devices Software License Agreement.
 *******************************************************************************/
 
 /******************************************************************************/
 /***************************** Include Files **********************************/
 /******************************************************************************/
-
-#include <stdbool.h>
-#include <assert.h>
-#include "ad717x_iio.h"
-
-/******************************************************************************/
-/********************* Macros and Constants Definition ************************/
-/******************************************************************************/
+#include <stdio.h>
+#include <stdint.h>
+#include "no_os_error.h"
 
 /******************************************************************************/
-/******************** Variables and User Defined Data Types *******************/
+/********************** Macros and Constants Definitions **********************/
 /******************************************************************************/
 
 /******************************************************************************/
-/************************** Functions Declaration *****************************/
+/********************** Variables and User Defined Data Types *****************/
 /******************************************************************************/
 
 /******************************************************************************/
-/************************** Functions Definition ******************************/
+/************************** Functions Declarations ****************************/
 /******************************************************************************/
+int32_t init_system(void);
+int32_t iio_app_initialize(void);
+void iio_app_event_handler(void);
 
+/******************************************************************************/
+/************************** Functions Definitions *****************************/
+/******************************************************************************/
 /**
  * @brief	Main entry point to application
  * @return	none
  */
 int main(void)
 {
-	/* Initialize the AD717x IIO interface */
-	if (ad717x_iio_initialize() != 0) {
-		assert(-1);
+	/* Initialize the system and peripherals */
+	if (init_system()) {
+		printf("System initialization failure!!\r\n");
+		return -ENODEV;
+	}
+
+	/* Initialize the IIO interface */
+	if (iio_app_initialize()) {
+		printf("IIO initialization failure!!\r\n");
+		return -ENODEV;
 	}
 
 	while (1) {
 		/* Monitor the IIO client events */
-		ad717x_iio_event_handler();
+		iio_app_event_handler();
 	}
 }

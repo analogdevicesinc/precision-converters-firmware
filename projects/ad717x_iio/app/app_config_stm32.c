@@ -2,7 +2,7 @@
  * @file    app_config_stm32.c
  * @brief   STM32 Specific configuration files for AD717x IIO Application
 ********************************************************************************
-* Copyright (c) 2025 Analog Devices, Inc.
+* Copyright (c) 2025-26 Analog Devices, Inc.
 * All rights reserved.
 *
 * This software is proprietary to Analog Devices, Inc. and its licensors.
@@ -50,6 +50,7 @@ struct stm32_usb_uart_init_param stm32_vcom_extra_init_params = {
 /******************************************************************************/
 /************************** Functions Declaration *****************************/
 /******************************************************************************/
+void SystemClock_Config(void);
 
 /******************************************************************************/
 /************************** Functions Definition ******************************/
