@@ -2,6 +2,7 @@ Evaluation Boards/Products Supported
 ------------------------------------ 
 EVAL-AD4111SDZ
 EVAL-AD4112SDZ
+EVAL-AD4113ARDZ
 EVAL-AD4114/15SDZ
 EVAL-AD4116
 EVAL-AD7175-2
@@ -17,10 +18,11 @@ Overview
 --------
 These code files provide the IIO application and device libraries to 
 interface with AD717x/AD411x EVAL boards. This code was developed and tested on SDP-K1 
-controller board: https://os.mbed.com/platforms/SDP_K1/
+controller board: https://www.analog.com/en/design-center/evaluation-hardware-and-software/evaluation-boards-kits/SDP-K1.html
  
 Product details: https://www.analog.com/en/products/ad4111.html
                  https://www.analog.com/en/products/ad4112.html
+                 https://www.analog.com/en/products/ad4113.html
                  https://www.analog.com/en/products/ad4115.html
 		 https://www.analog.com/en/products/ad4116.html
                  https://www.analog.com/en/products/landing-pages/001/ad717x-family.html
@@ -32,16 +34,14 @@ Communication Protocol: SPI
  
 Hardware Setup
 --------------
-Required: SDP-K1 (or alternative MBED enabled controller board), EVAL-AD4111SDZ (or other AD717x/AD411x supported EVAL board), 
+Required: SDP-K1 (or an STM32 board), EVAL-AD4111SDZ (or other AD717x/AD411x supported EVAL board),
 USB cable.
-Plug in the EVAL board on SDP-K1 board (or any other Mbed enabled 
-controller board) using the SDP connector and screws.
+Connect the EVAL-AD717x board to SDP-K1 board (or an STM32 board).
 Connect SDP-K1 board to the PC using the USB cable.
  
  
 How to Get Started
 ------------------
-Mbed web/online compiler: https://studio.keil.arm.com/auth/login/
 Import code into compiler and compile it to generate executable binary file. 
 Drag and drop binary file into USB drive hosted by SDP-K1 controller board. 
 Find detailed instructions here: https://analogdevicesinc.github.io/precision-converters-firmware/source/build/project_build.html
@@ -50,7 +50,6 @@ Find detailed instructions here: https://analogdevicesinc.github.io/precision-co
 Notes
 -----
 A detailed user guide on SDP-K1 controller board is available here:
-https://os.mbed.com/platforms/SDP_K1/
 https://www.analog.com/en/design-center/evaluation-hardware-and-software/evaluation-boards-kits/SDP-K1.html.
 
-Copyright (c) 2023 Analog Devices, Inc.  All rights reserved.
+Copyright (c) 2023, 2026 Analog Devices, Inc.  All rights reserved.
