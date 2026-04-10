@@ -2,7 +2,7 @@
  *   @file app_config_stm32.h
  *   @brief Header file for STM32 platform configurations
 ********************************************************************************
- * Copyright (c) 2025 Analog Devices, Inc.
+ * Copyright (c) 2025-26 Analog Devices, Inc.
  * All rights reserved.
  *
  * This software is proprietary to Analog Devices, Inc. and its licensors.
@@ -26,6 +26,7 @@
 #include "stm32_usb_uart.h"
 #include "app_config.h"
 #include "stm32_irq.h"
+#include "usb_device.h"
 
 /******************************************************************************/
 /********************** Macros and Constants Definition ***********************/
@@ -36,9 +37,8 @@
 * on the controller used. */
 #define TARGET_NAME		SDP-K1
 
-//#define ARDUINO
 /* SPI Pins on SDP-K1-Arduino Interface */
-#ifdef ARDUINO
+#if (EVB_INTERFACE == ARDUINO_INTERFACE)
 #define SPI_DEVICE_ID		1 // SPI1
 #define SPI_CS_PORT	        0  // GPIO Port A
 #define SPI_CSB				15 // PA_15
@@ -47,7 +47,7 @@
 /* SPI Pins on SDP-K1-SDP-120 Interface */
 #define SPI_DEVICE_ID		5 // SPI5
 #define SPI_CS_PORT	        1  // GPIO Port B
-#define SPI_CSB				9 // PA_15
+#define SPI_CSB				9 // PB_9
 #define I2C_DEVICE_ID       3 // I2C3
 #endif
 

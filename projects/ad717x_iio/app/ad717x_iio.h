@@ -2,7 +2,7 @@
  *   @file   ad717x_iio.h
  *   @brief  IIO Header file for AD717x and AD411x
 ******************************************************************************
-* Copyright (c) 2021-22 Analog Devices, Inc.
+* Copyright (c) 2021-22, 2026 Analog Devices, Inc.
 *
 * All rights reserved.
 *
@@ -35,8 +35,6 @@
 /******************************************************************************/
 
 extern ad717x_dev *p_ad717x_dev_inst;
-int32_t ad717x_iio_initialize(void);
-void ad717x_iio_event_handler(void);
 
 #endif // AD717x_IIO_H_
 
