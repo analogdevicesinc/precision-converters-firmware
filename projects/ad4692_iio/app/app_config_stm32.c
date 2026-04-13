@@ -32,23 +32,21 @@
 /* STM32 SPI specific parameters */
 struct stm32_spi_init_param stm32_spi_extra_init_params = {
 	.chip_select_port = SPI_CS_PORT_NUM,
-	.get_input_clock = HAL_RCC_GetPCLK2Freq
+	.get_input_clock = HAL_RCC_GetPCLK2Freq,
+	.dma_init = &ad4692_dma_init_param,
+	.irq_num = Rx_DMA_IRQ_ID,
+	.rxdma_ch = &rxdma_channel,
+	.txdma_ch = &txdma_channel
 };
 
-/* STM32 GPIO CNV specific parameters */
-struct stm32_gpio_init_param stm32_gpio_cnv_extra_init_params = {
+/* STM32 GPIO Output parameters */
+struct stm32_gpio_init_param stm32_gpio_output_extra_init_params = {
 	.mode = GPIO_MODE_OUTPUT_PP,
 	.speed = GPIO_SPEED_FREQ_VERY_HIGH,
 };
 
-/* STM32 GPIO Reset specific parameters */
-struct stm32_gpio_init_param stm32_gpio_reset_extra_init_params = {
-	.mode = GPIO_MODE_OUTPUT_PP,
-	.speed = GPIO_SPEED_FREQ_VERY_HIGH,
-};
-
-/* STM32 GPIO Busy specific parameters */
-struct stm32_gpio_init_param stm32_gpio_bsy_extra_init_params = {
+/* STM32 GPIO Input parameters */
+struct stm32_gpio_init_param stm32_gpio_input_extra_init_params = {
 	.mode = GPIO_MODE_INPUT,
 	.speed = GPIO_SPEED_FREQ_VERY_HIGH,
 };
@@ -124,23 +122,20 @@ struct stm32_dma_channel rxdma_channel = {
 /* STM32 PWM specific init params */
 struct stm32_pwm_init_param stm32_tx_trigger_extra_init_params = {
 	.htimer = &TX_TRIGGER_TIMER_HANDLE,
-	.prescaler = TIMER_8_PRESCALER,
+	.prescaler = TX_TRIGGER_PRESCALER,
 	.timer_autoreload = true,
 	.mode = TIM_OC_PWM1,
 	.timer_chn = TIMER_CHANNEL_1,
 	.complementary_channel = false,
 	.get_timer_clock = HAL_RCC_GetPCLK1Freq,
-	.clock_divider = TIMER_8_CLK_DIVIDER,
+	.clock_divider = TX_TRIGGER_CLK_DIVIDER,
+	.slave_mode = STM32_PWM_SM_TRIGGER,
+	.trigger_source = PWM_TS_ETR,
+	.trigger_polarity = PWM_TRIG_POL_FALLING,
 	.trigger_output = PWM_TRGO_UPDATE,
 	.dma_enable = true,
 	.repetitions = BYTES_PER_SAMPLE - 1,
 	.onepulse_enable = true
-};
-
-/* STM32 GPIO specific parameters */
-struct stm32_gpio_init_param stm32_csb_gpio_extra_init_params = {
-	.mode = GPIO_MODE_OUTPUT_PP,
-	.speed = GPIO_SPEED_FREQ_VERY_HIGH,
 };
 
 /* STM32 VCOM init parameters */
@@ -189,15 +184,17 @@ void stm32_system_init(void)
 {
 	HAL_Init();
 	SystemClock_Config();
+
 	MX_GPIO_Init();
 	MX_UART5_Init();
 	MX_I2C1_Init();
-	MX_TIM1_Init();
 	MX_SPI1_Init();
-	if (ad4692_interface_mode == SPI_DMA) {
-		MX_DMA_Init();
-		MX_TIM8_Init();
-	}
+	MX_DMA_Init();
+
+	MX_TIM1_Init();
+	MX_TIM4_Init();
+	MX_TIM8_Init();
+
 #ifdef USE_VIRTUAL_COM_PORT
 	MX_USB_DEVICE_Init();
 #endif
@@ -358,18 +355,6 @@ void DMA2_Stream0_IRQHandler(void)
 	}
 
 	HAL_DMA_IRQHandler(&hdma_spi1_rx);
-}
-
-/**
- * @brief  Initialize Tx trigger advanced PWM parameters
- * @return None
- */
-void tim8_init(void)
-{
-#if (INTERFACE_MODE == SPI_DMA_MODE)
-	TIM8->SMCR = TIM_SMCR_ETP | TIM_MASTERSLAVEMODE_ENABLE | TIM_SLAVEMODE_TRIGGER |
-		     TIM_TS_ETRF;
-#endif
 }
 
 /**

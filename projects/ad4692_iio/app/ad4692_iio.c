@@ -131,15 +131,6 @@ struct scan_type ad4692_iio_scan_type[NUM_OF_IIO_DEVICES][NO_OF_CHANNELS] = {
  * is tested for SDP-K1 platform @180Mhz default core clock */
 #define BUF_READ_TIMEOUT 0xffffffff
 
-/* Enable toggling of CS */
-#define CS_CHANGE		1
-
-/* Number of CNV toggles to register the channel ID */
-#define AD4692_N_CNV_TOGGLES 2
-
-/* Exit manual mode */
-#define AD4692_EXIT_MANUAL_MODE	0x0
-
 /* Min and Max values for per channel accumulator count */
 #define ACC_COUNT_MIN_VAL	0
 #define ACC_COUNT_MAX_VAL	64
@@ -465,17 +456,11 @@ int ad4692_update_sampling_frequency(uint32_t *sampling_rate)
 					*sampling_rate);
 
 		/* Initialize PWM with the updated rate */
-		ret = init_pwm();
+		ret = no_os_pwm_set_period(ad4692_dev->conv_desc,
+					   ad4692_init_params.conv_param->period_ns);
 		if (ret) {
 			return ret;
 		}
-
-		ret = ad4692_config_and_start_pwm(ad4692_dev);
-		if (ret) {
-			return ret;
-		}
-
-		ad4692_stop_timer();
 	} else { // SPI_INTR
 
 		if (ad4692_init_params.mode == AD4692_SPI_BURST) {
@@ -1326,13 +1311,6 @@ int ad4692_start_data_capture(struct ad4692_desc *desc)
 int ad4692_stop_data_capture(struct ad4692_desc *desc)
 {
 	int ret;
-	uint8_t toggle_n;
-	struct no_os_spi_msg ad4692_spi_msg = {
-		.cs_change = CS_CHANGE,
-		.tx_buff = data_buff,
-		.rx_buff = data_buff,
-		.bytes_number = BYTES_PER_SAMPLE
-	};
 
 	if (!desc) {
 		return -EINVAL;
@@ -1346,19 +1324,7 @@ int ad4692_stop_data_capture(struct ad4692_desc *desc)
 			return ret;
 		}
 
-		/* Toggle CNV at a gap of 5us */
-		for (toggle_n = 0; toggle_n < AD4692_N_CNV_TOGGLES; toggle_n++) {
-			no_os_udelay(5);
-			ret = ad4692_toggle_cnv(cnv_gpio_desc);
-			if (ret) {
-				return ret;
-			}
-		}
-
-		/* Register the Exit command */
-		data_buff[0] = AD4692_EXIT_COMMAND;
-		data_buff[1] = 0x0;
-		ret = no_os_spi_transfer(desc->comm_desc, &ad4692_spi_msg, 1);
+		ret = ad4692_exit_manual_mode(desc, cnv_gpio_desc);
 		if (ret) {
 			return ret;
 		}
@@ -1477,21 +1443,6 @@ static int32_t ad4692_iio_prepare_transfer(void* dev_instance, uint32_t ch_mask)
 			}
 		}
 	} else { // SPI DMA
-		spi_init_param = ad4692_init_params.comm_param->extra;
-		spi_init_param->dma_init = &ad4692_dma_init_param;
-		spi_init_param->irq_num = Rx_DMA_IRQ_ID;
-		spi_init_param->rxdma_ch = &rxdma_channel;
-		spi_init_param->txdma_ch = &txdma_channel;
-
-		/* Remove previous SPI descriptor before reinit in DMA mode */
-		no_os_spi_remove(ad4692_dev->comm_desc);
-
-		/* Init SPI interface in DMA Mode */
-		ret = no_os_spi_init(&ad4692_dev->comm_desc,
-				     ad4692_init_params.comm_param);
-		if (ret) {
-			return ret;
-		}
 
 		/* Pull the SPI CS line low to enable the data on SDO.*/
 		ret = no_os_gpio_set_value(csb_gpio_desc, NO_OS_GPIO_LOW);
@@ -1547,19 +1498,6 @@ static int32_t ad4692_iio_end_transfer(void *dev)
 
 		/* De initialize the Tx Trigger PWM */
 		ret = no_os_pwm_disable(tx_trigger_desc);
-		if (ret) {
-			return ret;
-		}
-
-		spi_init_param = ad4692_init_params.comm_param->extra;
-		spi_init_param->dma_init = NULL;
-
-		/* Remove DMA SPI descriptor before reinit in polling mode */
-		no_os_spi_remove(ad4692_dev->comm_desc);
-
-		/* Reinitialize SPI to operate in polling mode */
-		ret = no_os_spi_init(&ad4692_dev->comm_desc,
-				     ad4692_init_params.comm_param);
 		if (ret) {
 			return ret;
 		}
@@ -2439,6 +2377,63 @@ int32_t ad4692_configure_sampling_rate(void)
 }
 
 /**
+ * @brief	DeInitialize the IIO parameters.
+ */
+void iio_params_deinit(void)
+{
+	uint8_t indx = 0;
+
+	for (indx = 0 ; indx < iio_init_params.nb_devs; indx++) {
+		if (ad4692_iio_dev[indx] != NULL) {
+			no_os_free(ad4692_iio_dev[indx]);
+			ad4692_iio_dev[indx] = NULL;
+		}
+	}
+
+	iio_init_params.nb_devs = 0;
+	iio_init_params.nb_trigs = 0;
+}
+
+/**
+ * @brief	Remove the IIO application and free the allocated resources
+ * @return  None
+ */
+int32_t iio_app_remove(void)
+{
+	/* Remove and free the pointers allocated during IIO init.
+	 * Use NULL checks to determine which resources were allocated,
+	 * since attribute setters may have changed mode globals before
+	 * the restart flag was set. */
+
+	/* Remove hardware trigger if allocated (SPI_INTR + CONTINUOUS) */
+	if (ad4692_hw_trig_desc) {
+		iio_hw_trig_remove(ad4692_hw_trig_desc);
+		ad4692_hw_trig_desc = NULL;
+	}
+
+	/* Remove interrupt controller if allocated (SPI_INTR) */
+	remove_interrupt();
+
+	/* Remove SPI burst PWM if allocated (SPI_INTR + SPI_BURST) */
+	remove_pwm();
+
+	remove_gpio();
+
+	NO_OS_UNUSED_PARAM(ad4692_remove(ad4692_dev));
+	ad4692_dev = NULL;
+
+	iio_params_deinit();
+
+	NO_OS_UNUSED_PARAM(iio_remove(ad4692_iio_desc));
+	ad4692_iio_desc = NULL;
+
+	remove_iio_context_attributes(iio_init_params.ctx_attrs);
+	iio_init_params.ctx_attrs = NULL;
+
+	return 0;
+}
+
+/**
  * @brief Initialize the AD4692 IIO Application
  * @return 0 in case of success, negative value otherwise
  */
@@ -2500,26 +2495,27 @@ int32_t iio_app_initialize(void)
 					    STR(HW_CARRIER_NAME),
 					    &hw_mezzanine_is_valid,
 					    FIRMWARE_VERSION);
-	if (ret) {
-		return ret;
+
+	if (ret || !hw_mezzanine_is_valid) {
+		goto iio_init;
 	}
 
-	if (hw_mezzanine_is_valid) {
+	do {
 		ret = ad4692_init(&ad4692_dev, &ad4692_init_params);
 		if (ret) {
-			return ret;
+			goto system_config_init;
 		}
 
 		/* Exit from manual mode if device is configured to manual mode */
 		ret = ad4692_stop_data_capture(ad4692_dev);
 		if (ret) {
-			return ret;
+			goto err_remove_ad4692;
 		}
 
 		/* Register and initialize the AD4692 device into IIO interface */
 		ret = ad4692_iio_init(&ad4692_iio_dev[0], 0);
 		if (ret) {
-			return ret;
+			goto err_remove_ad4692;
 		}
 
 		/* Initialize the IIO interface */
@@ -2540,12 +2536,20 @@ int32_t iio_app_initialize(void)
 			iio_device_init_params[0].trigger_id = "trigger0";
 			iio_init_params.nb_trigs++;
 		}
-	}
 
+		break;
+
+err_remove_ad4692:
+		ad4692_remove(ad4692_dev);
+		ad4692_dev = NULL;
+		goto system_config_init;
+	} while (false);
+
+system_config_init:
 	/* Initialize board IIO paramaters */
 	ret = board_iio_params_init(&ad4692_iio_dev[iio_init_params.nb_devs], 1);
 	if (ret) {
-		return ret;
+		goto iio_init;
 	}
 
 	iio_device_init_params[iio_init_params.nb_devs].name = "system_config";
@@ -2553,12 +2557,13 @@ int32_t iio_app_initialize(void)
 		ad4692_iio_dev[iio_init_params.nb_devs];
 	iio_init_params.nb_devs++;
 
+iio_init:
 	/* Initialize the IIO interface */
 	iio_init_params.uart_desc = uart_iio_com_desc;
 	iio_init_params.devs = iio_device_init_params;
 	ret = iio_init(&ad4692_iio_desc, &iio_init_params);
 	if (ret) {
-		return ret;
+		goto err_iio_init;
 	}
 
 	if ((ad4692_interface_mode == SPI_INTR)
@@ -2569,45 +2574,33 @@ int32_t iio_app_initialize(void)
 		}
 	}
 
-	if (ad4692_interface_mode == SPI_INTR) {
+	/* Initialize the PWM and channel priorities only if ADC initialization is proper */
+	if (ad4692_dev) {
 		ret = init_pwm();
 		if (ret) {
 			return ret;
 		}
-	}
+		ad4692_stop_timer();
 
-	/* Configure the channel priorities in advanced sequencer mode */
-	if (ad4692_sequencer_mode == ADVANCED_SEQUENCER) {
-		ret = ad4692_configure_channel_priorities(channel_priorities,
-				channel_sequence,
-				&num_of_as_slots,
-				ad4692_acc_count);
-		if (ret) {
-			return ret;
+		/* Configure the channel priorities in advanced sequencer mode */
+		if (ad4692_sequencer_mode == ADVANCED_SEQUENCER) {
+			ret = ad4692_configure_channel_priorities(channel_priorities,
+					channel_sequence,
+					&num_of_as_slots,
+					ad4692_acc_count);
+			if (ret) {
+				return ret;
+			}
+		} else {
+			memset(ad4692_acc_count, 0x0, NO_OF_CHANNELS);
 		}
-	} else {
-		memset(ad4692_acc_count, 0x0, NO_OF_CHANNELS);
 	}
 
 	return 0;
-}
 
-/**
- * @brief	DeInitialize the IIO parameters.
- */
-void iio_params_deinit(void)
-{
-	uint8_t indx = 0;
-
-	for (indx = 0 ; indx < iio_init_params.nb_devs; indx++) {
-		if (ad4692_iio_dev[indx] != NULL) {
-			no_os_free(ad4692_iio_dev[indx]);
-			ad4692_iio_dev[indx] = NULL;
-		}
-	}
-
-	iio_init_params.nb_devs = 0;
-	iio_init_params.nb_trigs = 0;
+err_iio_init:
+	iio_app_remove();
+	return ret;
 }
 
 /**
@@ -2617,49 +2610,8 @@ void iio_params_deinit(void)
 void iio_app_event_handler(void)
 {
 	if (restart_iio_flag) {
-		/* Remove and free the pointers allocated during IIO init.
-		 * Use NULL checks to determine which resources were allocated,
-		 * since attribute setters may have changed mode globals before
-		 * the restart flag was set. */
 
-		/* Remove hardware trigger if allocated (SPI_INTR + CONTINUOUS) */
-		if (ad4692_hw_trig_desc) {
-			iio_hw_trig_remove(ad4692_hw_trig_desc);
-			ad4692_hw_trig_desc = NULL;
-		}
-
-		/* Remove interrupt controller if allocated (SPI_INTR) */
-		if (trigger_irq_desc) {
-			no_os_irq_ctrl_remove(trigger_irq_desc);
-			trigger_irq_desc = NULL;
-		}
-
-		/* Remove SPI burst PWM if allocated (SPI_INTR + SPI_BURST) */
-		if (spi_burst_pwm_desc) {
-			no_os_pwm_remove(spi_burst_pwm_desc);
-			spi_burst_pwm_desc = NULL;
-		}
-
-		/* Remove CSB GPIO if allocated (SPI_DMA / manual mode) */
-		if (csb_gpio_desc) {
-			no_os_gpio_remove(csb_gpio_desc);
-			csb_gpio_desc = NULL;
-		}
-
-		/* Remove CNV GPIO if allocated */
-		if (cnv_gpio_desc) {
-			no_os_gpio_remove(cnv_gpio_desc);
-			cnv_gpio_desc = NULL;
-		}
-
-		ad4692_remove(ad4692_dev);
-
-		iio_params_deinit();
-
-		iio_remove(ad4692_iio_desc);
-
-		remove_iio_context_attributes(iio_init_params.ctx_attrs);
-		iio_init_params.ctx_attrs = NULL;
+		iio_app_remove();
 
 		/* Reset the restart_iio flag */
 		restart_iio_flag = false;

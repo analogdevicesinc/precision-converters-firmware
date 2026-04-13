@@ -59,7 +59,7 @@ struct no_os_gpio_init_param gpio_init_busy = {
 	.port = BSY_PORT_NUM,
 	.number = BSY_PIN_NUM,
 	.platform_ops = &gpio_ops,
-	.extra = &bsy_extra_init_params
+	.extra = &gpio_input_extra_init_params
 };
 
 /* GPIO Reset Init parameters */
@@ -67,7 +67,7 @@ struct no_os_gpio_init_param gpio_init_reset = {
 	.port = RESET_PORT_NUM,
 	.number = RESET_PIN_NUM,
 	.platform_ops = &gpio_ops,
-	.extra = &reset_extra_init_params
+	.extra = &gpio_output_extra_init_params
 };
 
 /* AD4692 Init parameters */

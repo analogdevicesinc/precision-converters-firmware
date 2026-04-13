@@ -90,7 +90,7 @@ struct no_os_gpio_init_param cnv_gpio_init_param = {
 	.port = CNV_PORT_NUM,
 	.number = CNV_PIN_NUM,
 	.platform_ops = &gpio_ops,
-	.extra = &bsy_extra_init_params
+	.extra = &gpio_input_extra_init_params
 };
 
 /* External interrupt callback descriptor */
@@ -138,7 +138,7 @@ struct no_os_pwm_init_param pwm_spi_burst_init = {
 };
 
 /* Trigger interrupt descriptor */
-struct no_os_irq_ctrl_desc *trigger_irq_desc;
+struct no_os_irq_ctrl_desc *trigger_irq_desc = NULL;
 
 /* IIO Comm Descriptor */
 struct no_os_uart_desc *uart_iio_com_desc;
@@ -147,7 +147,7 @@ struct no_os_uart_desc *uart_iio_com_desc;
 struct no_os_uart_desc *uart_console_stdio_desc;
 
 /* CNV GPIO descriptor */
-struct no_os_gpio_desc *cnv_gpio_desc;
+struct no_os_gpio_desc *cnv_gpio_desc = NULL;
 
 /* EEPROM descriptor */
 struct no_os_eeprom_desc* eeprom_desc;
@@ -176,7 +176,7 @@ struct no_os_gpio_init_param csb_gpio_init_param = {
 	.number = SPI_CSB,
 	.pull = NO_OS_PULL_NONE,
 	.platform_ops = &gpio_ops,
-	.extra = &csb_gpio_extra_init_params
+	.extra = &gpio_output_extra_init_params
 };
 
 /* Tx trigger descriptor */
@@ -186,7 +186,7 @@ struct no_os_pwm_desc *tx_trigger_desc;
 struct no_os_pwm_desc *spi_burst_pwm_desc = NULL;
 
 /* Chip Select GPIO descriptor */
-struct no_os_gpio_desc* csb_gpio_desc;
+struct no_os_gpio_desc* csb_gpio_desc = NULL;
 
 /******************************************************************************/
 /************************ Functions Prototypes ********************************/
@@ -225,12 +225,28 @@ static int32_t init_uart(void)
 }
 
 /**
+ * @brief Remove the initialized GPIO peripheral.
+ * @return None.
+ */
+void remove_gpio(void)
+{
+	NO_OS_UNUSED_PARAM(no_os_gpio_remove(csb_gpio_desc));
+	csb_gpio_desc = NULL;
+	NO_OS_UNUSED_PARAM(no_os_gpio_remove(cnv_gpio_desc));
+	cnv_gpio_desc = NULL;
+	return;
+}
+
+/**
  * @brief Initialize the GPIO peripheral.
  * @return 0 in case of success, negative error code otherwise.
  */
 int init_gpio(void)
 {
 	int ret;
+
+	/* Remove Exiting GPIO descriptors */
+	remove_gpio();
 
 	ret = no_os_gpio_get(&cnv_gpio_desc, &cnv_gpio_init_param);
 	if (ret) {
@@ -239,22 +255,42 @@ int init_gpio(void)
 
 	ret = no_os_gpio_direction_output(cnv_gpio_desc, NO_OS_GPIO_LOW);
 	if (ret) {
-		return ret;
+		goto err_init_gpio;
 	}
 
 	if (ad4692_interface_mode == SPI_DMA) {
 		ret = no_os_gpio_get(&csb_gpio_desc, &csb_gpio_init_param);
 		if (ret) {
-			return ret;
+			goto err_init_gpio;
 		}
 
 		ret = no_os_gpio_direction_output(csb_gpio_desc, NO_OS_GPIO_LOW);
 		if (ret) {
-			return ret;
+			goto err_init_gpio;
 		}
 	}
 
 	return 0;
+err_init_gpio:
+	remove_gpio();
+	return ret;
+}
+
+/**
+ * @brief Remove the initialized interrupt controller.
+ * @return None.
+ */
+void remove_interrupt(void)
+{
+	if (trigger_irq_desc) {
+		NO_OS_UNUSED_PARAM(no_os_irq_unregister_callback(trigger_irq_desc,
+				   TRIGGER_INT_ID,
+				   &ext_int_callback_desc));
+	}
+	NO_OS_UNUSED_PARAM(no_os_irq_ctrl_remove(trigger_irq_desc));
+	trigger_irq_desc = NULL;
+
+	return;
 }
 
 /**
@@ -291,14 +327,14 @@ int32_t init_interrupt(void)
 							  TRIGGER_INT_ID,
 							  &ext_int_callback_desc);
 			if (ret) {
-				return ret;
+				goto err_init_interrupt;
 			}
 
 			ret = no_os_irq_trigger_level_set(trigger_irq_desc,
 							  TRIGGER_INT_ID,
 							  NO_OS_IRQ_EDGE_FALLING);
 			if (ret) {
-				return ret;
+				goto err_init_interrupt;
 			}
 		}
 #if (ACTIVE_PLATFORM == STM32_PLATFORM)
@@ -308,11 +344,29 @@ int32_t init_interrupt(void)
 		ret = no_os_irq_set_priority(trigger_irq_desc, TRIGGER_INT_ID,
 					     GPIO_IRQ_PRIORITY);
 		if (ret) {
-			return ret;
+			goto err_init_interrupt;
 		}
 #endif
 	}
 	return 0;
+
+err_init_interrupt:
+	remove_interrupt();
+	return ret;
+}
+
+/**
+ * @brief Remove the initialized PWM peripheral.
+ * @return None.
+ */
+void remove_pwm(void)
+{
+	/* Remove Tx Trigger Timer if allocated */
+	NO_OS_UNUSED_PARAM(no_os_pwm_remove(spi_burst_pwm_desc));
+	spi_burst_pwm_desc = NULL;
+	/* ad4692_dev->conv_desc will be removed in remove_ad4692 */
+
+	return;
 }
 
 /**
@@ -323,13 +377,16 @@ int init_pwm(void)
 {
 	int ret;
 
+	/* Remove Existing PWM descriptors */
+	remove_pwm();
+
 	if (ad4692_init_params.mode == AD4692_SPI_BURST) {
 		/* Initialize timer for SPI Burst PWM */
 		stm32_tim4_init();
 
 		ret = no_os_pwm_init(&spi_burst_pwm_desc, &pwm_spi_burst_init);
 		if (ret) {
-			return ret;
+			goto err_init_pwm;
 		}
 	}
 
@@ -344,13 +401,17 @@ int init_pwm(void)
 	ret = no_os_pwm_init(&ad4692_dev->conv_desc,
 			     ad4692_init_params.conv_param);
 	if (ret) {
-		return ret;
+		goto err_init_pwm;
 	}
 
 	/* Stop timer */
 	ad4692_stop_timer();
 
 	return 0;
+
+err_init_pwm:
+	remove_pwm();
+	return ret;
 }
 
 /**
@@ -373,8 +434,6 @@ int32_t tx_trigger_init(void)
 			return ret;
 		}
 	}
-
-	tim8_init();
 
 	return 0;
 }

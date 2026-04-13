@@ -233,3 +233,42 @@ int ad4692_configure_channel_priorities(uint8_t* chn_priorities,
 
 	return 0;
 }
+/**
+ * @brief Exit manual mode and switch to CNV clock mode.
+ *
+ * @param desc Pointer to the AD4692 descriptor.
+ * @param cnv_desc Pointer to the CNV GPIO descriptor.
+ * @return int 0 on success, negative error code on failure.
+ */
+int ad4692_exit_manual_mode(struct ad4692_desc *desc,
+			    struct no_os_gpio_desc* cnv_desc)
+{
+	int ret;
+	uint8_t toggle_n;
+	uint8_t buff[BYTES_PER_SAMPLE] = { AD4692_EXIT_COMMAND, 0x0 };
+
+	struct no_os_spi_msg ad4692_spi_msg = {
+		.cs_change = CS_CHANGE,
+		.tx_buff = buff,
+		.rx_buff = buff,
+		.bytes_number = BYTES_PER_SAMPLE
+	};
+
+	/* Toggle CNV at a gap of 5us */
+	for (toggle_n = 0; toggle_n < AD4692_N_CNV_TOGGLES; toggle_n++) {
+		no_os_udelay(5);
+		ret = ad4692_toggle_cnv(cnv_desc);
+		if (ret) {
+			return ret;
+		}
+	}
+
+	ret = no_os_spi_transfer(desc->comm_desc, &ad4692_spi_msg, 1);
+	if (ret) {
+		return ret;
+	}
+
+	desc->mode = AD4692_CNV_CLOCK;
+
+	return 0;
+}

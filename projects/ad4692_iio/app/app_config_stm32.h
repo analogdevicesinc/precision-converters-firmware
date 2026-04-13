@@ -80,15 +80,13 @@
 #define vcom_extra_init_params      stm32_vcom_extra_init_params
 #define uart_extra_init_params      stm32_uart_extra_init_params
 #define spi_extra_init_params       stm32_spi_extra_init_params
-#define bsy_extra_init_params       stm32_gpio_bsy_extra_init_params
-#define cnv_extra_init_params       stm32_gpio_cnv_extra_init_params
-#define reset_extra_init_params     stm32_gpio_reset_extra_init_params
+#define gpio_input_extra_init_params stm32_gpio_input_extra_init_params
+#define gpio_output_extra_init_params     stm32_gpio_output_extra_init_params
 #define pwm_cnv_extra_init_params   stm32_pwm_cnv_extra_init_params
 #define pwm_spi_burst_extra_init_params   stm32_pwm_spi_burst_extra_init_params
 #define trigger_gpio_irq_extra_params stm32_gpio_irq_extra_init_params
 #define cnv_pwm_gpio_extra_init_params    stm32_cnv_pwm_gpio_extra_init_params
 #define tx_trigger_extra_init_params  stm32_tx_trigger_extra_init_params
-#define csb_gpio_extra_init_params    stm32_csb_gpio_extra_init_params
 #define i2c_extra_init_params         stm32_i2c_extra_init_params
 #define spi_burst_extra_init_params stm32_spi_burst_pwm_gpio_extra_init_params
 
@@ -112,8 +110,8 @@
 #define TX_TRIGGER_TIMER_ID         8 // Timer 8
 #define TX_TRIGGER_PERIOD           400
 #define TX_TRIGGER_DUTY_RATIO       30
-#define TIMER_8_PRESCALER           0
-#define TIMER_8_CLK_DIVIDER         2
+#define TX_TRIGGER_PRESCALER        0
+#define TX_TRIGGER_CLK_DIVIDER      2
 #define TIMER_CHANNEL_1				1
 #define TX_TRIGGER_TIMER_HANDLE     htim8
 
@@ -167,14 +165,12 @@ extern TIM_HandleTypeDef htim4;
 
 extern struct stm32_uart_init_param stm32_uart_extra_init_params;
 extern struct stm32_spi_init_param stm32_spi_extra_init_params;
-extern struct stm32_gpio_init_param stm32_gpio_reset_extra_init_params;
-extern struct stm32_gpio_init_param stm32_gpio_bsy_extra_init_params;
+extern struct stm32_gpio_init_param stm32_gpio_output_extra_init_params;
+extern struct stm32_gpio_init_param stm32_gpio_input_extra_init_params;
 extern struct stm32_gpio_irq_init_param stm32_gpio_irq_extra_init_params;
-extern struct stm32_gpio_init_param stm32_gpio_cnv_extra_init_params;
 extern struct stm32_pwm_init_param stm32_pwm_cnv_extra_init_params;
 extern struct stm32_gpio_init_param stm32_cnv_pwm_gpio_extra_init_params;
 extern struct stm32_pwm_init_param stm32_tx_trigger_extra_init_params;
-extern struct stm32_gpio_init_param stm32_csb_gpio_extra_init_params;
 extern struct stm32_i2c_init_param stm32_i2c_extra_init_params;
 extern struct no_os_dma_init_param ad4692_dma_init_param;
 extern struct stm32_dma_channel rxdma_channel;
@@ -205,7 +201,6 @@ void ad4692_spi_dma_rx_half_cplt_callback(DMA_HandleTypeDef* hdma);
 void stm32_abort_dma_transfer(void);
 void update_buff(uint8_t *local_buf, uint8_t *buf_start_addr);
 void SystemClock_Config(void);
-void tim8_init(void);
 int32_t tx_trigger_init(void);
 void stm32_tim4_init(void);
 
