@@ -139,8 +139,11 @@ extern struct no_os_irq_init_param trigger_gpio_irq_params;
 
 int32_t init_system(void);
 int init_gpio(void);
+void remove_gpio(void);
 int init_pwm(void);
+void remove_pwm(void);
 void ad4692_data_capture_callback(void *ctx);
 int32_t init_interrupt(void);
+void remove_interrupt(void);
 
 #endif // APP_CONFIG_H
