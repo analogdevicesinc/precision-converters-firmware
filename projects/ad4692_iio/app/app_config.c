@@ -438,6 +438,26 @@ int32_t tx_trigger_init(void)
 	return 0;
 }
 
+/**
+ * @brief 	Set prescaler for timer.
+ * @param 	desc[in] - The PWM descriptor.
+ * @param 	prescaler[in] - Prescaler to be set.
+ * @return 	0 in case of success else negative error code.
+ */
+int32_t set_timer_prescaler(struct no_os_pwm_desc *desc, uint32_t prescaler)
+{
+#if (ACTIVE_PLATFORM == STM32_PLATFORM)
+	struct stm32_pwm_desc *sdesc = ((struct stm32_pwm_desc *)desc->extra);
+
+	sdesc->prescaler = prescaler;
+	((TIM_HandleTypeDef *)sdesc->htimer)->Instance->PSC = prescaler;
+
+	return 0;
+#else
+	return -ENOTSUP;
+#endif
+}
+
 
 /**
  * @brief Initializing system peripherals

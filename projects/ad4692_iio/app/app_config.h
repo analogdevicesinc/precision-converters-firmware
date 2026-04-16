@@ -138,6 +138,7 @@ extern struct no_os_pwm_init_param pwm_spi_burst_init;
 extern struct no_os_irq_init_param trigger_gpio_irq_params;
 
 int32_t init_system(void);
+int32_t set_timer_prescaler(struct no_os_pwm_desc *desc, uint32_t prescaler);
 int init_gpio(void);
 void remove_gpio(void);
 int init_pwm(void);

@@ -445,7 +445,9 @@ static uint8_t n_bytes_per_transaction = AD4692_N_BYTES_CNV_CLOCK_16BIT;
 int ad4692_update_sampling_frequency(uint32_t *sampling_rate)
 {
 	int ret;
-	uint32_t pwm_period_ns;
+	uint64_t pwm_period_ns;
+	uint32_t period_ns_readback;
+	uint32_t prescaler;
 
 	if (*sampling_rate > ad4692_sampling_frequency_max) {
 		*sampling_rate = ad4692_sampling_frequency_max;
@@ -454,6 +456,20 @@ int ad4692_update_sampling_frequency(uint32_t *sampling_rate)
 	if (ad4692_interface_mode == SPI_DMA) {
 		ad4692_init_params.conv_param->period_ns = CONV_TRIGGER_PERIOD_NSEC(
 					*sampling_rate);
+		pwm_period_ns = CONV_TRIGGER_PERIOD_NSEC(*sampling_rate);
+
+		/* Compute prescaler to fit the period value within respective register */
+		ret = compute_optimal_prescaler(ad4692_dev->conv_desc->extra, pwm_period_ns,
+						&prescaler);
+		if (ret) {
+			return ret;
+		}
+
+		/* Set prescaler for timer */
+		ret = set_timer_prescaler(ad4692_dev->conv_desc, prescaler);
+		if (ret) {
+			return ret;
+		}
 
 		/* Initialize PWM with the updated rate */
 		ret = no_os_pwm_set_period(ad4692_dev->conv_desc,
@@ -464,21 +480,48 @@ int ad4692_update_sampling_frequency(uint32_t *sampling_rate)
 	} else { // SPI_INTR
 
 		if (ad4692_init_params.mode == AD4692_SPI_BURST) {
-			ret = no_os_pwm_set_period(spi_burst_pwm_desc,
-						   CONV_TRIGGER_PERIOD_NSEC(*sampling_rate));
+			pwm_period_ns = CONV_TRIGGER_PERIOD_NSEC(*sampling_rate);
+
+			/* Compute prescaler to fit the period value within respective register */
+			ret = compute_optimal_prescaler(spi_burst_pwm_desc->extra, pwm_period_ns,
+							&prescaler);
+			if (ret) {
+				return ret;
+			}
+
+			/* Set prescaler for timer */
+			ret = set_timer_prescaler(spi_burst_pwm_desc, prescaler);
+			if (ret) {
+				return ret;
+			}
+
+			ret = no_os_pwm_set_period(spi_burst_pwm_desc, pwm_period_ns);
 			if (ret) {
 				return ret;
 			}
 		} else {
-			ret = no_os_pwm_set_period(ad4692_dev->conv_desc,
-						   CONV_TRIGGER_PERIOD_NSEC(*sampling_rate));
+			pwm_period_ns = CONV_TRIGGER_PERIOD_NSEC(*sampling_rate);
+
+			/* Compute prescaler to fit the period value within respective register */
+			ret = compute_optimal_prescaler(ad4692_dev->conv_desc->extra, pwm_period_ns,
+							&prescaler);
+			if (ret) {
+				return ret;
+			}
+
+			/* Set prescaler for timer */
+			ret = set_timer_prescaler(ad4692_dev->conv_desc, prescaler);
+			if (ret) {
+				return ret;
+			}
+
+			ret = no_os_pwm_set_period(ad4692_dev->conv_desc, pwm_period_ns);
 			if (ret) {
 				return ret;
 			}
 
 			ret = no_os_pwm_set_duty_cycle(ad4692_dev->conv_desc,
-						       CONV_TRIGGER_DUTY_CYCLE_NSEC(CONV_TRIGGER_PERIOD_NSEC(
-								       *sampling_rate)));
+						       CONV_TRIGGER_DUTY_CYCLE_NSEC(pwm_period_ns));
 			if (ret) {
 				return ret;
 			}
@@ -487,19 +530,19 @@ int ad4692_update_sampling_frequency(uint32_t *sampling_rate)
 
 	if (ad4692_init_params.mode == AD4692_SPI_BURST) {
 		/* Get the actual period of the PWM */
-		ret = no_os_pwm_get_period(spi_burst_pwm_desc, &pwm_period_ns);
+		ret = no_os_pwm_get_period(spi_burst_pwm_desc, &period_ns_readback);
 		if (ret) {
 			return ret;
 		}
 	} else {
 		/* Get the actual period of the PWM */
-		ret = no_os_pwm_get_period(ad4692_dev->conv_desc, &pwm_period_ns);
+		ret = no_os_pwm_get_period(ad4692_dev->conv_desc, &period_ns_readback);
 		if (ret) {
 			return ret;
 		}
 	}
 
-	ad4692_sampling_frequency = PWM_PERIOD_TO_FREQUENCY(pwm_period_ns);
+	ad4692_sampling_frequency = PWM_PERIOD_TO_FREQUENCY(period_ns_readback);
 
 	return 0;
 }
