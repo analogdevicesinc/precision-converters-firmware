@@ -26,6 +26,7 @@
 #include "stm32_gpio.h"
 #include "stm32_uart.h"
 #include "stm32_pwm.h"
+#include "stm32_pwm_ex.h"
 #include "stm32_dma.h"
 #include "stm32_usb_uart.h"
 #include "ad4692_iio.h"
