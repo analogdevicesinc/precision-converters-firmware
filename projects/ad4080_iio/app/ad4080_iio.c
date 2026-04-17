@@ -19,7 +19,6 @@
 
 #include "common.h"
 #include "app_config.h"
-#include "ad4080_iio.h"
 #include "ad4080.h"
 #include "ad4080_regs.h"
 #include "ad4080_user_config.h"
@@ -464,7 +463,7 @@ static int iio_ad4080_attr_get(void *device,
 		return sprintf(buf, "%ld", actual_fifo_data[0]);
 
 	case SCALE_ATTR_ID:
-		return sprintf(buf, "%10f", scale[0]);
+		return sprintf(buf, "%g", scale[0]);
 
 	case OFFSET_ATTR_ID:
 		/* Read the offset register */
@@ -1410,7 +1409,7 @@ int32_t ad4080_iio_start_fifo_mode_capture(uint32_t samples,
 }
 
 /**
- * @brief  Initiates data capture into FIFO.
+ * @brief  Ends FIFO data capture.
  * @param formatted_fifo_data[out] - Pointer to formatted FIFO data buffer.
  * @param raw_fifo_data[in] - Pointer to raw FIFO data buffer.
  * @param samples[in] - Number of requested samples.
@@ -1425,6 +1424,13 @@ int32_t ad4080_iio_end_fifo_mode_capture(uint32_t *formatted_fifo_data,
 
 	if (!raw_fifo_data) {
 		return -EINVAL;
+	}
+
+	/* Clear the High Threshold and Low Threshold detection bits */
+	ret = ad4080_write(ad4080_dev_inst, AD4080_REG_DEVICE_STATUS,
+			   NO_OS_GENMASK(5, 4));
+	if (ret) {
+		return ret;
 	}
 
 	/* Assert back the chosen oscillator */
@@ -1602,7 +1608,7 @@ static int32_t iio_ad4080_init(struct iio_device **desc)
  * @brief	Initialize the IIO interface for AD4080 IIO device
  * @return	0 in case of success,negative error code otherwise
  */
-int32_t ad4080_iio_initialize(void)
+int32_t iio_app_initialize(void)
 {
 	/* IIO init status variable */
 	int32_t init_status = 0;
@@ -1624,7 +1630,7 @@ int32_t ad4080_iio_initialize(void)
 	/* EVB HW validation status */
 	bool hw_mezzanine_is_valid = false;
 
-	/* Provide necessary delay */
+	/* Provide necessary delay for EVB bring up */
 	no_os_mdelay(2000);
 
 	do {
@@ -1660,15 +1666,14 @@ int32_t ad4080_iio_initialize(void)
 
 			/* Increment number of devs */
 			iio_init_params.nb_devs++;
+			iio_device_init_params.dev = &ad4080_dev_inst;
+			iio_device_init_params.dev_descriptor = ad4080_iio_dev;
 		}
 	} while (0);
 
-	/* Initialize the IIO interface */
-	iio_device_init_params.dev = &ad4080_dev_inst;
-	iio_device_init_params.dev_descriptor = ad4080_iio_dev;
-
 	iio_init_params.uart_desc = uart_iio_comm_desc;
 
+	/* Initialize the IIO interface */
 	init_status = iio_init(&ad4080_iio_desc, &iio_init_params);
 	if (init_status) {
 		goto iio_fail;
@@ -1697,7 +1702,7 @@ iio_fail:
  * @return	none
  * @details	This function monitors the new IIO client event
  */
-void ad4080_iio_event_handler(void)
+void iio_app_event_handler(void)
 {
 #ifdef USE_VIRTUAL_COM_PORT
 	ux_device_stack_tasks_run();
