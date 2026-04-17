@@ -137,9 +137,6 @@
 #define AD4080_SIGN_EXTENDED_RESOLUTION_BYTES	\
 						(AD4080_SIGN_EXTENDED_RESOLUTION_BITS / 8)
 
-/* ADC reference voltage in volts */
-#define ADC_REF_VOLTAGE					3
-
 /* Number of ADC Sign Extension Bits */
 #define AD4080_SIGN_EXT_BITS			4
 

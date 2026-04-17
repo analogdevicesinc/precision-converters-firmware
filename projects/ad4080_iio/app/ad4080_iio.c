@@ -129,12 +129,6 @@ int32_t ad4080_iio_end_fifo_mode_capture(uint32_t *formatted_fifo_data,
 static int8_t adc_data_buffer[DATA_BUFFER_SIZE];
 #endif
 
-/* Default scale value for AD4080 */
-#define AD4080_DEFAULT_SCALE	((((float)ADC_REF_VOLTAGE) / ADC_MAX_COUNT) * 1E3)
-
-/* Last register address for AD4080 */
-#define AD4080_LAST_REG_ADDR	AD4080_REG_FILTER_CONFIG
-
 /* Fifo depth limit (watermark count) for data capture */
 #define FIFO_SIZE				16384
 
@@ -1287,20 +1281,8 @@ int32_t ad4080_read_fifo_data(struct ad4080_dev *dev, uint8_t *adc_data,
 		.cs_change = 1
 	};
 
-	/* Remove the SPI descriptor */
-	ret = no_os_spi_remove(dev->spi_desc);
-	if (ret) {
-		return ret;
-	}
-
-	/* Re-initialize the SPI to configure it as Data SPI */
-	ret = no_os_spi_init(&dev->spi_desc, &data_spi_init_params);
-	if (ret) {
-		return ret;
-	}
-
 	/* Transfer using Data SPI */
-	ret = no_os_spi_transfer(dev->spi_desc, &spi_msg, 1);
+	ret = no_os_spi_transfer(dev->data.spi, &spi_msg, 1);
 	if (ret) {
 		return ret;
 	}
@@ -1464,14 +1446,6 @@ int32_t ad4080_iio_end_fifo_mode_capture(uint32_t *formatted_fifo_data,
 		no_os_gpio_set_value(gpio_osc_en_10m_desc,
 				     NO_OS_GPIO_HIGH);
 		break;
-	}
-
-	/* Switch to Config SPI */
-	no_os_spi_remove(ad4080_dev_inst->spi_desc);
-	ret = no_os_spi_init(&ad4080_dev_inst->spi_desc,
-			     &config_spi_init_params);
-	if (ret) {
-		return ret;
 	}
 
 	/* Disable FIFO */
@@ -1669,7 +1643,8 @@ int32_t ad4080_iio_initialize(void)
 		/* If hardware is detected, then initialize it */
 		if (hw_mezzanine_is_valid) {
 			/* Initialize AD4080 device and peripheral interface */
-			ad4080_init_params.spi_init = &config_spi_init_params;
+			ad4080_init_params.cfg.spi = &config_spi_init_params;
+			ad4080_init_params.data.spi = &data_spi_init_params;
 			init_status = ad4080_init(&ad4080_dev_inst, ad4080_init_params);
 			if (init_status) {
 				break;
