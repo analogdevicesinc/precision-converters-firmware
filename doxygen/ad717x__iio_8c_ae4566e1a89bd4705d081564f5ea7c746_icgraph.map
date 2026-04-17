@@ -1,9 +1,9 @@
 <map id="ad717x_trigger_handler" name="ad717x_trigger_handler">
-<area shape="rect" id="Node000001" title=" " alt="" coords="481,5,657,31"/>
-<area shape="rect" id="Node000002" href="$ad717x__iio_8c.html#a457cf699b9a80c01a0835c8e4f7f1ff7" title="Init for reading/writing and parameterization of a AD717x IIO device." alt="" coords="312,5,433,31"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="468,21,433,21,433,15,468,15"/>
-<area shape="rect" id="Node000003" href="$ad717x__iio_8c.html#acddf5b7a4d74fe84be7eceea2cd5f88d" title="Initialize the AD717x IIO Interface." alt="" coords="108,5,264,31"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="298,21,264,21,264,15,298,15"/>
-<area shape="rect" id="Node000004" href="$ad717x__iio_2app_2main_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title="Main entry point to application." alt="" coords="5,5,60,31"/>
-<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="94,21,60,21,60,15,94,15"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="572,5,748,31"/>
+<area shape="rect" id="Node000002" href="$ad717x__iio_8c.html#a457cf699b9a80c01a0835c8e4f7f1ff7" title="Init for reading/writing and parameterization of a AD717x IIO device." alt="" coords="403,5,524,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="558,21,524,21,524,15,558,15"/>
+<area shape="rect" id="Node000003" href="$ad717x__iio_8c.html#a7aa4c35d34a7370a9365923c3e18f500" title="Initialize the AD717x IIO Interface." alt="" coords="223,5,355,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="389,21,355,21,355,15,389,15"/>
+<area shape="rect" id="Node000004" href="$ad717x__iio_8c.html#a20b15ec49897aaf6440bb800ad6641e0" title="Run the AD717x IIO event handler." alt="" coords="5,5,175,31"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="209,21,175,21,175,15,209,15"/>
 </map>

@@ -74,6 +74,7 @@ $(function() {
 </div><!-- top -->
 <div class="header">
   <div class="summary">
+<a href="#define-members">Macros</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle"><div class="title">ad717x_support.h File Reference</div></div>
 </div><!--header-->
@@ -82,14 +83,17 @@ $(function() {
 <p>Header for AD717X support configurations.  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;ad717x.h&quot;</code><br />
+<code>#include &quot;no_os_util.h&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for ad717x_support.h:</div>
 <div class="dyncontent">
 <div class="center"><img src="ad717x__iio_2app_2ad717x__support_8h__incl.png" border="0" usemap="#a_2home_2runner_2work_2precision-converters-firmware_2precision-converters-firmware_2projects_2ad717x__iio_2app_2ad717x__support_8h" alt=""/></div>
 <map name="a_2home_2runner_2work_2precision-converters-firmware_2precision-converters-firmware_2projects_2ad717x__iio_2app_2ad717x__support_8h" id="a_2home_2runner_2work_2precision-converters-firmware_2precision-converters-firmware_2projects_2ad717x__iio_2app_2ad717x__support_8h">
 <area shape="rect" title="Header for AD717X support configurations." alt="" coords="5,5,251,75"/>
-<area shape="rect" title=" " alt="" coords="87,123,169,148"/>
-<area shape="poly" title=" " alt="" coords="131,75,131,109,125,109,125,75"/>
+<area shape="rect" title=" " alt="" coords="29,123,112,148"/>
+<area shape="poly" title=" " alt="" coords="110,76,87,112,83,109,105,73"/>
+<area shape="rect" title=" " alt="" coords="137,123,237,148"/>
+<area shape="poly" title=" " alt="" coords="151,73,174,109,170,112,147,76"/>
 </map>
 </div>
 </div><div class="textblock"><div class="dynheader">
@@ -107,8 +111,19 @@ This graph shows which files directly or indirectly include this file:</div>
 </div>
 <p><a href="ad717x__iio_2app_2ad717x__support_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
+Macros</h2></td></tr>
+<tr class="memitem:a1c76809c944f30e08bbf5e05034e7757" id="r_a1c76809c944f30e08bbf5e05034e7757"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad717x__iio_2app_2ad717x__support_8h.html#a1c76809c944f30e08bbf5e05034e7757">AD717X_FILT_CONF_REG_ENHFILT_MSK</a>&#160;&#160;&#160;NO_OS_GENMASK(10,8)</td></tr>
+<tr class="separator:a1c76809c944f30e08bbf5e05034e7757"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
+<tr class="memitem:a2441aeab2cd6848b60867ef581687fb9" id="r_a2441aeab2cd6848b60867ef581687fb9"><td class="memItemLeft" align="right" valign="top">int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad717x__iio_2app_2ad717x__support_8h.html#a2441aeab2cd6848b60867ef581687fb9">ad717x_write_filter_order</a> (ad717x_dev *<a class="el" href="ad5933__console_2app_2main_8c.html#a327c7a7f8b7537a06ce7f4402bf3b24c">device</a>, enum ad717x_order filter_order, uint8_t setup_id)</td></tr>
+<tr class="memdesc:a2441aeab2cd6848b60867ef581687fb9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Write filter order to FILTCON register.  <br /></td></tr>
+<tr class="separator:a2441aeab2cd6848b60867ef581687fb9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0d3ffea64f8d694de7676db8d7798e5d" id="r_a0d3ffea64f8d694de7676db8d7798e5d"><td class="memItemLeft" align="right" valign="top">int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad717x__iio_2app_2ad717x__support_8h.html#a0d3ffea64f8d694de7676db8d7798e5d">ad717x_write_post_filter</a> (ad717x_dev *<a class="el" href="ad5933__console_2app_2main_8c.html#a327c7a7f8b7537a06ce7f4402bf3b24c">device</a>, bool enable, enum ad717x_enhfilt post_filter, uint8_t setup_id)</td></tr>
+<tr class="memdesc:a0d3ffea64f8d694de7676db8d7798e5d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Write post filter (enhanced filter) settings to FILTCON register.  <br /></td></tr>
+<tr class="separator:a0d3ffea64f8d694de7676db8d7798e5d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a334d12dd7b14be43c4bc9d0723626512" id="r_a334d12dd7b14be43c4bc9d0723626512"><td class="memItemLeft" align="right" valign="top">int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad717x__iio_2app_2ad717x__support_8h.html#a334d12dd7b14be43c4bc9d0723626512">ad717x_enable_cont_read</a> (ad717x_dev *<a class="el" href="ad5933__console_2app_2main_8c.html#a327c7a7f8b7537a06ce7f4402bf3b24c">device</a>, bool cont_read_en)</td></tr>
 <tr class="memdesc:a334d12dd7b14be43c4bc9d0723626512"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enable/Disable continuous read mode.  <br /></td></tr>
 <tr class="separator:a334d12dd7b14be43c4bc9d0723626512"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -118,10 +133,25 @@ Functions</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Header for AD717X support configurations. </p>
-<p>Copyright (c) 2022 Analog Devices, Inc.</p>
+<p>Copyright (c) 2022, 2026 Analog Devices, Inc.</p>
 <p>All rights reserved.</p>
 <p>This software is proprietary to Analog Devices, Inc. and its licensors. By using this software you agree to the terms of the associated Analog Devices Software License Agreement. </p>
-</div><h2 class="groupheader">Function Documentation</h2>
+</div><h2 class="groupheader">Macro Definition Documentation</h2>
+<a id="a1c76809c944f30e08bbf5e05034e7757" name="a1c76809c944f30e08bbf5e05034e7757"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1c76809c944f30e08bbf5e05034e7757">&#9670;&#160;</a></span>AD717X_FILT_CONF_REG_ENHFILT_MSK</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define AD717X_FILT_CONF_REG_ENHFILT_MSK&#160;&#160;&#160;NO_OS_GENMASK(10,8)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Function Documentation</h2>
 <a id="a3dbee2afaa508927bb657fc3658c32e8" name="a3dbee2afaa508927bb657fc3658c32e8"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a3dbee2afaa508927bb657fc3658c32e8">&#9670;&#160;</a></span>ad717x_adc_read_converted_sample()</h2>
 
@@ -152,15 +182,15 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="ad717x__iio_2app_2ad717x__support_8h_a3dbee2afaa508927bb657fc3658c32e8_icgraph.png" border="0" usemap="#aad717x__iio_2app_2ad717x__support_8h_a3dbee2afaa508927bb657fc3658c32e8_icgraph" alt=""/></div>
 <map name="aad717x__iio_2app_2ad717x__support_8h_a3dbee2afaa508927bb657fc3658c32e8_icgraph" id="aad717x__iio_2app_2ad717x__support_8h_a3dbee2afaa508927bb657fc3658c32e8_icgraph">
-<area shape="rect" title="Read ADC raw data for recently sampled channel." alt="" coords="705,5,913,45"/>
-<area shape="rect" href="ad717x__iio_8c.html#ae4566e1a89bd4705d081564f5ea7c746" title=" " alt="" coords="481,13,657,38"/>
-<area shape="poly" title=" " alt="" coords="692,28,658,28,658,23,692,23"/>
-<area shape="rect" href="ad717x__iio_8c.html#a457cf699b9a80c01a0835c8e4f7f1ff7" title="Init for reading/writing and parameterization of a AD717x IIO device." alt="" coords="312,13,433,38"/>
-<area shape="poly" title=" " alt="" coords="468,28,433,28,433,23,468,23"/>
-<area shape="rect" href="ad717x__iio_8c.html#acddf5b7a4d74fe84be7eceea2cd5f88d" title="Initialize the AD717x IIO Interface." alt="" coords="108,13,264,38"/>
-<area shape="poly" title=" " alt="" coords="298,28,264,28,264,23,298,23"/>
-<area shape="rect" href="ad717x__iio_2app_2main_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title="Main entry point to application." alt="" coords="5,13,60,38"/>
-<area shape="poly" title=" " alt="" coords="94,28,60,28,60,23,94,23"/>
+<area shape="rect" title="Read ADC raw data for recently sampled channel." alt="" coords="796,5,1004,45"/>
+<area shape="rect" href="ad717x__iio_8c.html#ae4566e1a89bd4705d081564f5ea7c746" title=" " alt="" coords="572,13,748,38"/>
+<area shape="poly" title=" " alt="" coords="782,28,748,28,748,23,782,23"/>
+<area shape="rect" href="ad717x__iio_8c.html#a457cf699b9a80c01a0835c8e4f7f1ff7" title="Init for reading/writing and parameterization of a AD717x IIO device." alt="" coords="403,13,524,38"/>
+<area shape="poly" title=" " alt="" coords="558,28,524,28,524,23,558,23"/>
+<area shape="rect" href="ad717x__iio_8c.html#a7aa4c35d34a7370a9365923c3e18f500" title="Initialize the AD717x IIO Interface." alt="" coords="223,13,355,38"/>
+<area shape="poly" title=" " alt="" coords="389,28,355,28,355,23,389,23"/>
+<area shape="rect" href="ad717x__iio_8c.html#a20b15ec49897aaf6440bb800ad6641e0" title="Run the AD717x IIO event handler." alt="" coords="5,13,175,38"/>
+<area shape="poly" title=" " alt="" coords="209,28,175,28,175,23,209,23"/>
 </map>
 </div>
 
@@ -211,6 +241,127 @@ Here is the caller graph for this function:</div>
 <area shape="poly" title=" " alt="" coords="219,45,181,40,182,35,220,40"/>
 <area shape="rect" href="ad717x__iio_8c.html#ac086e9add2dfdc29e5641786dab88181" title="Function to prepare the ADC for continuous capture." alt="" coords="16,69,171,109"/>
 <area shape="poly" title=" " alt="" coords="220,75,171,81,171,76,219,69"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a2441aeab2cd6848b60867ef581687fb9" name="a2441aeab2cd6848b60867ef581687fb9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2441aeab2cd6848b60867ef581687fb9">&#9670;&#160;</a></span>ad717x_write_filter_order()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int32_t ad717x_write_filter_order </td>
+          <td>(</td>
+          <td class="paramtype">ad717x_dev *&#160;</td>
+          <td class="paramname"><em>device</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">enum ad717x_order&#160;</td>
+          <td class="paramname"><em>filter_order</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>setup_id</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Write filter order to FILTCON register. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">device[in]</td><td>- AD717x device instance </td></tr>
+    <tr><td class="paramname">filter_order[in]</td><td>- Filter order (sinc5_sinc1 or sinc3) </td></tr>
+    <tr><td class="paramname">setup_id[in]</td><td>- Setup ID (0-7) </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>0 in case of success, negative error code otherwise </dd></dl>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="ad717x__iio_2app_2ad717x__support_8h_a2441aeab2cd6848b60867ef581687fb9_icgraph.png" border="0" usemap="#aad717x__iio_2app_2ad717x__support_8h_a2441aeab2cd6848b60867ef581687fb9_icgraph" alt=""/></div>
+<map name="aad717x__iio_2app_2ad717x__support_8h_a2441aeab2cd6848b60867ef581687fb9_icgraph" id="aad717x__iio_2app_2ad717x__support_8h_a2441aeab2cd6848b60867ef581687fb9_icgraph">
+<area shape="rect" title="Write filter order to FILTCON register." alt="" coords="403,5,549,45"/>
+<area shape="rect" href="ad717x__iio_8c.html#a7aa4c35d34a7370a9365923c3e18f500" title="Initialize the AD717x IIO Interface." alt="" coords="223,13,355,38"/>
+<area shape="poly" title=" " alt="" coords="389,28,355,28,355,23,389,23"/>
+<area shape="rect" href="ad717x__iio_8c.html#a20b15ec49897aaf6440bb800ad6641e0" title="Run the AD717x IIO event handler." alt="" coords="5,13,175,38"/>
+<area shape="poly" title=" " alt="" coords="209,28,175,28,175,23,209,23"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a0d3ffea64f8d694de7676db8d7798e5d" name="a0d3ffea64f8d694de7676db8d7798e5d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0d3ffea64f8d694de7676db8d7798e5d">&#9670;&#160;</a></span>ad717x_write_post_filter()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int32_t ad717x_write_post_filter </td>
+          <td>(</td>
+          <td class="paramtype">ad717x_dev *&#160;</td>
+          <td class="paramname"><em>device</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>enable</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">enum ad717x_enhfilt&#160;</td>
+          <td class="paramname"><em>post_filter</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>setup_id</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Write post filter (enhanced filter) settings to FILTCON register. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">device[in]</td><td>- AD717x device instance </td></tr>
+    <tr><td class="paramname">enable[in]</td><td>- Enable post filter </td></tr>
+    <tr><td class="paramname">post_filter[in]</td><td>- Post filter type </td></tr>
+    <tr><td class="paramname">setup_id[in]</td><td>- Setup ID (0-7) </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>0 in case of success, negative error code otherwise </dd></dl>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="ad717x__iio_2app_2ad717x__support_8h_a0d3ffea64f8d694de7676db8d7798e5d_icgraph.png" border="0" usemap="#aad717x__iio_2app_2ad717x__support_8h_a0d3ffea64f8d694de7676db8d7798e5d_icgraph" alt=""/></div>
+<map name="aad717x__iio_2app_2ad717x__support_8h_a0d3ffea64f8d694de7676db8d7798e5d_icgraph" id="aad717x__iio_2app_2ad717x__support_8h_a0d3ffea64f8d694de7676db8d7798e5d_icgraph">
+<area shape="rect" title="Write post filter (enhanced filter) settings to FILTCON register." alt="" coords="403,5,585,31"/>
+<area shape="rect" href="ad717x__iio_8c.html#a7aa4c35d34a7370a9365923c3e18f500" title="Initialize the AD717x IIO Interface." alt="" coords="223,5,355,31"/>
+<area shape="poly" title=" " alt="" coords="389,21,355,21,355,15,389,15"/>
+<area shape="rect" href="ad717x__iio_8c.html#a20b15ec49897aaf6440bb800ad6641e0" title="Run the AD717x IIO event handler." alt="" coords="5,5,175,31"/>
+<area shape="poly" title=" " alt="" coords="209,21,175,21,175,15,209,15"/>
 </map>
 </div>
 

@@ -79,43 +79,148 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p>Main interface for AD717x-AD411x IIO firmware application.  
+<p>Main interface for IIO firmware application.  
 <a href="#details">More...</a></p>
-<div class="textblock"><code>#include &lt;stdbool.h&gt;</code><br />
-<code>#include &lt;assert.h&gt;</code><br />
-<code>#include &quot;<a class="el" href="ad717x__iio_8h_source.html">ad717x_iio.h</a>&quot;</code><br />
+<div class="textblock"><code>#include &lt;stdio.h&gt;</code><br />
+<code>#include &lt;stdint.h&gt;</code><br />
+<code>#include &quot;no_os_error.h&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for main.c:</div>
 <div class="dyncontent">
 <div class="center"><img src="ad717x__iio_2app_2main_8c__incl.png" border="0" usemap="#a_2home_2runner_2work_2precision-converters-firmware_2precision-converters-firmware_2projects_2ad717x__iio_2app_2main_8c" alt=""/></div>
 <map name="a_2home_2runner_2work_2precision-converters-firmware_2precision-converters-firmware_2projects_2ad717x__iio_2app_2main_8c" id="a_2home_2runner_2work_2precision-converters-firmware_2precision-converters-firmware_2projects_2ad717x__iio_2app_2main_8c">
-<area shape="rect" title="Main interface for AD717x&#45;AD411x IIO firmware application." alt="" coords="38,5,261,75"/>
-<area shape="rect" title=" " alt="" coords="5,123,88,148"/>
-<area shape="poly" title=" " alt="" coords="114,77,72,115,68,111,110,73"/>
-<area shape="rect" title=" " alt="" coords="112,123,187,148"/>
-<area shape="poly" title=" " alt="" coords="152,75,152,109,147,109,147,75"/>
-<area shape="rect" href="ad717x__iio_8h.html" title="IIO Header file for AD717x and AD411x." alt="" coords="211,123,317,148"/>
-<area shape="poly" title=" " alt="" coords="192,73,241,112,237,116,189,77"/>
-<area shape="rect" title=" " alt="" coords="143,196,214,221"/>
-<area shape="poly" title=" " alt="" coords="252,150,205,189,201,185,249,146"/>
-<area shape="rect" title=" " alt="" coords="239,196,289,221"/>
-<area shape="poly" title=" " alt="" coords="267,148,267,182,261,182,261,148"/>
-<area shape="rect" title=" " alt="" coords="313,196,396,221"/>
-<area shape="poly" title=" " alt="" coords="280,146,331,185,327,189,277,150"/>
+<area shape="rect" title="Main interface for IIO firmware application." alt="" coords="21,5,243,75"/>
+<area shape="rect" title=" " alt="" coords="5,123,72,148"/>
+<area shape="poly" title=" " alt="" coords="100,77,62,115,58,111,96,73"/>
+<area shape="rect" title=" " alt="" coords="97,123,167,148"/>
+<area shape="poly" title=" " alt="" coords="135,75,135,109,129,109,129,75"/>
+<area shape="rect" title=" " alt="" coords="192,123,301,148"/>
+<area shape="poly" title=" " alt="" coords="175,73,223,112,220,116,172,77"/>
 </map>
 </div>
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
+<tr class="memitem:aba990e48bb1b87852ff6a375f0c2f655" id="r_aba990e48bb1b87852ff6a375f0c2f655"><td class="memItemLeft" align="right" valign="top">int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad717x__iio_2app_2main_8c.html#aba990e48bb1b87852ff6a375f0c2f655">init_system</a> (void)</td></tr>
+<tr class="memdesc:aba990e48bb1b87852ff6a375f0c2f655"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize the system peripherals.  <br /></td></tr>
+<tr class="separator:aba990e48bb1b87852ff6a375f0c2f655"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7aa4c35d34a7370a9365923c3e18f500" id="r_a7aa4c35d34a7370a9365923c3e18f500"><td class="memItemLeft" align="right" valign="top">int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad717x__iio_2app_2main_8c.html#a7aa4c35d34a7370a9365923c3e18f500">iio_app_initialize</a> (void)</td></tr>
+<tr class="memdesc:a7aa4c35d34a7370a9365923c3e18f500"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize the IIO interface for AD405X IIO device.  <br /></td></tr>
+<tr class="separator:a7aa4c35d34a7370a9365923c3e18f500"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a20b15ec49897aaf6440bb800ad6641e0" id="r_a20b15ec49897aaf6440bb800ad6641e0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad717x__iio_2app_2main_8c.html#a20b15ec49897aaf6440bb800ad6641e0">iio_app_event_handler</a> (void)</td></tr>
+<tr class="memdesc:a20b15ec49897aaf6440bb800ad6641e0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Run the AD405X IIO event handler.  <br /></td></tr>
+<tr class="separator:a20b15ec49897aaf6440bb800ad6641e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a840291bc02cba5474a4cb46a9b9566fe" id="r_a840291bc02cba5474a4cb46a9b9566fe"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad717x__iio_2app_2main_8c.html#a840291bc02cba5474a4cb46a9b9566fe">main</a> (void)</td></tr>
 <tr class="memdesc:a840291bc02cba5474a4cb46a9b9566fe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Main entry point to application.  <br /></td></tr>
 <tr class="separator:a840291bc02cba5474a4cb46a9b9566fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Main interface for AD717x-AD411x IIO firmware application. </p>
-<p>Copyright (c) 2021-22 Analog Devices, Inc. All rights reserved.</p>
+<div class="textblock"><p>Main interface for IIO firmware application. </p>
+<p>Copyright (c) 2021-22, 2026 Analog Devices, Inc.</p>
 <p>This software is proprietary to Analog Devices, Inc. and its licensors. By using this software you agree to the terms of the associated Analog Devices Software License Agreement. </p>
 </div><h2 class="groupheader">Function Documentation</h2>
+<a id="a20b15ec49897aaf6440bb800ad6641e0" name="a20b15ec49897aaf6440bb800ad6641e0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a20b15ec49897aaf6440bb800ad6641e0">&#9670;&#160;</a></span>iio_app_event_handler()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void iio_app_event_handler </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Run the AD405X IIO event handler. </p>
+<dl class="section return"><dt>Returns</dt><dd>none</dd></dl>
+<p>This function monitors the new IIO client event</p>
+<p>Run the AD405X IIO event handler.</p>
+<dl class="section return"><dt>Returns</dt><dd>none</dd></dl>
+<p>This function monitors the new IIO client event</p>
+<p>Run the AD405X IIO event handler.</p>
+<dl class="section return"><dt>Returns</dt><dd>None </dd></dl>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="ad717x__iio_2app_2main_8c_a20b15ec49897aaf6440bb800ad6641e0_icgraph.png" border="0" usemap="#aad717x__iio_2app_2main_8c_a20b15ec49897aaf6440bb800ad6641e0_icgraph" alt=""/></div>
+<map name="aad717x__iio_2app_2main_8c_a20b15ec49897aaf6440bb800ad6641e0_icgraph" id="aad717x__iio_2app_2main_8c_a20b15ec49897aaf6440bb800ad6641e0_icgraph">
+<area shape="rect" title="Run the AD405X IIO event handler." alt="" coords="108,5,277,31"/>
+<area shape="rect" href="ad405x__iio_2app_2main_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title="Main entry point to application." alt="" coords="5,5,60,31"/>
+<area shape="poly" title=" " alt="" coords="94,21,60,21,60,15,94,15"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a7aa4c35d34a7370a9365923c3e18f500" name="a7aa4c35d34a7370a9365923c3e18f500"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7aa4c35d34a7370a9365923c3e18f500">&#9670;&#160;</a></span>iio_app_initialize()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int32_t iio_app_initialize </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Initialize the IIO interface for AD405X IIO device. </p>
+<dl class="section return"><dt>Returns</dt><dd>0 in case of success,negative error code otherwise</dd></dl>
+<p>Initialize the IIO interface for AD405X IIO device.</p>
+<dl class="section return"><dt>Returns</dt><dd>0 in case of success, negative error code otherwise</dd></dl>
+<p>Initialize the IIO interface for AD405X IIO device.</p>
+<dl class="section return"><dt>Returns</dt><dd>0 in case of success, negative value otherwise </dd></dl>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="ad717x__iio_2app_2main_8c_a7aa4c35d34a7370a9365923c3e18f500_icgraph.png" border="0" usemap="#aad717x__iio_2app_2main_8c_a7aa4c35d34a7370a9365923c3e18f500_icgraph" alt=""/></div>
+<map name="aad717x__iio_2app_2main_8c_a7aa4c35d34a7370a9365923c3e18f500_icgraph" id="aad717x__iio_2app_2main_8c_a7aa4c35d34a7370a9365923c3e18f500_icgraph">
+<area shape="rect" title="Initialize the IIO interface for AD405X IIO device." alt="" coords="325,31,457,56"/>
+<area shape="rect" href="ad405x__iio_8c.html#a20b15ec49897aaf6440bb800ad6641e0" title="Run the AD405X IIO event handler." alt="" coords="108,5,277,31"/>
+<area shape="poly" title=" " alt="" coords="311,36,277,31,278,26,312,31"/>
+<area shape="rect" href="ad405x__iio_2app_2main_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title="Main entry point to application." alt="" coords="5,31,60,56"/>
+<area shape="poly" title=" " alt="" coords="312,46,60,46,60,41,312,41"/>
+<area shape="poly" title=" " alt="" coords="99,35,61,42,60,36,99,30"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="aba990e48bb1b87852ff6a375f0c2f655" name="aba990e48bb1b87852ff6a375f0c2f655"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aba990e48bb1b87852ff6a375f0c2f655">&#9670;&#160;</a></span>init_system()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int32_t init_system </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Initialize the system peripherals. </p>
+<dl class="section return"><dt>Returns</dt><dd>0 in case of success, negative error code otherwise</dd></dl>
+<p>Initialize the system peripherals.</p>
+<dl class="section return"><dt>Returns</dt><dd>0 in case of success, negative error code otherwise.</dd></dl>
+<p>This function initializes system peripherals for the application</p>
+<dl class="section return"><dt>Returns</dt><dd>- 0 in case of success, negative error code otherwise</dd></dl>
+<p>Initialize the system peripherals.</p>
+<dl class="section return"><dt>Returns</dt><dd>0 in case of success, negative error code otherwise. </dd></dl>
+
+</div>
+</div>
 <a id="a840291bc02cba5474a4cb46a9b9566fe" name="a840291bc02cba5474a4cb46a9b9566fe"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a840291bc02cba5474a4cb46a9b9566fe">&#9670;&#160;</a></span>main()</h2>
 
