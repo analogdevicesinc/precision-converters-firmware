@@ -3,7 +3,7 @@
  *   @brief   Implementation of AD4080 IIO Appication Interface
  *   @details This module acts as an interface for AD4080 IIO device
 ********************************************************************************
- * Copyright (c) 2023-25 Analog Devices, Inc.
+ * Copyright (c) 2023-26 Analog Devices, Inc.
  *
  * This software is proprietary to Analog Devices, Inc. and its licensors.
  * By using this software you agree to the terms of the associated
@@ -1699,5 +1699,9 @@ iio_fail:
  */
 void ad4080_iio_event_handler(void)
 {
+#ifdef USE_VIRTUAL_COM_PORT
+	ux_device_stack_tasks_run();
+#endif
+
 	(void)iio_step(ad4080_iio_desc);
 }

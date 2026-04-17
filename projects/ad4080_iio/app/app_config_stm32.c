@@ -3,7 +3,7 @@
  * @brief   STM32 Specific configuration files for AD4080 IIO Application
  * @details This module contains the STM32 platform specific configurations
 ********************************************************************************
-* Copyright (c) 2024-25 Analog Devices, Inc.
+* Copyright (c) 2024-26 Analog Devices, Inc.
 * All rights reserved.
 *
 * This software is proprietary to Analog Devices, Inc. and its licensors.
@@ -18,6 +18,13 @@
 #include <stdint.h>
 
 #include "app_config.h"
+
+#ifdef STM32F469xx
+#include "usb_device.h"
+#endif
+#ifdef STM32H563xx
+#include "app_usbx_device.h"
+#endif
 
 /******************************************************************************/
 /********************* Macros and Constants Definition ************************/
@@ -93,10 +100,17 @@ struct stm32_uart_init_param stm32_uart_extra_init_params = {
 	.huart = &APP_UART_HANDLE
 };
 
-#if defined (TARGET_SDP_K1)
-/* VCOM Init Parameters */
+#ifdef STM32F469xx
+/* STM32 VCOM init parameters */
 struct stm32_usb_uart_init_param stm32_vcom_extra_init_params = {
-	.husbdevice = &APP_UART_USB_HANDLE
+	.husbdevice = &APP_UART_USB_HANDLE,
+};
+#endif
+
+#ifdef STM32H563xx
+/* STM32 VCOM init parameters */
+struct stm32_usb_uart_init_param stm32_vcom_extra_init_params = {
+	.hpcd = &APP_UART_USB_HANDLE,
 };
 #endif
 
@@ -192,7 +206,22 @@ void stm32_system_init(void)
 	MX_SPI1_Init();
 
 #ifdef USE_VIRTUAL_COM_PORT
+#ifdef STM32F469xx
 	/* Initialize USB device */
 	MX_USB_DEVICE_Init();
 #endif
+#ifdef STM32H563xx
+	MX_USB_PCD_Init();
+	MX_USBX_Device_Init();
+#endif
+#endif
+}
+
+/**
+ * @brief   Dummy function for USBx middleware used in STM32H563.
+ * @return	0
+ */
+__weak unsigned int ux_device_stack_tasks_run(void)
+{
+	return 0;
 }
