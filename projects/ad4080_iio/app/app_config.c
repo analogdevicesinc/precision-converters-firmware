@@ -3,7 +3,7 @@
  *   @brief   Application configurations module
  *   @details This module contains the configurations needed for IIO application
 ********************************************************************************
- * Copyright (c) 2023-25 Analog Devices, Inc.
+ * Copyright (c) 2023-26 Analog Devices, Inc.
  *
  * This software is proprietary to Analog Devices, Inc. and its licensors.
  * By using this software you agree to the terms of the associated
@@ -86,12 +86,13 @@ struct no_os_uart_init_param uart_iio_comm_init_params = {
 
 /* UART init parameters for console comm port */
 struct no_os_uart_init_param uart_console_stdio_init_params = {
-	.device_id = 0,
-	.asynchronous_rx = false,
+	.device_id = UART_DEVICE_ID,
+	.asynchronous_rx = true,
 	.baud_rate = IIO_UART_BAUD_RATE,
 	.size = NO_OS_UART_CS_8,
 	.parity = NO_OS_UART_PAR_NO,
 	.stop = NO_OS_UART_STOP_1_BIT,
+	.irq_id = UART_IRQ_ID,
 #if defined(USE_VIRTUAL_COM_PORT)
 	/* If virtual com port is primary IIO comm port, use physical port for stdio
 	 * console. Applications which does not support VCOM, should not satisfy this
@@ -276,6 +277,8 @@ static int32_t init_uart()
 	if (ret) {
 		goto err_uart_init;
 	}
+
+	no_os_uart_stdio(uart_console_stdio_desc);
 #endif
 
 	return 0;
@@ -467,3 +470,4 @@ int32_t init_system()
 
 	return 0;
 }
+

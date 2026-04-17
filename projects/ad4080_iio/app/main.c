@@ -1,8 +1,8 @@
 /***************************************************************************//**
  *   @file    main.c
- *   @brief   Main interface for AD4080 IIO firmware application
+ *   @brief   Main interface for IIO firmware application
 ********************************************************************************
- * Copyright (c) 2023-25 Analog Devices, Inc.
+ * Copyright (c) 2023-26 Analog Devices, Inc.
  *
  * This software is proprietary to Analog Devices, Inc. and its licensors.
  * By using this software you agree to the terms of the associated
@@ -15,17 +15,25 @@
 #include <stdio.h>
 #include <stdint.h>
 #include "no_os_error.h"
-#include "ad4080_iio.h"
-#include "app_config.h"
 
 /******************************************************************************/
 /********************** Macros and Constants Definitions **********************/
 /******************************************************************************/
 
 /******************************************************************************/
-/************************ Functions Definitions *******************************/
+/********************** Variables and User Defined Data Types *****************/
 /******************************************************************************/
 
+/******************************************************************************/
+/************************** Functions Declarations ****************************/
+/******************************************************************************/
+int32_t init_system(void);
+int32_t iio_app_initialize(void);
+void iio_app_event_handler(void);
+
+/******************************************************************************/
+/************************** Functions Definitions *****************************/
+/******************************************************************************/
 /**
  * @brief	Main entry point to application
  * @return	none
@@ -38,14 +46,14 @@ int main(void)
 		return -ENODEV;
 	}
 
-	/* Initialize the AD4080 IIO interface */
-	if (ad4080_iio_initialize()) {
+	/* Initialize the IIO interface */
+	if (iio_app_initialize()) {
 		printf("IIO initialization failure!!\r\n");
 		return -ENODEV;
 	}
 
 	while (1) {
 		/* Monitor the IIO client events */
-		ad4080_iio_event_handler();
+		iio_app_event_handler();
 	}
 }

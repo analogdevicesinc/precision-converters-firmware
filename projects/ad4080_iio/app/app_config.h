@@ -2,7 +2,7 @@
  *   @file   app_config.h
  *   @brief  Configuration file for AD4080 IIO firmware application
 ******************************************************************************
-* Copyright (c) 2023-25 Analog Devices, Inc.
+* Copyright (c) 2023-26 Analog Devices, Inc.
 *
 * This software is proprietary to Analog Devices, Inc. and its licensors.
 * By using this software you agree to the terms of the associated
@@ -119,6 +119,7 @@
 
 /* Check if any serial port available for use as console stdio port */
 #if defined(USE_VIRTUAL_COM_PORT)
+/* If PHY com is selected, VCOM or alternate PHY com port can act as a console stdio port */
 /* If VCOM is selected, PHY com port will/should act as a console stdio port */
 #define CONSOLE_STDIO_PORT_AVAILABLE
 #endif
@@ -146,23 +147,6 @@
 /* Baud rate for IIO application UART interface */
 #define IIO_UART_BAUD_RATE	(230400)
 
-/****** Macros used to form a VCOM serial number ******/
-#if !defined(PLATFORM_NAME)
-#define PLATFORM_NAME	HW_CARRIER_NAME
-#endif
-/******/
-
-/* Below USB configurations (VID and PID) are owned and assigned by ADI.
- * If intended to distribute software further, use the VID and PID owned by your
- * organization */
-#define VIRTUAL_COM_PORT_VID	0x0456
-#define VIRTUAL_COM_PORT_PID	0xb66c
-
-/* Serial number string is formed as:
- * application name + device (target) name + platform (host) name */
-#define VIRTUAL_COM_SERIAL_NUM	\
-				(FIRMWARE_NAME "_" DEVICE_NAME "_" STR(PLATFORM_NAME))
-
 /* Enable/Disable the use of SDRAM for ADC data capture buffer */
 /* (Use following macros to use SDRAM for data buffer) */
 //#define USE_SDRAM
@@ -185,6 +169,7 @@ extern struct no_os_spi_desc *quad_spi_desc;
 extern struct no_os_spi_init_param qspi_init_params;
 #endif
 extern struct no_os_uart_desc *uart_iio_comm_desc;
+extern struct no_os_uart_desc *uart_console_stdio_desc;
 extern struct no_os_eeprom_desc *eeprom_desc;
 
 /******************************************************************************/
