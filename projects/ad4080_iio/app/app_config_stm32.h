@@ -2,7 +2,7 @@
  *   @file app_config_stm32.h
  *   @brief Header file for STM32 platform configurations
 ********************************************************************************
- * Copyright (c) 2024-25 Analog Devices, Inc.
+ * Copyright (c) 2026 Analog Devices, Inc.
  * All rights reserved.
  *
  * This software is proprietary to Analog Devices, Inc. and its licensors.
@@ -24,7 +24,7 @@
 #include "stm32_i2c.h"
 #include "stm32_dma.h"
 
-#if defined (TARGET_SDP_K1)
+#if defined (STM32F469xx) || defined (STM32H563xx)
 #include "stm32_usb_uart.h"
 #endif
 
@@ -36,7 +36,7 @@
 /********************** Macros and Constants Definition ***********************/
 /******************************************************************************/
 
-#if defined (TARGET_SDP_K1)
+#if defined (STM32F469xx)
 /* The below configurations are specific to STM32F469NIH6 MCU on SDP-K1 Board. */
 #define HW_CARRIER_NAME		SDP_K1
 
@@ -130,6 +130,7 @@
 #define UART_DEVICE_ID			3
 #define APP_UART_HANDLE			huart3
 #define UART_IRQ_ID				USART3_IRQn
+#define APP_UART_USB_HANDLE		hpcd_USB_DRD_FS
 /**** End UART Parameters ****/
 
 /**** GPIO Parameters ****/
@@ -170,8 +171,11 @@
 /******************************************************************************/
 extern UART_HandleTypeDef 		APP_UART_HANDLE;
 extern DMA_HandleTypeDef 		QSPI_DMA_HANDLE;
-#if defined (TARGET_SDP_K1)
+#if defined (STM32F469xx)
 extern USBD_HandleTypeDef		APP_UART_USB_HANDLE;
+#endif
+#ifdef STM32H563xx
+extern PCD_HandleTypeDef        APP_UART_USB_HANDLE;
 #endif
 
 /* STM32 Extra Init Parameters */
@@ -179,7 +183,7 @@ extern struct stm32_spi_init_param stm32_config_spi_extra_init_params;
 extern struct stm32_spi_init_param stm32_data_spi_extra_init_params;
 extern struct stm32_xspi_init_param stm32_data_qspi_extra_init_params;
 extern struct stm32_uart_init_param stm32_uart_extra_init_params;
-#if defined (TARGET_SDP_K1)
+#if defined (STM32F469xx) || defined (STM32H563xx)
 extern struct stm32_usb_uart_init_param stm32_vcom_extra_init_params;
 #endif
 extern struct stm32_gpio_init_param stm32_gpio_xtal_osc_en_init_params;
@@ -197,7 +201,7 @@ extern struct stm32_i2c_init_param stm32_i2c_extra_init_params;
 /******************************************************************************/
 void stm32_system_init(void);
 
-#if defined (TARGET_SDP_K1)
+#if defined (STM32F469xx)
 void MX_USB_DEVICE_Init(void);
 #endif
 
