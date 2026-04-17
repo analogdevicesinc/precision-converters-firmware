@@ -2,7 +2,7 @@
  *   @file    ad4080_user_config.c
  *   @brief   User configuration source for the AD4080 IIO Application
 ********************************************************************************
- * Copyright (c) 2023-25 Analog Devices, Inc.
+ * Copyright (c) 2023-26 Analog Devices, Inc.
  *
  * This software is proprietary to Analog Devices, Inc. and its licensors.
  * By using this software you agree to the terms of the associated
@@ -24,7 +24,6 @@
 
 /* Initialize the AD4080 device structure */
 struct ad4080_init_param ad4080_init_params = {
-	.spi_init = NULL,
 	.spi3wire = 1,
 	.addr_asc = AD4080_ADDR_INCR,
 	.single_instr = AD4080_SINGLE_INST,
@@ -41,7 +40,5 @@ struct ad4080_init_param ad4080_init_params = {
 	.intf_ldo_pd = AD4080_INTF_LDO_EN,
 	.fifo_mode = AD4080_FIFO_DISABLE,
 	.op_mode = AD4080_OP_NORMAL,
-	.gpio_op_enable = { AD4080_GPIO_OUTPUT, AD4080_GPIO_INPUT, AD4080_GPIO_INPUT, AD4080_GPIO_INPUT },
-	.gpio_op_func_sel = { AD4080_GPIO_ADI_NSPI_SDO_DATA, AD4080_GPIO_ADI_NSPI_SDO_DATA, AD4080_GPIO_ADI_NSPI_SDO_DATA, AD4080_GPIO_ADI_NSPI_SDO_DATA}
 };
 
