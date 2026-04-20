@@ -1,0 +1,19 @@
+<map id="remove_gpio" name="remove_gpio">
+<area shape="rect" id="Node000001" title="Remove the initialized GPIO peripheral." alt="" coords="607,107,713,132"/>
+<area shape="rect" id="Node000002" href="$ad4692__iio_8c.html#a942ad1b47f919335d62503730fd50b01" title="Remove the IIO application and free the allocated resources." alt="" coords="432,63,559,88"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="598,106,543,91,544,85,600,101"/>
+<area shape="rect" id="Node000007" href="$ad4692__iio_2app_2app__config_8c.html#ace976967ea815d4540812408173db1e9" title="Initialize the GPIO peripheral." alt="" coords="456,143,535,168"/>
+<area shape="poly" id="edge7_Node000001_Node000007" title=" " alt="" coords="594,137,535,149,534,144,593,131"/>
+<area shape="rect" id="Node000003" href="$ad5710r__iio_8c.html#a22103aabadc62e36cf8e30021aab5ced" title="Initialize the IIO interface for AD5710R IIO device." alt="" coords="223,5,384,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="438,61,346,33,347,28,440,56"/>
+<area shape="rect" id="Node000005" href="$ad4692__iio_8c.html#a20b15ec49897aaf6440bb800ad6641e0" title="Run the ad4692 IIO event handler." alt="" coords="5,81,175,107"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="419,81,175,93,175,87,418,76"/>
+<area shape="rect" id="Node000006" href="$ad4692__iio_8c.html#a7aa4c35d34a7370a9365923c3e18f500" title="Initialize the AD4692 IIO Application." alt="" coords="237,107,369,132"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="427,94,360,109,359,104,425,89"/>
+<area shape="rect" id="Node000004" href="$ad5710r__iio_2app_2main_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title="Main entry point to application." alt="" coords="63,5,117,31"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="209,21,118,21,118,15,209,15"/>
+<area shape="poly" id="edge6_Node000006_Node000005" title=" " alt="" coords="223,113,174,107,175,101,224,107"/>
+<area shape="poly" id="edge8_Node000007_Node000007" title=" " alt="" coords="524,132,515,124,495,121,478,123,469,128,468,134,473,141,468,144,462,134,465,125,477,118,495,116,518,119,527,128"/>
+<area shape="rect" id="Node000008" href="$ad5706r__iio_2app_2app__config_8c.html#aba990e48bb1b87852ff6a375f0c2f655" title="Initializing system peripherals." alt="" coords="254,156,353,181"/>
+<area shape="poly" id="edge9_Node000007_Node000008" title=" " alt="" coords="442,162,353,168,352,163,442,156"/>
+</map>

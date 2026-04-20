@@ -1,6 +1,0 @@
-<map id="tim8_init" name="tim8_init">
-<area shape="rect" id="Node000001" title="Initialize Tx trigger advanced PWM parameters." alt="" coords="167,29,247,55"/>
-<area shape="rect" id="Node000002" href="$ad4692__iio_2app_2app__config_8c.html#a5d508ae48379ad49da63502afd2b7108" title="Initialize Tx Trigger Timer." alt="" coords="5,29,119,55"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="153,45,119,45,119,39,153,39"/>
-<area shape="poly" id="edge2_Node000002_Node000002" title=" " alt="" coords="87,18,79,11,62,8,47,10,39,15,38,20,42,28,37,30,32,21,35,11,45,5,62,3,82,6,91,15"/>
-</map>

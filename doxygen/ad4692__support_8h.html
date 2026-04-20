@@ -116,6 +116,12 @@ This graph shows which files directly or indirectly include this file:</div>
 Macros</h2></td></tr>
 <tr class="memitem:a6ab41f67766e28e2ff69a1460d44b70a" id="r_a6ab41f67766e28e2ff69a1460d44b70a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad4692__support_8h.html#a6ab41f67766e28e2ff69a1460d44b70a">AD4692_MAX_SLOTS_AS</a>&#160;&#160;&#160;128</td></tr>
 <tr class="separator:a6ab41f67766e28e2ff69a1460d44b70a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afdf2d523f97bcf4dbc237ef74fb2b9ea" id="r_afdf2d523f97bcf4dbc237ef74fb2b9ea"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad4692__support_8h.html#afdf2d523f97bcf4dbc237ef74fb2b9ea">CS_CHANGE</a>&#160;&#160;&#160;1</td></tr>
+<tr class="separator:afdf2d523f97bcf4dbc237ef74fb2b9ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acc3e6a002a5736eafea0a9037b7e38dd" id="r_acc3e6a002a5736eafea0a9037b7e38dd"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad4692__support_8h.html#acc3e6a002a5736eafea0a9037b7e38dd">AD4692_N_CNV_TOGGLES</a>&#160;&#160;&#160;2</td></tr>
+<tr class="separator:acc3e6a002a5736eafea0a9037b7e38dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9075343745f025a720c35e954a179f12" id="r_a9075343745f025a720c35e954a179f12"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad4692__support_8h.html#a9075343745f025a720c35e954a179f12">AD4692_EXIT_MANUAL_MODE</a>&#160;&#160;&#160;0x0</td></tr>
+<tr class="separator:a9075343745f025a720c35e954a179f12"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="enum-members" name="enum-members"></a>
 Enumerations</h2></td></tr>
@@ -139,6 +145,9 @@ Functions</h2></td></tr>
 <tr class="memitem:a053e191bd54f7e703b05e6675ec072cf" id="r_a053e191bd54f7e703b05e6675ec072cf"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad4692__support_8h.html#a053e191bd54f7e703b05e6675ec072cf">ad4692_configure_acc_mask</a> (uint16_t channel_mask, enum <a class="el" href="ad4692__support_8h.html#a255b56362f6091a76ab31bcbe13c829d">ad4692_sequencer_modes</a> sequencer, uint8_t *chn_priorities)</td></tr>
 <tr class="memdesc:a053e191bd54f7e703b05e6675ec072cf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Configure the accumulator mask.  <br /></td></tr>
 <tr class="separator:a053e191bd54f7e703b05e6675ec072cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3f78a2f77d76a18f7c5eed65623c9876" id="r_a3f78a2f77d76a18f7c5eed65623c9876"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad4692__support_8h.html#a3f78a2f77d76a18f7c5eed65623c9876">ad4692_exit_manual_mode</a> (struct ad4692_desc *desc, struct no_os_gpio_desc *cnv_desc)</td></tr>
+<tr class="memdesc:a3f78a2f77d76a18f7c5eed65623c9876"><td class="mdescLeft">&#160;</td><td class="mdescRight">Exit manual mode and switch to CNV clock mode.  <br /></td></tr>
+<tr class="separator:a3f78a2f77d76a18f7c5eed65623c9876"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Support header file for AD4692. </p>
@@ -146,6 +155,20 @@ Functions</h2></td></tr>
 <p>All rights reserved.</p>
 <p>This software is proprietary to Analog Devices, Inc. and its licensors. By using this software you agree to the terms of the associated Analog Devices Software License Agreement. </p>
 </div><h2 class="groupheader">Macro Definition Documentation</h2>
+<a id="a9075343745f025a720c35e954a179f12" name="a9075343745f025a720c35e954a179f12"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9075343745f025a720c35e954a179f12">&#9670;&#160;</a></span>AD4692_EXIT_MANUAL_MODE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define AD4692_EXIT_MANUAL_MODE&#160;&#160;&#160;0x0</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a6ab41f67766e28e2ff69a1460d44b70a" name="a6ab41f67766e28e2ff69a1460d44b70a"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a6ab41f67766e28e2ff69a1460d44b70a">&#9670;&#160;</a></span>AD4692_MAX_SLOTS_AS</h2>
 
@@ -154,6 +177,34 @@ Functions</h2></td></tr>
       <table class="memname">
         <tr>
           <td class="memname">#define AD4692_MAX_SLOTS_AS&#160;&#160;&#160;128</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="acc3e6a002a5736eafea0a9037b7e38dd" name="acc3e6a002a5736eafea0a9037b7e38dd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acc3e6a002a5736eafea0a9037b7e38dd">&#9670;&#160;</a></span>AD4692_N_CNV_TOGGLES</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define AD4692_N_CNV_TOGGLES&#160;&#160;&#160;2</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="afdf2d523f97bcf4dbc237ef74fb2b9ea" name="afdf2d523f97bcf4dbc237ef74fb2b9ea"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afdf2d523f97bcf4dbc237ef74fb2b9ea">&#9670;&#160;</a></span>CS_CHANGE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define CS_CHANGE&#160;&#160;&#160;1</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -306,6 +357,44 @@ Here is the caller graph for this function:</div>
 
 </div>
 </div>
+<a id="a3f78a2f77d76a18f7c5eed65623c9876" name="a3f78a2f77d76a18f7c5eed65623c9876"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3f78a2f77d76a18f7c5eed65623c9876">&#9670;&#160;</a></span>ad4692_exit_manual_mode()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int ad4692_exit_manual_mode </td>
+          <td>(</td>
+          <td class="paramtype">struct ad4692_desc *&#160;</td>
+          <td class="paramname"><em>desc</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">struct no_os_gpio_desc *&#160;</td>
+          <td class="paramname"><em>cnv_desc</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Exit manual mode and switch to CNV clock mode. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">desc</td><td>Pointer to the AD4692 descriptor. </td></tr>
+    <tr><td class="paramname">cnv_desc</td><td>Pointer to the CNV GPIO descriptor. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>int 0 on success, negative error code on failure. </dd></dl>
+
+</div>
+</div>
 <a id="a2b673407db9e08a28d781bd4d2d6ce62" name="a2b673407db9e08a28d781bd4d2d6ce62"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a2b673407db9e08a28d781bd4d2d6ce62">&#9670;&#160;</a></span>ad4692_toggle_cnv()</h2>
 
@@ -330,6 +419,16 @@ Here is the caller graph for this function:</div>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>0 in case of success, negative error code otherwise. </dd></dl>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="ad4692__support_8h_a2b673407db9e08a28d781bd4d2d6ce62_icgraph.png" border="0" usemap="#aad4692__support_8h_a2b673407db9e08a28d781bd4d2d6ce62_icgraph" alt=""/></div>
+<map name="aad4692__support_8h_a2b673407db9e08a28d781bd4d2d6ce62_icgraph" id="aad4692__support_8h_a2b673407db9e08a28d781bd4d2d6ce62_icgraph">
+<area shape="rect" title="Toggle CNV GPIO." alt="" coords="256,5,404,31"/>
+<area shape="rect" href="ad4692__support_8c.html#a3f78a2f77d76a18f7c5eed65623c9876" title="Exit manual mode and switch to CNV clock mode." alt="" coords="5,5,208,31"/>
+<area shape="poly" title=" " alt="" coords="242,21,208,21,208,15,242,15"/>
+</map>
+</div>
 
 </div>
 </div>
