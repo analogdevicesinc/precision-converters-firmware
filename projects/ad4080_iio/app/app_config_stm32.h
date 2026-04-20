@@ -2,7 +2,7 @@
  *   @file app_config_stm32.h
  *   @brief Header file for STM32 platform configurations
 ********************************************************************************
- * Copyright (c) 2026 Analog Devices, Inc.
+ * Copyright (c) 2024-26 Analog Devices, Inc.
  * All rights reserved.
  *
  * This software is proprietary to Analog Devices, Inc. and its licensors.
