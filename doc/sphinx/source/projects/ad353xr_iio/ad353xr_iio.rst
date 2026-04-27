@@ -9,14 +9,15 @@ Supported Hardware
 
 * `AD3530R <https://www.analog.com/en/ad3530r.html>`_
 * `AD3530 <https://www.analog.com/en/products/AD3530.html>`_ 
-* `AD3531R <https://wcm2.cldnet.analog.com/en/products/AD3531R.html>`_
-* `AD3531 <https://wcm2.cldnet.analog.com/en/products/AD3531.html>`_ 
-
+* `AD3531R <https://www.analog.com/en/products/AD3531R.html>`_
+* `AD3531 <https://www.analog.com/en/products/AD3531.html>`_ 
+* `AD3532R <https://www.analog.com/en/products/AD3532R.html>`_
 
 **Supported Evaluation Boards:**
 
-* `EVAL-AD3530RARDZ <https://www.analog.com/eval-ad3530r>`_
-* `EVAL-AD3531RARDZ <https://wcm2.cldnet.analog.com/en/resources/evaluation-hardware-and-software/evaluation-boards-kits/eval-ad3531r.html>`_ 
+* `EVAL-AD3530R <https://www.analog.com/eval-ad3530r>`_
+* `EVAL-AD3531R <https://www.analog.com/eval-ad3531r>`_ 
+* `EVAL-AD3532R <https://www.analog.com/eval-ad3532r>`_
 
 **Supported Carrier Boards:**
 
