@@ -9,6 +9,7 @@ Firmware Applications
    /source/projects/ad353xr_iio/ad353xr_iio.rst
    /source/projects/ad355xr_iio/ad355xr_iio.rst
    /source/projects/ad405x_iio/ad405x_iio.rst
+   /source/projects/ad552xr_iio/ad552xr_iio.rst
    /source/projects/ad4080_iio/ad4080_iio.rst
    /source/projects/ad4130_iio/ad4130_iio.rst
    /source/projects/ad4170_iio/ad4170_iio.rst
