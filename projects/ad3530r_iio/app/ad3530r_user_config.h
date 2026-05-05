@@ -2,7 +2,7 @@
  *   @file   ad3530r_user_config.h
  *   @brief  Header for AD3530R user configuration file
 ******************************************************************************
-* Copyright (c) 2022-23 Analog Devices, Inc.
+* Copyright (c) 2022-23,2026 Analog Devices, Inc.
 *
 * All rights reserved.
 *
@@ -28,5 +28,6 @@
 /******************************************************************************/
 extern struct ad3530r_init_param ad3530r_init_params;
 extern struct ad3530r_init_param ad3531r_init_params;
+extern struct ad3530r_init_param ad3532r_init_params;
 
 #endif /* AD3530R_USER_CONFIG_H */

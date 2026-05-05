@@ -2,7 +2,7 @@
  *   @file   ad3530r_user_config.c
  *   @brief  User configuration file for AD3530R
 ******************************************************************************
-* Copyright (c) 2022-25 Analog Devices, Inc.
+* Copyright (c) 2022-26 Analog Devices, Inc.
 *
 * All rights reserved.
 *
@@ -108,6 +108,31 @@ struct ad3530r_init_param ad3531r_init_params = {
 	.range = AD3530R_CH_OUTPUT_RANGE_0_VREF,
 	.hw_ldac_mask = 0xff,
 	.sw_ldac_mask = 0xff,
+	/* Set to enable CRC */
+	.crc_en = false
+};
+
+/* Device Initialization Parameters for AD3532R */
+struct ad3530r_init_param ad3532r_init_params = {
+	.chip_id = AD3532R_ID,
+	.spi_param = &spi_init_params,
+	.spi_cfg = {
+		.stream_mode_length = 0,
+		.addr_asc = 0,
+		.single_instr = 1,
+		.short_instr = 0,
+		.stream_length_keep_value = 0
+	},
+	/* If set, reset is done with RESET pin, otherwise it will be soft */
+	.reset_gpio_param_optional = &gpio_reset_init,
+	/* If set, input register are used and LDAC pulse is sent */
+	.ldac_gpio_param_optional = &gpio_ldac_init,
+	/* If set, use external Vref */
+	.vref_enable = AD3530R_EXTERNAL_VREF_PIN_INPUT,
+	.chn_op_mode = {AD3530R_CH_OPERATING_MODE_3, AD3530R_CH_OPERATING_MODE_3, AD3530R_CH_OPERATING_MODE_3, AD3530R_CH_OPERATING_MODE_3, AD3530R_CH_OPERATING_MODE_3, AD3530R_CH_OPERATING_MODE_3, AD3530R_CH_OPERATING_MODE_3, AD3530R_CH_OPERATING_MODE_3, AD3530R_CH_OPERATING_MODE_3, AD3530R_CH_OPERATING_MODE_3, AD3530R_CH_OPERATING_MODE_3, AD3530R_CH_OPERATING_MODE_3, AD3530R_CH_OPERATING_MODE_3, AD3530R_CH_OPERATING_MODE_3, AD3530R_CH_OPERATING_MODE_3, AD3530R_CH_OPERATING_MODE_3},
+	.range = AD3530R_CH_OUTPUT_RANGE_0_VREF,
+	.hw_ldac_mask = 0xffff,
+	.sw_ldac_mask = 0xffff,
 	/* Set to enable CRC */
 	.crc_en = false
 };

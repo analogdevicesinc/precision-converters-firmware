@@ -2,7 +2,7 @@
 * @file   ad3530r_regs.h
 * @brief  Header file for the ad3530r registers map
 ********************************************************************************
-* Copyright (c) 2023 Analog Devices, Inc.
+* Copyright (c) 2023,2026 Analog Devices, Inc.
 * All rights reserved.
 *
 * This software is proprietary to Analog Devices, Inc. and its licensors.
@@ -31,5 +31,6 @@
 
 extern const uint32_t ad3530r_regs [];
 extern const uint32_t ad3531r_regs [];
+extern const uint32_t ad3532r_regs [];
 
 #endif /* _AD3530R_REGS_H_ */

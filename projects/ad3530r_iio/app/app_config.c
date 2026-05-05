@@ -3,7 +3,7 @@
  *   @brief   Application configurations module
  *   @details This module contains the configurations needed for IIO application
 ********************************************************************************
- * Copyright (c) 2022-25 Analog Devices, Inc.
+ * Copyright (c) 2022-26 Analog Devices, Inc.
  * All rights reserved.
  *
  * This software is proprietary to Analog Devices, Inc. and its licensors.
@@ -146,8 +146,8 @@ struct no_os_pwm_desc* tx_trigger_desc;
 struct no_os_dma_init_param ad3530r_dma_init_param = {
 	.id = 0,
 	.num_ch = DMA_NUM_CHANNELS,
-	.platform_ops = &dma_ops,
-	.sg_handler = (void (*)(void *))receivecomplete_callback
+	.platform_ops = (struct no_os_dma_platform_ops *)&dma_ops,
+	.sg_handler = (void *)receivecomplete_callback,
 };
 #endif
 

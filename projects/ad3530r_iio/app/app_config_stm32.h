@@ -2,7 +2,7 @@
  *   @file app_config_stm32.h
  *   @brief Header file for STM32 platform configurations
  ********************************************************************************
- * Copyright (c) 2024-25 Analog Devices, Inc.
+ * Copyright (c) 2024-26 Analog Devices, Inc.
  * All rights reserved.
  *
  * This software is proprietary to Analog Devices, Inc. and its licensors.
@@ -81,7 +81,7 @@
 #define TIMER_8_PRESCALER                  0
 #define TIMER_8_CLK_DIVIDER                2
 #define TIMER_CHANNEL_1                    1
-#define TIMER8_HANDLE                  htim8
+#define TIMER8_HANDLE                      htim8
 
 #define Rx_DMA_IRQ_ID        DMA2_Stream0_IRQn
 #define TxDMA_CHANNEL_NUM    DMA_CHANNEL_7
