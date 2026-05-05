@@ -2,7 +2,7 @@
  *   @file    app_config_stm32.c
  *   @brief   Application configurations module for STM32 platform
 ********************************************************************************
- * Copyright (c) 2024-25 Analog Devices, Inc.
+ * Copyright (c) 2024-26 Analog Devices, Inc.
  * All rights reserved.
  *
  * This software is proprietary to Analog Devices, Inc. and its licensors.
@@ -20,6 +20,7 @@
 #include "no_os_pwm.h"
 #include "ad3530r.h"
 #include "ad3530r_iio.h"
+#include "usb_device.h"
 
 /******************************************************************************/
 /************************ Macros/Constants ************************************/
@@ -165,6 +166,7 @@ static bool entered_init;
 /******************************************************************************/
 /************************** Functions Declarations ****************************/
 /******************************************************************************/
+void SystemClock_Config(void);
 
 /******************************************************************************/
 /************************** Functions Definitions *****************************/
@@ -303,7 +305,7 @@ int stm32_timer_stop(void)
 	}
 
 	/* Disable RX DMA */
-	CLEAR_BIT(sdesc->hspi.Instance->CR2, SPI_CR2_RXDMAEN);
+	CLEAR_BIT(sdesc->hspi->Instance->CR2, SPI_CR2_RXDMAEN);
 
 	return 0;
 }
@@ -358,7 +360,7 @@ void receivecomplete_callback(DMA_HandleTypeDef* hdma)
 			entered_cb = true;
 		} else if (transfer_stop_flag) {
 			/* Disable TX DMA */
-			CLEAR_BIT(sdesc->hspi.Instance->CR2, SPI_CR2_TXDMAEN);
+			CLEAR_BIT(sdesc->hspi->Instance->CR2, SPI_CR2_TXDMAEN);
 			transfer_stop_flag = false;
 		}
 	}
