@@ -177,10 +177,12 @@ Variables</h2></td></tr>
 <tr class="separator:a923c77d2f505c9fe398ccb5a4b627d85"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac45680b5779809161c5b3e3400d002f7" id="r_ac45680b5779809161c5b3e3400d002f7"><td class="memItemLeft" align="right" valign="top">struct ad3530r_init_param&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad3530r__user__config_8c.html#ac45680b5779809161c5b3e3400d002f7">ad3531r_init_params</a></td></tr>
 <tr class="separator:ac45680b5779809161c5b3e3400d002f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab45258ee604c5316005dcae3f6c0ab7a" id="r_ab45258ee604c5316005dcae3f6c0ab7a"><td class="memItemLeft" align="right" valign="top">struct ad3530r_init_param&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad3530r__user__config_8c.html#ab45258ee604c5316005dcae3f6c0ab7a">ad3532r_init_params</a></td></tr>
+<tr class="separator:ab45258ee604c5316005dcae3f6c0ab7a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>User configuration file for AD3530R. </p>
-<p>Copyright (c) 2022-25 Analog Devices, Inc.</p>
+<p>Copyright (c) 2022-26 Analog Devices, Inc.</p>
 <p>All rights reserved.</p>
 <p>This software is proprietary to Analog Devices, Inc. and its licensors. By using this software you agree to the terms of the associated Analog Devices Software License Agreement. </p>
 </div><h2 class="groupheader">Variable Documentation</h2>
@@ -263,6 +265,43 @@ Variables</h2></td></tr>
 <div class="line">    .range = AD3530R_CH_OUTPUT_RANGE_0_VREF,</div>
 <div class="line">    .hw_ldac_mask = 0xff,</div>
 <div class="line">    .sw_ldac_mask = 0xff,</div>
+<div class="line">    </div>
+<div class="line">    .crc_en = <span class="keyword">false</span></div>
+<div class="line">}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="ab45258ee604c5316005dcae3f6c0ab7a" name="ab45258ee604c5316005dcae3f6c0ab7a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab45258ee604c5316005dcae3f6c0ab7a">&#9670;&#160;</a></span>ad3532r_init_params</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">struct ad3530r_init_param ad3532r_init_params</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line">= {</div>
+<div class="line">    .chip_id = AD3532R_ID,</div>
+<div class="line">    .spi_param = &amp;<a class="code hl_variable" href="ad3530r__user__config_8c.html#aa247c71107ed61242c98471409faab1d">spi_init_params</a>,</div>
+<div class="line">    .spi_cfg = {</div>
+<div class="line">        .stream_mode_length = 0,</div>
+<div class="line">        .addr_asc = 0,</div>
+<div class="line">        .single_instr = 1,</div>
+<div class="line">        .short_instr = 0,</div>
+<div class="line">        .stream_length_keep_value = 0</div>
+<div class="line">    },</div>
+<div class="line">    </div>
+<div class="line">    .reset_gpio_param_optional = &amp;<a class="code hl_variable" href="ad3530r__user__config_8c.html#ad684b8698a879c8aafafb7114ee345d2">gpio_reset_init</a>,</div>
+<div class="line">    </div>
+<div class="line">    .ldac_gpio_param_optional = &amp;<a class="code hl_variable" href="ad3530r__user__config_8c.html#a38228de64e9d7f9d57596f7f3117786d">gpio_ldac_init</a>,</div>
+<div class="line">    </div>
+<div class="line">    .vref_enable = AD3530R_EXTERNAL_VREF_PIN_INPUT,</div>
+<div class="line">    .chn_op_mode = {AD3530R_CH_OPERATING_MODE_3, AD3530R_CH_OPERATING_MODE_3, AD3530R_CH_OPERATING_MODE_3, AD3530R_CH_OPERATING_MODE_3, AD3530R_CH_OPERATING_MODE_3, AD3530R_CH_OPERATING_MODE_3, AD3530R_CH_OPERATING_MODE_3, AD3530R_CH_OPERATING_MODE_3, AD3530R_CH_OPERATING_MODE_3, AD3530R_CH_OPERATING_MODE_3, AD3530R_CH_OPERATING_MODE_3, AD3530R_CH_OPERATING_MODE_3, AD3530R_CH_OPERATING_MODE_3, AD3530R_CH_OPERATING_MODE_3, AD3530R_CH_OPERATING_MODE_3, AD3530R_CH_OPERATING_MODE_3},</div>
+<div class="line">    .range = AD3530R_CH_OUTPUT_RANGE_0_VREF,</div>
+<div class="line">    .hw_ldac_mask = 0xffff,</div>
+<div class="line">    .sw_ldac_mask = 0xffff,</div>
 <div class="line">    </div>
 <div class="line">    .crc_en = <span class="keyword">false</span></div>
 <div class="line">}</div>
