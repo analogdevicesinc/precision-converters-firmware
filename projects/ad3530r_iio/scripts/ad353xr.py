@@ -1,40 +1,6 @@
-# Copyright (C) 2025 Analog Devices, Inc.
+# Copyright (C) 2025-26 Analog Devices, Inc.
 #
 # SPDX short identifier: ADIBSD
-# Copyright (C) 2025 Analog Devices, Inc.
-#
-# All rights reserved.
-#
-# Redistribution and use in source and binary forms, with or without modification,
-# are permitted provided that the following conditions are met:
-#     - Redistributions of source code must retain the above copyright
-#       notice, this list of conditions and the following disclaimer.
-#     - Redistributions in binary form must reproduce the above copyright
-#       notice, this list of conditions and the following disclaimer in
-#       the documentation and/or other materials provided with the
-#       distribution.
-#     - Neither the name of Analog Devices, Inc. nor the names of its
-#       contributors may be used to endorse or promote products derived
-#       from this software without specific prior written permission.
-#     - The use of this software may or may not infringe the patent rights
-#       of one or more patent holders.  This license does not release you
-#       from the requirement that you obtain separate licenses from these
-#       patent holders to use this software.
-#     - Use of the software either in source or binary form, must be run
-#       on or directly connected to an Analog Devices Inc. component.
-#
-# THIS SOFTWARE IS PROVIDED BY ANALOG DEVICES "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES,
-# INCLUDING, BUT NOT LIMITED TO, NON-INFRINGEMENT, MERCHANTABILITY AND FITNESS FOR A
-# PARTICULAR PURPOSE ARE DISCLAIMED.
-#
-# IN NO EVENT SHALL ANALOG DEVICES BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
-# EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, INTELLECTUAL PROPERTY
-# RIGHTS, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR
-# BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT,
-# STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF
-# THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-
-from decimal import Decimal
 
 from adi.attribute import attribute
 from adi.context_manager import context_manager
@@ -45,14 +11,15 @@ class ad353xr(tx, context_manager):
     """ AD353xr DAC """
 
     _complex_data = False
-    channel = []  # type: ignore
     _device_name = ""
 
     def __init__(self, uri="", device_name=""):
         """Constructor for AD353xr class."""
         context_manager.__init__(self, uri, self._device_name)
 
-        compatible_parts = ["ad3530r"]
+        compatible_parts = ["ad3530r", 
+                            "ad3531r",
+                            "ad3532r"]
 
         self._ctrl = None
 
@@ -78,14 +45,21 @@ class ad353xr(tx, context_manager):
         if not self._txdac:
             raise Exception("Error in selecting matching device")
 
-        self.output_bits = []
+        self._output_bits = []
+        self.channel = []
         for ch in self._ctrl.channels:
             name = ch.id
-            self.output_bits.append(ch.data_format.bits)
+            self._output_bits.append(ch.data_format.bits)
             self._tx_channel_names.append(name)
             self.channel.append(self._channel(self._ctrl, name))
+            setattr(self, name, self._channel(self._ctrl, name))
 
         tx.__init__(self)
+
+    @property
+    def output_bits(self):
+        """AD353xr channel-wise number of output bits list"""
+        return self._output_bits
 
     ### Add device attributes here ###
 
@@ -124,7 +98,7 @@ class ad353xr(tx, context_manager):
         return self._get_iio_dev_attr_str("all_ch_input_registers")
 
     @all_ch_input_registers.setter
-    def all_input_registers(self, value):
+    def all_ch_input_registers(self, value):
         self._set_iio_dev_attr_str("all_ch_input_registers", value)
 
     @property
@@ -217,23 +191,23 @@ class ad353xr(tx, context_manager):
             )
 
     @property
-    def mux_out_select_avail(self):
-        """AD353xr mux_out_select available"""
-        return self._get_iio_dev_attr_str("mux_out_select_available")
+    def muxout_select_avail(self):
+        """AD353xr muxout_select available"""
+        return self._get_iio_dev_attr_str("muxout_select_available")
 
     @property
-    def mux_out_select(self):
+    def muxout_select(self):
         """AD353xr mux out select"""
-        return self._get_iio_dev_attr_str("mux_out_select")
+        return self._get_iio_dev_attr_str("muxout_select")
 
-    @mux_out_select.setter
-    def mux_out_select(self, value):
-        if value in self.mux_out_select_avail:
-            self._set_iio_dev_attr_str("mux_out_select", value)
+    @muxout_select.setter
+    def muxout_select(self, value):
+        if value in self.muxout_select_avail:
+            self._set_iio_dev_attr_str("muxout_select", value)
         else:
             raise ValueError(
                 "Error: Mux output option not supported \nUse one of: "
-                + str(self.mux_out_select_avail)
+                + str(self.muxout_select_avail)
             )
 
     ############################################################################
@@ -269,37 +243,49 @@ class ad353xr(tx, context_manager):
             """AD353xr channel offset"""
             return self._get_iio_attr(self.name, "offset", True)
 
-        @offset.setter
-        def offset(self, value):
-            self._set_iio_attr(self.name, "offset", True, str(Decimal(value).real))
-
         @property
         def scale(self):
             """AD353xr channel scale"""
             return self._get_iio_attr(self.name, "scale", True)
 
-        @scale.setter
-        def scale(self, value):
-            self._set_iio_attr(self.name, "scale", True, str(Decimal(value).real))
+        @property
+        def powerdown_avail(self):
+            """AD353xr channel powerdown available options"""
+            return self._get_iio_attr_str(self.name, "powerdown_available", True)
 
         @property
-        def operating_mode_avail(self):
-            """AD353xr channel operating mode settings"""
-            return self._get_iio_attr_str(self.name, "operating_mode_available", True)
+        def powerdown(self):
+            """AD353xr channel powerdown state (0=normal, 1=powered down)"""
+            return self._get_iio_attr_str(self.name, "powerdown", True)
 
-        @property
-        def operating_mode(self):
-            """AD353xr channel operating mode"""
-            return self._get_iio_attr_str(self.name, "operating_mode", True)
-
-        @operating_mode.setter
-        def operating_mode(self, value):
-            if value in self.operating_mode_avail:
-                self._set_iio_attr(self.name, "operating_mode", True, value)
+        @powerdown.setter
+        def powerdown(self, value):
+            if value in self.powerdown_avail:
+                self._set_iio_attr(self.name, "powerdown", True, value)
             else:
                 raise ValueError(
-                    "Error: Operating mode not supported \nUse one of: "
-                    + str(self.operating_mode_avail)
+                    "Error: Powerdown value not supported \nUse one of: "
+                    + str(self.powerdown_avail)
+                )
+
+        @property
+        def powerdown_mode_avail(self):
+            """AD353xr channel powerdown mode available options"""
+            return self._get_iio_attr_str(self.name, "powerdown_mode_available", True)
+
+        @property
+        def powerdown_mode(self):
+            """AD353xr channel powerdown mode (applies when powered down)"""
+            return self._get_iio_attr_str(self.name, "powerdown_mode", True)
+
+        @powerdown_mode.setter
+        def powerdown_mode(self, value):
+            if value in self.powerdown_mode_avail:
+                self._set_iio_attr(self.name, "powerdown_mode", True, value)
+            else:
+                raise ValueError(
+                    "Error: Powerdown mode not supported \nUse one of: "
+                    + str(self.powerdown_mode_avail)
                 )
 
         #####################################################################
