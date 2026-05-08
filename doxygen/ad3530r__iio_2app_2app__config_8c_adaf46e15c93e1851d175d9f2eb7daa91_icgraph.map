@@ -1,39 +1,30 @@
 <map id="init_pwm" name="init_pwm">
-<area shape="rect" id="Node000001" title="Initialize the PWM interface." alt="" coords="592,219,675,244"/>
-<area shape="rect" id="Node000002" href="$ad3530r__iio_8c.html#a4d2d07ab4b13d997040993474d2a1921" title="Initialize the IIO interface for AD3530R IIO device." alt="" coords="369,5,530,31"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="625,206,615,169,599,125,575,81,542,44,525,33,527,29,546,40,580,78,604,123,620,168,630,205"/>
-<area shape="rect" id="Node000004" href="$ad469x__iio_8c.html#adf57bdf6c7d2d6dfa2a8531795e03e3f" title="Release resources allocated for IIO device." alt="" coords="371,55,527,80"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="620,207,591,150,569,120,542,95,519,82,522,78,546,91,573,116,595,147,625,204"/>
-<area shape="rect" id="Node000006" href="$ad469x__iio_8c.html#a667ae98e0273401e857abc5ca78bad7a" title="Set the sampling rate and get the updated value supported by MCU platform." alt="" coords="355,105,544,145"/>
-<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="608,211,578,184,543,159,518,147,520,142,545,154,582,180,612,207"/>
-<area shape="rect" id="Node000007" href="$ad5706r__iio_8c.html#a21b0cec26f53ea5260056a698718b56e" title="Initialize the IIO interface for AD5706R IIO device." alt="" coords="369,169,530,195"/>
-<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="578,218,543,209,500,197,502,192,545,203,579,213"/>
-<area shape="rect" id="Node000010" href="$ad5710r__iio_8c.html#a22103aabadc62e36cf8e30021aab5ced" title="Initialize the IIO interface for AD5710R IIO device." alt="" coords="369,219,530,244"/>
-<area shape="poly" id="edge10_Node000001_Node000010" title=" " alt="" coords="578,234,530,234,530,229,578,229"/>
-<area shape="rect" id="Node000012" href="$ad5754r__iio_8c.html#af75390844f2453ece9d9763d07f194f6" title="Initialize the IIO interface for AD5754R IIO device." alt="" coords="386,268,513,293"/>
-<area shape="poly" id="edge12_Node000001_Node000012" title=" " alt="" coords="579,248,545,258,498,270,497,265,543,253,578,243"/>
-<area shape="rect" id="Node000014" href="$ad405x__iio_8c.html#a7aa4c35d34a7370a9365923c3e18f500" title="Initialize the IIO interface for AD405X IIO device." alt="" coords="383,317,515,343"/>
-<area shape="poly" id="edge14_Node000001_Node000014" title=" " alt="" coords="612,256,582,283,545,307,513,320,511,315,543,302,579,278,609,252"/>
-<area shape="rect" id="Node000017" href="$ad777x__iio_2app_2app__config_8c.html#aba990e48bb1b87852ff6a375f0c2f655" title="Initialize the system peripherals." alt="" coords="400,367,499,392"/>
-<area shape="poly" id="edge18_Node000001_Node000017" title=" " alt="" coords="623,258,593,309,571,335,545,358,523,369,500,376,498,371,521,364,543,353,568,331,589,306,619,255"/>
-<area shape="rect" id="Node000018" href="$ad3530r__iio_2app_2app__config__stm32_8c.html#af71ba79cb436be962f993524be96e30b" title="Reconfigure the STM32 specific system parameters with change in data streaming mode." alt="" coords="360,416,539,441"/>
-<area shape="poly" id="edge19_Node000001_Node000018" title=" " alt="" coords="629,258,618,292,601,332,578,373,546,407,527,418,524,414,542,403,573,369,597,330,613,290,623,257"/>
-<area shape="rect" id="Node000003" href="$ad3530r__iio_2app_2main_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title="Main entry point to application." alt="" coords="180,5,235,31"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="355,21,235,21,235,15,355,15"/>
-<area shape="rect" id="Node000005" href="$ad469x__iio_2app_2main_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title="Main entry point to application." alt="" coords="180,55,235,80"/>
-<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="358,70,235,70,235,65,358,65"/>
-<area shape="rect" id="Node000008" href="$ad5706r__iio_8c.html#a09e570353dfb1f8675491c751adc2819" title="Run the AD5706R IIO event handler." alt="" coords="108,117,307,143"/>
-<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="376,169,266,145,268,140,377,164"/>
-<area shape="rect" id="Node000009" href="$ad5706r__iio_2app_2main_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title="Main entry point to application." alt="" coords="5,143,60,168"/>
-<area shape="poly" id="edge9_Node000007_Node000009" title=" " alt="" coords="355,179,60,160,60,154,355,173"/>
-<area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="106,147,61,154,60,149,106,142"/>
-<area shape="rect" id="Node000011" href="$ad5710r__iio_2app_2main_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title="Main entry point to application." alt="" coords="180,219,235,244"/>
-<area shape="poly" id="edge11_Node000010_Node000011" title=" " alt="" coords="355,234,235,234,235,229,355,229"/>
-<area shape="rect" id="Node000013" href="$ad5754r__iio_2app_2main_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title="Main entry point to application." alt="" coords="180,268,235,293"/>
-<area shape="poly" id="edge13_Node000012_Node000013" title=" " alt="" coords="372,283,235,283,235,278,372,278"/>
-<area shape="rect" id="Node000015" href="$ad405x__iio_8c.html#a20b15ec49897aaf6440bb800ad6641e0" title="Run the AD405X IIO event handler." alt="" coords="123,317,292,343"/>
-<area shape="poly" id="edge15_Node000014_Node000015" title=" " alt="" coords="370,333,292,333,292,327,370,327"/>
-<area shape="rect" id="Node000016" href="$ad405x__iio_2app_2main_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title="Main entry point to application." alt="" coords="5,343,60,368"/>
-<area shape="poly" id="edge17_Node000014_Node000016" title=" " alt="" coords="377,348,307,358,168,363,60,360,60,354,168,357,306,353,377,343"/>
-<area shape="poly" id="edge16_Node000015_Node000016" title=" " alt="" coords="110,347,61,354,60,349,109,342"/>
+<area shape="rect" id="Node000001" title="Initialize the PWM interface." alt="" coords="592,195,675,220"/>
+<area shape="rect" id="Node000002" href="$ad469x__iio_8c.html#adf57bdf6c7d2d6dfa2a8531795e03e3f" title="Release resources allocated for IIO device." alt="" coords="371,5,527,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="623,182,612,150,595,113,572,77,542,45,521,33,524,29,546,41,576,73,600,111,617,148,628,180"/>
+<area shape="rect" id="Node000004" href="$ad469x__iio_8c.html#a667ae98e0273401e857abc5ca78bad7a" title="Set the sampling rate and get the updated value supported by MCU platform." alt="" coords="355,55,544,95"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="614,185,584,146,542,110,521,98,524,93,546,105,587,142,618,181"/>
+<area shape="rect" id="Node000005" href="$ad5706r__iio_8c.html#a21b0cec26f53ea5260056a698718b56e" title="Initialize the IIO interface for AD5706R IIO device." alt="" coords="369,120,530,145"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="600,189,543,159,509,148,511,143,545,154,603,185"/>
+<area shape="rect" id="Node000008" href="$ad5710r__iio_8c.html#a22103aabadc62e36cf8e30021aab5ced" title="Initialize the IIO interface for AD5710R IIO device." alt="" coords="369,169,530,195"/>
+<area shape="poly" id="edge8_Node000001_Node000008" title=" " alt="" coords="578,202,530,196,531,190,579,197"/>
+<area shape="rect" id="Node000010" href="$ad5754r__iio_8c.html#af75390844f2453ece9d9763d07f194f6" title="Initialize the IIO interface for AD5754R IIO device." alt="" coords="386,219,513,244"/>
+<area shape="poly" id="edge10_Node000001_Node000010" title=" " alt="" coords="578,217,513,226,513,220,578,212"/>
+<area shape="rect" id="Node000012" href="$ad3530r__iio_8c.html#a7aa4c35d34a7370a9365923c3e18f500" title="Initialize the IIO interface for AD3530R IIO device." alt="" coords="383,268,515,293"/>
+<area shape="poly" id="edge12_Node000001_Node000012" title=" " alt="" coords="602,230,545,259,510,271,509,265,543,254,600,225"/>
+<area shape="rect" id="Node000013" href="$ad777x__iio_2app_2app__config_8c.html#aba990e48bb1b87852ff6a375f0c2f655" title="Initialize the system peripherals." alt="" coords="400,317,499,343"/>
+<area shape="poly" id="edge13_Node000001_Node000013" title=" " alt="" coords="619,233,588,272,568,292,545,308,523,319,500,326,498,321,521,314,543,304,564,288,584,268,615,230"/>
+<area shape="rect" id="Node000014" href="$ad3530r__iio_2app_2app__config__stm32_8c.html#af71ba79cb436be962f993524be96e30b" title="Reconfigure the STM32 specific system parameters with change in data streaming mode." alt="" coords="360,367,539,392"/>
+<area shape="poly" id="edge14_Node000001_Node000014" title=" " alt="" coords="626,234,597,296,574,329,546,357,525,369,523,364,542,353,570,326,593,294,621,232"/>
+<area shape="rect" id="Node000003" href="$ad469x__iio_2app_2main_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title="Main entry point to application." alt="" coords="180,5,235,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="358,21,235,21,235,15,358,15"/>
+<area shape="rect" id="Node000006" href="$ad5706r__iio_8c.html#a09e570353dfb1f8675491c751adc2819" title="Run the AD5706R IIO event handler." alt="" coords="108,68,307,93"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="376,120,266,96,268,91,377,115"/>
+<area shape="rect" id="Node000007" href="$ad5706r__iio_2app_2main_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title="Main entry point to application." alt="" coords="5,93,60,119"/>
+<area shape="poly" id="edge7_Node000005_Node000007" title=" " alt="" coords="355,129,60,110,60,105,355,124"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="106,98,61,105,60,99,106,93"/>
+<area shape="rect" id="Node000009" href="$ad5710r__iio_2app_2main_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title="Main entry point to application." alt="" coords="180,169,235,195"/>
+<area shape="poly" id="edge9_Node000008_Node000009" title=" " alt="" coords="355,185,235,185,235,179,355,179"/>
+<area shape="rect" id="Node000011" href="$ad5754r__iio_2app_2main_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title="Main entry point to application." alt="" coords="180,219,235,244"/>
+<area shape="poly" id="edge11_Node000010_Node000011" title=" " alt="" coords="372,234,235,234,235,229,372,229"/>
 </map>

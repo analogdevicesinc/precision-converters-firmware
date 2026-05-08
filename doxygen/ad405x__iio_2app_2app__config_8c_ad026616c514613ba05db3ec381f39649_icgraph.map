@@ -1,11 +1,8 @@
 <map id="deinit_pwm" name="deinit_pwm">
-<area shape="rect" id="Node000001" title="DeInitialize the PWM interface." alt="" coords="505,31,604,56"/>
-<area shape="rect" id="Node000002" href="$ad405x__iio_8c.html#a20b15ec49897aaf6440bb800ad6641e0" title="Run the AD405X IIO event handler." alt="" coords="108,5,277,31"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="491,42,277,27,278,21,492,36"/>
-<area shape="rect" id="Node000004" href="$ad405x__iio_8c.html#a7aa4c35d34a7370a9365923c3e18f500" title="Initialize the IIO interface for AD405X IIO device." alt="" coords="325,56,457,81"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="492,56,458,61,457,56,491,50"/>
-<area shape="rect" id="Node000003" href="$ad405x__iio_2app_2main_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title="Main entry point to application." alt="" coords="5,31,60,56"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="99,35,61,42,60,36,99,30"/>
-<area shape="poly" id="edge4_Node000004_Node000002" title=" " alt="" coords="327,55,242,33,244,28,328,50"/>
-<area shape="poly" id="edge5_Node000004_Node000003" title=" " alt="" coords="311,66,60,48,60,43,312,60"/>
+<area shape="rect" id="Node000001" title="DeInitialize the PWM interface." alt="" coords="403,5,501,31"/>
+<area shape="rect" id="Node000002" href="$ad405x__iio_8c.html#a20b15ec49897aaf6440bb800ad6641e0" title="Run the AD405X IIO event handler." alt="" coords="5,5,175,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="389,21,175,21,175,15,389,15"/>
+<area shape="rect" id="Node000003" href="$ad405x__iio_8c.html#a7aa4c35d34a7370a9365923c3e18f500" title="Initialize the IIO interface for AD405X IIO device." alt="" coords="223,31,355,56"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="390,30,355,36,354,30,389,25"/>
+<area shape="poly" id="edge3_Node000003_Node000002" title=" " alt="" coords="209,36,175,31,175,26,209,31"/>
 </map>

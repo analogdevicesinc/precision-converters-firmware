@@ -244,7 +244,9 @@ Enumerations</h2></td></tr>
 , <br />
 &#160;&#160;<a class="el" href="ad3530r__iio_8c.html#ac44d8d2cd135d5e364461d7e2819db61abe8a5aee082e327230aaa050330909db">DAC_SCALE</a>
 , <br />
-&#160;&#160;<a class="el" href="ad3530r__iio_8c.html#ac44d8d2cd135d5e364461d7e2819db61a95088a4539155605b811e1885ad32e26">DAC_CHN_OP_SELECT</a>
+&#160;&#160;<a class="el" href="ad3530r__iio_8c.html#ac44d8d2cd135d5e364461d7e2819db61aadd39c4bea4fdcb46596b4a4d80e1c36">DAC_POWERDOWN</a>
+, <br />
+&#160;&#160;<a class="el" href="ad3530r__iio_8c.html#ac44d8d2cd135d5e364461d7e2819db61a96a89d47c2bfa4bcb4980928ad073b79">DAC_POWERDOWN_MODE</a>
 , <br />
 &#160;&#160;<a class="el" href="ad3530r__iio_8c.html#ac44d8d2cd135d5e364461d7e2819db61a8251a4bcb1a029e927bb54089ca87e8f">DAC_CHN_SW_LDAC_EN</a>
 , <br />
@@ -275,12 +277,12 @@ Enumerations</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a4d2d07ab4b13d997040993474d2a1921" id="r_a4d2d07ab4b13d997040993474d2a1921"><td class="memItemLeft" align="right" valign="top">int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad3530r__iio_8c.html#a4d2d07ab4b13d997040993474d2a1921">ad3530r_iio_initialize</a> (void)</td></tr>
-<tr class="memdesc:a4d2d07ab4b13d997040993474d2a1921"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize the IIO interface for AD3530R IIO device.  <br /></td></tr>
-<tr class="separator:a4d2d07ab4b13d997040993474d2a1921"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6ecb7b2a2f3bb8ee8b7646c17be15944" id="r_a6ecb7b2a2f3bb8ee8b7646c17be15944"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad3530r__iio_8c.html#a6ecb7b2a2f3bb8ee8b7646c17be15944">ad3530r_iio_event_handler</a> (void)</td></tr>
-<tr class="memdesc:a6ecb7b2a2f3bb8ee8b7646c17be15944"><td class="mdescLeft">&#160;</td><td class="mdescRight">Run the AD3530R IIO event handler.  <br /></td></tr>
-<tr class="separator:a6ecb7b2a2f3bb8ee8b7646c17be15944"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7aa4c35d34a7370a9365923c3e18f500" id="r_a7aa4c35d34a7370a9365923c3e18f500"><td class="memItemLeft" align="right" valign="top">int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad3530r__iio_8c.html#a7aa4c35d34a7370a9365923c3e18f500">iio_app_initialize</a> (void)</td></tr>
+<tr class="memdesc:a7aa4c35d34a7370a9365923c3e18f500"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize the IIO interface for AD3530R IIO device.  <br /></td></tr>
+<tr class="separator:a7aa4c35d34a7370a9365923c3e18f500"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a20b15ec49897aaf6440bb800ad6641e0" id="r_a20b15ec49897aaf6440bb800ad6641e0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad3530r__iio_8c.html#a20b15ec49897aaf6440bb800ad6641e0">iio_app_event_handler</a> (void)</td></tr>
+<tr class="memdesc:a20b15ec49897aaf6440bb800ad6641e0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Run the AD3530R IIO event handler.  <br /></td></tr>
+<tr class="separator:a20b15ec49897aaf6440bb800ad6641e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
@@ -346,7 +348,7 @@ Variables</h2></td></tr>
 <div class="line">    .scan_type = &amp;<a class="code hl_variable" href="ad3530r__iio_8c.html#a88fecdcad6ba15615aa12d6374d4bfb9">ad3530r_iio_scan_type</a>,\</div>
 <div class="line">    .attributes = ad3530r_iio_ch_attributes\</div>
 <div class="line">}</div>
-<div class="ttc" id="aad3530r__iio_8c_html_a88fecdcad6ba15615aa12d6374d4bfb9"><div class="ttname"><a href="ad3530r__iio_8c.html#a88fecdcad6ba15615aa12d6374d4bfb9">ad3530r_iio_scan_type</a></div><div class="ttdeci">struct scan_type ad3530r_iio_scan_type</div><div class="ttdef"><b>Definition</b> ad3530r_iio.c:170</div></div>
+<div class="ttc" id="aad3530r__iio_8c_html_a88fecdcad6ba15615aa12d6374d4bfb9"><div class="ttname"><a href="ad3530r__iio_8c.html#a88fecdcad6ba15615aa12d6374d4bfb9">ad3530r_iio_scan_type</a></div><div class="ttdeci">struct scan_type ad3530r_iio_scan_type</div><div class="ttdef"><b>Definition</b> ad3530r_iio.c:171</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -561,7 +563,8 @@ Variables</h2></td></tr>
 <tr><td class="fieldname"><a id="ac44d8d2cd135d5e364461d7e2819db61aa68d7b9aa21a76d75bd9eb54a54a76d6" name="ac44d8d2cd135d5e364461d7e2819db61aa68d7b9aa21a76d75bd9eb54a54a76d6"></a>DAC_RAW&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="ac44d8d2cd135d5e364461d7e2819db61ac7508d45198da3856fa3852cce6c29e1" name="ac44d8d2cd135d5e364461d7e2819db61ac7508d45198da3856fa3852cce6c29e1"></a>DAC_OFFSET&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="ac44d8d2cd135d5e364461d7e2819db61abe8a5aee082e327230aaa050330909db" name="ac44d8d2cd135d5e364461d7e2819db61abe8a5aee082e327230aaa050330909db"></a>DAC_SCALE&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="ac44d8d2cd135d5e364461d7e2819db61a95088a4539155605b811e1885ad32e26" name="ac44d8d2cd135d5e364461d7e2819db61a95088a4539155605b811e1885ad32e26"></a>DAC_CHN_OP_SELECT&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="ac44d8d2cd135d5e364461d7e2819db61aadd39c4bea4fdcb46596b4a4d80e1c36" name="ac44d8d2cd135d5e364461d7e2819db61aadd39c4bea4fdcb46596b4a4d80e1c36"></a>DAC_POWERDOWN&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="ac44d8d2cd135d5e364461d7e2819db61a96a89d47c2bfa4bcb4980928ad073b79" name="ac44d8d2cd135d5e364461d7e2819db61a96a89d47c2bfa4bcb4980928ad073b79"></a>DAC_POWERDOWN_MODE&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="ac44d8d2cd135d5e364461d7e2819db61a8251a4bcb1a029e927bb54089ca87e8f" name="ac44d8d2cd135d5e364461d7e2819db61a8251a4bcb1a029e927bb54089ca87e8f"></a>DAC_CHN_SW_LDAC_EN&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="ac44d8d2cd135d5e364461d7e2819db61a61abee39f9c7fae4a22b364dfe8a3c56" name="ac44d8d2cd135d5e364461d7e2819db61a61abee39f9c7fae4a22b364dfe8a3c56"></a>DAC_CHN_HW_LDAC_EN&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="ac44d8d2cd135d5e364461d7e2819db61aa0a7861b26bfc573b72d0ed5acf5c87d" name="ac44d8d2cd135d5e364461d7e2819db61aa0a7861b26bfc573b72d0ed5acf5c87d"></a>DAC_VREF_SELECT&#160;</td><td class="fielddoc"></td></tr>
@@ -579,14 +582,14 @@ Variables</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="a6ecb7b2a2f3bb8ee8b7646c17be15944" name="a6ecb7b2a2f3bb8ee8b7646c17be15944"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6ecb7b2a2f3bb8ee8b7646c17be15944">&#9670;&#160;</a></span>ad3530r_iio_event_handler()</h2>
+<a id="a20b15ec49897aaf6440bb800ad6641e0" name="a20b15ec49897aaf6440bb800ad6641e0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a20b15ec49897aaf6440bb800ad6641e0">&#9670;&#160;</a></span>iio_app_event_handler()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void ad3530r_iio_event_handler </td>
+          <td class="memname">void iio_app_event_handler </td>
           <td>(</td>
           <td class="paramtype">void&#160;</td>
           <td class="paramname"></td><td>)</td>
@@ -598,27 +601,17 @@ Variables</h2></td></tr>
 <p>Run the AD3530R IIO event handler. </p>
 <dl class="section return"><dt>Returns</dt><dd>none</dd></dl>
 <p>This function monitors the new IIO client event </p>
-<div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="ad3530r__iio_8c_a6ecb7b2a2f3bb8ee8b7646c17be15944_icgraph.png" border="0" usemap="#aad3530r__iio_8c_a6ecb7b2a2f3bb8ee8b7646c17be15944_icgraph" alt=""/></div>
-<map name="aad3530r__iio_8c_a6ecb7b2a2f3bb8ee8b7646c17be15944_icgraph" id="aad3530r__iio_8c_a6ecb7b2a2f3bb8ee8b7646c17be15944_icgraph">
-<area shape="rect" title="Run the AD3530R IIO event handler." alt="" coords="108,5,307,31"/>
-<area shape="rect" href="ad3530r__iio_2app_2main_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title="Main entry point to application." alt="" coords="5,5,60,31"/>
-<area shape="poly" title=" " alt="" coords="94,21,60,21,60,15,94,15"/>
-</map>
-</div>
 
 </div>
 </div>
-<a id="a4d2d07ab4b13d997040993474d2a1921" name="a4d2d07ab4b13d997040993474d2a1921"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4d2d07ab4b13d997040993474d2a1921">&#9670;&#160;</a></span>ad3530r_iio_initialize()</h2>
+<a id="a7aa4c35d34a7370a9365923c3e18f500" name="a7aa4c35d34a7370a9365923c3e18f500"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7aa4c35d34a7370a9365923c3e18f500">&#9670;&#160;</a></span>iio_app_initialize()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int32_t ad3530r_iio_initialize </td>
+          <td class="memname">int32_t iio_app_initialize </td>
           <td>(</td>
           <td class="paramtype">void&#160;</td>
           <td class="paramname"></td><td>)</td>
@@ -629,16 +622,6 @@ Here is the caller graph for this function:</div>
 
 <p>Initialize the IIO interface for AD3530R IIO device. </p>
 <dl class="section return"><dt>Returns</dt><dd>0 in case of success,negative error code otherwise </dd></dl>
-<div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="ad3530r__iio_8c_a4d2d07ab4b13d997040993474d2a1921_icgraph.png" border="0" usemap="#aad3530r__iio_8c_a4d2d07ab4b13d997040993474d2a1921_icgraph" alt=""/></div>
-<map name="aad3530r__iio_8c_a4d2d07ab4b13d997040993474d2a1921_icgraph" id="aad3530r__iio_8c_a4d2d07ab4b13d997040993474d2a1921_icgraph">
-<area shape="rect" title="Initialize the IIO interface for AD3530R IIO device." alt="" coords="108,5,269,31"/>
-<area shape="rect" href="ad3530r__iio_2app_2main_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title="Main entry point to application." alt="" coords="5,5,60,31"/>
-<area shape="poly" title=" " alt="" coords="94,21,60,21,60,15,94,15"/>
-</map>
-</div>
 
 </div>
 </div>

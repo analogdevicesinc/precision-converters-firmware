@@ -1,14 +1,11 @@
 <map id="eeprom_close" name="eeprom_close">
-<area shape="rect" id="Node000001" title="Close the EEPROM." alt="" coords="535,31,648,56"/>
-<area shape="rect" id="Node000002" href="$ad5710r__iio_8c.html#a22103aabadc62e36cf8e30021aab5ced" title="Initialize the IIO interface for AD5710R IIO device." alt="" coords="325,5,487,31"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="521,36,487,32,487,26,521,31"/>
-<area shape="rect" id="Node000004" href="$ad405x__iio_8c.html#a7aa4c35d34a7370a9365923c3e18f500" title="Initialize the IIO interface for AD405X IIO device." alt="" coords="340,55,472,80"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="521,55,473,61,472,56,520,50"/>
-<area shape="rect" id="Node000003" href="$ad5710r__iio_2app_2main_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title="Main entry point to application." alt="" coords="165,5,220,31"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="311,21,220,21,220,15,311,15"/>
-<area shape="rect" id="Node000005" href="$ad405x__iio_8c.html#a20b15ec49897aaf6440bb800ad6641e0" title="Run the AD405X IIO event handler." alt="" coords="108,55,277,80"/>
-<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="326,70,277,70,277,65,326,65"/>
-<area shape="rect" id="Node000006" href="$ad405x__iio_2app_2main_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title="Main entry point to application." alt="" coords="5,80,60,105"/>
-<area shape="poly" id="edge6_Node000004_Node000006" title=" " alt="" coords="340,85,278,95,156,100,60,97,60,92,156,95,277,90,339,80"/>
-<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="99,85,61,91,60,86,99,80"/>
+<area shape="rect" id="Node000001" title="Close the EEPROM." alt="" coords="432,31,545,56"/>
+<area shape="rect" id="Node000002" href="$ad5710r__iio_8c.html#a22103aabadc62e36cf8e30021aab5ced" title="Initialize the IIO interface for AD5710R IIO device." alt="" coords="223,5,384,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="418,36,384,32,385,26,419,31"/>
+<area shape="rect" id="Node000004" href="$ad405x__iio_8c.html#a7aa4c35d34a7370a9365923c3e18f500" title="Initialize the IIO interface for AD405X IIO device." alt="" coords="237,55,369,80"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="418,55,370,61,369,56,418,50"/>
+<area shape="rect" id="Node000003" href="$ad5710r__iio_2app_2main_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title="Main entry point to application." alt="" coords="63,5,117,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="209,21,118,21,118,15,209,15"/>
+<area shape="rect" id="Node000005" href="$ad405x__iio_8c.html#a20b15ec49897aaf6440bb800ad6641e0" title="Run the AD405X IIO event handler." alt="" coords="5,55,175,80"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="223,70,175,70,175,65,223,65"/>
 </map>
