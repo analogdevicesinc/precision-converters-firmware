@@ -49,6 +49,8 @@ struct no_os_uart_init_param uart_console_stdio_init_params = {
 	.size = NO_OS_UART_CS_8,
 	.parity = NO_OS_UART_PAR_NO,
 	.stop = NO_OS_UART_STOP_1_BIT,
+	.asynchronous_rx = true,
+	.irq_id = UART_IRQ_ID,
 #if defined(USE_VIRTUAL_COM_PORT)
 	/* If virtual com port is primary IIO comm port, use physical port for stdio
 	 * console. Applications which does not support VCOM, should not satisfy this

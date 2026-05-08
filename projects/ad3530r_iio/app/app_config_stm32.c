@@ -179,6 +179,7 @@ void stm32_system_init(void)
 {
 	if (entered_init ==  false) {
 		HAL_Init();
+		HAL_Delay(2000);
 		SystemClock_Config();
 		MX_GPIO_Init();
 		MX_UART5_Init();

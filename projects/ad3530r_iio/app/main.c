@@ -1,9 +1,8 @@
 /***************************************************************************//**
- * @file    main.c
- * @brief   Main interface for AD3530R IIO firmware application
- * @details
+ *   @file    main.c
+ *   @brief   Main interface for IIO firmware application
 ********************************************************************************
-* Copyright (c) 2022-23 Analog Devices, Inc.
+* Copyright (c) 2022-23,2026 Analog Devices, Inc.
 * All rights reserved.
 *
 * This software is proprietary to Analog Devices, Inc. and its licensors.
@@ -16,23 +15,25 @@
 /******************************************************************************/
 #include <stdio.h>
 #include <stdint.h>
-
-#include "ad3530r_iio.h"
-
-/******************************************************************************/
-/********************* Macros and Constants Definition ************************/
-/******************************************************************************/
+#include "no_os_error.h"
 
 /******************************************************************************/
-/******************** Variables and User Defined Data Types *******************/
+/********************** Macros and Constants Definitions **********************/
 /******************************************************************************/
 
 /******************************************************************************/
-/************************** Functions Declaration *****************************/
+/********************** Variables and User Defined Data Types *****************/
 /******************************************************************************/
 
 /******************************************************************************/
-/************************** Functions Definition ******************************/
+/************************** Functions Declarations ****************************/
+/******************************************************************************/
+int32_t init_system(void);
+int32_t iio_app_initialize(void);
+void iio_app_event_handler(void);
+
+/******************************************************************************/
+/************************** Functions Definitions *****************************/
 /******************************************************************************/
 /**
  * @brief	Main entry point to application
@@ -40,14 +41,21 @@
  */
 int main(void)
 {
-	/* Initialize the AD3530R IIO interface */
-	if (ad3530r_iio_initialize()) {
+	/* Initialize the system and peripherals */
+	if (init_system()) {
+		printf("System initialization failure!!\r\n");
+		return -ENODEV;
+	}
+
+	/* Initialize the IIO interface */
+	if (iio_app_initialize()) {
 		printf("IIO initialization failure!!\r\n");
+		return -ENODEV;
 	}
 
 	while (1) {
 		/* Monitor the IIO client events */
-		ad3530r_iio_event_handler();
+		iio_app_event_handler();
 	}
 }
 

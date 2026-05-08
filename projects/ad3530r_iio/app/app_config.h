@@ -2,7 +2,7 @@
  *   @file   app_config.h
  *   @brief   Application configurations module for AD3530R
 ******************************************************************************
-* Copyright (c) 2022-25 Analog Devices, Inc.
+* Copyright (c) 2022-26 Analog Devices, Inc.
 *
 * All rights reserved.
 *
@@ -23,7 +23,7 @@
 #include "no_os_uart.h"
 #include "no_os_irq.h"
 #include "no_os_pwm.h"
-#include <common_macros.h>
+#include "common_macros.h"
 
 /******************************************************************************/
 /********************** Macros and Constants Definition ***********************/
@@ -147,6 +147,7 @@ extern struct no_os_eeprom_desc *eeprom_desc;
 extern struct no_os_pwm_init_param pwm_init_params;
 extern struct no_os_gpio_desc* csb_gpio_desc;
 extern struct no_os_pwm_init_param pwm_init_params;
+extern struct no_os_uart_desc *uart_console_stdio_desc;
 
 #if (INTERFACE_MODE == SPI_DMA)
 extern struct no_os_pwm_desc* tx_trigger_desc;

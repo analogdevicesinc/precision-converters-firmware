@@ -150,7 +150,8 @@ enum ad3530r_attribute_ids {
 	DAC_RAW,
 	DAC_OFFSET,
 	DAC_SCALE,
-	DAC_CHN_OP_SELECT,
+	DAC_POWERDOWN,
+	DAC_POWERDOWN_MODE,
 	DAC_CHN_SW_LDAC_EN,
 	DAC_CHN_HW_LDAC_EN,
 
@@ -179,13 +180,38 @@ struct scan_type ad3530r_iio_scan_type = {
 #endif
 };
 
-/* Channel operating mode value string representation */
+/* AD3530R Channel operating mode value string representation */
 static char *ad3530r_operating_mode_str[] = {
 	"normal_operation",
-	"1kOhm_to_gnd",
-	"7k7Ohm_to_gnd",
-	"32kOhm_to_gnd"
+	"1kohm_to_gnd",
+	"7.7kohm_to_gnd",
+	"32kohm_to_gnd"
 };
+
+/* AD3531R Channel operating mode value string representation */
+static char *ad3531r_operating_mode_str[] = {
+	"normal_operation",
+	"500ohm_to_gnd",
+	"3.85kohm_to_gnd",
+	"16kohm_to_gnd",
+};
+
+/* AD3532R Channel operating mode value string representation */
+static char *ad3532r_operating_mode_str[] = {
+	"normal_operation",
+	"1kohm_to_gnd",
+	"10kohm_to_gnd",
+	"three_state"
+};
+
+/* Powerdown state string representation */
+static char *ad3530r_powerdown_str[] = {
+	"0",  // Normal operation
+	"1"   // Powered down
+};
+
+/* Pointer to active device-specific operating mode string array */
+static char **ad3530r_operating_mode_str_active = NULL;
 
 /* Vref value string representation */
 static char *ad3530r_vref_str[] = {
@@ -219,59 +245,59 @@ static char* ad3530r_streaming_select_str[] = {
 /* MUX out select value string representation */
 static char *ad3530r_mux_out_sel[] = {
 	"powered_down",
-	"VOUT0",
-	"IOUT0_source",
-	"IOUT0_sink",
-	"VOUT1",
-	"IOUT1_source",
-	"IOUT1_sink",
-	"VOUT2",
-	"IOUT2_source",
-	"IOUT2_sink",
-	"VOUT3",
-	"IOUT3_source",
-	"IOUT3_sink",
-	"VOUT4",
-	"IOUT4_source",
-	"IOUT4_sink",
-	"VOUT5",
-	"IOUT5_source",
-	"IOUT5_sink",
-	"VOUT6",
-	"IOUT6_source",
-	"IOUT6_sink",
-	"VOUT7",
-	"IOUT7_source",
-	"IOUT7_sink",
+	"vout0",
+	"iout0_source",
+	"iout0_sink",
+	"vout1",
+	"iout1_source",
+	"iout1_sink",
+	"vout2",
+	"iout2_source",
+	"iout2_sink",
+	"vout3",
+	"iout3_source",
+	"iout3_sink",
+	"vout4",
+	"iout4_source",
+	"iout4_sink",
+	"vout5",
+	"iout5_source",
+	"iout5_sink",
+	"vout6",
+	"iout6_source",
+	"iout6_sink",
+	"vout7",
+	"iout7_source",
+	"iout7_sink",
 	"die_temperature",
-	"tie_to_AGND_internally",
+	"tie_to_agnd_internally",
 	"powered_down_1",
-	"VOUT8",
-	"IOUT8_source",
-	"IOUT8_sink",
-	"VOUT9",
-	"IOUT9_source",
-	"IOUT9_sink",
-	"VOUT10",
-	"IOUT10_source",
-	"IOUT10_sink",
-	"VOUT11",
-	"IOUT11_source",
-	"IOUT11_sink",
-	"VOUT12",
-	"IOUT12_source",
-	"IOUT12_sink",
-	"VOUT13",
-	"IOUT13_source",
-	"IOUT13_sink",
-	"VOUT14",
-	"IOUT14_source",
-	"IOUT14_sink",
-	"VOUT15",
-	"IOUT15_source",
-	"IOUT15_sink",
+	"vout8",
+	"iout8_source",
+	"iout8_sink",
+	"vout9",
+	"iout9_source",
+	"iout9_sink",
+	"vout10",
+	"iout10_source",
+	"iout10_sink",
+	"vout11",
+	"iout11_source",
+	"iout11_sink",
+	"vout12",
+	"iout12_source",
+	"iout12_sink",
+	"vout13",
+	"iout13_source",
+	"iout13_sink",
+	"vout14",
+	"iout14_source",
+	"iout14_sink",
+	"vout15",
+	"iout15_source",
+	"iout15_sink",
 	"die_temperature_1",
-	"tie_to_AGND_internally"
+	"tie_to_agnd_internally"
 };
 
 /* AD3530R channel specific attributes list */
@@ -280,8 +306,10 @@ static struct iio_attribute ad3530r_iio_ch_attributes[] = {
 	AD3530R_CHN_ATTR("raw", DAC_RAW),
 	AD3530R_CHN_ATTR("scale", DAC_SCALE),
 	AD3530R_CHN_ATTR("offset", DAC_OFFSET),
-	AD3530R_CHN_ATTR("operating_mode", DAC_CHN_OP_SELECT),
-	AD3530R_CHN_AVAIL_ATTR("operating_mode_available", DAC_CHN_OP_SELECT),
+	AD3530R_CHN_ATTR("powerdown", DAC_POWERDOWN),
+	AD3530R_CHN_AVAIL_ATTR("powerdown_available", DAC_POWERDOWN),
+	AD3530R_CHN_ATTR("powerdown_mode", DAC_POWERDOWN_MODE),
+	AD3530R_CHN_AVAIL_ATTR("powerdown_mode_available", DAC_POWERDOWN_MODE),
 	AD3530R_CHN_ATTR("sw_ldac_enable", DAC_CHN_SW_LDAC_EN),
 	AD3530R_CHN_AVAIL_ATTR("sw_ldac_enable_available", DAC_CHN_SW_LDAC_EN),
 	AD3530R_CHN_ATTR("hw_ldac_enable", DAC_CHN_HW_LDAC_EN),
@@ -295,8 +323,8 @@ static struct iio_attribute ad3530r_iio_global_attributes[] = {
 	AD3530R_CHN_AVAIL_ATTR("reference_select_available", DAC_VREF_SELECT),
 	AD3530R_CHN_ATTR("range", DAC_RANGE),
 	AD3530R_CHN_AVAIL_ATTR("range_available", DAC_RANGE),
-	AD3530R_CHN_ATTR("mux_out_select", DAC_MUX_OUT),
-	AD3530R_CHN_AVAIL_ATTR("mux_out_select_available", DAC_MUX_OUT),
+	AD3530R_CHN_ATTR("muxout_select", DAC_MUX_OUT),
+	AD3530R_CHN_AVAIL_ATTR("muxout_select_available", DAC_MUX_OUT),
 	AD3530R_CHN_ATTR("all_ch_operating_mode", DAC_ALL_CH_OP_MODE),
 	AD3530R_CHN_AVAIL_ATTR("all_ch_operating_mode_available", DAC_ALL_CH_OP_MODE),
 	AD3530R_CHN_ATTR("all_ch_input_registers", DAC_MULTI_INPUT_CH),
@@ -321,8 +349,8 @@ static struct iio_attribute ad3532r_iio_global_attributes[] = {
 	AD3530R_CHN_AVAIL_ATTR("sw_ldac_trigger_available", DAC_SW_LDAC),
 	AD3530R_CHN_ATTR("hw_ldac_trigger", DAC_HW_LDAC),
 	AD3530R_CHN_AVAIL_ATTR("hw_ldac_trigger_available", DAC_HW_LDAC),
-	AD3530R_CHN_ATTR("mux_out_select", DAC_MUX_OUT),
-	AD3530R_CHN_AVAIL_ATTR("mux_out_select_available", DAC_MUX_OUT),
+	AD3530R_CHN_ATTR("muxout_select", DAC_MUX_OUT),
+	AD3530R_CHN_AVAIL_ATTR("muxout_select_available", DAC_MUX_OUT),
 	AD3530R_CHN_ATTR("all_ch_operating_mode", DAC_ALL_CH_OP_MODE),
 	AD3530R_CHN_AVAIL_ATTR("all_ch_operating_mode_available", DAC_ALL_CH_OP_MODE),
 	AD3530R_CHN_ATTR("all_ch_input_registers", DAC_MULTI_INPUT_CH),
@@ -357,6 +385,12 @@ static bool hw_mezzanine_is_valid;
 /* Variable to store all channel operating modes */
 static enum ad3530r_operating_mode all_chn_op_mode =
 	AD3530R_CH_OPERATING_MODE_3;
+
+/* Powerdown mode for each channel (0-2, maps to modes 1-3) */
+static uint8_t chn_powerdown_mode[AD3532R_NUM_CH] = {2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2};
+
+/* Powerdown state for each channel (true = powered down, false = normal) */
+static bool chn_powerdown_state[AD3532R_NUM_CH] = {false};
 
 /* Sampling rate/frequency value */
 static uint32_t sampling_rate = MAX_SAMPLING_RATE;
@@ -518,8 +552,8 @@ static int ad3530r_iio_attr_get(void *device,
 
 	switch (priv) {
 	case DAC_RAW:
-		addr = get_reg_addr(ad3530r_dev_desc, AD3530R_REG_ADDR_DAC_CHN(ch),
-				    AD3530R_CH_GRP(ch));
+		addr = ad3530r_get_reg_addr(ad3530r_dev_desc, AD3530R_REG_ADDR_DAC_CHN(ch),
+					    AD3530R_CH_GRP(ch));
 		ret = ad3530r_reg_read(ad3530r_dev_desc,
 				       addr,
 				       &val);
@@ -530,8 +564,8 @@ static int ad3530r_iio_attr_get(void *device,
 		return sprintf(buf, "%d", val);
 
 	case DAC_INPUT:
-		addr = get_reg_addr(ad3530r_dev_desc, AD3530R_REG_ADDR_INPUT_CHN(ch),
-				    AD3530R_CH_GRP(ch));
+		addr = ad3530r_get_reg_addr(ad3530r_dev_desc, AD3530R_REG_ADDR_INPUT_CHN(ch),
+					    AD3530R_CH_GRP(ch));
 		ret = ad3530r_reg_read(ad3530r_dev_desc,
 				       addr,
 				       &val);
@@ -547,9 +581,10 @@ static int ad3530r_iio_attr_get(void *device,
 	case DAC_OFFSET:
 		return sprintf(buf, "%d", attr_offset_val);
 
-	case DAC_CHN_OP_SELECT:
-		addr = get_reg_addr(ad3530r_dev_desc, AD3530R_REG_ADDR_OPERATING_MODE_CHN(ch),
-				    AD3530R_CH_GRP(ch));
+	case DAC_POWERDOWN:
+		addr = ad3530r_get_reg_addr(ad3530r_dev_desc,
+					    AD3530R_REG_ADDR_OPERATING_MODE_CHN(ch),
+					    AD3530R_CH_GRP(ch));
 		ret = ad3530r_spi_read_mask(ad3530r_dev_desc,
 					    addr,
 					    AD3530R_MASK_OPERATING_MODE(ch),
@@ -557,13 +592,21 @@ static int ad3530r_iio_attr_get(void *device,
 		if (ret) {
 			return ret;
 		}
-		ad3530r_dev_desc->chn_op_mode[ch] = val;
 
-		return sprintf(buf, "%s", ad3530r_operating_mode_str[val]);
+		/* Mode 0 = normal, modes 1-3 = powered down */
+		if (val == AD3530R_CH_OPERATING_MODE_0) {
+			val = 0;  // Normal operation
+			chn_powerdown_state[ch] = false;
+		} else {
+			val = 1;  // Powered down
+			chn_powerdown_state[ch] = true;
+		}
+
+		return sprintf(buf, "%s", ad3530r_powerdown_str[val]);
 
 	case DAC_CHN_HW_LDAC_EN:
-		addr = get_reg_addr(ad3530r_dev_desc, AD3530R_REG_ADDR_HW_LDAC_EN_0,
-				    AD3530R_CH_GRP(ch));
+		addr = ad3530r_get_reg_addr(ad3530r_dev_desc, AD3530R_REG_ADDR_HW_LDAC_EN_0,
+					    AD3530R_CH_GRP(ch));
 		ret = ad3530r_spi_read_mask(ad3530r_dev_desc,
 					    addr,
 					    AD3530R_MASK_HW_LDAC_EN_0(ch),
@@ -574,8 +617,8 @@ static int ad3530r_iio_attr_get(void *device,
 		return sprintf(buf, "%s", ad3530r_ldac_bit_en_str[val]);
 
 	case DAC_CHN_SW_LDAC_EN:
-		addr = get_reg_addr(ad3530r_dev_desc, AD3530R_REG_ADDR_SW_LDAC_EN_0,
-				    AD3530R_CH_GRP(ch));
+		addr = ad3530r_get_reg_addr(ad3530r_dev_desc, AD3530R_REG_ADDR_SW_LDAC_EN_0,
+					    AD3530R_CH_GRP(ch));
 		ret = ad3530r_spi_read_mask(ad3530r_dev_desc,
 					    addr,
 					    AD3530R_MASK_SW_LDAC_EN_0(ch),
@@ -586,7 +629,8 @@ static int ad3530r_iio_attr_get(void *device,
 		return sprintf(buf, "%s", ad3530r_ldac_bit_en_str[val]);
 
 	case DAC_VREF_SELECT:
-		addr = get_reg_addr(ad3530r_dev_desc, AD3530R_REG_ADDR_REF_CONTROL_0, 0);
+		addr = ad3530r_get_reg_addr(ad3530r_dev_desc, AD3530R_REG_ADDR_REF_CONTROL_0,
+					    0);
 		ret = ad3530r_spi_read_mask(ad3530r_dev_desc,
 					    addr,
 					    AD3530R_MASK_REERENCE_SELECT,
@@ -599,7 +643,8 @@ static int ad3530r_iio_attr_get(void *device,
 		return sprintf(buf, "%s", ad3530r_vref_str[val]);
 
 	case DAC_RANGE:
-		addr = get_reg_addr(ad3530r_dev_desc, AD3530R_REG_ADDR_OUTPUT_CONTROL_0, 0);
+		addr = ad3530r_get_reg_addr(ad3530r_dev_desc, AD3530R_REG_ADDR_OUTPUT_CONTROL_0,
+					    0);
 		ret = ad3530r_spi_read_mask(ad3530r_dev_desc,
 					    addr,
 					    AD3530R_MASK_OUTPUT_RANGE,
@@ -619,10 +664,15 @@ static int ad3530r_iio_attr_get(void *device,
 		return sprintf(buf, "%s", ad3530r_mux_out_sel[ad3530r_dev_desc->mux_out_sel]);
 
 	case DAC_ALL_CH_OP_MODE:
-		return sprintf(buf, "%s", ad3530r_operating_mode_str[all_chn_op_mode]);
+		return sprintf(buf, "%s", ad3530r_operating_mode_str_active[all_chn_op_mode]);
+
+	case DAC_POWERDOWN_MODE:
+		/* Return powerdown mode string (skip index 0 "normal_operation") */
+		return sprintf(buf, "%s",
+			       ad3530r_operating_mode_str_active[chn_powerdown_mode[ch] + 1]);
 
 	case DAC_MULTI_DAC_CH:
-		addr = get_reg_addr(ad3530r_dev_desc, AD3530R_REG_ADDR_MULTI_DAC_CH, 0);
+		addr = ad3530r_get_reg_addr(ad3530r_dev_desc, AD3530R_REG_ADDR_MULTI_DAC_CH, 0);
 		ret = ad3530r_reg_read(ad3530r_dev_desc,
 				       addr,
 				       &val);
@@ -633,7 +683,8 @@ static int ad3530r_iio_attr_get(void *device,
 		return sprintf(buf, "%d", val);
 
 	case DAC_MULTI_INPUT_CH:
-		addr = get_reg_addr(ad3530r_dev_desc, AD3530R_REG_ADDR_MULTI_INPUT_CH, 0);
+		addr = ad3530r_get_reg_addr(ad3530r_dev_desc, AD3530R_REG_ADDR_MULTI_INPUT_CH,
+					    0);
 		ret = ad3530r_reg_read(ad3530r_dev_desc,
 				       addr,
 				       &val);
@@ -728,15 +779,47 @@ static int ad3530r_iio_attr_set(void *device,
 		}
 		break;
 
-	case DAC_CHN_OP_SELECT:
-		for (value = 0; value < AD3530R_MAX_CHANNEL_OP_MODE_0; value++) {
-			if (!strncmp(buf, ad3530r_operating_mode_str[value], strlen(buf)))
+	case DAC_POWERDOWN:
+		for (value = 0; value < NO_OS_ARRAY_SIZE(ad3530r_powerdown_str); value++) {
+			if (!strncmp(buf, ad3530r_powerdown_str[value], strlen(buf)))
 				break;
 		}
 
-		ret = ad3530r_set_operating_mode(ad3530r_dev_desc, channel->ch_num, value);
-		if (ret) {
-			return ret;
+		if (value == 0) {
+			/* Return to normal operation (mode 0) */
+			ret = ad3530r_set_operating_mode(ad3530r_dev_desc, channel->ch_num,
+							 AD3530R_CH_OPERATING_MODE_0);
+			if (ret) {
+				return ret;
+			}
+			chn_powerdown_state[channel->ch_num] = false;
+		} else {
+			/* Enter powerdown mode (mode 1-3 based on chn_powerdown_mode)
+			 chn_powerdown_mode is 0-2, maps to modes 1-3 */
+			ret = ad3530r_set_operating_mode(ad3530r_dev_desc, channel->ch_num,
+							 chn_powerdown_mode[channel->ch_num] + 1);
+			if (ret) {
+				return ret;
+			}
+			chn_powerdown_state[channel->ch_num] = true;
+		}
+		break;
+
+	case DAC_POWERDOWN_MODE:
+		/* Parse input against powerdown mode strings (skip index 0 "normal_operation") */
+		for (value = 1; value < NO_OS_ARRAY_SIZE(ad3530r_operating_mode_str);
+		     value++) {  // Always 3 powerdown modes
+			if (!strncmp(buf, ad3530r_operating_mode_str_active[value], strlen(buf)))
+				break;
+		}
+		chn_powerdown_mode[channel->ch_num] = value - 1;
+
+		/* If this channel is currently powered down, apply the new mode immediately */
+		if (chn_powerdown_state[channel->ch_num]) {
+			ret = ad3530r_set_operating_mode(ad3530r_dev_desc, channel->ch_num, value + 1);
+			if (ret) {
+				return ret;
+			}
 		}
 		break;
 
@@ -868,7 +951,7 @@ static int ad3530r_iio_attr_set(void *device,
 
 	case DAC_ALL_CH_OP_MODE:
 		for (value = 0; value < AD3530R_MAX_CHANNEL_OP_MODE_0; value++) {
-			if (!strncmp(buf, ad3530r_operating_mode_str[value], strlen(buf)))
+			if (!strncmp(buf, ad3530r_operating_mode_str_active[value], strlen(buf)))
 				break;
 		}
 
@@ -877,8 +960,20 @@ static int ad3530r_iio_attr_set(void *device,
 			if (ret) {
 				return ret;
 			}
+			/* Update powerdown state */
+			if (value == AD3530R_CH_OPERATING_MODE_0) {
+				chn_powerdown_state[chn] = false;
+			} else {
+				chn_powerdown_state[chn] = true;
+			}
 		}
 		all_chn_op_mode = value;
+		if (value > 0) {
+			/* Sync all channels powerdown_mode with the selected operating mode */
+			for (chn = 0; chn < num_of_chns; chn++) {
+				chn_powerdown_mode[chn] = value - 1;
+			}
+		}
 		break;
 
 	case DAC_MULTI_DAC_CH:
@@ -958,9 +1053,14 @@ static int ad3530r_iio_attr_available_get(void *device,
 	buf[0] = '\0';
 
 	switch (priv) {
-	case DAC_CHN_OP_SELECT:
-		for (val = 0; val < AD3530R_MAX_CHANNEL_OP_MODE_0; val++) {
-			strcat(buf, ad3530r_operating_mode_str[val]);
+	case DAC_POWERDOWN:
+		return sprintf(buf, "%s %s", ad3530r_powerdown_str[0],
+			       ad3530r_powerdown_str[1]);
+
+	case DAC_POWERDOWN_MODE:
+		/* Return powerdown mode options (skip index 0 "normal_operation") */
+		for (val = 1; val < AD3530R_MAX_CHANNEL_OP_MODE_0; val++) {
+			strcat(buf, ad3530r_operating_mode_str_active[val]);
 			strcat(buf, " ");
 		}
 		break;
@@ -1002,7 +1102,7 @@ static int ad3530r_iio_attr_available_get(void *device,
 
 	case DAC_ALL_CH_OP_MODE:
 		for (val = 0; val < AD3530R_MAX_CHANNEL_OP_MODE_0; val++) {
-			strcat(buf, ad3530r_operating_mode_str[val]);
+			strcat(buf, ad3530r_operating_mode_str_active[val]);
 			strcat(buf, " ");
 		}
 		break;
@@ -1594,6 +1694,7 @@ static int32_t ad353xr_assign_device(enum ad3530r_id dev_id,
 		*dev_name = (char*)ACTIVE_DEVICE_NAME;
 		ad353xr_regs = ad3530r_regs;
 		num_of_mux_sels = AD3530R_NUM_MUX_OUT_SELECTS;
+		ad3530r_operating_mode_str_active = ad3530r_operating_mode_str;
 
 		break;
 
@@ -1607,6 +1708,7 @@ static int32_t ad353xr_assign_device(enum ad3530r_id dev_id,
 		ad353xr_regs = ad3531r_regs;
 		num_of_mux_sels = AD3531R_NUM_MUX_OUT_SELECTS;
 		num_of_chns = AD3531R_NUM_CH;
+		ad3530r_operating_mode_str_active = ad3531r_operating_mode_str;
 
 		break;
 
@@ -1620,6 +1722,7 @@ static int32_t ad353xr_assign_device(enum ad3530r_id dev_id,
 		ad353xr_regs = ad3532r_regs;
 		num_of_mux_sels = AD3532R_NUM_MUX_OUT_SELECTS;
 		num_of_chns = AD3532R_NUM_CH;
+		ad3530r_operating_mode_str_active = ad3532r_operating_mode_str;
 
 		break;
 
@@ -1629,8 +1732,9 @@ static int32_t ad353xr_assign_device(enum ad3530r_id dev_id,
 
 	/* Update channel addr array */
 	for (int i = 0; i < num_of_chns; i++) {
-		ch_addr_array[i] = get_reg_addr(ad3530r_dev_desc, AD3530R_REG_ADDR_INPUT_CHN(i),
-						AD3530R_CH_GRP(i));
+		ch_addr_array[i] = ad3530r_get_reg_addr(ad3530r_dev_desc,
+							AD3530R_REG_ADDR_INPUT_CHN(i),
+							AD3530R_CH_GRP(i));
 	}
 
 	return 0;
@@ -1641,7 +1745,7 @@ static int32_t ad353xr_assign_device(enum ad3530r_id dev_id,
  * @brief	Initialize the IIO interface for AD3530R IIO device
  * @return	0 in case of success,negative error code otherwise
  */
-int32_t ad3530r_iio_initialize(void)
+int32_t iio_app_initialize(void)
 {
 	int32_t ret;
 	enum ad3530r_id dev_id;
@@ -1672,11 +1776,6 @@ int32_t ad3530r_iio_initialize(void)
 	/* Add a fixed delay of 1 sec before system init for the PoR sequence to get completed */
 	no_os_udelay(
 		1000000);
-
-	ret = init_system();
-	if (ret) {
-		return ret;
-	}
 
 	/* Read context attributes */
 	static const char *mezzanine_names[] = {"EVAL-AD3530RARDZ",
@@ -1757,7 +1856,7 @@ int32_t ad3530r_iio_initialize(void)
  * @return	none
  * @details	This function monitors the new IIO client event
  */
-void ad3530r_iio_event_handler(void)
+void iio_app_event_handler(void)
 {
 	iio_step(ad3530r_iio_desc);
 }
