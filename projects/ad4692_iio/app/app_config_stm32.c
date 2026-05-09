@@ -183,6 +183,7 @@ struct stm32_spi_desc* sdesc;
 void stm32_system_init(void)
 {
 	HAL_Init();
+	HAL_Delay(2000);
 	SystemClock_Config();
 
 	MX_GPIO_Init();
