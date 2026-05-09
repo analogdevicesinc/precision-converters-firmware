@@ -52,11 +52,12 @@ static void ad4692_get_tx_command(uint8_t* local_tx_data);
 /* ADC data buffer size */
 #if defined(USE_SDRAM)
 /* Offset the IIO buffer for 4 bytes to accommodate the 2-cycle command offset in manual mode */
-#define adc_data_buffer				SDRAM_START_ADDRESS + (N_CYCLE_OFFSET * BYTES_PER_SAMPLE)
-#define DATA_BUFFER_SIZE			SDRAM_SIZE_BYTES
+#define adc_data_buffer				SDRAM_START_ADDRESS
+#define DATA_BUFFER_SIZE			SDRAM_SIZE_BYTES - (N_CYCLE_OFFSET * BYTES_PER_SAMPLE)
 #else
 #define DATA_BUFFER_SIZE			(32768)		// 32kbytes
-static int8_t adc_data_buffer[DATA_BUFFER_SIZE];
+__attribute__((aligned(32))) static int8_t adc_data_buffer[DATA_BUFFER_SIZE +
+				 (N_CYCLE_OFFSET * BYTES_PER_SAMPLE)];
 #endif
 
 #define DATA_BUFFER_SIZE_CONT		(32768)		// 32kbytes
@@ -408,7 +409,8 @@ volatile uint32_t *buff_start_addr;
 
 /* Local buffer */
 #define MAX_LOCAL_BUF_SIZE	65536
-uint8_t local_buf[MAX_LOCAL_BUF_SIZE + (NO_OF_CHANNELS * N_CYCLE_OFFSET)];
+__attribute__((aligned(32))) uint8_t local_buf[MAX_LOCAL_BUF_SIZE +
+				   (NO_OF_CHANNELS * N_CYCLE_OFFSET)];
 
 /* Maximum value the DMA NDTR register can take */
 #define MAX_DMA_NDTR		(no_os_min(65532, (MAX_LOCAL_BUF_SIZE)))
@@ -2563,7 +2565,8 @@ int32_t iio_app_initialize(void)
 
 		/* Initialize the IIO interface */
 		iio_device_init_params[0].name = ACTIVE_DEVICE_NAME;
-		iio_device_init_params[0].raw_buf = (int8_t *)adc_data_buffer;
+		iio_device_init_params[0].raw_buf = (int8_t *)adc_data_buffer +
+						    (N_CYCLE_OFFSET * BYTES_PER_SAMPLE);
 		if (ad4692_data_capture_mode == CONTINUOUS) {
 			iio_device_init_params[0].raw_buf_len = DATA_BUFFER_SIZE_CONT;
 		} else {
