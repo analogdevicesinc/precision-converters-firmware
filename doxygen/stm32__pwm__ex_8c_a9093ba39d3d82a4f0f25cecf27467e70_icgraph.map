@@ -1,0 +1,7 @@
+<map id="compute_optimal_prescaler" name="compute_optimal_prescaler">
+<area shape="rect" id="Node000001" title="Calculate optimal prescaler value to fit the period in ARR register." alt="" coords="441,13,644,38"/>
+<area shape="rect" id="Node000002" href="$ad4692__iio_8c.html#afe930a83bd4db7a6382ad38d9af29b61" title="Set the sampling rate and get the updated value supported by MCU platform." alt="" coords="204,5,393,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="428,28,393,28,393,23,428,23"/>
+<area shape="rect" id="Node000003" href="$ad4692__iio_8c.html#a171811e94bb04123b0203d72a2aaaaa5" title="Setter function for AD4692 attributes." alt="" coords="5,13,156,38"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="190,28,156,28,156,23,190,23"/>
+</map>

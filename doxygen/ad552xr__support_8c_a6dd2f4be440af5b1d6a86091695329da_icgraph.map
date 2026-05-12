@@ -1,0 +1,10 @@
+<map id="ad552xr_data_transfer_system_remove" name="ad552xr_data_transfer_system_remove">
+<area shape="rect" id="Node000001" title="De&#45;initialize the Data Transfer System." alt="" coords="403,35,572,75"/>
+<area shape="rect" id="Node000002" href="$ad552xr__support_8c.html#a8f6ec9c907eb51871e2e889c37f49abb" title="Initialize the Data Transfer System." alt="" coords="185,5,355,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="389,44,354,39,355,34,389,39"/>
+<area shape="rect" id="Node000004" href="$ad552xr__iio_8c.html#a7ad5c142dadcc75b3069d51c46b03480" title="Remove the IIO resources for AD552XR IIO application." alt="" coords="207,70,333,95"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="389,70,334,77,333,72,389,65"/>
+<area shape="rect" id="Node000003" href="$ad552xr__iio_8c.html#a7aa4c35d34a7370a9365923c3e18f500" title="Initialize the IIO interface for AD552XR IIO device." alt="" coords="5,42,137,67"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="172,43,138,48,137,42,171,37"/>
+<area shape="poly" id="edge4_Node000004_Node000003" title=" " alt="" coords="193,74,137,67,138,61,193,69"/>
+</map>

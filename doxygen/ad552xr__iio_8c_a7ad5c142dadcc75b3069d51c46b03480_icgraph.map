@@ -1,0 +1,5 @@
+<map id="iio_app_remove" name="iio_app_remove">
+<area shape="rect" id="Node000001" title="Remove the IIO resources for AD552XR IIO application." alt="" coords="185,5,312,31"/>
+<area shape="rect" id="Node000002" href="$ad552xr__iio_8c.html#a7aa4c35d34a7370a9365923c3e18f500" title="Initialize the IIO interface for AD552XR IIO device." alt="" coords="5,5,137,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="172,21,137,21,137,15,172,15"/>
+</map>

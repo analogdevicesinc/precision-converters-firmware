@@ -1,0 +1,16 @@
+<map id="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad552xr_iio/app/app_config_stm32.h" name="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad552xr_iio/app/app_config_stm32.h">
+<area shape="rect" id="Node000001" title="Header file for STM32 platform configurations." alt="" coords="809,5,1073,75"/>
+<area shape="rect" id="Node000002" href="$ad552xr__iio_2app_2app__config_8h.html" title="Configuration file for AD552XR IIO firmware application." alt="" coords="657,123,880,192"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="881,85,821,125,818,120,878,80"/>
+<area shape="rect" id="Node000007" href="$ad552xr__iio_2app_2app__config__stm32_8c.html" title="STM32 Specific configuration files for AD552XR IIO Application." alt="" coords="1080,240,1343,309"/>
+<area shape="poly" id="edge7_Node000001_Node000007" title=" " alt="" coords="992,82,1174,238,1171,242,989,86"/>
+<area shape="rect" id="Node000003" href="$ad552xr__iio_8c.html" title="Implementation of AD552XR IIO Application Interface." alt="" coords="5,240,228,309"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="644,176,453,204,240,243,229,245,228,240,239,237,452,199,643,171"/>
+<area shape="rect" id="Node000004" href="$ad552xr__support_8c.html" title="Source file for the AD552XR IIO Application Support." alt="" coords="252,240,507,309"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="645,198,493,243,492,237,643,193"/>
+<area shape="rect" id="Node000005" href="$ad552xr__user__config_8c.html" title="User configuration source for the AD552XR IIO Application." alt="" coords="531,240,809,309"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="733,204,701,242,697,238,729,201"/>
+<area shape="rect" id="Node000006" href="$ad552xr__iio_2app_2app__config_8c.html" title="Application configurations module." alt="" coords="833,240,1056,309"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="833,197,894,237,891,242,830,202"/>
+<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="894,188,1083,237,1082,243,893,194"/>
+</map>

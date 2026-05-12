@@ -14,5 +14,6 @@ var searchData=
   ['freq_5fattr_5fid_11',['FREQ_ATTR_ID',['../ad2s1210__iio_8c.html#a5a15d9327ec1216d37f49eb09ea00c9caa027d20ce77d68b8d1f2d8de950bc4e0',1,'ad2s1210_iio.c']]],
   ['freq_5favail_5fattr_5fid_12',['FREQ_AVAIL_ATTR_ID',['../ad2s1210__iio_8c.html#a5a15d9327ec1216d37f49eb09ea00c9cabfc108dc5ca67c6720b8ee49ebf6de1d',1,'ad2s1210_iio.c']]],
   ['full_5fpower_5fmode_13',['FULL_POWER_MODE',['../ad7124__console_2app_2ad7124__console__app_8h.html#af578d276ef26dc941024eaad001ae207ae4138ffa5ab6b25f7fc9eefd632c9bb4',1,'ad7124_console_app.h']]],
-  ['full_5fscale_5fcalib_5fstate_14',['full_scale_calib_state',['../ad4130__iio_8c.html#a1c37df02dc3b4eff9828329a98e06fc3ad76f907ed1f5e96925568724c8c21802',1,'FULL_SCALE_CALIB_STATE:&#160;ad4130_iio.c'],['../ad4170__iio_8c.html#a1c37df02dc3b4eff9828329a98e06fc3ad76f907ed1f5e96925568724c8c21802',1,'FULL_SCALE_CALIB_STATE:&#160;ad4170_iio.c']]]
+  ['full_5fscale_5fcalib_5fstate_14',['full_scale_calib_state',['../ad4130__iio_8c.html#a1c37df02dc3b4eff9828329a98e06fc3ad76f907ed1f5e96925568724c8c21802',1,'FULL_SCALE_CALIB_STATE:&#160;ad4130_iio.c'],['../ad4170__iio_8c.html#a1c37df02dc3b4eff9828329a98e06fc3ad76f907ed1f5e96925568724c8c21802',1,'FULL_SCALE_CALIB_STATE:&#160;ad4170_iio.c']]],
+  ['func_5fsel_5fattr_5fid_15',['FUNC_SEL_ATTR_ID',['../ad552xr__iio_8c.html#ab0c853754239fa3e3d580fd0d0b54a06afe618a96f52c67e07ab745cf0315e10d',1,'ad552xr_iio.c']]]
 ];
