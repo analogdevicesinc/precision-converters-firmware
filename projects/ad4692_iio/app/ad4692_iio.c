@@ -30,18 +30,6 @@
 #include "version.h"
 #include "ad4692_attrs.h"
 
-/******** Forward declaration of functions ********/
-
-static int ad4692_read_converted_data(struct ad4692_desc *desc,
-				      uint8_t chn,
-				      uint32_t *adc_data);
-
-static int ad4692_start_data_capture(struct ad4692_desc *desc);
-
-static int ad4692_stop_data_capture(struct ad4692_desc *desc);
-
-static void ad4692_get_tx_command(uint8_t* local_tx_data);
-
 /******************************************************************************/
 /************************ Macros/Constants ************************************/
 /******************************************************************************/
@@ -136,12 +124,6 @@ struct scan_type ad4692_iio_scan_type[NUM_OF_IIO_DEVICES][NO_OF_CHANNELS] = {
 #define ACC_COUNT_MIN_VAL	0
 #define ACC_COUNT_MAX_VAL	64
 
-/* Stop State mask */
-#define AD4692_ADC_MODE_STOP_STATE_MASK  NO_OS_BIT(5)
-
-/* Data Ready Stop state */
-#define AD4692_STOP_STATE_DATA_READYb   0x1
-
 /* ADC max count (full scale value) for unipolar inputs */
 #define ADC_MAX_COUNT_UNIPOLAR	(uint32_t) ((1 << ADC_RESOLUTION) - 1)
 
@@ -151,21 +133,12 @@ struct scan_type ad4692_iio_scan_type[NUM_OF_IIO_DEVICES][NO_OF_CHANNELS] = {
 /* AD4692 Offset */
 #define AD4692_OFFSET	0
 
-/* Converts pwm period in nanoseconds to sampling frequency in samples per second */
-#define PWM_PERIOD_TO_FREQUENCY(x)       (1000000000.0 / x)
-
 /* Maximum number of priorities supported in the FW */
 #define AD4692_MAX_PRIORITIES       2
 
 /* Supported resolutions- 16 and 24 bit */
 #define AD4692_RES_16		    16
 #define AD4692_RES_24		    24
-
-/* Number of bytes per transaction for accumulator data */
-#define AD4692_N_BYTES_CNV_CLOCK_24BIT	5
-
-/* Number of bytes per transaction for averaged data */
-#define AD4692_N_BYTES_CNV_CLOCK_16BIT	4
 
 /******************************************************************************/
 /*************************** Types Declarations *******************************/
@@ -178,7 +151,7 @@ struct ad4692_desc *ad4692_dev = NULL;
 static struct iio_desc *ad4692_iio_desc;
 
 /* AD4692 IIO hw trigger descriptor */
-static struct iio_hw_trig *ad4692_hw_trig_desc;
+struct iio_hw_trig *ad4692_hw_trig_desc;
 
 /* AD4692 Board level attribute unique IDs */
 enum ad4692_board_attribute_ids {
@@ -238,34 +211,13 @@ static struct iio_channel
 };
 
 /* List of channels to be captured */
-static uint8_t ad4692_active_channels[NO_OF_CHANNELS];
-
-/* Channel ID during data capture */
-volatile uint8_t chan_id = 0;
+uint8_t ad4692_active_channels[NO_OF_CHANNELS];
 
 /* Number of channels enabled by the IIO Client */
 uint8_t num_of_active_channels = 0;
 
-/* Data buffer */
-uint8_t data_buff[BYTES_PER_SAMPLE] = { 0x0 };
-
-/* SPI message for manual mode capture */
-struct no_os_spi_msg ad4692_spi_msg_manual_mode = {
-	.cs_change = CS_CHANGE,
-	.tx_buff = data_buff,
-	.rx_buff = data_buff,
-	.bytes_number = BYTES_PER_SAMPLE
-};
-
 /* Flag to check end of conversion */
-static volatile bool ad4692_conversion_flag = false;
-
-/* Flag to indicate if size of the buffer is updated according to requested
- * number of samples for the multi-channel IIO buffer data alignment */
-static volatile bool buf_size_updated = false;
-
-/* Variable to store number of requested samples */
-static uint32_t nb_of_samples;
+volatile bool ad4692_conversion_flag = false;
 
 /* ADC Mode values */
 static const char *ad4692_adc_modes[] = {
@@ -338,20 +290,14 @@ static const char *readback_modes[] = {
 	"accumulator_data"
 };
 
-/* Enum of readback options */
-enum ad4692_readback_options {
-	AVERAGED_DATA,
-	ACCUMULATOR_DATA
-};
-
 /* Selected sequencer mode. Default is standard */
-static enum ad4692_sequencer_modes ad4692_sequencer_mode = STANDARD_SEQUENCER;
+enum ad4692_sequencer_modes ad4692_sequencer_mode = STANDARD_SEQUENCER;
 
 /* Selected interface mode. Default is SPI DMA */
 enum ad4692_interface_modes ad4692_interface_mode = SPI_DMA;
 
 /* Selected data capture mode. Default is Burst */
-enum ad4692_data_capture_modes ad4692_data_capture_mode = BURST;
+enum ad4692_data_capture_modes ad4692_data_capture_mode = BURST_DATA_CAPTURE;
 
 /* Selected readback option. Default is Averaged data */
 enum ad4692_readback_options ad4692_readback_option = AVERAGED_DATA;
@@ -360,19 +306,13 @@ enum ad4692_readback_options ad4692_readback_option = AVERAGED_DATA;
 static bool restart_iio_flag = false;
 
 /* Default oscillator frequency */
-static enum ad4692_int_osc_sel osc_freq_id = AD4692_OSC_1MHZ;
+enum ad4692_int_osc_sel ad4692_osc_freq_id = AD4692_OSC_1MHZ;
 
 /* Default channel sequencer length */
 static uint8_t seq_len = 0;
 
 /* Sampling frequency */
 uint32_t ad4692_sampling_frequency;
-
-/* Maximum Sampling frequency */
-uint32_t ad4692_sampling_frequency_max;
-
-/* EVB HW validation status */
-static bool hw_mezzanine_is_valid;
 
 /* Array to hold the channel priorities */
 uint8_t channel_priorities[NO_OF_CHANNELS] = { 0x0 };
@@ -386,39 +326,11 @@ uint8_t num_of_as_slots = 0;
 /* Data number of bytes */
 uint8_t n_data_bytes;
 
+/* Number of bytes per SPI transaction for non manual modes */
+uint8_t n_bytes_per_transaction = AD4692_N_BYTES_TXN_16BIT;
+
 /* STM32 SPI Init params */
 struct stm32_spi_init_param* spi_init_param;
-
-/* Global Pointer for IIO Device Data */
-volatile struct iio_device_data* iio_dev_data_g;
-
-/* Global variable for number of samples */
-uint32_t nb_of_samples_g;
-
-/* Global variable for data read from CB functions */
-uint32_t data_read;
-
-/* Flag to indicate if DMA has been configured for capture */
-volatile bool dma_config_updated = false;
-
-/* Flag for checking DMA buffer overflow */
-volatile bool ad4692_dma_buff_full = false;
-
-/* Variable to store start of buffer address */
-volatile uint32_t *buff_start_addr;
-
-/* Local buffer */
-#define MAX_LOCAL_BUF_SIZE	65536
-__attribute__((aligned(32))) uint8_t local_buf[MAX_LOCAL_BUF_SIZE +
-				   (NO_OF_CHANNELS * N_CYCLE_OFFSET)];
-
-/* Maximum value the DMA NDTR register can take */
-#define MAX_DMA_NDTR		(no_os_min(65532, (MAX_LOCAL_BUF_SIZE)))
-
-/* Variable to track the number of entries to the complete callback */
-uint32_t callback_count = 0;
-
-static bool dma_capture = false;
 
 /* IIO interface init parameters */
 struct iio_init_param  iio_init_params = {
@@ -428,126 +340,9 @@ struct iio_init_param  iio_init_params = {
 /* AD4692 IIO device descriptor */
 static struct iio_device *ad4692_iio_dev[NUM_OF_IIO_DEVICES];
 
-/* Accumulator data buffer */
-static uint8_t acc_data_buff[AD4692_N_BYTES_CNV_CLOCK_24BIT *
-							    AD4692_MAX_CHANNELS] = { 0x0 };
-
-/* Number of bytes per SPI transaction for non manual modes */
-static uint8_t n_bytes_per_transaction = AD4692_N_BYTES_CNV_CLOCK_16BIT;
-
 /******************************************************************************/
 /************************ Functions Definitions *******************************/
 /******************************************************************************/
-
-/**
- * @brief Set the sampling rate and get the updated value
- *	  supported by MCU platform
- * @return 0 in case of success, negative error code otherwise
- */
-int ad4692_update_sampling_frequency(uint32_t *sampling_rate)
-{
-	int ret;
-	uint64_t pwm_period_ns;
-	uint32_t period_ns_readback;
-	uint32_t prescaler;
-
-	if (*sampling_rate > ad4692_sampling_frequency_max) {
-		*sampling_rate = ad4692_sampling_frequency_max;
-	}
-
-	if (ad4692_interface_mode == SPI_DMA) {
-		ad4692_init_params.conv_param->period_ns = CONV_TRIGGER_PERIOD_NSEC(
-					*sampling_rate);
-		pwm_period_ns = CONV_TRIGGER_PERIOD_NSEC(*sampling_rate);
-
-		/* Compute prescaler to fit the period value within respective register */
-		ret = compute_optimal_prescaler(ad4692_dev->conv_desc->extra, pwm_period_ns,
-						&prescaler);
-		if (ret) {
-			return ret;
-		}
-
-		/* Set prescaler for timer */
-		ret = set_timer_prescaler(ad4692_dev->conv_desc, prescaler);
-		if (ret) {
-			return ret;
-		}
-
-		/* Initialize PWM with the updated rate */
-		ret = no_os_pwm_set_period(ad4692_dev->conv_desc,
-					   ad4692_init_params.conv_param->period_ns);
-		if (ret) {
-			return ret;
-		}
-	} else { // SPI_INTR
-
-		if (ad4692_init_params.mode == AD4692_SPI_BURST) {
-			pwm_period_ns = CONV_TRIGGER_PERIOD_NSEC(*sampling_rate);
-
-			/* Compute prescaler to fit the period value within respective register */
-			ret = compute_optimal_prescaler(spi_burst_pwm_desc->extra, pwm_period_ns,
-							&prescaler);
-			if (ret) {
-				return ret;
-			}
-
-			/* Set prescaler for timer */
-			ret = set_timer_prescaler(spi_burst_pwm_desc, prescaler);
-			if (ret) {
-				return ret;
-			}
-
-			ret = no_os_pwm_set_period(spi_burst_pwm_desc, pwm_period_ns);
-			if (ret) {
-				return ret;
-			}
-		} else {
-			pwm_period_ns = CONV_TRIGGER_PERIOD_NSEC(*sampling_rate);
-
-			/* Compute prescaler to fit the period value within respective register */
-			ret = compute_optimal_prescaler(ad4692_dev->conv_desc->extra, pwm_period_ns,
-							&prescaler);
-			if (ret) {
-				return ret;
-			}
-
-			/* Set prescaler for timer */
-			ret = set_timer_prescaler(ad4692_dev->conv_desc, prescaler);
-			if (ret) {
-				return ret;
-			}
-
-			ret = no_os_pwm_set_period(ad4692_dev->conv_desc, pwm_period_ns);
-			if (ret) {
-				return ret;
-			}
-
-			ret = no_os_pwm_set_duty_cycle(ad4692_dev->conv_desc,
-						       CONV_TRIGGER_DUTY_CYCLE_NSEC(pwm_period_ns));
-			if (ret) {
-				return ret;
-			}
-		}
-	}
-
-	if (ad4692_init_params.mode == AD4692_SPI_BURST) {
-		/* Get the actual period of the PWM */
-		ret = no_os_pwm_get_period(spi_burst_pwm_desc, &period_ns_readback);
-		if (ret) {
-			return ret;
-		}
-	} else {
-		/* Get the actual period of the PWM */
-		ret = no_os_pwm_get_period(ad4692_dev->conv_desc, &period_ns_readback);
-		if (ret) {
-			return ret;
-		}
-	}
-
-	ad4692_sampling_frequency = PWM_PERIOD_TO_FREQUENCY(period_ns_readback);
-
-	return 0;
-}
 
 /*!
  * @brief	Getter/Setter for the raw, offset and scale attribute value
@@ -565,44 +360,24 @@ int ad4692_iio_attr_get(void *device,
 			intptr_t priv)
 {
 	int ret;
-	uint32_t data_read;
+	uint32_t adc_data;
+	uint32_t reg_val;
 	uint8_t ch;
 
 	switch (priv) {
 	case ADC_RAW_ATTR_ID:
-		dma_capture = false;
-
-		/* Check if device is already in manual mode, exit from the same */
-		if (ad4692_init_params.mode == AD4692_MANUAL_MODE) {
-			ret = ad4692_stop_data_capture(ad4692_dev);
-			if (ret) {
-				return ret;
-			}
-		}
-
 		channel_mask = NO_OS_BIT(channel->ch_num);
 		ad4692_active_channels[0] = channel->ch_num;
 		num_of_active_channels = 1;
 
-		/* Start Data capture */
-		ret = ad4692_start_data_capture(ad4692_dev);
-		if (ret) {
-			return ret;
-		}
-
 		/* Read the ADC Sample */
-		ret = ad4692_read_converted_data(ad4692_dev, channel->ch_num, &data_read);
+		ret = ad4692_data_transfer_read_converted_data(ad4692_dev, channel->ch_num,
+				&adc_data);
 		if (ret) {
 			return ret;
 		}
 
-		/* Stop Data capture */
-		ret = ad4692_stop_data_capture(ad4692_dev);
-		if (ret) {
-			return ret;
-		}
-
-		return sprintf(buf, "%ld", data_read);
+		return sprintf(buf, "%lu", adc_data);
 
 	case ADC_SCALE_ATTR_ID:
 
@@ -612,7 +387,7 @@ int ad4692_iio_attr_get(void *device,
 		return sprintf(buf, "%d", AD4692_OFFSET);
 
 	case ADC_SAMPLING_FREQUENCY_ATTR_ID:
-		return sprintf(buf, "%ld", ad4692_sampling_frequency);
+		return sprintf(buf, "%lu", ad4692_sampling_frequency);
 
 	case ADC_MODE_ATTR_ID:
 		return sprintf(buf, "%s", ad4692_adc_modes[ad4692_init_params.mode]);
@@ -630,27 +405,23 @@ int ad4692_iio_attr_get(void *device,
 		return sprintf(buf, "%s", readback_modes[ad4692_readback_option]);
 
 	case ACC_COUNT_ATTR_ID:
-		/* In Standard Sequencer Mode, the ACC_DEPTH_IN0 register sets
-		 * the accumulator depth for all 16 channels. For Advanced Sequencer Mode,
-		 * each channel's depth settings are independently programmed via the
-		 * ACC_DEPTH_IN0, ACC_DEPTH_IN1, ... , ACC_DEPTH_IN15 registers */
 		if (ad4692_sequencer_mode == STANDARD_SEQUENCER) {
 			ch = 0;
 		} else {
 			ch = channel->ch_num;
 		}
 
-		return sprintf(buf, "%d", ad4692_acc_count[ch]);
+		return sprintf(buf, "%u", ad4692_acc_count[ch]);
 
 	case OSC_FREQUENCY_ATTR_ID:
-		return sprintf(buf, "%s", ad4692_osc_frequencies[osc_freq_id]);
+		return sprintf(buf, "%s", ad4692_osc_frequencies[ad4692_osc_freq_id]);
 
 	case SEQUENCE_LENGTH_ATTR_ID:
-		ret = ad4692_reg_read(ad4692_dev, AD4692_SEQUENCER_CONTROL_REG, &data_read);
+		ret = ad4692_reg_read(ad4692_dev, AD4692_SEQUENCER_CONTROL_REG, &reg_val);
 		if (ret) {
 			return ret;
 		}
-		seq_len = no_os_field_get(AD4692_ADV_SEQ_MODE_MASK, data_read);
+		seq_len = no_os_field_get(AD4692_ADV_SEQ_MODE_MASK, reg_val);
 
 		return sprintf(buf, "%d", seq_len);
 
@@ -700,8 +471,6 @@ int ad4692_iio_attr_set(void *device,
 			return -EINVAL;
 		}
 
-		/* Update the mode in the init params
-		 * to include the updated mode during IIO re-initialization */
 		ad4692_init_params.mode = id;
 
 		break;
@@ -735,7 +504,7 @@ int ad4692_iio_attr_set(void *device,
 		break;
 
 	case DATA_CAPTURE_MODE_ATTR_ID:
-		for (id = CONTINUOUS; id <= BURST; id++) {
+		for (id = CONTINUOUS_DATA_CAPTURE; id <= BURST_DATA_CAPTURE; id++) {
 			if (!strcmp(buf, data_capture_modes[id])) {
 				ad4692_data_capture_mode = id;
 				break;
@@ -749,10 +518,6 @@ int ad4692_iio_attr_set(void *device,
 		break;
 
 	case ACC_COUNT_ATTR_ID:
-		/* In Standard Sequencer Mode, the ACC_DEPTH_IN0 register sets
-		 * the accumulator depth for all 16 channels. For Advanced Sequencer Mode,
-		 * each channel's depth settings are independently programmed via the
-		 * ACC_DEPTH_IN0, ACC_DEPTH_IN1, ... , ACC_DEPTH_IN15 registers */
 		if (ad4692_sequencer_mode == STANDARD_SEQUENCER) {
 			ch = 0;
 		} else {
@@ -763,7 +528,6 @@ int ad4692_iio_attr_set(void *device,
 			return -EINVAL;
 		}
 
-		/* Set the channel to the configured accumulator count */
 		ret = ad4692_reg_write(ad4692_dev, AD4692_ACC_COUNT_LIMIT_REG(ch),
 				       no_os_str_to_uint32(buf));
 		if (ret) {
@@ -781,17 +545,15 @@ int ad4692_iio_attr_set(void *device,
 			}
 		}
 
-		/* Configure the selected oscillator frequency */
 		ret = ad4692_set_osc(ad4692_dev, id);
 		if (ret) {
 			return ret;
 		}
-		osc_freq_id = id;
+		ad4692_osc_freq_id = id;
 
 		break;
 
 	case SEQUENCE_LENGTH_ATTR_ID:
-		/* Channel sequence length is a read-only attribute */
 		break;
 
 	case READBACK_OPTION_ATTR_ID:
@@ -810,7 +572,7 @@ int ad4692_iio_attr_set(void *device,
 
 	case ADC_SAMPLING_FREQUENCY_ATTR_ID:
 		s_rate = no_os_str_to_uint32(buf);
-		ret = ad4692_update_sampling_frequency(&s_rate);
+		ret = ad4692_data_transfer_update_freq(&s_rate);
 		if (ret) {
 			return ret;
 		}
@@ -832,7 +594,6 @@ int ad4692_iio_attr_set(void *device,
 		break;
 
 	case RESTART_IIO_ATTR_ID:
-		/* Set flag to true */
 		restart_iio_flag = true;
 		break;
 
@@ -878,7 +639,6 @@ int ad4692_iio_attr_available_get(void *device,
 		}
 
 	case INTERFACE_MODE_ATTR_ID:
-		/* SPI DMA mode is supported only for manual mode */
 		if (ad4692_init_params.mode == AD4692_MANUAL_MODE) {
 			return sprintf(buf, "%s %s",
 				       interface_modes[0],
@@ -952,1136 +712,13 @@ int ad4692_iio_attr_available_set(void *device,
 }
 
 /*!
- * @brief Read ADC converted data
- * @param desc[in, out]- AD4692 device descriptor
- * @param chn[in] - Channel ID (number)
- * @param adc_data[out] - ADC converted data
- * @return len in case of success, negative error code otherwise
- */
-static int ad4692_read_converted_data(struct ad4692_desc *desc,
-				      uint8_t chn,
-				      uint32_t *adc_data)
-{
-	int ret;
-	uint8_t eoc_status;
-	uint32_t timeout = BUF_READ_TIMEOUT;
-
-	switch (ad4692_init_params.mode) {
-	case AD4692_MANUAL_MODE:
-		data_buff[0] = AD4692_IN_COMMAND(chn);
-		data_buff[1] = 0x0;
-		eoc_status = NO_OS_GPIO_HIGH;
-
-		ret = no_os_gpio_direction_input(desc->gpio0_desc);
-		if (ret) {
-			return ret;
-		}
-
-		/* Toggle CNV as a GPIO */
-		ret = ad4692_toggle_cnv(cnv_gpio_desc);
-		if (ret) {
-			return ret;
-		}
-
-		/* Poll for BSY Low */
-		do {
-			ret = no_os_gpio_get_value(desc->gpio0_desc, &eoc_status);
-			if (ret) {
-				return ret;
-			}
-		} while ((eoc_status != NO_OS_GPIO_LOW) && (timeout-- > 0));
-
-		if (timeout == 0) {
-			return -ETIMEDOUT;
-		}
-
-		ret = no_os_spi_transfer(ad4692_dev->comm_desc, &ad4692_spi_msg_manual_mode, 1);
-		if (ret) {
-			return ret;
-		}
-
-		*adc_data = no_os_get_unaligned_be16(ad4692_spi_msg_manual_mode.rx_buff);
-
-		break;
-
-	case AD4692_CNV_CLOCK:
-	case AD4692_CNV_BURST:
-	case AD4692_SPI_BURST:
-
-		/* Enable CNV PWM */
-		ret = no_os_pwm_enable(desc->conv_desc);
-		if (ret) {
-			return ret;
-		}
-
-		if (ad4692_init_params.mode == AD4692_SPI_BURST) {
-			/* Write to Convert Start register to trigger the next burst of conversion */
-			ret = ad4692_reg_write(ad4692_dev,
-					       AD4692_OSC_EN_REG,
-					       AD4692_CONV_START_MASK);
-			if (ret) {
-				return ret;
-			}
-		}
-
-		eoc_status = NO_OS_GPIO_HIGH;
-
-		/* Poll for DATA_READYb Low */
-		do {
-			ret = no_os_gpio_get_value(desc->gpio0_desc, &eoc_status);
-			if (ret) {
-				return ret;
-			}
-		} while (eoc_status != NO_OS_GPIO_LOW && timeout-- > 0);
-
-		if (timeout == 0) {
-			return -ETIMEDOUT;
-		}
-
-		ret = ad4692_reg_read(ad4692_dev,
-				      AD4692_AVG_IN_REG(chn),
-				      adc_data);
-		if (ret) {
-			return ret;
-		}
-		*adc_data = no_os_get_unaligned_be16((uint8_t *)adc_data);
-
-		/* Reset the state of accumulator to start a new burst of conversion */
-		ret = ad4692_reg_write(ad4692_dev,
-				       AD4692_STATE_RESET_REG,
-				       AD4692_STATE_RESET_ALL);
-		if (ret) {
-			return ret;
-		}
-
-		/* Disable CNV PWM */
-		ret = no_os_pwm_disable(desc->conv_desc);
-		if (ret) {
-			return ret;
-		}
-
-		break;
-
-	default:
-
-		return -EINVAL;
-	}
-
-	return 0;
-}
-
-/**
- * @brief Initialize device for data capture
- * @param desc[in, out] - AD4692 Device Descriptor
- * @return 0 in case of success, negative error code otherwise.
- */
-int ad4692_start_data_capture(struct ad4692_desc *desc)
-{
-	int ret;
-	uint8_t toggle_n;
-	uint8_t ch_id;
-	struct no_os_spi_msg ad4692_spi_msg = {
-		.cs_change = CS_CHANGE,
-		.tx_buff = data_buff,
-		.rx_buff = data_buff,
-		.bytes_number = BYTES_PER_SAMPLE
-	};
-
-	if (!desc) {
-		return -EINVAL;
-	}
-
-	switch (ad4692_init_params.mode) {
-	case AD4692_MANUAL_MODE:
-		ret = init_gpio();
-		if (ret) {
-			return ret;
-		}
-
-		/* Configure GPIO0 as BUSY */
-		ret = ad4692_gpio_set(desc,
-				      AD4692_GPIO0,
-				      AD4692_GPIO_OUTPUT_ADC_BUSY);
-		if (ret) {
-			return ret;
-		}
-
-		/* Enter Manual Mode */
-		ret = ad4692_reg_write(desc,
-				       AD4692_DEVICE_SETUP_REG,
-				       AD4692_DEVICE_MANUAL);
-		if (ret) {
-			return ret;
-		}
-
-		if (!dma_capture) {
-			/* Toggle CNV at a gap of 5us */
-			for (toggle_n = 0; toggle_n < AD4692_N_CNV_TOGGLES; toggle_n++) {
-				no_os_udelay(5);
-				ret = ad4692_toggle_cnv(cnv_gpio_desc);
-				if (ret) {
-					return ret;
-				}
-
-				/* Register the channel ID */
-				data_buff[0] = AD4692_IN_COMMAND(ad4692_active_channels[chan_id]);
-				data_buff[1] = 0x0;
-
-				/* Since manual mode operates with an offset of 2 CNV pulses,
-				 * Iterate through the first two enabled channels if more
-				 * than one channel is enabled. Else, register the only enabled channel- twice */
-				if (num_of_active_channels > 1) {
-					chan_id++;
-				}
-
-				ret = no_os_spi_transfer(desc->comm_desc, &ad4692_spi_msg, 1);
-				if (ret) {
-					return ret;
-				}
-			}
-		}
-
-		break;
-
-	case AD4692_CNV_CLOCK:
-		/* Reset manual mode bit */
-		ad4692_reg_update(desc,
-				  AD4692_DEVICE_SETUP_REG,
-				  AD4692_MANUAL_MODE_MASK,
-				  AD4692_EXIT_MANUAL_MODE);
-
-		/* Enter CNV Clock Mode */
-		ret = ad4692_reg_update(desc,
-					AD4692_ADC_SETUP_REG,
-					AD4692_MODE_MASK,
-					AD4692_CNV_CLOCK);
-		if (ret) {
-			return ret;
-		}
-
-		/* Configure GPIO0 as DATA_READYb */
-		ret = ad4692_reg_update(desc,
-					AD4692_GPIO_MODE1_REG,
-					AD4692_GPIO0_MASK,
-					AD4692_GPIO_OUTPUT_DATA_READYb);
-
-		if (ad4692_sequencer_mode == STANDARD_SEQUENCER) {
-			/* Enable the desired channels */
-			ret = ad4692_std_seq_ch(desc, channel_mask, true, 0);
-			if (ret) {
-				return ret;
-			}
-
-			/* Configure accumulator mask */
-			ret = ad4692_configure_acc_mask(channel_mask, ad4692_sequencer_mode,
-							channel_priorities);
-			if (ret) {
-				return ret;
-			}
-		}
-
-		/* Configure the accumulator count limit */
-		for (ch_id = 0; ch_id < num_of_active_channels; ch_id++) {
-			ret = ad4692_reg_write(desc,
-					       AD4692_ACC_COUNT_LIMIT_REG(ad4692_active_channels[ch_id]),
-					       ad4692_acc_count[ad4692_active_channels[ch_id]]);
-			if (ret) {
-				return ret;
-			}
-		}
-
-		break;
-
-	case AD4692_CNV_BURST:
-		/* Reset manual mode bit */
-		ret = ad4692_reg_update(desc,
-					AD4692_DEVICE_SETUP_REG,
-					AD4692_MANUAL_MODE_MASK,
-					AD4692_EXIT_MANUAL_MODE);
-		if (ret) {
-			return ret;
-		}
-
-		/* Reset the state of the accumulator */
-		ret = ad4692_reg_write(desc,
-				       AD4692_STATE_RESET_REG,
-				       AD4692_STATE_RESET_ALL);
-		if (ret) {
-			return ret;
-		}
-
-		/* Set all channels to the configured accumulator count */
-		for (ch_id = 0; ch_id < NO_OF_CHANNELS; ch_id++) {
-			ret = ad4692_reg_write(ad4692_dev, AD4692_ACC_COUNT_LIMIT_REG(ch_id),
-					       ad4692_acc_count[ch_id]);
-			if (ret) {
-				return ret;
-			}
-		}
-
-		/* Configure GPIO0 as DATA_READYb */
-		ret = ad4692_reg_update(desc,
-					AD4692_GPIO_MODE1_REG,
-					AD4692_GPIO0_MASK,
-					AD4692_GPIO_OUTPUT_DATA_READYb);
-		if (ret) {
-			return ret;
-		}
-
-		/* Configure DATA_READYb as the stop state trigger */
-		ret = ad4692_reg_update(desc,
-					AD4692_ADC_SETUP_REG,
-					AD4692_ADC_MODE_STOP_STATE_MASK,
-					no_os_field_prep(AD4692_ADC_MODE_STOP_STATE_MASK,
-							AD4692_STOP_STATE_DATA_READYb));
-		if (ret) {
-			return ret;
-		}
-
-		/* Enable the desired channels.*/
-		if (ad4692_sequencer_mode == STANDARD_SEQUENCER) {
-			ret = ad4692_std_seq_ch(desc, channel_mask, true, 0);
-			if (ret) {
-				return ret;
-			}
-
-			/* Configure accumulator mask */
-			ret = ad4692_configure_acc_mask(channel_mask, ad4692_sequencer_mode,
-							channel_priorities);
-			if (ret) {
-				return ret;
-			}
-		}
-
-		/* Enter CNV Burst Mode */
-		ret = ad4692_reg_update(desc,
-					AD4692_ADC_SETUP_REG,
-					AD4692_MODE_MASK,
-					AD4692_CNV_BURST);
-		if (ret) {
-			return ret;
-		}
-
-		break;
-
-	case AD4692_SPI_BURST:
-		/* Reset manual mode bit */
-		ret = ad4692_reg_update(desc,
-					AD4692_DEVICE_SETUP_REG,
-					AD4692_MANUAL_MODE_MASK,
-					AD4692_EXIT_MANUAL_MODE);
-		if (ret) {
-			return ret;
-		}
-
-		/* Configure GPIO0 as DATA_READYb */
-		ret = ad4692_reg_update(desc,
-					AD4692_GPIO_MODE1_REG,
-					AD4692_GPIO0_MASK,
-					AD4692_GPIO_OUTPUT_DATA_READYb);
-		if (ret) {
-			return ret;
-		}
-
-		/* Configure DATA_READYb as the stop state trigger */
-		ret = ad4692_reg_update(desc,
-					AD4692_ADC_SETUP_REG,
-					AD4692_ADC_MODE_STOP_STATE_MASK,
-					no_os_field_prep(AD4692_ADC_MODE_STOP_STATE_MASK,
-							AD4692_STOP_STATE_DATA_READYb));
-		if (ret) {
-			return ret;
-		}
-
-		/* Set all channels to the configured accumulator count */
-		for (ch_id = 0; ch_id < NO_OF_CHANNELS; ch_id++) {
-			ret = ad4692_reg_write(ad4692_dev, AD4692_ACC_COUNT_LIMIT_REG(ch_id),
-					       ad4692_acc_count[ch_id]);
-			if (ret) {
-				return ret;
-			}
-		}
-
-		if (ad4692_sequencer_mode == STANDARD_SEQUENCER) {
-			ret = ad4692_std_seq_ch(desc, channel_mask, true, 0);
-			if (ret) {
-				return ret;
-			}
-
-			/* Configure accumulator mask */
-			ret = ad4692_configure_acc_mask(channel_mask, ad4692_sequencer_mode,
-							channel_priorities);
-			if (ret) {
-				return ret;
-			}
-		}
-
-		/* Configure the oscillator frequency */
-		ret = ad4692_set_osc(ad4692_dev, osc_freq_id);
-		if (ret) {
-			return ret;
-		}
-
-		/* Enter SPI Burst Mode */
-		ret = ad4692_reg_update(desc,
-					AD4692_ADC_SETUP_REG,
-					AD4692_MODE_MASK,
-					AD4692_SPI_BURST);
-		if (ret) {
-			return ret;
-		}
-
-		/* Write to Convert Start register */
-		ret = ad4692_reg_write(desc,
-				       AD4692_OSC_EN_REG,
-				       AD4692_CONV_START_MASK);
-		if (ret) {
-			return ret;
-		}
-
-		break;
-
-	default:
-		return -EINVAL;
-	}
-
-	return 0;
-}
-
-/**
- * @brief Exit device from data capture
- * @param desc[in, out] - AD4692 Device Descriptor
- * @return 0 in case of success, negative error code otherwise.
- */
-int ad4692_stop_data_capture(struct ad4692_desc *desc)
-{
-	int ret;
-
-	if (!desc) {
-		return -EINVAL;
-	}
-
-	switch (ad4692_init_params.mode) {
-	case AD4692_MANUAL_MODE:
-		/* Initialize CNV as a GPIO */
-		ret = init_gpio();
-		if (ret) {
-			return ret;
-		}
-
-		ret = ad4692_exit_manual_mode(desc, cnv_gpio_desc);
-		if (ret) {
-			return ret;
-		}
-
-		ret = no_os_gpio_remove(cnv_gpio_desc);
-		if (ret) {
-			return ret;
-		}
-		cnv_gpio_desc = NULL;
-
-		desc->mode = AD4692_CNV_CLOCK;
-
-		break;
-
-	case AD4692_CNV_CLOCK:
-	case AD4692_CNV_BURST:
-	case AD4692_SPI_BURST:
-		break;
-
-	default:
-		return -EINVAL;
-	}
-
-	return 0;
-}
-
-/**
- * @brief Prepare for ADC data capture (transfer from device to memory)
- * @param dev_instance[in] - IIO device instance
- * @param chn_mask[in] - Channels select mask
- * @return 0 in case of success, negative error code otherwise
- */
-static int32_t ad4692_iio_prepare_transfer(void* dev_instance, uint32_t ch_mask)
-{
-	int32_t ret;
-	uint8_t ch_id;
-	uint8_t index = 0;
-	uint32_t mask = 0x1;
-	num_of_active_channels = 0;
-	chan_id = 0;
-	memset(ad4692_active_channels, 0, NO_OF_CHANNELS);
-
-	if (!dev_instance) {
-		return -EINVAL;
-	}
-
-	if (ad4692_interface_mode == SPI_DMA) {
-		dma_capture = true;
-	}
-
-	if (ad4692_sequencer_mode == STANDARD_SEQUENCER) {
-		/* Updates the count of total number of active channels */
-		for (ch_id = 0; ch_id < NO_OF_CHANNELS; ch_id++) {
-			if (mask & ch_mask) {
-				ad4692_active_channels[index++] = ch_id;
-				num_of_active_channels++;
-			}
-			mask <<= 1;
-		}
-		channel_mask = ch_mask;
-	} else {
-		/* Updates the count of total number of active channels in advanced sequencer mode */
-		for (ch_id = 0; ch_id < NO_OF_CHANNELS; ch_id++) {
-			if (channel_priorities[ch_id] != 0) {
-				ad4692_active_channels[index++] = ch_id;
-				num_of_active_channels++;
-				mask |= (1 << ch_id);
-			}
-		}
-		channel_mask = mask;
-	}
-
-	if ((ad4692_data_capture_mode == CONTINUOUS)
-	    || (ad4692_interface_mode == SPI_DMA)) {
-		/* Start ADC Data capture */
-		ret = ad4692_start_data_capture(ad4692_dev);
-		if (ret) {
-			return ret;
-		}
-	}
-	if (ad4692_interface_mode == SPI_INTR) {
-		ad4692_init_params.conv_param->period_ns = CONV_TRIGGER_PERIOD_NSEC(
-					ad4692_sampling_frequency);
-		ad4692_init_params.conv_param->duty_cycle_ns = CNV_ON_TIME;
-		pwm_spi_burst_init.period_ns = CONV_TRIGGER_PERIOD_NSEC(
-						       ad4692_sampling_frequency);
-
-		ret = init_pwm();
-		if (ret) {
-			return ret;
-		}
-
-		if (ad4692_data_capture_mode == CONTINUOUS) {
-#if	(ACTIVE_PLATFORM == STM32_PLATFORM)
-			/* Clear any pending interrupts occured from a spurious falling edge of
-			 * GPIO pin during toggling the CNV as a GPIO in the ad4692_start_data_capture()
-			 * Note: EOC for SPI Burst is triggered in the ad4692_start_data_capture() when
-			 * AD4692_CONV_START_REG is configured. Hence, no clearing of pending interrupt
-			 * needed for SPI Burst */
-			if (ad4692_init_params.mode != AD4692_SPI_BURST) {
-				ret = no_os_irq_clear_pending(trigger_irq_desc, TRIGGER_INT_ID);
-				if (ret) {
-					return ret;
-				}
-			}
-#endif // ACTIVE_PLATFORM
-			ret = iio_trig_enable(ad4692_hw_trig_desc);
-			if (ret) {
-				return ret;
-			}
-
-			/* Configure CNV PWM and start */
-			ret = ad4692_config_and_start_pwm(ad4692_dev);
-			if (ret) {
-				return ret;
-			}
-		}
-	} else { // SPI DMA
-
-		/* Pull the SPI CS line low to enable the data on SDO.*/
-		ret = no_os_gpio_set_value(csb_gpio_desc, NO_OS_GPIO_LOW);
-		if (ret) {
-			return ret;
-		}
-
-		/* Initialize Tx Trigger Timer */
-		ret = tx_trigger_init();
-		if (ret) {
-			return ret;
-		}
-	}
-
-	return 0;
-}
-
-/**
- * @brief	Perform tasks before end of current data transfer
- * @param	dev[in] - IIO device instance
- * @return	0 in case of success, negative error code otherwise
- */
-static int32_t ad4692_iio_end_transfer(void *dev)
-{
-	int32_t ret;
-
-	if (!dev) {
-		return -EINVAL;
-	}
-
-	if (ad4692_interface_mode == SPI_INTR) {
-		if (ad4692_data_capture_mode == CONTINUOUS) {
-			/* Stop timer */
-			ad4692_stop_timer();
-
-			/* Disable triggers */
-			ret = iio_trig_disable(ad4692_hw_trig_desc);
-			if (ret) {
-				return ret;
-			}
-		}
-	} else { // SPI_DMA
-		/* Stop timers */
-		ad4692_stop_timer();
-
-		stm32_abort_dma_transfer();
-
-		/* Pull the SPI CS line back high to enable reg Access */
-		ret = no_os_gpio_set_value(csb_gpio_desc, NO_OS_GPIO_HIGH);
-		if (ret) {
-			return ret;
-		}
-
-		/* De initialize the Tx Trigger PWM */
-		ret = no_os_pwm_disable(tx_trigger_desc);
-		if (ret) {
-			return ret;
-		}
-
-		dma_config_updated = false;
-	}
-	/* Stop ADC Data capture */
-	ret = ad4692_stop_data_capture(ad4692_dev);
-	if (ret) {
-		return ret;
-	}
-
-	buf_size_updated = false;
-
-	return 0;
-}
-
-/**
- * @brief Push data into IIO buffer when trigger handler IRQ is invoked
- * @param iio_dev_data[in] - IIO device data instance
- * @return 0 in case of success or negative value otherwise
- */
-int32_t ad4692_trigger_handler(struct iio_device_data *iio_dev_data)
-{
-	int ret;
-	uint32_t data_read = 0;
-	uint8_t eoc_status;
-	uint32_t timeout = BUF_READ_TIMEOUT;
-	uint8_t id = 0;
-	uint8_t bytes_offset = 2; // Offset to start reading the Rx word from SPI Data
-
-	if (ad4692_init_params.mode == AD4692_MANUAL_MODE) {
-		/* Reset the channel ID back to the first enabled channel in ascending order */
-		if (chan_id >= num_of_active_channels) {
-			chan_id = 0;
-		}
-
-		data_buff[0] = AD4692_IN_COMMAND(ad4692_active_channels[chan_id++]);
-		data_buff[1] = 0x0;
-
-		ret = no_os_spi_transfer(ad4692_dev->comm_desc, &ad4692_spi_msg_manual_mode, 1);
-		if (ret) {
-			return ret;
-		}
-
-		ret = no_os_cb_write(iio_dev_data->buffer->buf,
-				     ad4692_spi_msg_manual_mode.rx_buff,
-				     n_data_bytes);
-		if (ret) {
-			return ret;
-		}
-	} else {
-		/* Populate the Tx command */
-		ad4692_get_tx_command(acc_data_buff);
-
-		if (ad4692_init_params.mode == AD4692_SPI_BURST) {
-			/* Write to Convert Start register to trigger the next burst of conversion */
-			ret = ad4692_reg_write(ad4692_dev,
-					       AD4692_OSC_EN_REG,
-					       AD4692_CONV_START_MASK);
-			if (ret) {
-				return ret;
-			}
-			/* Poll for BSY Low */
-			do {
-				ret = no_os_gpio_get_value(ad4692_dev->gpio0_desc, &eoc_status);
-				if (ret) {
-					return ret;
-				}
-			} while ((eoc_status != NO_OS_GPIO_LOW) && (timeout-- > 0));
-
-			if (timeout == 0) {
-				return -ETIMEDOUT;
-			}
-		}
-
-		/* Pull CS low, read the data of all channels and Pull back CS High */
-		ret = no_os_gpio_set_value(csb_gpio_desc, NO_OS_GPIO_LOW);
-		if (ret) {
-			return ret;
-		}
-
-		ret = no_os_spi_write_and_read(ad4692_dev->comm_desc, &acc_data_buff[0],
-					       num_of_active_channels * n_bytes_per_transaction);
-		if (ret) {
-			return ret;
-		}
-
-		ret = no_os_gpio_set_value(csb_gpio_desc, NO_OS_GPIO_HIGH);
-		if (ret) {
-			return ret;
-		}
-
-		for (chan_id = 0; chan_id < num_of_active_channels; chan_id++) {
-			id = (chan_id * n_bytes_per_transaction) + bytes_offset;
-			if (ad4692_readback_option == ACCUMULATOR_DATA) {
-				data_read = no_os_get_unaligned_be24(&acc_data_buff[id]);
-			} else {
-				data_read = no_os_get_unaligned_be16(&acc_data_buff[id]);
-			}
-
-			ret = no_os_cb_write(iio_dev_data->buffer->buf,
-					     &data_read,
-					     n_data_bytes);
-			if (ret) {
-				return ret;
-			}
-		}
-
-		/* Reset the state of accumulator to start a new burst of conversion */
-		ret = ad4692_reg_write(ad4692_dev,
-				       AD4692_STATE_RESET_REG,
-				       AD4692_STATE_RESET_ALL);
-		if (ret) {
-			return ret;
-		}
-	}
-
-	return 0;
-}
-
-/*!
  * @brief Interrupt Service Routine to monitor end of conversion event.
  * @param ctx[in] - Callback context (unused)
  * @return none
- * @note Callback registered for the the DRDY interrupt to indicate
- * end of conversion in case of burst data capturing with SPI operation.
  */
 void ad4692_data_capture_callback(void *ctx)
 {
 	ad4692_conversion_flag = true;
-}
-
-/**
- * @brief  Get the Tx buffer respective to the enabled channels
- * @param local_tx_data[out] Tx buffer
- * @return None
- */
-void ad4692_get_tx_command(uint8_t* local_tx_data)
-{
-	uint8_t ch_id;
-	uint8_t index;
-
-
-	if (ad4692_init_params.mode == AD4692_MANUAL_MODE) {
-		for (ch_id = 0; ch_id < num_of_active_channels; ch_id++) {
-			index = ad4692_active_channels[ch_id];
-			local_tx_data[ch_id * BYTES_PER_SAMPLE] = AD4692_IN_COMMAND(index);
-			local_tx_data[(ch_id * BYTES_PER_SAMPLE) + 1] = 0;
-		}
-	} else {
-		index = 0;
-		for (ch_id = 0; ch_id < num_of_active_channels; ch_id++) {
-			if (ad4692_readback_option == ACCUMULATOR_DATA) {
-				acc_data_buff[index++] = AD4692_RW_ADDR_MASK | AD4692_MSB_MASK(
-								 AD4692_ACC_IN_REG(
-										 ad4692_active_channels[ch_id]));
-				acc_data_buff[index++] = AD4692_LSB_MASK(AD4692_ACC_IN_REG(
-								 ad4692_active_channels[ch_id]));
-				acc_data_buff[index++] = 0x0;
-				acc_data_buff[index++] = 0x0;
-				acc_data_buff[index++] = 0x0;
-			} else {
-				acc_data_buff[index++] = AD4692_RW_ADDR_MASK | AD4692_MSB_MASK(
-								 AD4692_AVG_IN_REG(
-										 ad4692_active_channels[ch_id]));
-				acc_data_buff[index++] = AD4692_LSB_MASK(AD4692_AVG_IN_REG(
-								 ad4692_active_channels[ch_id]));
-				acc_data_buff[index++] = 0x0;
-				acc_data_buff[index++] = 0x0;
-			}
-		}
-	}
-}
-
-/**
- * @brief Read data in burst mode via SPI DMA
- * @param nb_of_samples[in] - Number of samples requested by IIO
- * @param iio_dev_data[in] - IIO Device data instance
- * @return 0 in case of success or negative value otherwise
- */
-static int32_t ad4692_read_data_spi_dma(uint32_t nb_of_samples,
-					struct iio_device_data* iio_dev_data)
-{
-	int ret;
-	uint32_t timeout = BUF_READ_TIMEOUT;
-	uint32_t spirxdma_ndtr;
-	static uint8_t local_tx_data[32] = { 0x0 };
-
-	if (ad4692_data_capture_mode == BURST) {
-		nb_of_samples = nb_of_samples * BYTES_PER_SAMPLE;
-
-		ret = no_os_cb_prepare_async_write(iio_dev_data->buffer->buf,
-						   nb_of_samples,
-						   (void **) &buff_start_addr,
-						   &data_read);
-		if (ret) {
-			return ret;
-		}
-
-		/* Manipulate the number of samples considering the 2-cycle offset in manual mode*/
-		if (num_of_active_channels <= 2) {
-			nb_of_samples += (N_CYCLE_OFFSET * BYTES_PER_SAMPLE);
-		} else {
-			nb_of_samples += (num_of_active_channels * BYTES_PER_SAMPLE);
-		}
-
-		if (!dma_config_updated) {
-			ad4692_init_params.conv_param->period_ns = CONV_TRIGGER_PERIOD_NSEC(
-						ad4692_sampling_frequency);
-			ad4692_init_params.conv_param->duty_cycle_ns = CNV_ON_TIME;
-
-			ret = init_pwm();
-			if (ret) {
-				return ret;
-			}
-
-			/* Build the Tx command with respect to the enabled channels */
-			ad4692_get_tx_command(local_tx_data);
-
-			/* Cap SPI RX DMA NDTR to MAX_DMA_NDTR. */
-			spirxdma_ndtr = no_os_min(MAX_DMA_NDTR, nb_of_samples);
-			rxdma_ndtr = spirxdma_ndtr;
-
-			/* Register half complete callback, for ping-pong buffers implementation. */
-			HAL_DMA_RegisterCallback(&hdma_spi1_rx,
-						 HAL_DMA_XFER_HALFCPLT_CB_ID,
-						 ad4692_spi_dma_rx_half_cplt_callback);
-
-			struct no_os_spi_msg  ad4692_spi_msg = {
-				.tx_buff = local_tx_data,
-				.rx_buff = local_buf,
-				.bytes_number = spirxdma_ndtr,
-			};
-
-			ret = no_os_spi_transfer_dma_async(ad4692_dev->comm_desc, &ad4692_spi_msg,
-							   1, NULL, NULL);
-			if (ret) {
-				return ret;
-			}
-
-			/* DMA to be disabled while reconfiguring the NDTR register */
-			DMA2_Stream2->CR &= ~1;
-			DMA2_Stream2->NDTR = num_of_active_channels * 2;
-			DMA2_Stream2->CR |= 1;
-
-			dma_config_updated = true;
-		}
-
-		if (nb_of_samples == rxdma_ndtr) {
-			dma_cycle_count = 1;
-		} else {
-			dma_cycle_count = ((nb_of_samples) / rxdma_ndtr) + 1;
-		}
-		callback_count = dma_cycle_count * 2;
-		update_buff(local_buf, (uint8_t *)buff_start_addr);
-
-		/* Configure CNV PWM and start */
-		ret = ad4692_config_and_start_pwm(ad4692_dev);
-		if (ret) {
-			return ret;
-		}
-
-		while (ad4692_dma_buff_full != true && timeout > 0) {
-			timeout--;
-		}
-
-		if (!timeout) {
-			return -EIO;
-		}
-
-		ad4692_dma_buff_full = false;
-		ret = no_os_cb_end_async_write(iio_dev_data->buffer->buf);
-		if (ret) {
-			return ret;
-		}
-		ad4692_stop_timer();
-	} else { // CONTINUOUS_DATA_CAPTURE
-		if (!dma_config_updated) {
-			ad4692_init_params.conv_param->period_ns = CONV_TRIGGER_PERIOD_NSEC(
-						ad4692_sampling_frequency);
-			ad4692_init_params.conv_param->duty_cycle_ns = CNV_ON_TIME;
-
-			ret = init_pwm();
-			if (ret) {
-				return ret;
-			}
-
-			/* Build the Tx command with respect to the enabled channels */
-			ad4692_get_tx_command(local_tx_data);
-
-			nb_of_samples = nb_of_samples * BYTES_PER_SAMPLE;
-
-			/* Manipulate the number of samples considering the 2-cycle offset in manual mode*/
-			if (num_of_active_channels <= 2) {
-				nb_of_samples += (N_CYCLE_OFFSET * BYTES_PER_SAMPLE);
-			} else {
-				nb_of_samples += (num_of_active_channels * BYTES_PER_SAMPLE);
-			}
-
-			nb_of_samples_g = nb_of_samples;
-			iio_dev_data_g = iio_dev_data;
-
-			spirxdma_ndtr = no_os_min(MAX_DMA_NDTR, nb_of_samples);
-			rxdma_ndtr = spirxdma_ndtr;
-
-			/* SPI Message */
-			struct no_os_spi_msg ad4692_spi_msg = {
-				.tx_buff = local_tx_data,
-				.rx_buff = local_buf,
-				.bytes_number = spirxdma_ndtr
-			};
-
-			ret = no_os_cb_prepare_async_write(iio_dev_data_g->buffer->buf,
-							   nb_of_samples,
-							   (void **) &buff_start_addr,
-							   &data_read);
-			if (ret) {
-				return ret;
-			}
-
-			ret = no_os_spi_transfer_dma_async(ad4692_dev->comm_desc, &ad4692_spi_msg, 1,
-							   NULL, NULL);
-			if (ret) {
-				return ret;
-			}
-
-			/* DMA to be disabled while configuring the NDTR Register */
-			DMA2_Stream2->CR &= ~1;
-			DMA2_Stream2->NDTR = num_of_active_channels * BYTES_PER_SAMPLE;
-			DMA2_Stream2->CR |= 1;
-
-			dma_config_updated = true;
-
-			if (nb_of_samples == rxdma_ndtr) {
-				dma_cycle_count = 1;
-			} else {
-				dma_cycle_count = ((nb_of_samples) / rxdma_ndtr) + 1;
-			}
-
-			/* Update Buffer indices */
-			update_buff(local_buf, (uint8_t *)buff_start_addr);
-
-			/* Configure CNV PWM and start */
-			ret = ad4692_config_and_start_pwm(ad4692_dev);
-			if (ret) {
-				return ret;
-			}
-		}
-	}
-
-	return 0;
-}
-
-/**
- * @brief Read buffer data corresponding to AD4692 IIO device.
- * @param [in, out] iio_dev_data - Device descriptor.
- * @return Number of samples read.
- */
-static int32_t ad4692_iio_submit_samples(struct iio_device_data *iio_dev_data)
-{
-	int ret;
-	uint32_t timeout = BUF_READ_TIMEOUT;
-	uint32_t sample_index = 0;
-	ad4692_conversion_flag = false;
-	chan_id = 0;
-	uint32_t data_read;
-	uint8_t eoc_status;
-	uint8_t id = 0;
-	uint8_t bytes_offset = 2; // Offset to start reading the Rx word from SPI Data
-
-	if (!iio_dev_data) {
-		return -EINVAL;
-	}
-
-	nb_of_samples = iio_dev_data->buffer->size / n_data_bytes;
-
-	if (!buf_size_updated) {
-		/* Update total buffer size according to bytes per scan for proper
-		 * alignment of multi-channel IIO buffer data */
-		iio_dev_data->buffer->buf->size = iio_dev_data->buffer->size;
-		buf_size_updated = true;
-	}
-
-	if (ad4692_interface_mode == SPI_INTR) {
-		/* Start ADC data capture */
-		ret = ad4692_start_data_capture(ad4692_dev);
-		if (ret) {
-			return ret;
-		}
-
-		/* Clear any pending interrupts occured from a spurious falling edge of
-		* GPIO pin during toggling the CNV as a GPIO in the ad4692_start_data_capture()*/
-		if (ad4692_init_params.mode != AD4692_SPI_BURST) {
-			ret = no_os_irq_clear_pending(trigger_irq_desc, TRIGGER_INT_ID);
-			if (ret) {
-				return ret;
-			}
-		}
-
-		ret = no_os_irq_enable(trigger_irq_desc, trigger_gpio_irq_params.irq_ctrl_id);
-		if (ret) {
-			return ret;
-		}
-
-		/* Config CNV PWM and start */
-		ret = ad4692_config_and_start_pwm(ad4692_dev);
-		if (ret) {
-			return ret;
-		}
-
-		while (sample_index < nb_of_samples) {
-			/* Build the Tx Command */
-			ad4692_get_tx_command(acc_data_buff);
-
-			if (ad4692_init_params.mode == AD4692_SPI_BURST) {
-				/* Write to Convert Start register to trigger the next burst of conversion */
-				ret = ad4692_reg_write(ad4692_dev,
-						       AD4692_OSC_EN_REG,
-						       AD4692_CONV_START_MASK);
-				if (ret) {
-					return ret;
-				}
-			}
-
-			/* Check for status of conversion flag */
-			while (!ad4692_conversion_flag && timeout > 0) {
-				timeout--;
-			}
-
-			if (timeout == 0) {
-				return -ETIMEDOUT;
-			}
-			timeout = BUF_READ_TIMEOUT;
-
-			ad4692_conversion_flag = false;
-
-			if (ad4692_init_params.mode == AD4692_MANUAL_MODE) {
-				if (chan_id >= num_of_active_channels) {
-					chan_id = 0;
-				}
-
-				data_buff[0] = AD4692_IN_COMMAND(ad4692_active_channels[chan_id++]);
-				data_buff[1] = 0x0;
-
-				ret = no_os_spi_transfer(ad4692_dev->comm_desc, &ad4692_spi_msg_manual_mode, 1);
-				if (ret) {
-					return ret;
-				}
-
-				ret = no_os_cb_write(iio_dev_data->buffer->buf,
-						     ad4692_spi_msg_manual_mode.rx_buff,
-						     n_data_bytes);
-				if (ret) {
-					return ret;
-				}
-
-			} else {
-				if (ad4692_init_params.mode == AD4692_SPI_BURST) {
-					/* Poll for BSY Low */
-					do {
-						ret = no_os_gpio_get_value(ad4692_dev->gpio0_desc, &eoc_status);
-						if (ret) {
-							return ret;
-						}
-					} while ((eoc_status != NO_OS_GPIO_LOW) && (timeout-- > 0));
-
-					if (timeout == 0) {
-						return -ETIMEDOUT;
-					}
-					timeout = BUF_READ_TIMEOUT;
-				}
-
-				/* Pull CS low, read the data of all channels and Pull back CS High */
-				ret = no_os_gpio_set_value(csb_gpio_desc, NO_OS_GPIO_LOW);
-				if (ret) {
-					return ret;
-				}
-
-				ret = no_os_spi_write_and_read(ad4692_dev->comm_desc, acc_data_buff,
-							       num_of_active_channels * n_bytes_per_transaction);
-				if (ret) {
-					return ret;
-				}
-
-				ret = no_os_gpio_set_value(csb_gpio_desc, NO_OS_GPIO_HIGH);
-				if (ret) {
-					return ret;
-				}
-
-				for (chan_id = 0; chan_id < num_of_active_channels; chan_id++) {
-					id = (chan_id * n_bytes_per_transaction) + bytes_offset;
-					if (ad4692_readback_option == ACCUMULATOR_DATA) {
-						data_read = no_os_get_unaligned_be24(&acc_data_buff[id]);
-					} else {
-						data_read = no_os_get_unaligned_be16(&acc_data_buff[id]);
-					}
-
-					ret = no_os_cb_write(iio_dev_data->buffer->buf,
-							     &data_read,
-							     n_data_bytes);
-					if (ret) {
-						return ret;
-					}
-				}
-
-				/* Reset the state of accumulator to start a new burst of conversion*/
-				ret = ad4692_reg_write(ad4692_dev,
-						       AD4692_STATE_RESET_REG,
-						       AD4692_STATE_RESET_ALL);
-				if (ret) {
-					return ret;
-				}
-			}
-			sample_index++;
-		}
-
-		/* Stop timer */
-		ad4692_stop_timer();
-
-		/* Disable triggers */
-		ret = no_os_irq_disable(trigger_irq_desc, trigger_gpio_irq_params.irq_ctrl_id);
-		if (ret) {
-			return ret;
-		}
-
-		/* Stop ADC Data capture */
-		ret = ad4692_stop_data_capture(ad4692_dev);
-		if (ret) {
-			return ret;
-		}
-	} else { // SPI_DMA
-		ret = ad4692_read_data_spi_dma(nb_of_samples, iio_dev_data);
-		if (ret) {
-			return ret;
-		}
-	}
-
-	return 0;
 }
 
 /*!
@@ -2095,7 +732,7 @@ static int32_t ad4692_iio_debug_reg_read(void *dev,
 		uint32_t reg,
 		uint32_t *readval)
 {
-	int ret;
+	int32_t ret;
 
 	if (!readval || (reg > AD4692_ACC_STS_DATA_REG(NO_OF_CHANNELS))) {
 		return -EINVAL;
@@ -2120,7 +757,7 @@ static int32_t ad4692_iio_debug_reg_write(void *dev,
 		uint32_t reg,
 		uint32_t writeval)
 {
-	int ret;
+	int32_t ret;
 
 	if (reg > AD4692_ACC_STS_DATA_REG(NO_OF_CHANNELS)) {
 		return -EINVAL;
@@ -2156,12 +793,9 @@ static int ad4692_iio_init(struct iio_device **desc, uint8_t dev_indx)
 
 	ad4692_iio_inst = no_os_calloc(1, sizeof(struct iio_device));
 	if (!ad4692_iio_inst) {
-		return -EINVAL;
+		return -ENOMEM;
 	}
 
-	/* The acc_depth attribute is a global level attribute in case of Standard Sequencer
-	 * and a channel level attribute in case of the Advanced sequencer */
-	/* Update the channel map structure according to the sequencer configurations */
 	if (ad4692_sequencer_mode == STANDARD_SEQUENCER) {
 		for (ch = 0; ch < AD4692_MAX_CHANNELS; ch++) {
 			channels[ch] = ad4692_iio_channels[dev_indx][ch];
@@ -2229,14 +863,14 @@ static int ad4692_iio_init(struct iio_device **desc, uint8_t dev_indx)
 	ad4692_iio_inst->num_ch = total_enabled_channels;
 	ad4692_iio_inst->channels = channels;
 	ad4692_iio_inst->attributes = ad4692_iio_global_attributes[dev_indx];
-	ad4692_iio_inst->submit = ad4692_iio_submit_samples;
-	ad4692_iio_inst->pre_enable = ad4692_iio_prepare_transfer;
-	ad4692_iio_inst->post_disable = ad4692_iio_end_transfer;
+	ad4692_iio_inst->submit = ad4692_data_transfer_submit;
+	ad4692_iio_inst->pre_enable = ad4692_data_transfer_prepare;
+	ad4692_iio_inst->post_disable = ad4692_data_transfer_end;
 	ad4692_iio_inst->debug_reg_read = ad4692_iio_debug_reg_read;
 	ad4692_iio_inst->debug_reg_write = ad4692_iio_debug_reg_write;
 
-	if (ad4692_data_capture_mode == CONTINUOUS) {
-		ad4692_iio_inst->trigger_handler = ad4692_trigger_handler;
+	if (ad4692_data_capture_mode == CONTINUOUS_DATA_CAPTURE) {
+		ad4692_iio_inst->trigger_handler = ad4692_data_transfer_trigger_handler;
 	}
 
 	/* Configure the endianness in Channel scan structure */
@@ -2247,15 +881,14 @@ static int ad4692_iio_init(struct iio_device **desc, uint8_t dev_indx)
 	} else {
 		endianness = false;
 
-		/* Update the scan structure according to the chosen readback option */
 		if (ad4692_readback_option == AVERAGED_DATA) {
 			realbits = AD4692_RES_16;
 			n_data_bytes = sizeof(uint16_t);
-			n_bytes_per_transaction = AD4692_N_BYTES_CNV_CLOCK_16BIT;
+			n_bytes_per_transaction = AD4692_N_BYTES_TXN_16BIT;
 		} else {
 			realbits = AD4692_RES_24;
 			n_data_bytes = sizeof(uint32_t);
-			n_bytes_per_transaction = AD4692_N_BYTES_CNV_CLOCK_24BIT;
+			n_bytes_per_transaction = AD4692_N_BYTES_TXN_24BIT;
 		}
 	}
 
@@ -2276,9 +909,9 @@ static int ad4692_iio_init(struct iio_device **desc, uint8_t dev_indx)
  * @param 	desc[in,out] - IIO hardware trigger descriptor
  * @return	0 in case of success, negative error code otherwise
  */
-static int ad4692_iio_trigger_param_init(struct iio_hw_trig **desc)
+static int32_t ad4692_iio_trigger_param_init(struct iio_hw_trig **desc)
 {
-	int ret;
+	int32_t ret;
 	struct iio_hw_trig_init_param ad4692_hw_trig_init_params;
 	struct iio_hw_trig *hw_trig_desc;
 
@@ -2352,75 +985,6 @@ static int board_iio_params_init(struct iio_device** desc,
 	return 0;
 }
 
-int32_t ad4692_configure_sampling_rate(void)
-{
-	dma_capture = false;
-
-	switch (ad4692_init_params.mode) {
-	case AD4692_MANUAL_MODE:
-		if (ad4692_interface_mode == SPI_DMA) {
-			dma_capture = true;
-			ad4692_sampling_frequency_max = S_RATE_MANUAL_DMA;
-		} else {
-			ad4692_sampling_frequency_max = S_RATE_MANUAL_INTR;
-		}
-
-		break;
-
-	case AD4692_CNV_CLOCK:
-		if (ad4692_readback_option == AVERAGED_DATA) {
-			ad4692_sampling_frequency_max = (ad4692_sequencer_mode == STANDARD_SEQUENCER) ?
-							S_RATE_CNV_CLOCK_INTR_STD_AVG :
-							S_RATE_CNV_CLOCK_INTR_ADV_AVG;
-		} else {
-			ad4692_sampling_frequency_max = (ad4692_sequencer_mode == STANDARD_SEQUENCER) ?
-							S_RATE_CNV_CLOCK_INTR_STD_ACC :
-							S_RATE_CNV_CLOCK_INTR_ADV_ACC;
-		}
-
-		break;
-
-	case AD4692_CNV_BURST:
-		if (ad4692_sequencer_mode == STANDARD_SEQUENCER) {
-			if (ad4692_readback_option  == AVERAGED_DATA) {
-				ad4692_sampling_frequency_max = S_RATE_CNV_BURST_STD_AVG;
-			} else {
-				ad4692_sampling_frequency_max = S_RATE_CNV_BURST_STD_ACC;
-			}
-		} else {
-			if (ad4692_readback_option  == AVERAGED_DATA) {
-				ad4692_sampling_frequency_max = S_RATE_CNV_BURST_ADV_AVG;
-			} else {
-				ad4692_sampling_frequency_max = S_RATE_CNV_BURST_ADV_ACC;
-			}
-		}
-
-		break;
-
-	case AD4692_SPI_BURST:
-		if (ad4692_sequencer_mode == STANDARD_SEQUENCER) {
-			if (ad4692_readback_option  == AVERAGED_DATA) {
-				ad4692_sampling_frequency_max = S_RATE_SPI_BURST_STD_AVG;
-			} else {
-				ad4692_sampling_frequency_max = S_RATE_SPI_BURST_STD_ACC;
-			}
-		} else {
-			if (ad4692_readback_option  == AVERAGED_DATA) {
-				ad4692_sampling_frequency_max = S_RATE_SPI_BURST_ADV_AVG;
-			} else {
-				ad4692_sampling_frequency_max = S_RATE_SPI_BURST_ADV_ACC;
-			}
-		}
-
-		break;
-
-	default:
-		return -EINVAL;
-	}
-
-	return 0;
-}
-
 /**
  * @brief	DeInitialize the IIO parameters.
  */
@@ -2441,16 +1005,14 @@ void iio_params_deinit(void)
 
 /**
  * @brief	Remove the IIO application and free the allocated resources
- * @return  None
+ * @return  0
  */
 int32_t iio_app_remove(void)
 {
-	/* Remove and free the pointers allocated during IIO init.
-	 * Use NULL checks to determine which resources were allocated,
-	 * since attribute setters may have changed mode globals before
-	 * the restart flag was set. */
+	/* Remove data transfer system */
+	ad4692_data_transfer_remove(ad4692_dev);
 
-	/* Remove hardware trigger if allocated (SPI_INTR + CONTINUOUS) */
+	/* Remove hardware trigger if allocated (SPI_INTR + CONTINUOUS_DATA_CAPTURE) */
 	if (ad4692_hw_trig_desc) {
 		iio_hw_trig_remove(ad4692_hw_trig_desc);
 		ad4692_hw_trig_desc = NULL;
@@ -2461,8 +1023,6 @@ int32_t iio_app_remove(void)
 
 	/* Remove SPI burst PWM if allocated (SPI_INTR + SPI_BURST) */
 	remove_pwm();
-
-	remove_gpio();
 
 	NO_OS_UNUSED_PARAM(ad4692_remove(ad4692_dev));
 	ad4692_dev = NULL;
@@ -2484,7 +1044,10 @@ int32_t iio_app_remove(void)
  */
 int32_t iio_app_initialize(void)
 {
-	int ret;
+	int32_t ret;
+
+	/* EVB HW validation status */
+	bool hw_mezzanine_is_valid;
 
 	static struct iio_trigger ad4692_iio_trig_desc = {
 		.is_synchronous = true,
@@ -2506,31 +1069,27 @@ int32_t iio_app_initialize(void)
 	}
 
 	if ((ad4692_interface_mode == SPI_INTR)
-	    && (ad4692_data_capture_mode == CONTINUOUS)) {
+	    && (ad4692_data_capture_mode == CONTINUOUS_DATA_CAPTURE)) {
 		iio_init_params.trigs = &iio_trigger_init_params;
 	}
-
-	/* Configure max permissible data rate */
-	ret = ad4692_configure_sampling_rate();
-	if (ret) {
-		return ret;
-	}
-
-	ad4692_sampling_frequency = ad4692_sampling_frequency_max;
 
 	/* Configure to Standard Sequencer in manual Mode */
 	if (ad4692_init_params.mode == AD4692_MANUAL_MODE) {
 		ad4692_sequencer_mode = STANDARD_SEQUENCER;
 	}
 
+	/* Set the PWM period based on the mode */
+	ad4692_sampling_frequency = ad4692_get_max_sampling_rate(
+					    ad4692_init_params.mode);
+	if (ad4692_sampling_frequency) {
+		pwm_init_convst.period_ns = CONV_TRIGGER_PERIOD_NSEC(ad4692_sampling_frequency);
+		pwm_init_convst.duty_cycle_ns = CNV_ON_TIME;
+	}
+
 	ret = init_interrupt();
 	if (ret) {
 		return ret;
 	}
-
-	pwm_init_convst.period_ns = CONV_TRIGGER_PERIOD_NSEC(ad4692_sampling_frequency);
-	pwm_spi_burst_init.period_ns = CONV_TRIGGER_PERIOD_NSEC(
-					       ad4692_sampling_frequency);
 
 	/* Read context attributes */
 	ret = get_iio_context_attributes_ex(&iio_init_params.ctx_attrs,
@@ -2552,22 +1111,24 @@ int32_t iio_app_initialize(void)
 		}
 
 		/* Exit from manual mode if device is configured to manual mode */
-		ret = ad4692_stop_data_capture(ad4692_dev);
-		if (ret) {
-			goto err_remove_ad4692;
+		if (ad4692_dev->mode == AD4692_MANUAL_MODE) {
+			ret = ad4692_exit_manual_mode(ad4692_dev);
+			if (ret) {
+				goto err_remove_ad4692_dev;
+			}
 		}
 
 		/* Register and initialize the AD4692 device into IIO interface */
 		ret = ad4692_iio_init(&ad4692_iio_dev[0], 0);
 		if (ret) {
-			goto err_remove_ad4692;
+			goto err_remove_ad4692_dev;
 		}
 
 		/* Initialize the IIO interface */
 		iio_device_init_params[0].name = ACTIVE_DEVICE_NAME;
 		iio_device_init_params[0].raw_buf = (int8_t *)adc_data_buffer +
 						    (N_CYCLE_OFFSET * BYTES_PER_SAMPLE);
-		if (ad4692_data_capture_mode == CONTINUOUS) {
+		if (ad4692_data_capture_mode == CONTINUOUS_DATA_CAPTURE) {
 			iio_device_init_params[0].raw_buf_len = DATA_BUFFER_SIZE_CONT;
 		} else {
 			iio_device_init_params[0].raw_buf_len = DATA_BUFFER_SIZE;
@@ -2578,18 +1139,52 @@ int32_t iio_app_initialize(void)
 		iio_init_params.nb_devs++;
 
 		if ((ad4692_interface_mode == SPI_INTR)
-		    && (ad4692_data_capture_mode == CONTINUOUS)) {
+		    && (ad4692_data_capture_mode == CONTINUOUS_DATA_CAPTURE)) {
 			iio_device_init_params[0].trigger_id = "trigger0";
 			iio_init_params.nb_trigs++;
 		}
-
 		break;
+	} while (false);
+
+	if (ad4692_dev) {
+		/* Configure the channel priorities in advanced sequencer mode */
+		if (ad4692_sequencer_mode == ADVANCED_SEQUENCER) {
+			ret = ad4692_configure_channel_priorities(channel_priorities,
+					channel_sequence,
+					&num_of_as_slots,
+					ad4692_acc_count);
+			if (ret) {
+				goto err_remove_ad4692;
+			}
+		} else {
+			memset(ad4692_acc_count, 0x0, NO_OF_CHANNELS);
+		}
+
+		/* Initialize data transfer system for selected mode */
+		/*
+		 * Note: ad4692_init_params.mode is used instead of ad4692_dev->mode
+		 * because when ad4692_init_params.mode is MANUAL the device moves to
+		 * MANUAL mode only when data capture occurs. The ADC doesn't accept
+		 * any register read/write when in MANUAL mode. Hence use CNV_CLOCK
+		 * mode for all register read/write and use MANUAL mode only for data
+		 * capture.
+		 */
+		ret = ad4692_data_transfer_init(ad4692_dev, ad4692_init_params.mode);
+		if (ret) {
+			goto err_remove_ad4692;
+		}
+	}
+
+	/* Goto System Config initialization if success */
+	goto system_config_init;
 
 err_remove_ad4692:
-		ad4692_remove(ad4692_dev);
-		ad4692_dev = NULL;
-		goto system_config_init;
-	} while (false);
+	no_os_free(ad4692_iio_dev[0]);
+	iio_init_params.nb_devs = 0;
+	iio_init_params.nb_trigs = 0;
+err_remove_ad4692_dev:
+	ad4692_remove(ad4692_dev);
+	ad4692_dev = NULL;
 
 system_config_init:
 	/* Initialize board IIO paramaters */
@@ -2613,32 +1208,10 @@ iio_init:
 	}
 
 	if ((ad4692_interface_mode == SPI_INTR)
-	    && (ad4692_data_capture_mode == CONTINUOUS)) {
+	    && (ad4692_data_capture_mode == CONTINUOUS_DATA_CAPTURE)) {
 		ret = ad4692_iio_trigger_param_init(&ad4692_hw_trig_desc);
 		if (ret) {
 			return ret;
-		}
-	}
-
-	/* Initialize the PWM and channel priorities only if ADC initialization is proper */
-	if (ad4692_dev) {
-		ret = init_pwm();
-		if (ret) {
-			return ret;
-		}
-		ad4692_stop_timer();
-
-		/* Configure the channel priorities in advanced sequencer mode */
-		if (ad4692_sequencer_mode == ADVANCED_SEQUENCER) {
-			ret = ad4692_configure_channel_priorities(channel_priorities,
-					channel_sequence,
-					&num_of_as_slots,
-					ad4692_acc_count);
-			if (ret) {
-				return ret;
-			}
-		} else {
-			memset(ad4692_acc_count, 0x0, NO_OF_CHANNELS);
 		}
 	}
 

@@ -192,10 +192,6 @@ void stm32_system_init(void)
 	MX_SPI1_Init();
 	MX_DMA_Init();
 
-	MX_TIM1_Init();
-	MX_TIM4_Init();
-	MX_TIM8_Init();
-
 #ifdef USE_VIRTUAL_COM_PORT
 	MX_USB_DEVICE_Init();
 #endif
@@ -205,16 +201,18 @@ void stm32_system_init(void)
  * @param desc[in] - Device descriptor
  * @return 0 in case of success, negative error code otherwise.
  */
-int ad4692_config_and_start_pwm(struct ad4692_desc *desc)
+int32_t ad4692_config_and_start_pwm(struct ad4692_desc *desc)
 {
-	int ret;
+	int32_t ret;
 
 	if (!desc) {
 		return -EINVAL;
 	}
 
 	/* Enable Tx Trigger DMA */
-	TIM8->DIER |= TIM_DIER_CC1DE;
+	if (ad4692_interface_mode == SPI_DMA) {
+		TIM8->DIER |= TIM_DIER_CC1DE;
+	}
 
 	/* Enable CNV PWM for any mode other than SPI Burst */
 	if (ad4692_init_params.mode != AD4692_SPI_BURST) {
@@ -309,7 +307,9 @@ void ad4692_spi_dma_rx_half_cplt_callback(DMA_HandleTypeDef* hdma)
  */
 void ad4692_spi_dma_rx_cplt_callback(DMA_HandleTypeDef* hdma)
 {
-	if (ad4692_data_capture_mode == BURST) {
+	uint32_t data_read;
+
+	if (ad4692_data_capture_mode == BURST_DATA_CAPTURE) {
 		/* Update samples captured so far */
 		dma_cycle_count -= 1;
 
@@ -344,13 +344,13 @@ void ad4692_spi_dma_rx_cplt_callback(DMA_HandleTypeDef* hdma)
  */
 void DMA2_Stream0_IRQHandler(void)
 {
-	if (ad4692_data_capture_mode == BURST) {
+	if (ad4692_data_capture_mode == BURST_DATA_CAPTURE) {
 		/* Stop Tx trigger DMA and CNV timer at the last entry
 		to the callback */
 		if (callback_count == 1) {
 			TIM8->DIER &= ~TIM_DIER_CC1DE;
 		}
-	} else { // CONTINUOUS
+	} else { // CONTINUOUS_DATA_CAPTURE
 		memcpy(iio_buf_current_idx,
 		       dma_buf_current_idx, rxdma_ndtr);
 	}

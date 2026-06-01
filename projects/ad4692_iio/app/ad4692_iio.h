@@ -38,8 +38,8 @@ enum ad4692_interface_modes {
 
 /* Enum of data capture modes */
 enum ad4692_data_capture_modes {
-	CONTINUOUS,
-	BURST
+	CONTINUOUS_DATA_CAPTURE,
+	BURST_DATA_CAPTURE
 };
 
 /* AD4692 attribute unique IDs */
@@ -80,6 +80,5 @@ extern struct ad4692_desc *ad4692_dev;
 extern uint32_t ad4692_sampling_frequency;
 extern enum ad4692_interface_modes ad4692_interface_mode;
 extern enum ad4692_data_capture_modes ad4692_data_capture_mode;
-extern uint8_t buf_offset;
 
 #endif /* AD4692_IIO_H_ */
