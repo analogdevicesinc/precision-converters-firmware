@@ -3,7 +3,7 @@
  *   @brief   Application configurations module
  *   @details This module contains the configurations needed for IIO application
 ********************************************************************************
- * Copyright (c) 2024, 2026 Analog Devices, Inc.
+ * Copyright (c) 2026 Analog Devices, Inc.
  * All rights reserved.
  *
  * This software is proprietary to Analog Devices, Inc. and its licensors.

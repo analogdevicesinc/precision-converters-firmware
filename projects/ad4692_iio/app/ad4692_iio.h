@@ -2,7 +2,7 @@
 *   @file   ad4692_iio.h
 *   @brief  Header file of ad4692_iio
 ********************************************************************************
-* Copyright (c) 2024, 2026 Analog Devices, Inc.
+* Copyright (c) 2026 Analog Devices, Inc.
 *
 * All rights reserved.
 * This software is proprietary to Analog Devices, Inc. and its licensors.

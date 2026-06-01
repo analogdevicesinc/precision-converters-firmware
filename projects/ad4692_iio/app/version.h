@@ -2,7 +2,7 @@
  *   @file   version.h
  *   @brief  Version macros for AD4692 IIO Firmware
 ******************************************************************************
-* Copyright (c) 2025-26 Analog Devices, Inc.
+* Copyright (c) 2026 Analog Devices, Inc.
 *
 * All rights reserved.
 *

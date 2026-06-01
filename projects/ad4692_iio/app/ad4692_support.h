@@ -2,7 +2,7 @@
  *   @file   ad4692_support.h
  *   @brief  Support header file for AD4692
 ******************************************************************************
-* Copyright (c) 2024, 2026 Analog Devices, Inc.
+* Copyright (c) 2026 Analog Devices, Inc.
 *
 * All rights reserved.
 *

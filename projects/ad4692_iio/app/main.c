@@ -2,7 +2,7 @@
  *   @file    main.c
  *   @brief   Main interface for IIO firmware application
 ********************************************************************************
- * Copyright (c) 2024, 2026 Analog Devices, Inc.
+ * Copyright (c) 2026 Analog Devices, Inc.
  *
  * This software is proprietary to Analog Devices, Inc. and its licensors.
  * By using this software you agree to the terms of the associated

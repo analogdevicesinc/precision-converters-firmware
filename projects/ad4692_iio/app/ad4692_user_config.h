@@ -2,7 +2,7 @@
  *   @file   ad4692_user_config.h
  *   @brief  Header for AD4692 user configuration file
 ******************************************************************************
-* Copyright (c) 2024 Analog Devices, Inc.
+* Copyright (c) 2026 Analog Devices, Inc.
 *
 * All rights reserved.
 *

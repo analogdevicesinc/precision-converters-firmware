@@ -2,7 +2,7 @@
  *   @file   app_config.h
  *   @brief  Configuration file for AD4692 device applications
 ******************************************************************************
-* Copyright (c) 2024, 2026 Analog Devices, Inc.
+* Copyright (c) 2026 Analog Devices, Inc.
 *
 * All rights reserved.
 *
