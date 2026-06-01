@@ -2,7 +2,7 @@
 HeaderPath=../../app;../../../../libraries/no-OS/util;../../../../libraries/no-OS/include;../../../../libraries/no-OS/drivers/platform/stm32;../../../../libraries/no-OS/iio;../../../../libraries/no-OS/drivers/api;../../../../libraries/precision-converters-library/board_info/;../../../../libraries/precision-converters-library/common/;../../../../libraries/no-OS/drivers/eeprom/24xx32a/;../../../../libraries/no-OS/drivers/adc/ad4692/;../../../../libraries/precision-converters-library/sdp_k1_sdram/;../../../_common/;../../../_common/stm32/;
 
 [Groups]
-app/=../../app/main.c;../../app/ad4692_iio.c;../../app/ad4692_iio.h;../../app/ad4692_support.c;../../app/ad4692_support.h;../../app/app_config.h;../../app/app_config.c;../../app/app_config_stm32.c;../../app/app_config_stm32.h;../../app/stm32_gpio_irq_generated.c;../../app/ad4692_user_config.c;../../app/ad4692_user_config.h;../../app/eeprom_config.c;../../app/eeprom_config.h;../../app/version.h;../../app/ad4692_attrs.h;
+app/=../../app/main.c;../../app/ad4692_iio.c;../../app/ad4692_iio.h;../../app/ad4692_support.c;../../app/ad4692_support.h;../../app/ad4692_support_manual_mode.c;../../app/ad4692_support_cnv_clock_mode.c;../../app/ad4692_support_cnv_burst_mode.c;../../app/ad4692_support_spi_burst_mode.c;../../app/app_config.h;../../app/app_config.c;../../app/app_config_stm32.c;../../app/app_config_stm32.h;../../app/stm32_gpio_irq_generated.c;../../app/ad4692_user_config.c;../../app/ad4692_user_config.h;../../app/eeprom_config.c;../../app/eeprom_config.h;../../app/version.h;../../app/ad4692_attrs.h;
 
 app/_common/=../../../_common/adi_version.h;../../../_common/common_macros.h;
 
