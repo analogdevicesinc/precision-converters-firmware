@@ -78,19 +78,19 @@ struct no_os_uart_init_param uart_console_stdio_init_params = {
 };
 #endif
 
+/* PWM GPIO init parameters */
+struct no_os_gpio_init_param cnv_pwm_gpio_params = {
+	.port = CNV_PORT_NUM,
+	.number = CNV_PIN_NUM,
+	.platform_ops = &gpio_ops,
+	.extra = &cnv_pwm_gpio_extra_init_params
+};
+
 /* External interrupt init parameters */
 struct no_os_irq_init_param trigger_gpio_irq_params = {
 	.irq_ctrl_id = TRIGGER_INT_ID,
 	.platform_ops = &trigger_gpio_irq_ops,
 	.extra = &trigger_gpio_irq_extra_params
-};
-
-/* CNV GPIO Init params */
-struct no_os_gpio_init_param cnv_gpio_init_param = {
-	.port = CNV_PORT_NUM,
-	.number = CNV_PIN_NUM,
-	.platform_ops = &gpio_ops,
-	.extra = &gpio_input_extra_init_params
 };
 
 /* External interrupt callback descriptor */
@@ -146,8 +146,6 @@ struct no_os_uart_desc *uart_iio_com_desc;
 /* Console Descriptor */
 struct no_os_uart_desc *uart_console_stdio_desc;
 
-/* CNV GPIO descriptor */
-struct no_os_gpio_desc *cnv_gpio_desc = NULL;
 
 /* EEPROM descriptor */
 struct no_os_eeprom_desc* eeprom_desc;
@@ -160,33 +158,8 @@ struct no_os_dma_init_param ad4692_dma_init_param = {
 	.sg_handler = (void (*)(void *))ad4692_spi_dma_rx_cplt_callback,
 };
 
-/* Tx Trigger Init params */
-struct no_os_pwm_init_param tx_trigger_init_param = {
-	.id = TX_TRIGGER_TIMER_ID,
-	.period_ns = TX_TRIGGER_PERIOD,
-	.duty_cycle_ns = TX_TRIGGER_DUTY_RATIO,
-	.polarity = NO_OS_PWM_POLARITY_HIGH,
-	.platform_ops = &pwm_ops,
-	.extra = &tx_trigger_extra_init_params,
-};
-
-/* Chip Select GPIO init parameters */
-struct no_os_gpio_init_param csb_gpio_init_param = {
-	.port = SPI_CS_PORT_NUM,
-	.number = SPI_CSB,
-	.pull = NO_OS_PULL_NONE,
-	.platform_ops = &gpio_ops,
-	.extra = &gpio_output_extra_init_params
-};
-
-/* Tx trigger descriptor */
-struct no_os_pwm_desc *tx_trigger_desc;
-
 /* SPI Burst PWM Descriptor */
 struct no_os_pwm_desc *spi_burst_pwm_desc = NULL;
-
-/* Chip Select GPIO descriptor */
-struct no_os_gpio_desc* csb_gpio_desc = NULL;
 
 /******************************************************************************/
 /************************ Functions Prototypes ********************************/
@@ -222,58 +195,6 @@ static int32_t init_uart(void)
 #endif
 
 	return 0;
-}
-
-/**
- * @brief Remove the initialized GPIO peripheral.
- * @return None.
- */
-void remove_gpio(void)
-{
-	NO_OS_UNUSED_PARAM(no_os_gpio_remove(csb_gpio_desc));
-	csb_gpio_desc = NULL;
-	NO_OS_UNUSED_PARAM(no_os_gpio_remove(cnv_gpio_desc));
-	cnv_gpio_desc = NULL;
-	return;
-}
-
-/**
- * @brief Initialize the GPIO peripheral.
- * @return 0 in case of success, negative error code otherwise.
- */
-int init_gpio(void)
-{
-	int ret;
-
-	/* Remove Exiting GPIO descriptors */
-	remove_gpio();
-
-	ret = no_os_gpio_get(&cnv_gpio_desc, &cnv_gpio_init_param);
-	if (ret) {
-		return ret;
-	}
-
-	ret = no_os_gpio_direction_output(cnv_gpio_desc, NO_OS_GPIO_LOW);
-	if (ret) {
-		goto err_init_gpio;
-	}
-
-	if (ad4692_interface_mode == SPI_DMA) {
-		ret = no_os_gpio_get(&csb_gpio_desc, &csb_gpio_init_param);
-		if (ret) {
-			goto err_init_gpio;
-		}
-
-		ret = no_os_gpio_direction_output(csb_gpio_desc, NO_OS_GPIO_LOW);
-		if (ret) {
-			goto err_init_gpio;
-		}
-	}
-
-	return 0;
-err_init_gpio:
-	remove_gpio();
-	return ret;
 }
 
 /**
@@ -319,7 +240,7 @@ int32_t init_interrupt(void)
 			return ret;
 		}
 
-		if (ad4692_data_capture_mode == BURST) {
+		if (ad4692_data_capture_mode == BURST_DATA_CAPTURE) {
 			/* The BSY pin has been tied as the interrupt source to sense the
 			 * End of Conversion. The registered callback function is responsible
 			 * of reading the raw samples via the SPI bus */
@@ -373,12 +294,9 @@ void remove_pwm(void)
  * @brief Initialize CNV PWM
  * @return 0 in case of success, negative error code otherwise.
  */
-int init_pwm(void)
+int32_t init_pwm(void)
 {
-	int ret;
-
-	/* Remove Existing PWM descriptors */
-	remove_pwm();
+	int32_t ret;
 
 	if (ad4692_init_params.mode == AD4692_SPI_BURST) {
 		/* Initialize timer for SPI Burst PWM */
@@ -404,38 +322,11 @@ int init_pwm(void)
 		goto err_init_pwm;
 	}
 
-	/* Stop timer */
-	ad4692_stop_timer();
-
 	return 0;
 
 err_init_pwm:
 	remove_pwm();
 	return ret;
-}
-
-/**
- * @brief 	Initialize Tx Trigger Timer
- * @return	0 in case of success, negative error code otherwise
- */
-int32_t tx_trigger_init(void)
-{
-	int ret;
-
-	if (ad4692_interface_mode == SPI_DMA) {
-		/* Free previous tx_trigger_desc before reinit */
-		if (tx_trigger_desc) {
-			no_os_pwm_remove(tx_trigger_desc);
-			tx_trigger_desc = NULL;
-		}
-
-		ret = no_os_pwm_init(&tx_trigger_desc, &tx_trigger_init_param);
-		if (ret) {
-			return ret;
-		}
-	}
-
-	return 0;
 }
 
 /**
@@ -466,7 +357,7 @@ int32_t set_timer_prescaler(struct no_os_pwm_desc *desc, uint32_t prescaler)
  */
 int32_t init_system(void)
 {
-	int ret;
+	int32_t ret;
 
 #if (ACTIVE_PLATFORM == STM32_PLATFORM)
 	stm32_system_init();

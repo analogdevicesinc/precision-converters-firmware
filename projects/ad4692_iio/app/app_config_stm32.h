@@ -183,11 +183,9 @@ extern uint8_t num_of_active_channels;
 extern volatile struct iio_device_data* iio_dev_data_g;
 extern uint32_t nb_of_samples_g;
 extern volatile uint32_t* buff_start_addr;
-extern uint32_t data_read;
 extern uint32_t rxdma_ndtr;
 extern volatile bool ad4692_dma_buff_full;
 extern uint32_t dma_cycle_count;
-extern struct no_os_gpio_desc* csb_gpio_desc;
 extern uint32_t callback_count;
 extern USBD_HandleTypeDef hUsbDeviceHS;
 extern struct stm32_usb_uart_init_param stm32_vcom_extra_init_params;
@@ -195,14 +193,13 @@ void MX_USB_DEVICE_Init(void);
 extern UART_HandleTypeDef huart5;
 
 void stm32_system_init(void);
-int ad4692_config_and_start_pwm(struct ad4692_desc *desc);
+int32_t ad4692_config_and_start_pwm(struct ad4692_desc *desc);
 void ad4692_stop_timer(void);
 void ad4692_spi_dma_rx_cplt_callback(DMA_HandleTypeDef* hdma);
 void ad4692_spi_dma_rx_half_cplt_callback(DMA_HandleTypeDef* hdma);
 void stm32_abort_dma_transfer(void);
 void update_buff(uint8_t *local_buf, uint8_t *buf_start_addr);
 void SystemClock_Config(void);
-int32_t tx_trigger_init(void);
 void stm32_tim4_init(void);
 
 #endif /* APP_CONFIG_STM32_H_ */

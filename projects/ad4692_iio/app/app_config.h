@@ -130,18 +130,15 @@
 extern struct no_os_uart_desc *uart_iio_com_desc;
 extern struct no_os_uart_desc *uart_console_stdio_desc;
 extern struct no_os_irq_ctrl_desc *trigger_irq_desc;
-extern struct no_os_gpio_desc *cnv_gpio_desc;
 extern struct no_os_eeprom_desc* eeprom_desc;
-extern struct no_os_pwm_desc *tx_trigger_desc;
 extern struct no_os_pwm_desc *spi_burst_pwm_desc;
+extern struct no_os_gpio_init_param cnv_pwm_gpio_params;
 extern struct no_os_pwm_init_param pwm_spi_burst_init;
 extern struct no_os_irq_init_param trigger_gpio_irq_params;
 
 int32_t init_system(void);
 int32_t set_timer_prescaler(struct no_os_pwm_desc *desc, uint32_t prescaler);
-int init_gpio(void);
-void remove_gpio(void);
-int init_pwm(void);
+int32_t init_pwm(void);
 void remove_pwm(void);
 void ad4692_data_capture_callback(void *ctx);
 int32_t init_interrupt(void);

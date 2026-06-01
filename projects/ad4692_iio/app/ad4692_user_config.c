@@ -38,14 +38,6 @@ struct no_os_spi_init_param ad4692_spi_init = {
 	.extra = &spi_extra_init_params,
 };
 
-/* PWM GPIO init parameters */
-struct no_os_gpio_init_param cnv_pwm_gpio_params = {
-	.port = CNV_PORT_NUM,
-	.number = CNV_PIN_NUM,
-	.platform_ops = &gpio_ops,
-	.extra = &cnv_pwm_gpio_extra_init_params
-};
-
 /* PWM init parameters for conversion pulses */
 struct no_os_pwm_init_param pwm_init_convst = {
 	.id = CNV_TIMER_ID,
