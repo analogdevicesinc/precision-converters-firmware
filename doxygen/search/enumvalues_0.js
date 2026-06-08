@@ -1,7 +1,7 @@
 var searchData=
 [
   ['acc_5fcount_5fattr_5fid_0',['ACC_COUNT_ATTR_ID',['../ad4692__iio_8h.html#a19a588ff8abda1fbd89114397b5b0008a0dc811c6ce48b79433a5787b17c9b1be',1,'ad4692_iio.h']]],
-  ['accumulator_5fdata_1',['ACCUMULATOR_DATA',['../ad4692__iio_8c.html#a0998d115398b710e0c7c0f3e7685ff1ca980eb6b5f48ea24fc088a53f90aaaf3a',1,'ad4692_iio.c']]],
+  ['accumulator_5fdata_1',['ACCUMULATOR_DATA',['../ad4692__support_8h.html#a0998d115398b710e0c7c0f3e7685ff1ca980eb6b5f48ea24fc088a53f90aaaf3a',1,'ad4692_support.h']]],
   ['ad3530r_5fldac_5fgpio_5foutput_2',['AD3530R_LDAC_GPIO_OUTPUT',['../ad3530r__support_8h.html#aa8ac74b0bb1680f8d24c443160c6475da714c4f3b85bd705d5321a3f1b731cd42',1,'ad3530r_support.h']]],
   ['ad3530r_5fldac_5fpwm_3',['AD3530R_LDAC_PWM',['../ad3530r__support_8h.html#aa8ac74b0bb1680f8d24c443160c6475da02d146ca1e091aa57533c17e8fd9687e',1,'ad3530r_support.h']]],
   ['ad4170_5fchn_5fdisabled_4',['AD4170_CHN_DISABLED',['../ad4170__iio_8c.html#a17f2dde53078e9e1dffd65f83c3d3d86a66c0ae06854e5ed0e3f66c39193f5092',1,'ad4170_iio.c']]],
@@ -145,7 +145,7 @@ var searchData=
   ['avdd2b_5favssx_5fmux_5fattr_5fid_142',['AVDD2B_AVSSX_MUX_ATTR_ID',['../ad777x__iio_8c.html#ab09ce48088b147b6981fbc11da70adf0aa242e35bb749c9c02da1b577fc854619',1,'ad777x_iio.c']]],
   ['avdd4_5favssx_5fatt_5fmux_5fattr_5fid_143',['AVDD4_AVSSX_ATT_MUX_ATTR_ID',['../ad777x__iio_8c.html#ab09ce48088b147b6981fbc11da70adf0aaf97015e74771b2bc9795ff4dcd3bf6a',1,'ad777x_iio.c']]],
   ['avdd4_5favssx_5fmux_5fattr_5fid_144',['AVDD4_AVSSX_MUX_ATTR_ID',['../ad777x__iio_8c.html#ab09ce48088b147b6981fbc11da70adf0a17ccc0d0c941a466c15ceeb2b83ccb8f',1,'ad777x_iio.c']]],
-  ['averaged_5fdata_145',['AVERAGED_DATA',['../ad4692__iio_8c.html#a0998d115398b710e0c7c0f3e7685ff1cafd14a63f95e1bb09c782fb952b6bb04e',1,'ad4692_iio.c']]],
+  ['averaged_5fdata_145',['AVERAGED_DATA',['../ad4692__support_8h.html#a0998d115398b710e0c7c0f3e7685ff1cafd14a63f95e1bb09c782fb952b6bb04e',1,'ad4692_support.h']]],
   ['averaged_5fmeasurement_146',['AVERAGED_MEASUREMENT',['../ad7124__temperature-measure_2app_2ad7124__console__app_8c.html#aafa0e33c7944c25501a44c973156a6a3a5dbfb79b3145b0a85eb5781937e6b779',1,'ad7124_console_app.c']]],
   ['avssx_5favdd4_5fmux_5fattr_5fid_147',['AVSSX_AVDD4_MUX_ATTR_ID',['../ad777x__iio_8c.html#ab09ce48088b147b6981fbc11da70adf0a6e0f14e0105218ceb2f6ef29ba39dc52',1,'ad777x_iio.c']]]
 ];

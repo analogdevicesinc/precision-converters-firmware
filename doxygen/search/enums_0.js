@@ -17,7 +17,7 @@ var searchData=
   ['ad4692_5fboard_5fattribute_5fids_14',['ad4692_board_attribute_ids',['../ad4692__iio_8c.html#abd62873e6b79b02e47ce2927da357483',1,'ad4692_iio.c']]],
   ['ad4692_5fdata_5fcapture_5fmodes_15',['ad4692_data_capture_modes',['../ad4692__iio_8h.html#aaabbc0e466962b7393b63be4131eb33d',1,'ad4692_iio.h']]],
   ['ad4692_5finterface_5fmodes_16',['ad4692_interface_modes',['../ad4692__iio_8h.html#ae972869c90923a2ffd5794149358503a',1,'ad4692_iio.h']]],
-  ['ad4692_5freadback_5foptions_17',['ad4692_readback_options',['../ad4692__iio_8c.html#a0998d115398b710e0c7c0f3e7685ff1c',1,'ad4692_iio.c']]],
+  ['ad4692_5freadback_5foptions_17',['ad4692_readback_options',['../ad4692__support_8h.html#a0998d115398b710e0c7c0f3e7685ff1c',1,'ad4692_support.h']]],
   ['ad4692_5fsequencer_5fmodes_18',['ad4692_sequencer_modes',['../ad4692__support_8h.html#a255b56362f6091a76ab31bcbe13c829d',1,'ad4692_support.h']]],
   ['ad469x_5fattribute_5fids_19',['ad469x_attribute_ids',['../ad469x__iio_8c.html#ad9810d1deb6376ca6c1a3178eaa9ab93',1,'ad469x_iio.c']]],
   ['ad469x_5fpolarity_5fselect_20',['ad469x_polarity_select',['../ad469x__support_8h.html#a360ee29fcedac4f29f27eb800b1b6421',1,'ad469x_support.h']]],

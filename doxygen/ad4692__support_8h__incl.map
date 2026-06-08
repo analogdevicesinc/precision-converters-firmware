@@ -1,7 +1,11 @@
 <map id="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad4692_iio/app/ad4692_support.h" name="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad4692_iio/app/ad4692_support.h">
-<area shape="rect" id="Node000001" title="Support header file for AD4692." alt="" coords="5,5,251,75"/>
-<area shape="rect" id="Node000002" title=" " alt="" coords="16,123,123,148"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="109,76,86,112,82,109,105,73"/>
-<area shape="rect" id="Node000003" title=" " alt="" coords="147,123,229,148"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="152,73,175,109,171,112,147,76"/>
+<area shape="rect" id="Node000001" title="Support header file for AD4692." alt="" coords="88,5,333,75"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,123,112,148"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="157,77,91,118,88,113,154,73"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="136,123,187,148"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="195,76,176,112,172,109,191,74"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="211,123,309,148"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="231,74,250,109,245,112,226,76"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="333,123,416,148"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="271,72,344,113,341,118,269,77"/>
 </map>

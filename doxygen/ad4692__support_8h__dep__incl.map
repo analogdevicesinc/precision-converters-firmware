@@ -1,7 +1,15 @@
 <map id="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad4692_iio/app/ad4692_support.h" name="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad4692_iio/app/ad4692_support.h">
-<area shape="rect" id="Node000001" title="Support header file for AD4692." alt="" coords="122,5,367,75"/>
-<area shape="rect" id="Node000002" href="$ad4692__iio_8c.html" title="Implementation of AD4692 IIO application interfaces." alt="" coords="5,123,228,192"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="199,86,156,124,153,120,195,82"/>
-<area shape="rect" id="Node000003" href="$ad4692__support_8c.html" title="Support file for AD4692 device." alt="" coords="252,123,496,192"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="294,82,338,120,334,124,291,86"/>
+<area shape="rect" id="Node000001" title="Support header file for AD4692." alt="" coords="642,5,887,75"/>
+<area shape="rect" id="Node000002" href="$ad4692__iio_8c.html" title="Implementation of AD4692 IIO application interfaces." alt="" coords="5,130,228,199"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="629,59,443,85,341,103,240,125,213,133,212,127,239,120,340,98,442,80,628,53"/>
+<area shape="rect" id="Node000003" href="$ad4692__support_8c.html" title="Support file for AD4692 device." alt="" coords="252,130,496,199"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="646,81,482,132,480,127,644,76"/>
+<area shape="rect" id="Node000004" href="$ad4692__support__cnv__burst__mode_8c.html" title="AD4692 CNV Burst Mode data transfer implementation." alt="" coords="520,123,753,207"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="722,86,681,125,678,121,718,82"/>
+<area shape="rect" id="Node000005" href="$ad4692__support__cnv__clock__mode_8c.html" title="AD4692 CNV Clock Mode data transfer implementation." alt="" coords="777,123,1011,207"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="812,82,853,121,849,125,808,86"/>
+<area shape="rect" id="Node000006" href="$ad4692__support__manual__mode_8c.html" title="AD4692 Manual Mode data transfer implementation." alt="" coords="1035,123,1268,207"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="885,76,1024,120,1035,124,1034,129,1023,125,883,81"/>
+<area shape="rect" id="Node000007" href="$ad4692__support__spi__burst__mode_8c.html" title="AD4692 SPI Burst Mode data transfer implementation." alt="" coords="1292,123,1525,207"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="902,55,1083,81,1281,120,1292,123,1291,128,1280,125,1082,86,901,60"/>
 </map>

@@ -74,111 +74,159 @@ $(function() {
 </div><!-- top -->
 <div class="header">
   <div class="summary">
-<a href="#func-members">Functions</a>  </div>
+<a href="#func-members">Functions</a> &#124;
+<a href="#var-members">Variables</a>  </div>
   <div class="headertitle"><div class="title">ad4692_support.c File Reference</div></div>
 </div><!--header-->
 <div class="contents">
 
 <p>Support file for AD4692 device.  
 <a href="#details">More...</a></p>
-<div class="textblock"><code>#include &quot;<a class="el" href="ad4692__support_8h_source.html">ad4692_support.h</a>&quot;</code><br />
+<div class="textblock"><code>#include &quot;string.h&quot;</code><br />
+<code>#include &quot;<a class="el" href="ad4692__support_8h_source.html">ad4692_support.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="ad4692__iio_8h_source.html">ad4692_iio.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="ad4692__iio_2app_2app__config_8h_source.html">app_config.h</a>&quot;</code><br />
 <code>#include &quot;no_os_error.h&quot;</code><br />
 <code>#include &quot;no_os_delay.h&quot;</code><br />
-<code>#include &quot;<a class="el" href="ad4692__iio_2app_2app__config_8h_source.html">app_config.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="ad4692__iio_8h_source.html">ad4692_iio.h</a>&quot;</code><br />
-<code>#include &quot;string.h&quot;</code><br />
+<code>#include &quot;no_os_util.h&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for ad4692_support.c:</div>
 <div class="dyncontent">
 <div class="center"><img src="ad4692__support_8c__incl.png" border="0" usemap="#a_2home_2runner_2work_2precision-converters-firmware_2precision-converters-firmware_2projects_2ad4692__iio_2app_2ad4692__support_8c" alt=""/></div>
 <map name="a_2home_2runner_2work_2precision-converters-firmware_2precision-converters-firmware_2projects_2ad4692__iio_2app_2ad4692__support_8c" id="a_2home_2runner_2work_2precision-converters-firmware_2precision-converters-firmware_2projects_2ad4692__iio_2app_2ad4692__support_8c">
-<area shape="rect" title="Support file for AD4692 device." alt="" coords="334,5,578,75"/>
-<area shape="rect" href="ad4692__support_8h.html" title="Support header file for AD4692." alt="" coords="56,123,195,148"/>
-<area shape="poly" title=" " alt="" coords="337,77,180,121,178,116,336,72"/>
-<area shape="rect" title=" " alt="" coords="219,123,328,148"/>
-<area shape="poly" title=" " alt="" coords="391,77,309,119,307,114,389,72"/>
-<area shape="rect" title=" " alt="" coords="353,123,466,148"/>
-<area shape="poly" title=" " alt="" coords="442,76,424,111,419,109,437,74"/>
-<area shape="rect" href="ad4692__iio_2app_2app__config_8h.html" title="Configuration file for AD4692 device applications." alt="" coords="769,123,873,148"/>
-<area shape="poly" title=" " alt="" coords="579,70,764,117,762,122,578,75"/>
-<area shape="rect" href="ad4692__iio_8h.html" title="Header file of ad4692_iio." alt="" coords="218,269,323,295"/>
-<area shape="poly" title=" " alt="" coords="476,74,486,111,486,131,480,149,448,191,407,224,363,249,322,267,320,262,360,244,404,220,444,187,475,147,481,130,481,112,471,76"/>
-<area shape="rect" title=" " alt="" coords="898,123,969,148"/>
-<area shape="poly" title=" " alt="" coords="579,60,885,120,884,125,578,66"/>
-<area shape="rect" title=" " alt="" coords="13,196,120,221"/>
-<area shape="poly" title=" " alt="" coords="118,150,87,187,83,184,114,147"/>
-<area shape="rect" title=" " alt="" coords="144,196,227,221"/>
-<area shape="poly" title=" " alt="" coords="137,147,169,184,165,187,133,150"/>
-<area shape="rect" title=" " alt="" coords="807,350,878,375"/>
-<area shape="poly" title=" " alt="" coords="770,151,695,172,656,187,621,204,593,223,575,245,571,256,570,268,574,280,582,293,605,315,627,328,650,333,675,334,730,331,761,333,795,340,803,343,802,348,794,345,761,338,730,337,675,339,650,339,625,333,601,320,578,296,569,282,565,268,565,255,570,242,589,219,618,199,654,182,694,167,769,145"/>
-<area shape="rect" href="common__macros_8h.html" title="The file contain common macros that needs to be followed same across all the projects." alt="" coords="1079,196,1225,221"/>
-<area shape="poly" title=" " alt="" coords="874,145,1086,190,1085,196,873,150"/>
-<area shape="rect" href="ad4692__iio_2app_2app__config__stm32_8h.html" title="Header file for STM32 platform configurations." alt="" coords="903,196,1055,221"/>
-<area shape="poly" title=" " alt="" coords="841,146,935,188,933,193,839,150"/>
-<area shape="poly" title=" " alt="" coords="959,198,865,156,867,151,961,193"/>
-<area shape="poly" title=" " alt="" coords="1055,217,1259,245,1382,267,1388,282,1382,296,1356,310,1308,322,1171,341,1017,354,892,362,891,356,1016,348,1171,335,1307,316,1354,305,1378,293,1383,282,1378,271,1258,251,1054,223"/>
-<area shape="rect" title=" " alt="" coords="1154,350,1257,375"/>
-<area shape="poly" title=" " alt="" coords="1055,217,1274,247,1404,267,1415,286,1413,303,1400,317,1381,328,1329,345,1271,356,1270,351,1327,340,1379,323,1397,312,1408,300,1410,287,1401,272,1273,252,1054,223"/>
-<area shape="rect" title=" " alt="" coords="592,269,693,295"/>
-<area shape="poly" title=" " alt="" coords="925,224,708,270,707,265,924,219"/>
-<area shape="rect" title=" " alt="" coords="717,269,816,295"/>
-<area shape="poly" title=" " alt="" coords="945,224,815,267,813,262,944,219"/>
-<area shape="rect" title=" " alt="" coords="841,269,975,295"/>
-<area shape="poly" title=" " alt="" coords="969,224,931,262,927,258,965,220"/>
-<area shape="rect" title=" " alt="" coords="1000,269,1101,295"/>
-<area shape="poly" title=" " alt="" coords="992,220,1031,258,1027,262,989,224"/>
-<area shape="rect" title=" " alt="" coords="1126,269,1237,295"/>
-<area shape="poly" title=" " alt="" coords="1012,219,1137,262,1135,267,1010,224"/>
-<area shape="rect" title=" " alt="" coords="1261,269,1369,295"/>
-<area shape="poly" title=" " alt="" coords="1033,219,1247,264,1246,269,1032,224"/>
-<area shape="rect" title=" " alt="" coords="1640,350,1755,375"/>
-<area shape="poly" title=" " alt="" coords="1055,217,1067,219,1189,224,1347,227,1427,230,1503,238,1568,249,1619,267,1640,281,1659,300,1687,337,1682,340,1655,303,1637,286,1616,272,1567,254,1502,243,1427,236,1347,232,1189,229,1066,224,1055,223"/>
-<area shape="rect" href="stm32__pwm__ex_8h.html" title="Extended support for STM32 PWM peripheral." alt="" coords="1682,269,1819,295"/>
-<area shape="poly" title=" " alt="" coords="1055,217,1067,219,1234,234,1365,243,1495,251,1663,267,1668,267,1668,273,1662,272,1495,257,1364,248,1234,239,1066,224,1055,223"/>
-<area shape="rect" title=" " alt="" coords="1495,269,1606,295"/>
-<area shape="poly" title=" " alt="" coords="1055,217,1067,219,1272,242,1476,267,1482,268,1482,273,1476,272,1271,247,1066,224,1055,223"/>
-<area shape="rect" href="stm32__usb__uart_8h.html" title="VCOM driver for stm32 as a no_os_uart implementation." alt="" coords="379,269,517,295"/>
-<area shape="poly" title=" " alt="" coords="903,223,531,272,530,267,902,217"/>
-<area shape="poly" title=" " alt="" coords="903,220,367,272,337,275,337,270,366,267,902,214"/>
-<area shape="poly" title=" " alt="" coords="1745,296,1715,340,1711,337,1741,293"/>
-<area shape="poly" title=" " alt="" coords="518,291,670,315,795,340,804,343,803,348,794,345,669,320,517,296"/>
-<area shape="poly" title=" " alt="" coords="518,288,1140,352,1140,357,517,293"/>
-<area shape="rect" title=" " alt="" coords="288,350,371,375"/>
-<area shape="poly" title=" " alt="" coords="432,297,360,344,357,340,429,293"/>
-<area shape="rect" title=" " alt="" coords="395,350,501,375"/>
-<area shape="poly" title=" " alt="" coords="451,295,451,336,445,336,445,295"/>
-<area shape="rect" title=" " alt="" coords="524,350,601,375"/>
-<area shape="poly" title=" " alt="" coords="466,293,536,340,533,344,463,297"/>
-<area shape="rect" title=" " alt="" coords="625,343,783,383"/>
-<area shape="poly" title=" " alt="" coords="486,292,630,336,629,341,484,297"/>
-<area shape="poly" title=" " alt="" coords="281,293,315,337,310,340,277,296"/>
-<area shape="rect" title=" " alt="" coords="123,350,189,375"/>
-<area shape="poly" title=" " alt="" coords="255,297,186,344,183,340,252,293"/>
-<area shape="rect" title=" " alt="" coords="213,350,264,375"/>
-<area shape="poly" title=" " alt="" coords="268,296,251,338,246,336,263,294"/>
-<area shape="rect" title=" " alt="" coords="5,350,99,375"/>
-<area shape="poly" title=" " alt="" coords="240,297,98,348,96,343,238,292"/>
+<area shape="rect" title="Support file for AD4692 device." alt="" coords="510,5,754,75"/>
+<area shape="rect" title=" " alt="" coords="149,123,219,148"/>
+<area shape="poly" title=" " alt="" coords="510,68,234,125,233,120,509,63"/>
+<area shape="rect" href="ad4692__support_8h.html" title="Support header file for AD4692." alt="" coords="244,123,383,148"/>
+<area shape="poly" title=" " alt="" coords="518,77,366,121,365,116,516,72"/>
+<area shape="rect" href="ad4692__iio_8h.html" title="Header file of ad4692_iio." alt="" coords="187,269,293,295"/>
+<area shape="poly" title=" " alt="" coords="605,77,531,150,483,190,432,224,369,252,307,270,305,265,367,247,429,219,480,185,527,146,601,73"/>
+<area shape="rect" href="ad4692__iio_2app_2app__config_8h.html" title="Configuration file for AD4692 device applications." alt="" coords="580,123,684,148"/>
+<area shape="poly" title=" " alt="" coords="635,75,635,109,629,109,629,75"/>
+<area shape="rect" title=" " alt="" coords="708,123,817,148"/>
+<area shape="poly" title=" " alt="" coords="681,73,737,112,734,117,678,77"/>
+<area shape="rect" title=" " alt="" coords="842,123,955,148"/>
+<area shape="poly" title=" " alt="" coords="729,72,854,116,852,121,727,77"/>
+<area shape="rect" title=" " alt="" coords="979,123,1079,148"/>
+<area shape="poly" title=" " alt="" coords="755,67,968,117,967,122,754,72"/>
+<area shape="rect" title=" " alt="" coords="5,196,112,221"/>
+<area shape="poly" title=" " alt="" coords="273,151,113,195,112,190,272,145"/>
+<area shape="rect" title=" " alt="" coords="127,350,177,375"/>
+<area shape="poly" title=" " alt="" coords="278,150,239,169,220,182,203,198,182,231,168,269,160,305,156,337,151,336,154,305,163,267,177,229,199,194,217,178,236,165,276,146"/>
+<area shape="rect" title=" " alt="" coords="213,196,312,221"/>
+<area shape="poly" title=" " alt="" coords="307,150,281,186,277,183,303,147"/>
+<area shape="rect" title=" " alt="" coords="336,196,419,221"/>
+<area shape="poly" title=" " alt="" coords="326,147,360,184,356,188,322,150"/>
+<area shape="poly" title=" " alt="" coords="229,297,177,343,173,339,225,293"/>
+<area shape="rect" title=" " alt="" coords="203,350,269,375"/>
+<area shape="poly" title=" " alt="" coords="242,295,240,336,235,336,237,295"/>
+<area shape="rect" title=" " alt="" coords="492,350,575,375"/>
+<area shape="poly" title=" " alt="" coords="283,292,479,344,478,349,282,297"/>
+<area shape="rect" title=" " alt="" coords="293,350,387,375"/>
+<area shape="poly" title=" " alt="" coords="256,293,316,339,313,343,253,297"/>
+<area shape="rect" title=" " alt="" coords="1658,350,1729,375"/>
+<area shape="poly" title=" " alt="" coords="684,143,696,145,796,153,924,155,1223,156,1372,163,1508,182,1567,196,1619,215,1663,239,1697,268,1706,284,1709,302,1705,336,1699,336,1704,302,1701,285,1693,271,1660,243,1617,220,1566,201,1507,187,1372,169,1223,161,924,160,796,158,696,151,684,149"/>
+<area shape="rect" href="common__macros_8h.html" title="The file contain common macros that needs to be followed same across all the projects." alt="" coords="559,196,705,221"/>
+<area shape="poly" title=" " alt="" coords="635,148,635,182,629,182,629,148"/>
+<area shape="rect" href="ad4692__iio_2app_2app__config__stm32_8h.html" title="Header file for STM32 platform configurations." alt="" coords="755,196,907,221"/>
+<area shape="poly" title=" " alt="" coords="658,146,780,189,778,194,656,151"/>
+<area shape="poly" title=" " alt="" coords="755,221,306,272,306,267,754,215"/>
+<area shape="poly" title=" " alt="" coords="804,198,683,155,684,150,806,193"/>
+<area shape="poly" title=" " alt="" coords="907,208,1100,211,1339,220,1453,228,1552,238,1627,251,1653,258,1670,267,1682,282,1690,300,1696,335,1691,336,1685,301,1678,285,1666,271,1651,263,1626,256,1552,243,1453,233,1339,225,1100,216,907,213"/>
+<area shape="rect" title=" " alt="" coords="1231,350,1334,375"/>
+<area shape="poly" title=" " alt="" coords="907,213,1076,232,1155,247,1211,267,1230,282,1248,300,1273,336,1268,339,1243,303,1227,286,1208,272,1154,252,1075,237,907,218"/>
+<area shape="rect" title=" " alt="" coords="1272,269,1373,295"/>
+<area shape="poly" title=" " alt="" coords="907,218,1254,267,1259,267,1258,273,1253,272,906,223"/>
+<area shape="rect" title=" " alt="" coords="1397,269,1496,295"/>
+<area shape="poly" title=" " alt="" coords="907,214,1118,234,1384,267,1383,272,1117,239,906,219"/>
+<area shape="rect" title=" " alt="" coords="1521,269,1655,295"/>
+<area shape="poly" title=" " alt="" coords="907,213,1168,233,1507,267,1507,272,1168,239,907,218"/>
+<area shape="rect" title=" " alt="" coords="317,269,419,295"/>
+<area shape="poly" title=" " alt="" coords="755,223,433,272,432,266,754,218"/>
+<area shape="rect" title=" " alt="" coords="443,269,554,295"/>
+<area shape="poly" title=" " alt="" coords="778,224,566,269,565,264,777,219"/>
+<area shape="rect" title=" " alt="" coords="578,269,686,295"/>
+<area shape="poly" title=" " alt="" coords="800,224,678,267,677,262,798,219"/>
+<area shape="rect" title=" " alt="" coords="673,350,788,375"/>
+<area shape="poly" title=" " alt="" coords="808,224,779,243,753,271,739,303,734,336,729,335,734,302,748,268,775,239,806,219"/>
+<area shape="rect" href="stm32__pwm__ex_8h.html" title="Extended support for STM32 PWM peripheral." alt="" coords="762,269,899,295"/>
+<area shape="poly" title=" " alt="" coords="833,222,833,256,828,256,828,222"/>
+<area shape="rect" title=" " alt="" coords="923,269,1034,295"/>
+<area shape="poly" title=" " alt="" coords="856,219,943,261,941,266,853,224"/>
+<area shape="rect" href="stm32__usb__uart_8h.html" title="VCOM driver for stm32 as a no_os_uart implementation." alt="" coords="1059,269,1197,295"/>
+<area shape="poly" title=" " alt="" coords="879,219,1067,263,1066,269,878,224"/>
+<area shape="poly" title=" " alt="" coords="818,297,758,343,755,339,814,293"/>
+<area shape="poly" title=" " alt="" coords="1059,296,1047,297,662,345,589,356,588,350,661,340,1046,292,1058,290"/>
+<area shape="poly" title=" " alt="" coords="1198,290,1645,352,1644,357,1198,296"/>
+<area shape="poly" title=" " alt="" coords="1152,292,1249,341,1246,346,1150,297"/>
+<area shape="rect" title=" " alt="" coords="819,350,925,375"/>
+<area shape="poly" title=" " alt="" coords="1092,297,923,348,922,343,1090,292"/>
+<area shape="rect" title=" " alt="" coords="948,350,1025,375"/>
+<area shape="poly" title=" " alt="" coords="1108,297,1021,346,1018,341,1106,293"/>
+<area shape="rect" title=" " alt="" coords="1049,343,1207,383"/>
+<area shape="poly" title=" " alt="" coords="1131,295,1131,329,1125,329,1125,295"/>
 </map>
 </div>
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a2b673407db9e08a28d781bd4d2d6ce62" id="r_a2b673407db9e08a28d781bd4d2d6ce62"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad4692__support_8c.html#a2b673407db9e08a28d781bd4d2d6ce62">ad4692_toggle_cnv</a> (struct no_os_gpio_desc *gpio_cnv)</td></tr>
-<tr class="memdesc:a2b673407db9e08a28d781bd4d2d6ce62"><td class="mdescLeft">&#160;</td><td class="mdescRight">Toggle CNV GPIO.  <br /></td></tr>
-<tr class="separator:a2b673407db9e08a28d781bd4d2d6ce62"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a64e244290c6c69085ad8fa57f5706e7c" id="r_a64e244290c6c69085ad8fa57f5706e7c"><td class="memItemLeft" align="right" valign="top">int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad4692__support_8c.html#a64e244290c6c69085ad8fa57f5706e7c">ad4692_data_transfer_init</a> (struct ad4692_desc *desc, enum ad4692_spi_mode mode)</td></tr>
+<tr class="memdesc:a64e244290c6c69085ad8fa57f5706e7c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize the data transfer system for a given ADC mode.  <br /></td></tr>
+<tr class="separator:a64e244290c6c69085ad8fa57f5706e7c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a329ea7c6eaa01126e26610dceec63fcd" id="r_a329ea7c6eaa01126e26610dceec63fcd"><td class="memItemLeft" align="right" valign="top">int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad4692__support_8c.html#a329ea7c6eaa01126e26610dceec63fcd">ad4692_data_transfer_read_converted_data</a> (struct ad4692_desc *desc, uint8_t chn, uint32_t *<a class="el" href="structadc__data.html">adc_data</a>)</td></tr>
+<tr class="memdesc:a329ea7c6eaa01126e26610dceec63fcd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Delegation: read converted data from active mode.  <br /></td></tr>
+<tr class="separator:a329ea7c6eaa01126e26610dceec63fcd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac33affc6975951bdc8f9205714b4cc33" id="r_ac33affc6975951bdc8f9205714b4cc33"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad4692__support_8c.html#ac33affc6975951bdc8f9205714b4cc33">ad4692_update_active_channels</a> (uint32_t ch_mask)</td></tr>
+<tr class="memdesc:ac33affc6975951bdc8f9205714b4cc33"><td class="mdescLeft">&#160;</td><td class="mdescRight">Update active channels based on sequencer mode and channel mask.  <br /></td></tr>
+<tr class="separator:ac33affc6975951bdc8f9205714b4cc33"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ade8873c432821fa4fd50401ec56358fc" id="r_ade8873c432821fa4fd50401ec56358fc"><td class="memItemLeft" align="right" valign="top">int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad4692__support_8c.html#ade8873c432821fa4fd50401ec56358fc">ad4692_data_transfer_prepare</a> (void *dev, uint32_t ch_mask)</td></tr>
+<tr class="memdesc:ade8873c432821fa4fd50401ec56358fc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Delegation: prepare transfer for active mode.  <br /></td></tr>
+<tr class="separator:ade8873c432821fa4fd50401ec56358fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9d6b309e93e1403f51045b23428bd566" id="r_a9d6b309e93e1403f51045b23428bd566"><td class="memItemLeft" align="right" valign="top">int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad4692__support_8c.html#a9d6b309e93e1403f51045b23428bd566">ad4692_data_transfer_end</a> (void *dev)</td></tr>
+<tr class="memdesc:a9d6b309e93e1403f51045b23428bd566"><td class="mdescLeft">&#160;</td><td class="mdescRight">Delegation: end transfer for active mode.  <br /></td></tr>
+<tr class="separator:a9d6b309e93e1403f51045b23428bd566"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab93b4716f16fa3a8416161f47fb51fd2" id="r_ab93b4716f16fa3a8416161f47fb51fd2"><td class="memItemLeft" align="right" valign="top">int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad4692__support_8c.html#ab93b4716f16fa3a8416161f47fb51fd2">ad4692_data_transfer_remove</a> (struct ad4692_desc *desc)</td></tr>
+<tr class="memdesc:ab93b4716f16fa3a8416161f47fb51fd2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Delegation: remove active mode resources.  <br /></td></tr>
+<tr class="separator:ab93b4716f16fa3a8416161f47fb51fd2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a561b02620bcf6ac623aa37ae41b3a1ea" id="r_a561b02620bcf6ac623aa37ae41b3a1ea"><td class="memItemLeft" align="right" valign="top">int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad4692__support_8c.html#a561b02620bcf6ac623aa37ae41b3a1ea">ad4692_data_transfer_submit</a> (struct iio_device_data *iio_dev_data)</td></tr>
+<tr class="memdesc:a561b02620bcf6ac623aa37ae41b3a1ea"><td class="mdescLeft">&#160;</td><td class="mdescRight">Delegation: submit samples for active mode.  <br /></td></tr>
+<tr class="separator:a561b02620bcf6ac623aa37ae41b3a1ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8b51b1379ee10fb895d755bd0698a7b0" id="r_a8b51b1379ee10fb895d755bd0698a7b0"><td class="memItemLeft" align="right" valign="top">int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad4692__support_8c.html#a8b51b1379ee10fb895d755bd0698a7b0">ad4692_data_transfer_trigger_handler</a> (struct iio_device_data *iio_dev_data)</td></tr>
+<tr class="memdesc:a8b51b1379ee10fb895d755bd0698a7b0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Delegation: trigger handler for active mode.  <br /></td></tr>
+<tr class="separator:a8b51b1379ee10fb895d755bd0698a7b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a327096d04b34ef447aeed9b1e702de66" id="r_a327096d04b34ef447aeed9b1e702de66"><td class="memItemLeft" align="right" valign="top">int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad4692__support_8c.html#a327096d04b34ef447aeed9b1e702de66">ad4692_data_transfer_update_freq</a> (uint32_t *sampling_rate)</td></tr>
+<tr class="memdesc:a327096d04b34ef447aeed9b1e702de66"><td class="mdescLeft">&#160;</td><td class="mdescRight">Delegation: update sampling frequency for active mode.  <br /></td></tr>
+<tr class="separator:a327096d04b34ef447aeed9b1e702de66"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abc7233ad5f02142ace7db21aa4c52e9c" id="r_abc7233ad5f02142ace7db21aa4c52e9c"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad4692__support_8c.html#abc7233ad5f02142ace7db21aa4c52e9c">ad4692_get_max_sampling_rate</a> (enum ad4692_spi_mode mode)</td></tr>
+<tr class="memdesc:abc7233ad5f02142ace7db21aa4c52e9c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get maximum sampling rate for a given ADC mode.  <br /></td></tr>
+<tr class="separator:abc7233ad5f02142ace7db21aa4c52e9c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0f2ea3fb0056aba4702df6d232536266" id="r_a0f2ea3fb0056aba4702df6d232536266"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad4692__support_8c.html#a0f2ea3fb0056aba4702df6d232536266">ad4692_get_tx_command</a> (uint8_t *local_tx_data)</td></tr>
+<tr class="memdesc:a0f2ea3fb0056aba4702df6d232536266"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the Tx buffer respective to the enabled channels.  <br /></td></tr>
+<tr class="separator:a0f2ea3fb0056aba4702df6d232536266"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a053e191bd54f7e703b05e6675ec072cf" id="r_a053e191bd54f7e703b05e6675ec072cf"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad4692__support_8c.html#a053e191bd54f7e703b05e6675ec072cf">ad4692_configure_acc_mask</a> (uint16_t channel_mask, enum <a class="el" href="ad4692__support_8h.html#a255b56362f6091a76ab31bcbe13c829d">ad4692_sequencer_modes</a> sequencer, uint8_t *chn_priorities)</td></tr>
 <tr class="memdesc:a053e191bd54f7e703b05e6675ec072cf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Configure the accumulator mask.  <br /></td></tr>
 <tr class="separator:a053e191bd54f7e703b05e6675ec072cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab35c18d90bf3fe29f3314b41597e4d4d" id="r_ab35c18d90bf3fe29f3314b41597e4d4d"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad4692__support_8c.html#ab35c18d90bf3fe29f3314b41597e4d4d">ad4692_configure_channel_priorities</a> (uint8_t *chn_priorities, uint8_t *<a class="el" href="ad4692__iio_8c.html#a8f775b37bbe4b624ced050910eebfe4b">channel_sequence</a>, uint8_t *<a class="el" href="ad4692__iio_8c.html#a03ec38c1af0e1374199160ef67344506">num_of_as_slots</a>, uint8_t *acc_count)</td></tr>
 <tr class="memdesc:ab35c18d90bf3fe29f3314b41597e4d4d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Configure the advanced sequencer slots.  <br /></td></tr>
 <tr class="separator:ab35c18d90bf3fe29f3314b41597e4d4d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3f78a2f77d76a18f7c5eed65623c9876" id="r_a3f78a2f77d76a18f7c5eed65623c9876"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad4692__support_8c.html#a3f78a2f77d76a18f7c5eed65623c9876">ad4692_exit_manual_mode</a> (struct ad4692_desc *desc, struct no_os_gpio_desc *cnv_desc)</td></tr>
-<tr class="memdesc:a3f78a2f77d76a18f7c5eed65623c9876"><td class="mdescLeft">&#160;</td><td class="mdescRight">Exit manual mode and switch to CNV clock mode.  <br /></td></tr>
-<tr class="separator:a3f78a2f77d76a18f7c5eed65623c9876"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aafddd45227d5aad9e8f20c39ed7be323" id="r_aafddd45227d5aad9e8f20c39ed7be323"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad4692__support_8c.html#aafddd45227d5aad9e8f20c39ed7be323">ad4692_configure_channel</a> (struct ad4692_desc *desc)</td></tr>
+<tr class="memdesc:aafddd45227d5aad9e8f20c39ed7be323"><td class="mdescLeft">&#160;</td><td class="mdescRight">Configure the per channel accumulator count limit and enable the desired channels in the AD4692 device.  <br /></td></tr>
+<tr class="separator:aafddd45227d5aad9e8f20c39ed7be323"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab1b21d3859ad91653c9069697640965f" id="r_ab1b21d3859ad91653c9069697640965f"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad4692__support_8c.html#ab1b21d3859ad91653c9069697640965f">ad4692_exit_manual_mode</a> (struct ad4692_desc *desc)</td></tr>
+<tr class="memdesc:ab1b21d3859ad91653c9069697640965f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Exit manual mode and switch to CNV clock mode.  <br /></td></tr>
+<tr class="separator:ab1b21d3859ad91653c9069697640965f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac7df8e4f9d0b373816597e3866c181f8" id="r_ac7df8e4f9d0b373816597e3866c181f8"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad4692__support_8c.html#ac7df8e4f9d0b373816597e3866c181f8">ad4692_configure_pwm_rate</a> (struct no_os_pwm_desc *desc, uint32_t sampling_rate)</td></tr>
+<tr class="memdesc:ac7df8e4f9d0b373816597e3866c181f8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Configure PWM with optimal prescaler for given sampling rate.  <br /></td></tr>
+<tr class="separator:ac7df8e4f9d0b373816597e3866c181f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:ae411b7e9715fabd8cb568c597449302b" id="r_ae411b7e9715fabd8cb568c597449302b"><td class="memItemLeft" align="right" valign="top">volatile bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad4692__support_8c.html#ae411b7e9715fabd8cb568c597449302b">buf_size_updated</a> = false</td></tr>
+<tr class="separator:ae411b7e9715fabd8cb568c597449302b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Support file for AD4692 device. </p>
-<p>Copyright (c) 2024 Analog Devices, Inc.</p>
+<p>Copyright (c) 2026 Analog Devices, Inc.</p>
 <p>All rights reserved.</p>
 <p>This software is proprietary to Analog Devices, Inc. and its licensors. By using this software you agree to the terms of the associated Analog Devices Software License Agreement. </p>
 </div><h2 class="groupheader">Function Documentation</h2>
@@ -229,15 +277,44 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="ad4692__support_8c_a053e191bd54f7e703b05e6675ec072cf_icgraph.png" border="0" usemap="#aad4692__support_8c_a053e191bd54f7e703b05e6675ec072cf_icgraph" alt=""/></div>
 <map name="aad4692__support_8c_a053e191bd54f7e703b05e6675ec072cf_icgraph" id="aad4692__support_8c_a053e191bd54f7e703b05e6675ec072cf_icgraph">
-<area shape="rect" title="Configure the accumulator mask." alt="" coords="645,13,855,38"/>
-<area shape="rect" href="ad4692__support_8c.html#ab35c18d90bf3fe29f3314b41597e4d4d" title="Configure the advanced sequencer slots." alt="" coords="403,5,597,45"/>
-<area shape="poly" title=" " alt="" coords="632,28,598,28,598,23,632,23"/>
-<area shape="rect" href="ad4692__iio_8c.html#a7aa4c35d34a7370a9365923c3e18f500" title="Initialize the AD4692 IIO Application." alt="" coords="223,13,355,38"/>
-<area shape="poly" title=" " alt="" coords="389,28,355,28,355,23,389,23"/>
-<area shape="rect" href="ad4692__iio_8c.html#a20b15ec49897aaf6440bb800ad6641e0" title="Run the ad4692 IIO event handler." alt="" coords="5,13,175,38"/>
-<area shape="poly" title=" " alt="" coords="209,28,175,28,175,23,209,23"/>
+<area shape="rect" title="Configure the accumulator mask." alt="" coords="645,35,855,60"/>
+<area shape="rect" href="ad4692__support_8c.html#aafddd45227d5aad9e8f20c39ed7be323" title="Configure the per channel accumulator count limit and enable the desired channels in the AD4692 devic..." alt="" coords="403,5,597,31"/>
+<area shape="poly" title=" " alt="" coords="632,36,597,32,598,27,632,31"/>
+<area shape="rect" href="ad4692__support_8c.html#ab35c18d90bf3fe29f3314b41597e4d4d" title="Configure the advanced sequencer slots." alt="" coords="403,55,597,95"/>
+<area shape="poly" title=" " alt="" coords="632,63,598,67,597,62,632,58"/>
+<area shape="rect" href="ad4692__iio_8c.html#a7aa4c35d34a7370a9365923c3e18f500" title="Initialize the AD4692 IIO Application." alt="" coords="223,63,355,88"/>
+<area shape="poly" title=" " alt="" coords="389,78,355,78,355,73,389,73"/>
+<area shape="rect" href="ad4692__iio_8c.html#a20b15ec49897aaf6440bb800ad6641e0" title="Run the ad4692 IIO event handler." alt="" coords="5,63,175,88"/>
+<area shape="poly" title=" " alt="" coords="209,78,175,78,175,73,209,73"/>
 </map>
 </div>
+
+</div>
+</div>
+<a id="aafddd45227d5aad9e8f20c39ed7be323" name="aafddd45227d5aad9e8f20c39ed7be323"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aafddd45227d5aad9e8f20c39ed7be323">&#9670;&#160;</a></span>ad4692_configure_channel()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int ad4692_configure_channel </td>
+          <td>(</td>
+          <td class="paramtype">struct ad4692_desc *&#160;</td>
+          <td class="paramname"><em>desc</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Configure the per channel accumulator count limit and enable the desired channels in the AD4692 device. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">desc[in]</td><td>- AD4692 device descriptor </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>0 in case of success, negative error code otherwise </dd></dl>
 
 </div>
 </div>
@@ -306,23 +383,23 @@ Here is the caller graph for this function:</div>
 
 </div>
 </div>
-<a id="a3f78a2f77d76a18f7c5eed65623c9876" name="a3f78a2f77d76a18f7c5eed65623c9876"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3f78a2f77d76a18f7c5eed65623c9876">&#9670;&#160;</a></span>ad4692_exit_manual_mode()</h2>
+<a id="ac7df8e4f9d0b373816597e3866c181f8" name="ac7df8e4f9d0b373816597e3866c181f8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac7df8e4f9d0b373816597e3866c181f8">&#9670;&#160;</a></span>ad4692_configure_pwm_rate()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int ad4692_exit_manual_mode </td>
+          <td class="memname">int ad4692_configure_pwm_rate </td>
           <td>(</td>
-          <td class="paramtype">struct ad4692_desc *&#160;</td>
+          <td class="paramtype">struct no_os_pwm_desc *&#160;</td>
           <td class="paramname"><em>desc</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">struct no_os_gpio_desc *&#160;</td>
-          <td class="paramname"><em>cnv_desc</em>&#160;</td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>sampling_rate</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -332,38 +409,345 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p>Exit manual mode and switch to CNV clock mode. </p>
+<p>Configure PWM with optimal prescaler for given sampling rate. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">desc</td><td>Pointer to the AD4692 descriptor. </td></tr>
-    <tr><td class="paramname">cnv_desc</td><td>Pointer to the CNV GPIO descriptor. </td></tr>
+    <tr><td class="paramname">desc[in]</td><td>- PWM descriptor to configure </td></tr>
+    <tr><td class="paramname">sampling_rate[in]</td><td>- Desired sampling rate in samples per second </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>int 0 on success, negative error code on failure. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>0 in case of success, negative error code otherwise </dd></dl>
 
 </div>
 </div>
-<a id="a2b673407db9e08a28d781bd4d2d6ce62" name="a2b673407db9e08a28d781bd4d2d6ce62"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2b673407db9e08a28d781bd4d2d6ce62">&#9670;&#160;</a></span>ad4692_toggle_cnv()</h2>
+<a id="a9d6b309e93e1403f51045b23428bd566" name="a9d6b309e93e1403f51045b23428bd566"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9d6b309e93e1403f51045b23428bd566">&#9670;&#160;</a></span>ad4692_data_transfer_end()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int ad4692_toggle_cnv </td>
+          <td class="memname">int32_t ad4692_data_transfer_end </td>
           <td>(</td>
-          <td class="paramtype">struct no_os_gpio_desc *&#160;</td>
-          <td class="paramname"><em>gpio_cnv</em></td><td>)</td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>dev</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Toggle CNV GPIO. </p>
+<p>Delegation: end transfer for active mode. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">gpio_cnv[in,out]</td><td>- GPIO CNV Descriptor </td></tr>
+    <tr><td class="paramname">dev[in]</td><td>- IIO device instance </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>0 in case of success, -EINVAL if no active mode, 0 if function not implemented </dd></dl>
+
+</div>
+</div>
+<a id="a64e244290c6c69085ad8fa57f5706e7c" name="a64e244290c6c69085ad8fa57f5706e7c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a64e244290c6c69085ad8fa57f5706e7c">&#9670;&#160;</a></span>ad4692_data_transfer_init()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int32_t ad4692_data_transfer_init </td>
+          <td>(</td>
+          <td class="paramtype">struct ad4692_desc *&#160;</td>
+          <td class="paramname"><em>desc</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">enum ad4692_spi_mode&#160;</td>
+          <td class="paramname"><em>mode</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Initialize the data transfer system for a given ADC mode. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">desc[in]</td><td>- AD4692 device descriptor </td></tr>
+    <tr><td class="paramname">mode[in]</td><td>- ADC mode to initialize </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>0 in case of success, negative error code otherwise </dd></dl>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="ad4692__support_8c_a64e244290c6c69085ad8fa57f5706e7c_icgraph.png" border="0" usemap="#aad4692__support_8c_a64e244290c6c69085ad8fa57f5706e7c_icgraph" alt=""/></div>
+<map name="aad4692__support_8c_a64e244290c6c69085ad8fa57f5706e7c_icgraph" id="aad4692__support_8c_a64e244290c6c69085ad8fa57f5706e7c_icgraph">
+<area shape="rect" title="Initialize the data transfer system for a given ADC mode." alt="" coords="403,5,595,31"/>
+<area shape="rect" href="ad4692__iio_8c.html#a7aa4c35d34a7370a9365923c3e18f500" title="Initialize the AD4692 IIO Application." alt="" coords="223,5,355,31"/>
+<area shape="poly" title=" " alt="" coords="389,21,355,21,355,15,389,15"/>
+<area shape="rect" href="ad4692__iio_8c.html#a20b15ec49897aaf6440bb800ad6641e0" title="Run the ad4692 IIO event handler." alt="" coords="5,5,175,31"/>
+<area shape="poly" title=" " alt="" coords="209,21,175,21,175,15,209,15"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ade8873c432821fa4fd50401ec56358fc" name="ade8873c432821fa4fd50401ec56358fc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ade8873c432821fa4fd50401ec56358fc">&#9670;&#160;</a></span>ad4692_data_transfer_prepare()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int32_t ad4692_data_transfer_prepare </td>
+          <td>(</td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>dev</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>ch_mask</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Delegation: prepare transfer for active mode. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">dev[in]</td><td>- IIO device instance </td></tr>
+    <tr><td class="paramname">ch_mask[in]</td><td>- Channel mask indicating which channels to enable </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>0 in case of success, -EINVAL if no active mode, 0 if function not implemented </dd></dl>
+
+</div>
+</div>
+<a id="a329ea7c6eaa01126e26610dceec63fcd" name="a329ea7c6eaa01126e26610dceec63fcd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a329ea7c6eaa01126e26610dceec63fcd">&#9670;&#160;</a></span>ad4692_data_transfer_read_converted_data()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int32_t ad4692_data_transfer_read_converted_data </td>
+          <td>(</td>
+          <td class="paramtype">struct ad4692_desc *&#160;</td>
+          <td class="paramname"><em>desc</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>chn</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t *&#160;</td>
+          <td class="paramname"><em>adc_data</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Delegation: read converted data from active mode. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">desc[in]</td><td>- AD4692 device descriptor </td></tr>
+    <tr><td class="paramname">chn[in]</td><td>- Channel number to read </td></tr>
+    <tr><td class="paramname">adc_data[out]</td><td>- Pointer to store the converted data </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>0 in case of success, negative error code otherwise </dd></dl>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="ad4692__support_8c_a329ea7c6eaa01126e26610dceec63fcd_icgraph.png" border="0" usemap="#aad4692__support_8c_a329ea7c6eaa01126e26610dceec63fcd_icgraph" alt=""/></div>
+<map name="aad4692__support_8c_a329ea7c6eaa01126e26610dceec63fcd_icgraph" id="aad4692__support_8c_a329ea7c6eaa01126e26610dceec63fcd_icgraph">
+<area shape="rect" title="Delegation: read converted data from active mode." alt="" coords="204,5,371,45"/>
+<area shape="rect" href="ad4692__iio_8c.html#ad24ecabab571a3dbcfbd32f1c4087663" title="Getter/Setter for the raw, offset and scale attribute value." alt="" coords="5,13,156,38"/>
+<area shape="poly" title=" " alt="" coords="190,28,156,28,156,23,190,23"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ab93b4716f16fa3a8416161f47fb51fd2" name="ab93b4716f16fa3a8416161f47fb51fd2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab93b4716f16fa3a8416161f47fb51fd2">&#9670;&#160;</a></span>ad4692_data_transfer_remove()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int32_t ad4692_data_transfer_remove </td>
+          <td>(</td>
+          <td class="paramtype">struct ad4692_desc *&#160;</td>
+          <td class="paramname"><em>desc</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Delegation: remove active mode resources. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">desc[in]</td><td>- AD4692 device descriptor </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>0 in case of success, -EINVAL if no active mode, 0 if function not implemented </dd></dl>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="ad4692__support_8c_ab93b4716f16fa3a8416161f47fb51fd2_icgraph.png" border="0" usemap="#aad4692__support_8c_ab93b4716f16fa3a8416161f47fb51fd2_icgraph" alt=""/></div>
+<map name="aad4692__support_8c_ab93b4716f16fa3a8416161f47fb51fd2_icgraph" id="aad4692__support_8c_ab93b4716f16fa3a8416161f47fb51fd2_icgraph">
+<area shape="rect" title="Delegation: remove active mode resources." alt="" coords="607,49,771,89"/>
+<area shape="rect" href="ad4692__iio_8c.html#a942ad1b47f919335d62503730fd50b01" title="Remove the IIO application and free the allocated resources." alt="" coords="432,56,559,81"/>
+<area shape="poly" title=" " alt="" coords="593,71,559,71,559,66,593,66"/>
+<area shape="rect" href="ad5710r__iio_8c.html#a22103aabadc62e36cf8e30021aab5ced" title="Initialize the IIO interface for AD5710R IIO device." alt="" coords="223,5,384,31"/>
+<area shape="poly" title=" " alt="" coords="433,55,352,33,353,28,434,50"/>
+<area shape="rect" href="ad4692__iio_8c.html#a20b15ec49897aaf6440bb800ad6641e0" title="Run the ad4692 IIO event handler." alt="" coords="5,81,175,107"/>
+<area shape="poly" title=" " alt="" coords="419,76,175,91,175,86,418,71"/>
+<area shape="rect" href="ad4692__iio_8c.html#a7aa4c35d34a7370a9365923c3e18f500" title="Initialize the AD4692 IIO Application." alt="" coords="237,107,369,132"/>
+<area shape="poly" title=" " alt="" coords="434,87,353,109,352,104,433,82"/>
+<area shape="rect" href="ad5710r__iio_2app_2main_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title="Main entry point to application." alt="" coords="63,5,117,31"/>
+<area shape="poly" title=" " alt="" coords="209,21,118,21,118,15,209,15"/>
+<area shape="poly" title=" " alt="" coords="223,113,174,107,175,101,224,107"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a561b02620bcf6ac623aa37ae41b3a1ea" name="a561b02620bcf6ac623aa37ae41b3a1ea"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a561b02620bcf6ac623aa37ae41b3a1ea">&#9670;&#160;</a></span>ad4692_data_transfer_submit()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int32_t ad4692_data_transfer_submit </td>
+          <td>(</td>
+          <td class="paramtype">struct iio_device_data *&#160;</td>
+          <td class="paramname"><em>iio_dev_data</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Delegation: submit samples for active mode. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">iio_dev_data[in]</td><td>- IIO device data instance </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>0 in case of success, -EINVAL if no active mode, 0 if function not implemented </dd></dl>
+
+</div>
+</div>
+<a id="a8b51b1379ee10fb895d755bd0698a7b0" name="a8b51b1379ee10fb895d755bd0698a7b0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8b51b1379ee10fb895d755bd0698a7b0">&#9670;&#160;</a></span>ad4692_data_transfer_trigger_handler()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int32_t ad4692_data_transfer_trigger_handler </td>
+          <td>(</td>
+          <td class="paramtype">struct iio_device_data *&#160;</td>
+          <td class="paramname"><em>iio_dev_data</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Delegation: trigger handler for active mode. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">iio_dev_data[in]</td><td>- IIO device data instance </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>0 in case of success, -EINVAL if no active mode, 0 if function not implemented </dd></dl>
+
+</div>
+</div>
+<a id="a327096d04b34ef447aeed9b1e702de66" name="a327096d04b34ef447aeed9b1e702de66"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a327096d04b34ef447aeed9b1e702de66">&#9670;&#160;</a></span>ad4692_data_transfer_update_freq()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int32_t ad4692_data_transfer_update_freq </td>
+          <td>(</td>
+          <td class="paramtype">uint32_t *&#160;</td>
+          <td class="paramname"><em>sampling_rate</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Delegation: update sampling frequency for active mode. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">sampling_rate[in,out]</td><td>- Pointer to requested/actual sampling rate </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>0 in case of success, -EINVAL if no active mode, 0 if function not implemented </dd></dl>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="ad4692__support_8c_a327096d04b34ef447aeed9b1e702de66_icgraph.png" border="0" usemap="#aad4692__support_8c_a327096d04b34ef447aeed9b1e702de66_icgraph" alt=""/></div>
+<map name="aad4692__support_8c_a327096d04b34ef447aeed9b1e702de66_icgraph" id="aad4692__support_8c_a327096d04b34ef447aeed9b1e702de66_icgraph">
+<area shape="rect" title="Delegation: update sampling frequency for active mode." alt="" coords="204,5,368,45"/>
+<area shape="rect" href="ad4692__iio_8c.html#a171811e94bb04123b0203d72a2aaaaa5" title="Setter function for AD4692 attributes." alt="" coords="5,13,156,38"/>
+<area shape="poly" title=" " alt="" coords="191,28,156,28,156,23,191,23"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ab1b21d3859ad91653c9069697640965f" name="ab1b21d3859ad91653c9069697640965f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab1b21d3859ad91653c9069697640965f">&#9670;&#160;</a></span>ad4692_exit_manual_mode()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int ad4692_exit_manual_mode </td>
+          <td>(</td>
+          <td class="paramtype">struct ad4692_desc *&#160;</td>
+          <td class="paramname"><em>desc</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Exit manual mode and switch to CNV clock mode. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">desc[in]</td><td>- AD4692 device descriptor </td></tr>
   </table>
   </dd>
 </dl>
@@ -371,13 +755,122 @@ Here is the caller graph for this function:</div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="ad4692__support_8c_a2b673407db9e08a28d781bd4d2d6ce62_icgraph.png" border="0" usemap="#aad4692__support_8c_a2b673407db9e08a28d781bd4d2d6ce62_icgraph" alt=""/></div>
-<map name="aad4692__support_8c_a2b673407db9e08a28d781bd4d2d6ce62_icgraph" id="aad4692__support_8c_a2b673407db9e08a28d781bd4d2d6ce62_icgraph">
-<area shape="rect" title="Toggle CNV GPIO." alt="" coords="256,5,404,31"/>
-<area shape="rect" href="ad4692__support_8c.html#a3f78a2f77d76a18f7c5eed65623c9876" title="Exit manual mode and switch to CNV clock mode." alt="" coords="5,5,208,31"/>
-<area shape="poly" title=" " alt="" coords="242,21,208,21,208,15,242,15"/>
+<div class="center"><img src="ad4692__support_8c_ab1b21d3859ad91653c9069697640965f_icgraph.png" border="0" usemap="#aad4692__support_8c_ab1b21d3859ad91653c9069697640965f_icgraph" alt=""/></div>
+<map name="aad4692__support_8c_ab1b21d3859ad91653c9069697640965f_icgraph" id="aad4692__support_8c_ab1b21d3859ad91653c9069697640965f_icgraph">
+<area shape="rect" title="Exit manual mode and switch to CNV clock mode." alt="" coords="403,5,605,31"/>
+<area shape="rect" href="ad4692__iio_8c.html#a7aa4c35d34a7370a9365923c3e18f500" title="Initialize the AD4692 IIO Application." alt="" coords="223,5,355,31"/>
+<area shape="poly" title=" " alt="" coords="389,21,355,21,355,15,389,15"/>
+<area shape="rect" href="ad4692__iio_8c.html#a20b15ec49897aaf6440bb800ad6641e0" title="Run the ad4692 IIO event handler." alt="" coords="5,5,175,31"/>
+<area shape="poly" title=" " alt="" coords="209,21,175,21,175,15,209,15"/>
 </map>
 </div>
+
+</div>
+</div>
+<a id="abc7233ad5f02142ace7db21aa4c52e9c" name="abc7233ad5f02142ace7db21aa4c52e9c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abc7233ad5f02142ace7db21aa4c52e9c">&#9670;&#160;</a></span>ad4692_get_max_sampling_rate()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t ad4692_get_max_sampling_rate </td>
+          <td>(</td>
+          <td class="paramtype">enum ad4692_spi_mode&#160;</td>
+          <td class="paramname"><em>mode</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get maximum sampling rate for a given ADC mode. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">mode[in]</td><td>- ADC mode </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Maximum sampling rate in samples per second </dd></dl>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="ad4692__support_8c_abc7233ad5f02142ace7db21aa4c52e9c_icgraph.png" border="0" usemap="#aad4692__support_8c_abc7233ad5f02142ace7db21aa4c52e9c_icgraph" alt=""/></div>
+<map name="aad4692__support_8c_abc7233ad5f02142ace7db21aa4c52e9c_icgraph" id="aad4692__support_8c_abc7233ad5f02142ace7db21aa4c52e9c_icgraph">
+<area shape="rect" title="Get maximum sampling rate for a given ADC mode." alt="" coords="403,5,637,31"/>
+<area shape="rect" href="ad4692__iio_8c.html#a7aa4c35d34a7370a9365923c3e18f500" title="Initialize the AD4692 IIO Application." alt="" coords="223,5,355,31"/>
+<area shape="poly" title=" " alt="" coords="389,21,355,21,355,15,389,15"/>
+<area shape="rect" href="ad4692__iio_8c.html#a20b15ec49897aaf6440bb800ad6641e0" title="Run the ad4692 IIO event handler." alt="" coords="5,5,175,31"/>
+<area shape="poly" title=" " alt="" coords="209,21,175,21,175,15,209,15"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a0f2ea3fb0056aba4702df6d232536266" name="a0f2ea3fb0056aba4702df6d232536266"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0f2ea3fb0056aba4702df6d232536266">&#9670;&#160;</a></span>ad4692_get_tx_command()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ad4692_get_tx_command </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t *&#160;</td>
+          <td class="paramname"><em>local_tx_data</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get the Tx buffer respective to the enabled channels. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">local_tx_data[out]</td><td>- Tx buffer to populate with channel commands </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>None </dd></dl>
+
+</div>
+</div>
+<a id="ac33affc6975951bdc8f9205714b4cc33" name="ac33affc6975951bdc8f9205714b4cc33"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac33affc6975951bdc8f9205714b4cc33">&#9670;&#160;</a></span>ad4692_update_active_channels()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ad4692_update_active_channels </td>
+          <td>(</td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>ch_mask</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Update active channels based on sequencer mode and channel mask. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ch_mask[in]</td><td>- Channel mask (used in standard sequencer mode) </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<h2 class="groupheader">Variable Documentation</h2>
+<a id="ae411b7e9715fabd8cb568c597449302b" name="ae411b7e9715fabd8cb568c597449302b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae411b7e9715fabd8cb568c597449302b">&#9670;&#160;</a></span>buf_size_updated</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">volatile bool buf_size_updated = false</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
 
 </div>
 </div>

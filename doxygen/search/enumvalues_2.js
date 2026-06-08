@@ -12,8 +12,8 @@ var searchData=
   ['clk_5fpin_9',['CLK_PIN',['../ad4130__support_8h.html#a09c8d5e226fd5d42b3a73728a360e3d2aae77fecd532b93e8af376550385d48df',1,'ad4130_support.h']]],
   ['cnv_5fgpio_5foutput_10',['CNV_GPIO_OUTPUT',['../ad7091r__support_8h.html#a7bffcfce3b7a38012b310f39e200fcd8a8411c87fd88843c8b3a6ac435e7ec9c3',1,'ad7091r_support.h']]],
   ['cnv_5fpwm_11',['CNV_PWM',['../ad7091r__support_8h.html#a7bffcfce3b7a38012b310f39e200fcd8a12a08f180fcfc585d57ca1507127d5f4',1,'ad7091r_support.h']]],
-  ['continuous_12',['CONTINUOUS',['../ad4692__iio_8h.html#aaabbc0e466962b7393b63be4131eb33da9191b0f571007d73a6fc0f6a39d2b866',1,'ad4692_iio.h']]],
-  ['continuous_5fconv_5fmode_13',['CONTINUOUS_CONV_MODE',['../ad7124__temperature-measure_2app_2ad7124__support_8h.html#a08f65bd1cd77f78f81d078923053ab26a7d0d8496c2719a6930cde7b187854263',1,'ad7124_support.h']]],
+  ['continuous_5fconv_5fmode_12',['CONTINUOUS_CONV_MODE',['../ad7124__temperature-measure_2app_2ad7124__support_8h.html#a08f65bd1cd77f78f81d078923053ab26a7d0d8496c2719a6930cde7b187854263',1,'ad7124_support.h']]],
+  ['continuous_5fdata_5fcapture_13',['CONTINUOUS_DATA_CAPTURE',['../ad4692__iio_8h.html#aaabbc0e466962b7393b63be4131eb33da382ff22af730b28f12fc485629f61cb6',1,'ad4692_iio.h']]],
   ['continuous_5fmeasurement_14',['CONTINUOUS_MEASUREMENT',['../ad7124__temperature-measure_2app_2ad7124__console__app_8c.html#aafa0e33c7944c25501a44c973156a6a3a21e1104bb8ee1bf420815e997e3028af',1,'ad7124_console_app.c']]],
   ['conv_5fmode_5fattr_5fid_15',['CONV_MODE_ATTR_ID',['../ad777x__iio_8c.html#ab09ce48088b147b6981fbc11da70adf0a34d271d2fd5909988be41b30e2d27b60',1,'ad777x_iio.c']]]
 ];
