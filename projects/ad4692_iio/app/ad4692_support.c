@@ -117,30 +117,23 @@ int32_t ad4692_data_transfer_read_converted_data(struct ad4692_desc *desc,
 void ad4692_update_active_channels(uint32_t ch_mask)
 {
 	uint8_t ch_id;
-	uint8_t index;
-	uint32_t mask;
 
 	num_of_active_channels = 0;
 	memset(ad4692_active_channels, 0, NO_OF_CHANNELS);
 
 	if (ad4692_sequencer_mode == STANDARD_SEQUENCER) {
-		for (ch_id = 0, index = 0, mask = 0x1; ch_id < NO_OF_CHANNELS; ch_id++) {
-			if (mask & ch_mask) {
-				ad4692_active_channels[index++] = ch_id;
-				num_of_active_channels++;
+		for (ch_id = 0; ch_id < NO_OF_CHANNELS; ch_id++) {
+			if (ch_mask & NO_OS_BIT(ch_id)) {
+				ad4692_active_channels[num_of_active_channels++] = ch_id;
 			}
-			mask <<= 1;
 		}
 		channel_mask = ch_mask;
 	} else {
-		for (ch_id = 0, index = 0, mask = 0x1; ch_id < NO_OF_CHANNELS; ch_id++) {
+		for (ch_id = 0; ch_id < NO_OF_CHANNELS; ch_id++) {
 			if (channel_priorities[ch_id] != 0) {
-				ad4692_active_channels[index++] = ch_id;
-				num_of_active_channels++;
-				mask |= (1 << ch_id);
+				ad4692_active_channels[num_of_active_channels++] = ch_id;
 			}
 		}
-		channel_mask = mask;
 	}
 
 	return;
@@ -340,7 +333,7 @@ int ad4692_configure_acc_mask(uint16_t channel_mask,
 		/* Build the channel mask depending on the channel priorities set */
 		for (ch_id = 0; ch_id < NO_OF_CHANNELS; ch_id++) {
 			if (chn_priorities[ch_id] > 0) {
-				chn_mask &= ~(1 << ch_id);
+				chn_mask &= ~NO_OS_BIT(ch_id);
 			}
 		}
 	}
