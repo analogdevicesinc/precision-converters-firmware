@@ -1004,14 +1004,30 @@ void iio_params_deinit(void)
 }
 
 /**
+ * @brief	Remove the AD4692 Instance & IIO device
+ * @return	0
+ */
+int32_t iio_adc_remove(void)
+{
+	/* Free AD4692 IIO device */
+	iio_params_deinit();
+
+	/* Remove data transfer system */
+	ad4692_data_transfer_remove(ad4692_dev);
+
+	/* Remove AD4692 descriptor */
+	ad4692_remove(ad4692_dev);
+	ad4692_dev = NULL;
+
+	return 0;
+}
+
+/**
  * @brief	Remove the IIO application and free the allocated resources
  * @return  0
  */
 int32_t iio_app_remove(void)
 {
-	/* Remove data transfer system */
-	ad4692_data_transfer_remove(ad4692_dev);
-
 	/* Remove hardware trigger if allocated (SPI_INTR + CONTINUOUS_DATA_CAPTURE) */
 	if (ad4692_hw_trig_desc) {
 		iio_hw_trig_remove(ad4692_hw_trig_desc);
@@ -1024,10 +1040,8 @@ int32_t iio_app_remove(void)
 	/* Remove SPI burst PWM if allocated (SPI_INTR + SPI_BURST) */
 	remove_pwm();
 
-	NO_OS_UNUSED_PARAM(ad4692_remove(ad4692_dev));
-	ad4692_dev = NULL;
-
-	iio_params_deinit();
+	/* Free AD4692 IIO device */
+	iio_adc_remove();
 
 	NO_OS_UNUSED_PARAM(iio_remove(ad4692_iio_desc));
 	ad4692_iio_desc = NULL;
@@ -1088,7 +1102,7 @@ int32_t iio_app_initialize(void)
 
 	ret = init_interrupt();
 	if (ret) {
-		return ret;
+		goto iio_init;
 	}
 
 	/* Read context attributes */
@@ -1107,21 +1121,48 @@ int32_t iio_app_initialize(void)
 	do {
 		ret = ad4692_init(&ad4692_dev, &ad4692_init_params);
 		if (ret) {
-			goto system_config_init;
+			goto iio_init;
 		}
 
 		/* Exit from manual mode if device is configured to manual mode */
 		if (ad4692_dev->mode == AD4692_MANUAL_MODE) {
 			ret = ad4692_exit_manual_mode(ad4692_dev);
 			if (ret) {
-				goto err_remove_ad4692_dev;
+				goto err_adc_init;
 			}
+		}
+
+		/* Configure the channel priorities in advanced sequencer mode */
+		if (ad4692_sequencer_mode == ADVANCED_SEQUENCER) {
+			ret = ad4692_configure_channel_priorities(channel_priorities,
+					channel_sequence,
+					&num_of_as_slots,
+					ad4692_acc_count);
+			if (ret) {
+				goto err_adc_init;
+			}
+		} else {
+			memset(ad4692_acc_count, 0x0, NO_OF_CHANNELS);
+		}
+
+		/* Initialize data transfer system for selected mode */
+		/*
+		 * Note: ad4692_init_params.mode is used instead of ad4692_dev->mode
+		 * because when ad4692_init_params.mode is MANUAL the device moves to
+		 * MANUAL mode only when data capture occurs. The ADC doesn't accept
+		 * any register read/write when in MANUAL mode. Hence use CNV_CLOCK
+		 * mode for all register read/write and use MANUAL mode only for data
+		 * capture.
+		 */
+		ret = ad4692_data_transfer_init(ad4692_dev, ad4692_init_params.mode);
+		if (ret) {
+			goto err_adc_init;
 		}
 
 		/* Register and initialize the AD4692 device into IIO interface */
 		ret = ad4692_iio_init(&ad4692_iio_dev[0], 0);
 		if (ret) {
-			goto err_remove_ad4692_dev;
+			goto err_adc_init;
 		}
 
 		/* Initialize the IIO interface */
@@ -1146,47 +1187,6 @@ int32_t iio_app_initialize(void)
 		break;
 	} while (false);
 
-	if (ad4692_dev) {
-		/* Configure the channel priorities in advanced sequencer mode */
-		if (ad4692_sequencer_mode == ADVANCED_SEQUENCER) {
-			ret = ad4692_configure_channel_priorities(channel_priorities,
-					channel_sequence,
-					&num_of_as_slots,
-					ad4692_acc_count);
-			if (ret) {
-				goto err_remove_ad4692;
-			}
-		} else {
-			memset(ad4692_acc_count, 0x0, NO_OF_CHANNELS);
-		}
-
-		/* Initialize data transfer system for selected mode */
-		/*
-		 * Note: ad4692_init_params.mode is used instead of ad4692_dev->mode
-		 * because when ad4692_init_params.mode is MANUAL the device moves to
-		 * MANUAL mode only when data capture occurs. The ADC doesn't accept
-		 * any register read/write when in MANUAL mode. Hence use CNV_CLOCK
-		 * mode for all register read/write and use MANUAL mode only for data
-		 * capture.
-		 */
-		ret = ad4692_data_transfer_init(ad4692_dev, ad4692_init_params.mode);
-		if (ret) {
-			goto err_remove_ad4692;
-		}
-	}
-
-	/* Goto System Config initialization if success */
-	goto system_config_init;
-
-err_remove_ad4692:
-	no_os_free(ad4692_iio_dev[0]);
-	iio_init_params.nb_devs = 0;
-	iio_init_params.nb_trigs = 0;
-err_remove_ad4692_dev:
-	ad4692_remove(ad4692_dev);
-	ad4692_dev = NULL;
-
-system_config_init:
 	/* Initialize board IIO paramaters */
 	ret = board_iio_params_init(&ad4692_iio_dev[iio_init_params.nb_devs], 1);
 	if (ret) {
@@ -1197,6 +1197,13 @@ system_config_init:
 	iio_device_init_params[iio_init_params.nb_devs].dev_descriptor =
 		ad4692_iio_dev[iio_init_params.nb_devs];
 	iio_init_params.nb_devs++;
+
+	/* Goto IIO initialization if success */
+	goto iio_init;
+
+err_adc_init:
+	/* Free AD4692 IIO device */
+	iio_adc_remove();
 
 iio_init:
 	/* Initialize the IIO interface */
@@ -1209,10 +1216,7 @@ iio_init:
 
 	if ((ad4692_interface_mode == SPI_INTR)
 	    && (ad4692_data_capture_mode == CONTINUOUS_DATA_CAPTURE)) {
-		ret = ad4692_iio_trigger_param_init(&ad4692_hw_trig_desc);
-		if (ret) {
-			return ret;
-		}
+		NO_OS_UNUSED_PARAM(ad4692_iio_trigger_param_init(&ad4692_hw_trig_desc));
 	}
 
 	return 0;
