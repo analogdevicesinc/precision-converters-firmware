@@ -763,16 +763,13 @@ static int32_t ad4692_manual_end_transfer(void *dev)
 			ad4692_stop_timer();
 
 			/* Disable triggers */
-			ret = iio_trig_disable(ad4692_hw_trig_desc);
-			if (ret) {
-				return ret;
-			}
+			iio_trig_disable(ad4692_hw_trig_desc);
 		}
 	} else { // SPI_DMA
 		/* Stop timers */
 		ad4692_stop_timer();
 
-		stm32_abort_dma_transfer();
+		no_os_spi_transfer_abort(ad4692_dev->comm_desc);
 
 		/* Pull the SPI CS line back high to enable reg Access */
 		ret = no_os_gpio_set_value(csb_gpio_desc, NO_OS_GPIO_HIGH);

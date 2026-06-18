@@ -197,7 +197,6 @@ int32_t ad4692_config_and_start_pwm(struct ad4692_desc *desc);
 void ad4692_stop_timer(void);
 void ad4692_spi_dma_rx_cplt_callback(DMA_HandleTypeDef* hdma);
 void ad4692_spi_dma_rx_half_cplt_callback(DMA_HandleTypeDef* hdma);
-void stm32_abort_dma_transfer(void);
 void update_buff(uint8_t *local_buf, uint8_t *buf_start_addr);
 void SystemClock_Config(void);
 void stm32_tim4_init(void);
