@@ -166,9 +166,6 @@ uint8_t* iio_buf_current_idx;
 /* DMA Buffer present index */
 uint8_t* dma_buf_current_idx;
 
-/* STM32 SPI desc */
-struct stm32_spi_desc* sdesc;
-
 /******************************************************************************/
 /************************** Functions Declaration *****************************/
 /******************************************************************************/
@@ -247,20 +244,6 @@ void ad4692_stop_timer(void)
 	} else {
 		no_os_pwm_disable(spi_burst_pwm_desc);
 	}
-
-	return;
-}
-
-/**
- * @brief  Abort DMA Transfers
- * @return None
- */
-void stm32_abort_dma_transfer(void)
-{
-	sdesc = ad4692_dev->comm_desc->extra;
-
-	no_os_dma_xfer_abort(sdesc->dma_desc, sdesc->rxdma_ch);
-	no_os_dma_xfer_abort(sdesc->dma_desc, sdesc->txdma_ch);
 
 	return;
 }
