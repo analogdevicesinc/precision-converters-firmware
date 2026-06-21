@@ -387,7 +387,6 @@ static int32_t ad4692_cnv_clock_read_converted_data(struct ad4692_desc *desc,
 	if (ret) {
 		goto ccm_disable_cnv_pwm;
 	}
-	*adc_data = no_os_get_unaligned_be16((uint8_t *)adc_data);
 
 	/* Reset the state of accumulator to start a new burst of conversion */
 	ret = ad4692_reg_write(desc,
