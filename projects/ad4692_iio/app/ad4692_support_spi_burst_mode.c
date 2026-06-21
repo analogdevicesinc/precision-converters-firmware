@@ -447,7 +447,6 @@ static int32_t ad4692_spi_burst_read_converted_data(struct ad4692_desc *desc,
 	if (ret) {
 		return ret;
 	}
-	*adc_data = no_os_get_unaligned_be16((uint8_t *)adc_data);
 
 	/* Reset the state of accumulator */
 	ret = ad4692_reg_write(desc,
