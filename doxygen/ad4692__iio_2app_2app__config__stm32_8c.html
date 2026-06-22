@@ -169,9 +169,6 @@ Functions</h2></td></tr>
 <tr class="memitem:a2a3ad81173093d82c62689aa127b2fb8" id="r_a2a3ad81173093d82c62689aa127b2fb8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad4692__iio_2app_2app__config__stm32_8c.html#a2a3ad81173093d82c62689aa127b2fb8">ad4692_stop_timer</a> (void)</td></tr>
 <tr class="memdesc:a2a3ad81173093d82c62689aa127b2fb8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stop timers and DMA transfers.  <br /></td></tr>
 <tr class="separator:a2a3ad81173093d82c62689aa127b2fb8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aed8efa9cf850d566266e90c8119e1ab6" id="r_aed8efa9cf850d566266e90c8119e1ab6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad4692__iio_2app_2app__config__stm32_8c.html#aed8efa9cf850d566266e90c8119e1ab6">stm32_abort_dma_transfer</a> (void)</td></tr>
-<tr class="memdesc:aed8efa9cf850d566266e90c8119e1ab6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Abort DMA Transfers.  <br /></td></tr>
-<tr class="separator:aed8efa9cf850d566266e90c8119e1ab6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5d3d4a0c72236ff1c70d56ecc1266670" id="r_a5d3d4a0c72236ff1c70d56ecc1266670"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad4692__iio_2app_2app__config__stm32_8c.html#a5d3d4a0c72236ff1c70d56ecc1266670">update_buff</a> (uint8_t *<a class="el" href="ad405x__support_8c.html#a64753f7285011cab33065a7abb2574ef">local_buf</a>, uint8_t *buf_start_addr)</td></tr>
 <tr class="memdesc:a5d3d4a0c72236ff1c70d56ecc1266670"><td class="mdescLeft">&#160;</td><td class="mdescRight">Update buffer index.  <br /></td></tr>
 <tr class="separator:a5d3d4a0c72236ff1c70d56ecc1266670"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -236,8 +233,6 @@ Variables</h2></td></tr>
 <tr class="separator:a71f09aee1100f5bb559da0c8f9d43786"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9dcd1558d7c02d9ed32c17a94abd09f2" id="r_a9dcd1558d7c02d9ed32c17a94abd09f2"><td class="memItemLeft" align="right" valign="top">uint8_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad4692__iio_2app_2app__config__stm32_8c.html#a9dcd1558d7c02d9ed32c17a94abd09f2">dma_buf_current_idx</a></td></tr>
 <tr class="separator:a9dcd1558d7c02d9ed32c17a94abd09f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7297495c0ad6c29decfc52ced16dc7c9" id="r_a7297495c0ad6c29decfc52ced16dc7c9"><td class="memItemLeft" align="right" valign="top">struct stm32_spi_desc *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ad4692__iio_2app_2app__config__stm32_8c.html#a7297495c0ad6c29decfc52ced16dc7c9">sdesc</a></td></tr>
-<tr class="separator:a7297495c0ad6c29decfc52ced16dc7c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Source file for STM32 platform configurations. </p>
@@ -411,27 +406,6 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 
 <p>GPIO15-10 IRQ handler for the interrupt trigger. </p>
-<dl class="section return"><dt>Returns</dt><dd>None </dd></dl>
-
-</div>
-</div>
-<a id="aed8efa9cf850d566266e90c8119e1ab6" name="aed8efa9cf850d566266e90c8119e1ab6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aed8efa9cf850d566266e90c8119e1ab6">&#9670;&#160;</a></span>stm32_abort_dma_transfer()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void stm32_abort_dma_transfer </td>
-          <td>(</td>
-          <td class="paramtype">void&#160;</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Abort DMA Transfers. </p>
 <dl class="section return"><dt>Returns</dt><dd>None </dd></dl>
 
 </div>
@@ -629,20 +603,6 @@ Here is the caller graph for this function:</div>
       <table class="memname">
         <tr>
           <td class="memname">uint32_t rxdma_ndtr</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a7297495c0ad6c29decfc52ced16dc7c9" name="a7297495c0ad6c29decfc52ced16dc7c9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7297495c0ad6c29decfc52ced16dc7c9">&#9670;&#160;</a></span>sdesc</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">struct stm32_spi_desc* sdesc</td>
         </tr>
       </table>
 </div><div class="memdoc">
