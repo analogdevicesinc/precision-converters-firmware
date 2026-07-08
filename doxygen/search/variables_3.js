@@ -68,5 +68,6 @@ var searchData=
   ['dpot_5fsw_5flrdac_5fupdate_65',['dpot_sw_lrdac_update',['../structdpot__ops.html#a31213cdeae796e14f0ec10f1d35b31c0',1,'dpot_ops']]],
   ['dpot_5ftolerance_5fread_66',['dpot_tolerance_read',['../structdpot__ops.html#aa578e74aa121fc5ab505a64d04925d27',1,'dpot_ops']]],
   ['dr_67',['DR',['../structadi__fft__measurements.html#ae666edd8452259dbea48ccd711c25118',1,'adi_fft_measurements']]],
-  ['drdy_5finit_5fparam_68',['drdy_init_param',['../ad777x__iio_2app_2app__config_8c.html#a0e32027c76900fd4c06857525bc3a100',1,'app_config.c']]]
+  ['drdy_5finit_5fparam_68',['drdy_init_param',['../ad777x__iio_2app_2app__config_8c.html#a0e32027c76900fd4c06857525bc3a100',1,'app_config.c']]],
+  ['dsipllinit_69',['dsiPllInit',['../tft_8c.html#a4b0f82967432b274680c3b7f00e109b3',1,'tft.c']]]
 ];

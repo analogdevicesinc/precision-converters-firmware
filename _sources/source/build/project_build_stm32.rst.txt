@@ -70,8 +70,6 @@ and generate executable file (.bin/.hex)
                .. image:: /source/build/stm32_exclude_files_option.png
                   :width: 600
 
-            * In order to choose STM32 platform in the firmware, select the "ACTIVE_PLATFORM" as "STM32_PLATFORM" in the app_config.h from the respective project. Alternately , add compiler flag "ACTIVE_PLATFORM=value of STM32_PLATFORM in app_config.h" for selecting stm32 platform.
-
             * Add compiler flags "-u _printf_float" to the project settings.
 
                .. image:: /source/build/stm32_compiler_flag.png

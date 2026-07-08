@@ -227,10 +227,13 @@ Functions</h2></td></tr>
 <tr class="memitem:a9dffdb1f5a800e5a964833e338fb762f" id="r_a9dffdb1f5a800e5a964833e338fb762f"><td class="memItemLeft" align="right" valign="top">int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="pl__gui__views_8h.html#a9dffdb1f5a800e5a964833e338fb762f">pl_gui_cnv_code_to_straight_binary</a> (uint32_t code, uint8_t chn)</td></tr>
 <tr class="memdesc:a9dffdb1f5a800e5a964833e338fb762f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert input code to straight binary data.  <br /></td></tr>
 <tr class="separator:a9dffdb1f5a800e5a964833e338fb762f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2ee7aa6e76f435f117563b6450348e6d" id="r_a2ee7aa6e76f435f117563b6450348e6d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="pl__gui__views_8h.html#a2ee7aa6e76f435f117563b6450348e6d">pl_gui_remove</a> (void)</td></tr>
+<tr class="memdesc:a2ee7aa6e76f435f117563b6450348e6d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Remove Pocket Lab resources.  <br /></td></tr>
+<tr class="separator:a2ee7aa6e76f435f117563b6450348e6d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Pocket lab GUI views. </p>
-<p>Copyright (c) 2023-24 Analog Devices, Inc. All rights reserved.</p>
+<p>Copyright (c) 2023-25 Analog Devices, Inc. All rights reserved.</p>
 <p>This software is proprietary to Analog Devices, Inc. and its licensors. By using this software you agree to the terms of the associated Analog Devices Software License Agreement. </p>
 </div><h2 class="groupheader">Macro Definition Documentation</h2>
 <a id="afde41e2007414869ce5c82d215425ec0" name="afde41e2007414869ce5c82d215425ec0"></a>
@@ -248,7 +251,7 @@ Functions</h2></td></tr>
 <div class="line">    .view_name = <span class="stringliteral">&quot;About&quot;</span>, \</div>
 <div class="line">    .create_view = &amp;<a class="code hl_function" href="pl__gui__views_8h.html#a54b11add895e8246c59654d375a950f2">pl_gui_create_about_view</a>\</div>
 <div class="line">}</div>
-<div class="ttc" id="apl__gui__views_8h_html_a54b11add895e8246c59654d375a950f2"><div class="ttname"><a href="pl__gui__views_8h.html#a54b11add895e8246c59654d375a950f2">pl_gui_create_about_view</a></div><div class="ttdeci">int32_t pl_gui_create_about_view(lv_obj_t *parent, struct pl_gui_init_param *param)</div><div class="ttdoc">Create pocket lab GUI about view.</div><div class="ttdef"><b>Definition</b> pl_gui_views.c:2129</div></div>
+<div class="ttc" id="apl__gui__views_8h_html_a54b11add895e8246c59654d375a950f2"><div class="ttname"><a href="pl__gui__views_8h.html#a54b11add895e8246c59654d375a950f2">pl_gui_create_about_view</a></div><div class="ttdeci">int32_t pl_gui_create_about_view(lv_obj_t *parent, struct pl_gui_init_param *param)</div><div class="ttdoc">Create pocket lab GUI about view.</div><div class="ttdef"><b>Definition</b> pl_gui_views.c:2101</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -267,7 +270,7 @@ Functions</h2></td></tr>
 <div class="line">    .view_name = <span class="stringliteral">&quot;Analysis&quot;</span>, \</div>
 <div class="line">    .create_view = &amp;<a class="code hl_function" href="pl__gui__views_8h.html#a9ec92c409f2f75a62f6663a8eb642666">pl_gui_create_analysis_view</a>\</div>
 <div class="line">}</div>
-<div class="ttc" id="apl__gui__views_8h_html_a9ec92c409f2f75a62f6663a8eb642666"><div class="ttname"><a href="pl__gui__views_8h.html#a9ec92c409f2f75a62f6663a8eb642666">pl_gui_create_analysis_view</a></div><div class="ttdeci">int32_t pl_gui_create_analysis_view(lv_obj_t *parent, struct pl_gui_init_param *param)</div><div class="ttdoc">Create pocket lab GUI analysis view.</div><div class="ttdef"><b>Definition</b> pl_gui_views.c:1918</div></div>
+<div class="ttc" id="apl__gui__views_8h_html_a9ec92c409f2f75a62f6663a8eb642666"><div class="ttname"><a href="pl__gui__views_8h.html#a9ec92c409f2f75a62f6663a8eb642666">pl_gui_create_analysis_view</a></div><div class="ttdeci">int32_t pl_gui_create_analysis_view(lv_obj_t *parent, struct pl_gui_init_param *param)</div><div class="ttdoc">Create pocket lab GUI analysis view.</div><div class="ttdef"><b>Definition</b> pl_gui_views.c:1894</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -286,7 +289,7 @@ Functions</h2></td></tr>
 <div class="line">    .view_name = <span class="stringliteral">&quot;Configure&quot;</span>, \</div>
 <div class="line">    .create_view = &amp;<a class="code hl_function" href="pl__gui__views_8h.html#a18720f4b283be5e0b8743045bd76a9a8">pl_gui_create_attributes_view</a>\</div>
 <div class="line">}</div>
-<div class="ttc" id="apl__gui__views_8h_html_a18720f4b283be5e0b8743045bd76a9a8"><div class="ttname"><a href="pl__gui__views_8h.html#a18720f4b283be5e0b8743045bd76a9a8">pl_gui_create_attributes_view</a></div><div class="ttdeci">int32_t pl_gui_create_attributes_view(lv_obj_t *parent, struct pl_gui_init_param *param)</div><div class="ttdoc">Create pocket lab GUI attributes view.</div><div class="ttdef"><b>Definition</b> pl_gui_views.c:1144</div></div>
+<div class="ttc" id="apl__gui__views_8h_html_a18720f4b283be5e0b8743045bd76a9a8"><div class="ttname"><a href="pl__gui__views_8h.html#a18720f4b283be5e0b8743045bd76a9a8">pl_gui_create_attributes_view</a></div><div class="ttdeci">int32_t pl_gui_create_attributes_view(lv_obj_t *parent, struct pl_gui_init_param *param)</div><div class="ttdoc">Create pocket lab GUI attributes view.</div><div class="ttdef"><b>Definition</b> pl_gui_views.c:1134</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -305,7 +308,7 @@ Functions</h2></td></tr>
 <div class="line">    .view_name = <span class="stringliteral">&quot;Capture&quot;</span>, \</div>
 <div class="line">    .create_view = &amp;<a class="code hl_function" href="pl__gui__views_8h.html#a0b4a192606ecba5eca51896fbc1befb8">pl_gui_create_capture_view</a>\</div>
 <div class="line">}</div>
-<div class="ttc" id="apl__gui__views_8h_html_a0b4a192606ecba5eca51896fbc1befb8"><div class="ttname"><a href="pl__gui__views_8h.html#a0b4a192606ecba5eca51896fbc1befb8">pl_gui_create_capture_view</a></div><div class="ttdeci">int32_t pl_gui_create_capture_view(lv_obj_t *parent, struct pl_gui_init_param *param)</div><div class="ttdoc">Create pocket lab GUI data capture view.</div><div class="ttdef"><b>Definition</b> pl_gui_views.c:1651</div></div>
+<div class="ttc" id="apl__gui__views_8h_html_a0b4a192606ecba5eca51896fbc1befb8"><div class="ttname"><a href="pl__gui__views_8h.html#a0b4a192606ecba5eca51896fbc1befb8">pl_gui_create_capture_view</a></div><div class="ttdeci">int32_t pl_gui_create_capture_view(lv_obj_t *parent, struct pl_gui_init_param *param)</div><div class="ttdoc">Create pocket lab GUI data capture view.</div><div class="ttdef"><b>Definition</b> pl_gui_views.c:1641</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -324,7 +327,7 @@ Functions</h2></td></tr>
 <div class="line">    .view_name = <span class="stringliteral">&quot;DMM&quot;</span>, \</div>
 <div class="line">    .create_view = &amp;<a class="code hl_function" href="pl__gui__views_8h.html#a6dd69c69516001dd3c9c24d5134f51c3">pl_gui_create_dmm_view</a>\</div>
 <div class="line">}</div>
-<div class="ttc" id="apl__gui__views_8h_html_a6dd69c69516001dd3c9c24d5134f51c3"><div class="ttname"><a href="pl__gui__views_8h.html#a6dd69c69516001dd3c9c24d5134f51c3">pl_gui_create_dmm_view</a></div><div class="ttdeci">int32_t pl_gui_create_dmm_view(lv_obj_t *parent, struct pl_gui_init_param *param)</div><div class="ttdoc">Create pocket lab GUI DMM view.</div><div class="ttdef"><b>Definition</b> pl_gui_views.c:1482</div></div>
+<div class="ttc" id="apl__gui__views_8h_html_a6dd69c69516001dd3c9c24d5134f51c3"><div class="ttname"><a href="pl__gui__views_8h.html#a6dd69c69516001dd3c9c24d5134f51c3">pl_gui_create_dmm_view</a></div><div class="ttdeci">int32_t pl_gui_create_dmm_view(lv_obj_t *parent, struct pl_gui_init_param *param)</div><div class="ttdoc">Create pocket lab GUI DMM view.</div><div class="ttdef"><b>Definition</b> pl_gui_views.c:1472</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -343,7 +346,7 @@ Functions</h2></td></tr>
 <div class="line">    .view_name = <span class="stringliteral">&quot; &quot;</span>, \</div>
 <div class="line">    .create_view = &amp;<a class="code hl_function" href="pl__gui__views_8h.html#af3657afe85a60b3d439755f324f4f6dd">pl_gui_create_power_up_view</a>\</div>
 <div class="line">}</div>
-<div class="ttc" id="apl__gui__views_8h_html_af3657afe85a60b3d439755f324f4f6dd"><div class="ttname"><a href="pl__gui__views_8h.html#af3657afe85a60b3d439755f324f4f6dd">pl_gui_create_power_up_view</a></div><div class="ttdeci">int32_t pl_gui_create_power_up_view(lv_obj_t *parent, struct pl_gui_init_param *param)</div><div class="ttdoc">Create pocket lab GUI power-up view.</div><div class="ttdef"><b>Definition</b> pl_gui_views.c:1123</div></div>
+<div class="ttc" id="apl__gui__views_8h_html_af3657afe85a60b3d439755f324f4f6dd"><div class="ttname"><a href="pl__gui__views_8h.html#af3657afe85a60b3d439755f324f4f6dd">pl_gui_create_power_up_view</a></div><div class="ttdeci">int32_t pl_gui_create_power_up_view(lv_obj_t *parent, struct pl_gui_init_param *param)</div><div class="ttdoc">Create pocket lab GUI power-up view.</div><div class="ttdef"><b>Definition</b> pl_gui_views.c:1113</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -362,7 +365,7 @@ Functions</h2></td></tr>
 <div class="line">    .view_name = <span class="stringliteral">&quot;Register&quot;</span>, \</div>
 <div class="line">    .create_view = &amp;<a class="code hl_function" href="pl__gui__views_8h.html#a605483e37dda1a227a7f66266193afae">pl_gui_create_register_view</a>\</div>
 <div class="line">}</div>
-<div class="ttc" id="apl__gui__views_8h_html_a605483e37dda1a227a7f66266193afae"><div class="ttname"><a href="pl__gui__views_8h.html#a605483e37dda1a227a7f66266193afae">pl_gui_create_register_view</a></div><div class="ttdeci">int32_t pl_gui_create_register_view(lv_obj_t *parent, struct pl_gui_init_param *param)</div><div class="ttdoc">Create pocket lab GUI register view.</div><div class="ttdef"><b>Definition</b> pl_gui_views.c:1321</div></div>
+<div class="ttc" id="apl__gui__views_8h_html_a605483e37dda1a227a7f66266193afae"><div class="ttname"><a href="pl__gui__views_8h.html#a605483e37dda1a227a7f66266193afae">pl_gui_create_register_view</a></div><div class="ttdeci">int32_t pl_gui_create_register_view(lv_obj_t *parent, struct pl_gui_init_param *param)</div><div class="ttdoc">Create pocket lab GUI register view.</div><div class="ttdef"><b>Definition</b> pl_gui_views.c:1311</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1161,6 +1164,39 @@ Here is the caller graph for this function:</div>
 <area shape="poly" title=" " alt="" coords="94,70,60,70,60,65,94,65"/>
 <area shape="rect" href="ad7124__iio_2app_2main_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title="Main entry point to application." alt="" coords="5,104,60,129"/>
 <area shape="poly" title=" " alt="" coords="94,119,60,119,60,114,94,114"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a2ee7aa6e76f435f117563b6450348e6d" name="a2ee7aa6e76f435f117563b6450348e6d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2ee7aa6e76f435f117563b6450348e6d">&#9670;&#160;</a></span>pl_gui_remove()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void pl_gui_remove </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Remove Pocket Lab resources. </p>
+<dl class="section return"><dt>Returns</dt><dd>None </dd></dl>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="pl__gui__views_8h_a2ee7aa6e76f435f117563b6450348e6d_icgraph.png" border="0" usemap="#apl__gui__views_8h_a2ee7aa6e76f435f117563b6450348e6d_icgraph" alt=""/></div>
+<map name="apl__gui__views_8h_a2ee7aa6e76f435f117563b6450348e6d_icgraph" id="apl__gui__views_8h_a2ee7aa6e76f435f117563b6450348e6d_icgraph">
+<area shape="rect" title="Remove Pocket Lab resources." alt="" coords="349,5,468,31"/>
+<area shape="rect" href="ad4170__iio_8c.html#a90df09e109b2513ba81975c0fabfdb60" title="Run the AD4170 IIO event handler." alt="" coords="108,5,301,31"/>
+<area shape="poly" title=" " alt="" coords="336,21,302,21,302,15,336,15"/>
+<area shape="rect" href="ad4170__iio_2app_2main_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title="Main entry point to application." alt="" coords="5,5,60,31"/>
+<area shape="poly" title=" " alt="" coords="94,21,60,21,60,15,94,15"/>
 </map>
 </div>
 
