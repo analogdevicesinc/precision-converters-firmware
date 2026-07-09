@@ -16,6 +16,7 @@ Firmware Applications
    /source/projects/ad4692_iio/ad4692_iio.rst
    /source/projects/ad4696_iio/ad4696_iio.rst
    /source/projects/ad559xr_console/ad559xr_console.rst
+   /source/projects/ad559xr_iio/ad559xr_iio.rst
    /source/projects/ad5706r_iio/ad5706r_iio.rst
    /source/projects/ad5710r_iio/ad5710r_iio.rst
    /source/projects/ad5754r_iio/ad5754r_iio.rst

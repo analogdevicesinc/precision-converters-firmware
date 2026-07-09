@@ -1,0 +1,13 @@
+<map id="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad559xr_iio/app/app_config_stm32.h" name="/home/runner/work/precision&#45;converters&#45;firmware/precision&#45;converters&#45;firmware/projects/ad559xr_iio/app/app_config_stm32.h">
+<area shape="rect" id="Node000001" title="Header file for STM32 platform configurations." alt="" coords="393,5,657,75"/>
+<area shape="rect" id="Node000002" href="$ad559xr__iio_2app_2app__config_8h.html" title="Configuration file for ad559xr IIO firmware application." alt="" coords="280,123,503,192"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="477,86,432,124,429,120,474,82"/>
+<area shape="rect" id="Node000006" href="$ad559xr__iio_2app_2app__config__stm32_8c.html" title="STM32 Specific configuration files for AD559xr IIO Application." alt="" coords="527,123,789,192"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="576,82,621,120,617,124,572,86"/>
+<area shape="rect" id="Node000003" href="$ad559xr__iio_8c.html" title="Implementation of ad559xr IIO application interfaces." alt="" coords="5,240,228,309"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="300,200,198,242,196,237,298,195"/>
+<area shape="rect" id="Node000004" href="$ad559xr__user__config_8c.html" title="User configuration file for ad559xr device." alt="" coords="252,240,531,309"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="394,206,394,240,389,240,389,206"/>
+<area shape="rect" id="Node000005" href="$ad559xr__iio_2app_2app__config_8c.html" title="Application configurations module." alt="" coords="555,240,777,309"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="485,195,587,237,585,242,483,200"/>
+</map>
