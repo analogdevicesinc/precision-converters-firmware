@@ -18,13 +18,11 @@
 /******************************************************************************/
 #include <stdint.h>
 #include "no_os_pwm.h"
+#include "common_macros.h"
 
 /******************************************************************************/
 /********************** Macros and Constants Definition ***********************/
 /******************************************************************************/
-/* List of supported platforms*/
-#define STM32_PLATFORM      1
-
 /* List of data capture modes for ad559xr device */
 #define CONTINUOUS_DATA_CAPTURE		0
 #define BURST_DATA_CAPTURE			1
