@@ -1,8 +1,9 @@
 /***************************************************************************//**
- *   @file    main.c
- *   @brief   Main interface for IIO firmware application
+ * @file    stm32_gpio_irq_generated.c
+ * @brief   GPIO IRQ specific functions for STM32 platform
 ********************************************************************************
- * Copyright (c) 2023 Analog Devices, Inc.
+ * Copyright (c) 2026 Analog Devices, Inc.
+ * All rights reserved.
  *
  * This software is proprietary to Analog Devices, Inc. and its licensors.
  * By using this software you agree to the terms of the associated
@@ -12,48 +13,70 @@
 /******************************************************************************/
 /***************************** Include Files **********************************/
 /******************************************************************************/
-#include <stdio.h>
-#include <stdint.h>
+
 #include "no_os_error.h"
+#include "stm32_hal.h"
 
 /******************************************************************************/
-/********************** Macros and Constants Definitions **********************/
-/******************************************************************************/
-
-/******************************************************************************/
-/********************** Variables and User Defined Data Types *****************/
+/********************* Macros and Constants Definition ************************/
 /******************************************************************************/
 
 /******************************************************************************/
-/************************** Functions Declarations ****************************/
+/******************** Variables and User Defined Data Types *******************/
 /******************************************************************************/
-int32_t init_system(void);
-int32_t iio_app_initialize(void);
-void iio_app_event_handler(void);
 
 /******************************************************************************/
-/************************** Functions Definitions *****************************/
+/************************** Functions Declaration *****************************/
 /******************************************************************************/
+
+/******************************************************************************/
+/************************** Functions Definition ******************************/
+/******************************************************************************/
+
 /**
- * @brief	Main entry point to application
- * @return	none
+ * @brief Get the IRQ ID
+ * @param pin_nb[in] - Pin number
+ * @param irq_id[out] - Interrupt ID
+ * @return 0 if successful, negative error code otherwise.
  */
-int main(void)
+int stm32_get_exti_irq_id_from_pin(uint8_t pin_nb, IRQn_Type *irq_id)
 {
-	/* Initialize the system and peripherals */
-	if (init_system()) {
-		printf("System initialization failure!!\r\n");
-		return -ENODEV;
+	/* Note: The irq_id number used here are specific to STM32F469NI MCU on the SDP-K1 board
+	 * The below parameters will change depending on the controller used.
+	 * */
+	switch (pin_nb) {
+	case 4:
+		*irq_id = EXTI4_IRQn;
+		break;
+	case 0:
+		*irq_id = EXTI0_IRQn;
+		break;
+	case 2:
+		*irq_id = EXTI2_IRQn;
+		break;
+	case 1:
+		*irq_id = EXTI1_IRQn;
+		break;
+	case 3:
+		*irq_id = EXTI3_IRQn;
+		break;
+	case 5:
+	case 6:
+	case 7:
+	case 8:
+	case 9:
+		*irq_id = EXTI9_5_IRQn;
+		break;
+	case 10:
+	case 11:
+	case 12:
+	case 13:
+	case 14:
+	case 15:
+		*irq_id = EXTI15_10_IRQn;
+		break;
+	default:
+		return -ENOSYS;
 	}
-
-	/* Initialize the IIO interface */
-	if (iio_app_initialize()) {
-		printf("IIO initialization failure!!\r\n");
-		return -ENODEV;
-	}
-
-	while (1) {
-		/* Monitor the IIO client events */
-		iio_app_event_handler();
-	}
+	return 0;
 }

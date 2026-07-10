@@ -2,7 +2,7 @@
  *   @file    ad2s1210_iio.c
  *   @brief   Implementation of AD2S1210 IIO application interfaces
 ********************************************************************************
- * Copyright (c) 2023 Analog Devices, Inc.
+ * Copyright (c) 2023, 2026 Analog Devices, Inc.
  * Copyright (c) 2023 BayLibre, SAS.
  * All rights reserved.
  *
@@ -29,7 +29,9 @@
 #include "ad2s1210_user_config.h"
 #include "common.h"
 #include "no_os_error.h"
+#include "no_os_pwm.h"
 #include "no_os_util.h"
+#include "version.h"
 
 /******** Forward declaration of getter/setter functions ********/
 static int iio_ad2s1210_attr_get(void *device, char *buf, uint32_t len,
@@ -360,14 +362,12 @@ static int32_t iio_ad2s1210_debug_reg_write(void *dev, uint32_t reg,
  */
 static int32_t iio_ad2s1210_submit_buffer(struct iio_device_data *iio_dev_data)
 {
-
+#if (DATA_CAPTURE_MODE == BURST_DATA_CAPTURE)
 	uint32_t sample_indx = 0;
 	uint32_t nb_of_samples;
 	int32_t ret;
 	uint16_t data[2];
-	uint8_t i;
 
-#if (DATA_CAPTURE_MODE == BURST_DATA_CAPTURE)
 	nb_of_samples = iio_dev_data->buffer->size / BYTES_PER_SAMPLE;
 
 	if (!buf_size_updated) {
@@ -405,8 +405,24 @@ static int32_t iio_ad2s1210_prepare_transfer(void *dev_instance,
 {
 	int32_t ret;
 
+	/* The UART interrupt needs to be prioritized over the GPIO (end of conversion) interrupt.
+	 * If not, the GPIO interrupt may occur during the period where there is a UART read happening
+	 * for the READBUF command. If UART interrupts are not prioritized, then it would lead to missing of
+	 * characters in the IIO command sent from the client. */
+#if (DATA_CAPTURE_MODE == CONTINUOUS_DATA_CAPTURE) && (ACTIVE_PLATFORM == STM32_PLATFORM)
+	ret = no_os_irq_set_priority(trigger_irq_desc, TRIGGER_INT_ID, GPIO_PRIORITY);
+	if (ret) {
+		return ret;
+	}
+#endif
+
 #if (DATA_CAPTURE_MODE == CONTINUOUS_DATA_CAPTURE)
 	ret = iio_trig_enable(ad2s1210_hw_trig_desc);
+	if (ret) {
+		return ret;
+	}
+
+	ret = no_os_pwm_enable(pwm_desc);
 	if (ret) {
 		return ret;
 	}
@@ -426,11 +442,17 @@ static int32_t iio_ad2s1210_end_transfer(void *dev)
 	int32_t ret;
 
 #if (DATA_CAPTURE_MODE == CONTINUOUS_DATA_CAPTURE)
+	ret = no_os_pwm_disable(pwm_desc);
+	if (ret) {
+		return ret;
+	}
+
 	ret = iio_trig_disable(ad2s1210_hw_trig_desc);
 	if (ret) {
 		return ret;
 	}
 #endif
+
 	return 0;
 }
 
@@ -543,10 +565,11 @@ static int32_t ad2s1210_iio_trigger_param_init(struct iio_hw_trig **desc)
  * @brief	Initialize the IIO interface for AD2S1210 IIO device
  * @return	0 in case of success, negative error code otherwise
  */
-int32_t ad2s1210_iio_initialize(void)
+int32_t iio_app_initialize(void)
 {
-	struct iio_ctx_attr *context_attributes;
 	int32_t init_status;
+	/* EVB HW validation status */
+	bool hw_mezzanine_is_valid = false;
 
 	/* IIO device descriptors */
 	struct iio_device *iio_ad2s1210_dev;
@@ -580,8 +603,14 @@ int32_t ad2s1210_iio_initialize(void)
 		}
 	};
 
-	/* Init the system peripherals */
-	init_status = init_system();
+	/* Read context attributes */
+	init_status = get_iio_context_attributes_ex(&iio_init_params.ctx_attrs,
+			&iio_init_params.nb_ctx_attr,
+			eeprom_desc,
+			HW_MEZZANINE_NAME,
+			STR(HW_CARRIER_NAME),
+			&hw_mezzanine_is_valid,
+			FIRMWARE_VERSION);
 	if (init_status) {
 		return init_status;
 	}
@@ -597,29 +626,8 @@ int32_t ad2s1210_iio_initialize(void)
 		return init_status;
 	}
 
-	/* The setup currently uses fly wires through the expanstion board
-	 * that has its own eeprom. Becuase of the autodetect mechanism
-	 * of eeprom we cannot choose which eeprom to read on the i2c bus.
-	 * hardcode these context attributes until a proper board is
-	 * available.
-	 */
-	context_attributes = (struct iio_ctx_attr *)calloc(
-				     NUM_CTX_ATTR, sizeof(*context_attributes));
-	context_attributes[0].name = "hw_carrier";
-	context_attributes[0].value = STR(HW_CARRIER_NAME);
-	context_attributes[1].name = "hw_mezzanine";
-	context_attributes[1].value = HW_MEZZANINE_NAME;
-	context_attributes[2].name = "hw_name";
-	context_attributes[2].value = HW_NAME;
-	context_attributes[3].name = "hw_vendor";
-	context_attributes[3].value = HW_VENDOR;
-
-
-	iio_init_params.ctx_attrs = context_attributes;
-	iio_init_params.nb_ctx_attr = NUM_CTX_ATTR;
-
 	iio_device_init_params[0].name = ACTIVE_DEVICE_NAME;
-	iio_device_init_params[0].raw_buf = data_buffer;
+	iio_device_init_params[0].raw_buf = (void *)data_buffer;
 	iio_device_init_params[0].raw_buf_len = DATA_BUFFER_SIZE;
 	iio_device_init_params[0].dev = ad2s1210_dev_inst;
 	iio_device_init_params[0].dev_descriptor = iio_ad2s1210_dev;
@@ -658,7 +666,7 @@ int32_t ad2s1210_iio_initialize(void)
  * @return	none
  * @details	This function monitors the new IIO client event
  */
-void ad2s1210_iio_event_handler(void)
+void iio_app_event_handler(void)
 {
 	(void)iio_step(ad2s1210_iio_desc);
 }
