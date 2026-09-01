@@ -19,7 +19,7 @@
 
 #include <stdint.h>
 #include "ad4170.h"
-#include "common_macros.h"
+#include <common_macros.h>
 
 /******************************************************************************/
 /********************** Macros and Constants Definition ***********************/
@@ -111,19 +111,14 @@
 #endif
 
 /* Note: The STM32 platform supports SPI interrupt and TDM DMA data capturing
- * using the Nucleo-H563ZI and SPI DMA Mode using the SDP-K1
- * while the MBED platform supports only SPI interrupt Mode */
+ * using the Nucleo-H563ZI and SPI DMA Mode using the SDP-K1 */
 #if !defined(INTERFACE_MODE)
-#if (ACTIVE_PLATFORM == STM32_PLATFORM)
 /* Note: SDP-K1 supports only SPI DMA Mode in stm32 platform*/
 #if defined (TARGET_SDP_K1)
 #define INTERFACE_MODE SPI_DMA_MODE
 #elif defined(NUCLEO_H563) // Nucleo H563
 #define INTERFACE_MODE TDM_MODE
 #else
-#define INTERFACE_MODE SPI_INTERRUPT_MODE
-#endif
-#else // Mbed
 #define INTERFACE_MODE SPI_INTERRUPT_MODE
 #endif
 #endif
@@ -304,6 +299,5 @@ extern struct no_os_tdm_desc *ad4170_tdm_desc;
 extern struct no_os_eeprom_desc *eeprom_desc;
 extern struct no_os_pwm_desc *tx_trigger_desc;
 int32_t init_system(void);
-void ticker_callback(void *ctx);
 
 #endif //_APP_CONFIG_H_

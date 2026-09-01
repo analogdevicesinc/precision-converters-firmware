@@ -31,7 +31,7 @@
 #define ADC_REGISTER_COUNT		(147)
 
 /* Max register address available (last register address defined in ad4170.h file) */
-#define MAX_REGISTER_ADDRESS	(AD4170_REG_INPUT_DATA)
+#define MAX_REG_ADDRESS	(AD4170_REG_INPUT_DATA)
 
 extern const uint32_t ad4170_regs[];
 

@@ -162,6 +162,7 @@ NVIC.PriorityGroup=NVIC_PRIORITYGROUP_4
 NVIC.SVCall_IRQn=true\:0\:0\:false\:false\:true\:false\:false\:false
 NVIC.SysTick_IRQn=true\:15\:0\:false\:false\:true\:false\:true\:false
 NVIC.TIM8_CC_IRQn=true\:0\:0\:false\:false\:false\:true\:true\:true
+NVIC.UART5_IRQn=true\:0\:0\:false\:false\:true\:true\:true\:false
 NVIC.UsageFault_IRQn=true\:0\:0\:false\:false\:true\:false\:false\:false
 PA0/WKUP.GPIOParameters=GPIO_PuPd
 PA0/WKUP.GPIO_PuPd=GPIO_PULLDOWN

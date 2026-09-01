@@ -2,7 +2,7 @@
  *   @file    app_config_stm32.h
  *   @brief   Header file for STM32 platform configurations
 ********************************************************************************
- * Copyright (c) 2023-24 Analog Devices, Inc.
+ * Copyright (c) 2023-25 Analog Devices, Inc.
  * All rights reserved.
  *
  * This software is proprietary to Analog Devices, Inc. and its licensors.
@@ -22,6 +22,7 @@
 #include "stm32_uart.h"
 #include "stm32_gpio.h"
 #include "app_config.h"
+#include "no_os_pwm.h"
 #if (INTERFACE_MODE == TDM_DMA_MODE)
 #include "stm32_tdm.h"
 #endif
@@ -53,6 +54,7 @@
 #define STM32_I2C_ID		1 // I2C1
 
 /* STM32 UART specific parameters */
+#define UART_DEVICE_ID      5
 #define APP_UART_HANDLE     huart5
 #define UART_IRQ_ID         UART5_IRQn
 
@@ -203,8 +205,6 @@
 #endif
 #endif
 
-#define TICKER_INTERRUPT_PERIOD_uSEC	(0) // unused
-
 /* Max SPI Speed */
 #define AD4170_MAX_SPI_SPEED     20000000
 
@@ -238,8 +238,8 @@ extern struct iio_device_data *ad4170_iio_dev_data;
 extern volatile bool tdm_read_started;
 extern volatile struct iio_device_data* iio_dev_data_g;
 extern uint32_t nb_of_samples_g;
-extern volatile uint32_t* buff_start_addr;
-extern int32_t data_read;
+extern uint8_t* buff_start_addr;
+extern uint32_t data_read;
 extern uint32_t rxdma_ndtr;
 extern volatile bool ad4170_dma_buff_full;
 extern uint32_t dma_cycle_count;
@@ -254,15 +254,16 @@ extern struct stm32_dma_channel txdma_channel;
 
 void tim8_config(void);
 void stm32_timer_stop(void);
-void stm32_system_init(void);
 void stm32_abort_dma_transfer(void);
 void ad4170_dma_rx_cplt(SAI_HandleTypeDef *hsai);
 void ad4170_dma_rx_half_cplt(SAI_HandleTypeDef *hsai);
 void ad4170_spi_dma_rx_cplt_callback(DMA_HandleTypeDef* hdma);
 void ad4170_spi_dma_rx_half_cplt_callback(DMA_HandleTypeDef* hdma);
-void update_buff(uint32_t* local_buf, uint32_t* buf_start_addr);
+void update_buff(uint8_t* local_buf, uint8_t* buf_start_addr);
 void tim8_init(struct no_os_pwm_desc *pwm_desc);
 void MX_USB_DEVICE_Init(void);
 extern volatile uint32_t callback_count;
 #endif
+
+void stm32_system_init(void);
 #endif /* APP_CONFIG_STM32_H_ */

@@ -13,6 +13,7 @@
 /***************************** Include Files **********************************/
 /******************************************************************************/
 
+#include <string.h>
 #include "ad4170_support.h"
 #include "app_config.h"
 #include "ad4170_iio.h"
@@ -22,8 +23,11 @@
 /********************* Macros and Constants Definitions ***********************/
 /******************************************************************************/
 
-/* Scale value for Filters - SINC5, SINC5_AVG and SINC3 */
+/* Scale value for Filters */
 #define FILTER_SCALE		32
+
+/* Processing time factor for the settling time calculation */
+#define PROCESSING_TIME		64
 
 /******************************************************************************/
 /******************** Variables and User Defined Data Types *******************/
@@ -44,7 +48,9 @@ int32_t ad4170_read_single_sample(uint8_t input_chn, uint32_t *raw_data)
 	int32_t ret;
 	struct ad4170_adc_ctrl adc_ctrl = { 0 };
 	uint32_t prev_active_channels;
+#if (INTERFACE_MODE == TDM_MODE)
 	uint8_t adc_data[BYTES_PER_SAMPLE];
+#endif
 
 	if (!raw_data) {
 		return -EINVAL;
@@ -404,6 +410,7 @@ int32_t ad4170_disable_input_chn(uint8_t input_chn)
 static int32_t ad4170_set_excitation_sources(uint8_t input_chn,
 		bool exc_enable)
 {
+#if ((ACTIVE_DEMO_MODE_CONFIG == RTD_3WIRE_CONFIG) || (ACTIVE_DEMO_MODE_CONFIG == RTD_2WIRE_CONFIG) || (ACTIVE_DEMO_MODE_CONFIG == RTD_4WIRE_CONFIG) || ((ACTIVE_DEMO_MODE_CONFIG == THERMOCOUPLE_CONFIG) && defined(USE_CJC_AS_RTD)))
 	int32_t ret;
 	struct ad4170_current_source current_source;
 	uint8_t exc_source1;
@@ -416,6 +423,7 @@ static int32_t ad4170_set_excitation_sources(uint8_t input_chn,
 	} else {
 		exc_val = AD4170_I_OUT_0UA;
 	}
+#endif
 
 #if (ACTIVE_DEMO_MODE_CONFIG == RTD_3WIRE_CONFIG)
 	switch (input_chn) {
@@ -559,7 +567,8 @@ int32_t ad4170_set_reference(struct ad4170_dev *dev, uint8_t chn,
 
 	reg = no_os_field_prep(AD4170_ADC_SETUPS_AFE_REF_SELECT_MSK,
 			       ref);
-	ret = ad4170_spi_reg_write(dev, AD4170_REG_ADC_SETUPS_AFE(setup), reg);
+	ret = ad4170_spi_reg_write_mask(dev, AD4170_REG_ADC_SETUPS_AFE(setup),
+					AD4170_ADC_SETUPS_AFE_REF_SELECT_MSK, reg);
 	if (ret) {
 		return ret;
 	}
@@ -582,7 +591,6 @@ int32_t ad4170_set_fs(struct ad4170_dev *dev, uint8_t setup, uint8_t chn,
 		      uint16_t fs_val)
 {
 	int32_t ret;
-	uint8_t reg;
 
 	if (!dev) {
 		return -EINVAL;
@@ -609,23 +617,25 @@ int ad4170_determine_t_settle(float *t_settle,
 			      enum ad4170_filter_type filter_type, uint32_t filter_fs)
 {
 	uint8_t filter_scaler = 0;
+	uint8_t processing_time = 0;
 
-	if (num_of_active_channels == 1) {
+	if (no_os_hweight32(ad4170_init_params.config.channel_en) == 1) {
 		switch (filter_type) {
 		case AD4170_FILT_SINC5_AVG:
 			filter_scaler = 128;
+			*t_settle = ((float)filter_scaler * (filter_fs / 4)) / (float)
+				    AD4170_INTERNAL_CLOCK;
 			break;
 
 		case AD4170_FILT_SINC5:
 		case AD4170_FILT_SINC3:
 			filter_scaler = 32;
+			*t_settle = ((float)filter_scaler * filter_fs) / (float)AD4170_INTERNAL_CLOCK;
 			break;
 
 		default:
 			return -EINVAL;
 		}
-
-		*t_settle = ((float)filter_scaler * filter_fs) / (float)AD4170_INTERNAL_CLOCK;
 
 		return 0;
 	}
@@ -638,7 +648,12 @@ int ad4170_determine_t_settle(float *t_settle,
 		break;
 
 	case AD4170_FILT_SINC5:
-		*t_settle = (float)(5 * FILTER_SCALE * filter_fs) / (float)
+		if (filter_fs == 1 || filter_fs == 2) {
+			/* For SINC5 filter with FS = 1 or 2, we need to add the processing time to the settling time calculation */
+			processing_time = PROCESSING_TIME;
+		}
+
+		*t_settle = (float)(5 * FILTER_SCALE * filter_fs + processing_time) / (float)
 			    AD4170_INTERNAL_CLOCK;
 		break;
 
