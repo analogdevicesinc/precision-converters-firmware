@@ -43,7 +43,6 @@
 
 /* UART init parameters */
 struct no_os_uart_init_param uart_init_params = {
-	.device_id = NULL,
 	.baud_rate = IIO_UART_BAUD_RATE,
 	.size = NO_OS_UART_CS_8,
 	.parity = NO_OS_UART_PAR_NO,
@@ -116,7 +115,7 @@ struct no_os_tdm_init_param tdm_init_param = {
 	.fs_lastbit = false,
 	.rising_edge_sampling = false,
 	.irq_id = DMA_IRQ_ID,
-	.rx_complete_callback = ad4170_dma_rx_cplt,
+	.rx_complete_callback = (void *) ad4170_dma_rx_cplt,
 	.active_slots = (1 << TDM_SLOTS_PER_FRAME) - 1,
 #if (DATA_CAPTURE_MODE == CONTINUOUS_DATA_CAPTURE)
 	.rx_half_complete_callback = ad4170_dma_rx_half_cplt,
@@ -154,8 +153,8 @@ static struct no_os_eeprom_init_param eeprom_init_params = {
 struct no_os_dma_init_param ad4170_dma_init_param = {
 	.id = 0,
 	.num_ch = AD469x_DMA_NUM_CHANNELS,
-	.platform_ops = &dma_ops,
-	.sg_handler = ad4170_spi_dma_rx_cplt_callback,
+	.platform_ops = (struct no_os_dma_platform_ops *) &dma_ops,
+	.sg_handler = (void *) ad4170_spi_dma_rx_cplt_callback,
 };
 
 /* Tx Trigger Init params */
@@ -219,7 +218,7 @@ struct no_os_gpio_desc* csb_gpio_desc;
  */
 static int32_t init_gpio(void)
 {
-	int32_t ret;
+	int32_t ret = 0;
 
 #if (INTERFACE_MODE == TDM_MODE) || (INTERFACE_MODE == SPI_DMA_MODE)
 	/* Initialize the Chip select pin as a GPIO */
@@ -234,7 +233,7 @@ static int32_t init_gpio(void)
 	}
 #endif
 
-	return 0;
+	return ret;
 }
 
 /**
@@ -243,7 +242,7 @@ static int32_t init_gpio(void)
  */
 static int32_t gpio_trigger_init(void)
 {
-	int32_t ret;
+	int32_t ret = 0;
 
 #if (INTERFACE_MODE != SPI_DMA_MODE)
 #if (INTERFACE_MODE == SPI_INTERRUPT_MODE)
@@ -266,7 +265,7 @@ static int32_t gpio_trigger_init(void)
 	}
 #endif
 
-	return 0;
+	return ret;
 }
 
 /**
@@ -278,54 +277,20 @@ static int32_t init_uart(void)
 	return no_os_uart_init(&uart_desc, &uart_init_params);
 }
 
-/**
- * @brief 	Initialize the IRQ contoller
- * @return	0 in case of success, negative error code otherwise
- * @details	This function initialize the interrupts for system peripherals
- */
-static int32_t init_interrupt(void)
-{
-	int32_t ret;
-
-#if (ACTIVE_PLATFORM == MBED_PLATFORM)
-	/* Init interrupt controller for Ticker interrupt */
-	ret = no_os_irq_ctrl_init(&ticker_int_desc, &ticker_int_init_params);
-	if (ret) {
-		return ret;
-	}
-
-	/* Register a callback function for Ticker interrupt */
-	ret = no_os_irq_register_callback(ticker_int_desc,
-					  TICKER_ID,
-					  &ticker_int_callback_desc);
-	if (ret) {
-		return ret;
-	}
-
-	/* Enable Ticker interrupt */
-	ret = no_os_irq_enable(ticker_int_desc, TICKER_ID);
-	if (ret) {
-		return ret;
-	}
-#endif // ACTIVE_PLATFORM
-
-	return 0;
-}
-
+#if (INTERFACE_MODE == TDM_MODE)
 /**
  * @brief 	Initialize the TDM peripheral
  * @return	0 in case of success, negative error code otherwise
  */
 static int32_t init_tdm(void)
 {
-#if (INTERFACE_MODE == TDM_MODE)
 	if (no_os_tdm_init(&ad4170_tdm_desc, &tdm_init_param) != 0) {
 		return -EINVAL;
 	}
-#endif // INTERFACE_MODE
 
 	return 0;
 }
+#endif // INTERFACE_MODE
 
 /**
  * @brief 	Initialize Tx Trigger Timer
@@ -333,7 +298,7 @@ static int32_t init_tdm(void)
  */
 static int32_t tx_trigger_init(void)
 {
-	int ret;
+	int32_t ret = 0;
 
 #if (INTERFACE_MODE == SPI_DMA_MODE)
 	ret = no_os_pwm_init(&tx_trigger_desc, &tx_trigger_init_param);
@@ -344,7 +309,7 @@ static int32_t tx_trigger_init(void)
 	tim8_init(tx_trigger_desc);
 #endif
 
-	return 0;
+	return ret;
 }
 
 /**
@@ -373,11 +338,6 @@ int32_t init_system(void)
 	no_os_mdelay(5000);
 
 	ret = gpio_trigger_init();
-	if (ret) {
-		return ret;
-	}
-
-	ret = init_interrupt();
 	if (ret) {
 		return ret;
 	}

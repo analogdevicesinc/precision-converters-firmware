@@ -2,7 +2,7 @@
  * @file    stm32_gpio_irq_generated.c
  * @brief   GPIO IRQ specific functions for STM32 platform
 ********************************************************************************
-* Copyright (c) 2023-2024 Analog Devices, Inc.
+* Copyright (c) 2023-2025 Analog Devices, Inc.
 * All rights reserved.
 *
 * This software is proprietary to Analog Devices, Inc. and its licensors.

@@ -17,7 +17,6 @@
 #include <stdint.h>
 
 #include "app_config.h"
-#include "ad4170_user_config.h"
 
 /******************************************************************************/
 /********************** Macros and Constants Definition ***********************/

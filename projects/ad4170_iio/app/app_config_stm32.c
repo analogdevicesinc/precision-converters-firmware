@@ -180,6 +180,7 @@ static uint32_t lvgl_tick_counter = 0;
 /******************************************************************************/
 /************************** Functions Declarations ****************************/
 /******************************************************************************/
+void SystemClock_Config(void);
 
 /******************************************************************************/
 /************************** Functions Definitions *****************************/
@@ -312,7 +313,9 @@ void ad4170_spi_dma_rx_cplt_callback(DMA_HandleTypeDef* hdma)
 #else // CONTUNUOUS_DATA_CAPTURE
 	no_os_cb_end_async_write(iio_dev_data_g->buffer->buf);
 	no_os_cb_prepare_async_write(iio_dev_data_g->buffer->buf,
-				     nb_of_samples_g, &buff_start_addr, &data_read);
+				     nb_of_samples_g,
+				     (void **) &buff_start_addr,
+				     &data_read);
 #endif // DATA_CAPTURE_MODE
 #endif // INTERFACE_MODE
 }
@@ -342,15 +345,15 @@ void ad4170_spi_dma_rx_half_cplt_callback(DMA_HandleTypeDef* hdma)
  * @param buf_start_addr[out] - Buffer start addr
  * @return None
  */
-void update_buff(uint32_t* local_buf, uint32_t* buf_start_addr)
+void update_buff(uint8_t* local_buf, uint8_t* buf_start_addr)
 {
 #if (INTERFACE_MODE == SPI_DMA_MODE)
-	iio_buf_start_idx = (uint8_t*)buf_start_addr;
+	iio_buf_start_idx = buf_start_addr;
 #if (DATA_CAPTURE_MODE == BURST_DATA_CAPTURE)
-	dma_buf_start_idx = (uint8_t*)local_buf  + (BYTES_PER_SAMPLE *
-			    num_of_active_channels);
+	dma_buf_start_idx = local_buf  + (BYTES_PER_SAMPLE *
+					  num_of_active_channels);
 #else
-	dma_buf_start_idx = (uint8_t*)local_buf;
+	dma_buf_start_idx = local_buf;
 #endif
 
 	iio_buf_current_idx = iio_buf_start_idx;
@@ -376,7 +379,6 @@ void tim8_config(void)
 void stm32_timer_stop(void)
 {
 #if (INTERFACE_MODE == SPI_DMA_MODE)
-	int ret;
 	sdesc = p_ad4170_dev_inst->spi_desc->extra;
 
 	/* Disable Tx Trigger DMA */
@@ -386,13 +388,10 @@ void stm32_timer_stop(void)
 	TIM8->CNT = 0;
 
 	/* Set SYNC Low to Stop conversion */
-	ret = no_os_gpio_set_value(p_ad4170_dev_inst->gpio_sync_inb, NO_OS_GPIO_LOW);
-	if (ret) {
-		return ret;
-	}
+	no_os_gpio_set_value(p_ad4170_dev_inst->gpio_sync_inb, NO_OS_GPIO_LOW);
 
 	/* Disable RX DMA */
-	CLEAR_BIT(sdesc->hspi.Instance->CR2, SPI_CR2_RXDMAEN);
+	CLEAR_BIT(sdesc->hspi->Instance->CR2, SPI_CR2_RXDMAEN);
 #endif
 }
 
@@ -403,19 +402,10 @@ void stm32_timer_stop(void)
 void stm32_abort_dma_transfer(void)
 {
 #if (INTERFACE_MODE == SPI_DMA_MODE)
-	int ret;
-
 	sdesc = p_ad4170_dev_inst->spi_desc->extra;
 
-	ret = no_os_dma_xfer_abort(sdesc->dma_desc, sdesc->rxdma_ch);
-	if (ret) {
-		return ret;
-	}
-
-	ret = no_os_dma_xfer_abort(sdesc->dma_desc, sdesc->txdma_ch);
-	if (ret) {
-		return ret;
-	}
+	(void) no_os_dma_xfer_abort(sdesc->dma_desc, sdesc->rxdma_ch);
+	(void) no_os_dma_xfer_abort(sdesc->dma_desc, sdesc->txdma_ch);
 #endif
 }
 
@@ -428,10 +418,8 @@ void tim8_init(struct no_os_pwm_desc *pwm_desc)
 {
 #if (INTERFACE_MODE == SPI_DMA_MODE)
 	if (!pwm_desc) {
-		return -EINVAL;
+		return;
 	}
-
-	struct stm32_pwm_desc *spwm_desc = pwm_desc->extra;
 
 	TIM8->SMCR = TIM_SMCR_ETP | TIM_MASTERSLAVEMODE_ENABLE | TIM_SLAVEMODE_TRIGGER |
 		     TIM_TS_ETRF;

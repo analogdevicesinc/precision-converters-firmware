@@ -33,6 +33,7 @@
 #include "iio_trigger.h"
 #include "no_os_gpio.h"
 #include "no_os_alloc.h"
+#include "version.h"
 
 #if (INTERFACE_MODE == TDM_MODE)
 #include "stm32_tdm_support.h"
@@ -45,14 +46,16 @@
 #endif
 
 /******** Forward declaration of functions ********/
+#if (ACTIVE_IIO_CLIENT == IIO_CLIENT_LOCAL)
 static int iio_ad4170_local_backend_event_read(void *conn, uint8_t *buf,
 		uint32_t len);
 static int iio_ad4170_local_backend_event_write(void *conn, uint8_t *buf,
 		uint32_t len);
-
+static int32_t ad4170_code_to_straight_binary(uint32_t code, uint8_t chn);
 static float ad4170_data_to_voltage_without_vref(int32_t data, uint8_t chn);
 static float ad4170_data_to_voltage_wrt_vref(int32_t data, uint8_t chn);
-static int32_t ad4170_code_to_straight_binary(uint32_t code, uint8_t chn);
+#endif
+
 static int ad4170_determine_fs_actual(uint32_t fs, uint32_t *fs_actual,
 				      enum ad4170_filter_type filter);
 
@@ -76,9 +79,6 @@ static int ad4170_determine_fs_actual(uint32_t fs, uint32_t *fs_actual,
 /* Number of data storage bits (needed for IIO client to plot ADC data) */
 #define CHN_REAL_BITS		(ADC_RESOLUTION)
 #define CHN_STORAGE_BITS	(BYTES_PER_SAMPLE * 8)
-
-#define	LED_TOGGLE_TIME			(500)		// 500msec
-#define	LED_TOGGLE_TICK_CNTR	(LED_TOGGLE_TIME / (TICKER_INTERRUPT_PERIOD_uSEC / 1000))
 
 #define		BYTE_SIZE		(uint32_t)8
 #define		BYTE_MASK		(uint32_t)0xff
@@ -118,7 +118,7 @@ static char app_local_backend_buff[APP_LOCAL_BACKEND_BUF_SIZE];
 #endif
 
 /* Max number of cached registers */
-#define N_REGISTERS_CACHED ADC_REGISTER_COUNT
+#define NUM_REGISTERS_CACHED ADC_REGISTER_COUNT
 
 /* Limits for Filter FS values */
 #define AD4190_SINC5_FS_LOW			4
@@ -144,8 +144,10 @@ struct ad4170_dev *p_ad4170_dev_inst = NULL;
 /* IIO device descriptor */
 struct iio_device *p_iio_ad4170_dev[NUM_OF_IIO_DEVICES];
 
+#if (DATA_CAPTURE_MODE == CONTINUOUS_DATA_CAPTURE) && (INTERFACE_MODE != SPI_DMA_MODE)
 /* IIO hw trigger descriptor */
 static struct iio_hw_trig *ad4170_hw_trig_desc;
+#endif
 
 #if (DATA_CAPTURE_MODE == CONTINUOUS_DATA_CAPTURE)
 static struct iio_trigger ad4170_iio_trig_desc = {
@@ -316,9 +318,11 @@ static enum calibration_state internal_calibration_state =
 static enum calib_status adc_calibration_status[AD4170_NUM_CHANNELS];
 static adc_calibration_configs adc_calibration_config[AD4170_NUM_CHANNELS];
 
+#if (ACTIVE_DEMO_MODE_CONFIG == LOADCELL_CONFIG)
 /* ADC raw averaged values from loadcell calibration */
 static uint32_t adc_raw_offset;
 static uint32_t adc_raw_gain;
+#endif
 
 /* Number of channels used in the application */
 static uint8_t num_of_channels;
@@ -397,7 +401,7 @@ volatile struct iio_device_data* iio_dev_data_g;
 uint32_t nb_of_samples_g;
 
 /* Global variable for data read from CB functions */
-int32_t data_read;
+uint32_t data_read;
 
 /* Flag to indicate if DMA has been configured for capture */
 volatile bool dma_config_updated = false;
@@ -406,7 +410,7 @@ volatile bool dma_config_updated = false;
 volatile bool ad4170_dma_buff_full = false;
 
 /* Variable to store start of buffer address */
-volatile uint32_t* buff_start_addr;
+uint8_t* buff_start_addr;
 
 /* Local buffer */
 #define MAX_LOCAL_BUF_SIZE	8000
@@ -417,6 +421,7 @@ uint8_t local_buf[MAX_LOCAL_BUF_SIZE + (BYTES_PER_SAMPLE *
 #define MAX_DMA_NDTR		(no_os_min(65535, MAX_LOCAL_BUF_SIZE))
 #endif
 
+#if (INTERFACE_MODE == SPI_DMA_MODE)
 /* Serial interface reset command */
 static const uint8_t ad4170_serial_intf_reset[24] = {
 	0xFF, 0xFF, 0xFF, 0xFF,
@@ -426,6 +431,7 @@ static const uint8_t ad4170_serial_intf_reset[24] = {
 	0xFF, 0xFF, 0xFF, 0xFF,
 	0xFF, 0xFF, 0xFF, 0xFE
 };
+#endif
 
 /**
  * @struct ad4170_cached_reg
@@ -433,11 +439,11 @@ static const uint8_t ad4170_serial_intf_reset[24] = {
  */
 struct ad4170_cached_reg {
 	uint32_t addr;
-	uint32_t value
+	uint32_t value;
 };
 
 /* Cached registers */
-struct ad4170_cached_reg reg_values[N_REGISTERS_CACHED];
+struct ad4170_cached_reg reg_values[NUM_REGISTERS_CACHED];
 
 /* Register index */
 uint8_t read_reg_id = 0;
@@ -455,6 +461,8 @@ static const char *mezzanine_names[] = {
 static const char* active_dev[] = {
 	"ad4170",
 	"ad4190",
+	"ad4171",
+	"ad4172",
 };
 
 /* Effective sampling rate of the device */
@@ -506,6 +514,28 @@ static int32_t ad4170_stop_data_capture(void);
 /******************************************************************************/
 /************************ Functions Definitions *******************************/
 /******************************************************************************/
+/**
+ * @brief	Update the effective sampling rate of the device
+ * @return	0 in case of success, negative error code otherwise
+ */
+static int ad4170_update_sampling_rate(void)
+{
+	float t_settle = 0;
+	int ret;
+
+	/* Determine T Settle */
+	ret = ad4170_determine_t_settle(&t_settle,
+					ad4170_init_params.config.setups[0].filter.filter_type,
+					ad4170_init_params.config.setups[0].filter_fs);
+	if (ret) {
+		return ret;
+	}
+
+	/* Calculate the effective sampling rate of the device */
+	sampling_rate = (1 / t_settle);
+
+	return 0;
+}
 
 /*!
  * @brief	Getter/Setter for the demo config attribute value
@@ -621,21 +651,7 @@ static int get_sampling_frequency(void *device,
 				  const struct iio_ch_info *channel,
 				  intptr_t id)
 {
-	float t_settle = 0;
-	int ret;
-
-	/* Determine T Settle */
-	ret = ad4170_determine_t_settle(&t_settle,
-					ad4170_init_params.config.setups[0].filter.filter_type,
-					ad4170_init_params.config.setups[0].filter_fs);
-	if (ret) {
-		return ret;
-	}
-
-	/* Calculate the effective sampling rate of the device */
-	sampling_rate = (1 / t_settle);
-
-	return sprintf(buf, "%.2f", sampling_rate);
+	return sprintf(buf, "%.2f", sampling_rate / num_of_channels);
 }
 
 static int set_sampling_frequency(void *device,
@@ -646,38 +662,6 @@ static int set_sampling_frequency(void *device,
 {
 	/* NA - Sampling frequency is fixed in the firmware */
 	return -EINVAL;
-}
-
-/*!
- * @brief Getter/Setter for the channel sampling frequency attribute value
- * @param device[in]- pointer to IIO device structure
- * @param buf[in]- pointer to buffer holding attribute value
- * @param len[in]- length of buffer string data
- * @param channel[in]- pointer to IIO channel structure
- * @param id[in]- Attribute ID (optional)
- * @return Number of characters read/written
- */
-static int get_ch_sampling_frequency(void *device,
-				     char *buf,
-				     uint32_t len,
-				     const struct iio_ch_info *channel,
-				     intptr_t id)
-{
-	int ret;
-	float t_settle = 0;
-
-	/* Determine T Settle */
-	ret = ad4170_determine_t_settle(&t_settle,
-					ad4170_init_params.config.setups[0].filter.filter_type,
-					ad4170_init_params.config.setups[0].filter_fs);
-	if (ret) {
-		return ret;
-	}
-
-	/* Calculate the effective sampling rate of the device */
-	sampling_rate = 1 / t_settle;
-
-	return sprintf(buf, "%.2f", (sampling_rate / num_of_channels));
 }
 
 /*!
@@ -727,7 +711,7 @@ static int get_adc_raw(void *device,
 		}
 
 		perform_sensor_measurement_and_update_scale(adc_data_raw, channel->ch_num);
-		return sprintf(buf, "%d", adc_data_raw);
+		return sprintf(buf, "%lu", adc_data_raw);
 
 	case IIO_SCALE_ATTR_ID:
 		return snprintf(buf, len, "%.10f", attr_scale_val[channel->ch_num]);
@@ -748,7 +732,7 @@ static int get_adc_raw(void *device,
 #endif
 		}
 
-		return sprintf(buf, "%d", offset);
+		return sprintf(buf, "%ld", offset);
 
 	default:
 		break;
@@ -1161,20 +1145,13 @@ static int set_pga(void *device,
 	ad4170_init_params.config.setups[ad4170_init_params.config.setup[channel->ch_num].setup_n].afe.pga_gain
 		= pga_id;
 
-	/* Read the AFE register */
-	ret = ad4170_spi_reg_read(p_ad4170_dev_inst,
-				  AD4170_REG_ADC_SETUPS_AFE(
-					  ad4170_init_params.config.setup[channel->ch_num].setup_n), &reg_val);
-	if (ret) {
-		return ret;
-	}
-
 	/* Update the value of PGA Gain */
-	reg_val |= no_os_field_prep(AD4170_ADC_SETUPS_AFE_PGA_GAIN_MSK, pga_id);
+	reg_val = no_os_field_prep(AD4170_ADC_SETUPS_AFE_PGA_GAIN_MSK, pga_id);
 
-	ret = ad4170_spi_reg_write(p_ad4170_dev_inst,
-				   AD4170_REG_ADC_SETUPS_AFE(
-					   ad4170_init_params.config.setup[channel->ch_num].setup_n), reg_val);
+	ret = ad4170_spi_reg_write_mask(p_ad4170_dev_inst,
+					AD4170_REG_ADC_SETUPS_AFE(
+						ad4170_init_params.config.setup[channel->ch_num].setup_n),
+					AD4170_ADC_SETUPS_AFE_PGA_GAIN_MSK, reg_val);
 	if (ret) {
 		return ret;
 	}
@@ -1668,16 +1645,16 @@ static int get_calibration_status(void *device,
 			}
 		}
 
-		sprintf(buf + buf_offset, "%08x",
+		sprintf(buf + buf_offset, "%08lx",
 			adc_calibration_config[channel->ch_num].gain_before_calib);
 		buf_offset += 8;
-		sprintf(buf + buf_offset, "%08x",
+		sprintf(buf + buf_offset, "%08lx",
 			adc_calibration_config[channel->ch_num].gain_after_calib);
 		buf_offset += 8;
-		sprintf(buf + buf_offset, "%08x",
+		sprintf(buf + buf_offset, "%08lx",
 			adc_calibration_config[channel->ch_num].offset_before_calib);
 		buf_offset += 8;
-		sprintf(buf + buf_offset, "%08x",
+		sprintf(buf + buf_offset, "%08lx",
 			adc_calibration_config[channel->ch_num].offset_after_calib);
 		buf_offset += 8;
 
@@ -1779,7 +1756,7 @@ static int set_calibration_routine(void *device,
 	return len;
 }
 
-
+#if (ACTIVE_DEMO_MODE_CONFIG == LOADCELL_CONFIG)
 /*!
  * @brief	Getter/Setter for the Loadcell offset/gain calibration
  * @param	device- pointer to IIO device structure
@@ -1797,10 +1774,10 @@ static int get_loadcell_calibration_status(void *device,
 {
 	switch (id) {
 	case LOADCELL_OFFSET_CALIB_ID:
-		return sprintf(buf, "%d", adc_raw_offset);
+		return sprintf(buf, "%lu", adc_raw_offset);
 
 	case LOADCELL_GAIN_CALIB_ID:
-		return sprintf(buf, "%d", adc_raw_gain);
+		return sprintf(buf, "%lu", adc_raw_gain);
 
 	default:
 		return -EINVAL;
@@ -1848,6 +1825,7 @@ static int set_loadcell_calibration_status(void *device,
 
 	return len;
 }
+#endif
 
 /*!
  * @brief	Search the debug register address in look-up table Or registers array
@@ -1909,7 +1887,7 @@ int32_t debug_reg_read(void *dev, uint32_t reg, uint32_t *readval)
 	uint32_t reg_base_add; 		// Base register address
 	uint32_t reg_addr_offset;	// Offset of input register address from its base
 
-	if (!dev || !readval || (reg > MAX_REGISTER_ADDRESS)) {
+	if (!dev || !readval || (reg > MAX_REG_ADDRESS)) {
 		return -EINVAL;
 	}
 
@@ -1948,7 +1926,7 @@ int32_t debug_reg_write(void *dev, uint32_t reg, uint32_t writeval)
 	uint32_t reg_addr_offset; 	// Offset of input register address from its base
 	uint32_t data;				// Register data
 
-	if (!dev || (reg > MAX_REGISTER_ADDRESS)) {
+	if (!dev || (reg > MAX_REG_ADDRESS)) {
 		return -EINVAL;
 	}
 
@@ -1991,18 +1969,20 @@ int32_t debug_reg_write(void *dev, uint32_t reg, uint32_t writeval)
 static void perform_sensor_measurement_and_update_scale(uint32_t adc_raw,
 		uint16_t chn)
 {
-	float temperature = 0;
-	int32_t cjc_raw_data;
-	float cjc_temp;
-
 #if (ACTIVE_DEMO_MODE_CONFIG == THERMISTOR_CONFIG)
+	float temperature = 0;
 	temperature = get_ntc_thermistor_temperature(adc_raw, chn);
 	attr_scale_val[chn] = (temperature / adc_raw) * 1000.0;
 #elif ((ACTIVE_DEMO_MODE_CONFIG == RTD_2WIRE_CONFIG) || \
 	(ACTIVE_DEMO_MODE_CONFIG == RTD_3WIRE_CONFIG) || (ACTIVE_DEMO_MODE_CONFIG == RTD_4WIRE_CONFIG))
+	float temperature = 0;
 	temperature = get_rtd_temperature(adc_raw, chn);
 	attr_scale_val[chn] = (temperature / adc_raw) * 1000.0;
 #elif (ACTIVE_DEMO_MODE_CONFIG == THERMOCOUPLE_CONFIG)
+	float temperature = 0;
+	int32_t cjc_raw_data;
+	float cjc_temp;
+
 	if (chn != CJC_CHANNEL) {
 		/* Sample the CJC channel (TC channel is already sampled through get_raw() function) */
 		if (ad4170_read_single_sample(CJC_CHANNEL, (uint32_t *)&cjc_raw_data)) {
@@ -2047,6 +2027,7 @@ static void update_vltg_conv_scale_factor(uint8_t chn)
 	}
 }
 
+#if (ACTIVE_IIO_CLIENT == IIO_CLIENT_LOCAL)
 /**
  * @brief	Convert ADC data to voltage without Vref
  * @param	data[in] - ADC data in straight binary format (signed)
@@ -2078,6 +2059,102 @@ static float ad4170_data_to_voltage_wrt_vref(int32_t data, uint8_t chn)
 static int32_t ad4170_code_to_straight_binary(uint32_t code, uint8_t chn)
 {
 	return perform_sign_conversion(code, chn);
+}
+#endif
+
+/**
+ * @brief Cache register values modified by attributes
+ * @return 0 in case of success, negative error code otherwise
+ */
+int ad4170_cache_register_values(void)
+{
+	int ret;
+	uint8_t chn_setup_index = 0;
+
+	read_reg_id = 0;
+
+	/* Cache ADC control register */
+	reg_values[read_reg_id].addr = AD4170_REG_ADC_CTRL;
+	ret = ad4170_spi_reg_read(p_ad4170_dev_inst,
+				  reg_values[read_reg_id].addr,
+				  &reg_values[read_reg_id].value);
+	if (ret) {
+		return ret;
+	}
+
+	read_reg_id++;
+
+	/* Cache setup register */
+	for (chn_setup_index = 0; chn_setup_index < AD4170_NUM_SETUPS;
+	     chn_setup_index++) {
+		reg_values[read_reg_id].addr = AD4170_REG_ADC_CHANNEL_SETUP(chn_setup_index);
+		ret = ad4170_spi_reg_read(p_ad4170_dev_inst,
+					  reg_values[read_reg_id].addr,
+					  &reg_values[read_reg_id].value);
+		if (ret) {
+			return ret;
+		}
+		read_reg_id++;
+	}
+
+	/* Cache AFE register */
+	for (chn_setup_index = 0; chn_setup_index < AD4170_NUM_SETUPS;
+	     chn_setup_index++) {
+		reg_values[read_reg_id].addr = AD4170_REG_ADC_SETUPS_AFE(chn_setup_index);
+		ret = ad4170_spi_reg_read(p_ad4170_dev_inst,
+					  reg_values[read_reg_id].addr,
+					  &reg_values[read_reg_id].value);
+		if (ret) {
+			return ret;
+		}
+		read_reg_id++;
+	}
+
+	/* Cache clock control register */
+	reg_values[read_reg_id].addr = AD4170_REG_CLOCK_CTRL;
+	ret = ad4170_spi_reg_read(p_ad4170_dev_inst,
+				  reg_values[read_reg_id].addr,
+				  &reg_values[read_reg_id].value);
+	if (ret) {
+		return ret;
+	}
+	read_reg_id++;
+
+	/* Cache Filter Fs register */
+	for (chn_setup_index = 0; chn_setup_index < AD4170_NUM_SETUPS;
+	     chn_setup_index++) {
+		reg_values[read_reg_id].addr = AD4170_REG_ADC_SETUPS_FILTER_FS(chn_setup_index);
+		ret = ad4170_spi_reg_read(p_ad4170_dev_inst,
+					  reg_values[read_reg_id].addr,
+					  &reg_values[read_reg_id].value);
+		if (ret) {
+			return ret;
+		}
+		read_reg_id++;
+	}
+
+	return 0;
+}
+
+/**
+ * @brief Restore cached register values
+ * @return 0 in case of success, negative error code otherwise
+ */
+int ad4170_restore_cache(void)
+{
+	int ret;
+	uint8_t write_reg_id;
+
+	for (write_reg_id = 0; write_reg_id < read_reg_id; write_reg_id++) {
+		ret = ad4170_spi_reg_write(p_ad4170_dev_inst,
+					   reg_values[write_reg_id].addr,
+					   reg_values[write_reg_id].value);
+		if (ret) {
+			return ret;
+		}
+	}
+
+	return 0;
 }
 
 /*!
@@ -2169,9 +2246,11 @@ static int32_t ad4170_stop_data_capture(void)
 {
 	int32_t ret;
 	uint8_t chn;
+#if (INTERFACE_MODE == SPI_DMA_MODE)
 	struct ad4170_adc_ctrl adc_ctrl = p_ad4170_dev_inst->config.adc_ctrl;
 	adc_ctrl.cont_read = AD4170_CONT_READ_OFF;
 	adc_ctrl.mode = AD4170_MODE_STANDBY;
+#endif
 
 #if (INTERFACE_MODE == TDM_MODE)
 	ret = no_os_tdm_stop(ad4170_tdm_desc);
@@ -2200,7 +2279,7 @@ static int32_t ad4170_stop_data_capture(void)
 	}
 #else
 	ret = no_os_spi_write_and_read(p_ad4170_dev_inst->spi_desc,
-				       ad4170_serial_intf_reset, sizeof(ad4170_serial_intf_reset));
+				       (uint8_t *) ad4170_serial_intf_reset, sizeof(ad4170_serial_intf_reset));
 	if (ret) {
 		return ret;
 	}
@@ -2234,6 +2313,7 @@ static int32_t ad4170_stop_data_capture(void)
 	return 0;
 }
 
+#if (INTERFACE_MODE == TDM_MODE_MODE) && (DATA_CAPTURE_MODE == BURST_DATA_CAPTURE)
 /**
  * @brief Read data in burst mode via TDM-DMA
  * @param nb_of_bytes[in] - Number of samples requested by IIO
@@ -2243,9 +2323,11 @@ static int32_t ad4170_stop_data_capture(void)
 static int32_t ad4170_read_burst_data_tdm(uint32_t nb_of_bytes,
 		struct iio_device_data *iio_dev_data)
 {
+#if (INTERFACE_MODE == TDM_MODE)
 	uint32_t ad4170_buff_available_size;
 	uint32_t timeout;
 	uint32_t remaining_bytes = nb_of_bytes;
+#endif
 	int32_t ret;
 
 	ret = ad4170_start_data_capture();
@@ -2267,7 +2349,8 @@ static int32_t ad4170_read_burst_data_tdm(uint32_t nb_of_bytes,
 		/* Retrieve the address of data buffer from where DMA data write needs to start */
 		ret = no_os_cb_prepare_async_write(iio_dev_data->buffer->buf,
 						   nb_of_bytes,
-						   &dma_buff, &ad4170_buff_available_size);
+						   (void **) &dma_buff,
+						   &ad4170_buff_available_size);
 		if (ret) {
 			return ret;
 		}
@@ -2311,7 +2394,9 @@ static int32_t ad4170_read_burst_data_tdm(uint32_t nb_of_bytes,
 
 	return 0;
 }
+#endif
 
+#if (INTERFACE_MODE == SPI_INTERRUPT_MODE) && (DATA_CAPTURE_MODE == BURST_DATA_CAPTURE)
 /**
  * @brief Read data in burst mode via SPI
  * @param nb_of_samples[in] - Number of samples requested by IIO
@@ -2352,7 +2437,9 @@ static int32_t ad4170_read_burst_data_spi(uint32_t nb_of_samples,
 
 	return 0;
 }
+#endif
 
+#if (INTERFACE_MODE == SPI_DMA_MODE)
 /**
  * @brief Read data in burst mode via SPI DMA
  * @param nb_of_samples[in] - Number of samples requested by IIO
@@ -2364,21 +2451,19 @@ static int32_t ad4170_read_burst_data_spi_dma(uint32_t nb_of_samples,
 {
 	nb_of_samples *= BYTES_PER_SAMPLE;
 	int ret;
-	uint32_t local_tx_data = 0x000000;
 	uint32_t timeout = BUF_READ_TIMEOUT;
 	uint32_t spirxdma_ndtr;
 
 #if (INTERFACE_MODE == SPI_DMA_MODE)
 	ad4170_dma_buff_full = false;
-	/* STM32 SPI Descriptor */
-	struct stm32_spi_desc* sdesc = p_ad4170_dev_inst->spi_desc->extra;
-
 	nb_of_samples_g = nb_of_samples;
 	iio_dev_data_g = iio_dev_data;
 
 #if (DATA_CAPTURE_MODE == BURST_DATA_CAPTURE)
 	ret = no_os_cb_prepare_async_write(iio_dev_data->buffer->buf,
-					   nb_of_samples, &buff_start_addr, &data_read);
+					   nb_of_samples,
+					   (void **) &buff_start_addr,
+					   &data_read);
 	if (ret) {
 		return ret;
 	}
@@ -2406,8 +2491,8 @@ static int32_t ad4170_read_burst_data_spi_dma(uint32_t nb_of_samples,
 					 ad4170_spi_dma_rx_half_cplt_callback);
 
 		struct no_os_spi_msg  ad4170_spi_msg = {
-			.tx_buff = (uint32_t*)local_tx_data,
-			.rx_buff = (uint32_t*)local_buf,
+			.tx_buff = NULL,
+			.rx_buff = local_buf,
 			.bytes_number = spirxdma_ndtr
 		};
 
@@ -2465,7 +2550,9 @@ static int32_t ad4170_read_burst_data_spi_dma(uint32_t nb_of_samples,
 #else
 	if (!dma_config_updated) {
 		ret = no_os_cb_prepare_async_write(iio_dev_data->buffer->buf,
-						   nb_of_samples, &buff_start_addr, &data_read);
+						   nb_of_samples,
+						   (void **) &buff_start_addr,
+						   &data_read);
 		if (ret) {
 			return ret;
 		}
@@ -2481,8 +2568,8 @@ static int32_t ad4170_read_burst_data_spi_dma(uint32_t nb_of_samples,
 		rxdma_ndtr = spirxdma_ndtr;
 
 		struct no_os_spi_msg  ad4170_spi_msg = {
-			.tx_buff = (uint32_t*)local_tx_data,
-			.rx_buff = (uint32_t*)local_buf,
+			.tx_buff = NULL,
+			.rx_buff = local_buf,
 			.bytes_number = spirxdma_ndtr
 		};
 
@@ -2516,6 +2603,7 @@ static int32_t ad4170_read_burst_data_spi_dma(uint32_t nb_of_samples,
 
 	return 0;
 }
+#endif
 
 /**
  * @brief	Read buffer data corresponding to AD4170 ADC IIO device
@@ -2525,8 +2613,10 @@ static int32_t ad4170_read_burst_data_spi_dma(uint32_t nb_of_samples,
 static int32_t iio_ad4170_submit_buffer(struct iio_device_data *iio_dev_data)
 {
 	uint32_t ret;
+#if (INTERFACE_MODE != TDM_MODE)
 	uint32_t nb_of_samples;
 	nb_of_samples = iio_dev_data->buffer->size / BYTES_PER_SAMPLE;
+#endif
 
 #if (INTERFACE_MODE  != TDM_MODE)
 	if (!buf_size_updated) {
@@ -2567,97 +2657,6 @@ static int32_t iio_ad4170_submit_buffer(struct iio_device_data *iio_dev_data)
 }
 
 /**
- * @brief Cache register values modified by attributes
- * @return 0 in case of success, negative error code otherwise
- */
-int ad4170_cache_register_values(void)
-{
-	int ret;
-	uint8_t chn_setup_index = 0;
-	uint32_t debug_addr = AD4170_REG_ADC_CTRL;
-	uint32_t debug_val = 0;
-
-	read_reg_id = 0;
-
-	/* Cache ADC control register */
-	reg_values[read_reg_id].addr = AD4170_REG_ADC_CTRL;
-	ret = ad4170_spi_reg_read(p_ad4170_dev_inst, reg_values[read_reg_id].addr,
-				  &reg_values[read_reg_id].value);
-	if (ret) {
-		return ret;
-	}
-
-	read_reg_id++;
-
-	/* Cache setup register */
-	for (chn_setup_index = 0; chn_setup_index < AD4170_NUM_SETUPS;
-	     chn_setup_index++) {
-		reg_values[read_reg_id].addr = AD4170_REG_ADC_CHANNEL_SETUP(chn_setup_index);
-		ret = ad4170_spi_reg_read(p_ad4170_dev_inst,
-					  reg_values[read_reg_id].addr, &reg_values[read_reg_id].value);
-		if (ret) {
-			return ret;
-		}
-		read_reg_id++;
-	}
-
-	/* Cache AFE register */
-	for (chn_setup_index = 0; chn_setup_index < AD4170_NUM_SETUPS;
-	     chn_setup_index++) {
-		reg_values[read_reg_id].addr = AD4170_REG_ADC_SETUPS_AFE(chn_setup_index);
-		ret = ad4170_spi_reg_read(p_ad4170_dev_inst,
-					  reg_values[read_reg_id].addr, &reg_values[read_reg_id].value);
-		if (ret) {
-			return ret;
-		}
-		read_reg_id++;
-	}
-
-	/* Cache clock control register */
-	reg_values[read_reg_id].addr = AD4170_REG_CLOCK_CTRL;
-	ret = ad4170_spi_reg_read(p_ad4170_dev_inst,
-				  reg_values[read_reg_id].addr, &reg_values[read_reg_id].value);
-	if (ret) {
-		return ret;
-	}
-	read_reg_id++;
-
-	/* Cache Filter Fs register */
-	for (chn_setup_index = 0; chn_setup_index < AD4170_NUM_SETUPS;
-	     chn_setup_index++) {
-		reg_values[read_reg_id].addr = AD4170_REG_ADC_SETUPS_FILTER_FS(chn_setup_index);
-		ret = ad4170_spi_reg_read(p_ad4170_dev_inst,
-					  reg_values[read_reg_id].addr, &reg_values[read_reg_id].value);
-		if (ret) {
-			return ret;
-		}
-		read_reg_id++;
-	}
-
-	return 0;
-}
-
-/**
- * @brief Restore cached register values
- * @return 0 in case of success, negative error code otherwise
- */
-int ad4170_restore_cache(void)
-{
-	int ret;
-	uint8_t write_reg_id;
-
-	for (write_reg_id = 0; write_reg_id < read_reg_id; write_reg_id++) {
-		ret = ad4170_spi_reg_write(p_ad4170_dev_inst,
-					   reg_values[write_reg_id].addr, reg_values[write_reg_id].value);
-		if (ret) {
-			return ret;
-		}
-	}
-
-	return 0;
-}
-
-/**
  * @brief	Prepare for ADC data capture (transfer from device to memory)
  * @param	dev_instance[in] - IIO device instance
  * @param	chn_mask[in] - Channels select mask
@@ -2671,7 +2670,9 @@ static int32_t iio_ad4170_prepare_transfer(void *dev_instance,
 	uint8_t chn;
 	uint8_t setup;
 	uint8_t index = 0;
+#if (DATA_CAPTURE_MODE == CONTINUOUS_DATA_CAPTURE) && (INTERFACE_MODE == TDM_MODE)
 	uint32_t timeout = BUF_READ_TIMEOUT;
+#endif
 
 	num_of_active_channels = 0;
 	buf_size_updated = false;
@@ -2783,7 +2784,7 @@ static int32_t iio_ad4170_prepare_transfer(void *dev_instance,
  */
 static int32_t iio_ad4170_end_transfer(void *dev)
 {
-	int32_t ret;
+	int32_t ret = 0;
 
 	adc_data_capture_started = false;
 	is_triggered = false;
@@ -2847,7 +2848,7 @@ static int32_t iio_ad4170_end_transfer(void *dev)
 
 	data_capture_operation = false;
 
-	return 0;
+	return ret;
 }
 
 /**
@@ -2861,7 +2862,7 @@ int32_t iio_ad4170_trigger_handler(struct iio_device_data *iio_dev_data)
 	uint32_t adc_raw;
 
 	if (data_capture_started) {
-#if (INTERFACE_MODE == TDM_MODE)
+#if (DATA_CAPTURE_MODE == CONTINUOUS_DATA_CAPTURE) && (INTERFACE_MODE == TDM_MODE)
 		/* Disable IIO trigger after first occurrence to the trigger handler.
 		 * The handler is enabled only once to point the private iio_dev_data to a
 		 * global ad4170_iio_dev_data structure variable for future IIO CB operations */
@@ -2968,10 +2969,6 @@ struct iio_attribute channel_input_attributes[] = {
 		.name = "pga_available",
 		.show = get_pga_available,
 		.store = set_pga_available
-	},
-	{
-		.name = "sampling_frequency",
-		.show = get_ch_sampling_frequency,
 	},
 
 	END_ATTRIBUTES_ARRAY
@@ -3157,6 +3154,7 @@ static struct iio_channel
 	}
 };
 
+#if (ACTIVE_IIO_CLIENT == IIO_CLIENT_LOCAL)
 /**
  * @brief	Read the IIO local backend event data
  * @param	conn[in] - connection descriptor
@@ -3167,11 +3165,7 @@ static struct iio_channel
 static int iio_ad4170_local_backend_event_read(void *conn, uint8_t *buf,
 		uint32_t len)
 {
-	int ret = 0;
-#if (ACTIVE_IIO_CLIENT == IIO_CLIENT_LOCAL)
-	ret = pl_gui_event_read(buf, len);
-#endif
-	return ret;
+	return pl_gui_event_read(buf, len);
 }
 
 /**
@@ -3191,7 +3185,9 @@ static int iio_ad4170_local_backend_event_write(void *conn, uint8_t *buf,
 	return ret;
 
 }
+#endif
 
+#if (DATA_CAPTURE_MODE == CONTINUOUS_DATA_CAPTURE) && (INTERFACE_MODE != SPI_DMA_MODE)
 /**
  * @brief Initialization of IIO hardware trigger specific parameters
  * @param desc[in,out] - IIO hardware trigger descriptor
@@ -3227,6 +3223,7 @@ static int32_t ad4170_iio_trigger_param_init(struct iio_hw_trig **desc)
 
 	return 0;
 }
+#endif
 
 /**
  * @brief	Init for reading/writing and parameterization of a
@@ -3324,39 +3321,6 @@ static int32_t ad4170_iio_remove(struct iio_desc *desc)
 	return 0;
 }
 
-/*!
- * @brief	This is an ISR (Interrupt Service Routine) for Ticker object
- * @param	ctx[in] - Callback context (unused)
- * @return	none
- * @details	This function is periodically called based on the time period
- *			configured during Ticker instance creation/initialization.
- */
-void ticker_callback(void *ctx)
-{
-	static uint32_t tick_cntr;
-	static bool led_on = false;
-
-	tick_cntr++;
-	if (tick_cntr >= LED_TOGGLE_TICK_CNTR) {
-		tick_cntr = 0;
-
-		if (diag_err_status) {
-			if (led_on) {
-				/* Turn off LED */
-				no_os_gpio_set_value(led_gpio_desc, NO_OS_GPIO_HIGH);
-				led_on = false;
-			} else {
-				/* Turn on LED */
-				no_os_gpio_set_value(led_gpio_desc, NO_OS_GPIO_LOW);
-				led_on = true;
-			}
-		} else {
-			/* Turn off LED */
-			no_os_gpio_set_value(led_gpio_desc, NO_OS_GPIO_HIGH);
-		}
-	}
-}
-
 /**
  * @brief Configure filter parameters according to active device chosen
  * @param None
@@ -3417,7 +3381,7 @@ static int board_iio_params_init(struct iio_device** desc,
 	iio_dev->num_ch = NO_OS_ARRAY_SIZE(iio_ad4170_channels[dev_indx]);
 	for (ch_id = 0; ch_id < TOTAL_CHANNELS; ch_id ++) {
 		iio_ad4170_channels[dev_indx][ch_id].attributes =
-			&ad4170_board_channel_attributes;
+			ad4170_board_channel_attributes;
 	}
 
 	iio_dev->channels = iio_ad4170_channels[dev_indx];
@@ -3451,12 +3415,13 @@ int32_t ad4170_iio_initialize(void)
 
 	/* Read context attributes */
 	for (read_id = 0; read_id < NO_OS_ARRAY_SIZE(mezzanine_names); read_id++) {
-		init_status = get_iio_context_attributes(&iio_init_params.ctx_attrs,
+		init_status = get_iio_context_attributes_ex(&iio_init_params.ctx_attrs,
 				&iio_init_params.nb_ctx_attr,
 				eeprom_desc,
 				mezzanine_names[read_id],
 				STR(HW_CARRIER_NAME),
-				&hw_mezzanine_is_valid);
+				&hw_mezzanine_is_valid,
+				FIRMWARE_VERSION);
 		if (init_status) {
 			return init_status;
 		}
@@ -3467,13 +3432,13 @@ int32_t ad4170_iio_initialize(void)
 			case 1:
 				/* AD4170 Device */
 				ad4170_init_params.id = ID_AD4170;
-				iio_device_init_params[0].name = active_dev[0];
+				iio_device_init_params[0].name = (char*) active_dev[0];
 				break;
 
 			case 2:
 				/* AD4190 Device */
 				ad4170_init_params.id = ID_AD4190;
-				iio_device_init_params[0].name = active_dev[1];
+				iio_device_init_params[0].name = (char*) active_dev[1];
 				break;
 
 			default:
@@ -3504,7 +3469,7 @@ int32_t ad4170_iio_initialize(void)
 			return init_status;
 		}
 
-		iio_device_init_params[0].raw_buf = adc_data_buffer;
+		iio_device_init_params[0].raw_buf = (int8_t *) adc_data_buffer;
 		iio_device_init_params[0].raw_buf_len = DATA_BUFFER_SIZE;
 
 		iio_device_init_params[0].dev = p_ad4170_dev_inst;
@@ -3555,6 +3520,12 @@ int32_t ad4170_iio_initialize(void)
 		return init_status;
 	}
 #endif
+
+	/* Update the effective sampling rate */
+	init_status = ad4170_update_sampling_rate();
+	if (init_status) {
+		return init_status;
+	}
 
 	return init_status;
 }

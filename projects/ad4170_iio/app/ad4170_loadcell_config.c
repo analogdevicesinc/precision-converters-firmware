@@ -17,7 +17,6 @@
 #include <stdint.h>
 
 #include "app_config.h"
-#include "ad4170_loadcell_config.h"
 
 /******************************************************************************/
 /********************** Macros and Constants Definition ***********************/
@@ -40,6 +39,7 @@ struct ad4170_init_param ad4170_loadcell_config_params = {
 		.chip_select = SPI_CSB,		// Chip Select
 		.mode = NO_OS_SPI_MODE_3,		// CPOL = 1, CPHA = 1
 		.platform_ops = &spi_ops,
+		.device_id = SPI_DEVICE_ID,
 		.extra = &spi_extra_init_params // SPI extra configurations
 	},
 

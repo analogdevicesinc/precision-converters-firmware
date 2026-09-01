@@ -31,8 +31,8 @@
 
 /* Select filter type for default user config (same for all channels) */
 /* The filter type is chosen depending on the interface mode as it decides
-/* output data rate that appears on the DIG_AUX1 pin and the upper limit
-/* for the ODR is higher for TDM Mode compared to the SPI.
+ * output data rate that appears on the DIG_AUX1 pin and the upper limit
+ * for the ODR is higher for TDM Mode compared to the SPI.
  * Example -:
  * Sinc5+averaging filter allows FS_CONFIG_VALUE to be configured from
  * 4 (125ksps) to 8330 (60.4sps) in steps of 4,
