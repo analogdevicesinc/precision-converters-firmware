@@ -65,7 +65,7 @@ var searchData=
   ['reg_5ft_5fhigh_62',['REG_T_HIGH',['../adt7xxx__support_8h.html#a7496716d25746ab1958284dea9f5ff4fa18ebf670b7a8187af7cf63796effaf18',1,'adt7xxx_support.h']]],
   ['reg_5ft_5flow_63',['REG_T_LOW',['../adt7xxx__support_8h.html#a7496716d25746ab1958284dea9f5ff4fab310f87e09a9f4157d7e4035f65718f4',1,'adt7xxx_support.h']]],
   ['reg_5ftemp_64',['REG_TEMP',['../adt7xxx__support_8h.html#a7496716d25746ab1958284dea9f5ff4fa3a065aef57f8cc483c8961e825ac58e9',1,'adt7xxx_support.h']]],
-  ['reg_5fvalues_65',['reg_values',['../ad4170__iio_8c.html#a3d8766463af09ccf4afa286778c4e587',1,'ad4170_iio.c']]],
+  ['reg_5fvalues_65',['reg_values',['../ad4170__iio_8c.html#ada1c751a12e9be1d893bd065dfdc7b48',1,'ad4170_iio.c']]],
   ['register_5fmax_5fval_66',['register_max_val',['../ad469x__iio_8c.html#aaf094666b088c711d3661f2fc30c7bbe',1,'REGISTER_MAX_VAL:&#160;ad469x_iio.c'],['../ad7091r__iio_8c.html#aaf094666b088c711d3661f2fc30c7bbe',1,'REGISTER_MAX_VAL:&#160;ad7091r_iio.c']]],
   ['registers_67',['registers',['../adt7420__console_2app_2main_8c.html#a9ab03328a4173fdaa0dd4015c6d66154',1,'main.c']]],
   ['registers_5fe_68',['registers_e',['../adt7xxx__support_8h.html#a7496716d25746ab1958284dea9f5ff4f',1,'adt7xxx_support.h']]],

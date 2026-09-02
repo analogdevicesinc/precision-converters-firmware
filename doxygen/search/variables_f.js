@@ -19,7 +19,7 @@ var searchData=
   ['refp_16',['refp',['../structad77681__init__param.html#a6850b6471848fb064ac87cf14f994cb6',1,'ad77681_init_param::REFp'],['../structad77681__dev.html#a5110c16cff8975cb44e969f26a773cae',1,'ad77681_dev::REFp']]],
   ['reg_5fread_5fwrite_5fitems_17',['reg_read_write_items',['../ad717x__menu__defines_8h.html#aede6b839ecac5448ac05b5d6d9800191',1,'ad717x_menu_defines.h']]],
   ['reg_5fread_5fwrite_5fmenu_18',['reg_read_write_menu',['../ad717x__menu__defines_8h.html#acb0951667f5196376a498ae346e9d59c',1,'ad717x_menu_defines.h']]],
-  ['reg_5fvalues_19',['reg_values',['../ad4170__iio_8c.html#a3d8766463af09ccf4afa286778c4e587',1,'ad4170_iio.c']]],
+  ['reg_5fvalues_19',['reg_values',['../ad4170__iio_8c.html#ada1c751a12e9be1d893bd065dfdc7b48',1,'ad4170_iio.c']]],
   ['registers_20',['registers',['../adt7420__console_2app_2main_8c.html#a9ab03328a4173fdaa0dd4015c6d66154',1,'main.c']]],
   ['regs_21',['regs',['../structad717x__device__map__info.html#aeae8b258db9f5bc56ec4779119528a7d',1,'ad717x_device_map_info']]],
   ['remove_22',['remove',['../structad4692__data__transfer__system.html#a37062f3ca40ab0f459c4ce64ebf94b4f',1,'ad4692_data_transfer_system']]],
