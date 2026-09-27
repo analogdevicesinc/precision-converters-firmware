@@ -2,7 +2,7 @@
  * @file    ad2s1210_user_config.c
  * @brief   User configurations for AD2S1210 No-OS driver
 ********************************************************************************
-* Copyright (c) 2023 Analog Devices, Inc.
+* Copyright (c) 2023, 2026 Analog Devices, Inc.
 * Copyright (c) 2023 BayLibre, SAS.
 * All rights reserved.
 *
@@ -21,41 +21,49 @@
 /********************* Macros and Constants Definition ************************/
 /******************************************************************************/
 
+#define AD2S1210_SPI_MAX_SPEED_HZ	2000000
+
 /******************************************************************************/
 /******************** Variables and User Defined Data Types *******************/
 /******************************************************************************/
 
 /* AD2S1210 No-OS driver init parameters */
 struct ad2s1210_init_param ad2s1210_init_params = {
-	.spi_init = { /* TODO: move to spi_init_param */
-		.max_speed_hz = 2000000,
+	.spi_init = {
+		.max_speed_hz = AD2S1210_SPI_MAX_SPEED_HZ,
 		.mode = NO_OS_SPI_MODE_1,
 		.chip_select = SPI_CSB,
 		.platform_ops = &spi_ops,
-		.extra = &spi_extra_init_params
+		.extra = &spi_extra_init_params,
+		.device_id = SPI_DEVICE_ID
 	},
 	.gpio_a0 = {
 		.number = GPIO_A0,
+		.port = GPIO_A0_PORT,
 		.platform_ops = &gpio_ops,
 		.extra = NULL
 	},
 	.gpio_a1 = {
 		.number = GPIO_A1,
+		.port = GPIO_A1_PORT,
 		.platform_ops = &gpio_ops,
 		.extra = NULL
 	},
 	.gpio_res0 = {
 		.number = GPIO_RES0,
+		.port = GPIO_RES0_PORT,
 		.platform_ops = &gpio_ops,
 		.extra = NULL
 	},
 	.gpio_res1 = {
 		.number = GPIO_RES1,
+		.port = GPIO_RES1_PORT,
 		.platform_ops = &gpio_ops,
 		.extra = NULL
 	},
 	.gpio_sample = {
 		.number = GPIO_SAMPLE,
+		.port = GPIO_SAMPLE_PORT,
 		.platform_ops = &gpio_ops,
 		.extra = NULL
 	},

@@ -1,14 +1,12 @@
 /***************************************************************************//**
- * @file    main.c
- * @brief   Main interface for AD2S1210 IIO firmware application
+ *   @file    main.c
+ *   @brief   Main interface for IIO firmware application
 ********************************************************************************
-* Copyright (c) 2023 Analog Devices, Inc.
-* Copyright (c) 2023 BayLibre, SAS.
-* All rights reserved.
-*
-* This software is proprietary to Analog Devices, Inc. and its licensors.
-* By using this software you agree to the terms of the associated
-* Analog Devices Software License Agreement.
+ * Copyright (c) 2023 Analog Devices, Inc.
+ *
+ * This software is proprietary to Analog Devices, Inc. and its licensors.
+ * By using this software you agree to the terms of the associated
+ * Analog Devices Software License Agreement.
 *******************************************************************************/
 
 /******************************************************************************/
@@ -16,37 +14,46 @@
 /******************************************************************************/
 #include <stdio.h>
 #include <stdint.h>
-
-#include "ad2s1210_iio.h"
-
-/******************************************************************************/
-/********************* Macros and Constants Definition ************************/
-/******************************************************************************/
+#include "no_os_error.h"
 
 /******************************************************************************/
-/******************** Variables and User Defined Data Types *******************/
+/********************** Macros and Constants Definitions **********************/
+/******************************************************************************/
+
+/******************************************************************************/
+/********************** Variables and User Defined Data Types *****************/
 /******************************************************************************/
 
 /******************************************************************************/
 /************************** Functions Declarations ****************************/
 /******************************************************************************/
+int32_t init_system(void);
+int32_t iio_app_initialize(void);
+void iio_app_event_handler(void);
 
 /******************************************************************************/
 /************************** Functions Definitions *****************************/
 /******************************************************************************/
-
-/* @brief	Main function
- * @details	This is a main entry function for AD2S1210 IIO application
+/**
+ * @brief	Main entry point to application
+ * @return	none
  */
 int main(void)
 {
-	/* Initialize the AD2S1210 IIO interface */
-	if (ad2s1210_iio_initialize()) {
+	/* Initialize the system and peripherals */
+	if (init_system()) {
+		printf("System initialization failure!!\r\n");
+		return -ENODEV;
+	}
+
+	/* Initialize the IIO interface */
+	if (iio_app_initialize()) {
 		printf("IIO initialization failure!!\r\n");
+		return -ENODEV;
 	}
 
 	while (1) {
-		ad2s1210_iio_event_handler();
+		/* Monitor the IIO client events */
+		iio_app_event_handler();
 	}
-
 }

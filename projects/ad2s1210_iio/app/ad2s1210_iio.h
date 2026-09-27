@@ -26,10 +26,5 @@
 /******************************************************************************/
 /********************** Public/Extern Declarations ****************************/
 /******************************************************************************/
-/* Init the IIO interface */
-int32_t ad2s1210_iio_initialize(void);
-
-/* Run the IIO event handler */
-void ad2s1210_iio_event_handler(void);
 
 #endif /* _AD2S1210_IIO_H_ */
