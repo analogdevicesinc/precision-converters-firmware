@@ -23,14 +23,14 @@ jobs:
       - name: Sphinx build
         run: |
           pushd doc/sphinx
-          sphinx-build ./ build
+          sphinx-build -b dirhtml ./ build
           popd
           echo "Sphinx was generated successfully!"
 
       - name: Store the generated doc
         uses: actions/upload-artifact@v4
         with:
-          name: html-sphinx
+          name: dirhtml-sphinx
           path: doc/sphinx/build
 
       - name: Doxygen build
@@ -64,7 +64,7 @@ jobs:
         git rm -r . --quiet
     - uses: actions/download-artifact@v4
       with:
-        name: html-sphinx
+        name: dirhtml-sphinx
 
     - uses: actions/download-artifact@v4
       with:
